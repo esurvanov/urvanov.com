@@ -55,6 +55,11 @@ const ICONS = {
       <path d="M6 8h12a4 4 0 0 1 4 4v3a3 3 0 0 1-5.2 2L15 15H9l-1.8 2A3 3 0 0 1 2 15v-3a4 4 0 0 1 4-4zM7 11v3M5.5 12.5h3M16 11.5h.01M18 13.5h.01" />
     </Icon>
   ),
+  jaiora: (
+    <Icon>
+      <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />
+    </Icon>
+  ),
   taiga: (
     <Icon>
       <path d="M12 3l4 6h-2.5l3.5 5h-3l3 5H7l3-5H7l3.5-5H8zM12 19v3" />
@@ -113,6 +118,11 @@ export default function HomeView() {
       </section>
 
       <section className="home-cards">
+        <button className="home-card home-card-wide" onClick={() => navigate('/jaiora')}>
+          <span className="home-card-icon">{ICONS.jaiora}</span>
+          <span className="home-card-title">Jaiora</span>
+          <span className="home-card-meta">Оффлайн-LinkedIn: находим нужного человека и сводим вживую</span>
+        </button>
         <button className="home-card" onClick={() => navigate('/patterns')}>
           <span className="home-card-icon">{ICONS.patterns}</span>
           <span className="home-card-title">Каталог паттернов</span>

@@ -5,6 +5,7 @@ import PatternsView from '@/components/PatternsView'
 import PatternsCategoryView from '@/components/PatternsCategoryView'
 import LinksView from '@/components/LinksView'
 import HomeView from '@/components/HomeView'
+import JaioraView from '@/components/JaioraView'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Route path="/presenter" element={<PresenterView />} />
       <Route path="/patterns" element={<PatternsView />} />
       <Route path="/patterns/:categoryId" element={<PatternsCategoryView />} />
+      <Route path="/jaiora" element={<JaioraView />} />
       <Route path="/links" element={<LinksView />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

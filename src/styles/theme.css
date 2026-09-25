@@ -1208,3 +1208,59 @@ a:hover {
   .home-page { padding: 40px 16px; }
   .home-name { font-size: 2.25rem; }
 }
+
+/* ---------- Jaiora ---------- */
+.jaiora-back {
+  align-self: flex-start;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--fg-muted);
+  font: inherit;
+  cursor: pointer;
+}
+.jaiora-back:hover { color: var(--accent); }
+
+.jaiora-lead {
+  margin: 20px 0 0;
+  max-width: 640px;
+  color: var(--fg);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.jaiora-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+}
+.jaiora-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.jaiora-step-main { border-color: var(--accent); }
+.jaiora-step-title { font-size: 1.25rem; font-weight: 700; }
+.jaiora-step-text { color: var(--fg-muted); font-size: 0.95rem; }
+.jaiora-arrow { align-self: center; color: var(--accent); font-size: 1.5rem; }
+
+.jaiora-section { display: flex; flex-direction: column; gap: 12px; }
+.jaiora-h2 { margin: 0; font-size: 1.5rem; font-weight: 700; }
+.jaiora-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.jaiora-card-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+
+@media (max-width: 600px) {
+  .jaiora-flow { flex-direction: column; }
+  .jaiora-arrow { transform: rotate(90deg); }
+}
+
+.home-card-wide { grid-column: 1 / -1; border-color: var(--accent); }
