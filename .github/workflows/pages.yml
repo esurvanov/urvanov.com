@@ -27,14 +27,16 @@ jobs:
       - run: npm run build
       # SPA-фолбэк: Pages отдаёт 404.html на неизвестные пути
       - run: cp dist/index.html dist/404.html
-      # Игра «Березовка» живёт в своём репозитории и подтягивается при каждой выкладке
+      # Игры живут в своём репозитории и подтягиваются при каждой выкладке
       - uses: actions/checkout@v4
         with:
           repository: esurvanov/awesome-games
           path: games
       - run: |
-          mkdir -p dist/berezovka
-          rsync -a --exclude docs --exclude 'README*' games/berezovka/ dist/berezovka/
+          for game in berezovka sibiria; do
+            mkdir -p "dist/$game"
+            rsync -a --exclude docs --exclude tests --exclude 'README*' "games/$game/" "dist/$game/"
+          done
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
