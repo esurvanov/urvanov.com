@@ -1155,7 +1155,7 @@ a:hover {
 
 .home-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
 }
 
@@ -1172,6 +1172,7 @@ a:hover {
   font: inherit;
   text-align: left;
   cursor: pointer;
+  text-decoration: none;
   transition: border-color 0.15s, transform 0.15s;
 }
 
