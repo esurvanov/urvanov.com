@@ -11,6 +11,10 @@ export interface LinkSection {
 
 export const LINK_SECTIONS: LinkSection[] = [
   {
+    title: 'Jaiora',
+    items: [{ url: '/jaiora', label: 'Jaiora', comment: 'оффлайн-LinkedIn · чаты по городам' }],
+  },
+  {
     title: 'Проекты и достижения',
     items: [
       { url: 'https://arxiv.org/abs/2502.13266v1', label: 'ArXiv · ML-подход для кубика Рубика', comment: 'Превзошли SOTA для 3×3×3, впервые решили 4×4×4 и 5×5×5' },
@@ -74,20 +78,26 @@ export const LINK_SECTIONS: LinkSection[] = [
       { url: 'https://www.youtube.com/@Digital_nomads_asia/videos', label: 'YouTube · Digital Nomads Asia', comment: 'Конференция в Таиланде' },
     ],
   },
-  {
-    title: 'IT-комьюнити',
-    items: [
-      { url: 'https://t.me/batumi_it_digital', label: 'Батуми' },
-      { url: 'https://t.me/it_danang', label: 'Дананг' },
-      { url: 'https://t.me/bangkok_it', label: 'Бангкок' },
-      { url: 'https://t.me/bali_digital_it', label: 'Бали' },
-      { url: 'https://t.me/phuket_digital_it', label: 'Пхукет' },
-      { url: 'https://t.me/almati_it', label: 'Алматы' },
-      { url: 'https://t.me/spb_digital_it', label: 'Санкт-Петербург' },
-      { url: 'https://t.me/antalia_it', label: 'Анталья' },
-      { url: 'https://t.me/moscow_digital_it', label: 'Москва' },
-      { url: 'https://t.me/belgrade_it_digital', label: 'Белград' },
-      { url: 'https://t.me/berlin_it_digital', label: 'Берлин' },
-    ],
-  },
+]
+
+export const CITY_CHATS: LinkItem[] = [
+  { url: 'https://t.me/batumi_it_digital', label: 'Батуми' },
+  { url: 'https://t.me/it_danang', label: 'Дананг' },
+  { url: 'https://t.me/bangkok_it', label: 'Бангкок' },
+  { url: 'https://t.me/bali_digital_it', label: 'Бали' },
+  { url: 'https://t.me/phuket_digital_it', label: 'Пхукет' },
+  { url: 'https://t.me/almati_it', label: 'Алматы' },
+  { url: 'https://t.me/spb_digital_it', label: 'Санкт-Петербург' },
+  { url: 'https://t.me/antalia_it', label: 'Анталья' },
+  { url: 'https://t.me/moscow_digital_it', label: 'Москва' },
+  { url: 'https://t.me/belgrade_it_digital', label: 'Белград' },
+  { url: 'https://t.me/berlin_it_digital', label: 'Берлин' },
+]
+
+// Группы для страницы ссылок: заголовок группы + разделы внутри неё
+export const LINK_GROUPS: { title: string; sections: string[] }[] = [
+  { title: 'Jaiora', sections: ['Jaiora'] },
+  { title: 'Обо мне', sections: ['Личное', 'Проекты и достижения', 'Образование'] },
+  { title: 'Выступления', sections: ['Медиа'] },
+  { title: 'Сообщества', sections: ['Каналы'] },
 ]

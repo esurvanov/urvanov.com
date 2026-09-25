@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { config } from '@/data/config'
+import { CITY_CHATS } from '@/data/links'
 
 const EXAMPLES = [
   { title: 'Работа', text: 'знакомство до собеседования' },
@@ -58,6 +59,17 @@ export default function JaioraView() {
               <span className="jaiora-card-title">{e.title}</span>
               <span className="home-metric-label">{e.text}</span>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="jaiora-section">
+        <h2 className="jaiora-h2">Чаты по городам</h2>
+        <div className="home-contacts">
+          {CITY_CHATS.map((c) => (
+            <a key={c.url} className="home-contact" href={c.url} target="_blank" rel="noopener noreferrer">
+              {c.label}
+            </a>
           ))}
         </div>
       </section>

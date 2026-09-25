@@ -104,7 +104,17 @@ export default function HomeView() {
     <div className="home-page">
       <header className="home-hero">
         <h1 className="home-name">{config.speaker}</h1>
-        <p className="home-role">CTO · AI · ментор</p>
+        <p className="home-role">CTO · AI · нетворк</p>
+        <div className="home-contacts home-contacts-hero">
+        {CONTACTS.map((c) => (
+          <a key={c.label} className="home-contact" href={c.url} target="_blank" rel="noopener noreferrer">
+            {c.label}
+          </a>
+        ))}
+        <button className="home-contact" onClick={() => navigate('/links')}>
+          Все ссылки
+        </button>
+        </div>
       </header>
 
       <section className="home-metrics">
@@ -123,41 +133,42 @@ export default function HomeView() {
           <span className="home-card-title">Jaiora</span>
           <span className="home-card-meta">Оффлайн-LinkedIn: находим нужного человека и сводим вживую</span>
         </button>
-        <button className="home-card" onClick={() => navigate('/patterns')}>
-          <span className="home-card-icon">{ICONS.patterns}</span>
-          <span className="home-card-title">Каталог паттернов</span>
-          <span className="home-card-meta">
-            {patternsTotal} паттернов · {PATTERN_CATEGORIES.length} категорий
-          </span>
-        </button>
-        <button className="home-card" onClick={() => navigate('/slide/1')}>
-          <span className="home-card-icon">{ICONS.talk}</span>
-          <span className="home-card-title">Презентация</span>
-          <span className="home-card-meta">
-            {config.conferenceName} · {config.talkTitle}
-          </span>
-        </button>
-        <a className="home-card" href="/berezovka/">
-          <span className="home-card-icon">{ICONS.game}</span>
-          <span className="home-card-title">Березовка</span>
-          <span className="home-card-meta">3D-игра в браузере · заснеженная деревня</span>
-        </a>
-        <a className="home-card" href="/sibiria/">
-          <span className="home-card-icon">{ICONS.taiga}</span>
-          <span className="home-card-title">Сибирь</span>
-          <span className="home-card-meta">2D-выживание · тайга, 1993</span>
-        </a>
       </section>
 
-      <section className="home-contacts">
-        {CONTACTS.map((c) => (
-          <a key={c.label} className="home-contact" href={c.url} target="_blank" rel="noopener noreferrer">
-            {c.label}
+      <section className="home-group">
+        <h2 className="home-group-title">Материалы</h2>
+        <div className="home-cards">
+          <button className="home-card" onClick={() => navigate('/patterns')}>
+            <span className="home-card-icon">{ICONS.patterns}</span>
+            <span className="home-card-title">Каталог паттернов</span>
+            <span className="home-card-meta">
+              {patternsTotal} паттернов · {PATTERN_CATEGORIES.length} категорий
+            </span>
+          </button>
+          <button className="home-card" onClick={() => navigate('/slide/1')}>
+            <span className="home-card-icon">{ICONS.talk}</span>
+            <span className="home-card-title">Презентация</span>
+            <span className="home-card-meta">
+              {config.conferenceName} · {config.talkTitle}
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section className="home-group">
+        <h2 className="home-group-title">Игры</h2>
+        <div className="home-cards">
+          <a className="home-card" href="/berezovka/">
+            <span className="home-card-icon">{ICONS.game}</span>
+            <span className="home-card-title">Березовка</span>
+            <span className="home-card-meta">3D-игра в браузере · заснеженная деревня</span>
           </a>
-        ))}
-        <button className="home-contact" onClick={() => navigate('/links')}>
-          Все ссылки
-        </button>
+          <a className="home-card" href="/sibiria/">
+            <span className="home-card-icon">{ICONS.taiga}</span>
+            <span className="home-card-title">Сибирь</span>
+            <span className="home-card-meta">2D-выживание · тайга, 1993</span>
+          </a>
+        </div>
       </section>
     </div>
   )
