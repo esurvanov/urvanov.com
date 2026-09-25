@@ -68,7 +68,7 @@ const METRICS = [
 const CONTACTS = [
   { label: 'Telegram', url: 'https://t.me/eurvanov' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/eurvanov/' },
-  { label: 'GitHub', url: 'http://github.com/hedgehogues/' },
+  { label: 'GitHub', url: 'https://github.com/esurvanov/' },
   { label: 'GetMentor', url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
 ]
 

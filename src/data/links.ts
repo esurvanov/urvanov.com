@@ -43,7 +43,7 @@ export const LINK_SECTIONS: LinkSection[] = [
     items: [
       { url: 'https://www.linkedin.com/in/eurvanov/', label: 'LinkedIn', comment: 'CTO · AI' },
       { url: 'https://ru.stackoverflow.com/users/188116/eurvanov', label: 'Stack Overflow', comment: '#103 year rank · 10 256 репутации · 10+ лет' },
-      { url: 'http://github.com/hedgehogues/', label: 'GitHub', comment: '100+ звёзд' },
+      { url: 'https://github.com/esurvanov/', label: 'GitHub', comment: '100+ звёзд' },
       { url: 'https://t.me/eurvanov', label: 'Telegram' },
       { url: 'https://vk.com/eurvanov', label: 'VK' },
       { url: 'https://getmentor.dev/mentor/egor-urvanov-1077', label: 'GetMentor', comment: 'Топ-1 ментор · 1500+ часов консультаций' },

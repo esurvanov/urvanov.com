@@ -75,7 +75,7 @@ export default function SlideView() {
       </SlideErrorBoundary>
       <a
         className="github-btn"
-        href="https://github.com/Hedgehogues/awesome-claude"
+        href="https://github.com/esurvanov/awesome-claude"
         target="_blank"
         rel="noopener noreferrer"
         title="Исходники"
