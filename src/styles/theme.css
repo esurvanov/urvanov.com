@@ -1149,7 +1149,7 @@ a:hover {
   border-radius: 12px;
 }
 
-.home-metric-icon { font-size: 1.25rem; }
+.home-metric-icon { display: inline-flex; color: var(--accent); font-size: 1.5rem; }
 .home-metric-value { font-size: 1.75rem; font-weight: 800; }
 .home-metric-label { color: var(--fg-muted); font-size: 0.9rem; }
 
@@ -1176,7 +1176,7 @@ a:hover {
 }
 
 .home-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-.home-card-icon { font-size: 2rem; }
+.home-card-icon { display: inline-flex; color: var(--accent); font-size: 2rem; }
 .home-card-title { font-size: 1.5rem; font-weight: 700; }
 .home-card-meta { color: var(--fg-muted); font-size: 0.95rem; }
 

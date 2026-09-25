@@ -2,19 +2,74 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { config } from '@/data/config'
+import type { ReactNode } from 'react'
+
+// Однотонные линейные значки (stroke = currentColor), 24×24
+function Icon({ children }: { children: ReactNode }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="1em"
+      height="1em"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {children}
+    </svg>
+  )
+}
+
+const ICONS = {
+  company: (
+    <Icon>
+      <path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M14 9h5a1 1 0 0 1 1 1v11M2 21h20M8 8h2M8 12h2M8 16h2" />
+    </Icon>
+  ),
+  interview: (
+    <Icon>
+      <rect x="9" y="3" width="6" height="11" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
+    </Icon>
+  ),
+  mentor: (
+    <Icon>
+      <path d="M2 9l10-5 10 5-10 5zM6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5" />
+    </Icon>
+  ),
+  rep: (
+    <Icon>
+      <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" />
+    </Icon>
+  ),
+  patterns: (
+    <Icon>
+      <path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19a2 2 0 0 1 2-2h13M9 7h6" />
+    </Icon>
+  ),
+  talk: (
+    <Icon>
+      <rect x="3" y="4" width="18" height="12" rx="1.5" />
+      <path d="M8 21l4-5 4 5M12 16v0" />
+    </Icon>
+  ),
+}
 
 const METRICS = [
-  { icon: '🏢', value: '10', label: 'компаний' },
-  { icon: '🎙', value: '35', label: 'интервью' },
-  { icon: '🎓', value: '1500+', label: 'часов менторинга' },
-  { icon: '⭐', value: '10 256', label: 'репутация SO' },
+  { icon: ICONS.company, value: '10', label: 'компаний' },
+  { icon: ICONS.interview, value: '35', label: 'интервью' },
+  { icon: ICONS.mentor, value: '1500+', label: 'часов менторинга' },
+  { icon: ICONS.rep, value: '10 256', label: 'репутация SO' },
 ]
 
 const CONTACTS = [
-  { icon: '✈️', label: 'Telegram', url: 'https://t.me/eurvanov' },
-  { icon: '💼', label: 'LinkedIn', url: 'https://www.linkedin.com/in/eurvanov/' },
-  { icon: '🐙', label: 'GitHub', url: 'http://github.com/hedgehogues/' },
-  { icon: '🧭', label: 'GetMentor', url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
+  { label: 'Telegram', url: 'https://t.me/eurvanov' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/eurvanov/' },
+  { label: 'GitHub', url: 'http://github.com/hedgehogues/' },
+  { label: 'GetMentor', url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
 ]
 
 const patternsTotal = PATTERN_CATEGORIES.reduce((sum, c) => sum + c.patterns.length, 0)
@@ -49,14 +104,14 @@ export default function HomeView() {
 
       <section className="home-cards">
         <button className="home-card" onClick={() => navigate('/patterns')}>
-          <span className="home-card-icon">📚</span>
+          <span className="home-card-icon">{ICONS.patterns}</span>
           <span className="home-card-title">Каталог паттернов</span>
           <span className="home-card-meta">
             {patternsTotal} паттернов · {PATTERN_CATEGORIES.length} категорий
           </span>
         </button>
         <button className="home-card" onClick={() => navigate('/slide/1')}>
-          <span className="home-card-icon">🎤</span>
+          <span className="home-card-icon">{ICONS.talk}</span>
           <span className="home-card-title">Презентация</span>
           <span className="home-card-meta">
             {config.conferenceName} · {config.talkTitle}
@@ -67,11 +122,11 @@ export default function HomeView() {
       <section className="home-contacts">
         {CONTACTS.map((c) => (
           <a key={c.label} className="home-contact" href={c.url} target="_blank" rel="noopener noreferrer">
-            <span>{c.icon}</span> {c.label}
+            {c.label}
           </a>
         ))}
         <button className="home-contact" onClick={() => navigate('/links')}>
-          <span>🔗</span> Все ссылки
+          Все ссылки
         </button>
       </section>
     </div>
