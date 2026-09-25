@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { PATTERN_CATEGORIES } from '@/data/patterns'
+import { closeTarget } from '@/lib/closeTarget'
 import PatternDetailOverlay from './PatternDetailOverlay'
 
 export default function PatternsCategoryView() {
@@ -9,8 +10,7 @@ export default function PatternsCategoryView() {
   const [activePatternIndex, setActivePatternIndex] = useState<number | null>(null)
 
   const closePatterns = () => {
-    const last = sessionStorage.getItem('lastSlide') ?? '1'
-    navigate(`/slide/${last}`)
+    navigate(closeTarget())
   }
 
   const category = PATTERN_CATEGORIES.find(c => c.id === categoryId)

@@ -1107,3 +1107,103 @@ a:hover {
   margin: 0;
 }
 
+
+/* ---------- Главная: обо мне ---------- */
+.home-page {
+  max-width: 880px;
+  margin: 0 auto;
+  min-height: 100%;
+  padding: 64px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.home-name {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.home-role {
+  margin: 8px 0 0;
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.home-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.home-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.home-metric-icon { font-size: 1.25rem; }
+.home-metric-value { font-size: 1.75rem; font-weight: 800; }
+.home-metric-label { color: var(--fg-muted); font-size: 0.9rem; }
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.home-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.home-card-icon { font-size: 2rem; }
+.home-card-title { font-size: 1.5rem; font-weight: 700; }
+.home-card-meta { color: var(--fg-muted); font-size: 0.95rem; }
+
+.home-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.home-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg);
+  font: inherit;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home-contact:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 600px) {
+  .home-page { padding: 40px 16px; }
+  .home-name { font-size: 2.25rem; }
+}

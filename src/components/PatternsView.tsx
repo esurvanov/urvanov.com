@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import { PATTERN_CATEGORIES } from '@/data/patterns'
+import { closeTarget } from '@/lib/closeTarget'
 
 export default function PatternsView() {
   const navigate = useNavigate()
 
   const closePatterns = () => {
-    const last = sessionStorage.getItem('lastSlide') ?? '1'
-    navigate(`/slide/${last}`)
+    navigate(closeTarget())
   }
 
   return (
