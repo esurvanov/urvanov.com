@@ -1,32 +1,18 @@
 import { useNavigate } from 'react-router-dom'
-
-const PRINCIPLES = [
-  {
-    title: 'Открытость — это подарок',
-    text: 'Чаты, встречи и доступ к сети открыты всем. Ничего не нужно отдавать взамен, и мы не ведём счёт.',
-  },
-  {
-    title: 'Доверие не скопировать',
-    text: 'Бот, чат и юрлицо получатся у любого. Годы, за которые люди привыкли доверять друг другу, никто не соберёт за выходные.',
-  },
-  {
-    title: 'Комьюнити не продаётся',
-    text: 'В чатах нет рекламы и спонсоров. Зарабатываем рядом: на найме и консультациях.',
-  },
-  {
-    title: 'Люди важнее алгоритма',
-    text: 'Само слово пришло из тайского «jai», сердце. Поэтому мы стараемся говорить «познакомить», а «автоматизировать» оставляем другим.',
-  },
-  {
-    title: 'Первый доллар важнее новой функции',
-    text: 'Пока нет первого заработка, делаем то, что к нему ведёт. Остальное подождёт, даже если очень хочется.',
-  },
-]
+import { config } from '@/data/config'
 
 const EXAMPLES = [
-  { title: 'Работа', text: 'Кандидат и работодатель сначала знакомятся на встрече, и только потом обсуждают условия.' },
-  { title: 'Грузия', text: 'Налоги и ВНЖ: разбираем вместе с тем, кто уже прошёл этот путь.' },
-  { title: 'Соавтор', text: 'Есть идея, но нужен второй человек: находим его среди тех, кто уже пришёл на встречу.' },
+  { title: 'Работа', text: 'знакомство до собеседования' },
+  { title: 'Грузия', text: 'налоги и ВНЖ от тех, кто прошёл' },
+  { title: 'Соавтор', text: 'второй человек для идеи' },
+]
+
+const PRINCIPLES = [
+  { title: 'Открытость — подарок', text: 'бесплатно и без обязательств' },
+  { title: 'Доверие не скопировать', text: 'годы не собрать за выходные' },
+  { title: 'Комьюнити не продаётся', text: 'без рекламы и спонсоров' },
+  { title: 'Люди важнее алгоритма', text: '«jai» по-тайски — сердце' },
+  { title: 'Первый доллар важнее функции', text: 'сначала заработок, потом фичи' },
 ]
 
 export default function JaioraView() {
@@ -38,29 +24,29 @@ export default function JaioraView() {
         ← На главную
       </button>
 
-      <header className="home-hero">
-        <h1 className="home-name">Jaiora</h1>
-        <p className="home-role">Оффлайн-LinkedIn</p>
-        <p className="jaiora-lead">
-          В LinkedIn найти можно кого угодно, но написать незнакомому человеку и дождаться ответа — отдельное приключение. Мы
-          начинаем с другого конца: сводим людей вживую, за одним столом, а разговор о делах приходит сам.
-        </p>
+      <header className="jaiora-hero">
+        <img className="jaiora-photo" src="/egor.jpg" alt={config.speaker} width="96" height="96" />
+        <div>
+          <p className="jaiora-kicker">Jaiora · оффлайн-LinkedIn</p>
+          <h1 className="jaiora-title">Нужный человек существует. Осталось оказаться с ним в одной комнате.</h1>
+          <p className="jaiora-lead">Любая задача решается, если рядом оказывается правильный человек. Мы устраиваем такие встречи.</p>
+        </div>
       </header>
 
       <section className="jaiora-flow" aria-label="Как это работает">
         <div className="jaiora-step">
           <span className="jaiora-step-title">Ты</span>
-          <span className="jaiora-step-text">приходишь со своей задачей</span>
+          <span className="jaiora-step-text">со своей задачей</span>
         </div>
         <span className="jaiora-arrow" aria-hidden="true">→</span>
         <div className="jaiora-step jaiora-step-main">
           <span className="jaiora-step-title">Площадка</span>
-          <span className="jaiora-step-text">чаты, конференции, встречи: всё, где люди уже разговаривают</span>
+          <span className="jaiora-step-text">чаты · встречи · конференции</span>
         </div>
         <span className="jaiora-arrow" aria-hidden="true">→</span>
         <div className="jaiora-step">
-          <span className="jaiora-step-title">Встреча</span>
-          <span className="jaiora-step-text">с тем, кто нужен, вживую</span>
+          <span className="jaiora-step-title">Знакомство</span>
+          <span className="jaiora-step-text">вживую, с нужным человеком</span>
         </div>
       </section>
 
@@ -77,7 +63,7 @@ export default function JaioraView() {
       </section>
 
       <section className="jaiora-section">
-        <h2 className="jaiora-h2">На чём всё держится</h2>
+        <h2 className="jaiora-h2">На чём держится</h2>
         <div className="jaiora-grid">
           {PRINCIPLES.map((p) => (
             <div key={p.title} className="home-metric">

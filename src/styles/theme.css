@@ -1221,12 +1221,36 @@ a:hover {
 }
 .jaiora-back:hover { color: var(--accent); }
 
+.jaiora-hero {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.jaiora-photo {
+  flex: none;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+}
+.jaiora-kicker {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.jaiora-title {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
 .jaiora-lead {
-  margin: 20px 0 0;
-  max-width: 640px;
-  color: var(--fg);
-  font-size: 1.2rem;
-  line-height: 1.6;
+  margin: 12px 0 0;
+  color: var(--fg-muted);
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
 
 .jaiora-flow {
@@ -1259,6 +1283,8 @@ a:hover {
 .jaiora-card-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
 
 @media (max-width: 600px) {
+  .jaiora-hero { flex-direction: column; align-items: flex-start; }
+  .jaiora-title { font-size: 1.75rem; }
   .jaiora-flow { flex-direction: column; }
   .jaiora-arrow { transform: rotate(90deg); }
 }
