@@ -380,12 +380,13 @@ button.s-card { font: inherit; }
 .s-feature-logo { width: 48px; height: 48px; margin-bottom: 8px; }
 
 /* ---------- Хроника по фазам: у каждой свой цвет линии, точек и подписей ----------
-   ph-me — оранжевый Егора; ph-together — бирюза логотипа (осветлена для тёмного фона);
-   ph-people — зелёный Jaiora. */
+   ph-me — оранжевый Егора; ph-together / ph-people / ph-jaiora — три ступени зелёного логотипа. */
 .site-jaiora .s-timeline::before { display: none; }
 .site-jaiora .ph-me { --ph: #ff6a3d; }
-.site-jaiora .ph-together { --ph: #4fb3c4; }
+/* Градации зелёного логотипа: глубже → ярче по мере роста сообщества */
+.site-jaiora .ph-together { --ph: #4eaa78; }
 .site-jaiora .ph-people { --ph: #66cf73; }
+.site-jaiora .ph-jaiora { --ph: #9be3a3; }
 
 .site-jaiora .s-step,
 .site-jaiora .s-phase { position: relative; }
