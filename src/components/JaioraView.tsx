@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { config } from '@/data/config'
 import { CITY_CHATS, THEME_CHATS } from '@/data/links'
 
-const STORY: { title: string; year?: string; text: string; pre?: boolean }[] = [
+const STORY: { title: string; year?: string; text: string; pre?: boolean; phase?: string }[] = [
   {
     title: 'Люди',
     year: '2016 и раньше',
     pre: true,
+    phase: 'Предыстория',
     text: 'В МАИ и других сообществах я много работал с людьми: собирал, учил, организовывал.',
   },
   {
@@ -17,11 +18,20 @@ const STORY: { title: string; year?: string; text: string; pre?: boolean }[] = [
     text: 'Стал топ-1 ментором на GetMentor. Там я понял, как важны нетворк и умение работать с людьми.',
   },
   {
-    title: 'Бангкок',
-    year: '2023',
-    text: 'Я уехал путешествовать в Бангкок и быстро понял, что мне не хватает живого общения. Первая попытка собрать людей не удалась: сообщество вокруг моего кондо развалилось.',
+    title: 'Bangkok IT',
+    year: '2022',
+    phase: 'С 2022 · Сообщества',
+    text: 'В 2022-м многие вдруг очень полюбили путешествовать. Я тоже уехал в Бангкок, и там появился Bangkok IT.',
   },
-  { title: 'Гипотеза', text: 'Я решил попробовать ещё раз. Мне казалось, что переезд даётся легче, если на новом месте тебя кто-то встречает.' },
+  {
+    title: 'Неудача',
+    year: '2023',
+    text: 'Не всё получалось сразу: сообщество вокруг моего кондо развалилось.',
+  },
+  {
+    title: 'Гипотеза',
+    text: 'Я не бросил. Мне казалось, что переезд даётся легче, если на новом месте тебя кто-то встречает.',
+  },
   { title: 'Работа и имя', year: '2024', text: 'Через сообщество я нашёл работу, и меня стали узнавать.' },
   {
     title: 'Сарафан',
@@ -34,9 +44,10 @@ const STORY: { title: string; year?: string; text: string; pre?: boolean }[] = [
   },
   { title: 'Переезды', text: 'Люди стали переезжать из города в город. Недавно в Батуми мы сидели за одним столом с ребятами из Бангкока.' },
   {
-    title: 'Сейчас',
+    title: 'Jaiora',
     year: '2026',
-    text: 'Хочу, чтобы любой мог найти нужного человека рядом и встретиться с ним вживую. Этим мы и занимаемся.',
+    phase: 'С 2026 · Jaiora',
+    text: 'Сообщества выросли в Jaiora. Хочу, чтобы любой мог найти нужного человека рядом и встретиться с ним вживую.',
   },
 ]
 
@@ -220,14 +231,9 @@ export default function JaioraView() {
           <ol className="s-timeline">
             {STORY.map((s, i) => (
               <Fragment key={s.title}>
-                {i > 0 && STORY[i - 1].pre && !s.pre && (
-                  <li className="s-phase" aria-hidden="true">
-                    С 2023 · Jaiora
-                  </li>
-                )}
-                {i === 0 && s.pre && (
-                  <li className="s-phase s-phase-pre" aria-hidden="true">
-                    Предыстория
+                {s.phase && (
+                  <li className={`s-phase${s.pre ? ' s-phase-pre' : ''}`} aria-hidden="true">
+                    {s.phase}
                   </li>
                 )}
                 <li className={`s-step${s.pre ? ' s-step-pre' : ''}${i === STORY.length - 1 ? ' s-step-now' : ''}`}>
