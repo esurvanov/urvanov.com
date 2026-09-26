@@ -378,3 +378,36 @@ button.s-card { font: inherit; }
 .s-feature-jaiora:hover { background: #121b29; }
 .s-feature-jaiora .s-arrow { color: #66cf73; }
 .s-feature-logo { width: 48px; height: 48px; margin-bottom: 8px; }
+
+/* ---------- Хроника по фазам: у каждой свой цвет линии, точек и подписей ----------
+   ph-me — оранжевый Егора; ph-together — бирюза логотипа (осветлена для тёмного фона);
+   ph-people — зелёный Jaiora. */
+.site-jaiora .s-timeline::before { display: none; }
+.site-jaiora .ph-me { --ph: #ff6a3d; }
+.site-jaiora .ph-together { --ph: #4fb3c4; }
+.site-jaiora .ph-people { --ph: #66cf73; }
+
+.site-jaiora .s-step,
+.site-jaiora .s-phase { position: relative; }
+.site-jaiora .s-step::after,
+.site-jaiora .s-phase::after {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--ph);
+  opacity: 0.55;
+  z-index: 0;
+}
+.site-jaiora .s-step::before,
+.site-jaiora .s-phase::before { z-index: 1; border-color: var(--ph); }
+.site-jaiora .s-step-year,
+.site-jaiora .s-phase { color: var(--ph); }
+.site-jaiora .s-phase { margin: 0; padding: 18px 0 6px; font-size: 0.78rem; }
+.site-jaiora .s-phase::before { top: calc(50% + 6px); }
+.site-jaiora .s-step-now::before { background: var(--ph); }
+.site-jaiora .s-step-goal::before { border-style: dashed; background: var(--s-bg); }
+.site-jaiora .s-step-goal .s-step-name { color: var(--ph); }
+.site-jaiora .s-step-pre::before { border-style: solid; }

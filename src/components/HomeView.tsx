@@ -67,7 +67,7 @@ export default function HomeView() {
               <span className="s-arrow" aria-hidden="true">↗</span>
               <img className="s-feature-logo" src="/jaiora/logo.svg" alt="" width="48" height="48" />
               <span className="s-card-title">Jaiora</span>
-              <span className="s-card-text">Оффлайн-LinkedIn: сообщество, где живые встречи важнее переписки</span>
+              <span className="s-card-text">Оффлайн-LinkedIn: находим человека под твою задачу или цель и знакомим вживую</span>
             </button>
           </div>
         </section>
