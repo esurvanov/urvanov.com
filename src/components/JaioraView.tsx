@@ -44,11 +44,11 @@ const PLATFORM: Tile[] = [
   { title: 'YouTube', text: 'записи и разборы', url: JAIORA_YOUTUBE },
 ]
 
-const SERVICES: Tile[] = [
-  { title: 'Агент-кодинг', text: 'чат и разборы про разработку с ИИ-агентами', url: 'https://t.me/agent_coding' },
-  { title: 'ПТД и ВНЖ', text: 'гайд и консультации по легализации в Грузии', url: 'https://t.me/ptd_vnzh_georgia' },
-  { title: 'Развитие бизнеса', text: 'продукт, процессы, операционка' },
-  { title: 'Задачи общего плана', text: 'приходи с задачей, найдём человека или решим вместе' },
+const COMMUNITIES: Tile[] = [
+  { title: 'Агент-кодинг', text: 'сообщество про разработку с ИИ-агентами', url: 'https://t.me/agent_coding' },
+  { title: 'ПТД и ВНЖ', text: 'сообщество про легализацию в Грузии', url: 'https://t.me/ptd_vnzh_georgia' },
+  { title: 'Развитие бизнеса', text: 'сообщество про продукт, процессы и операционку' },
+  { title: 'Задачи общего плана', text: 'сообщество, куда можно прийти с любой задачей' },
 ]
 
 const PRINCIPLES = [
@@ -141,8 +141,8 @@ export default function JaioraView() {
         <Chips items={CITY_CHATS} />
         <Chips items={THEME_CHATS} />
 
-        <h3 className="home-group-title jaiora-sub">Услуги</h3>
-        <Tiles items={SERVICES} />
+        <h3 className="home-group-title jaiora-sub">Ещё сообщества</h3>
+        <Tiles items={COMMUNITIES} />
       </section>
 
       <details className="jaiora-details">
