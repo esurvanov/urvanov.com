@@ -346,3 +346,5 @@ button.s-card { font: inherit; }
 .s-step-pre::before { border-style: dashed; }
 .s-step-year { white-space: nowrap; }
 .s-jhero-solo { grid-template-columns: 1fr; }
+.s-step-goal::before { border: 1px dashed var(--s-accent); background: var(--s-bg); }
+.s-step-goal .s-step-name { color: var(--s-accent); }

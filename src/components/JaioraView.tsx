@@ -46,7 +46,12 @@ const STORY: { title: string; year?: string; text: string; pre?: boolean; phase?
     title: 'Jaiora',
     year: '2026',
     phase: 'С 2026 · Jaiora',
-    text: 'Сообщества выросли в Jaiora. Мы хотим, чтобы любой мог найти нужного человека рядом и встретиться с ним вживую.',
+    text: 'Сообщества выросли в Jaiora, нас уже 10 000 человек. Мы хотим, чтобы любой мог найти нужного человека рядом и встретиться с ним вживую.',
+  },
+  {
+    title: 'Цель',
+    year: '2027',
+    text: '30 городов и 30 000 человек по всему миру.',
   },
 ]
 
@@ -227,14 +232,14 @@ export default function JaioraView() {
         <section className="s-section">
           <h2 className="s-h2">Как всё началось</h2>
           <ol className="s-timeline">
-            {STORY.map((s, i) => (
+            {STORY.map((s) => (
               <Fragment key={s.title}>
                 {s.phase && (
                   <li className={`s-phase${s.pre ? ' s-phase-pre' : ''}`} aria-hidden="true">
                     {s.phase}
                   </li>
                 )}
-                <li className={`s-step${s.pre ? ' s-step-pre' : ''}${i === STORY.length - 1 ? ' s-step-now' : ''}`}>
+                <li className={`s-step${s.pre ? ' s-step-pre' : ''}${s.year === '2026' ? ' s-step-now' : ''}${s.title === 'Цель' ? ' s-step-goal' : ''}`}>
                   <span className="s-step-name">
                     {s.title}
                     {s.year && <span className="s-step-year">{s.year}</span>}
