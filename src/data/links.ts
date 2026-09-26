@@ -133,6 +133,8 @@ export const CITY_CHATS: LinkItem[] = [
 
 // Чаты по темам — показываются на странице Jaiora
 export const THEME_CHATS: LinkItem[] = [
+  { url: 'https://t.me/agent_coding', label: 'Агент-кодинг' },
+  { url: 'https://t.me/ptd_vnzh_georgia', label: 'ПТД и ВНЖ' },
   { url: 'https://t.me/customer_success_team', label: 'Customer Success Team' },
   { url: 'https://t.me/digital_nomads_asia', label: 'Digital Nomads Asia' },
   { url: 'https://t.me/danang_it_channel', label: 'Анонсы Дананга' },

@@ -2,17 +2,19 @@ import { useNavigate } from 'react-router-dom'
 import { LINK_GROUPS, type LinkItem } from '@/data/links'
 import { closeTarget } from '@/lib/closeTarget'
 
+const TINTS = ['s-tint-coral', 's-tint-amber', 's-tint-violet', 's-tint-mint']
+
 // Внутренние ссылки открываем в той же вкладке, внешние — в новой
 const linkProps = (url: string) =>
   url.startsWith('/') ? {} : { target: '_blank', rel: 'noopener noreferrer' }
 
 function Cards({ items }: { items: LinkItem[] }) {
   return (
-    <div className="lk-cards">
-      {items.map((item) => (
-        <a key={item.label} href={item.url} {...linkProps(item.url)} className="home-metric lk-card">
-          <span className="lk-card-title">{item.label}</span>
-          {item.comment && <span className="home-metric-label">{item.comment}</span>}
+    <div className="s-bento">
+      {items.map((item, i) => (
+        <a key={item.label} href={item.url} {...linkProps(item.url)} className={`s-card s-span-4 ${TINTS[i % TINTS.length]}`}>
+          <span className="s-card-title">{item.label}</span>
+          {item.comment && <span className="s-card-text">{item.comment}</span>}
         </a>
       ))}
     </div>
@@ -21,13 +23,13 @@ function Cards({ items }: { items: LinkItem[] }) {
 
 function List({ items }: { items: LinkItem[] }) {
   return (
-    <ul className="lk-list">
+    <ul className="s-list">
       {items.map((item) => (
-        <li key={item.label} className="lk-row">
-          <a href={item.url} {...linkProps(item.url)} className="lk-row-link">
+        <li key={item.label} className="s-row">
+          <a href={item.url} {...linkProps(item.url)}>
             {item.label}
           </a>
-          {item.comment && <span className="lk-row-comment">{item.comment}</span>}
+          {item.comment && <span>{item.comment}</span>}
         </li>
       ))}
     </ul>
@@ -36,9 +38,9 @@ function List({ items }: { items: LinkItem[] }) {
 
 function Pills({ items }: { items: LinkItem[] }) {
   return (
-    <div className="home-contacts">
+    <div className="s-pills">
       {items.map((item) => (
-        <a key={item.label} href={item.url} {...linkProps(item.url)} className="home-contact">
+        <a key={item.label} href={item.url} {...linkProps(item.url)} className="s-pill">
           {item.label}
         </a>
       ))}
@@ -50,25 +52,27 @@ export default function LinksView() {
   const navigate = useNavigate()
 
   return (
-    <div className="home-page lk-page">
-      <button className="jaiora-back" onClick={() => navigate(closeTarget())}>
-        ← Назад
-      </button>
-      <h1 className="lk-title">Ссылки</h1>
+    <div className="site">
+      <div className="s-wrap">
+        <button className="s-back" onClick={() => navigate(closeTarget())}>
+          ← Назад
+        </button>
+        <h1 className="s-page-title">Ссылки</h1>
 
-      {LINK_GROUPS.map((group) => (
-        <section key={group.title} className="lk-group">
-          <h2 className="jaiora-h2">{group.title}</h2>
-          {group.blocks.map((block, i) => (
-            <div key={block.title ?? i} className="lk-block">
-              {block.title && <h3 className="home-group-title">{block.title}</h3>}
-              {block.variant === 'cards' && <Cards items={block.items} />}
-              {block.variant === 'list' && <List items={block.items} />}
-              {block.variant === 'pills' && <Pills items={block.items} />}
-            </div>
-          ))}
-        </section>
-      ))}
+        {LINK_GROUPS.map((group) => (
+          <section key={group.title} className="s-group">
+            <h2 className="s-label">{group.title}</h2>
+            {group.blocks.map((block, i) => (
+              <div key={block.title ?? i} className="s-block">
+                {block.title && <h3 className="s-step-name">{block.title}</h3>}
+                {block.variant === 'cards' && <Cards items={block.items} />}
+                {block.variant === 'list' && <List items={block.items} />}
+                {block.variant === 'pills' && <Pills items={block.items} />}
+              </div>
+            ))}
+          </section>
+        ))}
+      </div>
     </div>
   )
 }
