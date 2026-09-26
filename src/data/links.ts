@@ -90,7 +90,8 @@ export const CITY_CHATS: LinkItem[] = [
   { url: 'https://t.me/spb_digital_it', label: 'Санкт-Петербург' },
   { url: 'https://t.me/antalia_it', label: 'Анталья' },
   { url: 'https://t.me/moscow_digital_it', label: 'Москва' },
-  { url: 'https://t.me/belgrade_it_digital', label: 'Белград' },
+  { url: 'https://t.me/belgrade_jaiora', label: 'Белград' },
+  { url: 'https://t.me/erevan_jaiora', label: 'Ереван' },
   { url: 'https://t.me/berlin_it_digital', label: 'Берлин' },
 ]
 
