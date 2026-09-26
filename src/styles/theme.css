@@ -1388,3 +1388,5 @@ a:hover {
 @media (max-width: 600px) {
   .jaiora-story-item { grid-template-columns: 1fr; }
 }
+
+.jaiora-story-year { display: block; margin-top: 2px; color: var(--accent); font-size: 0.85rem; font-weight: 600; }

@@ -2,16 +2,22 @@ import { useNavigate } from 'react-router-dom'
 import { config } from '@/data/config'
 import { CITY_CHATS, JAIORA_YOUTUBE, THEME_CHATS } from '@/data/links'
 
-const STORY = [
-  { title: 'Бангкок, 2022', text: 'Я решил путешествовать и уехал в Бангкок. Мне не хватало живого общения, и я стал собирать людей вместе, лицом к лицу.' },
+const STORY: { title: string; year?: string; text: string }[] = [
+  {
+    title: 'Бангкок',
+    year: '2022',
+    text: 'Я решил путешествовать и уехал в Бангкок. Мне не хватало живого общения, и я стал собирать людей вместе, лицом к лицу.',
+  },
   { title: 'Гипотеза', text: 'При переезде человек получает социальные блага на новом месте, если его там кто-то встречает.' },
-  { title: 'Работа и бренд', text: 'Сообщество принесло мне работу и имя.' },
+  { title: 'Работа и бренд', year: '2023', text: 'Сообщество принесло мне работу и имя.' },
   { title: 'Дананг', text: 'Ко мне подошёл незнакомец: «Мой друг тебя знает». Ни его, ни друга я не знал.' },
   {
     title: 'Рост',
+    year: '2024',
     text: 'Я запустил ещё несколько сообществ и начал выступать в подкастах. Сомневался, нужно ли это там, где не экспаты. Москва и Питер показали: нужно.',
   },
   { title: 'Переезды', text: 'Люди ездят из города в город, и вот мы в Батуми сидим с ребятами из Бангкока.' },
+  { title: 'Сейчас', year: '2026', text: 'Мы хотим помогать людям решать их проблемы.' },
 ]
 
 const FIND = [
@@ -108,7 +114,10 @@ export default function JaioraView() {
         <ol className="jaiora-story">
           {STORY.map((s) => (
             <li key={s.title} className="jaiora-story-item">
-              <span className="jaiora-story-title">{s.title}</span>
+              <span className="jaiora-story-title">
+                {s.title}
+                {s.year && <span className="jaiora-story-year">{s.year}</span>}
+              </span>
               <span className="jaiora-story-text">{s.text}</span>
             </li>
           ))}
