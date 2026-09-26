@@ -4,12 +4,6 @@ import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { config } from '@/data/config'
 import { ICONS } from '@/components/site/icons'
 
-const STATS = [
-  { value: '1500+', label: 'часов менторинга' },
-  { value: '10 256', label: 'репутация на SO' },
-  { value: '#6', label: 'из 256 000 · Project Euler' },
-]
-
 const CONTACTS = [
   { label: 'Telegram', url: 'https://t.me/eurvanov' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/eurvanov/' },
@@ -52,15 +46,6 @@ export default function HomeView() {
           </div>
           <img className="s-avatar" src="/egor.jpg" alt={config.speaker} width="148" height="148" />
         </header>
-
-        <ul className="s-stats">
-          {STATS.map((s) => (
-            <li key={s.label} className="s-stat">
-              <b>{s.value}</b>
-              <span>{s.label}</span>
-            </li>
-          ))}
-        </ul>
 
         <section className="s-section">
           <h2 className="s-label">Проект</h2>
