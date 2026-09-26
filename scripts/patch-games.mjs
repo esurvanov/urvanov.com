@@ -28,9 +28,12 @@ for (const g of GAMES) {
         { '@type': 'ListItem', position: 3, name: g.title.split(' — ')[0], item: SITE_URL + path } ] },
     ],
   })
-  html = html.replace(/<head[^>]*>/i, (m) => `${m}\n    ${head}\n    ${analyticsHead()}`)
+  const block = `${head}\n    ${analyticsHead()}`
+  // У некоторых игр нет <head>: тогда просто ставим теги в начало файла, браузер сам отнесёт их к head
+  html = /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, (m) => `${m}\n    ${block}`) : `${block}\n${html}`
   // Текст для тех, кто не выполняет скрипты (краулеры, ИИ)
-  html = html.replace(/<\/body>/i, `<noscript><h1>${esc(g.title)}</h1><p>${esc(g.description)}</p><p><a href="/materials/games">Все игры</a> · <a href="/">Егор Урванов</a></p></noscript>\n</body>`)
+  const fallback = `<noscript><h1>${esc(g.title)}</h1><p>${esc(g.description)}</p><p><a href="/materials/games">Все игры</a> · <a href="/">Егор Урванов</a></p></noscript>`
+  html = /<\/body>/i.test(html) ? html.replace(/<\/body>/i, `${fallback}\n</body>`) : `${html}\n${fallback}\n`
   writeFileSync(file, html)
   console.log(`patched ${file}`)
 }
