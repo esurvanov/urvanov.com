@@ -27,6 +27,13 @@ const STORY: { title: string; year?: string; text: string }[] = [
   },
 ]
 
+const SOCIAL = [
+  { title: 'Батуми', year: '2026', text: 'Помогли спасти жизнь человеку и собрали деньги на лечение от рака.' },
+  { title: 'Бангкок', year: '2025', text: 'Помогли найти пропавшего парня.' },
+]
+
+const EVENT_FORMATS = ['лекция учёного «Что скрывает океан?»', 'доклады', 'AI-митапы', 'свободный микрофон «Айти Нытьё»', 'VR-игры']
+
 const FIND = [
   { title: 'Свои люди', text: 'приехать в новый город и в первую же субботу оказаться среди своих' },
   { title: 'Работа', text: 'человек в команду или команда для себя' },
@@ -130,8 +137,12 @@ export default function JaioraView() {
           </div>
           <p className="s-meet-text">О работе и о жизни, и не только про IT. Приходи один, с другом или с задачей: рады всем.</p>
           <div className="s-meet-cities">
-            <p className="s-meet-when">Выбери свой город</p>
-            <Chips items={CITY_CHATS} />
+            <button
+              className="s-pill s-pill-solid"
+              onClick={() => document.getElementById('cities')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+            >
+              Выбрать свой город ↓
+            </button>
           </div>
         </section>
 
@@ -151,6 +162,36 @@ export default function JaioraView() {
         </section>
 
         <section className="s-section">
+          <h2 className="s-h2">Что уже получилось</h2>
+          <h3 className="s-label">Социальные активности</h3>
+          <div className="s-bento">
+            {SOCIAL.map((c) => (
+              <div key={c.title} className="s-card s-span-6 s-card-static s-feature">
+                <span className="s-card-title">
+                  {c.title}
+                  <span className="s-step-year">{c.year}</span>
+                </span>
+                <span className="s-card-text">{c.text}</span>
+              </div>
+            ))}
+          </div>
+          <h3 className="s-label">Встречи сверх суббот</h3>
+          <div className="s-bento">
+            <div className="s-card s-span-12 s-card-static">
+              <span className="s-card-title">Около 10 митапов в Бангкоке, регулярные митапы в Дананге</span>
+              <span className="s-card-text">Бесплатно и без регистрации</span>
+              <div className="s-chips">
+                {EVENT_FORMATS.map((f) => (
+                  <span key={f} className="s-chip s-chip-static">
+                    {f}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="s-section">
           <h2 className="s-h2">Что можно найти</h2>
           <Tiles items={FIND} />
         </section>
@@ -159,6 +200,10 @@ export default function JaioraView() {
           <h2 className="s-h2">Что у нас есть</h2>
           <Tiles items={PLATFORM} />
           <div className="s-bento">
+            <div id="cities" className="s-card s-span-12 s-card-static s-tint-coral s-anchor">
+              <span className="s-card-title">Чаты по городам</span>
+              <Chips items={CITY_CHATS} />
+            </div>
             <div className="s-card s-span-12 s-card-static s-tint-violet">
               <span className="s-card-title">Тематические чаты и каналы</span>
               <Chips items={THEME_CHATS} />
