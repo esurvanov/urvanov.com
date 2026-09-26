@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { PATTERN_CATEGORIES } from '@/data/patterns'
+import { Link } from 'react-router-dom'
 import { config } from '@/data/config'
+import { POSTS } from '@/data/blog'
 import { ICONS } from '@/components/site/icons'
+import Page from '@/components/site/Page'
 
 const CONTACTS = [
   { label: 'Telegram', icon: ICONS.telegram, url: 'https://t.me/eurvanov' },
@@ -11,11 +12,7 @@ const CONTACTS = [
   { label: 'GetMentor', icon: ICONS.mentor, url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
 ]
 
-const patternsTotal = PATTERN_CATEGORIES.reduce((sum, c) => sum + c.patterns.length, 0)
-
 export default function HomeView() {
-  const navigate = useNavigate()
-
   useEffect(() => {
     try {
       sessionStorage.removeItem('lastSlide')
@@ -25,94 +22,59 @@ export default function HomeView() {
   }, [])
 
   return (
-    <div className="site">
-      <div className="s-wrap">
-        <header className="s-hero">
-          <div>
-            <p className="s-eyebrow">
-              <b>CTO</b> · AI · нетворк
-            </p>
-            <h1 className="s-name">{config.speaker}</h1>
-            <nav className="s-pills" aria-label="Контакты">
-              {CONTACTS.map((c) => (
-                <a
-                  key={c.label}
-                  className="s-pill s-icon-btn"
-                  href={c.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={c.label}
-                  title={c.label}
-                >
+    <Page>
+      <header className="s-hero">
+        <div>
+          <p className="s-eyebrow"><b>CTO</b> · AI · нетворк</p>
+          <h1 className="s-name">{config.speaker}</h1>
+          <ul className="s-pills" aria-label="Контакты">
+            {CONTACTS.map((c) => (
+              <li key={c.label}>
+                <a className="s-pill s-icon-btn" href={c.url} target="_blank" rel="me noopener noreferrer" aria-label={c.label} title={c.label}>
                   {c.icon}
                 </a>
-              ))}
-              <button
-                className="s-pill s-pill-solid s-icon-btn"
-                onClick={() => navigate('/links')}
-                aria-label="Все ссылки"
-                title="Все ссылки"
-              >
-                {ICONS.links}
-              </button>
-            </nav>
-          </div>
-          <img className="s-avatar" src="/egor.jpg" alt={config.speaker} width="148" height="148" />
-        </header>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <img className="s-avatar" src="/egor.jpg" alt={config.speaker} width="148" height="148" fetchPriority="high" />
+      </header>
 
-        <section className="s-section">
-          <h2 className="s-label">Проект</h2>
-          <div className="s-bento">
-            <button className="s-card s-feature s-feature-jaiora s-span-12" onClick={() => navigate('/jaiora')}>
-              <span className="s-arrow" aria-hidden="true">↗</span>
-              <img className="s-feature-logo" src="/jaiora/logo.svg" alt="" width="48" height="48" />
-              <span className="s-card-title">Jaiora</span>
-              <span className="s-card-text">Оффлайн-LinkedIn: находим человека под твою задачу или цель и знакомим вживую</span>
-            </button>
-          </div>
-        </section>
-
-        <section className="s-section">
-          <h2 className="s-label">Материалы</h2>
-          <div className="s-bento">
-            <button className="s-card s-span-6 s-tint-amber" onClick={() => navigate('/patterns')}>
-              <span className="s-card-icon">{ICONS.patterns}</span>
-              <span className="s-card-title">Каталог AI-паттернов</span>
-              <span className="s-card-text">
-                {patternsTotal} паттернов разработки с AI-агентами · {PATTERN_CATEGORIES.length} категорий
-              </span>
-            </button>
-            <button className="s-card s-span-6 s-tint-violet" onClick={() => navigate('/slide/1')}>
-              <span className="s-card-icon">{ICONS.talk}</span>
-              <span className="s-card-title">Презентация</span>
-              <span className="s-card-text">
-                {config.conferenceName} · {config.talkTitle}
-              </span>
-            </button>
-          </div>
-        </section>
-
-        <section className="s-section">
-          <h2 className="s-label">Игры</h2>
-          <div className="s-bento">
-            <a className="s-card s-span-4 s-tint-coral" href="/age-of-empires/">
-              <span className="s-card-icon">{ICONS.castle}</span>
-              <span className="s-card-title">Хроники Королевств</span>
-              <span className="s-card-text">Стратегия в духе Age of Empires II · 14 цивилизаций</span>
-            </a>
-            <a className="s-card s-span-4 s-tint-mint" href="/berezovka/">
-              <span className="s-card-icon">{ICONS.game}</span>
-              <span className="s-card-title">Березовка</span>
-              <span className="s-card-text">3D-игра в браузере · заснеженная деревня</span>
-            </a>
-            <a className="s-card s-span-4 s-tint-amber" href="/sibiria/">
-              <span className="s-card-icon">{ICONS.taiga}</span>
-              <span className="s-card-title">Сибирь</span>
-              <span className="s-card-text">2D-выживание · тайга, 1993</span>
-            </a>
-          </div>
-        </section>
-      </div>
-    </div>
+      <section className="s-section" aria-label="Разделы">
+        <div className="s-bento">
+          <Link className="s-card s-feature s-feature-jaiora s-span-12" to="/jaiora">
+            <span className="s-arrow" aria-hidden="true">↗</span>
+            <img className="s-feature-logo" src="/jaiora/logo.svg" alt="" width="48" height="48" />
+            <h2 className="s-card-title">Jaiora</h2>
+            <span className="s-card-text">Оффлайн-LinkedIn: находим человека под твою задачу или цель и знакомим вживую</span>
+          </Link>
+          <Link className="s-card s-span-4" to="/about">
+            <span className="s-card-icon">{ICONS.mentor}</span>
+            <h2 className="s-card-title">Обо мне</h2>
+            <span className="s-card-text">CTO · ML · ментор №1</span>
+          </Link>
+          <Link className="s-card s-span-4" to="/blog">
+            <span className="s-card-icon">{ICONS.patterns}</span>
+            <h2 className="s-card-title">Блог</h2>
+            <span className="s-card-text">{POSTS.length > 0 ? `${POSTS.length} постов` : 'Скоро'}</span>
+          </Link>
+          <Link className="s-card s-span-4" to="/links">
+            <span className="s-card-icon">{ICONS.links}</span>
+            <h2 className="s-card-title">Ссылки</h2>
+            <span className="s-card-text">Профили · выступления · чаты</span>
+          </Link>
+          <Link className="s-card s-span-6" to="/materials/presentations">
+            <span className="s-card-icon">{ICONS.talk}</span>
+            <h2 className="s-card-title">Презентации</h2>
+            <span className="s-card-text">Доклад про SDD · каталог AI-паттернов</span>
+          </Link>
+          <Link className="s-card s-span-6" to="/materials/games">
+            <span className="s-card-icon">{ICONS.game}</span>
+            <h2 className="s-card-title">Игры</h2>
+            <span className="s-card-text">Три игры в браузере</span>
+          </Link>
+        </div>
+      </section>
+    </Page>
   )
 }

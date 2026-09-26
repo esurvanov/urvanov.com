@@ -412,3 +412,36 @@ button.s-card { font: inherit; }
 .site-jaiora .s-step-goal::before { border-style: dashed; background: var(--s-bg); }
 .site-jaiora .s-step-goal .s-step-name { color: var(--ph); }
 .site-jaiora .s-step-pre::before { border-style: solid; }
+
+/* ---------- Разделы: меню, крошки, блог ---------- */
+.s-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-bottom: 20px; border-bottom: 1px solid var(--s-line); }
+.s-nav-home { font-weight: 800; letter-spacing: -0.01em; }
+.s-nav nav { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.s-nav-link { color: var(--s-muted); font-size: 0.92rem; font-weight: 600; }
+.s-nav-link:hover, .s-nav-link.is-active { color: var(--s-fg); }
+.s-nav-link.is-active { box-shadow: 0 2px 0 var(--s-accent); }
+.s-main { display: flex; flex-direction: column; gap: 44px; }
+.s-foot { color: var(--s-muted); }
+.s-crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; color: var(--s-muted); font-size: 0.85rem; }
+.s-crumbs li + li::before { content: '/'; margin-right: 6px; }
+.s-crumbs a:hover { color: var(--s-fg); }
+ul.s-pills, ul.s-chips, ol.s-posts { list-style: none; margin: 0; padding: 0; }
+ol.s-posts { display: flex; flex-direction: column; gap: 12px; }
+.s-post .s-card-title a::after { content: ''; position: absolute; inset: 0; }
+.s-article { display: flex; flex-direction: column; gap: 28px; max-width: 720px; }
+.s-article-wrap { display: flex; flex-direction: column; gap: 44px; }
+.s-stats { margin: 0; }
+.s-stat dt, .s-stat dd { margin: 0; }
+.s-prose { font-size: 1.05rem; line-height: 1.7; }
+.s-prose h2 { font-size: 1.4rem; margin: 2em 0 0.6em; letter-spacing: -0.01em; }
+.s-prose h3 { font-size: 1.15rem; margin: 1.6em 0 0.5em; }
+.s-prose p, .s-prose ul, .s-prose ol { margin: 0 0 1em; }
+.s-prose a { color: var(--s-accent); text-decoration: underline; text-underline-offset: 3px; }
+.s-prose img { max-width: 100%; height: auto; border-radius: var(--s-radius); }
+.s-prose blockquote { margin: 1.2em 0; padding-left: 16px; border-left: 2px solid var(--s-accent); color: var(--s-muted); }
+.s-prose code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: var(--s-surface); padding: 2px 6px; border-radius: 4px; }
+.s-prose pre { overflow-x: auto; padding: 16px; background: var(--s-surface); border: 1px solid var(--s-line); border-radius: var(--s-radius); }
+.s-prose pre code { background: none; padding: 0; }
+@media (max-width: 640px) {
+  .s-span-4, .s-span-6 { grid-column: span 12; }
+}

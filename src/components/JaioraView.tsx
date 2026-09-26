@@ -1,5 +1,5 @@
 import { Fragment, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { CITY_CHATS, THEME_CHATS } from '@/data/links'
 
 const STORY: { title: string; year?: string; text: string; pre?: boolean; phase?: string }[] = [
@@ -149,8 +149,6 @@ function Chips({ items }: { items: { url: string; label: string }[] }) {
 }
 
 export default function JaioraView() {
-  const navigate = useNavigate()
-
   // На странице Jaiora во вкладке — знак сообщества, при уходе возвращаем личную иконку
   useEffect(() => {
     const link = document.querySelector<HTMLLinkElement>('link[rel="icon"]')
@@ -164,9 +162,9 @@ export default function JaioraView() {
   return (
     <div className="site site-jaiora">
       <div className="s-wrap">
-        <button className="s-back" onClick={() => navigate('/')}>
+        <Link className="s-back" to="/">
           ← На главную
-        </button>
+        </Link>
 
         <header className="s-jhero">
           <img className="s-jlogo" src="/jaiora/logo.svg" alt="Jaiora" width="112" height="112" />

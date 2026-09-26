@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { closeTarget } from '@/lib/closeTarget'
 
@@ -17,17 +17,17 @@ export default function PatternsView() {
       </div>
       <div className="patterns-grid">
         {PATTERN_CATEGORIES.map((cat) => (
-          <div
+          <Link
             key={cat.id}
             className="pattern-tile"
-            onClick={() => navigate(`/patterns/${cat.id}`)}
+            to={`/patterns/${cat.id}`}
           >
             <div className="pattern-tile-header">
               <span className="pattern-tile-title">{cat.title}</span>
               <span className="pattern-tile-count">{cat.patterns.length}</span>
             </div>
             <p className="pattern-tile-desc">{cat.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

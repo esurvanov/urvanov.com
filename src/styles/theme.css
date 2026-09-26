@@ -1108,3 +1108,5 @@ a:hover {
 }
 
 
+
+a.pattern-tile { display: block; color: inherit; text-decoration: none; }

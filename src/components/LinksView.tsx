@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom'
 import { LINK_GROUPS, type LinkItem } from '@/data/links'
-import { closeTarget } from '@/lib/closeTarget'
+import Page from '@/components/site/Page'
+import Crumbs from '@/components/site/Crumbs'
 
 const TINTS = ['s-tint-coral', 's-tint-amber', 's-tint-violet', 's-tint-mint']
 
@@ -49,14 +49,9 @@ function Pills({ items }: { items: LinkItem[] }) {
 }
 
 export default function LinksView() {
-  const navigate = useNavigate()
-
   return (
-    <div className="site">
-      <div className="s-wrap">
-        <button className="s-back" onClick={() => navigate(closeTarget())}>
-          ← Назад
-        </button>
+    <Page>
+        <Crumbs items={[{ to: '/', label: 'Главная' }, { label: 'Ссылки' }]} />
         <h1 className="s-page-title">Ссылки</h1>
 
         {LINK_GROUPS.map((group) => (
@@ -72,7 +67,6 @@ export default function LinksView() {
             ))}
           </section>
         ))}
-      </div>
-    </div>
+    </Page>
   )
 }
