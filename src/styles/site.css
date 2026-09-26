@@ -348,3 +348,26 @@ button.s-card { font: inherit; }
 .s-jhero-solo { grid-template-columns: 1fr; }
 .s-step-goal::before { border: 1px dashed var(--s-accent); background: var(--s-bg); }
 .s-step-goal .s-step-name { color: var(--s-accent); }
+
+/* ---------- Палитра Jaiora: цвета сняты с логотипа ----------
+   #66cf73 зелёный · #4eaa78 зелёный листьев · #2e697a бирюза · #1c2c48 тёмно-синий.
+   Оранжевый (--s-me) — цвет Егора: предыстория в хронике. */
+.site-jaiora {
+  --s-accent: #66cf73;
+  --s-me: #ff6a3d;
+  --s-surface: #0f1622;
+  --s-line: #1f2a3a;
+  --s-line-strong: #2e3d52;
+  background: #0a0d12;
+}
+.site-jaiora .s-pill-solid { color: #07130b; }
+.site-jaiora .s-pill-solid:hover { color: #07130b; }
+.s-jlogo { width: 112px; height: 112px; }
+
+/* Хроника: до сообществ — оранжевый Егора, дальше — зелёный Jaiora */
+.site-jaiora .s-step-pre .s-step-year,
+.site-jaiora .s-phase-pre { color: var(--s-me); }
+.site-jaiora .s-phase-pre::before,
+.site-jaiora .s-step-pre::before { border-color: var(--s-me); }
+.site-jaiora .s-step-pre .s-step-name,
+.site-jaiora .s-step-pre .s-step-text { opacity: 0.85; }

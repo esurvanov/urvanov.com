@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CITY_CHATS, THEME_CHATS } from '@/data/links'
 
@@ -140,14 +140,25 @@ function Chips({ items }: { items: { url: string; label: string }[] }) {
 export default function JaioraView() {
   const navigate = useNavigate()
 
+  // На странице Jaiora во вкладке — знак сообщества, при уходе возвращаем личную иконку
+  useEffect(() => {
+    const link = document.querySelector<HTMLLinkElement>('link[rel="icon"]')
+    const prev = link?.href
+    if (link) link.href = '/jaiora/logo.svg'
+    return () => {
+      if (link && prev) link.href = prev
+    }
+  }, [])
+
   return (
-    <div className="site">
+    <div className="site site-jaiora">
       <div className="s-wrap">
         <button className="s-back" onClick={() => navigate('/')}>
           ← На главную
         </button>
 
-        <header className="s-jhero s-jhero-solo">
+        <header className="s-jhero">
+          <img className="s-jlogo" src="/jaiora/logo.svg" alt="Jaiora" width="112" height="112" />
           <div>
             <p className="s-eyebrow">
               <b>Jaiora</b> · оффлайн-LinkedIn
