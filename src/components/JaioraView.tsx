@@ -51,12 +51,15 @@ const HELP: Tile[] = [
   { title: 'Задачи общего плана', text: 'приходи с задачей, найдём человека или решим вместе' },
 ]
 
-const PRINCIPLES = [
-  { title: 'Открытость — подарок', text: 'бесплатно и без обязательств' },
+const RULES = [
+  { title: 'Открытость', text: 'открыто для всех, без условий и обязательств' },
+  { title: 'Нетоксичность', text: 'уважение к людям — единственное правило общения' },
+]
+
+const VALUES = [
+  { title: 'Польза сообществу', text: 'без рекламы и спонсоров. Рекомендации есть, и они бесплатные' },
   { title: 'Доверие не скопировать', text: 'годы не собрать за выходные' },
-  { title: 'Комьюнити не продаётся', text: 'без рекламы и спонсоров' },
   { title: 'Люди важнее алгоритма', text: 'Jaiora — «сердечный», от тайского ใจ (jai), сердце' },
-  { title: 'Польза важнее функций', text: 'сначала решаем чью-то задачу, потом делаем красиво' },
 ]
 
 const TINTS = ['s-tint-coral', 's-tint-amber', 's-tint-violet', 's-tint-mint']
@@ -168,11 +171,20 @@ export default function JaioraView() {
 
         <section className="s-section">
           <h2 className="s-h2">На чём держится</h2>
+          <p className="s-lead">Два правила. Других нет, и это главное.</p>
           <div className="s-bento">
-            {PRINCIPLES.map((p, i) => (
-              <div key={p.title} className={`s-card s-span-6 s-card-static ${TINTS[i % TINTS.length]}`}>
-                <span className="s-card-title">{p.title}</span>
-                <span className="s-card-text">{p.text}</span>
+            {RULES.map((r) => (
+              <div key={r.title} className="s-card s-span-6 s-card-static s-feature">
+                <span className="s-card-title">{r.title}</span>
+                <span className="s-card-text">{r.text}</span>
+              </div>
+            ))}
+          </div>
+          <div className="s-bento">
+            {VALUES.map((v) => (
+              <div key={v.title} className="s-card s-span-4 s-card-static">
+                <span className="s-card-title">{v.title}</span>
+                <span className="s-card-text">{v.text}</span>
               </div>
             ))}
           </div>
