@@ -88,6 +88,7 @@ export const LINK_GROUPS: LinkGroup[] = [
       {
         variant: 'list',
         items: [
+          { url: 'https://slideslive.com/39049529/a-machine-learning-approach-that-beats-rubiks-cubes', label: 'SlidesLive · A machine learning approach that beats Rubik’s cubes', comment: 'запись доклада по статье · 12 авторов' },
           { url: 'https://ysnit.mave.digital/ep-40', label: 'Подкаст · Знай и Умей ИТ', comment: 'страх кода, event storming и будущее с ИИ' },
           { url: 'https://www.youtube.com/watch?v=ycjmtkwQf8E', label: 'YouTube · SDD фреймворки для детерминированной AI разработки' },
           { url: 'https://www.youtube.com/watch?v=O8VbhnRUyJQ', label: 'YouTube · Рождённые копипастить: LLM-подходы и паттерны' },
