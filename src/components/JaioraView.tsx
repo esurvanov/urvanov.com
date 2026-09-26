@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { config } from '@/data/config'
 import { CITY_CHATS, THEME_CHATS } from '@/data/links'
 
 const STORY: { title: string; year?: string; text: string; pre?: boolean; phase?: string }[] = [
@@ -143,8 +142,7 @@ export default function JaioraView() {
           ← На главную
         </button>
 
-        <header className="s-jhero">
-          <img className="s-avatar" src="/egor.jpg" alt={config.speaker} width="128" height="128" />
+        <header className="s-jhero s-jhero-solo">
           <div>
             <p className="s-eyebrow">
               <b>Jaiora</b> · оффлайн-LinkedIn
