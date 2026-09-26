@@ -45,6 +45,11 @@ const ICONS = {
       <path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H4v1a3 3 0 0 0 4 2.8M16 6h4v1a3 3 0 0 1-4 2.8M12 13v4M8 21h8M10 17h4" />
     </Icon>
   ),
+  paper: (
+    <Icon>
+      <path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7" />
+    </Icon>
+  ),
   rep: (
     <Icon>
       <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" />
@@ -84,6 +89,7 @@ const METRICS = [
   { icon: ICONS.mentor, value: '1500+', label: 'часов менторинга' },
   { icon: ICONS.rep, value: '10 256', label: 'репутация SO' },
   { icon: ICONS.trophy, value: '#6', label: 'из 256 000 · Project Euler' },
+  { icon: ICONS.paper, value: 'NeurIPS', label: 'статья про кубик Рубика' },
 ]
 
 const CONTACTS = [

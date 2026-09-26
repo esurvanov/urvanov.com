@@ -1390,3 +1390,7 @@ a:hover {
 }
 
 .jaiora-story-year { display: block; margin-top: 2px; color: var(--accent); font-size: 0.85rem; font-weight: 600; }
+
+/* шесть плиток с цифрами в один ряд */
+.home-metrics { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.home-metric-value { font-size: 1.5rem; }
