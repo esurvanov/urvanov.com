@@ -60,6 +60,7 @@ export const LINK_GROUPS: LinkGroup[] = [
         variant: 'list',
         items: [
           { url: 'https://arxiv.org/abs/2502.13266v1', label: 'ArXiv · ML-подход для кубика Рубика', comment: 'превзошли SOTA для 3×3×3, впервые решили 4×4×4 и 5×5×5' },
+          { url: 'https://www.hackerrank.com/contests/projecteuler/leaderboard', label: 'HackerRank · Project Euler+', comment: '6-е место из ≈256 000 · все 254 задачи на полный балл' },
           { url: 'https://t.me/parsing_conf/', label: 'Conference on Internet Data Mining', comment: 'организатор · 1000 человек' },
           { url: LI + 'details/honors/', label: 'Best Onboarding Manager · Sbermarket', comment: '2021–2022' },
           { url: LI + 'details/honors/', label: 'Winner · Self-driving cars competition', comment: '2021 · Fless' },

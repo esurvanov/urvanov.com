@@ -40,6 +40,11 @@ const ICONS = {
       <path d="M2 9l10-5 10 5-10 5zM6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5" />
     </Icon>
   ),
+  trophy: (
+    <Icon>
+      <path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H4v1a3 3 0 0 0 4 2.8M16 6h4v1a3 3 0 0 1-4 2.8M12 13v4M8 21h8M10 17h4" />
+    </Icon>
+  ),
   rep: (
     <Icon>
       <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" />
@@ -78,6 +83,7 @@ const METRICS = [
   { icon: ICONS.interview, value: '35', label: 'интервью' },
   { icon: ICONS.mentor, value: '1500+', label: 'часов менторинга' },
   { icon: ICONS.rep, value: '10 256', label: 'репутация SO' },
+  { icon: ICONS.trophy, value: '#6', label: 'из 256 000 · Project Euler' },
 ]
 
 const CONTACTS = [
