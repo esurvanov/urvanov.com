@@ -11,8 +11,8 @@ const STORY: { title: string; year?: string; text: string }[] = [
   { title: 'Гипотеза', text: 'Я предположил, что переезд проходит легче, если на новом месте тебя кто-то встречает.' },
   { title: 'Работа и имя', year: '2023', text: 'Через сообщество я нашёл работу, и меня стали узнавать.' },
   {
-    title: 'Дананг',
-    text: 'Ко мне подошёл незнакомец: «Мой друг с Кипра тебя знает». Ни его, ни друга я не знал, а сообщества на Кипре у меня нет.',
+    title: 'Сарафан',
+    text: 'В Дананге ко мне подошёл незнакомец: «Мой друг с Кипра тебя знает». Ни его, ни друга я не знал, а сообщества на Кипре у меня нет.',
   },
   {
     title: 'Рост',
@@ -129,6 +129,10 @@ export default function JaioraView() {
             <p className="s-meet-title">Встречи в большинстве наших городов</p>
           </div>
           <p className="s-meet-text">О работе и о жизни, и не только про IT. Приходи один, с другом или с задачей: рады всем.</p>
+          <div className="s-meet-cities">
+            <p className="s-meet-when">Выбери свой город</p>
+            <Chips items={CITY_CHATS} />
+          </div>
         </section>
 
         <section className="s-section">
@@ -155,10 +159,6 @@ export default function JaioraView() {
           <h2 className="s-h2">Что у нас есть</h2>
           <Tiles items={PLATFORM} />
           <div className="s-bento">
-            <div className="s-card s-span-12 s-card-static s-tint-coral">
-              <span className="s-card-title">Чаты по городам</span>
-              <Chips items={CITY_CHATS} />
-            </div>
             <div className="s-card s-span-12 s-card-static s-tint-violet">
               <span className="s-card-title">Тематические чаты и каналы</span>
               <Chips items={THEME_CHATS} />

@@ -310,3 +310,5 @@ button.s-card { font: inherit; }
   justify-content: center;
   font-size: 1.15rem;
 }
+
+.s-meet-cities { grid-column: 1 / -1; padding-top: 16px; border-top: 1px solid var(--s-line); }
