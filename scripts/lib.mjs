@@ -10,8 +10,9 @@ const cfg = JSON.parse(readFileSync(new URL('../analytics.json', import.meta.url
 // Метатеги верификации, счётчики Яндекс.Метрики и Google-тега. Пустой ID — блок не выводится.
 export function analyticsHead() {
   const out = []
-  if (cfg.googleVerification) out.push(`<meta name="google-site-verification" content="${esc(cfg.googleVerification)}" />`)
-  if (cfg.yandexVerification) out.push(`<meta name="yandex-verification" content="${esc(cfg.yandexVerification)}" />`)
+  // Несколько кодов через запятую: по одному на каждый адрес сайта (с www и без)
+  for (const v of String(cfg.googleVerification).split(',').filter(Boolean)) out.push(`<meta name="google-site-verification" content="${esc(v.trim())}" />`)
+  for (const v of String(cfg.yandexVerification).split(',').filter(Boolean)) out.push(`<meta name="yandex-verification" content="${esc(v.trim())}" />`)
   const ids = {}
   if (cfg.yandexMetrika) ids.ym = Number(cfg.yandexMetrika)
   if (cfg.googleTag) ids.gtag = cfg.googleTag
