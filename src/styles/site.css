@@ -277,3 +277,36 @@ button.s-card { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .site * { transition: none !important; }
 }
+
+/* Баннер встреч: главный факт страницы */
+.s-meet {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px 40px;
+  padding: 24px 28px;
+  border: 1px solid var(--s-accent);
+  border-radius: var(--s-radius);
+  background: var(--s-surface);
+}
+.s-meet-when {
+  margin: 0 0 4px;
+  color: var(--s-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.s-meet-title { margin: 0; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; }
+.s-meet-text { margin: 0; color: var(--s-muted); }
+@media (max-width: 760px) {
+  .s-meet { grid-template-columns: 1fr; }
+}
+
+.s-icon-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  justify-content: center;
+  font-size: 1.15rem;
+}

@@ -5,10 +5,10 @@ import { config } from '@/data/config'
 import { ICONS } from '@/components/site/icons'
 
 const CONTACTS = [
-  { label: 'Telegram', url: 'https://t.me/eurvanov' },
-  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/eurvanov/' },
-  { label: 'GitHub', url: 'https://github.com/esurvanov/' },
-  { label: 'GetMentor', url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
+  { label: 'Telegram', icon: ICONS.telegram, url: 'https://t.me/eurvanov' },
+  { label: 'LinkedIn', icon: ICONS.linkedin, url: 'https://www.linkedin.com/in/eurvanov/' },
+  { label: 'GitHub', icon: ICONS.github, url: 'https://github.com/esurvanov/' },
+  { label: 'GetMentor', icon: ICONS.mentor, url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
 ]
 
 const patternsTotal = PATTERN_CATEGORIES.reduce((sum, c) => sum + c.patterns.length, 0)
@@ -35,12 +35,25 @@ export default function HomeView() {
             <h1 className="s-name">{config.speaker}</h1>
             <nav className="s-pills" aria-label="Контакты">
               {CONTACTS.map((c) => (
-                <a key={c.label} className="s-pill" href={c.url} target="_blank" rel="noopener noreferrer">
-                  {c.label}
+                <a
+                  key={c.label}
+                  className="s-pill s-icon-btn"
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={c.label}
+                  title={c.label}
+                >
+                  {c.icon}
                 </a>
               ))}
-              <button className="s-pill s-pill-solid" onClick={() => navigate('/links')}>
-                Все ссылки →
+              <button
+                className="s-pill s-pill-solid s-icon-btn"
+                onClick={() => navigate('/links')}
+                aria-label="Все ссылки"
+                title="Все ссылки"
+              >
+                {ICONS.links}
               </button>
             </nav>
           </div>
@@ -64,9 +77,9 @@ export default function HomeView() {
           <div className="s-bento">
             <button className="s-card s-span-6 s-tint-amber" onClick={() => navigate('/patterns')}>
               <span className="s-card-icon">{ICONS.patterns}</span>
-              <span className="s-card-title">Каталог паттернов</span>
+              <span className="s-card-title">Каталог AI-паттернов</span>
               <span className="s-card-text">
-                {patternsTotal} паттернов · {PATTERN_CATEGORIES.length} категорий
+                {patternsTotal} паттернов разработки с AI-агентами · {PATTERN_CATEGORIES.length} категорий
               </span>
             </button>
             <button className="s-card s-span-6 s-tint-violet" onClick={() => navigate('/slide/1')}>
