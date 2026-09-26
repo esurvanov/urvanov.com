@@ -139,5 +139,3 @@ export const THEME_CHATS: LinkItem[] = [
   { url: 'https://t.me/digital_nomads_asia', label: 'Digital Nomads Asia' },
   { url: 'https://t.me/danang_it_channel', label: 'Анонсы Дананга' },
 ]
-
-export const JAIORA_YOUTUBE = 'https://www.youtube.com/@Digital_nomads_asia/videos'

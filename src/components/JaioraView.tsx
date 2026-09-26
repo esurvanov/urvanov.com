@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { config } from '@/data/config'
-import { CITY_CHATS, JAIORA_YOUTUBE, THEME_CHATS } from '@/data/links'
+import { CITY_CHATS, THEME_CHATS } from '@/data/links'
 
 const STORY: { title: string; year?: string; text: string }[] = [
   {
@@ -43,7 +43,7 @@ interface Tile {
 const PLATFORM: Tile[] = [
   { title: 'Встречи', text: 'вживую, регулярно, в городах' },
   { title: 'Конференции', text: 'специалисты и идеи в одном зале' },
-  { title: 'YouTube', text: 'записи и разборы', url: JAIORA_YOUTUBE },
+  { title: 'YouTube', text: 'записи и разборы' },
 ]
 
 const HELP: Tile[] = [
