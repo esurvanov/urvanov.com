@@ -63,9 +63,9 @@ export default function HomeView() {
         <section className="s-section">
           <h2 className="s-label">Проект</h2>
           <div className="s-bento">
-            <button className="s-card s-feature s-span-12 s-tint-coral" onClick={() => navigate('/jaiora')}>
+            <button className="s-card s-feature s-feature-jaiora s-span-12" onClick={() => navigate('/jaiora')}>
               <span className="s-arrow" aria-hidden="true">↗</span>
-              <span className="s-card-icon">{ICONS.jaiora}</span>
+              <img className="s-feature-logo" src="/jaiora/logo.svg" alt="" width="48" height="48" />
               <span className="s-card-title">Jaiora</span>
               <span className="s-card-text">Оффлайн-LinkedIn: сообщество, где живые встречи важнее переписки</span>
             </button>

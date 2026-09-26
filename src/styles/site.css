@@ -371,3 +371,10 @@ button.s-card { font: inherit; }
 .site-jaiora .s-step-pre::before { border-color: var(--s-me); }
 .site-jaiora .s-step-pre .s-step-name,
 .site-jaiora .s-step-pre .s-step-text { opacity: 0.85; }
+
+/* Карточка Jaiora на главной — в цветах сообщества */
+.s-feature-jaiora,
+.s-feature-jaiora:hover { border-color: #66cf73; background: #0f1622; }
+.s-feature-jaiora:hover { background: #121b29; }
+.s-feature-jaiora .s-arrow { color: #66cf73; }
+.s-feature-logo { width: 48px; height: 48px; margin-bottom: 8px; }
