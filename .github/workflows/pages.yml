@@ -37,6 +37,12 @@ jobs:
             mkdir -p "dist/$game"
             rsync -a --exclude docs --exclude tests --exclude 'README*' "games/$game/" "dist/$game/"
           done
+          # Хроники Королевств: только браузерная версия (web/ + assets/), без версии на Python и тестов
+          mkdir -p dist/age-of-empires
+          rsync -a --exclude tests --exclude tools --exclude PORTING.md --exclude demo.html --exclude demo.js \
+            games/age-of-empires/web/ dist/age-of-empires/web/
+          rsync -a games/age-of-empires/assets/ dist/age-of-empires/assets/
+          cp games/age-of-empires/index.html games/age-of-empires/CREDITS.md dist/age-of-empires/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

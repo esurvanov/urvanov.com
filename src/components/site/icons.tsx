@@ -41,6 +41,11 @@ export const ICONS = {
       <path d="M6 8h12a4 4 0 0 1 4 4v3a3 3 0 0 1-5.2 2L15 15H9l-1.8 2A3 3 0 0 1 2 15v-3a4 4 0 0 1 4-4zM7 11v3M5.5 12.5h3M16 11.5h.01M18 13.5h.01" />
     </Icon>
   ),
+  castle: (
+    <Icon>
+      <path d="M4 21V9h3V6h2v3h2V6h2v3h2V6h2v3h3v12zM10 21v-4a2 2 0 0 1 4 0v4M4 13h16" />
+    </Icon>
+  ),
   taiga: (
     <Icon>
       <path d="M12 3l4 6h-2.5l3.5 5h-3l3 5H7l3-5H7l3.5-5H8zM12 19v3" />

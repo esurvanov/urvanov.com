@@ -95,12 +95,17 @@ export default function HomeView() {
         <section className="s-section">
           <h2 className="s-label">Игры</h2>
           <div className="s-bento">
-            <a className="s-card s-span-6 s-tint-mint" href="/berezovka/">
+            <a className="s-card s-span-4 s-tint-coral" href="/age-of-empires/">
+              <span className="s-card-icon">{ICONS.castle}</span>
+              <span className="s-card-title">Хроники Королевств</span>
+              <span className="s-card-text">Стратегия в духе Age of Empires II · 14 цивилизаций</span>
+            </a>
+            <a className="s-card s-span-4 s-tint-mint" href="/berezovka/">
               <span className="s-card-icon">{ICONS.game}</span>
               <span className="s-card-title">Березовка</span>
               <span className="s-card-text">3D-игра в браузере · заснеженная деревня</span>
             </a>
-            <a className="s-card s-span-6 s-tint-amber" href="/sibiria/">
+            <a className="s-card s-span-4 s-tint-amber" href="/sibiria/">
               <span className="s-card-icon">{ICONS.taiga}</span>
               <span className="s-card-title">Сибирь</span>
               <span className="s-card-text">2D-выживание · тайга, 1993</span>
