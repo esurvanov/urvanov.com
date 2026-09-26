@@ -1,11 +1,17 @@
 import { useNavigate } from 'react-router-dom'
 import { config } from '@/data/config'
-import { CITY_CHATS } from '@/data/links'
+import { CITY_CHATS, THEME_CHATS } from '@/data/links'
 
 const EXAMPLES = [
-  { title: 'Работа', text: 'знакомство до собеседования' },
-  { title: 'Грузия', text: 'налоги и ВНЖ от тех, кто прошёл' },
-  { title: 'Соавтор', text: 'второй человек для идеи' },
+  { title: 'Работа', text: 'найти человека в команду или команду для себя' },
+  { title: 'Опыт', text: 'спросить у того, кто уже прошёл этот путь' },
+  { title: 'Соавторы', text: 'второй человек для идеи или проекта' },
+  { title: 'Свои люди', text: 'знакомые в новом городе' },
+]
+
+const SERVICES = [
+  { title: 'Агент-кодинг', text: 'чат и разборы про разработку с ИИ-агентами', url: 'https://t.me/agent_coding' },
+  { title: 'ПТД и ВНЖ', text: 'гайд и консультации по легализации в Грузии', url: 'https://t.me/ptd_vnzh_georgia' },
 ]
 
 const PRINCIPLES = [
@@ -53,7 +59,7 @@ export default function JaioraView() {
 
       <section className="jaiora-section">
         <h2 className="jaiora-h2">Что можно найти</h2>
-        <div className="jaiora-grid">
+        <div className="jaiora-grid jaiora-grid-2">
           {EXAMPLES.map((e) => (
             <div key={e.title} className="home-metric">
               <span className="jaiora-card-title">{e.title}</span>
@@ -64,9 +70,39 @@ export default function JaioraView() {
       </section>
 
       <section className="jaiora-section">
-        <h2 className="jaiora-h2">Чаты по городам</h2>
+        <h2 className="jaiora-h2">Что ещё у нас есть</h2>
+        <div className="jaiora-grid">
+          {SERVICES.map((sv) => {
+            const body = (
+              <>
+                <span className="jaiora-card-title">{sv.title}</span>
+                <span className="home-metric-label">{sv.text}</span>
+              </>
+            )
+            return sv.url ? (
+              <a key={sv.title} className="home-metric jaiora-card-link" href={sv.url} target="_blank" rel="noopener noreferrer">
+                {body}
+              </a>
+            ) : (
+              <div key={sv.title} className="home-metric">
+                {body}
+              </div>
+            )
+          })}
+        </div>
+      </section>
+
+      <section className="jaiora-section">
+        <h2 className="jaiora-h2">Чаты</h2>
         <div className="home-contacts">
           {CITY_CHATS.map((c) => (
+            <a key={c.url} className="home-contact" href={c.url} target="_blank" rel="noopener noreferrer">
+              {c.label}
+            </a>
+          ))}
+        </div>
+        <div className="home-contacts">
+          {THEME_CHATS.map((c) => (
             <a key={c.url} className="home-contact" href={c.url} target="_blank" rel="noopener noreferrer">
               {c.label}
             </a>
