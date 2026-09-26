@@ -2,7 +2,7 @@ import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { POSTS } from '@/data/blog'
 import { config } from '@/data/config'
 
-export const SITE_URL = 'https://urvanov.com'
+export const SITE_URL = 'https://www.urvanov.com'
 export const SITE_NAME = 'Егор Урванов'
 
 export interface PageMeta {

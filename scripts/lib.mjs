@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs'
 
-export const SITE_URL = 'https://urvanov.com'
+export const SITE_URL = 'https://www.urvanov.com'
 // Pages отдаёт разделы как /путь/, поэтому канонический адрес — со слэшем
 export const urlOf = (path) => SITE_URL + (path.endsWith('/') ? path : path + '/')
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
