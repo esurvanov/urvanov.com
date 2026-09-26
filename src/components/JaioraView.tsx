@@ -45,15 +45,15 @@ const SOCIAL = [
   { title: 'Бангкок', year: '2025', text: 'Помогли найти пропавшего парня.' },
 ]
 
-const EVENT_FORMATS = ['лекция учёного «Что скрывает океан?»', 'доклады', 'AI-митапы', 'свободный микрофон «Айти Нытьё»', 'VR-игры']
+const EVENT_FORMATS = ['Лекция Александра Осадчиева «Что скрывает океан?»', 'Доклады', 'AI-митапы', 'Свободный микрофон «Айти Нытьё»', 'VR-игры']
 
 const FIND = [
-  { title: 'Свои люди', text: 'приехать в новый город и в первую же субботу оказаться среди своих' },
-  { title: 'Работа', text: 'человек в команду или команда для себя' },
-  { title: 'Инвесторы', text: 'деньги для проекта или проект для денег' },
-  { title: 'Идея', text: 'рассказать о своей идее и найти для неё компанию' },
-  { title: 'Любая задача', text: 'хоть юрист, хоть репетитор по физике для ребёнка' },
-  { title: 'Переезд', text: 'встретят, подскажут, познакомят' },
+  { title: 'Свои люди', text: 'Приехать в новый город и в первую же субботу оказаться среди своих' },
+  { title: 'Работа', text: 'Человек в команду или команда для себя' },
+  { title: 'Инвесторы', text: 'Деньги для проекта или проект для денег' },
+  { title: 'Идея', text: 'Рассказать о своей идее и найти для неё компанию' },
+  { title: 'Любая задача', text: 'Хоть юрист, хоть репетитор по физике для ребёнка' },
+  { title: 'Переезд', text: 'Встретят, подскажут, познакомят' },
 ]
 
 interface Tile {
@@ -63,13 +63,13 @@ interface Tile {
 }
 
 const PLATFORM: Tile[] = [
-  { title: 'Конференции', text: 'доклады и знакомства в одном зале' },
-  { title: 'YouTube', text: 'записи выступлений и разборы' },
+  { title: 'Конференции', text: 'Доклады и знакомства в одном зале' },
+  { title: 'YouTube', text: 'Записи выступлений и разборы' },
 ]
 
 const HELP: Tile[] = [
-  { title: 'Развитие бизнеса', text: 'продукт, процессы, операционка' },
-  { title: 'Задачи общего плана', text: 'приходи с задачей: найдём человека или решим вместе' },
+  { title: 'Развитие бизнеса', text: 'Продукт, процессы, операционка' },
+  { title: 'Задачи общего плана', text: 'Приходи с задачей: найдём человека или решим вместе' },
 ]
 
 const RULES = [
@@ -160,30 +160,29 @@ export default function JaioraView() {
         </section>
 
         <section className="s-section">
-          <h2 className="s-h2">Как всё началось</h2>
-          <ol className="s-timeline">
-            {STORY.map((s, i) => (
-              <Fragment key={s.title}>
-                {i > 0 && STORY[i - 1].pre && !s.pre && (
-                  <li className="s-phase" aria-hidden="true">
-                    С 2023 · Jaiora
-                  </li>
-                )}
-                {i === 0 && s.pre && (
-                  <li className="s-phase s-phase-pre" aria-hidden="true">
-                    Предыстория
-                  </li>
-                )}
-                <li className={`s-step${s.pre ? ' s-step-pre' : ''}${i === STORY.length - 1 ? ' s-step-now' : ''}`}>
-                  <span className="s-step-name">
-                    {s.title}
-                    {s.year && <span className="s-step-year">{s.year}</span>}
-                  </span>
-                  <span className="s-step-text">{s.text}</span>
-                </li>
-              </Fragment>
+          <h2 className="s-h2">На чём держится</h2>
+          <p className="s-lead">Правил всего два, и других нет.</p>
+          <div className="s-bento">
+            {RULES.map((r) => (
+              <div key={r.title} className="s-card s-span-6 s-card-static s-feature">
+                <span className="s-card-title">{r.title}</span>
+                <span className="s-card-text">{r.text}</span>
+              </div>
             ))}
-          </ol>
+          </div>
+          <div className="s-bento">
+            {VALUES.map((v) => (
+              <div key={v.title} className="s-card s-span-4 s-card-static">
+                <span className="s-card-title">{v.title}</span>
+                <span className="s-card-text">{v.text}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="s-section">
+          <h2 className="s-h2">Что можно найти</h2>
+          <Tiles items={FIND} />
         </section>
 
         <section className="s-section">
@@ -217,8 +216,30 @@ export default function JaioraView() {
         </section>
 
         <section className="s-section">
-          <h2 className="s-h2">Что можно найти</h2>
-          <Tiles items={FIND} />
+          <h2 className="s-h2">Как всё началось</h2>
+          <ol className="s-timeline">
+            {STORY.map((s, i) => (
+              <Fragment key={s.title}>
+                {i > 0 && STORY[i - 1].pre && !s.pre && (
+                  <li className="s-phase" aria-hidden="true">
+                    С 2023 · Jaiora
+                  </li>
+                )}
+                {i === 0 && s.pre && (
+                  <li className="s-phase s-phase-pre" aria-hidden="true">
+                    Предыстория
+                  </li>
+                )}
+                <li className={`s-step${s.pre ? ' s-step-pre' : ''}${i === STORY.length - 1 ? ' s-step-now' : ''}`}>
+                  <span className="s-step-name">
+                    {s.title}
+                    {s.year && <span className="s-step-year">{s.year}</span>}
+                  </span>
+                  <span className="s-step-text">{s.text}</span>
+                </li>
+              </Fragment>
+            ))}
+          </ol>
         </section>
 
         <section className="s-section">
@@ -243,27 +264,6 @@ export default function JaioraView() {
               <div key={t.title} className={`s-card s-span-6 s-card-static ${TINTS[(i + 1) % TINTS.length]}`}>
                 <span className="s-card-title">{t.title}</span>
                 <span className="s-card-text">{t.text}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="s-section">
-          <h2 className="s-h2">На чём держится</h2>
-          <p className="s-lead">Правил всего два.</p>
-          <div className="s-bento">
-            {RULES.map((r) => (
-              <div key={r.title} className="s-card s-span-6 s-card-static s-feature">
-                <span className="s-card-title">{r.title}</span>
-                <span className="s-card-text">{r.text}</span>
-              </div>
-            ))}
-          </div>
-          <div className="s-bento">
-            {VALUES.map((v) => (
-              <div key={v.title} className="s-card s-span-4 s-card-static">
-                <span className="s-card-title">{v.title}</span>
-                <span className="s-card-text">{v.text}</span>
               </div>
             ))}
           </div>

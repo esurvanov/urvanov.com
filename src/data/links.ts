@@ -26,7 +26,7 @@ export const LINK_GROUPS: LinkGroup[] = [
     blocks: [
       {
         variant: 'cards',
-        items: [{ url: '/jaiora', label: 'Jaiora', comment: 'оффлайн-LinkedIn · чаты · встречи' }],
+        items: [{ url: '/jaiora', label: 'Jaiora', comment: 'Оффлайн-LinkedIn · чаты · встречи' }],
       },
     ],
   },
@@ -40,7 +40,7 @@ export const LINK_GROUPS: LinkGroup[] = [
           { url: LI, label: 'LinkedIn', comment: 'CTO · AI' },
           { url: 'https://ru.stackoverflow.com/users/188116/eurvanov', label: 'Stack Overflow', comment: '10 256 репутации · 10+ лет' },
           { url: 'https://github.com/esurvanov/', label: 'GitHub', comment: '100+ звёзд' },
-          { url: 'https://getmentor.dev/mentor/egor-urvanov-1077', label: 'GetMentor', comment: 'топ-1 ментор · 1500+ часов' },
+          { url: 'https://getmentor.dev/mentor/egor-urvanov-1077', label: 'GetMentor', comment: 'Топ-1 ментор · 1500+ часов' },
           { url: 'https://t.me/eurvanov', label: 'Telegram' },
           { url: 'https://vk.com/eurvanov', label: 'VK' },
         ],
@@ -59,12 +59,12 @@ export const LINK_GROUPS: LinkGroup[] = [
         title: 'Проекты и достижения',
         variant: 'list',
         items: [
-          { url: 'https://arxiv.org/abs/2502.13266v1', label: 'ArXiv · ML-подход для кубика Рубика', comment: 'превзошли SOTA для 3×3×3, впервые решили 4×4×4 и 5×5×5' },
+          { url: 'https://arxiv.org/abs/2502.13266v1', label: 'ArXiv · ML-подход для кубика Рубика', comment: 'Превзошли SOTA для 3×3×3, впервые решили 4×4×4 и 5×5×5' },
           { url: 'https://www.hackerrank.com/contests/projecteuler/leaderboard', label: 'HackerRank · Project Euler+', comment: '6-е место из ≈256 000 · все 254 задачи на полный балл' },
-          { url: 'https://t.me/parsing_conf/', label: 'Conference on Internet Data Mining', comment: 'организатор · 1000 человек' },
+          { url: 'https://t.me/parsing_conf/', label: 'Conference on Internet Data Mining', comment: 'Организатор · 1000 человек' },
           { url: LI + 'details/honors/', label: 'Best Onboarding Manager · Sbermarket', comment: '2021–2022' },
           { url: LI + 'details/honors/', label: 'Winner · Self-driving cars competition', comment: '2021 · Fless' },
-          { url: LI + 'details/honors/', label: 'Data Mining section · ODS.ai', comment: 'организатор · 30 000 человек' },
+          { url: LI + 'details/honors/', label: 'Data Mining section · ODS.ai', comment: 'Организатор · 30 000 человек' },
           { url: LI + 'details/honors/', label: 'Winner · Rosbank credit card forecast', comment: '2018 · МГУ' },
           { url: LI + 'details/honors/', label: 'Winner · Uralsib bank churn prediction', comment: '2017 · Sputnik.ru' },
           { url: LI + 'details/projects/', label: 'Fabrika.cloud · CAD model evaluation system', comment: '2020 – настоящее время' },
@@ -77,7 +77,7 @@ export const LINK_GROUPS: LinkGroup[] = [
         items: [
           { url: LI, label: 'МГУ · Machine Learning', comment: '2018–2019 · ВМК' },
           { url: LI, label: 'НМУ · Математика', comment: '2014' },
-          { url: LI, label: 'МАИ · Математика и информатика', comment: 'магистр · 2012–2018' },
+          { url: LI, label: 'МАИ · Математика и информатика', comment: 'Магистр · 2012–2018' },
         ],
       },
     ],
@@ -88,8 +88,8 @@ export const LINK_GROUPS: LinkGroup[] = [
       {
         variant: 'list',
         items: [
-          { url: 'https://slideslive.com/39049529/a-machine-learning-approach-that-beats-rubiks-cubes', label: 'NeurIPS · A machine learning approach that beats Rubik’s cubes', comment: 'запись доклада по статье · 12 авторов' },
-          { url: 'https://ysnit.mave.digital/ep-40', label: 'Подкаст · Знай и Умей ИТ', comment: 'страх кода, event storming и будущее с ИИ' },
+          { url: 'https://slideslive.com/39049529/a-machine-learning-approach-that-beats-rubiks-cubes', label: 'NeurIPS · A machine learning approach that beats Rubik’s cubes', comment: 'Запись доклада по статье · 12 авторов' },
+          { url: 'https://ysnit.mave.digital/ep-40', label: 'Подкаст · Знай и Умей ИТ', comment: 'Страх кода, event storming и будущее с ИИ' },
           { url: 'https://www.youtube.com/watch?v=ycjmtkwQf8E', label: 'YouTube · SDD фреймворки для детерминированной AI разработки' },
           { url: 'https://www.youtube.com/watch?v=O8VbhnRUyJQ', label: 'YouTube · Рождённые копипастить: LLM-подходы и паттерны' },
           { url: 'https://www.youtube.com/watch?v=NqMS-UOU0os', label: 'YouTube · Модификация Event Storming для использования в команде' },
