@@ -316,3 +316,32 @@ button.s-card { font: inherit; }
 .s-chip-static:hover { border-color: var(--s-line-strong); color: inherit; }
 .s-anchor { scroll-margin-top: 24px; }
 .s-feature .s-card-title .s-step-year { font-size: 0.8rem; vertical-align: 4px; }
+
+/* Хроника: предыстория и вехи Jaiora */
+.s-phase {
+  position: relative;
+  margin: 14px 0 4px;
+  color: var(--s-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.s-phase::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  width: 17px;
+  height: 17px;
+  margin-top: -8.5px;
+  border: 1px solid var(--s-accent);
+  border-radius: 4px;
+  background: var(--s-bg);
+  transform: rotate(45deg);
+}
+.s-phase-pre { margin-top: 0; color: var(--s-muted); }
+.s-phase-pre::before { border-color: var(--s-line-strong); }
+.s-step-pre .s-step-name, .s-step-pre .s-step-text { opacity: 0.7; }
+.s-step-pre::before { border-style: dashed; }
+.s-step-year { white-space: nowrap; }

@@ -1,22 +1,35 @@
+import { Fragment } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { config } from '@/data/config'
 import { CITY_CHATS, THEME_CHATS } from '@/data/links'
 
-const STORY: { title: string; year?: string; text: string }[] = [
+const STORY: { title: string; year?: string; text: string; pre?: boolean }[] = [
+  {
+    title: 'Люди',
+    year: '2016 и раньше',
+    pre: true,
+    text: 'В МАИ и других сообществах я много работал с людьми: собирал, учил, организовывал.',
+  },
+  {
+    title: 'GetMentor',
+    year: '2022',
+    pre: true,
+    text: 'Стал топ-1 ментором на GetMentor. Там я понял, как важны нетворк и умение работать с людьми.',
+  },
   {
     title: 'Бангкок',
-    year: '2022',
-    text: 'Я решил путешествовать и уехал в Бангкок. Живого общения не хватало, и я начал собирать людей за одним столом.',
+    year: '2023',
+    text: 'Уехал путешествовать в Бангкок, и мне не хватало живого общения. Первая попытка не удалась: сообщество вокруг моего кондо развалилось.',
   },
   { title: 'Гипотеза', text: 'Я предположил, что переезд проходит легче, если на новом месте тебя кто-то встречает.' },
-  { title: 'Работа и имя', year: '2023', text: 'Через сообщество я нашёл работу, и меня стали узнавать.' },
+  { title: 'Работа и имя', year: '2024', text: 'Через сообщество я нашёл работу, и меня стали узнавать.' },
   {
     title: 'Сарафан',
     text: 'В Дананге ко мне подошёл незнакомец: «Мой друг с Кипра тебя знает». Ни его, ни друга я не знал, а сообщества на Кипре у меня нет.',
   },
   {
     title: 'Рост',
-    year: '2024',
+    year: '2025',
     text: 'Запустил ещё несколько сообществ, стал ходить на подкасты. Сомневался, нужно ли это в городах без экспатов. Москва и Питер ответили, что нужно.',
   },
   { title: 'Переезды', text: 'Люди стали переезжать из города в город. Недавно в Батуми мы сидели за одним столом с ребятами из Бангкока.' },
@@ -150,13 +163,25 @@ export default function JaioraView() {
           <h2 className="s-h2">Как всё началось</h2>
           <ol className="s-timeline">
             {STORY.map((s, i) => (
-              <li key={s.title} className={`s-step${i === STORY.length - 1 ? ' s-step-now' : ''}`}>
-                <span className="s-step-name">
-                  {s.title}
-                  {s.year && <span className="s-step-year">{s.year}</span>}
-                </span>
-                <span className="s-step-text">{s.text}</span>
-              </li>
+              <Fragment key={s.title}>
+                {i > 0 && STORY[i - 1].pre && !s.pre && (
+                  <li className="s-phase" aria-hidden="true">
+                    С 2023 · Jaiora
+                  </li>
+                )}
+                {i === 0 && s.pre && (
+                  <li className="s-phase s-phase-pre" aria-hidden="true">
+                    Предыстория
+                  </li>
+                )}
+                <li className={`s-step${s.pre ? ' s-step-pre' : ''}${i === STORY.length - 1 ? ' s-step-now' : ''}`}>
+                  <span className="s-step-name">
+                    {s.title}
+                    {s.year && <span className="s-step-year">{s.year}</span>}
+                  </span>
+                  <span className="s-step-text">{s.text}</span>
+                </li>
+              </Fragment>
             ))}
           </ol>
         </section>
