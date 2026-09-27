@@ -39,6 +39,7 @@
   --sp-section: 96px;
 
   --col: 720px;          /* ширина читаемой колонки */
+  --head-col: 14rem;     /* колонка заголовков в строках «заголовок — текст» и в хронике */
   --radius: 4px;
 
   min-height: 100vh;
@@ -130,16 +131,22 @@ h3.s-label { margin-top: var(--sp-2); padding-bottom: var(--sp-1); border-bottom
 .s-label a:hover { color: var(--accent); }
 
 /* ---------- 4. Строки-«определения»: заголовок слева, текст справа ---------- */
-.s-bento { display: flex; flex-direction: column; }
+/* Колонка заголовков — одна ширина на весь сайт (--head-col), все строки списка делят её (subgrid):
+   заголовки не ломаются в столбик, не наезжают на текст, и соседние списки выровнены по одной линии.
+   Строка-группа (заголовок + теги, без текста справа) идёт в одну колонку: заголовок над тегами на всю ширину. */
+.s-bento { display: grid; grid-template-columns: var(--head-col) minmax(0, 1fr); column-gap: var(--sp-3); }
 .s-card {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+  grid-template-columns: subgrid;
   gap: 4px var(--sp-3);
   align-items: baseline;
   padding: var(--sp-2) 0;
   border-top: 1px solid var(--line);
   color: var(--ink);
 }
+.s-card:has(> .s-chips) { grid-template-columns: minmax(0, 1fr); row-gap: var(--sp-1); }
+.s-card:has(> .s-chips) > .s-chips { margin-top: var(--sp-1); }
 .s-bento > .s-card:first-child { border-top: 0; }
 a.s-card:hover .s-card-title { color: var(--accent); }
 .s-card-title { font-size: var(--t-title); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
@@ -147,7 +154,8 @@ a.s-card:hover .s-card-title { color: var(--accent); }
 .s-card-icon { display: none; }
 /* Главное: цветная отметка слева */
 .s-feature { border-left: 3px solid var(--accent); padding-left: var(--sp-2); border-top: 0; margin: var(--sp-1) 0; }
-.s-step-year { margin-left: 8px; font-family: var(--mono); font-size: var(--t-label); font-weight: 500; color: var(--accent); white-space: nowrap; letter-spacing: 0.04em; }
+/* Год — отдельной строкой под заголовком: длинные «2016 и раньше» не вылезают в колонку текста */
+.s-step-year { display: block; margin-top: 2px; font-family: var(--mono); font-size: var(--t-label); font-weight: 500; color: var(--accent); letter-spacing: 0.04em; }
 .s-anchor { scroll-margin-top: var(--sp-3); }
 .s-card .s-chips { grid-column: 1 / -1; }
 
@@ -161,7 +169,7 @@ a.s-card:hover .s-card-title { color: var(--accent); }
 .s-group { display: flex; flex-direction: column; gap: var(--sp-3); border-top: 2px solid var(--line-strong); padding-top: var(--sp-3); counter-increment: sec; }
 .s-group::before { content: counter(sec, decimal-leading-zero); font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.1em; color: var(--accent); }
 .s-block { display: flex; flex-direction: column; gap: var(--sp-2); }
-.s-step-name { font-size: var(--t-title); font-weight: 700; letter-spacing: -0.02em; }
+.s-step-name { font-size: var(--t-title); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
 .s-block > h3.s-step-name { margin: 0; font-size: var(--t-lead); }
 
 /* Страница ссылок: много коротких групп, расстояние между ними меньше */
@@ -272,8 +280,9 @@ a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accen
 .s-meet-cities { padding-top: var(--sp-1); }
 
 /* Хроника */
-.s-timeline { list-style: none; margin: 0; padding: 0 0 0 var(--sp-4); position: relative; }
-.s-step { position: relative; display: grid; grid-template-columns: 11rem 1fr; gap: 4px var(--sp-3); padding: var(--sp-2) 0; }
+.s-timeline { list-style: none; margin: 0; padding: 0 0 0 var(--sp-4); position: relative; display: grid; grid-template-columns: calc(var(--head-col) - var(--sp-4)) minmax(0, 1fr); column-gap: var(--sp-3); }
+.s-timeline > li { grid-column: 1 / -1; }
+.s-step { position: relative; display: grid; grid-template-columns: subgrid; gap: 4px var(--sp-3); padding: var(--sp-2) 0; }
 .s-step-text { color: var(--ink-2); }
 .s-step::before { content: ''; position: absolute; left: -32px; top: 26px; width: 10px; height: 10px; border: 2px solid var(--ph, var(--line-2)); border-radius: 50%; background: var(--bg); z-index: 1; }
 .s-step::after, .s-phase::after { content: ''; position: absolute; left: -28px; top: 0; bottom: 0; width: 2px; background: var(--ph, var(--line-2)); opacity: 0.6; }
@@ -292,7 +301,7 @@ a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accen
 /* ---------- 10. Адаптив ---------- */
 @media (max-width: 640px) {
   .s-main { gap: var(--sp-5); }
-  .s-card, .s-step, .s-mile { grid-template-columns: 1fr; }
+  .s-bento, .s-timeline, .s-mile { grid-template-columns: minmax(0, 1fr); }
   .s-about-hero { grid-template-columns: 1fr; }
   .s-about-hero .s-avatar { order: -1; width: 96px; height: 96px; }
   .s-index a { grid-template-columns: 2.4rem 1fr auto; }

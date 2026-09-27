@@ -1,8 +1,17 @@
-import { Fragment, useEffect } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import Page from '@/components/site/Page'
 import { CITY_CHATS, THEME_CHATS, itemText, type LinkItem } from '@/data/links'
 import { JAIORA, type Tile } from '@/data/jaiora'
 import { useT, type Lang } from '@/lib/i18n'
+import type { Place } from '@/data/places'
+import PlacesMap from '@/components/site/PlacesMap'
+
+// Города чатов на карте: названия и порядок — из списка чатов
+const CITY_PLACES: Place[] = CITY_CHATS.map((c) => ({
+  name: { ru: itemText(c, 'ru').label, en: itemText(c, 'en').label },
+  lat: c.lat ?? 0,
+  lon: c.lon ?? 0,
+}))
 
 const PHASE_CLASS = ['ph-me', 'ph-together', 'ph-people', 'ph-jaiora']
 
@@ -19,20 +28,28 @@ function Tiles({ items }: { items: Tile[] }) {
   )
 }
 
-function Chips({ items, lang }: { items: LinkItem[]; lang: Lang }) {
+// active / onActive — подсветка тега в паре с точкой на карте
+function Chips({ items, lang, active, onActive }: { items: LinkItem[]; lang: Lang; active?: number | null; onActive?: (i: number | null) => void }) {
   return (
     <div className="s-chips">
-      {items.map((c) =>
-        c.url ? (
-          <a key={c.label} className="s-chip" href={c.url} target="_blank" rel="noopener noreferrer">
+      {items.map((c, i) => {
+        const cls = `s-chip${c.url ? '' : ' s-chip-static'}${active === i ? ' is-active' : ''}`
+        const hover = onActive && {
+          onMouseEnter: () => onActive(i),
+          onMouseLeave: () => onActive(null),
+          onFocus: () => onActive(i),
+          onBlur: () => onActive(null),
+        }
+        return c.url ? (
+          <a key={c.label} className={cls} href={c.url} target="_blank" rel="noopener noreferrer" {...hover}>
             {itemText(c, lang).label}
           </a>
         ) : (
-          <span key={c.label} className="s-chip s-chip-static">
+          <span key={c.label} className={cls} {...hover}>
             {itemText(c, lang).label}
           </span>
-        ),
-      )}
+        )
+      })}
     </div>
   )
 }
@@ -40,6 +57,7 @@ function Chips({ items, lang }: { items: LinkItem[]; lang: Lang }) {
 export default function JaioraView() {
   const { lang, t } = useT()
   const c = t(JAIORA)
+  const [activeCity, setActiveCity] = useState<number | null>(null)
 
   // На странице Jaiora во вкладке — знак сообщества, при уходе возвращаем личную иконку
   useEffect(() => {
@@ -160,7 +178,8 @@ export default function JaioraView() {
         <div className="s-bento">
           <div id="cities" className="s-card s-span-12 s-card-static s-anchor">
             <span className="s-card-title">{c.cityChats}</span>
-            <Chips items={CITY_CHATS} lang={lang} />
+            <PlacesMap places={CITY_PLACES} label={{ ru: 'Карта городов с чатами Jaiora', en: 'Map of Jaiora city chats' }} active={activeCity} onActive={setActiveCity} />
+            <Chips items={CITY_CHATS} lang={lang} active={activeCity} onActive={setActiveCity} />
           </div>
           <div className="s-card s-span-12 s-card-static">
             <span className="s-card-title">{c.themeChats}</span>

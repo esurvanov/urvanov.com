@@ -6,6 +6,9 @@ export interface LinkItem {
   comment?: string
   // Английский вариант: подставляется вместо русского, если задан
   en?: { label?: string; comment?: string }
+  // Координаты для карты (чаты по городам)
+  lat?: number
+  lon?: number
 }
 
 // cards — карточки с подписью, list — строки, pills — короткие «таблетки»
@@ -137,17 +140,17 @@ export const LINK_GROUPS: LinkGroup[] = [
 ]
 
 export const CITY_CHATS: LinkItem[] = [
-  { url: 'https://t.me/batumi_it_digital', label: 'Батуми', en: { label: 'Batumi' } },
-  { url: 'https://t.me/it_danang', label: 'Дананг', en: { label: 'Da Nang' } },
-  { url: 'https://t.me/bangkok_it', label: 'Бангкок', en: { label: 'Bangkok' } },
-  { url: 'https://t.me/bali_digital_it', label: 'Бали', en: { label: 'Bali' } },
-  { url: 'https://t.me/phuket_digital_it', label: 'Пхукет', en: { label: 'Phuket' } },
-  { url: 'https://t.me/almati_it', label: 'Алматы', en: { label: 'Almaty' } },
-  { url: 'https://t.me/spb_digital_it', label: 'Санкт-Петербург', en: { label: 'Saint Petersburg' } },
-  { url: 'https://t.me/antalia_it', label: 'Анталья', en: { label: 'Antalya' } },
-  { url: 'https://t.me/moscow_digital_it', label: 'Москва', en: { label: 'Moscow' } },
-  { url: 'https://t.me/belgrade_jaiora', label: 'Белград', en: { label: 'Belgrade' } },
-  { url: 'https://t.me/erevan_jaiora', label: 'Ереван', en: { label: 'Yerevan' } },
+  { url: 'https://t.me/batumi_it_digital', label: 'Батуми', en: { label: 'Batumi' }, lat: 41.64, lon: 41.64 },
+  { url: 'https://t.me/it_danang', label: 'Дананг', en: { label: 'Da Nang' }, lat: 16.05, lon: 108.22 },
+  { url: 'https://t.me/bangkok_it', label: 'Бангкок', en: { label: 'Bangkok' }, lat: 13.76, lon: 100.5 },
+  { url: 'https://t.me/bali_digital_it', label: 'Бали', en: { label: 'Bali' }, lat: -8.41, lon: 115.19 },
+  { url: 'https://t.me/phuket_digital_it', label: 'Пхукет', en: { label: 'Phuket' }, lat: 7.88, lon: 98.39 },
+  { url: 'https://t.me/almati_it', label: 'Алматы', en: { label: 'Almaty' }, lat: 43.24, lon: 76.89 },
+  { url: 'https://t.me/spb_digital_it', label: 'Санкт-Петербург', en: { label: 'Saint Petersburg' }, lat: 59.93, lon: 30.32 },
+  { url: 'https://t.me/antalia_it', label: 'Анталья', en: { label: 'Antalya' }, lat: 36.9, lon: 30.71 },
+  { url: 'https://t.me/moscow_digital_it', label: 'Москва', en: { label: 'Moscow' }, lat: 55.75, lon: 37.62 },
+  { url: 'https://t.me/belgrade_jaiora', label: 'Белград', en: { label: 'Belgrade' }, lat: 44.79, lon: 20.45 },
+  { url: 'https://t.me/erevan_jaiora', label: 'Ереван', en: { label: 'Yerevan' }, lat: 40.18, lon: 44.51 },
 ]
 
 // Чаты по темам — показываются на странице Jaiora

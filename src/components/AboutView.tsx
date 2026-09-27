@@ -18,7 +18,6 @@ const CONTACTS = [
 const MILESTONES = [
   { years: { ru: '2024 — сейчас', en: '2024 — present' }, role: 'CTO', org: { ru: 'SaaS-платформа клиентской поддержки', en: 'SaaS customer support platform' }, facts: [
     { ru: 'Время восстановления после сбоя: 5 часов → 2', en: 'Incident recovery time: 5 hours → 2' },
-    { ru: 'Загрузка виджета: 5 с → 0,4 с через CDN', en: 'Widget load time: 5 s → 0.4 s via CDN' },
     { ru: 'Выход в прод: 3 месяца → 1,5', en: 'Time to market: 3 months → 1.5' } ] },
   { years: { ru: '2023 — 2024', en: '2023 — 2024' }, role: 'Head of Department', url: 'https://www.linkedin.com/company/18186001/', org: { ru: 'WebPros', en: 'WebPros' }, facts: [
     { ru: 'Руководство отделом разработки', en: 'Led the development department' } ] },
@@ -96,7 +95,7 @@ export default function AboutView() {
           <h2 className="s-label" id="about-places">
             {t({ ru: 'Где я был', en: 'Places I have been' })} · {PLACES.length}
           </h2>
-          <PlacesMap active={active} onActive={setActive} />
+          <PlacesMap places={PLACES} label={{ ru: 'Карта мест, где бывал Егор', en: 'Map of places Egor has been' }} active={active} onActive={setActive} />
           <ul className="s-chips">
             {PLACES.map((p, i) => (
               <li
