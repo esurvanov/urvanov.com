@@ -29,12 +29,10 @@ export const MILESTONES: Milestone[] = [
   { years: { ru: '2021 — 2022', en: '2021 — 2022' }, role: 'Head of Development', url: 'https://www.linkedin.com/company/3295154/', org: { ru: 'СберМаркет', en: 'SberMarket' }, facts: [
     { ru: 'Система на 40 000 сотрудников, экономия 170 млн ₽ в год', en: 'A system for 40,000 employees, saving 170 million RUB a year' },
     { ru: 'Маршрутизация сборки для 10 000 магазинов, 12 млн ₽ в год', en: 'Picker routing for 10,000 stores, 12 million RUB a year' },
-    { ru: 'Онбординг и OKR в отделе на 200 человек', en: 'Onboarding and OKRs in a 200-person department' } ],
-    links: [{ label: { ru: 'Доклад: сбор данных в интернете', en: 'Talk: web data collection (in Russian)' }, url: 'https://www.youtube.com/watch?v=V_bRcl6EjFk' }] },
+    { ru: 'Онбординг и OKR в отделе на 200 человек', en: 'Onboarding and OKRs in a 200-person department' } ] },
   { years: { ru: '2019 — 2022', en: '2019 — 2022' }, role: 'Head of Development', url: 'https://www.linkedin.com/company/37829948/', org: { ru: 'Fless', en: 'Fless' }, facts: [
     { ru: 'От 0 до 6 000 пользователей, оборот 25 млн ₽ в год', en: 'From 0 to 6,000 users, 25 million RUB annual turnover' },
-    { ru: 'Доступность системы 99,9%, 8 проектов', en: '99.9% uptime, 8 projects delivered' } ],
-    links: [{ label: { ru: 'Доклад: очумелые ручки беспилотников', en: 'Talk: crazy hands of drones (in Russian)' }, url: 'https://www.youtube.com/watch?v=1LobFwBLel8' }] },
+    { ru: 'Доступность системы 99,9%, 8 проектов', en: '99.9% uptime, 8 projects delivered' } ] },
   { years: { ru: '2019 — 2020', en: '2019 — 2020' }, role: 'Software Engineer', url: 'https://www.linkedin.com/company/164715/', org: { ru: 'Леруа Мерлен', en: 'Leroy Merlin' }, facts: [
     { ru: 'Мониторинг цен конкурентов на 1 000 000 товаров', en: 'Competitor price monitoring for 1,000,000 products' } ] },
   { years: { ru: '2018 — 2019', en: '2018 — 2019' }, role: 'Software Engineer', url: 'https://www.linkedin.com/company/970369/', org: { ru: 'Ozon', en: 'Ozon' }, facts: [
