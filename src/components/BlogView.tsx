@@ -8,7 +8,7 @@ export default function BlogView() {
   const { lang, t, to } = useT()
   const posts = postsFor(lang)
   return (
-    <Page className="s-wide">
+    <Page>
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { label: t({ ru: 'Блог', en: 'Blog' }) }]} />
       <header>
         <h1 className="s-page-title">{t({ ru: 'Блог', en: 'Blog' })}</h1>
