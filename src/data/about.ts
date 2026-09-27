@@ -17,9 +17,13 @@ export const ABOUT_LEAD: L = {
 
 // Вехи карьеры — источник и для страницы «Обо мне», и для llms-full.txt (prerender.mjs)
 export const MILESTONES: Milestone[] = [
-  { years: { ru: '2024 — сейчас', en: '2024 — present' }, role: 'CTO', org: { ru: 'iGaming-компания (NDA), SaaS-платформа клиентской поддержки', en: 'iGaming company (NDA), a SaaS customer support platform' }, facts: [
+  { years: { ru: '2026 — сейчас', en: '2026 — present' }, role: 'Head of AI', org: { ru: 'iGaming-компания (NDA), SaaS-платформа клиентской поддержки', en: 'iGaming company (NDA), a SaaS customer support platform' }, facts: [] },
+  { years: { ru: '2024 — 2026', en: '2024 — 2026' }, role: 'CTO', org: { ru: 'iGaming-компания (NDA), SaaS-платформа клиентской поддержки', en: 'iGaming company (NDA), a SaaS customer support platform' }, facts: [
     { ru: 'Время восстановления после сбоя: 5 часов → 2', en: 'Incident recovery time: 5 hours → 2' },
-    { ru: 'Выход в прод: 3 месяца → 1,5', en: 'Time to market: 3 months → 1.5' } ] },
+    { ru: 'Выход в прод: 3 месяца → 1,5', en: 'Time to market: 3 months → 1.5' },
+    { ru: 'Переход на Scrum + LeSS', en: 'Moved the team to Scrum + LeSS' },
+    { ru: 'Смена орг. структуры на кросс-функциональную: продуктовые команды', en: 'Restructured into cross-functional product teams' },
+    { ru: 'Смена архитектуры', en: 'Rebuilt the architecture' } ] },
   { years: { ru: '2023 — 2024', en: '2023 — 2024' }, role: 'Head of Department', url: 'https://www.linkedin.com/company/18186001/', org: { ru: 'WebPros', en: 'WebPros' }, facts: [
     { ru: 'Руководство отделом разработки', en: 'Led the development department' } ] },
   { years: { ru: '2021 — 2022', en: '2021 — 2022' }, role: 'Head of Development', url: 'https://www.linkedin.com/company/3295154/', org: { ru: 'СберМаркет', en: 'SberMarket' }, facts: [
