@@ -21,8 +21,8 @@ function person(lang) {
     image: { '@type': 'ImageObject', url: `${SITE_URL}/egor.jpg`, width: 320, height: 320 },
     jobTitle: 'CTO',
     description: ru
-      ? 'CTO в iGaming-компании (NDA): AI-разработка, управление командами, Python, Go и экосистема Telegram. Живёт между городами Батуми, Дананг и Бангкок. Основатель сообщества Jaiora — оффлайн-нетворкинга на 10 000 человек в 11 городах.'
-      : 'CTO at an iGaming company (NDA): AI development, team management, Python, Go, and the Telegram ecosystem. Lives between Batumi, Da Nang, and Bangkok. Founder of Jaiora, an offline networking community of 10,000 people across 11 cities.',
+      ? 'CTO в iGaming-компании (NDA), SaaS-платформе клиентской поддержки: AI-разработка, управление командами, Python, Go и экосистема Telegram. Живёт между городами Батуми, Дананг и Бангкок. Основатель сообщества Jaiora — оффлайн-нетворкинга на 10 000 человек в 11 городах.'
+      : 'CTO at an iGaming company (NDA), a SaaS customer support platform: AI development, team management, Python, Go, and the Telegram ecosystem. Lives between Batumi, Da Nang, and Bangkok. Founder of Jaiora, an offline networking community of 10,000 people across 11 cities.',
     knowsAbout: ru
       ? ['AI-разработка', 'управление командами', 'нетворкинг', 'Python', 'Go', 'экосистема Telegram']
       : ['AI development', 'team management', 'networking', 'Python', 'Go', 'the Telegram ecosystem'],

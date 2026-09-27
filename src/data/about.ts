@@ -17,7 +17,7 @@ export const ABOUT_LEAD: L = {
 
 // Вехи карьеры — источник и для страницы «Обо мне», и для llms-full.txt (prerender.mjs)
 export const MILESTONES: Milestone[] = [
-  { years: { ru: '2024 — сейчас', en: '2024 — present' }, role: 'CTO', org: { ru: 'iGaming-компания (NDA)', en: 'iGaming company (NDA)' }, facts: [
+  { years: { ru: '2024 — сейчас', en: '2024 — present' }, role: 'CTO', org: { ru: 'iGaming-компания (NDA), SaaS-платформа клиентской поддержки', en: 'iGaming company (NDA), a SaaS customer support platform' }, facts: [
     { ru: 'Время восстановления после сбоя: 5 часов → 2', en: 'Incident recovery time: 5 hours → 2' },
     { ru: 'Выход в прод: 3 месяца → 1,5', en: 'Time to market: 3 months → 1.5' } ] },
   { years: { ru: '2023 — 2024', en: '2023 — 2024' }, role: 'Head of Department', url: 'https://www.linkedin.com/company/18186001/', org: { ru: 'WebPros', en: 'WebPros' }, facts: [

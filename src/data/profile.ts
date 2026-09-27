@@ -3,7 +3,7 @@ import { CITY_CHATS } from '@/data/links'
 
 // Факты о Егоре, проверенные и зафиксированные владельцем сайта.
 // Переиспользуются на главной (HomeView), в llms.txt и в JSON-LD Person (scripts/lib.mjs — держать в согласии при правках).
-export const CURRENT_ROLE: L = { ru: 'CTO в iGaming-компании (NDA)', en: 'CTO at an iGaming company (NDA)' }
+export const CURRENT_ROLE: L = { ru: 'CTO в iGaming-компании (NDA), SaaS-платформе клиентской поддержки', en: 'CTO at an iGaming company (NDA), a SaaS customer support platform' }
 export const CITIES: L = { ru: 'Батуми, Дананг и Бангкок', en: 'Batumi, Da Nang, and Bangkok' }
 export const TOPICS: L<string[]> = {
   ru: ['AI-разработка', 'управление командами', 'нетворкинг', 'Python', 'Go', 'экосистема Telegram'],
