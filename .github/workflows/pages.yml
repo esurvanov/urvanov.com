@@ -18,7 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # fetch-depth: 0 — полная история: prerender.mjs берёт честный lastmod для sitemap.xml из git log
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -26,10 +29,12 @@ jobs:
       - run: npm ci
       - run: npm run build
       # Игры живут в своём репозитории и подтягиваются при каждой выкладке
+      # fetch-depth: 0 — тоже полная история: patch-games.mjs берёт из неё дату игр для sitemap.xml
       - uses: actions/checkout@v4
         with:
           repository: esurvanov/awesome-games
           path: games
+          fetch-depth: 0
       - run: |
           for game in berezovka sibiria lars; do
             mkdir -p "dist/$game"

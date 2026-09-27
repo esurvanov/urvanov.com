@@ -4,7 +4,7 @@ export interface Crumb { to?: string; label: string }
 
 export default function Crumbs({ items }: { items: Crumb[] }) {
   return (
-    <nav className="s-crumbs" aria-label="Хлебные крошки">
+    <nav className="s-crumbs" data-track-section="crumbs" aria-label="Хлебные крошки">
       <ol>
         {items.map((c, i) => (
           <li key={c.label}>

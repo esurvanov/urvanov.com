@@ -9,6 +9,10 @@ export const withLang = (path: string, lang: Lang): string =>
   lang === 'en' ? (path === '/' ? '/en' : '/en' + path) : path
 export const otherLang = (lang: Lang): Lang => (lang === 'en' ? 'ru' : 'en')
 
+// Канонический адрес — всегда с хвостовым слэшем (как в sitemap.xml): для ссылок в разметке.
+// PageMeta.path (data/seo.ts) слэш не хранит — так его ждёт usePageMeta при сверке при переходах в SPA.
+export const withSlash = (path: string): string => (path.endsWith('/') ? path : path + '/')
+
 // Язык страницы берётся из адреса: /en/... — английский, остальное — русский
 export function useLang(): Lang {
   return langOf(useLocation().pathname)
@@ -19,6 +23,6 @@ export function useT() {
   return {
     lang,
     t: <T,>(v: L<T>): T => v[lang],
-    to: (path: string) => withLang(path, lang),
+    to: (path: string) => withSlash(withLang(path, lang)),
   }
 }

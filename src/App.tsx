@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import PatternsView from '@/components/PatternsView'
 import PatternsCategoryView from '@/components/PatternsCategoryView'
 import LinksView from '@/components/LinksView'
@@ -8,6 +8,8 @@ import JaioraView from '@/components/JaioraView'
 import AboutView from '@/components/AboutView'
 import BlogView from '@/components/BlogView'
 import BlogPostView from '@/components/BlogPostView'
+import TalkView from '@/components/TalkView'
+import NotFoundView from '@/components/NotFoundView'
 import { MaterialsView, PresentationsView, GamesView } from '@/components/MaterialsView'
 import { usePageMeta } from '@/lib/usePageMeta'
 
@@ -29,6 +31,7 @@ export default function App() {
       <Route path="/materials/games" element={<GamesView />} />
       <Route path="/jaiora" element={<JaioraView />} />
       <Route path="/links" element={<LinksView />} />
+      <Route path="/talk/spec-driven-development" element={<TalkView />} />
       <Route path="/en" element={<HomeView />} />
       <Route path="/en/about" element={<AboutView />} />
       <Route path="/en/blog" element={<BlogView />} />
@@ -38,11 +41,12 @@ export default function App() {
       <Route path="/en/materials/games" element={<GamesView />} />
       <Route path="/en/jaiora" element={<JaioraView />} />
       <Route path="/en/links" element={<LinksView />} />
+      <Route path="/en/talk/spec-driven-development" element={<TalkView />} />
       <Route path="/slide/:index" element={<SlideView />} />
       <Route path="/presenter" element={<PresenterView />} />
       <Route path="/patterns" element={<PatternsView />} />
       <Route path="/patterns/:categoryId" element={<PatternsCategoryView />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<NotFoundView />} />
     </Routes>
     </Suspense>
   )

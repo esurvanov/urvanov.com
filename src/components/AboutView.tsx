@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { LINK_GROUPS, itemText } from '@/data/links'
 import { config } from '@/data/config'
+import { MILESTONES, ABOUT_LEAD } from '@/data/about'
 import { ICONS } from '@/components/site/icons'
 import Page from '@/components/site/Page'
 import { useT } from '@/lib/i18n'
@@ -8,34 +9,11 @@ import { PLACES } from '@/data/places'
 import PlacesMap from '@/components/site/PlacesMap'
 
 const CONTACTS = [
-  { label: 'Telegram', icon: ICONS.telegram, url: 'https://t.me/eurvanov' },
-  { label: 'LinkedIn', icon: ICONS.linkedin, url: 'https://www.linkedin.com/in/eurvanov/' },
-  { label: 'GitHub', icon: ICONS.github, url: 'https://github.com/esurvanov/' },
-  { label: 'Stack Overflow', icon: ICONS.stackoverflow, url: 'https://ru.stackoverflow.com/users/188116/eurvanov' },
-  { label: 'GetMentor', icon: ICONS.mentor, url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
-]
-
-const MILESTONES = [
-  { years: { ru: '2024 — сейчас', en: '2024 — present' }, role: 'CTO', org: { ru: 'SaaS-платформа клиентской поддержки', en: 'SaaS customer support platform' }, facts: [
-    { ru: 'Время восстановления после сбоя: 5 часов → 2', en: 'Incident recovery time: 5 hours → 2' },
-    { ru: 'Выход в прод: 3 месяца → 1,5', en: 'Time to market: 3 months → 1.5' } ] },
-  { years: { ru: '2023 — 2024', en: '2023 — 2024' }, role: 'Head of Department', url: 'https://www.linkedin.com/company/18186001/', org: { ru: 'WebPros', en: 'WebPros' }, facts: [
-    { ru: 'Руководство отделом разработки', en: 'Led the development department' } ] },
-  { years: { ru: '2021 — 2022', en: '2021 — 2022' }, role: 'Head of Development', url: 'https://www.linkedin.com/company/3295154/', org: { ru: 'СберМаркет', en: 'SberMarket' }, facts: [
-    { ru: 'Система на 40 000 сотрудников, экономия 170 млн ₽ в год', en: 'A system for 40,000 employees, saving 170 million RUB a year' },
-    { ru: 'Маршрутизация сборки для 10 000 магазинов, 12 млн ₽ в год', en: 'Picker routing for 10,000 stores, 12 million RUB a year' },
-    { ru: 'Онбординг и OKR в отделе на 200 человек', en: 'Onboarding and OKRs in a 200-person department' } ],
-    links: [{ label: { ru: 'Доклад: сбор данных в интернете', en: 'Talk: web data collection (in Russian)' }, url: 'https://www.youtube.com/watch?v=V_bRcl6EjFk' }] },
-  { years: { ru: '2019 — 2022', en: '2019 — 2022' }, role: 'Head of Development', url: 'https://www.linkedin.com/company/37829948/', org: { ru: 'Fless', en: 'Fless' }, facts: [
-    { ru: 'От 0 до 6 000 пользователей, оборот 25 млн ₽ в год', en: 'From 0 to 6,000 users, 25 million RUB annual turnover' },
-    { ru: 'Доступность системы 99,9%, 8 проектов', en: '99.9% uptime, 8 projects delivered' } ],
-    links: [{ label: { ru: 'Доклад: очумелые ручки беспилотников', en: 'Talk: crazy hands of drones (in Russian)' }, url: 'https://www.youtube.com/watch?v=1LobFwBLel8' }] },
-  { years: { ru: '2019 — 2020', en: '2019 — 2020' }, role: 'Software Engineer', url: 'https://www.linkedin.com/company/164715/', org: { ru: 'Леруа Мерлен', en: 'Leroy Merlin' }, facts: [
-    { ru: 'Мониторинг цен конкурентов на 1 000 000 товаров', en: 'Competitor price monitoring for 1,000,000 products' } ] },
-  { years: { ru: '2018 — 2019', en: '2018 — 2019' }, role: 'Software Engineer', url: 'https://www.linkedin.com/company/970369/', org: { ru: 'Ozon', en: 'Ozon' }, facts: [
-    { ru: 'Переезд расчёта доставки с C# на Go, пропускная способность +250%, нагрузка 3 600 запросов в секунду', en: 'Migrated delivery pricing from C# to Go, throughput +250% at 3,600 requests per second' } ] },
-  { years: { ru: '2016 — 2018', en: '2016 — 2018' }, role: 'Software Engineer', url: 'https://www.linkedin.com/company/10116760/', org: { ru: 'Спутник', en: 'Sputnik' }, facts: [
-    { ru: 'Поисковый портал, распознавание речи', en: 'Search portal, speech recognition' } ] },
+  { label: 'Telegram', network: 'telegram', icon: ICONS.telegram, url: 'https://t.me/eurvanov' },
+  { label: 'LinkedIn', network: 'linkedin', icon: ICONS.linkedin, url: 'https://www.linkedin.com/in/eurvanov/' },
+  { label: 'GitHub', network: 'github', icon: ICONS.github, url: 'https://github.com/esurvanov/' },
+  { label: 'Stack Overflow', network: 'stackoverflow', icon: ICONS.stackoverflow, url: 'https://ru.stackoverflow.com/users/188116/eurvanov' },
+  { label: 'GetMentor', network: 'getmentor', icon: ICONS.mentor, url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
 ]
 
 const about = LINK_GROUPS.find((g) => g.titleEn === 'About me')!
@@ -48,15 +26,15 @@ export default function AboutView() {
   return (
     <Page>
       <article itemScope itemType="https://schema.org/Person" className="s-article-wrap">
-        <header className="s-about-hero">
+        <header className="s-about-hero" data-track-section="hero">
           <div className="s-about-text">
             <p className="s-eyebrow"><b>CTO</b> · AI · {t({ ru: 'нетворк', en: 'networking' })}</p>
             <h1 className="s-name" itemProp="name">{t({ ru: config.speaker, en: 'Egor Urvanov' })}</h1>
-            <p className="s-lead">{t({ ru: 'CTO, машинное обучение и AI-разработка. Менторю инженеров, выступаю, собираю людей в Jaiora.', en: 'CTO, machine learning and AI development. I mentor engineers, speak at events, and bring people together in Jaiora.' })}</p>
-            <ul className="s-pills" aria-label="Контакты">
+            <p className="s-lead">{t(ABOUT_LEAD)}</p>
+            <ul className="s-pills" aria-label="Контакты" data-track-section="contacts">
               {CONTACTS.map((c) => (
                 <li key={c.label}>
-                  <a className="s-pill s-icon-btn" href={c.url} target="_blank" rel="me noopener noreferrer" aria-label={c.label} title={c.label} itemProp="sameAs">
+                  <a className="s-pill s-icon-btn" href={c.url} target="_blank" rel="me noopener noreferrer" data-track-network={c.network} aria-label={c.label} title={c.label} itemProp="sameAs">
                     {c.icon}
                   </a>
                 </li>

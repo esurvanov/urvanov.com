@@ -38,8 +38,9 @@ function Rows({ items }: { items: Row[] }) {
 
 // Слайды и каталог паттернов только на русском: ссылки ведут на русские адреса
 const presentationRows = (lang: 'ru' | 'en'): Row[] => [
-  { to: '/slide/1', title: config.talkTitle, hint: lang === 'en' ? `${config.conferenceName} · slides in the browser (in Russian)` : `${config.conferenceName} · слайды в браузере` },
-  { to: '/patterns', title: lang === 'en' ? 'AI patterns catalog' : 'Каталог AI-паттернов', hint: lang === 'en' ? `${patternsTotal} patterns · ${PATTERN_CATEGORIES.length} categories (in Russian)` : `${patternsTotal} паттернов · ${PATTERN_CATEGORIES.length} категорий` },
+  { to: '/talk/spec-driven-development/', title: lang === 'en' ? config.talkTitleEn : config.talkTitle, hint: lang === 'en' ? `${config.conferenceName} · full talk text (in Russian)` : `${config.conferenceName} · текст доклада целиком` },
+  { to: '/slide/1/', title: lang === 'en' ? 'Open the slide deck' : 'Открыть презентацию', hint: lang === 'en' ? 'Slides in the browser (in Russian)' : 'Слайды в браузере' },
+  { to: '/patterns/', title: lang === 'en' ? 'AI patterns catalog' : 'Каталог AI-паттернов', hint: lang === 'en' ? `${patternsTotal} patterns · ${PATTERN_CATEGORIES.length} categories (in Russian)` : `${patternsTotal} паттернов · ${PATTERN_CATEGORIES.length} категорий` },
 ]
 
 const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => ({ href: g.path, title: lang === 'en' ? g.titleEn : g.title, hint: lang === 'en' ? g.longEn : g.long }))

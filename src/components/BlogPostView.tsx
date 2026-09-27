@@ -2,7 +2,7 @@ import { Navigate, useParams } from 'react-router-dom'
 import { findPost, formatDate } from '@/data/blog'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
-import { otherLang, useT, withLang } from '@/lib/i18n'
+import { otherLang, useT, withLang, withSlash } from '@/lib/i18n'
 
 export default function BlogPostView() {
   const { slug = '' } = useParams<{ slug: string }>()
@@ -12,7 +12,7 @@ export default function BlogPostView() {
 
   // Переключатель языка ведёт на перевод этого поста, а если его нет — в ленту блога
   const other = otherLang(lang)
-  const alt = findPost(slug, other) ? withLang(`/blog/${slug}`, other) : withLang('/blog', other)
+  const alt = withSlash(findPost(slug, other) ? withLang(`/blog/${slug}`, other) : withLang('/blog', other))
   const author = t({ ru: 'Егор Урванов', en: 'Egor Urvanov' })
 
   return (

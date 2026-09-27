@@ -320,3 +320,23 @@ a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accen
 /* Ключевые города */
 .s-chip.is-key { border-color: var(--accent); color: var(--ink); font-weight: 700; }
 .s-map-pin.is-key .s-map-halo { opacity: 0.35; }
+
+/* ---------- 11. Страница доклада: реальные слайды (.slide-container из theme.css), уменьшенные под обычный текст ---------- */
+.s-talk-deck { display: flex; flex-direction: column; gap: var(--sp-4); }
+.s-talk-section { margin: var(--sp-2) 0 0; padding-top: var(--sp-2); border-top: 1px solid var(--line); }
+.s-talk-slide.slide-container {
+  flex: none;
+  min-height: 0;
+  max-width: 100%;
+  padding: var(--sp-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: visible;
+  /* размер шрифта слайда — под карточку, а не под весь экран */
+  --size-title: var(--t-h2);
+  --size-heading: var(--t-title);
+  --size-body: var(--t-body);
+  --size-small: var(--t-small);
+  --size-code: var(--t-small);
+}

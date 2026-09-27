@@ -29,7 +29,8 @@ function Tiles({ items }: { items: Tile[] }) {
 }
 
 // active / onActive — подсветка тега в паре с точкой на карте
-function Chips({ items, lang, active, onActive }: { items: LinkItem[]; lang: Lang; active?: number | null; onActive?: (i: number | null) => void }) {
+// track — id кнопки для аналитики (cta_click), подпись берём английскую, чтобы не зависела от языка
+function Chips({ items, lang, track, active, onActive }: { items: LinkItem[]; lang: Lang; track: string; active?: number | null; onActive?: (i: number | null) => void }) {
   return (
     <div className="s-chips">
       {items.map((c, i) => {
@@ -41,7 +42,7 @@ function Chips({ items, lang, active, onActive }: { items: LinkItem[]; lang: Lan
           onBlur: () => onActive(null),
         }
         return c.url ? (
-          <a key={c.label} className={cls} href={c.url} target="_blank" rel="noopener noreferrer" {...hover}>
+          <a key={c.label} className={cls} href={c.url} target="_blank" rel="noopener noreferrer" data-track="cta" data-track-id={track} data-track-label={itemText(c, 'en').label} {...hover}>
             {itemText(c, lang).label}
           </a>
         ) : (
@@ -76,7 +77,7 @@ export default function JaioraView() {
 
   return (
     <Page className="site-jaiora">
-      <header className="s-jhero">
+      <header className="s-jhero" data-track-section="hero">
         <img className="s-jlogo" src="/jaiora/logo.svg" alt="Jaiora" width="112" height="112" />
         <div>
           <p className="s-eyebrow">{c.eyebrow}</p>
@@ -85,7 +86,7 @@ export default function JaioraView() {
         </div>
       </header>
 
-      <section className="s-meet">
+      <section className="s-meet" data-track-section="meet">
         <div>
           <p className="s-meet-when">{c.meet.when}</p>
           <p className="s-meet-title">{c.meet.title}</p>
@@ -94,6 +95,8 @@ export default function JaioraView() {
         <div className="s-meet-cities">
           <button
             className="s-pill s-pill-solid"
+            data-track="cta"
+            data-track-id="choose_city"
             onClick={() => document.getElementById('cities')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
           >
             {c.meet.button}
@@ -101,7 +104,7 @@ export default function JaioraView() {
         </div>
       </section>
 
-      <section className="s-section">
+      <section className="s-section" data-track-section="rules">
         <h2 className="s-h2">{c.rulesTitle}</h2>
         <p className="s-lead">{c.rulesLead}</p>
         <div className="s-bento">
@@ -115,12 +118,12 @@ export default function JaioraView() {
         <Tiles items={c.values} />
       </section>
 
-      <section className="s-section">
+      <section className="s-section" data-track-section="find">
         <h2 className="s-h2">{c.findTitle}</h2>
         <Tiles items={c.find} />
       </section>
 
-      <section className="s-section">
+      <section className="s-section" data-track-section="done">
         <h2 className="s-h2">{c.doneTitle}</h2>
         <h3 className="s-label">{c.socialTitle}</h3>
         <div className="s-bento">
@@ -150,7 +153,7 @@ export default function JaioraView() {
         </div>
       </section>
 
-      <section className="s-section">
+      <section className="s-section" data-track-section="story">
         <h2 className="s-h2">{c.storyTitle}</h2>
         <ol className="s-timeline">
           {c.story.map((s, i) => (
@@ -172,23 +175,23 @@ export default function JaioraView() {
         </ol>
       </section>
 
-      <section className="s-section">
+      <section className="s-section" data-track-section="have">
         <h2 className="s-h2">{c.haveTitle}</h2>
         <Tiles items={c.platform} />
         <div className="s-bento">
-          <div id="cities" className="s-card s-span-12 s-card-static s-anchor">
+          <div id="cities" className="s-card s-span-12 s-card-static s-anchor" data-track-section="cities">
             <span className="s-card-title">{c.cityChats}</span>
             <PlacesMap places={CITY_PLACES} label={{ ru: 'Карта городов с чатами Jaiora', en: 'Map of Jaiora city chats' }} active={activeCity} onActive={setActiveCity} />
-            <Chips items={CITY_CHATS} lang={lang} active={activeCity} onActive={setActiveCity} />
+            <Chips items={CITY_CHATS} lang={lang} track="city_chip" active={activeCity} onActive={setActiveCity} />
           </div>
-          <div className="s-card s-span-12 s-card-static">
+          <div className="s-card s-span-12 s-card-static" data-track-section="theme_chats">
             <span className="s-card-title">{c.themeChats}</span>
-            <Chips items={THEME_CHATS} lang={lang} />
+            <Chips items={THEME_CHATS} lang={lang} track="theme_chip" />
           </div>
         </div>
       </section>
 
-      <section className="s-section">
+      <section className="s-section" data-track-section="help">
         <h2 className="s-h2">{c.helpTitle}</h2>
         <Tiles items={c.help} />
       </section>

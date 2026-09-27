@@ -1,14 +1,17 @@
 import { LINK_GROUPS, itemText, type LinkItem } from '@/data/links'
-import { useT, withLang, type Lang } from '@/lib/i18n'
+import { useT, withLang, withSlash, type Lang } from '@/lib/i18n'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
+
+// Имя секции для аналитики: английский заголовок группы
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '')
 
 const TINTS = ['s-tint-coral', 's-tint-amber', 's-tint-violet', 's-tint-mint']
 
 // Внутренние ссылки открываем в той же вкладке и на том же языке, внешние — в новой
 const linkProps = (url: string) =>
   url.startsWith('/') ? {} : { target: '_blank', rel: 'noopener noreferrer' }
-const hrefFor = (url: string, lang: Lang) => (url.startsWith('/') ? withLang(url, lang) : url)
+const hrefFor = (url: string, lang: Lang) => (url.startsWith('/') ? withSlash(withLang(url, lang)) : url)
 
 function Cards({ items, lang }: { items: LinkItem[]; lang: Lang }) {
   return (
@@ -65,7 +68,7 @@ export default function LinksView() {
       <h1 className="s-page-title">{t({ ru: 'Ссылки', en: 'Links' })}</h1>
 
       {LINK_GROUPS.map((group) => (
-        <section key={group.title} className="s-group">
+        <section key={group.title} className="s-group" data-track-section={slug(group.titleEn)}>
           <h2 className="s-label">{lang === 'en' ? group.titleEn : group.title}</h2>
           {group.blocks.map((block, i) => (
             <div key={block.title ?? i} className="s-block">

@@ -6,7 +6,25 @@ import Timer from './Timer'
 import Progress from './Progress'
 import SlideErrorBoundary from './SlideErrorBoundary'
 
+// Страница не пререндерится (нет в data/seo.ts) и закрыта в robots.txt, но боты, которые
+// не читают robots.txt и заходят по прямой ссылке, всё равно должны увидеть noindex
+function useNoindex() {
+  useEffect(() => {
+    let meta = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]')
+    const prev = meta?.getAttribute('content') ?? null
+    if (!meta) {
+      meta = Object.assign(document.createElement('meta'), { name: 'robots' })
+      document.head.appendChild(meta)
+    }
+    meta.setAttribute('content', 'noindex, nofollow')
+    return () => {
+      if (prev !== null) meta.setAttribute('content', prev)
+    }
+  }, [])
+}
+
 export default function PresenterView() {
+  useNoindex()
   const total = slides.length
   const [currentIndex, setCurrentIndex] = useState<number>(() => {
     return readInitialSlideIndex() ?? 1
