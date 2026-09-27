@@ -107,6 +107,36 @@ for (const g of GAMES) {
   }
 }
 
+// Интерактивные учебные страницы из репозитория project-euler (копируются в workflow рядом с играми):
+// описание, canonical, разметка LearningResource, счётчики и fallback для ботов без JS
+const LABS = [
+  { dir: 'methods-lab', repoDir: 'methods-lab', title: 'Мастерская методов — 60 приёмов решения задач в 3D, шаг за шагом', description: '60 приёмов решения математических и алгоритмических задач в 3D: задача, решение в лоб, что замечаем и как решаем быстрее. Каждый шаг — сцена с понятным примером. На русском и английском, в браузере без установки.' },
+]
+for (const l of LABS) {
+  const file = `dist/${l.dir}/index.html`
+  if (!existsSync(file)) { console.warn(`нет ${file}`); continue }
+  const path = `/${l.dir}/`
+  const head = headTags({
+    title: l.title, description: l.description, path,
+    jsonLd: [
+      { '@type': 'LearningResource', name: l.title.split(' — ')[0], description: l.description, url: SITE_URL + path, inLanguage: ['ru', 'en'], learningResourceType: 'Interactive visualization', educationalLevel: 'Beginner', isAccessibleForFree: true, author: { '@type': 'Person', name: 'Егор Урванов', url: SITE_URL } },
+      { '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL + '/' },
+        { '@type': 'ListItem', position: 2, name: 'Материалы', item: SITE_URL + '/materials/' },
+        { '@type': 'ListItem', position: 3, name: l.title.split(' — ')[0], item: SITE_URL + path } ] },
+    ],
+  })
+  const fallback = `<noscript><h1>${esc(l.title)}</h1><p>${esc(l.description)}</p><p><a href="/materials/">Материалы</a> · <a href="/">Егор Урванов</a></p></noscript>`
+  let html = readFileSync(file, 'utf8')
+    .replace(/<title>[\s\S]*?<\/title>/i, '')
+    .replace(/<meta[^>]+name=["']description["'][^>]*>/gi, '')
+    .replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, '')
+  html = injectHead(html, `${head}\n    ${analyticsHead()}`)
+  html = /<\/body>/i.test(html) ? html.replace(/<\/body>/i, `${fallback}\n</body>`) : `${html}\n${fallback}\n`
+  writeFileSync(file, html)
+  console.log(`patched ${file}`)
+}
+
 // Честный lastmod игр в sitemap.xml: дата последнего коммита в их отдельном репозитории
 // (главный prerender.mjs здесь ставит дату сборки — у него нет доступа к games/, он собирается раньше)
 const sitemapFile = 'dist/sitemap.xml'
@@ -124,4 +154,19 @@ if (existsSync(sitemapFile) && existsSync('games')) {
   }
   writeFileSync(sitemapFile, sitemap)
   console.log('sitemap.xml: даты игр обновлены из games/.git')
+}
+// То же для учебных страниц: дата последнего коммита в project-euler
+if (existsSync(sitemapFile) && existsSync('project-euler')) {
+  let sitemap = readFileSync(sitemapFile, 'utf8')
+  for (const l of LABS) {
+    let date = null
+    try {
+      date = execSync(`git -C project-euler log -1 --format=%cI -- ${l.repoDir}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim().slice(0, 10) || null
+    } catch { /* нет истории — оставляем дату сборки */ }
+    if (!date) continue
+    const loc = (SITE_URL + `/${l.dir}/`).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    sitemap = sitemap.replace(new RegExp(`(<url><loc>${loc}</loc><lastmod>)[^<]+(</lastmod>)`), `$1${date}$2`)
+  }
+  writeFileSync(sitemapFile, sitemap)
+  console.log('sitemap.xml: даты учебных страниц обновлены из project-euler/.git')
 }

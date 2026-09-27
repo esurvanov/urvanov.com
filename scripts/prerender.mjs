@@ -8,7 +8,7 @@ import { analyticsHead, headTags, esc, urlOf, SITE_URL } from './lib.mjs'
 
 const DIST = 'dist'
 const {
-  render, allPages, POSTS, GAMES, config,
+  render, allPages, POSTS, GAMES, LABS, config,
   MILESTONES, ABOUT_LEAD, PLACES, LINK_GROUPS, itemText, CITY_CHATS, THEME_CHATS, JAIORA, BIO,
 } = await import(pathToFileURL(join(process.cwd(), 'dist-ssr/entry-server.js')).href)
 
@@ -106,6 +106,7 @@ const urls = [
   }),
   // Дата игр честно проставляется позже, в scripts/patch-games.mjs — там доступна их отдельная история git
   ...GAMES.map((g) => `  <url><loc>${SITE_URL}${g.path}</loc><lastmod>${buildDate}</lastmod><priority>0.7</priority></url>`),
+  ...LABS.map((l) => `  <url><loc>${SITE_URL}${l.path}</loc><lastmod>${buildDate}</lastmod><priority>0.7</priority></url>`),
 ]
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`)
 
@@ -149,6 +150,7 @@ write('llms.txt', [
   `- [Доклад: ${config.talkTitle}](${SITE_URL}/talk/spec-driven-development/) · [Talk](${SITE_URL}/en/talk/spec-driven-development/): полный текст слайдов / full slide text (RU)`,
   `- [Каталог AI-паттернов](${SITE_URL}/patterns/): паттерны разработки с AI-агентами (RU)`,
   `- [Презентации](${SITE_URL}/materials/presentations/) · [Presentations](${SITE_URL}/en/materials/presentations/)`,
+  ...LABS.map((l) => `- [${l.title}](${SITE_URL}${l.path}) · ${l.titleEn}: ${l.long} (RU/EN)`),
   `- [Игры](${SITE_URL}/materials/games/) · [Games](${SITE_URL}/en/materials/games/): ${GAMES.map((g) => g.title).join(', ')}`,
   `- [Ссылки](${SITE_URL}/links/) · [Links](${SITE_URL}/en/links/)`,
   '',

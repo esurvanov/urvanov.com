@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
-import { GAMES } from '@/data/seo'
+import { GAMES, LABS } from '@/data/seo'
 import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { config } from '@/data/config'
 import { useT } from '@/lib/i18n'
@@ -44,6 +44,7 @@ const presentationRows = (lang: 'ru' | 'en'): Row[] => [
 ]
 
 const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => ({ href: g.path, title: lang === 'en' ? g.titleEn : g.title, hint: lang === 'en' ? g.longEn : g.long }))
+const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => ({ href: l.path, title: lang === 'en' ? l.titleEn : l.title, hint: lang === 'en' ? l.longEn : l.long }))
 
 export function MaterialsView() {
   const { lang, t, to } = useT()
@@ -54,6 +55,10 @@ export function MaterialsView() {
       <section className="s-section" aria-labelledby="m-pres">
         <h2 className="s-label" id="m-pres"><Link to={to('/materials/presentations')}>{t({ ru: 'Презентации', en: 'Presentations' })}</Link></h2>
         <Rows items={presentationRows(lang)} />
+      </section>
+      <section className="s-section" aria-labelledby="m-labs">
+        <h2 className="s-label" id="m-labs">{t({ ru: 'Интерактивы', en: 'Interactive' })}</h2>
+        <Rows items={labRows(lang)} />
       </section>
       <section className="s-section" aria-labelledby="m-games">
         <h2 className="s-label" id="m-games"><Link to={to('/materials/games')}>{t({ ru: 'Игры', en: 'Games' })}</Link></h2>

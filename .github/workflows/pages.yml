@@ -53,7 +53,16 @@ jobs:
             --exclude '*.md' --exclude '*.bak' --exclude '*-demo.html' --exclude '*.command' games/ekho-razloma/ dist/ekho-razloma/
           cp games/ekho-razloma/CREDITS.md dist/ekho-razloma/
           cp dist/ekho-razloma/open-world.html dist/ekho-razloma/index.html
-      # Описание, разметка и счётчики для страниц игр
+      # Мастерская методов живёт в репозитории project-euler и тоже подтягивается при каждой выкладке
+      - uses: actions/checkout@v4
+        with:
+          repository: esurvanov/project-euler
+          path: project-euler
+          fetch-depth: 0
+      - run: |
+          mkdir -p dist/methods-lab
+          rsync -a project-euler/methods-lab/ dist/methods-lab/
+      # Описание, разметка и счётчики для страниц игр и мастерской методов
       - run: node scripts/patch-games.mjs
       - uses: actions/upload-pages-artifact@v3
         with:

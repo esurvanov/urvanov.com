@@ -10,7 +10,7 @@ export function render(url: string): string {
   )
 }
 
-export { allPages, SITE_URL, SITE_NAME, GAMES, PERSON_ID, JAIORA_ORG_ID } from './data/seo'
+export { allPages, SITE_URL, SITE_NAME, GAMES, LABS, PERSON_ID, JAIORA_ORG_ID } from './data/seo'
 export { POSTS } from './data/blog'
 export { config } from './data/config'
 // Данные для llms-full.txt (prerender.mjs): собираем текст «Обо мне» и Jaiora из тех же

@@ -101,6 +101,18 @@ export const GAMES = [
   },
 ]
 
+// Интерактивные учебные страницы: живут в отдельном репозитории project-euler и копируются при выкладке
+// (см. .github/workflows/pages.yml и scripts/patch-games.mjs)
+export const LABS = [
+  {
+    path: '/methods-lab/',
+    title: 'Мастерская методов',
+    titleEn: 'Methods workshop',
+    long: '60 приёмов решения математических и алгоритмических задач в 3D, шаг за шагом: задача, решение в лоб, что замечаем и как решаем быстрее. На русском и английском, прямо в браузере.',
+    longEn: '60 problem-solving methods from maths and algorithms in step-by-step 3D: the task, the head-on way, what we notice and how to solve it faster. In Russian and English, right in the browser.',
+  },
+]
+
 interface Base {
   path: string
   ru: { title: string; description: string }
@@ -142,8 +154,8 @@ const BASE: Base[] = [
   },
   {
     path: '/materials',
-    ru: { title: `Материалы — ${SITE_NAME}`, description: 'Презентации, каталог AI-паттернов и браузерные игры.' },
-    en: { title: 'Materials — Egor Urvanov', description: 'Presentations, an AI patterns catalog, and browser games.' },
+    ru: { title: `Материалы — ${SITE_NAME}`, description: 'Презентации, каталог AI-паттернов, мастерская методов в 3D и браузерные игры.' },
+    en: { title: 'Materials — Egor Urvanov', description: 'Presentations, an AI patterns catalog, a 3D methods workshop, and browser games.' },
     sources: ['src/components/MaterialsView.tsx'],
   },
   {
