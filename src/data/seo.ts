@@ -83,6 +83,14 @@ export const GAMES = [
     long: '3D-аркада в браузере: маленький корабль летит по бесконечному ледяному каньону под северным сиянием. Собирай осколки, копи энергию, пробивай ледяные стены и держи множитель до ×8. Один файл, без установки.',
     longEn: 'A 3D browser arcade: a small ship flies down an endless ice canyon under the northern lights. Collect shards, build energy, burst through the ice walls and keep a combo of up to ×8. One file, no installation.',
   },
+  {
+    path: '/skhodka/',
+    title: 'Сходка',
+    titleEn: 'Skhodka',
+    text: '3D · субботняя IT-сходка в баре Батуми',
+    long: '3D-игра в браузере: субботний вечер IT-сообщества в баре SushiGO в Батуми, с 19:00 до 01:00. Знакомься с гостями, находи общие темы, обменивайся контактами и своди тех, кто нужен друг другу. Саксофон, караоке, дождь и общее фото в конце. Играть в браузере без установки.',
+    longEn: 'A 3D browser game: a Saturday evening of the IT community at the SushiGO bar in Batumi, 19:00 to 01:00. Meet the guests, find common topics, swap contacts and introduce people who need each other. Sax, karaoke, rain and a group photo at the end. Play in the browser, no installation.',
+  },
 ]
 
 interface Base {

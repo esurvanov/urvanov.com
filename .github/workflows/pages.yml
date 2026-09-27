@@ -36,9 +36,9 @@ jobs:
           path: games
           fetch-depth: 0
       - run: |
-          for game in berezovka sibiria lars severny-razlom; do
+          for game in berezovka sibiria lars severny-razlom skhodka; do
             mkdir -p "dist/$game"
-            rsync -a --exclude docs --exclude tests --exclude tools --exclude 'README*' "games/$game/" "dist/$game/"
+            rsync -a --exclude docs --exclude tests --exclude tools --exclude dev --exclude 'README*' "games/$game/" "dist/$game/"
           done
           # Хроники Королевств: только браузерная версия (web/ + assets/), без версии на Python и тестов
           mkdir -p dist/age-of-empires
