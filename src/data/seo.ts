@@ -75,6 +75,14 @@ export const GAMES = [
     long: '3D-игра с открытым миром и сюжетом: пилот разбился на полярном острове под северным сиянием. Станция, отшельник, три кристальных шпиля, поющий разлом во льду, снег, который помнит каждый шаг, и два финала. Играть в браузере без установки.',
     longEn: 'A 3D open-world story game: a pilot crashes on a polar island under the northern lights. A station, a hermit, three crystal spires, a singing rift in the ice, snow that remembers every step, and two endings. Play in the browser, no installation.',
   },
+  {
+    path: '/severny-razlom/',
+    title: 'Северный Разлом',
+    titleEn: 'Northern Rift',
+    text: '3D-аркада · полёт по ледяному каньону',
+    long: '3D-аркада в браузере: маленький корабль летит по бесконечному ледяному каньону под северным сиянием. Собирай осколки, копи энергию, пробивай ледяные стены и держи множитель до ×8. Один файл, без установки.',
+    longEn: 'A 3D browser arcade: a small ship flies down an endless ice canyon under the northern lights. Collect shards, build energy, burst through the ice walls and keep a combo of up to ×8. One file, no installation.',
+  },
 ]
 
 interface Base {
