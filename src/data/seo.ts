@@ -91,6 +91,14 @@ export const GAMES = [
     long: '3D-игра в браузере: субботний вечер IT-сообщества в баре SushiGO в Батуми, с 19:00 до 01:00. Знакомься с гостями, находи общие темы, обменивайся контактами и своди тех, кто нужен друг другу. Саксофон, караоке, дождь и общее фото в конце. Играть в браузере без установки.',
     longEn: 'A 3D browser game: a Saturday evening of the IT community at the SushiGO bar in Batumi, 19:00 to 01:00. Meet the guests, find common topics, swap contacts and introduce people who need each other. Sax, karaoke, rain and a group photo at the end. Play in the browser, no installation.',
   },
+  {
+    path: '/zhitie/',
+    title: 'Житьё',
+    titleEn: 'Zhitiyo',
+    text: 'Симулятор жизни в духе The Sims · район из десяти семей',
+    long: 'Браузерная симуляция жизни в духе The Sims 1: изометрическое 3D в low-poly, район из десяти семей, потребности, карьера, навыки и отношения. Обставляй и достраивай дом в режимах «Покупка» и «Стройка». Играть можно прямо в браузере.',
+    longEn: 'A browser life sim in the spirit of The Sims 1: isometric low-poly 3D, a neighbourhood of ten households, needs, careers, skills, and relationships. Furnish and extend the house in Buy and Build modes. Play right in the browser.',
+  },
 ]
 
 interface Base {
