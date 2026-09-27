@@ -1,23 +1,26 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { NAV_ITEMS } from '@/data/nav'
+import { otherLang, stripLang, useT, withLang } from '@/lib/i18n'
 
-const ITEMS = [
-  { to: '/about', label: 'Обо мне' },
-  { to: '/blog', label: 'Блог' },
-  { to: '/materials', label: 'Материалы' },
-  { to: '/links', label: 'Ссылки' },
-  { to: '/jaiora', label: 'Jaiora' },
-]
+// alt — адрес той же страницы на другом языке (если отличается от зеркального пути)
+export default function SiteNav({ alt }: { alt?: string }) {
+  const { lang, t, to } = useT()
+  const { pathname } = useLocation()
+  const other = otherLang(lang)
+  const switchTo = alt ?? withLang(stripLang(pathname), other)
 
-export default function SiteNav() {
   return (
     <header className="s-nav">
-      <Link to="/" className="s-nav-home">Егор Урванов</Link>
-      <nav aria-label="Разделы">
-        {ITEMS.map((i) => (
-          <NavLink key={i.to} to={i.to} className={({ isActive }) => `s-nav-link${isActive ? ' is-active' : ''}`}>
-            {i.label}
+      <Link to={to('/')} className="s-nav-home">{t({ ru: 'Егор Урванов', en: 'Egor Urvanov' })}</Link>
+      <nav aria-label={t({ ru: 'Разделы', en: 'Sections' })}>
+        {NAV_ITEMS.map((i) => (
+          <NavLink key={i.to} to={to(i.to)} className={({ isActive }) => `s-nav-link${isActive ? ' is-active' : ''}`}>
+            {t(i.label)}
           </NavLink>
         ))}
+        <Link className="s-nav-lang" to={switchTo} hrefLang={other} lang={other} title={other === 'en' ? 'English' : 'Русский'}>
+          {other.toUpperCase()}
+        </Link>
       </nav>
     </header>
   )

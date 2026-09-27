@@ -1,18 +1,23 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { config } from '@/data/config'
-import { POSTS } from '@/data/blog'
-import { ICONS } from '@/components/site/icons'
+import { Link, useLocation } from 'react-router-dom'
+import { postsFor } from '@/data/blog'
+import { NAV_ITEMS } from '@/data/nav'
 import Page from '@/components/site/Page'
+import { otherLang, stripLang, useT, withLang } from '@/lib/i18n'
 
 const CONTACTS = [
-  { label: 'Telegram', icon: ICONS.telegram, url: 'https://t.me/eurvanov' },
-  { label: 'LinkedIn', icon: ICONS.linkedin, url: 'https://www.linkedin.com/in/eurvanov/' },
-  { label: 'GitHub', icon: ICONS.github, url: 'https://github.com/esurvanov/' },
-  { label: 'GetMentor', icon: ICONS.mentor, url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
+  { label: 'Telegram', url: 'https://t.me/eurvanov' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/eurvanov/' },
+  { label: 'GitHub', url: 'https://github.com/esurvanov/' },
+  { label: 'GetMentor', url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
 ]
 
 export default function HomeView() {
+  const { lang, t, to } = useT()
+  const { pathname } = useLocation()
+  const other = otherLang(lang)
+  const posts = postsFor(lang).length
+
   useEffect(() => {
     try {
       sessionStorage.removeItem('lastSlide')
@@ -21,60 +26,46 @@ export default function HomeView() {
     }
   }, [])
 
+  const [first, last] = t({ ru: 'Егор Урванов', en: 'Egor Urvanov' }).split(' ')
+
   return (
-    <Page>
-      <header className="s-hero">
-        <div>
-          <p className="s-eyebrow"><b>CTO</b> · AI · нетворк</p>
-          <h1 className="s-name">{config.speaker}</h1>
-          <ul className="s-pills" aria-label="Контакты">
-            {CONTACTS.map((c) => (
-              <li key={c.label}>
-                <a className="s-pill s-icon-btn" href={c.url} target="_blank" rel="me noopener noreferrer" aria-label={c.label} title={c.label}>
-                  {c.icon}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <img className="s-avatar" src="/egor.jpg" alt={config.speaker} width="148" height="148" fetchPriority="high" />
+    <Page nav={false}>
+      <Link className="s-nav-lang s-home-lang" to={withLang(stripLang(pathname), other)} hrefLang={other} lang={other}>
+        {other.toUpperCase()}
+      </Link>
+      <header className="s-home-hero">
+        <p className="s-eyebrow">CTO · AI · {t({ ru: 'нетворк', en: 'networking' })}</p>
+        <h1 className="s-home-name">
+          {first}
+          <br />
+          <span>{last}</span>
+        </h1>
       </header>
 
-      <section className="s-section" aria-label="Разделы">
-        <div className="s-bento">
-          <Link className="s-card s-feature s-feature-jaiora s-span-12" to="/jaiora">
-            <span className="s-arrow" aria-hidden="true">↗</span>
-            <img className="s-feature-logo" src="/jaiora/logo.svg" alt="" width="48" height="48" />
-            <h2 className="s-card-title">Jaiora</h2>
-            <span className="s-card-text">Оффлайн-LinkedIn: находим человека под твою задачу или цель и знакомим вживую</span>
-          </Link>
-          <Link className="s-card s-span-4" to="/about">
-            <span className="s-card-icon">{ICONS.mentor}</span>
-            <h2 className="s-card-title">Обо мне</h2>
-            <span className="s-card-text">CTO · ML · ментор №1</span>
-          </Link>
-          <Link className="s-card s-span-4" to="/blog">
-            <span className="s-card-icon">{ICONS.patterns}</span>
-            <h2 className="s-card-title">Блог</h2>
-            <span className="s-card-text">{POSTS.length > 0 ? `${POSTS.length} постов` : 'Скоро'}</span>
-          </Link>
-          <Link className="s-card s-span-4" to="/links">
-            <span className="s-card-icon">{ICONS.links}</span>
-            <h2 className="s-card-title">Ссылки</h2>
-            <span className="s-card-text">Профили · выступления · чаты</span>
-          </Link>
-          <Link className="s-card s-span-6" to="/materials/presentations">
-            <span className="s-card-icon">{ICONS.talk}</span>
-            <h2 className="s-card-title">Презентации</h2>
-            <span className="s-card-text">Доклад про SDD · каталог AI-паттернов</span>
-          </Link>
-          <Link className="s-card s-span-6" to="/materials/games">
-            <span className="s-card-icon">{ICONS.game}</span>
-            <h2 className="s-card-title">Игры</h2>
-            <span className="s-card-text">Три игры в браузере</span>
-          </Link>
-        </div>
-      </section>
+      <nav aria-label={t({ ru: 'Разделы', en: 'Sections' })}>
+        <ol className="s-index">
+          {NAV_ITEMS.map((s, i) => (
+            <li key={s.to}>
+              <Link to={to(s.to)} className={s.jaiora ? 'jai' : undefined}>
+                <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                <span className="t">{t(s.label)}</span>
+                <span className="h">
+                  {s.to === '/blog' && posts > 0 ? t({ ru: `${posts} постов`, en: `${posts} posts` }) : t(s.hint)}
+                </span>
+                <span className="ar" aria-hidden="true">→</span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <ul className="s-home-contacts" aria-label={t({ ru: 'Контакты', en: 'Contacts' })}>
+        {CONTACTS.map((c) => (
+          <li key={c.label}>
+            <a href={c.url} target="_blank" rel="me noopener noreferrer">{c.label}</a>
+          </li>
+        ))}
+      </ul>
     </Page>
   )
 }

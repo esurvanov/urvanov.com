@@ -1,4 +1,4 @@
-// Постсборка: превращает SPA в набор готовых HTML-страниц (для поисковиков и ИИ-краулеров),
+// Постсборка: превращает SPA в набор готовых HTML-страниц на двух языках (для поисковиков и ИИ-краулеров),
 // а также пишет sitemap.xml, robots.txt, rss.xml, llms.txt и markdown-копии постов.
 import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -12,16 +12,22 @@ const template = readFileSync(join(DIST, 'index.html'), 'utf8')
 const buildDate = new Date().toISOString().slice(0, 10)
 const analytics = analyticsHead()
 
-const crumbLabels = { about: 'Обо мне', blog: 'Блог', links: 'Ссылки', materials: 'Материалы', presentations: 'Презентации', games: 'Игры', patterns: 'Паттерны', jaiora: 'Jaiora' }
+const CRUMBS = {
+  ru: { home: 'Главная', about: 'Обо мне', blog: 'Блог', links: 'Ссылки', materials: 'Материалы', presentations: 'Презентации', games: 'Игры', patterns: 'Паттерны', jaiora: 'Jaiora' },
+  en: { home: 'Home', about: 'About', blog: 'Blog', links: 'Links', materials: 'Materials', presentations: 'Presentations', games: 'Games', patterns: 'Patterns', jaiora: 'Jaiora' },
+}
+
 function breadcrumbs(page, all) {
-  if (page.path === '/') return null
   const parts = page.path.split('/').filter(Boolean)
-  const items = [{ name: 'Главная', url: SITE_URL + '/' }]
-  let acc = ''
+  if (page.lang === 'en') parts.shift()
+  if (parts.length === 0) return null
+  const home = page.lang === 'en' ? '/en' : '/'
+  const items = [{ name: CRUMBS[page.lang].home, url: urlOf(home) }]
+  let acc = page.lang === 'en' ? '/en' : ''
   for (const part of parts) {
     acc += '/' + part
     const p = all.find((x) => x.path === acc)
-    items.push({ name: crumbLabels[part] ?? p?.title.split(' — ')[0] ?? part, url: urlOf(acc) })
+    items.push({ name: CRUMBS[page.lang][part] ?? p?.title.split(' — ')[0] ?? part, url: urlOf(acc) })
   }
   return { '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })) }
 }
@@ -29,10 +35,10 @@ function breadcrumbs(page, all) {
 function build(page, all, { body, noindex } = {}) {
   const graph = [breadcrumbs(page, all), page.jsonLd && { ...page.jsonLd, '@id': urlOf(page.path) + '#main' }].filter(Boolean)
   const head = headTags({ ...page, noindex: noindex ?? page.noindex, jsonLd: graph.length ? graph : undefined })
-  let html = template
+  return template
+    .replace('<html lang="ru">', `<html lang="${page.lang}">`)
     .replace(/<title>[\s\S]*?<\/title>/, `${head}\n    ${analytics}`)
     .replace('<div id="root"></div>', `<div id="root">${body ?? ''}</div>`)
-  return html
 }
 
 function write(file, content) {
@@ -45,7 +51,7 @@ const pages = allPages()
 for (const page of pages) {
   let body = ''
   try {
-    // слайды грузятся лениво: для них в HTML только метатеги и текст-описание
+    // слайды грузятся лениво: для них в HTML только метатеги
     body = page.path.startsWith('/slide/') ? '' : render(page.path)
   } catch (e) {
     console.warn(`  ! ${page.path}: без готового HTML (${e.message}), останется клиентская отрисовка`)
@@ -54,45 +60,66 @@ for (const page of pages) {
 }
 
 // 404: клиентская отрисовка, не индексируется
-write('404.html', build({ path: '/404', title: 'Страница не найдена — Егор Урванов', description: 'Такой страницы нет.' }, pages, { noindex: true }))
+write('404.html', build({ path: '/404', lang: 'ru', alternates: [], title: 'Страница не найдена — Егор Урванов', description: 'Такой страницы нет.' }, pages, { noindex: true }))
 
-// sitemap: страницы сайта + игры
+// sitemap: страницы сайта на обоих языках со связями hreflang + игры
 const indexable = pages.filter((p) => !p.noindex)
+const loc = (p) => (p === '/' ? SITE_URL + '/' : urlOf(p))
 const urls = [
-  ...indexable.map((p) => ({ loc: p.path, lastmod: p.date ?? buildDate, priority: p.path === '/' ? '1.0' : p.type === 'article' ? '0.8' : '0.6' })),
-  ...GAMES.map((g) => ({ loc: g.path, lastmod: buildDate, priority: '0.7' })),
+  ...indexable.map((p) => {
+    const alt = p.alternates.length > 1
+      ? p.alternates.map((a) => `<xhtml:link rel="alternate" hreflang="${a.lang}" href="${loc(a.path)}"/>`).join('')
+        + `<xhtml:link rel="alternate" hreflang="x-default" href="${loc(p.alternates.find((a) => a.lang === 'ru').path)}"/>`
+      : ''
+    return `  <url><loc>${loc(p.path)}</loc><lastmod>${p.date ?? buildDate}</lastmod><priority>${p.path === '/' || p.path === '/en' ? '1.0' : p.type === 'article' ? '0.8' : '0.6'}</priority>${alt}</url>`
+  }),
+  ...GAMES.map((g) => `  <url><loc>${SITE_URL}${g.path}</loc><lastmod>${buildDate}</lastmod><priority>0.7</priority></url>`),
 ]
-write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.loc === '/' ? SITE_URL + '/' : urlOf(u.loc)}</loc><lastmod>${u.lastmod}</lastmod><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`)
+write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`)
 
 // robots: обычные и ИИ-краулеры разрешены явно
 const AI_BOTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot-Extended', 'CCBot', 'Bytespider', 'Amazonbot', 'meta-externalagent', 'cohere-ai', 'YandexAdditional', 'YandexGPT']
 write('robots.txt', ['User-agent: *', 'Allow: /', 'Disallow: /presenter', '', ...AI_BOTS.flatMap((b) => [`User-agent: ${b}`, 'Allow: /', '']), `Sitemap: ${SITE_URL}/sitemap.xml`, `Host: ${SITE_URL.replace('https://', '')}`, ''].join('\n'))
 
-// RSS
+// RSS по языкам
 const rfc = (d) => new Date(d).toUTCString()
-write('rss.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>\n<title>Блог — Егор Урванов</title><link>${SITE_URL}/blog/</link><description>AI-разработка, инженерное управление, сообщества</description><language>ru</language>\n<atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />\n${POSTS.map((p) => `<item><title>${esc(p.title)}</title><link>${SITE_URL}/blog/${p.slug}/</link><guid>${SITE_URL}/blog/${p.slug}/</guid><pubDate>${rfc(p.date)}</pubDate><description>${esc(p.description)}</description><content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[${p.html}]]></content:encoded></item>`).join('\n')}\n</channel></rss>\n`)
+const postUrl = (p) => urlOf(p.lang === 'en' ? `/en/blog/${p.slug}` : `/blog/${p.slug}`)
+for (const lang of ['ru', 'en']) {
+  const posts = POSTS.filter((p) => p.lang === lang)
+  const prefix = lang === 'en' ? '/en' : ''
+  const title = lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'
+  const desc = lang === 'en' ? 'AI development, engineering management, communities' : 'AI-разработка, инженерное управление, сообщества'
+  write(`${prefix}/rss.xml`.replace(/^\//, ''), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>\n<title>${title}</title><link>${urlOf(prefix + '/blog')}</link><description>${desc}</description><language>${lang}</language>\n<atom:link href="${SITE_URL}${prefix}/rss.xml" rel="self" type="application/rss+xml" />\n${posts.map((p) => `<item><title>${esc(p.title)}</title><link>${postUrl(p)}</link><guid>${postUrl(p)}</guid><pubDate>${rfc(p.date)}</pubDate><description>${esc(p.description)}</description><content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[${p.html}]]></content:encoded></item>`).join('\n')}\n</channel></rss>\n`)
+}
 
 // Markdown-копии постов и llms.txt — чистый текст для ИИ
-for (const p of POSTS) write(`blog/${p.slug}.md`, `# ${p.title}\n\n${p.date} · Егор Урванов\n\n${p.markdown}\n`)
+const mdPath = (p) => (p.lang === 'en' ? `en/blog/${p.slug}.md` : `blog/${p.slug}.md`)
+for (const p of POSTS) write(mdPath(p), `# ${p.title}\n\n${p.date} · ${p.lang === 'en' ? 'Egor Urvanov' : 'Егор Урванов'}\n\n${p.markdown}\n`)
+const postLines = (lang) => {
+  const posts = POSTS.filter((p) => p.lang === lang)
+  return posts.length ? posts.map((p) => `- [${p.title}](${SITE_URL}/${mdPath(p)}): ${p.description}`) : [lang === 'en' ? '- First posts coming soon' : '- Первые посты скоро']
+}
 write('llms.txt', [
-  '# Егор Урванов',
+  '# Егор Урванов / Egor Urvanov',
   '',
-  '> CTO, AI-разработка, машинное обучение, ментор. Основатель Jaiora — оффлайн-LinkedIn. Блог, доклады, каталог AI-паттернов и браузерные игры.',
+  '> CTO, AI-разработка, машинное обучение, ментор. Основатель Jaiora — оффлайн-LinkedIn. / CTO, AI development, machine learning, mentor. Founder of Jaiora, an offline LinkedIn.',
   '',
-  '## Блог',
-  ...(POSTS.length ? POSTS.map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}.md): ${p.description}`) : ['- Первые посты скоро']),
+  '## Блог (RU)',
+  ...postLines('ru'),
   '',
-  '## Разделы',
-  `- [Обо мне](${SITE_URL}/about): профиль, достижения, образование`,
-  `- [Jaiora](${SITE_URL}/jaiora): сообщество и встречи, находим человека под задачу и знакомим вживую`,
-  `- [Каталог AI-паттернов](${SITE_URL}/patterns): паттерны разработки с AI-агентами`,
-  `- [Презентации](${SITE_URL}/materials/presentations): доклад про Spec-Driven Development`,
-  `- [Игры](${SITE_URL}/materials/games): ${GAMES.map((g) => g.title).join(', ')}`,
-  `- [Ссылки](${SITE_URL}/links): профили, выступления, сообщества`,
+  '## Blog (EN)',
+  ...postLines('en'),
+  '',
+  '## Разделы / Sections',
+  `- [Обо мне](${SITE_URL}/about/) · [About](${SITE_URL}/en/about/): профиль, достижения, образование / profile, achievements, education`,
+  `- [Jaiora](${SITE_URL}/jaiora/) · [EN](${SITE_URL}/en/jaiora/): сообщество и встречи / community and meetups`,
+  `- [Каталог AI-паттернов](${SITE_URL}/patterns/): паттерны разработки с AI-агентами (RU)`,
+  `- [Презентации](${SITE_URL}/materials/presentations/) · [Presentations](${SITE_URL}/en/materials/presentations/)`,
+  `- [Игры](${SITE_URL}/materials/games/) · [Games](${SITE_URL}/en/materials/games/): ${GAMES.map((g) => g.title).join(', ')}`,
+  `- [Ссылки](${SITE_URL}/links/) · [Links](${SITE_URL}/en/links/)`,
   '',
 ].join('\n'))
-
-write('llms-full.txt', `# Егор Урванов — блог целиком\n\n${POSTS.map((p) => `## ${p.title}\n\n${SITE_URL}/blog/${p.slug}/ · ${p.date}\n\n${p.markdown}\n`).join('\n')}`)
+write('llms-full.txt', `# Егор Урванов / Egor Urvanov — блог целиком / full blog\n\n${POSTS.map((p) => `## ${p.title}\n\n${postUrl(p)} · ${p.date} · ${p.lang}\n\n${p.markdown}\n`).join('\n')}`)
 
 if (existsSync('dist-ssr')) rmSync('dist-ssr', { recursive: true })
 console.log(`prerender: ${pages.length} страниц, ${POSTS.length} постов`)

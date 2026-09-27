@@ -1,7 +1,9 @@
 import { marked } from 'marked'
+import type { Lang } from '@/lib/i18n'
 
 export interface Post {
   slug: string
+  lang: Lang
   title: string
   description: string
   date: string
@@ -22,10 +24,14 @@ function parse(path: string, raw: string): Post | null {
     if (i > 0) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim().replace(/^["']|["']$/g, '')
   }
   if (meta.draft === 'true' || !meta.title || !meta.date) return null
-  const slug = path.split('/').pop()!.replace(/\.md$/, '')
+  // Файл slug.md — русская версия, slug.en.md — английская
+  const file = path.split('/').pop()!.replace(/\.md$/, '')
+  const lang: Lang = file.endsWith('.en') ? 'en' : 'ru'
+  const slug = file.replace(/\.en$/, '')
   const markdown = m[2].trim()
   return {
     slug,
+    lang,
     title: meta.title,
     description: meta.description ?? '',
     date: meta.date,
@@ -41,5 +47,8 @@ export const POSTS: Post[] = Object.entries(files)
   .filter((p): p is Post => p !== null)
   .sort((a, b) => b.date.localeCompare(a.date))
 
-export const formatDate = (iso: string) =>
-  new Date(iso).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+export const formatDate = (iso: string, lang: Lang = 'ru') =>
+  new Date(iso).toLocaleDateString(lang === 'en' ? 'en-US' : 'ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+
+export const postsFor = (lang: Lang): Post[] => POSTS.filter((p) => p.lang === lang)
+export const findPost = (slug: string, lang: Lang): Post | undefined => POSTS.find((p) => p.slug === slug && p.lang === lang)

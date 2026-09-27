@@ -19,6 +19,7 @@ export function usePageMeta() {
     const m = metaFor(pathname.replace(/\/$/, '') || '/')
     if (m) {
       document.title = m.title
+      document.documentElement.lang = m.lang
       setTag('meta[name="description"]', () => Object.assign(document.createElement('meta'), { name: 'description' }), 'content', m.description)
       setTag('link[rel="canonical"]', () => Object.assign(document.createElement('link'), { rel: 'canonical' }), 'href', SITE_URL + (m.path.endsWith('/') ? m.path : m.path + '/'))
     }

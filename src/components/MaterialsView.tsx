@@ -1,85 +1,86 @@
 import { Link } from 'react-router-dom'
-import { ICONS } from '@/components/site/icons'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
 import { GAMES } from '@/data/seo'
 import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { config } from '@/data/config'
+import { useT } from '@/lib/i18n'
 
 const patternsTotal = PATTERN_CATEGORIES.reduce((s, c) => s + c.patterns.length, 0)
 
-export function PresentationCards() {
-  return (
-    <div className="s-bento">
-      <Link className="s-card s-span-6" to="/patterns">
-        <span className="s-card-icon">{ICONS.patterns}</span>
-        <h3 className="s-card-title">Каталог AI-паттернов</h3>
-        <span className="s-card-text">{patternsTotal} паттернов · {PATTERN_CATEGORIES.length} категорий</span>
-      </Link>
-      <Link className="s-card s-span-6" to="/slide/1">
-        <span className="s-card-icon">{ICONS.talk}</span>
-        <h3 className="s-card-title">Презентация</h3>
-        <span className="s-card-text">{config.conferenceName} · {config.talkTitle}</span>
-      </Link>
-    </div>
-  )
-}
+interface Row { to?: string; href?: string; title: string; hint: string }
 
-const GAME_ICONS = [ICONS.castle, ICONS.game, ICONS.taiga]
-
-export function GameCards() {
+function Rows({ items }: { items: Row[] }) {
   return (
-    <div className="s-bento">
-      {GAMES.map((g, i) => (
-        <a key={g.path} className="s-card s-span-4" href={g.path}>
-          <span className="s-card-icon">{GAME_ICONS[i]}</span>
-          <h3 className="s-card-title">{g.title}</h3>
-          <span className="s-card-text">{g.text}</span>
-        </a>
+    <ol className="s-index s-index-desc">
+      {items.map((r, i) => (
+        <li key={r.title}>
+          {r.to ? (
+            <Link to={r.to}>
+              <span className="n">{String(i + 1).padStart(2, '0')}</span>
+              <span className="t">{r.title}</span>
+              <span className="ar" aria-hidden="true">→</span>
+              <span className="h">{r.hint}</span>
+            </Link>
+          ) : (
+            <a href={r.href}>
+              <span className="n">{String(i + 1).padStart(2, '0')}</span>
+              <span className="t">{r.title}</span>
+              <span className="ar" aria-hidden="true">→</span>
+              <span className="h">{r.hint}</span>
+            </a>
+          )}
+        </li>
       ))}
-    </div>
+    </ol>
   )
 }
+
+// Слайды и каталог паттернов только на русском: ссылки ведут на русские адреса
+const presentationRows = (lang: 'ru' | 'en'): Row[] => [
+  { to: '/slide/1', title: config.talkTitle, hint: lang === 'en' ? `${config.conferenceName} · slides in the browser (in Russian)` : `${config.conferenceName} · слайды в браузере` },
+  { to: '/patterns', title: lang === 'en' ? 'AI patterns catalog' : 'Каталог AI-паттернов', hint: lang === 'en' ? `${patternsTotal} patterns · ${PATTERN_CATEGORIES.length} categories (in Russian)` : `${patternsTotal} паттернов · ${PATTERN_CATEGORIES.length} категорий` },
+]
+
+const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => ({ href: g.path, title: lang === 'en' ? g.titleEn : g.title, hint: lang === 'en' ? g.longEn : g.long }))
 
 export function MaterialsView() {
+  const { lang, t, to } = useT()
   return (
     <Page>
-      <Crumbs items={[{ to: '/', label: 'Главная' }, { label: 'Материалы' }]} />
-      <h1 className="s-page-title">Материалы</h1>
+      <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { label: t({ ru: 'Материалы', en: 'Materials' }) }]} />
+      <h1 className="s-page-title">{t({ ru: 'Материалы', en: 'Materials' })}</h1>
       <section className="s-section" aria-labelledby="m-pres">
-        <h2 className="s-label" id="m-pres"><Link to="/materials/presentations">Презентации</Link></h2>
-        <PresentationCards />
+        <h2 className="s-label" id="m-pres"><Link to={to('/materials/presentations')}>{t({ ru: 'Презентации', en: 'Presentations' })}</Link></h2>
+        <Rows items={presentationRows(lang)} />
       </section>
       <section className="s-section" aria-labelledby="m-games">
-        <h2 className="s-label" id="m-games"><Link to="/materials/games">Игры</Link></h2>
-        <GameCards />
+        <h2 className="s-label" id="m-games"><Link to={to('/materials/games')}>{t({ ru: 'Игры', en: 'Games' })}</Link></h2>
+        <Rows items={gameRows(lang)} />
       </section>
     </Page>
   )
 }
 
 export function PresentationsView() {
+  const { lang, t, to } = useT()
   return (
     <Page>
-      <Crumbs items={[{ to: '/', label: 'Главная' }, { to: '/materials', label: 'Материалы' }, { label: 'Презентации' }]} />
-      <h1 className="s-page-title">Презентации</h1>
-      <PresentationCards />
+      <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { label: t({ ru: 'Презентации', en: 'Presentations' }) }]} />
+      <h1 className="s-page-title">{t({ ru: 'Презентации', en: 'Presentations' })}</h1>
+      <Rows items={presentationRows(lang)} />
     </Page>
   )
 }
 
 export function GamesView() {
+  const { lang, t, to } = useT()
   return (
     <Page>
-      <Crumbs items={[{ to: '/', label: 'Главная' }, { to: '/materials', label: 'Материалы' }, { label: 'Игры' }]} />
-      <h1 className="s-page-title">Игры</h1>
-      <p className="s-lead">Играть можно прямо в браузере, без установки.</p>
-      <GameCards />
-      <ul className="s-list">
-        {GAMES.map((g) => (
-          <li key={g.path} className="s-row"><a href={g.path}>{g.title}</a><span>{g.long}</span></li>
-        ))}
-      </ul>
+      <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { label: t({ ru: 'Игры', en: 'Games' }) }]} />
+      <h1 className="s-page-title">{t({ ru: 'Игры', en: 'Games' })}</h1>
+      <p className="s-lead">{t({ ru: 'Играть можно прямо в браузере, без установки.', en: 'Play right in the browser, no installation.' })}</p>
+      <Rows items={gameRows(lang)} />
     </Page>
   )
 }

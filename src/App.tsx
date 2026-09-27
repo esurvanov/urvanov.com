@@ -27,12 +27,21 @@ export default function App() {
       <Route path="/materials" element={<MaterialsView />} />
       <Route path="/materials/presentations" element={<PresentationsView />} />
       <Route path="/materials/games" element={<GamesView />} />
+      <Route path="/jaiora" element={<JaioraView />} />
+      <Route path="/links" element={<LinksView />} />
+      <Route path="/en" element={<HomeView />} />
+      <Route path="/en/about" element={<AboutView />} />
+      <Route path="/en/blog" element={<BlogView />} />
+      <Route path="/en/blog/:slug" element={<BlogPostView />} />
+      <Route path="/en/materials" element={<MaterialsView />} />
+      <Route path="/en/materials/presentations" element={<PresentationsView />} />
+      <Route path="/en/materials/games" element={<GamesView />} />
+      <Route path="/en/jaiora" element={<JaioraView />} />
+      <Route path="/en/links" element={<LinksView />} />
       <Route path="/slide/:index" element={<SlideView />} />
       <Route path="/presenter" element={<PresenterView />} />
       <Route path="/patterns" element={<PatternsView />} />
       <Route path="/patterns/:categoryId" element={<PatternsCategoryView />} />
-      <Route path="/jaiora" element={<JaioraView />} />
-      <Route path="/links" element={<LinksView />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
     </Suspense>

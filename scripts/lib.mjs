@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 
 export const SITE_URL = 'https://www.urvanov.com'
 // Pages отдаёт разделы как /путь/, поэтому канонический адрес — со слэшем
-export const urlOf = (path) => SITE_URL + (path.endsWith('/') ? path : path + '/')
+export const urlOf = (path) => SITE_URL + (path === '/' || path.endsWith('/') ? path : path + '/')
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
 const cfg = JSON.parse(readFileSync(new URL('../analytics.json', import.meta.url), 'utf8'))
@@ -32,7 +32,7 @@ export function analyticsHead() {
   return out.join('\n    ')
 }
 
-export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date }) {
+export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date, lang = 'ru', alternates = [] }) {
   const url = urlOf(path)
   const tags = [
     `<title>${esc(title)}</title>`,
@@ -40,7 +40,7 @@ export function headTags({ title, description, path, type = 'website', noindex =
     `<link rel="canonical" href="${url}" />`,
     `<meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'}" />`,
     `<meta property="og:site_name" content="Егор Урванов" />`,
-    `<meta property="og:locale" content="ru_RU" />`,
+    `<meta property="og:locale" content="${lang === 'en' ? 'en_US' : 'ru_RU'}" />`,
     `<meta property="og:type" content="${type}" />`,
     `<meta property="og:title" content="${esc(title)}" />`,
     `<meta property="og:description" content="${esc(description)}" />`,
@@ -49,8 +49,14 @@ export function headTags({ title, description, path, type = 'website', noindex =
     `<meta name="twitter:card" content="summary" />`,
     `<meta name="twitter:title" content="${esc(title)}" />`,
     `<meta name="twitter:description" content="${esc(description)}" />`,
-    `<link rel="alternate" type="application/rss+xml" title="Блог — Егор Урванов" href="/rss.xml" />`,
+    `<link rel="alternate" type="application/rss+xml" title="${lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'}" href="${lang === 'en' ? '/en/rss.xml' : '/rss.xml'}" />`,
   ]
+  // hreflang: все языковые версии страницы и x-default (русская)
+  if (alternates.length > 1) {
+    for (const a of alternates) tags.push(`<link rel="alternate" hreflang="${a.lang}" href="${urlOf(a.path)}" />`)
+    const ru = alternates.find((a) => a.lang === 'ru')
+    if (ru) tags.push(`<link rel="alternate" hreflang="x-default" href="${urlOf(ru.path)}" />`)
+  }
   if (type === 'article' && date) tags.push(`<meta property="article:published_time" content="${date}" />`)
   if (jsonLd) {
     tags.push(`<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonLd }).replace(/</g, '\\u003c')}</script>`)
