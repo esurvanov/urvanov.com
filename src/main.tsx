@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './styles/theme.css'
 import './styles/site.css'
+import './styles/rich-post.css'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) {

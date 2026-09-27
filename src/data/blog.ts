@@ -11,6 +11,9 @@ export interface Post {
   html: string
   markdown: string
   minutes: number
+  /** Широкий пост с инфографикой: колонка шире и оглавление сбоку */
+  wide: boolean
+  toc: { id: string; label: string }[]
 }
 
 const files = import.meta.glob('/content/blog/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
@@ -38,7 +41,14 @@ function parse(path: string, raw: string): Post | null {
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     html: marked.parse(markdown, { async: false }) as string,
     markdown,
-    minutes: Math.max(1, Math.round(markdown.split(/\s+/).length / 180)),
+    // HTML-разметку внутри поста не считаем за слова
+    minutes: Math.max(1, Math.round(markdown.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length / (lang === 'en' ? 220 : 180))),
+    wide: meta.layout === 'wide',
+    // toc: id=Подпись | id=Подпись
+    toc: (meta.toc ?? '').split('|').map((s) => s.trim()).filter(Boolean).map((s) => {
+      const i = s.indexOf('=')
+      return { id: s.slice(0, i).trim(), label: s.slice(i + 1).trim() }
+    }),
   }
 }
 

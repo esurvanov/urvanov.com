@@ -346,3 +346,23 @@ a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accen
   --size-small: var(--t-small);
   --size-code: var(--t-small);
 }
+
+/* ---------- 12. Широкий пост: статья с инфографикой, оглавление сбоку ---------- */
+/* Включается в шапке поста: layout: wide. Колонка шире обычной, слева — оглавление с подсветкой текущего раздела */
+.site.s-wide { --col: 1218px; }
+.s-post-layout { display: grid; grid-template-columns: minmax(0, 980px); justify-content: center; column-gap: var(--sp-5); }
+.s-toc { display: none; }
+@media (min-width: 1260px) {
+  .s-post-layout { grid-template-columns: 190px minmax(0, 980px); }
+  .s-toc { display: block; position: sticky; top: var(--sp-4); align-self: start; font-size: 0.9rem; }
+}
+.s-toc-t { margin-bottom: 12px; font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.s-toc ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--sp-1); border-left: 1px solid var(--line); }
+.s-toc a { display: block; margin-left: -1px; padding-left: 12px; border-left: 2px solid transparent; color: var(--ink-2); line-height: 1.35; }
+.s-toc a:hover { color: var(--ink); }
+.s-toc a.is-on { color: var(--ink); border-left-color: var(--accent); }
+.s-wide .s-article > header { display: flex; flex-direction: column; gap: var(--sp-2); }
+/* Длинный заголовок: суть крупно, уточнение после двоеточия — второй строкой */
+.s-page-title.is-long { font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1.06; letter-spacing: -0.035em; text-wrap: pretty; }
+.s-title-sub { display: block; margin-top: 0.4em; font-size: 0.5em; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink-2); text-wrap: pretty; }
+.s-wide section[id] { scroll-margin-top: var(--sp-3); }
