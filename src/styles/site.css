@@ -52,8 +52,9 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Тёмная тема: по настройке системы, пока посетитель не выбрал тему кнопкой в шапке (data-theme на <html>) */
 @media (prefers-color-scheme: dark) {
-  .site:not(.site-jaiora) {
+  :root:not([data-theme="light"]) .site:not(.site-jaiora) {
     --bg: #0e0e0c;
     --surface: #171714;
     --ink: #f0ede3;
@@ -65,6 +66,18 @@
     --accent: #8b9bff;
     --on-accent: #0e0e0c;
   }
+}
+:root[data-theme="dark"] .site:not(.site-jaiora) {
+  --bg: #0e0e0c;
+  --surface: #171714;
+  --ink: #f0ede3;
+  --ink-2: #c6c2b5;
+  --ink-3: #9a968a;
+  --line: #2d2c27;
+  --line-2: #57554b;
+  --line-strong: #6b695d;
+  --accent: #8b9bff;
+  --on-accent: #0e0e0c;
 }
 
 /* Jaiora всегда тёмная, цвета сняты с логотипа: #66cf73 · #4eaa78 · #2e697a · #1c2c48.
@@ -111,6 +124,11 @@
 .s-nav-lang, .s-home-lang { font-family: var(--mono); font-size: var(--t-label); color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 2px 8px; }
 .s-nav-lang:hover { color: var(--ink); border-color: var(--accent); }
 .s-home-lang { position: absolute; top: var(--sp-3); right: 0; }
+/* Кнопка темы: солнце или луна, рядом с переключателем языка */
+.s-theme { display: inline-grid; place-items: center; width: 30px; height: 24px; padding: 0; background: none; cursor: pointer; }
+.s-theme svg { width: 14px; height: 14px; }
+.s-theme:hover { color: var(--ink); border-color: var(--accent); }
+.s-home-theme { position: absolute; top: var(--sp-3); right: 48px; }
 
 .s-crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; color: var(--ink-3); font-size: var(--t-small); }
 .s-crumbs li + li::before { content: '/'; margin-right: 6px; }
@@ -212,7 +230,8 @@ a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accen
 .s-index .ar { color: var(--ink-3); transition: color 0.2s, transform 0.2s; }
 .s-index a:hover .ar { color: var(--accent); transform: translateX(4px); }
 .s-index .jai .t { color: #2f8f3f; }
-@media (prefers-color-scheme: dark) { .s-index .jai .t { color: #66cf73; } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .s-index .jai .t { color: #66cf73; } }
+:root[data-theme="dark"] .s-index .jai .t { color: #66cf73; }
 .s-home-contacts { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-3); margin: 0; padding: 0; list-style: none; font-family: var(--mono); font-size: var(--t-small); }
 .s-home-contacts a { color: var(--ink-2); border-bottom: 1px solid var(--line-2); }
 .s-home-contacts a:hover { color: var(--ink); border-color: var(--accent); }
@@ -366,3 +385,5 @@ a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accen
 .s-page-title.is-long { font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1.06; letter-spacing: -0.035em; text-wrap: pretty; }
 .s-title-sub { display: block; margin-top: 0.4em; font-size: 0.5em; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink-2); text-wrap: pretty; }
 .s-wide section[id] { scroll-margin-top: var(--sp-3); }
+/* Подзаголовок широкого поста — на всю ширину колонки и по ширине, как текст статьи */
+.s-wide .s-article > header .s-lead { max-width: none; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }

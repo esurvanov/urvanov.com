@@ -5,6 +5,7 @@ import { NAV_ITEMS } from '@/data/nav'
 import { BIO } from '@/data/profile'
 import Page from '@/components/site/Page'
 import { otherLang, stripLang, useT, withLang, withSlash } from '@/lib/i18n'
+import ThemeToggle from '@/components/site/ThemeToggle'
 
 const CONTACTS = [
   { label: 'Telegram', network: 'telegram', url: 'https://t.me/eurvanov' },
@@ -35,6 +36,7 @@ export default function HomeView() {
       <Link className="s-nav-lang s-home-lang" to={withSlash(withLang(stripLang(pathname), other))} data-track="cta" data-track-id="lang_switch" data-track-label={other} hrefLang={other} lang={other}>
         {other.toUpperCase()}
       </Link>
+      <ThemeToggle className="s-home-theme" />
       <header className="s-home-hero">
         <p className="s-eyebrow">CTO · AI · {t({ ru: 'нетворк', en: 'networking' })}</p>
         <h1 className="s-home-name">

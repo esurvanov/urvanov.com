@@ -1,6 +1,7 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { NAV_ITEMS } from '@/data/nav'
 import { otherLang, stripLang, useT, withLang, withSlash } from '@/lib/i18n'
+import ThemeToggle from '@/components/site/ThemeToggle'
 
 // alt — адрес той же страницы на другом языке (если отличается от зеркального пути)
 export default function SiteNav({ alt }: { alt?: string }) {
@@ -21,6 +22,7 @@ export default function SiteNav({ alt }: { alt?: string }) {
         <Link className="s-nav-lang" to={switchTo} data-track="cta" data-track-id="lang_switch" data-track-label={other} hrefLang={other} lang={other} title={other === 'en' ? 'English' : 'Русский'}>
           {other.toUpperCase()}
         </Link>
+        <ThemeToggle />
       </nav>
     </header>
   )
