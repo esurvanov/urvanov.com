@@ -110,6 +110,14 @@ export const LABS = [
     titleEn: 'Methods workshop',
     long: '60 приёмов решения математических и алгоритмических задач в 3D, шаг за шагом: задача, решение в лоб, что замечаем и как решаем быстрее. На русском и английском, прямо в браузере.',
     longEn: '60 problem-solving methods from maths and algorithms in step-by-step 3D: the task, the head-on way, what we notice and how to solve it faster. In Russian and English, right in the browser.',
+    source: {
+      ru: 'Приёмы собраны из решения задач Project Euler+ на HackerRank',
+      en: 'Methods drawn from solving Project Euler+ on HackerRank',
+      links: [
+        { href: 'https://www.hackerrank.com/contests/projecteuler/leaderboard', ru: 'HackerRank · 6-е место из ≈256 000', en: 'HackerRank · 6th of ≈256,000' },
+        { href: 'https://github.com/esurvanov/project-euler', ru: 'Решения на GitHub', en: 'Solutions on GitHub' },
+      ],
+    },
   },
 ]
 

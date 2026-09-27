@@ -80,6 +80,8 @@ export const LINK_GROUPS: LinkGroup[] = [
         items: [
           { url: 'https://arxiv.org/abs/2502.13266v1', label: 'ArXiv · ML-подход для кубика Рубика', comment: 'Превзошли SOTA для 3×3×3, впервые решили 4×4×4 и 5×5×5', en: { label: 'ArXiv · ML approach to the Rubik’s cube', comment: 'Beat SOTA on 3×3×3, first to solve 4×4×4 and 5×5×5' } },
           { url: 'https://www.hackerrank.com/contests/projecteuler/leaderboard', label: 'HackerRank · Project Euler+', comment: '6-е место из ≈256 000 · все 254 задачи на полный балл', en: { comment: '6th of ≈256,000 · full score on all 254 problems' } },
+          { url: 'https://github.com/esurvanov/project-euler', label: 'GitHub · решения Project Euler+', comment: 'Код решений на C++', en: { label: 'GitHub · Project Euler+ solutions', comment: 'Solution code in C++' } },
+          { url: 'https://www.urvanov.com/methods-lab/', label: 'Мастерская методов', comment: '60 приёмов из этих задач в 3D', en: { label: 'Methods workshop', comment: '60 methods from these problems in 3D' } },
           { url: 'https://t.me/parsing_conf/', label: 'Conference on Internet Data Mining', comment: 'Организатор · 1000 человек', en: { comment: 'Organizer · 1,000 people' } },
           { url: LI + 'details/honors/', label: 'Best Onboarding Manager · Sbermarket', comment: '2021–2022' },
           { url: LI + 'details/honors/', label: 'Winner · Self-driving cars competition', comment: '2021 · Fless' },

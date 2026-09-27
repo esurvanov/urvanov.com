@@ -8,7 +8,7 @@ import { useT } from '@/lib/i18n'
 
 const patternsTotal = PATTERN_CATEGORIES.reduce((s, c) => s + c.patterns.length, 0)
 
-interface Row { to?: string; href?: string; title: string; hint: string }
+interface Row { to?: string; href?: string; title: string; hint: string; note?: { text: string; links: { href: string; label: string }[] } }
 
 function Rows({ items }: { items: Row[] }) {
   return (
@@ -30,6 +30,14 @@ function Rows({ items }: { items: Row[] }) {
               <span className="h">{r.hint}</span>
             </a>
           )}
+          {r.note && (
+            <p className="s-index-note">
+              {r.note.text}:{' '}
+              {r.note.links.map((l, j) => (
+                <span key={l.href}>{j > 0 && ' · '}<a href={l.href} target="_blank" rel="noopener">{l.label}</a></span>
+              ))}
+            </p>
+          )}
         </li>
       ))}
     </ol>
@@ -44,7 +52,12 @@ const presentationRows = (lang: 'ru' | 'en'): Row[] => [
 ]
 
 const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => ({ href: g.path, title: lang === 'en' ? g.titleEn : g.title, hint: lang === 'en' ? g.longEn : g.long }))
-const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => ({ href: l.path, title: lang === 'en' ? l.titleEn : l.title, hint: lang === 'en' ? l.longEn : l.long }))
+const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => ({
+  href: l.path,
+  title: lang === 'en' ? l.titleEn : l.title,
+  hint: lang === 'en' ? l.longEn : l.long,
+  note: { text: l.source[lang], links: l.source.links.map((s) => ({ href: s.href, label: s[lang] })) },
+}))
 
 export function MaterialsView() {
   const { lang, t, to } = useT()

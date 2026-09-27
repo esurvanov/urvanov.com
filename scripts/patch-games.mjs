@@ -132,6 +132,8 @@ for (const l of LABS) {
     .replace(/<meta[^>]+name=["']description["'][^>]*>/gi, '')
     .replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, '')
   html = injectHead(html, `${head}\n    ${analyticsHead()}`)
+  // Путь обратно на сайт: кнопка в стиле самой страницы, рядом с переключателем языка
+  html = html.replace(/(<span class="lng")/, `<a class="btn" href="/materials/" data-track-label="back_to_site" style="text-decoration:none">← urvanov.com</a>\n  $1`)
   html = /<\/body>/i.test(html) ? html.replace(/<\/body>/i, `${fallback}\n</body>`) : `${html}\n${fallback}\n`
   writeFileSync(file, html)
   console.log(`patched ${file}`)
