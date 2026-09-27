@@ -11,6 +11,7 @@ const CONTACTS = [
   { label: 'Telegram', icon: ICONS.telegram, url: 'https://t.me/eurvanov' },
   { label: 'LinkedIn', icon: ICONS.linkedin, url: 'https://www.linkedin.com/in/eurvanov/' },
   { label: 'GitHub', icon: ICONS.github, url: 'https://github.com/esurvanov/' },
+  { label: 'Stack Overflow', icon: ICONS.stackoverflow, url: 'https://ru.stackoverflow.com/users/188116/eurvanov' },
   { label: 'GetMentor', icon: ICONS.mentor, url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
 ]
 

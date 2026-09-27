@@ -63,6 +63,14 @@ export const GAMES = [
     long: '2D-игра на выживание в сибирской тайге, 1993 год. Играть можно в браузере без установки.',
     longEn: 'A 2D survival game in the Siberian taiga, 1993. Play in the browser, no installation.',
   },
+  {
+    path: '/lars/',
+    title: 'Ларс',
+    titleEn: 'Lars',
+    text: '3D от первого лица · очередь на Верхнем Ларсе, 2022',
+    long: '3D-игра от первого лица: сентябрь 2022 года, очередь на КПП Верхний Ларс в Дарьяльском ущелье. Живая очередь из тысяч людей, слухи, цены, холод, выборы без правильных ответов. Голоса персонажей и живой разговор через OpenAI — по желанию. Играть в браузере без установки.',
+    longEn: 'A first-person 3D game: September 2022, the queue at the Verkhny Lars border crossing in the Darial gorge. A living queue of thousands of people, rumours, prices, cold, and choices with no right answers. Optional OpenAI character voices and live conversation. Play in the browser, no installation.',
+  },
 ]
 
 interface Base {

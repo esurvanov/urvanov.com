@@ -9,6 +9,7 @@ const CONTACTS = [
   { label: 'Telegram', url: 'https://t.me/eurvanov' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/eurvanov/' },
   { label: 'GitHub', url: 'https://github.com/esurvanov/' },
+  { label: 'Stack Overflow', url: 'https://ru.stackoverflow.com/users/188116/eurvanov' },
   { label: 'GetMentor', url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
 ]
 
