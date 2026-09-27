@@ -67,6 +67,14 @@ export const GAMES = [
     long: '3D-игра от первого лица: сентябрь 2022 года, очередь на КПП Верхний Ларс в Дарьяльском ущелье. Живая очередь из тысяч людей, слухи, цены, холод, выборы без правильных ответов. Голоса персонажей и живой разговор через OpenAI — по желанию. Играть в браузере без установки.',
     longEn: 'A first-person 3D game: September 2022, the queue at the Verkhny Lars border crossing in the Darial gorge. A living queue of thousands of people, rumours, prices, cold, and choices with no right answers. Optional OpenAI character voices and live conversation. Play in the browser, no installation.',
   },
+  {
+    path: '/ekho-razloma/',
+    title: 'Эхо Разлома',
+    titleEn: 'Echo of the Rift',
+    text: '3D открытый мир с сюжетом · полярный остров',
+    long: '3D-игра с открытым миром и сюжетом: пилот разбился на полярном острове под северным сиянием. Станция, отшельник, три кристальных шпиля, поющий разлом во льду, снег, который помнит каждый шаг, и два финала. Играть в браузере без установки.',
+    longEn: 'A 3D open-world story game: a pilot crashes on a polar island under the northern lights. A station, a hermit, three crystal spires, a singing rift in the ice, snow that remembers every step, and two endings. Play in the browser, no installation.',
+  },
 ]
 
 interface Base {

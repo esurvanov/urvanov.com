@@ -46,6 +46,14 @@ jobs:
             games/age-of-empires/web/ dist/age-of-empires/web/
           rsync -a games/age-of-empires/assets/ dist/age-of-empires/assets/
           cp games/age-of-empires/index.html games/age-of-empires/CREDITS.md dist/age-of-empires/
+          # Эхо Разлома: только то, что грузит игра (без фото-референсов, заметок разработки, сервера и стенда);
+          # игра — open-world.html, она же index.html; index.html репозитория — «Северный Разлом», отдельным файлом
+          mkdir -p dist/ekho-razloma
+          rsync -a --exclude docs --exclude tests --exclude tools --exclude references --exclude server \
+            --exclude '*.md' --exclude '*.bak' --exclude '*-demo.html' --exclude '*.command' games/ekho-razloma/ dist/ekho-razloma/
+          cp games/ekho-razloma/CREDITS.md dist/ekho-razloma/
+          mv dist/ekho-razloma/index.html dist/ekho-razloma/northern-rift.html
+          cp dist/ekho-razloma/open-world.html dist/ekho-razloma/index.html
       # Описание, разметка и счётчики для страниц игр
       - run: node scripts/patch-games.mjs
       - uses: actions/upload-pages-artifact@v3
