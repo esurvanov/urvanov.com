@@ -4,6 +4,8 @@ date: 2026-09-28
 description: Five console exports turn into adoption depth, archetypes and segments, a team comparison, a task map, data checks and an interview shortlist.
 tags: AI, research, analytics
 layout: wide
+image: /og/chatgpt-enterprise-usage-report.en.png
+mentions: ChatGPT Enterprise, Codex, ChatGPT Work, Claude in Chrome
 toc: why=Why the report | order=Workflow | data=Where to get the data | layer1=Big picture | layer2=Nature of work | layer3=Verification | layer4=People selection | start=Where to start | next=Further reading
 ---
 

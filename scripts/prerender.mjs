@@ -127,7 +127,9 @@ for (const lang of ['ru', 'en']) {
 
 // Markdown-копии постов
 const mdPath = (p) => (p.lang === 'en' ? `en/blog/${p.slug}.md` : `blog/${p.slug}.md`)
-for (const p of POSTS) write(mdPath(p), `# ${p.title}\n\n${p.date} · ${p.lang === 'en' ? 'Egor Urvanov' : 'Егор Урванов'}\n\n${p.markdown}\n`)
+// у широких постов с инфографикой — чистый текст (content/blog-text), а не вёрстка
+const postMd = (p) => `# ${p.title}\n\n${p.date} · ${p.lang === 'en' ? 'Egor Urvanov' : 'Егор Урванов'} · ${postUrl(p)}\n\n> ${p.description}\n\n${p.text ?? p.markdown}\n`
+for (const p of POSTS) write(mdPath(p), postMd(p))
 
 // llms.txt — факты в первом абзаце, пустые разделы блога не выводим, пока постов нет
 const postLines = (lang) => POSTS.filter((p) => p.lang === lang).map((p) => `- [${p.title}](${SITE_URL}/${mdPath(p)}): ${p.description}`)
@@ -155,7 +157,7 @@ write('llms.txt', [
   `- [Ссылки](${SITE_URL}/links/) · [Links](${SITE_URL}/en/links/)`,
   '',
   '## Полный текст / Full text',
-  `- [llms-full.txt](${SITE_URL}/llms-full.txt): «Обо мне» и Jaiora целиком, RU и EN / “About” and Jaiora in full, RU and EN`,
+  `- [llms-full.txt](${SITE_URL}/llms-full.txt): «Обо мне», Jaiora и все посты блога целиком, RU и EN / “About”, Jaiora and all blog posts in full, RU and EN`,
   '',
 ].join('\n'))
 
@@ -229,12 +231,13 @@ function jaioraSection(lang) {
 }
 
 write('llms-full.txt', [
-  '# Егор Урванов / Egor Urvanov — «Обо мне» и Jaiora целиком',
+  '# Егор Урванов / Egor Urvanov — «Обо мне», Jaiora и блог целиком',
   '',
   aboutSection('ru'),
   aboutSection('en'),
   jaioraSection('ru'),
   jaioraSection('en'),
+  ...(POSTS.length ? ['## Блог / Blog', '', ...POSTS.map((p) => postMd(p).replace(/^# /, '### '))] : []),
 ].join('\n'))
 
 if (existsSync('dist-ssr')) rmSync('dist-ssr', { recursive: true })

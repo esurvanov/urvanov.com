@@ -14,9 +14,18 @@ export interface Post {
   /** Широкий пост с инфографикой: колонка шире и оглавление сбоку */
   wide: boolean
   toc: { id: string; label: string }[]
+  /** Картинка превью для соцсетей и поисковиков: путь от корня сайта */
+  image?: string
+  /** Продукты и понятия, о которых пост (для разметки schema.org) */
+  mentions: string[]
+  /** Чистый текст поста в markdown для .md-копий и llms-full.txt (если вёрстка сложная) */
+  text?: string
+  words: number
 }
 
 const files = import.meta.glob('/content/blog/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
+// Текстовые копии широких постов: content/blog-text/<тот же файл>.md
+const texts = import.meta.glob('/content/blog-text/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 
 function parse(path: string, raw: string): Post | null {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
@@ -32,6 +41,8 @@ function parse(path: string, raw: string): Post | null {
   const lang: Lang = file.endsWith('.en') ? 'en' : 'ru'
   const slug = file.replace(/\.en$/, '')
   const markdown = m[2].trim()
+  const text = texts[`/content/blog-text/${file}.md`]?.trim()
+  const words = (text ?? markdown.replace(/<[^>]+>/g, ' ')).split(/\s+/).filter(Boolean).length
   return {
     slug,
     lang,
@@ -42,7 +53,11 @@ function parse(path: string, raw: string): Post | null {
     html: marked.parse(markdown, { async: false }) as string,
     markdown,
     // HTML-разметку внутри поста не считаем за слова
-    minutes: Math.max(1, Math.round(markdown.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length / (lang === 'en' ? 220 : 180))),
+    minutes: Math.max(1, Math.round(words / (lang === 'en' ? 220 : 180))),
+    words,
+    text,
+    image: meta.image || undefined,
+    mentions: (meta.mentions ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     wide: meta.layout === 'wide',
     // toc: id=Подпись | id=Подпись
     toc: (meta.toc ?? '').split('|').map((s) => s.trim()).filter(Boolean).map((s) => {

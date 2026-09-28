@@ -20,6 +20,10 @@ export interface PageMeta {
   type?: 'website' | 'article'
   noindex?: boolean
   date?: string
+  // Картинка превью (абсолютный путь от корня сайта); без неё — фото автора
+  image?: string
+  // Заголовок для соцсетей, если в <title> стоит короткая версия
+  ogTitle?: string
   jsonLd?: Record<string, unknown>
   // Файлы/данные, из которых реально собрана страница — источник честной даты lastmod в sitemap.xml
   sources?: string[]
@@ -249,10 +253,13 @@ export function allPages(): PageMeta[] {
     pages.push({
       path: withLang(`/blog/${p.slug}`, p.lang),
       lang: p.lang,
-      title: `${p.title} — ${p.lang === 'en' ? 'Egor Urvanov' : SITE_NAME}`,
+      // В выдаче длинный заголовок обрезается: в <title> — суть до двоеточия, полный — в соцсетях и разметке
+      title: `${p.title.split(': ')[0]} — ${p.lang === 'en' ? 'Egor Urvanov' : SITE_NAME}`,
+      ogTitle: p.title,
       description: p.description,
       type: 'article',
       date: p.date,
+      image: p.image,
       alternates,
       jsonLd: {
         '@type': 'BlogPosting',
@@ -262,9 +269,18 @@ export function allPages(): PageMeta[] {
         dateModified: p.date,
         inLanguage: p.lang,
         keywords: p.tags.join(', '),
+        articleSection: p.lang === 'en' ? 'Blog' : 'Блог',
+        wordCount: p.words,
+        timeRequired: `PT${p.minutes}M`,
+        isAccessibleForFree: true,
         author: person(),
+        publisher: person(),
         mainEntityOfPage: url(withLang(`/blog/${p.slug}`, p.lang)),
-        image: `${SITE_URL}/egor.jpg`,
+        image: p.image ? { '@type': 'ImageObject', url: `${SITE_URL}${p.image}`, width: 1200, height: 630 } : `${SITE_URL}/egor.jpg`,
+        ...(p.mentions.length ? { mentions: p.mentions.map((name) => ({ '@type': 'Thing', name })) } : {}),
+        ...(p.toc.length ? { hasPart: p.toc.map((t) => ({ '@type': 'WebPageElement', name: t.label, url: `${url(withLang(`/blog/${p.slug}`, p.lang))}#${t.id}` })) } : {}),
+        // русская версия — оригинал, английская — перевод
+        ...(tr ? { [p.lang === 'ru' ? 'workTranslation' : 'translationOfWork']: { '@id': url(withLang(`/blog/${p.slug}`, tr.lang)) + '#main' } } : {}),
       },
     })
   }

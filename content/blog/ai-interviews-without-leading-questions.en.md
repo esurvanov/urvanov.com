@@ -4,6 +4,8 @@ date: 2026-09-28
 description: A 30-minute call script, an eight-question survey, rules for staying on topic, a said-versus-measured check against the report, and answer analysis with ChatGPT or an agent.
 tags: AI, custdev, interviews
 layout: wide
+image: /og/ai-interviews-without-leading-questions.en.png
+mentions: Airtable, tl;dv, ChatGPT, Claude Code, Model Context Protocol
 toc: format=Choosing a format | prep=Voice: preparation | script=A 30-minute script | focus=Staying on topic | base=Logging in Airtable | agent=With Claude Code | wording=Text: wording | form=Questionnaire | after=Analyzing answers | next=Further reading
 ---
 

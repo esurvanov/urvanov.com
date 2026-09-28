@@ -4,6 +4,8 @@ date: 2026-09-28
 description: Как отобрать 16 человек из 340 по тратам, сообщениям и проектам, проверить покрытие команд и понять, что у них узнать.
 tags: AI, custdev, исследования
 layout: wide
+image: /og/who-to-interview-before-buying-ai-tools.png
+mentions: ChatGPT Enterprise, Codex
 toc: why=Зачем выборка | top=Топ по активности | groups=Семь групп | teams=Непокрытые команды | ask=Что узнать | order=Порядок работы | next=Дальше по теме
 ---
 

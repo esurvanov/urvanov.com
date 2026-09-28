@@ -76,8 +76,11 @@ export function analyticsHead() {
   return out.join('\n    ')
 }
 
-export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date, lang = 'ru', alternates = [], canonical = true }) {
+export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date, lang = 'ru', alternates = [], canonical = true, image, ogTitle }) {
   const url = urlOf(path)
+  // Своя картинка превью (1200×630) — большая карточка в соцсетях; иначе фото автора
+  const img = image ? SITE_URL + image : `${SITE_URL}/egor.jpg`
+  const social = ogTitle ?? title
   const tags = [
     `<title>${esc(title)}</title>`,
     `<meta name="description" content="${esc(description)}" />`,
@@ -85,11 +88,13 @@ export function headTags({ title, description, path, type = 'website', noindex =
     `<meta property="og:site_name" content="Егор Урванов" />`,
     `<meta property="og:locale" content="${lang === 'en' ? 'en_US' : 'ru_RU'}" />`,
     `<meta property="og:type" content="${type}" />`,
-    `<meta property="og:title" content="${esc(title)}" />`,
+    `<meta property="og:title" content="${esc(social)}" />`,
     `<meta property="og:description" content="${esc(description)}" />`,
-    `<meta property="og:image" content="${SITE_URL}/egor.jpg" />`,
-    `<meta name="twitter:card" content="summary" />`,
-    `<meta name="twitter:title" content="${esc(title)}" />`,
+    `<meta property="og:image" content="${img}" />`,
+    ...(image ? [`<meta property="og:image:width" content="1200" />`, `<meta property="og:image:height" content="630" />`, `<meta property="og:image:alt" content="${esc(social)}" />`] : []),
+    `<meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}" />`,
+    `<meta name="twitter:title" content="${esc(social)}" />`,
+    ...(image ? [`<meta name="twitter:image" content="${img}" />`] : []),
     `<meta name="twitter:description" content="${esc(description)}" />`,
     `<link rel="alternate" type="application/rss+xml" title="${lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'}" href="${lang === 'en' ? '/en/rss.xml' : '/rss.xml'}" />`,
   ]
@@ -104,7 +109,7 @@ export function headTags({ title, description, path, type = 'website', noindex =
     const ru = alternates.find((a) => a.lang === 'ru')
     if (ru) tags.push(`<link rel="alternate" hreflang="x-default" href="${urlOf(ru.path)}" />`)
   }
-  if (type === 'article' && date) tags.push(`<meta property="article:published_time" content="${date}" />`)
+  if (type === 'article' && date) tags.push(`<meta property="article:published_time" content="${date}" />`, `<meta property="article:author" content="${SITE_URL}/about/" />`)
   // Карточка человека — одинаковая на каждой странице, добавляется сюда один раз, а не в каждом jsonLd вызывающего кода
   if (jsonLd) {
     const graph = [person(lang), ...jsonLd.filter((node) => node && node['@type'] !== 'Person')]

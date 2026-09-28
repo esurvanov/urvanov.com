@@ -4,6 +4,8 @@ date: 2026-09-28
 description: Сценарий звонка на 30 минут, анкета из восьми вопросов, правила против ухода в сторону, сверка «со слов» с данными отчёта и разбор ответов через ChatGPT или агента.
 tags: AI, custdev, интервью
 layout: wide
+image: /og/ai-interviews-without-leading-questions.png
+mentions: Airtable, tl;dv, ChatGPT, Claude Code, Model Context Protocol
 toc: format=Какой формат выбрать | prep=Голосом: подготовка | script=Сценарий на 30 минут | focus=Как не уйти в сторону | base=Запись в Airtable | agent=Через Claude Code | wording=Текстом: формулировки | form=Анкета | after=Разбор ответов | next=Дальше по теме
 ---
 

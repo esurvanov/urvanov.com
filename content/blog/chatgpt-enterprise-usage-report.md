@@ -4,6 +4,8 @@ date: 2026-09-28
 description: Пять выгрузок консоли превращаются в глубину проникновения, архетипы и сегменты, сравнение команд, карту задач, сверку данных и список людей для интервью.
 tags: AI, исследования, аналитика
 layout: wide
+image: /og/chatgpt-enterprise-usage-report.png
+mentions: ChatGPT Enterprise, Codex, ChatGPT Work, Claude in Chrome
 toc: why=Зачем отчёт | order=Порядок работы | data=Откуда брать данные | layer1=Общая картина | layer2=Природа работы | layer3=Проверка | layer4=Отбор людей | start=С чего начать | next=Дальше по теме
 ---
 

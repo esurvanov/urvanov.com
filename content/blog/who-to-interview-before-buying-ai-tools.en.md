@@ -4,6 +4,8 @@ date: 2026-09-28
 description: How to pick 16 of 340 people by spend, messages and projects, check team coverage, and decide what to ask them.
 tags: AI, custdev, research
 layout: wide
+image: /og/who-to-interview-before-buying-ai-tools.en.png
+mentions: ChatGPT Enterprise, Codex
 toc: why=Why sample | top=Top by activity | groups=Seven groups | teams=Uncovered teams | ask=What to learn | order=Workflow | next=Further reading
 ---
 
