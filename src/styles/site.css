@@ -387,3 +387,16 @@ a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accen
 .s-wide section[id] { scroll-margin-top: var(--sp-3); }
 /* Подзаголовок широкого поста — на всю ширину колонки и по ширине, как текст статьи */
 .s-wide .s-article > header .s-lead { max-width: none; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+
+/* ---------- 13. Переходы между страницами ---------- */
+/* Полоса прокрутки не сдвигает страницу, когда появляется или пропадает */
+html { scrollbar-gutter: stable; }
+/* Плавная смена страницы (View Transitions): при переходах внутри сайта и при полной загрузке */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.22s; animation-timing-function: ease; }
+/* Шапка — отдельный слой: не мигает, а плавно меняет ширину между обычной и широкой страницей */
+.s-nav { view-transition-name: site-nav; }
+::view-transition-group(site-nav) { animation-duration: 0.3s; animation-timing-function: ease; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

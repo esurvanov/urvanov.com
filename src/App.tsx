@@ -12,6 +12,7 @@ import TalkView from '@/components/TalkView'
 import NotFoundView from '@/components/NotFoundView'
 import { MaterialsView, PresentationsView, GamesView } from '@/components/MaterialsView'
 import { usePageMeta } from '@/lib/usePageMeta'
+import { useSmoothNavigation } from '@/lib/useSmoothNavigation'
 
 // Презентация тянет за собой все слайды и подсветку кода: грузим только когда её открыли
 const SlideView = lazy(() => import('@/components/SlideView'))
@@ -19,6 +20,7 @@ const PresenterView = lazy(() => import('@/components/PresenterView'))
 
 export default function App() {
   usePageMeta()
+  useSmoothNavigation()
   return (
     <Suspense fallback={null}>
     <Routes>
