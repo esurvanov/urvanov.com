@@ -60,8 +60,9 @@ function build(page, all, { body, noindex, skipStructured } = {}) {
   const head = headTags({ ...page, noindex: noindex ?? page.noindex, jsonLd: graph.length ? graph : undefined, canonical: !skipStructured })
   return template
     .replace('<html lang="ru">', `<html lang="${page.lang}">`)
-    .replace(/<title>[\s\S]*?<\/title>/, `${head}\n    ${analytics}`)
-    .replace('<div id="root"></div>', `<div id="root">${body ?? ''}</div>`)
+    // Замена функцией: в строке-замене JS «$$» и «$&» — спецсимволы, и «$$$» в тексте поста превращался бы в «$$»
+    .replace(/<title>[\s\S]*?<\/title>/, () => `${head}\n    ${analytics}`)
+    .replace('<div id="root"></div>', () => `<div id="root">${body ?? ''}</div>`)
 }
 
 function write(file, content) {

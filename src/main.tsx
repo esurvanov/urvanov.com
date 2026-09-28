@@ -5,6 +5,8 @@ import App from './App'
 import './styles/theme.css'
 import './styles/site.css'
 import './styles/rich-post.css'
+import './styles/rich-post-harness.css'
+import './styles/rich-post-prompts.css'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) {

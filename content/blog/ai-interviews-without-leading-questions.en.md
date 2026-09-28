@@ -1,5 +1,5 @@
 ---
-title: Interviews about AI use without leading questions: voice, text and one Airtable table
+title: How to interview people about their AI use: a call, a survey and one Airtable table
 date: 2026-09-28
 description: A 30-minute call script, an eight-question survey, rules for staying on topic, a said-versus-measured check against the report, and answer analysis with ChatGPT or an agent.
 tags: AI, custdev, interviews
