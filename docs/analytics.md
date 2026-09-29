@@ -35,7 +35,7 @@
 
 **`page`** — путь без слэша на конце: `/about`, `/en/jaiora`.
 
-Игры (`game`): `age-of-empires`, `berezovka`, `sibiria`, `lars`.
+Игры (`game`): `age-of-empires`, `berezovka`, `sibiria`.
 
 ## Разметка в компонентах
 

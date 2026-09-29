@@ -12,7 +12,7 @@ declare global {
 type Params = Record<string, string | number | undefined>
 
 // Игры выкладываются рядом с сайтом отдельными страницами
-const GAME_PATHS = ['age-of-empires', 'berezovka', 'sibiria', 'lars', 'ekho-razloma', 'severny-razlom', 'skhodka']
+const GAME_PATHS = ['age-of-empires', 'berezovka', 'sibiria', 'ekho-razloma', 'severny-razlom', 'skhodka']
 
 const clip = (s: string, n = 100) => (s.length > n ? s.slice(0, n) : s)
 const pageOf = (path = location.pathname) => path.replace(/\/+$/, '') || '/'
