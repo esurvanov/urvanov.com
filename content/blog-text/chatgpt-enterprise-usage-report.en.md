@@ -6,7 +6,7 @@ Where to invest in training
 
 02 Nature of work
 
-73%Knowledge work, 27% code
+70%Of connections are Slack and Notion
 
 Which tool to buy
 
@@ -18,11 +18,11 @@ Can the numbers be trusted
 
 04 People selection
 
-16Of 340 — for interviews
+16Of 340 in the example — for interviews
 
 Who to talk to before buying
 
-## Which decisions it helps make
+## Which decisions the report helps make
 
 A company pays for hundreds of licenses for an AI tool. The business has to decide whether to buy specialized tools on top of the base one, for which teams, and where to direct the pilot budget. Console exports do not answer this directly: they only hold messages and spend per person.
 
@@ -54,7 +54,7 @@ Five console sections, details in "Where to get the data"
 
 Build the big picture
 
-Adoption depth, spend archetypes, segments, team comparison
+Adoption depth, uniformity across teams, main tool, segments
 
 3
 
@@ -74,11 +74,15 @@ Select people and draw conclusions
 
 An interview list and hypotheses about tools
 
+Who to interview · How to run the interviews
+
 ## Where to get the data
 
-Everything is built from five sections of a single ChatGPT Enterprise admin console. Hover over i to see exactly what each one contains.
+Everything is built from five sections of a single ChatGPT Enterprise admin console. Hover over i to see exactly what each section contains.
 
-**How to export.** The console does have APIs, but they cover only part of the data: Codex analytics, credit costs, and conversation logs for compliance. The users, projects and skills exports and the per-product leaderboard are easier to collect in the interface. This is a good job for Claude in Chrome: it opens the right section, sets the filter, clicks export, and saves the CSV. Every step is visible on screen, so a wrong filter or section is caught immediately, before the numbers reach the report.
+**How to export.** The console does have APIs, but they cover only part of the data: Codex analytics, credit costs, and conversation logs for compliance. The users, projects and skills exports and the per-product leaderboard are easier to collect in the interface. Exporting is a good job for Claude in Chrome: it opens the right section, sets the filter, clicks export, and saves the CSV. Every step is visible on screen, so a wrong filter or section is caught immediately, before the numbers reach the report.
+
+**Access.** The console API is not always available: company security policies often restrict admin API keys. In that case, export every section through the interface.
 
 Users
 
@@ -122,17 +126,11 @@ iWhat's inside Share of code and knowledge work, top tasks by credits. An OpenAI
 
 ## Big picture
 
-Distributions across the whole company. This shows which groups exist at all and how large they are.
+The next four sections are the report itself, each with its goal. **Goal:** show which groups of people exist in the company and how large they are.
 
 ### Adoption depth
 
-Shows how deeply the tool has entered the company's work: how many people have used it at least once, regularly, and every week. Those who pay through code or the API without using chat are shown separately.
-
-at least once 82%
-
-regularly 47%
-
-every week 21%
+Adoption depth shows how deeply the tool has entered the company's work: how many people have used it at least once, regularly, and every week. Those who never write in chat and work only through Codex are shown separately. **Decision:** which group to invest training in and whether to buy more licenses now.
 
 71
 
@@ -146,19 +144,47 @@ every week 21%
 
 340 people
 
-Source: Users · Leaderboard for those who pay without chat
+Source: Users · Leaderboard for those who work only through Codex
 
 **Takeaway:**
 
 **In this example:** 82% of people have tried the tool, 47% use it in their work, and for 21% it has become a weekly habit. The room to grow depth is the 97 people in the "occasionally" group.
 
-**In general:** The gap between "tried it" and "use it every week" shows how many people stopped after the first attempts. The benchmark for mass adoption is about 80% of employees using it in daily work. Until then, more licenses will not drive growth: something other than access is holding people back.
+**In general:** The gap between "tried it" and "use it every week" shows how many people stopped after the first attempts. The benchmark for mass adoption is 50–70% of employees using it in daily work. Until adoption reaches that benchmark, more licenses will not drive growth: something other than access is holding people back.
 
-**Next step:** Pick 5–10 people from the "occasionally" group, find out in interviews what got in the way, and run a review of real work cases with them. Recount the weekly share a month later.
+**Next step:** Put training into the largest group between "tried it" and "every week": it gives the fastest growth in regular use. Recount the breakdown once a month to see where people moved.
 
-### Spend archetypes
+**Important.** Pick 5–10 people from the "occasionally" group, find out in interviews what got in the way, and run a review of real work cases with them. Recount the weekly share a month later. How to ask without suggesting the answer is covered in "How to interview people about their AI use".
 
-Shows which product takes more than half of each person's spend over the last three months. Chat is the regular chat. Work is an agent: given a goal, it gathers data from connected apps and delivers a finished document, sheet or deck. Codex is the coding agent.
+### Uniformity
+
+Uniformity shows how evenly the tool has entered different teams: what share of each team uses it regularly and how many messages one person writes on average. **Decision:** which team to take working scenarios from and which team to bring them to first.
+
+| Team | Regular users | % | Msgs per person |
+|---|---|---|---|
+| Team A (strong) |  | 74% | 1,120 |
+| Team B (strong) |  | 66% | 870 |
+| Team C (middle) |  | 51% | 720 |
+| Team D (lagging) |  | 34% | 530 |
+| Team E (lagging) |  | 18% | 290 |
+
+Source: Users · department and groups fields
+
+**Takeaway:**
+
+**In this example:** In Team A, 74% of people use the tool regularly; in Team E, 18%: a spread of 56 percentage points.
+
+**In general:** A large spread between teams means working scenarios already exist but live in one or two teams: moving them is cheaper than buying something new. A uniformly low share across all teams points to a shared barrier: access, training, or unsuitable tasks. A uniformly high share means the tool has taken root and you can move to the next step. A team with barriers is not ready for a new tool yet.
+
+**Next step:** With a large spread, run a meetup: the strongest team shows three of its scenarios to the two weakest. Before the meetup, run 2–3 interviews about barriers in the weakest team. Recount the spread a month later: it should shrink.
+
+### Main tool
+
+Which of the three tools takes more than half of a person's spend over three months. The tool type shows how the person works with AI.
+
+- Chat — dialogue: question → answer, the person drives the work. Problems: prompt, hallucinations, reproducibility, scale.
+- Work — goal-driven agent: gathers data from apps and delivers a document. Remaining: reproducibility, scale.
+- Codex — coding agent: writes and edits code in the repository. No problems remain.
 
 164 · Chat
 
@@ -176,42 +202,44 @@ Source: Leaderboard · three exports: "Product" filter = Chat, Work, Codex
 
 **In this example:** Chat is the main product for 164 of 340 people, Codex for 38, Work for 47.
 
-**In general:** An archetype shows which product a person's money goes to, and the group size sets the pilot size: wide for a common scenario, narrow for a rare one.
+**In general:** The main tool shows the type of work: a conversation, a task handed to an agent, or code. It determines what the person needs next and which pilot to put them in. Group size sets pilot size: a wide pilot for a common scenario, a narrow one for a rare scenario.
 
-**Next step:** For each new tool, recruit pilot users with the matching archetype: from the 38 Codex people for a development tool, from the 164 Chat people for a chat tool.
+**Next step:** The decision is to move each group to the next step. For the Chat group: Work with connectors and MCP to work data, which removes prompting and hallucinations. For the Work group: specs, harness setup and shared skills, which make the result reproducible and transferable to other teams.
 
-### Top by product
+### Top by spend
 
-Ranks people by the amount spent on a specific product. This surfaces heavy users even when the product is a small share of their personal budget.
+The top list ranks people by the amount spent on a specific product, for example Codex. This way the list includes someone who spends a lot on Codex even if most of their spend goes to Chat.
 
-| Person | Team | $ on code / 3 mo |
-|---|---|---|
-| Hana Sato | Team C | 438.20 |
-| Luis Moreno | Team A | 395.60 |
-| Ada Kowalski | Team D | 84.30 |
+| Person | Team | $ on code / 3 mo | Tokens / 3 mo | Tokens per $ |
+|---|---|---|---|---|
+| Hana Sato | Team C | 438.20 | 21.9M | 50K |
+| Luis Moreno | Team A | 395.60 | 12.7M | 32K |
+| Ada Kowalski | Team D | 84.30 | 4.3M | 51K |
 
 Source: Leaderboard · one export per product
 
 **Takeaway:**
 
-**In this example:** Hana Sato and Luis Moreno spend about five times more on code than the third person on the list.
+**In this example:** Hana Sato and Luis Moreno spend about five times more on code than the third person on the list. With similar spend, Hana gets one and a half times more tokens per dollar than Luis.
 
-**In general:** Absolute spend shows who already takes most of a product's budget. Ranking by share of spend hides them. Their experience decides whether a specialized tool pays off.
+**In general:** Top users are change agents: they find working scenarios first, and their experience affects whether a specialized tool pays off. Next to them are more cautious colleagues who need more time and a live example on their own tasks. Ranking by share of spend hides the change agents, so look at absolute spend.
 
-**Next step:** Invite the top two or three to interviews and offer them two weeks in a specialized tool on their own tasks, with a before-and-after report.
+**Next step:** Involve top users as mentors: let them show their scenarios to colleagues who are just starting, on those colleagues' tasks. Invite cautious colleagues through examples and results, without mandates. Offer the top two or three a two-week experiment in a specialized tool with a before-and-after report.
 
-Top users can spend an order of magnitude more than everyone else. Capping them with limits is not worth it; agree on experiments and a results report instead, so the spend turns into proven practices for the whole company.
+The leaderboard has both spend and tokens. Compare the tokens-to-spend ratio within one group: one product and similar tasks. Whoever gets noticeably more tokens per dollar usually picks models and modes better. These are the most advanced and efficient users, and they are the first to invite as mentors. Introduce them to colleagues from the same group whose ratio is lower: working through one task together often gives more than a general training. Pairs from different teams bring cross-pollination: good techniques move between teams.
+
+During rollout, top users can spend an order of magnitude more than everyone else. It is better not to introduce limits at this stage: they easily demotivate the people who adopt the tool first. Instead of limits, agree on experiments and a results report. Limits make sense later, once practices are proven and the normal cost of a scenario is clear.
 
 ### Behavioral segments
 
 Groups by behavior intensity built from several exports: how much a person writes, spends and what they do.
 
-**How it differs from specialization:** segments overlap, one person can be in several, and they use thresholds instead of a single main feature.
+
 
 | Segment | People | Details |
 |---|---|---|
 | Write code in any product | 44 | 19 of them outside technical teams |
-| Heavy research in chat | 58 | 1,900+ messages on average |
+| Intensive research in chat | 58 | 1,900+ messages on average |
 | Agentic tasks | 33 | multi-step scenarios, connectors |
 | Image generation | 21 | two thirds from one team |
 | Fully inactive | 61 | 0 messages, $0 over the whole period |
@@ -220,90 +248,19 @@ Source: Users · Leaderboard
 
 **Takeaway:**
 
-**In this example:** Four segments give four directions to check:
+**In this example:** The largest segments for customer interviews are intensive research (58) and code (44, 19 of them outside technical teams). For the 61 inactive people the question is different: what stops them from starting.
 
-- 58 people doing heavy research in chat: is a tool for finding and analyzing sources needed;
-- 19 of the 44 people who write code work outside technical teams: a tool simpler than an IDE may fit;
-- 21 people generate images, two thirds of them in one team: is the built-in generation enough;
-- 33 people with agentic tasks: candidates for integrations and automation.
+**In general:** Data shows what people do but not whether the current tool is enough for them. So a segment is a hypothesis: it suggests whom to invite to customer interviews, which questions to ask, and what problems people may run into. Tool candidates appear already here, and the choice between them is made after the interviews, for a confirmed problem.
 
-**In general:** Data shows what people do but not whether the current tool is enough for them. So each segment is a hypothesis to be checked in conversation.
-
-**Next step:** For each segment, write one testable idea, for example "the 58 heavy researchers need a tool with source links". Talk to 2–3 people from the segment and make one decision: pilot, postpone, or close.
-
-### Team comparison
-
-Compares teams by adoption depth: what share of each team uses the tool regularly and how many messages one person writes on average.
-
-| Team | Regular users | % | Msgs per person |
-|---|---|---|---|
-| Team A |  | 74% | 1,120 |
-| Team B |  | 66% | 870 |
-| Team C |  | 51% | 720 |
-| Team D |  | 34% | 530 |
-| Team E |  | 18% | 290 |
-
-Source: Users · department and groups fields
-
-**Takeaway:**
-
-**In this example:** In Team A, 74% of people use the tool regularly; in Team E, 18%.
-
-**In general:** A high share of regular use means the team already has working scenarios. A low share means barriers: access, training, or unsuitable tasks. A team with barriers is not ready for a new tool yet. Internal meetups carry a strong team's scenarios to other departments.
-
-**Next step:** Run a meetup where Team A shows three of its scenarios and invite Teams D and E. Before the meetup, run 2–3 interviews about barriers in Team E.
+**Next step:** For each segment, talk to 2–3 people: where the current tool falls short and what they still do by hand. Gather candidates for a confirmed problem from three sources: consultations with innovators inside the company, outside experts, and market benchmarks, meaning what similar companies use. Pilot the best candidate with that segment. If the problem is not confirmed, postpone the segment until the next recount.
 
 ## Nature of work
 
-Which tasks people solve with the tool, with which built-in features, and through which integrations.
-
-### Code and other tasks
-
-The console itself splits tasks into two groups: code and knowledge work, meaning texts, analysis, research, design, anything that is not writing code. This is a check independent of our own labeling.
-
-27% · code
-
-73% · knowledge work
-
-Source: Analytics: tasks · 30-day window
-
-**Takeaway:**
-
-**In this example:** 73% of tasks are knowledge work (texts, analysis, research), 27% are code.
-
-**In general:** The console's classification shows which tasks the work goes to. It is produced independently of your labeling, which makes it a convenient check on your own conclusions.
-
-**Next step:** Split the budget for new tools in roughly the same proportion: about a quarter for coding tools, the rest for knowledge work.
-
-Task labeling is done by an OpenAI model on a sample of about 10% of requests over 30 days, with no people involved (OpenAI help). It is a sample-based estimate, so compare the numbers with your own labeling.
-
-### Specialization
-
-One label per active person: which built-in feature they use most, web search, file analysis or image generation.
-
-**How it differs from segments:** each person gets exactly one label, and together they add up to all 279 active people.
-
-131 · search and research
-
-38
-
-21
-
-89 · other
-
-Source: Users · messages with built-in tools
-
-**Takeaway:**
-
-**In this example:** 131 of 279 active people mostly search the web, 38 work with files, 21 generate images.
-
-**In general:** If search is the main feature for most people, the tool has replaced their search engine, and answer quality depends on sources. A feature used by a minority is tested with a specific team first.
-
-**Next step:** Take 5 of the 131 people whose main feature is search and compare the current tool with a specialized research tool on their real queries: time to answer and number of source errors.
+**Goal:** show which tasks people solve with the tool, with which built-in features, and through which integrations.
 
 ### Connectors
 
-Shows which external apps people connect the assistant to.
+Connectors link the assistant to work data: chats, documents, code, calendars. They determine the volume of hallucinations: without access to data, the model fills in the answer itself. **Decision:** which teams and which systems to connect first.
 
 Slack 520
 
@@ -317,15 +274,15 @@ Source: Overview · "App interactions" block
 
 **Takeaway:**
 
-**In this example:** Slack and Notion account for 70% of all connections.
+**In this example:** Slack and Notion account for 70% of all connections. The model does not see systems outside this list: it answers questions about them with a guess.
 
-**In general:** Connectors give the model real documents and conversations, so it guesses less and hallucinates less. Teams without connectors work with the model blind.
+**In general:** The volume of hallucinations drops where the model has the context it needs. Without it, the agent tries to fill the gap on its own. Teams with zero connections work with the model blind, and almost any answer about their processes is a guess. The sign in a customer interview: "I have to double-check everything".
 
-**Next step:** Find teams with zero connections, ask in interviews where their working data lives, connect one such source, and compare answers on the same tasks before and after.
+**Next step:** Find teams with zero connections and ask in interviews where their work data lives. Connect one such source and compare before and after on 10 identical questions: how many answers are wrong and how many rely on work data.
 
 ### Skills
 
-Shows which skills are used and who builds their own.
+Skills show process maturity: a scenario once described as a skill repeats the same way for anyone who runs it. The stats show which skills are used and who builds their own. **Decision:** which processes can already be rolled out to other teams, and which still depend on individual people.
 
 spreadsheets 88
 
@@ -337,39 +294,39 @@ Source: Overview · "Skills" block
 
 **Takeaway:**
 
-**In this example:** 29 calls to skill-creator: some people already build their own skills.
+**In this example:** The spreadsheet and PDF skills have 88 and 57 calls: these processes are already reproducible. 29 calls to skill-creator: some people are turning their scenarios into skills.
 
-**In general:** Skills signal maturity. Many skills in a department mean its processes are stable: a scenario is described once and repeats the same way. Such a department is ready to scale.
+**In general:** Process maturity grows in steps: one-off requests → a personal skill → a shared team skill. At the first step, the result depends on who asked and how. With a skill it is reproducible: the same input gives the same result. A shared skill makes the process transferable to other teams.
 
-**Next step:** Collect skills into one list with their authors, pick the two most used, and move them to a neighboring department with a short demo by the author.
+**Next step:** Collect skills into one list with their authors and mark the step of each process. Turn the two most used personal skills into shared ones: the author shows them to a neighboring team, and the team checks that the same inputs give the same result. Scenarios without a skill that repeat every week are the first candidates for new skills.
 
 ### Project themes
 
-Groups projects by meaning: which tasks people run in ongoing projects.
+The summary groups projects by meaning and shows the concrete tasks people run in ongoing projects. For customer interviews this is a ready list: which tasks to discuss and with whom. **Decision:** which tasks and whose projects to cover in interviews first.
 
-| Theme | Projects | Largest project |
-|---|---|---|
-| Sales | 11 | Pitch library · Elif Demir |
-| Onboarding | 8 | New hire guide · Rafael Costa |
-| Market research | 5 | Competitor notes · Jonas Keller |
+| Theme | Projects | Tasks | Question for the author |
+|---|---|---|---|
+| Sales (Pitch library · Elif Demir) | 11 | pitches, objection handling, commercial proposals | "Which part of a pitch does the model do well, and what do you rewrite?" |
+| Onboarding (New hire guide · Rafael Costa) | 8 | guides for newcomers, answers to typical questions | "Which newcomer questions does the model already handle without you?" |
+| Market research (Competitor notes · Jonas Keller) | 5 | competitor summaries, price comparisons | "Where do you get the data, and how quickly does it go stale?" |
 
 Source: Projects · names grouped by meaning
 
 **Takeaway:**
 
-**In this example:** Sales (11) and onboarding (8) have the most standing projects.
+**In this example:** Sales (11) and onboarding (8) have the most standing projects. The authors of the largest projects are the first people to interview.
 
-**In general:** A project is a knowledge base: files and instructions the model relies on in every answer. The fuller the base, the more accurate and stable the result. Projects sometimes reveal unexpected ways of using the tool that nobody knew about.
+**In general:** A project is a knowledge base: files and instructions the model relies on in every answer. The fuller the base, the more accurate and stable the result. What a project contains suggests what to ask in an interview: which files were added, what is missing, and where answers still need fixing.
 
-**Next step:** Open the three most active projects in each topic, check which files and instructions they hold, and ask the authors in interviews how these materials changed answer quality.
+**Next step:** Open the three most active projects in each theme and list the concrete tasks. In the interview, ask the author the question from the table and which files and instructions changed answer quality the most. Turn a successful project setup into a template for that theme.
 
 ## Verification
 
-The raw data behind every summary in the report: adoption depth, archetypes, segments, teams. Any number in the report can be traced back to its source row in an export.
+**Goal:** check the summaries against the raw exports, the project list and the leaderboard. Any number in the report can be traced back to its source row in an export.
 
 ### Full project list
 
-All projects with author and status. It is used to check the theme summary and to find the author of a specific project.
+All projects with author and status. This list is used to check the theme summary and to find the author of a specific project.
 
 | Project | Author | Status | Msgs |
 |---|---|---|---|
@@ -389,7 +346,7 @@ Source: Projects
 
 ### Leaderboard
 
-The billing export for each person and product. Archetypes and top lists are calculated from it.
+The billing export for each person and product. Main tools and top lists are calculated from it.
 
 | Name | Email | Credits | $ |
 |---|---|---|---|
@@ -409,13 +366,13 @@ Source: Leaderboard · three exports with different "Product" filters
 
 ## People selection
 
-The final layer: specific names for each hypothesis.
+**Goal:** name specific people for each hypothesis.
 
 ### Interview candidates
 
-A short list of people for each specialization found. The final list is 16 people out of 340; the table shows the first three.
+A short list of people for each direction found. In the example the final list is 16 people out of 340; the table shows the first three. Your company will have its own number.
 
-| Person | Specialization | Signal |
+| Person | Direction | Signal |
 |---|---|---|
 | Hana Sato | code | $438 / 3 mo |
 | Mira Castellano | agentic tasks | $97 / 3 mo |
@@ -433,9 +390,9 @@ Source: the users, leaderboard and projects exports, joined by email
 
 ### Table of all people
 
-Everyone, with filters by team, activity, specialization, and archetype.
+Everyone, with filters by team, activity, direction, and main tool.
 
-Team B Activity: every week Archetype: Work
+Team B Activity: every week Tool: Work
 
 | Person | Team | Chat / Work | $ / 3 mo |
 |---|---|---|---|
@@ -446,23 +403,23 @@ Source: the users, leaderboard and projects exports, joined by email
 
 **Takeaway:**
 
-**In this example:** The "Team B" and "Archetype: Work" filters left two people: Mira Castellano and Tomás Reid.
+**In this example:** The "Team B" and "Tool: Work" filters left two people: Mira Castellano and Tomás Reid.
 
-**In general:** A table of all people with filters by team, activity and archetype is the base for any next sample: a list for a new question needs no new export.
+**In general:** A table of all people with filters by team, activity and main tool is the base for any next sample: a list for a new question needs no new export.
 
 **Next step:** Save each set of filters as a separate table view so the next list takes one click.
 
 ## Where to start today
 
-You do not need the whole report at once: the first useful result, a list of heavy users, appears after the second item.
+You do not need the whole report at once: the first useful result, a list of most active users, appears after the second item.
 
-Export users and the leaderboard for three months The leaderboard three times, once per product
+Export users and the leaderboard for three months The leaderboard three times, once per product. A browser agent can do the export: Claude in Chrome · Gemini in Chrome · Perplexity Comet
 
-Calculate archetypes and the top by amount The first list of heavy users is ready
+Calculate main tools and the top by amount The first list of most active users is ready
 
-**Calculate adoption depth:** At least once / regularly / every week, with those who pay without chat counted separately
+**Calculate adoption depth:** At least once / regularly / every week, with those who work only through Codex counted separately
 
-Build a list of 16 people and schedule interviews How to pick these people is covered in "Who to interview"
+Build a list of people and schedule interviews How to pick these people is covered in "Who to interview"
 
 ## Further reading
 
@@ -471,5 +428,11 @@ Interviews
 Who to interview
 
 How to build an interview sample from the table of people
+
+Interviews
+
+How to interview people about their AI use
+
+A call, a survey and one Airtable table
 
 All names, teams, addresses, and numbers in the examples are fictional.
