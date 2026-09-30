@@ -23,6 +23,7 @@ export const PLACES: Place[] = [
   { name: { ru: 'Тбилиси', en: 'Tbilisi' }, lat: 41.72, lon: 44.79 },
   { name: { ru: 'Алматы', en: 'Almaty' }, lat: 43.24, lon: 76.89 },
   { name: { ru: 'Ош', en: 'Osh' }, lat: 40.53, lon: 72.8 },
+  { name: { ru: 'Стамбул', en: 'Istanbul' }, lat: 41.01, lon: 28.98 },
   { name: { ru: 'Анталья', en: 'Antalya' }, lat: 36.9, lon: 30.71 },
   { name: { ru: 'Каир', en: 'Cairo' }, lat: 30.04, lon: 31.24 },
   { name: { ru: 'Шарм-эль-Шейх', en: 'Sharm El Sheikh' }, lat: 27.91, lon: 34.33 },
