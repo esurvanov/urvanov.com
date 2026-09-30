@@ -14,10 +14,11 @@ export function useSmoothNavigation() {
 
   useLayoutEffect(() => {
     if (hash) {
-      document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView()
+      document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({ behavior: 'instant' })
       return
     }
-    window.scrollTo(0, 0)
+    // instant: плавная прокрутка из CSS нужна только для якорей внутри страницы
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     // hash — только для первого входа на страницу с якорем, дальше якоря листает браузер
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])

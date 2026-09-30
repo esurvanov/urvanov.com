@@ -1,10 +1,8 @@
-Interview design based on recommendations from @Kseniya_Vasil
+Interview design based on recommendations from @Kseniya_Vasil. People, groups and numbers for the interviews come from the ChatGPT Enterprise usage report. It also holds the business task: what the company decides, who decides, and by which signs.
 
 Voice
 
-**Call:** 30 min
-
-**tl;dv:** Recording
+**Call:** 30 min tl;dv · Granola Notes
 
 **Transcript:** Into Notes
 
@@ -32,39 +30,33 @@ Mix: the respondent picks the format
 
 InvitationBy direct message Up for a call?30 minutes
 
-yes voice recorded call
+yes voice call with a note-taking assistant
 
 no text same questions, one at a time, in chat
-
-partly voice + text started in chat, finished on a call
 
 **Takeaway:**
 
 **In this example:** Voice scores 5 of 5 on depth, text scores 5 of 5 on reach. Each person picks the format.
 
-**In general:** When people choose the format themselves, fewer decline, and identical questions and fields keep the answers comparable. Voice is the main format for polar groups; text is for those who cannot take a call and for checking patterns across the company.
+**In general:** When people choose the format themselves, fewer decline. The formats differ in depth: a call gives a detailed story with follow-ups, a chat gives short answers. So chat answers help find cases and topics, but they are not treated as equal to calls. Voice is the main format; chat is for those who cannot take a call. A company-wide questionnaire is a separate tool, written after the interviews.
 
 **Next step:** Offer both formats in one sentence in the invitation: "Shall we do a 30-minute call, or would you rather answer the questions in chat?"
 
-## Voice: preparation
+## Preparing for the meeting
 
-**Consent to record:** In the invitation and again in the first 30 seconds of the call
+**Mention the note-taking assistant:** In the invitation and at the start of the call: the assistant takes notes and a transcript that only the team sees, and answers go into the report without names. With Granola, no audio is kept
 
-**tl;dv connected to your calendar:** The bot joins the Google Meet or Zoom meeting and records it
+tl;dv or Granola tl;dv is connected to the calendar and joins the Google Meet or Zoom meeting on its own. Granola works without a bot, using your computer audio, and keeps only the transcript and notes
 
-**Airtable row created in advance:** Name, group, status "In progress", before the first message
+**Airtable row created in advance:** Name, group and numbers from the table of all people in the report, status "In progress", before the first message
 
 **Guide open on a second screen:** Seven script blocks and a 30-minute timer
 
-**One host, no note-taking:** tl;dv does the transcript, ChatGPT does the analysis
+**One host, no note-taking:** tl;dv or Granola does the transcript, ChatGPT does the analysis
 
 **Takeaway:**
 
-**In this example:** Three of the five prep items are about recording and the table.
-
-**In general:** When the recording and ChatGPT take the notes, the host can focus entirely on follow-up questions. A table row created before the first message makes sure no interview gets lost.
-
-**Next step:** The day before the call, check that the tl;dv bot sees the meeting in the calendar and create an Airtable row for this person.
+**Next step:** Before the meeting, check that tl;dv sees the meeting in the calendar or Granola is running on your computer, and create the Airtable row, so the call is left with nothing but questions.
 
 ## A 30-minute script
 
@@ -74,7 +66,7 @@ Minutes per block
 
 Intro
 
-"I'm looking at how people in the company actually work with the AI tool. This isn't an evaluation of you. Stories about what didn't work are the most useful to me. May I record this?"
+"I'm looking at how people in the company actually get their work tasks done. This isn't an evaluation of you. Both successful and unsuccessful cases are equally useful to me. A note-taking assistant is with me: only we see the transcript, and answers go into the report without names. May I turn it on?"
 
 2
 
@@ -82,57 +74,57 @@ Role and context
 
 "What do you spend most of your week on?"
 
-How often you open any AI tools · which ones · where else you handle similar tasks
+Which tasks repeat · where you look for information and draft things
 
 3
 
-The last time
+The last work task
 
-"Think back to the last time you opened the tool for work. What did you need to do?"
+"Think of the last work task that took you noticeable time. What did you need to get?"
 
-What was urgent · how you'd have done it without the tool · why you chose this way
+What means you had · what you chose and why · how you got to the result
 
 4
 
-Expectation and result
+Result and effort
 
-"What result were you expecting when you started? What did you end up with?"
+"What did you end up with, and how much effort did it take?"
 
-Steps from request to final result · what you used as is
+What you used as is · what you finished yourself · what constraints there were: data, access, security
 
 5
 
-Breaking point
+A successful case
 
-"Was there a moment when you had to give up or finish it yourself? Tell me how it went."
+"Think of a time a similar task went well. What was different then?"
 
-What exactly didn't work · what you did next
+Tool · data · preparation
 
 6
 
-Effect on work
+Quitting and switching
 
-"What changed in your work after tasks like this?"
+"Have you ever stopped using a tool or switched to another? How did that go?"
 
-Deadlines · volume · who does this task now
+Which tool · what you switched to · why. If this never happened, skip it
 
 7
 
 Wrap-up
 
-"What didn't I ask about that matters for understanding your work?"
+"What didn't I ask that matters for understanding your work?"
 
-Say thank you · explain that answers go into a shared analysis without names
+Thank them · say the answers go into the shared analysis without names
 
-**If the person barely uses the tool:** Instead of the last real case, ask about the last task they did by hand or through a colleague. Instead of the point of failure, ask what kept them from trying AI that time
+**If the person doesn't mention AI:** Don't ask why they don't use it. Ask how they did the task and which options they considered. Ask about AI only if the person named it as a possible option themselves
 
 **Takeaway:**
 
-**In this example:** The last case, expectation and result, and point of failure take 19 of the 30 minutes.
+**In this example:** The last task, result and effort take 13 of 30 minutes; the successful case and quitting or switching take another 9.
 
-**In general:** Most of the time goes to one real case: that is where you see which task is unsolved and which tool could solve it. The intro and context should stay short.
+**In general:** The conversation is built around the work, not the tool. That shows where AI helps, where the person chose another way, and where no new tool is needed. The successful case shows what already works; quitting and switching show why tools get replaced.
 
-**Next step:** Set a timer: by minute 15 you should be on the last real case. If not, cut the context down to one question.
+**Next step:** Set a timer: by minute 5, move on to the last work task. If not, cut the context down to one question. Pick the task topic for the person: their tasks show up in Project themes.
 
 ## Staying on topic
 
@@ -168,117 +160,123 @@ Situation → what to say
 
 ## Logging in Airtable
 
-tl;dv Recording and transcript Airtable Notes field in the person's row
+The table keeps everyone in the sample, their conversations and the report data in one place. **Decision:** whom else to invite so each group has enough interviews, whom to send a follow-up, and which gaps between self-reported and measured use to discuss with the person.
 
-AirtableBase and forms tl;dvCall recording
+tl;dv · Granola Transcript Airtable Notes field in the person's row
 
-Voice: the tl;dv transcript is copied into the Notes field. Text: the chat log is copied into the same field with the date and time of each message.
+AirtableBase and forms tl;dvCall notes and transcripts GranolaNotes without a bot, no audio kept
+
+Voice: the tl;dv or Granola transcript is copied into the Notes field. Text: the chat log is copied into the same field with the date and time of each message.
 
 One table: one row per person
 
-|  | A Name | ≡ Notes | ◉ Format | ◉ Group | ◉ Status | ◉ Frequency · self-reported | ◉ Frequency · per report | ƒ ≠ | # Messages | # $ / 3 mo | ▦ Activity |
+|  | A Name | ≡ Notes | ◉ Format | ◉ Group | ◉ Status | ◉ Frequency · self-reported | ◉ Frequency · per report | ƒ ≠ | # Tokens · 3 mo | # $ / 3 mo | ▦ Activity |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Hana Sato | Host [00:00]: Think back to the last time you… | voice | code | Done | daily | daily | = | 1 240 | 438 | 25.09 |
-| 2 | Luis Moreno | Host [00:00]: Thanks for making the time… | voice | code | Done | weekly | daily | ≠ | 980 | 396 | 24.09 |
-| 3 | Mira Castellano | [26.09 18:40] Host: What result were you expecting… | text | agent | Partial | weekly | weekly | = | 610 | 97 | 26.09 |
-| 4 | Jonas Keller | Host [00:00]: What do you spend most of your… | voice | research | Done | daily | daily | = | 3 214 | 19 | 26.09 |
-| 5 | Ben Ortiz |  |  | no chat | Awaiting reply |  | no chat |  | 0 | 64 | 22.09 |
-| 6 | Pavel Novak | [27.09 10:15] Host: Describe the last task… | text | inactive | Done | weekly | doesn't use | ≠ | 0 | 0 | — |
+| 1 | Hana Sato | Host [00:00]: Think back to the last time you… | voice | code | Done | weekly | weekly | = | 21.9M | 438 | 25.09 |
+| 2 | Luis Moreno | Host [00:00]: Thanks for making the time… | voice | code | Done | regularly | weekly | ≠ | 12.7M | 396 | 24.09 |
+| 3 | Mira Castellano | [26.09 18:40] Host: What result were you expecting… | text | agent | Partial | regularly | regularly | = | 3.9M | 97 | 26.09 |
+| 4 | Jonas Keller | Host [00:00]: What do you spend most of your… | voice | research | Done | weekly | weekly | = | 1.1M | 19 | 26.09 |
+| 5 | Ben Ortiz |  |  | Codex only | Awaiting reply |  | Codex only |  | 3.2M | 64 | 22.09 |
+| 6 | Pavel Novak | [27.09 10:15] Host: Describe the last task… | text | inactive | Done | regularly | doesn't use | ≠ | 0 | 0 | — |
 | 7 | Sara Quinn |  |  | inactive | Declined |  | doesn't use |  | 0 | 0 | — |
-| 8 | Nadia Rahimi | [27.09 09:30] Host: … / Host [00:00]: … | voice + text | teams | Done | rarely | rarely | = | 140 | 6 | 20.09 |
-| 9 | Elif Demir |  |  | projects | In progress |  | daily |  | 870 | 41 | 27.09 |
+| 8 | Nadia Rahimi | Host [00:00]: What did you do in ChatGPT yesterday… | voice | other tools | Done | occasionally | occasionally | = | 0.3M | 6 | 20.09 |
+| 9 | Elif Demir |  |  | projects | In progress |  | weekly |  | 1.8M | 41 | 27.09 |
 | 16 records · 9 shown |  |  |  |  |  |  |  |  |  |  |  |
 
-ChatGPT fills in the orange field from the conversation in Notes. "Per report", "Messages", "$" and "Activity" come from the "Who Uses What" report. The "≠" field is a formula that compares the two frequencies.
+ChatGPT fills in the orange field from the conversation in Notes. "Per report", "Tokens", "$" and "Activity" come from the ChatGPT Enterprise usage report. It also holds the business task: what the company decides, who decides, and by which signs. The "≠" field is a formula that compares the two frequencies.
 
 Reading the table: what each column gives you
 
 | Column | Source | What it affects |
 |---|---|---|
-| Name · Group | "Seven Polar Groups" sample | which hypothesis about the tool this conversation tests |
-| Notes | tl;dv or chat log | source for every field; any conclusion is checked against a quote |
-| Format | host | weight of the answer: text has less detail than a call |
+| Name · Group | "Eight groups" sample | which way of getting tasks done the person represents |
+| Notes | tl;dv, Granola or chat log | source for every field; any conclusion is checked against a quote |
+| Format | host | answer depth: a chat has less detail than a call |
 | Status | host | next action: remind, follow up, or replace the person |
-| Frequency · self-reported | ChatGPT from Notes | how the person sees their own usage |
-| Frequency · per report | "Who Uses What" report | how they actually use it |
-| ≠ | formula | where to look for another tool or uncounted tasks |
-| Messages · $ · Activity | report | weight of the opinion: heavy user or newcomer |
+| Frequency · self-reported | ChatGPT takes it from the conversation | how often the person says they use AI |
+| Frequency · per report | report · adoption depth | how often they use it according to console data |
+| ≠ | Airtable formula: compares the two frequencies | no match: a question to clarify in the interview, since the report only sees the corporate tool for 3 months |
+| Tokens · 3 mo | report · top by spend | amount of work in the corporate tool over 3 months, for sampling, not for weighting the answer |
+| $ · 3 mo | report · leaderboard | spend over 3 months, for sampling, not for weighting the answer |
+| Activity | report · users export | date of the last action: long ago means a candidate for the "Tried and quit" group |
 
 How to read the sample rows
 
 | Row | Signal | What to do |
 |---|---|---|
-| Hana Sato | = · $438 · Done | her breaking point is the main argument in the decision to buy a coding tool |
-| Luis Moreno | ≠ says "weekly", actually daily | the tool has become a habit; find out which tasks he doesn't count as AI work |
-| Pavel Novak | ≠ "weekly" with 0 messages | works in another tool; find out which one and why |
+| Hana Sato | frequencies match · $438 on code · Done | the highest spend on code: a conversation about her last task shows whether the current tool is enough |
+| Luis Moreno | ≠ says "regularly", actually weekly | clarify: which tasks he counts as AI work |
+| Pavel Novak | ≠ "regularly" with zero tokens | clarify: which tools he uses and for which tasks |
 | Mira Castellano | Partial | send one follow-up: where in the task they had to finish by hand |
-| Ben Ortiz | Awaiting reply · no chat · $64 | send a reminder: without him the "Pay without chat" group stays empty |
-| Sara Quinn | Declined | invite someone else from the "Inactive" group |
-| Elif Demir | In progress · 870 msgs | schedule a call; fill in self-reported frequency after the conversation |
+| Ben Ortiz | Awaiting reply · Codex only · $64 | send a reminder: without him the "Codex only" group stays empty |
+| Sara Quinn | Declined | replace by the replacement rule: the next candidate of the "Inactive" group |
+| Elif Demir | In progress · 7 active projects | schedule a call; fill in self-reported frequency after the conversation |
 
-Self-reported vs data: what to measure in the interview
+Self-reported vs data: what to clarify in the interview
 
-Measured in interview
+Measured in the interview
 
 Pair in the report
 
-If they don't match
+If they differ, clarify
 
 **How often they use it:**
 
 weekly activity
 
-"weekly" with 0 messages: a personal account or another tool
+which tools the person uses and for which tasks
 
 **Main task:**
 
-top product by spend
+main tool
 
-says research but pays for code: doesn't count code as "AI work"
+which tasks the person counts as AI work
 
 **How many tasks it covers:**
 
-number of projects and messages
+number of projects
 
-many projects, few tasks: tried it but didn't build it into their work
+which projects are alive and for which tasks
 
 **What else they use:**
 
-connectors and skills
+connectors
 
-names tools that aren't in the console: demand for an integration
+what these tools are and for which tasks; record them as a way of working
 
 **How much time it saves:**
 
 no pair
 
-self-reported only; compare across groups
+self-reported only
+
+Data limits: the report only sees the corporate tool and only for 3 months. Personal accounts and other tools do not show up in it, so a mismatch is a question to clarify, not a conclusion.
 
 Statuses of 16 invitees
 
 **Takeaway:**
 
-**In this example:** 9 of 16 interviews are "Done", 2 need a follow-up, and Pavel Novak's self-reported frequency doesn't match the report.
+**In this example:** 9 of 16 invitees gave an interview: the "Done" share is 56%. Pavel Novak's self-reported frequency doesn't match the report.
 
-**In general:** One row per person keeps the report data, format, raw conversation and status together. A gap between self-reported and measured use is a finding of its own: most often another tool is behind it.
+**In general:** One row per person keeps the report data, format, raw conversation and status together. The statuses show whether you have enough people: the "Done" share among invitees tells you how many to invite so each group gets the needed number of interviews. A gap between self-reported and measured use is a question to clarify: the report only sees the corporate tool for 3 months.
 
-**Next step:** Update the status right after each conversation. Once a week, send a follow-up to everyone marked Partial.
+**Next step:** Update the status right after each conversation. Keep the needed number of interviews in each group: with a 56% "Done" share, invite four people for two interviews per group. Send one follow-up to everyone marked Partial.
 
 ## Text: wording
 
-In a questionnaire you can't ask again, so a poorly worded question ruins the answer with no chance to fix it. Five common mistakes:
+In a chat or a questionnaire it is hard to ask again, so a poorly worded question ruins the answer with no chance to fix it. Five common mistakes:
 
 leading
 
 How convenient is the tool for you?
 
-Describe the last work task you opened it for.
+Describe the last work task that took you noticeable time.
 
 provocative
 
 Why don't you use the tool if the company pays for it?
 
-When did you last do a task where AI could have helped? How did you do it?
+How did you do your last task of this kind? Which options did you consider?
 
 feature request
 
@@ -296,7 +294,7 @@ double-barreled
 
 What do you do in the tool and how often?
 
-What did you do in the tool this week?
+What was the last task you did with AI?
 
 **Takeaway:**
 
@@ -304,7 +302,7 @@ What did you do in the tool this week?
 
 **In general:** Questions about convenience, features and the future collect opinions. A purchase decision rests on what people have already done, so a good question asks about a specific past case.
 
-**Next step:** Reread the survey and rewrite every question containing "convenient", "would you like" or "which features" into a question about the last case.
+**Next step:** Reread the chat and questionnaire questions and rewrite every question containing "convenient", "would you like" or "which features" into a question about the last work task.
 
 ## Fill the table with Claude Code
 
@@ -314,9 +312,9 @@ Claude Code Or any agent with MCP support Airtable MCPReads and writes the table
 
 **Create rows:** From the list of people selected for interviews: name, group, status
 
-**Pull in report data:** Messages, $, activity, frequency per report
+**Pull in report data:** Tokens, $, activity, frequency per report
 
-**Analyze Notes:** With the same prompt as in ChatGPT: fields, self-reported frequency, tag, quotes
+**Analyze Notes:** With the same prompt as in ChatGPT: fields, difficulties, self-reported frequency, quotes
 
 **Update statuses:** "Partial" (incomplete answer) if the analysis contains "no data"
 
@@ -332,49 +330,47 @@ Airtable MCPHow to connect
 
 ## Questionnaire
 
-Seven open questions in the same order as the voice script, plus one multiple-choice question to check against the report. Under each open field, a hint: "1–3 sentences".
+The questionnaire is written after the interviews, once you know which tasks and difficulties occur. It goes to the whole company to learn how widespread they are. Questions are short, and the answer options come from the interview analysis.
 
 1
 
-What do you spend most of your work week on? context
+Which of these tasks do you do at work? choice: tasks from the interviews · other, open field tasks
 
 2
 
-Think of the last work task you opened an AI tool for. What did you need to do? last case
+How often do you do these tasks? choice: every day · every week · less often · I don't task frequency
 
 3
 
-How did you do tasks like this before you started using it? previous method
+Which tools do you use for them? choice: ChatGPT · Claude · Cursor · another AI tool · I don't use AI tools
 
 4
 
-What result did you expect from this task, and what did you end up with? expectation and result
+Which difficulties do you run into in these tasks? choice: difficulties from the interviews · I don't run into any · other, open field difficulties
 
 5
 
-Was there a part of this task you had to redo or do yourself? Which part? breaking point
+How often does this difficulty get in the way? choice: in almost every task · sometimes · rarely difficulty frequency
 
 6
 
-What changed in your work after tasks like this: deadlines, volume, who does them? effect
+How much does it matter for the result? choice: gets in the way a lot · gets in the way · barely matters impact
 
 7
 
-What else is important to know about how you handle this task? open field
+How do you work around this difficulty now? open field · I don't workarounds
 
 8
 
-How often do you use any AI tools for work? choice: daily · weekly · rarely · I don't use them check against report
-
-**Branch for non-users:** Instead of 2–5: "Describe the last task you did by hand or through a colleague" and "What kept you from trying an AI tool that time?"
+What else matters that the questions missed? open field anything missed
 
 **Takeaway:**
 
-**In this example:** Questions 1–7 follow the same order as the call. Question 8 gives usage frequency to check against the report data.
+**In this example:** Eight short questions: six multiple-choice with options from the interviews and two open fields.
 
-**In general:** The same question order in voice and text gives the same fields in the table. Text has no follow-up in the moment, so the follow-up goes as a separate message.
+**In general:** The interviews show which tasks and difficulties exist; the questionnaire shows how many people face them and how much they get in the way. The options "I don't run into any", "I don't use AI" and the open field catch what the interviews missed.
 
-**Next step:** If an answer is shorter than one sentence, send one follow-up, "What happened at the next step?", and mark the answer as incomplete in the table until they reply.
+**Next step:** Collect the answer options from the interview analysis and send the questionnaire to the whole company. Count what share of people face each difficulty, how often, and how much it gets in the way. These shares feed the decision procedure in the report.
 
 ## Analyzing answers
 
@@ -382,49 +378,40 @@ How often do you use any AI tools for work? choice: daily · weekly · rarely ·
 
 Give the Notes text to ChatGPT
 
-The same day, with the same prompt for every interview
+With the same prompt for every interview
 
 2
 
 Move ChatGPT's answer into the person's row
 
-Task, expectation, result, point of failure, impact, self-reported frequency, tag, status
+Task, context, chosen way, result, effort, constraints, difficulties, self-reported frequency
 
 3
 
-Group the table by breaking-point tag
+Group the table by difficulty
 
-Airtable shows how many people, and from which groups, named the problem
+People with the same difficulty end up next to each other: you see how many there are and from which groups
 
 4
 
-Test the pattern with the questionnaire
+Check with the questionnaire
 
-Across the whole company, to find out how widespread it is
+Repeats become answer options in the company-wide questionnaire; the team breakdown is compared with Uniformity
 
 Analysis prompt
 ```
-Below is a conversation with an employee about AI tools.
-
+Below is a conversation with an employee about their work tasks.
 Return strictly by field, only what the person said themselves:
-
-1. Task: the last specific case
-
-2. Previous method
-
-3. Expectation
-
+1. Task: the last specific work task
+2. Context: for whom and why, what means they had
+3. Chosen tool or way, and why
 4. Result
-
-5. Breaking point: one tag from this list: {tags}
-
-6. Effect on work
-
-7. Self-reported frequency: daily / weekly / rarely / doesn't use / unknown
-
-8. 1–2 verbatim quotes about the breaking point
-
-If something isn't in the conversation, write "no data". Don't make things up.
+5. Effort: time and manual rework
+6. Constraints: data, access, security
+7. Difficulties: categories from the list {categories from the report's sign table} or "no difficulties"; if none fits, a new category in your own words
+8. Self-reported frequency: weekly / regularly / occasionally / doesn't use / unknown
+9. 1–2 verbatim quotes
+If something is not in the conversation, write "no data" and don't make it up.
 
 {text from Notes}
 ```
@@ -432,21 +419,21 @@ If something isn't in the conversation, write "no data". Don't make things up.
 
 case
 
-2 from one group
+repeats across several
 
-signal
+check with the questionnaire
 
-3+ from 2+ groups
+questionnaire confirmed
 
-pattern
+into the decision procedure
 
 **Takeaway:**
 
-**In this example:** A breaking point from one person is a case; from three people in two groups it's a pattern.
+**In this example:** A difficulty for one person is a case; a repeat across several is a reason to check with the questionnaire.
 
-**In general:** A tool hypothesis appears only through repetition. One prompt for all conversations keeps tags comparable, and "no data" stops ChatGPT from inventing answers for people.
+**In general:** The analysis keeps the whole task, not just the difficulty: without the context, the chosen way and the effort you cannot tell whether a new tool is needed. A repeat in interviews shows what to check, not how many people face it: only the questionnaire shows that. One prompt for all conversations keeps fields comparable, and "no data" stops ChatGPT from making things up.
 
-**Next step:** Once a week, group the table by the failure-point tag. Move any tag named by three people from two different groups to the pilot hypothesis list.
+**Next step:** Once several analyses have piled up, group the table by difficulty and move repeats into the answer options of the questionnaire. Record "no difficulties" as a result. Take categories from the report's sign table and add new ones if none fits. The pilot decision follows the procedure in the report.
 
 ## Further reading
 
@@ -454,7 +441,7 @@ Report
 
 ChatGPT Enterprise usage report
 
-How to build a usage report
+Who uses it, for which tasks, and which tools to buy next
 
 Sample
 
@@ -462,4 +449,4 @@ Who to interview
 
 Who to invite for interviews
 
-Interview design based on recommendations from @Kseniya_Vasil. All names, teams and numbers in the examples are fictional.
+Interview design based on recommendations from @Kseniya_Vasil. People, groups and numbers for the interviews come from the ChatGPT Enterprise usage report. It also holds the business task: what the company decides, who decides, and by which signs. All names, teams and numbers in the examples are fictional.

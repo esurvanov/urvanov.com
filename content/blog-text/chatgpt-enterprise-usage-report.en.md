@@ -24,9 +24,56 @@ Who to talk to before buying
 
 ## Which decisions the report helps make
 
-A company pays for hundreds of licenses for an AI tool. The business has to decide whether to buy specialized tools on top of the base one, for which teams, and where to direct the pilot budget. Console exports do not answer this directly: they only hold messages and spend per person.
+**Business task:** find out for which work tasks the current set of AI tools falls short and which solutions are worth testing before buying. The decision is made by the owner of the AI tools budget together with the leads of the teams where the pilot runs. Data access and security are approved by the information security team. The decision criteria are the signs in the table below.
 
-The report turns these exports into decisions: what the data proves, what needs checking in interviews, and what can safely be funded right away.
+
+
+That the current set is suboptimal somewhere is an assumption: the report and the interviews test it. "Suboptimal" breaks down into testable signs. The conclusion "no new tool is needed" is also a result.
+
+| Sign | How it shows | Interview category | Where the report shows it |
+|---|---|---|---|
+| Result quality | answers are inaccurate or made up | hallucinations | Connectors |
+| Time and manual rework | a lot of back-and-forth, the result is finished by hand | prompt | Depth, Main tool |
+| Reproducibility | a different result on the same task every time | reproducibility | Skills, Project themes |
+| Scale | a working scenario does not transfer to another team | scale | Uniformity |
+| Data access | the needed system is not connected | data access | Connectors |
+| Cost | expensive per unit of result | cost | Top by spend |
+
+Data limits: the report only sees the corporate tool and only for the export period, 3 months. Personal accounts and other tools do not show up in it.
+
+### How answers turn into a purchase decision
+
+The report shows where to look, and the purchase decision is made only after these five steps, so the money goes to a task many people have and nothing covers today.
+
+1
+
+Interviews
+
+Which tasks and difficulties exist and how people work around them now
+
+2
+
+Company-wide questionnaire
+
+How many people face a difficulty, how often, and how much it gets in the way
+
+3
+
+Compare
+
+Task scale, severity of consequences, workarounds, cost of the solution
+
+4
+
+Test tools
+
+Promising options on real tasks together with employees
+
+5
+
+Decision
+
+The budget owner decides by the six signs above: quality, time and rework, reproducibility, scale, data access, cost; "no new tool is needed" is a valid outcome
 
 Input
 
@@ -72,7 +119,7 @@ Verify each summary against the source export
 
 Select people and draw conclusions
 
-An interview list and hypotheses about tools
+An interview list and the questions to test in them
 
 Who to interview · How to run the interviews
 
@@ -152,9 +199,9 @@ Source: Users · Leaderboard for those who work only through Codex
 
 **In general:** The gap between "tried it" and "use it every week" shows how many people stopped after the first attempts. The benchmark for mass adoption is 50–70% of employees using it in daily work. Until adoption reaches that benchmark, more licenses will not drive growth: something other than access is holding people back.
 
-**Next step:** Put training into the largest group between "tried it" and "every week": it gives the fastest growth in regular use. Recount the breakdown once a month to see where people moved.
+**Next step:** Put training into the largest group between "tried it" and "every week": it gives the fastest growth in regular use. Recount the breakdown after the training to see where people moved.
 
-**Important.** Pick 5–10 people from the "occasionally" group, find out in interviews what got in the way, and run a review of real work cases with them. Recount the weekly share a month later. How to ask without suggesting the answer is covered in "How to interview people about their AI use".
+**Important.** Pick 5–10 people from the "occasionally" group, find out in interviews how they get their tasks done now, and run a review of real work cases with them. Recount the weekly share after the review. How to ask without suggesting the answer is covered in "How to interview people about their AI use".
 
 ### Uniformity
 
@@ -176,7 +223,7 @@ Source: Users · department and groups fields
 
 **In general:** A large spread between teams means working scenarios already exist but live in one or two teams: moving them is cheaper than buying something new. A uniformly low share across all teams points to a shared barrier: access, training, or unsuitable tasks. A uniformly high share means the tool has taken root and you can move to the next step. A team with barriers is not ready for a new tool yet.
 
-**Next step:** With a large spread, run a meetup: the strongest team shows three of its scenarios to the two weakest. Before the meetup, run 2–3 interviews about barriers in the weakest team. Recount the spread a month later: it should shrink.
+**Next step:** With a large spread, run a meetup: the strongest team shows three of its scenarios to the two weakest. Before the meetup, run 2–3 interviews about barriers in the weakest team. Recount the spread after the meetup: it should shrink.
 
 ### Main tool
 
@@ -224,7 +271,7 @@ Source: Leaderboard · one export per product
 
 **In general:** Top users are change agents: they find working scenarios first, and their experience affects whether a specialized tool pays off. Next to them are more cautious colleagues who need more time and a live example on their own tasks. Ranking by share of spend hides the change agents, so look at absolute spend.
 
-**Next step:** Involve top users as mentors: let them show their scenarios to colleagues who are just starting, on those colleagues' tasks. Invite cautious colleagues through examples and results, without mandates. Offer the top two or three a two-week experiment in a specialized tool with a before-and-after report.
+**Next step:** Involve top users as mentors: let them show their scenarios to colleagues who are just starting, on those colleagues' tasks. Invite cautious colleagues through examples and results, without mandates. Offer the top two or three an experiment in a specialized tool with a before-and-after report.
 
 The leaderboard has both spend and tokens. Compare the tokens-to-spend ratio within one group: one product and similar tasks. Whoever gets noticeably more tokens per dollar usually picks models and modes better. These are the most advanced and efficient users, and they are the first to invite as mentors. Introduce them to colleagues from the same group whose ratio is lower: working through one task together often gives more than a general training. Pairs from different teams bring cross-pollination: good techniques move between teams.
 
@@ -252,7 +299,7 @@ Source: Users · Leaderboard
 
 **In general:** Data shows what people do but not whether the current tool is enough for them. So a segment is a hypothesis: it suggests whom to invite to customer interviews, which questions to ask, and what problems people may run into. Tool candidates appear already here, and the choice between them is made after the interviews, for a confirmed problem.
 
-**Next step:** For each segment, talk to 2–3 people: where the current tool falls short and what they still do by hand. Gather candidates for a confirmed problem from three sources: consultations with innovators inside the company, outside experts, and market benchmarks, meaning what similar companies use. Pilot the best candidate with that segment. If the problem is not confirmed, postpone the segment until the next recount.
+**Next step:** For each segment, talk to 2–3 people: where the current tool falls short and what they still do by hand. Gather candidates for a confirmed problem from three sources: consultations with innovators inside the company, outside experts, and market benchmarks, meaning what similar companies use. Next, follow the decision procedure: questionnaire, comparison, and testing candidates on real tasks. If the problem is not confirmed, postpone the segment until the next recount.
 
 ## Nature of work
 
@@ -366,11 +413,11 @@ Source: Leaderboard · three exports with different "Product" filters
 
 ## People selection
 
-**Goal:** name specific people for each hypothesis.
+**Goal:** name specific people for each way of getting tasks done.
 
 ### Interview candidates
 
-A short list of people for each direction found. In the example the final list is 16 people out of 340; the table shows the first three. Your company will have its own number.
+A short list of people for each direction found. In the example the final list is 16 people out of 340; the table shows the first three. Your company will have its own number. The ChatGPT report is one of the sample sources: users of other tools and people who quit are added by the rules in "Who to interview", and the check across all employees is done with a questionnaire.
 
 | Person | Direction | Signal |
 |---|---|---|
@@ -382,11 +429,11 @@ Source: the users, leaderboard and projects exports, joined by email
 
 **Takeaway:**
 
-**In this example:** Hana Sato, Mira Castellano, and Jonas Keller test three different hypotheses: code, agentic tasks, and research.
+**In this example:** Hana Sato, Mira Castellano, and Jonas Keller represent three different ways of working: code, agentic tasks, and research.
 
-**In general:** The shortlist has one person per direction: code, agent tasks, research. Each conversation then tests its own idea and does not repeat another one.
+**In general:** The shortlist has one person per direction: code, agent tasks, research. Each conversation then shows its own way of working and does not repeat another one.
 
-**Next step:** Schedule three interviews for the coming week. Afterwards, decide which direction needs 2–3 more people.
+**Next step:** Schedule three interviews, one per direction. Afterwards, decide which direction needs 2–3 more people.
 
 ### Table of all people
 
@@ -396,8 +443,8 @@ Team B Activity: every week Tool: Work
 
 | Person | Team | Chat / Work | $ / 3 mo |
 |---|---|---|---|
-| Mira Castellano | Team B |  | 149.00 |
 | Tomás Reid | Team B |  | 112.00 |
+| Mira Castellano | Team B |  | 97.00 |
 
 Source: the users, leaderboard and projects exports, joined by email
 

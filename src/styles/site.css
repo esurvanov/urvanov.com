@@ -384,13 +384,15 @@ a.s-pill:hover, a.s-chip:hover { border-color: var(--accent); color: var(--accen
 /* Длинный заголовок: суть крупно, уточнение после двоеточия — второй строкой */
 .s-page-title.is-long { font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1.06; letter-spacing: -0.035em; text-wrap: pretty; }
 .s-title-sub { display: block; margin-top: 0.4em; font-size: 0.5em; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink-2); text-wrap: pretty; }
-.s-wide section[id] { scroll-margin-top: var(--sp-3); }
+.s-wide section[id], .s-wide .s-rich [id] { scroll-margin-top: var(--sp-3); }
 /* Подзаголовок широкого поста — на всю ширину колонки и по ширине, как текст статьи */
 .s-wide .s-article > header .s-lead { max-width: none; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 
 /* ---------- 13. Переходы между страницами ---------- */
 /* Полоса прокрутки не сдвигает страницу, когда появляется или пропадает */
 html { scrollbar-gutter: stable; }
+/* Ссылки на якоря внутри страницы листают плавно; переход на новую страницу — мгновенно (см. useSmoothNavigation) */
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 /* Плавная смена страницы (View Transitions): при переходах внутри сайта и при полной загрузке */
 @view-transition { navigation: auto; }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.22s; animation-timing-function: ease; }
