@@ -26,6 +26,7 @@ export function GameView() {
       <p className="s-lead">{t(g.tagline)}</p>
       <p className="g-actions">
         <a className="g-play" href={g.play} data-track-label={`play_${g.slug}`}>▶ {t({ ru: 'Играть в браузере', en: 'Play in your browser' })}</a>
+        {g.architecture && <Link className="g-repo" to={to(`/blog/${g.architecture.slug}`)}>{t({ ru: 'Архитектура игры', en: 'Game architecture' })}</Link>}
         <a className="g-repo" href={REPO + g.repoDir} target="_blank" rel="noopener">{t({ ru: 'Исходный код (MIT)', en: 'Source code (MIT)' })}</a>
       </p>
       <p className="g-genre">{t(g.genre)} · {t({ ru: 'бесплатно, без установки и регистрации', en: 'free, no install, no sign-up' })}</p>

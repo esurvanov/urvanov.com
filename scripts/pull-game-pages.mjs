@@ -21,6 +21,12 @@ for (const dir of readdirSync(GAMES).sort()) {
   const missing = REQUIRED.filter((k) => !(k in g))
   if (missing.length) { console.error(`pull-game-pages: ${f}: нет полей ${missing.join(', ')}`); process.exit(1) }
   if (g.repoDir !== dir) { console.error(`pull-game-pages: ${f}: repoDir «${g.repoDir}» ≠ папке «${dir}»`); process.exit(1) }
+  // статья об архитектуре лежит рядом (docs/architecture/post.json): страница игры ссылается на неё в блоге
+  const postFile = join(GAMES, dir, 'docs', 'architecture', 'post.json')
+  if (existsSync(postFile)) {
+    const post = JSON.parse(readFileSync(postFile, 'utf8'))
+    g.architecture = { slug: post.slug, path: `${dir}/docs/architecture` }
+  }
   const dest = join('public', 'games', g.slug)
   mkdirSync(dest, { recursive: true })
   g.shots = g.shots.map((s) => {
