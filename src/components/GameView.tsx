@@ -50,7 +50,20 @@ export function GameView() {
 
       <section className="s-section" aria-labelledby="g-controls">
         <h2 className="s-label" id="g-controls">{t({ ru: 'Управление', en: 'Controls' })}</h2>
-        <table className="g-table"><tbody>{t(g.controls).map(([k, v]) => <tr key={k}><th scope="row">{k}</th><td>{v}</td></tr>)}</tbody></table>
+        <ul className="g-keys">
+          {t(g.controls).map(([k, v]) => (
+            <li key={k}>
+              <span className="g-k">
+                {k.split(' · ').map((alt) => (
+                  <span className="g-combo" key={alt}>
+                    {alt.split(' + ').map((key, i) => <span key={key}>{i > 0 && <i>+</i>}<kbd>{key}</kbd></span>)}
+                  </span>
+                ))}
+              </span>
+              <span className="g-v">{v}</span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="s-section" aria-labelledby="g-facts">

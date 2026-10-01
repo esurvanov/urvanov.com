@@ -434,3 +434,22 @@ html { scrollbar-gutter: stable; }
 .arch svg { display: block; width: 100%; min-width: 640px; height: auto; }
 .arch svg.ad { --a-bg: var(--bg); --a-surface: var(--surface); --a-ink: var(--ink); --a-ink2: var(--ink-2); --a-ink3: var(--ink-3); --a-line: var(--line-2); --a-accent: var(--accent); }
 .arch figcaption { margin-top: var(--sp-1); color: var(--ink-3); font-size: var(--t-small); }
+
+/* страница игры: компактнее — шапка собрана плотно, разделы разнесены умеренно */
+.s-main:has(> .g-actions) { gap: var(--sp-3); }
+.s-main:has(> .g-actions) > .s-section { margin-top: var(--sp-3); }
+.g-hero { margin: var(--sp-2) 0 0; }
+/* управление: клавиши — «кнопками», слева колонка клавиш, справа что делают */
+.g-keys { list-style: none; margin: 0; padding: 0; max-width: 46em; display: flex; flex-direction: column; }
+.g-keys li { display: grid; grid-template-columns: minmax(8em, 13em) 1fr; gap: var(--sp-2); align-items: baseline; padding: 9px 0; border-top: 1px solid var(--line); }
+.g-keys li:first-child { border-top: 0; }
+.g-k { display: flex; flex-wrap: wrap; gap: 6px 10px; }
+.g-combo { display: inline-flex; align-items: center; gap: 4px; }
+.g-combo i { font-style: normal; color: var(--ink-3); font-size: var(--t-small); }
+.g-keys kbd { display: inline-block; min-width: 1.9em; padding: 2px 8px; text-align: center; font-family: var(--mono); font-size: 0.86em; line-height: 1.5; color: var(--ink); background: var(--surface); border: 1px solid var(--line-2, var(--line)); border-bottom-width: 2px; border-radius: 6px; }
+.g-v { line-height: 1.5; color: var(--ink-2); }
+@media (max-width: 600px) { .g-keys li { grid-template-columns: 1fr; gap: 4px; } }
+/* статьи об архитектуре: схемы и абзацы ближе друг к другу */
+.s-wide .s-prose figure.arch { margin: var(--sp-2) 0; }
+.s-wide .s-prose h2 { margin: 1.4em 0 0.4em; }
+.s-wide .s-prose p { margin: 0 0 0.8em; }
