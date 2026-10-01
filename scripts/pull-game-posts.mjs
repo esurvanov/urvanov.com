@@ -29,7 +29,7 @@ function gameLinks(dir, lang) {
   const g = JSON.parse(readFileSync(pageFile, 'utf8')), en = lang === 'en'
   const page = `${en ? '/en' : ''}/materials/games/${g.slug}/`
   const label = en ? ['Game page', 'Play', 'Source of this article and diagrams'] : ['Страница игры', 'Играть', 'Исходники этой статьи и схем']
-  return `\n\n---\n\n🎮 ${label[0]}: [${g.name[lang]}](${page}) · ▶ [${label[1]}](${g.play}) · 📁 [${label[2]}](${REPO}${g.repoDir}/docs/architecture)\n`
+  return `\n\n---\n\n${label[0]}: [${g.name[lang]}](${page}) · [${label[1]}](${g.play}) · [${label[2]}](${REPO}${g.repoDir}/docs/architecture)\n`
 }
 
 for (const file of found) {
