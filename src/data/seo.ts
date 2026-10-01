@@ -1,7 +1,6 @@
 import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { POSTS } from '@/data/blog'
 import { config } from '@/data/config'
-import { CITY_CHATS } from '@/data/links'
 import { withLang, type Lang, type L } from '@/lib/i18n'
 
 export const SITE_URL = 'https://www.urvanov.com'
@@ -10,7 +9,7 @@ export const SITE_NAME = 'Егор Урванов'
 // Единая карточка человека — @id, по которому её собирают в один узел на любой странице
 // (сама карточка строится один раз в scripts/lib.mjs и добавляется в каждую страницу через headTags)
 export const PERSON_ID = `${SITE_URL}/#person`
-export const JAIORA_ORG_ID = `${SITE_URL}/jaiora/#org`
+export const JAIORA_ORG_ID = 'https://jaiora.me/#org'
 
 export interface PageMeta {
   path: string
@@ -173,28 +172,6 @@ const BASE: Base[] = [
     ru: { title: `Игры в браузере — ${SITE_NAME}`, description: 'Хроники Королевств, Березовка и Сибирь: браузерные игры без установки.' },
     en: { title: 'Browser games — Egor Urvanov', description: 'Chronicles of Kingdoms, Berezovka, and Siberia: browser games, no installation.' },
     sources: ['src/components/MaterialsView.tsx', 'src/data/seo.ts'],
-  },
-  {
-    path: '/jaiora',
-    ru: { title: 'Jaiora — оффлайн-LinkedIn: находим человека под задачу и знакомим вживую', description: 'Jaiora — сообщество и встречи: у любой задачи и цели есть человек, который поможет. Помогаем его найти и встретиться вживую. Городские и тематические чаты.' },
-    en: { title: 'Jaiora — offline LinkedIn: we find the right person and introduce you in person', description: 'Jaiora is a community and meetups: every task and goal has a person who can help. We help you find them and meet in person. City and topic chats.' },
-    jsonLd: (l) => ({
-      '@type': 'Organization',
-      '@id': JAIORA_ORG_ID,
-      name: 'Jaiora',
-      alternateName: l === 'en' ? 'Jaiora' : 'Джайора',
-      slogan: l === 'en' ? 'The right person exists. You just need to be in the same room.' : 'Нужный человек существует. Осталось оказаться с ним в одной комнате.',
-      description: l === 'en'
-        ? 'Offline LinkedIn: a networking community and meetups. Every task and goal has a person who can help — we help you find them and meet in person. 10,000 members across 11 cities today, with a 2027 goal of 30 cities and 30,000 members.'
-        : 'Оффлайн-LinkedIn: сообщество нетворкинга и встречи вживую. У любой задачи и цели есть человек, который поможет её решить — мы помогаем его найти и встретиться. Сейчас 10 000 участников в 11 городах, цель на 2027 год — 30 городов и 30 000 участников.',
-      url: url(withLang('/jaiora', l)),
-      logo: `${SITE_URL}/jaiora/logo.svg`,
-      foundingDate: '2026',
-      founder: person(),
-      areaServed: CITY_CHATS.map((c) => ({ '@type': 'City', name: l === 'en' ? (c.en?.label ?? c.label) : c.label })),
-      sameAs: CITY_CHATS.map((c) => c.url),
-    }),
-    sources: ['src/components/JaioraView.tsx', 'src/data/jaiora.ts', 'src/data/links.ts'],
   },
   {
     path: '/talk/spec-driven-development',

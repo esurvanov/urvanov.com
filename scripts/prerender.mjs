@@ -9,7 +9,7 @@ import { analyticsHead, headTags, esc, urlOf, SITE_URL } from './lib.mjs'
 const DIST = 'dist'
 const {
   render, allPages, POSTS, GAMES, LABS, config,
-  MILESTONES, ABOUT_LEAD, PLACES, LINK_GROUPS, itemText, CITY_CHATS, THEME_CHATS, JAIORA, BIO,
+  MILESTONES, ABOUT_LEAD, PLACES, LINK_GROUPS, itemText, CITY_CHATS, THEME_CHATS, BIO,
 } = await import(pathToFileURL(join(process.cwd(), 'dist-ssr/entry-server.js')).href)
 
 const template = readFileSync(join(DIST, 'index.html'), 'utf8')
@@ -85,6 +85,11 @@ for (const page of pages) {
   write(page.path === '/' ? 'index.html' : join(page.path, 'index.html'), build(page, pages, { body, noindex }))
 }
 
+// Jaiora переехала на jaiora.me: старые адреса не отдают 404, а переправляют туда и не индексируются
+const jaioraMoved = (to) => `<!doctype html>\n<html lang="ru"><head><meta charset="utf-8"><title>Jaiora → jaiora.me</title><meta name="robots" content="noindex"><link rel="canonical" href="${to}"><meta http-equiv="refresh" content="0; url=${to}"></head><body><a href="${to}">${to}</a></body></html>\n`
+write('jaiora/index.html', jaioraMoved('https://jaiora.me/'))
+write('en/jaiora/index.html', jaioraMoved('https://jaiora.me/en/'))
+
 // 404: реальная страница (NotFoundView), без canonical и хлебных крошек — адреса /404/ не существует
 let body404 = ''
 try {
@@ -151,7 +156,7 @@ write('llms.txt', [
   ...(enPosts.length ? ['## Blog (EN)', ...enPosts, ''] : []),
   '## Разделы / Sections',
   `- [Обо мне](${SITE_URL}/about/) · [About](${SITE_URL}/en/about/): профиль, достижения, образование / profile, achievements, education`,
-  `- [Jaiora](${SITE_URL}/jaiora/) · [EN](${SITE_URL}/en/jaiora/): сообщество и встречи / community and meetups`,
+  `- [Jaiora](https://jaiora.me/): сообщество и встречи, отдельный сайт / community and meetups, a separate site`,
   `- [Доклад: ${config.talkTitle}](${SITE_URL}/talk/spec-driven-development/) · [Talk](${SITE_URL}/en/talk/spec-driven-development/): полный текст слайдов / full slide text (RU)`,
   `- [Каталог AI-паттернов](${SITE_URL}/patterns/): паттерны разработки с AI-агентами (RU)`,
   `- [Презентации](${SITE_URL}/materials/presentations/) · [Presentations](${SITE_URL}/en/materials/presentations/)`,
@@ -160,12 +165,12 @@ write('llms.txt', [
   `- [Ссылки](${SITE_URL}/links/) · [Links](${SITE_URL}/en/links/)`,
   '',
   '## Полный текст / Full text',
-  `- [llms-full.txt](${SITE_URL}/llms-full.txt): «Обо мне», Jaiora и все посты блога целиком, RU и EN / “About”, Jaiora and all blog posts in full, RU and EN`,
+  `- [llms-full.txt](${SITE_URL}/llms-full.txt): «Обо мне» и все посты блога целиком, RU и EN / “About” and all blog posts in full, RU and EN`,
   '',
 ].join('\n'))
 
-// llms-full.txt — полный текст «Обо мне» и Jaiora, RU и EN. Собран из тех же данных, что рендерят
-// AboutView/JaioraView (src/data/about.ts, src/data/jaiora.ts, src/data/links.ts), а не переписан руками.
+// llms-full.txt — полный текст «Обо мне», RU и EN. Собран из тех же данных, что рендерит
+// AboutView (src/data/about.ts, src/data/links.ts), а не переписан руками.
 const about = LINK_GROUPS.find((g) => g.titleEn === 'About me')
 const achievements = about.blocks.find((b) => b.titleEn === 'Projects and achievements').items
 const education = about.blocks.find((b) => b.titleEn === 'Education').items
@@ -192,54 +197,11 @@ function aboutSection(lang) {
   return lines.join('\n')
 }
 
-function jaioraSection(lang) {
-  const c = JAIORA[lang]
-  const cityNames = (lang === 'en' ? CITY_CHATS.map((x) => x.en?.label ?? x.label) : CITY_CHATS.map((x) => x.label))
-  const themeNames = (lang === 'en' ? THEME_CHATS.map((x) => x.en?.label ?? x.label) : THEME_CHATS.map((x) => x.label))
-  const lines = [
-    `## Jaiora (${lang.toUpperCase()})`,
-    '',
-    `${c.eyebrow} — ${c.title}`,
-    '',
-    c.lead,
-    '',
-    `### ${c.rulesTitle}`,
-    c.rulesLead,
-    ...c.rules.map((r) => `- ${r.title}: ${r.text}`),
-    ...c.values.map((v) => `- ${v.title}: ${v.text}`),
-    '',
-    `### ${c.findTitle}`,
-    ...c.find.map((f) => `- ${f.title}: ${f.text}`),
-    '',
-    `### ${c.doneTitle}`,
-    `#### ${c.socialTitle}`,
-    ...c.social.map((s) => `- ${s.title} (${s.year}): ${s.text}`),
-    `#### ${c.eventsTitle}`,
-    `${c.eventsMain}. ${c.eventsText}`,
-    ...c.eventFormats.map((f) => `- ${f}`),
-    '',
-    `### ${c.storyTitle}`,
-    ...c.story.map((s) => `- ${s.phase ? `[${s.phase}] ` : ''}${s.title}${s.year ? ` (${s.year})` : ''}: ${s.text}`),
-    '',
-    `### ${c.haveTitle}`,
-    ...c.platform.map((p) => `- ${p.title}: ${p.text}`),
-    `${c.cityChats}: ${cityNames.join(', ')}`,
-    `${c.themeChats}: ${themeNames.join(', ')}`,
-    '',
-    `### ${c.helpTitle}`,
-    ...c.help.map((h) => `- ${h.title}: ${h.text}`),
-    '',
-  ]
-  return lines.join('\n')
-}
-
 write('llms-full.txt', [
-  '# Егор Урванов / Egor Urvanov — «Обо мне», Jaiora и блог целиком',
+  '# Егор Урванов / Egor Urvanov — «Обо мне» и блог целиком',
   '',
   aboutSection('ru'),
   aboutSection('en'),
-  jaioraSection('ru'),
-  jaioraSection('en'),
   ...(POSTS.length ? ['## Блог / Blog', '', ...POSTS.map((p) => postMd(p).replace(/^# /, '### '))] : []),
 ].join('\n'))
 

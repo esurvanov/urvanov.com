@@ -8,7 +8,7 @@ export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
 // Единая карточка человека — одна и та же на каждой странице (сюда её добавляет headTags),
 // а не описывается заново в каждом компоненте. Факты — как в src/data/profile.ts, держать в согласии.
 export const PERSON_ID = `${SITE_URL}/#person`
-export const JAIORA_ORG_ID = `${SITE_URL}/jaiora/#org`
+export const JAIORA_ORG_ID = 'https://jaiora.me/#org'
 
 function person(lang) {
   const ru = lang !== 'en'

@@ -31,9 +31,9 @@
 В Метрику прирост также уходит параметром визита `game_seconds.<игра>`.
 
 **`section`** — имя ближайшей размеченной области: `data-track-section`, иначе `id` элемента, иначе `aria-labelledby` у `<section>`, иначе `header`/`nav`/`footer`/`main`.
-Примеры: `/about` — `hero`, `contacts`, `about-path`, `about-places`, `about-ach`, `about-edu`; `/jaiora` — `hero`, `meet`, `rules`, `find`, `done`, `story`, `have`, `cities`, `theme_chats`, `help`; `/materials` — `m-pres`, `m-games`; `/links` — `jaiora`, `about_me`, `talks`, `telegram_channels`; шапка — `site_nav`.
+Примеры: `/about` — `hero`, `contacts`, `about-path`, `about-places`, `about-ach`, `about-edu`;  `/materials` — `m-pres`, `m-games`; `/links` — `jaiora`, `about_me`, `talks`, `telegram_channels`; шапка — `site_nav`.
 
-**`page`** — путь без слэша на конце: `/about`, `/en/jaiora`.
+**`page`** — путь без слэша на конце: `/about`, `/en/about`.
 
 Игры (`game`): `age-of-empires`, `berezovka`, `sibiria`.
 

@@ -4,7 +4,6 @@ import PatternsView from '@/components/PatternsView'
 import PatternsCategoryView from '@/components/PatternsCategoryView'
 import LinksView from '@/components/LinksView'
 import HomeView from '@/components/HomeView'
-import JaioraView from '@/components/JaioraView'
 import AboutView from '@/components/AboutView'
 import BlogView from '@/components/BlogView'
 import BlogPostView from '@/components/BlogPostView'
@@ -31,7 +30,6 @@ export default function App() {
       <Route path="/materials" element={<MaterialsView />} />
       <Route path="/materials/presentations" element={<PresentationsView />} />
       <Route path="/materials/games" element={<GamesView />} />
-      <Route path="/jaiora" element={<JaioraView />} />
       <Route path="/links" element={<LinksView />} />
       <Route path="/talk/spec-driven-development" element={<TalkView />} />
       <Route path="/en" element={<HomeView />} />
@@ -41,7 +39,6 @@ export default function App() {
       <Route path="/en/materials" element={<MaterialsView />} />
       <Route path="/en/materials/presentations" element={<PresentationsView />} />
       <Route path="/en/materials/games" element={<GamesView />} />
-      <Route path="/en/jaiora" element={<JaioraView />} />
       <Route path="/en/links" element={<LinksView />} />
       <Route path="/en/talk/spec-driven-development" element={<TalkView />} />
       <Route path="/slide/:index" element={<SlideView />} />

@@ -19,7 +19,7 @@ export default function NotFoundView() {
 
       <nav aria-label="Разделы / Sections">
         <ol className="s-index">
-          {[{ to: '/', label: 'Главная / Home' }, ...NAV_ITEMS.map((s) => ({ to: s.to, label: `${s.label.ru} / ${s.label.en}` })), { to: '/en/', label: 'English version' }].map((s, i) => (
+          {[{ to: '/', label: 'Главная / Home' }, ...NAV_ITEMS.filter((s) => !s.external).map((s) => ({ to: s.to, label: `${s.label.ru} / ${s.label.en}` })), { to: '/en/', label: 'English version' }].map((s, i) => (
             <li key={s.to}>
               <Link to={s.to.endsWith('/') ? s.to : `${s.to}/`}>
                 <span className="n">{String(i + 1).padStart(2, '0')}</span>

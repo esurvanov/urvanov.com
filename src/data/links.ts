@@ -41,7 +41,7 @@ export const LINK_GROUPS: LinkGroup[] = [
     blocks: [
       {
         variant: 'cards',
-        items: [{ url: '/jaiora', label: 'Jaiora', comment: 'Оффлайн-LinkedIn · чаты · встречи', en: { comment: 'Offline LinkedIn · chats · meetups' } }],
+        items: [{ url: 'https://jaiora.me/', label: 'Jaiora', comment: 'Оффлайн-LinkedIn · чаты · встречи', en: { comment: 'Offline LinkedIn · chats · meetups' } }],
       },
     ],
   },

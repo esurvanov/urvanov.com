@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { postsFor } from '@/data/blog'
-import { NAV_ITEMS } from '@/data/nav'
+import { NAV_ITEMS, type NavItem } from '@/data/nav'
 import { BIO } from '@/data/profile'
 import Page from '@/components/site/Page'
 import { otherLang, stripLang, useT, withLang, withSlash } from '@/lib/i18n'
@@ -14,6 +14,14 @@ const CONTACTS = [
   { label: 'Stack Overflow', network: 'stackoverflow', url: 'https://ru.stackoverflow.com/users/188116/eurvanov' },
   { label: 'GetMentor', network: 'getmentor', url: 'https://getmentor.dev/mentor/egor-urvanov-1077' },
 ]
+
+// внешний раздел (Jaiora живёт на своём домене) — обычная ссылка, остальные — маршруты сайта
+function Wrap({ item, to, children }: { item: NavItem; to: string; children: React.ReactNode }) {
+  const cls = item.jaiora ? 'jai' : undefined
+  return item.external
+    ? <a href={item.to} className={cls} rel="noopener">{children}</a>
+    : <Link to={to} className={cls}>{children}</Link>
+}
 
 export default function HomeView() {
   const { lang, t, to } = useT()
@@ -51,14 +59,14 @@ export default function HomeView() {
         <ol className="s-index">
           {NAV_ITEMS.map((s, i) => (
             <li key={s.to}>
-              <Link to={to(s.to)} className={s.jaiora ? 'jai' : undefined}>
+              <Wrap item={s} to={to(s.to)}>
                 <span className="n">{String(i + 1).padStart(2, '0')}</span>
                 <span className="t">{t(s.label)}</span>
                 <span className="h">
                   {s.to === '/blog' && posts > 0 ? t({ ru: `${posts} постов`, en: `${posts} posts` }) : t(s.hint)}
                 </span>
                 <span className="ar" aria-hidden="true">→</span>
-              </Link>
+              </Wrap>
             </li>
           ))}
         </ol>
