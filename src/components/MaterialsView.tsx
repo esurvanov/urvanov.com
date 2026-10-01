@@ -69,28 +69,19 @@ const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => {
   return lp ? { to: withSlash(withLang(`/materials/interactive/${lp.slug}`, lang)), title, hint, note } : { href: l.path, title, hint, note }
 })
 
-// /materials/ — только группы: раздел, сколько в нём, названия внутри. Описания и ссылки на сами материалы — на странице раздела.
+// /materials/ — только группы: раздел и что в нём. Описания и ссылки на сами материалы — на странице раздела.
 export function MaterialsView() {
   const { lang, t, to } = useT()
-  const groups = [
-    { path: '/materials/games', label: t({ ru: 'Игры', en: 'Games' }), hint: t({ ru: 'в браузере, без установки', en: 'in the browser, no install' }), names: gameRows(lang).map((r) => r.title) },
-    { path: '/materials/interactive', label: t({ ru: 'Интерактивы', en: 'Interactive' }), hint: t({ ru: 'приёмы решения задач в 3D', en: 'problem-solving methods in 3D' }), names: labRows(lang).map((r) => r.title) },
-    { path: '/materials/presentations', label: t({ ru: 'Презентации', en: 'Presentations' }), hint: t({ ru: 'доклад, слайды, каталог паттернов', en: 'talk, slides, patterns catalog' }), names: presentationRows(lang).map((r) => r.title) },
-  ]
+  const group = (path: string, title: string, rows: Row[]): Row => ({ to: withSlash(to(path)), title, hint: rows.map((r) => r.title).join(' · ') })
   return (
     <Page>
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { label: t({ ru: 'Материалы', en: 'Materials' }) }]} />
       <h1 className="s-page-title">{t({ ru: 'Материалы', en: 'Materials' })}</h1>
-      <nav aria-label={t({ ru: 'Разделы материалов', en: 'Materials sections' })} className="m-groups">
-        {groups.map((x) => (
-          <Link key={x.path} to={withSlash(to(x.path))} className="m-group">
-            <span className="m-g-head"><b>{x.label}</b><span className="m-g-n">{x.names.length}</span></span>
-            <span className="m-g-hint">{x.hint}</span>
-            <span className="m-g-names">{x.names.join(' · ')}</span>
-            <span className="ar" aria-hidden="true">→</span>
-          </Link>
-        ))}
-      </nav>
+      <Rows items={[
+        group('/materials/games', t({ ru: 'Игры', en: 'Games' }), gameRows(lang)),
+        group('/materials/interactive', t({ ru: 'Интерактивы', en: 'Interactive' }), labRows(lang)),
+        group('/materials/presentations', t({ ru: 'Презентации', en: 'Presentations' }), presentationRows(lang)),
+      ]} />
     </Page>
   )
 }
