@@ -402,3 +402,21 @@ html { scrollbar-gutter: stable; }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
+
+/* Схемы архитектуры в постах: .arch > svg (боксы и стрелки на токенах сайта) */
+.arch { margin: var(--sp-3) 0; overflow-x: auto; }
+.arch svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.arch figcaption { margin-top: var(--sp-1); color: var(--ink-3); font-size: var(--t-small); }
+.arch .bx { fill: var(--surface); stroke: var(--line-2); stroke-width: 1.5; }
+.arch .bx.c { stroke: var(--accent); }
+.arch .bx.x { stroke: var(--ink-3); stroke-dasharray: 5 4; }
+.arch .bx.p { stroke: var(--ink); }
+.arch .t1 { fill: var(--ink); font: 700 13px var(--font); }
+.arch .t2 { fill: var(--ink-3); font: 500 11px var(--mono); }
+.arch .ln { stroke: var(--ink-3); stroke-width: 1.5; fill: none; }
+.arch .ln.ds { stroke-dasharray: 5 4; }
+.arch .ar { fill: var(--ink-3); }
+.arch .lbbg { fill: var(--bg); }
+.arch .lb, .arch .lb2 { fill: var(--ink-2); font: 500 11px var(--mono); }
+.arch .life { stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; }
+.arch .note { fill: var(--surface); stroke: var(--line-2); stroke-width: 1; }
