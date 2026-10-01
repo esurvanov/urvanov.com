@@ -464,3 +464,24 @@ html { scrollbar-gutter: stable; }
 .g-fold > summary::after { content: '+'; font-family: var(--mono); color: var(--accent); }
 .g-fold[open] > summary::after { content: '–'; }
 .g-fold[open] > summary { margin-bottom: var(--sp-2); }
+
+/* блок «Об игре» в конце статей об архитектуре — тот же вид, что «Дальше по теме» в других постах */
+.arch-next { margin-top: 64px; padding-top: 24px; border-top: 2px solid var(--line-strong); }
+.arch-next h2 { margin: 0 0 var(--sp-2); }
+.arch-next a { color: inherit; text-decoration: none; }
+.arch-next .ev-cta { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border: 2px solid var(--accent); border-radius: 6px; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+.arch-next .ev-cta:hover { background: var(--surface); }
+.arch-next .ev-ci { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 6px; background: var(--accent); color: #fff; }
+.arch-next .ev-ci svg { width: 24px; height: 24px; }
+.arch-next .ev-ct { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.arch-next .ev-ct small { font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.arch-next .ev-ct b { font-size: 17px; }
+.arch-next .ev-ct span { font-size: 13.5px; color: var(--ink-2); }
+.arch-next .ev-ca svg { width: 22px; height: 22px; color: var(--accent); }
+.arch-next .links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+.arch-next .links a { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px 18px; }
+.arch-next .links a:hover { border-color: var(--accent); }
+.arch-next .links .k { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.arch-next .links .t { font-weight: 700; font-size: 17px; color: var(--ink); margin: 4px 0 3px; }
+.arch-next .links .d { font-size: 14px; color: var(--ink-2); line-height: 1.45; text-align: left; }
+@media (max-width: 760px) { .arch-next .links { grid-template-columns: 1fr; } }

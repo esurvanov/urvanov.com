@@ -22,14 +22,21 @@ const inlineSvg = (dir, file, caption, alt) => {
 }
 
 const REPO = 'https://github.com/esurvanov/awesome-games/tree/main/'
-// Соседняя страница игры (docs/page/page.json) — чтобы статья вела на неё; нет страницы — блока нет
+// Соседняя страница игры (docs/page/page.json) — чтобы статья вела на неё; нет страницы — блока нет.
+// Блок оформлен как «Дальше по теме» в других постах блога: главная карточка и три карточки-ссылки (стили .arch-next в site.css)
+const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+const PLAY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z"/></svg>'
 function gameLinks(dir, lang) {
   const pageFile = join(dir, '..', 'page', 'page.json')
   if (!existsSync(pageFile)) return ''
   const g = JSON.parse(readFileSync(pageFile, 'utf8')), en = lang === 'en'
-  const page = `${en ? '/en' : ''}/materials/games/${g.slug}/`
-  const label = en ? ['Game page', 'Play', 'Source of this article and diagrams'] : ['Страница игры', 'Играть', 'Исходники этой статьи и схем']
-  return `\n\n---\n\n${label[0]}: [${g.name[lang]}](${page}) · [${label[1]}](${g.play}) · [${label[2]}](${REPO}${g.repoDir}/docs/architecture)\n`
+  const pre = en ? '/en' : ''
+  const T = en
+    ? { h: 'About the game', k: 'Game page', cards: [['Game', 'Play in the browser', 'no install, no sign-up', g.play], ['Repository', 'Source code', 'this article and the diagrams live next to the game', `${REPO}${g.repoDir}/docs/architecture`], ['More', 'All games', 'pages of the other games', `${pre}/materials/games/`]] }
+    : { h: 'Об игре', k: 'Страница игры', cards: [['Игра', 'Играть в браузере', 'без установки и регистрации', g.play], ['Репозиторий', 'Исходники', 'статья и схемы лежат рядом с игрой', `${REPO}${g.repoDir}/docs/architecture`], ['Ещё', 'Все игры', 'страницы остальных игр', `${pre}/materials/games/`]] }
+  const cards = T.cards.map(([k, t, d, href]) => `<a href="${href}"><div class="k">${k}</div><div class="t">${t}</div><div class="d">${d}</div></a>`).join('')
+  const cta = `<a class="ev-cta" href="${pre}/materials/games/${g.slug}/"><span class="ev-ci">${PLAY}</span><span class="ev-ct"><small>${T.k}</small><b>${g.name[lang]}</b><span>${g.tagline[lang]}</span></span><span class="ev-ca">${ARROW}</span></a>`
+  return `\n\n<section class="arch-next"><h2>${T.h}</h2>${cta}<div class="links three">${cards}</div></section>\n`
 }
 
 for (const file of found) {
