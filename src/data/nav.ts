@@ -6,6 +6,7 @@ export interface NavItem {
   label: L
   hint: L
   jaiora?: boolean
+  external?: boolean
 }
 
 export const NAV_ITEMS: NavItem[] = [
@@ -13,5 +14,5 @@ export const NAV_ITEMS: NavItem[] = [
   { to: '/blog', label: { ru: 'Блог', en: 'Blog' }, hint: { ru: 'AI · инженерия', en: 'AI · engineering' } },
   { to: '/materials', label: { ru: 'Материалы', en: 'Materials' }, hint: { ru: 'презентации · игры', en: 'talks · games' } },
   { to: '/links', label: { ru: 'Ссылки', en: 'Links' }, hint: { ru: 'профили · выступления', en: 'profiles · talks' } },
-  { to: '/jaiora', label: { ru: 'Jaiora', en: 'Jaiora' }, hint: { ru: 'оффлайн-LinkedIn', en: 'offline LinkedIn' }, jaiora: true },
+  { to: 'https://jaiora.me/', external: true, label: { ru: 'Jaiora', en: 'Jaiora' }, hint: { ru: 'оффлайн-LinkedIn', en: 'offline LinkedIn' }, jaiora: true },
 ]
