@@ -428,3 +428,9 @@ html { scrollbar-gutter: stable; }
 .g-faq h3 { margin: 0 0 4px; font-size: var(--t-title); letter-spacing: -0.02em; }
 .g-faq p { margin: 0; line-height: 1.6; color: var(--ink-2); }
 @media (max-width: 600px) { .g-facts > div { grid-template-columns: 1fr; gap: 2px; } }
+
+/* Схемы архитектуры в постах: самодостаточные .svg из репозитория игры; цвета берутся из токенов сайта */
+.arch { margin: var(--sp-3) 0; overflow-x: auto; }
+.arch svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.arch svg.ad { --a-bg: var(--bg); --a-surface: var(--surface); --a-ink: var(--ink); --a-ink2: var(--ink-2); --a-ink3: var(--ink-3); --a-line: var(--line-2); --a-accent: var(--accent); }
+.arch figcaption { margin-top: var(--sp-1); color: var(--ink-3); font-size: var(--t-small); }
