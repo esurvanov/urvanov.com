@@ -52,6 +52,84 @@ Mitchell Hashimoto's principle: when the agent makes a mistake, change the harne
 
 **Next step:** Adopt a rule: any agent mistake you had to fix by hand becomes a line in the instructions or a test on the same day.
 
+## How a harness is laid out: 3 × 3
+
+Three domains of the loop and three contexts in each — nine canons. Every canon has exactly one domain and one context.
+
+**Spec:** what must be true
+
+**Skill:** how to act
+
+**Memory:** what to rely on
+
+**Expectation:** what should be
+
+Spec genres, schemas requirement levels number passport
+
+Skill prediction before acting
+
+Memory actuator roles live · MCP
+
+**Observation:** what was measured
+
+Spec evidence rank finding format scale
+
+Skill sensor records the fact
+
+Memory live only
+
+**Loop:** compare and decide
+
+Spec rule completeness criteria findings registry
+
+Skill compare count repeats patch or revise
+
+Memory empty for now
+
+Expectation Observation
+
+Loop ✕ no reverse link
+
+patch revise rules
+
+→ skill → spec of its domain· a commit hook script checks the direction
+
+**snapshot:** a table, updated after each new measurement
+
+**live:** a protocol, fresh every time, nothing stored
+
+**Takeaway:**
+
+**In this example:** The loop splits into Expectation, Observation and Loop, each with its own spec, skill and memory. Loop reads the other two domains; they never read Loop.
+
+**In general:** It is a negative feedback loop: the target value is compared with the measured one, and something changes only on a mismatch. A strict reference direction keeps the domains from tangling, and the same concept repeating in two domains is not a defect.
+
+**Next step:** Sort the files of your harness into the nine cells and check that no Expectation or Observation file refers to Loop.
+
+## The double loop
+
+**single loop:** fix the action under the same rules
+
+**double loop:** change the rules themselves
+
+**Patches without a new prediction:** fix it with a rule
+
+**Several complaints:** first test for a shared cause
+
+**A new rule:** accepted only if old cases follow from it
+
+**No external check:** discard it, with a record
+
+The loop applies to itself: every run ends with the residual risk, never with a “done” status.
+
+**Takeaway:**
+
+**In this example:** A series of patches, complaints, a new rule and an external check are four checkable principles the Loop uses to decide whether to fix the action or change the rules.
+
+**In general:** A single loop fixes the result within the old rules. A double loop changes the rules themselves, and does it by checkable principles, so the harness learns without drifting from random edits.
+
+**Next step:** When the same fix comes up a third time, stop and ask which rule causes it. Change the rule only if it also explains the old cases.
+
 ## Guides and sensors
 
 **Guides:** before the action

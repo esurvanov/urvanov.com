@@ -9,7 +9,7 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { to: '/about', label: { ru: 'Обо мне', en: 'About' }, hint: { ru: 'CTO · ML · ментор №1', en: 'CTO · ML · #1 mentor' } },
+  { to: '/about', label: { ru: 'Обо мне', en: 'About' }, hint: { ru: 'CTO · AI · ментор №1', en: 'CTO · AI · #1 mentor' } },
   { to: '/blog', label: { ru: 'Блог', en: 'Blog' }, hint: { ru: 'AI · инженерия', en: 'AI · engineering' } },
   { to: '/materials', label: { ru: 'Материалы', en: 'Materials' }, hint: { ru: 'презентации · игры', en: 'talks · games' } },
   { to: '/links', label: { ru: 'Ссылки', en: 'Links' }, hint: { ru: 'профили · выступления', en: 'profiles · talks' } },
