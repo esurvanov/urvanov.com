@@ -21,3 +21,6 @@ npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Статьи, подтянутые из репозитория игр при сборке (scripts/pull-game-posts.mjs)
+content/blog/echo-of-the-rift-architecture*.md

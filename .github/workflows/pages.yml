@@ -27,14 +27,15 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build
-      # Игры живут в своём репозитории и подтягиваются при каждой выкладке
+      # Игры живут в своём репозитории и подтягиваются при каждой выкладке: статьи из их docs (pull-game-posts.mjs) попадают
+      # в блог при сборке сайта, сами игры копируются в dist ниже
       # fetch-depth: 0 — тоже полная история: patch-games.mjs берёт из неё дату игр для sitemap.xml
       - uses: actions/checkout@v4
         with:
           repository: esurvanov/awesome-games
           path: games
           fetch-depth: 0
+      - run: npm run build
       - run: |
           for game in berezovka sibiria severny-razlom skhodka zhitie; do
             mkdir -p "dist/$game"
