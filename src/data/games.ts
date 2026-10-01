@@ -265,7 +265,7 @@ export const GAME_PAGES: GamePage[] = [
         'Снег, который помнит: каждый ботинок, копыто и лапа оставляют свой след',
         'Пилот опирается на скалы и стены, упирается в склоны, перепрыгивает низкие препятствия',
         'Живая природа: олени и другие животные; ночь с северным сиянием, лунными тенями, туманом и снегопадом',
-        'Немного боя: кристальные существа и голем в Разломе; по желанию — ИИ-отшельник, отвечающий на ваш текст (нужен локальный сервер)',
+        'Немного боя: кристальные существа и голем в Разломе',
       ],
       en: [
         'An open island, 900 × 900 m: crash site, station, lake, ruins, forest, sea ice, the Rift',
@@ -274,7 +274,7 @@ export const GAME_PAGES: GamePage[] = [
         'Snow that remembers: every boot, hoof and paw leaves its own print',
         'The pilot leans on rocks and walls, braces on slopes and vaults low obstacles',
         'Wildlife: stags and other animals; a night with aurora, moon shadows, fog and falling snow',
-        'A little combat: crystal shardlings and a golem in the Rift; optionally an AI hermit who answers what you type (needs a local server)',
+        'A little combat: crystal shardlings and a golem in the Rift',
       ],
     },
     controls: {
@@ -290,13 +290,11 @@ export const GAME_PAGES: GamePage[] = [
         ['Нужна ли установка?', 'Нет. Нужен настольный браузер с WebGL 2.'],
         ['Что делать, если картинка тормозит?', 'Игра подбирает качество под компьютер сама; на слабых машинах есть облегчённый режим.'],
         ['Есть ли связь с «Северным Разломом»?', 'Да: «Северный Разлом» — аркада в том же мире, тот же остров, увиденный с воздуха.'],
-        ['Нужен ли ИИ-сервер?', 'Нет, игра проходится без него; сервер только добавляет живые ответы отшельника.'],
       ],
       en: [
         ['Do I need to install it?', 'No. A desktop browser with WebGL 2 is enough.'],
         ['What if it runs slowly?', 'The game picks a quality level for your machine; weaker computers get a lighter mode.'],
         ['Is it connected to Northern Rift?', 'Yes: Northern Rift is an arcade in the same world — the same island seen from the air.'],
-        ['Do I need the AI server?', 'No, the game is complete without it; the server only adds live answers from the hermit.'],
       ],
     },
     shots: [
