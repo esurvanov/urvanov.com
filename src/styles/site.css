@@ -121,14 +121,15 @@
 .s-nav-link { color: var(--ink-2); font-size: var(--t-small); font-weight: 600; padding: 4px 0; }
 .s-nav-link:hover, .s-nav-link.is-active { color: var(--ink); }
 .s-nav-link.is-active { box-shadow: 0 2px 0 var(--accent); }
-.s-nav-lang, .s-home-lang { font-family: var(--mono); font-size: var(--t-label); color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 2px 8px; }
+/* язык и тема — одна кнопка одного размера, что бы ни было внутри: текст «EN» или иконка */
+.s-nav-lang, .s-home-lang { box-sizing: border-box; display: inline-grid; place-items: center; min-width: 36px; height: 28px; padding: 0 8px; line-height: 1; font-family: var(--mono); font-size: var(--t-label); color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius); }
 .s-nav-lang:hover { color: var(--ink); border-color: var(--accent); }
 .s-home-lang { position: absolute; top: var(--sp-3); right: 0; }
 /* Кнопка темы: солнце или луна, рядом с переключателем языка */
-.s-theme { display: inline-grid; place-items: center; width: 30px; height: 24px; padding: 0; background: none; cursor: pointer; }
+.s-theme { width: 36px; padding: 0; background: none; cursor: pointer; }
 .s-theme svg { width: 14px; height: 14px; }
 .s-theme:hover { color: var(--ink); border-color: var(--accent); }
-.s-home-theme { position: absolute; top: var(--sp-3); right: 48px; }
+.s-home-theme { position: absolute; top: var(--sp-3); right: 44px; }
 
 .s-crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; color: var(--ink-3); font-size: var(--t-small); }
 .s-crumbs li + li::before { content: '/'; margin-right: 6px; }
