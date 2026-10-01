@@ -2,6 +2,7 @@ import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { POSTS } from '@/data/blog'
 import { config } from '@/data/config'
 import { GAME_PAGES } from '@/data/games'
+import { LAB_PAGES } from '@/data/labs'
 import { withLang, type Lang, type L } from '@/lib/i18n'
 
 export const SITE_URL = 'https://www.urvanov.com'
@@ -177,6 +178,12 @@ const BASE: Base[] = [
     sources: ['src/components/MaterialsView.tsx', 'src/data/seo.ts', 'src/data/games.ts'],
   },
   {
+    path: '/materials/interactive',
+    ru: { title: `Интерактивы — ${SITE_NAME}`, description: 'Интерактивные страницы: приёмы решения задач в 3D, шаг за шагом, прямо в браузере.' },
+    en: { title: 'Interactive — Egor Urvanov', description: 'Interactive pages: problem-solving methods in step-by-step 3D, right in the browser.' },
+    sources: ['src/components/MaterialsView.tsx', 'src/data/labs.ts'],
+  },
+  {
     path: '/talk/spec-driven-development',
     ru: {
       title: `${config.talkTitle} — ${config.conferenceName}`,
@@ -282,6 +289,24 @@ export function allPages(): PageMeta[] {
           '@type': 'FAQPage',
           mainEntity: g.faq[l].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
         }],
+      })
+    }
+  }
+  // Посадочные страницы интерактивов: индексируется она, а не сам интерактив (он на отдельном адресе)
+  for (const x of LAB_PAGES) {
+    const alternates = (['ru', 'en'] as Lang[]).map((l) => ({ lang: l, path: withLang(`/materials/interactive/${x.slug}`, l) }))
+    for (const l of ['ru', 'en'] as Lang[]) {
+      const pageUrl = url(withLang(`/materials/interactive/${x.slug}`, l))
+      pages.push({
+        path: withLang(`/materials/interactive/${x.slug}`, l), lang: l,
+        title: l === 'en' ? `${x.name.en} — interactive, in your browser` : `${x.name.ru} — интерактив в браузере`,
+        description: x.description[l], alternates, sources: ['src/data/labs.ts', 'src/components/LabView.tsx'],
+        jsonLd: {
+          '@type': 'LearningResource', '@id': `${pageUrl}#main`, name: x.name[l], description: x.description[l], url: pageUrl,
+          inLanguage: ['ru', 'en'], learningResourceType: 'Interactive visualization', isAccessibleForFree: true,
+          author: person(), isPartOf: url(withLang('/materials/interactive', l)),
+          potentialAction: { '@type': 'ViewAction', target: SITE_URL + x.play },
+        },
       })
     }
   }

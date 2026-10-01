@@ -99,7 +99,8 @@ try {
 }
 write('404.html', build({ path: '/404', lang: 'ru', alternates: [], title: 'Страница не найдена / Page not found — Егор Урванов', description: 'Такой страницы нет. Ссылки на главные разделы сайта на русском и английском.' }, pages, { noindex: true, skipStructured: true, body: body404 }))
 
-// sitemap: страницы сайта на обоих языках со связями hreflang + игры
+// sitemap: страницы сайта на обоих языках со связями hreflang. Сами игры и интерактивы (холст) сюда не входят:
+// индексируются их посадочные страницы /materials/games/<игра>/ и /materials/interactive/<имя>/
 // /slide/1 намеренно вне sitemap: почти без текста для ботов, канонический разбор доклада — /talk/spec-driven-development/
 const indexable = pages.filter((p) => !p.noindex && p.path !== '/slide/1')
 const loc = (p) => (p === '/' ? SITE_URL + '/' : urlOf(p))
@@ -110,11 +111,8 @@ const urls = [
         + `<xhtml:link rel="alternate" hreflang="x-default" href="${loc(p.alternates.find((a) => a.lang === 'ru').path)}"/>`
       : ''
     const lastmod = p.date ?? gitDate(p.sources)
-    return `  <url><loc>${loc(p.path)}</loc><lastmod>${lastmod}</lastmod><priority>${p.path === '/' || p.path === '/en' ? '1.0' : p.type === 'article' || /\/materials\/games\/[^/]+$/.test(p.path) ? '0.8' : '0.6'}</priority>${alt}</url>`
+    return `  <url><loc>${loc(p.path)}</loc><lastmod>${lastmod}</lastmod><priority>${p.path === '/' || p.path === '/en' ? '1.0' : p.type === 'article' || /\/materials\/(games|interactive)\/[^/]+$/.test(p.path) ? '0.8' : '0.6'}</priority>${alt}</url>`
   }),
-  // Дата игр честно проставляется позже, в scripts/patch-games.mjs — там доступна их отдельная история git
-  ...GAMES.map((g) => `  <url><loc>${SITE_URL}${g.path}</loc><lastmod>${buildDate}</lastmod><priority>0.7</priority></url>`),
-  ...LABS.map((l) => `  <url><loc>${SITE_URL}${l.path}</loc><lastmod>${buildDate}</lastmod><priority>0.7</priority></url>`),
 ]
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`)
 
@@ -160,7 +158,7 @@ write('llms.txt', [
   `- [Доклад: ${config.talkTitle}](${SITE_URL}/talk/spec-driven-development/) · [Talk](${SITE_URL}/en/talk/spec-driven-development/): полный текст слайдов / full slide text (RU)`,
   `- [Каталог AI-паттернов](${SITE_URL}/patterns/): паттерны разработки с AI-агентами (RU)`,
   `- [Презентации](${SITE_URL}/materials/presentations/) · [Presentations](${SITE_URL}/en/materials/presentations/)`,
-  ...LABS.map((l) => `- [${l.title}](${SITE_URL}${l.path}) · ${l.titleEn}: ${l.long} (RU/EN)`),
+  ...LABS.map((l) => `- [${l.title}](${SITE_URL}/materials/interactive/${l.path.replace(/\//g, '')}/) · [${l.titleEn}](${SITE_URL}/en/materials/interactive/${l.path.replace(/\//g, '')}/): ${l.long} (RU/EN)`),
   `- [Игры](${SITE_URL}/materials/games/) · [Games](${SITE_URL}/en/materials/games/): ${GAMES.map((g) => g.title).join(', ')}`,
   ...GAME_PAGES.map((g) => `  - [${g.name.ru}](${SITE_URL}/materials/games/${g.slug}/) · [${g.name.en}](${SITE_URL}/en/materials/games/${g.slug}/): ${g.tagline.ru} / ${g.tagline.en} (играть: ${SITE_URL}${g.play})`),
   `- [Ссылки](${SITE_URL}/links/) · [Links](${SITE_URL}/en/links/)`,

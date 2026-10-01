@@ -73,9 +73,12 @@ for (const g of GAMES) {
   const landingFile = g.entry ? `dist/${g.dir}/${g.entry}` : redirectFile
   if (g.entry && !existsSync(landingFile)) { console.warn(`нет ${landingFile}`); continue }
 
+  // Индексируется посадочная страница (/materials/games/<игра>/), а не холст игры: canonical и og:url ведут на неё,
+  // разметка VideoGame/FAQ лежит там же. У игры без посадочной всё остаётся на её адресе.
+  const landing = LANDING[g.dir] ? `/materials/games/${LANDING[g.dir]}/` : null
   const head = headTags({
-    title: g.title, description: g.description, path,
-    jsonLd: [
+    title: g.title, description: g.description, path: landing ?? path,
+    jsonLd: landing ? undefined : [
       { '@type': ['VideoGame', 'WebApplication'], isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, gamePlatform: 'Web browser', name: g.title.split(' — ')[0], description: g.description, url: SITE_URL + path, genre: g.genre, inLanguage: 'ru', applicationCategory: 'Game', operatingSystem: 'Web browser', playMode: 'SinglePlayer', author: { '@type': 'Person', name: 'Егор Урванов', url: SITE_URL }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
       { '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL + '/' },
@@ -100,7 +103,7 @@ for (const g of GAMES) {
   if (g.entry) {
     const redirectHtml = injectHead(
       readFileSync(redirectFile, 'utf8').replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, ''),
-      `<link rel="canonical" href="${SITE_URL}${path}" />\n    ${analyticsHead()}`,
+      `<link rel="canonical" href="${SITE_URL}${landing ?? path}" />\n    ${analyticsHead()}`,
     )
     writeFileSync(redirectFile, redirectHtml)
     console.log(`patched ${redirectFile} (redirect → ${path})`)
@@ -116,15 +119,9 @@ for (const l of LABS) {
   const file = `dist/${l.dir}/index.html`
   if (!existsSync(file)) { console.warn(`нет ${file}`); continue }
   const path = `/${l.dir}/`
+  // как у игр: индексируется посадочная /materials/interactive/<имя>/, а не сам интерактив
   const head = headTags({
-    title: l.title, description: l.description, path,
-    jsonLd: [
-      { '@type': 'LearningResource', name: l.title.split(' — ')[0], description: l.description, url: SITE_URL + path, inLanguage: ['ru', 'en'], learningResourceType: 'Interactive visualization', educationalLevel: 'Beginner', isAccessibleForFree: true, author: { '@type': 'Person', name: 'Егор Урванов', url: SITE_URL } },
-      { '@type': 'BreadcrumbList', itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL + '/' },
-        { '@type': 'ListItem', position: 2, name: 'Материалы', item: SITE_URL + '/materials/' },
-        { '@type': 'ListItem', position: 3, name: l.title.split(' — ')[0], item: SITE_URL + path } ] },
-    ],
+    title: l.title, description: l.description, path: `/materials/interactive/${l.dir}/`,
   })
   const fallback = `<noscript><h1>${esc(l.title)}</h1><p>${esc(l.description)}</p><p><a href="/materials/">Материалы</a> · <a href="/">Егор Урванов</a></p></noscript>`
   let html = readFileSync(file, 'utf8')
@@ -150,9 +147,10 @@ if (existsSync(sitemapFile) && existsSync('games')) {
       date = execSync(`git -C games log -1 --format=%cI -- ${g.dir}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim().slice(0, 10) || null
     } catch { /* нет git-истории игр — оставляем дату сборки */ }
     if (!date) continue
-    const path = g.entry ? `/${g.dir}/${g.entry.replace(/index\.html$/, '')}` : `/${g.dir}/`
-    const loc = (SITE_URL + path).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    sitemap = sitemap.replace(new RegExp(`(<url><loc>${loc}</loc><lastmod>)[^<]+(</lastmod>)`), `$1${date}$2`)
+    for (const prefix of ['', '/en']) {
+      const loc = (SITE_URL + `${prefix}/materials/games/${LANDING[g.dir]}/`).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      sitemap = sitemap.replace(new RegExp(`(<url><loc>${loc}</loc><lastmod>)[^<]+(</lastmod>)`), `$1${date}$2`)
+    }
   }
   writeFileSync(sitemapFile, sitemap)
   console.log('sitemap.xml: даты игр обновлены из games/.git')
@@ -166,8 +164,10 @@ if (existsSync(sitemapFile) && existsSync('project-euler')) {
       date = execSync(`git -C project-euler log -1 --format=%cI -- ${l.repoDir}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim().slice(0, 10) || null
     } catch { /* нет истории — оставляем дату сборки */ }
     if (!date) continue
-    const loc = (SITE_URL + `/${l.dir}/`).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    sitemap = sitemap.replace(new RegExp(`(<url><loc>${loc}</loc><lastmod>)[^<]+(</lastmod>)`), `$1${date}$2`)
+    for (const prefix of ['', '/en']) {
+      const loc = (SITE_URL + `${prefix}/materials/interactive/${l.dir}/`).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      sitemap = sitemap.replace(new RegExp(`(<url><loc>${loc}</loc><lastmod>)[^<]+(</lastmod>)`), `$1${date}$2`)
+    }
   }
   writeFileSync(sitemapFile, sitemap)
   console.log('sitemap.xml: даты учебных страниц обновлены из project-euler/.git')

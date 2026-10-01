@@ -34,12 +34,20 @@ export function GameView() {
 
       <section className="s-section" aria-labelledby="g-about">
         <h2 className="s-label" id="g-about">{t({ ru: 'Об игре', en: 'About the game' })}</h2>
-        <div className="s-prose">{t(g.intro).map((p) => <p key={p}>{p}</p>)}</div>
+        <div className="s-prose">
+          <p>{t(g.intro)[0]}</p>
+          {t(g.intro).length > 1 && (
+            <details className="g-more"><summary>{t({ ru: 'Подробнее', en: 'More' })}</summary>{t(g.intro).slice(1).map((p) => <p key={p}>{p}</p>)}</details>
+          )}
+        </div>
       </section>
 
       <section className="s-section" aria-labelledby="g-features">
         <h2 className="s-label" id="g-features">{t({ ru: 'Особенности', en: 'Features' })}</h2>
-        <ul className="g-list">{t(g.features).map((f) => <li key={f}>{f}</li>)}</ul>
+        <ul className="g-list">{t(g.features).slice(0, 5).map((f) => <li key={f}>{f}</li>)}</ul>
+        {t(g.features).length > 5 && (
+          <details className="g-more"><summary>{t({ ru: 'Ещё особенности', en: 'More features' })}</summary><ul className="g-list">{t(g.features).slice(5).map((f) => <li key={f}>{f}</li>)}</ul></details>
+        )}
       </section>
 
       {rest.length > 0 && (
@@ -50,7 +58,7 @@ export function GameView() {
       )}
 
       <section className="s-section" aria-labelledby="g-controls">
-        <h2 className="s-label" id="g-controls">{t({ ru: 'Управление', en: 'Controls' })}</h2>
+        <details className="g-fold"><summary><h2 className="s-label" id="g-controls">{t({ ru: 'Управление', en: 'Controls' })}</h2></summary>
         <ul className="g-keys">
           {t(g.controls).map(([k, v]) => (
             <li key={k}>
@@ -65,16 +73,19 @@ export function GameView() {
             </li>
           ))}
         </ul>
+        </details>
       </section>
 
       <section className="s-section" aria-labelledby="g-facts">
         <h2 className="s-label" id="g-facts">{t({ ru: 'Коротко', en: 'At a glance' })}</h2>
-        <dl className="g-facts">{t(g.facts).map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+        <dl className="g-facts">{t(g.facts).slice(0, 5).map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
       </section>
 
       <section className="s-section" aria-labelledby="g-faq">
-        <h2 className="s-label" id="g-faq">{t({ ru: 'Вопросы и ответы', en: 'FAQ' })}</h2>
-        <div className="g-faq">{t(g.faq).map(([q, a]) => <div key={q}><h3>{q}</h3><p>{a}</p></div>)}</div>
+        <details className="g-fold">
+          <summary><h2 className="s-label" id="g-faq">{t({ ru: 'Вопросы и ответы', en: 'FAQ' })}</h2></summary>
+          <div className="g-faq">{t(g.faq).map(([q, a]) => <div key={q}><h3>{q}</h3><p>{a}</p></div>)}</div>
+        </details>
       </section>
 
       <section className="s-section" aria-labelledby="g-more">

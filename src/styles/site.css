@@ -453,3 +453,25 @@ html { scrollbar-gutter: stable; }
 .s-wide .s-prose figure.arch { margin: var(--sp-2) 0; }
 .s-wide .s-prose h2 { margin: 1.4em 0 0.4em; }
 .s-wide .s-prose p { margin: 0 0 0.8em; }
+
+/* /materials/: группы-разделы (название, счётчик, что внутри), без деталей */
+.m-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--sp-3); }
+.m-group { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 20px 22px 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.m-group:hover { border-color: var(--accent); }
+.m-g-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: var(--t-title); letter-spacing: -0.02em; }
+.m-g-head b { font-weight: 800; }
+.m-g-n { font-family: var(--mono); font-size: var(--t-label); color: var(--accent); }
+.m-g-hint { color: var(--ink-2); }
+.m-g-names { color: var(--ink-3); font-size: var(--t-small); line-height: 1.55; }
+.m-group .ar { position: absolute; right: 20px; bottom: 16px; color: var(--accent); }
+
+/* страница игры кратко: подробности и вопросы раскрываются по клику (текст остаётся в разметке для поиска) */
+.g-more { margin-top: var(--sp-1); }
+.g-more summary, .g-fold > summary { cursor: pointer; color: var(--ink-2); }
+.g-more summary { font-size: var(--t-small); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
+.g-more[open] summary { margin-bottom: var(--sp-1); }
+.g-fold > summary { list-style: none; display: flex; align-items: center; gap: 8px; }
+.g-fold > summary::-webkit-details-marker { display: none; }
+.g-fold > summary::after { content: '+'; font-family: var(--mono); color: var(--accent); }
+.g-fold[open] > summary::after { content: '–'; }
+.g-fold[open] > summary { margin-bottom: var(--sp-2); }

@@ -9,8 +9,9 @@ import BlogView from '@/components/BlogView'
 import BlogPostView from '@/components/BlogPostView'
 import TalkView from '@/components/TalkView'
 import NotFoundView from '@/components/NotFoundView'
-import { MaterialsView, PresentationsView, GamesView } from '@/components/MaterialsView'
+import { MaterialsView, PresentationsView, GamesView, InteractiveView } from '@/components/MaterialsView'
 import { GameView } from '@/components/GameView'
+import { LabView } from '@/components/LabView'
 import { usePageMeta } from '@/lib/usePageMeta'
 import { useSmoothNavigation } from '@/lib/useSmoothNavigation'
 
@@ -32,6 +33,8 @@ export default function App() {
       <Route path="/materials/presentations" element={<PresentationsView />} />
       <Route path="/materials/games" element={<GamesView />} />
       <Route path="/materials/games/:slug" element={<GameView />} />
+      <Route path="/materials/interactive" element={<InteractiveView />} />
+      <Route path="/materials/interactive/:slug" element={<LabView />} />
       <Route path="/links" element={<LinksView />} />
       <Route path="/talk/spec-driven-development" element={<TalkView />} />
       <Route path="/en" element={<HomeView />} />
@@ -42,6 +45,8 @@ export default function App() {
       <Route path="/en/materials/presentations" element={<PresentationsView />} />
       <Route path="/en/materials/games" element={<GamesView />} />
       <Route path="/en/materials/games/:slug" element={<GameView />} />
+      <Route path="/en/materials/interactive" element={<InteractiveView />} />
+      <Route path="/en/materials/interactive/:slug" element={<LabView />} />
       <Route path="/en/links" element={<LinksView />} />
       <Route path="/en/talk/spec-driven-development" element={<TalkView />} />
       <Route path="/slide/:index" element={<SlideView />} />

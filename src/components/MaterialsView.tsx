@@ -6,6 +6,7 @@ import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { config } from '@/data/config'
 import { useT, withLang, withSlash } from '@/lib/i18n'
 import { gamePageByPlay } from '@/data/games'
+import { LAB_PAGES } from '@/data/labs'
 
 const patternsTotal = PATTERN_CATEGORIES.reduce((s, c) => s + c.patterns.length, 0)
 
@@ -55,36 +56,53 @@ const presentationRows = (lang: 'ru' | 'en'): Row[] => [
 const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => {
   const lp = gamePageByPlay(g.path)
   const title = lang === 'en' ? g.titleEn : g.title, hint = lang === 'en' ? g.longEn : g.long
-  // страница игры (описание, скриншоты, управление) — основная ссылка; саму игру открывает «Играть»
+  // страница игры (описание, скриншоты, управление, ссылка на игру) — единственная ссылка; индексируется она, а не холст игры
   return lp
-    ? { to: withSlash(withLang(`/materials/games/${lp.slug}`, lang)), title, hint, note: { text: lang === 'en' ? 'Play' : 'Играть', links: [{ href: g.path, label: lang === 'en' ? 'open the game' : 'открыть игру' }] } }
+    ? { to: withSlash(withLang(`/materials/games/${lp.slug}`, lang)), title, hint }
     : { href: g.path, title, hint }
 })
-const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => ({
-  href: l.path,
-  title: lang === 'en' ? l.titleEn : l.title,
-  hint: lang === 'en' ? l.longEn : l.long,
-  note: { text: l.source[lang], links: l.source.links.map((s) => ({ href: s.href, label: s[lang] })) },
-}))
+const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => {
+  const lp = LAB_PAGES.find((x) => x.play === l.path)
+  const title = lang === 'en' ? l.titleEn : l.title, hint = lang === 'en' ? l.longEn : l.long
+  const note = { text: l.source[lang], links: l.source.links.map((x) => ({ href: x.href, label: x[lang] })) }
+  // страница интерактива (описание для поиска) — основная ссылка; сам интерактив открывается оттуда
+  return lp ? { to: withSlash(withLang(`/materials/interactive/${lp.slug}`, lang)), title, hint, note } : { href: l.path, title, hint, note }
+})
 
+// /materials/ — только группы: раздел, сколько в нём, названия внутри. Описания и ссылки на сами материалы — на странице раздела.
 export function MaterialsView() {
   const { lang, t, to } = useT()
+  const groups = [
+    { path: '/materials/games', label: t({ ru: 'Игры', en: 'Games' }), hint: t({ ru: 'в браузере, без установки', en: 'in the browser, no install' }), names: gameRows(lang).map((r) => r.title) },
+    { path: '/materials/interactive', label: t({ ru: 'Интерактивы', en: 'Interactive' }), hint: t({ ru: 'приёмы решения задач в 3D', en: 'problem-solving methods in 3D' }), names: labRows(lang).map((r) => r.title) },
+    { path: '/materials/presentations', label: t({ ru: 'Презентации', en: 'Presentations' }), hint: t({ ru: 'доклад, слайды, каталог паттернов', en: 'talk, slides, patterns catalog' }), names: presentationRows(lang).map((r) => r.title) },
+  ]
   return (
     <Page>
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { label: t({ ru: 'Материалы', en: 'Materials' }) }]} />
       <h1 className="s-page-title">{t({ ru: 'Материалы', en: 'Materials' })}</h1>
-      <section className="s-section" aria-labelledby="m-pres">
-        <h2 className="s-label" id="m-pres"><Link to={to('/materials/presentations')}>{t({ ru: 'Презентации', en: 'Presentations' })}</Link></h2>
-        <Rows items={presentationRows(lang)} />
-      </section>
-      <section className="s-section" aria-labelledby="m-labs">
-        <h2 className="s-label" id="m-labs">{t({ ru: 'Интерактивы', en: 'Interactive' })}</h2>
-        <Rows items={labRows(lang)} />
-      </section>
-      <section className="s-section" aria-labelledby="m-games">
-        <h2 className="s-label" id="m-games"><Link to={to('/materials/games')}>{t({ ru: 'Игры', en: 'Games' })}</Link></h2>
-        <Rows items={gameRows(lang)} />
-      </section>
+      <nav aria-label={t({ ru: 'Разделы материалов', en: 'Materials sections' })} className="m-groups">
+        {groups.map((x) => (
+          <Link key={x.path} to={withSlash(to(x.path))} className="m-group">
+            <span className="m-g-head"><b>{x.label}</b><span className="m-g-n">{x.names.length}</span></span>
+            <span className="m-g-hint">{x.hint}</span>
+            <span className="m-g-names">{x.names.join(' · ')}</span>
+            <span className="ar" aria-hidden="true">→</span>
+          </Link>
+        ))}
+      </nav>
+    </Page>
+  )
+}
+
+export function InteractiveView() {
+  const { lang, t, to } = useT()
+  return (
+    <Page>
+      <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { label: t({ ru: 'Интерактивы', en: 'Interactive' }) }]} />
+      <h1 className="s-page-title">{t({ ru: 'Интерактивы', en: 'Interactive' })}</h1>
+      <p className="s-lead">{t({ ru: 'Открываются прямо в браузере, без установки.', en: 'Open right in the browser, no installation.' })}</p>
+      <Rows items={labRows(lang)} />
     </Page>
   )
 }
