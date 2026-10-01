@@ -8,7 +8,7 @@ import { analyticsHead, headTags, esc, urlOf, SITE_URL } from './lib.mjs'
 
 const DIST = 'dist'
 const {
-  render, allPages, POSTS, GAMES, LABS, config,
+  render, allPages, POSTS, GAMES, GAME_PAGES, LABS, config,
   MILESTONES, ABOUT_LEAD, PLACES, LINK_GROUPS, itemText, CITY_CHATS, THEME_CHATS, JAIORA, BIO,
 } = await import(pathToFileURL(join(process.cwd(), 'dist-ssr/entry-server.js')).href)
 
@@ -56,7 +56,7 @@ function breadcrumbs(page, all) {
 
 function build(page, all, { body, noindex, skipStructured } = {}) {
   // Свой @id (например, у Organization/PresentationDigitalDocument) важнее заглушки #main
-  const graph = skipStructured ? [] : [breadcrumbs(page, all), page.jsonLd && { '@id': urlOf(page.path) + '#main', ...page.jsonLd }].filter(Boolean)
+  const graph = skipStructured ? [] : [breadcrumbs(page, all), page.jsonLd && { '@id': urlOf(page.path) + '#main', ...page.jsonLd }, ...(page.jsonLdExtra ?? [])].filter(Boolean)
   const head = headTags({ ...page, noindex: noindex ?? page.noindex, jsonLd: graph.length ? graph : undefined, canonical: !skipStructured })
   return template
     .replace('<html lang="ru">', `<html lang="${page.lang}">`)
@@ -105,7 +105,7 @@ const urls = [
         + `<xhtml:link rel="alternate" hreflang="x-default" href="${loc(p.alternates.find((a) => a.lang === 'ru').path)}"/>`
       : ''
     const lastmod = p.date ?? gitDate(p.sources)
-    return `  <url><loc>${loc(p.path)}</loc><lastmod>${lastmod}</lastmod><priority>${p.path === '/' || p.path === '/en' ? '1.0' : p.type === 'article' ? '0.8' : '0.6'}</priority>${alt}</url>`
+    return `  <url><loc>${loc(p.path)}</loc><lastmod>${lastmod}</lastmod><priority>${p.path === '/' || p.path === '/en' ? '1.0' : p.type === 'article' || /\/materials\/games\/[^/]+$/.test(p.path) ? '0.8' : '0.6'}</priority>${alt}</url>`
   }),
   // Дата игр честно проставляется позже, в scripts/patch-games.mjs — там доступна их отдельная история git
   ...GAMES.map((g) => `  <url><loc>${SITE_URL}${g.path}</loc><lastmod>${buildDate}</lastmod><priority>0.7</priority></url>`),
@@ -157,6 +157,7 @@ write('llms.txt', [
   `- [Презентации](${SITE_URL}/materials/presentations/) · [Presentations](${SITE_URL}/en/materials/presentations/)`,
   ...LABS.map((l) => `- [${l.title}](${SITE_URL}${l.path}) · ${l.titleEn}: ${l.long} (RU/EN)`),
   `- [Игры](${SITE_URL}/materials/games/) · [Games](${SITE_URL}/en/materials/games/): ${GAMES.map((g) => g.title).join(', ')}`,
+  ...GAME_PAGES.map((g) => `  - [${g.name.ru}](${SITE_URL}/materials/games/${g.slug}/) · [${g.name.en}](${SITE_URL}/en/materials/games/${g.slug}/): ${g.tagline.ru} / ${g.tagline.en} (играть: ${SITE_URL}${g.play})`),
   `- [Ссылки](${SITE_URL}/links/) · [Links](${SITE_URL}/en/links/)`,
   '',
   '## Полный текст / Full text',

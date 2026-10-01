@@ -4,7 +4,8 @@ import Crumbs from '@/components/site/Crumbs'
 import { GAMES, LABS } from '@/data/seo'
 import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { config } from '@/data/config'
-import { useT } from '@/lib/i18n'
+import { useT, withLang, withSlash } from '@/lib/i18n'
+import { gamePageByPlay } from '@/data/games'
 
 const patternsTotal = PATTERN_CATEGORIES.reduce((s, c) => s + c.patterns.length, 0)
 
@@ -51,7 +52,14 @@ const presentationRows = (lang: 'ru' | 'en'): Row[] => [
   { to: '/patterns/', title: lang === 'en' ? 'AI patterns catalog' : 'Каталог AI-паттернов', hint: lang === 'en' ? `${patternsTotal} patterns · ${PATTERN_CATEGORIES.length} categories (in Russian)` : `${patternsTotal} паттернов · ${PATTERN_CATEGORIES.length} категорий` },
 ]
 
-const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => ({ href: g.path, title: lang === 'en' ? g.titleEn : g.title, hint: lang === 'en' ? g.longEn : g.long }))
+const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => {
+  const lp = gamePageByPlay(g.path)
+  const title = lang === 'en' ? g.titleEn : g.title, hint = lang === 'en' ? g.longEn : g.long
+  // страница игры (описание, скриншоты, управление) — основная ссылка; саму игру открывает «Играть»
+  return lp
+    ? { to: withSlash(withLang(`/materials/games/${lp.slug}`, lang)), title, hint, note: { text: lang === 'en' ? 'Play' : 'Играть', links: [{ href: g.path, label: lang === 'en' ? 'open the game' : 'открыть игру' }] } }
+    : { href: g.path, title, hint }
+})
 const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => ({
   href: l.path,
   title: lang === 'en' ? l.titleEn : l.title,

@@ -12,6 +12,7 @@ export function render(url: string): string {
 
 export { allPages, SITE_URL, SITE_NAME, GAMES, LABS, PERSON_ID, JAIORA_ORG_ID } from './data/seo'
 export { POSTS } from './data/blog'
+export { GAME_PAGES } from './data/games'
 export { config } from './data/config'
 // Данные для llms-full.txt (prerender.mjs): собираем текст «Обо мне» и Jaiora из тех же
 // источников, что рендерит React — чтобы файл не расходился со страницами при правках

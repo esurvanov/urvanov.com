@@ -11,6 +11,7 @@ import BlogPostView from '@/components/BlogPostView'
 import TalkView from '@/components/TalkView'
 import NotFoundView from '@/components/NotFoundView'
 import { MaterialsView, PresentationsView, GamesView } from '@/components/MaterialsView'
+import { GameView } from '@/components/GameView'
 import { usePageMeta } from '@/lib/usePageMeta'
 import { useSmoothNavigation } from '@/lib/useSmoothNavigation'
 
@@ -31,6 +32,7 @@ export default function App() {
       <Route path="/materials" element={<MaterialsView />} />
       <Route path="/materials/presentations" element={<PresentationsView />} />
       <Route path="/materials/games" element={<GamesView />} />
+      <Route path="/materials/games/:slug" element={<GameView />} />
       <Route path="/jaiora" element={<JaioraView />} />
       <Route path="/links" element={<LinksView />} />
       <Route path="/talk/spec-driven-development" element={<TalkView />} />
@@ -41,6 +43,7 @@ export default function App() {
       <Route path="/en/materials" element={<MaterialsView />} />
       <Route path="/en/materials/presentations" element={<PresentationsView />} />
       <Route path="/en/materials/games" element={<GamesView />} />
+      <Route path="/en/materials/games/:slug" element={<GameView />} />
       <Route path="/en/jaiora" element={<JaioraView />} />
       <Route path="/en/links" element={<LinksView />} />
       <Route path="/en/talk/spec-driven-development" element={<TalkView />} />

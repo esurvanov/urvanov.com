@@ -5,6 +5,7 @@ import { execSync } from 'node:child_process'
 import { analyticsHead, headTags, esc, SITE_URL } from './lib.mjs'
 
 // entry — страница, где на самом деле идёт игра (если index.html лишь перенаправляет)
+const LANDING = { 'age-of-empires': 'chronicles-of-kingdoms', berezovka: 'berezovka', sibiria: 'sibiria', 'ekho-razloma': 'echo-of-the-rift', 'severny-razlom': 'northern-rift', skhodka: 'skhodka', zhitie: 'zhitie' }
 const GAMES = [
   { dir: 'age-of-empires', title: 'Хроники Королевств — стратегия в браузере в духе Age of Empires II', description: 'Браузерная стратегия в реальном времени в духе Age of Empires II: 14 цивилизаций, строительство, добыча ресурсов и сражения. Без установки.', genre: 'Стратегия в реальном времени', entry: 'web/index.html' },
   { dir: 'berezovka', title: 'Березовка — 3D-игра в браузере: заснеженная деревня', description: '3D-игра в браузере: заснеженная русская деревня Березовка. Запускается без установки.', genre: 'Приключение' },
@@ -75,14 +76,14 @@ for (const g of GAMES) {
   const head = headTags({
     title: g.title, description: g.description, path,
     jsonLd: [
-      { '@type': 'VideoGame', name: g.title.split(' — ')[0], description: g.description, url: SITE_URL + path, genre: g.genre, inLanguage: 'ru', applicationCategory: 'Game', operatingSystem: 'Web browser', playMode: 'SinglePlayer', author: { '@type': 'Person', name: 'Егор Урванов', url: SITE_URL }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+      { '@type': ['VideoGame', 'WebApplication'], isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, gamePlatform: 'Web browser', name: g.title.split(' — ')[0], description: g.description, url: SITE_URL + path, genre: g.genre, inLanguage: 'ru', applicationCategory: 'Game', operatingSystem: 'Web browser', playMode: 'SinglePlayer', author: { '@type': 'Person', name: 'Егор Урванов', url: SITE_URL }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
       { '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL + '/' },
         { '@type': 'ListItem', position: 2, name: 'Игры', item: SITE_URL + '/materials/games/' },
         { '@type': 'ListItem', position: 3, name: g.title.split(' — ')[0], item: SITE_URL + path } ] },
     ],
   })
-  const fallback = `<noscript><h1>${esc(g.title)}</h1><p>${esc(g.description)}</p><p><a href="/materials/games/">Все игры</a> · <a href="/">Егор Урванов</a></p></noscript>`
+  const fallback = `<noscript><h1>${esc(g.title)}</h1><p>${esc(g.description)}</p><p>${LANDING[g.dir] ? `<a href="/materials/games/${LANDING[g.dir]}/">Об игре: описание, скриншоты, управление</a> · ` : ''}<a href="/materials/games/">Все игры</a> · <a href="/">Егор Урванов</a></p></noscript>`
 
   // Посадочная страница (сама игра, либо index.html, если редиректа нет): полная разметка + трекер + fallback
   let landingHtml = readFileSync(landingFile, 'utf8')

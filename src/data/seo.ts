@@ -2,6 +2,7 @@ import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { POSTS } from '@/data/blog'
 import { config } from '@/data/config'
 import { CITY_CHATS } from '@/data/links'
+import { GAME_PAGES } from '@/data/games'
 import { withLang, type Lang, type L } from '@/lib/i18n'
 
 export const SITE_URL = 'https://www.urvanov.com'
@@ -25,6 +26,8 @@ export interface PageMeta {
   // Заголовок для соцсетей, если в <title> стоит короткая версия
   ogTitle?: string
   jsonLd?: Record<string, unknown>
+  // Дополнительные узлы разметки (например FAQPage) рядом с основным
+  jsonLdExtra?: Record<string, unknown>[]
   // Файлы/данные, из которых реально собрана страница — источник честной даты lastmod в sitemap.xml
   sources?: string[]
   // Та же страница на других языках: для hreflang
@@ -170,9 +173,9 @@ const BASE: Base[] = [
   },
   {
     path: '/materials/games',
-    ru: { title: `Игры в браузере — ${SITE_NAME}`, description: 'Хроники Королевств, Березовка и Сибирь: браузерные игры без установки.' },
-    en: { title: 'Browser games — Egor Urvanov', description: 'Chronicles of Kingdoms, Berezovka, and Siberia: browser games, no installation.' },
-    sources: ['src/components/MaterialsView.tsx', 'src/data/seo.ts'],
+    ru: { title: `Игры в браузере — ${SITE_NAME}`, description: 'Семь бесплатных браузерных игр без установки: стратегия Хроники Королевств, выживание Сибирь, 3D-миры Эхо Разлома и Березовка, аркада, симулятор жизни и Сходка.' },
+    en: { title: 'Browser games — Egor Urvanov', description: 'Seven free browser games, no install: the RTS Chronicles of Kingdoms, the survival game Sibiria, 3D worlds Echo of the Rift and Berezovka, an arcade, a life sim and Skhodka.' },
+    sources: ['src/components/MaterialsView.tsx', 'src/data/seo.ts', 'src/data/games.ts'],
   },
   {
     path: '/jaiora',
@@ -275,6 +278,35 @@ export function allPages(): PageMeta[] {
         ...(tr ? { [p.lang === 'ru' ? 'workTranslation' : 'translationOfWork']: { '@id': url(withLang(`/blog/${p.slug}`, tr.lang)) + '#main' } } : {}),
       },
     })
+  }
+  // Посадочные страницы игр: текст для поиска + разметка VideoGame/WebApplication + FAQPage (сама игра на отдельном адресе)
+  for (const g of GAME_PAGES) {
+    const alternates = (['ru', 'en'] as Lang[]).map((l) => ({ lang: l, path: withLang(`/materials/games/${g.slug}`, l) }))
+    for (const l of ['ru', 'en'] as Lang[]) {
+      const path = withLang(`/materials/games/${g.slug}`, l), pageUrl = url(path), image = `/games/${g.slug}/${g.shots[0].file}`
+      pages.push({
+        path, lang: l,
+        title: l === 'en' ? `${g.name.en} — play free in your browser` : `${g.name.ru} — играть онлайн в браузере`,
+        description: g.description[l],
+        image, alternates, sources: ['src/data/games.ts', 'src/components/GameView.tsx'],
+        jsonLd: {
+          '@type': ['VideoGame', 'WebApplication'],
+          name: g.name[l], description: g.description[l], url: pageUrl, image: SITE_URL + image,
+          screenshot: g.shots.map((s) => ({ '@type': 'ImageObject', contentUrl: `${SITE_URL}/games/${g.slug}/${s.file}`, caption: s.alt[l] })),
+          genre: g.genre[l], keywords: g.keywords[l].join(', '), applicationCategory: 'GameApplication', gamePlatform: 'Web browser', operatingSystem: 'Any (web browser)',
+          playMode: 'SinglePlayer', inLanguage: l, isAccessibleForFree: true, license: 'https://opensource.org/licenses/MIT',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+          author: person(), publisher: person(), isPartOf: { '@id': `${SITE_URL}/#person` },
+          sameAs: [`https://github.com/esurvanov/awesome-games/tree/main/${g.repoDir}`],
+          potentialAction: { '@type': 'PlayAction', target: SITE_URL + g.play },
+          mainEntityOfPage: pageUrl,
+        },
+        jsonLdExtra: [{
+          '@type': 'FAQPage',
+          mainEntity: g.faq[l].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+        }],
+      })
+    }
   }
   return pages
 }
