@@ -80,7 +80,9 @@ for (const page of pages) {
   } catch (e) {
     console.warn(`  ! ${page.path}: без готового HTML (${e.message}), останется клиентская отрисовка`)
   }
-  write(page.path === '/' ? 'index.html' : join(page.path, 'index.html'), build(page, pages, { body }))
+  // слайды без текста не индексируем: иначе это пустой дубль /talk/spec-driven-development/ с тем же заголовком
+  const noindex = page.path.startsWith('/slide/') || undefined
+  write(page.path === '/' ? 'index.html' : join(page.path, 'index.html'), build(page, pages, { body, noindex }))
 }
 
 // 404: реальная страница (NotFoundView), без canonical и хлебных крошек — адреса /404/ не существует
