@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/pull-game-posts.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "pull": "node scripts/pull-game-pages.mjs && node scripts/pull-game-posts.mjs",
+    "predev": "node scripts/pull-game-pages.mjs",
+    "build": "node scripts/pull-game-pages.mjs && node scripts/pull-game-posts.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

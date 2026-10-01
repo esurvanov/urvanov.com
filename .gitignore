@@ -23,4 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # Статьи, подтянутые из репозитория игр при сборке (scripts/pull-game-posts.mjs)
-content/blog/echo-of-the-rift-architecture*.md
+content/blog/*-architecture*.md
+
+# Страницы игр из репозитория игр (scripts/pull-game-pages.mjs)
+src/data/games.generated.json
+public/games/
