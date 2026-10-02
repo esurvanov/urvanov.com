@@ -5,7 +5,7 @@ import { execSync } from 'node:child_process'
 import { analyticsHead, headTags, esc, SITE_URL } from './lib.mjs'
 
 // entry — страница, где на самом деле идёт игра (если index.html лишь перенаправляет)
-const LANDING = { 'age-of-empires': 'chronicles-of-kingdoms', berezovka: 'berezovka', sibiria: 'sibiria', 'ekho-razloma': 'echo-of-the-rift', 'severny-razlom': 'northern-rift', skhodka: 'skhodka', zhitie: 'zhitie' }
+const LANDING = { 'age-of-empires': 'chronicles-of-kingdoms', berezovka: 'berezovka', sibiria: 'sibiria', 'ekho-razloma': 'echo-of-the-rift', 'severny-razlom': 'northern-rift', skhodka: 'skhodka', zhitie: 'zhitie', 'work-programmer': 'uptime' }
 const GAMES = [
   { dir: 'age-of-empires', title: 'Хроники Королевств — стратегия в браузере в духе Age of Empires II', description: 'Браузерная стратегия в реальном времени в духе Age of Empires II: 14 цивилизаций, строительство, добыча ресурсов и сражения. Без установки.', genre: 'Стратегия в реальном времени', entry: 'web/index.html' },
   { dir: 'berezovka', title: 'Березовка — 3D-игра в браузере: заснеженная деревня', description: '3D-игра в браузере: заснеженная русская деревня Березовка. Запускается без установки.', genre: 'Приключение' },
@@ -14,6 +14,7 @@ const GAMES = [
   { dir: 'severny-razlom', title: 'Северный Разлом — 3D-аркада: полёт по бесконечному ледяному каньону', description: '3D-аркада в браузере: маленький корабль летит по бесконечному ледяному каньону под северным сиянием. Собирай осколки, пробивай лёд, держи множитель до ×8. Один файл, без установки.', genre: 'Аркада' },
   { dir: 'skhodka', title: 'Сходка — 3D-игра: субботняя IT-встреча в баре SushiGO, Батуми', description: '3D-игра в браузере: субботний вечер IT-сообщества в баре SushiGO в Батуми. Знакомься с гостями, находи общие темы, обменивайся контактами и своди тех, кто нужен друг другу. Без установки.', genre: 'Симулятор' },
   { dir: 'zhitie', title: 'Житьё — симулятор жизни в браузере в духе The Sims 1', description: 'Браузерная симуляция жизни в духе The Sims 1: изометрическое 3D в low-poly, район из десяти семей, потребности, карьера, навыки и отношения. Играть можно прямо в браузере без установки.', genre: 'Симулятор' },
+  { dir: 'work-programmer', title: 'Аптайм — игра про работу инженера: собери сервис и переживи аварии', description: 'Игра в браузере про проектирование серверных систем: собери сервис из блоков, пусти поток пользователей и переживи аварии. 43 уровня от одного сервера до распила монолита. Без установки.', genre: 'Головоломка' },
 ]
 
 // Теги — сразу после <head>. У некоторых игр нет <head>: тогда после <html> или <!doctype>
