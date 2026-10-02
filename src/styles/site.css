@@ -447,8 +447,28 @@ html { scrollbar-gutter: stable; }
 
 /* Посадочные страницы игр (GameView) */
 .g-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3); margin: var(--sp-3) 0 0; }
-.g-play { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 800; letter-spacing: -0.01em; }
-.g-play:hover { filter: brightness(1.08); }
+.g-actions { gap: 10px; }
+/* кнопки ряда действий: одна высота и скругление; главная — заливка, остальные — контур */
+.g-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  box-sizing: border-box; height: 48px; padding: 0 20px;
+  border: 1.5px solid var(--line-2); border-radius: 999px;
+  background: none; color: var(--ink);
+  font-weight: 700; letter-spacing: -0.01em; line-height: 1; white-space: nowrap;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s, filter 0.15s;
+}
+.g-btn > svg { flex: none; font-size: 1.15em; color: var(--accent); }
+.g-btn-ext { display: inline-flex; margin-left: -2px; font-size: 0.75em; color: var(--ink-3); }
+.g-btn:hover { border-color: var(--accent); color: var(--accent); }
+.g-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.g-btn.is-primary { padding: 0 24px; border-color: var(--accent); background: var(--accent); color: var(--on-accent); font-weight: 800; }
+.g-btn.is-primary > svg { color: inherit; }
+.g-btn.is-primary:hover { color: var(--on-accent); filter: brightness(1.08); }
+@media (max-width: 600px) {
+  .g-btn { height: 44px; padding: 0 16px; font-size: var(--t-small); }
+  .g-btn.is-primary { padding: 0 20px; }
+}
 .g-genre { margin: var(--sp-2) 0 0; color: var(--ink-3); font-size: var(--t-small); }
 .g-hero { margin: var(--sp-4) 0 var(--sp-3); }
 .g-hero img, .g-shots img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
@@ -502,7 +522,6 @@ a.s-link > svg { flex: none; }
 .s-pill-icon { gap: 8px; }
 .s-pill-icon svg { font-size: 1.1em; color: var(--accent); }
 .g-community { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 4px; margin: var(--sp-1) 0 0; color: var(--ink-2); font-size: var(--t-small); }
-.g-community .s-pill { margin-left: var(--sp-2); padding: 6px 12px; }
 .s-main:has(> .s-mat-list) { gap: var(--sp-3); }
 .s-post-note { position: relative; z-index: 1; color: var(--ink-3); font-size: var(--t-small); }
 /* Карточки «ещё по теме» — общий вид с блоком «Дальше по теме» в постах */

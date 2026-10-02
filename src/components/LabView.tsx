@@ -2,7 +2,8 @@ import { useParams } from 'react-router-dom'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
 import NotFoundView from '@/components/NotFoundView'
-import { CardLinks, TextLink } from '@/components/site/Links'
+import { ActionLink, CardLinks, TextLink } from '@/components/site/Links'
+import { ICONS } from '@/components/site/icons'
 import { LAB_PAGES, labPage } from '@/data/labs'
 import { LABS } from '@/data/seo'
 import { useT } from '@/lib/i18n'
@@ -21,7 +22,7 @@ export function LabView() {
       <h1 className="s-page-title is-long">{t(x.name)}</h1>
       <p className="s-lead">{t(x.tagline)}</p>
       <p className="g-actions">
-        <a className="g-play" href={x.play} data-track-label={`play_${x.slug}`}>▶ {t({ ru: 'Открыть', en: 'Open' })}</a>
+        <ActionLink primary href={x.play} icon={ICONS.play} track={`play_${x.slug}`}>{t({ ru: 'Открыть', en: 'Open' })}</ActionLink>
       </p>
 
       <section className="s-section" aria-labelledby="l-about">

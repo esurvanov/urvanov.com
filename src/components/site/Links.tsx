@@ -15,6 +15,19 @@ export function TextLink({ to, href, icon, children }: { to?: string; href?: str
   )
 }
 
+// Ряд действий под заголовком игры/интерактива: одно семейство кнопок-пилюль одной высоты.
+// primary — главное действие (акцентная заливка), остальные — контурные; иконка слева, внешняя — маленький ↗ внутри.
+export function ActionLink({ to, href, icon, primary, track, children, ...rest }: { to?: string; href?: string; icon?: ReactNode; primary?: boolean; track?: string; children: ReactNode } & Record<`data-${string}`, string>) {
+  const cls = `g-btn${primary ? ' is-primary' : ''}`
+  if (to) return <Link className={cls} to={to} data-track-label={track} {...rest}>{icon}{children}</Link>
+  const ext = /^https?:/.test(href ?? '')
+  return (
+    <a className={cls} href={href} data-track-label={track} {...rest} {...(ext ? { target: '_blank', rel: 'noopener' } : {})}>
+      {icon}{children}{ext && <span className="g-btn-ext">{ICONS.ext}</span>}
+    </a>
+  )
+}
+
 export interface CardLink { to?: string; href?: string; k: string; t: string; d?: string }
 
 export function CardLinks({ items }: { items: CardLink[] }) {

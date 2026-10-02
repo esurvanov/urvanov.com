@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { ActionLink } from '@/components/site/Links'
+import { ICONS } from '@/components/site/icons'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
 import { config } from '@/data/config'
@@ -48,10 +49,10 @@ export default function TalkView() {
             en: 'A talk about Spec-Driven Development: using specifications to make AI agents write code that matches intent, not just instructions. Below is the full slide text of the talk — the state of AI development, the theory, and a hands-on OpenSpec workshop (in Russian).',
           })}
         </p>
-        <p>
-          <Link className="s-pill s-pill-solid" to="/slide/1/" data-track="cta" data-track-id="open_presentation">
-            {t({ ru: 'Открыть презентацию ↗', en: 'Open the slide deck ↗ (in Russian)' })}
-          </Link>
+        <p className="g-actions">
+          <ActionLink primary to="/slide/1/" icon={ICONS.play} data-track="cta" data-track-id="open_presentation">
+            {t({ ru: 'Открыть презентацию', en: 'Open the slide deck (in Russian)' })}
+          </ActionLink>
         </p>
       </header>
 

@@ -121,6 +121,11 @@ export const ICONS = {
       <path d="M6 9l6 6 6-6" />
     </Icon>
   ),
+  play: (
+    <Icon>
+      <path d="M7 4.5v15l12-7.5z" fill="currentColor" />
+    </Icon>
+  ),
   doc: (
     <Icon>
       <path d="M6 3h8l4 4v14H6z" />

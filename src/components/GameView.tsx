@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
 import NotFoundView from '@/components/NotFoundView'
-import { CardLinks, Faq, Fold, More, TextLink } from '@/components/site/Links'
+import { ActionLink, CardLinks, Faq, Fold, More, TextLink } from '@/components/site/Links'
 import { ICONS } from '@/components/site/icons'
 import { GAME_PAGES, gamePage } from '@/data/games'
 import { CITY_CHATS, JAIORA_URL } from '@/data/links'
@@ -49,19 +49,19 @@ export function GameView() {
       <h1 className="s-page-title is-long">{t(g.name)}</h1>
       <p className="s-lead">{t(g.tagline)}</p>
       <p className="g-actions">
-        <a className="g-play" href={g.play} data-track-label={`play_${g.slug}`}>▶ {t({ ru: 'Играть в браузере', en: 'Play in your browser' })}</a>
-        {g.architecture && <TextLink to={to(`/blog/${g.architecture.slug}`)} icon={ICONS.doc}>{t({ ru: 'Архитектура игры', en: 'Game architecture' })}</TextLink>}
-        <TextLink href={REPO + g.repoDir} icon={ICONS.github}>{t({ ru: 'Исходный код (MIT)', en: 'Source code (MIT)' })}</TextLink>
+        <ActionLink primary href={g.play} icon={ICONS.play} track={`play_${g.slug}`}>{t({ ru: 'Играть в браузере', en: 'Play in your browser' })}</ActionLink>
+        {g.architecture && <ActionLink to={to(`/blog/${g.architecture.slug}`)} icon={ICONS.doc}>{t({ ru: 'Архитектура', en: 'Architecture' })}</ActionLink>}
+        <ActionLink href={REPO + g.repoDir} icon={ICONS.github}>{t({ ru: 'Исходный код', en: 'Source code' })}</ActionLink>
+        {chat && (
+          <ActionLink href={chat.url} icon={ICONS.telegram} track={`chat_${g.slug}`}>{t({ ru: `Чат ${chat.label}`, en: `${chat.en?.label ?? chat.label} chat` })}</ActionLink>
+        )}
       </p>
-      <p className="g-genre">{t(g.genre)} · {t({ ru: 'бесплатно, без установки и регистрации', en: 'free, no install, no sign-up' })}</p>
+      <p className="g-genre">{t(g.genre)} · {t({ ru: 'бесплатно, без установки и регистрации', en: 'free, no install, no sign-up' })} · MIT</p>
       {chat && (
         <p className="g-community">
           {t({ ru: 'Прототип — IT-сообщество ', en: 'Inspired by the ' })}
           <TextLink href={JAIORA_URL}>Jaiora</TextLink>
           {t({ ru: ` в ${chat.label}`, en: ` IT community in ${chat.en?.label ?? chat.label}` })}
-          <a className="s-pill s-pill-icon" href={chat.url} target="_blank" rel="noopener" data-track-label={`chat_${g.slug}`}>
-            {ICONS.telegram}{t({ ru: `Чат ${chat.label}`, en: `${chat.en?.label ?? chat.label} chat` })}
-          </a>
         </p>
       )}
       <figure className="g-hero">{img(hero, true)}</figure>
