@@ -37,7 +37,7 @@ jobs:
           fetch-depth: 0
       - run: npm run build
       - run: |
-          for game in berezovka sibiria severny-razlom skhodka zhitie; do
+          for game in berezovka sibiria severny-razlom skhodka zhitie work-programmer; do
             mkdir -p "dist/$game"
             rsync -a --exclude docs --exclude tests --exclude tools --exclude dev --exclude 'README*' "games/$game/" "dist/$game/"
           done

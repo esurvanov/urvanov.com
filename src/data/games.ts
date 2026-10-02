@@ -28,7 +28,7 @@ export interface GamePage {
 import raw from './games.generated.json'
 
 // порядок на сайте; игра, которой тут нет, встаёт в конец
-const ORDER = ['chronicles-of-kingdoms', 'berezovka', 'sibiria', 'echo-of-the-rift', 'northern-rift', 'skhodka', 'zhitie']
+const ORDER = ['chronicles-of-kingdoms', 'berezovka', 'sibiria', 'echo-of-the-rift', 'northern-rift', 'skhodka', 'zhitie', 'uptime']
 const rank = (slug: string) => { const i = ORDER.indexOf(slug); return i < 0 ? ORDER.length : i }
 export const GAME_PAGES: GamePage[] = [...(raw as unknown as GamePage[])].sort((a, b) => rank(a.slug) - rank(b.slug))
 

@@ -101,6 +101,14 @@ export const GAMES = [
     long: 'Браузерная симуляция жизни в духе The Sims 1: изометрическое 3D в low-poly, район из десяти семей, потребности, карьера, навыки и отношения. Обставляй и достраивай дом в режимах «Покупка» и «Стройка». Играть можно прямо в браузере.',
     longEn: 'A browser life sim in the spirit of The Sims 1: isometric low-poly 3D, a neighbourhood of ten households, needs, careers, skills, and relationships. Furnish and extend the house in Buy and Build modes. Play right in the browser.',
   },
+  {
+    path: '/work-programmer/',
+    title: 'Аптайм',
+    titleEn: 'Uptime',
+    text: 'Игра про работу инженера · собери сервис и переживи аварии',
+    long: 'Игра в браузере про работу инженера: собери сервис из блоков, пусти поток пользователей и посмотри, что сломается первым. 43 уровня от одного сервера до распила монолита: кэши, очереди, Kubernetes, мультирегион, мониторинг. Разбор решения после каждого уровня. Без установки.',
+    longEn: 'A browser game about an engineer’s job: build a service from blocks, send a stream of users through it and see what breaks first. 43 levels from a single server to splitting a monolith: caches, queues, Kubernetes, multi-region, monitoring. A debrief of your decision after every level. No installation.',
+  },
 ]
 
 // Интерактивные учебные страницы: живут в отдельном репозитории project-euler и копируются при выкладке
