@@ -3,6 +3,7 @@ title: Как провести интервью о работе с AI: звон�
 date: 2026-09-28
 description: Сценарий звонка на 30 минут, короткая анкета на всю компанию после интервью, правила против ухода в сторону, сверка «со слов» с данными отчёта и разбор ответов через ChatGPT или агента.
 tags: AI, custdev, интервью
+category: research
 layout: wide
 image: /og/ai-interviews-without-leading-questions.png
 mentions: Airtable, tl;dv, ChatGPT, Claude Code, Model Context Protocol

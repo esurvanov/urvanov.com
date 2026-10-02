@@ -17,7 +17,7 @@
 | `game_open` | переход с сайта к игре | `game`, `from` (страница), `section` |
 | `nav_click` | внутренняя ссылка внутри навигации (шапка, оглавление на главной, крошки) | `target`, `label`, `section`, `page` |
 | `material_click` | любая другая внутренняя ссылка (материалы, ссылки, блог) | `target`, `label`, `section`, `page` |
-| `cta_click` | заметные кнопки: `choose_city` («Выбрать свой город»), `city_chip`, `theme_chip` (чаты Jaiora, `label` — английское название), `lang_switch` (`label` — на какой язык) | `id`, `label`, `section`, `page` |
+| `cta_click` | заметные кнопки: `choose_city` («Выбрать свой город»), `city_chip`, `theme_chip` (чаты Jaiora, `label` — английское название), `lang_switch` (`label` — на какой язык), `blog_category` (рубрика блога: чип над лентой, рубрика в карточке и в шапке поста; `label` — slug рубрики `harness`/`specs`/`prompts`/`research` или `all` для «Все»), `blog_page` (номер или стрелка пагинации ленты; `label` — номер страницы, куда ведёт) | `id`, `label`, `section`, `page` |
 | `section_view` | секция страницы видна ≥ 50% (или занимает пол-экрана) не меньше 1 с; по разу за просмотр страницы | `section`, `page` |
 | `scroll_depth` | прокрутка до 25 / 50 / 75 / 100%; по разу за просмотр страницы | `depth`, `page` |
 | `game_start` | первое нажатие/клавиша/касание в игре | `game` |
@@ -31,7 +31,7 @@
 В Метрику прирост также уходит параметром визита `game_seconds.<игра>`.
 
 **`section`** — имя ближайшей размеченной области: `data-track-section`, иначе `id` элемента, иначе `aria-labelledby` у `<section>`, иначе `header`/`nav`/`footer`/`main`.
-Примеры: `/about` — `hero`, `contacts`, `about-path`, `about-places`, `about-ach`, `about-edu`;  `/materials` — `m-pres`, `m-games`; `/links` — `jaiora`, `about_me`, `talks`, `telegram_channels`; шапка — `site_nav`.
+Примеры: `/about` — `hero`, `contacts`, `about-path`, `about-places`, `about-ach`, `about-edu`;  `/materials` — `m-pres`, `m-games`; `/links` — `jaiora`, `about_me`, `talks`, `telegram_channels`; шапка — `site_nav`; `/blog` — `blog_categories` (чипы рубрик), `blog_pagination` (страницы).
 
 **`page`** — путь без слэша на конце: `/about`, `/en/about`.
 

@@ -3,6 +3,7 @@ title: Спеки по агрегатам: RFC-требования и огра�
 date: 2026-09-28
 description: Как держать спеки в одном словаре агрегатов, чтобы их не становилось больше с каждой фичей: уровни требований, карточка агрегата и границы контекстов.
 tags: AI, спеки, DDD, агенты
+category: specs
 layout: wide
 image: /og/specs-by-aggregates.png
 mentions: RFC 2119, Domain-Driven Design, OpenSpec, Spec-Driven Development

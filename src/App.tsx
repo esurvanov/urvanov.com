@@ -28,6 +28,9 @@ export default function App() {
       <Route path="/" element={<HomeView />} />
       <Route path="/about" element={<AboutView />} />
       <Route path="/blog" element={<BlogView />} />
+      <Route path="/blog/page/:page" element={<BlogView />} />
+      <Route path="/blog/category/:category" element={<BlogView />} />
+      <Route path="/blog/category/:category/page/:page" element={<BlogView />} />
       <Route path="/blog/:slug" element={<BlogPostView />} />
       <Route path="/materials" element={<MaterialsView />} />
       <Route path="/materials/presentations" element={<PresentationsView />} />
@@ -40,6 +43,9 @@ export default function App() {
       <Route path="/en" element={<HomeView />} />
       <Route path="/en/about" element={<AboutView />} />
       <Route path="/en/blog" element={<BlogView />} />
+      <Route path="/en/blog/page/:page" element={<BlogView />} />
+      <Route path="/en/blog/category/:category" element={<BlogView />} />
+      <Route path="/en/blog/category/:category/page/:page" element={<BlogView />} />
       <Route path="/en/blog/:slug" element={<BlogPostView />} />
       <Route path="/en/materials" element={<MaterialsView />} />
       <Route path="/en/materials/presentations" element={<PresentationsView />} />

@@ -49,6 +49,8 @@ function breadcrumbs(page, all) {
   for (const part of parts) {
     acc += '/' + part
     const p = all.find((x) => x.path === acc)
+    // Служебные сегменты без своей страницы (/blog/category/, /blog/page/) в крошки не попадают
+    if (!p && !CRUMBS[page.lang][part]) continue
     items.push({ name: CRUMBS[page.lang][part] ?? p?.title.split(' — ')[0] ?? part, url: urlOf(acc) })
   }
   return { '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })) }

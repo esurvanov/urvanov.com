@@ -76,7 +76,7 @@ export function analyticsHead() {
   return out.join('\n    ')
 }
 
-export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date, lang = 'ru', alternates = [], canonical = true, image, ogTitle }) {
+export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date, lang = 'ru', alternates = [], canonical = true, image, ogTitle, prev, next }) {
   const url = urlOf(path)
   // Своя картинка превью (1200×630) — большая карточка в соцсетях; иначе фото автора
   const img = image ? SITE_URL + image : `${SITE_URL}/egor.jpg`
@@ -103,6 +103,9 @@ export function headTags({ title, description, path, type = 'website', noindex =
     tags.splice(2, 0, `<link rel="canonical" href="${url}" />`)
     tags.push(`<meta property="og:url" content="${url}" />`)
   }
+  // Лента блога по страницам: соседние страницы (canonical у каждой — на саму себя)
+  if (prev) tags.push(`<link rel="prev" href="${urlOf(prev)}" />`)
+  if (next) tags.push(`<link rel="next" href="${urlOf(next)}" />`)
   // hreflang: все языковые версии страницы и x-default (русская)
   if (alternates.length > 1) {
     for (const a of alternates) tags.push(`<link rel="alternate" hreflang="${a.lang}" href="${urlOf(a.path)}" />`)

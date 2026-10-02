@@ -3,6 +3,7 @@ title: Сравнение харнессов: Claude Code, Codex, Cursor, Hermes
 date: 2026-09-28
 description: Где работает агент, что он видит, на какой модели думает и сколько стоит — пять харнессов рядом и подсказка, какой брать под задачу. Со ссылками на документацию.
 tags: AI, харнесс, Claude Code, Codex, Cursor, Hermes Agent
+category: harness
 layout: wide
 toc: tasks=Какой харнесс под какую задачу | stable=Что не меняется | harness=Что такое харнесс | compare=Что видят и что делают | next=Дальше по теме
 ---

@@ -3,6 +3,7 @@ title: Промпты для рабочих задач: пять частей и
 date: 2026-09-28
 description: Из каких частей собран хороший рабочий промпт, как выглядят слабый и сильный запрос, шесть готовых шаблонов под частые задачи и как сохранить их в проекте — по руководствам Anthropic, OpenAI и Google.
 tags: AI, промпты, ChatGPT, Claude
+category: prompts
 layout: wide
 toc: model=Human-in-the-loop | parts=Пять частей | examples=Шесть примеров | learn=Что изучить | next=Дальше по теме
 ---

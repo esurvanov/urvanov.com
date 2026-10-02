@@ -3,6 +3,7 @@ title: ChatGPT Enterprise usage report: who uses it, for what, and which AI tool
 date: 2026-09-28
 description: Five console exports turn into adoption depth, uniformity across teams, main tools and segments, a task map, data checks and an interview shortlist.
 tags: AI, research, analytics
+category: research
 layout: wide
 image: /og/chatgpt-enterprise-usage-report.en.png
 mentions: ChatGPT Enterprise, Codex, ChatGPT Work, Claude in Chrome

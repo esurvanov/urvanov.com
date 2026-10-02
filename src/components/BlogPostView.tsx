@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
-import { findPost, formatDate } from '@/data/blog'
+import { Link, Navigate, useParams } from 'react-router-dom'
+import { blogListPath, findCategory, findPost, formatDate } from '@/data/blog'
 import type { Post } from '@/data/blog'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
+import { ICONS } from '@/components/site/icons'
 import { otherLang, useT, withLang, withSlash } from '@/lib/i18n'
 
 // Длинный заголовок «Суть: уточнение» — уточнение идёт второй строкой, мельче
@@ -49,6 +50,7 @@ export default function BlogPostView() {
   const alt = withSlash(findPost(slug, other) ? withLang(`/blog/${slug}`, other) : withLang('/blog', other))
   const author = t({ ru: 'Егор Урванов', en: 'Egor Urvanov' })
   const [main, sub] = splitTitle(post.title)
+  const cat = findCategory(post.category)!
 
   const article = (
     <article className="s-article" itemScope itemType="https://schema.org/BlogPosting">
@@ -60,6 +62,7 @@ export default function BlogPostView() {
         <p className="s-card-text">
           <time dateTime={post.date} itemProp="datePublished">{formatDate(post.date, lang)}</time>
           {' · '}{post.minutes} {t({ ru: 'мин', en: 'min' })} · <span itemProp="author">{author}</span>
+          {' · '}<Link className="s-post-cat" to={to(blogListPath(cat.slug))} itemProp="articleSection" data-track="cta" data-track-id="blog_category" data-track-label={cat.slug}>{ICONS[cat.icon]}{t(cat.name)}</Link>
         </p>
       </header>
       <div className="s-prose" itemProp="articleBody" dangerouslySetInnerHTML={{ __html: post.html }} />

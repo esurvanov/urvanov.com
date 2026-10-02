@@ -3,6 +3,7 @@ title: Кого звать на интервью перед покупкой AI-
 date: 2026-09-28
 description: Как отобрать 16 человек по отчёту, анкете и спискам лицензий, проверить покрытие команд и замены и понять, что у них узнать.
 tags: AI, custdev, исследования
+category: research
 layout: wide
 image: /og/who-to-interview-before-buying-ai-tools.png
 mentions: ChatGPT Enterprise, Codex

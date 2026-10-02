@@ -3,6 +3,7 @@ title: Отчёт по ChatGPT Enterprise: кто пользуется, для �
 date: 2026-09-28
 description: Пять выгрузок консоли превращаются в глубину проникновения, однородность по командам, основные инструменты и сегменты, карту задач, сверку данных и список людей для интервью.
 tags: AI, исследования, аналитика
+category: research
 layout: wide
 image: /og/chatgpt-enterprise-usage-report.png
 mentions: ChatGPT Enterprise, Codex, ChatGPT Work, Claude in Chrome

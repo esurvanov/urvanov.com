@@ -3,6 +3,7 @@ title: Prompts for work tasks: five parts and six examples for ChatGPT and Claud
 date: 2026-09-28
 description: The parts of a good work prompt, what a weak and a strong ask look like, six ready templates for common tasks and how to keep them in a project, based on the Anthropic, OpenAI and Google guides.
 tags: AI, prompts, ChatGPT, Claude
+category: prompts
 layout: wide
 toc: model=Human-in-the-loop | parts=Five parts | examples=Six examples | learn=What to study | next=Further reading
 ---

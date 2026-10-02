@@ -1,5 +1,5 @@
 import { PATTERN_CATEGORIES } from '@/data/patterns'
-import { POSTS } from '@/data/blog'
+import { POSTS, BLOG_CATEGORIES, blogListPath, findCategory, pageCount, postsIn } from '@/data/blog'
 import { config } from '@/data/config'
 import { GAME_PAGES } from '@/data/games'
 import { LAB_PAGES } from '@/data/labs'
@@ -32,6 +32,9 @@ export interface PageMeta {
   sources?: string[]
   // Та же страница на других языках: для hreflang
   alternates: { lang: Lang; path: string }[]
+  // Соседние страницы ленты блога: <link rel="prev/next">
+  prev?: string
+  next?: string
 }
 
 // Ссылка на канонический Person (полностью описан один раз в scripts/lib.mjs и добавляется
@@ -226,6 +229,10 @@ export function allPages(): PageMeta[] {
   for (const c of PATTERN_CATEGORIES) {
     pages.push({ path: `/patterns/${c.id}`, lang: 'ru', title: `${c.title} — паттерны AI-разработки`, description: c.description, sources: ['src/data/patterns.ts'], alternates: [{ lang: 'ru', path: `/patterns/${c.id}` }] })
   }
+  for (const p of pages) {
+    if (p.path === withLang('/blog', p.lang) && pageCount(postsIn(p.lang).length) > 1) p.next = withLang(blogListPath(undefined, 2), p.lang)
+  }
+  pages.push(...blogListPages())
   for (const p of POSTS) {
     const tr = POSTS.find((x) => x.slug === p.slug && x.lang !== p.lang)
     const alternates = [{ lang: p.lang, path: withLang(`/blog/${p.slug}`, p.lang) }, ...(tr ? [{ lang: tr.lang, path: withLang(`/blog/${p.slug}`, tr.lang) }] : [])]
@@ -248,7 +255,7 @@ export function allPages(): PageMeta[] {
         dateModified: p.date,
         inLanguage: p.lang,
         keywords: p.tags.join(', '),
-        articleSection: p.lang === 'en' ? 'Blog' : 'Блог',
+        articleSection: findCategory(p.category)!.name[p.lang],
         wordCount: p.words,
         timeRequired: `PT${p.minutes}M`,
         isAccessibleForFree: true,
@@ -308,6 +315,52 @@ export function allPages(): PageMeta[] {
           potentialAction: { '@type': 'ViewAction', target: SITE_URL + x.play },
         },
       })
+    }
+  }
+  return pages
+}
+
+// Лента блога: страницы 2…N и рубрики (со своими страницами). Первая страница ленты — '/blog' из BASE.
+// У каждой страницы canonical на себя, prev/next — на соседей; /page/1/ не существует (первая — без номера).
+function blogListPages(): PageMeta[] {
+  const pages: PageMeta[] = []
+  const name = (l: Lang) => (l === 'en' ? 'Egor Urvanov' : SITE_NAME)
+  const lists: (typeof BLOG_CATEGORIES[number] | undefined)[] = [undefined, ...BLOG_CATEGORIES]
+  for (const cat of lists) {
+    for (const l of ['ru', 'en'] as Lang[]) {
+      const total = postsIn(l, cat?.slug).length
+      if (!total) continue
+      const n = pageCount(total)
+      for (let page = 1; page <= n; page++) {
+        // первая страница самой ленты уже есть в BASE (rel=next ей дописывает allPages)
+        if (!cat && page === 1) continue
+        const path = withLang(blogListPath(cat?.slug, page), l)
+        const prev = page > 1 ? withLang(blogListPath(cat?.slug, page - 1), l) : undefined
+        const next = page < n ? withLang(blogListPath(cat?.slug, page + 1), l) : undefined
+        const other: Lang = l === 'en' ? 'ru' : 'en'
+        const alternates = [{ lang: l, path }, ...(pageCount(postsIn(other, cat?.slug).length) >= page && postsIn(other, cat?.slug).length ? [{ lang: other, path: withLang(blogListPath(cat?.slug, page), other) }] : [])]
+        const head = cat ? cat.name[l] : l === 'en' ? 'Blog' : 'Блог'
+        const pageSuffix = page > 1 ? (l === 'en' ? `, page ${page}` : `, страница ${page}`) : ''
+        const blogOf = l === 'en' ? 'blog of Egor Urvanov' : 'блог Егора Урванова'
+        pages.push({
+          path,
+          lang: l,
+          title: cat ? `${head}${pageSuffix} — ${blogOf}` : `${head}${pageSuffix} — ${name(l)}`,
+          description: (cat ? cat.description[l] : l === 'en' ? 'Notes on AI development, Spec-Driven Development, engineering management, and communities.' : 'Заметки про AI-разработку, Spec-Driven Development, инженерное управление и сообщества.')
+            + (page > 1 ? (l === 'en' ? ` Page ${page} of ${n}.` : ` Страница ${page} из ${n}.`) : ''),
+          prev,
+          next,
+          alternates,
+          jsonLd: {
+            '@type': 'CollectionPage',
+            name: cat ? cat.name[l] : head,
+            url: url(path),
+            inLanguage: l,
+            isPartOf: { '@type': 'Blog', url: url(withLang('/blog', l)) },
+          },
+          sources: ['src/data/blog.ts', 'content/blog'],
+        })
+      }
     }
   }
   return pages

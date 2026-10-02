@@ -3,6 +3,7 @@ title: Петля сверки для спек: как в Kubernetes, тольк
 date: 2026-09-28
 description: Кто меняет желаемое, а кто приводит к нему код, почему зелёные тесты ещё не значат «верно» и какие шесть возможностей среды нужны агенту, чтобы петля замкнулась.
 tags: AI, спеки, Kubernetes, харнесс
+category: specs
 layout: wide
 image: /og/spec-reconcile-loop.png
 mentions: Kubernetes, reconcile loop, human-in-the-loop, Model Context Protocol, Spec-Driven Development

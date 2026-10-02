@@ -3,6 +3,7 @@ title: Harness-Driven Development: turning AI agent mistakes into rules of its e
 date: 2026-09-28
 description: The mistake-to-rule loop, guides and sensors, three layers of checks, how it fits with specs, and five first steps in your own project.
 tags: AI, harness, HDD, agents
+category: harness
 layout: wide
 image: /og/harness-driven-development.en.png
 mentions: Harness engineering, Claude Code, AGENTS.md, CLAUDE.md, Spec-Driven Development

@@ -77,6 +77,49 @@ export const ICONS = {
       <path d="M2 9l10-5 10 5-10 5zM6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5" />
     </Icon>
   ),
+  // Рубрики блога
+  all: (
+    <Icon>
+      <rect x="4" y="4" width="6" height="6" rx="1" />
+      <rect x="14" y="4" width="6" height="6" rx="1" />
+      <rect x="4" y="14" width="6" height="6" rx="1" />
+      <rect x="14" y="14" width="6" height="6" rx="1" />
+    </Icon>
+  ),
+  harness: (
+    <Icon>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M7 9l3 3-3 3M13 15h4" />
+    </Icon>
+  ),
+  specs: (
+    <Icon>
+      <path d="M6 3h8l4 4v14H6z" />
+      <path d="M14 3v4h4M9 12l1.5 1.5L13 11M9 17h6" />
+    </Icon>
+  ),
+  prompts: (
+    <Icon>
+      <path d="M4 5h16v11H9l-5 4z" />
+      <path d="M8 9h8M8 12h5" />
+    </Icon>
+  ),
+  research: (
+    <Icon>
+      <circle cx="11" cy="11" r="6" />
+      <path d="M20 20l-4.3-4.3M8.5 12.5v-2M11 12.5v-4M13.5 12.5v-1" />
+    </Icon>
+  ),
+  prev: (
+    <Icon>
+      <path d="M15 6l-6 6 6 6" />
+    </Icon>
+  ),
+  next: (
+    <Icon>
+      <path d="M9 6l6 6-6 6" />
+    </Icon>
+  ),
   links: (
     <Icon>
       <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" />

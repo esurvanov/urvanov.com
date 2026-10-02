@@ -3,6 +3,7 @@ title: Comparing harnesses: Claude Code, Codex, Cursor, Hermes and chat on one m
 date: 2026-09-28
 description: Where the agent runs, what it sees, which model it thinks with and what it costs — five harnesses side by side and which one to pick for the task. With links to the docs.
 tags: AI, harness, Claude Code, Codex, Cursor, Hermes Agent
+category: harness
 layout: wide
 toc: tasks=Which harness for which task | stable=What stays the same | harness=What a harness is | compare=What they see and do | next=Further reading
 ---

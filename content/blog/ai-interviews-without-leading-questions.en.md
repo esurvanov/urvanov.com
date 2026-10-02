@@ -3,6 +3,7 @@ title: How to interview people about their AI use: a call, a survey and one Airt
 date: 2026-09-28
 description: A 30-minute call script, a short company-wide questionnaire after the interviews, rules for staying on topic, a said-versus-measured check against the report, and answer analysis with ChatGPT or an agent.
 tags: AI, custdev, interviews
+category: research
 layout: wide
 image: /og/ai-interviews-without-leading-questions.en.png
 mentions: Airtable, tl;dv, ChatGPT, Claude Code, Model Context Protocol

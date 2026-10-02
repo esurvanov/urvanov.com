@@ -3,6 +3,7 @@ title: Specs, bible, rules and skills: what an agent should know about a project
 date: 2026-09-28
 description: Four kinds of persistent context for AI: the task spec, the project bible, rules and skills. What goes into each, when it enters the context, and what ChatGPT and Claude offer. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.
 tags: AI, harness, specs, skills
+category: specs
 layout: wide
 mentions: AGENTS.md, CLAUDE.md, Agent Skills, Spec Kit, Memory Bank
 toc: map=Four layers | spec=Spec | bible=Bible | rules=Rules | skills=Skills | chat=In a chat | pick=What goes where | next=Further reading

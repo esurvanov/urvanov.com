@@ -3,6 +3,7 @@ title: Harness-Driven Development: как превращать ошибки ИИ
 date: 2026-09-28
 description: Петля «ошибка → правило», направляющие и датчики, три слоя проверок, связь со спеками и пять первых шагов в своём проекте.
 tags: AI, харнесс, HDD, агенты
+category: harness
 layout: wide
 image: /og/harness-driven-development.png
 mentions: Harness engineering, Claude Code, AGENTS.md, CLAUDE.md, Spec-Driven Development

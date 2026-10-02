@@ -3,6 +3,7 @@ title: Specs by aggregate: RFC requirements and bounded contexts instead of a sp
 date: 2026-09-28
 description: How to keep specs in one aggregate dictionary so they do not multiply with every feature: requirement levels, the aggregate card and context boundaries.
 tags: AI, specs, DDD, agents
+category: specs
 layout: wide
 image: /og/specs-by-aggregates.en.png
 mentions: RFC 2119, Domain-Driven Design, OpenSpec, Spec-Driven Development

@@ -22,6 +22,13 @@ export function usePageMeta() {
       document.documentElement.lang = m.lang
       setTag('meta[name="description"]', () => Object.assign(document.createElement('meta'), { name: 'description' }), 'content', m.description)
       setTag('link[rel="canonical"]', () => Object.assign(document.createElement('link'), { rel: 'canonical' }), 'href', SITE_URL + (m.path.endsWith('/') ? m.path : m.path + '/'))
+      // rel=prev/next ленты блога: у других страниц их нет — убираем оставшиеся от прошлой
+      for (const rel of ['prev', 'next'] as const) {
+        const href = m[rel]
+        const el = document.head.querySelector(`link[rel="${rel}"]`)
+        if (href) setTag(`link[rel="${rel}"]`, () => Object.assign(document.createElement('link'), { rel }), 'href', SITE_URL + href + '/')
+        else el?.remove()
+      }
     }
     startPage(pathname)
   }, [pathname])

@@ -3,6 +3,7 @@ title: Approaches to working with a harness: the answer loop and review that fix
 date: 2026-09-28
 description: What to do when an answer misses: three paths and a repeated loop. How review finds gaps, why they go into the original request and the pipeline runs again. Based on Anthropic, OpenAI and Google guides.
 tags: AI, harness, prompts, review
+category: prompts
 layout: wide
 toc: iterate=If it misses | review=Answer review | next=Further reading
 ---
