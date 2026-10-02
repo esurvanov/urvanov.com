@@ -76,10 +76,12 @@ for (const g of GAMES) {
   // Индексируется посадочная страница (/materials/games/<игра>/), а не холст игры: canonical и og:url ведут на неё,
   // разметка VideoGame/FAQ лежит там же. У игры без посадочной всё остаётся на её адресе.
   const landing = LANDING[g.dir] ? `/materials/games/${LANDING[g.dir]}/` : null
+  // Картинка превью 1200×630 (public/og/games/<dir>.jpg) — только если она есть у этой игры
+  const ogImage = [`public/og/games/${g.dir}.jpg`, `dist/og/games/${g.dir}.jpg`].some((f) => existsSync(f)) ? `/og/games/${g.dir}.jpg` : undefined
   const head = headTags({
-    title: g.title, description: g.description, path: landing ?? path,
+    title: g.title, description: g.description, path: landing ?? path, image: ogImage,
     jsonLd: landing ? undefined : [
-      { '@type': ['VideoGame', 'WebApplication'], isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, gamePlatform: 'Web browser', name: g.title.split(' — ')[0], description: g.description, url: SITE_URL + path, genre: g.genre, inLanguage: 'ru', applicationCategory: 'Game', operatingSystem: 'Web browser', playMode: 'SinglePlayer', author: { '@type': 'Person', name: 'Егор Урванов', url: SITE_URL }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
+      { '@type': ['VideoGame', 'WebApplication'], isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, gamePlatform: 'Web browser', name: g.title.split(' — ')[0], description: g.description, url: SITE_URL + path, ...(ogImage ? { image: SITE_URL + ogImage } : {}), genre: g.genre, inLanguage: 'ru', applicationCategory: 'Game', operatingSystem: 'Web browser', playMode: 'SinglePlayer', author: { '@type': 'Person', name: 'Егор Урванов', url: SITE_URL }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
       { '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL + '/' },
         { '@type': 'ListItem', position: 2, name: 'Игры', item: SITE_URL + '/materials/games/' },
