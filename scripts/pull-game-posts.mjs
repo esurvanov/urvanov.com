@@ -46,7 +46,7 @@ for (const file of found) {
     let body = readFileSync(join(dir, m.file), 'utf8').replace(/^# .*\n+/, '')          // заголовок задаёт шапка поста
     for (const t of m.toc || []) body = body.replace(new RegExp(`^## ${t.heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[ \\t]*$`, 'm'), `<h2 id="${t.id}">${t.heading}</h2>`)  // [ \t], не \s: пустая строка после заголовка нужна, иначе markdown под ним не разбирается
     body = body.replace(/!\[([^\]]*)\]\(([^)\s]+\.svg)(?:\s+"([^"]*)")?\)/g, (_, alt, src, cap) => inlineSvg(dir, src, cap, alt))
-    const head = ['---', `title: ${m.title}`, `date: ${post.date}`, `description: ${m.description}`, `tags: ${m.tags}`, `layout: ${post.layout || 'wide'}`,
+    const head = ['---', `title: ${m.title}`, `date: ${post.date}`, `description: ${m.description}`, `tags: ${m.tags}`, `category: ${post.category || 'architecture'}`, `layout: ${post.layout || 'wide'}`,
       `mentions: ${post.mentions || ''}`, `toc: ${(m.toc || []).map((t) => `${t.id}=${t.label}`).join(' | ')}`, '---', '', ''].join('\n')
     const out = join('content', 'blog', lang === 'en' ? `${post.slug}.en.md` : `${post.slug}.md`)
     writeFileSync(out, head + body.replace(/\s*$/, '') + gameLinks(dir, lang))
