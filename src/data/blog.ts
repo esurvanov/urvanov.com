@@ -86,6 +86,13 @@ const files = import.meta.glob('/content/blog/*.md', { query: '?raw', import: 'd
 // Текстовые копии широких постов: content/blog-text/<тот же файл>.md
 const texts = import.meta.glob('/content/blog-text/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 
+// Cloudflare «Email Obfuscation» переписывает адреса в HTML в ссылки /cdn-cgi/l/email-protection, которых нет на GitHub Pages
+// (битые ссылки). Адреса в тексте поста (примеры вида hana@example.com) прячем от него официальной меткой email_off
+// и «@» сущностью — читатель видит обычный текст. Трогаем только текст между тегами, не атрибуты.
+const EMAIL = /([A-Za-z0-9._%+-]+)@([A-Za-z0-9.-]+\.[A-Za-z]{2,})/g
+export const shieldEmails = (html: string): string =>
+  html.split(/(<[^>]*>)/).map((part) => (part.startsWith('<') ? part : part.replace(EMAIL, '<!--email_off-->$1&#64;$2<!--/email_off-->'))).join('')
+
 function parse(path: string, raw: string): Post | null {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
   if (!m) return null
@@ -113,7 +120,7 @@ function parse(path: string, raw: string): Post | null {
     date: meta.date,
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     category: category.slug,
-    html: marked.parse(markdown, { async: false }) as string,
+    html: shieldEmails(marked.parse(markdown, { async: false }) as string),
     markdown,
     // HTML-разметку внутри поста не считаем за слова
     minutes: Math.max(1, Math.round(words / (lang === 'en' ? 220 : 180))),
