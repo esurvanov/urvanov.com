@@ -110,6 +110,28 @@ export const ICONS = {
       <path d="M20 20l-4.3-4.3M8.5 12.5v-2M11 12.5v-4M13.5 12.5v-1" />
     </Icon>
   ),
+  // Ссылки и раскрывашки в материалах
+  ext: (
+    <Icon>
+      <path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />
+    </Icon>
+  ),
+  chevron: (
+    <Icon>
+      <path d="M6 9l6 6 6-6" />
+    </Icon>
+  ),
+  doc: (
+    <Icon>
+      <path d="M6 3h8l4 4v14H6z" />
+      <path d="M14 3v4h4M9 12h6M9 16h6" />
+    </Icon>
+  ),
+  arrow: (
+    <Icon>
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </Icon>
+  ),
   prev: (
     <Icon>
       <path d="M15 6l-6 6 6 6" />

@@ -43,7 +43,7 @@ export default function BlogView() {
   ].filter((c) => c.n > 0)
 
   return (
-    <Page>
+    <Page className="s-blog-page">
       <Crumbs items={crumbs} />
       <header className="s-blog-head">
         <h1 className="s-page-title">{cat ? t(cat.name) : t({ ru: 'Блог', en: 'Blog' })}</h1>
@@ -55,6 +55,7 @@ export default function BlogView() {
       ) : (
         <div className="s-blog">
           <nav className="s-cats" data-track-section="blog_categories" aria-label={t({ ru: 'Рубрики', en: 'Categories' })}>
+            <p className="s-cats-t">{t({ ru: 'Рубрики', en: 'Categories' })}</p>
             <ul className="s-chips">
               {chips.map((c) => (
                 <li key={c.slug}>

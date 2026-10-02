@@ -34,6 +34,9 @@ export const itemText = (item: LinkItem, lang: Lang) => ({
 
 const LI = 'https://www.linkedin.com/in/eurvanov/'
 
+// Сайт сообщества Jaiora (страница на этом сайте переехала туда)
+export const JAIORA_URL = 'https://jaiora.me/'
+
 export const LINK_GROUPS: LinkGroup[] = [
   {
     title: 'Jaiora',
@@ -41,7 +44,7 @@ export const LINK_GROUPS: LinkGroup[] = [
     blocks: [
       {
         variant: 'cards',
-        items: [{ url: 'https://jaiora.me/', label: 'Jaiora', comment: 'Оффлайн-LinkedIn · чаты · встречи', en: { comment: 'Offline LinkedIn · chats · meetups' } }],
+        items: [{ url: JAIORA_URL, label: 'Jaiora', comment: 'Оффлайн-LinkedIn · чаты · встречи', en: { comment: 'Offline LinkedIn · chats · meetups' } }],
       },
     ],
   },

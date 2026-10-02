@@ -1,10 +1,12 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
 import NotFoundView from '@/components/NotFoundView'
-import { labPage } from '@/data/labs'
+import { CardLinks, TextLink } from '@/components/site/Links'
+import { LAB_PAGES, labPage } from '@/data/labs'
 import { LABS } from '@/data/seo'
 import { useT } from '@/lib/i18n'
+import { plural } from '@/lib/plural'
 
 // Посадочная страница интерактива: то, что может прочитать поисковик. Сам интерактив — на своём адресе, открывается кнопкой.
 export function LabView() {
@@ -40,13 +42,20 @@ export function LabView() {
       {lab && (
         <section className="s-section" aria-labelledby="l-src">
           <h2 className="s-label" id="l-src">{t({ ru: 'Источники', en: 'Sources' })}</h2>
-          <ul className="g-list">
-            {lab.source.links.map((l) => <li key={l.href}><a href={l.href} target="_blank" rel="noopener">{l[lang]}</a></li>)}
+          <ul className="g-list g-links">
+            {lab.source.links.map((l) => <li key={l.href}><TextLink href={l.href}>{l[lang]}</TextLink></li>)}
           </ul>
         </section>
       )}
 
-      <p className="g-genre"><Link to={to('/materials/interactive')}>{t({ ru: 'Все интерактивы', en: 'All interactive pages' })}</Link></p>
+      <section className="s-section" aria-labelledby="l-more">
+        <h2 className="s-label" id="l-more">{t({ ru: 'Ещё', en: 'More' })}</h2>
+        <CardLinks items={[
+          ...LAB_PAGES.filter((o) => o.slug !== x.slug).map((o) => ({ to: to(`/materials/interactive/${o.slug}`), k: t({ ru: 'Интерактив', en: 'Interactive' }), t: t(o.name), d: t(o.tagline) })),
+          { to: to('/materials/interactive'), k: t({ ru: 'Раздел', en: 'Section' }), t: t({ ru: 'Все интерактивы', en: 'All interactive pages' }), d: plural(LAB_PAGES.length, lang, ['интерактив', 'интерактива', 'интерактивов'], ['page', 'pages']) },
+          { to: to('/materials'), k: t({ ru: 'Раздел', en: 'Section' }), t: t({ ru: 'Все материалы', en: 'All materials' }), d: t({ ru: 'игры, интерактивы, презентации', en: 'games, interactive, talks' }) },
+        ]} />
+      </section>
     </Page>
   )
 }

@@ -7,39 +7,34 @@ import { config } from '@/data/config'
 import { useT, withLang, withSlash } from '@/lib/i18n'
 import { gamePageByPlay } from '@/data/games'
 import { LAB_PAGES } from '@/data/labs'
+import { TextLink } from '@/components/site/Links'
+import { plural } from '@/lib/plural'
 
 const patternsTotal = PATTERN_CATEGORIES.reduce((s, c) => s + c.patterns.length, 0)
 
-interface Row { to?: string; href?: string; title: string; hint: string; note?: { text: string; links: { href: string; label: string }[] } }
+interface Row { to?: string; href?: string; title: string; hint: string; meta?: string; note?: { text: string; links: { href: string; label: string }[] } }
 
+// Списки разделов — карточками, как лента блога: подпись, заголовок-ссылка (вся карточка кликабельна), описание
 function Rows({ items }: { items: Row[] }) {
   return (
-    <ol className="s-index s-index-desc">
-      {items.map((r, i) => (
+    <ol className="s-posts s-mat-list">
+      {items.map((r) => (
         <li key={r.title}>
-          {r.to ? (
-            <Link to={r.to}>
-              <span className="n">{String(i + 1).padStart(2, '0')}</span>
-              <span className="t">{r.title}</span>
-              <span className="ar" aria-hidden="true">→</span>
-              <span className="h">{r.hint}</span>
-            </Link>
-          ) : (
-            <a href={r.href}>
-              <span className="n">{String(i + 1).padStart(2, '0')}</span>
-              <span className="t">{r.title}</span>
-              <span className="ar" aria-hidden="true">→</span>
-              <span className="h">{r.hint}</span>
-            </a>
-          )}
-          {r.note && (
-            <p className="s-index-note">
-              {r.note.text}:{' '}
-              {r.note.links.map((l, j) => (
-                <span key={l.href}>{j > 0 && ' · '}<a href={l.href} target="_blank" rel="noopener">{l.label}</a></span>
-              ))}
-            </p>
-          )}
+          <article className="s-card s-post">
+            {r.meta && <p className="s-post-meta"><span>{r.meta}</span></p>}
+            <h2 className="s-card-title">
+              {r.to ? <Link to={r.to}>{r.title}</Link> : <a href={r.href}>{r.title}</a>}
+            </h2>
+            <p className="s-card-text">{r.hint}</p>
+            {r.note && (
+              <p className="s-post-note">
+                {r.note.text}:{' '}
+                {r.note.links.map((l, j) => (
+                  <span key={l.href}>{j > 0 && ' · '}<TextLink href={l.href}>{l.label}</TextLink></span>
+                ))}
+              </p>
+            )}
+          </article>
         </li>
       ))}
     </ol>
@@ -48,9 +43,9 @@ function Rows({ items }: { items: Row[] }) {
 
 // Слайды и каталог паттернов только на русском: ссылки ведут на русские адреса
 const presentationRows = (lang: 'ru' | 'en'): Row[] => [
-  { to: '/talk/spec-driven-development/', title: lang === 'en' ? config.talkTitleEn : config.talkTitle, hint: lang === 'en' ? `${config.conferenceName} · full talk text (in Russian)` : `${config.conferenceName} · текст доклада целиком` },
-  { to: '/slide/1/', title: lang === 'en' ? 'Open the slide deck' : 'Открыть презентацию', hint: lang === 'en' ? 'Slides in the browser (in Russian)' : 'Слайды в браузере' },
-  { to: '/patterns/', title: lang === 'en' ? 'AI patterns catalog' : 'Каталог AI-паттернов', hint: lang === 'en' ? `${patternsTotal} patterns · ${PATTERN_CATEGORIES.length} categories (in Russian)` : `${patternsTotal} паттернов · ${PATTERN_CATEGORIES.length} категорий` },
+  { meta: lang === 'en' ? 'Talk' : 'Доклад', to: '/talk/spec-driven-development/', title: lang === 'en' ? config.talkTitleEn : config.talkTitle, hint: lang === 'en' ? `${config.conferenceName} · full talk text (in Russian)` : `${config.conferenceName} · текст доклада целиком` },
+  { meta: lang === 'en' ? 'Slides' : 'Слайды', to: '/slide/1/', title: lang === 'en' ? 'Open the slide deck' : 'Открыть презентацию', hint: lang === 'en' ? 'Slides in the browser (in Russian)' : 'Слайды в браузере' },
+  { meta: lang === 'en' ? 'Catalog' : 'Каталог', to: '/patterns/', title: lang === 'en' ? 'AI patterns catalog' : 'Каталог AI-паттернов', hint: lang === 'en' ? `${patternsTotal} patterns · ${PATTERN_CATEGORIES.length} categories (in Russian)` : `${patternsTotal} паттернов · ${PATTERN_CATEGORIES.length} категорий` },
 ]
 
 const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => {
@@ -58,7 +53,7 @@ const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => {
   const title = lang === 'en' ? g.titleEn : g.title, hint = lang === 'en' ? g.longEn : g.long
   // страница игры (описание, скриншоты, управление, ссылка на игру) — единственная ссылка; индексируется она, а не холст игры
   return lp
-    ? { to: withSlash(withLang(`/materials/games/${lp.slug}`, lang)), title, hint }
+    ? { to: withSlash(withLang(`/materials/games/${lp.slug}`, lang)), title, hint, meta: lp.genre[lang] }
     : { href: g.path, title, hint }
 })
 const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => {
@@ -66,13 +61,14 @@ const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => {
   const title = lang === 'en' ? l.titleEn : l.title, hint = lang === 'en' ? l.longEn : l.long
   const note = { text: l.source[lang], links: l.source.links.map((x) => ({ href: x.href, label: x[lang] })) }
   // страница интерактива (описание для поиска) — основная ссылка; сам интерактив открывается оттуда
-  return lp ? { to: withSlash(withLang(`/materials/interactive/${lp.slug}`, lang)), title, hint, note } : { href: l.path, title, hint, note }
+  const meta = lang === 'en' ? 'Interactive' : 'Интерактив'
+  return lp ? { to: withSlash(withLang(`/materials/interactive/${lp.slug}`, lang)), title, hint, note, meta } : { href: l.path, title, hint, note, meta }
 })
 
 // /materials/ — только группы: раздел и что в нём. Описания и ссылки на сами материалы — на странице раздела.
 export function MaterialsView() {
   const { lang, t, to } = useT()
-  const group = (path: string, title: string, rows: Row[]): Row => ({ to: withSlash(to(path)), title, hint: rows.map((r) => r.title).join(' · ') })
+  const group = (path: string, title: string, rows: Row[]): Row => ({ to: withSlash(to(path)), title, hint: rows.map((r) => r.title).join(' · '), meta: plural(rows.length, lang, ['материал', 'материала', 'материалов'], ['item', 'items']) })
   return (
     <Page>
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { label: t({ ru: 'Материалы', en: 'Materials' }) }]} />
