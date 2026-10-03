@@ -2,7 +2,7 @@ import { marked } from 'marked'
 import type { Lang, L } from '@/lib/i18n'
 
 // Рубрики блога: у каждого поста одна, задаётся полем `category` во фронтматтере (у перевода — та же).
-// Сведены из тегов: харнесс / спеки / промпты и ревью / custdev и исследования / архитектура игр.
+// Сведены из тегов: харнесс / спеки / промпты и ревью / custdev и исследования.
 export const BLOG_CATEGORIES = [
   {
     slug: 'harness',
@@ -38,16 +38,6 @@ export const BLOG_CATEGORIES = [
     description: {
       ru: 'Интервью и исследования использования AI в компании: кого опрашивать, как не подсказывать ответ, что показывают отчёты.',
       en: 'Interviews and research on AI use in a company: who to interview, how to avoid leading questions, what usage reports show.',
-    },
-  },
-  {
-    // статьи об архитектуре игр подтягиваются из репозитория игр (scripts/pull-game-posts.mjs ставит эту рубрику)
-    slug: 'architecture',
-    icon: 'game',
-    name: { ru: 'Архитектура игр', en: 'Game architecture' },
-    description: {
-      ru: 'Архитектура браузерных игр: контексты, схемы C4 до уровня компонентов и критические пути — по исходникам каждой игры.',
-      en: 'Architecture of browser games: contexts, C4 diagrams down to components, and critical paths — from each game’s source code.',
     },
   },
 ] as const satisfies readonly { slug: string; icon: string; name: L; description: L }[]

@@ -8,7 +8,7 @@ import { analyticsHead, headTags, esc, urlOf, SITE_URL } from './lib.mjs'
 
 const DIST = 'dist'
 const {
-  render, allPages, POSTS, GAMES, GAME_PAGES, LABS, config,
+  render, allPages, POSTS, GAMES, GAME_PAGES, ARCHITECTURES, LABS, config,
   MILESTONES, ABOUT_LEAD, PLACES, LINK_GROUPS, itemText, CITY_CHATS, THEME_CHATS, BIO,
 } = await import(pathToFileURL(join(process.cwd(), 'dist-ssr/entry-server.js')).href)
 
@@ -92,6 +92,12 @@ const jaioraMoved = (to) => `<!doctype html>\n<html lang="ru"><head><meta charse
 write('jaiora/index.html', jaioraMoved('https://jaiora.me/'))
 write('en/jaiora/index.html', jaioraMoved('https://jaiora.me/en/'))
 
+// Архитектура игр жила в блоге (/blog/<игра>-architecture/): старые адреса переправляют на страницу рядом с игрой
+for (const a of ARCHITECTURES) {
+  const pre = a.lang === 'en' ? 'en/' : ''
+  write(`${pre}blog/${a.oldSlug}/index.html`, jaioraMoved(urlOf(`${a.lang === 'en' ? '/en' : ''}/materials/games/${a.game}/architecture`)).replace('Jaiora → jaiora.me', a.title).replace('lang="ru"', `lang="${a.lang}"`))
+}
+
 // 404: реальная страница (NotFoundView), без canonical и хлебных крошек — адреса /404/ не существует
 let body404 = ''
 try {
@@ -139,6 +145,12 @@ const mdPath = (p) => (p.lang === 'en' ? `en/blog/${p.slug}.md` : `blog/${p.slug
 const postMd = (p) => `# ${p.title}\n\n${p.date} · ${p.lang === 'en' ? 'Egor Urvanov' : 'Егор Урванов'} · ${postUrl(p)}\n\n> ${p.description}\n\n${p.text ?? p.markdown}\n`
 for (const p of POSTS) write(mdPath(p), postMd(p))
 
+// Архитектура игр: markdown-копии рядом со страницами (схемы-картинки заменены подписями)
+const archUrl = (a) => urlOf(`${a.lang === 'en' ? '/en' : ''}/materials/games/${a.game}/architecture`)
+const archMdPath = (a) => `${a.lang === 'en' ? 'en/' : ''}materials/games/${a.game}/architecture.md`
+const archMd = (a) => `# ${a.title}\n\n${archUrl(a)}\n\n> ${a.description}\n\n${a.markdown.replace(/<figure class="arch">.*?<figcaption>(.*?)<\/figcaption><\/figure>/g, '[Схема / Diagram: $1]').replace(/<section class="arch-next">[\s\S]*$/, '').replace(/<h2 id="[^"]*">(.*?)<\/h2>/g, '## $1').trim()}\n`
+for (const a of ARCHITECTURES) write(archMdPath(a), archMd(a))
+
 // llms.txt — факты в первом абзаце, пустые разделы блога не выводим, пока постов нет
 const postLines = (lang) => POSTS.filter((p) => p.lang === lang).map((p) => `- [${p.title}](${SITE_URL}/${mdPath(p)}): ${p.description}`)
 const ruPosts = postLines('ru')
@@ -162,7 +174,10 @@ write('llms.txt', [
   `- [Презентации](${SITE_URL}/materials/presentations/) · [Presentations](${SITE_URL}/en/materials/presentations/)`,
   ...LABS.map((l) => `- [${l.title}](${SITE_URL}/materials/interactive/${l.path.replace(/\//g, '')}/) · [${l.titleEn}](${SITE_URL}/en/materials/interactive/${l.path.replace(/\//g, '')}/): ${l.long} (RU/EN)`),
   `- [Игры](${SITE_URL}/materials/games/) · [Games](${SITE_URL}/en/materials/games/): ${GAMES.map((g) => g.title).join(', ')}`,
-  ...GAME_PAGES.map((g) => `  - [${g.name.ru}](${SITE_URL}/materials/games/${g.slug}/) · [${g.name.en}](${SITE_URL}/en/materials/games/${g.slug}/): ${g.tagline.ru} / ${g.tagline.en} (играть: ${SITE_URL}${g.play})`),
+  ...GAME_PAGES.flatMap((g) => [
+    `  - [${g.name.ru}](${SITE_URL}/materials/games/${g.slug}/) · [${g.name.en}](${SITE_URL}/en/materials/games/${g.slug}/): ${g.tagline.ru} / ${g.tagline.en} (играть: ${SITE_URL}${g.play})`,
+    ...ARCHITECTURES.filter((a) => a.game === g.slug).map((a) => `    - [${a.title}](${SITE_URL}/${archMdPath(a)}): ${a.description}`),
+  ]),
   `- [Ссылки](${SITE_URL}/links/) · [Links](${SITE_URL}/en/links/)`,
   '',
   '## Полный текст / Full text',
@@ -204,6 +219,7 @@ write('llms-full.txt', [
   aboutSection('ru'),
   aboutSection('en'),
   ...(POSTS.length ? ['## Блог / Blog', '', ...POSTS.map((p) => postMd(p).replace(/^# /, '### '))] : []),
+  ...(ARCHITECTURES.length ? ['## Архитектура игр / Game architecture', '', ...ARCHITECTURES.map((a) => archMd(a).replace(/^# /, '### '))] : []),
 ].join('\n'))
 
 if (existsSync('dist-ssr')) rmSync('dist-ssr', { recursive: true })

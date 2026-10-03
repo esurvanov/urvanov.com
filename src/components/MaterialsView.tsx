@@ -108,11 +108,30 @@ export function PresentationsView() {
 export function GamesView() {
   const { lang, t, to } = useT()
   return (
-    <Page>
+    <Page className="s-wide">
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { label: t({ ru: 'Игры', en: 'Games' }) }]} />
       <h1 className="s-page-title">{t({ ru: 'Игры', en: 'Games' })}</h1>
       <p className="s-lead">{t({ ru: 'Играть можно прямо в браузере, без установки.', en: 'Play right in the browser, no installation.' })}</p>
-      <Rows items={gameRows(lang)} />
+      <ul className="g-tiles">
+        {GAMES.map((g) => {
+          const lp = gamePageByPlay(g.path)
+          const title = lang === 'en' ? g.titleEn : g.title
+          const href = lp ? withSlash(withLang(`/materials/games/${lp.slug}`, lang)) : g.path
+          const shot = lp?.shots[0]
+          return (
+            <li key={g.path}>
+              <Link to={href} className="g-tile">
+                {lp && shot && <img src={`/games/${lp.slug}/${shot.file}`} alt={t(shot.alt)} width={shot.w} height={shot.h} loading="lazy" decoding="async" />}
+                <span className="g-tile-body">
+                  {lp && <small>{t(lp.genre)}</small>}
+                  <b>{lp ? t(lp.name) : title}</b>
+                  <span>{lp ? t(lp.tagline) : (lang === 'en' ? g.longEn : g.long)}</span>
+                </span>
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
     </Page>
   )
 }

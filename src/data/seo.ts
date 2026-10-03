@@ -2,6 +2,7 @@ import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { POSTS, BLOG_CATEGORIES, blogListPath, findCategory, pageCount, postsIn } from '@/data/blog'
 import { config } from '@/data/config'
 import { GAME_PAGES } from '@/data/games'
+import { ARCHITECTURES, architecturePath } from '@/data/architecture'
 import { LAB_PAGES } from '@/data/labs'
 import { withLang, type Lang, type L } from '@/lib/i18n'
 
@@ -306,6 +307,43 @@ export function allPages(): PageMeta[] {
         }],
       })
     }
+  }
+  // Архитектура игры: страница рядом с игрой (не пост блога), разметка TechArticle
+  for (const a of ARCHITECTURES) {
+    const g = GAME_PAGES.find((x) => x.slug === a.game)
+    if (!g) continue
+    const tr = ARCHITECTURES.find((x) => x.game === a.game && x.lang !== a.lang)
+    const alternates = [{ lang: a.lang, path: withLang(architecturePath(a.game), a.lang) }, ...(tr ? [{ lang: tr.lang, path: withLang(architecturePath(a.game), tr.lang) }] : [])]
+    const path = withLang(architecturePath(a.game), a.lang), pageUrl = url(path)
+    const image = `/games/${g.slug}/${g.shots[0].file}`
+    pages.push({
+      path, lang: a.lang,
+      title: `${a.title.split(': ')[0]} — ${a.lang === 'en' ? 'Egor Urvanov' : SITE_NAME}`,
+      ogTitle: a.title,
+      description: a.description,
+      type: 'article',
+      date: a.date || undefined,
+      image,
+      alternates,
+      sources: ['src/data/architecture.ts', 'src/components/ArchitectureView.tsx'],
+      jsonLd: {
+        '@type': 'TechArticle',
+        headline: a.title,
+        description: a.description,
+        ...(a.date ? { dateModified: a.date } : {}),
+        inLanguage: a.lang,
+        keywords: a.tags.join(', '),
+        wordCount: a.words,
+        isAccessibleForFree: true,
+        author: person(),
+        publisher: person(),
+        about: { '@type': 'VideoGame', name: g.name[a.lang], url: url(withLang(`/materials/games/${g.slug}`, a.lang)) },
+        mainEntityOfPage: pageUrl,
+        image: `${SITE_URL}${image}`,
+        ...(a.mentions.length ? { mentions: a.mentions.map((name) => ({ '@type': 'Thing', name })) } : {}),
+        ...(a.toc.length ? { hasPart: a.toc.map((t) => ({ '@type': 'WebPageElement', name: t.label, url: `${pageUrl}#${t.id}` })) } : {}),
+      },
+    })
   }
   // Посадочные страницы интерактивов: индексируется она, а не сам интерактив (он на отдельном адресе)
   for (const x of LAB_PAGES) {

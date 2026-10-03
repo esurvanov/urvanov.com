@@ -21,7 +21,7 @@ export interface GamePage {
   shots: GameShot[]
   related: string[]
   keywords: L<string[]>
-  // статья об архитектуре в блоге (из <игра>/docs/architecture/post.json); путь — папка статьи в репозитории игр
+  // страница архитектуры рядом с игрой (из <игра>/docs/architecture/post.json); slug — прежний адрес статьи в блоге
   architecture?: { slug: string; path: string }
 }
 

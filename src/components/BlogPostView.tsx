@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { blogListPath, findCategory, findPost, formatDate } from '@/data/blog'
-import type { Post } from '@/data/blog'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
+import Toc from '@/components/site/Toc'
 import { ICONS } from '@/components/site/icons'
 import { otherLang, useT, withLang, withSlash } from '@/lib/i18n'
 
@@ -13,30 +12,6 @@ function splitTitle(title: string): [string, string | null] {
   if (i < 0) return [title, null]
   const sub = title.slice(i + 2)
   return [title.slice(0, i), sub.charAt(0).toUpperCase() + sub.slice(1)]
-}
-
-// Оглавление сбоку: подсвечивает раздел, который сейчас на экране
-function Toc({ items, label }: { items: Post['toc']; label: string }) {
-  const [active, setActive] = useState<string | null>(null)
-  useEffect(() => {
-    if (!('IntersectionObserver' in window)) return
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id) }),
-      { rootMargin: '-20% 0px -70% 0px' },
-    )
-    items.forEach((it) => { const el = document.getElementById(it.id); if (el) io.observe(el) })
-    return () => io.disconnect()
-  }, [items])
-  return (
-    <nav className="s-toc" aria-label={label}>
-      <div className="s-toc-t">{label}</div>
-      <ol>
-        {items.map((it) => (
-          <li key={it.id}><a href={`#${it.id}`} className={active === it.id ? 'is-on' : undefined}>{it.label}</a></li>
-        ))}
-      </ol>
-    </nav>
-  )
 }
 
 export default function BlogPostView() {

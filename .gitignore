@@ -22,8 +22,8 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Статьи, подтянутые из репозитория игр при сборке (scripts/pull-game-posts.mjs)
-content/blog/*-architecture*.md
+# Архитектура игр, подтянутая из репозитория игр при сборке (scripts/pull-game-posts.mjs)
+content/game-architecture/
 
 # Страницы игр из репозитория игр (scripts/pull-game-pages.mjs)
 src/data/games.generated.json

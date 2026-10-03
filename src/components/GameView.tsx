@@ -44,13 +44,13 @@ export function GameView() {
     </ul>
   )
   return (
-    <Page>
+    <Page className="s-wide">
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { to: to('/materials/games'), label: t({ ru: 'Игры', en: 'Games' }) }, { label: t(g.name) }]} />
       <h1 className="s-page-title is-long">{t(g.name)}</h1>
       <p className="s-lead">{t(g.tagline)}</p>
       <p className="g-actions">
         <ActionLink primary href={g.play} icon={ICONS.play} track={`play_${g.slug}`}>{t({ ru: 'Играть в браузере', en: 'Play in your browser' })}</ActionLink>
-        {g.architecture && <ActionLink to={to(`/blog/${g.architecture.slug}`)} icon={ICONS.doc}>{t({ ru: 'Архитектура', en: 'Architecture' })}</ActionLink>}
+        {g.architecture && <ActionLink to={to(`/materials/games/${g.slug}/architecture`)} icon={ICONS.doc}>{t({ ru: 'Архитектура', en: 'Architecture' })}</ActionLink>}
         <ActionLink href={REPO + g.repoDir} icon={ICONS.github}>{t({ ru: 'Исходный код', en: 'Source code' })}</ActionLink>
         {chat && (
           <ActionLink href={chat.url} icon={ICONS.telegram} track={`chat_${g.slug}`}>{t({ ru: `Чат ${chat.label}`, en: `${chat.en?.label ?? chat.label} chat` })}</ActionLink>
