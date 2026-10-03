@@ -55,6 +55,8 @@ export interface Post {
   title: string
   description: string
   date: string
+  /** Дата последней содержательной правки: показывается на странице, идёт в dateModified и lastmod */
+  updated?: string
   tags: string[]
   category: CategorySlug
   html: string
@@ -108,6 +110,7 @@ function parse(path: string, raw: string): Post | null {
     title: meta.title,
     description: meta.description ?? '',
     date: meta.date,
+    updated: meta.updated || undefined,
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     category: category.slug,
     html: shieldEmails(marked.parse(markdown, { async: false }) as string),

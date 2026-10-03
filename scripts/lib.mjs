@@ -76,7 +76,7 @@ export function analyticsHead() {
   return out.join('\n    ')
 }
 
-export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date, lang = 'ru', alternates = [], canonical = true, image, ogTitle, prev, next }) {
+export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date, modified, lang = 'ru', alternates = [], canonical = true, image, ogTitle, prev, next }) {
   const url = urlOf(path)
   // Своя картинка превью (1200×630) — большая карточка в соцсетях; иначе фото автора
   const img = image ? SITE_URL + image : `${SITE_URL}/egor.jpg`
@@ -113,6 +113,7 @@ export function headTags({ title, description, path, type = 'website', noindex =
     if (ru) tags.push(`<link rel="alternate" hreflang="x-default" href="${urlOf(ru.path)}" />`)
   }
   if (type === 'article' && date) tags.push(`<meta property="article:published_time" content="${date}" />`, `<meta property="article:author" content="${SITE_URL}/about/" />`)
+  if (type === 'article' && modified) tags.push(`<meta property="article:modified_time" content="${modified}" />`)
   // Карточка человека — одинаковая на каждой странице, добавляется сюда один раз, а не в каждом jsonLd вызывающего кода
   if (jsonLd) {
     const graph = [person(lang), ...jsonLd.filter((node) => node && node['@type'] !== 'Person')]

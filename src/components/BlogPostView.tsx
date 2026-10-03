@@ -36,6 +36,7 @@ export default function BlogPostView() {
         {post.wide && post.description && <p className="s-lead" itemProp="description">{post.description}</p>}
         <p className="s-card-text">
           <time dateTime={post.date} itemProp="datePublished">{formatDate(post.date, lang)}</time>
+          {post.updated && post.updated !== post.date && <>{' · '}<span>{t({ ru: 'обновлено', en: 'updated' })} <time dateTime={post.updated} itemProp="dateModified">{formatDate(post.updated, lang)}</time></span></>}
           {' · '}{post.minutes} {t({ ru: 'мин', en: 'min' })} · <span itemProp="author">{author}</span>
           {' · '}<Link className="s-post-cat" to={to(blogListPath(cat.slug))} itemProp="articleSection" data-track="cta" data-track-id="blog_category" data-track-label={cat.slug}>{ICONS[cat.icon]}{t(cat.name)}</Link>
         </p>

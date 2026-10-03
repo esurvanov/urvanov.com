@@ -118,7 +118,7 @@ const urls = [
       ? p.alternates.map((a) => `<xhtml:link rel="alternate" hreflang="${a.lang}" href="${loc(a.path)}"/>`).join('')
         + `<xhtml:link rel="alternate" hreflang="x-default" href="${loc(p.alternates.find((a) => a.lang === 'ru').path)}"/>`
       : ''
-    const lastmod = p.date ?? gitDate(p.sources)
+    const lastmod = p.modified ?? p.date ?? gitDate(p.sources)
     return `  <url><loc>${loc(p.path)}</loc><lastmod>${lastmod}</lastmod><priority>${p.path === '/' || p.path === '/en' ? '1.0' : p.type === 'article' || /\/materials\/(games|interactive)\/[^/]+$/.test(p.path) ? '0.8' : '0.6'}</priority>${alt}</url>`
   }),
 ]

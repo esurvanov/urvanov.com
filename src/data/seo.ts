@@ -22,6 +22,8 @@ export interface PageMeta {
   type?: 'website' | 'article'
   noindex?: boolean
   date?: string
+  // Дата последней содержательной правки: lastmod в карте сайта и article:modified_time
+  modified?: string
   // Картинка превью (абсолютный путь от корня сайта); без неё — фото автора
   image?: string
   // Заголовок для соцсетей, если в <title> стоит короткая версия
@@ -254,6 +256,7 @@ export function allPages(): PageMeta[] {
       description: p.description,
       type: 'article',
       date: p.date,
+      modified: p.updated,
       image: p.image,
       alternates,
       jsonLd: {
@@ -261,7 +264,7 @@ export function allPages(): PageMeta[] {
         headline: p.title,
         description: p.description,
         datePublished: p.date,
-        dateModified: p.date,
+        dateModified: p.updated ?? p.date,
         inLanguage: p.lang,
         keywords: p.tags.join(', '),
         articleSection: findCategory(p.category)!.name[p.lang],
@@ -286,7 +289,7 @@ export function allPages(): PageMeta[] {
       const path = withLang(`/materials/games/${g.slug}`, l), pageUrl = url(path), image = `/games/${g.slug}/${g.shots[0].file}`
       pages.push({
         path, lang: l,
-        title: l === 'en' ? `${g.name.en} — play free in your browser` : `${g.name.ru} — играть онлайн в браузере`,
+        title: g.title?.[l] ?? (l === 'en' ? `${g.name.en} — play free in your browser` : `${g.name.ru} — играть онлайн в браузере`),
         description: g.description[l],
         image, alternates, sources: ['src/data/games.ts', 'src/components/GameView.tsx'],
         jsonLd: {
@@ -322,7 +325,7 @@ export function allPages(): PageMeta[] {
       ogTitle: a.title,
       description: a.description,
       type: 'article',
-      date: a.date || undefined,
+      modified: a.date || undefined,
       image,
       alternates,
       sources: ['src/data/architecture.ts', 'src/components/ArchitectureView.tsx'],

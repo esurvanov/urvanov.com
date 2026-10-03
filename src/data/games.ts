@@ -9,6 +9,8 @@ export interface GamePage {
   play: string                       // адрес самой игры (как в GAMES из seo.ts)
   repoDir: string                    // папка в github.com/esurvanov/awesome-games
   name: L<string>
+  // заголовок страницы в поиске (<title>), если «название — играть онлайн в браузере» не подходит: нужны слова из реальных запросов
+  title?: L<string>
   tagline: L<string>
   genre: L<string>
   // <meta description> и сниппет: 140–160 символов
