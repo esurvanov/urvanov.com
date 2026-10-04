@@ -797,3 +797,56 @@
 /* Hermes на диаграмме: полупрозрачный, чтобы были видны пересечения с Cursor и Claude Code */
 .s-rich .venn .v-hm{ fill:color-mix(in srgb, var(--c-work) 14%, transparent); stroke:var(--c-work); stroke-width:2; }
 
+/* карточки «вопрос — ответ» и «что есть что»: заголовки H3 остаются для поиска, вид — как у блоков «Стабильно / Меняется» */
+.s-rich-harness-ru .qa{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.s-rich-harness-ru .qa.three{grid-template-columns:repeat(3,1fr);}
+@media (max-width:860px){.s-rich-harness-ru .qa.three{grid-template-columns:1fr;}}
+@media (max-width:640px){.s-rich-harness-ru .qa{grid-template-columns:1fr;}}
+.s-rich-harness-ru .qa > div{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:14px 16px;}
+.s-rich-harness-ru .qa h3{font-size:16px; line-height:1.3; margin:0 0 6px;}
+.s-rich-harness-ru .qa p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+
+/* карточки «вопрос — ответ» и «что есть что»: заголовки H3 остаются для поиска, вид — как у блоков «Стабильно / Меняется» */
+.s-rich-harness-en .qa{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.s-rich-harness-en .qa.three{grid-template-columns:repeat(3,1fr);}
+@media (max-width:860px){.s-rich-harness-en .qa.three{grid-template-columns:1fr;}}
+@media (max-width:640px){.s-rich-harness-en .qa{grid-template-columns:1fr;}}
+.s-rich-harness-en .qa > div{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:14px 16px;}
+.s-rich-harness-en .qa h3{font-size:16px; line-height:1.3; margin:0 0 6px;}
+.s-rich-harness-en .qa p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+
+/* статья про интервью: акцент на анализе — вводный абзац, подзаголовок промпта и карточки «частые вопросы» */
+.s-rich-intervyu-ru .lead-a{margin:16px 0 22px; font-size:16.5px; line-height:1.55; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+.s-rich-intervyu-ru .pr-h{font-size:16px; margin:22px 0 8px;}
+.s-rich-intervyu-ru .qa{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+@media (max-width:640px){.s-rich-intervyu-ru .qa{grid-template-columns:1fr;}}
+.s-rich-intervyu-ru .qa > div{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:14px 16px;}
+.s-rich-intervyu-ru .qa h3{font-size:16px; line-height:1.3; margin:0 0 6px;}
+.s-rich-intervyu-ru .qa p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+
+/* статья про интервью: акцент на анализе — вводный абзац, подзаголовок промпта и карточки «частые вопросы» */
+.s-rich-intervyu-en .lead-a{margin:16px 0 22px; font-size:16.5px; line-height:1.55; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+.s-rich-intervyu-en .pr-h{font-size:16px; margin:22px 0 8px;}
+.s-rich-intervyu-en .qa{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+@media (max-width:640px){.s-rich-intervyu-en .qa{grid-template-columns:1fr;}}
+.s-rich-intervyu-en .qa > div{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:14px 16px;}
+.s-rich-intervyu-en .qa h3{font-size:16px; line-height:1.3; margin:0 0 6px;}
+.s-rich-intervyu-en .qa p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+
+/* отчёт по ChatGPT Enterprise: вводный абзац, подзаголовок выгрузки и карточки «частые вопросы» */
+.s-rich-kto-ru .lead-a{margin:0 0 22px; font-size:16.5px; line-height:1.55; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+.s-rich-kto-ru .pr-h{font-size:16px; margin:22px 0 8px;}
+.s-rich-kto-ru .qa{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+@media (max-width:640px){.s-rich-kto-ru .qa{grid-template-columns:1fr;}}
+.s-rich-kto-ru .qa > div{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:14px 16px;}
+.s-rich-kto-ru .qa h3{font-size:16px; line-height:1.3; margin:0 0 6px;}
+.s-rich-kto-ru .qa p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+
+/* отчёт по ChatGPT Enterprise: вводный абзац, подзаголовок выгрузки и карточки «частые вопросы» */
+.s-rich-kto-en .lead-a{margin:0 0 22px; font-size:16.5px; line-height:1.55; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+.s-rich-kto-en .pr-h{font-size:16px; margin:22px 0 8px;}
+.s-rich-kto-en .qa{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+@media (max-width:640px){.s-rich-kto-en .qa{grid-template-columns:1fr;}}
+.s-rich-kto-en .qa > div{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:14px 16px;}
+.s-rich-kto-en .qa h3{font-size:16px; line-height:1.3; margin:0 0 6px;}
+.s-rich-kto-en .qa p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
