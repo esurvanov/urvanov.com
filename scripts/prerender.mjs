@@ -8,7 +8,7 @@ import { analyticsHead, headTags, esc, urlOf, SITE_URL } from './lib.mjs'
 
 const DIST = 'dist'
 const {
-  render, allPages, POSTS, GAMES, GAME_PAGES, ARCHITECTURES, LABS, config,
+  render, allPages, POSTS, ALL_TERMS, TERM_SETS, GAMES, GAME_PAGES, ARCHITECTURES, LABS, config,
   MILESTONES, ABOUT_LEAD, PLACES, LINK_GROUPS, itemText, CITY_CHATS, THEME_CHATS, BIO,
 } = await import(pathToFileURL(join(process.cwd(), 'dist-ssr/entry-server.js')).href)
 
@@ -35,8 +35,8 @@ function gitDate(sources) {
 }
 
 const CRUMBS = {
-  ru: { home: 'Главная', about: 'Обо мне', blog: 'Блог', links: 'Ссылки', materials: 'Материалы', presentations: 'Презентации', games: 'Игры', patterns: 'Паттерны', jaiora: 'Jaiora', talk: 'Доклад' },
-  en: { home: 'Home', about: 'About', blog: 'Blog', links: 'Links', materials: 'Materials', presentations: 'Presentations', games: 'Games', patterns: 'Patterns', jaiora: 'Jaiora', talk: 'Talk' },
+  ru: { home: 'Главная', about: 'Обо мне', blog: 'Блог', links: 'Ссылки', materials: 'Материалы', presentations: 'Презентации', glossary: 'Глоссарий', games: 'Игры', patterns: 'Паттерны', jaiora: 'Jaiora', talk: 'Доклад' },
+  en: { home: 'Home', about: 'About', blog: 'Blog', links: 'Links', materials: 'Materials', presentations: 'Presentations', glossary: 'Glossary', games: 'Games', patterns: 'Patterns', jaiora: 'Jaiora', talk: 'Talk' },
 }
 
 function breadcrumbs(page, all) {
@@ -51,7 +51,7 @@ function breadcrumbs(page, all) {
     const p = all.find((x) => x.path === acc)
     // Служебные сегменты без своей страницы (/blog/category/, /blog/page/) в крошки не попадают
     if (!p && !CRUMBS[page.lang][part]) continue
-    items.push({ name: CRUMBS[page.lang][part] ?? p?.title.split(' — ')[0] ?? part, url: urlOf(acc) })
+    items.push({ name: CRUMBS[page.lang][part] ?? p?.crumb ?? p?.title.split(' — ')[0] ?? part, url: urlOf(acc) })
   }
   return { '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })) }
 }
@@ -91,6 +91,11 @@ for (const page of pages) {
 const jaioraMoved = (to) => `<!doctype html>\n<html lang="ru"><head><meta charset="utf-8"><title>Jaiora → jaiora.me</title><meta name="robots" content="noindex"><link rel="canonical" href="${to}"><meta http-equiv="refresh" content="0; url=${to}"></head><body><a href="${to}">${to}</a></body></html>\n`
 write('jaiora/index.html', jaioraMoved('https://jaiora.me/'))
 write('en/jaiora/index.html', jaioraMoved('https://jaiora.me/en/'))
+
+// Убранные термины глоссария: старые адреса переправляют на тот, что их заменил
+for (const [from, to, ru, en] of [['ai', 'ai-agent', 'ИИ-агент', 'AI agent'], ['language-model', 'llm', 'LLM', 'LLM']]) {
+  for (const pre of ['', 'en/']) write(`${pre}materials/glossary/${from}/index.html`, jaioraMoved(urlOf(`${pre ? '/en' : ''}/materials/glossary/${to}`)).replace('Jaiora → jaiora.me', pre ? en : ru).replace('lang="ru"', `lang="${pre ? 'en' : 'ru'}"`))
+}
 
 // Архитектура игр жила в блоге (/blog/<игра>-architecture/): старые адреса переправляют на страницу рядом с игрой
 for (const a of ARCHITECTURES) {
@@ -171,6 +176,7 @@ write('llms.txt', [
   `- [Jaiora](https://jaiora.me/): сообщество и встречи, отдельный сайт / community and meetups, a separate site`,
   `- [Доклад: ${config.talkTitle}](${SITE_URL}/talk/spec-driven-development/) · [Talk](${SITE_URL}/en/talk/spec-driven-development/): полный текст слайдов / full slide text (RU)`,
   `- [Каталог AI-паттернов](${SITE_URL}/patterns/): паттерны разработки с AI-агентами (RU)`,
+  `- [Глоссарий](${SITE_URL}/materials/glossary/) · [Glossary](${SITE_URL}/en/materials/glossary/): ${ALL_TERMS.map((x) => x.name.ru).join(', ')} / ${TERM_SETS.map((s) => s.name.en).join(', ')}`,
   `- [Презентации](${SITE_URL}/materials/presentations/) · [Presentations](${SITE_URL}/en/materials/presentations/)`,
   ...LABS.map((l) => `- [${l.title}](${SITE_URL}/materials/interactive/${l.path.replace(/\//g, '')}/) · [${l.titleEn}](${SITE_URL}/en/materials/interactive/${l.path.replace(/\//g, '')}/): ${l.long} (RU/EN)`),
   `- [Игры](${SITE_URL}/materials/games/) · [Games](${SITE_URL}/en/materials/games/): ${GAMES.map((g) => g.title).join(', ')}`,

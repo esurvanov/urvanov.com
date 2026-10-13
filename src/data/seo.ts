@@ -4,6 +4,8 @@ import { config } from '@/data/config'
 import { GAME_PAGES } from '@/data/games'
 import { ARCHITECTURES, architecturePath } from '@/data/architecture'
 import { LAB_PAGES } from '@/data/labs'
+import { ALL_TERMS, glossaryPath, postsWithTerm, setOfTerm } from '@/data/glossary'
+import { AI_OFFERS } from '@/data/aiOffers'
 import { withLang, type Lang, type L } from '@/lib/i18n'
 
 export const SITE_URL = 'https://www.urvanov.com'
@@ -28,6 +30,8 @@ export interface PageMeta {
   image?: string
   // Заголовок для соцсетей, если в <title> стоит короткая версия
   ogTitle?: string
+  // Короткое имя страницы для хлебных крошек в разметке (иначе берётся начало title)
+  crumb?: string
   jsonLd?: Record<string, unknown>
   // Дополнительные узлы разметки (например FAQPage) рядом с основным
   jsonLdExtra?: Record<string, unknown>[]
@@ -198,6 +202,16 @@ const BASE: Base[] = [
     sources: ['src/components/MaterialsView.tsx', 'src/data/labs.ts'],
   },
   {
+    path: '/materials/glossary',
+    ru: { title: `Глоссарий AI-разработки — ${SITE_NAME}`, description: 'Термины AI-разработки по наборам: агенты, харнесс, MCP, спеки, промпты. У каждого термина определение и статьи, где он разобран.' },
+    en: { title: 'AI development glossary — Egor Urvanov', description: 'AI development terms by set: agents, harness, MCP, specs, prompts. Each term has a definition and the articles that cover it.' },
+    jsonLd: (l) => ({
+      '@type': 'DefinedTermSet', name: l === 'en' ? 'AI development glossary' : 'Глоссарий AI-разработки', inLanguage: l, url: url(withLang('/materials/glossary', l)),
+      author: person(), hasDefinedTerm: ALL_TERMS.map((x) => ({ '@type': 'DefinedTerm', name: x.name[l], url: url(withLang(glossaryPath(x.slug), l)) })),
+    }),
+    sources: ['src/components/GlossaryView.tsx', 'src/data/glossary.ts'],
+  },
+  {
     path: '/talk/spec-driven-development',
     ru: {
       title: `${config.talkTitle} — ${config.conferenceName}`,
@@ -232,6 +246,24 @@ export function allPages(): PageMeta[] {
       pages.push({ path: withLang(b.path, l), lang: l, title: m.title, description: m.description, noindex: b.noindex?.[l], jsonLd: b.jsonLd?.(l), sources: b.sources, alternates })
     }
   }
+  pages.push(
+    ...(['ru', 'en'] as Lang[]).flatMap((l) => {
+      const alternates = (['ru', 'en'] as Lang[]).map((x) => ({ lang: x, path: withLang('/ai', x) }))
+      return [
+        {
+          path: withLang('/ai', l), lang: l, alternates, sources: ['src/components/AiOfferView.tsx', 'src/data/aiOffers.ts'],
+          title: l === 'en' ? 'AI at work: training and adoption — Egor Urvanov' : `AI на работе: обучение и внедрение — ${SITE_NAME}`,
+          description: l === 'en' ? 'AI training and adoption for companies, teams by role, and individuals.' : 'Обучение AI и внедрение: для компаний, команд по ролям и лично.',
+        },
+        ...AI_OFFERS.map((o) => ({
+          path: withLang(`/ai/${o.slug}`, l), lang: l, sources: ['src/components/AiOfferView.tsx', 'src/data/aiOffers.ts'],
+          alternates: (['ru', 'en'] as Lang[]).map((x) => ({ lang: x, path: withLang(`/ai/${o.slug}`, x) })),
+          title: `${o.name[l]} — ${l === 'en' ? 'Egor Urvanov' : SITE_NAME}`,
+          description: `${o.hook[l]}. ${o.outcomes[l].slice(0, 2).join('; ')}.`,
+        })),
+      ]
+    }),
+  )
   // Слайды и каталог паттернов только на русском
   pages.push(
     { path: '/patterns', lang: 'ru', title: `Каталог AI-паттернов разработки — ${SITE_NAME}`, description: 'Паттерны разработки с AI-агентами по категориям: описание, когда применять, примеры.', sources: ['src/data/patterns.ts'], alternates: [{ lang: 'ru', path: '/patterns' }] },
@@ -362,6 +394,26 @@ export function allPages(): PageMeta[] {
           inLanguage: ['ru', 'en'], learningResourceType: 'Interactive visualization', isAccessibleForFree: true,
           author: person(), isPartOf: url(withLang('/materials/interactive', l)),
           potentialAction: { '@type': 'ViewAction', target: SITE_URL + x.play },
+        },
+      })
+    }
+  }
+  // Термины глоссария: страница на термин, разметка DefinedTerm внутри набора
+  for (const x of ALL_TERMS) {
+    const set = setOfTerm(x.slug)
+    const alternates = (['ru', 'en'] as Lang[]).map((l) => ({ lang: l, path: withLang(glossaryPath(x.slug), l) }))
+    for (const l of ['ru', 'en'] as Lang[]) {
+      const pageUrl = url(withLang(glossaryPath(x.slug), l))
+      pages.push({
+        path: withLang(glossaryPath(x.slug), l), lang: l, crumb: x.name[l],
+        title: x.seo ? x.seo.title[l] : l === 'en' ? `${x.name.en}: what it is — AI development glossary` : `${x.name.ru}: что это — глоссарий AI-разработки`,
+        description: x.seo ? x.seo.description[l] : x.def[l].replace(/`/g, ''), alternates, sources: ['src/data/glossary.ts', 'src/components/GlossaryView.tsx'],
+        jsonLd: {
+          '@type': 'DefinedTerm', name: x.name[l], description: x.def[l].replace(/`/g, ''), url: pageUrl, inLanguage: l,
+          ...(x.aka ? { alternateName: x.aka[l] } : {}),
+          ...(x.source && /wikipedia\.org/.test(x.source.url) ? { sameAs: x.source.url } : {}),
+          inDefinedTermSet: { '@type': 'DefinedTermSet', name: set.name[l], url: url(withLang('/materials/glossary', l)) },
+          subjectOf: postsWithTerm(x.slug, l).map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: url(withLang(`/blog/${p.slug}`, l)) })),
         },
       })
     }

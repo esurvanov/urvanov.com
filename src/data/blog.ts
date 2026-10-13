@@ -1,4 +1,5 @@
 import { marked } from 'marked'
+import { withBlogArt } from '@/data/blogArt'
 import type { Lang, L } from '@/lib/i18n'
 
 // Рубрики блога: у каждого поста одна, задаётся полем `category` во фронтматтере (у перевода — та же).
@@ -113,7 +114,7 @@ function parse(path: string, raw: string): Post | null {
     updated: meta.updated || undefined,
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     category: category.slug,
-    html: shieldEmails(marked.parse(markdown, { async: false }) as string),
+    html: shieldEmails(withBlogArt(marked.parse(markdown, { async: false }) as string, lang)),
     markdown,
     // HTML-разметку внутри поста не считаем за слова
     minutes: Math.max(1, Math.round(words / (lang === 'en' ? 220 : 180))),

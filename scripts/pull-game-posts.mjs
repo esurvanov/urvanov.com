@@ -18,8 +18,15 @@ for (const game of readdirSync(GAMES)) {
 const OUT = join('content', 'game-architecture')
 mkdirSync(OUT, { recursive: true })
 
+// Цвета схем по общему словарю сайта (src/lib/infographic/palette.ts): люди и внешние системы серые, синим — только свой код.
+// В схемах игр игрок и браузерные хранилища иногда нарисованы как свой модуль (ad-c) — переводим их в человека (ad-p) и внешнее (ad-x).
+const PERSON = /^(Игрок|Player|Человек|Human)$/
+const EXTERNAL = /^(Браузер|Browser|CDN|localStorage|IndexedDB|numpy|pygame)$/
+const roleColors = (svg) => svg.replace(/class="ad-bx ad-c"(\/><text[^>]*>)([^<]*)</g, (m, t, label) =>
+  PERSON.test(label) ? `class="ad-bx ad-p"${t}${label}<` : EXTERNAL.test(label) ? `class="ad-bx ad-x"${t}${label}<` : m)
+
 const inlineSvg = (dir, file, caption, alt) => {
-  const svg = readFileSync(join(dir, file), 'utf8').replace(/<\?xml[^>]*\?>/, '').replace(/>\s+</g, '><').replace(/\n\s*/g, '').trim()
+  const svg = roleColors(readFileSync(join(dir, file), 'utf8').replace(/<\?xml[^>]*\?>/, '').replace(/>\s+</g, '><').replace(/\n\s*/g, '').trim())
   // всё в одну строку: markdown не должен разрывать HTML-блок пустой строкой
   return `<figure class="arch">${svg}<figcaption>${(caption || alt).replace(/&/g, '&amp;').replace(/</g, '&lt;')}</figcaption></figure>`
 }

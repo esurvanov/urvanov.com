@@ -12,6 +12,7 @@ export function render(url: string): string {
 
 export { allPages, SITE_URL, SITE_NAME, GAMES, LABS, PERSON_ID, JAIORA_ORG_ID } from './data/seo'
 export { POSTS } from './data/blog'
+export { ALL_TERMS, TERM_SETS } from './data/glossary'
 export { GAME_PAGES } from './data/games'
 export { ARCHITECTURES, architecturePath } from './data/architecture'
 export { config } from './data/config'

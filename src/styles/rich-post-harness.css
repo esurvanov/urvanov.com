@@ -284,13 +284,13 @@
 .s-rich-harness-ru .grp3{margin-top:30px; display:grid; grid-template-columns:2.2fr 1fr 1fr; gap:10px;}
 @media (max-width:760px){.s-rich-harness-ru .grp3{grid-template-columns:1fr;}}
 .s-rich-harness-ru .gc{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:14px 12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center;}
-.s-rich-harness-ru .gc.pair{border:1.5px solid var(--warn);}
+.s-rich-harness-ru .gc.pair{border:1.5px solid var(--accent);}
 .s-rich-harness-ru .gc.chat{border-style:dashed; border-color:var(--line-2);}
 .s-rich-harness-ru .gk{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600;}
 .s-rich-harness-ru .chips{display:flex; align-items:center; justify-content:center; gap:10px;}
 @media (max-width:460px){.s-rich-harness-ru .chips{flex-direction:column; gap:6px;}}
 .s-rich-harness-ru .chip{font-family:"Manrope", system-ui, sans-serif; font-weight:700; font-size:15px; border:1.5px solid var(--line-strong); border-radius:4px; padding:6px 12px; background:var(--surface-2); white-space:nowrap;}
-.s-rich-harness-ru .vsw{display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--warn); font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; max-width:90px; line-height:1.25; text-align:center;}
+.s-rich-harness-ru .vsw{display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; max-width:90px; line-height:1.25; text-align:center;}
 .s-rich-harness-ru .vsw svg{width:26px; height:26px;}
 .s-rich-harness-ru .gc small{font-size:12.5px; color:var(--muted);}
 .s-rich-harness-ru .sc{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
@@ -336,12 +336,12 @@
 .s-rich-harness-ru .venn .rg{transition:opacity .15s;}
 .s-rich-harness-ru .venn svg:hover .rg{opacity:.35;}
 .s-rich-harness-ru .venn svg .rg:hover{opacity:1;}
-.s-rich-harness-ru .v-h{fill:none; stroke:var(--line-strong); stroke-width:2;}
+.s-rich-harness-ru .v-h{fill:none; stroke:var(--accent); stroke-width:2;}
 .s-rich-harness-ru .v-cc{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2; stroke-dasharray:6 5;}
-.s-rich-harness-ru .v-cx{fill:var(--warn-soft); stroke:var(--warn); stroke-width:2; stroke-dasharray:6 5;}
-.s-rich-harness-ru .v-sh{fill:var(--pp); stroke:var(--c-code); stroke-width:2;}
-.s-rich-harness-ru .v-cu{fill:var(--surface-2); stroke:var(--ink-2); stroke-width:2;}
-.s-rich-harness-ru .v-ch{fill:var(--surface); stroke:var(--muted); stroke-width:2; stroke-dasharray:6 5;}
+.s-rich-harness-ru .v-cx{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2; stroke-dasharray:2 4;}
+.s-rich-harness-ru .v-sh{fill:color-mix(in srgb, var(--accent) 30%, var(--surface)); stroke:var(--accent); stroke-width:2;}
+.s-rich-harness-ru .v-cu{fill:var(--surface); stroke:var(--accent); stroke-width:2;}
+.s-rich-harness-ru .v-ch{fill:var(--surface); stroke:var(--accent); stroke-width:2; stroke-dasharray:6 5;}
 .s-rich-harness-ru .vpt{fill:var(--ink);}
 .s-rich-harness-ru .vld{stroke:var(--muted); stroke-width:1.5; stroke-dasharray:3 3; fill:none;}
 .s-rich-harness-ru .vtl{font-family:"Manrope", system-ui, sans-serif; font-weight:700; font-size:16px; fill:var(--ink); pointer-events:none;}
@@ -640,13 +640,13 @@
 .s-rich-harness-en .grp3{margin-top:30px; display:grid; grid-template-columns:2.2fr 1fr 1fr; gap:10px;}
 @media (max-width:760px){.s-rich-harness-en .grp3{grid-template-columns:1fr;}}
 .s-rich-harness-en .gc{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:14px 12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; text-align:center;}
-.s-rich-harness-en .gc.pair{border:1.5px solid var(--warn);}
+.s-rich-harness-en .gc.pair{border:1.5px solid var(--accent);}
 .s-rich-harness-en .gc.chat{border-style:dashed; border-color:var(--line-2);}
 .s-rich-harness-en .gk{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); font-weight:600;}
 .s-rich-harness-en .chips{display:flex; align-items:center; justify-content:center; gap:10px;}
 @media (max-width:460px){.s-rich-harness-en .chips{flex-direction:column; gap:6px;}}
 .s-rich-harness-en .chip{font-family:"Manrope", system-ui, sans-serif; font-weight:700; font-size:15px; border:1.5px solid var(--line-strong); border-radius:4px; padding:6px 12px; background:var(--surface-2); white-space:nowrap;}
-.s-rich-harness-en .vsw{display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--warn); font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; max-width:90px; line-height:1.25; text-align:center;}
+.s-rich-harness-en .vsw{display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; max-width:90px; line-height:1.25; text-align:center;}
 .s-rich-harness-en .vsw svg{width:26px; height:26px;}
 .s-rich-harness-en .gc small{font-size:12.5px; color:var(--muted);}
 .s-rich-harness-en .sc{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
@@ -692,12 +692,12 @@
 .s-rich-harness-en .venn .rg{transition:opacity .15s;}
 .s-rich-harness-en .venn svg:hover .rg{opacity:.35;}
 .s-rich-harness-en .venn svg .rg:hover{opacity:1;}
-.s-rich-harness-en .v-h{fill:none; stroke:var(--line-strong); stroke-width:2;}
+.s-rich-harness-en .v-h{fill:none; stroke:var(--accent); stroke-width:2;}
 .s-rich-harness-en .v-cc{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2; stroke-dasharray:6 5;}
-.s-rich-harness-en .v-cx{fill:var(--warn-soft); stroke:var(--warn); stroke-width:2; stroke-dasharray:6 5;}
-.s-rich-harness-en .v-sh{fill:var(--pp); stroke:var(--c-code); stroke-width:2;}
-.s-rich-harness-en .v-cu{fill:var(--surface-2); stroke:var(--ink-2); stroke-width:2;}
-.s-rich-harness-en .v-ch{fill:var(--surface); stroke:var(--muted); stroke-width:2; stroke-dasharray:6 5;}
+.s-rich-harness-en .v-cx{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2; stroke-dasharray:2 4;}
+.s-rich-harness-en .v-sh{fill:color-mix(in srgb, var(--accent) 30%, var(--surface)); stroke:var(--accent); stroke-width:2;}
+.s-rich-harness-en .v-cu{fill:var(--surface); stroke:var(--accent); stroke-width:2;}
+.s-rich-harness-en .v-ch{fill:var(--surface); stroke:var(--accent); stroke-width:2; stroke-dasharray:6 5;}
 .s-rich-harness-en .vpt{fill:var(--ink);}
 .s-rich-harness-en .vld{stroke:var(--muted); stroke-width:1.5; stroke-dasharray:3 3; fill:none;}
 .s-rich-harness-en .vtl{font-family:"Manrope", system-ui, sans-serif; font-weight:700; font-size:16px; fill:var(--ink); pointer-events:none;}
@@ -738,8 +738,8 @@
 .s-rich .cv-a svg{ width:19px; height:19px; }
 .s-rich .cv-a.on{ border:1.5px solid var(--accent); background:var(--accent-soft); color:var(--accent); }
 .s-rich .cv-v{ display:flex; gap:6px; }
-.s-rich .cv-v i{ width:14px; height:14px; border-radius:50%; background:var(--c-chat); }
-.s-rich .cv-v i:nth-child(2){ background:var(--c-work); } .s-rich .cv-v i:nth-child(3){ background:var(--c-proj); } .s-rich .cv-v i:nth-child(4){ background:var(--c-code); } .s-rich .cv-v i:nth-child(5){ background:var(--c-team); }
+.s-rich .cv-v i{ width:14px; height:14px; border-radius:50%; background:var(--muted); }
+.s-rich .cv-v i:nth-child(2){ opacity:.82; } .s-rich .cv-v i:nth-child(3){ opacity:.66; } .s-rich .cv-v i:nth-child(4){ opacity:.5; } .s-rich .cv-v i:nth-child(5){ opacity:.36; }
 .s-rich .cv-p{ flex-wrap:wrap; gap:2px; }
 .s-rich .cv-leg{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; padding:12px 18px; border-top:1px solid var(--line); background:var(--surface-2); }
 .s-rich .cv-leg .cv-a{ width:24px; height:24px; } .s-rich .cv-leg .cv-a svg{ width:13px; height:13px; }
@@ -761,7 +761,7 @@
 @media (max-width:760px){.s-rich-harness-ru .cv-h, .s-rich-harness-ru .cv-r{grid-template-columns:1fr 1fr !important;}}
 .s-rich-harness-ru .grp3{grid-template-columns:1fr 1fr !important;}
 @media (max-width:760px){.s-rich-harness-ru .grp3{grid-template-columns:1fr !important;}}
-.s-rich-harness-ru .gc.open{border:1.5px solid var(--c-work);}
+.s-rich-harness-ru .gc.open{border:1.5px solid color-mix(in srgb, var(--accent) 50%, var(--line-2));}
 .s-rich-harness-ru .gc small.alts{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-2);}
 .s-rich-harness-en .cv-h, .s-rich-harness-en .cv-r{grid-template-columns:minmax(150px,1.2fr) 110px minmax(200px,1.5fr) 100px 120px 80px !important;}
 .s-rich-harness-en .cv-cost{flex-direction:column; gap:1px; text-align:center;}
@@ -773,7 +773,7 @@
 @media (max-width:760px){.s-rich-harness-en .cv-h, .s-rich-harness-en .cv-r{grid-template-columns:1fr 1fr !important;}}
 .s-rich-harness-en .grp3{grid-template-columns:1fr 1fr !important;}
 @media (max-width:760px){.s-rich-harness-en .grp3{grid-template-columns:1fr !important;}}
-.s-rich-harness-en .gc.open{border:1.5px solid var(--c-work);}
+.s-rich-harness-en .gc.open{border:1.5px solid color-mix(in srgb, var(--accent) 50%, var(--line-2));}
 .s-rich-harness-en .gc small.alts{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--ink-2);}
 
 /* ---- стоимость: число значков $ — относительная цена (больше $ — дороже) ---- */
@@ -791,11 +791,11 @@
 .s-rich .hx .c.part{ background:transparent; border-color:color-mix(in srgb, var(--line-2) 70%, transparent); }
 .s-rich .hx .c.part > :not(.ps){ opacity:.45; }
 .s-rich .hx .c.part .cap2{ font-weight:500; }
-.s-rich-harness-ru .v-hm{fill:color-mix(in srgb, var(--c-work) 16%, var(--surface)); stroke:var(--c-work); stroke-width:2;}
-.s-rich-harness-en .v-hm{fill:color-mix(in srgb, var(--c-work) 16%, var(--surface)); stroke:var(--c-work); stroke-width:2;}
+.s-rich-harness-ru .v-hm{fill:color-mix(in srgb, var(--accent) 10%, var(--surface)); stroke:color-mix(in srgb, var(--accent) 55%, var(--muted)); stroke-width:2;}
+.s-rich-harness-en .v-hm{fill:color-mix(in srgb, var(--accent) 10%, var(--surface)); stroke:color-mix(in srgb, var(--accent) 55%, var(--muted)); stroke-width:2;}
 
 /* Hermes на диаграмме: полупрозрачный, чтобы были видны пересечения с Cursor и Claude Code */
-.s-rich .venn .v-hm{ fill:color-mix(in srgb, var(--c-work) 14%, transparent); stroke:var(--c-work); stroke-width:2; }
+.s-rich .venn .v-hm{ fill:color-mix(in srgb, var(--accent) 8%, transparent); stroke:color-mix(in srgb, var(--accent) 55%, var(--muted)); stroke-width:2.5; stroke-dasharray:12 4; }
 
 /* карточки «вопрос — ответ» и «что есть что»: заголовки H3 остаются для поиска, вид — как у блоков «Стабильно / Меняется» */
 .s-rich-harness-ru .qa{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
@@ -850,3 +850,343 @@
 .s-rich-kto-en .qa > div{background:var(--surface); border:1px solid var(--line); border-radius:4px; padding:14px 16px;}
 .s-rich-kto-en .qa h3{font-size:16px; line-height:1.3; margin:0 0 6px;}
 .s-rich-kto-en .qa p{margin:0; font-size:14.5px; line-height:1.5; color:var(--ink-2); text-align:left; hyphens:manual; -webkit-hyphens:manual;}
+
+/* верхняя схема HDD: процесс одного запуска агента и вложенные слои «промпт → контекст → харнесс» */
+.s-rich-hdd-ru .hdd-fig{margin:34px 0 0;}
+.s-rich-hdd-ru .hdd-sc{overflow-x:auto;}
+.s-rich-hdd-ru .hdd-sc svg{display:block; width:100%; min-width:720px; height:auto; color:var(--ink-3);}
+.s-rich-hdd-ru .hdd-sc .hf{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2; stroke-dasharray:6 5;}
+.s-rich-hdd-ru .hdd-sc .hn{fill:var(--surface); stroke:var(--line-2); stroke-width:1.5;}
+.s-rich-hdd-ru .hdd-sc .hc{stroke:var(--ink-3);}
+.s-rich-hdd-ru .hdd-sc .hmod{stroke:var(--ink-2); stroke-width:2;}
+.s-rich-hdd-ru .hdd-sc .ht{stroke:var(--accent);}
+.s-rich-hdd-ru .hdd-sc .hl{stroke:currentColor; stroke-width:2; fill:none;}
+.s-rich-hdd-ru .hdd-sc .hloop{stroke:var(--accent); color:var(--accent); stroke-dasharray:7 5;}
+.s-rich-hdd-ru .hdd-sc text{font-family:inherit;}
+.s-rich-hdd-ru .hdd-sc .hb{font-size:15px; font-weight:700; fill:var(--ink);}
+.s-rich-hdd-ru .hdd-sc .hs{font-size:12px; fill:var(--ink-2);}
+.s-rich-hdd-ru .hdd-sc .hm{font-size:13px; fill:var(--ink-2);}
+.s-rich-hdd-ru .hdd-sc .hp{font-size:12px; font-weight:700; letter-spacing:.06em; fill:var(--ink-2);}
+.s-rich-hdd-ru .hdd-sc .ha{font-size:14px; font-weight:700; letter-spacing:.04em; fill:var(--accent);}
+.s-rich-hdd-ru .hdd-cap{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px;}
+@media (max-width:640px){.s-rich-hdd-ru .hdd-cap{grid-template-columns:1fr;}}
+.s-rich-hdd-ru .hdd-cap > div{border-top:3px solid var(--ink-3); padding-top:8px; display:flex; flex-direction:column; gap:2px;}
+.s-rich-hdd-ru .hdd-cap .k2{border-top-color:color-mix(in srgb, var(--accent) 55%, var(--ink-3));}
+.s-rich-hdd-ru .hdd-cap .k3{border-top-color:var(--accent);}
+.s-rich-hdd-ru .hdd-cap b{font-size:15px; color:var(--ink);}
+.s-rich-hdd-ru .hdd-cap span{font-size:13px; color:var(--ink-2);}
+.s-rich-hdd-ru .hdd-cap em{font-style:normal; font-size:13.5px; font-weight:700; color:var(--ink);}
+.s-rich-hdd-ru .hdd-cap .k3 em{color:var(--accent);}
+
+/* верхняя схема HDD: процесс одного запуска агента и вложенные слои «промпт → контекст → харнесс» */
+.s-rich-hdd-en .hdd-fig{margin:34px 0 0;}
+.s-rich-hdd-en .hdd-sc{overflow-x:auto;}
+.s-rich-hdd-en .hdd-sc svg{display:block; width:100%; min-width:720px; height:auto; color:var(--ink-3);}
+.s-rich-hdd-en .hdd-sc .hf{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2; stroke-dasharray:6 5;}
+.s-rich-hdd-en .hdd-sc .hn{fill:var(--surface); stroke:var(--line-2); stroke-width:1.5;}
+.s-rich-hdd-en .hdd-sc .hc{stroke:var(--ink-3);}
+.s-rich-hdd-en .hdd-sc .hmod{stroke:var(--ink-2); stroke-width:2;}
+.s-rich-hdd-en .hdd-sc .ht{stroke:var(--accent);}
+.s-rich-hdd-en .hdd-sc .hl{stroke:currentColor; stroke-width:2; fill:none;}
+.s-rich-hdd-en .hdd-sc .hloop{stroke:var(--accent); color:var(--accent); stroke-dasharray:7 5;}
+.s-rich-hdd-en .hdd-sc text{font-family:inherit;}
+.s-rich-hdd-en .hdd-sc .hb{font-size:15px; font-weight:700; fill:var(--ink);}
+.s-rich-hdd-en .hdd-sc .hs{font-size:12px; fill:var(--ink-2);}
+.s-rich-hdd-en .hdd-sc .hm{font-size:13px; fill:var(--ink-2);}
+.s-rich-hdd-en .hdd-sc .hp{font-size:12px; font-weight:700; letter-spacing:.06em; fill:var(--ink-2);}
+.s-rich-hdd-en .hdd-sc .ha{font-size:14px; font-weight:700; letter-spacing:.04em; fill:var(--accent);}
+.s-rich-hdd-en .hdd-cap{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px;}
+@media (max-width:640px){.s-rich-hdd-en .hdd-cap{grid-template-columns:1fr;}}
+.s-rich-hdd-en .hdd-cap > div{border-top:3px solid var(--ink-3); padding-top:8px; display:flex; flex-direction:column; gap:2px;}
+.s-rich-hdd-en .hdd-cap .k2{border-top-color:color-mix(in srgb, var(--accent) 55%, var(--ink-3));}
+.s-rich-hdd-en .hdd-cap .k3{border-top-color:var(--accent);}
+.s-rich-hdd-en .hdd-cap b{font-size:15px; color:var(--ink);}
+.s-rich-hdd-en .hdd-cap span{font-size:13px; color:var(--ink-2);}
+.s-rich-hdd-en .hdd-cap em{font-style:normal; font-size:13.5px; font-weight:700; color:var(--ink);}
+.s-rich-hdd-en .hdd-cap .k3 em{color:var(--accent);}
+
+.s-rich-hdd-ru .hdd-sc .hctx{fill:color-mix(in srgb, var(--accent) 7%, var(--surface)); stroke:color-mix(in srgb, var(--accent) 55%, var(--ink-3)); stroke-width:2;}
+.s-rich-hdd-ru .hdd-sc .hprm{fill:var(--surface); stroke:var(--ink-3); stroke-width:2;}
+.s-rich-hdd-ru .hdd-sc .hc2{fill:color-mix(in srgb, var(--accent) 55%, var(--ink));}
+.s-rich-hdd-ru .hdd-sc .hp1{fill:var(--ink-2);}
+.s-rich-hdd-ru .hdd-sc .hr{font-size:13px;}
+
+.s-rich-hdd-en .hdd-sc .hctx{fill:color-mix(in srgb, var(--accent) 7%, var(--surface)); stroke:color-mix(in srgb, var(--accent) 55%, var(--ink-3)); stroke-width:2;}
+.s-rich-hdd-en .hdd-sc .hprm{fill:var(--surface); stroke:var(--ink-3); stroke-width:2;}
+.s-rich-hdd-en .hdd-sc .hc2{fill:color-mix(in srgb, var(--accent) 55%, var(--ink));}
+.s-rich-hdd-en .hdd-sc .hp1{fill:var(--ink-2);}
+.s-rich-hdd-en .hdd-sc .hr{font-size:13px;}
+
+/* верхняя схема: одна ошибка и три способа её починить (замена схемы вложенных слоёв) */
+.s-rich-hdd-ru .hdd-sc .herr{fill:color-mix(in srgb, var(--warn) 14%, var(--surface)); stroke:var(--warn); stroke-width:1.5;}
+.s-rich-hdd-ru .hdd-sc .herrt{fill:var(--ink);}
+.s-rich-hdd-ru .hdd-sc .row{fill:var(--surface); stroke:var(--line-2); stroke-width:1.2;}
+.s-rich-hdd-ru .hdd-sc .row.r3{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2;}
+.s-rich-hdd-ru .hdd-sc .bar.r1{fill:var(--ink-3);}
+.s-rich-hdd-ru .hdd-sc .bar.r2{fill:color-mix(in srgb, var(--accent) 55%, var(--ink-3));}
+.s-rich-hdd-ru .hdd-sc .bar.r3{fill:var(--accent);}
+.s-rich-hdd-ru .hdd-sc .hc0{font-size:11px; letter-spacing:.08em; fill:var(--muted); font-weight:700;}
+.s-rich-hdd-ru .hdd-sc .hn1{font-size:11px; fill:var(--muted);}
+.s-rich-hdd-ru .hdd-sc .ht1{font-size:14px; fill:var(--ink);}
+.s-rich-hdd-ru .hdd-sc .ht2{font-size:13px; fill:var(--ink-2);}
+.s-rich-hdd-ru .hdd-sc .ck{stroke-width:1.8;}
+.s-rich-hdd-ru .hdd-sc .ck-ok{fill:var(--accent); stroke:var(--accent);}
+.s-rich-hdd-ru .hdd-sc .ck-mid{fill:none; stroke:var(--accent); stroke-dasharray:3 3;}
+.s-rich-hdd-ru .hdd-sc .ck-no{fill:none; stroke:var(--ink-3);}
+.s-rich-hdd-ru .hdd-sc .cg{font-size:15px; font-weight:700; stroke:none;}
+.s-rich-hdd-ru .hdd-sc .cg.ck-ok{fill:var(--on-accent,#0e0e10);}
+.s-rich-hdd-ru .hdd-sc .cg.ck-mid{fill:var(--accent);}
+.s-rich-hdd-ru .hdd-sc .cg.ck-no{fill:var(--ink-3);}
+.s-rich-hdd-ru .hdd-sc .hleg{fill:var(--muted);}
+
+/* верхняя схема: одна ошибка и три способа её починить (замена схемы вложенных слоёв) */
+.s-rich-hdd-en .hdd-sc .herr{fill:color-mix(in srgb, var(--warn) 14%, var(--surface)); stroke:var(--warn); stroke-width:1.5;}
+.s-rich-hdd-en .hdd-sc .herrt{fill:var(--ink);}
+.s-rich-hdd-en .hdd-sc .row{fill:var(--surface); stroke:var(--line-2); stroke-width:1.2;}
+.s-rich-hdd-en .hdd-sc .row.r3{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2;}
+.s-rich-hdd-en .hdd-sc .bar.r1{fill:var(--ink-3);}
+.s-rich-hdd-en .hdd-sc .bar.r2{fill:color-mix(in srgb, var(--accent) 55%, var(--ink-3));}
+.s-rich-hdd-en .hdd-sc .bar.r3{fill:var(--accent);}
+.s-rich-hdd-en .hdd-sc .hc0{font-size:11px; letter-spacing:.08em; fill:var(--muted); font-weight:700;}
+.s-rich-hdd-en .hdd-sc .hn1{font-size:11px; fill:var(--muted);}
+.s-rich-hdd-en .hdd-sc .ht1{font-size:14px; fill:var(--ink);}
+.s-rich-hdd-en .hdd-sc .ht2{font-size:13px; fill:var(--ink-2);}
+.s-rich-hdd-en .hdd-sc .ck{stroke-width:1.8;}
+.s-rich-hdd-en .hdd-sc .ck-ok{fill:var(--accent); stroke:var(--accent);}
+.s-rich-hdd-en .hdd-sc .ck-mid{fill:none; stroke:var(--accent); stroke-dasharray:3 3;}
+.s-rich-hdd-en .hdd-sc .ck-no{fill:none; stroke:var(--ink-3);}
+.s-rich-hdd-en .hdd-sc .cg{font-size:15px; font-weight:700; stroke:none;}
+.s-rich-hdd-en .hdd-sc .cg.ck-ok{fill:var(--on-accent,#0e0e10);}
+.s-rich-hdd-en .hdd-sc .cg.ck-mid{fill:var(--accent);}
+.s-rich-hdd-en .hdd-sc .cg.ck-no{fill:var(--ink-3);}
+.s-rich-hdd-en .hdd-sc .hleg{fill:var(--muted);}
+
+/* мини-игра «неделя с агентом» (src/lib/hddGame.ts): три одинаковые сцены с разной «мебелью» — стикер, папка инструкции, турникет тестов */
+.s-rich-hdd-ru .hg{margin:18px 0 0; padding:16px 18px; border:1px solid var(--line-2); border-radius:8px; background:var(--surface);}
+.s-rich-hdd-ru .hg .hg-top{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px;}
+.s-rich-hdd-ru .hg .hg-h{font-size:16px; font-weight:700; color:var(--ink);}
+.s-rich-hdd-ru .hg .hg-p, .s-rich-hdd-ru .hg .hg-hint{margin:8px 0 12px; font-size:13.5px; color:var(--ink-2); text-align:left;}
+.s-rich-hdd-ru .hg .hg-days{display:flex; gap:6px;}
+.s-rich-hdd-ru .hg .hg-d{padding:4px 11px; border:1.5px solid var(--line-2); border-radius:999px; font-size:13px; color:var(--muted);}
+.s-rich-hdd-ru .hg .hg-d.done{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+.s-rich-hdd-ru .hg .hg-d.cur{border-color:var(--accent); border-style:dashed; color:var(--ink);}
+.s-rich-hdd-ru .hg .hg-scenes{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+@media (max-width:860px){.s-rich-hdd-ru .hg .hg-scenes{grid-template-columns:1fr;}}
+.s-rich-hdd-ru .hg .hg-sc{border:1px solid var(--line-2); border-top:3px solid var(--ink-3); border-radius:8px; padding:10px 10px 12px; background:var(--surface-2);}
+.s-rich-hdd-ru .hg .hg-sc.hg-context{border-top-color:color-mix(in srgb, var(--accent) 55%, var(--ink-3));}
+.s-rich-hdd-ru .hg .hg-sc.hg-harness{border-top-color:var(--accent); background:var(--accent-soft); border-color:var(--accent);}
+.s-rich-hdd-ru .hg .hg-ch b{display:block; font-size:15px; color:var(--ink);}
+.s-rich-hdd-ru .hg .hg-ch small{display:block; font-size:12.5px; color:var(--ink-2);}
+.s-rich-hdd-ru .hg .hg-fig svg{display:block; width:100%; height:auto;}
+.s-rich-hdd-ru .hg .hg-foot{display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin-top:6px;}
+.s-rich-hdd-ru .hg .hg-c{display:flex; align-items:center; gap:5px; color:var(--ink-2); font-size:12.5px;}
+.s-rich-hdd-ru .hg .hg-c svg{width:18px; height:18px;}
+.s-rich-hdd-ru .hg .hg-c b{font-size:20px; color:var(--ink);}
+.s-rich-hdd-ru .hg .hg-c.bad, .s-rich-hdd-ru .hg .hg-c.bad b{color:var(--warn);}
+.s-rich-hdd-ru .hg .hg-stk{font:inherit; font-size:13px; display:flex; align-items:center; gap:7px; padding:6px 11px; border:1.5px solid var(--accent); border-radius:6px; background:transparent; color:var(--accent); cursor:pointer;}
+.s-rich-hdd-ru .hg .hg-stk.on{background:var(--accent); color:var(--on-accent,#0e0e10); font-weight:700;}
+.s-rich-hdd-ru .hg .hg-note-ic{width:12px; height:12px; background:#f0d264; border-radius:2px; transform:rotate(-6deg);}
+.s-rich-hdd-ru .hg .hg-ctl{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:14px;}
+.s-rich-hdd-ru .hg .hg-btn{font:inherit; font-size:15px; font-weight:700; padding:10px 22px; border:1px solid var(--accent); border-radius:999px; background:var(--accent); color:var(--on-accent,#0e0e10); cursor:pointer;}
+.s-rich-hdd-ru .hg .hg-btn:hover{filter:brightness(1.08);}
+.s-rich-hdd-ru .hg .hg-task{font-size:14px; color:var(--ink); font-weight:700;}
+.s-rich-hdd-ru .hg .hg-leg{margin-left:auto; font-size:12px; color:var(--muted);}
+/* части сцены */
+.s-rich-hdd-ru .hg .sc-floor{stroke:var(--line-2); stroke-width:2;}
+.s-rich-hdd-ru .hg .sc-me{fill:var(--ink-3);}
+.s-rich-hdd-ru .hg .sc-agent{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2;}
+.s-rich-hdd-ru .hg .sc-eye{fill:var(--accent);}
+.s-rich-hdd-ru .hg .sc-code{fill:var(--surface); stroke:var(--ink-2); stroke-width:2;}
+.s-rich-hdd-ru .hg .sc-ct{font-size:15px; font-family:"JetBrains Mono",monospace; fill:var(--ink-2);}
+.s-rich-hdd-ru .hg .sc-lb{font-size:11px; fill:var(--muted);}
+.s-rich-hdd-ru .hg .sc-arrow{stroke:var(--ink-3); stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round;}
+.s-rich-hdd-ru .hg .sc-lamp{stroke:var(--ink-3); stroke-width:2; fill:var(--surface);}
+.s-rich-hdd-ru .hg .sc-lamp.is-ok{fill:var(--accent); stroke:var(--accent);}
+.s-rich-hdd-ru .hg .sc-lamp.is-bad{fill:var(--warn); stroke:var(--warn);}
+.s-rich-hdd-ru .hg .sc-bug{fill:var(--warn); stroke:var(--warn); stroke-width:1.6; stroke-linecap:round;}
+.s-rich-hdd-ru .hg .sc-drop.pop{animation:hgdrop .6s ease-in;}
+@keyframes hgdrop{0%{transform:translate(258px,40px); opacity:0;} 100%{transform:translate(258px,116px); opacity:1;}}
+.s-rich-hdd-ru .hg .sc-lamp.pop{animation:hgflash .5s ease-out;}
+@keyframes hgflash{0%{opacity:.2;} 100%{opacity:1;}}
+.s-rich-hdd-ru .hg .sc-bub{fill:var(--surface); stroke:var(--ink-3); stroke-width:1.6;}
+.s-rich-hdd-ru .hg .sc-bt{font-size:11px; fill:var(--ink);}
+.s-rich-hdd-ru .hg .sc-fold{fill:var(--surface); stroke:var(--ink-3); stroke-width:2;}
+.s-rich-hdd-ru .hg .sc-fold.is-open{stroke:var(--accent);}
+.s-rich-hdd-ru .hg .sc-page{fill:var(--accent-soft); stroke:var(--accent); stroke-width:1.5;}
+.s-rich-hdd-ru .hg .sc-line{stroke:var(--accent); stroke-width:1.5; fill:none;}
+.s-rich-hdd-ru .hg .sc-z{font-size:11px; fill:var(--muted);}
+.s-rich-hdd-ru .hg .sc-post{fill:var(--accent);}
+.s-rich-hdd-ru .hg .sc-gate{fill:var(--accent);}
+.s-rich-hdd-ru .hg .sc-gate.is-closed{fill:var(--warn);}
+.s-rich-hdd-ru .hg .sc-back{stroke:var(--warn); stroke-width:2; fill:none; stroke-dasharray:4 3; stroke-linecap:round;}
+
+/* мини-игра «неделя с агентом» (src/lib/hddGame.ts): три одинаковые сцены с разной «мебелью» — стикер, папка инструкции, турникет тестов */
+.s-rich-hdd-en .hg{margin:18px 0 0; padding:16px 18px; border:1px solid var(--line-2); border-radius:8px; background:var(--surface);}
+.s-rich-hdd-en .hg .hg-top{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px;}
+.s-rich-hdd-en .hg .hg-h{font-size:16px; font-weight:700; color:var(--ink);}
+.s-rich-hdd-en .hg .hg-p, .s-rich-hdd-en .hg .hg-hint{margin:8px 0 12px; font-size:13.5px; color:var(--ink-2); text-align:left;}
+.s-rich-hdd-en .hg .hg-days{display:flex; gap:6px;}
+.s-rich-hdd-en .hg .hg-d{padding:4px 11px; border:1.5px solid var(--line-2); border-radius:999px; font-size:13px; color:var(--muted);}
+.s-rich-hdd-en .hg .hg-d.done{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+.s-rich-hdd-en .hg .hg-d.cur{border-color:var(--accent); border-style:dashed; color:var(--ink);}
+.s-rich-hdd-en .hg .hg-scenes{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+@media (max-width:860px){.s-rich-hdd-en .hg .hg-scenes{grid-template-columns:1fr;}}
+.s-rich-hdd-en .hg .hg-sc{border:1px solid var(--line-2); border-top:3px solid var(--ink-3); border-radius:8px; padding:10px 10px 12px; background:var(--surface-2);}
+.s-rich-hdd-en .hg .hg-sc.hg-context{border-top-color:color-mix(in srgb, var(--accent) 55%, var(--ink-3));}
+.s-rich-hdd-en .hg .hg-sc.hg-harness{border-top-color:var(--accent); background:var(--accent-soft); border-color:var(--accent);}
+.s-rich-hdd-en .hg .hg-ch b{display:block; font-size:15px; color:var(--ink);}
+.s-rich-hdd-en .hg .hg-ch small{display:block; font-size:12.5px; color:var(--ink-2);}
+.s-rich-hdd-en .hg .hg-fig svg{display:block; width:100%; height:auto;}
+.s-rich-hdd-en .hg .hg-foot{display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin-top:6px;}
+.s-rich-hdd-en .hg .hg-c{display:flex; align-items:center; gap:5px; color:var(--ink-2); font-size:12.5px;}
+.s-rich-hdd-en .hg .hg-c svg{width:18px; height:18px;}
+.s-rich-hdd-en .hg .hg-c b{font-size:20px; color:var(--ink);}
+.s-rich-hdd-en .hg .hg-c.bad, .s-rich-hdd-en .hg .hg-c.bad b{color:var(--warn);}
+.s-rich-hdd-en .hg .hg-stk{font:inherit; font-size:13px; display:flex; align-items:center; gap:7px; padding:6px 11px; border:1.5px solid var(--accent); border-radius:6px; background:transparent; color:var(--accent); cursor:pointer;}
+.s-rich-hdd-en .hg .hg-stk.on{background:var(--accent); color:var(--on-accent,#0e0e10); font-weight:700;}
+.s-rich-hdd-en .hg .hg-note-ic{width:12px; height:12px; background:#f0d264; border-radius:2px; transform:rotate(-6deg);}
+.s-rich-hdd-en .hg .hg-ctl{display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:14px;}
+.s-rich-hdd-en .hg .hg-btn{font:inherit; font-size:15px; font-weight:700; padding:10px 22px; border:1px solid var(--accent); border-radius:999px; background:var(--accent); color:var(--on-accent,#0e0e10); cursor:pointer;}
+.s-rich-hdd-en .hg .hg-btn:hover{filter:brightness(1.08);}
+.s-rich-hdd-en .hg .hg-task{font-size:14px; color:var(--ink); font-weight:700;}
+.s-rich-hdd-en .hg .hg-leg{margin-left:auto; font-size:12px; color:var(--muted);}
+/* части сцены */
+.s-rich-hdd-en .hg .sc-floor{stroke:var(--line-2); stroke-width:2;}
+.s-rich-hdd-en .hg .sc-me{fill:var(--ink-3);}
+.s-rich-hdd-en .hg .sc-agent{fill:var(--accent-soft); stroke:var(--accent); stroke-width:2;}
+.s-rich-hdd-en .hg .sc-eye{fill:var(--accent);}
+.s-rich-hdd-en .hg .sc-code{fill:var(--surface); stroke:var(--ink-2); stroke-width:2;}
+.s-rich-hdd-en .hg .sc-ct{font-size:15px; font-family:"JetBrains Mono",monospace; fill:var(--ink-2);}
+.s-rich-hdd-en .hg .sc-lb{font-size:11px; fill:var(--muted);}
+.s-rich-hdd-en .hg .sc-arrow{stroke:var(--ink-3); stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round;}
+.s-rich-hdd-en .hg .sc-lamp{stroke:var(--ink-3); stroke-width:2; fill:var(--surface);}
+.s-rich-hdd-en .hg .sc-lamp.is-ok{fill:var(--accent); stroke:var(--accent);}
+.s-rich-hdd-en .hg .sc-lamp.is-bad{fill:var(--warn); stroke:var(--warn);}
+.s-rich-hdd-en .hg .sc-bug{fill:var(--warn); stroke:var(--warn); stroke-width:1.6; stroke-linecap:round;}
+.s-rich-hdd-en .hg .sc-drop.pop{animation:hgdrop .6s ease-in;}
+@keyframes hgdrop{0%{transform:translate(258px,40px); opacity:0;} 100%{transform:translate(258px,116px); opacity:1;}}
+.s-rich-hdd-en .hg .sc-lamp.pop{animation:hgflash .5s ease-out;}
+@keyframes hgflash{0%{opacity:.2;} 100%{opacity:1;}}
+.s-rich-hdd-en .hg .sc-bub{fill:var(--surface); stroke:var(--ink-3); stroke-width:1.6;}
+.s-rich-hdd-en .hg .sc-bt{font-size:11px; fill:var(--ink);}
+.s-rich-hdd-en .hg .sc-fold{fill:var(--surface); stroke:var(--ink-3); stroke-width:2;}
+.s-rich-hdd-en .hg .sc-fold.is-open{stroke:var(--accent);}
+.s-rich-hdd-en .hg .sc-page{fill:var(--accent-soft); stroke:var(--accent); stroke-width:1.5;}
+.s-rich-hdd-en .hg .sc-line{stroke:var(--accent); stroke-width:1.5; fill:none;}
+.s-rich-hdd-en .hg .sc-z{font-size:11px; fill:var(--muted);}
+.s-rich-hdd-en .hg .sc-post{fill:var(--accent);}
+.s-rich-hdd-en .hg .sc-gate{fill:var(--accent);}
+.s-rich-hdd-en .hg .sc-gate.is-closed{fill:var(--warn);}
+.s-rich-hdd-en .hg .sc-back{stroke:var(--warn); stroke-width:2; fill:none; stroke-dasharray:4 3; stroke-linecap:round;}
+
+.s-rich-hdd-ru .hg .hg-lgd{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12px; color:var(--muted);}
+.s-rich-hdd-ru .hg .hg-lgd span{display:flex; align-items:center; gap:5px;}
+.s-rich-hdd-ru .hg .hg-lgd i{width:11px; height:11px; border-radius:50%; border:2px solid var(--ink-3); display:inline-block;}
+.s-rich-hdd-ru .hg .hg-lgd .d-ok{background:var(--accent); border-color:var(--accent);}
+.s-rich-hdd-ru .hg .hg-lgd .d-bad{background:var(--warn); border-color:var(--warn);}
+
+.s-rich-hdd-en .hg .hg-lgd{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12px; color:var(--muted);}
+.s-rich-hdd-en .hg .hg-lgd span{display:flex; align-items:center; gap:5px;}
+.s-rich-hdd-en .hg .hg-lgd i{width:11px; height:11px; border-radius:50%; border:2px solid var(--ink-3); display:inline-block;}
+.s-rich-hdd-en .hg .hg-lgd .d-ok{background:var(--accent); border-color:var(--accent);}
+.s-rich-hdd-en .hg .hg-lgd .d-bad{background:var(--warn); border-color:var(--warn);}
+
+/* Переключатель вида: иллюстрация / структура */
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vt{ position:sticky; top:8px; z-index:5; display:flex; justify-content:flex-end; margin:0 0 14px; pointer-events:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vt > input{ position:absolute; opacity:0; pointer-events:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vt-b{ display:inline-flex; border:1px solid var(--line-2); border-radius:6px; background:var(--surface); overflow:hidden; pointer-events:auto; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vt-b label{ display:inline-flex; align-items:center; gap:7px; padding:7px 12px; font-size:13.5px; font-weight:600; color:var(--ink-2); cursor:pointer; line-height:1.2; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vt-b label svg{ width:16px; height:16px; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vt-ic:checked ~ .vt-b .vt-lc,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vt-is:checked ~ .vt-b .vt-ls{ background:var(--accent); color:#fff; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vt-ic:focus-visible ~ .vt-b .vt-lc,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vt-is:focus-visible ~ .vt-b .vt-ls{ outline:2px solid var(--accent); outline-offset:-2px; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en):has(.vt-ic:checked) .v-s{ display:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en):has(.vt-is:checked) .v-c{ display:none; }
+
+/* баги на сценах QA: объёмные жуки, медленно разворачиваются на месте */
+@keyframes bugspin{to{transform:rotate(360deg)}}
+.s-article .bug-rot{animation:bugspin 7s linear infinite;}
+@media (prefers-reduced-motion:reduce){.s-article .bug-rot{animation:none;}}
+
+/* Подсказка агенту: цитата с кнопкой копирования */
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq{ position:relative; margin:10px 0 0; padding:14px 52px 14px 18px; border-left:3px solid var(--accent); background:var(--surface-2); border-radius:0 6px 6px 0; color:var(--ink); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-text{ font-size:15.5px; line-height:1.55; font-style:italic; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-text::before{ content:"«"; color:var(--accent); font-weight:700; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-text::after{ content:"»"; color:var(--accent); font-weight:700; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-copy{ position:absolute; top:8px; right:8px; display:inline-grid; place-items:center; width:34px; height:34px; padding:0; border:0; border-radius:6px; background:transparent; color:var(--muted); cursor:pointer; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-copy:hover{ color:var(--ink); background:var(--surface); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-copy svg{ width:18px; height:18px; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-ok{ display:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-copy[data-state="done"]{ color:var(--accent); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-copy[data-state="done"] .pq-ok{ display:block; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-copy[data-state="done"] .pq-ic{ display:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq-sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+@media (max-width:600px){ .s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .pq{ padding:14px 48px 14px 16px; } }
+
+/* Блок кода с кнопкой копирования */
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .cb{ position:relative; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .cb pre{ padding-right:52px !important; }
+
+/* Переключатель «картинка / график» без скрипта: радиокнопки и соседние блоки */
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vtog > input{ position:absolute; opacity:0; pointer-events:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vtog-tabs{ display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; margin:10px 0 2px; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vtog-tabs label{ padding:5px 18px; cursor:pointer; font-size:13px; font-weight:700; color:var(--muted); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vtog > .vtog-b{ display:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vtog > input.vt-b:checked ~ .vtog-b{ display:block; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vtog > input.vt-b:checked ~ .vtog-a{ display:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vtog > input.vt-a:checked ~ .vtog-tabs label.l-a,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vtog > input.vt-b:checked ~ .vtog-tabs label.l-b{ background:var(--accent); color:var(--on-accent); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .vtog > input:focus-visible ~ .vtog-tabs{ outline:2px solid var(--accent); outline-offset:2px; }
+
+/* Переключатель проблем под схемой: номер → карточка «что ломается / что помогает», без скрипта */
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk{ margin-top:12px; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input{ position:absolute; opacity:0; pointer-events:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk-tabs{ display:flex; flex-wrap:wrap; gap:6px; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk-tabs label{ display:inline-flex; align-items:center; gap:7px; padding:5px 12px 5px 6px; border:1px solid var(--line); border-radius:999px; cursor:pointer; font-size:13px; font-weight:700; color:var(--muted); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk-tabs label i{ display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:var(--warn); color:#fff; font-style:normal; font-size:12px; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk-p{ display:none; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px; padding:12px 14px; border:1px solid var(--line); border-radius:10px; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk-p > div{ display:flex; flex-direction:column; gap:4px; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk-p .k{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk-p .k.w{ color:var(--warn); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk-p .k.a{ color:var(--accent); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(1):checked ~ .brk-p.p1,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(2):checked ~ .brk-p.p2,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(3):checked ~ .brk-p.p3,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(4):checked ~ .brk-p.p4,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(5):checked ~ .brk-p.p5,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(6):checked ~ .brk-p.p6,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(7):checked ~ .brk-p.p7{ display:grid; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(1):checked ~ .brk-tabs label:nth-child(1),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(2):checked ~ .brk-tabs label:nth-child(2),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(3):checked ~ .brk-tabs label:nth-child(3),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(4):checked ~ .brk-tabs label:nth-child(4),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(5):checked ~ .brk-tabs label:nth-child(5),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(6):checked ~ .brk-tabs label:nth-child(6),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:nth-of-type(7):checked ~ .brk-tabs label:nth-child(7){ border-color:var(--warn); color:var(--ink); background:color-mix(in srgb, var(--warn) 14%, transparent); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk > input:focus-visible ~ .brk-tabs{ outline:2px solid var(--accent); outline-offset:2px; border-radius:8px; }
+@media (max-width:600px){ .s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk-p{ grid-template-columns:1fr; } }
+/* Схема над переключателем: выбранная проблема подсвечена рамкой, остальные приглушены */
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane .bk .hl{ opacity:0; transition:opacity .2s; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane .bk{ transition:opacity .2s; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(1):checked) .bk:not(.bk1),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(2):checked) .bk:not(.bk2),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(3):checked) .bk:not(.bk3),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(4):checked) .bk:not(.bk4),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(5):checked) .bk:not(.bk5),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(6):checked) .bk:not(.bk6),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(7):checked) .bk:not(.bk7){ opacity:.22; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(1):checked) .bk1 .hl,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(2):checked) .bk2 .hl,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(3):checked) .bk3 .hl,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(4):checked) .bk4 .hl,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(5):checked) .bk5 .hl,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(6):checked) .bk6 .hl,
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .lane:has(.brk > input:nth-of-type(7):checked) .bk7 .hl{ opacity:1; }
+/* Переключатель без риска: номера и выбранная вкладка синие */
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk.a .brk-tabs label i{ background:var(--accent); }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk.a > input:checked ~ .brk-tabs label{ border-color:var(--line); color:var(--muted); background:none; }
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk.a > input:nth-of-type(1):checked ~ .brk-tabs label:nth-child(1),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk.a > input:nth-of-type(2):checked ~ .brk-tabs label:nth-child(2),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk.a > input:nth-of-type(3):checked ~ .brk-tabs label:nth-child(3),
+.s-rich:is(.s-rich-harness-ru,.s-rich-harness-en) .brk.a > input:nth-of-type(4):checked ~ .brk-tabs label:nth-child(4){ border-color:var(--accent); color:var(--ink); background:color-mix(in srgb, var(--accent) 14%, transparent); }

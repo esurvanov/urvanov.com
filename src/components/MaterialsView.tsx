@@ -9,6 +9,7 @@ import { gamePageByPlay } from '@/data/games'
 import { LAB_PAGES } from '@/data/labs'
 import { TextLink } from '@/components/site/Links'
 import { plural } from '@/lib/plural'
+import { ALL_TERMS, TERM_SETS } from '@/data/glossary'
 
 const patternsTotal = PATTERN_CATEGORIES.reduce((s, c) => s + c.patterns.length, 0)
 
@@ -77,6 +78,7 @@ export function MaterialsView() {
         group('/materials/games', t({ ru: 'Игры', en: 'Games' }), gameRows(lang)),
         group('/materials/interactive', t({ ru: 'Интерактивы', en: 'Interactive' }), labRows(lang)),
         group('/materials/presentations', t({ ru: 'Презентации', en: 'Presentations' }), presentationRows(lang)),
+        { to: withSlash(to('/materials/glossary')), title: t({ ru: 'Глоссарий', en: 'Glossary' }), hint: TERM_SETS.map((s) => t(s.name)).join(' · '), meta: plural(ALL_TERMS.length, lang, ['термин', 'термина', 'терминов'], ['term', 'terms']) },
       ]} />
     </Page>
   )

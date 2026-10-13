@@ -9,7 +9,9 @@ import BlogView from '@/components/BlogView'
 import BlogPostView from '@/components/BlogPostView'
 import TalkView from '@/components/TalkView'
 import NotFoundView from '@/components/NotFoundView'
+import { GlossaryView, TermView } from '@/components/GlossaryView'
 import { MaterialsView, PresentationsView, GamesView, InteractiveView } from '@/components/MaterialsView'
+import { AiHubView, AiOfferView } from '@/components/AiOfferView'
 import { GameView } from '@/components/GameView'
 import ArchitectureView from '@/components/ArchitectureView'
 import { LabView } from '@/components/LabView'
@@ -38,8 +40,12 @@ export default function App() {
       <Route path="/materials/games" element={<GamesView />} />
       <Route path="/materials/games/:slug" element={<GameView />} />
       <Route path="/materials/games/:slug/architecture" element={<ArchitectureView />} />
+      <Route path="/materials/glossary" element={<GlossaryView />} />
+      <Route path="/materials/glossary/:slug" element={<TermView />} />
       <Route path="/materials/interactive" element={<InteractiveView />} />
       <Route path="/materials/interactive/:slug" element={<LabView />} />
+      <Route path="/ai" element={<AiHubView />} />
+      <Route path="/ai/:slug" element={<AiOfferView />} />
       <Route path="/links" element={<LinksView />} />
       <Route path="/talk/spec-driven-development" element={<TalkView />} />
       <Route path="/en" element={<HomeView />} />
@@ -54,8 +60,12 @@ export default function App() {
       <Route path="/en/materials/games" element={<GamesView />} />
       <Route path="/en/materials/games/:slug" element={<GameView />} />
       <Route path="/en/materials/games/:slug/architecture" element={<ArchitectureView />} />
+      <Route path="/en/materials/glossary" element={<GlossaryView />} />
+      <Route path="/en/materials/glossary/:slug" element={<TermView />} />
       <Route path="/en/materials/interactive" element={<InteractiveView />} />
       <Route path="/en/materials/interactive/:slug" element={<LabView />} />
+      <Route path="/en/ai" element={<AiHubView />} />
+      <Route path="/en/ai/:slug" element={<AiOfferView />} />
       <Route path="/en/links" element={<LinksView />} />
       <Route path="/en/talk/spec-driven-development" element={<TalkView />} />
       <Route path="/slide/:index" element={<SlideView />} />

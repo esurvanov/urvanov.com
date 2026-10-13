@@ -1,0 +1,350 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3D: оценка или проверка</title>
+<style>
+:root{color-scheme:dark light;--fg:#e9e7df;--muted:#a09e98;--pillbg:rgba(30,30,27,.94);--agent:#8b9bff;--you:#9a968a;--real:#e9e7df;--hand:#e9e7df;--neutral:#cfc4a6;--ghost:#cfc9bb;--panel:rgba(20,20,26,.55);--line:rgba(255,255,255,.14)}
+html[data-theme=light]{--fg:#1c1c19;--muted:#6b6a60;--pillbg:rgba(255,255,255,.96);--agent:#2440ff;--you:#6a675b;--real:#1c1c19;--hand:#1c1c19;--neutral:#6e6650;--ghost:#6b6a60;--panel:rgba(255,255,255,.6);--line:rgba(0,0,0,.14)}
+html,body{margin:0;height:100%;overflow:hidden;background:transparent;color:var(--fg);font:14px system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{position:absolute;inset:0;display:flex;flex-direction:column}
+.bar{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:8px 10px;z-index:3}
+.bar .sep{width:1px;height:20px;background:var(--line);margin:0 4px}
+button{font:inherit;font-size:13px;font-weight:700;padding:5px 13px;border-radius:999px;border:1.5px solid var(--c,var(--line));background:var(--panel);color:var(--c,var(--fg));cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}
+button:hover{filter:brightness(1.15)}
+button::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,transparent)}
+button.plain{--c:var(--fg)}
+button.plain::before{display:none}
+button[aria-pressed=true]{background:var(--c);color:#14141a;border-color:var(--c)}
+html[data-theme=light] button[aria-pressed=true]{color:#fff}
+button[aria-pressed=true]::before{background:#14141a}
+html[data-theme=light] button[aria-pressed=true]::before{background:#fff}
+button:focus-visible{outline:2px solid var(--c,var(--fg));outline-offset:2px}
+#pAgent{--c:var(--agent)}#pYou{--c:var(--you)}#pReal{--c:var(--real)}
+#play{--c:var(--fg);font-size:15px;padding:5px 16px}
+#play::before{display:none}
+.stage{position:relative;flex:1 1 56%;min-height:180px;touch-action:pan-y;cursor:grab}
+.stage:active{cursor:grabbing}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 50% at 82% 25%,var(--glow,rgba(154,150,138,.25)),transparent 70%)}
+.stage canvas{display:block;width:100%;height:100%;position:relative;z-index:1}
+.lbl{font-variant-numeric:tabular-nums;position:absolute;left:0;top:0;transform:translate(-50%,-50%);z-index:2;pointer-events:none;white-space:nowrap;font-size:13px;font-weight:800;padding:6px 14px;border-radius:999px;border:2px solid var(--neutral);background:var(--pillbg);color:var(--neutral);transition:opacity .25s}
+.lbl.agent{border-color:var(--agent);color:var(--agent)}
+.lbl.you{border-color:var(--you);color:var(--you)}
+.lbl.real{border-color:var(--real);color:var(--real)}
+.lbl.cloud{font-size:14px;padding:10px 18px;border-radius:26px;background:var(--pillbg);border-width:2px;font-weight:700}
+.lbl.cloud::before,.lbl.cloud::after{content:"";position:absolute;border-radius:50%;background:var(--pillbg);border:2px solid currentColor}
+.lbl.cloud::after{width:12px;height:12px;left:50%;bottom:-17px;margin-left:-6px}
+.lbl.cloud::before{width:7px;height:7px;left:50%;bottom:-27px;margin-left:-3px}
+.lbl.fact{font-size:13px;font-weight:700;border-radius:8px;border:none;background:var(--pillbg);color:var(--fg);box-shadow:0 0 0 1.5px var(--line)}
+.lbl.bubble{font-size:15px;padding:9px 16px}
+.lbl.ghost{border:none;background:none;color:var(--ghost);font-weight:600}
+.lbl.now{background:var(--fg);color:var(--pillbg);border-color:var(--fg)}
+.meters{display:flex;gap:8px;justify-content:center;padding:6px 14px 2px}
+.meters b{font-weight:700;color:var(--muted)}
+.meters .bar2{height:9px;border-radius:5px;background:var(--line);position:relative;overflow:hidden}
+.meters .bar2 i{position:absolute;left:0;top:0;bottom:0;border-radius:5px;transition:none}
+.meters span{font-variant-numeric:tabular-nums;min-width:74px;text-align:right}
+.hud{position:absolute;z-index:3;left:12px;top:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;pointer-events:none}
+.hud span{font-size:12.5px;font-weight:800;padding:4px 11px;border-radius:999px;border:1.5px solid var(--line);background:var(--pillbg);color:var(--fg);font-variant-numeric:tabular-nums}
+.hud .row{display:flex;gap:6px;flex-wrap:wrap}
+.hud .a{border-color:var(--agent);color:var(--agent)}.hud .y{border-color:var(--you);color:var(--you)}.hud .x{border-color:var(--hand);color:var(--hand)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;padding:2px 12px 0;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.legend b{color:var(--fg)}
+.graph{flex:1 1 38%;min-height:150px;padding:0 10px 8px;background:transparent}
+.graph svg{width:100%;height:100%;display:block;cursor:pointer}
+.graph text{font-family:inherit}
+@media(max-width:560px){.lbl{font-size:11px;padding:4px 9px}.lbl.bubble{font-size:12px;padding:6px 11px}button{font-size:12px;padding:4px 9px}}
+</style>
+<div class="wrap">
+  <div class="bar" role="group">
+    <button id="pAgent" aria-pressed="false"></button>
+    <button id="pYou" aria-pressed="false"></button>
+    <button id="pReal" aria-pressed="true"></button>
+    <span class="sep"></span>
+    <button id="play" class="plain"></button>
+  </div>
+  <div class="stage" id="stage"></div>
+  <div class="meters" id="meters"></div>
+  <div class="legend" id="legend"></div>
+  <div class="graph"><svg id="gr" viewBox="0 0 700 256" preserveAspectRatio="xMidYMid meet"></svg></div>
+</div>
+<script type="importmap">{"imports":{"three":"/vendor/three/build/three.module.js","three/addons/":"/vendor/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+
+const EN=new URLSearchParams(location.search).get('lang')==='en';
+const TX=EN?{pAgent:'How the agent thinks',pYou:'How you think',pReal:'How it really is',play:'▶ Play',pause:'❚❚ Pause',replay:'↻ Replay',
+  agent:'agent',agentWork:'agent works',decide:'you decide',hands:'you do by hand',idle:'done',
+  bubbleAgent:'“You will do a lot and decide a lot”',bubbleYou:'“There will be few decisions and little work”',bubbleReal:'“Almost all of it is mine”',
+  q:'? needs a decision',deciding:'you decide…',decided:'✓ decided',legAgent:'agent',legYou:'you (by hand)',legDec:'decision',legHand:'by hand',min:'min',h:'h',time:'time',vol:'work done',share:'share of work',tokens:'tokens',k:'k',cnt:{a:'agent',x:'by hand',y:'decisions'}}
+ :{pAgent:'Как думает агент',pYou:'Как думаете вы',pReal:'Как на самом деле',play:'▶ Играть',pause:'❚❚ Пауза',replay:'↻ Заново',
+  agent:'агент',agentWork:'работает агент',decide:'вы решаете',hands:'вы делаете руками',idle:'готово',
+  bubbleAgent:'«Вы много сделаете и решите»',bubbleYou:'«Решений и работы будет мало»',bubbleReal:'«Почти всё делаю я»',
+  q:'? нужно решение',deciding:'вы решаете…',decided:'✓ решено',legAgent:'агент',legYou:'вы (руками)',legDec:'решение',legHand:'руками',min:'мин',h:'ч',time:'время',vol:'объём работы',share:'доля работы',tokens:'токены',k:'тыс.',cnt:{a:'агент',x:'руками',y:'решений'}};
+pAgent.textContent=TX.pAgent; pYou.textContent=TX.pYou; pReal.textContent=TX.pReal;
+
+// ---------- данные (цифры условные) ----------
+// фаза: [t0,t1,v0,v1,кто]: v — накопленный объём работы в % от всего (0..100). a — агент работает, x — вы делаете руками, y — вы решаете (объём стоит).
+// Решения короткие, работа длинная. Агент ждёт: вы много делаете и много решаете. Вы думаете: мало и мало. На деле: мало делаете, немного решаете.
+const MODES={
+ agent:{T:60, bubble:TX.bubbleAgent, ph:[[0,6,0,8,'a'],[6,9,8,8,'y'],[9,18,8,30,'x'],[18,21,30,30,'y'],[21,29,30,50,'x'],[29,32,50,50,'y'],[32,38,50,62,'a'],[38,41,62,62,'y'],[41,50,62,82,'x'],[50,53,82,82,'y'],[53,60,82,100,'a']]},
+ you:{T:45, bubble:TX.bubbleYou, ph:[[0,16,0,60,'a'],[16,18,60,60,'y'],[18,22,60,72,'x'],[22,45,72,100,'a']]},
+ real:{T:150, bubble:TX.bubbleReal, ph:[[0,40,0,28,'a'],[40,44,28,28,'y'],[44,50,28,36,'x'],[50,110,36,78,'a'],[110,114,78,78,'y'],[114,150,78,100,'a']]}
+};
+const COST={agent:{time:60,tok:25},you:{time:45,tok:35},real:{time:150,tok:100}};
+function monotone(pts){ // гладкая монотонная кубическая интерполяция (Фритч–Карлсон)
+  const n=pts.length, d=[], m=[];
+  for(let i=0;i<n-1;i++)d.push((pts[i+1][1]-pts[i][1])/Math.max(1e-9,pts[i+1][0]-pts[i][0]));
+  m.push(d[0]); for(let i=1;i<n-1;i++)m.push(d[i-1]*d[i]<=0?0:(d[i-1]+d[i])/2); m.push(d[n-2]);
+  for(let i=0;i<n-1;i++){ if(d[i]===0){m[i]=m[i+1]=0;continue} const a=m[i]/d[i], b=m[i+1]/d[i], r=a*a+b*b; if(r>9){const k=3/Math.sqrt(r); m[i]=k*a*d[i]; m[i+1]=k*b*d[i]} }
+  return t=>{ if(t<=pts[0][0])return pts[0][1]; if(t>=pts[n-1][0])return pts[n-1][1]; let i=0; while(i<n-2&&pts[i+1][0]<t)i++;
+    const h=pts[i+1][0]-pts[i][0], s=(t-pts[i][0])/h, s2=s*s, s3=s2*s;
+    return (2*s3-3*s2+1)*pts[i][1]+(s3-2*s2+s)*h*m[i]+(-2*s3+3*s2)*pts[i+1][1]+(s3-s2)*h*m[i+1] };
+}
+const sm5=x=>{x=Math.max(0,Math.min(1,x)); return x*x*x*(x*(x*6-15)+10)};
+function series(ph,who){ // накопленный объём роли: плавно растёт только в её фазах, в остальное время строго горизонтален
+  return t=>{ let v=0; for(const p of ph){ if(p[4]!==who)continue; v+=(p[3]-p[2])*sm5((t-p[0])/(p[1]-p[0])) } return v } }
+let play='real';
+const mode=()=>MODES[play];
+let FA=series(mode().ph,'a'), FX=series(mode().ph,'x');
+const prog=t=>FA(t)+FX(t);
+const share=()=>{const T=mode().T; return {a:Math.round(FA(T)), x:Math.round(FX(T))}};
+const phaseAt=tm=>{for(const p of mode().ph){ if(tm>=p[0]&&tm<p[1])return p[4] } return 'idle'};
+function owners(){ // кто делает i-й кубик: тот, чей участок объёма его содержит
+  return Array.from({length:N},(_,i)=>{const v=(i+.5)/N*100; for(const p of mode().ph){ if(p[4]!=='y'&&v>=p[2]&&v<=p[3])return p[4]==='a'?'agent':'you' } return 'agent'}) }
+// ---------- 3D-сцена ----------
+const THEMES={
+ dark:{bg:'radial-gradient(60% 70% at 28% 38%,#4b55b8 0%,#2b336f 48%,#171a33 100%)',glow:'rgba(154,150,138,.3)',sky:0xc4caff,ground:0x7a6050,hemi:1.5,sun:3.4,exp:1.45,plat:0x44443d,ring:0x9aa1ff,rimB:140,rimO:140},
+ light:{bg:'radial-gradient(60% 70% at 28% 38%,#ffffff 0%,#eceeff 50%,#d6daf7 100%)',glow:'rgba(154,150,138,.22)',sky:0xffffff,ground:0xd2c6aa,hemi:1.9,sun:2.6,exp:1.05,plat:0xeee8d8,ring:0x6a73e0,rimB:50,rimO:50}
+};
+const stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+stage.prepend(renderer.domElement);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(32,1,.1,100);
+const hemi=new THREE.HemisphereLight(0x9aa1f7,0x3a2a22,1.5); scene.add(hemi);
+const sun=new THREE.DirectionalLight(0xfff0dd,3); sun.position.set(-5,10,6); sun.castShadow=true;
+sun.shadow.mapSize.set(2048,2048); Object.assign(sun.shadow.camera,{left:-10,right:10,top:10,bottom:-10}); sun.shadow.radius=4; sun.shadow.bias=-.0004; scene.add(sun);
+const rimBlue=new THREE.PointLight(0x8e96f5,100,22); rimBlue.position.set(-8,3,5); scene.add(rimBlue);
+const rimOrange=new THREE.PointLight(0xe8e2d4,100,22); rimOrange.position.set(8,4,-2); scene.add(rimOrange);
+const world=new THREE.Group(); scene.add(world);
+const controls=new OrbitControls(camera,renderer.domElement); controls.target.set(0,1.1,0); controls.enableDamping=true; controls.enableZoom=false; controls.enablePan=false; controls.rotateSpeed=.7; controls.minPolarAngle=.9; controls.maxPolarAngle=1.5; controls.minAzimuthAngle=-.9; controls.maxAzimuthAngle=.9; renderer.domElement.style.touchAction='pan-y'; renderer.domElement.style.cursor='grab';
+const M=(c,r=.55,m=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
+const mStone=M(0xa89d80,.78), mStoneL=M(0xc4baa0,.8), mDark=M(0x1a1410,.5), mAgent=M(0x6b7bff,.4), mAgentD=M(0x3f50e0,.5), mSeam=M(0x5d5540,.9);
+const mk=(g,m,x=0,y=0,z=0)=>{const o=new THREE.Mesh(g,m);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;world.add(o);return o};
+const platMat=M(0x44443d,.85); mk(new THREE.CylinderGeometry(7.6,7.8,.5,96),platMat,0,-.25,0).castShadow=false;
+const ringMat=new THREE.MeshBasicMaterial({color:0x9aa1ff}); const ring=new THREE.Mesh(new THREE.TorusGeometry(7.65,.04,12,128),ringMat); ring.rotation.x=Math.PI/2; ring.position.y=.02; world.add(ring);
+const TOP=0;
+
+function agentCube(x,z,k,rotY){
+  const g=new THREE.Group(); g.position.set(x,TOP,z); g.rotation.y=rotY; world.add(g);
+  const body=new THREE.Mesh(new RoundedBoxGeometry(1.5*k,1.5*k,1.5*k,6,.2*k),mAgent); body.position.y=.95*k; body.castShadow=true; g.add(body);
+  for(const ex of [-.34,.34]){
+    const e=new THREE.Mesh(new THREE.SphereGeometry(.13*k,16,16),mDark); e.scale.set(1,1.35,.4); e.position.set(ex*k,1.08*k,.76*k); g.add(e);
+    const hl=new THREE.Mesh(new THREE.SphereGeometry(.035*k,8,8),new THREE.MeshBasicMaterial({color:0xffffff})); hl.position.set((ex-.03)*k,1.14*k,.8*k); g.add(hl);
+  }
+  const sm=new THREE.Mesh(new THREE.TorusGeometry(.2*k,.04*k,8,20,Math.PI),mDark); sm.rotation.z=Math.PI; sm.position.set(0,.7*k,.76*k); g.add(sm);
+  for(const fx of [-.38,.38]){const f=new THREE.Mesh(new RoundedBoxGeometry(.5*k,.28*k,.6*k,3,.08*k),mAgentD); f.position.set(fx*k,.14*k,.05*k); f.castShadow=true; g.add(f)}
+  return g;
+}
+const mainAgent=agentCube(-5.6,2.0,1.15,.7);
+mk(new RoundedBoxGeometry(2.2,1.2,1.7,6,.2),mStone,0,TOP+.6,0);
+for(const y of [.4,.85]){const s=new THREE.Mesh(new THREE.BoxGeometry(2.22,.03,1.72),mSeam); s.position.set(0,y,0); world.add(s)}
+const tri=new THREE.Shape(); tri.moveTo(-.2,-.28); tri.lineTo(.32,0); tri.lineTo(-.2,.28); tri.lineTo(-.2,-.28);
+const play3=new THREE.Mesh(new THREE.ExtrudeGeometry(tri,{depth:.05,bevelEnabled:false}),new THREE.MeshStandardMaterial({color:0x6b7bff,roughness:.4})); play3.position.set(0,TOP+.62,.88); world.add(play3);
+const BLOCK_TOP=TOP+1.2;
+const PB=new THREE.Vector3(4.4,0,-1.9), PR=new THREE.Vector3(4.4,0,1.9), PED_H=.9;
+mk(new RoundedBoxGeometry(2.3,PED_H,1.8,6,.2),mStoneL,PB.x,TOP+PED_H/2,PB.z);
+mk(new RoundedBoxGeometry(2.3,PED_H,1.8,6,.2),mStoneL,PR.x,TOP+PED_H/2,PR.z);
+const PED_TOP=TOP+PED_H;
+agentCube(-3.9,3.5,.55,.6); agentCube(-6.8,.2,.55,.8); agentCube(-5.3,4.4,.55,.5);
+const mixers=[]; let actIdle=null, actWave=null;
+new GLTFLoader().load('/models/cube.glb',gltf=>{
+  const m=SkeletonUtils.clone(gltf.scene); const g=new THREE.Group(); g.add(m); m.scale.setScalar(2.0/2.84);
+  const tc=new THREE.Color(0xffffff).lerp(new THREE.Color(0x6a675b),.38);
+  m.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;o.material=o.material.clone();o.material.color.copy(tc);o.material.roughness=.55;o.material.metalness=0}});
+  g.position.set(6.4,TOP,2.6); g.rotation.y=-1.0; world.add(g);
+  const mx=new THREE.AnimationMixer(m); actIdle=mx.clipAction(gltf.animations.find(a=>a.name.endsWith('Idle'))||gltf.animations[0]); actWave=mx.clipAction(gltf.animations.find(a=>a.name.endsWith('Wave'))||gltf.animations[0]); actIdle.play(); mixers.push(mx);
+});
+
+// ---------- кубики-задачи ----------
+const N=13, S=.46, STEP=.54, FLY=.07; // FLY — доля оси времени на полёт одного куба
+let BY=owners();
+const neutral=new THREE.Color(0xc4baa0), cAgent=new THREE.Color(0x6b7bff), cYou=new THREE.Color(0x8a877c);
+const pile=[], target=[];
+for(let i=0;i<N;i++){const row=Math.floor(i/3), col=[1,0,2][i%3]; pile.push(new THREE.Vector3(-2.7-row*.52,TOP+S/2,(col-1)*.52))}
+function layoutTargets(){ target.length=0; const cnt={agent:0,you:0};
+  BY.forEach(b=>{const k=cnt[b]++, base=b==='agent'?PB:PR, layer=Math.floor(k/6), kk=k%6; target.push(new THREE.Vector3(base.x+((kk%3)-1)*STEP,PED_TOP+S/2+layer*S,base.z+(Math.floor(kk/3)-.5)*STEP))}) }
+layoutTargets();
+const cubeG=new RoundedBoxGeometry(S,S,S,4,.08);
+const cubes=BY.map((b,i)=>{const o=mk(cubeG,new THREE.MeshStandardMaterial({color:neutral.clone(),roughness:.55})); o.userData.final=b==='agent'?cAgent:cYou; return o});
+const G=TOP+S/2, CK=BLOCK_TOP+S/2;
+function routeFor(i){const base=BY[i]==='agent'?PB:PR; return {pts:[pile[i].clone(),new THREE.Vector3(0,CK,0),target[i].clone()]}}
+let routes=BY.map((_,i)=>routeFor(i));
+const trackM=new THREE.MeshBasicMaterial({color:0xffffff,transparent:true,opacity:.28});
+function track(x0,z0,x1,z1){const dx=x1-x0,dz=z1-z0,len=Math.hypot(dx,dz); const m=new THREE.Mesh(new THREE.PlaneGeometry(len,.12),trackM); m.rotation.x=-Math.PI/2; m.rotation.z=-Math.atan2(dz,dx); m.position.set((x0+x1)/2,.012,(z0+z1)/2); world.add(m)}
+track(-5.0,0,-1.2,0); track(1.2,0,2.7,0); track(2.7,PB.z,2.7,PR.z); track(2.7,PB.z,PB.x-1.2,PB.z); track(2.7,PR.z,PR.x-1.2,PR.z);
+
+// на сцене только три подписи: имя агента, реплика режима и сообщение при решении
+function label(text,cls,pos){const el=document.createElement('div'); el.className='lbl '+cls; el.textContent=text; stage.appendChild(el); return {el,pos}}
+const labels=[];
+const cloudAgent=label('','cloud agent',new THREE.Vector3(-5.6,TOP+4.3,2.0)); cloudAgent.el.textContent=TX.bubbleAgent;
+const cloudYou=label('','cloud you',new THREE.Vector3(6.2,TOP+4.2,2.6)); cloudYou.el.textContent=TX.bubbleYou;
+const factLbl=label('','fact',new THREE.Vector3(0,TOP+4.4,0)); labels.push(cloudAgent,cloudYou,factLbl);
+const msgLbl=label('?','bubble',new THREE.Vector3(0,3,0)); msgLbl.el.style.opacity=0; labels.push(msgLbl);
+const linkM=new THREE.LineDashedMaterial({color:0xa9b0ff,dashSize:.3,gapSize:.2,transparent:true,opacity:0});
+const linkL=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-5.6,2.2,2.0),new THREE.Vector3(6.4,2.2,2.6)]),linkM); linkL.computeLineDistances(); world.add(linkL);
+const A_POS=new THREE.Vector3(-5.6,3.0,2.0), H_POS=new THREE.Vector3(6.4,3.0,2.6);
+let wavePose=false;
+function interaction(f){ // f 0..1 внутри решения: вопрос летит к человеку, человек решает, ответ летит назад. В остальное время всё спокойно
+  const on=f>=0; linkM.opacity=on?.7:0;
+  if(wavePose!==on&&actWave&&actIdle){wavePose=on; if(on){actIdle.fadeOut(.2);actWave.reset().fadeIn(.2).play()}else{actWave.fadeOut(.2);actIdle.reset().fadeIn(.2).play()}}
+  if(!on){msgLbl.el.style.opacity=0; return}
+  let a,b,k,txt,col;
+  if(f<.3){a=A_POS;b=H_POS;k=f/.3;txt=TX.q;col='agent'} else if(f<.7){a=H_POS;b=H_POS;k=0;txt=TX.deciding;col='you'} else {a=H_POS;b=A_POS;k=(f-.7)/.3;txt=TX.decided;col='real'}
+  msgLbl.pos.lerpVectors(a,b,k); msgLbl.pos.y+=Math.sin(Math.PI*k)*.8+(f>=.3&&f<.7?.8:0);
+  msgLbl.el.className='lbl bubble '+col; msgLbl.el.textContent=txt; msgLbl.el.style.opacity=1;
+}
+
+// ---------- состояние ----------
+let t=0, playing=false, finished=false, ARR=[];
+const T_=()=>mode().T;
+function arrivals(){ // момент, когда кривая объёма достигла (i+1)/N; ни один куб не стартует раньше начала и не летит во время решений
+  const T=T_(), D=FLY*T, out=[]; let j=0;
+  for(let i=0;i<N;i++){ const tg=(i+1)/N*100-1e-6; while(j<1000&&prog(j/1000*T)<tg)j++; out.push(Math.max(j/1000*T,D)) }
+  const ys=mode().ph.filter(p=>p[4]==='y');
+  for(let i=0;i<N;i++){ for(const [y0,,,,] of []){} for(const p of ys){ if(out[i]-D<p[1]&&out[i]>p[0])out[i]=p[1]+D } if(i&&out[i]<out[i-1])out[i]=out[i-1] }
+  return out;
+}
+function applyScene(tm){
+  const T=T_(), D=FLY*T;
+  cubes.forEach((c,i)=>{
+    const u=Math.max(0,Math.min(1,(tm-(ARR[i]-D))/D)), r=routes[i].pts, l0=r[0].distanceTo(r[1]), l1=r[1].distanceTo(r[2]), d=u*(l0+l1);
+    let a,b,k; if(d<l0){a=r[0];b=r[1];k=d/l0} else {a=r[1];b=r[2];k=(d-l0)/l1}
+    c.position.lerpVectors(a,b,k); if(u>0&&u<1)c.position.y+=Math.sin(Math.PI*k)*1.0;
+    c.material.color.lerpColors(neutral,c.userData.final,u>=1?1:d<l0?0:Math.min(1,(d-l0)/(l1*.15)));
+  });
+}
+function setMode(k){
+  play=k; FA=series(mode().ph,'a'); FX=series(mode().ph,'x'); TA=tokSeries('a'); TY=tokSeries('y'); BY=owners(); layoutTargets();
+  cubes.forEach((c,i)=>{c.userData.final=BY[i]==='agent'?cAgent:cYou}); routes=BY.map((_,i)=>routeFor(i)); ARR=arrivals();
+  t=0; playing=false; finished=false; buildGraph(); renderMeters(); refreshUI();
+}
+
+// ---------- график: стопка по объёму работы (0…100%) ----------
+const gr=document.getElementById('gr');
+const X0=68,X1=676,Y0=196,Y1=40,VBH=256;
+let METRIC='time'; // по горизонтали: время или токены
+// расход токенов: агент в работе тратит много, вы (руками и на решениях) почти ничего; итог режима = COST.tok
+const RATE={a:1,x:.12,y:.08};
+function tokF(){ const ph=mode().ph; let tot=0; for(const p of ph)tot+=RATE[p[4]]*(p[1]-p[0]); const k=COST[play].tok/tot;
+  return t=>{let v=0; for(const p of ph){ const d=Math.max(0,Math.min(t,p[1])-p[0]); v+=RATE[p[4]]*d } return v*k } }
+const MV=tm=>tm, MT=()=>T_();
+// токены: накопленный расход агента и ваш против времени. Шкала одна на все режимы (до 100 тыс.), чтобы режимы сравнивались.
+function tokSeries(who){ const ph=mode().ph; let tot=0; for(const p of ph)tot+=RATE[p[4]]*(p[1]-p[0]); const k=COST[play].tok/tot;
+  return t=>{let v=0; for(const p of ph){ if((who==='a')!==(p[4]==='a'))continue; v+=RATE[p[4]]*(p[1]-p[0])*k*sm5((t-p[0])/(p[1]-p[0])) } return v} }
+let TA=tokSeries('a'), TY=tokSeries('y');
+const TT=t=>TA(t)+TY(t);
+const fa=()=>METRIC==='time'?FA:TA, fp=()=>METRIC==='time'?prog:TT, fu=()=>METRIC==='time'?'%':' '+TX.k;
+const metricUnit=()=>METRIC==='time'?TX.min:TX.k;
+const fmtT=m=>m>60?(m/60).toString().replace('.',',')+' '+TX.h:m+' '+TX.min;
+function buildGraph(){
+  const T=T_(), px=tm=>X0+tm/T*(X1-X0), py=v=>Y0-v/100*(Y0-Y1), FA_=fa(), PR_=fp(); let s='';
+  s+=`<defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--agent)" stop-opacity=".65"/><stop offset="1" stop-color="var(--agent)" stop-opacity=".15"/></linearGradient><linearGradient id="gY" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--you)" stop-opacity=".65"/><stop offset="1" stop-color="var(--you)" stop-opacity=".15"/></linearGradient></defs>`;
+  for(const v of [0,50,100])s+=`<path d="M${X0} ${py(v)}H${X1}" stroke="currentColor" stroke-opacity=".16" stroke-dasharray="3 4"/><text x="${X0-8}" y="${py(v)+4}" text-anchor="end" font-size="11.5" fill="var(--muted)">${v}${fu()}</text>`;
+  s+=`<path d="M${X0} ${Y1}V${Y0}H${X1}" fill="none" stroke="var(--muted)" stroke-width="1.5"/>`;
+  {const step=T<=60?10:30; for(let tk=0;tk<=T;tk+=step)s+=`<path d="M${px(tk)} ${Y0}v4" stroke="var(--muted)"/><text x="${px(tk)}" y="${Y0+16}" text-anchor="middle" font-size="11.5" fill="var(--muted)">${tk===0?'0':fmtT(tk)}</text>`}
+  // будущее — тонкий контур, пройденное — заливка (areaA, areaY)
+  const n=240, smp=Array.from({length:n+1},(_,i)=>i/n*T);
+  const FA2=FA_, line=f=>smp.map((tm,i)=>(i?'L':'M')+px(tm).toFixed(1)+' '+py(f(tm)).toFixed(1)).join('');
+  s+=`<path d="${line(FA_)}" fill="none" stroke="var(--agent)" stroke-opacity=".3" stroke-width="1.5"/><path d="${line(PR_)}" fill="none" stroke="currentColor" stroke-opacity=".3" stroke-width="1.5"/>`;
+  s+=`<path id="areaA" d="" fill="url(#gA)"/><path id="areaY" d="" fill="url(#gY)"/><path id="lineA" d="" fill="none" stroke="var(--agent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><g id="topSegs"></g><path id="cursor" d="" stroke="currentColor" stroke-opacity=".5" stroke-dasharray="4 4"/>`;
+  // мейлстоуны на линии итога: решение — ромб, ручная работа — квадрат
+  let nd=0,nh=0; for(const p of mode().ph){ if(p[4]==='a')continue; const x=px((p[0]+p[1])/2), d=p[4]==='y', y=py(PR_((p[0]+p[1])/2)), k=d?++nd:++nh;
+    const col=d?'var(--hand)':'var(--you)'; s+=`<g class="ms" data-t="${p[0]}"><path d="M${x} ${y+(d?10:9)}V${Y0}" stroke="${col}" stroke-width="1.5" stroke-dasharray="3 3" opacity=".8"/>`+(d?`<path d="M${x} ${y-10}l10 10-10 10-10-10z" fill="var(--hand)" stroke="var(--pillbg)" stroke-width="1.5"/>`:`<rect x="${x-9}" y="${y-9}" width="18" height="18" rx="4" fill="var(--you)" stroke="var(--pillbg)" stroke-width="1.5"/>`)+`<text x="${x}" y="${y+3.6}" text-anchor="middle" font-size="10.5" font-weight="800" fill="${d?'var(--pillbg)':'#fff'}">${k}</text></g>`}
+  // одна полоска «кто сейчас»
+  const ly=Y0+26; s+=`<rect x="${X0}" y="${ly}" width="${X1-X0}" height="14" rx="3" fill="currentColor" fill-opacity=".07"/>`;
+  for(const p of mode().ph) s+=`<rect class="seg" data-a="${p[0]}" data-b="${p[1]}" x="${px(p[0])}" y="${ly}" width="0" height="14" rx="3" fill="${p[4]==='a'?'var(--agent)':p[4]==='x'?'var(--you)':'var(--hand)'}"/>`;
+  s+=`<text id="gNow" x="${X1}" y="16" text-anchor="end" font-size="12.5" font-weight="800" fill="currentColor" style="font-variant-numeric:tabular-nums"></text>`;
+  gr.innerHTML=s;
+  const sh=share(); document.getElementById('legend').innerHTML=`<span><i style="background:var(--agent)"></i>${TX.legAgent} <b>${sh.a}%</b></span><span><i style="background:var(--you)"></i>${TX.legYou} <b>${sh.x}%</b></span><span><i style="background:var(--hand);transform:rotate(45deg)"></i>${TX.legDec}</span><span><i style="background:var(--you);border-radius:2px"></i>${TX.legHand}</span>`;
+  updateGraph();
+}
+function updateGraph(){
+  const T=T_(), px=tm=>X0+tm/T*(X1-X0), py=v=>Y0-v/100*(Y0-Y1), FA_=fa(), PR_=fp(), nn=Math.max(2,Math.round(t/T*240));
+  const ts=Array.from({length:nn+1},(_,i)=>i/nn*t), top=f=>ts.map((tm,i)=>(i?'L':'M')+px(tm).toFixed(1)+' '+py(f(tm)).toFixed(1)).join('');
+  const bottomRev=f=>ts.slice().reverse().map(tm=>'L'+px(tm).toFixed(1)+' '+py(f(tm)).toFixed(1)).join('');
+  const a=top(FA_), tot=top(PR_);
+  gr.querySelector('#areaA').setAttribute('d',a+`L${px(t)} ${Y0}L${X0} ${Y0}Z`);
+  gr.querySelector('#areaY').setAttribute('d',tot+bottomRev(FA_)+'Z');
+  gr.querySelector('#lineA').setAttribute('d',a);
+  // верхняя линия = агент + вы = итог 100%. Цвет участка — кто её сейчас поднимает; на решениях она плоская
+  let segs=''; for(const p of mode().ph){ if(t<=p[0])break; const t1=Math.min(t,p[1]), m=Math.max(2,Math.round((t1-p[0])/T*240)); let d='';
+    for(let i=0;i<=m;i++){const tm=p[0]+(t1-p[0])*i/m; d+=(i?'L':'M')+px(tm).toFixed(1)+' '+py(PR_(tm)).toFixed(1)}
+    segs+=`<path d="${d}" fill="none" stroke="${p[4]==='a'?'var(--agent)':p[4]==='x'?'var(--you)':'var(--hand)'}" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>` }
+  gr.querySelector('#topSegs').innerHTML=segs;
+  gr.querySelector('#cursor').setAttribute('d',`M${px(t)} ${Y1}V${Y0}`);
+  gr.querySelectorAll('.ms').forEach(m=>m.style.opacity=t>=+m.dataset.t?1:.3);
+  gr.querySelectorAll('.seg').forEach(r=>{const a0=+r.dataset.a,b0=+r.dataset.b,w=Math.max(0,Math.min(t,b0)-a0); r.setAttribute('width',w>0?Math.max(3,w/T*(X1-X0)):0)});
+  gr.querySelector('#gNow').textContent=Math.round(t)+' '+TX.min+' · '+(METRIC==='time'?Math.round(prog(t))+'%':Math.round(TT(t))+' '+TX.k);
+}
+gr.addEventListener('pointerdown',e=>{scrub(e); gr.setPointerCapture(e.pointerId); gr._drag=true});
+gr.addEventListener('pointermove',e=>{if(gr._drag)scrub(e)}); gr.addEventListener('pointerup',()=>gr._drag=false);
+function scrub(e){const r=gr.getBoundingClientRect(), sc=Math.min(r.width/700,r.height/VBH), pad=Math.max(0,(r.width-700*sc)/2); const x=(e.clientX-r.left-pad)/sc; const target=Math.max(0,Math.min(1,(x-X0)/(X1-X0)))*MT();
+  let lo=0,hi=T_(); for(let i=0;i<40;i++){const m=(lo+hi)/2; if(MV(m)<target)lo=m; else hi=m} t=(lo+hi)/2; playing=false; finished=false; refreshUI()}
+
+// ---------- интерфейс ----------
+function renderMeters(){ // переключатель шкалы графика: время или токены
+  const c=COST[play], m=document.getElementById('meters');
+  m.innerHTML=`<button id="mTime" class="plain" aria-pressed="${METRIC==='time'}">${TX.time}: ${c.time} ${TX.min}</button><button id="mTok" class="plain" aria-pressed="${METRIC==='tok'}">${TX.tokens}: ${c.tok} ${TX.k}</button>`;
+  document.getElementById('mTime').onclick=()=>{METRIC='time'; buildGraph(); renderMeters()};
+  document.getElementById('mTok').onclick=()=>{METRIC='tok'; buildGraph(); renderMeters()};
+}
+function refreshUI(){
+  const T=T_(), ph=phaseAt(t);
+  for(const [id,k] of [['pAgent','agent'],['pYou','you'],['pReal','real']])document.getElementById(id).setAttribute('aria-pressed',play===k);
+  document.getElementById('play').textContent=playing?TX.pause:(finished||t>=T?TX.replay:TX.play);
+  const sh=share(), nd=mode().ph.filter(p=>p[4]==='y').length;
+  // реплика режима — только пока нет решения; сообщение — только во время решения
+  const y=mode().ph.find(p=>p[4]==='y'&&t>=p[0]&&t<p[1]);
+  cloudAgent.el.style.opacity=(!y&&play==='agent')?1:0; cloudYou.el.style.opacity=(!y&&play==='you')?1:0;
+  factLbl.el.textContent=(EN?'Fact: agent ':'Факт: агент ')+sh.a+'% · '+(EN?'you ':'вы ')+sh.x+'% · '+(EN?'decisions ':'решений ')+nd; factLbl.el.style.opacity=(!y&&play==='real')?1:0;
+  interaction(y?(t-y[0])/(y[1]-y[0]):-1);
+  applyScene(t); updateGraph();
+}
+pAgent.onclick=()=>setMode('agent'); pYou.onclick=()=>setMode('you'); pReal.onclick=()=>setMode('real');
+document.getElementById('play').onclick=()=>{ if(finished||t>=T_()){t=0;finished=false} playing=!playing; refreshUI() };
+addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault(); document.getElementById('play').click()}});
+const HOLD_S=5.5, DUR=11; // секунд на каждую передачу решения и на всю ось
+
+// ---------- рендер ----------
+const tmp=new THREE.Vector3();
+function resize(){const w=stage.clientWidth,h=Math.max(1,stage.clientHeight); renderer.setSize(w,h,false); camera.aspect=w/h; const z=Math.max(1,12.5/(Math.tan(camera.fov*Math.PI/360)*camera.aspect)/13.6); camera.position.set(0,7.4*z,13.6*z); camera.updateProjectionMatrix(); controls.update()}
+new ResizeObserver(resize).observe(stage); resize();
+function placeLabels(){const w=stage.clientWidth,h=stage.clientHeight; labels.forEach(l=>{tmp.copy(l.pos).applyMatrix4(world.matrixWorld).project(camera); l.el.style.left=((tmp.x+1)/2*w)+'px'; l.el.style.top=((1-tmp.y)/2*h)+'px'})}
+const siteDark=()=>{try{const x=parent.document.documentElement.dataset.theme; if(x)return x!=='light'}catch(e){} return !matchMedia('(prefers-color-scheme: light)').matches};
+function applyTheme(d){const T=d?THEMES.dark:THEMES.light; document.documentElement.dataset.theme=d?'dark':'light'; stage.style.background=T.bg; stage.style.setProperty('--glow',T.glow);
+  hemi.color.setHex(T.sky); hemi.groundColor.setHex(T.ground); hemi.intensity=T.hemi; sun.intensity=T.sun; renderer.toneMappingExposure=T.exp; platMat.color.setHex(T.plat); ringMat.color.setHex(T.ring); rimBlue.intensity=T.rimB; rimOrange.intensity=T.rimO}
+applyTheme(siteDark()); try{new MutationObserver(()=>applyTheme(siteDark())).observe(parent.document.documentElement,{attributes:true,attributeFilter:['data-theme']})}catch(e){}
+setMode('real');
+
+let visible=true; new IntersectionObserver(e=>{visible=e[0].isIntersecting}).observe(stage);
+let last=performance.now();
+function frame(now){
+  requestAnimationFrame(frame);
+  const dt=Math.min(.05,(now-last)/1000); last=now;
+  if(!visible)return;
+  mixers.forEach(m=>m.update(dt));
+  if(playing){const T=T_(), yp=mode().ph.find(p=>p[4]==='y'&&t>=p[0]&&t<p[1]); t+=yp?dt*(yp[1]-yp[0])/HOLD_S:dt*T/DUR; if(t>=T){t=T; playing=false; finished=true} refreshUI()}
+  controls.update(); world.updateMatrixWorld();
+  renderer.render(scene,camera); placeLabels();
+}
+requestAnimationFrame(frame);
+</script>

@@ -17,8 +17,8 @@ export const ABOUT_LEAD: L = {
 
 // Вехи карьеры — источник и для страницы «Обо мне», и для llms-full.txt (prerender.mjs)
 export const MILESTONES: Milestone[] = [
-  { years: { ru: '2026 — сейчас', en: '2026 — present' }, role: 'Head of AI', org: { ru: 'iGaming-компания (NDA), SaaS-платформа клиентской поддержки', en: 'iGaming company (NDA), a SaaS customer support platform' }, facts: [] },
-  { years: { ru: '2024 — 2026', en: '2024 — 2026' }, role: 'CTO', org: { ru: 'iGaming-компания (NDA), SaaS-платформа клиентской поддержки', en: 'iGaming company (NDA), a SaaS customer support platform' }, facts: [
+  { years: { ru: '2026 — сейчас', en: '2026 — present' }, role: 'Head of AI', org: { ru: 'iGaming-компания, SaaS-платформа клиентской поддержки', en: 'iGaming company, a SaaS customer support platform' }, facts: [] },
+  { years: { ru: '2024 — 2026', en: '2024 — 2026' }, role: 'CTO', org: { ru: 'iGaming-компания, SaaS-платформа клиентской поддержки', en: 'iGaming company, a SaaS customer support platform' }, facts: [
     { ru: 'Время восстановления после сбоя: 5 часов → 2', en: 'Incident recovery time: 5 hours → 2' },
     { ru: 'Выход в прод: 3 месяца → 1,5', en: 'Time to market: 3 months → 1.5' },
     { ru: 'Переход на Scrum + LeSS', en: 'Moved the team to Scrum + LeSS' },

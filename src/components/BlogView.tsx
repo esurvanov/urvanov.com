@@ -5,6 +5,7 @@ import Crumbs, { type Crumb } from '@/components/site/Crumbs'
 import NotFoundView from '@/components/NotFoundView'
 import { ICONS } from '@/components/site/icons'
 import { useT } from '@/lib/i18n'
+import { glossaryPath, termForTag } from '@/data/glossary'
 
 // Номера страниц: первая, последняя и соседи текущей, остальное — «…»
 function pageItems(cur: number, total: number): (number | null)[] {
@@ -92,7 +93,7 @@ export default function BlogView() {
                       <Link to={to(`/blog/${p.slug}`)} itemProp="url">{p.title}</Link>
                     </h2>
                     <p className="s-card-text" itemProp="description">{p.description}</p>
-                    {p.tags.length > 0 && <p className="s-post-tags" itemProp="keywords">{p.tags.map((tag) => <span key={tag}>#{tag}</span>)}</p>}
+                    {p.tags.length > 0 && <p className="s-post-tags" itemProp="keywords">{p.tags.map((tag) => { const term = termForTag(tag, lang); return term ? <Link key={tag} to={to(glossaryPath(term.slug))}>#{tag}</Link> : <span key={tag}>#{tag}</span> })}</p>}
                   </article>
                 </li>
               )
