@@ -1,0 +1,42 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><!-- About the speaker: one card, short facts, the site address -->
+<style>
+html, body { width:100%; height:100%; margin:0; background:#ECEBE6; overflow:hidden; font-family:Manrope, system-ui, sans-serif; color:#1F1E1A; }
+#a { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.4vw; }
+#a h1 { margin:0; font-size:clamp(28px,4.6vw,76px); font-weight:800; letter-spacing:-.02em; }
+#a .role { font-size:clamp(14px,1.8vw,30px); font-weight:700; color:#5E5B50; margin-top:-1.6vw; }
+#a .facts { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.2vw 2.4vw; width:min(86vw,1100px); }
+#a .f { display:flex; align-items:center; gap:.9vw; background:#fff; border-radius:1.2vw; padding:1.1vw 1.4vw; font-size:clamp(13px,1.7vw,28px); font-weight:700; box-shadow:0 2px 0 #D8D6CC; }
+#a .f i { font-style:normal; font-size:1.3em; }
+#a .f small { font-weight:600; color:#6B6A60; font-size:.72em; }
+#a a { font-size:clamp(20px,3.4vw,56px); font-weight:800; color:#fff; background:#D9653B; text-decoration:none; padding:.45em 1.1em; border-radius:.6em; }
+</style>
+<script>
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d || !parent.go) return;
+  e.preventDefault();
+  parent.go(d);
+});
+</script>
+<div id="a">
+  <h1>Егор Урванов</h1>
+  <div class="role">Head of AI · SaaS для клиентской поддержки</div>
+  <div class="facts">
+    <div class="f"><i>🌏</i><span>Батуми · Дананг · Бангкок</span></div>
+    <div class="f"><i>🏆</i><span>Project Euler: топ-6 из 250 тыс.</span></div>
+    <div class="f"><i>🤝</i><span>Jaiora: 10 тыс. человек, 11 городов <small>jaiora.me</small></span></div>
+    <div class="f"><i>👥</i><span>Мы нанимаем — если умеете в агентов</span></div>
+  </div>
+  <a href="https://www.urvanov.com/" target="_blank" rel="noopener">urvanov.com</a>
+</div>
+<script>
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d || !parent.go) return;
+  e.preventDefault();
+  if (parent.__deckKey && parent.__deckKey(d)) return;   // a lead card in front takes the key
+  var f = d > 0 ? window.__fwd : window.__back;
+  if (f && f()) return;   // the slide took a step of its own
+  parent.go(d);
+});
+</script>
