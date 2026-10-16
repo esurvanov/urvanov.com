@@ -29,7 +29,7 @@ html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
 /* The storyboard: one cell per step, left to right in the order things happen.
    Every cell has its place from the start, so a new line never moves anything else */
 #cap { position:absolute; left:50%; transform:translateX(-50%); bottom:clamp(40px,7.5vh,84px); pointer-events:auto;
-       display:grid; grid-template-columns:repeat(8, minmax(0,1fr) auto) minmax(0,1fr); align-items:stretch; gap:0 .35em;
+       display:grid; grid-template-columns:repeat(12, minmax(0,1fr) auto) minmax(0,1fr); align-items:stretch; gap:0 .35em;
        width:min(96vw, 1840px); font-size:clamp(10px,.82vw,15px); font-weight:700; }
 #cap .s { display:flex; flex-direction:column; gap:.35em; padding:.5em .6em; border-radius:14px; background:rgba(255,255,255,.55);
           cursor:pointer; transition:background .4s, box-shadow .4s; min-width:0; }
@@ -113,14 +113,14 @@ html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
 <canvas id="c"></canvas>
 <div id="ui">
   <div id="hd">
-    <span class="hd-no">14 · Технологии</span>
-    <span class="hd-t">Статусная модель чата</span><span class="hd-lead">Статусная модель системы: любой чат кончается ответом или человеком</span>
+    <span class="hd-no">05 · Технологии</span>
+    <span class="hd-t">Один ход агента</span><span class="hd-lead">Граф переходов агента: пауза копит сообщения, ход идёт по шагам, у каждого шага свой лимит времени</span>
   </div>
     <div id="cap"></div>
   <div id="ft">
-    <span>Статус хранится в базе</span>
+    <span>Ход = процесс Temporal</span>
     <span>·</span>
-    <span><b>Финал: у человека или закрыт</b></span>
+    <span><b>1 ход = 1 трейс Langfuse</b></span>
     <span class="cr">3D: J-Toastie, Poly by Google · CC BY 3.0 · poly.pizza</span>
   </div>
 </div>
@@ -395,7 +395,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // code that checks the login; the model never reaches the safe.
   // Upper row: the client, the phone, the guardrails, the model, the public shelf.
   // On the private slide a lower row under the shelf: the logic and the private data.
-  var PUBLIC = false, MODE = 'status2';
+  var PUBLIC = false, MODE = 'turn2';
   var Y0 = -0.2, Y1 = Y0 - 2.8, CWD = 3.35, CHT = 0.56, PD = 1.5, OBJZ = 0.8;
   var STRUCT = MODE === 'struct' || MODE === 'outcls';   // the structure slides: the upper row of the flood slide + a private row
   var FLOOD = MODE === 'flood' || STRUCT;   // one row: the classifier stands between the guardrails and the model
@@ -991,10 +991,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   /* ========== Сценарий ========== */
-  // The chat's statuses (MODE 'status2', tools/status2-scene.js), on the scenario slides'
-  // stage: the client on his block with the phone, plates for the states, roads that appear
-  // one per step as the chat first moves along them. Every chat ends with an answer and a
-  // close, or with a person.
+  // One turn of the agent (MODE 'turn2', tools/turn2-scene.js), on the scenario slides' stage:
+  // the client on his block with the phone, a snake of places — the top row left to right
+  // (pause, take the chat?, knowledge, hint filter, the model), down, the bottom row right to
+  // left (check, mask, send) and back to the client; the operator at the right end. The pause
+  // gathers what the client writes into one turn; each place has its own time limit.
   var T = 0, timers = [];
   function later(s, fn) { timers.push({ t: T + s, fn: fn }); }
   var ui = document.getElementById('ui');
@@ -1065,53 +1066,62 @@ window.addEventListener('DOMContentLoaded', function () {
   function mdlHead() { return [X.mdl + ROB_DX, mdl.top + 2.0, OBJZ + 0.1]; }
 
   var QC = '#3A86C8';
-  // off this stage: the guardrails (a hidden spacer here)
   grd.g.visible = false; grd.glow.visible = false;
   if (grd.screen && grd.screen.parent) grd.screen.parent.visible = false;
   world.children.forEach(function (o) { if (o.material && o.material.map === shTex && Math.abs(o.position.x - X.grd) < 0.6) o.visible = false; });
-  // the states: the middle row (waits, in work, with a person), a column between (answered
-  // above, failed below), closed above «with a person»
-  var YU = Y0 + 2.8, YL = Y1;
-  X.ans = X.fail = (edgeR('mdl') + edgeL('trn')) / 2; X.clo = X.trn;
-  var idl  = station(X.idl, Y0, '#E2ECF6', C.R, '', 'Ждёт · idle', '', W_.idl);
-  var trn  = station(X.trn, Y0, '#FBEFCB', C.M, '', 'У человека · transferred', '', W_.trn);
-  var ans  = station(X.ans, YU, '#E2EFE4', C.D, '', 'Ответил · answered', '', W_.ans);
-  var fail = station(X.fail, YL, '#F8E1DF', C.G, '', 'Сбой · failed', '', W_.fail);
-  var clo  = station(X.clo, YU, '#E2ECF6', C.R, '', 'Закрыт · closed', '', W_.clo);
-  // what stands on them: an hourglass, a board with a tick, a brick wall, the safe, the operator
-  var sand = new THREE.Group();
+  var YB = Y0 - 3.6;
+  X.chk = X.mdl; X.msk = X.p3; X.snd = X.p2; W_.chk = W_.msk = W_.snd = 3.3;
+  var BLU = ['#E2ECF6', C.R], GRN = ['#E2EFE4', C.D], AMB = ['#FBEFCB', C.M];
+  var p0  = station(X.p0, Y0, BLU[0], BLU[1], '', 'Пауза · 20 с', '', W_.p0);
+  var p1  = station(X.p1, Y0, BLU[0], BLU[1], '', 'Брать ли чат', '', W_.p1);
+  var p2  = station(X.p2, Y0, GRN[0], GRN[1], '', 'Знания', '', W_.p2);
+  var p3  = station(X.p3, Y0, GRN[0], GRN[1], '', 'Фильтр подсказок', '', W_.p3);
+  var chk = station(X.chk, YB, GRN[0], GRN[1], '', 'Проверка', '', W_.chk);
+  var msk = station(X.msk, YB, GRN[0], GRN[1], '', 'Маска', '', W_.msk);
+  var snd = station(X.snd, YB, AMB[0], AMB[1], '', 'Отправка · 10 с × 5', '', W_.snd);
+  var opr = station(X.opr, Y0, '#E1EFE4', C.D, 'D', 'Оператор', '', W_.opr);
+  // the phases behind the plates: in (blue), the agent (green), out (amber)
+  function field(x0, x1, y0, y1, hex, name, css) {
+    var m = new THREE.Mesh(new THREE.ShapeGeometry(roundedShape(x1 - x0, y1 - y0, 0.45), 12), new THREE.MeshBasicMaterial({ color: hex }));
+    m.material.color.convertSRGBToLinear(); m.position.set((x0 + x1) / 2, (y0 + y1) / 2, -0.5); world.add(m);
+    var t = makeTag(name, css); t.position.set(x0 + 1.0, y1, OBJZ); world.add(t);
+  }
+  field(edgeL('p0') - 0.3, edgeR('p1') + 0.3, Y0 - CHT / 2 - 0.75, Y0 + 2.0, 0xDCE8F4, 'Вход', C.R);
+  field(edgeL('p2') - 0.3, edgeR('mdl') + 0.3, Y0 - CHT / 2 - 0.75, Y0 + 2.0, 0xDCEEDF, 'Агент', C.D);
+  field(edgeL('msk') - 0.3, edgeR('chk') + 0.3, YB - CHT / 2 - 0.75, YB + 2.0, 0xDCEEDF, 'Агент', C.D);
+  field(edgeL('snd') - 0.3, edgeR('snd') + 0.3, YB - CHT / 2 - 0.75, YB + 2.0, 0xF6EDD2, 'Выход', C.M);
+  // what stands on them
   (function () {
-    var wood = 0x9A6B3E, glass = 0xD8E4EC;
-    [0.05, 1.05].forEach(function (y) { var c = cyl(0.42, 0.1, wood, 24); c.position.y = y; sand.add(c); });
-    var up = new THREE.Mesh(new THREE.ConeGeometry(0.34, 0.45, 24), flat(glass)); up.rotation.x = Math.PI; up.position.y = 0.78; sand.add(up);
-    var dn = new THREE.Mesh(new THREE.ConeGeometry(0.34, 0.45, 24), flat(0xE8C77E)); dn.position.y = 0.32; sand.add(dn);
-    sand.position.set(X.idl, idl.top, OBJZ); world.add(sand); contact(idl, 1.0);
+    var g = new THREE.Group(), wood = 0x9A6B3E;
+    [0.05, 1.05].forEach(function (y) { var c = cyl(0.42, 0.1, wood, 24); c.position.y = y; g.add(c); });
+    var up = new THREE.Mesh(new THREE.ConeGeometry(0.34, 0.45, 24), flat(0xD8E4EC)); up.rotation.x = Math.PI; up.position.y = 0.78; g.add(up);
+    var dn = new THREE.Mesh(new THREE.ConeGeometry(0.34, 0.45, 24), flat(0xE8C77E)); dn.position.y = 0.32; g.add(dn);
+    g.position.set(X.p0 - 0.8, p0.top, OBJZ); world.add(g); contact({ x: X.p0 - 0.8, top: p0.top }, 1.0);
   })();
-  var ansB = null;
+  var pauseB = null;
   (function () {
-    var g = new THREE.Group(), BW = 1.3, BH = 0.8;
+    var g = new THREE.Group(), BW = 1.35, BH = 0.85;
     g.add(slab(BW + 0.1, BH + 0.1, 0.08, 0.05, 0x3A3F3B));
-    ansB = screen(BW, BH, '#1F2A22'); ansB.position.z = FZ(0.08); g.add(ansB);
+    pauseB = screen(BW, BH, '#1F2A33'); pauseB.position.z = FZ(0.08); g.add(pauseB);
     var leg = box(0.08, 0.3, 0.08, 0x3A3F3B); leg.position.y = -BH / 2 - 0.15; g.add(leg);
-    g.position.set(X.ans, ans.top + 0.3 + BH / 2 + 0.05, OBJZ); world.add(g);
-    ansB.write([['…', '#6B716D']]);
+    g.position.set(X.p0 + 0.75, p0.top + 0.3 + BH / 2 + 0.05, OBJZ); world.add(g);
   })();
-  prop('../models/prop-bricks.glb', fail, { h: 1.0, w: 1.1, d: 0.6 }); contact(fail, 1.2);
-  safeBox(clo, 0);
+  var PB0 = [['накопление:', '#8FB8DA'], ['…', '#6B7C8C']];
+  pauseB.write(PB0);
+  scanner(p1);
+  prop('../models/prop-bookcase.glb', p2, { h: 1.25, w: 1.2, d: 0.55 }); contact(p2, 1.3);
+  prop('../models/prop-xray.glb', p3, { h: 1.35, w: 1.6 }); contact(p3, 1.3);
+  rulesDesk(chk);
+  safeBox(msk, 0);
+  prop('../models/prop-phone.glb', snd, { h: 0.95, w: 0.9, d: 0.7 }); contact(snd, 0.9);
   var op = null;
-  person('../models/human.glb', H0 * 0.9, X.trn + 0.6, trn.top, OBJZ + 0.1, -0.3, {
+  person('../models/human.glb', H0 * 0.9, X.opr, opr.top, OBJZ + 0.1, -0.3, {
     base: '../models/anim-neutral-idle.glb', talk: '../models/anim-talking.glb'
   }, function (a) { op = a; });
-  function idlHead() { return [X.idl, idl.top + 1.6, OBJZ + 0.1]; }
-  var Q = '«Где мой заказ #4812?»', A = '«Заказ в пути, доставка завтра»';
-  var P = {
-    idlT: [X.idl, idl.top + 1.5, OBJZ + 0.3],
-    mdlT: [X.mdl, mdl.top + 1.85, OBJZ],
-    ansT: [X.ans, ans.top + 1.45, OBJZ + 0.3],
-    failT: [X.fail, fail.top + 1.3, OBJZ + 0.3],
-    cloT: [X.clo, clo.top + 1.45, OBJZ + 0.3],
-    trnT: [X.trn - 0.6, trn.top + 1.6, OBJZ + 0.3]
-  };
+  var Q = '«Где мой заказ?»', Q2 = '«И когда доставка?»', A = '«Заказ в пути, доставка завтра»';
+  var P = {};
+  ['p0', 'p1', 'p2', 'p3', 'chk', 'msk', 'snd'].forEach(function (k) { var st = { p0: p0, p1: p1, p2: p2, p3: p3, chk: chk, msk: msk, snd: snd }[k]; P[k] = [X[k], st.top + 1.6, OBJZ + 0.3]; });
+  P.mdl = [X.mdl, mdl.top + 1.85, OBJZ]; P.opr = [X.opr + 0.9, opr.top + 0.6, OBJZ + 0.3];
   var ROADS = [];
   function seg(x0, y0, x1, y1, hex, head) {
     var L = Math.hypot(x1 - x0, y1 - y0), dx = (x1 - x0) / L, dy = (y1 - y0) / L, m, ax;
@@ -1149,39 +1159,44 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function roadsTick(dt) { ROADS.forEach(function (r) { if (r.on && r.k < 1) r.k = Math.min(1, r.k + dt / (0.5 + 0.35 * r.segs.length)); }); roadsDraw(); }
 
-  var BY = Y0, BOT = Y0 - CHT / 2, YT = YU + 2.4, YB = YL - CHT / 2 - 0.95;
+  var BY = Y0, BOT = Y0 - CHT / 2, BOTB = YB - CHT / 2, YM = Y0 - 1.3, YT = Y0 + 2.65;
   function pts3(a) { return a.map(function (p) { return [p[0], p[1], OBJZ + 0.3]; }); }
+  function gap(a, b, y) { return [[edgeR(a) + 0.08, y], [edgeL(b) - 0.08, y]]; }
+  function gapL(a, b, y) { return [[edgeL(a) - 0.08, y], [edgeR(b) + 0.08, y]]; }
   ARROWZ = 0.6;
-  var XA = edgeR('mdl') + 0.5, XF = edgeR('mdl') + 0.95;
-  var R_IN = [[PHX + PHW / 2 + 0.12, BY], [edgeL('idl') - 0.08, BY]];
-  var R_GO = [[edgeR('idl') + 0.08, BY + 0.2], [edgeL('mdl') - 0.08, BY + 0.2]];
-  var R_ANS = [[edgeR('mdl') + 0.08, BY + 0.2], [XA, BY + 0.2], [XA, YU], [edgeL('ans') - 0.08, YU]];
-  var R_QUIET = [[edgeR('ans') + 0.08, YU], [edgeL('clo') - 0.08, YU]];
-  var R_BACK = [[X.clo + 0.8, clo.top + 1.5], [X.clo + 0.8, YT], [X.mdl + 0.5, YT], [X.mdl + 0.5, mdl.top + 1.75]];
-  var R_CUT = [[edgeL('mdl') - 0.08, BY - 0.2], [edgeR('idl') + 0.08, BY - 0.2]];
-  var R_FAIL = [[edgeR('mdl') + 0.08, BY - 0.2], [XF, BY - 0.2], [XF, YL], [edgeL('fail') - 0.08, YL]];
-  var R_TWICE = [[edgeR('fail') + 0.08, YL], [X.trn - 0.6, YL], [X.trn - 0.6, BOT - 0.08]];
-  var R_REJ = [[X.idl, BOT - 0.08], [X.idl, YB], [X.trn + 0.6, YB], [X.trn + 0.6, BOT - 0.08]];
-  road(0, 1.0, R_IN, 0x3A86C8, ['сообщение', '#3A86C8', (PHX + edgeL('idl')) / 2, BY + 0.55]);
-  road(1, 0.2, R_GO, 0x3A86C8, ['ход начат', C.R, (edgeR('idl') + edgeL('mdl')) / 2, BY + 0.6]);
-  road(2, 0.2, R_ANS, GREEN, ['ответ ушёл', C.D, XA, (BY + YU) / 2]);
-  road(3, 0.2, R_QUIET, 0x3A86C8, ['5 мин тишины', C.R, (edgeR('ans') + edgeL('clo')) / 2, YU + 0.45]);
-  road(4, 0.2, R_BACK, 0x3A86C8, ['клиент вернулся', C.R, (X.clo + X.mdl) / 2, YT]);
-  road(5, 0.2, R_CUT, 0x3A86C8, ['клиент перебил', C.R, (edgeR('idl') + edgeL('mdl')) / 2, BY - 0.62]);
-  road(6, 0.2, R_FAIL, 0xD9534F, ['сбой', C.G, XF, (BY + YL) / 2]);
-  road(7, 0.2, R_TWICE, 0xD99A1E, ['2-й сбой', C.M, (edgeR('fail') + X.trn) / 2, YL]);
-  road(8, 0.2, R_REJ, 0xD99A1E, ['отказ на входе', C.M, (X.idl + X.trn) / 2, YB]);
+  var R = {
+    in:  [[PHX + PHW / 2 + 0.12, BY], [edgeL('p0') - 0.08, BY]],
+    s0: gap('p0', 'p1', BY), s1: gap('p1', 'p2', BY), s2: gap('p2', 'p3', BY), s3: gap('p3', 'mdl', BY),
+    s4: [[X.mdl + 1.3, BOT - 0.08], [X.mdl + 1.3, chk.top + 0.05]],
+    s5: gapL('chk', 'msk', YB), s6: gapL('msk', 'snd', YB),
+    out: [[edgeL('snd') - 0.08, YB], [X.att, YB], [X.att, attS.bot - 0.08]],
+    again: [[X.mdl + 0.35, BOT - 0.08], [X.mdl + 0.35, YM], [X.p0 + 0.9, YM], [X.p0 + 0.9, BOT - 0.08]],
+    refuse: [[X.p1 + 1.0, p1.top + 1.75], [X.p1 + 1.0, YT], [X.opr + 0.9, YT], [X.opr + 0.9, opr.top + 0.15]],
+    fail2: [[edgeR('chk') + 0.08, YB], [X.opr, YB], [X.opr, BOT - 0.08]]
+  };
+  var BL = 0x3A86C8, GR = GREEN, AM = 0xD99A1E;
+  road(0, 1.0, R.in, BL, ['сообщение', '#3A86C8', (PHX + edgeL('p0')) / 2, BY + 0.55]);
+  road(2, 0.2, R.s0, BL); road(3, 0.2, R.s1, GR); road(4, 0.2, R.s2, GR); road(5, 0.2, R.s3, GR);
+  road(6, 0.2, R.s4, GR); road(7, 0.2, R.s5, GR); road(8, 0.2, R.s6, AM);
+  road(9, 0.2, R.out, AM, ['ответ', C.M, (X.att + X.snd) / 2 - 1.0, YB]);
+  road(10, 0.2, R.again, BL, ['клиент дописал: заново, 1 раз', C.R, (X.p1 + X.p2) / 2, YM]);
+  road(11, 0.2, R.refuse, AM, ['отказ: сразу человеку', C.M, (X.p1 + X.opr) / 2, YT]);
+  road(12, 0.2, R.fail2, AM, ['2 сбоя', C.M, (edgeR('chk') + X.opr) / 2, YB]);
 
   var STEPS = [
-    ['Клиент пишет', '💬', '#3A86C8', 'att', [['att', 'go', Q, 'att'], ['idl', 'ok', 'чат: ждёт', 'idl']]],
-    ['Ход начат', '⚙', C.R, 'idl', [['idl', 'go', 'ждёт → в работе', 'mdl']]],
-    ['Ответ ушёл', '✓', C.D, 'mdl', [['mdl', 'go', 'в работе → ответил', 'ans'], ['att', 'back', A, 'att']]],
-    ['Тишина', '⏳', C.R, 'ans', [['ans', 'go', '5 мин тишины → закрыт', 'clo']]],
-    ['Клиент вернулся', '↺', C.R, 'clo', [['clo', 'go', 'закрыт → новый ход', 'mdl']]],
-    ['Клиент перебил', '✋', C.R, 'mdl', [['mdl', 'back', 'новое сообщение — ход заново', 'idl']]],
-    ['Сбой', '✗', C.G, 'fail', [['mdl', 'no', 'в работе → сбой', 'fail']]],
-    ['2-й сбой', '👤', C.M, 'fail', [['fail', 'go', 'дважды — человеку', 'trn']]],
-    ['Отказ на входе', '👤', C.M, 'trn', [['idl', 'go', 'гардрейлы отказали — человеку', 'trn'], ['trn', 'ok', 'финал: у человека или закрыт', 'trn']]]
+    ['Клиент пишет', '💬', '#3A86C8', 'att', [['att', 'go', Q, 'att'], ['p0', 'ok', 'пауза 20 с: вдруг допишет', 'p0']]],
+    ['Накопление', '⏳', C.R, 'p0', [['att', 'go', Q2, 'att'], ['p0', 'ok', '2 сообщения → 1 ход', 'p0']]],
+    ['Брать ли чат', '🛡', C.R, 'p1', [['p1', 'ok', 'тема · язык · вред — ок', 'p1']]],
+    ['Знания', '📖', C.D, 'p2', [['p2', 'ok', 'только под тему', 'p2']]],
+    ['Фильтр подсказок', '🔍', C.D, 'p3', [['p3', 'ok', '4 шаблона атак — чисто', 'p3']]],
+    ['Модель и тулы', '✎', C.D, 'mdl', [['mdl', 'go', 'до 50 вызовов', 'mdl'], ['mdl', 'note', 'агент: до 2 мин × 2', 'mdl']]],
+    ['Проверка', '⚖', C.D, 'chk', [['chk', 'ok', 'отправить · переписать · людям', 'chk']]],
+    ['Маска', '🔒', C.D, 'msk', [['msk', 'ok', 'личные данные скрыты', 'msk']]],
+    ['Отправка', '📤', C.M, 'snd', [['snd', 'go', '10 с × 5 попыток', 'snd']]],
+    ['Ответ', '←', C.M, 'att', [['att', 'back', A, 'att']]],
+    ['Клиент дописал', '↺', C.R, 'p0', [['p0', 'back', 'ход отменён — заново, 1 раз', 'p0']]],
+    ['Отказ на входе', '👤', C.M, 'opr', [['p1', 'no', 'вред или не наша тема', 'p1'], ['opr', 'go', 'сразу человеку', 'opr']]],
+    ['2 сбоя', '👤', C.M, 'chk', [['chk', 'no', 'дважды не вышло — человеку', 'opr']]]
   ];
   var ARW = { go: '→', back: '←', ok: '✓', note: '·', no: '✗' };
   // a token carried along a road: one straight leg after another
@@ -1191,7 +1206,7 @@ window.addEventListener('DOMContentLoaded', function () {
       fly(text, css, pts[i], pts[i + 1], d, leg, function () { i++; if (i < pts.length - 1) go(0); else if (done) done(); }, { leg: i < pts.length - 2 });
     })(delay);
   }
-  var ST = { att: attS, idl: idl, mdl: mdl, ans: ans, fail: fail, clo: clo, trn: trn };
+  var ST = { att: attS, p0: p0, p1: p1, p2: p2, p3: p3, mdl: mdl, chk: chk, msk: msk, snd: snd, opr: opr };
   var capEl = document.getElementById('cap');
   capEl.innerHTML = STEPS.map(function () { return '<div class="s"><div class="h"><b></b><span></span></div><div class="v"></div></div>'; }).join('<span class="a">→</span>');
   var cells = capEl.querySelectorAll('.s'), arrs = capEl.querySelectorAll('.a');
@@ -1226,11 +1241,11 @@ window.addEventListener('DOMContentLoaded', function () {
     lines.push({ d: d, n: n });
     return d;
   }
-  // what the stage looks like once a step is over, for a jump straight to a later step
   function settle(n) {
     if (n >= 1) chat('me', Q.replace(/[«»]/g, ''), QC);
-    if (n >= 3) { chat('bot', A.replace(/[«»]/g, '')); ansB.write([['✓ ответ ушёл', '#9AE6B4']]); }
-    if (n >= 4) clo.lockT = T - 1;
+    if (n >= 2) { chat('me', Q2.replace(/[«»]/g, ''), QC); pauseB.write([['накопление:', '#8FB8DA'], ['2 сообщения', '#C8DDF0'], ['→ 1 ход', '#9AE6B4']]); }
+    if (n >= 3) p1.verdict(true);
+    if (n >= 10) chat('bot', A.replace(/[«»]/g, ''));
   }
   function clear() {
     timers = []; lines.forEach(function (o) { o.d.remove(); }); lines = [];
@@ -1238,32 +1253,46 @@ window.addEventListener('DOMContentLoaded', function () {
     for (var i = 0; i < STEPS.length; i++) capS(i, 0);
     flyers.forEach(function (f) { world.remove(f.m); }); flyers = [];
     bubbles.forEach(function (b) { b.hide(); });
-    chatClear(); turnTo(0); ansB.write([['…', '#6B716D']]);
+    chatClear(); turnTo(0); pauseB.write(PB0); p1.verdict(null);
     if (cli) cli.rest(); if (op) op.rest();
     roadsTo(-1);
   }
+  function hop(text, css, from, path, to, k, line, then) {
+    route(text, css, [from].concat(pts3(path)).concat([to]), 0.3, 0.5, function () { line(k); if (then) then(); });
+  }
   function act(n, line) {
-    if (n === 0) {
-      // the client types; the message lands in the chat, and the chat waits
-      if (cli) cli.loop('talk'); turnTo(-1); bAtt.show(Q, attHead());
+    function say(q, k, then) {
+      if (cli) cli.loop('talk'); turnTo(-1); bAtt.show(q, attHead());
       fly('сообщение', QC, handAtk(), phoneTop(), 0.3, 0.8, function () {
-        chat('me', Q.replace(/[«»]/g, ''), QC); if (cli) cli.rest(); lit(attS); line(0); turnTo(1);
-        later(0.4, function () { bAtt.hide(); });
-        route('сообщение', QC, [phoneTop()].concat(pts3(R_IN)).concat([P.idlT]), 0.6, 0.5, function () { lit(idl); turnTo(0); line(1); });
+        chat('me', q.replace(/[«»]/g, ''), QC); if (cli) cli.rest(); lit(attS); line(k);
+        later(0.4, function () { bAtt.hide(); turnTo(1); });
+        if (then) then();
       });
     }
-    if (n === 1) route('ход', C.R, [P.idlT].concat(pts3(R_GO)).concat([P.mdlT]), 0.3, 0.6, function () { lit(mdl); if (rob) rob.play('Yes'); line(0); });
-    if (n === 2) route('ответ', C.D, [P.mdlT].concat(pts3(R_ANS)).concat([P.ansT]), 0.3, 0.5, function () {
-      lit(ans); ansB.write([['✓ ответ ушёл', '#9AE6B4']]); line(0);
-      later(0.5, function () { chat('bot', A.replace(/[«»]/g, '')); turnTo(-1); lit(attS); bAtt.show(A, attHead()); if (cli) cli.pose('thanks'); line(1); });
+    if (n === 0) say(Q, 0, function () {
+      route('сообщение', QC, [phoneTop()].concat(pts3(R.in)).concat([P.p0]), 0.6, 0.5, function () {
+        lit(p0); turnTo(0); pauseB.write([['накопление:', '#8FB8DA'], ['1 сообщение', '#C8DDF0'], ['ждём 20 с…', '#6B7C8C']]); line(1);
+      });
+    });
+    if (n === 1) say(Q2, 0, function () {
+      route('ещё одно', QC, [phoneTop()].concat(pts3(R.in)).concat([P.p0]), 0.6, 0.5, function () {
+        lit(p0); turnTo(0); pauseB.write([['накопление:', '#8FB8DA'], ['2 сообщения', '#C8DDF0'], ['→ 1 ход', '#9AE6B4']]); line(1);
+      });
+    });
+    if (n === 2) hop('ход', C.R, P.p0, R.s0, P.p1, 0, line, function () { lit(p1); p1.verdict(true); });
+    if (n === 3) hop('тема', C.D, P.p1, R.s1, P.p2, 0, line, function () { lit(p2); });
+    if (n === 4) hop('подсказки', C.D, P.p2, R.s2, P.p3, 0, line, function () { lit(p3); });
+    if (n === 5) hop('ход', C.D, P.p3, R.s3, P.mdl, 0, line, function () { lit(mdl); if (rob) rob.play('Yes'); later(0.8, function () { line(1); }); });
+    if (n === 6) hop('черновик', C.D, P.mdl, R.s4, P.chk, 0, line, function () { lit(chk); chk.stampT = T; });
+    if (n === 7) hop('ответ', C.D, P.chk, R.s5, P.msk, 0, line, function () { lit(msk); msk.lockT = T; });
+    if (n === 8) hop('ответ', C.M, P.msk, R.s6, P.snd, 0, line, function () { lit(snd); });
+    if (n === 9) route(A.replace(/[«»]/g, ''), C.M, [P.snd].concat(pts3(R.out)).concat([phoneTop()]), 0.3, 0.5, function () {
+      chat('bot', A.replace(/[«»]/g, '')); turnTo(-1); lit(attS); bAtt.show(A, attHead()); if (cli) cli.pose('thanks'); line(0);
       later(2.4, function () { bAtt.hide(); turnTo(0); });
     });
-    if (n === 3) route('тишина', C.R, [P.ansT].concat(pts3(R_QUIET)).concat([P.cloT]), 0.6, 0.6, function () { clo.lockT = T; lit(clo); line(0); });
-    if (n === 4) route('новый ход', C.R, [P.cloT].concat(pts3(R_BACK)).concat([P.mdlT]), 0.3, 0.5, function () { lit(mdl); if (rob) rob.play('Yes'); line(0); });
-    if (n === 5) route('новое сообщение', C.R, [P.mdlT].concat(pts3(R_CUT)).concat([P.idlT]), 0.3, 0.6, function () { lit(idl); line(0); });
-    if (n === 6) route('сбой', C.G, [P.mdlT].concat(pts3(R_FAIL)).concat([P.failT]), 0.3, 0.5, function () { lit(fail); if (rob) rob.play('No'); line(0); });
-    if (n === 7) route('2-й сбой', C.M, [P.failT].concat(pts3(R_TWICE)).concat([P.trnT]), 0.3, 0.55, function () { lit(trn); if (op) op.loop('talk'); line(0); later(1.6, function () { if (op) op.rest(); }); });
-    if (n === 8) route('отказ', C.M, [P.idlT].concat(pts3(R_REJ)).concat([P.trnT]), 0.3, 0.5, function () { lit(trn); line(0); later(0.6, function () { line(1); }); });
+    if (n === 10) hop('заново', C.R, P.mdl, R.again, P.p0, 0, line, function () { lit(p0); });
+    if (n === 11) hop('отказ', C.M, P.p1, R.refuse, P.opr, 0, line, function () { lit(opr); if (op) op.loop('talk'); later(0.6, function () { line(1); if (op) op.rest(); }); });
+    if (n === 12) hop('2 сбоя', C.M, P.chk, R.fail2, P.opr, 0, line, function () { lit(opr); });
   }
   function play(n) {
     capS(n, 1); pinCur(n); roadsTo(n, false);
