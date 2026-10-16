@@ -29,7 +29,7 @@ html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
 /* The storyboard: one cell per step, left to right in the order things happen.
    Every cell has its place from the start, so a new line never moves anything else */
 #cap { position:absolute; left:50%; transform:translateX(-50%); bottom:clamp(40px,7.5vh,84px); pointer-events:auto;
-       display:grid; grid-template-columns:repeat(5, minmax(0,1fr) auto) minmax(0,1fr); align-items:stretch; gap:0 .35em;
+       display:grid; grid-template-columns:repeat(4, minmax(0,1fr) auto) minmax(0,1fr); align-items:stretch; gap:0 .35em;
        width:min(96vw, 1840px); font-size:clamp(10px,.82vw,15px); font-weight:700; }
 #cap .s { display:flex; flex-direction:column; gap:.35em; padding:.5em .6em; border-radius:14px; background:rgba(255,255,255,.55);
           cursor:pointer; transition:background .4s, box-shadow .4s; min-width:0; }
@@ -113,14 +113,14 @@ html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
 <canvas id="c"></canvas>
 <div id="ui">
   <div id="hd">
-    <span class="hd-no">05 · Технологии</span>
-    <span class="hd-t">Стек на схеме: Temporal, LangChain, LangGraph, MCP, Langfuse</span><span class="hd-lead">Какие технологии реализуют эти подходы</span>
+    <span class="hd-no">05 · Защита</span>
+    <span class="hd-t">Публичные данные: доступны всем</span><span class="hd-lead">Сценарий 3: данные, доступные всем — модель выбирает, доступ отдаёт сразу</span>
   </div>
     <div id="cap"></div>
   <div id="ft">
-    <span>Один чат — один процесс Temporal</span>
+    <span>Сценарий 3: публичный запрос</span>
     <span>·</span>
-    <span><b>Ответ — цикл LangGraph «модель ⇄ тулы», трейс — в Langfuse</b></span>
+    <span><b>Модель выбирает, доступ отдаёт сразу</b></span>
     <span class="cr">3D: J-Toastie, Poly by Google · CC BY 3.0 · poly.pizza</span>
   </div>
 </div>
@@ -395,7 +395,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // code that checks the login; the model never reaches the safe.
   // Upper row: the client, the phone, the guardrails, the model, the public shelf.
   // On the private slide a lower row under the shelf: the logic and the private data.
-  var PUBLIC = false, MODE = 'stack2';
+  var PUBLIC = true, MODE = 'public';
   var Y0 = -0.2, Y1 = Y0 - 2.8, CWD = 3.35, CHT = 0.56, PD = 1.5, OBJZ = 0.8;
   var STRUCT = MODE === 'struct' || MODE === 'outcls';   // the structure slides: the upper row of the flood slide + a private row
   var FLOOD = MODE === 'flood' || STRUCT;   // one row: the classifier stands between the guardrails and the model
@@ -991,11 +991,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   /* ========== Сценарий ========== */
-  // The stack on the scheme (MODE 'stack2', tools/stack-scene.js), built on the same blocks as
-  // the planes slide: the Data plane on top (classifier, model, public data), the filters in the
-  // middle with the operator and the developer beside them, the Control plane at the bottom
-  // (classifier, model, private data). Nothing travels; each step draws one technology's frame
-  // around the part of the scheme it implements.
+  // The attacker whirls in on the client's spot and types into the phone; the phone passes
+  // the words to the guardrails, which find no attack; the model only names the kind of data.
+  // Public: the shelf says "open to all — here it is" and the answer comes back to the phone.
+  // Private: the model says an order is not public and sends it down to the filters, plain
+  // code; the attacker's session reaches them straight, with no login; the safe stays shut
+  // and the filters escalate to the operator, who answers through the phone.
   var T = 0, timers = [];
   function later(s, fn) { timers.push({ t: T + s, fn: fn }); }
   var ui = document.getElementById('ui');
@@ -1065,80 +1066,18 @@ window.addEventListener('DOMContentLoaded', function () {
   function pubHead() { return [X.pub, pub.top + 1.75, OBJZ + 0.1]; }
   function mdlHead() { return [X.mdl + ROB_DX, mdl.top + 2.0, OBJZ + 0.1]; }
 
-  // off this stage: the guardrails (a hidden spacer here)
-  grd.g.visible = false; grd.glow.visible = false;
-  if (grd.screen && grd.screen.parent) grd.screen.parent.visible = false;
-  world.children.forEach(function (o) { if (o.material && o.material.map === shTex && Math.abs(o.position.x - X.grd) < 0.6) o.visible = false; });
-  // the Control plane at the bottom: its own classifier and model — the same robots
-  // the Control plane is purple: its plates and its robots
-  var cls2 = station(X.cls2, Y2, '#ECE6FA', C.A, '◎', 'Классификатор', '', W_.cls2);
-  var mdl2 = station(X.mdl2, Y2, '#ECE6FA', C.A, '✎', 'Модель', '', W_.mdl2);
-  funnel(cls2, 0, 0x7E5FD0); funnel(mdl2, 0, 0x7E5FD0);
-  // the middle row: the operator on the left of the filters, the developer on the right
-  X.opr = X.cls; W_.opr = W_.cls; X.dev = X.pub; W_.dev = 3.4;
-  var opr = station(X.opr, Y1, '#E1EFE4', C.D, 'D', 'Оператор', '', W_.opr);
-  var dev = station(X.dev, Y1, '#DFEDF7', C.R, '', 'Разработчик', '', W_.dev);
-  person('../models/human.glb', H0 * 0.9, X.opr - 0.2, opr.top, OBJZ + 0.1, 0.3, { base: '../models/anim-neutral-idle.glb' }, function () {});
-  person('../models/dev2.glb', H0 * 0.85, X.dev - 0.9, dev.top, OBJZ + 0.1, -0.3, { base: '../models/anim-neutral-idle.glb' }, function (a, hld) { hld.position.y += 0.08; });
-  var trB = null;
-  (function () {
-    var g = new THREE.Group(), BW = 1.35, BH = 0.95;
-    g.add(slab(BW + 0.1, BH + 0.1, 0.08, 0.05, 0x3A3F3B));
-    trB = screen(BW, BH, '#1F2A33'); trB.position.z = FZ(0.08); g.add(trB);
-    trB.write([['Langfuse:', '#8FB8DA'], ['…', '#6B7C8C']]);
-    g.position.set(X.dev + 0.75, dev.top + 0.3 + BH / 2 + 0.05, OBJZ - 0.2); world.add(g);
-  })();
-  // the planes behind the plates, shown from the start: amber Data plane, purple Control plane
-  function field(x0, x1, y0, y1, hex, name, css) {
-    var g = new THREE.Group();
-    var m = new THREE.Mesh(new THREE.ShapeGeometry(roundedShape(x1 - x0, y1 - y0, 0.45), 12), new THREE.MeshBasicMaterial({ color: hex }));
-    m.material.color.convertSRGBToLinear(); m.position.set((x0 + x1) / 2, (y0 + y1) / 2, -0.5); g.add(m);
-    var t = makeTag(name, css); t.position.set(x1 - 2.0, y1, OBJZ); g.add(t);
-    world.add(g); return g;
-  }
-  var BX0 = edgeL('cls') - 0.35, BX1 = edgeR('pub') + 0.35;
-  field(BX0, BX1, Y0 - CHT / 2 - 0.75, Y0 + 2.25, 0xF6EDD2, 'Data plane', C.M);
-  field(BX0, BX1, Y2 - CHT / 2 - 0.75, Y2 + 2.0, 0xE7E0F6, 'Control plane', C.A);
-  // a technology's frame: an outline around part of the scheme, with its name on it
-  function techFrame(x0, x1, y0, y1, hex, css, name, tx) {   // not `frame`: that name is the render loop
-    var g = new THREE.Group(), t = 0.09;
-    [[x0, y0, x1, y0], [x0, y1, x1, y1], [x0, y0, x0, y1], [x1, y0, x1, y1]].forEach(function (e) {
-      var m = box(Math.max(t, e[2] - e[0]), Math.max(t, e[3] - e[1]), t, hex); m.position.set((e[0] + e[2]) / 2, (e[1] + e[3]) / 2, 0.62); g.add(m);
-    });
-    var tg = makeTag(name, css); tg.position.set(tx !== undefined ? tx : x0 + 1.4, y1, OBJZ + 0.15); g.add(tg);
-    g.visible = false; world.add(g); return g;
-  }
-  var TOPY = Y0 + 2.55, BOTY = Y2 - CHT / 2 - 1.05;
-  // How vivo-chat really uses the stack (from the code session, ai-engine main, 2026-10-12):
-  // Temporal runs one process per chat; LangChain gives the model wrappers, the classifier's
-  // structured output and the agent's middleware; LangGraph is only the answer loop
-  // «model ⇄ tools» built by create_agent, one run per Temporal activity; MCP serves the tools,
-  // narrowed per turn to the topics; Langfuse traces the turn through a callback.
-  var LX0 = BX0 + 0.15, LX1 = edgeR('cls') + 0.45, GX0 = edgeL('mdl') - 0.45, GX1 = BX1 - 0.15;
-  var FR = [
-    // Temporal: the whole chat, the client included
-    [techFrame(edgeL('att') - 0.3, BX1 + 0.3, BOTY, TOPY + 0.35, 0xD9653B, '#D9653B', 'Temporal · весь чат')],
-    // LangChain: the base layer under the whole row — the classifier's call and the models and
-    // tools inside the answer loop are all LangChain wrappers
-    [techFrame(LX0, GX1 + 0.1, Y0 - CHT / 2 - 0.65, Y0 + 2.1, 0x2E8B7A, '#2E8B7A', 'LangChain · основа'),
-     techFrame(LX0, GX1 + 0.1, Y2 - CHT / 2 - 0.65, Y2 + 1.9, 0x2E8B7A, '#2E8B7A', 'LangChain · основа')],
-    // the decision after the classifier is plain code in the Temporal workflow: no frame of its own
-    [],
-    // LangGraph: on top of LangChain, only the answer loop, model ⇄ tools, on each plane
-    [techFrame(GX0, GX1 - 0.1, Y0 - CHT / 2 - 0.45, Y0 + 1.9, 0x7E5FD0, '#7E5FD0', 'LangGraph · цикл ответа'),
-     techFrame(GX0, GX1 - 0.1, Y2 - CHT / 2 - 0.45, Y2 + 1.7, 0x7E5FD0, '#7E5FD0', 'LangGraph · цикл ответа')],
-    // MCP: the tools to the data on both planes
-    [techFrame(edgeL('acc') - 0.05, edgeR('acc') + 0.05, Y2 - CHT / 2 - 0.35, Y2 + 1.55, 0x5B3FB0, '#5B3FB0', 'MCP'),
-     techFrame(edgeL('pub') - 0.05, edgeR('pub') + 0.05, Y0 - CHT / 2 - 0.35, Y0 + 1.75, 0x5B3FB0, '#5B3FB0', 'MCP')],
-    // Langfuse: the developer's trace, over the whole turn
-    [techFrame(edgeL('dev') - 0.15, edgeR('dev') + 0.15, Y1 - CHT / 2 - 0.3, Y1 + 1.9, 0x2E7FB8, '#2E7FB8', 'Langfuse', edgeR('dev') - 0.7)]
-  ];
-  function framesTo(n) { FR.forEach(function (fs, i) { fs.forEach(function (f) { f.visible = i <= n; }); }); }
-  // the fork after the classifier: plain code in the Temporal workflow decides by the intent id
-  var lgcRows = [['решение — код:', '#E8D9C8'], ['id интента →', '#C8DDF0'], ['✓ принять', '#9AE6B4'], ['· промолчать', '#E8D9C8'], ['→ оператору', '#FFD27A']];
-  var lgcIdle = [['…', '#8C7A69']];
-  lgc.screen.write(lgcIdle);
-  var TRACE = [['Langfuse · трейс хода:', '#8FB8DA'], ['· классификатор', '#C8DDF0'], ['· цикл: модель ⇄ тулы', '#C8DDF0'], ['· ответ', '#C8DDF0']];
+  var Q = PUBLIC ? '«Какие сейчас акции?»' : '«Покажи заказ #4812»';
+  var A = PUBLIC ? '«Сейчас −10% на первый заказ» ✓' : '«Заказ доступен только владельцу аккаунта» ✗';
+  var NOTPUB = '«Заказ — не публичные данные»';
+  var OPEN = '«Доступно всем — отдаю» ✓';
+  // where the cards stop on their way: above each plate's object
+  var P = {
+    grdT: [X.grd, grd.top + 1.55, OBJZ + 0.45],
+    mdlT: [X.mdl, mdl.top + 1.85, OBJZ],
+    pubT: [X.pub, pub.top + 1.55, OBJZ + 0.2],
+    lgcT: PUBLIC ? null : [X.lgc - 0.2, lgc.top + 1.5, OBJZ + 0.3],
+    oprT: PUBLIC ? null : [X.opr, opr.top + 2.2, OBJZ + 0.3]
+  };
   var ROADS = [];
   function seg(x0, y0, x1, y1, hex, head) {
     var L = Math.hypot(x1 - x0, y1 - y0), dx = (x1 - x0) / L, dy = (y1 - y0) / L, m, ax;
@@ -1176,13 +1115,62 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   function roadsTick(dt) { ROADS.forEach(function (r) { if (r.on && r.k < 1) r.k = Math.min(1, r.k + dt / (0.5 + 0.35 * r.segs.length)); }); roadsDraw(); }
 
-  var STEPS = [
-    ['Temporal', '⏱', '#D9653B', 'att', [['att', 'go', 'один процесс на весь чат, ход — по сигналу', 'att'], ['opr', 'go', 'пауза · проверки · таймауты · сбой → оператор', 'opr']]],
-    ['LangChain', '⛓', '#2E8B7A', 'cls', [['cls', 'go', 'классификатор: только id интентов из списка', 'cls'], ['mdl', 'go', 'основа: модели, тулы, прослойки', 'mdl']]],
-    ['Решение — код', 'A', C.A, 'lgc', [['lgc', 'ok', 'принять · промолчать · оператору', 'lgc'], ['lgc', 'note', 'обычный код в Temporal, без моделей', 'lgc']]],
-    ['LangGraph', '↻', '#7E5FD0', 'mdl', [['mdl', 'go', 'только цикл ответа: модель ⇄ тулы', 'mdl'], ['mdl', 'note', 'модель и тулы внутри — LangChain', 'mdl']]],
-    ['MCP', '🔌', '#5B3FB0', 'acc', [['acc', 'go', 'тулы — из MCP-серверов', 'acc'], ['pub', 'note', 'на ход — только тулы распознанных тем', 'pub']]],
-    ['Langfuse', '🔍', '#2E7FB8', 'dev', [['dev', 'ok', 'один трейс на ход: классификатор + цикл', 'dev'], ['dev', 'go', 'разработчик читает трейс', 'dev']]]
+  var BY = Y0, BOT = Y0 - CHT / 2, BOT1 = Y1 - CHT / 2, LANEE = BOT1 - 0.95, LANE3 = BOT1 - 1.65;
+  // the private slide's lower roads: under the plates, below the step numbers, never crossing
+  var AUTH = PUBLIC ? null : [[X.att, attS.bot - 0.08], [X.att, LANE3], [X.lgc + 0.6, LANE3], [X.lgc + 0.6, BOT1 - 0.08]];
+  // the agent (the model) escalates to its operator: down from the model, left into her plate
+  // the filters escalate to the operator: down from the filters, along a lane under the lower row, up into her plate
+  var ESC = PUBLIC ? null : [[X.lgc - 0.6, BOT1 - 0.08], [X.lgc - 0.6, LANEE], [X.opr + 0.4, LANEE], [X.opr + 0.4, BOT1 - 0.08]];
+  var OPA = PUBLIC ? null : [[edgeL('opr') - 0.08, Y1], [PHX, Y1], [PHX, PHB - 0.08]];
+  function pts3(a) { return a.map(function (p) { return [p[0], p[1], OBJZ + 0.3]; }); }
+  ARROWZ = 0.6;
+  // one new road per step, drawn by the step that first sends something along it.
+  // The phone carries the words to the guardrails by hand, so the first road starts there
+  var LANEP = BOT - 1.0, MLX = X.mdl + 0.8;
+  // step 2 on both slides, as on the guardrails slide: the phone hands the words to the guardrails
+  road(1, 0.3, [[PHX + PHW / 2 + 0.12, BY], [edgeL('grd') - 0.08, BY]], 0xD9534F);
+  if (PUBLIC) {
+    road(2, 0.2, [[edgeR('grd') + 0.08, BY], [edgeL('mdl') - 0.08, BY]], GREEN);
+    road(3, 0.2, [[edgeR('mdl') + 0.08, BY], [edgeL('pub') - 0.08, BY]], 0x8A8778, ['публичные', C.grey, (edgeR('mdl') + edgeL('pub')) / 2, BY]);
+    // the answer goes back from the boundary under the row, into the phone
+    road(4, 0.2, [[X.pub, BOT - 0.08], [X.pub, LANEP], [PHX, LANEP], [PHX, PHB - 0.08]], GREEN, ['ответ', C.ok, (X.grd + X.mdl) / 2, LANEP]);
+  } else {
+    // nothing is on the stage at the start, and each step adds one travelled road at most;
+    // the road to the shelf is only shown crossed out — the model turns it down
+    road(2, 0.2, [[edgeR('grd') + 0.08, BY], [edgeL('mdl') - 0.08, BY]], GREEN);
+    // the way to the shelf the model looks at and turns down: a grey road, crossed out in red
+    var NOPUB = road(3, 0.3, [[edgeR('mdl') + 0.08, BY], [edgeL('pub') - 0.08, BY]], 0xA8A597);
+    (function () {
+      var g = new THREE.Group(), mx = (edgeR('mdl') + edgeL('pub')) / 2;
+      [1, -1].forEach(function (sd) { var b = box(1.0, 0.16, 0.12, 0xD9534F); b.rotation.z = sd * Math.PI / 4; g.add(b); });
+      g.position.set(mx, BY, ARROWZ + 0.12); world.add(g);
+      anim.push(function () { var q = ease((NOPUB.k - 0.9) * 10); g.visible = q > 0; g.scale.setScalar(Math.max(q, 0.001)); });
+    })();
+    road(4, 0.2, [[MLX, BOT - 0.08], [MLX, Y1], [edgeL('lgc') - 0.08, Y1]], 0x7E5FD0, ['приватные', C.A, MLX, (BOT + Y1) / 2]);
+    // the attacker's session goes to the filters straight, past the model: no login
+    road(5, 0.2, AUTH, 0xD9534F, ['авторизация не прошла', C.G, (X.grd + X.mdl) / 2, LANE3]);
+    // the agent escalates to its operator; she turns the attacker down through the phone
+    road(6, 0.2, ESC, 0x2A6B38, ['эскалация', C.D, (X.opr + X.lgc) / 2 + 0.6, LANEE]);
+    road(7, 0.2, OPA, 0xD9534F, ['отказ', C.G, (PHX + edgeL('opr')) / 2, Y1]);
+  }
+
+  // the steps: title, icon, colour, the plate its number is left on, and its lines —
+  // card, kind, text, the plate it lights
+  var STEPS = PUBLIC ? [
+    ['Злоумышленник', '😈', C.G, 'att', [['att', 'go', 'клиента сменил злоумышленник', 'att'], ['att', 'go', Q, 'att']]],
+    ['Гардрейлы', 'G', C.G, 'grd', [['grd', 'ok', 'атаки нет', 'grd']]],
+    ['Модель выбирает', '✎', C.M, 'mdl', [['mdl', 'go', 'тема: акции → публичные', 'mdl']]],
+    ['Доступно всем', 'U', C.U, 'pub', [['pub', 'ok', 'доступно всем — отдаю', 'pub']]],
+    ['Ни с чем', '✗', C.G, 'att', [['att', 'back', A, 'att'], ['att', 'no', 'только публичное — уходит ни с чем', 'att']]]
+  ] : [
+    ['Злоумышленник', '😈', C.G, 'att', [['att', 'go', 'клиента сменил злоумышленник', 'att'], ['att', 'go', Q, 'att']]],
+    ['Гардрейлы', 'G', C.G, 'grd', [['grd', 'ok', 'атаки нет', 'grd']]],
+    ['Модель выбирает', '✎', C.M, 'mdl', [['mdl', 'go', 'тема: заказ #4812', 'mdl']]],
+    ['Не публичные', '✗', C.M, 'mdl', [['mdl', 'no', 'заказ — не публичные', 'mdl']]],
+    ['В приватные', '✎', C.A, 'lgc', [['mdl', 'go', 'в приватные → фильтры', 'lgc']]],
+    ['Фильтры', 'A', C.A, 'lgc', [['lgc', 'no', 'авторизация не прошла', 'lgc'], ['acc', 'no', 'нет доступа — сейф закрыт', 'acc']]],
+    ['Эскалация', 'A', C.D, 'opr', [['lgc', 'go', 'фильтры → оператору', 'opr']]],
+    ['Оператор: отказ', '👤', C.G, 'att', [['att', 'no', A.replace(' ✗', ''), 'att']]]
   ];
   var ARW = { go: '→', back: '←', ok: '✓', note: '·', no: '✗' };
   // a token carried along a road: one straight leg after another
@@ -1192,7 +1180,7 @@ window.addEventListener('DOMContentLoaded', function () {
       fly(text, css, pts[i], pts[i + 1], d, leg, function () { i++; if (i < pts.length - 1) go(0); else if (done) done(); }, { leg: i < pts.length - 2 });
     })(delay);
   }
-  var ST = { att: attS, grd: grd, mdl: mdl, pub: pub, lgc: lgc, acc: acc, cls: cls, cls2: cls2, mdl2: mdl2, opr: opr, dev: dev };
+  var ST = { att: attS, grd: grd, mdl: mdl, pub: pub, lgc: lgc, acc: acc, opr: opr };
   var capEl = document.getElementById('cap');
   capEl.innerHTML = STEPS.map(function () { return '<div class="s"><div class="h"><b></b><span></span></div><div class="v"></div></div>'; }).join('<span class="a">→</span>');
   var cells = capEl.querySelectorAll('.s'), arrs = capEl.querySelectorAll('.a');
@@ -1227,24 +1215,121 @@ window.addEventListener('DOMContentLoaded', function () {
     lines.push({ d: d, n: n });
     return d;
   }
+  function stampRed(on) { if (lgc) lgc.mark.material.color.setHex(on ? 0xD9534F : 0x2A6B38).convertSRGBToLinear(); }
+  var NO_LOGIN = [['✗ вход не выполнен', '#FF8A80'], ['✗ нет доступа', '#FF8A80']];
   // what the stage looks like once a step is over, for a jump straight to a later step
-  function settle(n) { framesTo(n - 1); if (n >= 3) lgc.screen.write(lgcRows); if (n >= 6) trB.write(TRACE); }
+  function settle(n) {
+    if (n >= 1) { chat('me', Q.replace(/[«»]/g, ''), QC); cast(1); }
+    if (n >= 2) grd.verdict(true);
+    if (!PUBLIC && n >= 6) { stampRed(true); lgc.stampT = T - 1; lgc.screen.write(NO_LOGIN); }
+  }
   function clear() {
     timers = []; lines.forEach(function (o) { o.d.remove(); }); lines = [];
     pins.forEach(function (o) { o.e.classList.remove('in', 'cur'); });
     for (var i = 0; i < STEPS.length; i++) capS(i, 0);
+    flyers.forEach(function (f) { world.remove(f.m); }); flyers = [];
     bubbles.forEach(function (b) { b.hide(); });
-    framesTo(-1); lgc.screen.write(lgcIdle); trB.write([['Langfuse:', '#8FB8DA'], ['…', '#6B7C8C']]);
+    grd.verdict(null); chatClear(); turnTo(0); whirlStop(); cast(0);
+    if (op) op.rest();
+    if (lgc) { lgc.screen.write([['…', '#8C7A69']]); lgc.stampT = -9; stampRed(false); }
+    if (att) att.rest();
+    roadsTo(-1);
   }
-  // each step draws one technology's frame; nothing travels
+  // who moves the request on each step; the lines are written as the doers finish
   function act(n, line) {
-    later(0.2, function () { framesTo(n); });
-    if (n === 0) { later(0.5, function () { lit(attS); line(0); }); later(1.1, function () { lit(opr); line(1); }); }
-    if (n === 1) { later(0.5, function () { lit(cls); lit(cls2); line(0); }); later(1.1, function () { lit(mdl); lit(mdl2); line(1); }); }
-    if (n === 2) { later(0.5, function () { lgc.screen.write(lgcRows); lgc.stampT = T; lit(lgc); line(0); }); later(1.1, function () { line(1); }); }
-    if (n === 3) { later(0.5, function () { lit(mdl); lit(mdl2); line(0); }); later(1.1, function () { line(1); }); }
-    if (n === 4) { later(0.5, function () { lit(pub); lit(acc); line(0); }); later(1.1, function () { line(1); }); }
-    if (n === 5) { later(0.5, function () { trB.write(TRACE); lit(dev); line(0); }); later(1.1, function () { line(1); }); }
+    // the asker types: the phone turns to them, the words fly from the hand into the chat
+    function ask(k) {
+      if (att) att.loop('talk'); turnTo(-1); bAtt.show(Q, attHead());
+      fly('сообщение', QC, handAtk(), phoneTop(), 0.3, 0.8, function () {
+        chat('me', Q.replace(/[«»]/g, ''), QC); if (att) att.rest(); lit(attS); line(k);
+        later(0.6, function () { turnTo(0); bAtt.hide(); });
+      });
+    }
+    if (n === 0) {
+      // the client whirls off his block, it reddens, the attacker whirls in on his spot
+      later(0.3, function () {
+        if (!cliM || !attM) { cast(1); line(0); ask(1); return; }
+        vanish(cliM, function () {
+          cliM.userData.off = true; vil = 1;
+          attM.userData.off = false;
+          appear(attM, function () { if (att) att.pose('sly'); line(0); later(0.5, function () { ask(1); }); });
+        });
+      });
+    }
+    if (n === 1) {
+      // the phone turns to the guardrails and passes the words on; the frame finds no attack
+      // as on the guardrails slide: a short label in the asker's colour runs along the road
+      turnTo(1);
+      fly(PUBLIC ? 'акции' : '#4812', QC, [PHX + PHW / 2 + 0.3, BY + 0.45, OBJZ + 0.55], P.grdT, 0.3, 0.9, function () {
+        grd.verdict(true); lit(grd); line(0); turnTo(0);
+      }, { leg: true });
+    }
+    if (n === 2) {
+      // the model reads the question and only names the kind of data it needs
+      fly(PUBLIC ? 'акции' : '#4812', QC, P.grdT, P.mdlT, 0.2, 0.9, function () { lit(mdl); if (rob) rob.play('Yes'); line(0); }, { leg: true });
+    }
+    if (n === 3 && !PUBLIC) {
+      // the robot looks at the shelf and shakes its head: an order is not public data
+      later(0.3, function () { lit(mdl); if (rob) rob.play('No'); bMdl.show(NOTPUB, mdlHead()); line(0); });
+    }
+    if (n === 4 && !PUBLIC) {
+      // so it sends the order down to the filters
+      if (rob) rob.play('Yes');
+      route('заказ #4812', C.A, [P.mdlT, [MLX, Y1 + 0.35, OBJZ + 0.3], P.lgcT], 0.3, 0.6, function () { bMdl.hide(); lit(lgc); line(0); });
+    }
+    if (n === 3 && PUBLIC) {
+      // the shelf sees what is asked for is open to all, says so and gives it
+      fly('акции', C.grey, P.mdlT, P.pubT, 0.2, 0.9, function () {
+        lit(pub); bPub.show(OPEN, pubHead());
+        later(1.2, function () {
+          line(0);
+          fly('−10% на первый заказ', C.grey, P.pubT, P.mdlT, 0, 0.8, function () { if (rob) rob.play('Yes'); }, { arc: 0.5 });
+        });
+      }, { leg: true });
+    }
+    if (n === 5 && !PUBLIC) {
+      // the filters are code: they ask the attacker's session for a login, it has none —
+      // so no private data, whatever the model asked for
+      later(0.2, function () { lit(lgc); lgc.screen.write([['? вход в аккаунт', '#E8D9C8']]); });
+      route('вход: нет', C.G, pts3(AUTH), 0.7, 0.6, function () {
+        stampRed(true); lgc.stampT = T; lgc.screen.write(NO_LOGIN); lit(lgc); line(0);
+        later(0.8, function () { acc.lockT = T; lit(acc); line(1); });
+      });
+    }
+    if (n === 6 && !PUBLIC) {
+      // the filters cannot answer: they hand the question to the operator
+      route('вопрос #4812', C.D, [P.lgcT].concat(pts3(ESC)).concat([P.oprT]), 0.4, 0.55, function () {
+        lit(opr); if (op) op.loop('talk'); line(0);
+        later(1.6, function () { if (op) op.rest(); });
+      });
+    }
+    if (n === 7) {
+      // the operator turns it down; the words go into the phone, which turns to the attacker
+      if (op) op.loop('talk');
+      route(A.replace(/[«»✗]/g, '').trim(), C.G, pts3(OPA).concat([phoneTop()]), 0.6, 0.6, function () {
+        if (op) op.rest();
+        chat('bot', A.replace(/[«»✗]/g, '').trim()); turnTo(-1); lit(attS); line(0);
+        later(0.6, function () { bAtt.show(A, attHead()); if (att) att.pose('shrug'); });
+        later(2.6, function () { turnTo(0); });
+        // nothing to take: the attacker whirls away, as at the end of the public slide
+        later(3.2, function () { bAtt.hide(); if (attM && attM.visible) vanish(attM, function () { attM.userData.off = true; }); });
+      });
+    }
+    if (n === 4 && PUBLIC) {
+      // the answer comes back into the phone, which turns to the client with it on screen
+      var back = [P.pubT, [X.pub, LANEP, OBJZ + 0.3], [PHX, LANEP, OBJZ + 0.3], phoneTop()];
+      bPub.hide();
+      route(A.replace(/[«»✓]/g, '').trim(), C.ok, back, 0.3, 0.7, function () {
+        chat('bot', A.replace(/[«»✓]/g, '').trim()); turnTo(-1); lit(attS); line(0);
+        later(0.6, function () { bAtt.show(A, attHead()); if (att) att.pose('shrug'); });
+        later(2.6, function () { turnTo(0); });
+        // the attacker only got what anyone can read: disappointed, he whirls away with nothing
+        later(3.2, function () {
+          bAtt.hide();
+          if (attM && attM.visible) vanish(attM, function () { attM.userData.off = true; line(1); }); else line(1);
+        });
+      });
+    }
   }
   function play(n) {
     capS(n, 1); pinCur(n); roadsTo(n, false);
@@ -1298,7 +1383,7 @@ window.addEventListener('DOMContentLoaded', function () {
   window.__leave = function () { clear(); cur = -1; };
   function next() { if (cur >= STEPS.length - 1) { clear(); cur = -1; return; } startAt(cur + 1); }
   addEventListener('keydown', function (e) {
-    var i = '1234567890'.slice(0, STEPS.length).indexOf(e.key);
+    var i = '12345678'.slice(0, STEPS.length).indexOf(e.key);
     if (i >= 0) startAt(i);
     else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); next(); }
   });

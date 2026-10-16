@@ -29,7 +29,7 @@ html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
 /* The storyboard: one cell per step, left to right in the order things happen.
    Every cell has its place from the start, so a new line never moves anything else */
 #cap { position:absolute; left:50%; transform:translateX(-50%); bottom:clamp(40px,7.5vh,84px); pointer-events:auto;
-       display:grid; grid-template-columns:repeat(11, minmax(0,1fr) auto) minmax(0,1fr); align-items:stretch; gap:0 .35em;
+       display:grid; grid-template-columns:repeat(12, minmax(0,1fr) auto) minmax(0,1fr); align-items:stretch; gap:0 .35em;
        width:min(96vw, 1840px); font-size:clamp(10px,.82vw,15px); font-weight:700; }
 #cap .s { display:flex; flex-direction:column; gap:.35em; padding:.5em .6em; border-radius:14px; background:rgba(255,255,255,.55);
           cursor:pointer; transition:background .4s, box-shadow .4s; min-width:0; }
@@ -113,14 +113,14 @@ html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
 <canvas id="c"></canvas>
 <div id="ui">
   <div id="hd">
-    <span class="hd-no">03 · Защита</span>
-    <span class="hd-t">Гардрейлы на выходе: очистка</span><span class="hd-lead">Сценарий 9: гардрейлы на выходе вырезают из ответа то, что клиенту видеть нельзя</span>
+    <span class="hd-no">05 · Защита</span>
+    <span class="hd-t">Атака прошла, но R заметил</span><span class="hd-lead">Сценарий 10: тот же путь, атака прошла — R пишет трейс и даёт алерт, разработчик выкатывает правку</span>
   </div>
     <div id="cap"></div>
   <div id="ft">
-    <span>Сценарий 9: ответ чистится на выходе</span>
+    <span>Сценарий 10: тот же путь — R видит утечку</span>
     <span>·</span>
-    <span><b>Чего нельзя клиенту — вырезается до телефона</b></span>
+    <span><b>Трейс → алерт → разработчик правит</b></span>
     <span class="cr">3D: J-Toastie, Poly by Google · CC BY 3.0 · poly.pizza</span>
   </div>
 </div>
@@ -395,7 +395,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // code that checks the login; the model never reaches the safe.
   // Upper row: the client, the phone, the guardrails, the model, the public shelf.
   // On the private slide a lower row under the shelf: the logic and the private data.
-  var PUBLIC = false, MODE = 'outguard';
+  var PUBLIC = false, MODE = 'observe';
   var Y0 = -0.2, Y1 = Y0 - 2.8, CWD = 3.35, CHT = 0.56, PD = 1.5, OBJZ = 0.8;
   var STRUCT = MODE === 'struct' || MODE === 'outcls';   // the structure slides: the upper row of the flood slide + a private row
   var FLOOD = MODE === 'flood' || STRUCT;   // one row: the classifier stands between the guardrails and the model

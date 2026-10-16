@@ -1,4 +1,4 @@
-<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><style>#cap{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;max-width:96vw;scrollbar-width:none;align-items:stretch}#cap::-webkit-scrollbar{display:none}#cap>*{flex:0 0 auto}#cap>.s:has(.v){width:clamp(230px,15.5vw,300px)}#cap .s .v{height:5.9em!important}#cap>.s:not(:has(.v)){white-space:nowrap}#cap>.a{align-self:center}#cap>:first-child{margin-left:auto}#cap>:last-child{margin-right:auto}#cap.ovf{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%)}</style><style>#hd{flex-wrap:wrap;row-gap:.3em}.hd-lead{order:9;flex-basis:100%;display:flex;flex-wrap:wrap;gap:.35em 1.4em;font-size:clamp(10px,.95vw,15px);font-weight:700;color:#5E5B50;letter-spacing:0;text-transform:none}body.lead-wait .hd-lead{opacity:0}</style><title>Интент и тул</title>
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><style>#cap{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;max-width:96vw;scrollbar-width:none;align-items:stretch}#cap::-webkit-scrollbar{display:none}#cap>*{flex:0 0 auto}#cap>.s:has(.v){width:clamp(230px,15.5vw,300px)}#cap .s .v{height:5.9em!important}#cap>.s:not(:has(.v)){white-space:nowrap}#cap>.a{align-self:center}#cap>:first-child{margin-left:auto}#cap>:last-child{margin-right:auto}#cap.ovf{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%)}</style><style>#hd{flex-wrap:wrap;row-gap:.3em}.hd-lead{order:9;flex-basis:100%;display:flex;flex-wrap:wrap;gap:.35em 1.4em;font-size:clamp(10px,.95vw,15px);font-weight:700;color:#5E5B50;letter-spacing:0;text-transform:none}body.lead-wait .hd-lead{opacity:0}</style><title>Интенты и описания</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
 <style>
@@ -45,6 +45,27 @@ html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
 #log .ln b { color:var(--c); min-width:1.4em; }
 @keyframes lnIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:none; } }
 
+/* Message cards: flat, always facing the viewer; one line per crossing, the step number first */
+.msg { position:absolute; left:0; top:0; display:none; flex-direction:column; gap:.3em; padding:.4em;
+       background:rgba(255,255,255,.94); border-radius:14px; box-shadow:0 4px 16px rgba(21,20,15,.12);
+       font-size:clamp(10px,.86vw,14px); font-weight:800; white-space:nowrap; }
+.msg.on { display:flex; }
+.msg.below { transform:translate(-50%,0); }
+.msg.above { transform:translate(-50%,-100%); }
+.msg.right { transform:none; }
+.msg .ln { display:flex; align-items:center; gap:.45em; padding:.25em .6em .25em .3em; border-radius:999px;
+           opacity:0; transform:translateY(-6px); transition:opacity .45s, transform .45s, box-shadow .3s;
+           --k:#2E7FB8; color:var(--k); }
+.msg .ln.in { opacity:1; transform:none; }
+.msg .ln.cur { box-shadow:inset 0 0 0 2px var(--k); }
+.msg .ln b { display:inline-flex; align-items:center; justify-content:center; min-width:1.6em; height:1.6em; border-radius:999px;
+             background:var(--k); color:#FFFFFF; font-size:.85em; }
+.msg .ln i { font-style:normal; }
+.msg .ln span { color:#15140F; }
+.msg .ln.back, .msg .ln.ok { --k:#2A6B38; }
+.msg .ln.up, .msg .ln.down { --k:#6F8FA8; }
+.msg .ln.no { --k:#D9534F; }
+.msg .ln.no span { color:#D9534F; }
 /* Speech bubbles stand still over whoever speaks: nothing to read in flight */
 .bub { position:absolute; left:0; top:0; transform:translate(-50%,-100%) scale(.85);
        opacity:0; transition:opacity .25s, transform .25s; white-space:nowrap;
@@ -62,14 +83,14 @@ html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
 <canvas id="c"></canvas>
 <div id="ui">
   <div id="hd">
-    <span class="hd-no">04 · Архитектура</span>
-    <span class="hd-t">Интент → свой тул → свои данные</span><span class="hd-lead">Data и Control Plane в реальных условиях: у процесса свой тул и свои данные</span>
+    <span class="hd-no">09 · Архитектура</span>
+    <span class="hd-t">Интенты: у каждого описание, пересечений — минимум</span><span class="hd-lead">Декомпозиция бизнеса: каждый процесс — интент с чётким описанием</span>
   </div>
     <div id="cap"></div>
   <div id="ft">
-    <span>У каждого интента — один тул</span>
+    <span>Топиков нет — есть только интенты</span>
     <span>·</span>
-    <span><b>Тул сам знает, публичные данные или приватные</b></span>
+    <span><b>Чем меньше пересечений, тем точнее классификатор</b></span>
     <span class="cr">3D: J-Toastie, Poly by Google · CC BY 3.0 · poly.pizza</span>
   </div>
 </div>
@@ -473,6 +494,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // Each intent is a disc with its description under it. Vague descriptions make the
   // discs overlap (the classifier cannot tell them apart); sharp ones pull them apart.
+  // One small overlap stays on purpose: 'статус заказа' and 'где курьер' are close by
+  // nature, and a little overlap is fine.
   var CLS = '#0F8B8D', R = 1.45;
   var INT = [
     // name, colour, vague description, sharp description, vague spot, sharp spot
@@ -482,7 +505,7 @@ window.addEventListener('DOMContentLoaded', function () {
     ['возврат',          0xD9534F, 'не хочу заказ', 'вернуть полученный товар', [2.6, 1.0], [7.2, 1.7]],
     ['акции',            0x7E5FD0, 'скидки и деньги', 'действующие акции и промокоды', [-0.6, -0.9], [-0.9, -1.6]],
     ['наличие товара',   0x6B5BB0, 'есть ли что-то', 'есть ли товар на складе', [0.6, -1.1], [3.3, -1.6]],
-    ['где курьер',       0x0F8B8D, 'когда приедет', 'где курьер прямо сейчас', [-2.7, 0.6], [-6.25, -0.75]]
+    ['где курьер',       0x0F8B8D, 'когда приедет', 'где курьер прямо сейчас', [-2.7, 0.6], [-6.4, -0.75]]
   ];
   var discs = INT.map(function (r) {
     var g = new THREE.Group();
@@ -543,10 +566,13 @@ window.addEventListener('DOMContentLoaded', function () {
     var mk = new THREE.Mesh(new THREE.CircleGeometry(0.2, 24), new THREE.MeshBasicMaterial({ color: 0xD9534F, transparent: true, opacity: 0 }));
     mk.position.z = 0.5; world.add(mk); marks.push({ m: mk, a: discs[a], b: discs[b] });
   }
-  var overTag = makeTag('пересечения: 0', '#D9534F'); overTag.position.set(0, 3.9, OBJZ); world.add(overTag);
-  var overN = -1;
+  var overTag = makeTag('пересечения: 0', '#D9534F'); overTag.position.set(1.6, 3.9, OBJZ); world.add(overTag);
+  var overN = -1, overOk = false;
   function overCount() {
     var n = 0; marks.forEach(function (o) { if (o.a.g.position.distanceTo(o.b.g.position) < 2 * R - 0.15) n++; }); return n;
+  }
+  function overCountTo() {
+    var n = 0; marks.forEach(function (o) { if (o.a.to.distanceTo(o.b.to) < 2 * R - 0.15) n++; }); return n;
   }
   var kls = { lit: -99, ring: { material: { opacity: 0 } } }, dcl = null, topics = [];
   var dpC = kls, cpC = kls;
@@ -573,100 +599,141 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
   /* ========== Сценарий ========== */
+  // What each step shows is written on flat cards that always face the viewer: one
+  // card by the overlap counter, one over each telling pair of discs. A step only adds
+  // lines (the step number first); nothing already on screen moves or is rebuilt.
   var T = 0, timers = [];
   function later(s, fn) { timers.push({ t: T + s, fn: fn }); }
-  var Z = 1.9, h = CWD / 2 - 0.3;
-  var STEPS = ['Свой тул', 'Публичные · приватные данные'];
+  var STEPS = [
+    ['Только интенты', [['count', 'go', '7 интентов, у каждого описание']]],
+    ['Размытые описания', [['count', 'no', 'пересечений: N', null, { marks: true }],
+      ['p1', 'no', '«где заказ» ≈ «когда приедет»'], ['p2', 'no', '«про доставку» ≈ «не хочу заказ»'], ['p3', 'no', '«скидки» ≈ «есть ли что-то»']]],
+    ['Чёткие описания', [['p1', 'ok', '«где заказ» ~ «где курьер» — это ок', null, { sharp: true }],
+      ['p2', 'ok', '«сроки и цены» ≠ «вернуть товар»'], ['p3', 'ok', '«промокоды» ≠ «товар на складе»'], ['count', 'ok', 'пересечений: N — небольшое, допустимо']]]
+  ];
+  var ARW = { go: '→', back: '←', up: '↑', down: '↓', no: '✗', ok: '✓' };
   var capEl = document.getElementById('cap');
   capEl.style.setProperty('--c', CLS);
   capEl.innerHTML = STEPS.map(function () { return '<span class="s"></span>'; }).join('<span class="a">→</span>');
-  capEl.querySelectorAll('.s').forEach(function (e, i) { e.textContent = (i + 1) + ' · ' + STEPS[i]; e.addEventListener('click', function () { startAt(i); }); });
+  capEl.querySelectorAll('.s').forEach(function (e, i) { e.textContent = (i + 1) + ' · ' + STEPS[i][0]; e.addEventListener('click', function () { startAt(i); }); });
   function capS(i, v) { var e = capEl.querySelectorAll('.s')[i]; if (!e) return; e.classList.toggle('on', v === 1); e.classList.toggle('done', v === 2); }
-  function lit(c) { c.lit = T; }
   function placeAns() {}
   var vaultPulse = -9, notesPulse = -9, gearT = [-9, -9], showMarks = false;
-  var DATAY = TOOLY - 2.7, dataGrp = new THREE.Group(), dataOn = false, dataT = -9;
-  (function () {
-    var n0 = world.children.length;
-    var x0 = COLX(0) - TW / 2, x1 = COLX(NPUB - 1) + TW / 2, x2 = COLX(NPUB) - TW / 2, x3 = COLX(discs.length - 1) + TW / 2;
-    station((x0 + x1) / 2, DATAY, '#E1EFE4', '#2A6B38', '✓', 'Публичные · акции, условия, каталог', '', x1 - x0);
-    station((x2 + x3) / 2, DATAY, '#EFEEE9', '#5E6863', '🔒', 'Приватные · всё о конкретном клиенте', '', x3 - x2);
-    for (var k = 0; k < discs.length; k++) arrow(COLX(k), TOOLY - CHT / 2 - 0.08, DATAY + CHT / 2 + 0.1, k < NPUB ? GREEN : 0x5E6863);
-    var shelfSt = { x: x0 - 1.0, top: DATAY + CHT / 2 + BEVEL }, safeSt = { x: x3 + 1.0, top: DATAY + CHT / 2 + BEVEL };
-    var p1 = slab(1.4, CHT, PD, 0.16, 0xE1EFE4); p1.position.set(shelfSt.x, DATAY, 0.6); world.add(p1);
-    var p2 = slab(1.4, CHT, PD, 0.16, 0xEFEEE9); p2.position.set(safeSt.x, DATAY, 0.6); world.add(p2);
-    prop('../models/prop-bookcase.glb', shelfSt, { h: 1.1, w: 1.0, d: 0.5 });
-    prop('../models/prop-safe.glb', safeSt, { h: 0.95, w: 1.0, d: 0.8, tint: { '*': 0x4A524D } });
-    world.children.slice(n0).forEach(function (o) { dataGrp.add(o); });
-    dataGrp.scale.setScalar(0.001); world.add(dataGrp);
-  })();
-  // the bridge to the next slide: a classifier on top picks one intent for each message
-  var clsGrp = new THREE.Group(), clsOn = false, clsT = -9, ccl = null, CLY = 5.0, BUSY = 3.75;
-  (function () {
-    var n0 = world.children.length;
-    var st = station(0, CLY, '#D3F0EE', CLS, '◆', 'Классификатор', '', 3.6);
-    var ring = glow(5.2, 2.6, 0x0F8B8D); ring.material.opacity = 0.35; ring.position.set(0, CLY + 0.9, -0.4); world.add(ring);
-    arrow(0, CLY - CHT / 2 - 0.06, BUSY + 0.09, GREEN);
-    var bar = box(COLX(discs.length - 1) - COLX(0) + 0.18, 0.18, 0.12, GREEN); bar.position.set((COLX(0) + COLX(discs.length - 1)) / 2, BUSY, ARROWZ); world.add(bar);
-    for (var k = 0; k < discs.length; k++) arrow(COLX(k), BUSY, ROWY + R * 0.82 + 0.08, GREEN);
-    var bub = slab(1.3, 0.75, 0.16, 0.26, 0xFFFFFF); bub.position.set(-3.6, CLY + 0.1, OBJZ); world.add(bub);
-    [-0.32, 0, 0.32].forEach(function (dx) { var d = cyl(0.08, 0.05, 0x3A86C8, 16); d.rotation.x = Math.PI / 2; d.position.set(-3.6 + dx, CLY + 0.1, OBJZ + 0.12); world.add(d); });
-    arrowR(-2.8, -1.86, CLY, GREEN);
-    new THREE.GLTFLoader().load('../models/robot.glb', function (g) {
-      var m = g.scene;
-      m.traverse(function (n) { if (n.isMesh && n.material && n.material.name === 'Main') { n.material = n.material.clone(); n.material.color.setHex(0x0F8B8D).convertSRGBToLinear(); } });
-      var holder = new THREE.Group(); holder.add(m); place(m, 1.2);
-      holder.position.set(0, st.top, 0.6); clsGrp.add(holder);
-      ccl = actor(g, m, 'Idle');
-    });
-    world.children.slice(n0).forEach(function (o) { clsGrp.add(o); });
-    clsGrp.scale.setScalar(0.001); world.add(clsGrp);
-  })();
-  var rowMode = false;
-  function layout(sharp) { rowMode = false; discs.forEach(function (d) { var p = sharp ? d.r[5] : d.r[4]; d.to.set(p[0], p[1]); }); }
-  function rowLayout() { rowMode = true; discs.forEach(function (d) { d.to.set(COLX(POS[d.r[0]]), ROWY); }); }
-  function reset() {
-    timers = []; flyers.forEach(function (f) { world.remove(f.m); }); flyers = [];
-    camTo.x = CAM0.x; camTo.y = CAM0.y; camTo.k = CAM0.k;
+  var toolOn = false, dataOn = false, clsOn = false, rowMode = false;
+  var DATAY = TOOLY - 2.7, dataGrp = new THREE.Group(), dataT = -9;
+  var clsGrp = new THREE.Group(), clsT = -9, CLY = 5.0;
+  function layout(sharp) { discs.forEach(function (d) { var p = sharp ? d.r[5] : d.r[4]; d.to.set(p[0], p[1]); }); }
+  // the cards: where (an anchor in the scene) and how they grow from it
+  var ui = document.getElementById('ui');
+  function card(x, y, how) {
+    var e = document.createElement('div'); e.className = 'msg ' + how; ui.appendChild(e);
+    return { e: e, p: new THREE.Vector3(x, y, OBJZ) };
+  }
+  var CARDS = {
+    count: card(2.9, 4.3, 'right'),                  // by the counter tag, grows down to its right
+    p1: card(-9.0, 4.5, 'right'),                    // 'статус заказа' and 'где курьер'
+    p2: card(-4.3, 4.5, 'right'),                    // 'условия доставки' и 'возврат'
+    p3: card(4.9, -0.3, 'right')                     // 'акции' and 'наличие товара'
+  };
+  var lines = [];
+  // one line on a card: the step number, the mark, the words
+  function addLine(n, l, live) {
+    var c = CARDS[l[0]], d = document.createElement('div');
+    d.className = 'ln ' + l[1] + (live ? '' : ' in');
+    d.innerHTML = '<b>' + (n + 1) + '</b><i>' + ARW[l[1]] + '</i><span></span>';
+    d.querySelector('span').textContent = l[2].replace('N', overCountTo());
+    c.e.appendChild(d); c.e.classList.add('on');
+    lines.push({ d: d, n: n });
+    return d;
+  }
+  function mark(n) { lines.forEach(function (o) { o.d.classList.toggle('cur', o.n === n); }); }
+  function clear() {
+    timers = []; lines.forEach(function (o) { o.d.remove(); }); lines = [];
+    for (var k in CARDS) CARDS[k].e.classList.remove('on');
     for (var i = 0; i < STEPS.length; i++) capS(i, 0);
-    toolOn = false; dataOn = false; clsOn = false;
+    showMarks = false; layout(false); discs.forEach(function (d) { setDesc(d, false); });
   }
-  function step1() { capS(0, 1); showMarks = false; layout(false); discs.forEach(function (d) { setDesc(d, false); }); later(1.0, function () { capS(0, 2); }); }
-  function step2() { capS(1, 1); showMarks = true; layout(false); discs.forEach(function (d) { setDesc(d, false); }); later(1.5, function () { capS(1, 2); }); }
-  function step3() {
-    capS(2, 1); showMarks = true;
-    discs.forEach(function (d, k) { later(k * 0.15, function () { setDesc(d, true); }); });
-    later(0.5, function () { layout(true); });
-    later(2.6, function () { capS(2, 2); });
+  // what moves the scene on a line: the overlap marks light up, or the descriptions
+  // are rewritten sharp and only then the discs draw apart
+  function doer(l, t0) {
+    var o = l[4]; if (!o) return;
+    if (o.marks) later(t0, function () { showMarks = true; });
+    if (o.sharp) {
+      discs.forEach(function (d, k) { later(t0 + k * 0.15, function () { setDesc(d, true); }); });
+      later(t0 + 0.5, function () { layout(true); });
+    }
   }
-  function step4() {
-    // the intents line up in a row and each one gets its tool below
-    capS(0, 1); showMarks = false; rowLayout(); discs.forEach(function (d) { if (!d.sharp) setDesc(d, true); });
-    later(0.9, function () { toolOn = true; toolT = T; });
-    later(3.0, function () { capS(0, 2); });
+  // a step plays its lines one after another; earlier steps are only re-marked
+  function play(n) {
+    capS(n, 1); mark(n);
+    STEPS[n][1].forEach(function (l, k) {
+      var t0 = 0.15 + k * 0.7;
+      doer(l, t0);
+      later(t0, function () {
+        var d = addLine(n, l, true); mark(n);
+        requestAnimationFrame(function () { d.classList.add('in'); });
+      });
+    });
+    later(0.15 + STEPS[n][1].length * 0.7 + 0.4, function () { if (cur === n) capS(n, 2); });
   }
-  function step5() {
-    capS(1, 1); showMarks = false; rowLayout(); discs.forEach(function (d) { if (!d.sharp) setDesc(d, true); });
-    toolOn = true; toolT = Math.min(toolT, T - 3); dataOn = true; dataT = T + 0.3;
-    later(2.0, function () { capS(1, 2); });
+  var cur = -1;
+  function startAt(n) {
+    if (n === cur + 1 && n > 0) {   // the usual way forward: nothing on screen is touched, the step is added
+      timers.forEach(function (t) { t.fn(); }); timers = [];   // the previous step finishes at once
+      capS(cur, 2); cur = n; play(n); return;
+    }
+    clear(); cur = n;
+    for (var i = 0; i < n; i++) {
+      STEPS[i][1].forEach(function (l) { doer(l, 0); addLine(i, l, false); });
+      capS(i, 2);
+    }
+    timers.forEach(function (t) { t.fn(); }); timers = [];   // the earlier steps' effects land at once
+    play(n);
   }
-  var STEP = [step4, step5], cur = -1;
-  // the scene the slide before ended on (sharp descriptions), already in place
-  function home() { showMarks = true; layout(true); discs.forEach(function (d) { if (!d.sharp) setDesc(d, true); }); }
-  home(); discs.forEach(function (d) { d.at.copy(d.to); d.g.position.x = d.at.x; d.g.position.y = d.at.y; });
-  window.__seamless = true;   // it picks up exactly where the slide before stops
-
   // the deck's arrows walk the steps first and only then turn the slide
-  window.__fwd = function () { if (cur < STEP.length - 1) { startAt(cur + 1); return true; } return false; };
-  window.__back = function () { if (cur > 0) { startAt(cur - 1); return true; } if (cur === 0) { reset(); home(); cur = -1; return true; } return false; };
-  function startAt(n) { reset(); for (var i = 0; i < n; i++) capS(i, 2); cur = n; STEP[n](); }
-  function next() { if (cur >= STEP.length - 1) { reset(); home(); cur = -1; return; } startAt(cur + 1); }
+  window.__fwd = function () { if (cur < STEPS.length - 1) { startAt(cur + 1); return true; } return false; };
+  window.__back = function () { if (cur > 0) { startAt(cur - 1); return true; } if (cur === 0) { clear(); cur = -1; return true; } return false; };
+  function next() { if (cur >= STEPS.length - 1) { clear(); cur = -1; return; } startAt(cur + 1); }
   addEventListener('keydown', function (e) {
-    var i = '12'.indexOf(e.key);
+    var i = '123'.indexOf(e.key);
     if (i >= 0) startAt(i);
     else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); next(); }
   });
   window.__next = next; window.__pick = startAt;
+  // The camera is not placed by hand: it is fitted to the stage (the discs in both
+  // layouts and the counter above) so the whole scene sits in the band between the
+  // header and the step buttons on any screen, and it never moves between steps
+  var EXT = { x0: -9.0, x1: 9.0, y0: -3.3, y1: 4.5 };
+  function fitCam() {
+    var hdB = document.getElementById('hd').getBoundingClientRect().bottom, cpT = capEl.getBoundingClientRect().top;
+    var top = 1 - 2 * (hdB + 6) / innerHeight, bot = -1 + 2 * (innerHeight - cpT + 14) / innerHeight, side = 0.94;
+    var pts = [];
+    [EXT.x0, EXT.x1].forEach(function (x) { [EXT.y0, EXT.y1].forEach(function (y) { [-0.2, 1.0].forEach(function (z) { pts.push(new THREE.Vector3(x, y, z)); }); }); });
+    var k = 1.3, cx = (EXT.x0 + EXT.x1) / 2, cy = (EXT.y0 + EXT.y1) / 2, t = Math.tan(camera.fov / 2 * Math.PI / 180), asp = innerWidth / innerHeight;
+    camera.aspect = asp; camera.updateProjectionMatrix();
+    for (var it = 0; it < 5; it++) {
+      camera.position.set(cx, cy + 6.2 * k, 29.6 * k); camera.lookAt(cx, cy, 0); camera.updateMatrixWorld(true);
+      var nx0 = 9, nx1 = -9, ny0 = 9, ny1 = -9, v = new THREE.Vector3();
+      pts.forEach(function (p) { v.copy(p).project(camera); nx0 = Math.min(nx0, v.x); nx1 = Math.max(nx1, v.x); ny0 = Math.min(ny0, v.y); ny1 = Math.max(ny1, v.y); });
+      var D = Math.hypot(6.2, 29.6) * k;
+      cx += (nx0 + nx1) / 2 * D * t * asp;
+      cy += ((ny0 + ny1) / 2 - (top + bot) / 2) * D * t;
+      k *= Math.max((nx1 - nx0) / (2 * side), (ny1 - ny0) / (top - bot));
+    }
+    CAM0.x = cam.x = camTo.x = cx; CAM0.y = cam.y = camTo.y = cy; CAM0.k = cam.k = camTo.k = k;
+    placeCam();
+  }
+  fitCam();
+  // the cards follow their anchors on screen, whichever way the viewer turns the scene
+  var pv = new THREE.Vector3();
+  function placeMsgs() {
+    var r = renderer.domElement.getBoundingClientRect();
+    for (var k in CARDS) {
+      var c = CARDS[k]; pv.copy(c.p).project(camera);
+      c.e.style.left = ((pv.x + 1) / 2 * r.width).toFixed(1) + 'px';
+      c.e.style.top = ((1 - pv.y) / 2 * r.height).toFixed(1) + 'px';
+    }
+  }
 
   /* ========== Animate ========== */
   var clock = new THREE.Clock();
@@ -724,19 +791,20 @@ window.addEventListener('DOMContentLoaded', function () {
     marks.forEach(function (o) {
       var on = showMarks && o.a.g.position.distanceTo(o.b.g.position) < 2 * R - 0.15;
       o.m.material.opacity += ((on ? 1 : 0) - o.m.material.opacity) * Math.min(1, dt * 6);
+      // with sharp descriptions what overlaps is the small, accepted kind: amber, not red
+      o.m.material.color.setHex(o.a.sharp ? 0xD99A1E : 0xD9534F);
       o.m.position.x = (o.a.g.position.x + o.b.g.position.x) / 2; o.m.position.y = (o.a.g.position.y + o.b.g.position.y) / 2;
     });
-    var nn = clsOn ? -3 : rowMode ? -2 : showMarks ? overCount() : -1;
-    if (nn !== overN) {
-      overN = nn; world.remove(overTag);
-      overTag = makeTag(nn === -3 ? 'один интент на сообщение' : nn === -2 ? 'интент → свой тул' : nn < 0 ? 'интенты и их описания' : 'пересечений: ' + nn, nn > 0 ? '#D9534F' : nn === -2 ? '#6B5BB0' : CLS);
-      overTag.position.set(nn === -3 ? 3.6 : 0, nn === -3 ? CLY + 0.1 : 3.9, OBJZ); world.add(overTag);
+    var nn = clsOn ? -3 : rowMode ? -2 : showMarks ? overCount() : -1, ok1 = discs[0].sharp;
+    if (nn !== overN || ok1 !== overOk) {
+      overN = nn; overOk = ok1; world.remove(overTag);
+      overTag = makeTag(nn === -3 ? 'один интент на сообщение' : nn === -2 ? 'интент → свой тул' : nn < 0 ? 'интенты и их описания' : 'пересечений: ' + nn, nn > 0 ? (ok1 ? '#D99A1E' : '#D9534F') : nn === -2 ? '#6B5BB0' : CLS);
+      overTag.position.set(nn === -3 ? 3.6 : 1.6, nn === -3 ? CLY + 0.1 : 3.9, OBJZ); world.add(overTag);
     }
-    camTo.k = clsOn ? 1.3 : dataOn ? 1.38 : rowMode ? 1.15 : CAM0.k; camTo.y = clsOn ? 1.4 : dataOn ? -0.9 : CAM0.y;
     clsGrp.scale.setScalar(Math.max(0.001, clsOn ? ease((T - clsT) / 0.6) : 0));
     dataGrp.scale.setScalar(Math.max(0.001, dataOn ? ease((T - dataT) / 0.5) : 0));
     [kls].forEach(function (c) { var k = T - c.lit; c.ring.material.opacity = 0.3 + 0.1 * Math.sin(T * 2) + (k < 1.5 ? 0.4 * (1 - k / 1.5) : 0); });
-    placeAns();
+    placeMsgs();
   }
   (function tick() {
     requestAnimationFrame(tick);
@@ -746,6 +814,7 @@ window.addEventListener('DOMContentLoaded', function () {
     renderer.setSize(innerWidth, innerHeight);
     camera.aspect = innerWidth / innerHeight;
     camera.updateProjectionMatrix();
+    fitCam();
   });
   });
 });
