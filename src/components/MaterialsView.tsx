@@ -46,7 +46,6 @@ function Rows({ items }: { items: Row[] }) {
 const presentationRows = (lang: 'ru' | 'en'): Row[] => [
   { meta: lang === 'en' ? 'Talk · interactive slides' : 'Доклад · интерактивные слайды', href: '/decks/ai-agent-architecture/', title: lang === 'en' ? 'AI agent in production: architecture, protection, economics' : 'Работа AI-агента: архитектура, защита, экономика', hint: lang === 'en' ? 'Podlodka AI Crew · prompt injection, Data plane and Control plane, the stack · 3D slides in the browser (in Russian)' : 'Podlodka AI Crew · prompt injection, Data plane и Control plane, стек · 3D-слайды в браузере' },
   { meta: lang === 'en' ? 'Talk' : 'Доклад', to: '/talk/spec-driven-development/', title: lang === 'en' ? config.talkTitleEn : config.talkTitle, hint: lang === 'en' ? `${config.conferenceName} · full talk text (in Russian)` : `${config.conferenceName} · текст доклада целиком` },
-  { meta: lang === 'en' ? 'Slides' : 'Слайды', to: '/slide/1/', title: lang === 'en' ? 'Open the slide deck' : 'Открыть презентацию', hint: lang === 'en' ? 'Slides in the browser (in Russian)' : 'Слайды в браузере' },
   { meta: lang === 'en' ? 'Catalog' : 'Каталог', to: '/patterns/', title: lang === 'en' ? 'AI patterns catalog' : 'Каталог AI-паттернов', hint: lang === 'en' ? `${patternsTotal} patterns · ${PATTERN_CATEGORIES.length} categories (in Russian)` : `${patternsTotal} паттернов · ${PATTERN_CATEGORIES.length} категорий` },
 ]
 
