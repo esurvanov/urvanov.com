@@ -1,0 +1,813 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><style>#cap{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;max-width:96vw;scrollbar-width:none;align-items:stretch}#cap::-webkit-scrollbar{display:none}#cap>*{flex:0 0 auto}#cap>.s:has(.v){width:clamp(230px,15.5vw,300px)}#cap .s .v{height:5.9em!important}#cap>.s:not(:has(.v)){white-space:nowrap}#cap>.a{align-self:center}#cap>:first-child{margin-left:auto}#cap>:last-child{margin-right:auto}#cap.ovf{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%)}</style><style>#hd{flex-wrap:wrap;row-gap:.3em}.hd-lead{order:9;flex-basis:100%;display:flex;flex-wrap:wrap;gap:.35em 1.4em;font-size:clamp(10px,.95vw,15px);font-weight:700;color:#5E5B50;letter-spacing:0;text-transform:none}body.lead-wait .hd-lead{opacity:0}</style><title>База знаний</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Same committed look as slide 01: warm off-white canvas, green system, amber model, Manrope 800 */
+:root { color-scheme: light; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
+             font-family:'Manrope', system-ui, sans-serif; }
+#c  { display:block; position:fixed; inset:0; width:100%; height:100%; }
+#ui { position:fixed; inset:0; pointer-events:none; }
+
+#hd { position:absolute; top:0; left:0; right:0;
+      padding: clamp(16px,2.2vw,30px) clamp(22px,4vw,56px);
+      display:flex; align-items:baseline; gap:1.4em; }
+.hd-no { font-size:clamp(8px,.68vw,10px); font-weight:700; text-transform:uppercase;
+         letter-spacing:.2em; color:#2A6B38; white-space:nowrap; }
+.hd-t  { font-size:clamp(17px,2.3vw,32px); font-weight:800; color:#15140F;
+         letter-spacing:-.024em; }
+
+#ft { position:absolute; left:0; right:0; bottom:0;
+      padding: clamp(10px,1.4vw,20px) clamp(22px,4vw,56px);
+      display:flex; align-items:center; gap:1.1em; flex-wrap:wrap;
+      font-size:clamp(8px,.74vw,11px); font-weight:700;
+      text-transform:uppercase; letter-spacing:.13em; color:#8A8778; }
+#ft b { color:#A8650F; font-weight:700; }
+#ft .cr { margin-left:auto; text-transform:none; letter-spacing:.02em; font-weight:600; color:#B7B4A8; }
+
+#cap { position:absolute; left:50%; transform:translateX(-50%); bottom:clamp(40px,7.5vh,84px); pointer-events:auto;
+       display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:.45em .35em; width:max-content; max-width:94vw;
+       font-size:clamp(10px,.88vw,15px); font-weight:700; --c:#D99A1E; }
+#cap .t { padding:.5em 1em; border-radius:999px; background:var(--c); color:#FFFFFF; font-weight:800; }
+#cap .s { padding:.45em .8em; white-space:nowrap; border-radius:999px; background:#FFFFFF; color:#B7B4A8; cursor:pointer;
+          transition:color .3s, box-shadow .3s; }
+#cap .s.on   { color:#15140F; box-shadow:inset 0 0 0 2px var(--c); }
+#cap .s.done { color:var(--c); }
+#cap .a { color:#B7B4A8; font-weight:800; }
+#cap .s:hover { color:#15140F; }
+#log { position:absolute; left:50%; top:44%; transform:translate(-50%,-50%) scale(.92); width:clamp(260px,28vw,460px);
+       background:#FFFFFF; border-radius:18px; padding:.8em 1em; box-shadow:0 14px 40px rgba(21,20,15,.16);
+       font-size:clamp(11px,1vw,16px); font-weight:700; color:#15140F; opacity:0; transition:opacity .35s, transform .35s; }
+#log.on { opacity:1; transform:translate(-50%,-50%) scale(1); }
+#log .lh { color:#2E7FB8; font-weight:800; margin-bottom:.3em; }
+#log .ln { display:flex; gap:.5em; padding:.15em 0; border-top:1px solid #EFEEE9; animation:lnIn .3s ease; }
+#log .ln b { color:var(--c); min-width:1.4em; }
+@keyframes lnIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:none; } }
+
+/* Message cards: flat, always facing the viewer; one line per crossing, the step number first */
+.msg { position:absolute; left:0; top:0; display:none; flex-direction:column; gap:.3em; padding:.4em;
+       background:rgba(255,255,255,.94); border-radius:14px; box-shadow:0 4px 16px rgba(21,20,15,.12);
+       font-size:clamp(10px,.86vw,14px); font-weight:800; white-space:nowrap; }
+.msg.on { display:flex; }
+.msg.below { transform:translate(-50%,0); }
+.msg.above { transform:translate(-50%,-100%); }
+.msg.right { transform:none; }
+.msg .ln { display:flex; align-items:center; gap:.45em; padding:.25em .6em .25em .3em; border-radius:999px;
+           opacity:0; transform:translateY(-6px); transition:opacity .45s, transform .45s, box-shadow .3s;
+           --k:#2E7FB8; color:var(--k); }
+.msg .ln.in { opacity:1; transform:none; }
+.msg .ln.cur { box-shadow:inset 0 0 0 2px var(--k); }
+.msg .ln b { display:inline-flex; align-items:center; justify-content:center; min-width:1.6em; height:1.6em; border-radius:999px;
+             background:var(--k); color:#FFFFFF; font-size:.85em; }
+.msg .ln i { font-style:normal; }
+.msg .ln span { color:#15140F; }
+.msg .ln.back, .msg .ln.ok { --k:#2A6B38; }
+.msg .ln.up, .msg .ln.down { --k:#6F8FA8; }
+.msg .ln.no { --k:#D9534F; }
+.msg .ln.no span { color:#D9534F; }
+/* Speech bubbles stand still over whoever speaks: nothing to read in flight */
+.bub { position:absolute; left:0; top:0; transform:translate(-50%,-100%) scale(.85);
+       opacity:0; transition:opacity .25s, transform .25s; white-space:nowrap;
+       background:#FFFFFF; color:#15140F; border:3px solid var(--c,#3A86C8);
+       border-radius:18px; padding:.45em .9em; font-weight:800;
+       font-size:clamp(12px,1.25vw,21px); box-shadow:0 6px 18px rgba(21,20,15,.12); }
+.bub.on { opacity:1; transform:translate(-50%,-100%) scale(1); }
+.bub::after { content:''; position:absolute; left:50%; bottom:-11px; width:16px; height:16px;
+              background:#FFFFFF; border-right:3px solid var(--c,#3A86C8); border-bottom:3px solid var(--c,#3A86C8);
+              transform:translateX(-50%) rotate(45deg); }
+.bub.tag { border-radius:999px; color:#FFFFFF; background:var(--c); }
+.bub.tag::after { display:none; }
+</style>
+
+<canvas id="c"></canvas>
+<div id="ui">
+  <div id="hd">
+    <span class="hd-no">08 · Архитектура</span>
+    <span class="hd-t">База знаний: класс = описание + вопросы-ответы + ограничения</span><span class="hd-lead">Класс в базе знаний: описание для классификатора + вопросы-ответы + ограничения; ответ собирается из всего набора</span>
+  </div>
+    <div id="cap"></div>
+  <div id="ft">
+    <span>Один набор — один класс</span>
+    <span>·</span>
+    <span><b>Классификатор выбирает по описанию, ответ — из всего набора</b></span>
+    <span class="cr">3D: J-Toastie, Poly by Google · CC BY 3.0 · poly.pizza</span>
+  </div>
+</div>
+
+<script src="../lib/three.min.js"></script>
+<script src="../lib/GLTFLoader.js"></script>
+<script>
+// Always override: the native roundRect appends to the current path instead of
+// starting one, so successive fills repaint every earlier subpath.
+{
+  CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
+    this.beginPath(); this.moveTo(x+r,y); this.lineTo(x+w-r,y);
+    this.arcTo(x+w,y,x+w,y+r,r); this.lineTo(x+w,y+h-r);
+    this.arcTo(x+w,y+h,x+w-r,y+h,r); this.lineTo(x+r,y+h);
+    this.arcTo(x,y+h,x,y+h-r,r); this.lineTo(x,y+r);
+    this.arcTo(x,y,x+r,y,r); this.closePath();
+  };
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  var F = document.fonts;
+  var ready = F ? Promise.all([
+    F.load('800 72px Manrope'), F.load('700 30px Manrope'), F.load('600 28px Manrope')
+  ]).catch(function () {}) : Promise.resolve();
+  ready.then(function () {
+
+  var CANVAS_BG = 0xECEBE6;
+  var GREEN = 0x2A6B38, AMBER = 0xD99A1E, CARD = 0xFFFFFF;
+  var RISK = [
+    { css: '#D9534F', hex: 0xD9534F, bg: '#F8E1DF' },
+    { css: '#C9762E', hex: 0xC9762E, bg: '#F7E7D6' },
+    { css: '#7E5FD0', hex: 0x7E5FD0, bg: '#ECE6FA' }
+  ];
+
+  var W = innerWidth, H = innerHeight;
+  var renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setSize(W, H);
+  renderer.setClearColor(CANVAS_BG);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  var scene = new THREE.Scene();
+  // the client's and the owner's podium centres (the layout below uses the same numbers)
+  var camera = new THREE.PerspectiveCamera(24, W / H, 2, 160);
+  // The camera follows the request: each step frames its own part of the contour
+  // close up, and glides there (eased, never a cut); 'all' is the whole stage.
+  var CAM0 = { x: -1.2, y: 0.5, k: 0.98 };
+  var cam = { x: CAM0.x, y: CAM0.y, k: CAM0.k }, camTo = { x: CAM0.x, y: CAM0.y, k: CAM0.k };
+  function placeCam() {
+    camera.position.set(cam.x, cam.y + 6.2 * cam.k, 29.6 * cam.k);
+    camera.lookAt(cam.x, cam.y, 0);
+  }
+  // The viewer can look around: drag to turn the scene, right-drag (or Shift+drag)
+  // to move it, the wheel to come closer, a double click to go back. The story's
+  // own camera keeps working underneath; the viewer's turn rides on top of it.
+  var CU = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0, to: { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 },
+             look: new THREE.Vector3(), base: null, last: null };
+  (function () {
+    var lookAt0 = camera.lookAt.bind(camera);
+    camera.lookAt = function (x, y, z) {
+      if (x && x.isVector3) CU.look.copy(x); else CU.look.set(x, y, z);
+      lookAt0(CU.look);
+    };
+    CU.lookAt0 = lookAt0;
+    var el = renderer.domElement, drag = null;
+    el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    el.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, y: e.clientY, pan: e.button === 2 || e.shiftKey, on: false }; });
+    addEventListener('pointerup', function () { drag = null; });
+    addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.on && Math.hypot(dx, dy) < 4) return;
+      drag.on = true; drag.x = e.clientX; drag.y = e.clientY;
+      if (drag.pan) { CU.to.px -= dx * 0.0016; CU.to.py += dy * 0.0016; }
+      else {
+        CU.to.yaw = Math.max(-0.9, Math.min(0.9, CU.to.yaw - dx * 0.004));
+        CU.to.pitch = Math.max(-0.35, Math.min(0.5, CU.to.pitch + dy * 0.003));
+      }
+    });
+    el.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      CU.to.zoom = Math.max(0.45, Math.min(1.8, CU.to.zoom * Math.exp(e.deltaY * 0.0012)));
+    }, { passive: false });
+    el.addEventListener('dblclick', function () { CU.to = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 }; });
+    window.__center = function () { CU.to = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 }; };
+    // a visible button on the slide itself, top right
+    (function () {
+      var bt = document.createElement('button');
+      bt.textContent = '⌖ Центр'; bt.title = 'Вернуть сцену в центр';
+      bt.style.cssText = 'position:fixed;top:clamp(14px,2vw,26px);right:clamp(16px,3vw,44px);z-index:5;border:0;' +
+        'background:#FFFFFF;color:#15140F;border-radius:999px;padding:.5em 1em;cursor:pointer;' +
+        'font:800 clamp(11px,.9vw,14px)/1 Manrope,system-ui,sans-serif;box-shadow:0 2px 10px rgba(21,20,15,.12);';
+      bt.addEventListener('click', function (e) { e.stopPropagation(); window.__center(); });
+      bt.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+      document.body.appendChild(bt);
+    })();
+  })();
+  var cuV = new THREE.Vector3(), cuR = new THREE.Vector3(), cuU = new THREE.Vector3(), cuT = new THREE.Vector3(), cuQ = new THREE.Quaternion();
+  function camUser(dt) {
+    var p = camera.position;
+    // the story moved the camera since the last frame: that is the new base
+    if (!CU.last || !p.equals(CU.last)) CU.base = p.clone();
+    var k = 1 - Math.exp(-(dt || 0.016) * 8);
+    ['yaw', 'pitch', 'zoom', 'px', 'py'].forEach(function (n) { CU[n] += (CU.to[n] - CU[n]) * k; });
+    var tgt = CU.look, rel = cuV.copy(CU.base).sub(tgt), dist = rel.length();
+    rel.applyQuaternion(cuQ.setFromAxisAngle(cuU.set(0, 1, 0), CU.yaw));
+    cuR.crossVectors(cuU.set(0, 1, 0), rel).normalize();
+    rel.applyQuaternion(cuQ.setFromAxisAngle(cuR, -CU.pitch));
+    rel.multiplyScalar(CU.zoom);
+    cuU.crossVectors(rel, cuR).normalize();
+    cuT.copy(tgt).addScaledVector(cuR, -CU.px * dist).addScaledVector(cuU, CU.py * dist);
+    camera.position.copy(cuT).add(rel);
+    CU.lookAt0(cuT);
+    CU.last = camera.position.clone();
+  }
+  placeCam();
+
+  scene.add(new THREE.AmbientLight(0xFFFFFF, 0.78));
+  scene.add(new THREE.HemisphereLight(0xFFFFFF, 0xC9C7BD, 0.5));
+  var key = new THREE.DirectionalLight(0xFFFFFF, 0.62);
+  key.position.set(-5, 23, 9);
+  key.castShadow = true;
+  key.shadow.mapSize.width = 2048; key.shadow.mapSize.height = 2048;
+  key.shadow.camera.left = -15; key.shadow.camera.right = 15;
+  key.shadow.camera.top = 15;   key.shadow.camera.bottom = -15;
+  key.shadow.camera.near = 2;   key.shadow.camera.far = 48;
+  key.shadow.bias = -0.0004; key.shadow.normalBias = 0.05;
+  scene.add(key);
+  var fill = new THREE.DirectionalLight(0xFFFFFF, 0.22);
+  fill.position.set(9, 4, 8); scene.add(fill);
+
+  function flat(hex) {
+    var m = new THREE.MeshLambertMaterial({ color: hex });
+    m.color.convertSRGBToLinear();
+    return m;
+  }
+  function liveTex(c) {
+    var t = new THREE.CanvasTexture(c); t.anisotropy = 8; t.encoding = THREE.sRGBEncoding;
+    return t;
+  }
+  function face(cv) { return new THREE.MeshBasicMaterial({ map: liveTex(cv) }); }
+
+  function roundedShape(w, h, r) {
+    var s = new THREE.Shape(), x = -w / 2, y = -h / 2;
+    s.moveTo(x + r, y);
+    s.lineTo(x + w - r, y);           s.quadraticCurveTo(x + w, y, x + w, y + r);
+    s.lineTo(x + w, y + h - r);       s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    s.lineTo(x + r, y + h);           s.quadraticCurveTo(x, y + h, x, y + h - r);
+    s.lineTo(x, y + r);               s.quadraticCurveTo(x, y, x + r, y);
+    return s;
+  }
+  // The bevel sticks out past `depth` on both ends; faces go to FZ
+  var BEVEL = 0.035;
+  function FZ(d) { return d / 2 + BEVEL + 0.015; }
+  function slab(w, h, d, r, hex) {
+    var g = new THREE.ExtrudeGeometry(roundedShape(w, h, r), {
+      depth: d, bevelEnabled: true, bevelThickness: BEVEL, bevelSize: BEVEL,
+      bevelOffset: 0, bevelSegments: 2, curveSegments: 7
+    });
+    g.translate(0, 0, -d / 2);
+    var m = new THREE.Mesh(g, flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function box(w, h, d, hex) {
+    var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function cyl(r, h, hex, seg) {
+    var m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, seg || 32), flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function ease(k) { k = Math.max(0, Math.min(1, k)); return k * k * (3 - 2 * k); }
+
+  // soft radial glow, tinted per use
+  var glowCv = document.createElement('canvas'); glowCv.width = glowCv.height = 256;
+  (function () {
+    var x = glowCv.getContext('2d'), g = x.createRadialGradient(128, 128, 10, 128, 128, 128);
+    g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 256, 256);
+  })();
+  var glowTex = new THREE.CanvasTexture(glowCv);
+  function glow(w, h, hex) {
+    var m = new THREE.MeshBasicMaterial({ map: glowTex, color: hex, transparent: true,
+      opacity: 0, depthWrite: false });
+    return new THREE.Mesh(new THREE.PlaneGeometry(w, h), m);
+  }
+
+  var world = new THREE.Group();
+  scene.add(world);
+
+  var BASE = -4.35;
+  var ground = new THREE.Mesh(new THREE.PlaneGeometry(120, 90), new THREE.ShadowMaterial({ opacity: 0.11 }));
+  ground.rotation.x = -Math.PI / 2; ground.position.y = BASE; ground.receiveShadow = true;
+  world.add(ground);
+
+  function makeTag(name, css) {
+    var c = document.createElement('canvas'), x = c.getContext('2d');
+    x.font = '800 36px Manrope, sans-serif';
+    c.width = Math.ceil(x.measureText(name).width + 86); c.height = 84;
+    x = c.getContext('2d');
+    x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, c.width, 84);
+    x.fillStyle = css; x.beginPath(); x.arc(34, 42, 11, 0, 6.3); x.fill();
+    x.fillStyle = '#15140F'; x.font = '800 36px Manrope, sans-serif';
+    x.fillText(name, 56, 55);
+    var w = 0.37 * c.width / 84;
+    var g = new THREE.Group();
+    g.add(slab(w, 0.37, 0.1, 0.17, CARD));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.37), face(c));
+    f.position.z = FZ(0.1); g.add(f);
+    g.userData.w = w;
+    return g;
+  }
+  function sign(x, w, y, z, label, css) {
+    var cv = document.createElement('canvas'); cv.width = 560; cv.height = 96;
+    var c = cv.getContext('2d');
+    c.fillStyle = css; c.fillRect(0, 0, 560, 96);
+    c.fillStyle = '#FFFFFF'; c.font = '800 46px Manrope, sans-serif'; c.textAlign = 'center';
+    if (c.letterSpacing !== undefined) c.letterSpacing = '6px';
+    c.fillText(label, 280, 64);
+    var sg = new THREE.Group();
+    sg.add(slab(w, 0.56, 0.3, 0.12, parseInt(css.slice(1), 16)));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.56), face(cv));
+    f.position.z = FZ(0.3); sg.add(f);
+    sg.position.set(x, y, z); world.add(sg);
+  }
+
+  // Straight, flat arrows cut from slab stock; rot = PI/2 turns a down arrow to point right
+  var ARROWZ = 0.6;
+  var FLOWS = [];
+  function arrow(xc, yTop, yBot, hex, rot) {
+    var L = yTop - yBot, sw = 0.09, hw = 0.24, hl = Math.min(0.26, L * 0.5);
+    var sh = new THREE.Shape();
+    sh.moveTo(-sw, 0); sh.lineTo(sw, 0); sh.lineTo(sw, -(L - hl));
+    sh.lineTo(hw, -(L - hl)); sh.lineTo(0, -L); sh.lineTo(-hw, -(L - hl));
+    sh.lineTo(-sw, -(L - hl)); sh.closePath();
+    var g = new THREE.ExtrudeGeometry(sh, {
+      depth: 0.1, bevelEnabled: true, bevelThickness: 0.03, bevelSize: 0.02,
+      bevelOffset: 0, bevelSegments: 2
+    });
+    g.translate(0, L / 2, -0.05);   // centred, so it can turn round on the spot
+    var m = new THREE.Mesh(g, flat(hex)), r0 = rot || 0;
+    var dx = Math.sin(r0), dy = -Math.cos(r0);   // where it points
+    m.position.set(xc + dx * L / 2, yTop + dy * L / 2, ARROWZ);
+    m.rotation.z = r0;
+    m.castShadow = true; m.receiveShadow = true;
+    world.add(m);
+    FLOWS.push({ m: m, r0: r0, flip: 0, x0: xc, y0: yTop, x1: xc + dx * L, y1: yTop + dy * L, dx: dx, dy: dy, L: L });
+    return m;
+  }
+  function arrowL(x0, x1, y, hex) { return arrow(x0, y, y - (x0 - x1), hex, -Math.PI / 2); }
+  function arrowR(x0, x1, y, hex) { return arrow(x0, y, y - (x1 - x0), hex, Math.PI / 2); }
+  function bar(x0, y0, x1, y1, hex) {
+    var t = 0.18, w = Math.max(t, Math.abs(x1 - x0)), h = Math.max(t, Math.abs(y1 - y0));
+    var m = slab(w, h, 0.1, 0.05, hex);
+    m.position.set((x0 + x1) / 2, (y0 + y1) / 2, 0.6);
+    world.add(m);
+    return m;
+  }
+
+
+
+
+
+  /* ========== Раскладка ========== */
+  // One row, left to right: the model, the contract window, the isolated vault.
+  // The vault is sealed off from the outside world by glass walls; the only way
+  // in or out is the contract — fixed calls and fixed answers, no free text.
+  var Y0 = -1.1, CWD = 3.35, CHT = 0.56, PD = 1.5, OBJZ = 0.8;
+  // outside: the model; then the contract; behind it, the inner model next to the data
+  // text comes in on the left; the outer model turns it into codes; only codes cross the
+  // contract; the inner model answers from them and fetches private data through MCP
+  // logic stands on both sides of the contract: no model talks to it directly
+  // the inner logic fetches through MCP first; the inner model sits above it and only interprets
+  var X = { dp: -7.3, con: 0, cp: 7.3 };
+  var C = { M: '#D99A1E', K: '#2E7FB8', V: '#5E6863', ok: '#2A6B38', no: '#D9534F', grey: '#8A8778' };
+  var cards = [];
+  function station(x, y, bg, col, badge, title, idle, wd) {
+    var w = wd || CWD;
+    var c = document.createElement('canvas'); c.width = Math.round(180 * w); c.height = Math.round(180 * CHT);
+    var tex = liveTex(c), g = new THREE.Group();
+    g.add(slab(w, CHT, PD, 0.16, parseInt(bg.slice(1), 16)));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, CHT), new THREE.MeshBasicMaterial({ map: tex }));
+    f.position.z = FZ(PD); g.add(f);
+    g.position.set(x, y, 0.6); world.add(g);
+    var gl = glow(w + 1.8, 2.8, parseInt(col.slice(1), 16)); gl.position.set(x, y + 0.8, -0.3); world.add(gl);
+    var me = { g: g, glow: gl, x: x, y: y, top: y + CHT / 2 + BEVEL, lit: -99 };
+    me.paint = function () {
+      var k = c.getContext('2d'), W = c.width, H = c.height;
+      k.fillStyle = bg; k.fillRect(0, 0, W, H);
+      k.fillStyle = col; k.fillRect(0, 0, 10, H);
+      var tx = 30;
+      if (badge) {   // a plate without a letter is a prop, not a GUARD layer
+        k.roundRect(26, 14, H - 28, H - 28, 14); k.fill();
+        k.fillStyle = '#FFFFFF'; k.font = '800 ' + Math.round(H * 0.5) + 'px Manrope, sans-serif'; k.textAlign = 'center';
+        k.fillText(badge, 26 + (H - 28) / 2, H * 0.67); k.textAlign = 'left';
+        tx = H + 12;
+      }
+      k.fillStyle = '#15140F'; k.font = '800 ' + Math.round(H * 0.46) + 'px Manrope, sans-serif'; k.fillText(title, tx, H * 0.66);
+      tex.needsUpdate = true;
+    };
+    me.paint();
+    cards.push(me);
+    return me;
+  }
+  var shCv = document.createElement('canvas'); shCv.width = shCv.height = 128;
+  (function () { var k = shCv.getContext('2d'), gr = k.createRadialGradient(64, 64, 4, 64, 64, 64);
+    gr.addColorStop(0, 'rgba(21,20,15,.35)'); gr.addColorStop(1, 'rgba(21,20,15,0)'); k.fillStyle = gr; k.fillRect(0, 0, 128, 128); })();
+  var shTex = new THREE.CanvasTexture(shCv);
+  function contact(st, w) {
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(w * 1.5, 1.1), new THREE.MeshBasicMaterial({ map: shTex, transparent: true, depthWrite: false }));
+    m.rotation.x = -Math.PI / 2; m.position.set(st.x, st.top + 0.012, OBJZ); world.add(m);
+  }
+  function prop(file, st, o, then) {
+    var holder = new THREE.Group();
+    holder.position.set(st.x + (o.dx || 0), st.top + (o.dy || 0), OBJZ + (o.dz || 0)); world.add(holder);
+    new THREE.GLTFLoader().load(file, function (g) {
+      var m = g.scene; m.rotation.y = o.ry || 0;
+      m.traverse(function (n) {
+        if (!n.isMesh) return;
+        n.castShadow = true; n.receiveShadow = true;
+        var src = Array.isArray(n.material) ? n.material : [n.material];
+        var out = src.map(function (sm) {
+          var t = o.tint && (o.tint[sm.name] !== undefined ? o.tint[sm.name] : o.tint['*']);
+          var lm = new THREE.MeshLambertMaterial({ color: sm.color ? sm.color.clone() : new THREE.Color(1, 1, 1), map: t === undefined ? sm.map || null : null, side: THREE.DoubleSide });
+          if (t !== undefined) lm.color.setHex(t).convertSRGBToLinear();
+          return lm;
+        });
+        n.material = Array.isArray(n.material) ? out : out[0];
+      });
+      m.updateMatrixWorld(true);
+      var box = new THREE.Box3().setFromObject(m), sz = box.getSize(new THREE.Vector3());
+      var k = Math.min(o.h ? o.h / sz.y : 1e9, o.w ? o.w / sz.x : 1e9, o.d ? o.d / sz.z : 1e9);
+      m.scale.setScalar(k); m.updateMatrixWorld(true);
+      box.setFromObject(m);
+      m.position.set(-(box.min.x + box.max.x) / 2, -box.min.y, -(box.min.z + box.max.z) / 2);
+      holder.add(m);
+      if (then) then(holder, m);
+    });
+    return holder;
+  }
+  function screen(w, h, bg) {
+    var c = document.createElement('canvas'); c.width = Math.round(200 * w); c.height = Math.round(200 * h);
+    var tex = liveTex(c), m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: tex }));
+    m.write = function (rows) {
+      var k = c.getContext('2d'); k.fillStyle = bg; k.fillRect(0, 0, c.width, c.height);
+      var fs = Math.round(c.height / (rows.length + 1.4));
+      rows.forEach(function (r, i) {
+        var size = fs; do { k.font = '800 ' + size + 'px Manrope, sans-serif'; size -= 1; } while (k.measureText(r[0]).width > c.width - 24 && size > 10);
+        k.fillStyle = r[1] || '#FFFFFF'; k.fillText(r[0], 12, (i + 1) * fs * 1.15 + 4);
+      });
+      tex.needsUpdate = true;
+    };
+    return m;
+  }
+  var mixers = [];
+  function measure(obj) {
+    obj.updateMatrixWorld(true);
+    var geo = new THREE.Box3().setFromObject(obj);
+    var bone = new THREE.Box3(), v = new THREE.Vector3(), n = 0;
+    obj.traverse(function (o) {
+      if (o.isBone) { v.setFromMatrixPosition(o.matrixWorld); bone.expandByPoint(v); n++; }
+    });
+    if (n && (geo.max.y - geo.min.y) < (bone.max.y - bone.min.y) * 0.5) {
+      bone.max.y += (bone.max.y - bone.min.y) * 0.09;
+      return bone;
+    }
+    return geo;
+  }
+  function place(m, h) {
+    m.traverse(function (o) { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.frustumCulled = false; } });
+    var b3 = measure(m), k = h / (b3.max.y - b3.min.y);
+    m.scale.setScalar(k);
+    m.position.set(-(b3.min.x + b3.max.x) / 2 * k, -b3.min.y * k, -(b3.min.z + b3.max.z) / 2 * k);
+  }
+  function actor(g, m, base) {
+    var mx = new THREE.AnimationMixer(m), A = {};
+    // clip names may carry the rig's name: 'CharacterArmature|Wave' → 'Wave'
+    g.animations.forEach(function (c) { A[c.name.split('|').pop()] = mx.clipAction(c); });
+    var cur = A[base]; cur.play();
+    mixers.push(mx);
+    var me = { A: A, mx: mx };
+    mx.addEventListener('finished', function (e) {
+      if (e.action !== cur) return;
+      var b = A[base]; b.reset().play(); cur.crossFadeTo(b, 0.3, false); cur = b;
+    });
+    me.play = function (name, loop) {
+      var a = A[name]; if (!a || a === cur) return;
+      a.reset(); a.setLoop(loop ? THREE.LoopRepeat : THREE.LoopOnce, Infinity);
+      a.clampWhenFinished = !loop; a.play();
+      cur.crossFadeTo(a, 0.25, false); cur = a;
+    };
+    me.rest = function () { me.play(base, true); };
+    return me;
+  }
+
+
+  // One class written out whole: a board with its three parts — the description the
+  // classifier reads, the question→answer pairs, the constraints. Left to right: the
+  // classifier, the class board, the model. A question comes in, the classifier holds it
+  // against the description and picks this class; the model answers from all three parts.
+  var Y0 = -1.5;
+  var XS = { clf: -8.2, cl: 0, mdl: 8.2 }, WS = { clf: 3.4, cl: 9.0, mdl: 3.8 };
+  var clf = station(XS.clf, Y0, '#E3EBF1', '#6F8FA8', '◎', 'Классификатор', '', WS.clf);
+  var clP = station(XS.cl, Y0, '#F3EDE3', '#8C6B4B', '', 'Класс · возврат', '', WS.cl);
+  var mdl = station(XS.mdl, Y0, '#FBEFCB', C.M, '✎', 'Модель', '', WS.mdl);
+  // the classifier is the same robot as the model; only its plate tells them apart
+  var clfBot = null;
+  new THREE.GLTFLoader().load('../models/robot.glb', function (g) {
+    var m = g.scene;
+    m.traverse(function (o) { if (o.isMesh && o.material && o.material.name === 'Main') { o.material = o.material.clone(); o.material.color.setHex(0xD99A1E).convertSRGBToLinear(); } });
+    var holder = new THREE.Group(); holder.add(m); place(m, 1.5);
+    holder.position.set(clf.x, clf.top, 0.6); holder.rotation.y = 0.35; world.add(holder);
+    clfBot = actor(g, m, 'Idle');
+  });
+  contact(clf, 1.3);
+
+  // the class board: three blocks, each comes when its step comes, and lights up when used
+  var PARTS = [
+    ['📝', 'Описание', '#2A6B38', 'для классификатора', ['вернуть товар и деньги за него', 'в течение 14 дней после получения']],
+    ['❓', 'Вопросы-ответы', '#3A86C8', 'готовые ответы', ['«без чека?» → «по номеру заказа»', '«куда деньги?» → «на карту оплаты»']],
+    ['⛔', 'Ограничения', '#C9762E', 'чего нельзя', ['не обещать дату возврата денег', 'не принимать товар со следами']]
+  ];
+  var BW = 8.4, BH = 3.9, BCV = document.createElement('canvas'); BCV.width = 1680; BCV.height = 780;
+  var bTex = liveTex(BCV), bShown = 0, bHot = [0, 0, 0];
+  function boardDraw() {
+    var x = BCV.getContext('2d'), W = BCV.width, H = BCV.height;
+    x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, W, H);
+    x.fillStyle = '#8C6B4B'; x.fillRect(0, 0, W, 92);
+    x.fillStyle = '#FFFFFF'; x.font = '800 50px Manrope, sans-serif'; x.fillText('Класс «возврат» — один набор', 34, 63);
+    var bw = (W - 4 * 26) / 3;
+    PARTS.forEach(function (p, i) {
+      var bx = 26 + i * (bw + 26), by = 118, bh = H - by - 26;
+      if (i >= bShown) {   // a place kept for the part that has not come yet
+        x.strokeStyle = '#E2DED3'; x.lineWidth = 4; x.setLineDash([14, 12]); x.strokeRect(bx, by, bw, bh); x.setLineDash([]);
+        return;
+      }
+      x.fillStyle = bHot[i] ? p[2] + '22' : '#F7F5F0'; x.fillRect(bx, by, bw, bh);
+      x.strokeStyle = p[2]; x.lineWidth = bHot[i] ? 12 : 5; x.strokeRect(bx, by, bw, bh);
+      x.fillStyle = p[2]; x.fillRect(bx, by, bw, 84);
+      x.fillStyle = '#FFFFFF'; x.font = '800 42px Manrope, sans-serif'; x.fillText(p[0] + ' ' + p[1], bx + 22, by + 57);
+      x.fillStyle = p[2]; x.font = '800 34px Manrope, sans-serif'; x.fillText(p[3], bx + 22, by + 134);
+      x.fillStyle = '#15140F'; x.font = '800 38px Manrope, sans-serif';
+      var y = by + 200;
+      p[4].forEach(function (t) {   // wrap each line to the block's width
+        var words = t.split(' '), cur = '';
+        words.forEach(function (w) { var tt = cur ? cur + ' ' + w : w; if (x.measureText(tt).width > bw - 44) { x.fillText(cur, bx + 22, y); y += 48; cur = w; } else cur = tt; });
+        x.fillText(cur, bx + 22, y); y += 70;
+      });
+    });
+    bTex.needsUpdate = true;
+  }
+  var board = new THREE.Group();
+  (function () {
+    var back = slab(BW + 0.16, BH + 0.16, 0.1, 0.08, 0x8C6B4B); board.add(back);
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(BW, BH), new THREE.MeshBasicMaterial({ map: bTex })); f.position.z = FZ(0.1); board.add(f);
+    [-1, 1].forEach(function (s) { var l = box(0.12, 0.5, 0.12, 0x6E533B); l.position.set(s * (BW / 2 - 0.6), -BH / 2 - 0.25, 0); board.add(l); });
+    board.position.set(XS.cl, clP.top + 0.5 + BH / 2, OBJZ); world.add(board);
+  })();
+  var boardS = 0, boardTo = 0;
+  // where the parts sit on the board, for what flies out of them
+  function partT(i) { return [XS.cl - BW / 3 + i * BW / 3, clP.top + 0.5 + BH * 0.55, OBJZ + 0.5]; }
+  var CLFT = [XS.clf, clf.top + 1.7, 1.4], MDLT = [XS.mdl + 0.9, mdl.top + 1.9, 1.4];
+
+  // the model is our robot, at its desk
+  var rob = null;
+  new THREE.GLTFLoader().load('../models/robot.glb', function (g) {
+    var m = g.scene;
+    m.traverse(function (o) {
+      if (o.isMesh && o.material && o.material.name === 'Main') { o.material = o.material.clone(); o.material.color.setHex(AMBER).convertSRGBToLinear(); }
+    });
+    var holder = new THREE.Group(); holder.add(m); place(m, 1.5);
+    holder.position.set(XS.mdl + 0.9, mdl.top, 0.6); holder.rotation.y = -0.45; world.add(holder);
+    rob = actor(g, m, 'Idle');
+  });
+  // speech bubbles: the question over the classifier, the answer over the model
+  var bubs = [];
+  function bubble(css, at) {
+    var e = document.createElement('div'); e.className = 'msg above'; e.style.display = 'none';
+    e.style.cssText += ';border:3px solid ' + css + ';border-radius:16px;background:#FFFFFF;padding:.45em .8em;font-weight:800;max-width:30vw;white-space:normal';
+    document.getElementById('ui').appendChild(e);
+    var b = { e: e, p: new THREE.Vector3(at[0], at[1], at[2]) };
+    b.show = function (t) { e.textContent = t; e.style.display = 'block'; };
+    b.hide = function () { e.style.display = 'none'; };
+    bubs.push(b); return b;
+  }
+
+  /* ========== Карточки ========== */
+  // What a step says is written on a flat card that always faces the viewer and stays;
+  // a step only adds lines, the current step's lines are outlined
+  var ui = document.getElementById('ui');
+  function card(x, y, how) {
+    var e = document.createElement('div'); e.className = 'msg ' + how; ui.appendChild(e);
+    return { e: e, p: new THREE.Vector3(x, y, OBJZ + 0.6) };
+  }
+  var CARDS = {
+    cl:   card(XS.cl - WS.cl / 2 + 0.2, Y0 - CHT / 2 - 0.25, 'right'),     // under the class: what it is made of
+    clf:  card(XS.clf - WS.clf / 2 + 0.2, Y0 - CHT / 2 - 0.25, 'right'),   // under the classifier: how it picks
+    desk: card(XS.mdl - WS.mdl / 2 - 0.4, Y0 - CHT / 2 - 0.25, 'right')    // under the model: what it answers from
+  };
+  var bQ = bubble('#3A86C8', [XS.clf, clf.top + 2.7, OBJZ]), bA = bubble('#2A6B38', [XS.mdl, mdl.top + 2.6, OBJZ]);
+  var ARW = { go: '→', back: '←', ok: '✓', no: '✗' };
+  // card, kind, icon (instead of the arrow) or null, text
+  var STEPS = [
+    ['Класс', [['cl', 'go', null, 'один класс = один набор из трёх частей']]],
+    ['Описание', [['cl', 'go', '📝', 'описание — его читает классификатор']]],
+    ['Вопросы-ответы', [['cl', 'go', '❓', 'готовые ответы на частые вопросы']]],
+    ['Ограничения', [['cl', 'no', '⛔', 'чего модели нельзя обещать']]],
+    ['Классификатор', [['clf', 'go', null, 'вопрос ↔ описания классов'], ['clf', 'ok', null, 'подошло описание → класс «возврат»']]],
+    ['Ответ из класса', [['desk', 'ok', null, 'ответ — из вопросов-ответов и описания'], ['desk', 'no', null, 'ограничение: дату денег не обещаем']]]
+  ];
+  var Q = '«Хочу вернуть куртку, чек потерял»';
+  var A = '«Вернуть можно в течение 14 дней. Без чека — по номеру заказа, деньги придут на карту оплаты»';
+  var capEl = document.getElementById('cap');
+  capEl.style.setProperty('--c', '#8C6B4B');
+  capEl.innerHTML = STEPS.map(function () { return '<span class="s"></span>'; }).join('<span class="a">→</span>');
+  capEl.querySelectorAll('.s').forEach(function (e, i) { e.textContent = (i + 1) + ' · ' + STEPS[i][0]; e.addEventListener('click', function () { startAt(i); }); });
+  function capS(i, v) { var e = capEl.querySelectorAll('.s')[i]; if (!e) return; e.classList.toggle('on', v === 1); e.classList.toggle('done', v === 2); }
+  function lit(c) { c.lit = T; }
+  var lines = [];
+  function addLine(n, l, live) {
+    var c = CARDS[l[0]], d = document.createElement('div');
+    d.className = 'ln ' + l[1] + (live ? '' : ' in');
+    d.innerHTML = '<b>' + (n + 1) + '</b><i></i><span></span>';
+    d.querySelector('i').textContent = l[2] || ARW[l[1]];
+    d.querySelector('span').textContent = l[3];
+    c.e.appendChild(d); c.e.classList.add('on');
+    lines.push({ d: d, n: n });
+    return d;
+  }
+  function mark(n) { lines.forEach(function (o) { o.d.classList.toggle('cur', o.n === n); }); }
+  var pv = new THREE.Vector3();
+  function placeMsgs() {
+    var r = renderer.domElement.getBoundingClientRect();
+    for (var k in CARDS) {
+      var c = CARDS[k]; pv.copy(c.p).project(camera);
+      c.e.style.left = ((pv.x + 1) / 2 * r.width).toFixed(1) + 'px';
+      c.e.style.top = ((1 - pv.y) / 2 * r.height).toFixed(1) + 'px';
+    }
+    bubs.forEach(function (b) {
+      pv.copy(b.p).project(camera);
+      b.e.style.left = ((pv.x + 1) / 2 * r.width).toFixed(1) + 'px';
+      b.e.style.top = ((1 - pv.y) / 2 * r.height).toFixed(1) + 'px';
+    });
+  }
+
+  /* ========== Сценарий ========== */
+  var T = 0, timers = [];
+  function later(s, fn) { timers.push({ t: T + s, fn: fn }); }
+  // a tag carried from a to b along an arc: the question, the class, what the model takes
+  var flyTags = [];
+  function flyTag(text, css, a, b, delay, dur, done) {
+    var g = makeTag(text, css); g.visible = false; world.add(g);
+    flyTags.push({ g: g, a: a, b: b, t0: T + delay, dur: dur, done: done });
+  }
+  function flyClear() { flyTags.forEach(function (f) { world.remove(f.g); }); flyTags = []; }
+  function clear() {
+    timers = []; flyClear(); lines.forEach(function (o) { o.d.remove(); }); lines = [];
+    for (var k in CARDS) CARDS[k].e.classList.remove('on');
+    for (var i = 0; i < STEPS.length; i++) capS(i, 0);
+    bubs.forEach(function (b) { b.hide(); });
+    if (rob) rob.rest();
+  }
+  // what the steps before n left on the stage, laid out at once
+  function state(n) {
+    boardS = boardTo = n >= 0 ? 1 : 0;
+    bShown = Math.max(0, Math.min(3, n)); bHot = [0, 0, 0];
+    boardDraw();
+  }
+  // what each step does on the stage, besides its card lines
+  function act(n) {
+    if (n === 0) { boardTo = 1; bShown = 0; bHot = [0, 0, 0]; boardDraw(); lit(clP); }
+    if (n >= 1 && n <= 3) { later(0.3, function () { bShown = n; bHot = [0, 0, 0]; bHot[n - 1] = 1; boardDraw(); lit(clP); }); }
+    if (n === 4) {
+      // the question comes to the classifier; it holds it against the description and names the class
+      bHot = [0, 0, 0]; boardDraw();
+      later(0.1, function () { bQ.show(Q); });
+      flyTag('«хочу вернуть куртку»', '#3A86C8', [XS.clf - 3.4, clf.top + 1.9, 1.4], CLFT, 0.5, 1.1, function () { lit(clf); });
+      later(1.8, function () { bHot = [1, 0, 0]; boardDraw(); lit(clP); });
+      flyTag('класс: возврат', '#6F8FA8', CLFT, partT(0), 2.3, 1.0, function () { lit(clP); });
+    }
+    if (n === 5) {
+      // the model answers from the whole set: all three parts go to it
+      bQ.hide();
+      later(0.2, function () { bHot = [1, 1, 1]; boardDraw(); lit(clP); });
+      PARTS.forEach(function (p, i) {
+        flyTag(p[0] + ' ' + p[1].toLowerCase(), p[2], partT(i), MDLT, 0.5 + i * 0.35, 1.2, function () { lit(mdl); if (i === 2) { if (rob) rob.play('Yes'); bA.show(A); } });
+      });
+    }
+  }
+  function play(n) {
+    capS(n, 1); mark(n); act(n);
+    var at = n === 4 ? 2.6 : n === 5 ? 2.4 : 0.9;
+    STEPS[n][1].forEach(function (l, k) {
+      later(at + k * 0.7, function () {
+        var d = addLine(n, l, true); mark(n);
+        requestAnimationFrame(function () { d.classList.add('in'); });
+      });
+    });
+    later(at + STEPS[n][1].length * 0.7 + 0.4, function () { if (cur === n) capS(n, 2); });
+  }
+  var cur = -1;
+  function startAt(n) {
+    if (n === cur + 1 && n > 0) {   // the usual way forward: nothing on screen is touched, the step is added
+      timers.forEach(function (t) { t.fn(); }); timers = [];
+      flyTags.forEach(function (f) { if (f.done) f.done(); }); flyClear();
+      capS(cur, 2); cur = n; play(n); return;
+    }
+    clear(); state(n); cur = n;
+    if (n === 5) bQ.hide();
+    for (var i = 0; i < n; i++) { STEPS[i][1].forEach(function (l) { addLine(i, l, false); }); capS(i, 2); }
+    play(n);
+  }
+  // the deck's arrows walk the steps first and only then turn the slide
+  window.__fwd = function () { if (cur < STEPS.length - 1) { startAt(cur + 1); return true; } return false; };
+  window.__back = function () { if (cur > 0) { startAt(cur - 1); return true; } if (cur === 0) { clear(); state(-1); cur = -1; return true; } return false; };
+  function next() { if (cur >= STEPS.length - 1) { clear(); state(-1); cur = -1; return; } startAt(cur + 1); }
+  addEventListener('keydown', function (e) {
+    var i = '123456'.indexOf(e.key);
+    if (i >= 0) startAt(i);
+    else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); next(); }
+  });
+  window.__next = next; window.__pick = startAt;
+  state(-1);
+
+  // The camera is not placed by hand: it is fitted to the stage (the plates, the board and
+  // the bubbles over the classifier and the model) so it sits between the header and the steps
+  var EXT = { x0: XS.clf - WS.clf / 2 - 1.2, x1: XS.mdl + WS.mdl / 2 + 0.6, y0: Y0 - CHT / 2 - 1.3, y1: clP.top + 0.5 + BH + 0.3 };
+  function fitCam() {
+    var hdB = document.getElementById('hd').getBoundingClientRect().bottom, cpT = capEl.getBoundingClientRect().top;
+    var top = 1 - 2 * (hdB + 6) / innerHeight, bot = -1 + 2 * (innerHeight - cpT + 14) / innerHeight, side = 0.94;
+    var pts = [];
+    [EXT.x0, EXT.x1].forEach(function (x) { [EXT.y0, EXT.y1].forEach(function (y) { [-0.6, 1.4].forEach(function (z) { pts.push(new THREE.Vector3(x, y, z)); }); }); });
+    var k = 1.3, cx = (EXT.x0 + EXT.x1) / 2, cy = (EXT.y0 + EXT.y1) / 2, t = Math.tan(camera.fov / 2 * Math.PI / 180), asp = innerWidth / innerHeight;
+    camera.aspect = asp; camera.updateProjectionMatrix();
+    for (var it = 0; it < 5; it++) {
+      camera.position.set(cx, cy + 6.2 * k, 29.6 * k); camera.lookAt(cx, cy, 0); camera.updateMatrixWorld(true);
+      var nx0 = 9, nx1 = -9, ny0 = 9, ny1 = -9, v = new THREE.Vector3();
+      pts.forEach(function (p) { v.copy(p).project(camera); nx0 = Math.min(nx0, v.x); nx1 = Math.max(nx1, v.x); ny0 = Math.min(ny0, v.y); ny1 = Math.max(ny1, v.y); });
+      var D = Math.hypot(6.2, 29.6) * k;
+      cx += (nx0 + nx1) / 2 * D * t * asp;
+      cy += ((ny0 + ny1) / 2 - (top + bot) / 2) * D * t;
+      k *= Math.max((nx1 - nx0) / (2 * side), (ny1 - ny0) / (top - bot));
+    }
+    CAM0.x = cam.x = camTo.x = cx; CAM0.y = cam.y = camTo.y = cy; CAM0.k = cam.k = camTo.k = k;
+    placeCam();
+  }
+  fitCam();
+
+  // per frame: the board rises into place, tags fly
+  function stage(dt) {
+    boardS += (boardTo - boardS) * Math.min(1, dt * 5);
+    board.visible = boardS > 0.01; board.scale.setScalar(Math.max(0.001, boardS));
+    flyTags = flyTags.filter(function (f) {
+      var k = (T - f.t0) / f.dur;
+      if (k < 0) return true;
+      var e = ease(k); f.g.visible = true;
+      f.g.position.set(f.a[0] + (f.b[0] - f.a[0]) * e, f.a[1] + (f.b[1] - f.a[1]) * e + Math.sin(Math.PI * Math.min(1, k)) * 0.8, f.a[2] + (f.b[2] - f.a[2]) * e);
+      if (k >= 1) { world.remove(f.g); if (f.done) f.done(); return false; }
+      return true;
+    });
+    placeMsgs();
+  }
+
+  /* ========== Animate ========== */
+  var clock = new THREE.Clock();
+  function frame(dt) {
+    T += dt;
+    placeCam();
+    var due = timers.filter(function (t) { return t.t <= T; });
+    timers = timers.filter(function (t) { return t.t > T; });
+    due.forEach(function (t) { t.fn(); });
+    cards.forEach(function (c) { var k = T - c.lit; c.glow.material.opacity = k < 2 ? 0.55 * (1 - k / 2) : 0; });
+    mixers.forEach(function (m) { m.update(dt); });
+    stage(dt);
+    camUser(dt);
+    renderer.render(scene, camera);
+  }
+  (function tick() {
+    requestAnimationFrame(tick);
+    frame(Math.min(clock.getDelta(), 0.1));
+  })();
+  addEventListener('resize', function () {
+    renderer.setSize(innerWidth, innerHeight);
+    fitCam();
+  });
+  });
+});
+</script>
+<script>
+(function () {
+  function init() {
+    var cap = document.getElementById('cap'); if (!cap) return;
+    function fit() { cap.classList.toggle('ovf', cap.scrollWidth > cap.clientWidth + 2); }
+    function follow() {
+      var c = cap.querySelector('.s.on') || [].slice.call(cap.querySelectorAll('.s.done')).pop();
+      if (!c) { cap.scrollTo({ left: 0, behavior: 'smooth' }); return; }
+      cap.scrollTo({ left: c.offsetLeft - (cap.clientWidth - c.offsetWidth) / 2, behavior: 'smooth' });
+    }
+    new MutationObserver(function () { fit(); follow(); }).observe(cap, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
+    addEventListener('resize', function () { fit(); follow(); });
+    fit();
+  }
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', init); else init();
+})();
+</script><script>
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d || !parent.go) return;
+  e.preventDefault();
+  if (parent.__deckKey && parent.__deckKey(d)) return;   // a lead card in front takes the key
+  var f = d > 0 ? window.__fwd : window.__back;
+  if (f && f()) return;   // the slide took a step of its own
+  parent.go(d);
+});
+</script>

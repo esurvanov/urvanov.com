@@ -1,0 +1,167 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><style>#hd{flex-wrap:wrap;row-gap:.3em}.hd-lead{order:9;flex-basis:100%;display:flex;flex-wrap:wrap;gap:.35em 1.4em;font-size:clamp(10px,.95vw,15px);font-weight:700;color:#5E5B50;letter-spacing:0;text-transform:none}body.lead-wait .hd-lead{opacity:0}</style><title>План доклада</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Same look as the rest of the deck: warm off-white canvas, Manrope 800, green / amber / risk colours */
+:root { color-scheme: light; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
+             font-family:'Manrope', system-ui, sans-serif; color:#15140F; }
+
+#hd { position:absolute; top:0; left:0; right:0;
+      padding: clamp(16px,2.2vw,30px) clamp(22px,4vw,56px);
+      display:flex; align-items:baseline; gap:1.4em; }
+.hd-no { font-size:clamp(8px,.68vw,10px); font-weight:700; text-transform:uppercase;
+         letter-spacing:.2em; color:#2A6B38; white-space:nowrap; }
+.hd-t  { font-size:clamp(17px,2.3vw,32px); font-weight:800; letter-spacing:-.024em; }
+
+#ft { position:absolute; left:0; right:0; bottom:0;
+      padding: clamp(10px,1.4vw,20px) clamp(22px,4vw,56px);
+      display:flex; align-items:center; gap:1.1em; flex-wrap:wrap;
+      font-size:clamp(8px,.74vw,11px); font-weight:700;
+      text-transform:uppercase; letter-spacing:.13em; color:#8A8778; }
+#ft b { color:#A8650F; font-weight:700; }
+
+#stage { position:absolute; left:clamp(22px,4vw,56px); right:clamp(22px,4vw,56px);
+         top:50%; transform:translateY(-54%); }
+
+/* the chain of parts */
+#chain { display:grid; grid-template-columns:1fr auto 1fr auto 1.5fr auto 1.9fr auto 1.4fr; align-items:stretch;
+         gap:clamp(6px,.9vw,14px); }
+.card { position:relative; background:#FFFFFF; border-radius:22px; cursor:pointer;
+        padding:clamp(14px,1.6vw,26px) clamp(14px,1.5vw,24px);
+        box-shadow:0 6px 18px rgba(21,20,15,.07); border-top:6px solid var(--c);
+        display:flex; flex-direction:column; gap:clamp(6px,.7vw,12px);
+        opacity:0; transform:translateY(14px);
+        transition:transform .25s, box-shadow .25s; }
+.card:hover { transform:translateY(-4px); box-shadow:0 12px 26px rgba(21,20,15,.12); }
+.ic { width:clamp(34px,3.4vw,56px); height:clamp(34px,3.4vw,56px); border-radius:16px;
+      background:var(--bg); display:grid; place-items:center; }
+.ic svg { width:58%; height:58%; stroke:var(--c); fill:none; stroke-width:2.2;
+          stroke-linecap:round; stroke-linejoin:round; }
+.no { font-size:clamp(9px,.75vw,12px); font-weight:800; letter-spacing:.16em; color:var(--c); }
+.t  { font-size:clamp(16px,1.9vw,30px); font-weight:800; letter-spacing:-.02em; line-height:1.05; }
+.s  { font-size:clamp(10px,.95vw,15px); font-weight:700; color:#8A8778; }
+.arr { align-self:center; color:#B7B4A8; font-size:clamp(16px,1.8vw,28px); font-weight:800;
+       opacity:0; }
+
+/* the approach card lists its steps as chips */
+.chips { display:flex; flex-wrap:wrap; gap:.4em; margin-top:auto; }
+.chip { font-size:clamp(9px,.82vw,13px); font-weight:800; padding:.4em .8em; border-radius:999px;
+        background:var(--bg); color:var(--c); white-space:nowrap; }
+.chip i { font-style:normal; opacity:.55; margin-right:.35em; }
+
+/* the timeline underneath: one cell per slide, coloured by part */
+#tl { margin-top:clamp(18px,2.4vw,40px); }
+#tl .bar { display:flex; gap:4px; }
+#tl .seg { flex:1; height:clamp(8px,.8vw,12px); border-radius:6px; background:var(--c);
+           transform:scaleX(0); transform-origin:left; }
+#tl .lb { display:flex; justify-content:space-between; margin-top:.6em;
+          font-size:clamp(8px,.72vw,11px); font-weight:800; letter-spacing:.14em; color:#8A8778; }
+
+body.in .card, body.in .arr { animation:up .55s cubic-bezier(.22,.8,.24,1) forwards; animation-delay:calc(var(--i) * .12s); }
+body.in .seg { animation:grow .4s ease forwards; animation-delay:calc(.5s + var(--k) * .04s); }
+@keyframes up   { to { opacity:1; transform:none; } }
+@keyframes grow { to { transform:none; } }
+</style>
+
+<div id="hd">
+  <span class="hd-no">00 · План</span>
+  <span class="hd-t">О чём доклад</span><span class="hd-lead">Домен → атаки → защита → архитектура в деле → технологии</span>
+</div>
+
+<div id="stage">
+  <div id="chain">
+    <div class="card" data-go="2" style="--i:0;--c:#2E7FB8;--bg:#E1EEF7">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></div>
+      <div class="no">01</div>
+      <div class="t">Домен</div>
+      <div class="s">Customer Success: бот и люди</div>
+    </div>
+    <div class="arr" style="--i:.5">→</div>
+    <div class="card" data-go="3" style="--i:1;--c:#D9534F;--bg:#F8E1DF">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.1"/></svg></div>
+      <div class="no">02</div>
+      <div class="t">Атаки</div>
+      <div class="s">Самые известные</div>
+    </div>
+    <div class="arr" style="--i:1.5">→</div>
+    <div class="card" data-go="4" style="--i:2;--c:#2A6B38;--bg:#E0EDE2">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+      <div class="no">03 – 06</div>
+      <div class="t">Защита</div>
+      <div class="chips">
+        <span class="chip"><i>03</i>OWASP → GUARD</span>
+        <span class="chip"><i>04</i>Архитектура</span>
+        <span class="chip"><i>05</i>Пример</span>
+        <span class="chip"><i>06</i>Data · Control</span>
+      </div>
+    </div>
+    <div class="arr" style="--i:2.5">→</div>
+    <div class="card" data-go="8" style="--i:3;--c:#0F8B8D;--bg:#D3F0EE">
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+      <div class="no">07 – 11</div>
+      <div class="t">Архитектура</div>
+      <div class="chips">
+        <span class="chip"><i>07</i>Декомпозиция</span>
+        <span class="chip"><i>08</i>Один процесс</span>
+        <span class="chip"><i>09</i>Реальные условия</span>
+        <span class="chip"><i>10</i>Классификатор</span>
+        <span class="chip"><i>11</i>Пример</span>
+      </div>
+    </div>
+    <div class="arr" style="--i:3.5">→</div>
+    <div class="card" data-go="13" style="--i:4;--c:#D99A1E;--bg:#F8EDD6">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5-8 4.5-8-4.5z"/><path d="M4 12l8 4.5 8-4.5M4 16.5l8 4.5 8-4.5"/></svg></div>
+      <div class="no">12 – 14</div>
+      <div class="t">Технологии</div>
+      <div class="chips"><span class="chip"><i>12</i>Стек</span><span class="chip"><i>13</i>Статусы системы</span><span class="chip"><i>14</i>Статусы агента</span></div>
+    </div>
+  </div>
+
+  <div id="tl">
+    <div class="bar" id="bar"></div>
+    <div class="lb"><span>01</span><span>14 слайдов</span></div>
+  </div>
+</div>
+
+<div id="ft">
+  <span>5 частей</span>
+  <span>·</span>
+  <span><b>Клик по карточке — переход</b></span>
+</div>
+
+<script>
+// one timeline cell per slide, coloured by the part it belongs to
+(function () {
+  var parts = [['#2E7FB8', 1], ['#D9534F', 1], ['#2A6B38', 4], ['#0F8B8D', 5], ['#D99A1E', 3]], k = 0, bar = document.getElementById('bar');
+  parts.forEach(function (p) {
+    for (var j = 0; j < p[1]; j++) {
+      var s = document.createElement('div');
+      s.className = 'seg'; s.style.setProperty('--c', p[0]); s.style.setProperty('--k', k++);
+      bar.appendChild(s);
+    }
+  });
+})();
+document.querySelectorAll('.card').forEach(function (c) {
+  c.onclick = function () { try { parent.show(+c.dataset.go, true); } catch (e) {} };
+});
+// the entrance plays when the slide comes on (inside the deck: after its phrase has flown);
+// it is reset only once the slide is out of sight, so nothing ever snaps back on screen
+function play() { if (document.body.classList.contains('in')) return; void document.body.offsetWidth; document.body.classList.add('in'); }
+window.__enter = play;
+window.__leave = function () { document.body.classList.remove('in'); };
+var inDeck = false; try { inDeck = parent !== window && !!parent.show; } catch (e) {}
+if (!inDeck) play();
+</script>
+<script>
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d || !parent.go) return;
+  e.preventDefault();
+  if (parent.__deckKey && parent.__deckKey(d)) return;   // a lead card in front takes the key
+  var f = d > 0 ? window.__fwd : window.__back;
+  if (f && f()) return;   // the slide took a step of its own
+  parent.go(d);
+});
+</script>

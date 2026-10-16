@@ -1,0 +1,855 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><style>#hd{flex-wrap:wrap;row-gap:.3em}.hd-lead{order:9;flex-basis:100%;display:flex;flex-wrap:wrap;gap:.35em 1.4em;font-size:clamp(10px,.95vw,15px);font-weight:700;color:#5E5B50;letter-spacing:0;text-transform:none}body.lead-wait .hd-lead{opacity:0}</style><title>Начало · Герои</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Same committed look as slide 01: warm off-white canvas, green system, amber model, Manrope 800 */
+:root { color-scheme: light; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
+             font-family:'Manrope', system-ui, sans-serif; }
+#c  { display:block; position:fixed; inset:0; width:100%; height:100%; }
+#ui { position:fixed; inset:0; pointer-events:none; }
+
+#hd { position:absolute; top:0; left:0; right:0;
+      padding: clamp(16px,2.2vw,30px) clamp(22px,4vw,56px);
+      display:flex; align-items:baseline; gap:1.4em; }
+.hd-no { font-size:clamp(8px,.68vw,10px); font-weight:700; text-transform:uppercase;
+         letter-spacing:.2em; color:#2A6B38; white-space:nowrap; }
+.hd-t  { font-size:clamp(17px,2.3vw,32px); font-weight:800; color:#15140F;
+         letter-spacing:-.024em; }
+
+#ft { position:absolute; left:0; right:0; bottom:0;
+      padding: clamp(10px,1.4vw,20px) clamp(22px,4vw,56px);
+      display:flex; align-items:center; gap:1.1em; flex-wrap:wrap;
+      font-size:clamp(8px,.74vw,11px); font-weight:700;
+      text-transform:uppercase; letter-spacing:.13em; color:#8A8778; }
+#ft b { color:#A8650F; font-weight:700; }
+
+#cap { position:absolute; left:50%; transform:translateX(-50%); bottom:clamp(40px,7.5vh,84px); pointer-events:auto;
+       display:flex; align-items:center; gap:.5em; white-space:nowrap;
+       font-size:clamp(10px,.88vw,15px); font-weight:700; --c:#D99A1E; }
+#cap .t { padding:.5em 1em; border-radius:999px; background:var(--c); color:#FFFFFF; font-weight:800; }
+#cap .s { padding:.5em 1em; border-radius:999px; background:#FFFFFF; color:#B7B4A8; cursor:pointer;
+          transition:color .3s, box-shadow .3s; }
+#cap .s.on   { color:#15140F; box-shadow:inset 0 0 0 2px var(--c); }
+#cap .s.done { color:var(--c); }
+#cap .a { color:#B7B4A8; font-weight:800; }
+#cap .s:hover { color:#15140F; }
+#log { display:none; position:absolute; right:clamp(22px,4vw,56px); top:clamp(16px,2.2vw,30px); width:clamp(220px,22vw,340px);
+       background:#FFFFFF; border-radius:14px; padding:.6em .8em; box-shadow:0 6px 18px rgba(21,20,15,.08);
+       font-size:clamp(10px,.8vw,13px); font-weight:700; color:#15140F; }
+#log .lh { color:#2E7FB8; font-weight:800; margin-bottom:.3em; }
+#log .ln { display:flex; gap:.5em; padding:.15em 0; border-top:1px solid #EFEEE9; animation:lnIn .3s ease; }
+#log .ln b { color:var(--c); min-width:1.4em; }
+@keyframes lnIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:none; } }
+
+/* Speech bubbles stand still over whoever speaks: nothing to read in flight */
+.bub { position:absolute; left:0; top:0; transform:translate(-50%,-100%) scale(.85);
+       opacity:0; transition:opacity .25s, transform .25s; white-space:nowrap;
+       background:#FFFFFF; color:#15140F; border:3px solid var(--c,#3A86C8);
+       border-radius:18px; padding:.45em .9em; font-weight:800;
+       font-size:clamp(12px,1.25vw,21px); box-shadow:0 6px 18px rgba(21,20,15,.12); }
+.bub.on { opacity:1; transform:translate(-50%,-100%) scale(1); }
+.bub::after { content:''; position:absolute; left:50%; bottom:-11px; width:16px; height:16px;
+              background:#FFFFFF; border-right:3px solid var(--c,#3A86C8); border-bottom:3px solid var(--c,#3A86C8);
+              transform:translateX(-50%) rotate(45deg); }
+.bub.tag { border-radius:999px; color:#FFFFFF; background:var(--c); }
+.bub.tag::after { display:none; }
+</style>
+
+<canvas id="c"></canvas>
+<div id="ui">
+  <div id="hd">
+    <span class="hd-no">00 · Начало</span>
+    <span class="hd-t">Новый формат: интерактивные слайды</span><span class="hd-lead">Эту презентацию я собрал с Opus 5.5 и Fable — расскажите, как вам</span>
+  </div>
+  <div id="ft">
+    <span>Покажу, как это делается</span>
+    <span>·</span>
+    <span><b>Жду ваш фидбэк</b></span>
+  </div>
+</div>
+
+<script src="../lib/three.min.js"></script>
+<script src="../lib/GLTFLoader.js"></script>
+<script>
+// Always override: the native roundRect appends to the current path instead of
+// starting one, so successive fills repaint every earlier subpath.
+{
+  CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
+    this.beginPath(); this.moveTo(x+r,y); this.lineTo(x+w-r,y);
+    this.arcTo(x+w,y,x+w,y+r,r); this.lineTo(x+w,y+h-r);
+    this.arcTo(x+w,y+h,x+w-r,y+h,r); this.lineTo(x+r,y+h);
+    this.arcTo(x,y+h,x,y+h-r,r); this.lineTo(x,y+r);
+    this.arcTo(x,y,x+r,y,r); this.closePath();
+  };
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  var F = document.fonts;
+  var ready = F ? Promise.all([
+    F.load('800 72px Manrope'), F.load('700 30px Manrope'), F.load('600 28px Manrope')
+  ]).catch(function () {}) : Promise.resolve();
+  ready.then(function () {
+
+  var CANVAS_BG = 0xECEBE6;
+  var GREEN = 0x2A6B38, AMBER = 0xD99A1E, CARD = 0xFFFFFF;
+  var RISK = [
+    { css: '#D9534F', hex: 0xD9534F, bg: '#F8E1DF' },
+    { css: '#C9762E', hex: 0xC9762E, bg: '#F7E7D6' },
+    { css: '#7E5FD0', hex: 0x7E5FD0, bg: '#ECE6FA' }
+  ];
+
+  var W = innerWidth, H = innerHeight;
+  var renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setSize(W, H);
+  renderer.setClearColor(CANVAS_BG);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(24, W / H, 2, 140);
+  camera.position.set(0, 6.4, 29.6);
+  camera.lookAt(0, -1.1, 0);   // the stage fills the frame: nothing above the cast but sky
+  // The viewer can look around: drag to turn the scene, right-drag (or Shift+drag)
+  // to move it, the wheel to come closer, a double click to go back. The story's
+  // own camera keeps working underneath; the viewer's turn rides on top of it.
+  var CU = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0, to: { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 },
+             look: new THREE.Vector3(), base: null, last: null };
+  (function () {
+    var lookAt0 = camera.lookAt.bind(camera);
+    camera.lookAt = function (x, y, z) {
+      if (x && x.isVector3) CU.look.copy(x); else CU.look.set(x, y, z);
+      lookAt0(CU.look);
+    };
+    CU.lookAt0 = lookAt0;
+    var el = renderer.domElement, drag = null;
+    el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    el.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, y: e.clientY, pan: e.button === 2 || e.shiftKey, on: false }; });
+    addEventListener('pointerup', function () { drag = null; });
+    addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.on && Math.hypot(dx, dy) < 4) return;
+      drag.on = true; drag.x = e.clientX; drag.y = e.clientY;
+      if (drag.pan) { CU.to.px -= dx * 0.0016; CU.to.py += dy * 0.0016; }
+      else {
+        CU.to.yaw = Math.max(-0.9, Math.min(0.9, CU.to.yaw - dx * 0.004));
+        CU.to.pitch = Math.max(-0.35, Math.min(0.5, CU.to.pitch + dy * 0.003));
+      }
+    });
+    el.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      CU.to.zoom = Math.max(0.45, Math.min(1.8, CU.to.zoom * Math.exp(e.deltaY * 0.0012)));
+    }, { passive: false });
+    el.addEventListener('dblclick', function () { CU.to = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 }; });
+    window.__center = function () { CU.to = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 }; };
+    // a visible button on the slide itself, top right
+    (function () {
+      var bt = document.createElement('button');
+      bt.textContent = '⌖ Центр'; bt.title = 'Вернуть сцену в центр';
+      bt.style.cssText = 'position:fixed;top:clamp(14px,2vw,26px);right:clamp(16px,3vw,44px);z-index:5;border:0;' +
+        'background:#FFFFFF;color:#15140F;border-radius:999px;padding:.5em 1em;cursor:pointer;' +
+        'font:800 clamp(11px,.9vw,14px)/1 Manrope,system-ui,sans-serif;box-shadow:0 2px 10px rgba(21,20,15,.12);';
+      bt.addEventListener('click', function (e) { e.stopPropagation(); window.__center(); });
+      bt.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+      document.body.appendChild(bt);
+    })();
+  })();
+  var cuV = new THREE.Vector3(), cuR = new THREE.Vector3(), cuU = new THREE.Vector3(), cuT = new THREE.Vector3(), cuQ = new THREE.Quaternion();
+  function camUser(dt) {
+    var p = camera.position;
+    // the story moved the camera since the last frame: that is the new base
+    if (!CU.last || !p.equals(CU.last)) CU.base = p.clone();
+    var k = 1 - Math.exp(-(dt || 0.016) * 8);
+    ['yaw', 'pitch', 'zoom', 'px', 'py'].forEach(function (n) { CU[n] += (CU.to[n] - CU[n]) * k; });
+    var tgt = CU.look, rel = cuV.copy(CU.base).sub(tgt), dist = rel.length();
+    rel.applyQuaternion(cuQ.setFromAxisAngle(cuU.set(0, 1, 0), CU.yaw));
+    cuR.crossVectors(cuU.set(0, 1, 0), rel).normalize();
+    rel.applyQuaternion(cuQ.setFromAxisAngle(cuR, -CU.pitch));
+    rel.multiplyScalar(CU.zoom);
+    cuU.crossVectors(rel, cuR).normalize();
+    cuT.copy(tgt).addScaledVector(cuR, -CU.px * dist).addScaledVector(cuU, CU.py * dist);
+    camera.position.copy(cuT).add(rel);
+    CU.lookAt0(cuT);
+    CU.last = camera.position.clone();
+  }
+
+  scene.add(new THREE.AmbientLight(0xFFFFFF, 0.78));
+  scene.add(new THREE.HemisphereLight(0xFFFFFF, 0xC9C7BD, 0.5));
+  var key = new THREE.DirectionalLight(0xFFFFFF, 0.62);
+  key.position.set(-5, 23, 9);
+  key.castShadow = true;
+  key.shadow.mapSize.width = 2048; key.shadow.mapSize.height = 2048;
+  key.shadow.camera.left = -15; key.shadow.camera.right = 15;
+  key.shadow.camera.top = 15;   key.shadow.camera.bottom = -15;
+  key.shadow.camera.near = 2;   key.shadow.camera.far = 48;
+  key.shadow.bias = -0.0004; key.shadow.normalBias = 0.05;
+  scene.add(key);
+  var fill = new THREE.DirectionalLight(0xFFFFFF, 0.22);
+  fill.position.set(9, 4, 8); scene.add(fill);
+
+  function flat(hex) {
+    var m = new THREE.MeshLambertMaterial({ color: hex });
+    m.color.convertSRGBToLinear();
+    return m;
+  }
+  function liveTex(c) {
+    var t = new THREE.CanvasTexture(c); t.anisotropy = 8; t.encoding = THREE.sRGBEncoding;
+    return t;
+  }
+  function face(cv) { return new THREE.MeshBasicMaterial({ map: liveTex(cv) }); }
+
+  function roundedShape(w, h, r) {
+    var s = new THREE.Shape(), x = -w / 2, y = -h / 2;
+    s.moveTo(x + r, y);
+    s.lineTo(x + w - r, y);           s.quadraticCurveTo(x + w, y, x + w, y + r);
+    s.lineTo(x + w, y + h - r);       s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    s.lineTo(x + r, y + h);           s.quadraticCurveTo(x, y + h, x, y + h - r);
+    s.lineTo(x, y + r);               s.quadraticCurveTo(x, y, x + r, y);
+    return s;
+  }
+  // The bevel sticks out past `depth` on both ends; faces go to FZ
+  var BEVEL = 0.035;
+  function FZ(d) { return d / 2 + BEVEL + 0.015; }
+  function slab(w, h, d, r, hex) {
+    var g = new THREE.ExtrudeGeometry(roundedShape(w, h, r), {
+      depth: d, bevelEnabled: true, bevelThickness: BEVEL, bevelSize: BEVEL,
+      bevelOffset: 0, bevelSegments: 2, curveSegments: 7
+    });
+    g.translate(0, 0, -d / 2);
+    var m = new THREE.Mesh(g, flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function box(w, h, d, hex) {
+    var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function cyl(r, h, hex, seg) {
+    var m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, seg || 32), flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function ease(k) { k = Math.max(0, Math.min(1, k)); return k * k * (3 - 2 * k); }
+
+  // soft radial glow, tinted per use
+  var glowCv = document.createElement('canvas'); glowCv.width = glowCv.height = 256;
+  (function () {
+    var x = glowCv.getContext('2d'), g = x.createRadialGradient(128, 128, 10, 128, 128, 128);
+    g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 256, 256);
+  })();
+  var glowTex = new THREE.CanvasTexture(glowCv);
+  function glow(w, h, hex) {
+    var m = new THREE.MeshBasicMaterial({ map: glowTex, color: hex, transparent: true,
+      opacity: 0, depthWrite: false });
+    return new THREE.Mesh(new THREE.PlaneGeometry(w, h), m);
+  }
+
+  var world = new THREE.Group();
+  scene.add(world);
+
+  var BASE = -4.35;
+  var ground = new THREE.Mesh(new THREE.PlaneGeometry(120, 90), new THREE.ShadowMaterial({ opacity: 0.11 }));
+  ground.rotation.x = -Math.PI / 2; ground.position.y = BASE; ground.receiveShadow = true;
+  world.add(ground);
+
+  function makeTag(name, css) {
+    var c = document.createElement('canvas'), x = c.getContext('2d');
+    x.font = '800 36px Manrope, sans-serif';
+    c.width = Math.ceil(x.measureText(name).width + 86); c.height = 84;
+    x = c.getContext('2d');
+    x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, c.width, 84);
+    x.fillStyle = css; x.beginPath(); x.arc(34, 42, 11, 0, 6.3); x.fill();
+    x.fillStyle = '#15140F'; x.font = '800 36px Manrope, sans-serif';
+    x.fillText(name, 56, 55);
+    var w = 0.37 * c.width / 84;
+    var g = new THREE.Group();
+    g.add(slab(w, 0.37, 0.1, 0.17, CARD));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.37), face(c));
+    f.position.z = FZ(0.1); g.add(f);
+    g.userData.w = w;
+    return g;
+  }
+  function sign(x, w, y, z, label, css) {
+    var cv = document.createElement('canvas'); cv.width = 560; cv.height = 96;
+    var c = cv.getContext('2d');
+    c.fillStyle = css; c.fillRect(0, 0, 560, 96);
+    c.fillStyle = '#FFFFFF'; c.font = '800 46px Manrope, sans-serif'; c.textAlign = 'center';
+    if (c.letterSpacing !== undefined) c.letterSpacing = '6px';
+    c.fillText(label, 280, 64);
+    var sg = new THREE.Group();
+    sg.add(slab(w, 0.56, 0.3, 0.12, parseInt(css.slice(1), 16)));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.56), face(cv));
+    f.position.z = FZ(0.3); sg.add(f);
+    sg.position.set(x, y, z); world.add(sg);
+  }
+
+  // Straight, flat arrows cut from slab stock; rot = PI/2 turns a down arrow to point right
+  var ARROWZ = 0.6;
+  function arrow(xc, yTop, yBot, hex, rot) {
+    var L = yTop - yBot, sw = 0.09, hw = 0.24, hl = Math.min(0.26, L * 0.5);
+    var sh = new THREE.Shape();
+    sh.moveTo(-sw, 0); sh.lineTo(sw, 0); sh.lineTo(sw, -(L - hl));
+    sh.lineTo(hw, -(L - hl)); sh.lineTo(0, -L); sh.lineTo(-hw, -(L - hl));
+    sh.lineTo(-sw, -(L - hl)); sh.closePath();
+    var g = new THREE.ExtrudeGeometry(sh, {
+      depth: 0.1, bevelEnabled: true, bevelThickness: 0.03, bevelSize: 0.02,
+      bevelOffset: 0, bevelSegments: 2
+    });
+    g.translate(0, 0, -0.05);
+    var m = new THREE.Mesh(g, flat(hex));
+    m.position.set(xc, yTop, ARROWZ);
+    if (rot) m.rotation.z = rot;
+    m.castShadow = true; m.receiveShadow = true;
+    world.add(m);
+    return m;
+  }
+  function arrowR(x0, x1, y, hex) { return arrow(x0, y, y - (x1 - x0), hex, Math.PI / 2); }
+  function bar(x0, y0, x1, y1, hex) {
+    var t = 0.18, w = Math.max(t, Math.abs(x1 - x0)), h = Math.max(t, Math.abs(y1 - y0));
+    var m = slab(w, h, 0.1, 0.05, hex);
+    m.position.set((x0 + x1) / 2, (y0 + y1) / 2, 0.6);
+    world.add(m);
+    return m;
+  }
+
+
+
+
+
+
+  /* ========== Сцена: одна длинная площадка ========== */
+  var STG = 0.32, FLOOR = BASE + STG + BEVEL;
+  var stage = slab(19.6, STG, 3.4, 0.16, 0xE2E0D8); stage.position.set(0, BASE + STG / 2, 1.0); world.add(stage);
+  // the cast, in story order, left to right
+  var SX = [-7.2, -3.6, 0, 3.6, 7.2];
+  var NAMES = ['Клиент', 'Модели', 'Оператор', 'Разработчик', 'Злоумышленник'];
+  var COLS = ['#3A86C8', '#2A6B38', '#A8650F', '#2A6B38', '#7E5FD0'];
+  NAMES.forEach(function (n, i) {
+    var t = makeTag(n, COLS[i]);
+    t.position.set(SX[i], BASE - 0.1, 2.75); world.add(t);
+  });
+
+  function Walker(holder, o) {
+    var me = { tx: holder.position.x, face: o.ry, nextT: T + 2 + Math.random() * 3, busyUntil: 0, walking: false, done: null };
+    function stop() {
+      me.walking = false; me.face = o.ry; o.rest();
+      if (me.done) { var d = me.done; me.done = null; d(); }
+    }
+    me.hold = function (sec) { me.busyUntil = Math.max(me.busyUntil, T + sec); me.nextT = me.busyUntil + 2 + Math.random() * 3; };
+    me.goTo = function (x, done) {
+      me.tx = x; me.done = done || null;
+      if (Math.abs(x - holder.position.x) < 0.02) { stop(); return; }
+      me.walking = true; me.face = x > holder.position.x ? Math.PI / 2 : -Math.PI / 2; o.walk();
+    };
+    me.update = function (dt) {
+      if (!me.walking && !me.done && T > me.nextT && T > me.busyUntil && o.range > 0) {
+        var x = o.x0 + (Math.random() * 2 - 1) * o.range;
+        if (Math.abs(x - holder.position.x) < 0.3) x = holder.position.x > o.x0 ? o.x0 - o.range * 0.6 : o.x0 + o.range * 0.6;
+        me.goTo(x); me.nextT = T + 4 + Math.random() * 4;
+      }
+      if (me.walking) {
+        var dx = me.tx - holder.position.x, step = dt * o.speed;
+        if (Math.abs(dx) <= step) { holder.position.x = me.tx; stop(); }
+        else holder.position.x += Math.sign(dx) * step;
+      }
+      holder.rotation.y += (me.face - holder.rotation.y) * Math.min(1, dt * 6);
+    };
+    return me;
+  }
+  var mixers = [];
+  function measure(obj) {
+    obj.updateMatrixWorld(true);
+    var geo = new THREE.Box3().setFromObject(obj);
+    var bone = new THREE.Box3(), v = new THREE.Vector3(), n = 0;
+    obj.traverse(function (o) {
+      if (o.isBone) { v.setFromMatrixPosition(o.matrixWorld); bone.expandByPoint(v); n++; }
+    });
+    if (n && (geo.max.y - geo.min.y) < (bone.max.y - bone.min.y) * 0.5) {
+      bone.max.y += (bone.max.y - bone.min.y) * 0.09;
+      return bone;
+    }
+    return geo;
+  }
+  function place(m, h) {
+    m.traverse(function (o) { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.frustumCulled = false; } });
+    var b3 = measure(m), k = h / (b3.max.y - b3.min.y);
+    m.scale.setScalar(k);
+    m.position.set(-(b3.min.x + b3.max.x) / 2 * k, -b3.min.y * k, -(b3.min.z + b3.max.z) / 2 * k);
+  }
+  // one actor: a looping base clip and one-shot gestures that fall back to it
+  function actor(g, m, base) {
+    var mx = new THREE.AnimationMixer(m), A = {};
+    // clip names may carry the rig's name: 'CharacterArmature|Wave' → 'Wave'
+    g.animations.forEach(function (c) { A[c.name.split('|').pop()] = mx.clipAction(c); });
+    var cur = A[base]; cur.play();
+    mixers.push(mx);
+    var me = { A: A };
+    mx.addEventListener('finished', function (e) {
+      if (e.action !== cur) return;
+      var b = A[base]; b.reset().play(); cur.crossFadeTo(b, 0.3, false); cur = b;
+    });
+    me.play = function (name, loop) {
+      var a = A[name]; if (!a || a === cur) return;
+      a.reset(); a.setLoop(loop ? THREE.LoopRepeat : THREE.LoopOnce, Infinity);
+      a.clampWhenFinished = !loop; a.play();
+      cur.crossFadeTo(a, 0.25, false); cur = a;
+    };
+    me.rest = function () { me.play(base, true); };
+    return me;
+  }
+
+  // People come in T-pose without clips, so they are posed by hand as on
+  // slide 01: arms down at rest, a slow sway, and a few gestures to blend to
+  var people = [];
+  var AXX = new THREE.Vector3(1, 0, 0), AXY = new THREE.Vector3(0, 1, 0), AXZ = new THREE.Vector3(0, 0, 1);
+  var POSES = {
+    rest:   { LeftArm: [0.30, -1, 0.05], LeftForeArm: [0.12, -1, 0.42], RightArm: [-0.30, -1, 0.05], RightForeArm: [-0.12, -1, 0.42] },
+    talk:   { RightArm: [-0.45, -0.55, 0.75], RightForeArm: [-0.15, 0.35, 1] },
+    wave:   { RightArm: [-0.85, 0.35, 0.25], RightForeArm: [-0.15, 1, 0.15] },
+    flinch: { LeftArm: [0.55, 0.05, 0.75], LeftForeArm: [0.05, 1, 0.35], RightArm: [-0.55, 0.05, 0.75], RightForeArm: [-0.05, 1, 0.35] }
+  };
+  var ARMS = ['LeftArm', 'LeftForeArm', 'RightArm', 'RightForeArm'];
+  var CHILD = { LeftArm: 'LeftForeArm', LeftForeArm: 'LeftHand', RightArm: 'RightForeArm', RightForeArm: 'RightHand' };
+  // Motion clips were recorded on the standard Mixamo rig. Our rigs name the same
+  // bones but bind in their own local frames and sometimes in another pose (arms
+  // down in an A-pose, a Z-up armature, frames baked into the bind matrices), so a
+  // rotation cannot be copied bone-local. Each bone is carried over in world space:
+  // first our rest is swung so every bone points the way the clip rig's bone does,
+  // then the clip's world rotation relative to its own rest is applied on top, and
+  // the result is written back as local rotations, sampled at 30 fps. Positions are
+  // dropped: the body is moved by code.
+  function retarget(gltf, root) {
+    var clip = gltf.animations[0], src = gltf.scene, S = {}, B = {}, order = [];
+    function key(n) { return n.replace(/^mixamorig:?/, ''); }
+    src.traverse(function (n) { var k = key(n.name); if (!S[k]) S[k] = n; });
+    // the head and neck keep their modelled pose: carried over, the clips' head
+    // motion reads as staring at the floor
+    root.traverse(function (o) { if (o.isBone) { var k = key(o.name); if (!B[k] && S[k] && k !== 'Head' && k !== 'Neck') { B[k] = o; order.push(k); } } });
+    // our bind pose, kept from before any hand posing touched the bones
+    var saved = [];
+    root.traverse(function (o) { if (o.isBone) { saved.push([o, o.quaternion.clone()]); if (!o.userData.bind) o.userData.bind = o.quaternion.clone(); o.quaternion.copy(o.userData.bind); } });
+    root.updateMatrixWorld(true); src.updateMatrixWorld(true);
+    var rootQ = new THREE.Quaternion(), rootM = new THREE.Matrix4(); root.getWorldQuaternion(rootQ); rootM.copy(root.matrixWorld).invert();
+    var rootQi = rootQ.clone().invert();
+    function relQ(o) { var q = new THREE.Quaternion(); o.getWorldQuaternion(q); return q.premultiply(rootQi); }
+    function relP(o) { var p = new THREE.Vector3(); o.getWorldPosition(p); return p.applyMatrix4(rootM); }
+    function srcQ(o) { var q = new THREE.Quaternion(); o.getWorldQuaternion(q); return q; }
+    function srcP(o) { var p = new THREE.Vector3(); o.getWorldPosition(p); return p; }
+    // the child that gives a bone its direction: down the spine first, else the first shared child
+    function heir(k) {
+      var kids = S[k].children.map(function (c) { return key(c.name); }).filter(function (c) { return B[c]; });
+      for (var i = 0; i < kids.length; i++) if (/Spine|Neck|Head/.test(kids[i])) return kids[i];
+      return kids[0];
+    }
+    // an orthonormal frame from a main direction and a rough side direction
+    function basis(d, side) {
+      var x = d.normalize(), z = new THREE.Vector3().crossVectors(x, side).normalize(), y = new THREE.Vector3().crossVectors(z, x);
+      return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z));
+    }
+    var sRestInv = {}, tRef = {}, parentFixed = {};
+    order.forEach(function (k) {
+      sRestInv[k] = srcQ(S[k]).invert();
+      var ref = relQ(B[k]), c = heir(k);
+      // a hand points down its middle finger, and the line across its knuckles fixes
+      // the palm's roll: matched on direction alone the hand comes out twisted
+      var hs = /Hand$/.test(k) ? k : null, mid = hs && B[hs + 'Middle1'] ? hs + 'Middle1' : null;
+      var ix = hs && B[hs + 'Index1'] ? hs + 'Index1' : null, pk = hs && (B[hs + 'Pinky1'] ? hs + 'Pinky1' : B[hs + 'Ring1'] ? hs + 'Ring1' : null);
+      if (mid && ix && pk) {
+        var fS = basis(srcP(S[mid]).sub(srcP(S[k])), srcP(S[ix]).sub(srcP(S[pk])));
+        var fT = basis(relP(B[mid]).sub(relP(B[k])), relP(B[ix]).sub(relP(B[pk])));
+        ref.premultiply(fS.multiply(fT.invert()));
+      } else if (c) {
+        var dS = srcP(S[c]).sub(srcP(S[k])).normalize(), dT = relP(B[c]).sub(relP(B[k])).normalize();
+        ref.premultiply(new THREE.Quaternion().setFromUnitVectors(dT, dS));
+      }
+      tRef[k] = ref;
+      var p = B[k].parent;
+      if (!(p && p.isBone && B[key(p.name)])) parentFixed[k] = p && p !== root ? relQ(p) : new THREE.Quaternion();
+    });
+    // The hips carry the weight shifts: when they keep still and only turn, the legs
+    // swing round the pelvis and the figure seems to hang from its middle. So the
+    // hips' travel is carried over too, scaled by leg length, with any steady drift
+    // (a walk moving forward) taken out: the feet stay put while the body sways.
+    var hipK = S.Hips && B.Hips ? 'Hips' : null, hipS0, hipT0, hipScale = 1, hipInv = new THREE.Matrix4();
+    if (hipK) {
+      hipS0 = srcP(S.Hips); hipT0 = relP(B.Hips);
+      var fS = S.LeftFoot ? srcP(S.LeftFoot).y : 0, fT = B.LeftFoot ? relP(B.LeftFoot).y : 0;
+      if (hipS0.y - fS > 1e-6) hipScale = (hipT0.y - fT) / (hipS0.y - fS);
+      hipInv.copy(rootM).multiply(B.Hips.parent.matrixWorld).invert();
+    }
+    var mx = new THREE.AnimationMixer(src), act = mx.clipAction(clip); act.play();
+    var N = Math.max(2, Math.ceil(clip.duration * 30)), times = new Float32Array(N + 1), vals = {};
+    var hipD = [];
+    order.forEach(function (k) { vals[k] = new Float32Array((N + 1) * 4); });
+    var W = {}, q = new THREE.Quaternion();
+    for (var i = 0; i <= N; i++) {
+      var t = clip.duration * i / N; times[i] = t;
+      mx.setTime(t); src.updateMatrixWorld(true);
+      order.forEach(function (k) {
+        W[k] = srcQ(S[k]).multiply(sRestInv[k]).multiply(tRef[k]);
+        var pk = parentFixed[k] ? null : key(B[k].parent.name);
+        q.copy(pk ? W[pk] : parentFixed[k]).invert().multiply(W[k]);
+        q.toArray(vals[k], i * 4);
+      });
+      if (hipK) hipD.push(srcP(S.Hips).sub(hipS0).multiplyScalar(hipScale));
+    }
+    act.stop(); mx.uncacheRoot(src);
+    saved.forEach(function (s) { s[0].quaternion.copy(s[1]); });
+    root.updateMatrixWorld(true);
+    var tr = order.map(function (k) { return new THREE.QuaternionKeyframeTrack(B[k].name + '.quaternion', times, vals[k]); });
+    if (hipK) {
+      // the travel is measured as the straight-line trend over the whole cycle (a walk
+      // clip often snaps back to its start on the last key, so the ends alone lie),
+      // taken out, and the loop is closed on the first key
+      var pv = new Float32Array((N + 1) * 3), v = new THREE.Vector3();
+      var mi = (N - 1) / 2, sx = 0, sz = 0, mx0 = 0, mz0 = 0, den = 0;
+      for (var i2 = 0; i2 < N; i2++) { mx0 += hipD[i2].x / N; mz0 += hipD[i2].z / N; }
+      for (i2 = 0; i2 < N; i2++) { sx += (i2 - mi) * (hipD[i2].x - mx0); sz += (i2 - mi) * (hipD[i2].z - mz0); den += (i2 - mi) * (i2 - mi); }
+      sx /= den; sz /= den;
+      hipD.forEach(function (d, i) {
+        var j = i === N ? 0 : i, e = hipD[j];
+        v.set(e.x - sx * j, e.y, e.z - sz * j).add(hipT0).applyMatrix4(hipInv);
+        v.toArray(pv, i * 3);
+      });
+      tr.push(new THREE.VectorKeyframeTrack(B.Hips.name + '.position', times, pv));
+    }
+    return new THREE.AnimationClip(clip.name, clip.duration, tr);
+  }
+  // How fast the ground passes under a walk cycle: the planted (lower) foot slides
+  // back relative to the hips at exactly the walking speed. Sampling the clip on
+  // this very rig gives the speed in scene units, so the feet never skate.
+  function strideSpeed(clip, root) {
+    var feet = [], hips = null;
+    root.traverse(function (o) { if (!o.isBone) return; if (/Foot/.test(o.name) && !/_end$/i.test(o.name)) feet.push(o); if (/Hips$/.test(o.name)) hips = o; });
+    if (feet.length < 2 || !hips) return 0.8;
+    var saved = []; root.traverse(function (o) { if (o.isBone) saved.push([o, o.quaternion.clone(), o.position.clone()]); });
+    var mx = new THREE.AnimationMixer(root), act = mx.clipAction(clip); act.play();
+    var N = 40, prev = null, speeds = [], h = new THREE.Vector3(), f = new THREE.Vector3();
+    for (var i = 0; i <= N; i++) {
+      var t = clip.duration * i / N; mx.setTime(t); root.updateMatrixWorld(true);
+      h.setFromMatrixPosition(hips.matrixWorld);
+      var cur = feet.map(function (b) { f.setFromMatrixPosition(b.matrixWorld); return { x: f.x - h.x, y: f.y, z: f.z - h.z }; });
+      if (prev) {
+        var lo = cur[0].y < cur[1].y ? 0 : 1, dt = clip.duration / N;
+        speeds.push(Math.hypot(cur[lo].x - prev[lo].x, cur[lo].z - prev[lo].z) / dt);
+      }
+      prev = cur;
+    }
+    act.stop(); mx.uncacheRoot(root);
+    saved.forEach(function (s) { s[0].quaternion.copy(s[1]); s[0].position.copy(s[2]); });
+    speeds.sort(function (a, b) { return a - b; });
+    return speeds[Math.floor(speeds.length / 2)];
+  }
+  // A soft dark patch right under the soles: without it the eye reads the body's
+  // centre as the point it hangs from, with it the figure stands on the floor
+  var contactTex = null;
+  function contactShadow(h) {
+    if (!contactTex) {
+      var c = document.createElement('canvas'); c.width = c.height = 128;
+      var x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+      g.addColorStop(0, 'rgba(40,38,30,0.75)'); g.addColorStop(0.35, 'rgba(40,38,30,0.42)'); g.addColorStop(1, 'rgba(40,38,30,0)');
+      x.fillStyle = g; x.fillRect(0, 0, 128, 128);
+      contactTex = new THREE.CanvasTexture(c);
+    }
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(h * 0.32, h * 0.22),
+      new THREE.MeshBasicMaterial({ map: contactTex, transparent: true, depthWrite: false }));
+    m.rotation.x = -Math.PI / 2; m.position.y = 0.035; m.renderOrder = 1;
+    return m;
+  }
+  function person(file, h, x, y, z, ry, clips, then) {
+    new THREE.GLTFLoader().load(file, function (g) {
+      var m = g.scene, holder = new THREE.Group(); holder.add(m);
+      place(m, h);
+      holder.position.set(x, y, z); holder.rotation.y = ry; world.add(holder);
+      holder.add(contactShadow(h));
+      holder.updateMatrixWorld(true);
+      // stand on the soles: some rigs carry geometry below the feet that skews the box
+      var low = Infinity, fv = new THREE.Vector3();
+      m.traverse(function (o) { if (o.isBone && /Toe|Foot/.test(o.name)) low = Math.min(low, fv.setFromMatrixPosition(o.matrixWorld).y); });
+      if (low < Infinity) { m.position.y += y + 0.03 - low; holder.updateMatrixWorld(true); }
+      var B = {};
+      m.traverse(function (o) {
+        if (!o.isBone) return;
+        var n = o.name.replace(/^mixamorig:?/, '');
+        if (!B[n]) B[n] = o;
+      });
+      var rq = new THREE.Quaternion(); holder.getWorldQuaternion(rq);
+      var cur = new THREE.Vector3(), tgt = new THREE.Vector3(), a = new THREE.Vector3();
+      function aim(bone, d) {
+        var b = B[bone], c = B[CHILD[bone]]; if (!b || !c) return;
+        b.updateMatrixWorld(true); c.updateMatrixWorld(true);
+        cur.setFromMatrixPosition(c.matrixWorld).sub(a.setFromMatrixPosition(b.matrixWorld)).normalize();
+        tgt.set(d[0], d[1], d[2]).normalize().applyQuaternion(rq);
+        var dq = new THREE.Quaternion().setFromUnitVectors(cur, tgt);
+        var pq = new THREE.Quaternion(); b.parent.getWorldQuaternion(pq);
+        b.quaternion.premultiply(pq.clone().invert().multiply(dq).multiply(pq));
+        b.updateMatrixWorld(true);
+      }
+      function snap() { var o = {}; ARMS.forEach(function (n) { if (B[n]) o[n] = B[n].quaternion.clone(); }); return o; }
+      function load(q) { ARMS.forEach(function (n) { if (B[n] && q[n]) B[n].quaternion.copy(q[n]); }); }
+      m.traverse(function (o) { if (o.isBone) o.userData.bind = o.quaternion.clone(); });   // the bind pose, for retarget
+      ARMS.forEach(function (n) { aim(n, POSES.rest[n]); });
+      var rest = snap(), Q = {};
+      Object.keys(POSES).forEach(function (k) {
+        if (k === 'rest') return;
+        load(rest);
+        ARMS.forEach(function (n) { if (POSES[k][n]) aim(n, POSES[k][n]); });
+        Q[k] = snap();
+      });
+      load(rest);
+      var base = {}; ['Spine', 'Spine1', 'Neck', 'Head'].forEach(function (n) { if (B[n]) base[n] = B[n].quaternion.clone(); });
+      var me = { w: 0, name: null, until: 0, ph: Math.random() * 6 };
+      var qt = new THREE.Quaternion();
+      me.pose = function (name, dur) { me.name = name; me.until = T + dur; };
+      me.rest = function () { me.until = 0; };
+      me.update = function (dt) {
+        me.w += ((T < me.until ? 1 : 0) - me.w) * Math.min(1, dt * 6);
+        ARMS.forEach(function (n) {
+          if (!B[n]) return;
+          B[n].quaternion.copy(rest[n]);
+          if (me.name && me.w > 0.001 && Q[me.name][n]) B[n].quaternion.slerp(Q[me.name][n], me.w);
+        });
+        // a waving forearm and a breathing upper body
+        if (me.name === 'wave' && B.RightForeArm) B.RightForeArm.quaternion.multiply(qt.setFromAxisAngle(AXZ, Math.sin(T * 9) * 0.4 * me.w));
+        if (me.name === 'talk' && B.RightForeArm) B.RightForeArm.quaternion.multiply(qt.setFromAxisAngle(AXX, Math.sin(T * 6) * 0.15 * me.w));
+        var t = T + me.ph;
+        [['Spine', AXX, 0.03, 0.9], ['Spine1', AXZ, 0.025, 0.6], ['Neck', AXX, 0.04, 0.8], ['Head', AXY, 0.12, 0.45]].forEach(function (r) {
+          if (!base[r[0]]) return;
+          B[r[0]].quaternion.copy(base[r[0]]).multiply(qt.setFromAxisAngle(r[1], Math.sin(t * r[3]) * r[2]));
+        });
+      };
+      // with a clip library the body is driven by the mixer: a base loop and one-shot gestures
+      if (clips) {
+        holder.visible = false;   // no T-pose on screen while the clips load
+        var mx = new THREE.AnimationMixer(m), act = {}, curA = null, pending = Object.keys(clips).length;
+        // a clip is either a Mixamo gesture file (mapped by bone name) or one entry
+        // of a clip set baked ahead of time for this very rig
+        function got(k, clip) {
+          act[k] = mx.clipAction(clip); if (k === 'base') { curA = act.base; curA.play(); holder.visible = true; }
+          if (k === 'walk') me.speed = strideSpeed(clip, m);
+        }
+        Object.keys(clips).forEach(function (k) {
+          var c = clips[k];
+          if (typeof c === 'string') new THREE.GLTFLoader().load(c, function (cg) { got(k, retarget(cg, m)); });
+          else new THREE.FileLoader().setResponseType('json').load(c.json, function (arr) { got(k, THREE.AnimationClip.parse(arr[c.i])); });
+        });
+        mx.addEventListener('finished', function (e) {
+          if (e.action !== curA || !act.base) return;
+          act.base.reset().play(); curA.crossFadeTo(act.base, 0.4, false); curA = act.base;
+        });
+        me.pose = function (name) {
+          var a = act[name]; if (!a || !curA || a === curA) return;
+          a.reset(); a.setLoop(THREE.LoopOnce, 1); a.clampWhenFinished = true; a.play();
+          curA.crossFadeTo(a, 0.3, false); curA = a;
+        };
+        me.rest = function () {};
+        me.update = function (dt) { mx.update(dt); };
+      }
+      footLock(m);
+      people.push(me);
+      then(me, holder, B);
+    });
+  }
+
+  /* ========== Герои ========== */
+  var cast = [];   // { greet: fn } in stage order
+  function robot(x, hex, gesture, slot) {
+    new THREE.GLTFLoader().load('../models/robot.glb', function (g) {
+      var m = g.scene;
+      m.traverse(function (o) {
+        if (o.isMesh && o.material && o.material.name === 'Main') { o.material = o.material.clone(); o.material.color.setHex(hex).convertSRGBToLinear(); }
+      });
+      var holder = new THREE.Group(); holder.add(m); place(m, 3.1);
+      holder.position.set(x, FLOOR, 1.0); holder.rotation.y = x < 0 ? 0.25 : -0.25; world.add(holder);
+      holder.add(contactShadow(3.1));
+      var a = actor(g, m, 'Idle');
+      cast[slot] = { greet: function () { a.play(gesture, false); } };
+    });
+  }
+  function human(file, h, x, ry, clips, gesture, slot) {
+    person(file, h, x, FLOOR, 1.0, ry, clips, function (a, hld) {
+      // the developer's soles sit below his foot bones: lift him so he stands level with the others
+      if (/dev2/.test(file)) hld.position.y += 0.15;
+      if (/xbot/.test(file)) hld.traverse(function (o) {
+        if (o.isMesh) { o.material = o.material.clone(); o.material.color.setHex(/Joints/.test(o.material.name) ? 0x4A525C : 0xB9C4CF).convertSRGBToLinear(); }
+      });
+      cast[slot] = { greet: function () { a.pose(gesture); } };
+    });
+  }
+  var IDLE = '../models/anim-neutral-idle.glb', WAVE = '../models/anim-waving.glb';
+  human('../models/client4.glb',   3.4, SX[0],  0.35, { base: IDLE, wave: WAVE }, 'wave', 0);
+  // a crowd of agents in place of a single model: small robots of different colours,
+  // front ones lower and closer, all facing and waving together
+  (function () {
+    var crowd = [], SPOTS = [
+      [-1.05, 0.0, 2.0], [0, -0.1, 2.1], [1.05, 0.0, 2.0],
+      [-1.5, 0.95, 1.6], [-0.5, 0.95, 1.65], [0.5, 0.95, 1.65], [1.5, 0.95, 1.6],
+      [-0.75, 1.85, 1.3], [0.75, 1.85, 1.3]
+    ];
+    var SHADES = [0x2A6B38, 0xD99A1E, 0x3A86C8, 0xD9534F, 0x7E5FD0, 0x0F8B8D, 0xC9762E, 0xE07AA6, 0x6F8FA8];
+    SPOTS.forEach(function (p, k) {
+      new THREE.GLTFLoader().load('../models/robot.glb', function (g) {
+        var m = g.scene;
+        m.traverse(function (o) { if (o.isMesh && o.material && o.material.name === 'Main') { o.material = o.material.clone(); o.material.color.setHex(SHADES[k]).convertSRGBToLinear(); } });
+        var holder = new THREE.Group(); holder.add(m); place(m, p[2]);
+        holder.position.set(SX[1] + p[0], FLOOR, p[1]); holder.rotation.y = 0.12; world.add(holder);   // all face the same way
+        holder.add(contactShadow(p[2]));
+        crowd.push(actor(g, m, 'Idle'));
+      });
+    });
+    cast[1] = { greet: function () { crowd.forEach(function (a) { a.play('Wave', false); }); } };
+  })();
+  human('../models/human.glb',     3.4, SX[2],  0.2,  { base: IDLE, wave: WAVE }, 'wave', 2);
+  // the developer: a guy in glasses and a T-shirt — a Ready Player Me avatar (from met4citizen/HeadTTS,
+  // MIT), on the same rig as the attacker, so he takes the same idle and wave clips
+  human('../models/dev2.glb',      3.62, SX[3], -0.2,  { base: IDLE, wave: WAVE }, 'wave', 3);
+  human('../models/stranger3.glb', 3.4, SX[4], -0.3,  { base: IDLE, wave: WAVE }, 'wave', 4);
+
+  // two birds cross the sky above the stage, each on its own lap
+  var birds = [];
+  [['../models/parrot.glb', 2.0, -3.0, 3.2, 0], ['../models/flamingo.glb', 2.9, -5.0, 2.4, 9]].forEach(function (b) {
+    new THREE.GLTFLoader().load(b[0], function (g) {
+      var m = g.scene; place(m, 1.1);
+      var holder = new THREE.Group(); holder.add(m); holder.rotation.y = Math.PI / 2;
+      world.add(holder);
+      var mx = new THREE.AnimationMixer(m); mx.clipAction(g.animations[0]).play(); mixers.push(mx);
+      birds.push({ h: holder, y: b[1], z: b[2], speed: b[3], t0: T - b[4] });
+    });
+  });
+
+  /* ========== Приветствие по кругу ========== */
+  var T = 0, timers = [], gi = 0, nextGreet = 1.5;
+  function later(s, fn) { timers.push({ t: T + s, fn: fn }); }
+  function greetNext() {
+    var c = cast[gi % cast.length]; gi++;
+    if (c) c.greet();
+  }
+
+  /* ========== Animate ========== */
+  var clock = new THREE.Clock();
+  // Planted feet. A standing body carries its weight on the soles: the hips and
+  // torso move, the foot on the ground does not. The motion clips were recorded on
+  // another body, so on ours the feet drift and the figure seems pinned at the
+  // waist. After every frame each leg is bent (two-bone IK: thigh and shin) so a
+  // planted foot returns to the spot where it was put down. A foot the clip lifts
+  // stays on its spot even when the clip shifts weight or lifts it. While the whole figure is carried along (a walk) the
+  // feet follow the clip and are put down afresh when it stops.
+  var FEET = [];
+  function footLock(m) {
+    var holder = m.parent, bones = {};
+    m.traverse(function (o) { if (o.isBone) { var k = o.name.replace(/^mixamorig:?/, ''); if (!bones[k]) bones[k] = o; } });
+    var legs = ['Left', 'Right'].map(function (s) {
+      return { a: bones[s + 'UpLeg'], b: bones[s + 'Leg'], c: bones[s + 'Foot'], anc: null, ancQ: null, lift: false };
+    }).filter(function (l) { return l.a && l.b && l.c; });
+    if (legs.length < 2) return;
+    holder.updateMatrixWorld(true);
+    var v = new THREE.Vector3();
+    legs.forEach(function (l) { l.ground = holder.worldToLocal(l.c.getWorldPosition(v)).y; });
+    FEET.push({ holder: holder, legs: legs, last: holder.position.clone(), calm: 0 });
+  }
+  var ikA = new THREE.Vector3(), ikB = new THREE.Vector3(), ikC = new THREE.Vector3(), ikT = new THREE.Vector3();
+  var ikQ = new THREE.Quaternion(), ikP = new THREE.Quaternion(), ikR = new THREE.Quaternion(), ikAx = new THREE.Vector3();
+  // turn a bone by a rotation given in world space
+  function turnW(bone, r) {
+    bone.getWorldQuaternion(ikQ); bone.parent.getWorldQuaternion(ikP);
+    bone.quaternion.copy(ikP.invert().multiply(r).multiply(ikQ));
+    bone.updateMatrixWorld(true);
+  }
+  function solveLeg(l, t) {
+    l.a.getWorldPosition(ikA); l.b.getWorldPosition(ikB); l.c.getWorldPosition(ikC);
+    var lab = ikB.distanceTo(ikA), lbc = ikC.distanceTo(ikB);
+    var lat = Math.min(Math.max(t.distanceTo(ikA), 0.01), lab + lbc - 0.001);
+    var acab0 = new THREE.Vector3().subVectors(ikC, ikA).normalize().angleTo(new THREE.Vector3().subVectors(ikB, ikA).normalize());
+    var babc0 = new THREE.Vector3().subVectors(ikA, ikB).normalize().angleTo(new THREE.Vector3().subVectors(ikC, ikB).normalize());
+    var acab1 = Math.acos(Math.min(1, Math.max(-1, (lbc * lbc - lab * lab - lat * lat) / (-2 * lab * lat))));
+    var babc1 = Math.acos(Math.min(1, Math.max(-1, (lat * lat - lab * lab - lbc * lbc) / (-2 * lab * lbc))));
+    ikAx.crossVectors(ikT.subVectors(ikC, ikA), new THREE.Vector3().subVectors(ikB, ikA));
+    if (ikAx.lengthSq() < 1e-10) return;
+    ikAx.normalize();
+    turnW(l.a, ikR.setFromAxisAngle(ikAx, acab1 - acab0));
+    turnW(l.b, ikR.setFromAxisAngle(ikAx, babc1 - babc0));
+    // then swing the whole leg so the foot lands on the target
+    l.a.getWorldPosition(ikA); l.c.getWorldPosition(ikC);
+    var from = ikC.sub(ikA).normalize(), to = ikT.subVectors(t, ikA).normalize();
+    turnW(l.a, ikR.setFromUnitVectors(from, to));
+  }
+  function feetUpdate() {
+    var v = new THREE.Vector3(), w = new THREE.Vector3(), q = new THREE.Quaternion(), hq = new THREE.Quaternion();
+    FEET.forEach(function (f) {
+      var h = f.holder;
+      if (!h.visible || !h.parent) return;
+      // carried along: walking (the walker says how much) or moved by hand
+      var carried = (h.userData.gait || 0) > 0.02 || h.position.distanceToSquared(f.last) > 1e-4; f.last.copy(h.position);
+      // after a walk the clip needs a moment to bring the feet together before they settle
+      // the lock takes hold a moment after the body comes to rest and lets go just
+      // as gradually when it sets off, so the feet never snap between the two
+      f.calm = carried ? 0 : f.calm + 1;
+      f.k = Math.max(0, Math.min(1, (f.k || 0) + (f.calm > 20 ? 1 : -1) / 15));
+      var k = f.k * f.k * (3 - 2 * f.k);
+      h.updateMatrixWorld(true);
+      h.getWorldQuaternion(hq);
+      f.legs.forEach(function (l) {
+        if (k <= 0) { l.anc = null; return; }
+        v.copy(l.c.getWorldPosition(w)); h.worldToLocal(v);
+        // standing figures keep their spot: a clip that shifts or lifts a foot does
+        // not walk them away, the foot stays where it was put down after the last walk
+        if (!l.anc) {
+          l.anc = v.clone(); l.anc.y = Math.min(v.y, l.ground);
+          l.c.getWorldQuaternion(q); l.ancQ = hq.clone().invert().multiply(q);
+        }
+        // a foot that has just been put down eases onto its spot
+        solveLeg(l, h.localToWorld(w.copy(v).lerp(l.anc, k)));
+        // the sole keeps the angle it was put down with
+        l.c.parent.getWorldQuaternion(ikP);
+        l.c.getWorldQuaternion(ikR);
+        l.c.quaternion.copy(ikP.invert().multiply(ikR.slerp(q.copy(hq).multiply(l.ancQ), k)));
+        l.c.updateMatrixWorld(true);
+      });
+    });
+  }
+  function frame(dt) {
+    T += dt;
+    var due = timers.filter(function (t) { return t.t <= T; });
+    timers = timers.filter(function (t) { return t.t > T; });
+    due.forEach(function (t) { t.fn(); });
+    if (T > nextGreet && cast.length) { greetNext(); nextGreet = T + 1.4; }
+    mixers.forEach(function (m) { m.update(dt); });
+    people.forEach(function (p) { p.update(dt); });
+    birds.forEach(function (b) {
+      var k = ((T - b.t0) * b.speed) % 34;
+      b.h.position.set(-17 + k, b.y + Math.sin((T - b.t0) * 1.3) * 0.25, b.z);
+    });
+    feetUpdate();
+    camUser(dt);
+    renderer.render(scene, camera);
+  }
+  (function tick() {
+    requestAnimationFrame(tick);
+    frame(Math.min(clock.getDelta(), 0.1));
+  })();
+
+  addEventListener('resize', function () {
+    renderer.setSize(innerWidth, innerHeight);
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+  });
+  });
+});
+</script>
+<script>
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d || !parent.go) return;
+  e.preventDefault();
+  if (parent.__deckKey && parent.__deckKey(d)) return;   // a lead card in front takes the key
+  var f = d > 0 ? window.__fwd : window.__back;
+  if (f && f()) return;   // the slide took a step of its own
+  parent.go(d);
+});
+</script>

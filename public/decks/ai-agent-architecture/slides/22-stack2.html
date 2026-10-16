@@ -1,0 +1,1529 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><style>#cap{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;max-width:96vw;scrollbar-width:none;align-items:stretch}#cap::-webkit-scrollbar{display:none}#cap>*{flex:0 0 auto}#cap>.s:has(.v){width:clamp(230px,15.5vw,300px)}#cap .s .v{height:5.9em!important}#cap>.s:not(:has(.v)){white-space:nowrap}#cap>.a{align-self:center}#cap>:first-child{margin-left:auto}#cap>:last-child{margin-right:auto}#cap.ovf{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%)}</style><style>#hd{flex-wrap:wrap;row-gap:.3em}.hd-lead{order:9;flex-basis:100%;display:flex;flex-wrap:wrap;gap:.35em 1.4em;font-size:clamp(10px,.95vw,15px);font-weight:700;color:#5E5B50;letter-spacing:0;text-transform:none}body.lead-wait .hd-lead{opacity:0}</style><title>GUARD · контур</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Same committed look as slide 01: warm off-white canvas, green system, amber model, Manrope 800 */
+:root { color-scheme: light; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
+             font-family:'Manrope', system-ui, sans-serif; }
+#c  { display:block; position:fixed; inset:0; width:100%; height:100%; }
+#ui { position:fixed; inset:0; pointer-events:none; }
+
+#hd { position:absolute; top:0; left:0; right:0;
+      padding: clamp(16px,2.2vw,30px) clamp(22px,4vw,56px);
+      display:flex; align-items:baseline; gap:1.4em; }
+.hd-no { font-size:clamp(8px,.68vw,10px); font-weight:700; text-transform:uppercase;
+         letter-spacing:.2em; color:#2A6B38; white-space:nowrap; }
+.hd-t  { font-size:clamp(17px,2.3vw,32px); font-weight:800; color:#15140F;
+         letter-spacing:-.024em; }
+
+#ft { position:absolute; left:0; right:0; bottom:0;
+      padding: clamp(10px,1.4vw,20px) clamp(22px,4vw,56px);
+      display:flex; align-items:center; gap:1.1em; flex-wrap:wrap;
+      font-size:clamp(8px,.74vw,11px); font-weight:700;
+      text-transform:uppercase; letter-spacing:.13em; color:#8A8778; }
+#ft b { color:#A8650F; font-weight:700; }
+#ft .cr { margin-left:auto; text-transform:none; letter-spacing:.02em; font-weight:600; color:#B7B4A8; }
+
+/* The storyboard: one cell per step, left to right in the order things happen.
+   Every cell has its place from the start, so a new line never moves anything else */
+#cap { position:absolute; left:50%; transform:translateX(-50%); bottom:clamp(40px,7.5vh,84px); pointer-events:auto;
+       display:grid; grid-template-columns:repeat(5, minmax(0,1fr) auto) minmax(0,1fr); align-items:stretch; gap:0 .35em;
+       width:min(96vw, 1840px); font-size:clamp(10px,.82vw,15px); font-weight:700; }
+#cap .s { display:flex; flex-direction:column; gap:.35em; padding:.5em .6em; border-radius:14px; background:rgba(255,255,255,.55);
+          cursor:pointer; transition:background .4s, box-shadow .4s; min-width:0; }
+#cap .s .h { display:flex; align-items:center; gap:.45em; color:#B7B4A8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; transition:color .4s; }
+#cap .s .h b { flex:none; display:inline-flex; align-items:center; justify-content:center; width:1.6em; height:1.6em; border-radius:999px;
+               background:#DDDAD0; color:#FFFFFF; font-size:.85em; transition:background .4s; }
+#cap .s .v { display:flex; flex-direction:column; gap:.2em; height:4.2em; overflow:hidden; font-weight:800; }
+#cap .s.on, #cap .s.done { background:rgba(255,255,255,.96); box-shadow:0 4px 16px rgba(21,20,15,.10); }
+#cap .s.on { box-shadow:0 4px 16px rgba(21,20,15,.10), inset 0 0 0 2px var(--k); }
+#cap .s.on .h, #cap .s.done .h { color:#15140F; }
+#cap .s.on .h b, #cap .s.done .h b { background:var(--k); }
+#cap .a { align-self:center; color:#C9C6BA; font-weight:800; transition:color .4s; }
+#cap .a.done { color:#8A8778; }
+#cap .s .ln { display:flex; gap:.4em; line-height:1.3; color:var(--k); opacity:0; transform:translateY(-5px); transition:opacity .45s, transform .45s; }
+#cap .s .ln.in { opacity:1; transform:none; }
+#cap .s .ln i { flex:none; font-style:normal; }
+#cap .s .ln span { color:#15140F; }
+/* the journal's record: what the camera wrote down, one line per plate, as it nods at each */
+#jlog { position:absolute; left:0; top:0; transform:translate(-100%,-50%); display:flex; flex-direction:column; gap:.2em;
+        padding:.5em .7em; border-radius:14px; background:rgba(255,255,255,.96); box-shadow:0 4px 16px rgba(21,20,15,.12);
+        font-size:clamp(9px,.78vw,14px); font-weight:800; white-space:nowrap; opacity:0; transition:opacity .4s; }
+#jlog.on { opacity:1; }
+#jlog .jh { color:#2E7FB8; margin-bottom:.15em; }
+#jlog .jl { display:flex; align-items:center; gap:.45em; opacity:0; transform:translateX(-6px); transition:opacity .35s, transform .35s; }
+#jlog .jl.in { opacity:1; transform:none; }
+#jlog .jl b { display:inline-flex; align-items:center; justify-content:center; width:1.5em; height:1.5em; border-radius:6px; color:#FFFFFF; font-size:.85em; }
+#jlog .jl i { font-style:normal; color:#2A6B38; margin-left:auto; padding-left:.6em; }
+/* the number of a step, left on the plate where it happened: the route stays readable */
+.pin { position:absolute; left:0; top:0; display:flex; align-items:center; justify-content:center; width:1.9em; height:1.9em;
+       margin:-.95em 0 0 -.95em; border-radius:999px; background:var(--k); color:#FFFFFF; font-size:clamp(11px,.95vw,16px); font-weight:800;
+       box-shadow:0 0 0 3px #FFFFFF, 0 4px 12px rgba(21,20,15,.18); opacity:0; transform:scale(.3);
+       transition:opacity .35s, transform .45s cubic-bezier(.3,1.5,.5,1); }
+.pin.in { opacity:1; transform:none; }
+.pin.cur::after { content:''; position:absolute; inset:-7px; border-radius:999px; border:2px solid var(--k); animation:pinR 1.6s ease-out infinite; }
+@keyframes pinR { from { opacity:.9; transform:scale(.8); } to { opacity:0; transform:scale(1.5); } }
+#log { position:absolute; left:50%; top:44%; transform:translate(-50%,-50%) scale(.92); width:clamp(260px,28vw,460px);
+       background:#FFFFFF; border-radius:18px; padding:.8em 1em; box-shadow:0 14px 40px rgba(21,20,15,.16);
+       font-size:clamp(11px,1vw,16px); font-weight:700; color:#15140F; opacity:0; transition:opacity .35s, transform .35s; }
+#log.on { opacity:1; transform:translate(-50%,-50%) scale(1); }
+#log .lh { color:#2E7FB8; font-weight:800; margin-bottom:.3em; }
+#log .ln { display:flex; gap:.5em; padding:.15em 0; border-top:1px solid #EFEEE9; animation:lnIn .3s ease; }
+#log .ln b { color:var(--c); min-width:1.4em; }
+@keyframes lnIn { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:none; } }
+
+/* Message cards: flat, always facing the viewer; one line per crossing, the step number first */
+.msg { position:absolute; left:0; top:0; display:none; flex-direction:column; gap:.3em; padding:.4em;
+       background:rgba(255,255,255,.94); border-radius:14px; box-shadow:0 4px 16px rgba(21,20,15,.12);
+       font-size:clamp(9px,.72vw,14px); font-weight:800; white-space:nowrap; }
+.msg.on { display:flex; }
+.msg.below { transform:translate(-50%,0); }
+.msg.above { transform:translate(-50%,-100%); }
+.msg.right { transform:none; }
+.msg .ln { display:flex; align-items:center; gap:.45em; padding:.25em .6em .25em .3em; border-radius:999px;
+           opacity:0; transform:translateY(-6px); transition:opacity .45s, transform .45s, box-shadow .3s;
+           --k:#2E7FB8; color:var(--k); }
+.msg .ln.in { opacity:1; transform:none; }
+.msg .ln.cur { box-shadow:inset 0 0 0 2px var(--k); }
+.msg .ln b { display:inline-flex; align-items:center; justify-content:center; min-width:1.6em; height:1.6em; border-radius:999px;
+             background:var(--k); color:#FFFFFF; font-size:.85em; }
+.msg .ln i { font-style:normal; }
+.msg .ln span { color:#15140F; }
+.msg .ln.back, .msg .ln.ok { --k:#2A6B38; }
+.msg .ln.up, .msg .ln.down { --k:#6F8FA8; }
+.msg .ln.no { --k:#D9534F; }
+.msg .ln.no span { color:#D9534F; }
+.msg .ln.pub { --k:#8A8778; }
+/* Speech bubbles stand still over whoever speaks: nothing to read in flight */
+.bub { position:absolute; left:0; top:0; transform:translate(-50%,-100%) scale(.85);
+       opacity:0; transition:opacity .25s, transform .25s; white-space:nowrap;
+       background:#FFFFFF; color:#15140F; border:3px solid var(--c,#3A86C8);
+       border-radius:18px; padding:.45em .9em; font-weight:800;
+       font-size:clamp(12px,1.25vw,21px); box-shadow:0 6px 18px rgba(21,20,15,.12); }
+.bub.on { opacity:1; transform:translate(-50%,-100%) scale(1); }
+.bub::after { content:''; position:absolute; left:50%; bottom:-11px; width:16px; height:16px;
+              background:#FFFFFF; border-right:3px solid var(--c,#3A86C8); border-bottom:3px solid var(--c,#3A86C8);
+              transform:translateX(-50%) rotate(45deg); }
+.bub.tag { border-radius:999px; color:#FFFFFF; background:var(--c); }
+.bub.tag::after { display:none; }
+</style>
+
+<canvas id="c"></canvas>
+<div id="ui">
+  <div id="hd">
+    <span class="hd-no">13 · Технологии</span>
+    <span class="hd-t">Стек на схеме: Temporal, LangChain, LangGraph, MCP, Langfuse</span><span class="hd-lead">Какие технологии реализуют эти подходы</span>
+  </div>
+    <div id="cap"></div>
+  <div id="ft">
+    <span>Один чат — один процесс Temporal</span>
+    <span>·</span>
+    <span><b>Ответ — цикл LangGraph «модель ⇄ тулы», трейс — в Langfuse</b></span>
+    <span class="cr">3D: J-Toastie, Poly by Google · CC BY 3.0 · poly.pizza</span>
+  </div>
+</div>
+
+<script src="../lib/three.min.js"></script>
+<script src="../lib/GLTFLoader.js"></script>
+<script>
+// Always override: the native roundRect appends to the current path instead of
+// starting one, so successive fills repaint every earlier subpath.
+{
+  CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
+    this.beginPath(); this.moveTo(x+r,y); this.lineTo(x+w-r,y);
+    this.arcTo(x+w,y,x+w,y+r,r); this.lineTo(x+w,y+h-r);
+    this.arcTo(x+w,y+h,x+w-r,y+h,r); this.lineTo(x+r,y+h);
+    this.arcTo(x,y+h,x,y+h-r,r); this.lineTo(x,y+r);
+    this.arcTo(x,y,x+r,y,r); this.closePath();
+  };
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  var F = document.fonts;
+  var ready = F ? Promise.all([
+    F.load('800 72px Manrope'), F.load('700 30px Manrope'), F.load('600 28px Manrope')
+  ]).catch(function () {}) : Promise.resolve();
+  ready.then(function () {
+
+  var CANVAS_BG = 0xECEBE6;
+  var GREEN = 0x2A6B38, AMBER = 0xD99A1E, CARD = 0xFFFFFF;
+  var RISK = [
+    { css: '#D9534F', hex: 0xD9534F, bg: '#F8E1DF' },
+    { css: '#C9762E', hex: 0xC9762E, bg: '#F7E7D6' },
+    { css: '#7E5FD0', hex: 0x7E5FD0, bg: '#ECE6FA' }
+  ];
+
+  var W = innerWidth, H = innerHeight;
+  var renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setSize(W, H);
+  renderer.setClearColor(CANVAS_BG);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  var scene = new THREE.Scene();
+  // the client's and the owner's podium centres (the layout below uses the same numbers)
+  var camera = new THREE.PerspectiveCamera(24, W / H, 2, 160);
+  // The camera follows the request: each step frames its own part of the contour
+  // close up, and glides there (eased, never a cut); 'all' is the whole stage.
+  var CAM0 = { x: 0.3, y: -0.7, k: 1.3 };
+  var cam = { x: CAM0.x, y: CAM0.y, k: CAM0.k }, camTo = { x: CAM0.x, y: CAM0.y, k: CAM0.k };
+  function placeCam() {
+    camera.position.set(cam.x, cam.y + 6.2 * cam.k, 29.6 * cam.k);
+    camera.lookAt(cam.x, cam.y, 0);
+  }
+  // The viewer can look around: drag to turn the scene, right-drag (or Shift+drag)
+  // to move it, the wheel to come closer, a double click to go back. The story's
+  // own camera keeps working underneath; the viewer's turn rides on top of it.
+  var CU = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0, to: { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 },
+             look: new THREE.Vector3(), base: null, last: null };
+  (function () {
+    var lookAt0 = camera.lookAt.bind(camera);
+    camera.lookAt = function (x, y, z) {
+      if (x && x.isVector3) CU.look.copy(x); else CU.look.set(x, y, z);
+      lookAt0(CU.look);
+    };
+    CU.lookAt0 = lookAt0;
+    var el = renderer.domElement, drag = null;
+    el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    el.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, y: e.clientY, pan: e.button === 2 || e.shiftKey, on: false }; });
+    addEventListener('pointerup', function () { drag = null; });
+    addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.on && Math.hypot(dx, dy) < 4) return;
+      drag.on = true; drag.x = e.clientX; drag.y = e.clientY;
+      if (drag.pan) { CU.to.px -= dx * 0.0016; CU.to.py += dy * 0.0016; }
+      else {
+        CU.to.yaw = Math.max(-0.9, Math.min(0.9, CU.to.yaw - dx * 0.004));
+        CU.to.pitch = Math.max(-0.35, Math.min(0.5, CU.to.pitch + dy * 0.003));
+      }
+    });
+    el.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      CU.to.zoom = Math.max(0.45, Math.min(1.8, CU.to.zoom * Math.exp(e.deltaY * 0.0012)));
+    }, { passive: false });
+    el.addEventListener('dblclick', function () { CU.to = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 }; });
+    window.__center = function () { CU.to = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 }; };
+    // a visible button on the slide itself, top right
+    (function () {
+      var bt = document.createElement('button');
+      bt.textContent = '⌖ Центр'; bt.title = 'Вернуть сцену в центр';
+      bt.style.cssText = 'position:fixed;top:clamp(14px,2vw,26px);right:clamp(16px,3vw,44px);z-index:5;border:0;' +
+        'background:#FFFFFF;color:#15140F;border-radius:999px;padding:.5em 1em;cursor:pointer;' +
+        'font:800 clamp(11px,.9vw,14px)/1 Manrope,system-ui,sans-serif;box-shadow:0 2px 10px rgba(21,20,15,.12);';
+      bt.addEventListener('click', function (e) { e.stopPropagation(); window.__center(); });
+      bt.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+      document.body.appendChild(bt);
+    })();
+  })();
+  var cuV = new THREE.Vector3(), cuR = new THREE.Vector3(), cuU = new THREE.Vector3(), cuT = new THREE.Vector3(), cuQ = new THREE.Quaternion();
+  function camUser(dt) {
+    var p = camera.position;
+    // the story moved the camera since the last frame: that is the new base
+    if (!CU.last || !p.equals(CU.last)) CU.base = p.clone();
+    var k = 1 - Math.exp(-(dt || 0.016) * 8);
+    ['yaw', 'pitch', 'zoom', 'px', 'py'].forEach(function (n) { CU[n] += (CU.to[n] - CU[n]) * k; });
+    var tgt = CU.look, rel = cuV.copy(CU.base).sub(tgt), dist = rel.length();
+    rel.applyQuaternion(cuQ.setFromAxisAngle(cuU.set(0, 1, 0), CU.yaw));
+    cuR.crossVectors(cuU.set(0, 1, 0), rel).normalize();
+    rel.applyQuaternion(cuQ.setFromAxisAngle(cuR, -CU.pitch));
+    rel.multiplyScalar(CU.zoom);
+    cuU.crossVectors(rel, cuR).normalize();
+    cuT.copy(tgt).addScaledVector(cuR, -CU.px * dist).addScaledVector(cuU, CU.py * dist);
+    camera.position.copy(cuT).add(rel);
+    CU.lookAt0(cuT);
+    CU.last = camera.position.clone();
+  }
+  placeCam();
+
+  scene.add(new THREE.AmbientLight(0xFFFFFF, 0.78));
+  scene.add(new THREE.HemisphereLight(0xFFFFFF, 0xC9C7BD, 0.5));
+  var key = new THREE.DirectionalLight(0xFFFFFF, 0.62);
+  key.position.set(-5, 23, 9);
+  key.castShadow = true;
+  key.shadow.mapSize.width = 2048; key.shadow.mapSize.height = 2048;
+  key.shadow.camera.left = -15; key.shadow.camera.right = 15;
+  key.shadow.camera.top = 15;   key.shadow.camera.bottom = -15;
+  key.shadow.camera.near = 2;   key.shadow.camera.far = 48;
+  key.shadow.bias = -0.0004; key.shadow.normalBias = 0.05;
+  scene.add(key);
+  var fill = new THREE.DirectionalLight(0xFFFFFF, 0.22);
+  fill.position.set(9, 4, 8); scene.add(fill);
+
+  function flat(hex) {
+    var m = new THREE.MeshLambertMaterial({ color: hex });
+    m.color.convertSRGBToLinear();
+    return m;
+  }
+  function liveTex(c) {
+    var t = new THREE.CanvasTexture(c); t.anisotropy = 8; t.encoding = THREE.sRGBEncoding;
+    return t;
+  }
+  function face(cv) { return new THREE.MeshBasicMaterial({ map: liveTex(cv) }); }
+
+  function roundedShape(w, h, r) {
+    var s = new THREE.Shape(), x = -w / 2, y = -h / 2;
+    s.moveTo(x + r, y);
+    s.lineTo(x + w - r, y);           s.quadraticCurveTo(x + w, y, x + w, y + r);
+    s.lineTo(x + w, y + h - r);       s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    s.lineTo(x + r, y + h);           s.quadraticCurveTo(x, y + h, x, y + h - r);
+    s.lineTo(x, y + r);               s.quadraticCurveTo(x, y, x + r, y);
+    return s;
+  }
+  // The bevel sticks out past `depth` on both ends; faces go to FZ
+  var BEVEL = 0.035;
+  function FZ(d) { return d / 2 + BEVEL + 0.015; }
+  function slab(w, h, d, r, hex) {
+    var g = new THREE.ExtrudeGeometry(roundedShape(w, h, r), {
+      depth: d, bevelEnabled: true, bevelThickness: BEVEL, bevelSize: BEVEL,
+      bevelOffset: 0, bevelSegments: 2, curveSegments: 7
+    });
+    g.translate(0, 0, -d / 2);
+    var m = new THREE.Mesh(g, flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function box(w, h, d, hex) {
+    var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function cyl(r, h, hex, seg) {
+    var m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, seg || 32), flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function ease(k) { k = Math.max(0, Math.min(1, k)); return k * k * (3 - 2 * k); }
+
+  // soft radial glow, tinted per use
+  var glowCv = document.createElement('canvas'); glowCv.width = glowCv.height = 256;
+  (function () {
+    var x = glowCv.getContext('2d'), g = x.createRadialGradient(128, 128, 10, 128, 128, 128);
+    g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 256, 256);
+  })();
+  var glowTex = new THREE.CanvasTexture(glowCv);
+  function glow(w, h, hex) {
+    var m = new THREE.MeshBasicMaterial({ map: glowTex, color: hex, transparent: true,
+      opacity: 0, depthWrite: false });
+    return new THREE.Mesh(new THREE.PlaneGeometry(w, h), m);
+  }
+
+  var world = new THREE.Group();
+  scene.add(world);
+
+  var BASE = -5.85;   // the floor stays 1.3 under the contour field, which now holds two rows
+  var ground = new THREE.Mesh(new THREE.PlaneGeometry(120, 90), new THREE.ShadowMaterial({ opacity: 0.11 }));
+  ground.rotation.x = -Math.PI / 2; ground.position.y = BASE; ground.receiveShadow = true;
+  world.add(ground);
+
+  function makeTag(name, css) {
+    var c = document.createElement('canvas'), x = c.getContext('2d');
+    x.font = '800 36px Manrope, sans-serif';
+    c.width = Math.ceil(x.measureText(name).width + 86); c.height = 84;
+    x = c.getContext('2d');
+    x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, c.width, 84);
+    x.fillStyle = css; x.beginPath(); x.arc(34, 42, 11, 0, 6.3); x.fill();
+    x.fillStyle = '#15140F'; x.font = '800 36px Manrope, sans-serif';
+    x.fillText(name, 56, 55);
+    var w = 0.37 * c.width / 84;
+    var g = new THREE.Group();
+    g.add(slab(w, 0.37, 0.1, 0.17, CARD));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.37), face(c));
+    f.position.z = FZ(0.1); g.add(f);
+    g.userData.w = w;
+    return g;
+  }
+  function sign(x, w, y, z, label, css) {
+    var cv = document.createElement('canvas'); cv.width = 560; cv.height = 96;
+    var c = cv.getContext('2d');
+    c.fillStyle = css; c.fillRect(0, 0, 560, 96);
+    c.fillStyle = '#FFFFFF'; c.font = '800 46px Manrope, sans-serif'; c.textAlign = 'center';
+    if (c.letterSpacing !== undefined) c.letterSpacing = '6px';
+    c.fillText(label, 280, 64);
+    var sg = new THREE.Group();
+    sg.add(slab(w, 0.56, 0.3, 0.12, parseInt(css.slice(1), 16)));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.56), face(cv));
+    f.position.z = FZ(0.3); sg.add(f);
+    sg.position.set(x, y, z); world.add(sg);
+  }
+
+  // Straight, flat arrows cut from slab stock; rot = PI/2 turns a down arrow to point right
+  var ARROWZ = 0.6;
+  var FLOWS = [];
+  function arrow(xc, yTop, yBot, hex, rot) {
+    var L = yTop - yBot, sw = 0.09, hw = 0.24, hl = Math.min(0.26, L * 0.5);
+    var sh = new THREE.Shape();
+    sh.moveTo(-sw, 0); sh.lineTo(sw, 0); sh.lineTo(sw, -(L - hl));
+    sh.lineTo(hw, -(L - hl)); sh.lineTo(0, -L); sh.lineTo(-hw, -(L - hl));
+    sh.lineTo(-sw, -(L - hl)); sh.closePath();
+    var g = new THREE.ExtrudeGeometry(sh, {
+      depth: 0.1, bevelEnabled: true, bevelThickness: 0.03, bevelSize: 0.02,
+      bevelOffset: 0, bevelSegments: 2
+    });
+    g.translate(0, L / 2, -0.05);   // centred, so it can turn round on the spot
+    var m = new THREE.Mesh(g, flat(hex)), r0 = rot || 0;
+    var dx = Math.sin(r0), dy = -Math.cos(r0);   // where it points
+    m.position.set(xc + dx * L / 2, yTop + dy * L / 2, ARROWZ);
+    m.rotation.z = r0;
+    m.castShadow = true; m.receiveShadow = true;
+    world.add(m);
+    FLOWS.push({ m: m, r0: r0, flip: 0, x0: xc, y0: yTop, x1: xc + dx * L, y1: yTop + dy * L, dx: dx, dy: dy, L: L });
+    return m;
+  }
+  function arrowR(x0, x1, y, hex) { return arrow(x0, y, y - (x1 - x0), hex, Math.PI / 2); }
+  function bar(x0, y0, x1, y1, hex) {
+    var t = 0.18, w = Math.max(t, Math.abs(x1 - x0)), h = Math.max(t, Math.abs(y1 - y0));
+    var m = slab(w, h, 0.1, 0.05, hex);
+    m.position.set((x0 + x1) / 2, (y0 + y1) / 2, 0.6);
+    world.add(m);
+    return m;
+  }
+
+
+
+
+
+  /* ========== Раскладка ========== */
+  // A client who has not logged in writes to the shop through the phone; the guardrails
+  // find no attack. The model only chooses where the request goes. Public data: open to
+  // all, the shelf gives it straight away. Private data: only through the logic — plain
+  // code that checks the login; the model never reaches the safe.
+  // Upper row: the client, the phone, the guardrails, the model, the public shelf.
+  // On the private slide a lower row under the shelf: the logic and the private data.
+  var PUBLIC = false, MODE = 'stack2';
+  var Y0 = -0.2, Y1 = Y0 - 2.8, CWD = 3.35, CHT = 0.56, PD = 1.5, OBJZ = 0.8;
+  var STRUCT = MODE === 'struct' || MODE === 'outcls';   // the structure slides: the upper row of the flood slide + a private row
+  var FLOOD = MODE === 'flood' || STRUCT;   // one row: the classifier stands between the guardrails and the model
+  // planes2 is a block diagram in three rows: the Data plane on top (classifier, model, public
+  // data), the filters in the middle, the Control plane at the bottom (its own classifier, model,
+  // private data); the guardrails' plate is a narrow hidden spacer
+  var P2 = MODE === 'planes2' || MODE === 'stack2', Y2 = Y0 - 6.2;
+  // status2: the chat's states. The middle row: the client, «waits», «in work» (the robot), «with
+  // a person»; between «in work» and «with a person» a column: «answered» above, «failed» below;
+  // «closed» above «with a person». The guardrails' plate is a narrow hidden spacer
+  var ST2 = MODE === 'status2';
+  // turn2: one turn of the agent — a snake of places. The top row left to right (pause, take
+  // the chat?, knowledge, hint filter, the model), down, the bottom row right to left (check,
+  // mask, send) and back to the client; the operator stands at the right end
+  var TU = MODE === 'turn2', OWN = ST2 || TU;
+  var ORDERX = TU ? ['att', 'grd', 'p0', 'p1', 'p2', 'p3', 'mdl', 'opr'] : ST2 ? ['att', 'grd', 'idl', 'mdl', 'trn'] : P2 ? ['att', 'grd', 'cls', 'mdl', 'pub'] : FLOOD ? ['att', 'grd', 'cls', 'mdl'] : PUBLIC ? ['att', 'grd', 'mdl', 'pub'] : ['att', 'grd', 'mdl', 'lgc', 'acc'];
+  var W_ = { att: 2.3, grd: 2.9, mdl: 3.0, pub: 4.6, lgc: 3.4, acc: 4.6, cls: 3.4 };
+  var GAP = 1.15, GAPS = FLOOD ? { att: 3.0, grd: 2.6, cls: 2.6 } : { att: 3.0, mdl: PUBLIC ? 2.4 : 1.7 }, X = {};   // room for the phone after the client
+  // Сценарий 7 is one row: the attacker, the model, the filters, the private data; the
+  // guardrails' plate stays only as a narrow hidden spacer
+  if (MODE === 'shared') { W_.grd = 0.4; GAPS = { att: 1.6, mdl: 1.7 }; }
+  if (TU) { W_.grd = 0.4; W_.mdl = 3.4; W_.opr = 3.0; ['p0', 'p1', 'p2', 'p3'].forEach(function (k) { W_[k] = 3.3; }); GAPS = { att: 1.6, mdl: 1.6 }; }
+  if (ST2) { W_.grd = 0.4; W_.idl = 3.1; W_.trn = 3.4; W_.ans = 3.1; W_.fail = 3.1; W_.clo = 3.4; GAPS = { att: 1.6, idl: 1.7, mdl: 6.0 }; }
+  if (P2) { W_.grd = 0.4; GAPS = { att: 1.6, cls: 1.4, mdl: 1.4 }; }
+  function gapAfter(k) { return GAPS[k] || GAP; }
+  (function () {
+    var tot = ORDERX.reduce(function (a, k, i) { return a + W_[k] + (i < ORDERX.length - 1 ? gapAfter(k) : 0); }, 0), x = -tot / 2;
+    ORDERX.forEach(function (k) { X[k] = x + W_[k] / 2; x += W_[k] + gapAfter(k); });
+  })();
+  // on the private slide the public shelf stands over the lower row, in the middle of it
+  if (!PUBLIC && !FLOOD && !P2) X.pub = (X.lgc + X.acc) / 2;
+  // planes2: the filters stand in the middle row under the model, the Control plane repeats the
+  // Data plane's columns at the bottom
+  if (P2) { X.lgc = X.mdl; X.acc = X.pub; W_.acc = W_.pub; X.cls2 = X.cls; X.mdl2 = X.mdl; W_.cls2 = W_.cls; W_.mdl2 = W_.mdl; }
+  if (MODE === 'shared') X.pub = X.mdl;   // the public shelf is off this stage (hidden in the scene)
+  // the structure slides: under the public model, the filter, then the private classifier, model and data
+  if (STRUCT) {
+    W_.flt = 3.4; W_.cls2 = 3.4; W_.mdl2 = 3.4; W_.sfe = 3.6; W_.cls3 = 3.9;
+    X.flt = X.mdl + 1.8; X.cls2 = X.flt + 5.0; X.mdl2 = X.cls2 + 5.0; X.sfe = X.mdl2 + 5.1; X.cls3 = X.cls;   // the exit classifier over the input one: clear of the client's bubble
+  }
+  // the operator stands in the lower row under the guardrails: the filters hand him what they cannot answer
+  if (MODE === 'private') { X.opr = X.grd; W_.opr = W_.grd; }
+  var C = { G: '#D9534F', U: '#C9762E', A: '#7E5FD0', M: '#D99A1E', R: '#2E7FB8', D: '#2A6B38', ok: '#2A6B38', grey: '#8A8778', cli: '#3A86C8' };
+  var anim = [];   // small motions of the props, run every frame
+  var cards = [];
+  function station(x, y, bg, col, badge, title, idle, wd) {
+    var w = wd || CWD;
+    var c = document.createElement('canvas'); c.width = Math.round(180 * w); c.height = Math.round(180 * CHT);
+    var tex = liveTex(c), g = new THREE.Group();
+    g.add(slab(w, CHT, PD, 0.16, parseInt(bg.slice(1), 16)));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, CHT), new THREE.MeshBasicMaterial({ map: tex }));
+    f.position.z = FZ(PD); g.add(f);
+    g.position.set(x, y, 0.6); world.add(g);
+    var gl = glow(w + 1.8, 2.8, parseInt(col.slice(1), 16)); gl.position.set(x, y + 0.8, -0.3); world.add(gl);
+    var me = { g: g, glow: gl, x: x, y: y, top: y + CHT / 2 + BEVEL, lit: -99 };
+    me.paint = function () {
+      var k = c.getContext('2d'), W = c.width, H = c.height;
+      k.fillStyle = bg; k.fillRect(0, 0, W, H);
+      k.fillStyle = col; k.fillRect(0, 0, 10, H);
+      var tx = 30;
+      if (badge) {   // a plate without a letter is a prop, not a GUARD layer
+        k.roundRect(26, 14, H - 28, H - 28, 14); k.fill();
+        k.fillStyle = '#FFFFFF'; k.font = '800 ' + Math.round(H * 0.5) + 'px Manrope, sans-serif'; k.textAlign = 'center';
+        k.fillText(badge, 26 + (H - 28) / 2, H * 0.67); k.textAlign = 'left';
+        tx = H + 12;
+      }
+      k.fillStyle = '#15140F'; k.font = '800 ' + Math.round(H * 0.46) + 'px Manrope, sans-serif'; k.fillText(title, tx, H * 0.66);
+      tex.needsUpdate = true;
+    };
+    me.paint();
+    cards.push(me);
+    return me;
+  }
+  var shCv = document.createElement('canvas'); shCv.width = shCv.height = 128;
+  (function () { var k = shCv.getContext('2d'), gr = k.createRadialGradient(64, 64, 4, 64, 64, 64);
+    gr.addColorStop(0, 'rgba(21,20,15,.35)'); gr.addColorStop(1, 'rgba(21,20,15,0)'); k.fillStyle = gr; k.fillRect(0, 0, 128, 128); })();
+  var shTex = new THREE.CanvasTexture(shCv);
+  function contact(st, w) {
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(w * 1.5, 1.1), new THREE.MeshBasicMaterial({ map: shTex, transparent: true, depthWrite: false }));
+    m.rotation.x = -Math.PI / 2; m.position.set(st.x, st.top + 0.012, OBJZ); world.add(m);
+  }
+  function prop(file, st, o, then) {
+    var holder = new THREE.Group();
+    holder.position.set(st.x + (o.dx || 0), st.top + (o.dy || 0), OBJZ + (o.dz || 0)); world.add(holder);
+    new THREE.GLTFLoader().load(file, function (g) {
+      var m = g.scene; m.rotation.y = o.ry || 0;
+      m.traverse(function (n) {
+        if (!n.isMesh) return;
+        n.castShadow = true; n.receiveShadow = true;
+        var src = Array.isArray(n.material) ? n.material : [n.material];
+        var out = src.map(function (sm) {
+          var t = o.tint && (o.tint[sm.name] !== undefined ? o.tint[sm.name] : o.tint['*']);
+          var lm = new THREE.MeshLambertMaterial({ color: sm.color ? sm.color.clone() : new THREE.Color(1, 1, 1), map: t === undefined ? sm.map || null : null, side: THREE.DoubleSide });
+          if (t !== undefined) lm.color.setHex(t).convertSRGBToLinear();
+          return lm;
+        });
+        n.material = Array.isArray(n.material) ? out : out[0];
+      });
+      m.updateMatrixWorld(true);
+      var box = new THREE.Box3().setFromObject(m), sz = box.getSize(new THREE.Vector3());
+      var k = Math.min(o.h ? o.h / sz.y : 1e9, o.w ? o.w / sz.x : 1e9, o.d ? o.d / sz.z : 1e9);
+      m.scale.setScalar(k); m.updateMatrixWorld(true);
+      box.setFromObject(m);
+      m.position.set(-(box.min.x + box.max.x) / 2, -box.min.y, -(box.min.z + box.max.z) / 2);
+      holder.add(m);
+      if (then) then(holder, m);
+    });
+    return holder;
+  }
+  function screen(w, h, bg) {
+    var c = document.createElement('canvas'); c.width = Math.round(200 * w); c.height = Math.round(200 * h);
+    var tex = liveTex(c), m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: tex }));
+    m.write = function (rows) {
+      var k = c.getContext('2d'); k.fillStyle = bg; k.fillRect(0, 0, c.width, c.height);
+      var fs = Math.round(c.height / (rows.length + 1.4));
+      rows.forEach(function (r, i) {
+        var size = fs; do { k.font = '800 ' + size + 'px Manrope, sans-serif'; size -= 1; } while (k.measureText(r[0]).width > c.width - 24 && size > 10);
+        k.fillStyle = r[1] || '#FFFFFF'; k.fillText(r[0], 12, (i + 1) * fs * 1.15 + 4);
+      });
+      tex.needsUpdate = true;
+    };
+    return m;
+  }
+  var mixers = [];
+  function measure(obj) {
+    obj.updateMatrixWorld(true);
+    var geo = new THREE.Box3().setFromObject(obj);
+    var bone = new THREE.Box3(), v = new THREE.Vector3(), n = 0;
+    obj.traverse(function (o) {
+      if (o.isBone) { v.setFromMatrixPosition(o.matrixWorld); bone.expandByPoint(v); n++; }
+    });
+    if (n && (geo.max.y - geo.min.y) < (bone.max.y - bone.min.y) * 0.5) {
+      bone.max.y += (bone.max.y - bone.min.y) * 0.09;
+      return bone;
+    }
+    return geo;
+  }
+  function place(m, h) {
+    m.traverse(function (o) { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.frustumCulled = false; } });
+    var b3 = measure(m), k = h / (b3.max.y - b3.min.y);
+    m.scale.setScalar(k);
+    m.position.set(-(b3.min.x + b3.max.x) / 2 * k, -b3.min.y * k, -(b3.min.z + b3.max.z) / 2 * k);
+  }
+  function actor(g, m, base) {
+    var mx = new THREE.AnimationMixer(m), A = {};
+    // clip names may carry the rig's name: 'CharacterArmature|Wave' → 'Wave'
+    g.animations.forEach(function (c) { A[c.name.split('|').pop()] = mx.clipAction(c); });
+    var cur = A[base]; cur.play();
+    mixers.push(mx);
+    var me = { A: A, mx: mx };
+    mx.addEventListener('finished', function (e) {
+      if (e.action !== cur) return;
+      var b = A[base]; b.reset().play(); cur.crossFadeTo(b, 0.3, false); cur = b;
+    });
+    me.play = function (name, loop) {
+      var a = A[name]; if (!a || a === cur) return;
+      a.reset(); a.setLoop(loop ? THREE.LoopRepeat : THREE.LoopOnce, Infinity);
+      a.clampWhenFinished = !loop; a.play();
+      cur.crossFadeTo(a, 0.25, false); cur = a;
+    };
+    me.rest = function () { me.play(base, true); };
+    return me;
+  }
+
+  function edgeR(k) { return X[k] + W_[k] / 2 + 0.06; }
+  function edgeL(k) { return X[k] - W_[k] / 2 - 0.06; }
+  function gx(a, b) { return (edgeR(a) + edgeL(b)) / 2; }
+
+  // The client's plate, as on the attacks and guardrails slides: a thick light-blue block
+  // with who stands on it written across its face — here a client who has not logged in
+  var PODH = 0.86, PODD = 1.9, attTop = Y0 + CHT / 2 + BEVEL;
+  var podC = slab(W_.att, PODH, PODD, 0.16, 0xA9C9E8);
+  podC.position.set(X.att, attTop - BEVEL - PODH / 2, 0.6); world.add(podC);
+  var podCv = document.createElement('canvas'); podCv.width = Math.round(W_.att * 150); podCv.height = Math.round(PODH * 150);
+  var podTex = liveTex(podCv), podLbl = -1;
+  // v 0: the client who has not logged in; v 1: the attacker who took his place (public slide)
+  function drawPod(v) {
+    var x = podCv.getContext('2d'), W = podCv.width, H = podCv.height;
+    x.clearRect(0, 0, W, H);
+    x.fillStyle = '#15140F'; x.textAlign = 'center';   // black on both the blue and the red block
+    if (v) {
+      x.font = '800 30px Manrope, sans-serif';
+      if (x.letterSpacing !== undefined) x.letterSpacing = '3px';
+      if (MODE === 'notes' || MODE === 'tool' || MODE === 'reverse' || MODE === 'shared' || MODE === 'observe' || MODE === 'outguard') {   // he has an account of his own and is logged in
+        x.fillText('ЗЛОУМЫШЛЕННИК', W / 2, H / 2 - 2);
+        x.font = '800 25px Manrope, sans-serif'; if (x.letterSpacing !== undefined) x.letterSpacing = '1px';
+        x.fillText('вошёл в аккаунт', W / 2, H / 2 + 32);
+      } else x.fillText('ЗЛОУМЫШЛЕННИК', W / 2, H / 2 + 12);
+    } else {
+      x.font = '800 36px Manrope, sans-serif';
+      if (x.letterSpacing !== undefined) x.letterSpacing = '5px';
+      x.fillStyle = '#15140F';
+      x.fillText('КЛИЕНТ', W / 2, H / 2 - 2);
+      x.font = '800 25px Manrope, sans-serif';
+      if (x.letterSpacing !== undefined) x.letterSpacing = '1px';
+      x.fillText(MODE === 'struct' || MODE === 'outcls' ? 'вошёл в аккаунт' : 'не авторизован', W / 2, H / 2 + 32);
+    }
+    podTex.needsUpdate = true;
+  }
+  drawPod(0); podLbl = 0;
+  var podC0 = podC.material.color.clone(), podC1 = new THREE.Color(0xE49A94).convertSRGBToLinear();
+  var vil = 0, vilK = 0;
+  var podF = new THREE.Mesh(new THREE.PlaneGeometry(W_.att, PODH), new THREE.MeshBasicMaterial({ map: podTex, transparent: true }));
+  podF.position.set(X.att, attTop - BEVEL - PODH / 2, 0.6 + FZ(PODD)); world.add(podF);
+  var attGl = glow(W_.att + 1.8, 2.8, 0x3A86C8); attGl.position.set(X.att, Y0 + 0.8, -0.3); world.add(attGl);
+  // its pins go under the block, not under a plate
+  var attS = { x: X.att, y: Y0, top: attTop, glow: attGl, lit: -99, bot: attTop - BEVEL - PODH };
+  cards.push(attS);
+  var grd  = station(X.grd, Y0, '#F8E1DF', C.G, 'G', 'Гардрейлы', '', W_.grd);
+  var mdl  = TU ? station(X.mdl, Y0, '#E2EFE4', C.D, '', 'Модель и тулы · до 50', '', W_.mdl) : ST2 ? station(X.mdl, Y0, '#E2ECF6', C.R, '', 'В работе · processing', '', W_.mdl) : station(X.mdl, Y0, '#FBEFCB', C.M, '✎', 'Модель', '', W_.mdl);
+  // the public shelf is a U boundary too: it decides "open to all — here it is"
+  var pub  = FLOOD || OWN ? null : station(X.pub, Y0, '#F7E7D6', C.U, 'U', 'Граница · публичные данные', '', W_.pub);
+  // the classifier (flood slide): a funnel — the whole pile goes in, one topic comes out
+  // on the structure and planes slides the colours say the plane: amber Data plane, purple Control plane
+  var cls  = FLOOD || P2 ? (STRUCT || P2 ? station(X.cls, Y0, '#FBEFCB', C.M, '◎', 'Классификатор', '', W_.cls) : station(X.cls, Y0, '#E3EBF1', '#6F8FA8', '◎', 'Классификатор', '', W_.cls)) : null;
+  // the logic is the A layer, plain code that filters; the private data is a U boundary, like the shelf
+  var lgc  = PUBLIC || FLOOD || OWN ? null : station(X.lgc, MODE === 'shared' ? Y0 : Y1, '#ECE6FA', C.A, 'A', 'Фильтры · код', '', W_.lgc);
+  var acc  = PUBLIC || FLOOD || OWN ? null : station(X.acc, MODE === 'shared' ? Y0 : P2 ? Y2 : Y1, '#F7E7D6', C.U, 'U', 'Граница · приватные данные', '', W_.acc);
+  var opr  = MODE !== 'private' ? null : station(X.opr, Y1, '#E1EFE4', C.D, 'D', 'Оператор', '', W_.opr);
+  function rightEdge() { return TU ? edgeR('opr') : ST2 ? edgeR('trn') : STRUCT ? edgeR('sfe') : FLOOD ? edgeR('mdl') : PUBLIC ? edgeR('pub') : Math.max(edgeR('acc'), edgeR('pub')); }
+
+  // A joint is a lever on a post between two plates: whatever crosses the joint tips
+  // it, the far end up the way the value goes, and it settles back like a damped spring
+  var JG = {};
+  function lever(x) {
+    var g = new THREE.Group(), w = GAP - 0.14, top = Y0 + CHT / 2;
+    var post = box(0.14, CHT + 0.1, 0.3, 0x8E8B80); post.position.set(x, top - (CHT + 0.1) / 2, 0.6); world.add(post);
+    var arm = slab(w, 0.09, 0.26, 0.04, 0xA8A497); g.add(arm);
+    [-1, 1].forEach(function (s) { var k = cyl(0.08, 0.3, 0x6E6B60, 16); k.rotation.x = Math.PI / 2; k.position.x = s * w / 2; g.add(k); });
+    var pin = cyl(0.06, 0.36, 0x6E6B60, 12); pin.rotation.x = Math.PI / 2; g.add(pin);
+    g.position.set(x, top + 0.02, 0.6); world.add(g);
+    return g;
+  }
+
+  // the joints between two plates, left to right
+  function joints(a, b) {
+    var i = ORDERX.indexOf(a), j = ORDERX.indexOf(b), out = [];
+    for (var k = Math.min(i, j); k < Math.max(i, j); k++) if (JG[ORDERX[k]]) out.push(JG[ORDERX[k]]);
+    return out;
+  }
+  function turnJoints(a, b, d) { joints(a, b).forEach(function (o) { o.d = d; o.until = T + 1.3; }); }
+
+  // the contour: one pale field behind the five plates and the upper row; the client stands outside it
+  var ZY0 = TU ? Y0 - 3.6 - CHT / 2 - 1.7 : ST2 ? Y1 - CHT / 2 - 1.8 : P2 ? Y2 - CHT / 2 - 1.0 : MODE === 'shared' ? Y0 - CHT / 2 - 2.0 : STRUCT ? Y1 - CHT / 2 - 2.6 : PUBLIC || FLOOD ? Y0 - CHT / 2 - 1.7 : Y1 - CHT / 2 - 2.6, ZY1 = Y0 + (TU ? 3.6 : ST2 ? 5.9 : MODE === 'outguard' || MODE === 'outcls' ? 5.3 : STRUCT ? 4.0 : 3.1);   // the private slide's roads run under its lower row
+  (function () {
+    var x0 = edgeL('grd') - 0.35, x1 = rightEdge() + 0.35;
+    var m = new THREE.Mesh(new THREE.ShapeGeometry(roundedShape(x1 - x0, ZY1 - ZY0, 0.5), 12), new THREE.MeshBasicMaterial({ color: 0xE3EEE5 }));
+    m.material.color.convertSRGBToLinear(); m.position.set((x0 + x1) / 2, (ZY0 + ZY1) / 2, -0.6); world.add(m);
+    var tag = makeTag('Контур GUARD', C.D); tag.position.set(x0 + 1.45, ZY1, OBJZ); world.add(tag);
+  })();
+
+  /* ---------- the objects on the plates ---------- */
+  // G: a scanner frame — the request walks through it, the beam says what it saw
+  function scanner(st) {
+    var g = new THREE.Group(), FR = 0xC9CCC7, DK = 0x2B322E;
+    [-1, 1].forEach(function (sd) {
+      var post = slab(0.26, 1.3, 0.5, 0.06, FR); post.position.set(sd * 0.62, 0.65, 0); g.add(post);
+      var foot = slab(0.36, 0.08, 0.66, 0.03, DK); foot.position.set(sd * 0.62, 0.04, 0); g.add(foot);
+    });
+    var beam = slab(1.6, 0.42, 0.56, 0.08, DK); beam.position.set(0, 1.47, 0); g.add(beam);
+    var scr = screen(1.3, 0.3, '#1E2421'); scr.position.set(0, 1.47, FZ(0.56)); g.add(scr);
+    var stripe = slab(1.6, 0.08, 0.56, 0.03, 0xB5BAB6); stripe.position.set(0, 1.74, 0); g.add(stripe);
+    var mat = slab(1.0, 0.03, 0.9, 0.02, 0xA7ACA8); mat.position.set(0, 0.015, 0); g.add(mat);
+    scr.write([['…', '#6B716D']]);
+    g.position.set(st.x, st.top, OBJZ); world.add(g); contact(st, 1.7);
+    st.screen = scr; st.stripe = stripe; st.stripe0 = stripe.material.color.clone();
+    st.verdict = function (ok) {
+      if (ok === null) { scr.write([['…', '#6B716D']]); stripe.material.color.copy(st.stripe0); return; }
+      scr.write([[ok ? '✓' : '✗', ok ? '#9AE6B4' : '#FF6B6B']]);
+      stripe.material.color.setHex(ok ? 0x2A6B38 : 0xD9534F).convertSRGBToLinear();
+    };
+  }
+  // U: a rules console — a checklist screen and a stamp that comes down with the decision
+  function rulesDesk(st) {
+    var g = new THREE.Group();
+    var desk = slab(1.9, 0.42, 0.9, 0.06, 0xE0A26A); desk.position.set(0, 0.22, 0); g.add(desk);
+    var mon = slab(1.35, 0.8, 0.08, 0.05, 0x3A2E24); mon.position.set(-0.22, 0.98, -0.1); mon.rotation.x = -0.12; g.add(mon);
+    var scr = screen(1.24, 0.68, '#2A221B'); scr.position.set(-0.22, 0.98, -0.1 + FZ(0.08)); scr.rotation.x = -0.12; g.add(scr);
+    scr.write([['…', '#8C7A69']]);
+    var stamp = new THREE.Group();
+    stamp.position.set(0.68, 0.48, 0.15); g.add(stamp);
+    prop('../models/prop-stamp.glb', { x: 0, top: 0 }, { h: 0.62, w: 0.5 }, function (hd) { world.remove(hd); hd.position.set(0, 0, 0); stamp.add(hd); });
+    var mark = cyl(0.19, 0.01, 0x2A6B38, 24); st.mark = mark; mark.position.set(0.68, 0.44, 0.15); mark.scale.setScalar(0.001); g.add(mark);
+    g.position.set(st.x, st.top, OBJZ); world.add(g); contact(st, 1.9);
+    st.screen = scr; st.stampT = -9;
+    anim.push(function () {
+      var k = T - st.stampT;
+      stamp.position.y = 0.48 - (k > 0 && k < 0.5 ? Math.sin(Math.PI * k / 0.5) * 0.26 : 0);
+      mark.scale.setScalar(k > 0.25 && k < 600 ? 1 : 0.001);
+    });
+  }
+  // A: the safe with every record, and the funnel that lets only the client's own fields out
+  function safeBox(st, dx) {
+    prop('../models/prop-safe.glb', st, { dx: dx, h: 1.15, w: 1.2, d: 1.0, tint: { '*': 0x4A524D } }, function (hd, m) {
+      var b = new THREE.Box3().setFromObject(m);
+      var lock = new THREE.Group();
+      var lockB = slab(0.3, 0.26, 0.12, 0.04, 0xE0B23A); lock.add(lockB);
+      var sh = new THREE.Mesh(new THREE.TorusGeometry(0.1, 0.03, 8, 20, Math.PI), flat(0xBFC2BD)); sh.position.y = 0.13; lock.add(sh);
+      lock.position.set(-0.15, (b.max.y - b.min.y) * 0.4, b.max.z - hd.position.z + 0.06); hd.add(lock);
+      st.lockT = -9;
+      anim.push(function () { var k = T - st.lockT; lock.scale.setScalar(k > 0 && k < 0.6 ? 1 + Math.sin(Math.PI * k / 0.6) * 0.35 : 1); });
+    });
+    contact({ x: st.x + dx, top: st.top }, 1.3);
+  }
+  // the classifier is the same robot as the model; only its plate tells them apart
+  // hex: the robot's colour — amber in the Data plane (the default), purple in the Control plane
+  function funnel(st, dx, hex) {
+    new THREE.GLTFLoader().load('../models/robot.glb', function (g) {
+    var m = g.scene;
+    m.traverse(function (o) { if (o.isMesh && o.material && o.material.name === 'Main') { o.material = o.material.clone(); o.material.color.setHex(hex || 0xD99A1E).convertSRGBToLinear(); } });
+    var holder = new THREE.Group(); holder.add(m); place(m, 1.5);
+    holder.position.set(st.x + (dx || 0), st.top, 0.6); holder.rotation.y = 0.35; world.add(holder);
+    st.bot = actor(g, m, 'Idle');
+  });
+    contact({ x: st.x + (dx || 0), top: st.top }, 1.3);
+  }
+  scanner(grd);
+  var SAFE_DX = 0;
+  if (lgc) { rulesDesk(lgc); safeBox(acc, SAFE_DX); }
+  if (cls) funnel(cls, 0);
+
+  // the model is our robot, on its own plate
+  var rob = null;
+  new THREE.GLTFLoader().load('../models/robot.glb', function (g) {
+    var m = g.scene;
+    m.traverse(function (o) {
+      if (o.isMesh && o.material && o.material.name === 'Main') { o.material = o.material.clone(); o.material.color.setHex(AMBER).convertSRGBToLinear(); }
+    });
+    var holder = new THREE.Group(); holder.add(m); place(m, 1.5);
+    holder.position.set(X.mdl + ROB_DX, mdl.top, 0.6); holder.rotation.y = 0.35; world.add(holder);
+    rob = actor(g, m, 'Idle');
+  });
+  // public data: an open shelf on the model's plate — the model reads it itself, no gate
+  // public data: an open shelf on its own plate — after the model, nothing stands in the way
+  var ROB_DX = 0;
+  if (pub) {
+    if (MODE !== 'shared') { prop('../models/prop-bookcase.glb', pub, { h: 1.25, w: 1.2, d: 0.55 }); contact({ x: X.pub, top: pub.top }, 1.3); }
+  }
+
+  /* ========== Злоумышленник и телефон ========== */
+  // Motion clips were recorded on the standard Mixamo rig. Our rigs name the same
+  // bones but bind in their own local frames and sometimes in another pose (arms
+  // down in an A-pose, a Z-up armature, frames baked into the bind matrices), so a
+  // rotation cannot be copied bone-local. Each bone is carried over in world space:
+  // first our rest is swung so every bone points the way the clip rig's bone does,
+  // then the clip's world rotation relative to its own rest is applied on top, and
+  // the result is written back as local rotations, sampled at 30 fps. Positions are
+  // dropped: the body is moved by code.
+  function retarget(gltf, root) {
+    var clip = gltf.animations[0], src = gltf.scene, S = {}, B = {}, order = [];
+    function key(n) { return n.replace(/^mixamorig:?/, ''); }
+    src.traverse(function (n) { var k = key(n.name); if (!S[k]) S[k] = n; });
+    // the head and neck keep their modelled pose: carried over, the clips' head
+    // motion reads as staring at the floor
+    root.traverse(function (o) { if (o.isBone) { var k = key(o.name); if (!B[k] && S[k] && k !== 'Head' && k !== 'Neck') { B[k] = o; order.push(k); } } });
+    // our bind pose, kept from before any hand posing touched the bones
+    var saved = [];
+    root.traverse(function (o) { if (o.isBone) { saved.push([o, o.quaternion.clone()]); if (!o.userData.bind) o.userData.bind = o.quaternion.clone(); o.quaternion.copy(o.userData.bind); } });
+    root.updateMatrixWorld(true); src.updateMatrixWorld(true);
+    var rootQ = new THREE.Quaternion(), rootM = new THREE.Matrix4(); root.getWorldQuaternion(rootQ); rootM.copy(root.matrixWorld).invert();
+    var rootQi = rootQ.clone().invert();
+    function relQ(o) { var q = new THREE.Quaternion(); o.getWorldQuaternion(q); return q.premultiply(rootQi); }
+    function relP(o) { var p = new THREE.Vector3(); o.getWorldPosition(p); return p.applyMatrix4(rootM); }
+    function srcQ(o) { var q = new THREE.Quaternion(); o.getWorldQuaternion(q); return q; }
+    function srcP(o) { var p = new THREE.Vector3(); o.getWorldPosition(p); return p; }
+    // the child that gives a bone its direction: down the spine first, else the first shared child
+    function heir(k) {
+      var kids = S[k].children.map(function (c) { return key(c.name); }).filter(function (c) { return B[c]; });
+      for (var i = 0; i < kids.length; i++) if (/Spine|Neck|Head/.test(kids[i])) return kids[i];
+      return kids[0];
+    }
+    // an orthonormal frame from a main direction and a rough side direction
+    function basis(d, side) {
+      var x = d.normalize(), z = new THREE.Vector3().crossVectors(x, side).normalize(), y = new THREE.Vector3().crossVectors(z, x);
+      return new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(x, y, z));
+    }
+    var sRestInv = {}, tRef = {}, parentFixed = {};
+    order.forEach(function (k) {
+      sRestInv[k] = srcQ(S[k]).invert();
+      var ref = relQ(B[k]), c = heir(k);
+      // a hand points down its middle finger, and the line across its knuckles fixes
+      // the palm's roll: matched on direction alone the hand comes out twisted
+      var hs = /Hand$/.test(k) ? k : null, mid = hs && B[hs + 'Middle1'] ? hs + 'Middle1' : null;
+      var ix = hs && B[hs + 'Index1'] ? hs + 'Index1' : null, pk = hs && (B[hs + 'Pinky1'] ? hs + 'Pinky1' : B[hs + 'Ring1'] ? hs + 'Ring1' : null);
+      if (mid && ix && pk) {
+        var fS = basis(srcP(S[mid]).sub(srcP(S[k])), srcP(S[ix]).sub(srcP(S[pk])));
+        var fT = basis(relP(B[mid]).sub(relP(B[k])), relP(B[ix]).sub(relP(B[pk])));
+        ref.premultiply(fS.multiply(fT.invert()));
+      } else if (c) {
+        var dS = srcP(S[c]).sub(srcP(S[k])).normalize(), dT = relP(B[c]).sub(relP(B[k])).normalize();
+        ref.premultiply(new THREE.Quaternion().setFromUnitVectors(dT, dS));
+      }
+      tRef[k] = ref;
+      var p = B[k].parent;
+      if (!(p && p.isBone && B[key(p.name)])) parentFixed[k] = p && p !== root ? relQ(p) : new THREE.Quaternion();
+    });
+    // The hips carry the weight shifts: when they keep still and only turn, the legs
+    // swing round the pelvis and the figure seems to hang from its middle. So the
+    // hips' travel is carried over too, scaled by leg length, with any steady drift
+    // (a walk moving forward) taken out: the feet stay put while the body sways.
+    var hipK = S.Hips && B.Hips ? 'Hips' : null, hipS0, hipT0, hipScale = 1, hipInv = new THREE.Matrix4();
+    if (hipK) {
+      hipS0 = srcP(S.Hips); hipT0 = relP(B.Hips);
+      var fS = S.LeftFoot ? srcP(S.LeftFoot).y : 0, fT = B.LeftFoot ? relP(B.LeftFoot).y : 0;
+      if (hipS0.y - fS > 1e-6) hipScale = (hipT0.y - fT) / (hipS0.y - fS);
+      hipInv.copy(rootM).multiply(B.Hips.parent.matrixWorld).invert();
+    }
+    var mx = new THREE.AnimationMixer(src), act = mx.clipAction(clip); act.play();
+    var N = Math.max(2, Math.ceil(clip.duration * 30)), times = new Float32Array(N + 1), vals = {};
+    var hipD = [];
+    order.forEach(function (k) { vals[k] = new Float32Array((N + 1) * 4); });
+    var W = {}, q = new THREE.Quaternion();
+    for (var i = 0; i <= N; i++) {
+      var t = clip.duration * i / N; times[i] = t;
+      mx.setTime(t); src.updateMatrixWorld(true);
+      order.forEach(function (k) {
+        W[k] = srcQ(S[k]).multiply(sRestInv[k]).multiply(tRef[k]);
+        var pk = parentFixed[k] ? null : key(B[k].parent.name);
+        q.copy(pk ? W[pk] : parentFixed[k]).invert().multiply(W[k]);
+        q.toArray(vals[k], i * 4);
+      });
+      if (hipK) hipD.push(srcP(S.Hips).sub(hipS0).multiplyScalar(hipScale));
+    }
+    act.stop(); mx.uncacheRoot(src);
+    saved.forEach(function (s) { s[0].quaternion.copy(s[1]); });
+    root.updateMatrixWorld(true);
+    var tr = order.map(function (k) { return new THREE.QuaternionKeyframeTrack(B[k].name + '.quaternion', times, vals[k]); });
+    if (hipK) {
+      // the travel is measured as the straight-line trend over the whole cycle (a walk
+      // clip often snaps back to its start on the last key, so the ends alone lie),
+      // taken out, and the loop is closed on the first key
+      var pv = new Float32Array((N + 1) * 3), v = new THREE.Vector3();
+      var mi = (N - 1) / 2, sx = 0, sz = 0, mx0 = 0, mz0 = 0, den = 0;
+      for (var i2 = 0; i2 < N; i2++) { mx0 += hipD[i2].x / N; mz0 += hipD[i2].z / N; }
+      for (i2 = 0; i2 < N; i2++) { sx += (i2 - mi) * (hipD[i2].x - mx0); sz += (i2 - mi) * (hipD[i2].z - mz0); den += (i2 - mi) * (i2 - mi); }
+      sx /= den; sz /= den;
+      hipD.forEach(function (d, i) {
+        var j = i === N ? 0 : i, e = hipD[j];
+        v.set(e.x - sx * j, e.y, e.z - sz * j).add(hipT0).applyMatrix4(hipInv);
+        v.toArray(pv, i * 3);
+      });
+      tr.push(new THREE.VectorKeyframeTrack(B.Hips.name + '.position', times, pv));
+    }
+    return new THREE.AnimationClip(clip.name, clip.duration, tr);
+  }
+  var contactTex = null;
+  function contactShadow(h) {
+    if (!contactTex) {
+      var c = document.createElement('canvas'); c.width = c.height = 128;
+      var x = c.getContext('2d'), g = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+      g.addColorStop(0, 'rgba(40,38,30,0.75)'); g.addColorStop(0.35, 'rgba(40,38,30,0.42)'); g.addColorStop(1, 'rgba(40,38,30,0)');
+      x.fillStyle = g; x.fillRect(0, 0, 128, 128);
+      contactTex = new THREE.CanvasTexture(c);
+    }
+    var m = new THREE.Mesh(new THREE.PlaneGeometry(h * 0.32, h * 0.22),
+      new THREE.MeshBasicMaterial({ map: contactTex, transparent: true, depthWrite: false }));
+    m.rotation.x = -Math.PI / 2; m.position.y = 0.035; m.renderOrder = 1;
+    return m;
+  }
+  var people = [];
+  // a person with motion-capture clips: a base loop and one-shot gestures that fall back to it
+  function person(file, h, x, y, z, ry, clips, then) {
+    new THREE.GLTFLoader().load(file, function (g) {
+      var m = g.scene, holder = new THREE.Group(); holder.add(m);
+      place(m, h);
+      holder.position.set(x, y, z); holder.rotation.y = ry; world.add(holder);
+      holder.add(contactShadow(h));
+      holder.updateMatrixWorld(true);
+      var low = Infinity, fv = new THREE.Vector3();
+      m.traverse(function (o) { if (o.isBone && /Toe|Foot/.test(o.name)) low = Math.min(low, fv.setFromMatrixPosition(o.matrixWorld).y); });
+      if (low < Infinity) { m.position.y += y + 0.03 - low; holder.updateMatrixWorld(true); }
+      m.traverse(function (o) { if (o.isBone) o.userData.bind = o.quaternion.clone(); });
+      holder.visible = false;   // no T-pose on screen while the clips load
+      var mx = new THREE.AnimationMixer(m), act = {}, curA = null, me = {};
+      Object.keys(clips).forEach(function (k) {
+        new THREE.GLTFLoader().load(clips[k], function (cg) {
+          act[k] = mx.clipAction(retarget(cg, m));
+          if (k === 'base') { curA = act.base; curA.play(); holder.visible = !holder.userData.off; footLock(m); }
+        });
+      });
+      mx.addEventListener('finished', function (e) {
+        if (e.action !== curA || !act.base) return;
+        act.base.reset().play(); curA.crossFadeTo(act.base, 0.4, false); curA = act.base;
+      });
+      me.pose = function (name) {
+        var a = act[name]; if (!a || !curA || a === curA) return;
+        a.reset(); a.setLoop(THREE.LoopOnce, 1); a.clampWhenFinished = true; a.play();
+        curA.crossFadeTo(a, 0.3, false); curA = a;
+      };
+      me.loop = function (name) {
+        var a = act[name]; if (!a || !curA || a === curA) return;
+        a.reset(); a.setLoop(THREE.LoopRepeat, Infinity); a.play();
+        curA.crossFadeTo(a, 0.3, false); curA = a;
+      };
+      me.rest = function () { me.loop('base'); };
+      me.update = function (dt) { mx.update(dt); };
+      people.push(me);
+      then(me, holder);
+    });
+  }
+  // the client on the block outside the contour, as on the guardrails slide
+  // `att` is whoever asks: the attacker, who whirls in on the client's spot as on the guardrails slide
+  var H0 = 2.05, att = null, attM = null, cli = null, cliM = null, op = null, opM = null;
+  person('../models/client4.glb', H0, X.att - 0.25, attS.top, OBJZ + 0.1, 0.5, {
+    base: '../models/anim-neutral-idle.glb', talk: '../models/anim-talking.glb',
+    thanks: '../models/anim-thankful.glb', shrug: '../models/anim-shrugging.glb'
+  }, function (a, hld) { cli = a; cliM = hld; });
+  person('../models/stranger3.glb', H0, X.att - 0.25, attS.top, OBJZ + 0.1, 0.5, {
+    base: '../models/anim-neutral-idle.glb', talk: '../models/anim-talking.glb',
+    sly: '../models/anim-being-cocky.glb', shrug: '../models/anim-shrugging.glb'
+  }, function (a, hld) { att = a; attM = hld; hld.userData.off = true; hld.visible = false; });
+  // the operator, the same person as on the intro slide; the agent escalates to her (private slide)
+  if (MODE === 'private') person('../models/human.glb', H0, X.opr - 0.1, opr.top, OBJZ + 0.1, 0.3, {
+    base: '../models/anim-neutral-idle.glb', talk: '../models/anim-talking.glb'
+  }, function (a, hld) { op = a; opM = hld; });
+
+  // The phone stands on its own small plate between him and the model (3D: Quaternius,
+  // poly.pizza, CC0): his words land in the shop's chat on its screen, and it turns
+  // to whoever it works with, -1 him, +1 the model, 0 the hall
+  var chatCv = document.createElement('canvas'); chatCv.width = 420; chatCv.height = 760;
+  var chatTex = liveTex(chatCv), chatRows = [];
+  function chatDraw() {
+    var x = chatCv.getContext('2d'), W = 420, H = 760;
+    x.fillStyle = '#F4F2EC'; x.fillRect(0, 0, W, H);
+    x.fillStyle = '#2A6B38'; x.fillRect(0, 0, W, 96);
+    x.fillStyle = '#FFFFFF'; x.font = '800 38px Manrope, sans-serif'; x.fillText('Чат магазина', 26, 62);
+    var y = 130;
+    chatRows.forEach(function (r) {
+      var me = r[0] === 'me', words = r[1].split(' '), lines = [], cur = '';
+      x.font = '700 34px Manrope, sans-serif';
+      words.forEach(function (w) { var t = cur ? cur + ' ' + w : w; if (x.measureText(t).width > 300) { lines.push(cur); cur = w; } else cur = t; });
+      lines.push(cur);
+      var bw = Math.max.apply(null, lines.map(function (l) { return x.measureText(l).width; })) + 40, bh = lines.length * 42 + 26;
+      var bx = me ? W - 20 - bw : 20;
+      x.fillStyle = me ? (r[2] || '#3A86C8') : '#FFFFFF'; x.roundRect(bx, y, bw, bh, 22); x.fill();
+      if (!me) { x.strokeStyle = '#D9D6CC'; x.lineWidth = 3; x.stroke(); }
+      x.fillStyle = me ? '#FFFFFF' : '#15140F';
+      lines.forEach(function (l, i) { x.fillText(l, bx + 20, y + 46 + i * 42); });
+      y += bh + 22;
+    });
+    chatTex.needsUpdate = true;
+  }
+  function chat(who, text, css) { chatRows.push([who, text, css]); while (chatRows.length > 4) chatRows.shift(); chatDraw(); }
+  function chatClear() { chatRows = []; chatDraw(); }
+  chatDraw();
+  var PHH = 0.95 * H0, PHW = PHH * 0.467;   // as on the attacks slide: the interface is as tall as a person's chest
+  var PHX = (edgeR('att') + edgeL('grd')) / 2, PHB = attS.bot;
+  var PHY = PHB + PHH / 2 + 0.02, PHZ = OBJZ;
+  contact({ x: PHX, top: PHB }, 0.9);
+  var phone = new THREE.Group(); phone.position.set(PHX, PHY, PHZ); world.add(phone);
+  var phoneTo = 0, phoneR = 0, phoneV = 0;
+  function turnTo(who) { phoneTo = who; }
+  // where words leave the attacker's hand and land in the phone
+  function handAtk() { return [X.att + 0.3, attTop + 1.25, OBJZ + 0.3]; }
+  function phoneTop() { return [PHX, PHY + PHH / 2 + 0.15, PHZ + 0.2]; }
+  new THREE.GLTFLoader().load('../models/prop-phone.glb', function (g) {
+    var m = g.scene, turn = new THREE.Group(); turn.add(m);
+    m.traverse(function (n) {
+      if (!n.isMesh) return; n.castShadow = true;
+      var c = n.material.color ? n.material.color.clone() : new THREE.Color(1, 1, 1);
+      n.material = new THREE.MeshLambertMaterial({ color: c });
+    });
+    // the file already stands it up (its own node turns it); the screen faces us
+    turn.updateMatrixWorld(true);
+    var b = new THREE.Box3().setFromObject(turn), sz = b.getSize(new THREE.Vector3()), k = PHH / sz.y;
+    turn.scale.setScalar(k); turn.updateMatrixWorld(true); b.setFromObject(turn); sz = b.getSize(new THREE.Vector3());
+    turn.position.set(-(b.min.x + b.max.x) / 2, -(b.min.y + b.max.y) / 2, -(b.min.z + b.max.z) / 2);
+    phone.add(turn);
+    var scr = new THREE.Mesh(new THREE.PlaneGeometry(sz.x * 0.84, sz.y * 0.74), new THREE.MeshBasicMaterial({ map: chatTex }));
+    scr.position.set(0, 0, sz.z / 2 + 0.02); phone.add(scr);
+  });
+
+  /* ========== Жетоны ========== */
+  var flyers = [];
+  function token(text, css) {
+    var c = document.createElement('canvas'), x = c.getContext('2d');
+    x.font = '800 34px Manrope, sans-serif';
+    c.width = Math.ceil(x.measureText(text).width + 44); c.height = 76;
+    x = c.getContext('2d'); x.fillStyle = css; x.fillRect(0, 0, c.width, 76);
+    x.fillStyle = '#FFFFFF'; x.font = '800 34px Manrope, sans-serif'; x.fillText(text, 22, 50);
+    var w = 0.36 * c.width / 76, g = new THREE.Group();
+    g.add(slab(w, 0.36, 0.08, 0.15, parseInt(css.slice(1), 16)));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.36), face(c)); f.position.z = FZ(0.08); g.add(f);
+    g.visible = false; world.add(g);
+    return g;
+  }
+  // a→b; drop = falls off and fades instead of arriving
+  function fly(text, css, a, b, delay, dur, done, opt) {
+    var m = token(text, css); opt = opt || {};
+    flyers.push({ m: m, a: a, b: b, t0: T + delay * 1.5, dur: dur * 1.5, done: done, drop: opt.drop, leg: opt.leg, arc: opt.arc });
+  }
+
+
+
+  /* ========== Сценарий ========== */
+  // The stack on the scheme (MODE 'stack2', tools/stack-scene.js), built on the same blocks as
+  // the planes slide: the Data plane on top (classifier, model, public data), the filters in the
+  // middle with the operator and the developer beside them, the Control plane at the bottom
+  // (classifier, model, private data). Nothing travels; each step draws one technology's frame
+  // around the part of the scheme it implements.
+  var T = 0, timers = [];
+  function later(s, fn) { timers.push({ t: T + s, fn: fn }); }
+  var ui = document.getElementById('ui');
+  // speech bubbles stand over whoever speaks
+  var bubbles = [];
+  function bubble(css) {
+    var e = document.createElement('div'); e.className = 'bub'; e.style.setProperty('--c', css); ui.appendChild(e);
+    var b = { e: e, p: new THREE.Vector3() };
+    b.show = function (text, at) { e.textContent = text; b.p.set(at[0], at[1], at[2]); e.classList.add('on'); };
+    b.hide = function () { e.classList.remove('on'); };
+    bubbles.push(b); return b;
+  }
+  var QC = '#D9534F';   // the asker is the attacker: red
+  var bAtt = bubble(QC), bPub = bubble(C.ok), bMdl = bubble(C.M);
+
+  // A whirl, as on the attacks and guardrails slides (tools/actions.js): the client whirls
+  // off his block, it reddens, the attacker whirls in; on the public slide, with nothing
+  // worth having, the attacker whirls away at the end
+  var WHIRLS = [];
+  function whirl(holder, dir, done) {
+    var w = { h: holder, dir: dir, t0: T, dur: 1.2, done: done, ry0: holder.rotation.y, y0: holder.position.y, parts: [] };
+    for (var i = 0; i < 12; i++) {
+      var p = box(0.13, 0.13, 0.13, i % 3 ? 0xFFFFFF : 0xB7B4A8); p.castShadow = false; p.visible = false; world.add(p); w.parts.push(p);
+    }
+    holder.userData.whirl = 1;
+    if (dir > 0) { holder.visible = true; holder.scale.setScalar(0.001); }
+    WHIRLS.push(w);
+  }
+  function whirlUpdate() {
+    var done = [];   // what a finished whirl starts (often the next whirl) runs after the list is updated
+    WHIRLS = WHIRLS.filter(function (w) {
+      var k = Math.min(1, (T - w.t0) / w.dur), p = w.dir < 0 ? k : 1 - k;   // p: 0 whole, 1 gone
+      var h = w.h, cx = h.position.x, cz = h.position.z;
+      h.rotation.y = w.ry0 + p * p * Math.PI * 7;                              // winds up from rest, or down to it
+      var thin = ease((p - 0.3) / 0.7);
+      h.scale.setScalar(Math.max(0.001, 1 - thin));   // the whole figure shrinks down to the point at its feet
+      h.position.y = w.y0 + 0.5 * p * p;
+      var s = Math.sin(Math.PI * p);
+      w.parts.forEach(function (m, i) {
+        var a = i * 0.55 + p * 14, r = 0.55 + 0.5 * p;
+        m.visible = s > 0.02; m.scale.setScalar(Math.max(0.001, s));
+        m.position.set(cx + Math.cos(a) * r, w.y0 + 0.4 + i * 0.22 + p * 1.6, cz + Math.sin(a) * r);
+        m.rotation.set(a, a * 0.7, 0);
+      });
+      if (k < 1) return true;
+      w.parts.forEach(function (m) { world.remove(m); });
+      h.rotation.y = w.ry0; h.scale.setScalar(1); h.position.y = w.y0; h.userData.whirl = 0;
+      if (w.dir < 0) h.visible = false;
+      if (w.done) done.push(w.done);
+      return false;
+    });
+    done.forEach(function (fn) { fn(); });
+  }
+  function vanish(holder, done) { whirl(holder, -1, done); }
+  function appear(holder, done) { whirl(holder, 1, done); }
+  function whirlStop() {
+    WHIRLS.forEach(function (w) { w.parts.forEach(function (m) { world.remove(m); }); w.h.scale.setScalar(1); w.h.rotation.y = w.ry0; w.h.position.y = w.y0; w.h.userData.whirl = 0; });
+    WHIRLS = [];
+  }
+  // who stands on the block: 0 the client, 1 the attacker, 2 nobody
+  function cast(k) {
+    vil = vilK = k ? 1 : 0;
+    if (cliM) { cliM.userData.off = k !== 0; cliM.visible = k === 0; }
+    if (attM) { attM.userData.off = k !== 1; attM.visible = k === 1; }
+  }
+  function attHead() { return [X.att - 0.25, attS.top + H0 + 0.1, OBJZ + 0.1]; }
+  function pubHead() { return [X.pub, pub.top + 1.75, OBJZ + 0.1]; }
+  function mdlHead() { return [X.mdl + ROB_DX, mdl.top + 2.0, OBJZ + 0.1]; }
+
+  // off this stage: the guardrails (a hidden spacer here)
+  grd.g.visible = false; grd.glow.visible = false;
+  if (grd.screen && grd.screen.parent) grd.screen.parent.visible = false;
+  world.children.forEach(function (o) { if (o.material && o.material.map === shTex && Math.abs(o.position.x - X.grd) < 0.6) o.visible = false; });
+  // the Control plane at the bottom: its own classifier and model — the same robots
+  // the Control plane is purple: its plates and its robots
+  var cls2 = station(X.cls2, Y2, '#ECE6FA', C.A, '◎', 'Классификатор', '', W_.cls2);
+  var mdl2 = station(X.mdl2, Y2, '#ECE6FA', C.A, '✎', 'Модель', '', W_.mdl2);
+  funnel(cls2, 0, 0x7E5FD0); funnel(mdl2, 0, 0x7E5FD0);
+  // the middle row: the operator on the left of the filters, the developer on the right
+  X.opr = X.cls; W_.opr = W_.cls; X.dev = X.pub; W_.dev = 3.4;
+  var opr = station(X.opr, Y1, '#E1EFE4', C.D, 'D', 'Оператор', '', W_.opr);
+  var dev = station(X.dev, Y1, '#DFEDF7', C.R, '', 'Разработчик', '', W_.dev);
+  person('../models/human.glb', H0 * 0.9, X.opr - 0.2, opr.top, OBJZ + 0.1, 0.3, { base: '../models/anim-neutral-idle.glb' }, function () {});
+  person('../models/dev2.glb', H0 * 0.85, X.dev - 0.9, dev.top, OBJZ + 0.1, -0.3, { base: '../models/anim-neutral-idle.glb' }, function (a, hld) { hld.position.y += 0.08; });
+  var trB = null;
+  (function () {
+    var g = new THREE.Group(), BW = 1.35, BH = 0.95;
+    g.add(slab(BW + 0.1, BH + 0.1, 0.08, 0.05, 0x3A3F3B));
+    trB = screen(BW, BH, '#1F2A33'); trB.position.z = FZ(0.08); g.add(trB);
+    trB.write([['Langfuse:', '#8FB8DA'], ['…', '#6B7C8C']]);
+    g.position.set(X.dev + 0.75, dev.top + 0.3 + BH / 2 + 0.05, OBJZ - 0.2); world.add(g);
+  })();
+  // the planes behind the plates, shown from the start: amber Data plane, purple Control plane
+  function field(x0, x1, y0, y1, hex, name, css) {
+    var g = new THREE.Group();
+    var m = new THREE.Mesh(new THREE.ShapeGeometry(roundedShape(x1 - x0, y1 - y0, 0.45), 12), new THREE.MeshBasicMaterial({ color: hex }));
+    m.material.color.convertSRGBToLinear(); m.position.set((x0 + x1) / 2, (y0 + y1) / 2, -0.5); g.add(m);
+    var t = makeTag(name, css); t.position.set(x1 - 2.0, y1, OBJZ); g.add(t);
+    world.add(g); return g;
+  }
+  var BX0 = edgeL('cls') - 0.35, BX1 = edgeR('pub') + 0.35;
+  field(BX0, BX1, Y0 - CHT / 2 - 0.75, Y0 + 2.25, 0xF6EDD2, 'Data plane', C.M);
+  field(BX0, BX1, Y2 - CHT / 2 - 0.75, Y2 + 2.0, 0xE7E0F6, 'Control plane', C.A);
+  // a technology's frame: an outline around part of the scheme, with its name on it
+  function techFrame(x0, x1, y0, y1, hex, css, name, tx) {   // not `frame`: that name is the render loop
+    var g = new THREE.Group(), t = 0.09;
+    [[x0, y0, x1, y0], [x0, y1, x1, y1], [x0, y0, x0, y1], [x1, y0, x1, y1]].forEach(function (e) {
+      var m = box(Math.max(t, e[2] - e[0]), Math.max(t, e[3] - e[1]), t, hex); m.position.set((e[0] + e[2]) / 2, (e[1] + e[3]) / 2, 0.62); g.add(m);
+    });
+    var tg = makeTag(name, css); tg.position.set(tx !== undefined ? tx : x0 + 1.4, y1, OBJZ + 0.15); g.add(tg);
+    g.visible = false; world.add(g); return g;
+  }
+  var TOPY = Y0 + 2.55, BOTY = Y2 - CHT / 2 - 1.05;
+  // How vivo-chat really uses the stack (from the code session, ai-engine main, 2026-10-12):
+  // Temporal runs one process per chat; LangChain gives the model wrappers, the classifier's
+  // structured output and the agent's middleware; LangGraph is only the answer loop
+  // «model ⇄ tools» built by create_agent, one run per Temporal activity; MCP serves the tools,
+  // narrowed per turn to the topics; Langfuse traces the turn through a callback.
+  var LX0 = BX0 + 0.15, LX1 = edgeR('cls') + 0.45, GX0 = edgeL('mdl') - 0.45, GX1 = BX1 - 0.15;
+  var FR = [
+    // Temporal: the whole chat, the client included
+    [techFrame(edgeL('att') - 0.3, BX1 + 0.3, BOTY, TOPY + 0.35, 0xD9653B, '#D9653B', 'Temporal · весь чат')],
+    // LangChain: the base layer under the whole row — the classifier's call and the models and
+    // tools inside the answer loop are all LangChain wrappers
+    [techFrame(LX0, GX1 + 0.1, Y0 - CHT / 2 - 0.65, Y0 + 2.1, 0x2E8B7A, '#2E8B7A', 'LangChain · основа'),
+     techFrame(LX0, GX1 + 0.1, Y2 - CHT / 2 - 0.65, Y2 + 1.9, 0x2E8B7A, '#2E8B7A', 'LangChain · основа')],
+    // the decision after the classifier is plain code in the Temporal workflow: no frame of its own
+    [],
+    // LangGraph: on top of LangChain, only the answer loop, model ⇄ tools, on each plane
+    [techFrame(GX0, GX1 - 0.1, Y0 - CHT / 2 - 0.45, Y0 + 1.9, 0x7E5FD0, '#7E5FD0', 'LangGraph · цикл ответа'),
+     techFrame(GX0, GX1 - 0.1, Y2 - CHT / 2 - 0.45, Y2 + 1.7, 0x7E5FD0, '#7E5FD0', 'LangGraph · цикл ответа')],
+    // MCP: the tools to the data on both planes
+    [techFrame(edgeL('acc') - 0.05, edgeR('acc') + 0.05, Y2 - CHT / 2 - 0.35, Y2 + 1.55, 0x5B3FB0, '#5B3FB0', 'MCP'),
+     techFrame(edgeL('pub') - 0.05, edgeR('pub') + 0.05, Y0 - CHT / 2 - 0.35, Y0 + 1.75, 0x5B3FB0, '#5B3FB0', 'MCP')],
+    // Langfuse: the developer's trace, over the whole turn
+    [techFrame(edgeL('dev') - 0.15, edgeR('dev') + 0.15, Y1 - CHT / 2 - 0.3, Y1 + 1.9, 0x2E7FB8, '#2E7FB8', 'Langfuse', edgeR('dev') - 0.7)]
+  ];
+  function framesTo(n) { FR.forEach(function (fs, i) { fs.forEach(function (f) { f.visible = i <= n; }); }); }
+  // the fork after the classifier: plain code in the Temporal workflow decides by the intent id
+  var lgcRows = [['решение — код:', '#E8D9C8'], ['id интента →', '#C8DDF0'], ['✓ принять', '#9AE6B4'], ['· промолчать', '#E8D9C8'], ['→ оператору', '#FFD27A']];
+  var lgcIdle = [['…', '#8C7A69']];
+  lgc.screen.write(lgcIdle);
+  var TRACE = [['Langfuse · трейс хода:', '#8FB8DA'], ['· классификатор', '#C8DDF0'], ['· цикл: модель ⇄ тулы', '#C8DDF0'], ['· ответ', '#C8DDF0']];
+  var ROADS = [];
+  function seg(x0, y0, x1, y1, hex, head) {
+    var L = Math.hypot(x1 - x0, y1 - y0), dx = (x1 - x0) / L, dy = (y1 - y0) / L, m, ax;
+    if (head) { m = arrow(x0, y0, y0 - L, hex, Math.atan2(dx, -dy)); FLOWS.pop(); ax = 'y'; }
+    else { m = box(L + 0.18, 0.18, 0.12, hex); m.rotation.z = Math.atan2(dy, dx); m.position.z = ARROWZ; world.add(m); ax = 'x'; L += 0.18; x0 -= dx * 0.09; y0 -= dy * 0.09; }
+    return { m: m, ax: ax, x0: x0, y0: y0, dx: dx, dy: dy, L: L };
+  }
+  // a road through the given points; only its last stretch carries the head
+  function road(step, at, pts, hex, tag) {
+    var r = { step: step, at: at, k: 0, on: false, segs: [], tag: null };
+    for (var i = 0; i < pts.length - 1; i++) r.segs.push(seg(pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1], hex, i === pts.length - 2));
+    if (tag) { r.tag = makeTag(tag[0], tag[1]); r.tag.position.set(tag[2], tag[3], ARROWZ + 0.12); world.add(r.tag); }
+    ROADS.push(r); return r;
+  }
+  function roadsDraw() {
+    ROADS.forEach(function (r) {
+      var n = r.segs.length;
+      r.segs.forEach(function (s, i) {
+        var k = Math.max(0, Math.min(1, r.k * n - i)), e = ease(k);
+        s.m.visible = k > 0;
+        s.m.scale[s.ax] = Math.max(e, 0.001);
+        s.m.position.x = s.x0 + s.dx * s.L * e / 2; s.m.position.y = s.y0 + s.dy * s.L * e / 2;
+      });
+      if (r.tag) { var q = ease(Math.max(0, r.k * 2 - 1)); r.tag.scale.setScalar(Math.max(q, 0.001)); r.tag.visible = q > 0; }
+    });
+  }
+  // a step grows its roads; a jump puts every earlier road in place at once
+  function roadsTo(n, instant) {
+    ROADS.forEach(function (r) {
+      if (r.step < n || (instant && r.step === n)) { r.on = true; r.k = 1; }
+      else if (r.step === n) { r.on = false; r.k = 0; later(r.at, function () { r.on = true; }); }
+      else { r.on = false; r.k = 0; }
+    });
+    roadsDraw();
+  }
+  function roadsTick(dt) { ROADS.forEach(function (r) { if (r.on && r.k < 1) r.k = Math.min(1, r.k + dt / (0.5 + 0.35 * r.segs.length)); }); roadsDraw(); }
+
+  var STEPS = [
+    ['Temporal', '⏱', '#D9653B', 'att', [['att', 'go', 'один процесс на весь чат, ход — по сигналу', 'att'], ['opr', 'go', 'пауза · проверки · таймауты · сбой → оператор', 'opr']]],
+    ['LangChain', '⛓', '#2E8B7A', 'cls', [['cls', 'go', 'классификатор: только id интентов из списка', 'cls'], ['mdl', 'go', 'основа: модели, тулы, прослойки', 'mdl']]],
+    ['Решение — код', 'A', C.A, 'lgc', [['lgc', 'ok', 'принять · промолчать · оператору', 'lgc'], ['lgc', 'note', 'обычный код в Temporal, без моделей', 'lgc']]],
+    ['LangGraph', '↻', '#7E5FD0', 'mdl', [['mdl', 'go', 'только цикл ответа: модель ⇄ тулы', 'mdl'], ['mdl', 'note', 'модель и тулы внутри — LangChain', 'mdl']]],
+    ['MCP', '🔌', '#5B3FB0', 'acc', [['acc', 'go', 'тулы — из MCP-серверов', 'acc'], ['pub', 'note', 'на ход — только тулы распознанных тем', 'pub']]],
+    ['Langfuse', '🔍', '#2E7FB8', 'dev', [['dev', 'ok', 'один трейс на ход: классификатор + цикл', 'dev'], ['dev', 'go', 'разработчик читает трейс', 'dev']]]
+  ];
+  var ARW = { go: '→', back: '←', ok: '✓', note: '·', no: '✗' };
+  // a token carried along a road: one straight leg after another
+  function route(text, css, pts, delay, leg, done) {
+    var i = 0;
+    (function go(d) {
+      fly(text, css, pts[i], pts[i + 1], d, leg, function () { i++; if (i < pts.length - 1) go(0); else if (done) done(); }, { leg: i < pts.length - 2 });
+    })(delay);
+  }
+  var ST = { att: attS, grd: grd, mdl: mdl, pub: pub, lgc: lgc, acc: acc, cls: cls, cls2: cls2, mdl2: mdl2, opr: opr, dev: dev };
+  var capEl = document.getElementById('cap');
+  capEl.innerHTML = STEPS.map(function () { return '<div class="s"><div class="h"><b></b><span></span></div><div class="v"></div></div>'; }).join('<span class="a">→</span>');
+  var cells = capEl.querySelectorAll('.s'), arrs = capEl.querySelectorAll('.a');
+  cells.forEach(function (e, i) {
+    e.style.setProperty('--k', STEPS[i][2]);
+    e.querySelector('b').textContent = i + 1; e.querySelector('.h span').textContent = STEPS[i][1] + ' ' + STEPS[i][0];
+    e.addEventListener('click', function () { startAt(i); });
+  });
+  function capS(i, v) {
+    var e = cells[i]; if (!e) return;
+    e.classList.toggle('on', v === 1); e.classList.toggle('done', v === 2);
+    if (arrs[i - 1]) arrs[i - 1].classList.toggle('done', v > 0);
+  }
+  function lit(c) { if (c) c.lit = T; }
+  // the numbers left on the plates where each step happened; a plate used twice gets them side by side
+  var seen = {};
+  var pins = STEPS.map(function (s, i) {
+    var k = s[3], e = document.createElement('div'); e.className = 'pin'; e.textContent = i + 1;
+    e.style.setProperty('--k', s[2]); ui.appendChild(e);
+    var n = seen[k] = (seen[k] || 0) + 1;
+    return { e: e, p: new THREE.Vector3(X[k] - W_[k] / 2 + 0.55 + (n - 1) * 0.75, (ST[k].bot || ST[k].y - CHT / 2) - 0.42, OBJZ + 0.4) };
+  });
+  function pinCur(n) { pins.forEach(function (o, i) { o.e.classList.toggle('cur', i === n); }); }
+  var lines = [];
+  function addLine(n, l, live) {
+    var d = document.createElement('div');
+    d.className = 'ln' + (live ? '' : ' in');
+    d.innerHTML = '<i>' + ARW[l[1]] + '</i><span></span>';
+    d.querySelector('span').textContent = l[2];
+    cells[n].querySelector('.v').appendChild(d);
+    pins[n].e.classList.add('in');
+    lines.push({ d: d, n: n });
+    return d;
+  }
+  // what the stage looks like once a step is over, for a jump straight to a later step
+  function settle(n) { framesTo(n - 1); if (n >= 3) lgc.screen.write(lgcRows); if (n >= 6) trB.write(TRACE); }
+  function clear() {
+    timers = []; lines.forEach(function (o) { o.d.remove(); }); lines = [];
+    pins.forEach(function (o) { o.e.classList.remove('in', 'cur'); });
+    for (var i = 0; i < STEPS.length; i++) capS(i, 0);
+    bubbles.forEach(function (b) { b.hide(); });
+    framesTo(-1); lgc.screen.write(lgcIdle); trB.write([['Langfuse:', '#8FB8DA'], ['…', '#6B7C8C']]);
+  }
+  // each step draws one technology's frame; nothing travels
+  function act(n, line) {
+    later(0.2, function () { framesTo(n); });
+    if (n === 0) { later(0.5, function () { lit(attS); line(0); }); later(1.1, function () { lit(opr); line(1); }); }
+    if (n === 1) { later(0.5, function () { lit(cls); lit(cls2); line(0); }); later(1.1, function () { lit(mdl); lit(mdl2); line(1); }); }
+    if (n === 2) { later(0.5, function () { lgc.screen.write(lgcRows); lgc.stampT = T; lit(lgc); line(0); }); later(1.1, function () { line(1); }); }
+    if (n === 3) { later(0.5, function () { lit(mdl); lit(mdl2); line(0); }); later(1.1, function () { line(1); }); }
+    if (n === 4) { later(0.5, function () { lit(pub); lit(acc); line(0); }); later(1.1, function () { line(1); }); }
+    if (n === 5) { later(0.5, function () { trB.write(TRACE); lit(dev); line(0); }); later(1.1, function () { line(1); }); }
+  }
+  function play(n) {
+    capS(n, 1); pinCur(n); roadsTo(n, false);
+    var done = {};
+    function line(k) {
+      if (done[k]) return; done[k] = true;
+      var l = STEPS[n][4][k], d = addLine(n, l, true); pinCur(n);
+      requestAnimationFrame(function () { d.classList.add('in'); });
+      if (l[3]) lit(ST[l[3]]);
+      if (Object.keys(done).length === STEPS[n][4].length) later(0.4, function () { if (cur === n) capS(n, 2); });
+    }
+    act(n, line);
+    // whatever a step has not written by then is written: nothing waits on a lost flight
+    later(9.0, function () { if (cur === n) for (var k = 0; k < STEPS[n][4].length; k++) line(k); });
+  }
+  // The previous step finishes at once: its waits, whirls and flights all end where they
+  // would have ended. What one of them starts (a whirl that sends a message when done) is
+  // finished too, so nothing of the old step flies on into the new one
+  function finishAll() {
+    for (var g = 0; g < 20; g++) {
+      var busy = false;
+      if (timers.length) { var ts = timers; timers = []; ts.forEach(function (t) { t.fn(); }); busy = true; }
+      if (WHIRLS.length) {
+        var ws = WHIRLS; WHIRLS = [];
+        ws.forEach(function (w) {
+          w.parts.forEach(function (m) { world.remove(m); });
+          w.h.rotation.y = w.ry0; w.h.scale.setScalar(1); w.h.position.y = w.y0; w.h.userData.whirl = 0;
+          if (w.dir < 0) w.h.visible = false;
+          if (w.done) w.done();
+        });
+        busy = true;
+      }
+      if (flyers.length) { var fs = flyers; flyers = []; fs.forEach(function (f) { world.remove(f.m); if (f.done) f.done(); }); busy = true; }
+      if (!busy) break;
+    }
+  }
+  var cur = -1;
+  function startAt(n) {
+    if (n === cur + 1 && n > 0) {   // the usual way forward: nothing on screen is touched, the step is added
+      finishAll();
+      capS(cur, 2); cur = n; play(n); return;
+    }
+    clear(); cur = n;
+    for (var i = 0; i < n; i++) { STEPS[i][4].forEach(function (l) { addLine(i, l, false); }); capS(i, 2); }
+    roadsTo(n, false);
+    settle(n);
+    play(n);
+  }
+  window.__fwd = function () { if (cur < STEPS.length - 1) { startAt(cur + 1); return true; } return false; };
+  window.__back = function () { if (cur > 0) { startAt(cur - 1); return true; } if (cur === 0) { clear(); cur = -1; return true; } return false; };
+  window.__leave = function () { clear(); cur = -1; };
+  function next() { if (cur >= STEPS.length - 1) { clear(); cur = -1; return; } startAt(cur + 1); }
+  addEventListener('keydown', function (e) {
+    var i = '1234567890'.slice(0, STEPS.length).indexOf(e.key);
+    if (i >= 0) startAt(i);
+    else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); next(); }
+  });
+  window.__next = next; window.__pick = startAt;
+  window.__timers = function () { return timers.map(function (t) { return +(t.t - T).toFixed(2); }); };
+
+  // The camera is not placed by hand: it is fitted to the stage so the whole scene,
+  // cards included, sits in the band between the header and the step buttons on any screen
+  var EXT = { x0: edgeL('att') - 0.3, x1: rightEdge() + 0.35, y0: ZY0 - 0.1, y1: ZY1 + 0.35 };
+  function fitCam() {
+    var hdB = document.getElementById('hd').getBoundingClientRect().bottom, cpT = capEl.getBoundingClientRect().top;
+    var top = 1 - 2 * (hdB + 6) / innerHeight, bot = -1 + 2 * (innerHeight - cpT + 6) / innerHeight, side = 0.94;
+    var pts = [];
+    [EXT.x0, EXT.x1].forEach(function (x) { [EXT.y0, EXT.y1].forEach(function (y) { [-0.6, 1.4].forEach(function (z) { pts.push(new THREE.Vector3(x, y, z)); }); }); });
+    var k = 1.3, cx = (EXT.x0 + EXT.x1) / 2, cy = (EXT.y0 + EXT.y1) / 2, t = Math.tan(camera.fov / 2 * Math.PI / 180), asp = innerWidth / innerHeight;
+    camera.aspect = asp; camera.updateProjectionMatrix();
+    for (var it = 0; it < 5; it++) {
+      camera.position.set(cx, cy + 6.2 * k, 29.6 * k); camera.lookAt(cx, cy, 0); camera.updateMatrixWorld(true);
+      var nx0 = 9, nx1 = -9, ny0 = 9, ny1 = -9, v = new THREE.Vector3();
+      pts.forEach(function (p) { v.copy(p).project(camera); nx0 = Math.min(nx0, v.x); nx1 = Math.max(nx1, v.x); ny0 = Math.min(ny0, v.y); ny1 = Math.max(ny1, v.y); });
+      var D = Math.hypot(6.2, 29.6) * k;
+      cx += (nx0 + nx1) / 2 * D * t * asp;
+      cy += ((ny0 + ny1) / 2 - (top + bot) / 2) * D * t;
+      k *= Math.max((nx1 - nx0) / (2 * side), (ny1 - ny0) / (top - bot));
+    }
+    CAM0.x = cam.x = camTo.x = cx; CAM0.y = cam.y = camTo.y = cy; CAM0.k = cam.k = camTo.k = k;
+    placeCam();
+  }
+  fitCam();
+  addEventListener('resize', function () { renderer.setSize(innerWidth, innerHeight); fitCam(); });
+  var pv = new THREE.Vector3();
+  function placeMsgs() {
+    var r = renderer.domElement.getBoundingClientRect();
+    pins.forEach(function (c) {
+      pv.copy(c.p).project(camera);
+      c.e.style.left = ((pv.x + 1) / 2 * r.width).toFixed(1) + 'px';
+      c.e.style.top = ((1 - pv.y) / 2 * r.height).toFixed(1) + 'px';
+    });
+    bubbles.forEach(function (b) {
+      pv.copy(b.p).project(camera);
+      var half = b.e.offsetWidth / 2 + 12;
+      b.e.style.left = Math.max(half, Math.min(r.width - half, (pv.x + 1) / 2 * r.width)) + 'px';
+      b.e.style.top = ((1 - pv.y) / 2 * r.height) + 'px';
+    });
+  }
+
+  /* ========== Проверки ========== */
+  // Finite checks anyone can run after a step: no two cards overlap, nothing on
+  // screen crosses the header or the step buttons, and every figure stands on its plate.
+  window.__layout = function () {
+    var out = { overlaps: [], outside: [] };
+    var hd = document.getElementById('hd').getBoundingClientRect(), cp = capEl.getBoundingClientRect();
+    var els = [].slice.call(ui.querySelectorAll('.pin.in, .bub.on')).map(function (e) { return { e: e, r: e.getBoundingClientRect() }; });
+    els.forEach(function (a, i) {
+      if (a.r.top < hd.bottom || a.r.bottom > cp.top || a.r.left < 0 || a.r.right > innerWidth) out.outside.push(a.e.textContent.slice(0, 40));
+      els.forEach(function (b, j) {
+        if (j <= i) return;
+        if (a.r.left < b.r.right && b.r.left < a.r.right && a.r.top < b.r.bottom && b.r.top < a.r.bottom)
+          out.overlaps.push([a.e.textContent.slice(0, 30), b.e.textContent.slice(0, 30)]);
+      });
+    });
+    return out;
+  };
+  window.__soles = function () {
+    var v = new THREE.Vector3();
+    return [[attM, attS]].map(function (p) {
+      if (!p[0]) return null;
+      var low = Infinity;
+      p[0].traverse(function (o) { if (o.isBone && /Toe|Foot/.test(o.name)) low = Math.min(low, world.worldToLocal(o.getWorldPosition(v)).y); });
+      return +(low - p[1].top).toFixed(3);
+    });
+  };
+
+  var FEET = [];
+  function footLock(m) {
+    var holder = m.parent, bones = {};
+    m.traverse(function (o) { if (o.isBone) { var k = o.name.replace(/^mixamorig:?/, ''); if (!bones[k]) bones[k] = o; } });
+    var legs = ['Left', 'Right'].map(function (s) {
+      return { a: bones[s + 'UpLeg'], b: bones[s + 'Leg'], c: bones[s + 'Foot'], anc: null, ancQ: null, lift: false };
+    }).filter(function (l) { return l.a && l.b && l.c; });
+    if (legs.length < 2) return;
+    holder.updateMatrixWorld(true);
+    var v = new THREE.Vector3();
+    legs.forEach(function (l) { l.ground = holder.worldToLocal(l.c.getWorldPosition(v)).y; });
+    FEET.push({ holder: holder, legs: legs, last: holder.position.clone(), calm: 0 });
+  }
+  var ikA = new THREE.Vector3(), ikB = new THREE.Vector3(), ikC = new THREE.Vector3(), ikT = new THREE.Vector3();
+  var ikQ = new THREE.Quaternion(), ikP = new THREE.Quaternion(), ikR = new THREE.Quaternion(), ikAx = new THREE.Vector3();
+  // turn a bone by a rotation given in world space
+  function turnW(bone, r) {
+    bone.getWorldQuaternion(ikQ); bone.parent.getWorldQuaternion(ikP);
+    bone.quaternion.copy(ikP.invert().multiply(r).multiply(ikQ));
+    bone.updateMatrixWorld(true);
+  }
+  function solveLeg(l, t) {
+    l.a.getWorldPosition(ikA); l.b.getWorldPosition(ikB); l.c.getWorldPosition(ikC);
+    var lab = ikB.distanceTo(ikA), lbc = ikC.distanceTo(ikB);
+    var lat = Math.min(Math.max(t.distanceTo(ikA), 0.01), lab + lbc - 0.001);
+    var acab0 = new THREE.Vector3().subVectors(ikC, ikA).normalize().angleTo(new THREE.Vector3().subVectors(ikB, ikA).normalize());
+    var babc0 = new THREE.Vector3().subVectors(ikA, ikB).normalize().angleTo(new THREE.Vector3().subVectors(ikC, ikB).normalize());
+    var acab1 = Math.acos(Math.min(1, Math.max(-1, (lbc * lbc - lab * lab - lat * lat) / (-2 * lab * lat))));
+    var babc1 = Math.acos(Math.min(1, Math.max(-1, (lat * lat - lab * lab - lbc * lbc) / (-2 * lab * lbc))));
+    ikAx.crossVectors(ikT.subVectors(ikC, ikA), new THREE.Vector3().subVectors(ikB, ikA));
+    if (ikAx.lengthSq() < 1e-10) return;
+    ikAx.normalize();
+    turnW(l.a, ikR.setFromAxisAngle(ikAx, acab1 - acab0));
+    turnW(l.b, ikR.setFromAxisAngle(ikAx, babc1 - babc0));
+    // then swing the whole leg so the foot lands on the target
+    l.a.getWorldPosition(ikA); l.c.getWorldPosition(ikC);
+    var from = ikC.sub(ikA).normalize(), to = ikT.subVectors(t, ikA).normalize();
+    turnW(l.a, ikR.setFromUnitVectors(from, to));
+  }
+  function feetUpdate() {
+    var v = new THREE.Vector3(), w = new THREE.Vector3(), q = new THREE.Quaternion(), hq = new THREE.Quaternion();
+    FEET.forEach(function (f) {
+      var h = f.holder;
+      if (!h.visible || !h.parent) return;
+      // carried along: walking (the walker says how much) or moved by hand
+      var carried = (h.userData.gait || 0) > 0.02 || h.userData.whirl || h.position.distanceToSquared(f.last) > 1e-4; f.last.copy(h.position);
+      // after a walk the clip needs a moment to bring the feet together before they settle
+      // the lock takes hold a moment after the body comes to rest and lets go just
+      // as gradually when it sets off, so the feet never snap between the two
+      f.calm = carried ? 0 : f.calm + 1;
+      f.k = Math.max(0, Math.min(1, (f.k || 0) + (f.calm > 20 ? 1 : -1) / 15));
+      var k = f.k * f.k * (3 - 2 * f.k);
+      h.updateMatrixWorld(true);
+      h.getWorldQuaternion(hq);
+      f.legs.forEach(function (l) {
+        if (k <= 0) { l.anc = null; return; }
+        v.copy(l.c.getWorldPosition(w)); h.worldToLocal(v);
+        // standing figures keep their spot: a clip that shifts or lifts a foot does
+        // not walk them away, the foot stays where it was put down after the last walk
+        if (!l.anc) {
+          l.anc = v.clone(); l.anc.y = Math.min(v.y, l.ground);
+          l.c.getWorldQuaternion(q); l.ancQ = hq.clone().invert().multiply(q);
+        }
+        // a foot that has just been put down eases onto its spot
+        solveLeg(l, h.localToWorld(w.copy(v).lerp(l.anc, k)));
+        // the sole keeps the angle it was put down with
+        l.c.parent.getWorldQuaternion(ikP);
+        l.c.getWorldQuaternion(ikR);
+        l.c.quaternion.copy(ikP.invert().multiply(ikR.slerp(q.copy(hq).multiply(l.ancQ), k)));
+        l.c.updateMatrixWorld(true);
+      });
+    });
+  }
+  /* ========== Animate ========== */
+  var clock = new THREE.Clock();
+  function frame(dt) {
+    T += dt;
+    var ck = 1 - Math.exp(-dt * 1.8);
+    cam.x += (camTo.x - cam.x) * ck; cam.y += (camTo.y - cam.y) * ck; cam.k += (camTo.k - cam.k) * ck;
+    placeCam();
+    var due = timers.filter(function (t) { return t.t <= T; });
+    timers = timers.filter(function (t) { return t.t > T; });
+    due.forEach(function (t) { t.fn(); });
+    mixers.forEach(function (m) { m.update(dt); });
+    cards.forEach(function (c) { var k = T - c.lit; c.glow.material.opacity = k < 2 ? 0.55 * (1 - k / 2) : 0; });
+    people.forEach(function (p) { p.update(dt); });
+    whirlUpdate();
+    feetUpdate();
+    anim.forEach(function (f) { f(); });
+    // a lever tips while something crosses its joint and settles back: no snap, no overshoot
+    for (var jk in JG) {
+      var J = JG[jk], want = T < J.until ? J.d * 0.35 : 0;
+      var ja = 30 * (want - J.a) - 2 * Math.sqrt(30) * J.v; J.v += ja * dt; J.a += J.v * dt;
+      J.g.rotation.z = J.a;
+    }
+    var landed = [], moving = null;
+    flyers = flyers.filter(function (f) {
+      var k = (T - f.t0) / f.dur;
+      if (k < 0) { f.m.visible = false; return true; }
+      f.m.visible = true;
+      var e = ease(k);
+      f.m.position.set(f.a[0] + (f.b[0] - f.a[0]) * e, f.a[1] + (f.b[1] - f.a[1]) * e + Math.sin(Math.PI * e) * (f.arc || 0), f.a[2] + (f.b[2] - f.a[2]) * e);
+      if (!f.leg) f.m.scale.setScalar(k > 0.85 ? Math.max(0.05, 1 - (k - 0.85) * 5) : 1);
+      moving = f.m.position;
+      if (k >= 1) { world.remove(f.m); if (f.done) landed.push(f.done); return false; }
+      return true;
+    });
+    landed.forEach(function (fn) { fn(); });
+    // the camera turns after whatever moves on the belt, and back to the belt's middle when nothing does
+    // the phone turns like a damped spring: no snap, no overshoot
+    var pa = 40 * (phoneTo * 0.6 - phoneR) - 2 * Math.sqrt(40) * phoneV; phoneV += pa * dt; phoneR += phoneV * dt;
+    phone.rotation.y = phoneR;
+    // client ↔ attacker: the block reddens and its label changes
+    vilK += (vil - vilK) * Math.min(1, dt * 4);
+    podC.material.color.copy(podC0).lerp(podC1, vilK);
+    var lbl = vilK > 0.5 ? 1 : 0; if (lbl !== podLbl) { podLbl = lbl; drawPod(lbl); }
+    roadsTick(dt);
+    camUser(dt);
+    renderer.render(scene, camera);
+    placeMsgs();
+  }
+  (function tick() {
+    requestAnimationFrame(tick);
+    frame(Math.min(clock.getDelta(), 0.1));
+  })();
+  });
+});
+</script>
+<script>
+(function () {
+  function init() {
+    var cap = document.getElementById('cap'); if (!cap) return;
+    function fit() { cap.classList.toggle('ovf', cap.scrollWidth > cap.clientWidth + 2); }
+    function follow() {
+      var c = cap.querySelector('.s.on') || [].slice.call(cap.querySelectorAll('.s.done')).pop();
+      if (!c) { cap.scrollTo({ left: 0, behavior: 'smooth' }); return; }
+      cap.scrollTo({ left: c.offsetLeft - (cap.clientWidth - c.offsetWidth) / 2, behavior: 'smooth' });
+    }
+    new MutationObserver(function () { fit(); follow(); }).observe(cap, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
+    addEventListener('resize', function () { fit(); follow(); });
+    fit();
+  }
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', init); else init();
+})();
+</script><script>
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d || !parent.go) return;
+  e.preventDefault();
+  if (parent.__deckKey && parent.__deckKey(d)) return;   // a lead card in front takes the key
+  var f = d > 0 ? window.__fwd : window.__back;
+  if (f && f()) return;   // the slide took a step of its own
+  parent.go(d);
+});
+</script>

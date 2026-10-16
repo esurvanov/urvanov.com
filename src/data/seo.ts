@@ -185,7 +185,7 @@ const BASE: Base[] = [
   },
   {
     path: '/materials/presentations',
-    ru: { title: `Презентации — ${SITE_NAME}`, description: `${config.conferenceName}: «${config.talkTitle}» и каталог паттернов разработки с AI-агентами.` },
+    ru: { title: `Презентации — ${SITE_NAME}`, description: `${config.conferenceName}: «Работа AI-агента: архитектура, защита, экономика», «${config.talkTitle}» и каталог паттернов разработки с AI-агентами.` },
     en: { title: 'Presentations — Egor Urvanov', description: `${config.conferenceName}: “Spec-Driven Development in practice” (in Russian) and a catalog of AI-agent development patterns.` },
     sources: ['src/components/MaterialsView.tsx', 'src/data/config.ts'],
   },

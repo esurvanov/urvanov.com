@@ -1,0 +1,632 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><style>#cap{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;overflow-y:hidden;max-width:96vw;scrollbar-width:none;align-items:stretch}#cap::-webkit-scrollbar{display:none}#cap>*{flex:0 0 auto}#cap>.s:has(.v){width:clamp(230px,15.5vw,300px)}#cap .s .v{height:5.9em!important}#cap>.s:not(:has(.v)){white-space:nowrap}#cap>.a{align-self:center}#cap>:first-child{margin-left:auto}#cap>:last-child{margin-right:auto}#cap.ovf{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 48px,#000 calc(100% - 48px),transparent 100%)}</style><style>#hd{flex-wrap:wrap;row-gap:.3em}.hd-lead{order:9;flex-basis:100%;display:flex;flex-wrap:wrap;gap:.35em 1.4em;font-size:clamp(10px,.95vw,15px);font-weight:700;color:#5E5B50;letter-spacing:0;text-transform:none}body.lead-wait .hd-lead{opacity:0}</style><title>OWASP · GUARD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
+<style>
+/* Same committed look as slide 01: warm off-white canvas, green system, amber model, Manrope 800 */
+:root { color-scheme: light; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width:100%; height:100%; background:#ECEBE6; overflow:hidden;
+             font-family:'Manrope', system-ui, sans-serif; }
+#c  { display:block; position:fixed; inset:0; width:100%; height:100%; }
+#ui { position:fixed; inset:0; pointer-events:none; }
+
+#hd { position:absolute; top:0; left:0; right:0;
+      padding: clamp(16px,2.2vw,30px) clamp(22px,4vw,56px);
+      display:flex; align-items:baseline; gap:1.4em; }
+.hd-no { font-size:clamp(8px,.68vw,10px); font-weight:700; text-transform:uppercase;
+         letter-spacing:.2em; color:#2A6B38; white-space:nowrap; }
+.hd-t  { font-size:clamp(17px,2.3vw,32px); font-weight:800; color:#15140F;
+         letter-spacing:-.024em; }
+
+.hd-src { font-size:clamp(9px,.78vw,12px); font-weight:700; color:#8A8778;
+          padding:.35em .9em; border-radius:999px; background:#FFFFFF; white-space:nowrap; }
+#ft { position:absolute; left:0; right:0; bottom:0;
+      padding: clamp(10px,1.4vw,20px) clamp(22px,4vw,56px);
+      display:flex; align-items:center; gap:1.1em; flex-wrap:wrap;
+      font-size:clamp(8px,.74vw,11px); font-weight:700;
+      text-transform:uppercase; letter-spacing:.13em; color:#8A8778; }
+#ft b { color:#A8650F; font-weight:700; }
+
+#tip { position:fixed; z-index:5; max-width:340px; padding:.7em .9em; border-radius:14px; background:#FFFFFF;
+  box-shadow:0 6px 24px rgba(21,20,15,.14), inset 3px 0 0 var(--c,#8A8778); font:600 clamp(12px,1.05vw,16px)/1.35 Manrope, sans-serif;
+  color:#15140F; pointer-events:none; opacity:0; transform:translateY(4px); transition:opacity .15s, transform .15s; }
+#tip.on { opacity:1; transform:none; }
+#tip b { display:block; font-weight:800; color:var(--c,#8A8778); margin-bottom:.2em; }
+#cap { position:absolute; left:50%; transform:translateX(-50%); bottom:clamp(40px,7.5vh,84px); pointer-events:auto;
+       display:flex; align-items:center; gap:.5em; white-space:nowrap;
+       font-size:clamp(10px,.88vw,15px); font-weight:700; --c:#D99A1E; }
+#cap .t { padding:.5em 1em; border-radius:999px; background:var(--c); color:#FFFFFF; font-weight:800; }
+#cap .s { padding:.5em 1em; border-radius:999px; background:#FFFFFF; color:#B7B4A8; cursor:pointer;
+          transition:color .3s, box-shadow .3s; }
+#cap .s.on   { color:#15140F; box-shadow:inset 0 0 0 2px var(--c); }
+#cap .s.done { color:var(--c); }
+#cap .a { color:#B7B4A8; font-weight:800; }
+#cap .s:hover { color:#15140F; }
+
+/* Speech bubbles stand still over whoever speaks: nothing to read in flight */
+.bub { position:absolute; left:0; top:0; transform:translate(-50%,-100%) scale(.85);
+       opacity:0; transition:opacity .25s, transform .25s; white-space:nowrap;
+       background:#FFFFFF; color:#15140F; border:3px solid var(--c,#3A86C8);
+       border-radius:18px; padding:.45em .9em; font-weight:800;
+       font-size:clamp(12px,1.25vw,21px); box-shadow:0 6px 18px rgba(21,20,15,.12); }
+.bub.on { opacity:1; transform:translate(-50%,-100%) scale(1); }
+.bub::after { content:''; position:absolute; left:50%; bottom:-11px; width:16px; height:16px;
+              background:#FFFFFF; border-right:3px solid var(--c,#3A86C8); border-bottom:3px solid var(--c,#3A86C8);
+              transform:translateX(-50%) rotate(45deg); }
+.bub.tag { border-radius:999px; color:#FFFFFF; background:var(--c); }
+.bub.tag::after { display:none; }
+</style>
+
+<canvas id="c"></canvas>
+<div id="ui">
+  <div id="hd">
+    <span class="hd-no">03 · Защита</span>
+    <span class="hd-t">Риски OWASP → пять слоёв GUARD</span><span class="hd-lead">Риски OWASP и их классификация по слоям GUARD</span>
+    <span class="hd-src">OWASP GenAI Top-10 · L1-саппорт</span>
+  </div>
+  <div id="cap"></div>
+  <div id="tip"></div>
+</div>
+
+<script src="../lib/three.min.js"></script>
+<script src="../lib/GLTFLoader.js"></script>
+<script>
+// Always override: the native roundRect appends to the current path instead of
+// starting one, so successive fills repaint every earlier subpath.
+{
+  CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r){
+    this.beginPath(); this.moveTo(x+r,y); this.lineTo(x+w-r,y);
+    this.arcTo(x+w,y,x+w,y+r,r); this.lineTo(x+w,y+h-r);
+    this.arcTo(x+w,y+h,x+w-r,y+h,r); this.lineTo(x+r,y+h);
+    this.arcTo(x,y+h,x,y+h-r,r); this.lineTo(x,y+r);
+    this.arcTo(x,y,x+r,y,r); this.closePath();
+  };
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  var F = document.fonts;
+  var ready = F ? Promise.all([
+    F.load('800 72px Manrope'), F.load('700 30px Manrope'), F.load('600 28px Manrope')
+  ]).catch(function () {}) : Promise.resolve();
+  ready.then(function () {
+
+  var CANVAS_BG = 0xECEBE6;
+  var GREEN = 0x2A6B38, AMBER = 0xD99A1E, CARD = 0xFFFFFF;
+  var RISK = [
+    { css: '#D9534F', hex: 0xD9534F, bg: '#F8E1DF' },
+    { css: '#C9762E', hex: 0xC9762E, bg: '#F7E7D6' },
+    { css: '#7E5FD0', hex: 0x7E5FD0, bg: '#ECE6FA' }
+  ];
+
+  var W = innerWidth, H = innerHeight;
+  var renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.setSize(W, H);
+  renderer.setClearColor(CANVAS_BG);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(24, W / H, 2, 140);
+  camera.position.set(0, 5.2, 26.6);
+  camera.lookAt(0, -1.7, 0);
+  // The viewer can look around: drag to turn the scene, right-drag (or Shift+drag)
+  // to move it, the wheel to come closer, a double click to go back. The story's
+  // own camera keeps working underneath; the viewer's turn rides on top of it.
+  var CU = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0, to: { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 },
+             look: new THREE.Vector3(0, -0.75, 0), base: null, last: null };
+  (function () {
+    var lookAt0 = camera.lookAt.bind(camera);
+    camera.lookAt = function (x, y, z) {
+      if (x && x.isVector3) CU.look.copy(x); else CU.look.set(x, y, z);
+      lookAt0(CU.look);
+    };
+    CU.lookAt0 = lookAt0;
+    var el = renderer.domElement, drag = null;
+    el.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    el.addEventListener('pointerdown', function (e) { drag = { x: e.clientX, y: e.clientY, pan: e.button === 2 || e.shiftKey, on: false }; });
+    addEventListener('pointerup', function () { drag = null; });
+    addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.on && Math.hypot(dx, dy) < 4) return;
+      drag.on = true; drag.x = e.clientX; drag.y = e.clientY;
+      if (drag.pan) { CU.to.px -= dx * 0.0016; CU.to.py += dy * 0.0016; }
+      else {
+        CU.to.yaw = Math.max(-0.9, Math.min(0.9, CU.to.yaw - dx * 0.004));
+        CU.to.pitch = Math.max(-0.35, Math.min(0.5, CU.to.pitch + dy * 0.003));
+      }
+    });
+    el.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      CU.to.zoom = Math.max(0.45, Math.min(1.8, CU.to.zoom * Math.exp(e.deltaY * 0.0012)));
+    }, { passive: false });
+    el.addEventListener('dblclick', function () { CU.to = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 }; });
+    window.__center = function () { CU.to = { yaw: 0, pitch: 0, zoom: 1, px: 0, py: 0 }; };
+    // a visible button on the slide itself, top right
+    (function () {
+      var bt = document.createElement('button');
+      bt.textContent = '⌖ Центр'; bt.title = 'Вернуть сцену в центр';
+      bt.style.cssText = 'position:fixed;top:clamp(14px,2vw,26px);right:clamp(16px,3vw,44px);z-index:5;border:0;' +
+        'background:#FFFFFF;color:#15140F;border-radius:999px;padding:.5em 1em;cursor:pointer;' +
+        'font:800 clamp(11px,.9vw,14px)/1 Manrope,system-ui,sans-serif;box-shadow:0 2px 10px rgba(21,20,15,.12);';
+      bt.addEventListener('click', function (e) { e.stopPropagation(); window.__center(); });
+      bt.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+      document.body.appendChild(bt);
+    })();
+  })();
+  var cuV = new THREE.Vector3(), cuR = new THREE.Vector3(), cuU = new THREE.Vector3(), cuT = new THREE.Vector3(), cuQ = new THREE.Quaternion();
+  function camUser(dt) {
+    var p = camera.position;
+    // the story moved the camera since the last frame: that is the new base
+    if (!CU.last || !p.equals(CU.last)) CU.base = p.clone();
+    var k = 1 - Math.exp(-(dt || 0.016) * 8);
+    ['yaw', 'pitch', 'zoom', 'px', 'py'].forEach(function (n) { CU[n] += (CU.to[n] - CU[n]) * k; });
+    var tgt = CU.look, rel = cuV.copy(CU.base).sub(tgt), dist = rel.length();
+    rel.applyQuaternion(cuQ.setFromAxisAngle(cuU.set(0, 1, 0), CU.yaw));
+    cuR.crossVectors(cuU.set(0, 1, 0), rel).normalize();
+    rel.applyQuaternion(cuQ.setFromAxisAngle(cuR, -CU.pitch));
+    rel.multiplyScalar(CU.zoom);
+    cuU.crossVectors(rel, cuR).normalize();
+    cuT.copy(tgt).addScaledVector(cuR, -CU.px * dist).addScaledVector(cuU, CU.py * dist);
+    camera.position.copy(cuT).add(rel);
+    CU.lookAt0(cuT);
+    CU.last = camera.position.clone();
+  }
+
+  scene.add(new THREE.AmbientLight(0xFFFFFF, 0.78));
+  scene.add(new THREE.HemisphereLight(0xFFFFFF, 0xC9C7BD, 0.5));
+  var key = new THREE.DirectionalLight(0xFFFFFF, 0.62);
+  key.position.set(-5, 23, 9);
+  key.castShadow = true;
+  key.shadow.mapSize.width = 2048; key.shadow.mapSize.height = 2048;
+  key.shadow.camera.left = -15; key.shadow.camera.right = 15;
+  key.shadow.camera.top = 15;   key.shadow.camera.bottom = -15;
+  key.shadow.camera.near = 2;   key.shadow.camera.far = 48;
+  key.shadow.bias = -0.0004; key.shadow.normalBias = 0.05;
+  scene.add(key);
+  var fill = new THREE.DirectionalLight(0xFFFFFF, 0.22);
+  fill.position.set(9, 4, 8); scene.add(fill);
+
+  function flat(hex) {
+    var m = new THREE.MeshLambertMaterial({ color: hex });
+    m.color.convertSRGBToLinear();
+    return m;
+  }
+  function liveTex(c) {
+    var t = new THREE.CanvasTexture(c); t.anisotropy = 8; t.encoding = THREE.sRGBEncoding;
+    return t;
+  }
+  function face(cv) { return new THREE.MeshBasicMaterial({ map: liveTex(cv) }); }
+
+  function roundedShape(w, h, r) {
+    var s = new THREE.Shape(), x = -w / 2, y = -h / 2;
+    s.moveTo(x + r, y);
+    s.lineTo(x + w - r, y);           s.quadraticCurveTo(x + w, y, x + w, y + r);
+    s.lineTo(x + w, y + h - r);       s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    s.lineTo(x + r, y + h);           s.quadraticCurveTo(x, y + h, x, y + h - r);
+    s.lineTo(x, y + r);               s.quadraticCurveTo(x, y, x + r, y);
+    return s;
+  }
+  // The bevel sticks out past `depth` on both ends; faces go to FZ
+  var BEVEL = 0.035;
+  function FZ(d) { return d / 2 + BEVEL + 0.015; }
+  function slab(w, h, d, r, hex) {
+    var g = new THREE.ExtrudeGeometry(roundedShape(w, h, r), {
+      depth: d, bevelEnabled: true, bevelThickness: BEVEL, bevelSize: BEVEL,
+      bevelOffset: 0, bevelSegments: 2, curveSegments: 7
+    });
+    g.translate(0, 0, -d / 2);
+    var m = new THREE.Mesh(g, flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function box(w, h, d, hex) {
+    var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function cyl(r, h, hex, seg) {
+    var m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, seg || 32), flat(hex));
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+  function ease(k) { k = Math.max(0, Math.min(1, k)); return k * k * (3 - 2 * k); }
+
+  // soft radial glow, tinted per use
+  var glowCv = document.createElement('canvas'); glowCv.width = glowCv.height = 256;
+  (function () {
+    var x = glowCv.getContext('2d'), g = x.createRadialGradient(128, 128, 10, 128, 128, 128);
+    g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 256, 256);
+  })();
+  var glowTex = new THREE.CanvasTexture(glowCv);
+  function glow(w, h, hex) {
+    var m = new THREE.MeshBasicMaterial({ map: glowTex, color: hex, transparent: true,
+      opacity: 0, depthWrite: false });
+    return new THREE.Mesh(new THREE.PlaneGeometry(w, h), m);
+  }
+
+  var world = new THREE.Group();
+  scene.add(world);
+
+  var BASE = -4.35;
+  var ground = new THREE.Mesh(new THREE.PlaneGeometry(120, 90), new THREE.ShadowMaterial({ opacity: 0.11 }));
+  ground.rotation.x = -Math.PI / 2; ground.position.y = BASE; ground.receiveShadow = true;
+  world.add(ground);
+
+  function makeTag(name, css) {
+    var c = document.createElement('canvas'), x = c.getContext('2d');
+    x.font = '800 36px Manrope, sans-serif';
+    c.width = Math.ceil(x.measureText(name).width + 86); c.height = 84;
+    x = c.getContext('2d');
+    x.fillStyle = '#FFFFFF'; x.fillRect(0, 0, c.width, 84);
+    x.fillStyle = css; x.beginPath(); x.arc(34, 42, 11, 0, 6.3); x.fill();
+    x.fillStyle = '#15140F'; x.font = '800 36px Manrope, sans-serif';
+    x.fillText(name, 56, 55);
+    var w = 0.37 * c.width / 84;
+    var g = new THREE.Group();
+    g.add(slab(w, 0.37, 0.1, 0.17, CARD));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.37), face(c));
+    f.position.z = FZ(0.1); g.add(f);
+    g.userData.w = w;
+    return g;
+  }
+  function sign(x, w, y, z, label, css) {
+    var cv = document.createElement('canvas'); cv.width = 560; cv.height = 96;
+    var c = cv.getContext('2d');
+    c.fillStyle = css; c.fillRect(0, 0, 560, 96);
+    c.fillStyle = '#FFFFFF'; c.font = '800 46px Manrope, sans-serif'; c.textAlign = 'center';
+    if (c.letterSpacing !== undefined) c.letterSpacing = '6px';
+    c.fillText(label, 280, 64);
+    var sg = new THREE.Group();
+    sg.add(slab(w, 0.56, 0.3, 0.12, parseInt(css.slice(1), 16)));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, 0.56), face(cv));
+    f.position.z = FZ(0.3); sg.add(f);
+    sg.position.set(x, y, z); world.add(sg);
+  }
+
+  // Straight, flat arrows cut from slab stock; rot = PI/2 turns a down arrow to point right
+  function arrow(xc, yTop, yBot, hex, rot) {
+    var L = yTop - yBot, sw = 0.09, hw = 0.24, hl = Math.min(0.26, L * 0.5);
+    var sh = new THREE.Shape();
+    sh.moveTo(-sw, 0); sh.lineTo(sw, 0); sh.lineTo(sw, -(L - hl));
+    sh.lineTo(hw, -(L - hl)); sh.lineTo(0, -L); sh.lineTo(-hw, -(L - hl));
+    sh.lineTo(-sw, -(L - hl)); sh.closePath();
+    var g = new THREE.ExtrudeGeometry(sh, {
+      depth: 0.1, bevelEnabled: true, bevelThickness: 0.03, bevelSize: 0.02,
+      bevelOffset: 0, bevelSegments: 2
+    });
+    g.translate(0, 0, -0.05);
+    var m = new THREE.Mesh(g, flat(hex));
+    m.position.set(xc, yTop, 0.6);
+    if (rot) m.rotation.z = rot;
+    m.castShadow = true; m.receiveShadow = true;
+    world.add(m);
+    return m;
+  }
+  function arrowR(x0, x1, y, hex) { return arrow(x0, y, y - (x1 - x0), hex, Math.PI / 2); }
+  function bar(x0, y0, x1, y1, hex) {
+    var t = 0.18, w = Math.max(t, Math.abs(x1 - x0)), h = Math.max(t, Math.abs(y1 - y0));
+    var m = slab(w, h, 0.1, 0.05, hex);
+    m.position.set((x0 + x1) / 2, (y0 + y1) / 2, 0.6);
+    world.add(m);
+    return m;
+  }
+
+
+  /* ========== Слои GUARD ========== */
+  var CW = 3.6, CH = 2.05, CG = 0.35, CY = -2.45;
+  var L = [
+    { k: 'G', en: 'Gatekeeping',          ru: 'гардрейлы на входе и выходе', css: '#D9534F', bg: '#F8E1DF',
+      steps: ['Гардрейлы режут атаку на входе', 'Ответ проверяется перед клиентом', 'Сомнение → эскалация на человека'] },
+    { k: 'U', en: 'Usage Boundaries',     ru: 'детерминированный код и логика', css: '#C9762E', bg: '#F7E7D6',
+      steps: ['Права и политика — в коде', 'Модель не видит логику и служебное', 'Промпт-инъекции нечего ломать'] },
+    { k: 'A', en: 'Access Scope',         ru: 'выбор конкретных частей данных',   css: '#7E5FD0', bg: '#ECE6FA',
+      steps: ['Только разрешённые данные', 'Только свой аккаунт', 'Только нужные здесь и сейчас'] },
+    { k: 'R', en: 'Runtime Observability', ru: 'что происходит и отладка', css: '#2E7FB8', bg: '#DFEDF7',
+      steps: ['Виден каждый шаг агента', 'Алерты на аномалии', 'Отладка и откат'] },
+    { k: 'D', en: 'Design Ownership',     ru: 'у агента есть владелец',    css: '#2A6B38', bg: '#E1EFE4',
+      steps: ['Кто отвечает за агента', 'Реестр моделей и промптов', 'Откат и замена вендора'] }
+  ];
+  // the 19 risks from the OWASP mapping; layer -1 = outside the contour
+  var RISKS = [
+    ['Prompt injection', 0], ['Галлюцинации', 0], ['Опасный вывод в системы', 0], ['Перегрузка и счёт за токены', 0], ['Вредный контент', 0],
+    ['Утечка между клиентами', 1], ['Чужие документы в контексте', 1], ['Подмена прав через диалог', 1], ['MCP ходит от чужого имени', 1],
+    ['Overfetch в GraphQL', 2], ['IDOR', 2], ['Запрос, собранный промптом', 2], ['Внутренние заметки', 2], ['Профиль по кусочкам', 2], ['Лишние сервисы федерации', 2],
+    ['Дрейф и незамеченные атаки', 3],
+    ['Утечка между сессиями', 2],
+    ['Теневой AI и вендор', 4], ['Отравление базы знаний', 4], ['Действия с деньгами', 4]
+  ];
+  var WHAT = {
+    'Prompt injection': 'Текст клиента подменяет инструкции бота: «забудь правила и…»',
+    'Галлюцинации': 'Бот уверенно выдумывает статус заказа, срок доставки или правило возврата',
+    'Опасный вывод в системы': 'Ответ модели без проверки уходит дальше — в API, письмо, страницу',
+    'Перегрузка и счёт за токены': 'Длинные и зацикленные запросы съедают бюджет и кладут сервис',
+    'Вредный контент': 'Грубость, токсичность, советы вне политики магазина',
+    'Утечка между клиентами': 'В ответ попадают заказ, адрес или телефон другого покупателя',
+    'Чужие документы в контексте': 'В контекст модели загружены файлы, которые этому клиенту видеть нельзя',
+    'Подмена прав через диалог': 'Клиент в чате убеждает бота, что он оператор или администратор',
+    'MCP ходит от чужого имени': 'Инструмент вызывается с правами сервиса, а не того, кто спросил',
+    'Overfetch в GraphQL': 'Запрос тянет все поля заказа, хотя для ответа нужен один статус',
+    'IDOR': 'Подставил чужой номер заказа — получил чужой заказ',
+    'Запрос, собранный промптом': 'Модель сама пишет запрос к базе, и его можно увести куда угодно',
+    'Внутренние заметки': 'Комментарии операторов и служебные пометки уходят клиенту',
+    'Профиль по кусочкам': 'Из многих безобидных ответов складывается полный профиль человека',
+    'Лишние сервисы федерации': 'Агенту доступны сервисы, которые для его задачи не нужны',
+    'Дрейф и незамеченные атаки': 'Качество тихо падает, атаки идут — и этого никто не видит',
+    'Теневой AI и вендор': 'Модель или промпт поменяли без владельца; всё держится на одном вендоре',
+    'Отравление базы знаний': 'В статьи помощи подложили ложные инструкции: у базы нужен владелец, ревью и откат',
+    'Действия с деньгами': 'Возвраты и списания решает ответственный человек, бот только читает',
+    'Утечка между сессиями': 'Кусок одного разговора всплывает в другом: контекст привязан к сессии и аккаунту'
+  };
+  var X0 = -(5 * CW + 4 * CG) / 2 + CW / 2;
+  function cardX(i) { return X0 + i * (CW + CG); }
+  var cards = L.map(function (l, i) {
+    var c = document.createElement('canvas'); c.width = 560; c.height = 320;
+    var x = c.getContext('2d');
+    var n = RISKS.filter(function (r) { return r[1] === i; }).length;
+    var cnt = n + ' ' + (n === 1 ? 'риск' : n < 5 ? 'риска' : 'рисков');
+    function wrap(t, maxW) {
+      var out = [''];
+      t.split(' ').forEach(function (w) {
+        var cur = out[out.length - 1], nx = cur ? cur + ' ' + w : w;
+        if (x.measureText(nx).width > maxW && cur) out.push(w); else out[out.length - 1] = nx;
+      });
+      return out;
+    }
+    function paint(active) {
+      x.fillStyle = l.bg; x.fillRect(0, 0, 560, 320);
+      x.fillStyle = l.css; x.roundRect(30, 30, 110, 110, 26); x.fill();
+      x.fillStyle = '#FFFFFF'; x.font = '800 86px Manrope, sans-serif'; x.textAlign = 'center';
+      x.fillText(l.k, 85, 116); x.textAlign = 'left';
+      // count badge, top right
+      x.font = '800 28px Manrope, sans-serif';
+      var bw = x.measureText(cnt).width + 36;
+      x.fillStyle = '#FFFFFF'; x.roundRect(530 - bw, 30, bw, 46, 23); x.fill();
+      x.fillStyle = l.css; x.fillText(cnt, 548 - bw, 63);
+      if (!active) {
+        x.fillStyle = '#15140F'; x.font = '800 40px Manrope, sans-serif';
+        wrap(l.ru, 500).forEach(function (t, j) { x.fillText(t, 30, 214 + j * 48); });
+      } else {
+        // the longest step decides the size, so all three fit the card
+        var fs = 30;
+        x.font = '700 30px Manrope, sans-serif';
+        var wMax = Math.max.apply(null, l.steps.map(function (t) { return x.measureText(t).width; }));
+        if (wMax > 456) fs = Math.floor(30 * 456 / wMax);
+        x.font = '700 ' + fs + 'px Manrope, sans-serif';
+        l.steps.forEach(function (t, j) {
+          var y = 182 + j * 46;
+          x.fillStyle = l.css; x.beginPath(); x.arc(46, y - 10, 15, 0, 6.3); x.fill();
+          x.strokeStyle = '#FFFFFF'; x.lineWidth = 5; x.lineCap = 'round'; x.lineJoin = 'round';
+          x.beginPath(); x.moveTo(39, y - 10); x.lineTo(44, y - 4); x.lineTo(54, y - 16); x.stroke();
+          x.fillStyle = '#15140F'; x.fillText(t, 74, y);
+        });
+      }
+    }
+    paint(false);
+    var g = new THREE.Group();
+    g.add(slab(CW, CH, 0.7, 0.26, parseInt(l.bg.slice(1), 16)));
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(CW, CH), face(c));
+    f.position.z = FZ(0.7); g.add(f);
+    g.position.set(cardX(i), CY, 0.6); world.add(g);
+    var gl = glow(CW + 2.0, CH + 2.0, parseInt(l.css.slice(1), 16));
+    gl.position.set(cardX(i), CY, -0.2); world.add(gl);
+    g.userData.i = i;
+    var card = { g: g, glow: gl, lit: -99, on: false };
+    card.set = function (v) { if (card.on === v) return; card.on = v; paint(v); f.material.map.needsUpdate = true; };
+    return card;
+  });
+
+  /* ========== Облако рисков ========== */
+  var CHH = 0.38;
+  function chip(text, css, bg) {
+    var c = document.createElement('canvas'), x = c.getContext('2d');
+    x.font = '800 34px Manrope, sans-serif';
+    c.width = Math.ceil(x.measureText(text).width + 56); c.height = 76;
+    x = c.getContext('2d');
+    var w = CHH * c.width / 76, g = new THREE.Group();
+    var body = slab(w, CHH, 0.1, 0.17, 0xFFFFFF); g.add(body);
+    var f = new THREE.Mesh(new THREE.PlaneGeometry(w, CHH), new THREE.MeshBasicMaterial({ map: liveTex(c) }));
+    f.position.z = FZ(0.1); g.add(f);
+    function paint(dot, ink, fill) {
+      x.fillStyle = fill; x.fillRect(0, 0, c.width, 76);
+      x.fillStyle = dot; x.beginPath(); x.arc(26, 38, 9, 0, 6.3); x.fill();
+      x.fillStyle = ink; x.font = '800 34px Manrope, sans-serif'; x.fillText(text, 44, 50);
+      f.material.map.needsUpdate = true;
+    }
+    paint('#B7B4A8', '#15140F', '#FFFFFF');
+    g.userData.w = w; g.userData.paint = paint;
+    world.add(g);
+    return g;
+  }
+  // every risk already sits in a column over the layer that closes it
+  var chips = RISKS.map(function (r) { return { text: r[0], layer: r[1], m: chip(r[0]) }; });
+  (function () {
+    var count = [0, 0, 0, 0, 0];
+    chips.forEach(function (c) {
+      var k = count[c.layer]++;
+      c.home = [cardX(c.layer), CY + CH / 2 + 0.38 + k * 0.44, 0.9];
+      c.m.position.set(c.home[0], c.home[1], c.home[2]); c.from = c.to = c.home; c.t0 = -9;
+    });
+  })();
+  // three looks of a risk: at rest, its layer is on, another layer is on
+  function look(c, v) {
+    var l = L[c.layer];
+    if (v === 'on') c.m.userData.paint(l.css, l.css, '#FFFFFF');
+    else if (v === 'dim') c.m.userData.paint('#D5D3CB', '#B7B4A8', '#F4F3EF');
+    else c.m.userData.paint(l.css, '#15140F', '#FFFFFF');
+  }
+  chips.forEach(function (c) { look(c, 'rest'); });
+
+  /* ========== Подписи ========== */
+  var capEl = document.getElementById('cap');
+  // the bar holds the whole route, like the other slides: G → U → A → R → D;
+  // each pill is clickable, the current one is outlined, the passed ones keep their colour
+  var CAP = L.map(function (l) { return [l.k + ' · ' + l.en, l.css]; });
+  capEl.innerHTML = CAP.map(function () { return '<span class="s"></span>'; }).join('<span class="a">→</span>');
+  capEl.querySelectorAll('.s').forEach(function (e, i) {
+    e.textContent = CAP[i][0]; e.style.setProperty('--c', CAP[i][1]);
+    e.addEventListener('click', function () { pick(i); });
+  });
+  function capSet(i) { for (var k = 0; k < CAP.length; k++) capS(k, k < i ? 2 : k === i ? 1 : 0); }
+  function capS(k, v) { var e = capEl.querySelectorAll('.s')[k]; if (!e) return; e.classList.toggle('on', v === 1); e.classList.toggle('done', v === 2); }
+
+  /* ========== Ход ========== */
+  var T = 0, timers = [], mode = -1;
+  function later(sec, fn) { timers.push({ t: T + sec, fn: fn }); }
+  function move(c, to, delay) { c.from = [c.m.position.x, c.m.position.y, c.m.position.z]; c.to = to; c.t0 = T + delay; }
+  // a hop in place: the risk answers to its layer
+  function hop(c, delay) { c.from = c.to = c.home; c.t0 = T + delay; c.hop = true; }
+  // one layer lights up: its risks hop and take its colour, the rest fade back
+  function play(i, keep, first) {
+    if (!keep) timers = [];
+    mode = i; if (!keep) capSet(i); else capS(i, 1);
+    cards.forEach(function (c, k) { c.set(k === i); });
+    chips.forEach(function (c) { if (c.layer === i) return; if (!keep || c.layer > i) look(c, 'dim'); });
+    var mine = chips.filter(function (c) { return c.layer === i; });
+    // a clicked risk goes first
+    if (first) mine = [first].concat(mine.filter(function (c) { return c !== first; }));
+    mine.forEach(function (c, k) {
+      later(0.2 + k * 0.16, function () { look(c, 'on'); hop(c, 0); });
+    });
+    later(0.2 + mine.length * 0.16 + 0.5, function () { cards[i].lit = T; capS(i, 2); });
+  }
+  // the whole contour: every layer in turn, then all of them at once
+  function all() {
+    timers = []; capSet(-1);
+    chips.forEach(function (c) { look(c, 'dim'); });
+    L.forEach(function (l, i) { later(i * 2.2, function () { play(i, true); }); });
+    later(5 * 2.2, function () {
+      mode = -1; capSet(5);
+      cards.forEach(function (c) { c.set(false); c.lit = T; });
+      chips.forEach(function (c) { look(c, 'on'); });
+    });
+  }
+  // a click on a risk shows the layer that closes it
+  function pickRisk(c) { play(c.layer, false, c); step = c.layer + 1; }
+  // driven by hand: 1–5 or a click shows a layer, 0 the whole contour,
+  // Space / Enter steps through G → U → A → R → D, then starts over
+  var step = 0;
+  function pick(i) { play(i); step = i + 1; }
+  // the deck's arrows walk G → U → A → R → D, then turn the slide straight away
+  window.__fwd = function () { if (step < 5) { pick(step); return true; } return false; };
+  window.__back = function () { if (step > 1 && step <= 5) { pick(step - 2); return true; } if (step === 6) { pick(4); return true; } return false; };
+  addEventListener('keydown', function (e) {
+    var i = '12345'.indexOf(e.key);
+    if (i >= 0) pick(i);
+    else if (e.key === '0') { all(); step = 6; }
+    else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); pick(step < 5 ? step : 0); }
+  });
+  var ray = new THREE.Raycaster(), mp = new THREE.Vector2(), hov = -1;
+  function cardAt(e) {
+    var b = renderer.domElement.getBoundingClientRect();
+    mp.set((e.clientX - b.left) / b.width * 2 - 1, -(e.clientY - b.top) / b.height * 2 + 1);
+    ray.setFromCamera(mp, camera);
+    var hit = ray.intersectObjects(cards.map(function (c) { return c.g; }), true)[0];
+    var o = hit && hit.object; while (o && o.userData.i === undefined) o = o.parent;
+    return o ? o.userData.i : -1;
+  }
+  function chipAt(e) {
+    var b = renderer.domElement.getBoundingClientRect();
+    mp.set((e.clientX - b.left) / b.width * 2 - 1, -(e.clientY - b.top) / b.height * 2 + 1);
+    ray.setFromCamera(mp, camera);
+    var hit = ray.intersectObjects(chips.map(function (c) { return c.m; }), true)[0];
+    if (!hit) return null;
+    var o = hit.object; while (o.parent && chips.every(function (c) { return c.m !== o; })) o = o.parent;
+    return chips.filter(function (c) { return c.m === o; })[0] || null;
+  }
+  // hovering a risk shows what it means, next to the pointer
+  var tipEl = document.getElementById('tip'), tipFor = null;
+  function tip(c, e) {
+    if (!c) { tipEl.classList.remove('on'); tipFor = null; return; }
+    if (tipFor !== c) {
+      tipFor = c;
+      var l = c.layer >= 0 ? L[c.layer] : null;
+      tipEl.style.setProperty('--c', l ? l.css : '#8A8778');
+      tipEl.innerHTML = '<b></b><span></span>';
+      tipEl.querySelector('b').textContent = c.text + ' · ' + (l ? l.k + ' · ' + l.en : 'вне контура');
+      tipEl.querySelector('span').textContent = WHAT[c.text] || '';
+    }
+    var w = tipEl.offsetWidth, h = tipEl.offsetHeight;
+    var x = Math.min(innerWidth - w - 12, e.clientX + 16), y = e.clientY + 18;
+    if (y + h > innerHeight - 12) y = e.clientY - h - 14;
+    tipEl.style.left = x + 'px'; tipEl.style.top = y + 'px';
+    tipEl.classList.add('on');
+  }
+  renderer.domElement.addEventListener('pointermove', function (e) {
+    hov = cardAt(e);
+    var c = chipAt(e); tip(c, e);
+    renderer.domElement.style.cursor = hov >= 0 || c ? 'pointer' : '';
+  });
+  renderer.domElement.addEventListener('pointerleave', function () { hov = -1; tip(null); });
+  renderer.domElement.addEventListener('pointerdown', function (e) {
+    var c = chipAt(e); if (c) { pickRisk(c); return; }
+    var i = cardAt(e); if (i >= 0) pick(i);
+  });
+  window.__pick = pick; window.__all = all; window.__risk = function (n) { pickRisk(chips[n]); };
+  // on its own: the full contour once, then layer by layer, round and round
+  // opens on the bare cloud of risks; nothing moves until the speaker asks
+
+  var clock = new THREE.Clock();
+  function frame(dt) {
+    T += dt;
+    var due = timers.filter(function (t) { return t.t <= T; });
+    timers = timers.filter(function (t) { return t.t > T; });
+    due.forEach(function (t) { t.fn(); });
+
+    // a hop toward the viewer and back: a parabola in time, constant pull back,
+    // so a risk never runs into its neighbours in the column
+    chips.forEach(function (c) {
+      var k = Math.max(0, Math.min(1, (T - c.t0) / 0.42));
+      c.m.position.set(c.home[0], c.home[1], c.home[2] + 4 * 0.7 * k * (1 - k));
+    });
+    cards.forEach(function (c, i) {
+      var k = T - c.lit, on = mode === i;
+      var flash = k < 3 ? 0.75 * (1 - ease((k - 1.5) / 1.5)) * ease(k / 0.3) : 0;
+      c.glow.material.opacity = Math.max(flash, on ? 0.3 : 0, hov === i ? 0.18 : 0);
+    });
+    camUser(dt);
+    renderer.render(scene, camera);
+  }
+  (function tick() {
+    requestAnimationFrame(tick);
+    frame(Math.min(clock.getDelta(), 0.1));
+  })();
+
+  addEventListener('resize', function () {
+    renderer.setSize(innerWidth, innerHeight);
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+  });
+  });
+});
+</script>
+<script>
+(function () {
+  function init() {
+    var cap = document.getElementById('cap'); if (!cap) return;
+    function fit() { cap.classList.toggle('ovf', cap.scrollWidth > cap.clientWidth + 2); }
+    function follow() {
+      var c = cap.querySelector('.s.on') || [].slice.call(cap.querySelectorAll('.s.done')).pop();
+      if (!c) { cap.scrollTo({ left: 0, behavior: 'smooth' }); return; }
+      cap.scrollTo({ left: c.offsetLeft - (cap.clientWidth - c.offsetWidth) / 2, behavior: 'smooth' });
+    }
+    new MutationObserver(function () { fit(); follow(); }).observe(cap, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
+    addEventListener('resize', function () { fit(); follow(); });
+    fit();
+  }
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', init); else init();
+})();
+</script><script>
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d || !parent.go) return;
+  e.preventDefault();
+  if (parent.__deckKey && parent.__deckKey(d)) return;   // a lead card in front takes the key
+  var f = d > 0 ? window.__fwd : window.__back;
+  if (f && f()) return;   // the slide took a step of its own
+  parent.go(d);
+});
+</script>

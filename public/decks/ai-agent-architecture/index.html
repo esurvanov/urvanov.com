@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Работа AI-агента: архитектура, защита, экономика — Podlodka AI Crew</title>
+<meta name="description" content="Доклад Егора Урванова на Podlodka AI Crew: архитектура AI-агента, защита от prompt injection, Data plane и Control plane. Интерактивные слайды в браузере.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
+<style>
+html, body { margin:0; height:100%; background:#ECEBE6; overflow:hidden; font-family:Manrope, system-ui, sans-serif; }
+/* one slide at a time: the old one fades to the background, then the new one fades in;
+   two schemes never show through each other */
+iframe { position:fixed; inset:0; width:100%; height:100%; border:0; opacity:0; pointer-events:none; visibility:hidden;
+         transition:opacity .3s ease, visibility 0s linear .3s; }
+iframe.on { opacity:1; pointer-events:auto; visibility:visible; transition:opacity .35s ease .3s, visibility 0s; }
+/* a slide that continues the one before (same picture): a direct cross-fade */
+body.flat iframe { transition:opacity .6s ease, visibility 0s linear .6s !important; }
+body.flat iframe.on { transition:opacity .6s ease, visibility 0s !important; }
+/* Before each slide: one phrase alone on the screen; going on, it flies to its place under the title */
+#card { position:fixed; inset:0; background:#ECEBE6; z-index:5; opacity:0; pointer-events:none; transition:opacity .45s ease; }
+body.instant iframe { transition:none !important; }   /* a switch hidden behind the card: no fade, no glide */
+#card.on { opacity:1; pointer-events:auto; }
+#card .no { position:absolute; left:0; right:0; top:calc(50% - 4.2em); text-align:center; font:700 clamp(10px,.9vw,14px)/1 Manrope, system-ui, sans-serif;
+            letter-spacing:.2em; text-transform:uppercase; color:#2A6B38; }
+/* a section opener: its name stands large above the phrase, the number goes higher */
+#card .sec { position:absolute; left:0; right:0; top:calc(50% - 2.2em); text-align:center; display:none;
+             font:800 clamp(34px,5.2vw,84px)/1 Manrope, system-ui, sans-serif; color:#15140F; letter-spacing:-.01em; transform:translateY(-100%); }
+#card.section .sec { display:block; }
+#card.section .no { top:calc(50% - 3.75 * clamp(34px,5.2vw,84px)); }   /* just above the section name */
+#card.section::before { content:''; position:absolute; left:50%; top:calc(50% - 4.2em); width:min(30vw,420px); height:6px; border-radius:3px;
+             transform:translateX(-50%); background:linear-gradient(90deg,#D99A1E 0 50%,#7E5FD0 50% 100%); }
+#fly { position:fixed; left:0; top:0; z-index:6; white-space:nowrap; font-family:Manrope, system-ui, sans-serif; font-weight:700;
+       color:#15140F; transform-origin:0 0; pointer-events:none; opacity:0; transition:opacity .45s ease; }
+#fly.on { opacity:1; }
+#fly.go { transition:transform .9s cubic-bezier(.45,0,.2,1), color .9s ease, opacity .45s ease; color:#5E5B50; }
+#nav { position:fixed; right:16px; bottom:12px; display:flex; gap:6px; align-items:center;
+       font:700 11px/1 system-ui, sans-serif; color:#8A8778; opacity:.55; transition:opacity .2s; }
+#nav:hover { opacity:1; }
+#nav button { border:0; background:#FFFFFF; color:#15140F; width:26px; height:26px; border-radius:13px;
+              font:800 14px/1 system-ui, sans-serif; cursor:pointer; }
+</style></head><body>
+<div id="card"><div class="no"></div><div class="sec"></div></div><div id="fly"></div>
+<div id="nav"><button id="prev" aria-label="Назад">‹</button><span id="no"></span><button id="next" aria-label="Вперёд">›</button></div>
+<script>
+var MODELS = {};
+var SLIDES = ["slides/01-title.html", "slides/02-intro.html", "slides/03-plan.html", "slides/04-domain.html", "slides/05-problem.html", "slides/06-guard-map.html", "slides/07-guardrails.html", "slides/08-flood.html", "slides/09-public.html", "slides/10-routing.html", "slides/11-notes.html", "slides/12-reverse.html", "slides/13-shared.html", "slides/14-tool.html", "slides/15-outguard.html", "slides/16-observe.html", "slides/17-planes2.html", "slides/18-kb.html", "slides/19-topics.html", "slides/20-tools.html", "slides/21-intents.html", "slides/22-stack2.html", "slides/23-status2.html", "slides/24-turn2.html"], SPLIT = true;
+// Every slide has its own 3D scene, and a browser keeps only 16 of them alive: past that it
+// kills the oldest and that slide goes blank. So only the slide on screen and its near
+// neighbours are loaded; the rest are emptied and load again when the talk comes near them.
+var NEAR = 2;
+var frames = SLIDES.map(function (html) {
+  var f = document.createElement('iframe');
+  f.addEventListener('load', function () { if (carded && frames[cur] === f) waitLead(cur, true); });
+  document.body.appendChild(f); return f;
+});
+var CARDS = [{"no": "", "lead": "", "sec": ""}, {"no": "00 · Начало", "lead": "Эту презентацию я собрал с Opus 5.5 и Fable — расскажите, как вам", "sec": ""}, {"no": "00 · План", "lead": "Домен → атаки → защита → архитектура в деле → технологии", "sec": ""}, {"no": "01 · Домен", "lead": "Как устроен Customer Success: каналы, бот на первой линии, люди на второй", "sec": ""}, {"no": "02 · Атаки", "lead": "Самые известные атаки: уговорить, выведать, заставить действовать", "sec": ""}, {"no": "03 · Защита", "lead": "Риски OWASP и их классификация по слоям GUARD", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 1: явная инъекция — гардрейлы отсекают её на входе", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 2: засорение контекста — гардрейлы отсекают простыню на входе", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 3: данные, доступные всем — модель выбирает, доступ отдаёт сразу", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 4: приватные данные без входа — логика не пускает, что бы ни выбрала модель", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 5: атака на заметки оператора — их категория падает на фильтре, а ответ без фильтра и так верный: только значение", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 6: заметка вышла из сейфа — на обратном пути её вырезает фильтр, модель пересказывает остальное", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 7: запись из приватных данных прошла через ту же модель — фильтр отработал, но заметка протекла из её контекста", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 8: данные выходят через тул — но этот тул доступен только оператору", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 9: гардрейлы на выходе вырезают из ответа то, что клиенту видеть нельзя", "sec": ""}, {"no": "05 · Защита", "lead": "Сценарий 10: тот же путь, атака прошла — R пишет трейс и даёт алерт, разработчик выкатывает правку", "sec": ""}, {"no": "06 · Раздел", "lead": "Клиент ⇄ Data plane ⇄ фильтр ⇄ Control plane — между плоскостями только коды", "sec": "Data plane и Control plane"}, {"no": "08 · Архитектура", "lead": "Класс в базе знаний: описание для классификатора + вопросы-ответы + ограничения; ответ собирается из всего набора", "sec": ""}, {"no": "09 · Архитектура", "lead": "Декомпозиция бизнеса: каждый процесс — интент с чётким описанием", "sec": ""}, {"no": "10 · Архитектура", "lead": "Data и Control Plane в реальных условиях: у процесса свой тул и свои данные", "sec": ""}, {"no": "11 · Архитектура", "lead": "Классификатор в работе: выбирает процесс или зовёт человека", "sec": ""}, {"no": "13 · Технологии", "lead": "Какие технологии реализуют эти подходы", "sec": ""}, {"no": "14 · Технологии", "lead": "Статусная модель системы: любой чат кончается ответом или человеком", "sec": ""}, {"no": "15 · Технологии", "lead": "Граф переходов агента: пауза копит сообщения, ход идёт по шагам, у каждого шага свой лимит времени", "sec": ""}];
+var cur = 0, carded = false, flying = false;
+function keepNear() {
+  frames.forEach(function (f, k) {
+    var want = Math.abs(k - cur) <= NEAR;
+    if (want === !!f.live) return;
+    f.live = want;
+    if (SPLIT) f.src = want ? SLIDES[k] : 'about:blank'; else f.srcdoc = want ? SLIDES[k] : '';
+  });
+}
+var cardEl = document.getElementById('card'), flyEl = document.getElementById('fly');
+function doc(k) { try { return frames[k].contentDocument; } catch (e) { return null; } }
+function waitLead(k, on) { var d = doc(k); if (d && d.body) d.body.classList.toggle('lead-wait', on); }
+// One thing moves at a time. Going on to a slide with a phrase: the card comes up over
+// the slide on screen until it covers it; only then is the slide behind it swapped, at
+// once (nobody sees it); then the phrase flies to its place and the card fades off the
+// new slide. Without a card, slides cross-fade as before.
+var CARD_T = 470;
+function cardUp(k) {
+  var c = CARDS[k];
+  cardEl.querySelector('.no').textContent = c.no;
+  cardEl.querySelector('.sec').textContent = c.sec || '';
+  cardEl.classList.toggle('section', !!c.sec);
+  flyEl.className = ''; flyEl.style.transform = 'none'; flyEl.textContent = c.lead;
+  fitCard();
+  void flyEl.offsetWidth;   // start the fade from nothing
+  flyEl.classList.add('on'); cardEl.classList.add('on');
+}
+function fitCard() {   // measured again whenever the font or the window changes
+  var fs = 48; flyEl.style.fontSize = fs + 'px';
+  fs = Math.min(fs, fs * innerWidth * 0.84 / flyEl.offsetWidth); flyEl.style.fontSize = fs + 'px';
+  flyEl.style.left = (innerWidth - flyEl.offsetWidth) / 2 + 'px';
+  flyEl.style.top = (innerHeight - flyEl.offsetHeight) / 2 + 'px';
+}
+addEventListener('resize', function () { if (carded) fitCard(); });
+if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', function () { if (carded) fitCard(); });
+// it flies to the lead under the slide's title: same words, so moving and scaling it lands it exactly
+function cardAway() {
+  var k = cur, d = doc(k), t = d && d.querySelector('.hd-lead');
+  carded = false; flying = true;
+  var done = function () { waitLead(k, false); flyEl.className = ''; flying = false; enter(k); };
+  cardEl.classList.remove('on');
+  if (!t) { flyEl.classList.remove('on'); setTimeout(done, CARD_T); return; }
+  var r = t.getBoundingClientRect(), s0 = flyEl.getBoundingClientRect(), k2 = r.height / s0.height;
+  flyEl.classList.add('go');
+  flyEl.style.transform = 'translate(' + (r.left - s0.left) + 'px,' + (r.top - s0.top) + 'px) scale(' + k2 + ')';
+  setTimeout(done, 920);
+}
+function enter(k) { try { if (frames[k].contentWindow.__enter) frames[k].contentWindow.__enter(true); } catch (e) {} }
+// a key or a button: a card in front, or a move under way, takes it first
+window.__deckKey = function (d) {
+  if (flying) return true;
+  if (!carded) return false;
+  if (d > 0) { cardAway(); return true; }
+  // back from a card: the slide before is put back behind it, then the card fades off
+  carded = false; flying = true;
+  waitLead(cur, false); switchTo(cur - 1, true);
+  flyEl.classList.remove('on'); cardEl.classList.remove('on');
+  setTimeout(function () { flyEl.className = ''; flying = false; }, CARD_T);
+  return true;
+};
+// put slide i on screen: with the usual cross-fade, or at once (behind a card)
+function switchTo(i, instant) {
+  var prev = cur;
+  cur = Math.max(0, Math.min(frames.length - 1, i));
+  keepNear();
+  if (prev !== cur) { var pw = frames[prev]; setTimeout(function () { try { if (pw.contentWindow.__leave) pw.contentWindow.__leave(); } catch (e) {} }, 700); }
+  var flat = false; try { flat = prev === cur - 1 && !!frames[cur].contentWindow.__seamless; } catch (e) {}
+  document.body.classList.toggle('flat', flat);
+  if (instant) document.body.classList.add('instant');
+  frames.forEach(function (f, k) {
+    f.style.setProperty('--dx', k < cur ? '-3%' : k > cur ? '3%' : '0');
+    f.classList.toggle('on', k === cur);
+  });
+  if (instant) { void document.body.offsetWidth; requestAnimationFrame(function () { requestAnimationFrame(function () { document.body.classList.remove('instant'); }); }); }
+  document.getElementById('no').textContent = (cur + 1) + ' / ' + frames.length;
+  try { history.replaceState(null, '', '#' + (cur + 1)); } catch (e) {}
+  setTimeout(function () { try { frames[cur].contentWindow.focus(); } catch (e) {} }, 0);
+  return prev;
+}
+function show(i, withCard) {
+  i = Math.max(0, Math.min(frames.length - 1, i));
+  var c = CARDS[i];
+  if (withCard && c && c.lead) {
+    flying = true; waitLead(i, true); cardUp(i);
+    setTimeout(function () { switchTo(i, true); waitLead(i, true); flying = false; carded = true; }, CARD_T + 30);
+    return;
+  }
+  var prev = switchTo(i, false);
+  try { if (frames[cur].contentWindow.__enter) frames[cur].contentWindow.__enter(prev === cur - 1); } catch (e) {}
+}
+function go(d) { show(cur + d, d > 0); }
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d) return;
+  e.preventDefault();
+  if (__deckKey(d)) return;
+  try { var w = frames[cur].contentWindow, f = d > 0 ? w.__fwd : w.__back; if (f && f()) return; } catch (x) {}
+  go(d);
+});
+function stepOrGo(d) { if (__deckKey(d)) return; try { var w = frames[cur].contentWindow, f = d > 0 ? w.__fwd : w.__back; if (f && f()) return; } catch (x) {} go(d); }
+document.getElementById('prev').onclick = function () { stepOrGo(-1); };
+document.getElementById('next').onclick = function () { stepOrGo(1); };
+(function () {
+  var k = (parseInt(location.hash.slice(1), 10) || 1) - 1;
+  cur = Math.max(0, Math.min(frames.length - 1, k)); keepNear();
+  var start = function () { show(k, true); };
+  if (document.fonts && document.fonts.load) document.fonts.load('700 40px Manrope').then(start, start); else start();
+})();
+</script>
+</body></html>
