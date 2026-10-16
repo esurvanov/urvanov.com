@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><!-- Closing card: questions -->
+<style>
+html, body { width:100%; height:100%; margin:0; background:#ECEBE6; overflow:hidden; font-family:Manrope, system-ui, sans-serif; }
+#q { position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.2vw; color:#1F1E1A; }
+#q .mark { font-size:clamp(60px,12vw,200px); line-height:1; }
+#q h1 { margin:0; font-size:clamp(40px,8vw,140px); font-weight:800; letter-spacing:-.02em; }
+#q .who { font-size:clamp(14px,1.6vw,26px); font-weight:700; color:#5E5B50; }
+</style>
+<script>
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d || !parent.go) return;
+  e.preventDefault();
+  parent.go(d);
+});
+</script>
+<div id="q"><div class="mark">?</div><h1>Вопросы</h1><div class="who">Егор Урванов · Podlodka AI Crew</div></div>
+<script>
+addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (!d || !parent.go) return;
+  e.preventDefault();
+  if (parent.__deckKey && parent.__deckKey(d)) return;   // a lead card in front takes the key
+  var f = d > 0 ? window.__fwd : window.__back;
+  if (f && f()) return;   // the slide took a step of its own
+  parent.go(d);
+});
+</script>
