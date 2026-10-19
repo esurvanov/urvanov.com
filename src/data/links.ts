@@ -115,6 +115,7 @@ export const LINK_GROUPS: LinkGroup[] = [
         variant: 'list',
         items: [
           { url: 'https://slideslive.com/39049529/a-machine-learning-approach-that-beats-rubiks-cubes', label: 'NeurIPS · A machine learning approach that beats Rubik’s cubes', comment: 'Запись доклада по статье · 12 авторов', en: { comment: 'Talk recording · 12 authors' } },
+          { url: 'https://design-practice.mave.digital/', label: 'Подкаст · Дизайн-практика', comment: 'Также: Telegram, Яндекс Музыка, Apple Podcasts, VK Подкасты', en: { label: 'Podcast · Design Practice (in Russian)', comment: 'Also on Telegram, Yandex Music, Apple Podcasts, VK Podcasts' } },
           { url: 'https://ysnit.mave.digital/ep-40', label: 'Подкаст · Знай и Умей ИТ', comment: 'Страх кода, event storming и будущее с ИИ', en: { label: 'Podcast · Znai i Umei IT (in Russian)', comment: 'Fear of code, event storming and the future with AI' } },
           { url: 'https://www.youtube.com/watch?v=ycjmtkwQf8E', label: 'YouTube · SDD фреймворки для детерминированной AI разработки', en: { label: 'YouTube · SDD frameworks for deterministic AI development (in Russian)' } },
           { url: 'https://www.youtube.com/watch?v=O8VbhnRUyJQ', label: 'YouTube · Рождённые копипастить: LLM-подходы и паттерны', en: { label: 'YouTube · Born to copy-paste: LLM approaches and patterns (in Russian)' } },
