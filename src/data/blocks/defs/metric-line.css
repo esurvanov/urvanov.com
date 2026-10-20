@@ -1,0 +1,4 @@
+/* Число с подписью в строку */
+.s-rich.bk .bk-mt { display: flex; align-items: baseline; gap: 12px; margin-top: 12px; padding: 12px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
+.s-rich.bk .bk-mt b { font-size: 28px; color: color-mix(in srgb, var(--accent) 65%, var(--muted)); font-family: "JetBrains Mono", monospace; }
+.s-rich.bk .bk-mt span { font-size: 14px; color: var(--ink-2); }

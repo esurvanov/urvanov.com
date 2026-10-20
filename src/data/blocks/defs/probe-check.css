@@ -1,0 +1,22 @@
+/* «Что видит замер»: панели систем, проверки с исходом, покрытие и вывод; правила-плашки под панелями */
+.s-rich.bk .bk-sn { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; }
+.s-rich.bk .bk-sn-p { display: flex; flex-direction: column; gap: 8px; padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.s-rich.bk .bk-sn-h { display: flex; align-items: center; gap: 8px; }
+.s-rich.bk .bk-sn-h svg { width: 20px; height: 20px; color: var(--accent); }
+.s-rich.bk .bk-sn code { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-2); }
+.s-rich.bk .bk-sn-i { display: grid; grid-template-columns: 20px 1fr auto; gap: 8px; align-items: center; padding: 7px 10px; border-radius: 4px; background: var(--surface-2); }
+.s-rich.bk .bk-sn-i svg { width: 16px; height: 16px; }
+.s-rich.bk .bk-sn-i span { font-size: 12.5px; color: var(--muted); }
+.s-rich.bk .bk-sn-i.bk-ok svg { color: var(--accent); }
+.s-rich.bk .bk-sn-i.bk-eye svg { color: var(--accent); opacity: .6; }
+.s-rich.bk .bk-sn-i.bk-no { background: var(--warn-soft); outline: 1px dashed var(--warn); }
+.s-rich.bk .bk-sn-i.bk-no :is(svg, span) { color: var(--warn); }
+.s-rich.bk .bk-sn-v { margin-top: auto; font-size: 13.5px; font-weight: 700; color: var(--warn); }
+.s-rich.bk .bk-sn-cov { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; font-size: 13px; color: var(--muted); }
+.s-rich.bk .bk-sn-bar { height: 8px; border-radius: 4px; background: var(--warn-soft); overflow: hidden; }
+.s-rich.bk .bk-sn-bar i { display: block; height: 100%; background: var(--accent); }
+.s-rich.bk .bk-sn-cov b { color: var(--ink); }
+.s-rich.bk .bk-sn-rules { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+@media (max-width: 640px) { .s-rich.bk .bk-sn { grid-template-columns: 1fr; } }
+/* Плашки правил — <b-chip> с высотой строки текста вокруг, как в постах про спеки */
+.s-rich.bk .bk-sn-rules .bk-chip { line-height: inherit; }

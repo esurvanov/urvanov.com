@@ -76,20 +76,20 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | Метка | Атрибуты (* — обязательный) | Вложенные элементы |
 |---|---|---|
 | `b-post` | series* | — |
-| `b-chapter` | id*, title*, icon | — (markdown абзацами) |
+| `b-chapter` | id*, title*, icon, sw | — (markdown абзацами) |
 | `b-finding` | title | `<ex k>`, `<gen k>`, `<do k>` |
 | `b-proof` | href*, quote* | — |
-| `b-links` | cols (1/2/3) | `<item href* k* t*>` |
+| `b-links` | cols (1/2/3) | `<item href* k* t* ext>` |
 | `b-why` | align (left) | — |
 | `b-cap` | — | — |
 | `b-sublabel` | top | — |
 | `b-lead` | — | — |
 | `b-credit` | — | — |
 | `b-subhead` | — | — |
-| `b-footer` | — | — |
+| `b-footer` | compact | — |
 | `b-prompt` | — | — (текст как есть) |
-| `b-art` | names* | — |
-| `b-cta` | href*, k*, t*, icon | — |
+| `b-art` | names*, wide | — |
+| `b-cta` | href*, k*, t*, icon, sw | — |
 | `b-flow` | label*, lead | `<b-lane>` внутри |
 | `b-lane` | title*, color*, top | `<node icon* t*>` |
 | `b-steps` | — | `<step t* hl>` |
@@ -98,22 +98,45 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-tag` | kind* (ok/no/plain) | — |
 | `b-chip` | on | — |
 | `b-chips` | — | `<b-chip>` внутри |
-| `b-io` | — | `<item k*>` |
+| `b-io` | justify | `<item k* mono eq>` |
 | `b-qa` | cols (2/3) | `<q t*>` |
 | `b-rules` | cols (2/3) | `<rule icon* t*>` |
 | `b-stack` | label | `<seg w* color* ink>` |
 | `b-bar` | value*, color | — |
 | `b-todo` | — | `<item t*>` |
-| `b-hchain` | label* | `<step icon* t*>` |
+| `b-hchain` | label* | `<step icon* t* sw>` |
 | `b-icon` | name*, sw | — |
+| `b-k8s-loop` | label*, cols*, human*, back* | `<b-k8s-row>` внутри |
+| `b-k8s-row` | icon*, t*, sw | `<cell on hz>` |
+| `b-probe-check` | — | `<b-probe-panel>` внутри, `<rule>` |
+| `b-probe-panel` | icon*, t*, verdict*, sw | `<probe kind* note>`, `<cov t* value*>` |
+| `b-env-caps` | — | `<side icon* t* sw>`, `<cap icon* t*>` |
+| `b-spec-growth` | — | `<b-growth-panel>` внутри, `<step em>` |
+| `b-growth-panel` | icon*, t*, sub*, n*, note*, chip*, files, good | `<agg dots*>` |
+| `b-rfc-levels` | cols* | `<level k* s* w* check* t* note*>`, `<syn>` |
+| `b-aggregate-card` | label* | `<field icon* t* sw>` |
+| `b-ctx-map` | — | `<ctx name*>` |
+| `b-ctx-links` | t*, arrow | `<ref from* to*>` |
+| `b-ctx-clash` | word*, note* | `<sense code*>` |
+| `b-ctx-rules` | — | `<rule icon*>` |
+| `b-ctx-layers` | — | `<layer kind* t* when*>` |
+| `b-ctx-layer` | kind* (spec/bible/rules/skill) | — |
+| `b-ctx-table` | phone* (hide4/wrap) | HTML-таблица |
+| `b-seq-row` | — | `<step t*>` |
+| `b-file-grid` | — | `<file name*>` |
+| `b-rule-modes` | — | `<mode t*>` |
+| `b-metric-line` | value* | — |
+| `b-skill-pick` | start*, start-note*, picked*, call*, call-note*, file*, file-note* | `<skill on>` |
+| `b-prompt-anatomy` | label*, order* | `<part kind* icon* t* tip* tag note>`, `<tags t* tip*>` |
+| `b-prompt-tabs` | name* | `<b-prompt-tab>` внутри |
+| `b-prompt-tab` | id*, icon*, label*, title* | — (любые блоки) |
+| `b-prompt-parts` | — | `<part icon* off>` |
 
 ## Ещё не обобщено (разовые элементы серий)
 
 Остались ручной вёрсткой в своих постах и стилями серий — кандидаты в блоки, когда понадобятся второй раз:
 
-- **prompts**: анатомия промпта (`anat`/`an`), окно промпта (`pa-*`), табы с примерами (`tabs`/`tb`/`tp`),
-  слои контекста (`ly-*`), последовательность (`seq`/`sq`), файлы (`fls`), модели (`mds`/`md`), метрика (`mt`),
-  планировщик (`pl-*`), части промпта (`parts`/`pt`), схема предметной области (`dm-*`).
+- **prompts**: анатомия промпта (`anat`/`an`).
 - **harness**: карточки харнессов (`hx`, `cv-*`, `cap2`), вкладки (`brk-*`, `vtog-*`, `vt-*`), подсказки агенту
   с копированием (`pq-*`, `cb`), диаграмма Венна (`venn`), выноска (`callout`), пары (`pair`), дрейф (`drift`).
 - **hdd**: шкала стоимости (`sh`, `usd`), петля (`loopwrap`, `cf-*`), слои зрелости (`ly-r`/`ly-bar`),
@@ -124,6 +147,4 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
   сравнение (`cmp`), таймлайн (`tl`/`ph`).
 - **intervyu**: сценарий звонка (`script`/`sn`/`q`/`fu`), таблица Airtable (`atbl`, `at`, `fieldtype`),
   оценки (`rate`/`rt`), микс форматов (`mix`/`mx`), пары «плохо/хорошо» (`pairs`/`pr`), шкала (`gauge`).
-- **agg / rec**: словарь агрегатов (`ag-*`, `rl-*`), рост спек (`gw-*`), контексты (`cx-*`), эволюция (`ev-*`),
-  Kubernetes-петля (`kl-*`), снимок (`sn-*`).
 - Общий вариант: `chain` с карточками `nd` (harness) отличается от `chain` gruppy — разные блоки под одним именем.

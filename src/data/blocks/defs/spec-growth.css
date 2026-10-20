@@ -1,0 +1,29 @@
+/* Рост спек: две панели (файлы фич и записи агрегатов) и путь новой фичи пунктирной полосой */
+.s-rich.bk .bk-gw { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.s-rich.bk .bk-gw-p { display: flex; flex-direction: column; gap: 14px; padding: 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.s-rich.bk .bk-gw-p.bk-on { border-color: var(--accent); }
+.s-rich.bk .bk-gw-h { display: grid; grid-template-columns: 22px 1fr; column-gap: 8px; align-items: center; }
+.s-rich.bk .bk-gw-h svg { width: 20px; height: 20px; color: var(--accent); }
+.s-rich.bk .bk-gw-h b { font-size: 16px; }
+.s-rich.bk .bk-gw-h small { grid-column: 2; font-size: 13px; color: var(--muted); }
+.s-rich.bk .bk-gw-files { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.s-rich.bk .bk-gw-files i { display: grid; place-items: center; aspect-ratio: 1; border-radius: 4px; background: var(--surface-2); color: var(--line-2); }
+.s-rich.bk .bk-gw-files i svg { width: 60%; height: 60%; }
+.s-rich.bk .bk-gw-files i.bk-on { background: var(--warn-soft); color: var(--warn); }
+.s-rich.bk .bk-gw-aggs { display: flex; flex-direction: column; gap: 6px; }
+.s-rich.bk .bk-gw-ag { display: flex; justify-content: space-between; align-items: center; padding: 7px 10px; border-radius: 4px; background: var(--accent-soft); }
+.s-rich.bk .bk-gw-d { display: flex; gap: 4px; }
+.s-rich.bk .bk-gw-d i { width: 9px; height: 9px; border-radius: 2px; background: var(--accent); }
+.s-rich.bk .bk-gw-n { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+.s-rich.bk .bk-gw-n b { font-size: 28px; letter-spacing: -.02em; }
+.s-rich.bk .bk-gw-n .bk-warn { color: var(--warn); font-weight: 700; font-size: 14px; }
+.s-rich.bk .bk-gw-n .bk-good { color: var(--accent); font-weight: 700; font-size: 14px; }
+.s-rich.bk .bk-gw-c { align-self: flex-start; font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+.s-rich.bk .bk-gw-c.bk-bad { background: var(--warn-soft); color: var(--warn); }
+.s-rich.bk .bk-gw-c.bk-good { background: var(--accent-soft); color: var(--accent); }
+.s-rich.bk .bk-gw-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; padding: 10px 14px; border: 1px dashed var(--line-2); border-radius: 6px; }
+.s-rich.bk .bk-gw-fs { display: inline-flex; align-items: center; gap: 6px; }
+.s-rich.bk :is(.bk-gw, .bk-gw-fs) code { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-2); }
+.s-rich.bk .bk-gw-fs em { font-style: normal; font-size: 12px; font-weight: 700; color: var(--accent); }
+.s-rich.bk .bk-gw-ar { color: var(--muted); }
+@media (max-width: 640px) { .s-rich.bk .bk-gw { grid-template-columns: 1fr; } }

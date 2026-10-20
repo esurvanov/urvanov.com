@@ -1,0 +1,12 @@
+/* Карточка агрегата: код записи слева с акцентной чертой, пояснение с номером справа; на телефоне пояснение сверху */
+.s-rich.bk .bk-ag { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
+.s-rich.bk .bk-ag-r { display: grid; grid-template-columns: 1fr 240px; border-top: 1px solid var(--line); }
+.s-rich.bk .bk-ag-r:first-child { border-top: 0; }
+.s-rich.bk .bk-ag-c { margin: 0; padding: 10px 14px; font-family: "JetBrains Mono", monospace; font-size: 12.5px; line-height: 1.6; color: var(--ink); white-space: pre-wrap; background: var(--surface-2); border-left: 3px solid var(--accent); overflow-x: auto; }
+.s-rich.bk .bk-ag-n { display: flex; align-items: center; gap: 8px; padding: 10px 14px; font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.s-rich.bk .bk-ag-n svg { width: 18px; height: 18px; color: var(--accent); flex: none; }
+.s-rich.bk .bk-nb { display: grid; place-items: center; width: 22px; height: 22px; flex: none; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 700; }
+@media (max-width: 640px) {
+  .s-rich.bk .bk-ag-r { grid-template-columns: 1fr; }
+  .s-rich.bk .bk-ag-n { order: -1; padding-bottom: 4px; }
+}

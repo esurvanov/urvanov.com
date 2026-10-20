@@ -1,0 +1,18 @@
+/* Слои контекста: карточки с цветной чертой сверху, метка слоя его цветом, таблица без прокрутки на телефоне */
+.s-rich.bk .bk-ly { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 6px 0 10px; }
+@media (max-width: 640px) { .s-rich.bk .bk-ly { grid-template-columns: 1fr 1fr; } }
+.s-rich.bk .bk-ly-c { display: grid; gap: 4px; align-content: start; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--c); border-radius: 4px; padding: 14px; }
+.s-rich.bk .bk-ly-i { width: 34px; height: 34px; border-radius: 4px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent); margin-bottom: 4px; }
+.s-rich.bk .bk-ly-i svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-ly-c b { font-size: 17px; color: var(--ink); }
+.s-rich.bk .bk-ly-c small { font-size: 13.5px; color: var(--ink-2); line-height: 1.35; }
+.s-rich.bk .bk-ly-w { justify-self: start; margin-top: 6px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .04em; padding: 3px 8px; border-radius: 3px; color: var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); }
+.s-rich.bk .bk-ly-t { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--c); white-space: nowrap; }
+.s-rich.bk .bk-ly-t svg { width: 15px; height: 15px; }
+@media (max-width: 640px) {
+  .s-rich.bk .bk-lt-hide4 :is(th, td):nth-child(4) { display: none; }
+  .s-rich.bk .bk-lt table { min-width: 0 !important; width: 100%; }
+  .s-rich.bk .bk-lt-wrap td:last-child { white-space: normal; }
+}
+/* Код в ячейках — с подложкой, как код в тексте статьи (у таблицы блоков подложка снята) */
+.s-rich.bk .bk-tbl.bk-lt code { background: var(--surface); padding: 2px 6px; }
