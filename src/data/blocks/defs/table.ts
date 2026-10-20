@@ -7,12 +7,15 @@ export default defineBlock({
   tag: 'table',
   title: 'Таблица',
   doc: 'Таблица в рамке; внутри HTML-таблица или markdown-таблица.',
-  attrs: { id: { doc: 'якорь' } },
+  attrs: {
+    id: { doc: 'якорь' },
+    code: { doc: 'prose — `код` в ячейках как в тексте поста: с фоном и крупнее (по умолчанию — мелкий моноширинный без фона)', values: ['prose'] },
+  },
   // Строки markdown-таблицы должны остаться строками: содержимое не склеивается в одну строку
   flow: true,
   render: ({ attrs, children }) => {
     const body = children.trim().startsWith('|') ? (marked.parse(children.trim(), { async: false }) as string).trim().replace(/>\n</g, '><') : children.trim()
-    return `<div class="bk-tbl"${attrs.id ? ` id="${attr(attrs.id)}"` : ''}>${body}</div>`
+    return `<div class="bk-tbl${attrs.code ? ' bk-tbl-code-prose' : ''}"${attrs.id ? ` id="${attr(attrs.id)}"` : ''}>${body}</div>`
   },
   example: {
     ru: '<b-table>\n| Команда | Регулярно | Статус |\n|---|---|---|\n| Команда A | <b-bar value="74"></b-bar> | <b-tag kind="ok">покрыта</b-tag> |\n| Команда B | <b-bar value="31"></b-bar> | <b-tag kind="no">нет людей</b-tag> |\n</b-table>',

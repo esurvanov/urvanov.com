@@ -11,4 +11,61 @@ toc: idea=Агент на контекст | scale=Масштабировани�
 
 Сколько нужно ИИ-агентов? Столько, сколько ограниченных контекстов: у каждой границы смысла свой агент. Ниже: почему так, как это масштабируется, что стоит между агентами и с чего начать.
 
-<div class="s-rich s-rich-harness-ru"><section class="chapter" id="idea"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span>Один агент на один контекст</h2><p class="why" style="text-align:left">Агентов столько, сколько <a href="/materials/glossary/bounded-context/">ограниченных контекстов</a>. Так <a href="/materials/glossary/ai-agent/">агенту</a> хватает контекста.</p><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Один на всё или по контексту</div><iso-art name="agents-per-bounded-context/one-vs-per-context"></iso-art></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">В этом примере</span>Слово «заказ» в продажах, доставке и оплате значит разное. Один агент путает смыслы, три агента держат каждый свой.</div><div class="fg"><span class="fk">В общем случае</span>Граница контекста уже говорит, где смысл меняется. По ней удобно резать и спеки, и работу агентов.</div><div class="fa"><span class="fk">Что сделать</span>Составьте список контекстов проекта и напротив каждого запишите, кто работает в его границах.</div></div></section><section class="chapter" id="scale"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16M7 15l4-4 3 3 5-6"/></svg></span>Как это масштабируется</h2><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Нагрузка и число агентов</div><iso-art name="agents-per-bounded-context/load-chart"></iso-art></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">В этом примере</span>Контекстов 8: один агент тонет в смыслах, а восемь агентов каждый работает в своих границах.</div><div class="fg"><span class="fk">В общем случае</span>Число агентов растёт линейно с числом контекстов, а нагрузка на каждого остаётся ровной. По нашему опыту. Цифры на графиках условные.</div><div class="fa"><span class="fk">Что сделать</span>Добавляйте агента вместе с новым контекстом, а не наращивайте контекст у одного агента.</div></div></section><section class="chapter" id="borders"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h6v6H4zM14 12h6v6h-6zM10 9h4v6"/></svg></span>Что между агентами</h2><p class="why" style="text-align:left">Агенты общаются по контрактам: события и API. Чужой контекст не под нашим контролем, поэтому к нему агент ходит только по контракту и под вашим подтверждением. Подробнее про оценку сложности: <a href="/blog/agent-hands-work-back-to-you/#hard">где сложность настоящая</a>.</p><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Карта контекстов</div><iso-art name="agents-per-bounded-context/context-map"></iso-art></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">В этом примере</span>Агент продаж читает событие «заказ оплачен» из оплаты, а в партнёрскую систему пишет только через утверждённый контракт.</div><div class="fg"><span class="fk">В общем случае</span>Контракт заменяет общий контекст: агентам не нужно знать внутренности чужой границы, и ошибка не расползается.</div><div class="fa"><span class="fk">Что сделать</span>Для каждой связи между контекстами запишите контракт одной строкой: что отдаёт, что принимает, кто владелец.</div></div></section><section class="chapter" id="first"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>С чего начать</h2><div class="chain"><div class="nd"><b>1</b><small>нарисовать карту контекстов</small></div><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="nd"><b>2</b><small>назначить агента на каждый</small></div><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="nd"><b>3</b><small>записать контракты на границах</small></div></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">В этом примере</span>Начните с двух соседних контекстов и одного контракта между ними.</div><div class="fg"><span class="fk">В общем случае</span>Один контекст, один агент, один контракт: так проверяется схема до того, как вы растянете её на весь проект.</div><div class="fa"><span class="fk">Что сделать</span>Выберите два контекста, где чаще всего путаются слова, и заведите по агенту на каждый.</div></div></section><section class="chapter" id="next"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Дальше по теме</h2><div class="links three"><a href="/blog/specs-by-aggregates/"><div class="k">Спеки</div><div class="t">Спеки по агрегатам</div><div class="d">границы контекстов в спеках</div></a><a href="/blog/agent-hands-work-back-to-you/"><div class="k">Агент</div><div class="t">Заберут ли агенты вашу работу</div><div class="d">где сложность настоящая</div></a><a href="/materials/glossary/bounded-context/"><div class="k">Термин</div><div class="t">Ограниченный контекст</div><div class="d">что это и зачем</div></a></div></section></div>
+<b-post series="harness">
+
+<b-chapter id="idea" icon="ring-dot" title="Один агент на один контекст">
+  <b-why align="left">Агентов столько, сколько [ограниченных контекстов](/materials/glossary/bounded-context/). Так [агенту](/materials/glossary/ai-agent/) хватает контекста.</b-why>
+  <b-lane title="Один на всё или по контексту" color="accent">
+    <iso-art name="agents-per-bounded-context/one-vs-per-context"></iso-art>
+  </b-lane>
+  <b-finding>
+    <ex>Слово «заказ» в продажах, доставке и оплате значит разное. Один агент путает смыслы, три агента держат каждый свой.</ex>
+    <gen>Граница контекста уже говорит, где смысл меняется. По ней удобно резать и спеки, и работу агентов.</gen>
+    <do>Составьте список контекстов проекта и напротив каждого запишите, кто работает в его границах.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="scale" icon="chart-axes" title="Как это масштабируется">
+  <b-lane title="Нагрузка и число агентов" color="accent">
+    <iso-art name="agents-per-bounded-context/load-chart"></iso-art>
+  </b-lane>
+  <b-finding>
+    <ex>Контекстов 8: один агент тонет в смыслах, а восемь агентов каждый работает в своих границах.</ex>
+    <gen>Число агентов растёт линейно с числом контекстов, а нагрузка на каждого остаётся ровной. По нашему опыту. Цифры на графиках условные.</gen>
+    <do>Добавляйте агента вместе с новым контекстом, а не наращивайте контекст у одного агента.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="borders" icon="boxes-link" title="Что между агентами">
+  <b-why align="left">Агенты общаются по контрактам: события и API. Чужой контекст не под нашим контролем, поэтому к нему агент ходит только по контракту и под вашим подтверждением. Подробнее про оценку сложности: [где сложность настоящая](/blog/agent-hands-work-back-to-you/#hard).</b-why>
+  <b-lane title="Карта контекстов" color="accent">
+    <iso-art name="agents-per-bounded-context/context-map"></iso-art>
+  </b-lane>
+  <b-finding>
+    <ex>Агент продаж читает событие «заказ оплачен» из оплаты, а в партнёрскую систему пишет только через утверждённый контракт.</ex>
+    <gen>Контракт заменяет общий контекст: агентам не нужно знать внутренности чужой границы, и ошибка не расползается.</gen>
+    <do>Для каждой связи между контекстами запишите контракт одной строкой: что отдаёт, что принимает, кто владелец.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="first" icon="shield-check" title="С чего начать">
+  <b-numchain>
+    <step>нарисовать карту контекстов</step>
+    <step>назначить агента на каждый</step>
+    <step>записать контракты на границах</step>
+  </b-numchain>
+  <b-finding>
+    <ex>Начните с двух соседних контекстов и одного контракта между ними.</ex>
+    <gen>Один контекст, один агент, один контракт: так проверяется схема до того, как вы растянете её на весь проект.</gen>
+    <do>Выберите два контекста, где чаще всего путаются слова, и заведите по агенту на каждый.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="next" icon="arrow-right" title="Дальше по теме">
+  <b-links>
+    <item href="/blog/specs-by-aggregates/" k="Спеки" t="Спеки по агрегатам">границы контекстов в спеках</item>
+    <item href="/blog/agent-hands-work-back-to-you/" k="Агент" t="Заберут ли агенты вашу работу">где сложность настоящая</item>
+    <item href="/materials/glossary/bounded-context/" k="Термин" t="Ограниченный контекст">что это и зачем</item>
+  </b-links>
+</b-chapter>
+</b-post>

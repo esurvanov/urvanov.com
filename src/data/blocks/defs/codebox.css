@@ -1,0 +1,4 @@
+/* Код моноширинным блоком; с кнопкой «Копировать» — место справа под кнопку (сама кнопка — в say-agent.css) */
+.s-rich.bk .bk-codebox { background: var(--surface-2); border: 1px solid var(--muted); border-radius: 6px; padding: 10px; overflow: auto; font-size: 13px; margin-top: 10px; }
+.s-rich.bk .bk-codebox-wrap { position: relative; }
+.s-rich.bk .bk-codebox-wrap .bk-codebox { padding-right: 52px; }

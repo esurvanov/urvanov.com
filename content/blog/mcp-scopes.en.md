@@ -11,17 +11,112 @@ toc: what=Three scopes | pick=Which to pick | order=What wins | team=Project for
 
 An MCP server’s scope answers two questions: which projects it works in and who sees it. Claude Code has three scopes: local, project and user. Below: how they differ, which to pick, what wins when names collide and how to share servers with a team. What MCP is and how to connect it is in the [MCP for an AI agent](/blog/mcp-agent-access/) article.
 
-<div class="s-rich s-rich-harness-en"><section class="chapter" id="what"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>Three scopes</h2><iso-art name="mcp-scopes/scopes"></iso-art><div class="tbl"><table><thead><tr><th>Scope</th><th>Works in</th><th>Who sees it</th><th>Stored in</th></tr></thead><tbody><tr><td>Local</td><td>current project</td><td>only you</td><td><code>~/.claude.json</code></td></tr><tr><td>Project</td><td>current project</td><td>the whole team, via the repo</td><td><code>.mcp.json</code> in the root</td></tr><tr><td>User</td><td>all your projects</td><td>only you</td><td><code>~/.claude.json</code></td></tr></tbody></table></div><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>The same server can be connected for yourself in one project, for the whole team, or for all your projects.</div><div class="fg"><span class="fk">In general</span>Local is the default: the server is visible only to you and only in this project.</div><div class="fa"><span class="fk">What to do</span>See which scope each of your servers lives in: claude mcp list.</div></div></section><section class="chapter" id="pick"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7M12 17h.01"/></svg></span>Which one to pick</h2><h3 style="margin-top:14px">Tell the agent</h3><blockquote class="pq"><div class="pq-text">Show which scopes my MCP servers are configured in and suggest which ones to move to project for the team.</div><button type="button" class="pq-copy" data-label="Copy" data-done="Copied" aria-label="Copy" title="Copy"><svg class="pq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="pq-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span class="pq-sr">Copy</span></button></blockquote><p class="why" style="text-align:left">The agent runs the commands itself: claude mcp list and claude mcp get.</p><details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">How to do it by hand</summary><iso-art name="mcp-scopes/what-where"></iso-art><div class="cb"><pre style="background:var(--surface-2);border:1px solid var(--muted);border-radius:6px;padding:10px;overflow:auto;font-size:13px;margin-top:10px"><code># local — the default
-claude mcp add --transport http stripe https://mcp.stripe.com
-# project — the whole team, .mcp.json file
-claude mcp add --transport http shared-server --scope project https://example.com/mcp
-# user — all your projects
-claude mcp add --transport http hubspot --scope user https://mcp.hubspot.com/anthropic</code></pre><button type="button" class="pq-copy" data-label="Copy" data-done="Copied" aria-label="Copy" title="Copy"><svg class="pq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="pq-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span class="pq-sr">Copy</span></button></div><p>Server list: <code>claude mcp list</code>; details: <code>claude mcp get &lt;name&gt;</code>; remove: <code>claude mcp remove &lt;name&gt;</code>; inside Claude Code: <code>/mcp</code>.</p></details><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>An experiment starts in local, a shared tool lives in project, a personal utility in user.</div><div class="fg"><span class="fk">In general</span>The scope decides who sees the server and where its configuration lives.</div><div class="fa"><span class="fk">What to do</span>Add a shared tool with --scope project and a personal one with --scope user.</div></div></section><section class="chapter" id="order"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>What wins when names collide</h2><p class="why">If a server with the same name exists in several places, the entry from the topmost layer is used whole.</p><iso-art name="mcp-scopes/priority-layers"></iso-art><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>Local overrides project and user, project overrides user, and plugins, claude.ai connectors and managed MCP sit below.</div><div class="fg"><span class="fk">In general</span>A personal entry overrides a shared one with the same name as a whole: fields of the two entries are not merged.</div><div class="fa"><span class="fk">What to do</span>Give personal servers different names so they do not override shared ones.</div></div></section><section class="chapter" id="team"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="9" r="2.5"/><path d="M6 8.5v7M8.3 7c4 1 7 0 7.7 0"/></svg></span>Project: shared setup for the team</h2><div class="rules"><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h6l2 2h10v11H3z"/></svg></span><b>.mcp.json</b><span>The file sits in the project root, in the repository: the whole team gets the same servers.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4z"/><path d="M10 21h4"/></svg></span><b>Approval</b><span>In an interactive session Claude Code asks before using servers from .mcp.json.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M15 20c0-2 1.5-3.5 3.5-3.5S22 18 22 20"/></svg></span><b>No prompt</b><span>In non-interactive runs (claude -p, the Agent SDK, cloud sessions) servers load without a prompt.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><b>Folder trust</b><span>In an untrusted folder the server waits for approval (“Pending approval”) until the trust dialog.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg></span><b>Disable</b><span>Add an unwanted server to disabledMcpjsonServers; claude mcp reset-project-choices clears approval choices.</span></div></div><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>A file in the repository makes the agent setup shared: a new member gets the servers together with the code.</div><div class="fg"><span class="fk">In general</span>Approval guards against a stranger’s server in interactive work, while in automated runs the server turns on at once.</div><div class="fa"><span class="fk">What to do</span>Review .mcp.json in code review like any code.</div></div></section><section class="chapter" id="secrets"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v4M21 12v3"/></svg></span>Secrets in .mcp.json</h2><p class="why">The file holds environment variable names. ${VAR} inserts the value and ${VAR:-default} sets a fallback. Expansion works in command, args, env, url and headers.</p><iso-art name="mcp-scopes/env-keys"></iso-art><div class="cb"><pre style="background:var(--surface-2);border:1px solid var(--muted);border-radius:6px;padding:10px;overflow:auto;font-size:13px;margin-top:10px"><code>{
-  "mcpServers": {
-    "api-server": {
-      "type": "http",
-      "url": "${API_BASE_URL:-https://api.example.com}/mcp",
-      "headers": { "Authorization": "Bearer ${API_KEY}" }
+<b-post series="harness">
+
+<b-chapter id="what" icon="layers" title="Three scopes">
+  <iso-art name="mcp-scopes/scopes"></iso-art>
+  <b-table code="prose">
+| Scope | Works in | Who sees it | Stored in |
+|---|---|---|---|
+| Local | current project | only you | `~/.claude.json` |
+| Project | current project | the whole team, via the repo | `.mcp.json` in the root |
+| User | all your projects | only you | `~/.claude.json` |
+  </b-table>
+  <b-finding>
+    <ex>The same server can be connected for yourself in one project, for the whole team, or for all your projects.</ex>
+    <gen>Local is the default: the server is visible only to you and only in this project.</gen>
+    <do k="What to do">See which scope each of your servers lives in: claude mcp list.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="pick" icon="help" title="Which one to pick">
+  <b-say-agent title="Tell the agent">Show which scopes my MCP servers are configured in and suggest which ones to move to project for the team.</b-say-agent>
+  <b-why align="left">The agent runs the commands itself: claude mcp list and claude mcp get.</b-why>
+  <b-spoiler summary="How to do it by hand">
+    <iso-art name="mcp-scopes/what-where"></iso-art>
+    <b-codebox copy>
+      # local — the default
+      claude mcp add --transport http stripe https://mcp.stripe.com
+      # project — the whole team, .mcp.json file
+      claude mcp add --transport http shared-server --scope project https://example.com/mcp
+      # user — all your projects
+      claude mcp add --transport http hubspot --scope user https://mcp.hubspot.com/anthropic
+    </b-codebox>
+
+Server list: `claude mcp list`; details: `claude mcp get <name>`; remove: `claude mcp remove <name>`; inside Claude Code: `/mcp`.
+
+  </b-spoiler>
+  <b-finding>
+    <ex>An experiment starts in local, a shared tool lives in project, a personal utility in user.</ex>
+    <gen>The scope decides who sees the server and where its configuration lives.</gen>
+    <do k="What to do">Add a shared tool with --scope project and a personal one with --scope user.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="order" icon="layers" title="What wins when names collide">
+  <b-why>If a server with the same name exists in several places, the entry from the topmost layer is used whole.</b-why>
+  <iso-art name="mcp-scopes/priority-layers"></iso-art>
+  <b-finding>
+    <ex>Local overrides project and user, project overrides user, and plugins, claude.ai connectors and managed MCP sit below.</ex>
+    <gen>A personal entry overrides a shared one with the same name as a whole: fields of the two entries are not merged.</gen>
+    <do k="What to do">Give personal servers different names so they do not override shared ones.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="team" icon="git-branch" title="Project: shared setup for the team">
+  <b-rules sw="1.8">
+    <rule icon="folder-tab" t=".mcp.json">The file sits in the project root, in the repository: the whole team gets the same servers.</rule>
+    <rule icon="bell" t="Approval">In an interactive session Claude Code asks before using servers from .mcp.json.</rule>
+    <rule icon="users" t="No prompt">In non-interactive runs (claude -p, the Agent SDK, cloud sessions) servers load without a prompt.</rule>
+    <rule icon="lock" t="Folder trust">In an untrusted folder the server waits for approval (“Pending approval”) until the trust dialog.</rule>
+    <rule icon="ban" t="Disable">Add an unwanted server to disabledMcpjsonServers; claude mcp reset-project-choices clears approval choices.</rule>
+  </b-rules>
+  <b-finding>
+    <ex>A file in the repository makes the agent setup shared: a new member gets the servers together with the code.</ex>
+    <gen>Approval guards against a stranger’s server in interactive work, while in automated runs the server turns on at once.</gen>
+    <do k="What to do">Review .mcp.json in code review like any code.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="secrets" icon="key" title="Secrets in .mcp.json">
+  <b-why>The file holds environment variable names. ${VAR} inserts the value and ${VAR:-default} sets a fallback. Expansion works in command, args, env, url and headers.</b-why>
+  <iso-art name="mcp-scopes/env-keys"></iso-art>
+  <b-codebox copy>
+    {
+      "mcpServers": {
+        "api-server": {
+          "type": "http",
+          "url": "${API_BASE_URL:-https://api.example.com}/mcp",
+          "headers": { "Authorization": "Bearer ${API_KEY}" }
+        }
+      }
     }
-  }
-}</code></pre><button type="button" class="pq-copy" data-label="Copy" data-done="Copied" aria-label="Copy" title="Copy"><svg class="pq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="pq-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span class="pq-sr">Copy</span></button></div><p>If a variable is unset and has no default, the config loads as is, and claude mcp list and /mcp show a warning. Claude Code credentials (ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN) and several others read as empty in url and headers: copy the value to a variable with another name.</p><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>The repository holds ${API_KEY}, and every developer keeps the real key in their own environment variable.</div><div class="fg"><span class="fk">In general</span>That keeps the shared file safe to commit.</div><div class="fa"><span class="fk">What to do</span>Remove keys from .mcp.json and replace them with variables.</div></div></section><section class="chapter" id="first"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></span>Where to start</h2><iso-art name="mcp-scopes/steps"></iso-art><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>Three steps: look, share, hide the keys.</div><div class="fg"><span class="fk">In general</span>First order in your own servers, then shared setup for the team.</div><div class="fa"><span class="fk">What to do</span>Run claude mcp list and find a server the whole team needs.</div></div></section><section class="chapter" id="next"><h2>Next</h2><div class="links three"><a href="/blog/mcp-agent-access/"><div class="k">Basics</div><div class="t">MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту</div><div class="d">What MCP is and how to connect it</div></a><a href="/blog/claude-in-chrome/"><div class="k">Browser</div><div class="t">Claude in Chrome: как агент работает в вашем браузере — тест, отладка и формы под вашим входом</div><div class="d">The agent in your browser</div></a><a href="/blog/bug-report-to-reproduction-agent/"><div class="k">Example</div><div class="t">Работа QA после поддержки с ИИ-агентом: исследование, описание и документирование через MCP и скиллы</div><div class="d">The agent reproduces a Jira bug</div></a></div></section><footer>Facts about scopes and precedence follow the Claude Code docs: <a href="https://code.claude.com/docs/en/mcp#mcp-installation-scopes" target="_blank" rel="noopener">MCP installation scopes</a>.</footer></div>
+  </b-codebox>
+
+If a variable is unset and has no default, the config loads as is, and claude mcp list and /mcp show a warning. Claude Code credentials (ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN) and several others read as empty in url and headers: copy the value to a variable with another name.
+
+  <b-finding>
+    <ex>The repository holds ${API_KEY}, and every developer keeps the real key in their own environment variable.</ex>
+    <gen>That keeps the shared file safe to commit.</gen>
+    <do k="What to do">Remove keys from .mcp.json and replace them with variables.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="first" icon="flag" title="Where to start">
+  <iso-art name="mcp-scopes/steps"></iso-art>
+  <b-finding>
+    <ex>Three steps: look, share, hide the keys.</ex>
+    <gen>First order in your own servers, then shared setup for the team.</gen>
+    <do k="What to do">Run claude mcp list and find a server the whole team needs.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="next" title="Next">
+  <b-links>
+    <item href="/blog/mcp-agent-access/" k="Basics" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">What MCP is and how to connect it</item>
+    <item href="/blog/claude-in-chrome/" k="Browser" t="Claude in Chrome: как агент работает в вашем браузере — тест, отладка и формы под вашим входом">The agent in your browser</item>
+    <item href="/blog/bug-report-to-reproduction-agent/" k="Example" t="Работа QA после поддержки с ИИ-агентом: исследование, описание и документирование через MCP и скиллы">The agent reproduces a Jira bug</item>
+  </b-links>
+</b-chapter>
+<b-footer>Facts about scopes and precedence follow the Claude Code docs: <a href="https://code.claude.com/docs/en/mcp#mcp-installation-scopes" target="_blank" rel="noopener">MCP installation scopes</a>.</b-footer>
+</b-post>

@@ -8,3 +8,5 @@
 .s-rich.bk .bk-tbl td:first-child { color: var(--ink); font-weight: 600; }
 .s-rich.bk .bk-tbl :is(td, th).bk-r { text-align: right; font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
 .s-rich.bk .bk-tbl code { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink-2); overflow-wrap: anywhere; background: none; padding: 0; }
+/* code="prose": код в ячейках как в абзацах поста (.s-prose code) — с фоном, 0.9em */
+.s-rich.bk .bk-tbl.bk-tbl-code-prose code { font-family: var(--mono); font-size: .9em; color: inherit; background: var(--surface); padding: 2px 6px; overflow-wrap: normal; }
