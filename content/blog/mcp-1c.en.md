@@ -9,7 +9,7 @@ mentions: Model Context Protocol, MCP, 1C:Enterprise, AI agent, Claude Code, Cod
 toc: what=What it is | specifics=1C specifics | breaks=Where it breaks | servers=Servers | cases=What breaks | scheme=Scheme | rights=Rights | check=Checks | agents=Agents | start=Where to start | next=Read next
 ---
 
-MCP for 1C is an MCP server that plugs an AI agent (Claude Code, Codex or Cursor) into the configuration and the database: an AI agent for 1C reads the real code and the real data. The wider the access, the costlier a mistake. Below: what servers exist, what breaks in practice and how to set up access so the agent helps and the production database stays intact. How MCP works in general is covered in [MCP for an AI agent](/blog/mcp-agent-access/).
+To let Claude Code, Codex or Cursor into a 1C database without breaking it, connect the AI agent through an MCP server for 1C — a bridge to the configuration code and the database data — and split the access. The agent only reads the production database under a user without write rights, makes changes in a test copy, and a person moves changes to production through the repository after review. Below: what servers exist, what breaks in practice, the ladder of rights and how to check results. How MCP works in general is covered in [MCP for an AI agent](/blog/mcp-agent-access/).
 
 <b-post series="harness">
 <b-chapter id="what" icon="plug" title="What an MCP server for 1C is">
