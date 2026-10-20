@@ -1,0 +1,3 @@
+/* Полоска-процент в ячейке таблицы */
+.s-rich.bk .bk-dbar { height: 10px; min-width: 110px; background: var(--surface-2); border-radius: 5px; overflow: hidden; }
+.s-rich.bk .bk-dbar span { display: block; height: 100%; background: var(--c-chat); border-radius: 5px; }

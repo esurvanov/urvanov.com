@@ -15,6 +15,7 @@ import { AiHubView, AiOfferView } from '@/components/AiOfferView'
 import { GameView } from '@/components/GameView'
 import ArchitectureView from '@/components/ArchitectureView'
 import { LabView } from '@/components/LabView'
+import BlocksView from '@/components/BlocksView'
 import { usePageMeta } from '@/lib/usePageMeta'
 import { useSmoothNavigation } from '@/lib/useSmoothNavigation'
 
@@ -44,6 +45,7 @@ export default function App() {
       <Route path="/materials/glossary/:slug" element={<TermView />} />
       <Route path="/materials/interactive" element={<InteractiveView />} />
       <Route path="/materials/interactive/:slug" element={<LabView />} />
+      <Route path="/materials/blocks" element={<BlocksView />} />
       <Route path="/ai" element={<AiHubView />} />
       <Route path="/ai/:slug" element={<AiOfferView />} />
       <Route path="/links" element={<LinksView />} />
@@ -64,6 +66,7 @@ export default function App() {
       <Route path="/en/materials/glossary/:slug" element={<TermView />} />
       <Route path="/en/materials/interactive" element={<InteractiveView />} />
       <Route path="/en/materials/interactive/:slug" element={<LabView />} />
+      <Route path="/en/materials/blocks" element={<BlocksView />} />
       <Route path="/en/ai" element={<AiHubView />} />
       <Route path="/en/ai/:slug" element={<AiOfferView />} />
       <Route path="/en/links" element={<LinksView />} />

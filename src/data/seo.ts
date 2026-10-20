@@ -212,6 +212,14 @@ const BASE: Base[] = [
     sources: ['src/components/GlossaryView.tsx', 'src/data/glossary.ts'],
   },
   {
+    // Витрина блоков статей: служебная страница для проверки вёрстки — не в поиске, не в sitemap и llms.txt
+    path: '/materials/blocks',
+    ru: { title: `Блоки статей — ${SITE_NAME}`, description: 'Витрина библиотеки блоков статей блога: каждый блок, его метка, атрибуты и пример.' },
+    en: { title: 'Article blocks — Egor Urvanov', description: 'Showcase of the blog article block library: every block, its tag, attributes and an example.' },
+    noindex: { ru: true, en: true },
+    sources: ['src/components/BlocksView.tsx', 'src/data/blocks'],
+  },
+  {
     path: '/talk/spec-driven-development',
     ru: {
       title: `${config.talkTitle} — ${config.conferenceName}`,

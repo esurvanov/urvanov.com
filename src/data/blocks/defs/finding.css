@@ -1,0 +1,14 @@
+/* «Вывод»: пример → общее правило → что сделать, части разделены пунктиром */
+.s-rich.bk .bk-finding { margin-top: 14px; background: var(--mark); color: var(--mark-ink); border: 1px solid var(--line); border-radius: 4px; padding: 11px 15px; font-size: 15.5px; line-height: 1.5; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-finding b { font-weight: 700; margin-right: 4px; }
+.s-rich.bk .bk-finding > b:first-child { display: block; font-family: "JetBrains Mono", monospace; font-size: .8rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; }
+.s-rich.bk .bk-finding a { text-decoration-line: underline; text-underline-offset: 3px; }
+.s-rich.bk :is(.bk-fc, .bk-fg, .bk-fa) { margin: 0; }
+.s-rich.bk :is(.bk-fg, .bk-fa) { margin-top: 8px; padding-top: 8px; border-top: 1px dashed color-mix(in srgb, currentColor 25%, transparent); }
+.s-rich.bk .bk-fk { display: block; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; opacity: .6; margin-bottom: 2px; }
+.s-rich.bk .bk-fa .bk-fk { opacity: 1; color: var(--accent); }
+/* Обычная ссылка в тексте вывода — со стрелкой, как в абзацах (site.css); ссылка с классом — свой элемент */
+.s-prose .s-rich.bk :is(.bk-fc, .bk-fg, .bk-fa) > a:not([class])::after { margin-left: .2em; font-size: .85em; display: inline; white-space: nowrap; }
+.s-prose .s-rich.bk :is(.bk-fc, .bk-fg, .bk-fa) > a[target="_blank"]:not([class])::after { content: "↗"; }
+.s-prose .s-rich.bk :is(.bk-fc, .bk-fg, .bk-fa) > a[href^="/blog/"]:not([class])::after { content: "→"; }
+.s-prose .s-rich.bk :is(.bk-fc, .bk-fg, .bk-fa) > a[href^="#"]:not([class])::after { content: "↓"; }
