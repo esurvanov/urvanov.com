@@ -103,6 +103,23 @@ export const ICONS: Record<string, string> = {
   'page-lines': '<path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7"/>',
   'coin': '<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h5a2 2 0 0 1 0 4H9"/>',
   'scales': '<path d="M12 4v16M5 8l7-4 7 4M3 15l2-7 2 7a3 3 0 0 1-4 0zM17 15l2-7 2 7a3 3 0 0 1-4 0z"/>',
+  'sparkle-sm': '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>',
+  'stairs': '<path d="M3 20h5v-5h5v-5h5V5h3"/>',
+  'doc-square': '<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/>',
+  'chat-square': '<path d="M4 5h16v12H8l-4 4z"/>',
+  'monitor-screen': '<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/>',
+  'scissors': '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/>',
+  'image': '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 9"/>',
+  'pencil': '<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',
+  'cylinder': '<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/>',
+  'venn': '<circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/>',
+  'swap': '<path d="M4 9h15l-4-4M20 15H5l4 4"/>',
+  'code-wide': '<path d="M9 6L3 12l6 6M15 6l6 6-6 6"/>',
+  'laptop': '<path d="M4 6h16v10H4z M2 19h20"/>',
+  'cloud': '<path d="M7 19H17Q21 19 21 15Q21 11.5 17.5 11Q16.5 6.5 12 6.5Q8 6.5 6.8 10.5Q3 11 3 15Q3 19 7 19Z"/>',
+  'chat-box': '<path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-5 4z"/>',
+  'wrench': '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>',
+  'dollar': '<circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.4-.9-1.4-1.5-2.5-1.5-1.4 0-2.5.8-2.5 2s1.1 1.6 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2c-1.2 0-2.2-.6-2.6-1.6M12 6v1.7M12 16.3V18"/>',
 }
 
 /** <svg> значка по имени; sw — толщина линии (2 в тексте и схемах, 1.8 в заголовках глав) */

@@ -1,0 +1,11 @@
+/* Ряд «было / стало»: метка-плашка и цепочка коротких шагов; «было» приглушено */
+.s-rich.bk .bk-qrow { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+.s-rich.bk .bk-qrow-k { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 15px; border: 1.5px solid var(--muted); border-radius: 4px; padding: 6px 12px; background: var(--surface-2); white-space: nowrap; min-width: 64px; text-align: center; color: var(--muted); }
+.s-rich.bk .bk-qrow-k.bk-on { color: var(--accent); border-color: var(--accent); }
+.s-rich.bk .bk-qrow-c { display: flex; align-items: center; justify-content: space-between; gap: 6px; flex: 1; min-width: 260px; }
+.s-rich.bk .bk-qrow-c.bk-was { opacity: .8; }
+.s-rich.bk .bk-qrow-nd { flex: 1; min-width: 92px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: var(--surface-2); border-radius: 4px; padding: 12px 6px; text-align: center; }
+.s-rich.bk .bk-qrow-nd svg { width: 22px; height: 22px; color: var(--ink-2); }
+.s-rich.bk .bk-qrow-nd b { font-size: 13px; line-height: 1.2; }
+.s-rich.bk .bk-qrow-ar { color: var(--muted); display: grid; place-items: center; flex: none; }
+.s-rich.bk .bk-qrow-ar svg { width: 18px; height: 18px; }

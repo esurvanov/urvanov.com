@@ -1,0 +1,15 @@
+/* Группы инструментов: две карточки в ряд, на телефоне — столбиком */
+.s-rich.bk .bk-tg { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 760px) { .s-rich.bk .bk-tg { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-tg-g { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; }
+.s-rich.bk .bk-tg-g.bk-tg-pair { border: 1.5px solid var(--accent); }
+.s-rich.bk .bk-tg-g.bk-tg-open { border: 1.5px solid color-mix(in srgb, var(--accent) 50%, var(--line-2)); }
+.s-rich.bk .bk-tg-g.bk-tg-chat { border-style: dashed; border-color: var(--line-2); }
+.s-rich.bk .bk-tg-k { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.s-rich.bk .bk-tg-chips { display: flex; align-items: center; justify-content: center; gap: 10px; }
+@media (max-width: 460px) { .s-rich.bk .bk-tg-chips { flex-direction: column; gap: 6px; } }
+.s-rich.bk .bk-tg-chip { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 15px; border: 1.5px solid var(--line-strong); border-radius: 4px; padding: 6px 12px; background: var(--surface-2); white-space: nowrap; }
+.s-rich.bk .bk-tg-sw { display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--accent); font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; max-width: 90px; line-height: 1.25; text-align: center; }
+.s-rich.bk .bk-tg-sw svg { width: 26px; height: 26px; }
+.s-rich.bk .bk-tg-g small { font-size: 12.5px; color: var(--muted); }
+.s-rich.bk .bk-tg-g small.bk-tg-alts { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--ink-2); }

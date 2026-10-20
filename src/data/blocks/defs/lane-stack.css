@@ -1,0 +1,2 @@
+/* Дорожки столбиком: сетка в одну колонку с зазором 10px */
+.s-rich.bk .bk-lstack { display: grid; gap: 10px; }

@@ -1,0 +1,46 @@
+/* Сравнение харнессов: строка — продукт, колонки по значкам заголовка; на узком экране — по две ячейки в ряд */
+.s-rich.bk .bk-cv { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
+.s-rich.bk :is(.bk-cv-h, .bk-cv-r) { display: grid; grid-template-columns: minmax(150px, 1.2fr) 110px minmax(200px, 1.5fr) 100px 120px 80px; align-items: center; gap: 12px; padding: 12px 18px; }
+.s-rich.bk .bk-cv-h { border-bottom: 1px solid var(--line); }
+.s-rich.bk .bk-cv-r + .bk-cv-r { border-top: 1px solid var(--line); }
+.s-rich.bk .bk-cv-hi { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 4px; border: 1px solid var(--line-2); color: var(--accent); justify-self: center; }
+.s-rich.bk .bk-cv-hi svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-cv-n { font-weight: 700; font-size: 16px; line-height: 1.3; color: var(--ink); }
+.s-rich.bk .bk-cv-c { display: flex; justify-content: center; align-items: center; gap: 8px; }
+/* Что видит: вложенные рамки, закрашенные — доступная часть */
+.s-rich.bk .bk-cv-scope { width: 88px; height: 58px; }
+.s-rich.bk .bk-cv-scope rect { stroke-width: 2; }
+.s-rich.bk .bk-cv-scope rect.bk-on { fill: color-mix(in srgb, var(--accent) 22%, transparent); stroke: var(--accent); }
+.s-rich.bk .bk-cv-scope rect.bk-off { fill: none; stroke: var(--line-2); stroke-dasharray: 3 3; }
+/* Действия: залитый кружок — есть, пунктирный — нет */
+.s-rich.bk .bk-cv-a { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; border: 1.5px dashed var(--line-2); color: var(--line-2); }
+.s-rich.bk .bk-cv-a svg { width: 19px; height: 19px; }
+.s-rich.bk .bk-cv-a.bk-on { border: 1.5px solid var(--accent); background: var(--accent-soft); color: var(--accent); }
+/* Модели: точки, каждая следующая бледнее */
+.s-rich.bk .bk-cv-v { display: flex; gap: 6px; }
+.s-rich.bk .bk-cv-v i { width: 14px; height: 14px; border-radius: 50%; background: var(--muted); }
+.s-rich.bk .bk-cv-v i:nth-child(2) { opacity: .82; }
+.s-rich.bk .bk-cv-v i:nth-child(3) { opacity: .66; }
+.s-rich.bk .bk-cv-v i:nth-child(4) { opacity: .5; }
+.s-rich.bk .bk-cv-v i:nth-child(5) { opacity: .36; }
+.s-rich.bk .bk-cv-p { flex-wrap: wrap; gap: 2px; }
+/* Стоимость: число значков $ — относительная цена, точные цены — в подсказке */
+.s-rich.bk .bk-cv-cost { flex-direction: column; gap: 6px; text-align: center; }
+.s-rich.bk .bk-cv-usd { display: inline-flex; align-items: center; gap: 2px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 22px; letter-spacing: 1px; line-height: 1; cursor: help; }
+.s-rich.bk .bk-cv-usd i { font-style: normal; }
+.s-rich.bk .bk-cv-usd i.bk-on { color: var(--accent); }
+.s-rich.bk .bk-cv-usd.bk-sm { font-size: 14px; letter-spacing: 0; }
+.s-rich.bk .bk-cv-cp { display: flex; gap: 1px; margin-top: 2px; }
+.s-rich.bk .bk-cv-cp .bk-proof { margin: 0; }
+.s-rich.bk .bk-cv-r .bk-cv-cost .bk-proof::after { left: auto; right: 0; }
+/* Легенда */
+.s-rich.bk .bk-cv-leg { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 12px 18px; border-top: 1px solid var(--line); background: var(--surface-2); }
+.s-rich.bk .bk-cv-leg .bk-cv-a { width: 24px; height: 24px; }
+.s-rich.bk .bk-cv-leg .bk-cv-a svg { width: 13px; height: 13px; }
+.s-rich.bk .bk-cv-li { display: inline-flex; align-items: center; gap: 6px; }
+.s-rich.bk .bk-cv-leg small { font-size: 13px; color: var(--ink-2); }
+@media (max-width: 760px) {
+  .s-rich.bk .bk-cv-h { display: none; }
+  .s-rich.bk :is(.bk-cv-h, .bk-cv-r) { grid-template-columns: 1fr 1fr; }
+  .s-rich.bk .bk-cv-n { grid-column: 1 / -1; }
+}
