@@ -1,0 +1,3 @@
+/* Свёрнутый раздел: надпись жирным, курсор-рука */
+.s-rich.bk .bk-spoiler { margin-top: 12px; }
+.s-rich.bk .bk-spoiler > summary { cursor: pointer; font-weight: 700; }

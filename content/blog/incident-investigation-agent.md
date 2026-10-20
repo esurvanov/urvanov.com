@@ -11,8 +11,89 @@ toc: flow=Как идёт расследование | connect=Подключе�
 
 При инциденте человек прыгает между Sentry, Grafana и чатом и склеивает картину сам. Агент с доступом к обеим системам собирает ошибки, метрики и время событий в один черновик, а человек проверяет гипотезу и решает, что делать. Ниже: как это идёт, как подключить Sentry и Grafana, какие права выдавать. Основа — в статье [MCP для ИИ-агента](/blog/mcp-agent-access/).
 
-<div class="s-rich s-rich-harness-ru"><section class="chapter" id="flow"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="13" rx="5" ry="6"/><path d="M12 7V5M9 8L7 6M15 8l2-2M7 12H4M17 12h3M8 17l-3 2M16 17l3 2"/></svg></span>Как идёт расследование</h2><iso-art name="incident-investigation-agent/before-after"></iso-art><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">В этом примере</span>Агент читает ошибки в Sentry и графики в Grafana, человек получает один черновик расследования.</div><div class="fg"><span class="fk">В общем случае</span>Sentry и Grafana подключаются через MCP на чтение, поэтому агент ничего не меняет без вашего разрешения. Гипотезу проверяет человек.</div><div class="fa"><span class="fk">Что сделать</span>Выпишите, в каких системах вы искали причину в последнем инциденте.</div></div></section><section class="chapter" id="connect"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></svg></span>Как подключить Sentry и Grafana</h2><h3 style="margin-top:14px">Скажите агенту</h3><blockquote class="pq"><div class="pq-text">Подключи Sentry и Grafana только на чтение. Найди в Sentry новые ошибки по сервису оплаты за последний час, найди в Grafana, когда вырос процент ответов 5xx, и сопоставь со временем релиза. Предложи гипотезу и укажи источник каждого факта.</div><button type="button" class="pq-copy" data-label="Копировать" data-done="Скопировано" aria-label="Копировать" title="Копировать"><svg class="pq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="pq-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span class="pq-sr">Копировать</span></button></blockquote><p class="why" style="text-align:left">Команды агент запустит сам, вам останется войти в Sentry через браузер и выдать токен Grafana. <a href="/blog/agent-hands-work-back-to-you/">Если агент просит сделать это вас</a>.</p><details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Как это делается руками</summary><iso-art name="incident-investigation-agent/setup-steps"></iso-art><h4>Sentry</h4><div class="cb"><pre style="background:var(--surface-2);border:1px solid var(--muted);border-radius:6px;padding:10px;overflow:auto;font-size:13px;margin-top:10px"><code>claude mcp add --transport http sentry https://mcp.sentry.dev/mcp
-/mcp   # войти через браузер (OAuth)</code></pre><button type="button" class="pq-copy" data-label="Копировать" data-done="Скопировано" aria-label="Копировать" title="Копировать"><svg class="pq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="pq-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span class="pq-sr">Копировать</span></button></div><p>Вход через OAuth, токены хранятся и обновляются автоматически.</p><h4>Grafana</h4><div class="cb"><pre style="background:var(--surface-2);border:1px solid var(--muted);border-radius:6px;padding:10px;overflow:auto;font-size:13px;margin-top:10px"><code>claude mcp add --transport stdio \
-  --env GRAFANA_URL=https://myinstance.grafana.net \
-  --env GRAFANA_SERVICE_ACCOUNT_TOKEN=$GRAFANA_TOKEN \
-  grafana -- uvx mcp-grafana --disable-write</code></pre><button type="button" class="pq-copy" data-label="Копировать" data-done="Скопировано" aria-label="Копировать" title="Копировать"><svg class="pq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="pq-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span class="pq-sr">Копировать</span></button></div><p>Это официальный сервер <a href="https://github.com/grafana/mcp-grafana" target="_blank" rel="noopener">grafana/mcp-grafana</a>. Токен берут у сервисного аккаунта с минимальными правами, флаг --disable-write запрещает изменения.</p></details><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">В этом примере</span>Агент подключает обе системы, находит ошибки и график, сопоставляет их с релизом и называет источники.</div><div class="fg"><span class="fk">В общем случае</span>Обе системы подключаются командой, а доступ на чтение держит расследование безопасным.</div><div class="fa"><span class="fk">Что сделать</span>Поручите подключение агенту и сверьте его вывод с тем, что видите в Sentry и Grafana сами.</div></div></section><section class="chapter" id="timeline"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>Что сопоставляет агент</h2><iso-art name="incident-investigation-agent/event-timeline"></iso-art><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">В этом примере</span>Релиз, рост ошибок и алерт ставятся на одну ось времени, и видно, что произошло раньше.</div><div class="fg"><span class="fk">В общем случае</span>Совпадение по времени даёт гипотезу и не доказывает причину: проверка остаётся за человеком.</div><div class="fa"><span class="fk">Что сделать</span>Просите приложить к каждому выводу ссылку на график или событие.</div></div></section><section class="chapter" id="rights"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>Права и риски</h2><iso-art name="incident-investigation-agent/rights-ladder"></iso-art><div class="rules"><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v4M21 12v3"/></svg></span><b>Токен</b><span>Сервисный аккаунт Grafana с минимальными правами, значение лежит в переменной окружения.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><b>Только чтение</b><span>Флаг --disable-write запрещает изменения, в том числе создание инцидентов.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg></span><b>Чужой сервер</b><span>Подключайте только серверы, которым доверяете: серверы, читающие внешний текст, открывают путь для prompt injection.</span></div></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">В этом примере</span>Агент читает ошибки и графики, а менять что-либо в системах ему нельзя.</div><div class="fg"><span class="fk">В общем случае</span>Права выдаются по каждому источнику отдельно, а самые широкие остаются закрытыми.</div><div class="fa"><span class="fk">Что сделать</span>Создайте сервисный аккаунт на чтение и подключите Grafana с флагом --disable-write.</div></div></section><section class="chapter" id="first"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></span>С чего начать</h2><iso-art name="incident-investigation-agent/start-steps"></iso-art><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">В этом примере</span>Три шага: Sentry, Grafana, проверка на прошлом инциденте.</div><div class="fg"><span class="fk">В общем случае</span>Прошлый инцидент знаком вам, поэтому видно, где агент нашёл причину, а где ошибся.</div><div class="fa"><span class="fk">Что сделать</span>Возьмите закрытый инцидент и попросите агента найти причину по Sentry и Grafana.</div></div></section><section class="chapter" id="next"><h2>Дальше по теме</h2><div class="links three"><a href="/blog/mcp-agent-access/"><div class="k">Основа</div><div class="t">MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту</div><div class="d">Что такое MCP и как подключить</div></a><a href="/blog/analytics-reports-agent/"><div class="k">Другой кейс</div><div class="t">Аналитические отчёты с ИИ-агентом: данные из базы, таблицы и документы через MCP</div><div class="d">База, таблицы и документы через MCP</div></a><a href="/blog/mcp-scopes/"><div class="k">Настройка</div><div class="t">Области MCP в Claude Code: local, project и user — где хранится сервер и кто его видит</div><div class="d">Где хранится сервер и кто его видит</div></a></div></section><footer>Инцидент выдуман. Подключение Sentry — по документации Claude Code: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">MCP</a>, Grafana — по репозиторию <a href="https://github.com/grafana/mcp-grafana" target="_blank" rel="noopener">grafana/mcp-grafana</a>.</footer></div>
+<b-post series="harness">
+
+<b-chapter id="flow" icon="bug" title="Как идёт расследование">
+  <iso-art name="incident-investigation-agent/before-after"></iso-art>
+  <b-finding>
+    <ex>Агент читает ошибки в Sentry и графики в Grafana, человек получает один черновик расследования.</ex>
+    <gen>Sentry и Grafana подключаются через MCP на чтение, поэтому агент ничего не меняет без вашего разрешения. Гипотезу проверяет человек.</gen>
+    <do>Выпишите, в каких системах вы искали причину в последнем инциденте.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="connect" icon="plug" title="Как подключить Sentry и Grafana">
+  <b-say-agent title="Скажите агенту">Подключи Sentry и Grafana только на чтение. Найди в Sentry новые ошибки по сервису оплаты за последний час, найди в Grafana, когда вырос процент ответов 5xx, и сопоставь со временем релиза. Предложи гипотезу и укажи источник каждого факта.</b-say-agent>
+  <b-why align="left">Команды агент запустит сам, вам останется войти в Sentry через браузер и выдать токен Grafana. [Если агент просит сделать это вас](/blog/agent-hands-work-back-to-you/).</b-why>
+  <b-spoiler summary="Как это делается руками">
+    <iso-art name="incident-investigation-agent/setup-steps"></iso-art>
+
+#### Sentry
+
+    <b-codebox copy>
+      claude mcp add --transport http sentry https://mcp.sentry.dev/mcp
+      /mcp   # войти через браузер (OAuth)
+    </b-codebox>
+
+Вход через OAuth, токены хранятся и обновляются автоматически.
+
+#### Grafana
+
+    <b-codebox copy>
+      claude mcp add --transport stdio \
+        --env GRAFANA_URL=https://myinstance.grafana.net \
+        --env GRAFANA_SERVICE_ACCOUNT_TOKEN=$GRAFANA_TOKEN \
+        grafana -- uvx mcp-grafana --disable-write
+    </b-codebox>
+
+Это официальный сервер <a href="https://github.com/grafana/mcp-grafana" target="_blank" rel="noopener">grafana/mcp-grafana</a>. Токен берут у сервисного аккаунта с минимальными правами, флаг --disable-write запрещает изменения.
+
+  </b-spoiler>
+  <b-finding>
+    <ex>Агент подключает обе системы, находит ошибки и график, сопоставляет их с релизом и называет источники.</ex>
+    <gen>Обе системы подключаются командой, а доступ на чтение держит расследование безопасным.</gen>
+    <do>Поручите подключение агенту и сверьте его вывод с тем, что видите в Sentry и Grafana сами.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="timeline" icon="lines" title="Что сопоставляет агент">
+  <iso-art name="incident-investigation-agent/event-timeline"></iso-art>
+  <b-finding>
+    <ex>Релиз, рост ошибок и алерт ставятся на одну ось времени, и видно, что произошло раньше.</ex>
+    <gen>Совпадение по времени даёт гипотезу и не доказывает причину: проверка остаётся за человеком.</gen>
+    <do>Просите приложить к каждому выводу ссылку на график или событие.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="rights" icon="shield-check" title="Права и риски">
+  <iso-art name="incident-investigation-agent/rights-ladder"></iso-art>
+  <b-rules sw="1.8">
+    <rule icon="key" t="Токен">Сервисный аккаунт Grafana с минимальными правами, значение лежит в переменной окружения.</rule>
+    <rule icon="lock" t="Только чтение">Флаг --disable-write запрещает изменения, в том числе создание инцидентов.</rule>
+    <rule icon="ban" t="Чужой сервер">Подключайте только серверы, которым доверяете: серверы, читающие внешний текст, открывают путь для prompt injection.</rule>
+  </b-rules>
+  <b-finding>
+    <ex>Агент читает ошибки и графики, а менять что-либо в системах ему нельзя.</ex>
+    <gen>Права выдаются по каждому источнику отдельно, а самые широкие остаются закрытыми.</gen>
+    <do>Создайте сервисный аккаунт на чтение и подключите Grafana с флагом --disable-write.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="first" icon="flag" title="С чего начать">
+  <iso-art name="incident-investigation-agent/start-steps"></iso-art>
+  <b-finding>
+    <ex>Три шага: Sentry, Grafana, проверка на прошлом инциденте.</ex>
+    <gen>Прошлый инцидент знаком вам, поэтому видно, где агент нашёл причину, а где ошибся.</gen>
+    <do>Возьмите закрытый инцидент и попросите агента найти причину по Sentry и Grafana.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="next" title="Дальше по теме">
+  <b-links>
+    <item href="/blog/mcp-agent-access/" k="Основа" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">Что такое MCP и как подключить</item>
+    <item href="/blog/analytics-reports-agent/" k="Другой кейс" t="Аналитические отчёты с ИИ-агентом: данные из базы, таблицы и документы через MCP">База, таблицы и документы через MCP</item>
+    <item href="/blog/mcp-scopes/" k="Настройка" t="Области MCP в Claude Code: local, project и user — где хранится сервер и кто его видит">Где хранится сервер и кто его видит</item>
+  </b-links>
+</b-chapter>
+<b-footer>Инцидент выдуман. Подключение Sentry — по документации Claude Code: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">MCP</a>, Grafana — по репозиторию <a href="https://github.com/grafana/mcp-grafana" target="_blank" rel="noopener">grafana/mcp-grafana</a>.</b-footer>
+</b-post>

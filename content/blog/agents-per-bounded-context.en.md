@@ -11,4 +11,61 @@ toc: idea=Agent per context | scale=Scaling | borders=Between agents | first=Whe
 
 How many AI agents do you need? As many as there are bounded contexts: each meaning boundary gets its own agent. Below: why, how it scales, what sits between agents and where to start.
 
-<div class="s-rich s-rich-harness-en"><section class="chapter" id="idea"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span>One agent per context</h2><p class="why" style="text-align:left">There are as many agents as <a href="/materials/glossary/bounded-context/">bounded contexts</a>. That way an <a href="/materials/glossary/ai-agent/">agent</a> has enough context.</p><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>One for all or one per context</div><iso-art name="agents-per-bounded-context/one-vs-per-context"></iso-art></div><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>"Order" means different things in sales, delivery and payment. One agent mixes the meanings, three agents each keep their own.</div><div class="fg"><span class="fk">In general</span>A context boundary already shows where the meaning changes. It is a handy place to cut both specs and the agents' work.</div><div class="fa"><span class="fk">What to do</span>List the project contexts and write next to each one who works inside its boundaries.</div></div></section><section class="chapter" id="scale"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4M4 20h16M7 15l4-4 3 3 5-6"/></svg></span>How it scales</h2><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Load and number of agents</div><iso-art name="agents-per-bounded-context/load-chart"></iso-art></div><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>Eight contexts: one agent drowns in meanings, while eight agents each work within their own borders.</div><div class="fg"><span class="fk">In general</span>The number of agents grows linearly with the number of contexts while each one's load stays flat. In our experience. The numbers in the charts are illustrative.</div><div class="fa"><span class="fk">What to do</span>Add an agent together with a new context instead of growing one agent's context.</div></div></section><section class="chapter" id="borders"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h6v6H4zM14 12h6v6h-6zM10 9h4v6"/></svg></span>What sits between agents</h2><p class="why" style="text-align:left">Agents talk through contracts: events and APIs. A foreign context is not under our control, so the agent reaches it only through the contract and with your confirmation. More on judging complexity: <a href="/blog/agent-hands-work-back-to-you/#hard">where the complexity is real</a>.</p><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Context map</div><iso-art name="agents-per-bounded-context/context-map"></iso-art></div><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>The sales agent reads the "order paid" event from payment and writes to the partner system only through an approved contract.</div><div class="fg"><span class="fk">In general</span>A contract replaces shared context: agents do not need to know the inside of someone else's boundary, and a mistake does not spread.</div><div class="fa"><span class="fk">What to do</span>For each link between contexts write the contract in one line: what it gives, what it takes, who owns it.</div></div></section><section class="chapter" id="first"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>Where to start</h2><div class="chain"><div class="nd"><b>1</b><small>draw the context map</small></div><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="nd"><b>2</b><small>assign an agent to each</small></div><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="nd"><b>3</b><small>write contracts on the borders</small></div></div><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>Start with two neighbouring contexts and one contract between them.</div><div class="fg"><span class="fk">In general</span>One context, one agent, one contract: that tests the scheme before you stretch it across the whole project.</div><div class="fa"><span class="fk">What to do</span>Pick two contexts where words get mixed up most often and start one agent for each.</div></div></section><section class="chapter" id="next"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Read next</h2><div class="links three"><a href="/blog/specs-by-aggregates/"><div class="k">Specs</div><div class="t">Specs by aggregates</div><div class="d">context boundaries in specs</div></a><a href="/blog/agent-hands-work-back-to-you/"><div class="k">Agent</div><div class="t">Will agents take your job</div><div class="d">where the complexity is real</div></a><a href="/materials/glossary/bounded-context/"><div class="k">Term</div><div class="t">Bounded context</div><div class="d">what it is and why</div></a></div></section></div>
+<b-post series="harness">
+
+<b-chapter id="idea" icon="ring-dot" title="One agent per context">
+  <b-why align="left">There are as many agents as [bounded contexts](/materials/glossary/bounded-context/). That way an [agent](/materials/glossary/ai-agent/) has enough context.</b-why>
+  <b-lane title="One for all or one per context" color="accent">
+    <iso-art name="agents-per-bounded-context/one-vs-per-context"></iso-art>
+  </b-lane>
+  <b-finding>
+    <ex>"Order" means different things in sales, delivery and payment. One agent mixes the meanings, three agents each keep their own.</ex>
+    <gen>A context boundary already shows where the meaning changes. It is a handy place to cut both specs and the agents' work.</gen>
+    <do k="What to do">List the project contexts and write next to each one who works inside its boundaries.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="scale" icon="chart-axes" title="How it scales">
+  <b-lane title="Load and number of agents" color="accent">
+    <iso-art name="agents-per-bounded-context/load-chart"></iso-art>
+  </b-lane>
+  <b-finding>
+    <ex>Eight contexts: one agent drowns in meanings, while eight agents each work within their own borders.</ex>
+    <gen>The number of agents grows linearly with the number of contexts while each one's load stays flat. In our experience. The numbers in the charts are illustrative.</gen>
+    <do k="What to do">Add an agent together with a new context instead of growing one agent's context.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="borders" icon="boxes-link" title="What sits between agents">
+  <b-why align="left">Agents talk through contracts: events and APIs. A foreign context is not under our control, so the agent reaches it only through the contract and with your confirmation. More on judging complexity: [where the complexity is real](/blog/agent-hands-work-back-to-you/#hard).</b-why>
+  <b-lane title="Context map" color="accent">
+    <iso-art name="agents-per-bounded-context/context-map"></iso-art>
+  </b-lane>
+  <b-finding>
+    <ex>The sales agent reads the "order paid" event from payment and writes to the partner system only through an approved contract.</ex>
+    <gen>A contract replaces shared context: agents do not need to know the inside of someone else's boundary, and a mistake does not spread.</gen>
+    <do k="What to do">For each link between contexts write the contract in one line: what it gives, what it takes, who owns it.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="first" icon="shield-check" title="Where to start">
+  <b-numchain>
+    <step>draw the context map</step>
+    <step>assign an agent to each</step>
+    <step>write contracts on the borders</step>
+  </b-numchain>
+  <b-finding>
+    <ex>Start with two neighbouring contexts and one contract between them.</ex>
+    <gen>One context, one agent, one contract: that tests the scheme before you stretch it across the whole project.</gen>
+    <do k="What to do">Pick two contexts where words get mixed up most often and start one agent for each.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="next" icon="arrow-right" title="Read next">
+  <b-links>
+    <item href="/blog/specs-by-aggregates/" k="Specs" t="Specs by aggregates">context boundaries in specs</item>
+    <item href="/blog/agent-hands-work-back-to-you/" k="Agent" t="Will agents take your job">where the complexity is real</item>
+    <item href="/materials/glossary/bounded-context/" k="Term" t="Bounded context">what it is and why</item>
+  </b-links>
+</b-chapter>
+</b-post>

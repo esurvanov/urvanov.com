@@ -75,6 +75,16 @@ export const ICONS: Record<string, string> = {
   'zap-alt': '<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>',
   'card': '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/>',
   'slash': '<circle cx="12" cy="12" r="8"/><path d="M6.5 17.5l11-11"/>',
+  'ring-dot': '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/>',
+  'chart-axes': '<path d="M4 20V4M4 20h16M7 15l4-4 3 3 5-6"/>',
+  'boxes-link': '<path d="M4 6h6v6H4zM14 12h6v6h-6zM10 9h4v6"/>',
+  'monitor': '<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/>',
+  'folder': '<path d="M3 6h6l2 2h10v11H3z"/>',
+  'video': '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/>',
+  'boxes-route': '<path d="M4 4h6v6H4zM14 14h6v6h-6z"/><path d="M10 7h4a3 3 0 0 1 3 3v4"/>',
+  'page-lines': '<path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h7"/>',
+  'coin': '<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h5a2 2 0 0 1 0 4H9"/>',
+  'scales': '<path d="M12 4v16M5 8l7-4 7 4M3 15l2-7 2 7a3 3 0 0 1-4 0zM17 15l2-7 2 7a3 3 0 0 1-4 0z"/>',
 }
 
 /** <svg> значка по имени; sw — толщина линии (2 в тексте и схемах, 1.8 в заголовках глав) */

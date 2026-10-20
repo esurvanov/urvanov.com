@@ -11,5 +11,71 @@ toc: flow=How a report gets built | access=Sources and permissions | connect=Con
 
 A report by hand is an export from a database, a table, a chart and text, and every step waits for a person. An agent with access to the sources goes through the chain itself, while a person checks the numbers and decides what to do next. Below: how it looks, which permissions to give per source, how to connect the database and verify the result. The basics are in the [MCP for an AI agent](/blog/mcp-agent-access/) article.
 
-<div class="s-rich s-rich-harness-en"><section class="chapter" id="flow"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>How a report gets built</h2><iso-art name="analytics-reports-agent/before-after"></iso-art><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>By hand, a person moves data between the database, table, chart and text. With an agent they get a ready draft and check the numbers.</div><div class="fg"><span class="fk">In general</span>The sources connect to the agent through MCP. Every step of the chain repeats and gives a clear result, so it can go to an agent. What the numbers mean is a human decision.</div><div class="fa"><span class="fk">What to do</span>List the steps of your latest report and mark which of them are copying.</div></div></section><section class="chapter" id="access"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>Sources and permissions</h2><p class="why">Systems, data and documents outside the conversation. Permissions are set separately for each source.</p><iso-art name="analytics-reports-agent/source-rights"></iso-art><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>Jira, documents and the database are open for reading, the sheet for writing with confirmation, and only the stand can be broken.</div><div class="fg"><span class="fk">In general</span>The agent sees exactly what is connected and does exactly what is allowed.</div><div class="fa"><span class="fk">What to do</span>For each source write one word: read, write or stand only.</div></div></section><section class="chapter" id="connect"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></svg></span>How to connect the database</h2><h3 style="margin-top:14px">Tell the agent</h3><blockquote class="pq"><div class="pq-text">Connect the analytics database as read-only. Show the schema of the orders table and calculate this month’s revenue. Show the query you used.</div><button type="button" class="pq-copy" data-label="Copy" data-done="Copied" aria-label="Copy" title="Copy"><svg class="pq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="pq-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span class="pq-sr">Copy</span></button></blockquote><p class="why" style="text-align:left">The agent runs the connection command itself. <a href="/blog/agent-hands-work-back-to-you/">If the agent asks you to do it</a>.</p><details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">How to do it by hand</summary><iso-art name="analytics-reports-agent/setup-steps"></iso-art><div class="cb"><pre style="background:var(--surface-2);border:1px solid var(--muted);border-radius:6px;padding:10px;overflow:auto;font-size:13px;margin-top:10px"><code>claude mcp add --transport stdio db -- npx -y @bytebase/dbhub \
-  --dsn "postgresql://readonly:pass@prod.db.com:5432/analytics"</code></pre><button type="button" class="pq-copy" data-label="Copy" data-done="Copied" aria-label="Copy" title="Copy"><svg class="pq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="pq-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span class="pq-sr">Copy</span></button></div><p>Create the user as read-only so the agent’s queries cannot change anything. Example prompts from the docs: “What’s our total revenue this month?”, “Show me the schema for the orders table”.</p></details><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>The agent connects the database, looks at the schema, calculates revenue and shows the query.</div><div class="fg"><span class="fk">In general</span>Read-only rights keep queries safe: the agent cannot change data.</div><div class="fa"><span class="fk">What to do</span>Create a read-only database user and connect it first.</div></div></section><section class="chapter" id="verify"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>How to check the report</h2><iso-art name="analytics-reports-agent/check-number"></iso-art><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>The agent shows the query and result, a person recomputes one number another way.</div><div class="fg"><span class="fk">In general</span>The model calculates with a query, and a query can be reread. A matching number raises trust in the rest.</div><div class="fa"><span class="fk">What to do</span>Check one number from the report by hand before sending the report on.</div></div></section><section class="chapter" id="first"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></span>Where to start</h2><iso-art name="analytics-reports-agent/start-steps"></iso-art><div class="finding"><b>Takeaway</b><div class="fc"><span class="fk">In this example</span>Three steps: a read-only database, one report, checking one number.</div><div class="fg"><span class="fk">In general</span>Start with a report whose numbers you already know: that shows where the agent went wrong.</div><div class="fa"><span class="fk">What to do</span>Today create a read-only user and ask the agent to calculate a familiar figure.</div></div></section><section class="chapter" id="next"><h2>Next</h2><div class="links three"><a href="/blog/mcp-agent-access/"><div class="k">Basics</div><div class="t">MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту</div><div class="d">What MCP is and how to connect it</div></a><a href="/blog/incident-investigation-agent/"><div class="k">Another case</div><div class="t">Incident investigation with an AI agent</div><div class="d">Sentry and Grafana through MCP</div></a><a href="/blog/work-prompts-examples/"><div class="k">Practice</div><div class="t">Промпты для рабочих задач: пять частей и шесть примеров для ChatGPT и Claude</div><div class="d">The “table analysis” example</div></a></div></section><footer>The example is made up. The database connection command and the read-only user advice follow the Claude Code docs: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>.</footer></div>
+<b-post series="harness">
+
+<b-chapter id="flow" icon="grid-alt" title="How a report gets built">
+  <iso-art name="analytics-reports-agent/before-after"></iso-art>
+  <b-finding>
+    <ex>By hand, a person moves data between the database, table, chart and text. With an agent they get a ready draft and check the numbers.</ex>
+    <gen>The sources connect to the agent through MCP. Every step of the chain repeats and gives a clear result, so it can go to an agent. What the numbers mean is a human decision.</gen>
+    <do k="What to do">List the steps of your latest report and mark which of them are copying.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="access" icon="lock" title="Sources and permissions">
+  <b-why>Systems, data and documents outside the conversation. Permissions are set separately for each source.</b-why>
+  <iso-art name="analytics-reports-agent/source-rights"></iso-art>
+  <b-finding>
+    <ex>Jira, documents and the database are open for reading, the sheet for writing with confirmation, and only the stand can be broken.</ex>
+    <gen>The agent sees exactly what is connected and does exactly what is allowed.</gen>
+    <do k="What to do">For each source write one word: read, write or stand only.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="connect" icon="plug" title="How to connect the database">
+  <b-say-agent title="Tell the agent">Connect the analytics database as read-only. Show the schema of the orders table and calculate this month’s revenue. Show the query you used.</b-say-agent>
+  <b-why align="left">The agent runs the connection command itself. [If the agent asks you to do it](/blog/agent-hands-work-back-to-you/).</b-why>
+  <b-spoiler summary="How to do it by hand">
+    <iso-art name="analytics-reports-agent/setup-steps"></iso-art>
+    <b-codebox copy>
+      claude mcp add --transport stdio db -- npx -y @bytebase/dbhub \
+        --dsn "postgresql://readonly:pass@prod.db.com:5432/analytics"
+    </b-codebox>
+
+Create the user as read-only so the agent’s queries cannot change anything. Example prompts from the docs: “What’s our total revenue this month?”, “Show me the schema for the orders table”.
+
+  </b-spoiler>
+  <b-finding>
+    <ex>The agent connects the database, looks at the schema, calculates revenue and shows the query.</ex>
+    <gen>Read-only rights keep queries safe: the agent cannot change data.</gen>
+    <do k="What to do">Create a read-only database user and connect it first.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="verify" icon="shield-check" title="How to check the report">
+  <iso-art name="analytics-reports-agent/check-number"></iso-art>
+  <b-finding>
+    <ex>The agent shows the query and result, a person recomputes one number another way.</ex>
+    <gen>The model calculates with a query, and a query can be reread. A matching number raises trust in the rest.</gen>
+    <do k="What to do">Check one number from the report by hand before sending the report on.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="first" icon="flag" title="Where to start">
+  <iso-art name="analytics-reports-agent/start-steps"></iso-art>
+  <b-finding>
+    <ex>Three steps: a read-only database, one report, checking one number.</ex>
+    <gen>Start with a report whose numbers you already know: that shows where the agent went wrong.</gen>
+    <do k="What to do">Today create a read-only user and ask the agent to calculate a familiar figure.</do>
+  </b-finding>
+</b-chapter>
+
+<b-chapter id="next" title="Next">
+  <b-links>
+    <item href="/blog/mcp-agent-access/" k="Basics" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">What MCP is and how to connect it</item>
+    <item href="/blog/incident-investigation-agent/" k="Another case" t="Incident investigation with an AI agent">Sentry and Grafana through MCP</item>
+    <item href="/blog/work-prompts-examples/" k="Practice" t="Промпты для рабочих задач: пять частей и шесть примеров для ChatGPT и Claude">The “table analysis” example</item>
+  </b-links>
+</b-chapter>
+<b-footer>The example is made up. The database connection command and the read-only user advice follow the Claude Code docs: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>.</b-footer>
+</b-post>
