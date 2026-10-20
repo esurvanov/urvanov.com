@@ -11,4 +11,290 @@ toc: what=Что это | specifics=Особенности 1С | breaks=Где �
 
 MCP для 1С — это MCP-сервер, который подключает ИИ-агента (Claude Code, Codex или Cursor) к конфигурации и к базе: ИИ-агент для 1С читает настоящий код и настоящие данные. Чем шире доступ, тем дороже ошибка. Ниже: какие бывают серверы, что ломается на практике и как устроить доступ, чтобы агент помогал, а рабочая база оставалась целой. Как MCP устроен в целом, разобрано в статье [MCP для ИИ-агента](/blog/mcp-agent-access/).
 
-<div class="s-rich s-rich-harness-ru"><section class="chapter" id="what"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></svg></span>Что такое MCP-сервер для 1С</h2><p class="why" style="text-align:left"><a href="/materials/glossary/mcp/">MCP</a> — общий разъём между агентом и системой. Для 1С это <a href="/materials/glossary/mcp-server/">MCP-сервер</a>, который даёт агенту код и метаданные конфигурации, данные базы, справку платформы или проверки. Многие серверы совмещают несколько. Устроено это так же, как для любой другой системы: 1С — ещё один <a href="/blog/mcp-agent-access/#ours">чужой контекст</a>, как Jira или GitLab, с тем же разъёмом и теми же агентами. Своё у 1С только одно — как сервер добирается до неё: через выгрузку, среду 1С, расширение конфигурации или внешнюю обработку.</p><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Что даёт MCP-сервер</div><iso-art name="mcp-1c/servers"></iso-art></div><table><thead><tr><th></th><th>Код и метаданные</th><th>Данные базы</th></tr></thead><tbody><tr><td>Что видит агент</td><td>модули, метаданные, формы</td><td>справочники, документы, регистры, отчёты</td></tr><tr><td>Откуда берёт</td><td>выгрузка конфигурации или 1C:EDT</td><td>база 1С через расширение конфигурации или внешнюю обработку</td></tr><tr><td>Зачем</td><td>пишет код по настоящей конфигурации, меньше выдумывает</td><td>отвечает цифрами из базы, разбирает данные</td></tr><tr><td>Главный риск</td><td><span class="tag no">правка не той конфигурации</span></td><td><span class="tag no">запись в рабочую базу, чужие данные</span></td></tr></tbody></table><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">Код</span>Агент перестаёт придумывать методы и реквизиты, которых нет в конфигурации.</div><div class="fg"><span class="fk">Данные</span>Агент отвечает по базе, а значит, может и изменить её. Здесь нужны правила доступа.</div><div class="fa"><span class="fk">Что сделать</span>Начните с кода: это безопаснее. Доступ к данным включайте только по схеме ниже, даже если сервер умеет и то и другое.</div></div></section><section class="chapter" id="specifics"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 9h4M7 13h10M15 9h2"/></svg></span>Чем 1С отличается для ИИ-агента</h2><p class="why" style="text-align:left">Вайбкодинг в 1С устроен иначе, чем в обычных языках: программа живёт в базе и в визуальных конструкторах, код — только её часть. Схема показывает путь программы от компьютера <a href="/materials/glossary/ai-agent/">ИИ-агента</a> до рабочей среды в <a href="/materials/glossary/gitlab/">GitLab</a> и в 1С.</p><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Путь программы: локально, тест, прод</div><iso-art name="mcp-1c/pipeline"></iso-art></div><div class="rules" style="grid-template-columns:repeat(3,1fr);margin-top:12px"><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><b>Локально</b><span>У GitLab <a href="/materials/glossary/ai-agent/">агент</a> правит файлы и сразу запускает тесты. У 1С он правит выгрузку, а проверить может только после загрузки в базу — локальную или тестовую.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="12" r="2"/><path d="M6 8v8M8 6c6 0 8 2 8 4"/></svg></span><b>Версии</b><span>У GitLab версии в git-репозитории с <a href="/materials/glossary/checks/">проверкой</a>. У 1С — в хранилище конфигурации, git бывает, но необязателен.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/></svg></span><b>Тест и прод</b><span>У GitLab программа и данные лежат отдельно. У 1С в каждой среде своя база, где они вместе: обновить прод — значит обновить рабочую базу.</span></div></div></section><section class="chapter" id="breaks"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></svg></span>Где ломается ИИ-агент в 1С и почему</h2><p class="why" style="text-align:left">Выберите номер — под схемой откроется, что ломается и что помогает. Пять особенностей чаще всего обсуждают в чатах 1С-разработчиков, шестая — про MCP.</p><div class="lane"><div class="lane-h" style="color:var(--warn)"><span class="dot" style="background:var(--warn)"></span>Что ломается и где</div><iso-art name="mcp-1c/breaks"></iso-art><div class="brk"><input type="radio" name="brk" id="brk1" checked><input type="radio" name="brk" id="brk2"><input type="radio" name="brk" id="brk3"><input type="radio" name="brk" id="brk4"><input type="radio" name="brk" id="brk5"><input type="radio" name="brk" id="brk6"><div class="brk-tabs"><label for="brk1"><i>1</i>Не знает 1С</label><label for="brk2"><i>2</i>Файлы ≠ база</label><label for="brk3"><i>3</i>Формы мышкой</label><label for="brk4"><i>4</i>Долгая загрузка</label><label for="brk5"><i>5</i>Мимо расширения</label><label for="brk6"><i>6</i>Мимо теста</label></div><div class="brk-p p1"><div><span class="k">Особенность</span><b>Модели плохо знают язык 1С и БСП</b></div><div><span class="k w">Что ломается</span><span>выдуманные методы, синтаксис SQL вместо языка запросов 1С</span></div><div><span class="k a">Что помогает</span><span>справка платформы через MCP, 2–3 образца из самой типовой</span></div></div><div class="brk-p p2"><div><span class="k">Особенность</span><b>Служебные файлы нельзя править как текст</b></div><div><span class="k w">Что ломается</span><span>проект расходится с базой, загрузка висит часами</span></div><div><span class="k a">Что помогает</span><span>правки только через MCP-сервер, запрет прямой записи</span></div></div><div class="brk-p p3"><div><span class="k">Особенность</span><b>Формы, СКД и макеты собираются мышкой</b></div><div><span class="k w">Что ломается</span><span>агент не привязывает события, оставляет пустой отчёт, макет не меняется</span></div><div><span class="k a">Что помогает</span><span>каркас руками, агенту только код; снимок формы для проверки</span></div></div><div class="brk-p p4"><div><span class="k">Особенность</span><b>Медленный цикл проверки</b></div><div><span class="k w">Что ломается</span><span>обновление базы на десятки минут, агент обрывается и отчитывается раньше времени</span></div><div><span class="k a">Что помогает</span><span>обновление в фоне, тесты на отдельном сервере</span></div></div><div class="brk-p p5"><div><span class="k">Особенность</span><b>Типовая на поддержке, доработки в расширении</b></div><div><span class="k w">Что ломается</span><span>агент пишет в основную конфигурацию, тянет лишние заимствования</span></div><div><span class="k a">Что помогает</span><span>проект расширения указан в правилах агента, основная закрыта</span></div></div><div class="brk-p p6"><div><span class="k">Особенность</span><b>Запись в рабочую базу через MCP</b></div><div><span class="k w">Что ломается</span><span>правка мимо хранилища и теста, сразу в живых данных</span></div><div><span class="k a">Что помогает</span><span>рабочая база только на чтение, запись в тестовую</span></div></div></div></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">Отличие</span>Агенту в 1С нужен посредник: среда разработки, справка и запущенная платформа. Без них он правит то, чего не видит.</div><div class="fg"><span class="fk">Размер</span>Типовые конфигурации огромны, модули по 15–26 тысяч строк. Агенту дают поиск по конфигурации и читают только нужный кусок.</div><div class="fa"><span class="fk">Что сделать</span>Начните с кода и запросов, формы и отчёты СКД оставьте человеку, пока агент не покажет стабильный результат.</div></div></section><section class="chapter" id="servers"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>Бесплатные MCP-серверы для 1С и 1C:EDT</h2><p class="why" style="text-align:left">Готовых серверов много, и они быстро меняются. Перед подключением прочитайте, какие действия сервер умеет: только чтение или ещё и запись.</p><div style="display:grid;gap:8px;margin-top:12px"><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:var(--surface-2);border:1px solid var(--muted);border-radius:8px;padding:10px 12px"><b style="color:var(--accent);min-width:150px">mcp-1c</b><span style="flex:1;min-width:220px">Структура конфигурации, поиск по коду, справка по языку и запросы к данным только на чтение</span><span style="color:var(--muted);font-size:13px">Код и данные</span><a href="https://github.com/feenlace/mcp-1c" target="_blank" rel="noopener">GitHub</a></div><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:var(--surface-2);border:1px solid var(--muted);border-radius:8px;padding:10px 12px"><b style="color:var(--accent);min-width:150px">1c_mcp</b><span style="flex:1;min-width:220px">Конструктор своего MCP-сервера внутри 1С расширением конфигурации: конфигурация из коробки, данные — своими инструментами</span><span style="color:var(--muted);font-size:13px">Код и данные</span><a href="https://github.com/vladimir-kharin/1c_mcp" target="_blank" rel="noopener">GitHub</a></div><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:var(--surface-2);border:1px solid var(--muted);border-radius:8px;padding:10px 12px"><b style="color:var(--accent);min-width:150px">1c-mcp-toolkit</b><span style="flex:1;min-width:220px">Подключение к базе внешней обработкой, без изменения конфигурации</span><span style="color:var(--muted);font-size:13px">Данные</span><a href="https://github.com/ROCTUP/1c-mcp-toolkit" target="_blank" rel="noopener">GitHub</a></div><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:var(--surface-2);border:1px solid var(--muted);border-radius:8px;padding:10px 12px"><b style="color:var(--accent);min-width:150px">EDT-MCP</b><span style="flex:1;min-width:220px">Плагин для 1C:EDT: агент работает с проектом через инструменты среды разработки</span><span style="color:var(--muted);font-size:13px">Код</span><a href="https://github.com/DitriXNew/EDT-MCP" target="_blank" rel="noopener">GitHub</a></div><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:var(--surface-2);border:1px solid var(--muted);border-radius:8px;padding:10px 12px"><b style="color:var(--accent);min-width:150px">MCP:RSV Data</b><span style="flex:1;min-width:220px">Расширение для данных и метаданных любой конфигурации: только чтение и только то, что видит текущий пользователь</span><span style="color:var(--muted);font-size:13px">Данные</span><a href="https://infostart.ru/1c/articles/2720241/" target="_blank" rel="noopener">Инфостарт</a></div><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:var(--surface-2);border:1px solid var(--muted);border-radius:8px;padding:10px 12px"><b style="color:var(--accent);min-width:150px">bsl-ai-toolkit</b><span style="flex:1;min-width:220px">Правила, скиллы и серверы, чтобы агент работал по вашему коду</span><span style="color:var(--muted);font-size:13px">Код</span><a href="https://github.com/vgtitov/bsl-ai-toolkit" target="_blank" rel="noopener">GitHub</a></div><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:var(--surface-2);border:1px solid var(--muted);border-radius:8px;padding:10px 12px"><b style="color:var(--accent);min-width:150px">Каталог 1c-mcp</b><span style="flex:1;min-width:220px">Серверы по группам: среда разработки, база, код, справка, тесты</span><span style="color:var(--muted);font-size:13px">Каталог</span><a href="https://github.com/Untru/1c-mcp" target="_blank" rel="noopener">GitHub</a></div><div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;background:var(--surface-2);border:1px solid var(--muted);border-radius:8px;padding:10px 12px"><b style="color:var(--accent);min-width:150px">1C AI Dev Tools</b><span style="flex:1;min-width:220px">Каталог серверов, скиллов и интеграций для разработки 1С с ИИ</span><span style="color:var(--muted);font-size:13px">Каталог</span><a href="https://aitools1c.dev" target="_blank" rel="noopener">Сайт</a></div></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">Выбор</span>Код включают первым, данные — вторым шагом и отдельно.</div><div class="fg"><span class="fk">Проверка</span>Список инструментов сервера — это список того, что агент сможет сделать с базой.</div><div class="fa"><span class="fk">Что сделать</span>Выпишите инструменты сервера и отметьте, какие из них меняют данные.</div></div></section><section class="chapter" id="cases"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span>Что ломается на практике</h2><p class="why" style="text-align:left">В открытых чатах 1С-разработчиков описывают похожие случаи. Пересказ своими словами, без имён. Это примеры из практики: проверить каждый случай невозможно. Выберите случай — схема покажет, где он произошёл, а карточка — почему и как защититься.</p><div class="lane"><div class="lane-h" style="color:var(--warn)"><span class="dot" style="background:var(--warn)"></span>Случаи из практики</div><iso-art name="mcp-1c/cases"></iso-art><div class="brk"><input type="radio" name="cs" id="cs1" checked><input type="radio" name="cs" id="cs2"><input type="radio" name="cs" id="cs3"><input type="radio" name="cs" id="cs4"><input type="radio" name="cs" id="cs5"><input type="radio" name="cs" id="cs6"><input type="radio" name="cs" id="cs7"><div class="brk-tabs"><label for="cs1"><i>1</i>Рабочая база</label><label for="cs2"><i>2</i>Сотня баз</label><label for="cs3"><i>3</i>Чужие данные</label><label for="cs4"><i>4</i>Пароли в журналах</label><label for="cs5"><i>5</i>«Готово»</label><label for="cs6"><i>6</i>Неверный ответ</label><label for="cs7"><i>7</i>Данные в облаке</label></div><div class="brk-p p1"><div><span class="k">Что случилось</span><b>Сломал рабочую базу</b><span>Агенту открыли запись в рабочую базу, чтобы было быстрее. Правка ушла сразу в учёт, откатывали из копии.</span></div><div><span class="k w">Почему</span><span>Между агентом и живыми данными не было тестовой базы, запись в рабочую открыта.</span></div><div><span class="k a">Защита</span><span>Рабочую базу — только на чтение. Агент пишет в тестовую, переносит человек после проверки.</span></div></div><div class="brk-p p2"><div><span class="k">Что случилось</span><b>Удалил список из сотни баз</b><span>Агент наводил порядок на сервере и удалил лишнее — заодно со списком рабочих баз.</span></div><div><span class="k w">Почему</span><span>Учётка с правами администратора сервера, хотя задача касалась одной базы.</span></div><div><span class="k a">Защита</span><span>Отдельный пользователь под задачу, права только на одну базу, без администрирования сервера.</span></div></div><div class="brk-p p3"><div><span class="k">Что случилось</span><b>Ответил бухгалтеру данными директора</b><span>Агент на MCP отвечал сотрудникам. Бухгалтер получил цифры, которые ему видеть нельзя.</span></div><div><span class="k w">Почему</span><span>Сервер ходил в базу под одним общим пользователем с полными правами — роли и ограничения 1С не работали.</span></div><div><span class="k a">Защита</span><span>Вход под тем, кто спрашивает: тогда действуют его роли и ограничения доступа к записям.</span></div></div><div class="brk-p p4"><div><span class="k">Что случилось</span><b>Пароли и ключи попали в журналы</b><span>Пароль от базы передали агенту прямо в запросе. Он остался в журнале вызовов и в истории чата.</span></div><div><span class="k w">Почему</span><span>Секреты передавались в аргументах инструментов и лежали в файлах рядом с проектом.</span></div><div><span class="k a">Защита</span><span>Секреты только в настройках сервера, агенту их не показывают. Папки с ключами закрыты от агента.</span></div></div><div class="brk-p p5"><div><span class="k">Что случилось</span><b>«Готово», а изменений нет</b><span>Агент добавил реквизит и отчитался. В пользовательском режиме изменений нет: базу после правки не обновили.</span></div><div><span class="k w">Почему</span><span>Отчёт агента приняли без проверки результата.</span></div><div><span class="k a">Защита</span><span>После правки — обновление базы, проверка ошибок и автотест. «Готово» — только со ссылкой на результат.</span></div></div><div class="brk-p p6"><div><span class="k">Что случилось</span><b>Запрос без ошибок, но ответ неверный</b><span>Агент написал запрос, он выполнился без ошибок, но цифры разошлись с отчётом 1С.</span></div><div><span class="k w">Почему</span><span>Модель плохо знает регистры и периоды 1С и пишет запрос как в обычной базе.</span></div><div><span class="k a">Защита</span><span>Сверка с типовым отчётом 1С или ответ через готовый отчёт вместо своего запроса.</span></div></div><div class="brk-p p7"><div><span class="k">Что случилось</span><b>Персональные данные ушли в облако</b><span>Агенту отдали выгрузку с паспортами и зарплатами, и она ушла к облачной модели.</span></div><div><span class="k w">Почему</span><span>Агенту дали всю базу вместо нужных полей.</span></div><div><span class="k a">Защита</span><span>Обезличивание, только нужные поля. Для чувствительных данных — модель внутри контура.</span></div></div></div></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">Общее</span>Почти все случаи — про права и проверку. Модель здесь вторична.</div><div class="fg"><span class="fk">Причина</span>Агенту дали столько же прав, сколько у администратора, и поверили его отчёту на слово.</div><div class="fa"><span class="fk">Что сделать</span>Пройдите по случаям и отметьте, какие защиты у вас уже есть.</div></div></section><section class="chapter" id="scheme"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>Безопасная схема</h2><p class="why" style="text-align:left">Рабочую базу агент только читает. Пишет он в тестовую базу. В рабочую изменения переносит человек после проверки.</p><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Чтение отдельно от записи</div><iso-art name="mcp-1c/safe-scheme"></iso-art><div class="brk a"><input type="radio" name="sf" id="sf1" checked><input type="radio" name="sf" id="sf2"><input type="radio" name="sf" id="sf3"><div class="brk-tabs"><label for="sf1"><i>1</i>Чтение</label><label for="sf2"><i>2</i>Запись</label><label for="sf3"><i>3</i>Проверка и перенос</label></div><div class="brk-p p1"><div><span class="k">Шаг</span><b>Агент читает</b><span>Данные и код рабочей базы — для ответов и разбора.</span></div><div><span class="k a">Где</span><span>Рабочая база, под своим пользователем 1С с ролью только на чтение.</span></div><div><span class="k">Почему так</span><span>Агент видит настоящие данные, но изменить их не может.</span></div></div><div class="brk-p p2"><div><span class="k">Шаг</span><b>Агент пишет</b><span>Код, метаданные и документы.</span></div><div><span class="k a">Где</span><span>Тестовая база или <a href="/materials/glossary/sandbox/">песочница</a> с копией рабочей.</span></div><div><span class="k">Почему так</span><span>Ошибка остаётся в тестовой базе и не доходит до учёта.</span></div></div><div class="brk-p p3"><div><span class="k">Шаг</span><b>Проверка и перенос</b><span>Автотесты, затем человек смотрит изменения.</span></div><div><span class="k a">Где</span><span>Изменения уходят в хранилище, рабочую базу обновляют из него.</span></div><div><span class="k">Почему так</span><span>В рабочую попадает только проверенное, и у каждой правки есть версия.</span></div></div></div></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">Схема</span>Ошибка агента остаётся в тестовой базе и не доходит до учёта.</div><div class="fg"><span class="fk">Цена</span>Нужна тестовая база рядом с рабочей. Это дешевле одного восстановления из копии.</div><div class="fa"><span class="fk">Что сделать</span>Заведите <a href="/materials/glossary/test-stand/">тестовый стенд</a> с копией базы до того, как подключать сервер к данным.</div></div></section><section class="chapter" id="rights"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v4M21 12v3"/></svg></span>Права: лестница доступа</h2><p class="why" style="text-align:left">Права агента собирают по ступеням: каждая следующая ступень открывается, когда предыдущая отработала без сюрпризов. <a href="/materials/glossary/permissions/">Что такое права агента</a></p><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Лестница доступа</div><iso-art name="mcp-1c/rights"></iso-art><div class="brk a"><input type="radio" name="rt" id="rt1" checked><input type="radio" name="rt" id="rt2"><input type="radio" name="rt" id="rt3"><input type="radio" name="rt" id="rt4"><div class="brk-tabs"><label for="rt1"><i>1</i>Чтение кода</label><label for="rt2"><i>2</i>Чтение данных</label><label for="rt3"><i>3</i>Запись в тест</label><label for="rt4"><i>4</i>Запись в рабочую</label></div><div class="brk-p p1"><div><span class="k">Что может агент</span><b>Чтение кода</b><span>Модули, метаданные, формы.</span></div><div><span class="k a">Когда открывать</span><span>Сразу.</span></div><div><span class="k">Как настроить</span><span>Сервер с доступом к выгрузке конфигурации или проекту EDT, без доступа к базе.</span></div></div><div class="brk-p p2"><div><span class="k">Что может агент</span><b>Чтение данных</b><span>Запросы и отчёты под своим пользователем 1С.</span></div><div><span class="k a">Когда открывать</span><span>На копии базы, после того как код отработал без сюрпризов.</span></div><div><span class="k">Как настроить</span><span>Пользователь 1С с ролью только на чтение; инструмент «выполнить любой код» выключен.</span></div></div><div class="brk-p p3"><div><span class="k">Что может агент</span><b>Запись в тест</b><span>Код, метаданные, документы.</span></div><div><span class="k a">Когда открывать</span><span>Когда есть автотесты.</span></div><div><span class="k">Как настроить</span><span>Отдельная тестовая база; после каждой правки — проверка ошибок и автотесты.</span></div></div><div class="brk-p p4"><div><span class="k">Что может агент</span><b>Запись в рабочую</b><span>Ничего: ступень закрыта для агента.</span></div><div><span class="k a">Когда открывать</span><span>Никогда — только человек.</span></div><div><span class="k">Как настроить</span><span>Перенос делает человек через хранилище после проверки.</span></div></div></div></div><div class="rules" style="grid-template-columns:repeat(2,1fr)"><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><b>Свой пользователь 1С</b><span>Агент входит под отдельным пользователем или под тем, кто задал вопрос. Тогда работают обычные права и ограничения доступа к записям.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><b>Роль только на чтение</b><span>Для рабочей базы — роль без права записи и проведения. Пример: в mcp-1c запросы к базе по устройству только на чтение.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l6-5-6-5M12 19h8"/></svg></span><b>Без произвольного кода</b><span>Инструмент «выполнить любой код» на рабочей базе отключите: через него обходятся все права.</span></div><div class="rule"><span class="ri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><b>Секреты отдельно</b><span>Пароли и ключи — в настройках сервера. Агенту их не показывают и в запросы не передают.</span></div></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">Данные как команды</span>Комментарий в документе или письмо в базе может содержать указание агенту. Это <a href="/materials/glossary/prompt-injection/">промпт-инъекция</a>, и права ограничивают её вред.</div><div class="fg"><span class="fk">Правило</span>Агент получает права обычного пользователя. Чего не может пользователь, того не может и агент.</div><div class="fa"><span class="fk">Что сделать</span>Как отличать данные от команд, разобрано <a href="/blog/data-plane-control-plane-prompt-injection/">в статье про промпт-инъекции</a>.</div></div></section><section class="chapter" id="check"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span>Проверка результата</h2><p class="why" style="text-align:left">Отчёт агента «готово» — это заявка. Подтверждают её проверки и <a href="/materials/glossary/human-in-the-loop/">человек в контуре</a>.</p><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Четыре проверки до результата</div><iso-art name="mcp-1c/checks"></iso-art><div class="brk a"><input type="radio" name="ck" id="ck1" checked><input type="radio" name="ck" id="ck2"><input type="radio" name="ck" id="ck3"><input type="radio" name="ck" id="ck4"><div class="brk-tabs"><label for="ck1"><i>1</i>Ошибки среды</label><label for="ck2"><i>2</i>Автотесты</label><label for="ck3"><i>3</i>Сверка с 1С</label><label for="ck4"><i>4</i>Человек</label></div><div class="brk-p p1"><div><span class="k">Проверка</span><b>Проверка ошибок среды</b></div><div><span class="k w">Что ловит</span><span>Синтаксис, несуществующие методы и реквизиты.</span></div><div><span class="k a">Как запускать</span><span>После каждой правки; агент показывает итог проверки в отчёте.</span></div></div><div class="brk-p p2"><div><span class="k">Проверка</span><b>Автотесты</b></div><div><span class="k w">Что ловит</span><span>Сценарий не проходит, форма не открывается.</span></div><div><span class="k a">Как запускать</span><span>Сценарные и модульные тесты на тестовой базе в каждом цикле.</span></div></div><div class="brk-p p3"><div><span class="k">Проверка</span><b>Сверка с отчётом 1С</b></div><div><span class="k w">Что ловит</span><span>Цифры агента не совпадают с учётом.</span></div><div><span class="k a">Как запускать</span><span>Тот же период и организация в типовом отчёте; расхождение — стоп.</span></div></div><div class="brk-p p4"><div><span class="k">Проверка</span><b>Просмотр изменений человеком</b></div><div><span class="k w">Что ловит</span><span>Правки не там, лишние заимствования, обход инструментов.</span></div><div><span class="k a">Как запускать</span><span>Сравнение изменений перед переносом: только расширение, только нужные объекты.</span></div></div></div></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">Частая ошибка</span>Агент правит файлы конфигурации в обход инструментов среды, и проект расходится с базой.</div><div class="fg"><span class="fk">Правило</span>Каждое «готово» подтверждено проверкой или ссылкой на результат.</div><div class="fa"><span class="fk">Что сделать</span>Впишите в правила агента: после правки запустить проверку ошибок и показать её итог.</div></div></section><section class="chapter" id="agents"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17l6-5-6-5M12 19h8"/></svg></span>Claude Code, Codex и Cursor для 1С</h2><p class="why" style="text-align:left">MCP-сервер для 1С подключается к любому агенту с поддержкой MCP. Отличается только место настройки.</p><h3 style="margin-top:4px">Подключение за 3 шага</h3><div class="chain"><div class="nd"><b>1. Выбрать сервер</b><small>К коду или к данным, из списка выше</small></div><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="nd"><b>2. Поручить агенту</b><small>«Подключи MCP-сервер для 1С по инструкции из README»</small></div><span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><div class="nd"><b>3. Проверить на копии</b><small>Попросить список инструментов и найти один справочник</small></div></div><div class="lane"><div class="lane-h" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Где настройка</div><iso-art name="mcp-1c/agents"></iso-art><div class="brk a"><input type="radio" name="ag" id="ag1" checked><input type="radio" name="ag" id="ag2"><input type="radio" name="ag" id="ag3"><div class="brk-tabs"><label for="ag1"><i>1</i>Claude Code</label><label for="ag2"><i>2</i>Codex</label><label for="ag3"><i>3</i>Cursor</label></div><div class="brk-p p1"><div><span class="k">Где настроить</span><span>команда <code>claude mcp add</code></span></div><div><span class="k a">Для команды</span><span><code>.mcp.json</code> в репозитории</span></div><div><span class="k">Документация</span><span><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">MCP в Claude Code</a></span></div></div><div class="brk-p p2"><div><span class="k">Где настроить</span><span><code>~/.codex/config.toml</code> или <code>.codex/config.toml</code> в проекте</span></div><div><span class="k a">Для команды</span><span><code>.codex/config.toml</code> в доверенном проекте</span></div><div><span class="k">Документация</span><span><a href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">MCP в Codex</a></span></div></div><div class="brk-p p3"><div><span class="k">Где настроить</span><span>файл <code>mcp.json</code></span></div><div><span class="k a">Для команды</span><span>командный каталог серверов</span></div><div><span class="k">Документация</span><span><a href="https://cursor.com/docs/context/mcp" target="_blank" rel="noopener">MCP в Cursor</a></span></div></div></div></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">Общее</span>Права задают сервер и пользователь 1С. Схема выше работает с любым из трёх.</div><div class="fg"><span class="fk">Подтверждения</span>Оставьте подтверждение для инструментов, которые меняют данные.</div><div class="fa"><span class="fk">Что сделать</span>Поручите подключение самому агенту, как описано <a href="/blog/mcp-agent-access/#connect">в статье про MCP</a>.</div></div></section><section class="chapter" id="start"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4h11l-2 4 2 4H5"/></svg></span>С чего начать</h2><p class="why" style="text-align:left">Три шага. Каждый следующий — после того, как предыдущий прошёл без сюрпризов.</p><div class="lane"><iso-art name="mcp-1c/start-steps"></iso-art></div><div class="finding"><b>Вывод</b><div class="fc"><span class="fk">Неделя 1</span>Сервер к коду и чтение данных на копии базы. Проверьте 5 ответов агента руками.</div><div class="fg"><span class="fk">Неделя 2</span>Запись в тестовую базу и автотесты. Агент сам показывает, что проверил.</div><div class="fa"><span class="fk">Дальше</span>Рабочая база остаётся только на чтение. Перенос изменений — за человеком.</div></div></section><section class="chapter" id="next"><h2><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>Дальше по теме</h2><div class="links three"><a href="/blog/mcp-agent-access/"><div class="k">Подключение</div><div class="t">MCP для ИИ-агента</div><div class="d">как подключить и поручить это агенту</div></a><a href="/blog/data-plane-control-plane-prompt-injection/"><div class="k">Безопасность</div><div class="t">Данные и команды</div><div class="d">как защититься от промпт-инъекций</div></a><a href="/blog/mcp-scopes/"><div class="k">Области</div><div class="t">Области MCP</div><div class="d">где хранится настройка сервера</div></a></div></section><footer>Случаи пересказаны по открытым обсуждениям 1С-разработчиков, без имён и цитат. Это примеры из практики, проверить каждый случай невозможно. Правила защиты — практика автора.</footer></div>
+<b-post series="harness">
+<b-chapter id="what" icon="plug" title="Что такое MCP-сервер для 1С">
+<b-why align="left"><a href="/materials/glossary/mcp/">MCP</a> — общий разъём между агентом и системой. Для 1С это <a href="/materials/glossary/mcp-server/">MCP-сервер</a>, который даёт агенту код и метаданные конфигурации, данные базы, справку платформы или проверки. Многие серверы совмещают несколько. Устроено это так же, как для любой другой системы: 1С — ещё один <a href="/blog/mcp-agent-access/#ours">чужой контекст</a>, как Jira или GitLab, с тем же разъёмом и теми же агентами. Своё у 1С только одно — как сервер добирается до неё: через выгрузку, среду 1С, расширение конфигурации или внешнюю обработку.</b-why>
+<b-lane title="Что даёт MCP-сервер" color="accent">
+<b-scene names="mcp-1c/servers"/>
+</b-lane>
+<b-table-plain>
+<table><thead><tr><th></th><th>Код и метаданные</th><th>Данные базы</th></tr></thead><tbody><tr><td>Что видит агент</td><td>модули, метаданные, формы</td><td>справочники, документы, регистры, отчёты</td></tr><tr><td>Откуда берёт</td><td>выгрузка конфигурации или 1C:EDT</td><td>база 1С через расширение конфигурации или внешнюю обработку</td></tr><tr><td>Зачем</td><td>пишет код по настоящей конфигурации, меньше выдумывает</td><td>отвечает цифрами из базы, разбирает данные</td></tr><tr><td>Главный риск</td><td><b-tag-inline kind="no">правка не той конфигурации</b-tag-inline></td><td><b-tag-inline kind="no">запись в рабочую базу, чужие данные</b-tag-inline></td></tr></tbody></table>
+</b-table-plain>
+<b-finding>
+  <ex k="Код">Агент перестаёт придумывать методы и реквизиты, которых нет в конфигурации.</ex>
+  <gen k="Данные">Агент отвечает по базе, а значит, может и изменить её. Здесь нужны правила доступа.</gen>
+  <do>Начните с кода: это безопаснее. Доступ к данным включайте только по схеме ниже, даже если сервер умеет и то и другое.</do>
+</b-finding>
+</b-chapter>
+<b-chapter id="specifics" icon="form" title="Чем 1С отличается для ИИ-агента">
+<b-why align="left">Вайбкодинг в 1С устроен иначе, чем в обычных языках: программа живёт в базе и в визуальных конструкторах, код — только её часть. Схема показывает путь программы от компьютера <a href="/materials/glossary/ai-agent/">ИИ-агента</a> до рабочей среды в <a href="/materials/glossary/gitlab/">GitLab</a> и в 1С.</b-why>
+<b-lane title="Путь программы: локально, тест, прод" color="accent">
+<b-scene names="mcp-1c/pipeline"/>
+</b-lane>
+<b-rules-fixed cols="3" top="12" sw="1.8">
+  <rule icon="monitor" t="Локально">У GitLab <a href="/materials/glossary/ai-agent/">агент</a> правит файлы и сразу запускает тесты. У 1С он правит выгрузку, а проверить может только после загрузки в базу — локальную или тестовую.</rule>
+  <rule icon="git-fork" t="Версии">У GitLab версии в git-репозитории с <a href="/materials/glossary/checks/">проверкой</a>. У 1С — в хранилище конфигурации, git бывает, но необязателен.</rule>
+  <rule icon="cylinder" t="Тест и прод">У GitLab программа и данные лежат отдельно. У 1С в каждой среде своя база, где они вместе: обновить прод — значит обновить рабочую базу.</rule>
+</b-rules-fixed>
+</b-chapter>
+<b-chapter id="breaks" icon="alert" title="Где ломается ИИ-агент в 1С и почему">
+<b-why align="left">Выберите номер — под схемой откроется, что ломается и что помогает. Пять особенностей чаще всего обсуждают в чатах 1С-разработчиков, шестая — про MCP.</b-why>
+<b-lane title="Что ломается и где" color="warn">
+<b-scene names="mcp-1c/breaks"/>
+<b-pick-tabs id="brk" tone="warn">
+  <tab t="Не знает 1С">
+    <b-pick-cell k="Особенность" t="Модели плохо знают язык 1С и БСП"/>
+    <b-pick-cell k="Что ломается" tone="warn">выдуманные методы, синтаксис SQL вместо языка запросов 1С</b-pick-cell>
+    <b-pick-cell k="Что помогает" tone="accent">справка платформы через MCP, 2–3 образца из самой типовой</b-pick-cell>
+  </tab>
+  <tab t="Файлы ≠ база">
+    <b-pick-cell k="Особенность" t="Служебные файлы нельзя править как текст"/>
+    <b-pick-cell k="Что ломается" tone="warn">проект расходится с базой, загрузка висит часами</b-pick-cell>
+    <b-pick-cell k="Что помогает" tone="accent">правки только через MCP-сервер, запрет прямой записи</b-pick-cell>
+  </tab>
+  <tab t="Формы мышкой">
+    <b-pick-cell k="Особенность" t="Формы, СКД и макеты собираются мышкой"/>
+    <b-pick-cell k="Что ломается" tone="warn">агент не привязывает события, оставляет пустой отчёт, макет не меняется</b-pick-cell>
+    <b-pick-cell k="Что помогает" tone="accent">каркас руками, агенту только код; снимок формы для проверки</b-pick-cell>
+  </tab>
+  <tab t="Долгая загрузка">
+    <b-pick-cell k="Особенность" t="Медленный цикл проверки"/>
+    <b-pick-cell k="Что ломается" tone="warn">обновление базы на десятки минут, агент обрывается и отчитывается раньше времени</b-pick-cell>
+    <b-pick-cell k="Что помогает" tone="accent">обновление в фоне, тесты на отдельном сервере</b-pick-cell>
+  </tab>
+  <tab t="Мимо расширения">
+    <b-pick-cell k="Особенность" t="Типовая на поддержке, доработки в расширении"/>
+    <b-pick-cell k="Что ломается" tone="warn">агент пишет в основную конфигурацию, тянет лишние заимствования</b-pick-cell>
+    <b-pick-cell k="Что помогает" tone="accent">проект расширения указан в правилах агента, основная закрыта</b-pick-cell>
+  </tab>
+  <tab t="Мимо теста">
+    <b-pick-cell k="Особенность" t="Запись в рабочую базу через MCP"/>
+    <b-pick-cell k="Что ломается" tone="warn">правка мимо хранилища и теста, сразу в живых данных</b-pick-cell>
+    <b-pick-cell k="Что помогает" tone="accent">рабочая база только на чтение, запись в тестовую</b-pick-cell>
+  </tab>
+</b-pick-tabs>
+</b-lane>
+<b-finding>
+  <ex k="Отличие">Агенту в 1С нужен посредник: среда разработки, справка и запущенная платформа. Без них он правит то, чего не видит.</ex>
+  <gen k="Размер">Типовые конфигурации огромны, модули по 15–26 тысяч строк. Агенту дают поиск по конфигурации и читают только нужный кусок.</gen>
+  <do>Начните с кода и запросов, формы и отчёты СКД оставьте человеку, пока агент не покажет стабильный результат.</do>
+</b-finding>
+</b-chapter>
+<b-chapter id="servers" icon="cylinder-alt" title="Бесплатные MCP-серверы для 1С и 1C:EDT">
+<b-why align="left">Готовых серверов много, и они быстро меняются. Перед подключением прочитайте, какие действия сервер умеет: только чтение или ещё и запись.</b-why>
+<b-source-rows wide>
+  <row t="mcp-1c" note="Код и данные" href="https://github.com/feenlace/mcp-1c" link="GitHub">Структура конфигурации, поиск по коду, справка по языку и запросы к данным только на чтение</row>
+  <row t="1c_mcp" note="Код и данные" href="https://github.com/vladimir-kharin/1c_mcp" link="GitHub">Конструктор своего MCP-сервера внутри 1С расширением конфигурации: конфигурация из коробки, данные — своими инструментами</row>
+  <row t="1c-mcp-toolkit" note="Данные" href="https://github.com/ROCTUP/1c-mcp-toolkit" link="GitHub">Подключение к базе внешней обработкой, без изменения конфигурации</row>
+  <row t="EDT-MCP" note="Код" href="https://github.com/DitriXNew/EDT-MCP" link="GitHub">Плагин для 1C:EDT: агент работает с проектом через инструменты среды разработки</row>
+  <row t="MCP:RSV Data" note="Данные" href="https://infostart.ru/1c/articles/2720241/" link="Инфостарт">Расширение для данных и метаданных любой конфигурации: только чтение и только то, что видит текущий пользователь</row>
+  <row t="bsl-ai-toolkit" note="Код" href="https://github.com/vgtitov/bsl-ai-toolkit" link="GitHub">Правила, скиллы и серверы, чтобы агент работал по вашему коду</row>
+  <row t="Каталог 1c-mcp" note="Каталог" href="https://github.com/Untru/1c-mcp" link="GitHub">Серверы по группам: среда разработки, база, код, справка, тесты</row>
+  <row t="1C AI Dev Tools" note="Каталог" href="https://aitools1c.dev" link="Сайт">Каталог серверов, скиллов и интеграций для разработки 1С с ИИ</row>
+</b-source-rows>
+<b-finding>
+  <ex k="Выбор">Код включают первым, данные — вторым шагом и отдельно.</ex>
+  <gen k="Проверка">Список инструментов сервера — это список того, что агент сможет сделать с базой.</gen>
+  <do>Выпишите инструменты сервера и отметьте, какие из них меняют данные.</do>
+</b-finding>
+</b-chapter>
+<b-chapter id="cases" icon="alert-alt" title="Что ломается на практике">
+<b-why align="left">В открытых чатах 1С-разработчиков описывают похожие случаи. Пересказ своими словами, без имён. Это примеры из практики: проверить каждый случай невозможно. Выберите случай — схема покажет, где он произошёл, а карточка — почему и как защититься.</b-why>
+<b-lane title="Случаи из практики" color="warn">
+<b-scene names="mcp-1c/cases"/>
+<b-pick-tabs id="cs" tone="warn">
+  <tab t="Рабочая база">
+    <b-pick-cell k="Что случилось" t="Сломал рабочую базу">Агенту открыли запись в рабочую базу, чтобы было быстрее. Правка ушла сразу в учёт, откатывали из копии.</b-pick-cell>
+    <b-pick-cell k="Почему" tone="warn">Между агентом и живыми данными не было тестовой базы, запись в рабочую открыта.</b-pick-cell>
+    <b-pick-cell k="Защита" tone="accent">Рабочую базу — только на чтение. Агент пишет в тестовую, переносит человек после проверки.</b-pick-cell>
+  </tab>
+  <tab t="Сотня баз">
+    <b-pick-cell k="Что случилось" t="Удалил список из сотни баз">Агент наводил порядок на сервере и удалил лишнее — заодно со списком рабочих баз.</b-pick-cell>
+    <b-pick-cell k="Почему" tone="warn">Учётка с правами администратора сервера, хотя задача касалась одной базы.</b-pick-cell>
+    <b-pick-cell k="Защита" tone="accent">Отдельный пользователь под задачу, права только на одну базу, без администрирования сервера.</b-pick-cell>
+  </tab>
+  <tab t="Чужие данные">
+    <b-pick-cell k="Что случилось" t="Ответил бухгалтеру данными директора">Агент на MCP отвечал сотрудникам. Бухгалтер получил цифры, которые ему видеть нельзя.</b-pick-cell>
+    <b-pick-cell k="Почему" tone="warn">Сервер ходил в базу под одним общим пользователем с полными правами — роли и ограничения 1С не работали.</b-pick-cell>
+    <b-pick-cell k="Защита" tone="accent">Вход под тем, кто спрашивает: тогда действуют его роли и ограничения доступа к записям.</b-pick-cell>
+  </tab>
+  <tab t="Пароли в журналах">
+    <b-pick-cell k="Что случилось" t="Пароли и ключи попали в журналы">Пароль от базы передали агенту прямо в запросе. Он остался в журнале вызовов и в истории чата.</b-pick-cell>
+    <b-pick-cell k="Почему" tone="warn">Секреты передавались в аргументах инструментов и лежали в файлах рядом с проектом.</b-pick-cell>
+    <b-pick-cell k="Защита" tone="accent">Секреты только в настройках сервера, агенту их не показывают. Папки с ключами закрыты от агента.</b-pick-cell>
+  </tab>
+  <tab t="«Готово»">
+    <b-pick-cell k="Что случилось" t="«Готово», а изменений нет">Агент добавил реквизит и отчитался. В пользовательском режиме изменений нет: базу после правки не обновили.</b-pick-cell>
+    <b-pick-cell k="Почему" tone="warn">Отчёт агента приняли без проверки результата.</b-pick-cell>
+    <b-pick-cell k="Защита" tone="accent">После правки — обновление базы, проверка ошибок и автотест. «Готово» — только со ссылкой на результат.</b-pick-cell>
+  </tab>
+  <tab t="Неверный ответ">
+    <b-pick-cell k="Что случилось" t="Запрос без ошибок, но ответ неверный">Агент написал запрос, он выполнился без ошибок, но цифры разошлись с отчётом 1С.</b-pick-cell>
+    <b-pick-cell k="Почему" tone="warn">Модель плохо знает регистры и периоды 1С и пишет запрос как в обычной базе.</b-pick-cell>
+    <b-pick-cell k="Защита" tone="accent">Сверка с типовым отчётом 1С или ответ через готовый отчёт вместо своего запроса.</b-pick-cell>
+  </tab>
+  <tab t="Данные в облаке">
+    <b-pick-cell k="Что случилось" t="Персональные данные ушли в облако">Агенту отдали выгрузку с паспортами и зарплатами, и она ушла к облачной модели.</b-pick-cell>
+    <b-pick-cell k="Почему" tone="warn">Агенту дали всю базу вместо нужных полей.</b-pick-cell>
+    <b-pick-cell k="Защита" tone="accent">Обезличивание, только нужные поля. Для чувствительных данных — модель внутри контура.</b-pick-cell>
+  </tab>
+</b-pick-tabs>
+</b-lane>
+<b-finding>
+  <ex k="Общее">Почти все случаи — про права и проверку. Модель здесь вторична.</ex>
+  <gen k="Причина">Агенту дали столько же прав, сколько у администратора, и поверили его отчёту на слово.</gen>
+  <do>Пройдите по случаям и отметьте, какие защиты у вас уже есть.</do>
+</b-finding>
+</b-chapter>
+<b-chapter id="scheme" icon="shield-check" title="Безопасная схема">
+<b-why align="left">Рабочую базу агент только читает. Пишет он в тестовую базу. В рабочую изменения переносит человек после проверки.</b-why>
+<b-lane title="Чтение отдельно от записи" color="accent">
+<b-scene names="mcp-1c/safe-scheme"/>
+<b-pick-tabs id="sf" tone="accent">
+  <tab t="Чтение">
+    <b-pick-cell k="Шаг" t="Агент читает">Данные и код рабочей базы — для ответов и разбора.</b-pick-cell>
+    <b-pick-cell k="Где" tone="accent">Рабочая база, под своим пользователем 1С с ролью только на чтение.</b-pick-cell>
+    <b-pick-cell k="Почему так">Агент видит настоящие данные, но изменить их не может.</b-pick-cell>
+  </tab>
+  <tab t="Запись">
+    <b-pick-cell k="Шаг" t="Агент пишет">Код, метаданные и документы.</b-pick-cell>
+    <b-pick-cell k="Где" tone="accent">Тестовая база или <a href="/materials/glossary/sandbox/">песочница</a> с копией рабочей.</b-pick-cell>
+    <b-pick-cell k="Почему так">Ошибка остаётся в тестовой базе и не доходит до учёта.</b-pick-cell>
+  </tab>
+  <tab t="Проверка и перенос">
+    <b-pick-cell k="Шаг" t="Проверка и перенос">Автотесты, затем человек смотрит изменения.</b-pick-cell>
+    <b-pick-cell k="Где" tone="accent">Изменения уходят в хранилище, рабочую базу обновляют из него.</b-pick-cell>
+    <b-pick-cell k="Почему так">В рабочую попадает только проверенное, и у каждой правки есть версия.</b-pick-cell>
+  </tab>
+</b-pick-tabs>
+</b-lane>
+<b-finding>
+  <ex k="Схема">Ошибка агента остаётся в тестовой базе и не доходит до учёта.</ex>
+  <gen k="Цена">Нужна тестовая база рядом с рабочей. Это дешевле одного восстановления из копии.</gen>
+  <do>Заведите <a href="/materials/glossary/test-stand/">тестовый стенд</a> с копией базы до того, как подключать сервер к данным.</do>
+</b-finding>
+</b-chapter>
+<b-chapter id="rights" icon="key" title="Права: лестница доступа">
+<b-why align="left">Права агента собирают по ступеням: каждая следующая ступень открывается, когда предыдущая отработала без сюрпризов. <a href="/materials/glossary/permissions/">Что такое права агента</a></b-why>
+<b-lane title="Лестница доступа" color="accent">
+<b-scene names="mcp-1c/rights"/>
+<b-pick-tabs id="rt" tone="accent">
+  <tab t="Чтение кода">
+    <b-pick-cell k="Что может агент" t="Чтение кода">Модули, метаданные, формы.</b-pick-cell>
+    <b-pick-cell k="Когда открывать" tone="accent">Сразу.</b-pick-cell>
+    <b-pick-cell k="Как настроить">Сервер с доступом к выгрузке конфигурации или проекту EDT, без доступа к базе.</b-pick-cell>
+  </tab>
+  <tab t="Чтение данных">
+    <b-pick-cell k="Что может агент" t="Чтение данных">Запросы и отчёты под своим пользователем 1С.</b-pick-cell>
+    <b-pick-cell k="Когда открывать" tone="accent">На копии базы, после того как код отработал без сюрпризов.</b-pick-cell>
+    <b-pick-cell k="Как настроить">Пользователь 1С с ролью только на чтение; инструмент «выполнить любой код» выключен.</b-pick-cell>
+  </tab>
+  <tab t="Запись в тест">
+    <b-pick-cell k="Что может агент" t="Запись в тест">Код, метаданные, документы.</b-pick-cell>
+    <b-pick-cell k="Когда открывать" tone="accent">Когда есть автотесты.</b-pick-cell>
+    <b-pick-cell k="Как настроить">Отдельная тестовая база; после каждой правки — проверка ошибок и автотесты.</b-pick-cell>
+  </tab>
+  <tab t="Запись в рабочую">
+    <b-pick-cell k="Что может агент" t="Запись в рабочую">Ничего: ступень закрыта для агента.</b-pick-cell>
+    <b-pick-cell k="Когда открывать" tone="accent">Никогда — только человек.</b-pick-cell>
+    <b-pick-cell k="Как настроить">Перенос делает человек через хранилище после проверки.</b-pick-cell>
+  </tab>
+</b-pick-tabs>
+</b-lane>
+<b-rules-fixed cols="2" sw="1.8">
+  <rule icon="user" t="Свой пользователь 1С">Агент входит под отдельным пользователем или под тем, кто задал вопрос. Тогда работают обычные права и ограничения доступа к записям.</rule>
+  <rule icon="eye-wide" t="Роль только на чтение">Для рабочей базы — роль без права записи и проведения. Пример: в mcp-1c запросы к базе по устройству только на чтение.</rule>
+  <rule icon="prompt" t="Без произвольного кода">Инструмент «выполнить любой код» на рабочей базе отключите: через него обходятся все права.</rule>
+  <rule icon="lock-alt" t="Секреты отдельно">Пароли и ключи — в настройках сервера. Агенту их не показывают и в запросы не передают.</rule>
+</b-rules-fixed>
+<b-finding>
+  <ex k="Данные как команды">Комментарий в документе или письмо в базе может содержать указание агенту. Это <a href="/materials/glossary/prompt-injection/">промпт-инъекция</a>, и права ограничивают её вред.</ex>
+  <gen k="Правило">Агент получает права обычного пользователя. Чего не может пользователь, того не может и агент.</gen>
+  <do>Как отличать данные от команд, разобрано <a href="/blog/data-plane-control-plane-prompt-injection/">в статье про промпт-инъекции</a>.</do>
+</b-finding>
+</b-chapter>
+<b-chapter id="check" icon="check-square" title="Проверка результата">
+<b-why align="left">Отчёт агента «готово» — это заявка. Подтверждают её проверки и <a href="/materials/glossary/human-in-the-loop/">человек в контуре</a>.</b-why>
+<b-lane title="Четыре проверки до результата" color="accent">
+<b-scene names="mcp-1c/checks"/>
+<b-pick-tabs id="ck" tone="accent">
+  <tab t="Ошибки среды">
+    <b-pick-cell k="Проверка" t="Проверка ошибок среды"/>
+    <b-pick-cell k="Что ловит" tone="warn">Синтаксис, несуществующие методы и реквизиты.</b-pick-cell>
+    <b-pick-cell k="Как запускать" tone="accent">После каждой правки; агент показывает итог проверки в отчёте.</b-pick-cell>
+  </tab>
+  <tab t="Автотесты">
+    <b-pick-cell k="Проверка" t="Автотесты"/>
+    <b-pick-cell k="Что ловит" tone="warn">Сценарий не проходит, форма не открывается.</b-pick-cell>
+    <b-pick-cell k="Как запускать" tone="accent">Сценарные и модульные тесты на тестовой базе в каждом цикле.</b-pick-cell>
+  </tab>
+  <tab t="Сверка с 1С">
+    <b-pick-cell k="Проверка" t="Сверка с отчётом 1С"/>
+    <b-pick-cell k="Что ловит" tone="warn">Цифры агента не совпадают с учётом.</b-pick-cell>
+    <b-pick-cell k="Как запускать" tone="accent">Тот же период и организация в типовом отчёте; расхождение — стоп.</b-pick-cell>
+  </tab>
+  <tab t="Человек">
+    <b-pick-cell k="Проверка" t="Просмотр изменений человеком"/>
+    <b-pick-cell k="Что ловит" tone="warn">Правки не там, лишние заимствования, обход инструментов.</b-pick-cell>
+    <b-pick-cell k="Как запускать" tone="accent">Сравнение изменений перед переносом: только расширение, только нужные объекты.</b-pick-cell>
+  </tab>
+</b-pick-tabs>
+</b-lane>
+<b-finding>
+  <ex k="Частая ошибка">Агент правит файлы конфигурации в обход инструментов среды, и проект расходится с базой.</ex>
+  <gen k="Правило">Каждое «готово» подтверждено проверкой или ссылкой на результат.</gen>
+  <do>Впишите в правила агента: после правки запустить проверку ошибок и показать её итог.</do>
+</b-finding>
+</b-chapter>
+<b-chapter id="agents" icon="prompt" title="Claude Code, Codex и Cursor для 1С">
+<b-why align="left">MCP-сервер для 1С подключается к любому агенту с поддержкой MCP. Отличается только место настройки.</b-why>
+<b-section-h3 top="4">Подключение за 3 шага</b-section-h3>
+<b-step-chain>
+  <node t="1. Выбрать сервер">К коду или к данным, из списка выше</node>
+  <node t="2. Поручить агенту">«Подключи MCP-сервер для 1С по инструкции из README»</node>
+  <node t="3. Проверить на копии">Попросить список инструментов и найти один справочник</node>
+</b-step-chain>
+<b-lane title="Где настройка" color="accent">
+<b-scene names="mcp-1c/agents"/>
+<b-pick-tabs id="ag" tone="accent">
+  <tab t="Claude Code">
+    <b-pick-cell k="Где настроить">команда <code>claude mcp add</code></b-pick-cell>
+    <b-pick-cell k="Для команды" tone="accent"><code>.mcp.json</code> в репозитории</b-pick-cell>
+    <b-pick-cell k="Документация"><a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">MCP в Claude Code</a></b-pick-cell>
+  </tab>
+  <tab t="Codex">
+    <b-pick-cell k="Где настроить"><code>~/.codex/config.toml</code> или <code>.codex/config.toml</code> в проекте</b-pick-cell>
+    <b-pick-cell k="Для команды" tone="accent"><code>.codex/config.toml</code> в доверенном проекте</b-pick-cell>
+    <b-pick-cell k="Документация"><a href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">MCP в Codex</a></b-pick-cell>
+  </tab>
+  <tab t="Cursor">
+    <b-pick-cell k="Где настроить">файл <code>mcp.json</code></b-pick-cell>
+    <b-pick-cell k="Для команды" tone="accent">командный каталог серверов</b-pick-cell>
+    <b-pick-cell k="Документация"><a href="https://cursor.com/docs/context/mcp" target="_blank" rel="noopener">MCP в Cursor</a></b-pick-cell>
+  </tab>
+</b-pick-tabs>
+</b-lane>
+<b-finding>
+  <ex k="Общее">Права задают сервер и пользователь 1С. Схема выше работает с любым из трёх.</ex>
+  <gen k="Подтверждения">Оставьте подтверждение для инструментов, которые меняют данные.</gen>
+  <do>Поручите подключение самому агенту, как описано <a href="/blog/mcp-agent-access/#connect">в статье про MCP</a>.</do>
+</b-finding>
+</b-chapter>
+<b-chapter id="start" icon="flag-alt" title="С чего начать">
+<b-why align="left">Три шага. Каждый следующий — после того, как предыдущий прошёл без сюрпризов.</b-why>
+<b-lane-art names="mcp-1c/start-steps"/>
+<b-finding>
+  <ex k="Неделя 1">Сервер к коду и чтение данных на копии базы. Проверьте 5 ответов агента руками.</ex>
+  <gen k="Неделя 2">Запись в тестовую базу и автотесты. Агент сам показывает, что проверил.</gen>
+  <do k="Дальше">Рабочая база остаётся только на чтение. Перенос изменений — за человеком.</do>
+</b-finding>
+</b-chapter>
+<b-chapter id="next" icon="arrow-right" title="Дальше по теме">
+  <b-links>
+    <item href="/blog/mcp-agent-access/" k="Подключение" t="MCP для ИИ-агента">как подключить и поручить это агенту</item>
+    <item href="/blog/data-plane-control-plane-prompt-injection/" k="Безопасность" t="Данные и команды">как защититься от промпт-инъекций</item>
+    <item href="/blog/mcp-scopes/" k="Области" t="Области MCP">где хранится настройка сервера</item>
+  </b-links>
+</b-chapter>
+<b-footer>Случаи пересказаны по открытым обсуждениям 1С-разработчиков, без имён и цитат. Это примеры из практики, проверить каждый случай невозможно. Правила защиты — практика автора.</b-footer>
+</b-post>

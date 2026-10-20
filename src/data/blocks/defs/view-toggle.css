@@ -1,0 +1,10 @@
+/* Два вида раздела: радиокнопки скрыты, выбранная вкладка залита акцентом, второй вид скрыт */
+.s-rich.bk .bk-vt > input { position: absolute; opacity: 0; pointer-events: none; }
+.s-rich.bk .bk-vt-tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin: 10px 0 2px; }
+.s-rich.bk .bk-vt-tabs label { padding: 5px 18px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--muted); }
+.s-rich.bk .bk-vt > .bk-vt-vb { display: none; }
+.s-rich.bk .bk-vt > input.bk-vt-b:checked ~ .bk-vt-vb { display: block; }
+.s-rich.bk .bk-vt > input.bk-vt-b:checked ~ .bk-vt-va { display: none; }
+.s-rich.bk .bk-vt > input.bk-vt-a:checked ~ .bk-vt-tabs .bk-vt-la,
+.s-rich.bk .bk-vt > input.bk-vt-b:checked ~ .bk-vt-tabs .bk-vt-lb { background: var(--accent); color: var(--on-accent); }
+.s-rich.bk .bk-vt > input:focus-visible ~ .bk-vt-tabs { outline: 2px solid var(--accent); outline-offset: 2px; }

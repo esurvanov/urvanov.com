@@ -80,7 +80,7 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-finding` | title | `<ex k>`, `<gen k>`, `<do k>` |
 | `b-proof` | href*, quote* | — |
 | `b-links` | cols (1/2/3) | `<item href* k* t*>` |
-| `b-why` | align (left) | — |
+| `b-why` | align (left), top | — |
 | `b-cap` | — | — |
 | `b-sublabel` | top | — |
 | `b-lead` | — | — |
@@ -100,12 +100,34 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-chips` | — | `<b-chip>` внутри |
 | `b-io` | — | `<item k*>` |
 | `b-qa` | cols (2/3) | `<q t*>` |
-| `b-rules` | cols (2/3) | `<rule icon* t*>` |
+| `b-rules` | cols (2/3), sw | `<rule icon* t*>` |
 | `b-stack` | label | `<seg w* color* ink>` |
 | `b-bar` | value*, color | — |
 | `b-todo` | — | `<item t*>` |
 | `b-hchain` | label* | `<step icon* t*>` |
 | `b-icon` | name*, sw | — |
+| `b-lane-art` | names*, top | — |
+| `b-scene` | names* | — |
+| `b-tag-inline` | kind* (ok/no/muted) | — |
+| `b-arrow-rows` | wide | `<row t* color*>` |
+| `b-faq-cards` | — | `<q t*>` |
+| `b-embed-frame` | src*, title*, ratio* | — |
+| `b-agent-term` | app*, ver*, model*, path* | `<line kind* note>` |
+| `b-step-chain` | — | `<node t*>` |
+| `b-section-h3` | top | — |
+| `b-copy-code` | wrap | — (текст как есть) |
+| `b-code-text` | wrap | — (текст как есть) |
+| `b-copy-quote` | — | — |
+| `b-view-toggle` | id* | `<view label*>` ×2 |
+| `b-callout` | icon* | — |
+| `b-rules-fixed` | cols*, top, sw | `<rule t* icon>` |
+| `b-spacer` | h* | — |
+| `b-art-note` | top, align (left) | — |
+| `b-source-rows` | wide | `<row t* note* href* link miss>` |
+| `b-table-plain` | — | HTML-таблица |
+| `b-details-more` | summary*, top | — |
+| `b-pick-tabs` | id*, tone* (warn/accent) | `<tab t*>` с `<b-pick-cell k* tone t>` внутри |
+| `b-steps-round` | — | `<step t* hl>` |
 
 ## Ещё не обобщено (разовые элементы серий)
 
@@ -114,8 +136,9 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 - **prompts**: анатомия промпта (`anat`/`an`), окно промпта (`pa-*`), табы с примерами (`tabs`/`tb`/`tp`),
   слои контекста (`ly-*`), последовательность (`seq`/`sq`), файлы (`fls`), модели (`mds`/`md`), метрика (`mt`),
   планировщик (`pl-*`), части промпта (`parts`/`pt`), схема предметной области (`dm-*`).
-- **harness**: карточки харнессов (`hx`, `cv-*`, `cap2`), вкладки (`brk-*`, `vtog-*`, `vt-*`), подсказки агенту
-  с копированием (`pq-*`, `cb`), диаграмма Венна (`venn`), выноска (`callout`), пары (`pair`), дрейф (`drift`).
+- **harness**: карточки харнессов (`hx`, `cv-*`, `cap2`), вкладки (`vt-*`), диаграмма Венна (`venn`), пары (`pair`),
+  дрейф (`drift`). Уже блоки: вкладки под схемой `brk-*` — `<b-pick-tabs>`, два вида `vtog-*` — `<b-view-toggle>`,
+  копирование `pq-*`/`cb` — `<b-copy-quote>`/`<b-copy-code>`, выноска `callout` — `<b-callout>`.
 - **hdd**: шкала стоимости (`sh`, `usd`), петля (`loopwrap`, `cf-*`), слои зрелости (`ly-r`/`ly-bar`),
   карты (`cn-*`, `gs-*`, `hm-*`, `sp-*`, `mm-*`, `pr4-*`), игра (`hdd-fig`, `hdd-sc`).
 - **kto**: источники (`src-*`), подсказки (`tip`/`tip-body`, `tt-*`), воронка (`cf-*`), точки-графики (`dp-*`),
@@ -126,4 +149,4 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
   оценки (`rate`/`rt`), микс форматов (`mix`/`mx`), пары «плохо/хорошо» (`pairs`/`pr`), шкала (`gauge`).
 - **agg / rec**: словарь агрегатов (`ag-*`, `rl-*`), рост спек (`gw-*`), контексты (`cx-*`), эволюция (`ev-*`),
   Kubernetes-петля (`kl-*`), снимок (`sn-*`).
-- Общий вариант: `chain` с карточками `nd` (harness) отличается от `chain` gruppy — разные блоки под одним именем.
+- Общий вариант: `chain` с карточками `nd` (harness) — теперь `<b-step-chain>`; `chain` gruppy — другой элемент под тем же именем.
