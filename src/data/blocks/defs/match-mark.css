@@ -1,0 +1,3 @@
+/* Знак сверки: совпало — цвет работы, расходится — предупреждение */
+.s-rich.bk .bk-mm-same { color: var(--c-work); font-weight: 700; }
+.s-rich.bk .bk-mm-diff { color: var(--warn); font-weight: 700; }

@@ -1,3 +1,5 @@
 /* Благодарность под разделом */
 .s-rich.bk .bk-credit { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
 .s-rich.bk .bk-credit a { color: var(--accent); text-decoration-line: underline; text-underline-offset: 3px; }
+/* tight — отступы обычного абзаца: благодарность первой строкой поста */
+.s-rich.bk .bk-credit.bk-tight { margin: 0 0 .8em; }

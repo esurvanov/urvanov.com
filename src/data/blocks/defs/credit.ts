@@ -5,7 +5,8 @@ export default defineBlock({
   tag: 'credit',
   title: 'Благодарность',
   doc: 'Строка «по рекомендациям …» под разделом.',
-  render: ({ children }) => `<p class="bk-credit">${inline(children)}</p>`,
+  attrs: { tight: { doc: 'отступы как у обычного абзаца (первой строкой поста): 0 сверху, .8em снизу', values: [''] } },
+  render: ({ attrs, children }) => `<p class="bk-credit${'tight' in attrs ? ' bk-tight' : ''}">${inline(children)}</p>`,
   example: {
     ru: '<b-credit>Дизайн выборки — по рекомендациям <a href="https://example.com/" target="_blank" rel="noopener">@author</a></b-credit>',
     en: '<b-credit>Sample design follows recommendations by <a href="https://example.com/" target="_blank" rel="noopener">@author</a></b-credit>',

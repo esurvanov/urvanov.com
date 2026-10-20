@@ -1,0 +1,11 @@
+/* Путь данных: карточки с цветной верхней границей, стрелки между ними */
+.s-rich.bk .bk-pipe { display: flex; align-items: stretch; gap: 8px; }
+.s-rich.bk .bk-pn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 4px; padding: 12px 8px; font-weight: 700; font-size: 15px; }
+.s-rich.bk .bk-pn svg { width: 22px; height: 22px; color: var(--c); }
+.s-rich.bk .bk-pn small { font-weight: 500; font-size: 12.5px; color: var(--muted); }
+.s-rich.bk .bk-pipe-ar { color: var(--muted); display: grid; place-items: center; flex: none; }
+.s-rich.bk .bk-pipe-ar svg { width: 18px; height: 18px; }
+@media (max-width: 640px) {
+  .s-rich.bk .bk-pipe { flex-direction: column; }
+  .s-rich.bk .bk-pipe-ar { transform: rotate(90deg); }
+}

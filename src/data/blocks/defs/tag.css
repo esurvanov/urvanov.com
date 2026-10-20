@@ -3,3 +3,5 @@
 .s-rich.bk .bk-tag.bk-ok { background: var(--accent-soft); color: var(--accent); }
 .s-rich.bk .bk-tag.bk-no { background: var(--warn-soft); color: var(--warn); }
 .s-rich.bk .bk-tag.bk-plain { background: var(--surface-2); color: var(--ink-2); }
+/* inline — высота строки как у текста вокруг (так метки выглядели в таблицах серии kto) */
+.s-rich.bk .bk-tag.bk-tag-inline { line-height: inherit; }

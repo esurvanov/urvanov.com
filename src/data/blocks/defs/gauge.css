@@ -1,0 +1,7 @@
+/* Шкала ступеней: подпись, полоса, вывод; на телефоне — друг под другом */
+.s-rich.bk .bk-gauge { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
+.s-rich.bk .bk-gg { display: grid; grid-template-columns: 150px 1fr 120px; gap: 12px; align-items: center; font-size: 14px; }
+@media (max-width: 520px) { .s-rich.bk .bk-gg { grid-template-columns: 1fr; gap: 4px; } }
+.s-rich.bk .bk-gbar { height: 12px; background: var(--surface-2); border-radius: 6px; overflow: hidden; }
+.s-rich.bk .bk-gbar i { display: block; height: 100%; border-radius: 6px; }
+.s-rich.bk .bk-gg em { font-style: normal; font-weight: 700; }

@@ -1,0 +1,14 @@
+/* Шаги и развилка в одной полосе; на узком экране — столбиком, стрелки вниз.
+   Плашка варианта — те же классы, что у <b-select-pill> (select-pill.css) */
+.s-rich.bk .bk-mix { display: grid; grid-template-columns: auto 24px auto 24px 1fr; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; margin-top: 14px; }
+.s-rich.bk .bk-mx { background: var(--surface-2); border-radius: 4px; padding: 9px 12px; font-size: 14px; font-weight: 600; text-align: center; }
+.s-rich.bk .bk-mx small { display: block; font-weight: 500; font-size: 12px; color: var(--muted); }
+.s-rich.bk .bk-mix-ar { color: var(--muted); display: grid; place-items: center; flex: none; }
+.s-rich.bk .bk-mix-ar svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-mxo { display: flex; flex-direction: column; gap: 6px; }
+.s-rich.bk .bk-mxo div { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.s-rich.bk .bk-mxo em { font-style: normal; font-size: 12px; color: var(--muted); min-width: 74px; }
+@media (max-width: 760px) {
+  .s-rich.bk .bk-mix { grid-template-columns: 1fr; }
+  .s-rich.bk .bk-mix-ar { transform: rotate(90deg); }
+}

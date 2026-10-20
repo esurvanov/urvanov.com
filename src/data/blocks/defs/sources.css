@@ -1,0 +1,18 @@
+/* Источники данных: карточка целиком — ссылка (растянутый ::after у названия), кружок «i» поверх неё.
+   Подсказка «Что внутри» в покое скрыта (прозрачна и невидима), при наведении или фокусе — выезжает под кружком */
+.s-rich.bk .bk-sources { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.s-rich.bk .bk-src { position: relative; transition: border-color .15s; display: grid; grid-template-columns: 40px 1fr 24px; gap: 14px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
+.s-rich.bk .bk-src:hover { border-color: var(--accent); }
+.s-rich.bk .bk-src-ico { width: 36px; height: 36px; border-radius: 4px; background: var(--surface-2); color: var(--ink-2); display: grid; place-items: center; }
+.s-rich.bk .bk-src-ico svg { width: 19px; height: 19px; }
+.s-rich.bk .bk-src-name { font-weight: 600; font-size: 16px; }
+.s-rich.bk .bk-src-name a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.s-rich.bk .bk-src-name a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.s-rich.bk .bk-src:hover .bk-src-name a, .s-rich.bk .bk-src-name a:hover { color: var(--accent); border-color: var(--accent); }
+.s-rich.bk .bk-src-path { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--muted); margin-top: 1px; word-break: break-word; }
+.s-rich.bk .bk-src-what { font-size: 14.5px; color: var(--ink-2); margin-top: 5px; line-height: 1.45; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-tip { position: relative; z-index: 2; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink-2); display: grid; place-items: center; font-size: 12px; font-weight: 700; cursor: help; margin-top: 6px; }
+.s-rich.bk .bk-tip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.s-rich.bk .bk-tip-body { position: absolute; right: -6px; top: calc(100% + 8px); z-index: 5; width: min(300px, 78vw); background: var(--tip-bg); color: var(--tip-ink); border-radius: 4px; padding: 12px 14px; font-size: 13px; font-weight: 400; line-height: 1.5; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,.18); opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity .15s, transform .15s, visibility .15s; pointer-events: none; }
+.s-rich.bk .bk-tip-k { display: block; font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; opacity: .65; margin-bottom: 4px; font-weight: 700; }
+.s-rich.bk .bk-tip:is(:hover, :focus) .bk-tip-body { opacity: 1; visibility: visible; transform: none; }

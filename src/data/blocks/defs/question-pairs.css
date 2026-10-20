@@ -1,0 +1,10 @@
+/* Пары «плохо — хорошо»: тип, ✕ неудачная, ✓ исправленная; на узком экране — столбиком */
+.s-rich.bk .bk-pairs { display: flex; flex-direction: column; gap: 10px; }
+.s-rich.bk .bk-pr { display: grid; grid-template-columns: 130px 1fr 1fr; gap: 10px; align-items: stretch; }
+@media (max-width: 700px) { .s-rich.bk .bk-pr { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-pr-tg { align-self: center; font-family: "JetBrains Mono", monospace; font-size: 11.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.s-rich.bk :is(.bk-pr-no, .bk-pr-yes) { border-radius: 4px; padding: 10px 13px; font-size: 14.5px; line-height: 1.4; display: flex; gap: 8px; }
+.s-rich.bk .bk-pr-no { background: var(--warn-soft); }
+.s-rich.bk .bk-pr-yes { background: var(--accent-soft); }
+.s-rich.bk .bk-pr-no::before { content: "✕"; color: var(--warn); font-weight: 700; }
+.s-rich.bk .bk-pr-yes::before { content: "✓"; color: var(--accent); font-weight: 700; }

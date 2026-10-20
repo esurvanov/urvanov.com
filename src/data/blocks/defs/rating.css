@@ -1,0 +1,6 @@
+/* Оценка точками; значок в заголовке таблицы оценок — мелкий, по строке */
+.s-rich.bk .bk-rt { display: inline-flex; gap: 4px; }
+.s-rich.bk .bk-rt i { width: 11px; height: 11px; border-radius: 50%; background: var(--surface-2); border: 1px solid var(--line); }
+.s-rich.bk .bk-rt i.bk-on { background: var(--accent); border-color: var(--accent); }
+.s-rich.bk .bk-rt.bk-rt-w i.bk-on { background: var(--warn); border-color: var(--warn); }
+.s-rich.bk .bk-tbl th > svg { width: 14px; height: 14px; vertical-align: -2px; margin-right: 4px; }

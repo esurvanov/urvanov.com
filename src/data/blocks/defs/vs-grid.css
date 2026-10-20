@@ -1,0 +1,11 @@
+/* Сетка сравнения в три колонки; на телефоне — столбиком, строки разделены жирной линией */
+.s-rich.bk .bk-vs { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; font-size: 14px; }
+.s-rich.bk .bk-vs > div { padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.s-rich.bk .bk-vs > .bk-vs-h { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--muted); background: var(--surface-2); }
+.s-rich.bk .bk-vs > div:nth-last-child(-n+3) { border-bottom: none; }
+.s-rich.bk .bk-vs b { font-weight: 600; }
+@media (max-width: 640px) {
+  .s-rich.bk .bk-vs { grid-template-columns: 1fr; }
+  .s-rich.bk .bk-vs > .bk-vs-h { display: none; }
+  .s-rich.bk .bk-vs > div:nth-child(3n) { border-bottom: 2px solid var(--line); }
+}

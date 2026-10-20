@@ -1,0 +1,3 @@
+/* Полоска-соотношение в ячейке */
+.s-rich.bk .bk-split { display: flex; width: 84px; height: 10px; border-radius: 3px; overflow: hidden; background: var(--surface-2); }
+.s-rich.bk .bk-split span { height: 100%; }

@@ -1,0 +1,8 @@
+/* Сценарий звонка: карточки с цветным номером */
+.s-rich.bk .bk-script { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.s-rich.bk .bk-script li { display: grid; grid-template-columns: 36px 1fr; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 13px 16px; }
+.s-rich.bk .bk-sn { width: 30px; height: 30px; border-radius: 50%; color: #fff; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 13.5px; line-height: 1; }
+.s-rich.bk .bk-st-t { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.s-rich.bk .bk-q { font-size: 16px; line-height: 1.45; margin-top: 3px; font-weight: 500; }
+.s-rich.bk .bk-fu { font-size: 13.5px; color: var(--ink-2); margin-top: 5px; }
+.s-rich.bk .bk-fu::before { content: attr(data-k); font-weight: 600; color: var(--ink); }
