@@ -9,7 +9,10 @@
     "predev": "node scripts/pull-game-pages.mjs",
     "build": "node scripts/pull-game-pages.mjs && node scripts/pull-game-posts.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:text": "node scripts/check-text.mjs",
+    "check:layout": "node scripts/check-layout.mjs",
+    "check:visual": "node scripts/check-visual.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
@@ -30,6 +33,10 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "node-html-parser": "^9.0.5",
+    "pixelmatch": "^8.0.0",
+    "pngjs": "^7.0.0",
+    "puppeteer-core": "^25.15.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.0",
     "vite": "^8.0.4"
