@@ -9,7 +9,7 @@ mentions: AI agent, LLM, agent harness, harness engineering, agent loop, MCP, Cl
 toc: formula=Agent = LLM + harness | table=LLM vs harness vs agent | parts=What the harness includes | same=Same model | faq=FAQ | next=Read next
 ---
 
-Agent = LLM + harness. The model reasons in text; the harness gives it a loop, tools, context, rules and checks. Below: LLM vs harness vs agent in one table, the five groups a harness includes, and the same model in two harnesses.
+An AI agent is an LLM plus a harness: the LLM only reasons and writes text, and the harness is everything around it that lets it act — a loop of steps, tools, context, rules and checks. Together they carry a task to a result, while an LLM alone only answers. Below: LLM vs harness vs agent in one table, the five groups a harness includes, and the same model in two harnesses.
 
 <b-post series="harness">
 <b-chapter id="formula" icon="target-dot" title="Agent = LLM + harness">
