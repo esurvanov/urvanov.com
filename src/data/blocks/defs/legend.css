@@ -1,0 +1,4 @@
+/* Легенда: квадратик цвета и подпись */
+.s-rich.bk .bk-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 13.5px; color: var(--ink-2); }
+.s-rich.bk .bk-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.s-rich.bk .bk-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }

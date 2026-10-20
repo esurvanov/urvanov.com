@@ -1,0 +1,3 @@
+/* Подпись под схемой: мелко и приглушённо */
+.s-rich.bk .bk-cap { font-size: 13px; color: var(--muted); }
+.s-rich.bk .bk-cap a { color: var(--accent); text-decoration-line: underline; text-underline-offset: 3px; }

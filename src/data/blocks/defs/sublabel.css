@@ -1,0 +1,2 @@
+/* Метка капсом внутри главы */
+.s-rich.bk .bk-sublabel { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 0 0 10px; }

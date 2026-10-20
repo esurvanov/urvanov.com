@@ -1,0 +1,2 @@
+/* Ряд плашек с переносом */
+.s-rich.bk .bk-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; }

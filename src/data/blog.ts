@@ -1,5 +1,6 @@
 import { marked } from 'marked'
 import { withBlogArt } from '@/data/blogArt'
+import { withBlocks } from '@/data/blocks'
 import type { Lang, L } from '@/lib/i18n'
 
 // Рубрики блога: у каждого поста одна, задаётся полем `category` во фронтматтере (у перевода — та же).
@@ -102,7 +103,9 @@ function parse(path: string, raw: string): Post | null {
   const category = findCategory(meta.category)
   // Рубрика обязательна: без неё пост выпал бы из фильтров — лучше упасть на сборке
   if (!category) throw new Error(`${path}: category «${meta.category ?? ''}» — нужна одна из: ${BLOG_CATEGORIES.map((c) => c.slug).join(', ')}`)
-  const markdown = m[2].trim()
+  // Метки блоков (<b-finding>…) разворачиваются в HTML до markdown: .md-копии и llms-full получают тот же HTML, что и раньше
+  const body = m[2].trim()
+  const markdown = withBlocks(body, lang, path, raw.slice(0, raw.indexOf(body)).split('\n').length - 1)
   const text = texts[`/content/blog-text/${file}.md`]?.trim()
   const words = (text ?? markdown.replace(/<[^>]+>/g, ' ')).split(/\s+/).filter(Boolean).length
   return {

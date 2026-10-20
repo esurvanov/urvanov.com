@@ -1,0 +1,10 @@
+/* Глава: номер-счётчик над чертой, заголовок со значком */
+.s-rich.bk .bk-chapter { margin-top: 64px; padding-top: 24px; border-top: 2px solid var(--line-strong); counter-increment: sec; }
+.s-rich.bk .bk-chapter::before { content: counter(sec, decimal-leading-zero); display: block; font-family: "JetBrains Mono", monospace; font-size: .8rem; letter-spacing: .1em; color: var(--accent); margin-bottom: 12px; }
+.s-rich.bk .bk-chapter > h2 { font-size: 27px; font-weight: 700; line-height: 1.2; letter-spacing: -0.025em; margin: 1.4em 0 .4em; display: flex; align-items: center; gap: 12px; }
+.s-rich.bk .bk-chapter > p { color: var(--ink-2); }
+.s-rich.bk .bk-ico { width: 34px; height: 34px; margin-top: .12em; border: 1px solid var(--line-2); border-radius: 4px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; }
+.s-rich.bk .bk-ico svg { width: 19px; height: 19px; }
+/* «Дальше по теме» под статьёй (BlogPostView выносит главу id="next" вниз): без номера и черты */
+.s-rich.bk.s-next-wrap .bk-chapter { margin-top: 40px; padding-top: 0; border-top: 0; counter-increment: none; }
+.s-rich.bk.s-next-wrap .bk-chapter::before { display: none; }

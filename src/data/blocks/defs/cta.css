@@ -1,0 +1,11 @@
+/* Карточка «следующий шаг»; с значком — значок слева и стрелка справа */
+.s-rich.bk .bk-cta { display: grid; gap: 4px; margin-top: 14px; padding: 16px 18px; border: 2px solid var(--accent); border-radius: 6px; background: var(--accent-soft); text-decoration: none; color: var(--ink); }
+.s-rich.bk .bk-cta:hover { border-color: var(--ink); }
+.s-rich.bk .bk-cta b { font-size: 18px; }
+.s-rich.bk .bk-cta-k { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.s-rich.bk .bk-cta-d { font-size: 14.5px; color: var(--ink-2); }
+.s-rich.bk .bk-cta.bk-cta-i { display: flex; align-items: center; gap: 14px; }
+.s-rich.bk .bk-cta-ic { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 6px; background: var(--accent); color: var(--on-accent); }
+.s-rich.bk .bk-cta-ic svg { width: 24px; height: 24px; }
+.s-rich.bk .bk-cta-b { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.s-rich.bk .bk-cta-ar svg { display: block; width: 22px; height: 22px; color: var(--accent); }

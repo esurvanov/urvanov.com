@@ -1,0 +1,16 @@
+/* Основа блоков статей (src/data/blocks). Всё внутри обёртки <b-post>: <div class="s-rich bk bk-<серия>">.
+   Каждый селектор начинается с .s-rich.bk и у каждого блока свои классы bk-*: правила старых серий
+   (.s-rich-<серия>-<язык> .finding …) и общие правила сайта (.s-wide .s-prose p, ссылки) их не перебивают.
+   Цвета — токены .s-rich из rich-post.css (светлая и тёмная тема); серия меняет только акцент — ниже. */
+
+/* Серия отличается только токенами: свой акцент — --accent и --accent-soft для .s-rich.bk.bk-<серия>
+   здесь же, в светлой и тёмной теме. Сейчас все серии на общих токенах сайта, отдельных правил нет */
+
+.s-rich.bk { counter-reset: sec; }
+.s-rich.bk * { box-sizing: border-box; }
+.s-rich.bk a { color: var(--accent); }
+.s-rich.bk a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.s-rich.bk :is(h2, h3) { font-family: "Manrope", system-ui, sans-serif; text-wrap: balance; color: var(--ink); }
+.s-rich.bk h3 { font-size: 20px; line-height: 1.3; margin: 0 0 6px; font-weight: 700; letter-spacing: -0.02em; }
+/* Абзац: отступ как у широкого поста (.s-wide .s-prose p), выключка по ширине с переносами */
+.s-rich.bk p { margin: 0 0 .8em; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }

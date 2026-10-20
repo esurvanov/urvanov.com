@@ -1,0 +1,5 @@
+/* Две дорожки рядом; на узком экране — друг под другом */
+.s-rich.bk .bk-flow { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 12px; }
+.s-rich.bk .bk-flow.bk-flow-lead .bk-nd svg { width: 24px; height: 24px; }
+.s-rich.bk .bk-flow.bk-flow-lead .bk-nd small { line-height: 1.3; }
+@media (max-width: 760px) { .s-rich.bk .bk-flow { grid-template-columns: 1fr; } }

@@ -1,0 +1,3 @@
+/* Плашка с названием; выбранная — залита акцентом */
+.s-rich.bk .bk-chip { display: inline-flex; align-items: center; padding: 4px 10px; border: 1px solid var(--line-2); border-radius: 4px; font-size: 13px; font-weight: 600; line-height: 1.5; color: var(--ink-2); background: var(--surface); }
+.s-rich.bk .bk-chip.bk-on { background: var(--accent); border-color: var(--accent); color: #fff; }

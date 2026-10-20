@@ -1,0 +1,9 @@
+/* Рамка схемы <iso-art>: на широком экране прокрутка вбок, на телефоне — узкая раскладка схемы */
+.s-rich.bk .bk-art { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px; overflow-x: auto; }
+.s-rich.bk .bk-chapter > h2 + .bk-art { margin-top: 4px; }
+@media (max-width: 640px) { .s-rich.bk .bk-art { overflow-x: visible; padding: 10px; } }
+/* Подписи схем rv-* (../../blogArt): вычеркнутое и лишнее ограничение. В старых стилях эти правила были
+   под классом серии prompts, а у обёртки блоков класса серии нет */
+.s-rich.bk .rv-del { font-family: "JetBrains Mono", monospace; font-size: 12.5px; font-weight: 600; fill: var(--muted); text-decoration: line-through; }
+.s-rich.bk .rv-lim { fill: var(--muted); }
+.s-rich.bk :is(.rv-del, .rv-add, .rv-q).sm { font-size: 11px; }

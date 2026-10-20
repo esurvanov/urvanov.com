@@ -7,6 +7,8 @@ import './styles/site.css'
 import './styles/rich-post.css'
 import './styles/rich-post-harness.css'
 import './styles/rich-post-prompts.css'
+// Стили библиотеки блоков статей (src/data/blocks): после старых стилей серий
+import './data/blocks/styles'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) {

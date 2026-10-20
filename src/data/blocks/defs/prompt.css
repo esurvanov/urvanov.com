@@ -1,0 +1,2 @@
+/* Текст промпта: моноширинный, переносы как в посте */
+.s-rich.bk .bk-prompt { margin: 0; background: var(--surface-2); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; font-family: "JetBrains Mono", monospace; font-size: 13px; line-height: 1.55; color: var(--ink); white-space: pre-wrap; overflow-x: auto; }

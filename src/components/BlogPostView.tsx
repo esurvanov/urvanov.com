@@ -19,7 +19,7 @@ function splitTitle(title: string): [string, string | null] {
 
 // Раздел «Дальше по теме» лежит внутри статьи; выносим его вниз, к блоку «С теми же терминами»
 function splitNext(html: string): { body: string; next: string | null; rich: string } {
-  const m = /<section class="chapter" id="next">[\s\S]*?<\/section>/.exec(html)
+  const m = /<section class="(?:bk-)?chapter" id="next">[\s\S]*?<\/section>/.exec(html)
   if (!m) return { body: html, next: null, rich: '' }
   const rich = /<div class="(s-rich[^"]*)"/.exec(html)?.[1] ?? 's-rich'
   return { body: html.slice(0, m.index) + html.slice(m.index + m[0].length), next: m[0], rich }
