@@ -90,7 +90,7 @@ const scenes: Record<string, Scene> = {
     cls: 'tt-v',
     style: '',
     attrs: { ...ink, stroke: 'currentColor' },
-    draw: (c) => c.raw('<g stroke="var(--ink-2)"><circle cx="16" cy="24" r="6"/><path d="M6 44c0-7 4.5-11 10-11s10 4 10 11"/></g><path d="M32 18H92M87 14l5 4-5 4"/><path d="M92 30H32M37 26l-5 4--5 4"/><path d="M32 42H92M87 38l5 4-5 4"/><rect x="101" y="21" width="22" height="22" rx="6"/><path d="M112 21v-4"/><circle cx="108" cy="31" r="1.6" fill="currentColor"/><circle cx="116" cy="31" r="1.6" fill="currentColor"/><path d="M108 37h8"/><path d="M128 32H146M141 28l5 4-5 4"/><g><path d="M154 42a8 8 0 0 1 1-16 11 11 0 0 1 21-3 8 8 0 0 1 4 19z"/><path d="M163.5 28a3.5 3.5 0 1 1 5 3.2c-1 .5-1.5 1.2-1.5 2.3M167 37.5h.01"/></g>'),
+    draw: (c) => c.raw('<g stroke="var(--ink-2)"><circle cx="16" cy="24" r="6"/><path d="M6 44c0-7 4.5-11 10-11s10 4 10 11"/></g><path d="M32 18H92M87 14l5 4-5 4"/><path d="M92 30H32M37 26l-5 4 5 4"/><path d="M32 42H92M87 38l5 4-5 4"/><rect x="101" y="21" width="22" height="22" rx="6"/><path d="M112 21v-4"/><circle cx="108" cy="31" r="1.6" fill="currentColor"/><circle cx="116" cy="31" r="1.6" fill="currentColor"/><path d="M108 37h8"/><path d="M128 32H146M141 28l5 4-5 4"/><g><path d="M154 42a8 8 0 0 1 1-16 11 11 0 0 1 21-3 8 8 0 0 1 4 19z"/><path d="M163.5 28a3.5 3.5 0 1 1 5 3.2c-1 .5-1.5 1.2-1.5 2.3M167 37.5h.01"/></g>'),
   },
   // Основной инструмент Work: одна цель, данные из приложений
   'tool-work': {
