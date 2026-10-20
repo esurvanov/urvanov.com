@@ -1,0 +1,10 @@
+/* Одинарная и двойная петля (hdd) */
+.s-rich.bk .bk-hdl { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.s-rich.bk .bk-hdl-a { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); text-align: center; }
+.s-rich.bk .bk-hdl-a.bk-on { border: 2px solid var(--accent); background: var(--accent-soft); }
+.s-rich.bk .bk-hdl-a svg { width: 110px; height: 110px; }
+.s-rich.bk .bk-hdl-a b { font-family: "JetBrains Mono", monospace; font-size: 13px; text-transform: uppercase; letter-spacing: .07em; }
+.s-rich.bk .bk-hdl-a small { font-size: 13px; color: var(--muted); }
+.s-rich.bk .bk-hdl-c1 { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; opacity: .55; }
+.s-rich.bk .bk-hdl-c2 { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 10 6; }
+@media (max-width: 760px) { .s-rich.bk .bk-hdl { grid-template-columns: 1fr; } }

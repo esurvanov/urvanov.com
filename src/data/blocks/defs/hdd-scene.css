@@ -1,0 +1,64 @@
+/* Схемы <iso-art> поста HDD: рамки loop (карточка) и fig (без рамки), цвета и шрифты классов сцен из
+   ../../blogArt/harness-driven-development.ts — раньше были под классом серии .s-rich-hdd-<язык> */
+.s-rich.bk .bk-hloop { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 12px; overflow-x: auto; }
+.s-rich.bk .bk-hloop .lp { display: block; width: 100%; min-width: 680px; height: auto; }
+.s-rich.bk .bk-hloop .lp-h { fill: color-mix(in srgb, var(--accent) 5%, transparent); stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 6 5; }
+.s-rich.bk .bk-hloop .lp-ht { font-family: "JetBrains Mono",monospace; font-size: 12px; fill: var(--accent); letter-spacing: .08em; }
+.s-rich.bk .bk-hloop .lp-n { fill: var(--surface-2); stroke: var(--line-2); stroke-width: 1.5; }
+.s-rich.bk .bk-hloop .lp-n.key { fill: var(--accent-soft); stroke: var(--accent); }
+.s-rich.bk .bk-hloop .lp-n.sen { stroke: var(--accent); }
+.s-rich.bk .bk-hloop .lp-n.rule { fill: color-mix(in srgb, var(--accent) 16%, var(--surface-2)); stroke: var(--accent); stroke-width: 2; }
+.s-rich.bk .bk-hloop .lp-t { font-family: "Manrope",system-ui,sans-serif; font-size: 16px; font-weight: 700; fill: var(--ink); }
+.s-rich.bk .bk-hloop .lp-s { font-family: "JetBrains Mono",monospace; font-size: 11.5px; fill: var(--muted); }
+.s-rich.bk .bk-hloop .lp-e { fill: none; stroke: var(--ink-2); stroke-width: 1.6; }
+.s-rich.bk .bk-hloop .lp-e.ok { stroke: var(--accent); }
+.s-rich.bk .bk-hloop .lp-e.bad { stroke: var(--warn); stroke-dasharray: 5 4; }
+.s-rich.bk .bk-hloop .lp-arh { fill: var(--ink-2); }
+.s-rich.bk .bk-hloop .lp-el { font-family: "JetBrains Mono",monospace; font-size: 11.5px; fill: var(--muted); }
+.s-rich.bk .bk-hloop .lp-el.ok { fill: var(--accent); }
+.s-rich.bk .bk-hloop .lp-el.bad { fill: var(--warn); }
+.s-rich.bk .bk-hloop .lp-ok { fill: color-mix(in srgb, var(--accent) 20%, transparent); stroke: var(--accent); stroke-width: 2; }
+.s-rich.bk .bk-hloop .lp-okm { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.s-rich.bk .bk-hloop .lp-e.fix { stroke: var(--accent); stroke-dasharray: 5 4; }
+.s-rich.bk .bk-hloop .lp-el.fix { fill: var(--accent); }
+.s-rich.bk .bk-hfig { margin: 34px 0 0; }
+.s-rich.bk .bk-hsc { overflow-x: auto; }
+.s-rich.bk .bk-hsc svg { display: block; width: 100%; min-width: 720px; height: auto; color: var(--ink-3); }
+.s-rich.bk .bk-hsc .hf { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 5; }
+.s-rich.bk .bk-hsc .hn { fill: var(--surface); stroke: var(--line-2); stroke-width: 1.5; }
+.s-rich.bk .bk-hsc .hc { stroke: var(--ink-3); }
+.s-rich.bk .bk-hsc .hmod { stroke: var(--ink-2); stroke-width: 2; }
+.s-rich.bk .bk-hsc .ht { stroke: var(--accent); }
+.s-rich.bk .bk-hsc .hl { stroke: currentColor; stroke-width: 2; fill: none; }
+.s-rich.bk .bk-hsc .hloop { stroke: var(--accent); color: var(--accent); stroke-dasharray: 7 5; }
+.s-rich.bk .bk-hsc text { font-family: inherit; }
+.s-rich.bk .bk-hsc .hb { font-size: 15px; font-weight: 700; fill: var(--ink); }
+.s-rich.bk .bk-hsc .hs { font-size: 12px; fill: var(--ink-2); }
+.s-rich.bk .bk-hsc .hm { font-size: 13px; fill: var(--ink-2); }
+.s-rich.bk .bk-hsc .hp { font-size: 12px; font-weight: 700; letter-spacing: .06em; fill: var(--ink-2); }
+.s-rich.bk .bk-hsc .ha { font-size: 14px; font-weight: 700; letter-spacing: .04em; fill: var(--accent); }
+.s-rich.bk .bk-hsc .hctx { fill: color-mix(in srgb, var(--accent) 7%, var(--surface)); stroke: color-mix(in srgb, var(--accent) 55%, var(--ink-3)); stroke-width: 2; }
+.s-rich.bk .bk-hsc .hprm { fill: var(--surface); stroke: var(--ink-3); stroke-width: 2; }
+.s-rich.bk .bk-hsc .hc2 { fill: color-mix(in srgb, var(--accent) 55%, var(--ink)); }
+.s-rich.bk .bk-hsc .hp1 { fill: var(--ink-2); }
+.s-rich.bk .bk-hsc .hr { font-size: 13px; }
+.s-rich.bk .bk-hsc .herr { fill: color-mix(in srgb, var(--warn) 14%, var(--surface)); stroke: var(--warn); stroke-width: 1.5; }
+.s-rich.bk .bk-hsc .herrt { fill: var(--ink); }
+.s-rich.bk .bk-hsc .row { fill: var(--surface); stroke: var(--line-2); stroke-width: 1.2; }
+.s-rich.bk .bk-hsc .row.r3 { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; }
+.s-rich.bk .bk-hsc .bar.r1 { fill: var(--ink-3); }
+.s-rich.bk .bk-hsc .bar.r2 { fill: color-mix(in srgb, var(--accent) 55%, var(--ink-3)); }
+.s-rich.bk .bk-hsc .bar.r3 { fill: var(--accent); }
+.s-rich.bk .bk-hsc .hc0 { font-size: 11px; letter-spacing: .08em; fill: var(--muted); font-weight: 700; }
+.s-rich.bk .bk-hsc .hn1 { font-size: 11px; fill: var(--muted); }
+.s-rich.bk .bk-hsc .ht1 { font-size: 14px; fill: var(--ink); }
+.s-rich.bk .bk-hsc .ht2 { font-size: 13px; fill: var(--ink-2); }
+.s-rich.bk .bk-hsc .ck { stroke-width: 1.8; }
+.s-rich.bk .bk-hsc .ck-ok { fill: var(--accent); stroke: var(--accent); }
+.s-rich.bk .bk-hsc .ck-mid { fill: none; stroke: var(--accent); stroke-dasharray: 3 3; }
+.s-rich.bk .bk-hsc .ck-no { fill: none; stroke: var(--ink-3); }
+.s-rich.bk .bk-hsc .cg { font-size: 15px; font-weight: 700; stroke: none; }
+.s-rich.bk .bk-hsc .cg.ck-ok { fill: var(--on-accent,#0e0e10); }
+.s-rich.bk .bk-hsc .cg.ck-mid { fill: var(--accent); }
+.s-rich.bk .bk-hsc .cg.ck-no { fill: var(--ink-3); }
+.s-rich.bk .bk-hsc .hleg { fill: var(--muted); }
