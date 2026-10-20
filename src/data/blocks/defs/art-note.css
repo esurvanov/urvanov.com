@@ -1,0 +1,4 @@
+/* Примечание под схемой: мелко, приглушённо, вплотную к схеме */
+.s-rich.bk .bk-artn { font-size: 13px; color: var(--muted); margin: 8px 0 .8em; }
+.s-rich.bk .bk-artn.bk-left { text-align: left; }
+.s-rich.bk .bk-artn a { color: var(--accent); }

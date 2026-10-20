@@ -1,0 +1,9 @@
+/* Строки источников: название, описание на всю оставшуюся ширину, пометка и ссылка; на узком экране переносятся.
+   Ссылка без класса — с общей стрелкой сайта, как ссылки в тексте */
+.s-rich.bk .bk-srcr { display: grid; gap: 8px; margin-top: 12px; }
+.s-rich.bk .bk-srcr-r { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; background: var(--surface-2); border: 1px solid var(--muted); border-radius: 8px; padding: 10px 12px; }
+.s-rich.bk .bk-srcr-r > b { color: var(--accent); min-width: 96px; }
+.s-rich.bk .bk-srcr-wide .bk-srcr-r > b { min-width: 150px; }
+.s-rich.bk .bk-srcr-d { flex: 1; min-width: 220px; }
+.s-rich.bk .bk-srcr-miss { color: var(--warn); }
+.s-rich.bk .bk-srcr-n { color: var(--muted); font-size: 13px; }

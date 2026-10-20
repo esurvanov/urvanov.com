@@ -80,7 +80,7 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-finding` | title | `<ex k>`, `<gen k>`, `<do k>` |
 | `b-proof` | href*, quote* | — |
 | `b-links` | cols (1/2/3) | `<item href* k* t* ext>` |
-| `b-why` | align (left) | — |
+| `b-why` | align (left), top | — |
 | `b-cap` | — | — |
 | `b-sublabel` | top | — |
 | `b-lead` | — | — |
@@ -100,7 +100,7 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-chips` | — | `<b-chip>` внутри |
 | `b-io` | justify | `<item k* mono eq>` |
 | `b-qa` | cols (2/3) | `<q t*>` |
-| `b-rules` | cols (2/3) | `<rule icon* t*>` |
+| `b-rules` | cols (2/3), sw | `<rule icon* t*>` |
 | `b-stack` | label | `<seg w* color* ink>` |
 | `b-bar` | value*, color | — |
 | `b-todo` | — | `<item t*>` |
@@ -150,13 +150,33 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-prompt-tabs` | name* | `<b-prompt-tab>` внутри |
 | `b-prompt-tab` | id*, icon*, label*, title* | — (любые блоки) |
 | `b-prompt-parts` | — | `<part icon* off>` |
+| `b-lane-art` | names*, top | — |
+| `b-scene` | names* | — |
+| `b-tag-inline` | kind* (ok/no/muted) | — |
+| `b-arrow-rows` | wide | `<row t* color*>` |
+| `b-faq-cards` | — | `<q t*>` |
+| `b-embed-frame` | src*, title*, ratio* | — |
+| `b-agent-term` | app*, ver*, model*, path* | `<line kind* note>` |
+| `b-step-chain` | — | `<node t*>` |
+| `b-section-h3` | top | — |
+| `b-copy-code` | wrap | — (текст как есть) |
+| `b-code-text` | wrap | — (текст как есть) |
+| `b-copy-quote` | — | — |
+| `b-view-switch` | id* | `<view label*>` ×2 |
+| `b-callout` | icon* | — |
+| `b-rules-fixed` | cols*, top, sw | `<rule t* icon>` |
+| `b-spacer` | h* | — |
+| `b-art-note` | top, align (left) | — |
+| `b-source-rows` | wide | `<row t* note* href* link miss>` |
+| `b-table-plain` | — | HTML-таблица |
+| `b-details-more` | summary*, top | — |
+| `b-pick-tabs` | id*, tone* (warn/accent) | `<tab t*>` с `<b-pick-cell k* tone t>` внутри |
+| `b-steps-round` | — | `<step t* hl>` |
 
 ## Ещё не обобщено (разовые элементы серий)
 
 Остались ручной вёрсткой в своих постах и стилями серий — кандидаты в блоки, когда понадобятся второй раз:
 
-- **prompts**: анатомия промпта (`anat`/`an`).
-- **harness**: вкладки (`brk-*`, `vtog-*`), подсказки агенту с копированием (`pq-*`, `cb`), выноска (`callout`).
 - **hdd**: шкала стоимости (`sh`, `usd`), петля (`loopwrap`, `cf-*`), слои зрелости (`ly-r`/`ly-bar`),
   карты (`cn-*`, `gs-*`, `hm-*`, `sp-*`, `mm-*`, `pr4-*`), игра (`hdd-fig`, `hdd-sc`).
 - **kto**: источники (`src-*`), подсказки (`tip`/`tip-body`, `tt-*`), воронка (`cf-*`), точки-графики (`dp-*`),
@@ -165,4 +185,3 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
   сравнение (`cmp`), таймлайн (`tl`/`ph`).
 - **intervyu**: сценарий звонка (`script`/`sn`/`q`/`fu`), таблица Airtable (`atbl`, `at`, `fieldtype`),
   оценки (`rate`/`rt`), микс форматов (`mix`/`mx`), пары «плохо/хорошо» (`pairs`/`pr`), шкала (`gauge`).
-- Общий вариант: `chain` с карточками `nd` (harness) отличается от `chain` gruppy — разные блоки под одним именем.

@@ -1,0 +1,4 @@
+/* Частые вопросы столбиком: серые карточки, вопрос акцентом */
+.s-rich.bk .bk-faqc { display: grid; gap: 8px; margin-top: 6px; }
+.s-rich.bk .bk-faqc > div { background: var(--surface-2); border: 1px solid var(--muted); border-radius: 8px; padding: 10px 12px; }
+.s-rich.bk .bk-faqc > div > b:first-child { color: var(--accent); }

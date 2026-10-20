@@ -1,0 +1,2 @@
+/* Раскрывашка: жирный заголовок-кнопка */
+.s-rich.bk .bk-more > summary { cursor: pointer; font-weight: 700; }

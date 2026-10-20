@@ -1,0 +1,5 @@
+/* Выноска: мягкий фон акцента, полоса слева, значок и абзац */
+.s-rich.bk .bk-callout { font-size: 1.25rem; line-height: 1.5; display: flex; gap: 12px; align-items: flex-start; margin: 14px 0 0; padding: 12px 16px; border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; background: var(--accent-soft); color: var(--ink); }
+.s-rich.bk .bk-callout svg { flex: none; width: 22px; height: 22px; margin-top: 2px; color: var(--accent); }
+.s-rich.bk .bk-callout p { margin: 0; }
+.s-rich.bk .bk-callout :is(b, strong) { color: var(--accent); }

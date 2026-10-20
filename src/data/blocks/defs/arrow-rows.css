@@ -1,0 +1,8 @@
+/* Строки «понятие → пояснение» с цветной полосой слева */
+.s-rich.bk .bk-arw { display: grid; gap: 8px; margin-top: 12px; }
+.s-rich.bk .bk-arw-r { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; background: var(--surface-2); border-left: 4px solid var(--muted); border-radius: 6px; padding: 9px 12px; }
+.s-rich.bk .bk-arw-r > b { flex: 1 1 200px; }
+.s-rich.bk .bk-arw-a { flex: none; font-weight: 800; }
+.s-rich.bk .bk-arw-d { flex: 1.6 1 300px; }
+.s-rich.bk .bk-arw-wide .bk-arw-r > b { flex: 1 1 240px; }
+.s-rich.bk .bk-arw-wide .bk-arw-d { flex: 1.4 1 300px; }
