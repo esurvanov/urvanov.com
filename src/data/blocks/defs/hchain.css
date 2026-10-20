@@ -3,6 +3,6 @@
 .s-rich.bk .bk-hc-s { flex: 1 1 150px; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 14px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
 .s-rich.bk .bk-hc-s svg { width: 22px; height: 22px; color: var(--accent); }
 .s-rich.bk .bk-hc-s b { font-size: 15px; }
-.s-rich.bk .bk-hc-s code { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-2); background: none; padding: 0; }
+.s-rich.bk .bk-hc-s code { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink-2); }
 .s-rich.bk .bk-hc-a { color: var(--muted); font-size: 20px; }
 @media (max-width: 640px) { .s-rich.bk .bk-hc { flex-direction: column; align-items: stretch; } .s-rich.bk .bk-hc-a { text-align: center; transform: rotate(90deg); } }

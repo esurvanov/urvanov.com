@@ -1,0 +1,29 @@
+/* Вкладки на радиокнопках: видна панель выбранной вкладки, выбранная подпись — с заливкой акцента */
+.s-rich.bk .bk-tabs { position: relative; }
+.s-rich.bk .bk-tabs > input { position: absolute; opacity: 0; pointer-events: none; }
+/* Ряд подписей скруглён и обрезан по краю — так было в посте с примерами промптов */
+.s-rich.bk .bk-tb { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; border-radius: 4px; overflow: hidden; }
+.s-rich.bk .bk-tb label { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border: 1px solid var(--line-2); border-radius: 4px; background: var(--surface); color: var(--ink-2); font-size: 14px; font-weight: 600; cursor: pointer; line-height: 1.2; }
+.s-rich.bk .bk-tb label:hover { border-color: var(--accent); color: var(--ink); }
+.s-rich.bk .bk-tb-i { display: inline-flex; width: 16px; height: 16px; }
+.s-rich.bk .bk-tb-i svg { width: 16px; height: 16px; }
+.s-rich.bk .bk-tp { display: none; }
+.s-rich.bk .bk-tp-h { margin: 0 0 6px; font-size: 19px; }
+.s-rich.bk .bk-tabs > input:nth-of-type(1):checked ~ .bk-tp:nth-of-type(1),
+.s-rich.bk .bk-tabs > input:nth-of-type(2):checked ~ .bk-tp:nth-of-type(2),
+.s-rich.bk .bk-tabs > input:nth-of-type(3):checked ~ .bk-tp:nth-of-type(3),
+.s-rich.bk .bk-tabs > input:nth-of-type(4):checked ~ .bk-tp:nth-of-type(4),
+.s-rich.bk .bk-tabs > input:nth-of-type(5):checked ~ .bk-tp:nth-of-type(5),
+.s-rich.bk .bk-tabs > input:nth-of-type(6):checked ~ .bk-tp:nth-of-type(6),
+.s-rich.bk .bk-tabs > input:nth-of-type(7):checked ~ .bk-tp:nth-of-type(7),
+.s-rich.bk .bk-tabs > input:nth-of-type(8):checked ~ .bk-tp:nth-of-type(8) { display: block; }
+.s-rich.bk .bk-tabs > input:nth-of-type(1):checked ~ .bk-tb label:nth-of-type(1),
+.s-rich.bk .bk-tabs > input:nth-of-type(2):checked ~ .bk-tb label:nth-of-type(2),
+.s-rich.bk .bk-tabs > input:nth-of-type(3):checked ~ .bk-tb label:nth-of-type(3),
+.s-rich.bk .bk-tabs > input:nth-of-type(4):checked ~ .bk-tb label:nth-of-type(4),
+.s-rich.bk .bk-tabs > input:nth-of-type(5):checked ~ .bk-tb label:nth-of-type(5),
+.s-rich.bk .bk-tabs > input:nth-of-type(6):checked ~ .bk-tb label:nth-of-type(6),
+.s-rich.bk .bk-tabs > input:nth-of-type(7):checked ~ .bk-tb label:nth-of-type(7),
+.s-rich.bk .bk-tabs > input:nth-of-type(8):checked ~ .bk-tb label:nth-of-type(8) { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+.s-rich.bk .bk-tabs > input:focus-visible ~ .bk-tb { outline: 1px dashed var(--accent); outline-offset: 4px; }
+@media (max-width: 640px) { .s-rich.bk .bk-tb label { font-size: 13px; padding: 6px 10px; } }

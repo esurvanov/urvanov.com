@@ -1,0 +1,24 @@
+/* Уровни требований: строки-таблица с полоской силы; на телефоне — по две колонки, без заголовка */
+.s-rich.bk .bk-rl { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface); }
+.s-rich.bk .bk-rl-r { display: grid; grid-template-columns: 120px 1fr 140px 190px; gap: 12px; align-items: center; padding: 11px 14px; border-top: 1px solid var(--line); }
+.s-rich.bk .bk-rl-th { border-top: 0; background: var(--surface-2); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.s-rich.bk .bk-rl-k { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 14px; }
+.s-rich.bk .bk-rl-r.bk-s5 .bk-rl-k { color: var(--accent); }
+.s-rich.bk .bk-rl-r.bk-s3 .bk-rl-k { color: color-mix(in srgb, var(--accent) 65%, var(--muted)); }
+.s-rich.bk .bk-rl-r.bk-s1 .bk-rl-k { color: var(--muted); }
+.s-rich.bk .bk-rl-m { font-size: 14.5px; color: var(--ink-2); }
+.s-rich.bk .bk-rl-b { height: 8px; border-radius: 4px; background: var(--surface-2); overflow: hidden; }
+.s-rich.bk .bk-rl-b i { display: block; height: 100%; background: var(--accent); }
+.s-rich.bk .bk-rl-r.bk-s3 .bk-rl-b i { background: var(--accent); opacity: .55; }
+.s-rich.bk .bk-rl-r.bk-s1 .bk-rl-b i { background: var(--line-2); }
+.s-rich.bk .bk-rl-c { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; flex-wrap: wrap; }
+.s-rich.bk .bk-rl-c svg { width: 16px; height: 16px; color: var(--accent); }
+.s-rich.bk .bk-rl-c small { font-weight: 400; color: var(--muted); font-size: 12.5px; }
+.s-rich.bk .bk-rl-syn { margin-top: 8px; }
+@media (max-width: 640px) {
+  .s-rich.bk .bk-rl-r { grid-template-columns: 96px 1fr; row-gap: 6px; }
+  .s-rich.bk .bk-rl-th { display: none; }
+  .s-rich.bk .bk-rl-b { grid-column: 1; }
+  .s-rich.bk .bk-rl-c { grid-column: 2; }
+}
+.s-rich.bk .bk-rl-syn .bk-chip { line-height: inherit; }

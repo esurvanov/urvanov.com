@@ -11,12 +11,17 @@ export default defineBlock({
     item: {
       doc: 'карточка; внутри — строка-описание',
       required: true,
-      attrs: { href: { doc: 'адрес', required: true }, k: { doc: 'рубрика над названием', required: true }, t: { doc: 'название', required: true } },
+      attrs: {
+        href: { doc: 'адрес', required: true },
+        k: { doc: 'рубрика над названием', required: true },
+        t: { doc: 'название', required: true },
+        ext: { doc: 'внешняя ссылка: открыть в новой вкладке', values: [''] },
+      },
     },
   },
   render: ({ attrs, slots }) =>
     `<div class="bk-links${attrs.cols && attrs.cols !== '1' ? ` bk-cols-${attrs.cols}` : ''}">${slots.item.map((s) =>
-      `<a class="bk-link" href="${attr(s.attrs.href)}"><div class="bk-k">${s.attrs.k}</div><div class="bk-t">${s.attrs.t}</div><div class="bk-d">${inline(s.html)}</div></a>`).join('')}</div>`,
+      `<a class="bk-link" href="${attr(s.attrs.href)}"${'ext' in s.attrs ? ' target="_blank" rel="noopener"' : ''}><div class="bk-k">${s.attrs.k}</div><div class="bk-t">${s.attrs.t}</div><div class="bk-d">${inline(s.html)}</div></a>`).join('')}</div>`,
   example: {
     ru: '<b-links cols="2">\n  <item href="/blog/specs-rules-skills/" k="Контекст" t="Спеки, библия, правила и скиллы">Что агент должен знать о проекте</item>\n  <item href="/blog/harness-driven-development/" k="Метод" t="Harness-Driven Development">Ошибка агента → правило окружения</item>\n</b-links>',
     en: '<b-links cols="2">\n  <item href="/en/blog/specs-rules-skills/" k="Context" t="Specs, bible, rules and skills">What an agent should know about a project</item>\n  <item href="/en/blog/harness-driven-development/" k="Method" t="Harness-Driven Development">An agent mistake → a rule of its environment</item>\n</b-links>',

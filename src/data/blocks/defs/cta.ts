@@ -10,9 +10,10 @@ export default defineBlock({
     k: { doc: 'метка над заголовком: «Следующий шаг · HDD»', required: true },
     t: { doc: 'заголовок', required: true },
     icon: { doc: 'значок слева (тогда справа — стрелка)' },
+    sw: { doc: 'толщина линии значка слева (по умолчанию 2)' },
   },
   render: ({ attrs, children }) => attrs.icon
-    ? `<a class="bk-cta bk-cta-i" href="${attr(attrs.href)}"><span class="bk-cta-ic">${icon(attrs.icon)}</span><span class="bk-cta-b"><span class="bk-cta-k">${attrs.k}</span><b>${attrs.t}</b><span class="bk-cta-d">${inline(children)}</span></span><span class="bk-cta-ar">${icon('arrow-right')}</span></a>`
+    ? `<a class="bk-cta bk-cta-i" href="${attr(attrs.href)}"><span class="bk-cta-ic">${icon(attrs.icon, attrs.sw)}</span><span class="bk-cta-b"><span class="bk-cta-k">${attrs.k}</span><b>${attrs.t}</b><span class="bk-cta-d">${inline(children)}</span></span><span class="bk-cta-ar">${icon('arrow-right')}</span></a>`
     : `<a class="bk-cta" href="${attr(attrs.href)}"><span class="bk-cta-k">${attrs.k}</span><b>${attrs.t}</b><span class="bk-cta-d">${inline(children)}</span></a>`,
   example: {
     ru: '<b-cta href="/blog/harness-driven-development/" k="Следующий шаг · HDD" t="Harness-Driven Development">Как повторяющийся пропуск перенести из запроса в правила харнесса</b-cta>\n<b-cta href="/blog/spec-reconcile-loop/" k="Продолжение" t="Петля сверки для спек" icon="refresh-cw">как в Kubernetes: желаемое, замер и среда агента</b-cta>',
