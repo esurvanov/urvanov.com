@@ -1,0 +1,18 @@
+/* Диаграмма Венна в рамке; при наведении на схему области бледнеют, область под курсором — нет */
+.s-rich.bk .bk-venn { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 10px; }
+.s-rich.bk .bk-venn svg { width: 100%; height: auto; display: block; }
+.s-rich.bk .bk-venn .rg { transition: opacity .15s; }
+.s-rich.bk .bk-venn svg:hover .rg { opacity: .35; }
+.s-rich.bk .bk-venn svg .rg:hover { opacity: 1; }
+/* Области и подписи сцены (классы задаёт сцена в ../../blogArt): раньше — под классом серии harness */
+.s-rich.bk .bk-venn .v-h { fill: none; stroke: var(--accent); stroke-width: 2; }
+.s-rich.bk .bk-venn .v-cc { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 5; }
+.s-rich.bk .bk-venn .v-cx { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2; stroke-dasharray: 2 4; }
+.s-rich.bk .bk-venn .v-sh { fill: color-mix(in srgb, var(--accent) 30%, var(--surface)); stroke: var(--accent); stroke-width: 2; }
+.s-rich.bk .bk-venn .v-cu { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
+.s-rich.bk .bk-venn .v-ch { fill: var(--surface); stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 5; }
+.s-rich.bk .bk-venn .v-hm { fill: color-mix(in srgb, var(--accent) 8%, transparent); stroke: color-mix(in srgb, var(--accent) 55%, var(--muted)); stroke-width: 2.5; stroke-dasharray: 12 4; }
+.s-rich.bk .bk-venn .vpt { fill: var(--ink); }
+.s-rich.bk .bk-venn .vld { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 3 3; fill: none; }
+.s-rich.bk .bk-venn .vtl { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 16px; fill: var(--ink); pointer-events: none; }
+.s-rich.bk .bk-venn .vts { font-family: "JetBrains Mono", monospace; font-size: 12.5px; fill: var(--muted); pointer-events: none; }

@@ -1,0 +1,13 @@
+/* Переключатель вида: прилипает к верху, выбранная кнопка залита акцентом; радиокнопки скрыты */
+.s-rich.bk .bk-vt { position: sticky; top: 8px; z-index: 5; display: flex; justify-content: flex-end; margin: 0 0 14px; pointer-events: none; }
+.s-rich.bk .bk-vt > input { position: absolute; opacity: 0; pointer-events: none; }
+.s-rich.bk .bk-vt-b { display: inline-flex; border: 1px solid var(--line-2); border-radius: 6px; background: var(--surface); overflow: hidden; pointer-events: auto; }
+.s-rich.bk .bk-vt-b label { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; font-size: 13.5px; font-weight: 600; color: var(--ink-2); cursor: pointer; line-height: 1.2; }
+.s-rich.bk .bk-vt-b label svg { width: 16px; height: 16px; }
+.s-rich.bk .bk-vt-ic:checked ~ .bk-vt-b .bk-vt-lc,
+.s-rich.bk .bk-vt-is:checked ~ .bk-vt-b .bk-vt-ls { background: var(--accent); color: #fff; }
+.s-rich.bk .bk-vt-ic:focus-visible ~ .bk-vt-b .bk-vt-lc,
+.s-rich.bk .bk-vt-is:focus-visible ~ .bk-vt-b .bk-vt-ls { outline: 2px solid var(--accent); outline-offset: -2px; }
+/* Невыбранный вид прячется во всём посте */
+.s-rich.bk:has(.bk-vt-ic:checked) .bk-v-s { display: none; }
+.s-rich.bk:has(.bk-vt-is:checked) .bk-v-c { display: none; }

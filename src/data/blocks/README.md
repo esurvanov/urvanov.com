@@ -106,6 +106,25 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-todo` | — | `<item t*>` |
 | `b-hchain` | label* | `<step icon* t*>` |
 | `b-icon` | name*, sw | — |
+| `b-view-toggle` | — | — |
+| `b-view` | kind* (pic/struct) | — |
+| `b-art-plain` | name* | — |
+| `b-lane-stack` | — | `<b-lane>` / `<b-icon-lane>` внутри |
+| `b-icon-lane` | icon*, title*, color, top | — |
+| `b-qa-route` | — | `<node t* icon kind chips frame tools n time bar share>` |
+| `b-qa-row` | label*, now | `<node icon*>` |
+| `b-agents-lane` | title*, agents*, note, top | — |
+| `b-node-grid` | min (150/170) | `<node icon* t* sw>` |
+| `b-num-chain` | start, top | `<step>` |
+| `b-chiprow` | start, top | `<chip kind>` |
+| `b-ticket` | key* | — |
+| `b-kv-rows` | — | `<row k*>` |
+| `b-drift` | sm | — |
+| `b-tool-groups` | label* | `<group k* kind chips chip swap alts>` |
+| `b-venn` | name* | — |
+| `b-two-lists` | — | `<list icon* t* items* warn>` |
+| `b-harness-matrix` | label*, diff*, legend* | `<col icon* t*>`, `<row t*>`, `<cell icon* t part diff>` |
+| `b-harness-compare` | label*, heads*, acts*, yes*, no*, cheap*, dear* | `<row t* scope* scopelabel* acts* models* modelslabel* cost* costlabel* costproofs*>` |
 
 ## Ещё не обобщено (разовые элементы серий)
 
@@ -114,8 +133,7 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 - **prompts**: анатомия промпта (`anat`/`an`), окно промпта (`pa-*`), табы с примерами (`tabs`/`tb`/`tp`),
   слои контекста (`ly-*`), последовательность (`seq`/`sq`), файлы (`fls`), модели (`mds`/`md`), метрика (`mt`),
   планировщик (`pl-*`), части промпта (`parts`/`pt`), схема предметной области (`dm-*`).
-- **harness**: карточки харнессов (`hx`, `cv-*`, `cap2`), вкладки (`brk-*`, `vtog-*`, `vt-*`), подсказки агенту
-  с копированием (`pq-*`, `cb`), диаграмма Венна (`venn`), выноска (`callout`), пары (`pair`), дрейф (`drift`).
+- **harness**: вкладки (`brk-*`, `vtog-*`), подсказки агенту с копированием (`pq-*`, `cb`), выноска (`callout`).
 - **hdd**: шкала стоимости (`sh`, `usd`), петля (`loopwrap`, `cf-*`), слои зрелости (`ly-r`/`ly-bar`),
   карты (`cn-*`, `gs-*`, `hm-*`, `sp-*`, `mm-*`, `pr4-*`), игра (`hdd-fig`, `hdd-sc`).
 - **kto**: источники (`src-*`), подсказки (`tip`/`tip-body`, `tt-*`), воронка (`cf-*`), точки-графики (`dp-*`),
