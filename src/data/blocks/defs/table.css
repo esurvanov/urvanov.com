@@ -1,12 +1,14 @@
 /* Таблица в рамке, на узком экране прокручивается вбок */
-.s-rich.bk .bk-tbl { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
-.s-rich.bk .bk-chapter > :not(h2, h3, h4, p) + .bk-tbl { margin-top: 14px; }
-.s-rich.bk .bk-tbl table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; margin: 0; }
-.s-rich.bk .bk-tbl th { text-align: left; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 11px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.s-rich.bk .bk-tbl td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-2); vertical-align: middle; }
-.s-rich.bk .bk-tbl tbody tr:last-child td { border-bottom: none; }
-.s-rich.bk .bk-tbl td:first-child { color: var(--ink); font-weight: 600; }
-.s-rich.bk .bk-tbl :is(td, th).bk-r { text-align: right; font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
-.s-rich.bk .bk-tbl code { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink-2); overflow-wrap: anywhere; background: none; padding: 0; }
+.s-rich.bk .bk-table { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
+.s-rich.bk .bk-chapter > :not(h2, h3, h4, p) + .bk-table { margin-top: 14px; }
+.s-rich.bk .bk-table table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; margin: 0; }
+.s-rich.bk .bk-table th { text-align: left; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 11px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.s-rich.bk .bk-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-2); vertical-align: middle; }
+.s-rich.bk .bk-table tbody tr:last-child td { border-bottom: none; }
+.s-rich.bk .bk-table td:first-child { color: var(--ink); font-weight: 600; }
+.s-rich.bk .bk-table :is(td, th).bk-table-r { text-align: right; font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+.s-rich.bk .bk-table code { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink-2); overflow-wrap: anywhere; background: none; padding: 0; }
 /* code="prose": код в ячейках как в абзацах поста (.s-prose code) — с фоном, 0.9em */
-.s-rich.bk .bk-tbl.bk-tbl-code-prose code { font-family: var(--mono); font-size: .9em; color: inherit; background: var(--surface); padding: 2px 6px; overflow-wrap: normal; }
+.s-rich.bk .bk-table.bk-table-code-prose code { font-family: var(--mono); font-size: .9em; color: inherit; background: var(--surface); padding: 2px 6px; overflow-wrap: normal; }
+/* Значок в заголовке таблицы (<b-icon> в <th>, таблица оценок) — мелкий, по строке */
+.s-rich.bk .bk-table th > svg { width: 14px; height: 14px; vertical-align: -2px; margin-right: 4px; }

@@ -1,5 +1,5 @@
 /* Подпись под значением, цитата и строка-группа в таблице */
 .s-rich.bk .bk-cell-sub { display: block; font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 2px; }
-.s-rich.bk .bk-cell-q { font-style: italic; color: var(--ink); }
-.s-rich.bk .bk-tbl tr.bk-grp td { padding: 8px 16px 4px; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--muted); background: var(--surface-2); }
-.s-rich.bk .bk-tbl tr.bk-grp i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 8px; }
+.s-rich.bk .bk-cell-quote { font-style: italic; color: var(--ink); }
+.s-rich.bk .bk-table tr.bk-table-group td { padding: 8px 16px 4px; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--muted); background: var(--surface-2); }
+.s-rich.bk .bk-table tr.bk-table-group i { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 8px; }

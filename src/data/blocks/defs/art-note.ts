@@ -10,7 +10,7 @@ export default defineBlock({
     top: { doc: 'отступ сверху в px' },
     align: { doc: 'left — без выключки по ширине', values: ['left'] },
   },
-  render: ({ attrs, children }) => `<p class="bk-artn${attrs.align ? ' bk-left' : ''}"${topStyle(attrs.top)}>${inline(children)}</p>`,
+  render: ({ attrs, children }) => `<p class="bk-art-note${attrs.align ? ' bk-art-note-left' : ''}"${topStyle(attrs.top)}>${inline(children)}</p>`,
   example: {
     ru: '<b-art-note top="6">Порог 25 000 можно поднять настройкой окружения.</b-art-note>',
     en: '<b-art-note top="6">The 25,000 threshold can be raised with an environment setting.</b-art-note>',

@@ -17,9 +17,9 @@ export default defineBlock({
       },
     },
   },
-  render: ({ slots }) => `<div class="bk-gcmp">${slots.way.map((s) =>
-    `<div class="bk-gcmp-${s.attrs.kind}"><div class="bk-gcmp-h"><span class="bk-gcmp-s">${s.attrs.s}</span>${s.attrs.t}</div><div class="bk-gcmp-row" aria-hidden="true">${
-      s.attrs.dots.trim().split(/\s+/).map((c) => `<i style="background:${color(c)}"></i>`).join('')}</div><div class="bk-gcmp-m">${inline(s.html)}</div></div>`).join('')}</div>`,
+  render: ({ slots }) => `<div class="bk-gruppy-compare">${slots.way.map((s) =>
+    `<div class="bk-gruppy-compare-${s.attrs.kind}"><div class="bk-gruppy-compare-h"><span class="bk-gruppy-compare-s">${s.attrs.s}</span>${s.attrs.t}</div><div class="bk-gruppy-compare-row" aria-hidden="true">${
+      s.attrs.dots.trim().split(/\s+/).map((c) => `<i style="background:${color(c)}"></i>`).join('')}</div><div class="bk-gruppy-compare-m">${inline(s.html)}</div></div>`).join('')}</div>`,
   example: {
     ru: '<b-gruppy-compare>\n  <way kind="bad" s="мало" t="Топ по сообщениям" dots="c-chat c-chat c-chat c-work c-chat c-chat">сценариев: **2 из 8**</way>\n  <way kind="good" s="полно" t="Полярные группы" dots="c-code c-work c-chat c-silent c-none c-light">сценариев: **8 из 8**</way>\n</b-gruppy-compare>',
     en: '<b-gruppy-compare>\n  <way kind="bad" s="few" t="Top by messages" dots="c-chat c-chat c-chat c-work c-chat c-chat">scenarios: **2 of 8**</way>\n  <way kind="good" s="full" t="Polar groups" dots="c-code c-work c-chat c-silent c-none c-light">scenarios: **8 of 8**</way>\n</b-gruppy-compare>',

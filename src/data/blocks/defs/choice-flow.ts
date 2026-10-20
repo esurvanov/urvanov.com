@@ -19,10 +19,10 @@ export default defineBlock({
     },
   },
   render: ({ attrs, slots }) => {
-    const ar = `<span class="bk-mix-ar">${icon('arrow-right')}</span>`
-    const steps = slots.step.map((s) => `<span class="bk-mx">${s.attrs.t}<small>${inline(s.html)}</small></span>`).join(ar)
-    const opts = slots.opt.map((o) => `<div><em>${o.attrs.k}</em><span class="bk-at bk-at-${o.attrs.tone}">${o.attrs.pill}</span> ${inline(o.html)}</div>`).join('')
-    return `<div class="bk-mix" aria-label="${attr(attrs.label)}">${steps}${ar}<div class="bk-mxo">${opts}</div></div>`
+    const ar = `<span class="bk-choice-flow-ar">${icon('arrow-right')}</span>`
+    const steps = slots.step.map((s) => `<span class="bk-choice-flow-mx">${s.attrs.t}<small>${inline(s.html)}</small></span>`).join(ar)
+    const opts = slots.opt.map((o) => `<div><em>${o.attrs.k}</em><span class="bk-select-pill bk-select-pill-${o.attrs.tone}">${o.attrs.pill}</span> ${inline(o.html)}</div>`).join('')
+    return `<div class="bk-choice-flow" aria-label="${attr(attrs.label)}">${steps}${ar}<div class="bk-choice-flow-mxo">${opts}</div></div>`
   },
   example: {
     ru: '<b-choice-flow label="Голос или текст — выбирает респондент">\n  <step t="Приглашение">В личном сообщении</step>\n  <step t="Готов созвониться?">30 минут</step>\n  <opt k="да" tone="cyan" pill="голос">звонок с ассистентом для заметок</opt>\n  <opt k="нет" tone="purple" pill="текст">те же вопросы в переписке</opt>\n</b-choice-flow>',

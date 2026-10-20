@@ -19,7 +19,7 @@ export default defineBlock({
     },
   },
   render: ({ attrs, slots }) => `<div class="bk-pipe" aria-label="${attr(attrs.label)}">${slots.node.map((n) =>
-    `<span class="bk-pn" style="--c:${color(n.attrs.color)}">${icon(n.attrs.icon)}<span>${n.html}</span><small>${n.attrs.sub}</small></span>`).join(`<span class="bk-pipe-ar">${icon('arrow-right')}</span>`)}</div>`,
+    `<span class="bk-pipe-pn" style="--c:${color(n.attrs.color)}">${icon(n.attrs.icon)}<span>${n.html}</span><small>${n.attrs.sub}</small></span>`).join(`<span class="bk-pipe-ar">${icon('arrow-right')}</span>`)}</div>`,
   example: {
     ru: '<b-pipe label="Агент заполняет таблицу">\n  <node icon="terminal" color="c-code" sub="Или любой агент с MCP">Claude Code</node>\n  <node icon="plug" color="c-light" sub="Чтение и запись таблицы">Airtable MCP</node>\n  <node icon="table" color="c-proj" sub="Все поля и статусы">Airtable</node>\n</b-pipe>',
     en: '<b-pipe label="The agent fills the table">\n  <node icon="terminal" color="c-code" sub="Or any agent with MCP">Claude Code</node>\n  <node icon="plug" color="c-light" sub="Reads and writes the table">Airtable MCP</node>\n  <node icon="table" color="c-proj" sub="All fields and statuses">Airtable</node>\n</b-pipe>',

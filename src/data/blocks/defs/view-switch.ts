@@ -11,9 +11,9 @@ export default defineBlock({
   render: ({ attrs, slots }) => {
     if (slots.view.length !== 2) throw new Error(`blocks: <b-view-switch id="${attrs.id}"> — нужно ровно два <view>`)
     const id = attr(attrs.id), [a, b] = slots.view
-    return `<div class="bk-vs"><input type="radio" class="bk-vs-a" name="${id}" id="${id}-a" checked><input type="radio" class="bk-vs-b" name="${id}" id="${id}-b">`
-      + `<div class="bk-vs-tabs" role="group"><label class="bk-vs-la" for="${id}-a">${a.attrs.label}</label><label class="bk-vs-lb" for="${id}-b">${b.attrs.label}</label></div>`
-      + `<div class="bk-vs-va">${a.html}</div><div class="bk-vs-vb">${b.html}</div></div>`
+    return `<div class="bk-view-switch"><input type="radio" class="bk-view-switch-a" name="${id}" id="${id}-a" checked><input type="radio" class="bk-view-switch-b" name="${id}" id="${id}-b">`
+      + `<div class="bk-view-switch-tabs" role="group"><label class="bk-view-switch-la" for="${id}-a">${a.attrs.label}</label><label class="bk-view-switch-lb" for="${id}-b">${b.attrs.label}</label></div>`
+      + `<div class="bk-view-switch-va">${a.html}</div><div class="bk-view-switch-vb">${b.html}</div></div>`
   },
   example: {
     ru: '<b-view-switch id="vt-demo">\n  <view label="Просто"><b-why>Короткое объяснение.</b-why></view>\n  <view label="Подробно"><b-why>Подробное объяснение со схемами.</b-why></view>\n</b-view-switch>',

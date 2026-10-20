@@ -132,11 +132,14 @@ export function renderScene(sc: Scene, lang: Lang, o: { legend?: boolean } = {})
   const l: L = (ru, en) => (lang === 'ru' ? ru : en)
   sc.draw(c, l)
   const body = c.render()
-  let [vx, vy, vw, vh] = sc.viewBox ?? (() => { const [x0, y0, x1, y1] = bounds(body); return [x0 - 12, y0 - 12, x1 - x0 + 24, y1 - y0 + 24] })()
+  const [vx, vy, vw, vh0] = sc.viewBox ?? (() => { const [x0, y0, x1, y1] = bounds(body); return [x0 - 12, y0 - 12, x1 - x0 + 24, y1 - y0 + 24] })()
+  let vh = vh0
   const legend = sc.legend !== false && o.legend !== false ? legendRow(body, vx + vw / 2, vy + vh + 14, lang) : ''
   if (legend) vh += 26
   const label = lang === 'ru' ? sc.ru : sc.en
   const style = sc.style ?? 'width:100%;height:auto;display:block;margin-top:10px'
   const extra = Object.entries(sc.attrs ?? {}).map(([k, v]) => ` ${k}="${v}"`).join('')
-  return `<svg${sc.cls ? ` class="${sc.cls}"` : ''} viewBox="${f(vx)} ${f(vy)} ${f(vw)} ${f(vh)}" role="img" aria-label="${esc(label)}"${style ? ` style="${style}"` : ''}${extra}>${DEFS}${body}${legend}</svg>`
+  // Декоративная сцена (aria-hidden — подпись рядом текстом) не объявляет себя картинкой с подписью
+  const role = sc.attrs?.['aria-hidden'] === 'true' ? '' : ` role="img" aria-label="${esc(label)}"`
+  return `<svg${sc.cls ? ` class="${sc.cls}"` : ''} viewBox="${f(vx)} ${f(vy)} ${f(vw)} ${f(vh)}"${role}${style ? ` style="${style}"` : ''}${extra}>${DEFS}${body}${legend}</svg>`
 }

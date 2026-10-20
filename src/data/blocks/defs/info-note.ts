@@ -6,7 +6,7 @@ export default defineBlock({
   title: 'Заметка',
   doc: 'Плашка акцента со значком: оговорка или совет к разделу.',
   attrs: { icon: { doc: 'значок', required: true } },
-  render: ({ attrs, children }) => `<div class="bk-note"><span class="bk-note-i">${icon(attrs.icon)}</span><div>${inline(children)}</div></div>`,
+  render: ({ attrs, children }) => `<div class="bk-info-note"><span class="bk-info-note-i">${icon(attrs.icon)}</span><div>${inline(children)}</div></div>`,
   example: {
     ru: '<b-info-note icon="flag-alt-iv"><b>Важно.</b> Выберите из группы «изредка» 5–10 человек и узнайте на интервью, как они решают свои задачи.</b-info-note>',
     en: '<b-info-note icon="flag-alt-iv"><b>Important.</b> Pick 5–10 people from the “occasional” group and learn in interviews how they solve their tasks.</b-info-note>',

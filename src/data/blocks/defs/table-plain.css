@@ -1,6 +1,6 @@
 /* Таблица без рамки: шапка капсом, строки разделены линиями, первая колонка темнее */
-.s-rich.bk .bk-tblp { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
-.s-rich.bk .bk-tblp th { text-align: left; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 11px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.s-rich.bk .bk-tblp td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-2); vertical-align: middle; }
-.s-rich.bk .bk-tblp tbody tr:last-child td { border-bottom: none; }
-.s-rich.bk .bk-tblp td:first-child { color: var(--ink); font-weight: 600; }
+.s-rich.bk .bk-table-plain { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; }
+.s-rich.bk .bk-table-plain th { text-align: left; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 11px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.s-rich.bk .bk-table-plain td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-2); vertical-align: middle; }
+.s-rich.bk .bk-table-plain tbody tr:last-child td { border-bottom: none; }
+.s-rich.bk .bk-table-plain td:first-child { color: var(--ink); font-weight: 600; }

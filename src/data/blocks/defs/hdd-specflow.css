@@ -1,9 +1,9 @@
 /* Три шага со стрелками (hdd) */
-.s-rich.bk .bk-hsf { display: grid; grid-template-columns: 1fr 28px 1fr 28px 1fr; align-items: stretch; gap: 8px; }
-.s-rich.bk .bk-hsf-n { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 18px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); text-align: center; }
-.s-rich.bk .bk-hsf-n svg { width: 26px; height: 26px; color: var(--accent); }
-.s-rich.bk .bk-hsf-n b { font-size: 16px; }
-.s-rich.bk .bk-hsf-n small { font-size: 12.5px; color: var(--muted); }
-.s-rich.bk .bk-hsf-x { display: grid; place-items: center; color: var(--muted); }
-.s-rich.bk .bk-hsf-x svg { width: 20px; height: 20px; color: var(--muted); }
-@media (max-width: 640px) { .s-rich.bk .bk-hsf { grid-template-columns: 1fr; } .s-rich.bk .bk-hsf-x { transform: rotate(90deg); } }
+.s-rich.bk .bk-hdd-specflow { display: grid; grid-template-columns: 1fr 28px 1fr 28px 1fr; align-items: stretch; gap: 8px; }
+.s-rich.bk .bk-hdd-specflow-n { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 18px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); text-align: center; }
+.s-rich.bk .bk-hdd-specflow-n svg { width: 26px; height: 26px; color: var(--accent); }
+.s-rich.bk .bk-hdd-specflow-n b { font-size: 16px; }
+.s-rich.bk .bk-hdd-specflow-n small { font-size: 12.5px; color: var(--muted); }
+.s-rich.bk .bk-hdd-specflow-x { display: grid; place-items: center; color: var(--muted); }
+.s-rich.bk .bk-hdd-specflow-x svg { width: 20px; height: 20px; color: var(--muted); }
+@media (max-width: 640px) { .s-rich.bk .bk-hdd-specflow { grid-template-columns: 1fr; } .s-rich.bk .bk-hdd-specflow-x { transform: rotate(90deg); } }

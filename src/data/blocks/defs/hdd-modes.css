@@ -1,7 +1,7 @@
 /* Режимы рядом (hdd) */
-.s-rich.bk .bk-hmm { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.s-rich.bk .bk-hmm-c { display: grid; grid-template-columns: 36px 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: center; padding: 14px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
-.s-rich.bk .bk-hmm-c svg { grid-row: 1 / 3; width: 30px; height: 30px; color: var(--accent); }
-.s-rich.bk .bk-hmm-c b { font-family: "JetBrains Mono", monospace; font-size: 15px; }
-.s-rich.bk .bk-hmm-c small { font-size: 13px; color: var(--muted); }
-@media (max-width: 640px) { .s-rich.bk .bk-hmm { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-hdd-modes { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.s-rich.bk .bk-hdd-modes-c { display: grid; grid-template-columns: 36px 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: center; padding: 14px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.s-rich.bk .bk-hdd-modes-c svg { grid-row: 1 / 3; width: 30px; height: 30px; color: var(--accent); }
+.s-rich.bk .bk-hdd-modes-c b { font-family: "JetBrains Mono", monospace; font-size: 15px; }
+.s-rich.bk .bk-hdd-modes-c small { font-size: 13px; color: var(--muted); }
+@media (max-width: 640px) { .s-rich.bk .bk-hdd-modes { grid-template-columns: 1fr; } }

@@ -12,8 +12,8 @@ export default defineBlock({
       attrs: { k: { doc: 'подпись слева', required: true }, w: { doc: 'длина: 65%', required: true }, color: { doc: 'цвет полосы', required: true } },
     },
   },
-  render: ({ slots }) => `<div class="bk-bars">${slots.bar.map((b) =>
-    `<div class="bk-cbar"><span class="bk-cbar-l">${b.attrs.k}</span><span class="bk-cbar-tr"><span style="width:${b.attrs.w};background:${color(b.attrs.color)}"></span></span><span class="bk-cbar-v">${b.html}</span></div>`).join('')}</div>`,
+  render: ({ slots }) => `<div class="bk-count-bars-bars">${slots.bar.map((b) =>
+    `<div class="bk-count-bars"><span class="bk-count-bars-l">${b.attrs.k}</span><span class="bk-count-bars-tr"><span style="width:${b.attrs.w};background:${color(b.attrs.color)}"></span></span><span class="bk-count-bars-v">${b.html}</span></div>`).join('')}</div>`,
   example: {
     ru: '<b-count-bars>\n  <bar k="Slack" w="100%" color="c-work">520</bar>\n  <bar k="Notion" w="65%" color="c-work">340</bar>\n  <bar k="GitHub" w="40%" color="c-work">210</bar>\n</b-count-bars>',
     en: '<b-count-bars>\n  <bar k="Slack" w="100%" color="c-work">520</bar>\n  <bar k="Notion" w="65%" color="c-work">340</bar>\n  <bar k="GitHub" w="40%" color="c-work">210</bar>\n</b-count-bars>',

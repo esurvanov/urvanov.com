@@ -3,8 +3,10 @@
 // Картинки разницы — в node_modules/.cache/site-checks/visual (или --out <dir>).
 //
 //   npm run check:visual -- [--base <dir>] [--dist <dir>] [--only /blog/x/] [--all] [--threshold 0.1] [--out <dir>]
+//                          [--widths 1280,390] [--theme dark]
 //   --threshold — доля изменённых пикселей в %, выше которой страница считается изменённой (по умолчанию 0.1)
 //   --all       — все страницы из sitemap, а не только посты
+//   --theme     — тема системы при снимке: light (по умолчанию) или dark
 import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { PNG } from 'pngjs'
@@ -20,6 +22,7 @@ const WIDTHS = String(args.widths || '1280,390').split(',').map(Number)
 const THRESHOLD = Number(args.threshold ?? 0.1)
 const CONCURRENCY = Number(args.concurrency || 6)
 const OUT = outDir(args, 'visual')
+const THEME = args.theme === 'dark' ? 'dark' : 'light'
 
 for (const d of [BASE, DIST]) if (!existsSync(join(d, 'sitemap.xml'))) {
   console.error(`Нет сборки: ${d}/sitemap.xml`)
@@ -52,7 +55,7 @@ async function shot(origin, path, width) {
   try {
     await isolatePage(page, origin)
     await page.setViewport({ width, height: 900, deviceScaleFactor: 1, isMobile: width < 600, hasTouch: width < 600 })
-    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }, { name: 'prefers-color-scheme', value: 'light' }])
+    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }, { name: 'prefers-color-scheme', value: THEME }])
     await page.evaluateOnNewDocument((css) => {
       document.addEventListener('DOMContentLoaded', () => { const s = document.createElement('style'); s.textContent = css; document.head.appendChild(s) })
     }, FREEZE_CSS)
@@ -90,7 +93,9 @@ async function fullShot(page, width) {
   const chunks = []
   for (let y = 0; y < height; y += CHUNK) {
     const h = Math.min(CHUNK, height - y)
-    chunks.push(Buffer.from(await page.screenshot({ clip: { x: 0, y, width, height: h }, captureBeyondViewport: false, optimizeForSpeed: true })))
+    // Окно не выше 32 000 px (витрина блоков — 56 тыс.): куски ниже окна без captureBeyondViewport выходят нулевой высоты
+    const beyond = y + h > page.viewport().height
+    chunks.push(Buffer.from(await page.screenshot({ clip: { x: 0, y, width, height: h }, captureBeyondViewport: beyond, optimizeForSpeed: true })))
   }
   return { width, height, chunks }
 }

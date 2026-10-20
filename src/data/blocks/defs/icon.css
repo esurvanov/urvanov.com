@@ -1,5 +1,5 @@
 /* Значок в тексте — размером со строку; на витрине — сетка всех значков */
-.s-rich.bk p > svg[viewBox="0 0 24 24"], .s-rich.bk td > svg[viewBox="0 0 24 24"] { width: 1.1em; height: 1.1em; vertical-align: -.2em; }
-.s-rich.bk .bk-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; text-align: left; }
-.s-rich.bk .bk-icons span { display: flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink-2); }
-.s-rich.bk .bk-icons svg { width: 20px; height: 20px; flex: none; color: var(--ink); }
+.s-rich.bk p > svg.bk-icon-i, .s-rich.bk td > svg.bk-icon-i { width: 1.1em; height: 1.1em; vertical-align: -.2em; }
+.s-rich.bk .bk-icon { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; text-align: left; }
+.s-rich.bk .bk-icon span { display: flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink-2); }
+.s-rich.bk .bk-icon svg { width: 20px; height: 20px; flex: none; color: var(--ink); }

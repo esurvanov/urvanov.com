@@ -1,5 +1,5 @@
 /* Строчная метка: высота строки — от текста вокруг */
-.s-rich.bk .bk-tgi { font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 4px; white-space: nowrap; }
-.s-rich.bk .bk-tgi-ok { background: var(--accent-soft); color: var(--accent); }
-.s-rich.bk .bk-tgi-no { background: var(--warn-soft); color: var(--warn); }
-.s-rich.bk .bk-tgi-muted { background: var(--surface-2); color: var(--muted); }
+.s-rich.bk .bk-tag-inline { font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 4px; white-space: nowrap; }
+.s-rich.bk .bk-tag-inline-ok { background: var(--accent-soft); color: var(--accent); }
+.s-rich.bk .bk-tag-inline-no { background: var(--warn-soft); color: var(--warn); }
+.s-rich.bk .bk-tag-inline-muted { background: var(--surface-2); color: var(--muted); }

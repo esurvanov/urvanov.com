@@ -16,10 +16,10 @@ export default [
     render: ({ attrs, slots }) => {
       if (slots.tab.length > 8) throw new Error(`blocks: <b-pick-tabs id="${attrs.id}"> — не больше 8 вкладок`)
       const id = attr(attrs.id)
-      return `<div class="bk-pick${attrs.tone === 'accent' ? ' bk-pick-a' : ''}">`
+      return `<div class="bk-pick-tabs${attrs.tone === 'accent' ? ' bk-pick-tabs-a' : ''}">`
         + slots.tab.map((_, i) => `<input type="radio" name="${id}" id="${id}${i + 1}"${i ? '' : ' checked'}>`).join('')
-        + `<div class="bk-pick-tabs">${slots.tab.map((s, i) => `<label for="${id}${i + 1}"><i>${i + 1}</i>${s.attrs.t}</label>`).join('')}</div>`
-        + slots.tab.map((s, i) => `<div class="bk-pick-p bk-pick-p${i + 1}">${s.html}</div>`).join('')
+        + `<div class="bk-pick-tabs-row">${slots.tab.map((s, i) => `<label for="${id}${i + 1}"><i>${i + 1}</i>${s.attrs.t}</label>`).join('')}</div>`
+        + slots.tab.map((s, i) => `<div class="bk-pick-tabs-p bk-pick-tabs-p${i + 1}">${s.html}</div>`).join('')
         + '</div>'
     },
     example: {
@@ -37,7 +37,7 @@ export default [
       t: { doc: 'жирное название под подписью' },
     },
     render: ({ attrs, children }) => {
-      const k = `<span class="bk-pick-k${attrs.tone ? ` bk-pick-k-${attrs.tone === 'warn' ? 'w' : 'a'}` : ''}">${attrs.k}</span>`
+      const k = `<span class="bk-pick-tabs-k${attrs.tone ? ` bk-pick-tabs-k-${attrs.tone === 'warn' ? 'w' : 'a'}` : ''}">${attrs.k}</span>`
       const d = children.trim() ? `<span>${inline(children)}</span>` : ''
       return `<div>${k}${attrs.t ? `<b>${attrs.t}</b>` : ''}${d}</div>`
     },

@@ -1,2 +1,2 @@
 /* Встроенная сцена: во всю ширину, без рамки, скруглённая */
-.s-rich.bk .bk-embed { width: 100%; border: 0; border-radius: 10px; display: block; margin-top: 10px; }
+.s-rich.bk .bk-embed-frame { width: 100%; border: 0; border-radius: 10px; display: block; margin-top: 10px; }

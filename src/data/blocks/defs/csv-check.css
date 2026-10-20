@@ -1,7 +1,7 @@
 /* Сверка выгрузок: плашки, «=», зелёный круг с галочкой */
-.s-rich.bk .bk-chk { display: flex; align-items: center; gap: 10px; }
-.s-rich.bk .bk-csv { display: flex; flex-direction: column; gap: 5px; }
-.s-rich.bk .bk-csv span { width: 58px; height: 18px; border-radius: 4px; font-size: 9.5px; font-weight: 700; color: #fff; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; }
-.s-rich.bk .bk-chk-eq { color: var(--muted); font-size: 18px; font-weight: 700; }
-.s-rich.bk .bk-chk-ok { width: 54px; height: 54px; border-radius: 50%; background: var(--c-work); color: #fff; display: grid; place-items: center; }
-.s-rich.bk .bk-chk-ok svg { width: 28px; height: 28px; }
+.s-rich.bk .bk-csv-check { display: flex; align-items: center; gap: 10px; }
+.s-rich.bk .bk-csv-check-csv { display: flex; flex-direction: column; gap: 5px; }
+.s-rich.bk .bk-csv-check-csv span { width: 58px; height: 18px; border-radius: 4px; font-size: 9.5px; font-weight: 700; color: #fff; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; }
+.s-rich.bk .bk-csv-check-eq { color: var(--muted); font-size: 18px; font-weight: 700; }
+.s-rich.bk .bk-csv-check-ok { width: 54px; height: 54px; border-radius: 50%; background: var(--c-work); color: #fff; display: grid; place-items: center; }
+.s-rich.bk .bk-csv-check-ok svg { width: 28px; height: 28px; }

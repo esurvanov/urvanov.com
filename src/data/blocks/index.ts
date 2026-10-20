@@ -3,16 +3,34 @@
 // обычный статический HTML. Блок — один файл в ./defs (и, если нужно, свой .css рядом): реестр собирается сам,
 // общего списка нет. Неизвестная метка, лишний или недостающий атрибут — ошибка сборки с понятным сообщением.
 import type { Block, BlockCtx, Lang, SlotItem } from './core'
+import { cssErrors, htmlClasses, makeRegistry, renderError } from './namespace'
 
 const modules = import.meta.glob('./defs/*.ts', { eager: true, import: 'default' }) as Record<string, Block | Block[]>
 
 export const BLOCKS: Record<string, Block> = {}
+const byFile: Record<string, Block[]> = {}
 for (const [path, mod] of Object.entries(modules)) {
   for (const b of Array.isArray(mod) ? mod : [mod]) {
     // Два файла с одной меткой — ошибка: иначе один молча перекрыл бы другой
     if (BLOCKS[b.tag]) throw new Error(`blocks: метка <b-${b.tag}> объявлена дважды (${path})`)
     BLOCKS[b.tag] = b
+    ;(byFile[path.slice(7, -3)] ??= []).push(b)
   }
+}
+
+// Пространство имён классов (./namespace.ts) проверяется при сборке и в dev; в браузерную сборку CSS-текст не попадает
+const CHECK = import.meta.env.SSR || import.meta.env.DEV
+const REG = makeRegistry(byFile)
+const FILE_OF_BLOCK = new Map(Object.entries(byFile).flatMap(([f, bs]) => bs.map((b) => [b, f] as const)))
+if (CHECK) {
+  const css = import.meta.glob('./defs/*.css', { eager: true, query: '?raw', import: 'default' }) as Record<string, string>
+  const errors: string[] = []
+  for (const [path, text] of Object.entries(css)) {
+    const file = path.slice(7, -4)
+    if (!byFile[file]) errors.push(`src/data/blocks/defs/${file}.css: нет блока defs/${file}.ts — стили живут рядом со своим блоком`)
+    else errors.push(...cssErrors(REG, file, text))
+  }
+  if (errors.length) throw new Error(`blocks: пространство имён классов (src/data/blocks/README.md):\n  ${errors.join('\n  ')}`)
 }
 
 /** Блоки по алфавиту — для витрины и README */
@@ -122,9 +140,26 @@ function checkAttrs(attrs: Record<string, string>, spec: Block['attrs'], what: s
   }
 }
 
-function render(nodes: Node[], lang: Lang, flow: boolean, where: string): string {
+/**
+ * Классы bk-* в HTML блока (или в тексте поста внутри него) — только свои или общие (./namespace.ts). Классы,
+ * которые уже есть во вложенных блоках и элементах, проверены там: блок может раскладывать содержимое по-своему
+ */
+function checkClasses(html: string, owner: Block | null, nested: string[], fail: (msg: string) => never) {
+  const inner = new Set(htmlClasses(nested.join('')))
+  const file = owner ? FILE_OF_BLOCK.get(owner)! : ''
+  for (const c of new Set(htmlClasses(html))) {
+    if (inner.has(c)) continue
+    const err = owner ? renderError(REG, file, c) : `класс «${c}» вне блоков`
+    if (err) fail(`${owner ? `<b-${owner.tag}> (defs/${file}.ts): ` : ''}${err}`)
+  }
+}
+
+function render(nodes: Node[], lang: Lang, flow: boolean, where: string, parent: Block | null = null): string {
   return nodes.map((n) => {
-    if (n.kind === 'text') return normText(n.value, flow)
+    if (n.kind === 'text') {
+      if (CHECK && n.value.includes('bk-')) checkClasses(n.value, parent, [], (msg) => { throw new Error(`blocks: ${where}: ${msg}`) })
+      return normText(n.value, flow)
+    }
     const fail = (msg: string): never => { throw new Error(`blocks: ${where}, строка ${n.line}: ${msg}`) }
     if (n.kind === 'slot') return fail(`<${n.name}> здесь не к месту`)
     const b = n.block
@@ -135,25 +170,29 @@ function render(nodes: Node[], lang: Lang, flow: boolean, where: string): string
     for (const c of n.children) {
       if (c.kind !== 'slot') { rest.push(c); continue }
       checkAttrs(c.attrs, b.slots![c.name].attrs, `<${c.name}> в ${name}`, fail)
-      ;(slots[c.name] ??= []).push({ attrs: c.attrs, html: render(c.children, lang, false, where).trim() })
+      ;(slots[c.name] ??= []).push({ attrs: c.attrs, html: render(c.children, lang, false, where, b).trim() })
     }
     for (const [k, s] of Object.entries(b.slots ?? {})) if (s.required && !slots[k]) fail(`в ${name} нужен хотя бы один <${k}>: ${s.doc}`)
     const ctx: BlockCtx = {
       lang,
       attrs: n.attrs,
-      children: render(rest, lang, !!b.flow, where),
+      children: render(rest, lang, !!b.flow, where, b),
       slots,
       raw: n.raw,
       l: (ru, en) => (lang === 'en' ? en : ru),
     }
     const html = b.render(ctx)
+    if (CHECK) checkClasses(html, b, [ctx.children, ...Object.values(slots).flat().map((s) => s.html)], fail)
     // Пустая строка внутри HTML оборвала бы HTML-блок для markdown: в обычных блоках её не бывает
     return b.flow ? html : html.replace(/\n[ \t]*\n/g, '\n')
   }).join('')
 }
 
-/** Развернуть метки блоков в тексте поста (до markdown). Без меток текст возвращается как есть; line0 — строк до текста (фронтматтер) */
-export function withBlocks(src: string, lang: Lang, where = 'пост', line0 = 0): string {
+/**
+ * Развернуть метки блоков в тексте поста (до markdown). Без меток текст возвращается как есть; line0 — строк до текста
+ * (фронтматтер); owner — метка блока, которому принадлежат классы bk-* в тексте вне блоков (пример на витрине)
+ */
+export function withBlocks(src: string, lang: Lang, where = 'пост', line0 = 0, owner?: string): string {
   if (!src.includes('<b-')) return src
-  return render(parse(src, where, line0), lang, true, where)
+  return render(parse(src, where, line0), lang, true, where, owner ? BLOCKS[owner] : null)
 }

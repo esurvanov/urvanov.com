@@ -21,9 +21,9 @@ export default defineBlock({
     },
   },
   render: ({ slots, l }) => `<div class="bk-sources">${slots.src.map((s) =>
-    `<div class="bk-src"><div class="bk-src-ico" aria-hidden="true">${icon(s.attrs.icon, '1.8')}</div>`
-    + `<div><div class="bk-src-name"><a href="${attr(s.attrs.href)}" target="_blank" rel="noopener">${s.attrs.t}</a></div><div class="bk-src-path">${s.attrs.path}</div><div class="bk-src-what">${s.attrs.what}</div></div>`
-    + `<span class="bk-tip" tabindex="0" aria-label="${attr(s.attrs['tip-label'])}">i<span class="bk-tip-body" role="tooltip"><span class="bk-tip-k">${l('Что внутри', 'What&#39;s inside')}</span>${s.html}</span></span></div>`).join('')}</div>`,
+    `<div class="bk-sources-src"><div class="bk-sources-src-ico" aria-hidden="true">${icon(s.attrs.icon, '1.8')}</div>`
+    + `<div><div class="bk-sources-src-name"><a href="${attr(s.attrs.href)}" target="_blank" rel="noopener">${s.attrs.t}</a></div><div class="bk-sources-src-path">${s.attrs.path}</div><div class="bk-sources-src-what">${s.attrs.what}</div></div>`
+    + `<span class="bk-sources-tip" tabindex="0" aria-label="${attr(s.attrs['tip-label'])}">i<span class="bk-sources-tip-body" role="tooltip"><span class="bk-sources-tip-k">${l('Что внутри', 'What&#39;s inside')}</span>${s.html}</span></span></div>`).join('')}</div>`,
   example: {
     ru: '<b-sources>\n  <src icon="users-alt" href="https://chatgpt.com/admin/usage/users" t="Пользователи" path="chatgpt.com/admin/usage/users" what="Сообщения, даты активности и встроенные инструменты каждого человека" tip-label="Что внутри раздела Пользователи">Экспорт CSV за период до 12 месяцев. Поля: messages, tool_messages, department, last_day_active.</src>\n</b-sources>',
     en: '<b-sources>\n  <src icon="users-alt" href="https://chatgpt.com/admin/usage/users" t="Users" path="chatgpt.com/admin/usage/users" what="Messages, activity dates, and built-in tools for each person" tip-label="What is inside the Users section">CSV export for a period of up to 12 months. Fields: messages, tool_messages, department, last_day_active.</src>\n</b-sources>',

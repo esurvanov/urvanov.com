@@ -1,5 +1,5 @@
 /* Части промпта плашками: есть — акцентом, нет — бледно */
-.s-rich.bk .bk-parts { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
-.s-rich.bk .bk-pt { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 3px 10px 3px 8px; border-radius: 11px; background: var(--accent-soft); color: var(--accent); }
-.s-rich.bk .bk-pt svg { width: 13px; height: 13px; }
-.s-rich.bk .bk-pt.bk-off { background: var(--surface-2); color: var(--muted); opacity: .55; }
+.s-rich.bk .bk-prompt-parts { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.s-rich.bk .bk-prompt-parts-pt { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 3px 10px 3px 8px; border-radius: 11px; background: var(--accent-soft); color: var(--accent); }
+.s-rich.bk .bk-prompt-parts-pt svg { width: 13px; height: 13px; }
+.s-rich.bk .bk-prompt-parts-pt.bk-prompt-parts-off { background: var(--surface-2); color: var(--muted); opacity: .55; }

@@ -1,7 +1,7 @@
 /* Файлы плиткой: значок слева на две строки, имя и подпись */
-.s-rich.bk .bk-fls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
-@media (max-width: 640px) { .s-rich.bk .bk-fls { grid-template-columns: 1fr; } }
-.s-rich.bk .bk-fl { display: grid; grid-template-columns: 18px 1fr; column-gap: 8px; row-gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 12px 14px; }
-.s-rich.bk .bk-fl svg { width: 16px; height: 16px; color: color-mix(in srgb, var(--accent) 70%, var(--ink)); grid-row: span 2; margin-top: 2px; }
-.s-rich.bk .bk-fl code { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink); overflow-wrap: anywhere; }
-.s-rich.bk .bk-fl small { font-size: 13px; color: var(--muted); }
+.s-rich.bk .bk-file-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+@media (max-width: 640px) { .s-rich.bk .bk-file-grid { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-file-grid-fl { display: grid; grid-template-columns: 18px 1fr; column-gap: 8px; row-gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 12px 14px; }
+.s-rich.bk .bk-file-grid-fl svg { width: 16px; height: 16px; color: color-mix(in srgb, var(--accent) 70%, var(--ink)); grid-row: span 2; margin-top: 2px; }
+.s-rich.bk .bk-file-grid-fl code { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--ink); overflow-wrap: anywhere; }
+.s-rich.bk .bk-file-grid-fl small { font-size: 13px; color: var(--muted); }

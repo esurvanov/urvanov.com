@@ -18,10 +18,10 @@ export default defineBlock({
     },
   },
   render: ({ slots, l }) => {
-    const pair = slots.side ? `<div class="bk-ev-pair">${slots.side.map((s) =>
-      `<div class="bk-ev-pp">${icon(s.attrs.icon, s.attrs.sw)}<b>${s.attrs.t}</b><small>${s.html}</small></div>`).join('<span class="bk-ev-eq">≈</span>')}</div>` : ''
-    return `${pair}<div class="bk-ev">${slots.cap.map((s) =>
-      `<div class="bk-ev-c"><span class="bk-ev-i">${icon(s.attrs.icon)}</span><b>${s.attrs.t}</b><small><span>${l('без этого →', 'without it →')}</span> ${s.html}</small></div>`).join('')}</div>`
+    const pair = slots.side ? `<div class="bk-env-caps-pair">${slots.side.map((s) =>
+      `<div class="bk-env-caps-pp">${icon(s.attrs.icon, s.attrs.sw)}<b>${s.attrs.t}</b><small>${s.html}</small></div>`).join('<span class="bk-env-caps-eq">≈</span>')}</div>` : ''
+    return `${pair}<div class="bk-env-caps">${slots.cap.map((s) =>
+      `<div class="bk-env-caps-c"><span class="bk-env-caps-i">${icon(s.attrs.icon)}</span><b>${s.attrs.t}</b><small><span>${l('без этого →', 'without it →')}</span> ${s.html}</small></div>`).join('')}</div>`
   },
   example: {
     ru: '<b-env-caps>\n  <side icon="hub" sw="1.6" t="кластер">среда контроллера</side>\n  <side icon="terminal-screen" sw="1.8" t="харнесс">среда агента</side>\n  <cap icon="play" t="Запуск кода">догадки вместо фактов</cap>\n  <cap icon="flask" t="Тесты">MUST не проверить</cap>\n  <cap icon="database" t="Тестовые данные">проверка на пустом</cap>\n</b-env-caps>',

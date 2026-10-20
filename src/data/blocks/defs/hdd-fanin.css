@@ -1,22 +1,22 @@
 /* Два входа → узел → два выхода (hdd): пять колонок со стрелками, на телефоне — столбиком со стрелками «↓» */
-.s-rich.bk .bk-hfi { margin-top: 14px; display: grid; grid-template-columns: 1fr 80px 1fr 80px 1fr; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
-.s-rich.bk :is(.bk-hfi-l, .bk-hfi-r) { display: flex; flex-direction: column; gap: 28px; }
-.s-rich.bk .bk-hfi-m { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.s-rich.bk .bk-hfi-n { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 6px; border: 1.5px solid var(--line-2); background: var(--surface-2); font-weight: 700; }
-.s-rich.bk .bk-hfi-n svg { width: 18px; height: 18px; color: var(--accent); }
-.s-rich.bk .bk-hfi-n.bk-hfi-key { border: 2px solid var(--accent); background: var(--accent-soft); }
-.s-rich.bk .bk-hfi-no { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--warn); }
-.s-rich.bk .bk-hfi-ar svg { width: 100%; height: auto; }
-.s-rich.bk .bk-hfi-e { fill: none; stroke: var(--ink-2); stroke-width: 1.6; }
-.s-rich.bk .bk-hfi-o { text-align: center; padding: 10px; border-radius: 6px; border: 1.5px solid var(--accent); font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 600; color: var(--accent); }
-.s-rich.bk .bk-hfi-o.bk-alt { border-style: dashed; background: var(--accent-soft); }
-.s-rich.bk .bk-hfi-note { margin-top: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
-.s-rich.bk .bk-hfi-note span { display: inline-flex; align-items: center; gap: 2px; color: var(--accent); }
-.s-rich.bk .bk-hfi-note svg { width: 16px; height: 16px; }
-.s-rich.bk .bk-hfi-note i { font-style: normal; }
+.s-rich.bk .bk-hdd-fanin { margin-top: 14px; display: grid; grid-template-columns: 1fr 80px 1fr 80px 1fr; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
+.s-rich.bk :is(.bk-hdd-fanin-l, .bk-hdd-fanin-r) { display: flex; flex-direction: column; gap: 28px; }
+.s-rich.bk .bk-hdd-fanin-m { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.s-rich.bk .bk-hdd-fanin-n { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 6px; border: 1.5px solid var(--line-2); background: var(--surface-2); font-weight: 700; }
+.s-rich.bk .bk-hdd-fanin-n svg { width: 18px; height: 18px; color: var(--accent); }
+.s-rich.bk .bk-hdd-fanin-n.bk-hdd-fanin-key { border: 2px solid var(--accent); background: var(--accent-soft); }
+.s-rich.bk .bk-hdd-fanin-no { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--warn); }
+.s-rich.bk .bk-hdd-fanin-ar svg { width: 100%; height: auto; }
+.s-rich.bk .bk-hdd-fanin-e { fill: none; stroke: var(--ink-2); stroke-width: 1.6; }
+.s-rich.bk .bk-hdd-fanin-o { text-align: center; padding: 10px; border-radius: 6px; border: 1.5px solid var(--accent); font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 600; color: var(--accent); }
+.s-rich.bk .bk-hdd-fanin-o.bk-hdd-fanin-alt { border-style: dashed; background: var(--accent-soft); }
+.s-rich.bk .bk-hdd-fanin-note { margin-top: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.s-rich.bk .bk-hdd-fanin-note span { display: inline-flex; align-items: center; gap: 2px; color: var(--accent); }
+.s-rich.bk .bk-hdd-fanin-note svg { width: 16px; height: 16px; }
+.s-rich.bk .bk-hdd-fanin-note i { font-style: normal; }
 @media (max-width: 640px) {
-  .s-rich.bk .bk-hfi { grid-template-columns: 1fr; gap: 10px; }
-  .s-rich.bk .bk-hfi-ar { display: none; }
-  .s-rich.bk :is(.bk-hfi-m, .bk-hfi-r)::before { content: "↓"; display: block; text-align: center; color: var(--ink-2); font-size: 20px; line-height: 1; margin-bottom: 8px; }
-  .s-rich.bk :is(.bk-hfi-l, .bk-hfi-r) { gap: 8px; }
+  .s-rich.bk .bk-hdd-fanin { grid-template-columns: 1fr; gap: 10px; }
+  .s-rich.bk .bk-hdd-fanin-ar { display: none; }
+  .s-rich.bk :is(.bk-hdd-fanin-m, .bk-hdd-fanin-r)::before { content: "↓"; display: block; text-align: center; color: var(--ink-2); font-size: 20px; line-height: 1; margin-bottom: 8px; }
+  .s-rich.bk :is(.bk-hdd-fanin-l, .bk-hdd-fanin-r) { gap: 8px; }
 }

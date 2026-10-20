@@ -1,6 +1,6 @@
 /* Ветка «если…»: плашка акцента с круглым значком */
 .s-rich.bk .bk-branch { margin-top: 12px; display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; background: var(--accent-soft); border-radius: 4px; padding: 13px 16px; }
-.s-rich.bk .bk-bi { margin-top: 2px; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; }
-.s-rich.bk .bk-bi svg { width: 17px; height: 17px; }
+.s-rich.bk .bk-branch-bi { margin-top: 2px; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; }
+.s-rich.bk .bk-branch-bi svg { width: 17px; height: 17px; }
 .s-rich.bk .bk-branch b { display: block; font-size: 15px; }
 .s-rich.bk .bk-branch div > span { display: block; font-size: 14.5px; color: var(--ink-2); line-height: 1.45; margin-top: 2px; }

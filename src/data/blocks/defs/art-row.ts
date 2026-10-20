@@ -14,8 +14,8 @@ export default defineBlock({
   render: ({ attrs }) => {
     const arts = attrs.names.trim().split(/\s+/).map((n) => `<iso-art name="${attr(n)}"></iso-art>`)
     const seq = 'arrows' in attrs
-    const cls = ['bk-dp', seq && 'bk-dp-seq', attrs.cols === '1' && 'bk-dp-1'].filter(Boolean).join(' ')
-    return `<div class="${cls}">${arts.join(seq ? `<span class="bk-dp-ar" aria-hidden="true">${icon('arrow-right')}</span>` : '')}</div>`
+    const cls = ['bk-art-row', seq && 'bk-art-row-seq', attrs.cols === '1' && 'bk-art-row-1'].filter(Boolean).join(' ')
+    return `<div class="${cls}">${arts.join(seq ? `<span class="bk-art-row-ar" aria-hidden="true">${icon('arrow-right')}</span>` : '')}</div>`
   },
   example: {
     ru: '<b-art-row names="chatgpt-enterprise-usage-report/depth-tried chatgpt-enterprise-usage-report/depth-regular chatgpt-enterprise-usage-report/depth-weekly"></b-art-row>\n<b-art-row arrows names="chatgpt-enterprise-usage-report/skill-adhoc chatgpt-enterprise-usage-report/skill-repeat chatgpt-enterprise-usage-report/shared-skill"></b-art-row>',

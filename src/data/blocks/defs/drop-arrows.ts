@@ -9,7 +9,7 @@ export default defineBlock({
   render: ({ attrs }) => {
     const n = Number(attrs.n)
     if (!(n >= 1 && n <= 6)) throw new Error(`blocks: <b-drop-arrows n="${attrs.n}"> — нужно число от 1 до 6`)
-    return `<div class="bk-drop" aria-hidden="true">${icon('arrow-down-iv').repeat(n)}</div>`
+    return `<div class="bk-drop-arrows" aria-hidden="true">${icon('arrow-down-iv').repeat(n)}</div>`
   },
   example: { ru: '<b-drop-arrows n="2"></b-drop-arrows>', en: '<b-drop-arrows n="2"></b-drop-arrows>' },
 })

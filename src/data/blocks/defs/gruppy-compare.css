@@ -1,12 +1,12 @@
 /* Сравнение выборок (gruppy): три колонки, на узком экране — одна */
-.s-rich.bk .bk-gcmp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-@media (max-width: 760px) { .s-rich.bk .bk-gcmp { grid-template-columns: 1fr; } }
-.s-rich.bk .bk-gcmp > div { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
-.s-rich.bk .bk-gcmp-h { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; margin-bottom: 10px; }
-.s-rich.bk .bk-gcmp-s { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
-.s-rich.bk .bk-gcmp-bad .bk-gcmp-s { background: var(--warn-soft); color: var(--warn); }
-.s-rich.bk .bk-gcmp-good .bk-gcmp-s { background: var(--accent-soft); color: var(--accent); }
-.s-rich.bk .bk-gcmp-row { display: flex; flex-wrap: wrap; gap: 5px; min-height: 22px; }
-.s-rich.bk .bk-gcmp-row i { width: 16px; height: 16px; border-radius: 50%; }
-.s-rich.bk .bk-gcmp-m { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
-.s-rich.bk .bk-gcmp-m :is(b, strong) { color: var(--ink); font-family: "JetBrains Mono", monospace; }
+.s-rich.bk .bk-gruppy-compare { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+@media (max-width: 760px) { .s-rich.bk .bk-gruppy-compare { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-gruppy-compare > div { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
+.s-rich.bk .bk-gruppy-compare-h { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; margin-bottom: 10px; }
+.s-rich.bk .bk-gruppy-compare-s { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
+.s-rich.bk .bk-gruppy-compare-bad .bk-gruppy-compare-s { background: var(--warn-soft); color: var(--warn); }
+.s-rich.bk .bk-gruppy-compare-good .bk-gruppy-compare-s { background: var(--accent-soft); color: var(--accent); }
+.s-rich.bk .bk-gruppy-compare-row { display: flex; flex-wrap: wrap; gap: 5px; min-height: 22px; }
+.s-rich.bk .bk-gruppy-compare-row i { width: 16px; height: 16px; border-radius: 50%; }
+.s-rich.bk .bk-gruppy-compare-m { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
+.s-rich.bk .bk-gruppy-compare-m :is(b, strong) { color: var(--ink); font-family: "JetBrains Mono", monospace; }

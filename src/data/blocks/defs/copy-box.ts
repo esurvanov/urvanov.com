@@ -5,10 +5,10 @@ import { defineBlock, icon, inline } from '../core'
 // эти имена оставлены в разметке как зацепки для скрипта, вид задают классы bk-*
 const button = (l: (ru: string, en: string) => string) => {
   const label = l('Копировать', 'Copy')
-  return `<button type="button" class="bk-cpy pq-copy" data-label="${label}" data-done="${l('Скопировано', 'Copied')}" aria-label="${label}" title="${label}">`
-    + icon('copy').replace('<svg ', '<svg class="bk-cpy-ic" ')
-    + icon('check', '2.4').replace('<svg ', '<svg class="bk-cpy-ok" ')
-    + `<span class="bk-cpy-sr">${label}</span></button>`
+  return `<button type="button" class="bk-copy-code pq-copy" data-label="${label}" data-done="${l('Скопировано', 'Copied')}" aria-label="${label}" title="${label}">`
+    + icon('copy').replace('<svg ', '<svg class="bk-copy-code-ic" ')
+    + icon('check', '2.4').replace('<svg ', '<svg class="bk-copy-code-ok" ')
+    + `<span class="bk-copy-code-sr">${label}</span></button>`
 }
 
 // Текст как есть: общий отступ строк из поста срезается. Переносы — настоящие (слова в счётчике слов поста
@@ -28,7 +28,7 @@ export default [
     attrs: { wrap: WRAP },
     raw: true,
     render: ({ attrs, raw, l }) =>
-      `<div class="bk-cb cb"><pre class="bk-cb-pre${'wrap' in attrs ? ' bk-cb-wrap' : ''}"><code>${codeText(raw)}</code></pre>${button(l)}</div>`,
+      `<div class="bk-copy-code-cb cb"><pre class="bk-copy-code-cb-pre${'wrap' in attrs ? ' bk-copy-code-cb-wrap' : ''}"><code>${codeText(raw)}</code></pre>${button(l)}</div>`,
     example: {
       ru: '<b-copy-code>\n  claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp\n  claude mcp list     # статус подключения\n</b-copy-code>',
       en: '<b-copy-code>\n  claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp\n  claude mcp list     # connection status\n</b-copy-code>',
@@ -40,7 +40,7 @@ export default [
     doc: 'Тот же блок кода, но без кнопки копирования: строки как в посте.',
     attrs: { wrap: WRAP },
     raw: true,
-    render: ({ attrs, raw }) => `<pre class="bk-cb-pre bk-cb-nb${'wrap' in attrs ? ' bk-cb-wrap' : ''}"><code>${codeText(raw)}</code></pre>`,
+    render: ({ attrs, raw }) => `<pre class="bk-copy-code-cb-pre bk-copy-code-cb-nb${'wrap' in attrs ? ' bk-copy-code-cb-wrap' : ''}"><code>${codeText(raw)}</code></pre>`,
     example: {
       ru: '<b-code-text wrap>\n  Сначала пробуй, оценку давай после пробы.\n  Если можешь сделать сам, делай.\n</b-code-text>',
       en: '<b-code-text wrap>\n  Try first, estimate after the try.\n  If you can do it yourself, do it.\n</b-code-text>',
@@ -50,7 +50,7 @@ export default [
     tag: 'copy-quote',
     title: 'Фраза агенту',
     doc: 'Готовая фраза агенту в кавычках с кнопкой «Копировать».',
-    render: ({ children, l }) => `<blockquote class="bk-pq pq"><div class="bk-pq-text pq-text">${inline(children)}</div>${button(l)}</blockquote>`,
+    render: ({ children, l }) => `<blockquote class="bk-copy-code-pq pq"><div class="bk-copy-code-pq-text pq-text">${inline(children)}</div>${button(l)}</blockquote>`,
     example: {
       ru: '<b-copy-quote>Подключи MCP-сервер Jira по инструкции Atlassian и проверь на задаче PAY-142.</b-copy-quote>',
       en: '<b-copy-quote>Connect the Jira MCP server following the Atlassian guide and test it on PAY-142.</b-copy-quote>',

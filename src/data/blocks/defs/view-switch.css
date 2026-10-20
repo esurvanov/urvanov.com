@@ -1,10 +1,10 @@
 /* Два вида раздела: радиокнопки скрыты, выбранная вкладка залита акцентом, второй вид скрыт */
-.s-rich.bk .bk-vs > input { position: absolute; opacity: 0; pointer-events: none; }
-.s-rich.bk .bk-vs-tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin: 10px 0 2px; }
-.s-rich.bk .bk-vs-tabs label { padding: 5px 18px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--muted); }
-.s-rich.bk .bk-vs > .bk-vs-vb { display: none; }
-.s-rich.bk .bk-vs > input.bk-vs-b:checked ~ .bk-vs-vb { display: block; }
-.s-rich.bk .bk-vs > input.bk-vs-b:checked ~ .bk-vs-va { display: none; }
-.s-rich.bk .bk-vs > input.bk-vs-a:checked ~ .bk-vs-tabs .bk-vs-la,
-.s-rich.bk .bk-vs > input.bk-vs-b:checked ~ .bk-vs-tabs .bk-vs-lb { background: var(--accent); color: var(--on-accent); }
-.s-rich.bk .bk-vs > input:focus-visible ~ .bk-vs-tabs { outline: 2px solid var(--accent); outline-offset: 2px; }
+.s-rich.bk .bk-view-switch > input { position: absolute; opacity: 0; pointer-events: none; }
+.s-rich.bk .bk-view-switch-tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; margin: 10px 0 2px; }
+.s-rich.bk .bk-view-switch-tabs label { padding: 5px 18px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--muted); }
+.s-rich.bk .bk-view-switch > .bk-view-switch-vb { display: none; }
+.s-rich.bk .bk-view-switch > input.bk-view-switch-b:checked ~ .bk-view-switch-vb { display: block; }
+.s-rich.bk .bk-view-switch > input.bk-view-switch-b:checked ~ .bk-view-switch-va { display: none; }
+.s-rich.bk .bk-view-switch > input.bk-view-switch-a:checked ~ .bk-view-switch-tabs .bk-view-switch-la,
+.s-rich.bk .bk-view-switch > input.bk-view-switch-b:checked ~ .bk-view-switch-tabs .bk-view-switch-lb { background: var(--accent); color: var(--on-accent); }
+.s-rich.bk .bk-view-switch > input:focus-visible ~ .bk-view-switch-tabs { outline: 2px solid var(--accent); outline-offset: 2px; }

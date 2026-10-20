@@ -113,13 +113,13 @@ toc: why=Зачем отчёт | order=Порядок работы | data=Что
     <b-why>Однородность показывает, насколько равномерно инструмент вошёл в разные команды: какая доля каждой команды пользуется им регулярно и сколько в среднем пишет один человек. <b>Решение:</b> из какой команды брать работающие сценарии и в какую нести их в первую очередь.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Команда</th><th>Регулярно пользуются</th><th class="bk-r">%</th><th class="bk-r">Сообщ. на человека</th></tr>
+      <tr><th>Команда</th><th>Регулярно пользуются</th><th class="bk-table-r">%</th><th class="bk-table-r">Сообщ. на человека</th></tr>
       </thead><tbody><b-table-group color="d-week" span="4">Сильные · источник сценариев</b-table-group>
-      <tr><td>Команда A</td><td><b-bar value="74" min="120"/></td><td class="bk-r">74%</td><td class="bk-r">1 120</td></tr>
-      <tr><td>Команда B</td><td><b-bar value="66" min="120"/></td><td class="bk-r">66%</td><td class="bk-r">870</td></tr><b-table-group color="d-reg" span="4">Середина</b-table-group>
-      <tr><td>Команда C</td><td><b-bar value="51" min="120"/></td><td class="bk-r">51%</td><td class="bk-r">720</td></tr><b-table-group color="d-rare" span="4">Отстающие · куда нести сценарии</b-table-group>
-      <tr><td>Команда D</td><td><b-bar value="34" min="120"/></td><td class="bk-r">34%</td><td class="bk-r">530</td></tr>
-      <tr><td>Команда E</td><td><b-bar value="18" min="120"/></td><td class="bk-r">18%</td><td class="bk-r">290</td></tr>
+      <tr><td>Команда A</td><td><b-bar value="74" min="120"/></td><td class="bk-table-r">74%</td><td class="bk-table-r">1 120</td></tr>
+      <tr><td>Команда B</td><td><b-bar value="66" min="120"/></td><td class="bk-table-r">66%</td><td class="bk-table-r">870</td></tr><b-table-group color="d-reg" span="4">Середина</b-table-group>
+      <tr><td>Команда C</td><td><b-bar value="51" min="120"/></td><td class="bk-table-r">51%</td><td class="bk-table-r">720</td></tr><b-table-group color="d-rare" span="4">Отстающие · куда нести сценарии</b-table-group>
+      <tr><td>Команда D</td><td><b-bar value="34" min="120"/></td><td class="bk-table-r">34%</td><td class="bk-table-r">530</td></tr>
+      <tr><td>Команда E</td><td><b-bar value="18" min="120"/></td><td class="bk-table-r">18%</td><td class="bk-table-r">290</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Источник: <a href="https://chatgpt.com/admin/usage/users" target="_blank" rel="noopener">Пользователи</a> · поля department и groups</b-cap>
@@ -159,11 +159,11 @@ toc: why=Зачем отчёт | order=Порядок работы | data=Что
     <b-why>Топ ранжирует людей по сумме, потраченной на конкретный продукт, например на Codex. Так в топ попадает и тот, кто тратит на Codex много, хотя основная часть его трат уходит на Chat.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Человек</th><th>Команда</th><th class="bk-r">$ на код / 3 мес</th><th class="bk-r">Токены / 3 мес</th><th class="bk-r">Токенов на $</th></tr>
+      <tr><th>Человек</th><th>Команда</th><th class="bk-table-r">$ на код / 3 мес</th><th class="bk-table-r">Токены / 3 мес</th><th class="bk-table-r">Токенов на $</th></tr>
       </thead><tbody>
-      <tr><td>Hana Sato</td><td>Команда C</td><td class="bk-r">438,20</td><td class="bk-r">21,9 млн</td><td class="bk-r">50 тыс.</td></tr>
-      <tr><td>Luis Moreno</td><td>Команда A</td><td class="bk-r">395,60</td><td class="bk-r">12,7 млн</td><td class="bk-r">32 тыс.</td></tr>
-      <tr><td>Ada Kowalski</td><td>Команда D</td><td class="bk-r">84,30</td><td class="bk-r">4,3 млн</td><td class="bk-r">51 тыс.</td></tr>
+      <tr><td>Hana Sato</td><td>Команда C</td><td class="bk-table-r">438,20</td><td class="bk-table-r">21,9 млн</td><td class="bk-table-r">50 тыс.</td></tr>
+      <tr><td>Luis Moreno</td><td>Команда A</td><td class="bk-table-r">395,60</td><td class="bk-table-r">12,7 млн</td><td class="bk-table-r">32 тыс.</td></tr>
+      <tr><td>Ada Kowalski</td><td>Команда D</td><td class="bk-table-r">84,30</td><td class="bk-table-r">4,3 млн</td><td class="bk-table-r">51 тыс.</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Источник: <a href="https://admin.openai.com" target="_blank" rel="noopener">Таблица лидеров</a> · одна выгрузка на каждый продукт</b-cap>
@@ -185,13 +185,13 @@ toc: why=Зачем отчёт | order=Порядок работы | data=Что
     <b-why>Группы по силе поведения из нескольких выгрузок: сколько человек пишет, тратит и что делает.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Сегмент</th><th class="bk-r">Людей</th><th>Детали</th></tr>
+      <tr><th>Сегмент</th><th class="bk-table-r">Людей</th><th>Детали</th></tr>
       </thead><tbody>
-      <tr><td>Пишут код в любом продукте</td><td class="bk-r">44</td><td>19 из них вне технических команд</td></tr>
-      <tr><td>Глубокий ресёрч в чате</td><td class="bk-r">58</td><td>в среднем 1 900+ сообщений</td></tr>
-      <tr><td>Агентные задачи</td><td class="bk-r">33</td><td>многошаговые сценарии, коннекторы</td></tr>
-      <tr><td>Генерация изображений</td><td class="bk-r">21</td><td>две трети из одной команды</td></tr>
-      <tr><td>Полностью неактивные</td><td class="bk-r">61</td><td>0 сообщений, 0 $ за весь период</td></tr>
+      <tr><td>Пишут код в любом продукте</td><td class="bk-table-r">44</td><td>19 из них вне технических команд</td></tr>
+      <tr><td>Глубокий ресёрч в чате</td><td class="bk-table-r">58</td><td>в среднем 1 900+ сообщений</td></tr>
+      <tr><td>Агентные задачи</td><td class="bk-table-r">33</td><td>многошаговые сценарии, коннекторы</td></tr>
+      <tr><td>Генерация изображений</td><td class="bk-table-r">21</td><td>две трети из одной команды</td></tr>
+      <tr><td>Полностью неактивные</td><td class="bk-table-r">61</td><td>0 сообщений, 0 $ за весь период</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Источник: <a href="https://chatgpt.com/admin/usage/users" target="_blank" rel="noopener">Пользователи</a> · <a href="https://admin.openai.com" target="_blank" rel="noopener">Таблица лидеров</a></b-cap>
@@ -242,11 +242,11 @@ toc: why=Зачем отчёт | order=Порядок работы | data=Что
     <b-why>Сводка группирует проекты по смыслу и показывает конкретные задачи, которые люди ведут в постоянных проектах. Для кастдева это готовый список: какие задачи обсуждать и с кем. <b>Решение:</b> какие задачи и чьи проекты разбирать на кастдеве первыми.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Тема</th><th class="bk-r">Проектов</th><th>Задачи</th><th>Вопрос автору на кастдеве</th></tr>
+      <tr><th>Тема</th><th class="bk-table-r">Проектов</th><th>Задачи</th><th>Вопрос автору на кастдеве</th></tr>
       </thead><tbody>
-      <tr><td>Продажи<b-cell-sub>Pitch library · Elif Demir</b-cell-sub></td><td class="bk-r">11</td><td>питчи, ответы на возражения, коммерческие предложения</td><td><b-cell-quote>«Какую часть питча модель делает хорошо, а что вы переписываете?»</b-cell-quote></td></tr>
-      <tr><td>Онбординг<b-cell-sub>New hire guide · Rafael Costa</b-cell-sub></td><td class="bk-r">8</td><td>гайды для новичков, ответы на типовые вопросы</td><td><b-cell-quote>«Какие вопросы новичков модель уже закрывает без вас?»</b-cell-quote></td></tr>
-      <tr><td>Исследования рынка<b-cell-sub>Competitor notes · Jonas Keller</b-cell-sub></td><td class="bk-r">5</td><td>сводки по конкурентам, сравнение цен</td><td><b-cell-quote>«Откуда берёте данные и как часто они устаревают?»</b-cell-quote></td></tr>
+      <tr><td>Продажи<b-cell-sub>Pitch library · Elif Demir</b-cell-sub></td><td class="bk-table-r">11</td><td>питчи, ответы на возражения, коммерческие предложения</td><td><b-cell-quote>«Какую часть питча модель делает хорошо, а что вы переписываете?»</b-cell-quote></td></tr>
+      <tr><td>Онбординг<b-cell-sub>New hire guide · Rafael Costa</b-cell-sub></td><td class="bk-table-r">8</td><td>гайды для новичков, ответы на типовые вопросы</td><td><b-cell-quote>«Какие вопросы новичков модель уже закрывает без вас?»</b-cell-quote></td></tr>
+      <tr><td>Исследования рынка<b-cell-sub>Competitor notes · Jonas Keller</b-cell-sub></td><td class="bk-table-r">5</td><td>сводки по конкурентам, сравнение цен</td><td><b-cell-quote>«Откуда берёте данные и как часто они устаревают?»</b-cell-quote></td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Источник: <a href="https://chatgpt.com/admin/usage/projects" target="_blank" rel="noopener">Проекты</a> · названия, сгруппированные по смыслу</b-cap>
@@ -265,11 +265,11 @@ toc: why=Зачем отчёт | order=Порядок работы | data=Что
     <b-why>Все проекты с автором и статусом. По этому списку проверяют тематическую сводку и находят автора конкретного проекта.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Проект</th><th>Автор</th><th>Статус</th><th class="bk-r">Сообщ.</th></tr>
+      <tr><th>Проект</th><th>Автор</th><th>Статус</th><th class="bk-table-r">Сообщ.</th></tr>
       </thead><tbody>
-      <tr><td>Pitch library</td><td>Elif Demir</td><td><b-status-dot color="c-work">активен</b-status-dot></td><td class="bk-r">268</td></tr>
-      <tr><td>Прайс-лист 2026</td><td>Oskar Berg</td><td><b-status-dot color="c-work">активен</b-status-dot></td><td class="bk-r">64</td></tr>
-      <tr><td>Личный черновик</td><td>Pavel Novak</td><td><b-status-dot color="c-none">заброшен</b-status-dot></td><td class="bk-r">0</td></tr>
+      <tr><td>Pitch library</td><td>Elif Demir</td><td><b-status-dot color="c-work">активен</b-status-dot></td><td class="bk-table-r">268</td></tr>
+      <tr><td>Прайс-лист 2026</td><td>Oskar Berg</td><td><b-status-dot color="c-work">активен</b-status-dot></td><td class="bk-table-r">64</td></tr>
+      <tr><td>Личный черновик</td><td>Pavel Novak</td><td><b-status-dot color="c-none">заброшен</b-status-dot></td><td class="bk-table-r">0</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Источник: <a href="https://chatgpt.com/admin/usage/projects" target="_blank" rel="noopener">Проекты</a></b-cap>
@@ -283,11 +283,11 @@ toc: why=Зачем отчёт | order=Порядок работы | data=Что
     <b-why>Биллинговая выгрузка по каждому человеку и продукту. Из неё посчитаны основные инструменты и топы.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Имя</th><th>Email</th><th class="bk-r">Кредиты</th><th class="bk-r">$</th></tr>
+      <tr><th>Имя</th><th>Email</th><th class="bk-table-r">Кредиты</th><th class="bk-table-r">$</th></tr>
       </thead><tbody>
-      <tr><td>Hana Sato</td><td>hana@example.com</td><td class="bk-r">10 955</td><td class="bk-r">438,20</td></tr>
-      <tr><td>Mira Castellano</td><td>mira@example.com</td><td class="bk-r">2 425</td><td class="bk-r">97,00</td></tr>
-      <tr><td>Jonas Keller</td><td>jonas@example.com</td><td class="bk-r">470</td><td class="bk-r">18,80</td></tr>
+      <tr><td>Hana Sato</td><td>hana@example.com</td><td class="bk-table-r">10 955</td><td class="bk-table-r">438,20</td></tr>
+      <tr><td>Mira Castellano</td><td>mira@example.com</td><td class="bk-table-r">2 425</td><td class="bk-table-r">97,00</td></tr>
+      <tr><td>Jonas Keller</td><td>jonas@example.com</td><td class="bk-table-r">470</td><td class="bk-table-r">18,80</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Источник: <a href="https://admin.openai.com" target="_blank" rel="noopener">Таблица лидеров</a> · три выгрузки с разным фильтром «Продукт»</b-cap>
@@ -306,11 +306,11 @@ toc: why=Зачем отчёт | order=Порядок работы | data=Что
     <b-why>Короткий список людей по каждому найденному направлению. В примере итоговый список — 16 человек из 340, в таблице первые трое. В вашей компании размер списка будет своим. Отчёт по ChatGPT — один из источников выборки: пользователей других инструментов и тех, кто бросил, добирают по правилам из статьи <a href="/blog/who-to-interview-before-buying-ai-tools/#groups">«Кого звать на интервью»</a>, а проверку на всех сотрудниках делают <a href="/blog/ai-interviews-without-leading-questions/#form">анкетой</a>.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Человек</th><th>Направление</th><th class="bk-r">Сигнал</th></tr>
+      <tr><th>Человек</th><th>Направление</th><th class="bk-table-r">Сигнал</th></tr>
       </thead><tbody>
-      <tr><td>Hana Sato</td><td><b-status-dot color="c-code">код</b-status-dot></td><td class="bk-r">$438 / 3 мес</td></tr>
-      <tr><td>Mira Castellano</td><td><b-status-dot color="c-work">агентные задачи</b-status-dot></td><td class="bk-r">$97 / 3 мес</td></tr>
-      <tr><td>Jonas Keller</td><td><b-status-dot color="c-chat">ресёрч</b-status-dot></td><td class="bk-r">3 200+ сообщ.</td></tr>
+      <tr><td>Hana Sato</td><td><b-status-dot color="c-code">код</b-status-dot></td><td class="bk-table-r">$438 / 3 мес</td></tr>
+      <tr><td>Mira Castellano</td><td><b-status-dot color="c-work">агентные задачи</b-status-dot></td><td class="bk-table-r">$97 / 3 мес</td></tr>
+      <tr><td>Jonas Keller</td><td><b-status-dot color="c-chat">ресёрч</b-status-dot></td><td class="bk-table-r">3 200+ сообщ.</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Источник: выгрузки пользователей, таблицы лидеров и проектов, сведённые по почте</b-cap>
@@ -329,10 +329,10 @@ toc: why=Зачем отчёт | order=Порядок работы | data=Что
     </b-filter-chips>
     <b-table>
       <table><thead>
-      <tr><th>Человек</th><th>Команда</th><th>Chat / Work</th><th class="bk-r">$ / 3 мес</th></tr>
+      <tr><th>Человек</th><th>Команда</th><th>Chat / Work</th><th class="bk-table-r">$ / 3 мес</th></tr>
       </thead><tbody>
-      <tr><td>Tomás Reid</td><td>Команда B</td><td><b-split-bar parts="c-chat:28% c-work:72%"/></td><td class="bk-r">112,00</td></tr>
-      <tr><td>Mira Castellano</td><td>Команда B</td><td><b-split-bar parts="c-chat:35% c-work:65%"/></td><td class="bk-r">97,00</td></tr>
+      <tr><td>Tomás Reid</td><td>Команда B</td><td><b-split-bar parts="c-chat:28% c-work:72%"/></td><td class="bk-table-r">112,00</td></tr>
+      <tr><td>Mira Castellano</td><td>Команда B</td><td><b-split-bar parts="c-chat:35% c-work:65%"/></td><td class="bk-table-r">97,00</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Источник: выгрузки пользователей, таблицы лидеров и проектов, сведённые по почте</b-cap>

@@ -1,6 +1,6 @@
 /* Ссылки на инструменты: плашки в ряд с переносом */
-.s-rich.bk .bk-srcs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.s-rich.bk .bk-srcs-a { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; }
-.s-rich.bk .bk-srcs-a:hover { border-color: var(--accent); color: var(--accent); }
-.s-rich.bk .bk-srcs-a svg { width: 16px; height: 16px; color: var(--muted); }
-.s-rich.bk .bk-srcs-a small { font-weight: 500; color: var(--muted); font-size: 12.5px; }
+.s-rich.bk .bk-tool-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.s-rich.bk .bk-tool-links-a { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; }
+.s-rich.bk .bk-tool-links-a:hover { border-color: var(--accent); color: var(--accent); }
+.s-rich.bk .bk-tool-links-a svg { width: 16px; height: 16px; color: var(--muted); }
+.s-rich.bk .bk-tool-links-a small { font-weight: 500; color: var(--muted); font-size: 12.5px; }

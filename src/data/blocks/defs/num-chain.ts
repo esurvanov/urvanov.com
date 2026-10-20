@@ -12,7 +12,7 @@ export default defineBlock({
   slots: { step: { doc: 'шаг; внутри — подпись', required: true } },
   render: ({ attrs, slots }) => {
     const n0 = Number(attrs.start ?? 1)
-    return `<div class="bk-nc"${topStyle(attrs.top)}>${slots.step.map((s, i) => `<div class="bk-nc-nd"><b>${n0 + i}</b><small>${inline(s.html)}</small></div>`).join(`<span class="bk-nc-arr">${icon('arrow-right')}</span>`)}</div>`
+    return `<div class="bk-num-chain"${topStyle(attrs.top)}>${slots.step.map((s, i) => `<div class="bk-num-chain-nd"><b>${n0 + i}</b><small>${inline(s.html)}</small></div>`).join(`<span class="bk-num-chain-arr">${icon('arrow-right')}</span>`)}</div>`
   },
   example: {
     ru: '<b-num-chain top="6">\n  <step>прочитать задачу</step>\n  <step>пройти критический путь на стенде</step>\n  <step>сжать до минимума</step>\n</b-num-chain>',

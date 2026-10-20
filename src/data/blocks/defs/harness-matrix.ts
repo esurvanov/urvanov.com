@@ -28,15 +28,15 @@ export default defineBlock({
   },
   render: ({ attrs, slots }) => {
     const n = slots.col.length
-    const head = `<div class="bk-hx-row bk-hx-h"><div></div>${slots.col.map((c) => `<div class="bk-hx-hh">${icon(c.attrs.icon, '1.75')}<span>${c.attrs.t}</span><small>${c.html}</small></div>`).join('')}</div>`
+    const head = `<div class="bk-harness-matrix-row bk-harness-matrix-h"><div></div>${slots.col.map((c) => `<div class="bk-harness-matrix-hh">${icon(c.attrs.icon, '1.75')}<span>${c.attrs.t}</span><small>${c.html}</small></div>`).join('')}</div>`
     const cell = (c: (typeof slots.cell)[number]) => {
-      const cls = ['bk-hx-c', 'diff' in c.attrs ? 'bk-hx-diff' : '', 'part' in c.attrs ? 'bk-hx-part' : ''].filter(Boolean).join(' ')
+      const cls = ['bk-harness-matrix-c', 'diff' in c.attrs ? 'bk-harness-matrix-diff' : '', 'part' in c.attrs ? 'bk-harness-matrix-part' : ''].filter(Boolean).join(' ')
       const title = 'diff' in c.attrs ? ` title="${attr(attrs.diff)}"` : ''
-      return `<div${title} class="${cls}">${icon(c.attrs.icon, '1.75')}${c.attrs.t ? `<span class="bk-hx-cap">${c.attrs.t}</span>` : ''}${c.html ? `<span class="bk-hx-ps">${c.html}</span>` : ''}</div>`
+      return `<div${title} class="${cls}">${icon(c.attrs.icon, '1.75')}${c.attrs.t ? `<span class="bk-harness-matrix-cap">${c.attrs.t}</span>` : ''}${c.html ? `<span class="bk-harness-matrix-ps">${c.html}</span>` : ''}</div>`
     }
-    const rows = slots.row.map((r, i) => `<div class="bk-hx-row"><div class="bk-hx-rl">${r.attrs.t}</div>${slots.cell.slice(i * n, i * n + n).map(cell).join('')}</div>`).join('')
+    const rows = slots.row.map((r, i) => `<div class="bk-harness-matrix-row"><div class="bk-harness-matrix-rl">${r.attrs.t}</div>${slots.cell.slice(i * n, i * n + n).map(cell).join('')}</div>`).join('')
     const [dif, full, part] = attrs.legend.split('|').map((x) => x.trim())
-    return `<div class="bk-hx" style="--bk-hx-n:${n}" aria-label="${attr(attrs.label)}">${head}${rows}</div><div class="bk-hx-leg"><span><i class="bk-hx-li-dif"></i>${dif}</span><span><i class="bk-hx-li-full"></i>${full}</span><span><i class="bk-hx-li-part"></i>${part}</span></div>`
+    return `<div class="bk-harness-matrix" style="--bk-hx-n:${n}" aria-label="${attr(attrs.label)}">${head}${rows}</div><div class="bk-harness-matrix-leg"><span><i class="bk-harness-matrix-li-dif"></i>${dif}</span><span><i class="bk-harness-matrix-li-full"></i>${full}</span><span><i class="bk-harness-matrix-li-part"></i>${part}</span></div>`
   },
   example: {
     ru: '<b-harness-matrix label="Состав харнесса" diff="отличие от энтерпрайза" legend="отличие от энтерпрайза|есть|частично">\n  <col icon="code-wide" t="По API">публичный API</col>\n  <col icon="laptop" t="Энтерпрайз">приватный API</col>\n  <row t="Человек"></row>\n  <row t="Среда"></row>\n  <cell icon="user-alt" t="рядом / в конце"><b-proof href="https://example.com/" quote="Источник — example.com"></b-proof></cell>\n  <cell icon="user-alt" t="каждый шаг" diff></cell>\n  <cell icon="rows" t="ваш компьютер"></cell>\n  <cell icon="cloud" t="VM провайдера" diff part></cell>\n</b-harness-matrix>',

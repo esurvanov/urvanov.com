@@ -1,8 +1,8 @@
 /* Цветная метка «да / нет» */
 .s-rich.bk .bk-tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 4px; white-space: nowrap; line-height: 1.5; }
-.s-rich.bk .bk-tag.bk-ok { background: var(--accent-soft); color: var(--accent); }
-.s-rich.bk .bk-tag.bk-no { background: var(--warn-soft); color: var(--warn); }
-.s-rich.bk .bk-tag.bk-plain { background: var(--surface-2); color: var(--ink-2); }
-.s-rich.bk .bk-tag.bk-inline { display: inline; line-height: inherit; }
+.s-rich.bk .bk-tag.bk-tag-ok { background: var(--accent-soft); color: var(--accent); }
+.s-rich.bk .bk-tag.bk-tag-no { background: var(--warn-soft); color: var(--warn); }
+.s-rich.bk .bk-tag.bk-tag-plain { background: var(--surface-2); color: var(--ink-2); }
+.s-rich.bk .bk-tag.bk-tag-inl { display: inline; line-height: inherit; }
 /* line — высота строки как у текста вокруг, метка остаётся плашкой (так метки стояли в таблицах серии kto) */
 .s-rich.bk .bk-tag.bk-tag-line { line-height: inherit; }

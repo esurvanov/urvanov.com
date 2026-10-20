@@ -1,8 +1,8 @@
 /* Шаги с круглым номером; выделенный шаг — рамкой акцента */
-.s-rich.bk .bk-str { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.s-rich.bk .bk-str li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
-.s-rich.bk .bk-str li.bk-hl { border-color: var(--accent); }
-.s-rich.bk .bk-str-n { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 14px; line-height: 1; }
-.s-rich.bk .bk-str-t { font-weight: 600; font-size: 16px; line-height: 1.35; }
-.s-rich.bk .bk-str-d { font-size: 14.5px; color: var(--ink-2); line-height: 1.45; margin-top: 2px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
-.s-rich.bk .bk-str-d::first-letter { text-transform: uppercase; }
+.s-rich.bk .bk-steps-round { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.s-rich.bk .bk-steps-round li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
+.s-rich.bk .bk-steps-round li.bk-steps-round-hl { border-color: var(--accent); }
+.s-rich.bk .bk-steps-round-n { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 14px; line-height: 1; }
+.s-rich.bk .bk-steps-round-t { font-weight: 600; font-size: 16px; line-height: 1.35; }
+.s-rich.bk .bk-steps-round-d { font-size: 14.5px; color: var(--ink-2); line-height: 1.45; margin-top: 2px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-steps-round-d::first-letter { text-transform: uppercase; }

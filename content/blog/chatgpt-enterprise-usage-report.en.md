@@ -113,13 +113,13 @@ toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big
     <b-why>Uniformity shows how evenly the tool has entered different teams: what share of each team uses it regularly and how many messages one person writes on average. <b>Decision:</b> which team to take working scenarios from and which team to bring them to first.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Team</th><th>Regular users</th><th class="bk-r">%</th><th class="bk-r">Msgs per person</th></tr>
+      <tr><th>Team</th><th>Regular users</th><th class="bk-table-r">%</th><th class="bk-table-r">Msgs per person</th></tr>
       </thead><tbody><b-table-group color="d-week" span="4">Strong · source of scenarios</b-table-group>
-      <tr><td>Team A</td><td><b-bar value="74" min="120"/></td><td class="bk-r">74%</td><td class="bk-r">1,120</td></tr>
-      <tr><td>Team B</td><td><b-bar value="66" min="120"/></td><td class="bk-r">66%</td><td class="bk-r">870</td></tr><b-table-group color="d-reg" span="4">Middle</b-table-group>
-      <tr><td>Team C</td><td><b-bar value="51" min="120"/></td><td class="bk-r">51%</td><td class="bk-r">720</td></tr><b-table-group color="d-rare" span="4">Lagging · where to bring scenarios</b-table-group>
-      <tr><td>Team D</td><td><b-bar value="34" min="120"/></td><td class="bk-r">34%</td><td class="bk-r">530</td></tr>
-      <tr><td>Team E</td><td><b-bar value="18" min="120"/></td><td class="bk-r">18%</td><td class="bk-r">290</td></tr>
+      <tr><td>Team A</td><td><b-bar value="74" min="120"/></td><td class="bk-table-r">74%</td><td class="bk-table-r">1,120</td></tr>
+      <tr><td>Team B</td><td><b-bar value="66" min="120"/></td><td class="bk-table-r">66%</td><td class="bk-table-r">870</td></tr><b-table-group color="d-reg" span="4">Middle</b-table-group>
+      <tr><td>Team C</td><td><b-bar value="51" min="120"/></td><td class="bk-table-r">51%</td><td class="bk-table-r">720</td></tr><b-table-group color="d-rare" span="4">Lagging · where to bring scenarios</b-table-group>
+      <tr><td>Team D</td><td><b-bar value="34" min="120"/></td><td class="bk-table-r">34%</td><td class="bk-table-r">530</td></tr>
+      <tr><td>Team E</td><td><b-bar value="18" min="120"/></td><td class="bk-table-r">18%</td><td class="bk-table-r">290</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Source: <a href="https://chatgpt.com/admin/usage/users" target="_blank" rel="noopener">Users</a> · department and groups fields</b-cap>
@@ -159,11 +159,11 @@ toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big
     <b-why>The top list ranks people by the amount spent on a specific product, for example Codex. This way the list includes someone who spends a lot on Codex even if most of their spend goes to Chat.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Person</th><th>Team</th><th class="bk-r">$ on code / 3 mo</th><th class="bk-r">Tokens / 3 mo</th><th class="bk-r">Tokens per $</th></tr>
+      <tr><th>Person</th><th>Team</th><th class="bk-table-r">$ on code / 3 mo</th><th class="bk-table-r">Tokens / 3 mo</th><th class="bk-table-r">Tokens per $</th></tr>
       </thead><tbody>
-      <tr><td>Hana Sato</td><td>Team C</td><td class="bk-r">438.20</td><td class="bk-r">21.9M</td><td class="bk-r">50K</td></tr>
-      <tr><td>Luis Moreno</td><td>Team A</td><td class="bk-r">395.60</td><td class="bk-r">12.7M</td><td class="bk-r">32K</td></tr>
-      <tr><td>Ada Kowalski</td><td>Team D</td><td class="bk-r">84.30</td><td class="bk-r">4.3M</td><td class="bk-r">51K</td></tr>
+      <tr><td>Hana Sato</td><td>Team C</td><td class="bk-table-r">438.20</td><td class="bk-table-r">21.9M</td><td class="bk-table-r">50K</td></tr>
+      <tr><td>Luis Moreno</td><td>Team A</td><td class="bk-table-r">395.60</td><td class="bk-table-r">12.7M</td><td class="bk-table-r">32K</td></tr>
+      <tr><td>Ada Kowalski</td><td>Team D</td><td class="bk-table-r">84.30</td><td class="bk-table-r">4.3M</td><td class="bk-table-r">51K</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Source: <a href="https://admin.openai.com" target="_blank" rel="noopener">Leaderboard</a> · one export per product</b-cap>
@@ -185,13 +185,13 @@ toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big
     <b-why>Groups by behavior intensity built from several exports: how much a person writes, spends and what they do.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Segment</th><th class="bk-r">People</th><th>Details</th></tr>
+      <tr><th>Segment</th><th class="bk-table-r">People</th><th>Details</th></tr>
       </thead><tbody>
-      <tr><td>Write code in any product</td><td class="bk-r">44</td><td>19 of them outside technical teams</td></tr>
-      <tr><td>Intensive research in chat</td><td class="bk-r">58</td><td>1,900+ messages on average</td></tr>
-      <tr><td>Agentic tasks</td><td class="bk-r">33</td><td>multi-step scenarios, connectors</td></tr>
-      <tr><td>Image generation</td><td class="bk-r">21</td><td>two thirds from one team</td></tr>
-      <tr><td>Fully inactive</td><td class="bk-r">61</td><td>0 messages, $0 over the whole period</td></tr>
+      <tr><td>Write code in any product</td><td class="bk-table-r">44</td><td>19 of them outside technical teams</td></tr>
+      <tr><td>Intensive research in chat</td><td class="bk-table-r">58</td><td>1,900+ messages on average</td></tr>
+      <tr><td>Agentic tasks</td><td class="bk-table-r">33</td><td>multi-step scenarios, connectors</td></tr>
+      <tr><td>Image generation</td><td class="bk-table-r">21</td><td>two thirds from one team</td></tr>
+      <tr><td>Fully inactive</td><td class="bk-table-r">61</td><td>0 messages, $0 over the whole period</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Source: <a href="https://chatgpt.com/admin/usage/users" target="_blank" rel="noopener">Users</a> · <a href="https://admin.openai.com" target="_blank" rel="noopener">Leaderboard</a></b-cap>
@@ -242,11 +242,11 @@ toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big
     <b-why>The summary groups projects by meaning and shows the concrete tasks people run in ongoing projects. For customer interviews this is a ready list: which tasks to discuss and with whom. <b>Decision:</b> which tasks and whose projects to cover in interviews first.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Theme</th><th class="bk-r">Projects</th><th>Tasks</th><th>Question for the author</th></tr>
+      <tr><th>Theme</th><th class="bk-table-r">Projects</th><th>Tasks</th><th>Question for the author</th></tr>
       </thead><tbody>
-      <tr><td>Sales<b-cell-sub>Pitch library · Elif Demir</b-cell-sub></td><td class="bk-r">11</td><td>pitches, objection handling, commercial proposals</td><td><b-cell-quote>"Which part of a pitch does the model do well, and what do you rewrite?"</b-cell-quote></td></tr>
-      <tr><td>Onboarding<b-cell-sub>New hire guide · Rafael Costa</b-cell-sub></td><td class="bk-r">8</td><td>guides for newcomers, answers to typical questions</td><td><b-cell-quote>"Which newcomer questions does the model already handle without you?"</b-cell-quote></td></tr>
-      <tr><td>Market research<b-cell-sub>Competitor notes · Jonas Keller</b-cell-sub></td><td class="bk-r">5</td><td>competitor summaries, price comparisons</td><td><b-cell-quote>"Where do you get the data, and how quickly does it go stale?"</b-cell-quote></td></tr>
+      <tr><td>Sales<b-cell-sub>Pitch library · Elif Demir</b-cell-sub></td><td class="bk-table-r">11</td><td>pitches, objection handling, commercial proposals</td><td><b-cell-quote>"Which part of a pitch does the model do well, and what do you rewrite?"</b-cell-quote></td></tr>
+      <tr><td>Onboarding<b-cell-sub>New hire guide · Rafael Costa</b-cell-sub></td><td class="bk-table-r">8</td><td>guides for newcomers, answers to typical questions</td><td><b-cell-quote>"Which newcomer questions does the model already handle without you?"</b-cell-quote></td></tr>
+      <tr><td>Market research<b-cell-sub>Competitor notes · Jonas Keller</b-cell-sub></td><td class="bk-table-r">5</td><td>competitor summaries, price comparisons</td><td><b-cell-quote>"Where do you get the data, and how quickly does it go stale?"</b-cell-quote></td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Source: <a href="https://chatgpt.com/admin/usage/projects" target="_blank" rel="noopener">Projects</a> · names grouped by meaning</b-cap>
@@ -265,11 +265,11 @@ toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big
     <b-why>All projects with author and status. This list is used to check the theme summary and to find the author of a specific project.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Project</th><th>Author</th><th>Status</th><th class="bk-r">Msgs</th></tr>
+      <tr><th>Project</th><th>Author</th><th>Status</th><th class="bk-table-r">Msgs</th></tr>
       </thead><tbody>
-      <tr><td>Pitch library</td><td>Elif Demir</td><td><b-status-dot color="c-work">active</b-status-dot></td><td class="bk-r">268</td></tr>
-      <tr><td>Price list 2026</td><td>Oskar Berg</td><td><b-status-dot color="c-work">active</b-status-dot></td><td class="bk-r">64</td></tr>
-      <tr><td>Personal draft</td><td>Pavel Novak</td><td><b-status-dot color="c-none">abandoned</b-status-dot></td><td class="bk-r">0</td></tr>
+      <tr><td>Pitch library</td><td>Elif Demir</td><td><b-status-dot color="c-work">active</b-status-dot></td><td class="bk-table-r">268</td></tr>
+      <tr><td>Price list 2026</td><td>Oskar Berg</td><td><b-status-dot color="c-work">active</b-status-dot></td><td class="bk-table-r">64</td></tr>
+      <tr><td>Personal draft</td><td>Pavel Novak</td><td><b-status-dot color="c-none">abandoned</b-status-dot></td><td class="bk-table-r">0</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Source: <a href="https://chatgpt.com/admin/usage/projects" target="_blank" rel="noopener">Projects</a></b-cap>
@@ -283,11 +283,11 @@ toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big
     <b-why>The billing export for each person and product. Main tools and top lists are calculated from it.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Name</th><th>Email</th><th class="bk-r">Credits</th><th class="bk-r">$</th></tr>
+      <tr><th>Name</th><th>Email</th><th class="bk-table-r">Credits</th><th class="bk-table-r">$</th></tr>
       </thead><tbody>
-      <tr><td>Hana Sato</td><td>hana@example.com</td><td class="bk-r">10,955</td><td class="bk-r">438.20</td></tr>
-      <tr><td>Mira Castellano</td><td>mira@example.com</td><td class="bk-r">2,425</td><td class="bk-r">97.00</td></tr>
-      <tr><td>Jonas Keller</td><td>jonas@example.com</td><td class="bk-r">470</td><td class="bk-r">18.80</td></tr>
+      <tr><td>Hana Sato</td><td>hana@example.com</td><td class="bk-table-r">10,955</td><td class="bk-table-r">438.20</td></tr>
+      <tr><td>Mira Castellano</td><td>mira@example.com</td><td class="bk-table-r">2,425</td><td class="bk-table-r">97.00</td></tr>
+      <tr><td>Jonas Keller</td><td>jonas@example.com</td><td class="bk-table-r">470</td><td class="bk-table-r">18.80</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Source: <a href="https://admin.openai.com" target="_blank" rel="noopener">Leaderboard</a> · three exports with different "Product" filters</b-cap>
@@ -306,11 +306,11 @@ toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big
     <b-why>A short list of people for each direction found. In the example the final list is 16 people out of 340; the table shows the first three. Your company will have its own number. The ChatGPT report is one of the sample sources: users of other tools and people who quit are added by the rules in <a href="/en/blog/who-to-interview-before-buying-ai-tools/#groups">"Who to interview"</a>, and the check across all employees is done with a <a href="/en/blog/ai-interviews-without-leading-questions/#form">questionnaire</a>.</b-why>
     <b-table>
       <table><thead>
-      <tr><th>Person</th><th>Direction</th><th class="bk-r">Signal</th></tr>
+      <tr><th>Person</th><th>Direction</th><th class="bk-table-r">Signal</th></tr>
       </thead><tbody>
-      <tr><td>Hana Sato</td><td><b-status-dot color="c-code">code</b-status-dot></td><td class="bk-r">$438 / 3 mo</td></tr>
-      <tr><td>Mira Castellano</td><td><b-status-dot color="c-work">agentic tasks</b-status-dot></td><td class="bk-r">$97 / 3 mo</td></tr>
-      <tr><td>Jonas Keller</td><td><b-status-dot color="c-chat">research</b-status-dot></td><td class="bk-r">3,200+ msgs</td></tr>
+      <tr><td>Hana Sato</td><td><b-status-dot color="c-code">code</b-status-dot></td><td class="bk-table-r">$438 / 3 mo</td></tr>
+      <tr><td>Mira Castellano</td><td><b-status-dot color="c-work">agentic tasks</b-status-dot></td><td class="bk-table-r">$97 / 3 mo</td></tr>
+      <tr><td>Jonas Keller</td><td><b-status-dot color="c-chat">research</b-status-dot></td><td class="bk-table-r">3,200+ msgs</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Source: the users, leaderboard and projects exports, joined by email</b-cap>
@@ -329,10 +329,10 @@ toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big
     </b-filter-chips>
     <b-table>
       <table><thead>
-      <tr><th>Person</th><th>Team</th><th>Chat / Work</th><th class="bk-r">$ / 3 mo</th></tr>
+      <tr><th>Person</th><th>Team</th><th>Chat / Work</th><th class="bk-table-r">$ / 3 mo</th></tr>
       </thead><tbody>
-      <tr><td>Tomás Reid</td><td>Team B</td><td><b-split-bar parts="c-chat:28% c-work:72%"/></td><td class="bk-r">112.00</td></tr>
-      <tr><td>Mira Castellano</td><td>Team B</td><td><b-split-bar parts="c-chat:35% c-work:65%"/></td><td class="bk-r">97.00</td></tr>
+      <tr><td>Tomás Reid</td><td>Team B</td><td><b-split-bar parts="c-chat:28% c-work:72%"/></td><td class="bk-table-r">112.00</td></tr>
+      <tr><td>Mira Castellano</td><td>Team B</td><td><b-split-bar parts="c-chat:35% c-work:65%"/></td><td class="bk-table-r">97.00</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Source: the users, leaderboard and projects exports, joined by email</b-cap>

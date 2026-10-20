@@ -18,8 +18,8 @@ export default defineBlock({
       },
     },
   },
-  render: ({ slots }) => `<div class="bk-sc">${slots.list.map((s) =>
-    `<div${'warn' in s.attrs ? ' class="bk-sc-mv"' : ''}><div class="bk-sc-sh">${icon(s.attrs.icon)}${s.attrs.t}${s.html}</div><ul>${s.attrs.items.split('|').map((i) => `<li>${i.trim()}</li>`).join('')}</ul></div>`).join('')}</div>`,
+  render: ({ slots }) => `<div class="bk-two-lists">${slots.list.map((s) =>
+    `<div${'warn' in s.attrs ? ' class="bk-two-lists-mv"' : ''}><div class="bk-two-lists-sh">${icon(s.attrs.icon)}${s.attrs.t}${s.html}</div><ul>${s.attrs.items.split('|').map((i) => `<li>${i.trim()}</li>`).join('')}</ul></div>`).join('')}</div>`,
   example: {
     ru: '<b-two-lists>\n  <list icon="lock" t="Стабильно" items="семейство моделей|устройство харнесса"></list>\n  <list icon="refresh" t="Меняется каждую неделю" warn items="функции и режимы|модели, тарифы и лимиты"><b-proof href="https://example.com/" quote="Источник: список версий — example.com"></b-proof></list>\n</b-two-lists>',
     en: '<b-two-lists>\n  <list icon="lock" t="Stable" items="model family|how a harness is built"></list>\n  <list icon="refresh" t="Changes every week" warn items="features and modes|models, plans and limits"><b-proof href="https://example.com/" quote="Source: release list — example.com"></b-proof></list>\n</b-two-lists>',

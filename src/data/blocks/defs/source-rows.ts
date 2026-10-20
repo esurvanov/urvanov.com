@@ -20,10 +20,10 @@ export default defineBlock({
       },
     },
   },
-  render: ({ attrs, slots, l }) => `<div class="bk-srcr${'wide' in attrs ? ' bk-srcr-wide' : ''}">${slots.row.map((s) => {
+  render: ({ attrs, slots, l }) => `<div class="bk-source-rows${'wide' in attrs ? ' bk-source-rows-wide' : ''}">${slots.row.map((s) => {
     const a = s.attrs, ext = /^https?:/.test(a.href) ? ' target="_blank" rel="noopener"' : ''
-    const miss = a.miss ? `<br><span class="bk-srcr-miss"><b>${l('Без него:', 'Without it:')}</b> ${a.miss}</span>` : ''
-    return `<div class="bk-srcr-r"><b>${a.t}</b><span class="bk-srcr-d">${inline(s.html)}${miss}</span><span class="bk-srcr-n">${a.note}</span><a href="${attr(a.href)}"${ext}>${a.link ?? l('Подробнее', 'More')}</a></div>`
+    const miss = a.miss ? `<br><span class="bk-source-rows-miss"><b>${l('Без него:', 'Without it:')}</b> ${a.miss}</span>` : ''
+    return `<div class="bk-source-rows-r"><b>${a.t}</b><span class="bk-source-rows-d">${inline(s.html)}${miss}</span><span class="bk-source-rows-n">${a.note}</span><a href="${attr(a.href)}"${ext}>${a.link ?? l('Подробнее', 'More')}</a></div>`
   }).join('')}</div>`,
   example: {
     ru: '<b-source-rows>\n  <row t="GitLab" note="Официальный MCP" href="https://docs.gitlab.com/user/model_context_protocol/mcp_server/" miss="Агент додумывает код по другим контекстам">Код и запросы на слияние</row>\n  <row t="1С" note="Открытые MCP-серверы" href="/blog/mcp-1c/#what">Код конфигурации и данные учёта</row>\n</b-source-rows>',

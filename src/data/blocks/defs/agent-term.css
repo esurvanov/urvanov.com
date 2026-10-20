@@ -1,18 +1,18 @@
 /* Терминал агента: тёмное окно в обеих темах, цвета — как у настоящего Claude Code */
-.s-rich.bk .bk-term { background: #1b1b1d; color: #e7e5dc; border: 1px solid #3a3a3d; border-radius: 10px; padding: 14px 16px; font: 13.5px/1.7 'JetBrains Mono', ui-monospace, Menlo, monospace; margin-top: 10px; overflow-x: auto; }
-.s-rich.bk .bk-term-h { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
-.s-rich.bk .bk-term-logo { flex: none; }
-.s-rich.bk .bk-term-id { line-height: 1.5; }
-.s-rich.bk .bk-term-id b { color: #f4f1e8; }
-.s-rich.bk .bk-term-id > div:not(:first-child) { color: #9a998f; }
-.s-rich.bk .bk-term-id > div:first-child span { color: #9a998f; }
-.s-rich.bk .bk-term-ask { margin: 10px 0 2px; color: #9a998f; }
-.s-rich.bk :is(.bk-term-req, .bk-term-you) { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 2px 0; }
-.s-rich.bk .bk-term-you { padding: 2px 8px; background: rgba(139, 155, 255, .14); border-left: 3px solid #8b9bff; }
-.s-rich.bk .bk-term-n { font-size: 12px; }
-.s-rich.bk .bk-term-req :is(.bk-term-m, .bk-term-n) { color: #e08a63; }
-.s-rich.bk .bk-term-you :is(.bk-term-m, .bk-term-n) { color: #8b9bff; }
-.s-rich.bk .bk-term-act { margin: 2px 0; }
-.s-rich.bk .bk-term-act .bk-term-m { color: #9ad0a0; }
-.s-rich.bk .bk-term-out { margin: 0 0 2px 18px; color: #8b8b85; }
-.s-rich.bk .bk-term code { background: none; color: #f0ede3; padding: 0; border: 0; }
+.s-rich.bk .bk-agent-term { background: #1b1b1d; color: #e7e5dc; border: 1px solid #3a3a3d; border-radius: 10px; padding: 14px 16px; font: 13.5px/1.7 'JetBrains Mono', ui-monospace, Menlo, monospace; margin-top: 10px; overflow-x: auto; }
+.s-rich.bk .bk-agent-term-h { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+.s-rich.bk .bk-agent-term-logo { flex: none; }
+.s-rich.bk .bk-agent-term-id { line-height: 1.5; }
+.s-rich.bk .bk-agent-term-id b { color: #f4f1e8; }
+.s-rich.bk .bk-agent-term-id > div:not(:first-child) { color: #9a998f; }
+.s-rich.bk .bk-agent-term-id > div:first-child span { color: #9a998f; }
+.s-rich.bk .bk-agent-term-ask { margin: 10px 0 2px; color: #9a998f; }
+.s-rich.bk :is(.bk-agent-term-req, .bk-agent-term-you) { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 2px 0; }
+.s-rich.bk .bk-agent-term-you { padding: 2px 8px; background: rgba(139, 155, 255, .14); border-left: 3px solid #8b9bff; }
+.s-rich.bk .bk-agent-term-n { font-size: 12px; }
+.s-rich.bk .bk-agent-term-req :is(.bk-agent-term-m, .bk-agent-term-n) { color: #e08a63; }
+.s-rich.bk .bk-agent-term-you :is(.bk-agent-term-m, .bk-agent-term-n) { color: #8b9bff; }
+.s-rich.bk .bk-agent-term-act { margin: 2px 0; }
+.s-rich.bk .bk-agent-term-act .bk-agent-term-m { color: #9ad0a0; }
+.s-rich.bk .bk-agent-term-out { margin: 0 0 2px 18px; color: #8b8b85; }
+.s-rich.bk .bk-agent-term code { background: none; color: #f0ede3; padding: 0; border: 0; }

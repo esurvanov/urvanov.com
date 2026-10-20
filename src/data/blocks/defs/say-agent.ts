@@ -5,18 +5,20 @@ import { defineBlock, icon, inline } from '../core'
 // plain — короткий вариант из ранних постов: кнопка без галочки «скопировано» и без скрытой подписи
 export const copyButton = (l: (ru: string, en: string) => string, plain = false): string => {
   const label = l('Копировать', 'Copy')
-  const head = `<button type="button" class="bk-copy pq-copy" data-label="${label}" data-done="${l('Скопировано', 'Copied')}" aria-label="${label}"`
+  const head = `<button type="button" class="bk-say-agent-copy pq-copy" data-label="${label}" data-done="${l('Скопировано', 'Copied')}" aria-label="${label}"`
   if (plain) return `${head}>${icon('copy', '1.8')}</button>`
-  const ic = icon('copy').replace('<svg ', '<svg class="bk-copy-ic" ')
-  const ok = icon('check', '2.4').replace('<svg ', '<svg class="bk-copy-ok" ')
-  return `${head} title="${label}">${ic}${ok}<span class="bk-sr">${label}</span></button>`
+  const ic = icon('copy').replace('<svg ', '<svg class="bk-say-agent-ic" ')
+  const ok = icon('check', '2.4').replace('<svg ', '<svg class="bk-say-agent-ok" ')
+  return `${head} title="${label}">${ic}${ok}<span class="bk-say-agent-sr">${label}</span></button>`
 }
 
 /** Заголовок h3 над фразой или кодом: «Скажите агенту», «Шаблон одного пункта» */
-export const askTitle = (t?: string): string => (t ? `<h3 class="bk-ask-h">${t}</h3>` : '')
+export const askTitle = (t?: string): string => (t ? `<h3 class="bk-say-agent-ask-h">${t}</h3>` : '')
 
 export default defineBlock({
   tag: 'say-agent',
+  // Общие классы: кнопку «Копировать» (copyButton) и заголовок (askTitle) выводит и codebox
+  shared: ['bk-say-agent-copy', 'bk-say-agent-ic', 'bk-say-agent-ok', 'bk-say-agent-sr', 'bk-say-agent-ask-h'],
   title: 'Скажите агенту',
   doc: 'Фраза для агента курсивом в кавычках с кнопкой «Копировать»; title — заголовок h3 над ней.',
   attrs: {
@@ -26,8 +28,8 @@ export default defineBlock({
   render: ({ attrs, children, l }) => {
     const text = inline(children)
     const body = 'plain' in attrs
-      ? `<div class="bk-say pq">${copyButton(l, true)}<span class="bk-say-text pq-text">${text}</span></div>`
-      : `<blockquote class="bk-say pq"><div class="bk-say-text pq-text">${text}</div>${copyButton(l)}</blockquote>`
+      ? `<div class="bk-say-agent-say pq">${copyButton(l, true)}<span class="bk-say-agent-say-text pq-text">${text}</span></div>`
+      : `<blockquote class="bk-say-agent-say pq"><div class="bk-say-agent-say-text pq-text">${text}</div>${copyButton(l)}</blockquote>`
     return askTitle(attrs.title) + body
   },
   example: {
