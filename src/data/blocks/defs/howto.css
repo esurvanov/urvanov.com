@@ -1,0 +1,8 @@
+/* «Как сделать»: плашка акцента, оговорка под пунктиром цветом предупреждения */
+.s-rich.bk .bk-howto { margin: 18px 0 0; background: var(--accent-soft); border-radius: 4px; padding: 16px 18px; font-size: 15.5px; line-height: 1.55; color: var(--ink); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-howto b { color: var(--accent); }
+.s-rich.bk .bk-howto a { text-decoration-line: underline; text-underline-offset: 3px; }
+.s-rich.bk .bk-howto-w { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; margin-top: 12px; padding-top: 12px; border-top: 1px dashed color-mix(in srgb, currentColor 25%, transparent); text-align: left; hyphens: manual; -webkit-hyphens: manual; }
+.s-rich.bk .bk-howto-wi { color: var(--warn); display: grid; place-items: center; margin-top: 2px; }
+.s-rich.bk .bk-howto-wi svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-howto-w b { color: var(--warn); }

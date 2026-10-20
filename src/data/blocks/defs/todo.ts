@@ -1,4 +1,4 @@
-import { defineBlock, inline } from '../core'
+import { defineBlock, inline, topStyle } from '../core'
 
 // Чек-лист карточками в две колонки: пустой квадратик, дело, пояснение
 export default defineBlock({
@@ -6,7 +6,8 @@ export default defineBlock({
   title: 'Чек-лист',
   doc: 'Список дел с квадратиками, две колонки.',
   slots: { item: { doc: 'дело; внутри — пояснение', required: true, attrs: { t: { doc: 'что сделать', required: true } } } },
-  render: ({ slots }) => `<ul class="bk-todo">${slots.item.map((s) =>
+  attrs: { top: { doc: 'отступ сверху в px (после схемы без своего отступа)' } },
+  render: ({ attrs, slots }) => `<ul class="bk-todo"${topStyle(attrs.top)}>${slots.item.map((s) =>
     `<li><span class="bk-box" aria-hidden="true"></span><div><b>${s.attrs.t}</b>${s.html ? `<span class="bk-d">${inline(s.html)}</span>` : ''}</div></li>`).join('')}</ul>`,
   example: {
     ru: '<b-todo>\n  <item t="Предупредить про ассистента для заметок">В приглашении и в начале звонка</item>\n  <item t="Выгрузить пользователей за три месяца">Выгрузку можно поручить браузерному агенту</item>\n  <item t="Сверить ответы с отчётом">Расхождения обсудить с человеком</item>\n</b-todo>',

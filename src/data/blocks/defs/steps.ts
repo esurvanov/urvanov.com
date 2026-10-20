@@ -1,4 +1,4 @@
-import { defineBlock, inline } from '../core'
+import { defineBlock, inline, topStyle } from '../core'
 
 // Нумерованные шаги карточками: номер, название, пояснение. Номера ставятся сами
 export default defineBlock({
@@ -12,7 +12,11 @@ export default defineBlock({
       attrs: { t: { doc: 'название шага', required: true }, hl: { doc: 'выделить шаг рамкой акцента', values: [''] } },
     },
   },
-  render: ({ slots }) => `<ol class="bk-steps">${slots.step.map((s, i) =>
+  attrs: {
+    top: { doc: 'отступ сверху в px' },
+    round: { doc: 'номера в кружках, пояснение с выключкой по ширине', values: [''] },
+  },
+  render: ({ attrs, slots }) => `<ol class="bk-steps${'round' in attrs ? ' bk-steps-round' : ''}"${topStyle(attrs.top)}>${slots.step.map((s, i) =>
     `<li${'hl' in s.attrs ? ' class="bk-hl"' : ''}><span class="bk-step-n">${i + 1}</span><div><div class="bk-step-t">${s.attrs.t}</div>${s.html ? `<div class="bk-step-d">${inline(s.html)}</div>` : ''}</div></li>`).join('')}</ol>`,
   example: {
     ru: '<b-steps>\n  <step t="Агент подключит Jira">одной командой, вы ничего не вводите</step>\n  <step t="Откроется страница Jira — главный шаг" hl>вы входите и подтверждаете, пароль агент не видит</step>\n  <step t="Агент прочитает задачу">откроет задачу с комментариями и перескажет их</step>\n</b-steps>',

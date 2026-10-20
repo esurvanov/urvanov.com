@@ -1,0 +1,14 @@
+/* Карта направлений: четыре карточки в ряд (на планшете две, на телефоне одна) */
+.s-rich.bk .bk-map { margin-top: 36px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+@media (max-width: 900px) { .s-rich.bk .bk-map { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .s-rich.bk .bk-map { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-dir { display: flex; flex-direction: column; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px 16px 18px; text-decoration: none; color: inherit; transition: border-color .15s; }
+.s-rich.bk .bk-dir:hover { border-color: var(--accent); }
+.s-rich.bk .bk-dir-h { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); }
+.s-rich.bk .bk-dir-n { font-family: "JetBrains Mono", monospace; color: var(--muted); font-weight: 600; }
+.s-rich.bk .bk-dir-h i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.s-rich.bk .bk-viz { height: 128px; display: flex; align-items: center; justify-content: center; background: var(--surface-2); border-radius: 4px; padding: 12px; }
+.s-rich.bk .bk-big { font-family: "JetBrains Mono", monospace; font-size: 30px; font-weight: 700; line-height: 1; color: var(--ink); }
+.s-rich.bk .bk-big small { display: block; font-family: "Manrope", system-ui, sans-serif; font-size: 12.5px; font-weight: 500; color: var(--muted); margin-top: 6px; letter-spacing: 0; }
+.s-rich.bk .bk-dec { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); font-size: 14px; font-weight: 600; color: var(--accent); line-height: 1.35; }
+.s-rich.bk .bk-dec::before { content: attr(data-k); display: block; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 3px; }

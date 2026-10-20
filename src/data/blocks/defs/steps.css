@@ -6,3 +6,6 @@
 .s-rich.bk .bk-step-t { font-weight: 600; font-size: 16px; line-height: 1.35; }
 .s-rich.bk .bk-step-d { font-size: 14.5px; color: var(--ink-2); line-height: 1.45; margin-top: 2px; text-align: left; }
 .s-rich.bk .bk-step-d::first-letter { text-transform: uppercase; }
+/* round — номера в кружках, пояснение с выключкой по ширине (так шаги выглядели в постах серий kto и intervyu) */
+.s-rich.bk .bk-steps-round .bk-step-n { border-radius: 50%; }
+.s-rich.bk .bk-steps-round .bk-step-d { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }

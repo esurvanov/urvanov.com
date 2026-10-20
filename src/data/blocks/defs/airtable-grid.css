@@ -1,0 +1,14 @@
+/* Таблица в стиле Airtable: сетка с вертикальными линиями, серая шапка и подвал, прокрутка вбок */
+.s-rich.bk .bk-atbl { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
+.s-rich.bk .bk-atbl table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 860px; margin: 0; }
+.s-rich.bk .bk-atbl th { text-align: left; font-family: "JetBrains Mono", monospace; font-size: 12.5px; letter-spacing: 0; color: var(--ink-2); font-weight: 600; padding: 11px 16px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); white-space: nowrap; background: var(--surface-2); }
+.s-rich.bk .bk-atbl th.bk-ag-me { color: var(--c-proj); }
+.s-rich.bk .bk-atbl td { padding: 8px 12px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); color: var(--ink-2); vertical-align: middle; white-space: nowrap; }
+.s-rich.bk .bk-atbl tbody tr:last-child td { border-bottom: none; }
+.s-rich.bk .bk-atbl td.bk-ag-rn { color: var(--muted); font-weight: 400; text-align: center; width: 34px; }
+.s-rich.bk .bk-atbl td.bk-ag-nm { color: var(--ink); font-weight: 600; }
+.s-rich.bk .bk-atbl td.bk-ag-nt { max-width: 230px; overflow: hidden; text-overflow: ellipsis; font-family: "JetBrains Mono", monospace; font-size: 12px; }
+.s-rich.bk .bk-atbl td.bk-ag-c { text-align: center; }
+.s-rich.bk .bk-atbl td.bk-ag-r { text-align: right; font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+.s-rich.bk .bk-atbl tfoot td { font-size: 12.5px; font-weight: 600; color: var(--muted); background: var(--surface-2); border-right: none; }
+.s-rich.bk .bk-ag-ft { color: var(--muted); font-family: "JetBrains Mono", monospace; font-size: 11px; margin-right: 5px; }

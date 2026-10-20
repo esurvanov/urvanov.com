@@ -1,0 +1,4 @@
+/* Фильтры таблицы: плашки в ряд, выбранная залита акцентом */
+.s-rich.bk .bk-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.s-rich.bk .bk-filter { font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 4px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+.s-rich.bk .bk-filter.bk-on { background: var(--accent); border-color: var(--accent); color: #fff; }

@@ -83,8 +83,8 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-why` | align (left), top | — |
 | `b-cap` | — | — |
 | `b-sublabel` | top | — |
-| `b-lead` | — | — |
-| `b-credit` | — | — |
+| `b-lead` | tight | — |
+| `b-credit` | tight | — |
 | `b-subhead` | — | — |
 | `b-footer` | compact | — |
 | `b-prompt` | — | — (текст как есть) |
@@ -92,18 +92,18 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-cta` | href*, k*, t*, icon, sw | — |
 | `b-flow` | label*, lead | `<b-lane>` внутри |
 | `b-lane` | title*, color*, top | `<node icon* t*>` |
-| `b-steps` | — | `<step t* hl>` |
+| `b-steps` | top, round | `<step t* hl>` |
 | `b-table` | id | HTML- или markdown-таблица |
 | `b-legend` | — | `<item color*>` |
-| `b-tag` | kind* (ok/no/plain) | — |
+| `b-tag` | kind* (ok/no/plain), inline | — |
 | `b-chip` | on | — |
 | `b-chips` | — | `<b-chip>` внутри |
 | `b-io` | justify | `<item k* mono eq>` |
 | `b-qa` | cols (2/3) | `<q t*>` |
 | `b-rules` | cols (2/3), sw | `<rule icon* t*>` |
 | `b-stack` | label | `<seg w* color* ink>` |
-| `b-bar` | value*, color | — |
-| `b-todo` | — | `<item t*>` |
+| `b-bar` | value*, color, min | — |
+| `b-todo` | top | `<item t*>` |
 | `b-hchain` | label* | `<step icon* t* sw>` |
 | `b-icon` | name*, sw | — |
 | `b-view-toggle` | — | — |
@@ -172,16 +172,54 @@ CSS: каждый селектор начинается с `.s-rich.bk`, кла�
 | `b-details-more` | summary*, top | — |
 | `b-pick-tabs` | id*, tone* (warn/accent) | `<tab t*>` с `<b-pick-cell k* tone t>` внутри |
 | `b-steps-round` | — | `<step t* hl>` |
+| `b-subsection` | title*, id | — (markdown абзацами) |
+| `b-section-title` | id*, top | — |
+| `b-lead-large` | — | — |
+| `b-info-note` | icon* | — |
+| `b-howto` | — | `<warn icon*>` |
+| `b-ink-link` | href*, plain | — |
+| `b-link-chips` | — | `<item href* icon*>` |
+| `b-checklist` | — | `<item t*>`, внутри может быть `<b-link-chips>` |
+| `b-filter-chips` | — | `<f on>` |
+| `b-sources` | — | `<src icon* href* t* path* what* tip-label*>` (подсказка по наведению) |
+| `b-dir-map` | label* | `<dir href* n* color* t* big* sub* dec* art>` |
+| `b-mini-funnel` | — | `<seg w* color* ink>` |
+| `b-csv-check` | — | `<file color*>` |
+| `b-dot-grid` | n*, on* | — |
+| `b-art-row` | names*, arrows, cols (1) | — |
+| `b-art-chain` | label* | `<step art*>` |
+| `b-tool-types` | — | `<prob title*>`, `<tool n* href* t* color* art* on*>` |
+| `b-count-bars` | — | `<bar k* w* color*>` |
+| `b-share-bar` | kind* (time/status/wide), label | `<seg w* color* ink>` |
+| `b-table-group` | color*, span* | — (строка внутри HTML-таблицы) |
+| `b-cell-sub` | — | — |
+| `b-cell-quote` | — | — |
+| `b-status-dot` | color* | — |
+| `b-split-bar` | parts* | — |
+| `b-select-pill` | tone* (green/yellow/red/cyan/gray/purple) | — |
+| `b-match-mark` | kind* (same/diff) | — |
+| `b-rating` | value*, of*, label*, warn | — |
+| `b-airtable-preview` | icon*, title*, sub*, count* | `<col w* mw kind>`, `<row>` (ячейки через « \| ») |
+| `b-airtable-grid` | foot* | `<field type* kind>`, `<row>` (ячейки через « \| ») |
+| `b-drop-arrows` | n* | — |
+| `b-choice-flow` | label* | `<step t*>`, `<opt k* pill* tone*>` |
+| `b-call-script` | — | `<step t* q* color* ink>` |
+| `b-branch` | icon*, t* | — |
+| `b-pipe` | label* | `<node icon* color* sub*>` |
+| `b-tool-links` | — | `<item href* icon* sub*>` |
+| `b-vs-grid` | — | `<h>` ×3, `<c>` по три на строку |
+| `b-question-pairs` | — | `<pair tag* bad*>` |
+| `b-survey` | — | `<q t* tag* color>` |
+| `b-gauge` | label* | `<row k* w* color*>` |
 
-## Ещё не обобщено (разовые элементы серий)
+## Разовые блоки серий
 
-Остались ручной вёрсткой в своих постах и стилями серий — кандидаты в блоки, когда понадобятся второй раз:
+Все посты блога собраны из блоков: ручной вёрстки и копий значков в текстах не осталось. Блоки, которые пока нужны
+одной серии, названы по ней (`b-hdd-*`, `b-gruppy-*`, `b-prompt-*`, `b-ctx-*`, `b-k8s-*`, `b-harness-*` …).
+Когда такой элемент понадобится второй раз — обобщите блок, а не копируйте его.
 
-- **hdd**: шкала стоимости (`sh`, `usd`), петля (`loopwrap`, `cf-*`), слои зрелости (`ly-r`/`ly-bar`),
-  карты (`cn-*`, `gs-*`, `hm-*`, `sp-*`, `mm-*`, `pr4-*`), игра (`hdd-fig`, `hdd-sc`).
-- **kto**: источники (`src-*`), подсказки (`tip`/`tip-body`, `tt-*`), воронка (`cf-*`), точки-графики (`dp-*`),
-  блоки (`block`), how-to (`howto-*`), направления (`dir-*`), заметки (`note`).
-- **gruppy**: группы (`g-*`), цепочка этапов с визуализацией (`chain`/`st`/`viz`/`dots`), покрытие (`cov`),
-  сравнение (`cmp`), таймлайн (`tl`/`ph`).
-- **intervyu**: сценарий звонка (`script`/`sn`/`q`/`fu`), таблица Airtable (`atbl`, `at`, `fieldtype`),
-  оценки (`rate`/`rt`), микс форматов (`mix`/`mx`), пары «плохо/хорошо» (`pairs`/`pr`), шкала (`gauge`).
+Похожие блоки-кандидаты на слияние: `b-steps` / `b-steps-round` / `b-hdd-steps` / `b-gruppy-steps`,
+`b-tag` (`inline`, `line`) / `b-tag-inline`, `b-numchain` / `b-num-chain` / `b-step-chain`,
+`b-art` / `b-art-plain` / `b-scene` / `b-lane-art`, `b-view-toggle` / `b-view-switch`, `b-codebox` / `b-copy-code`,
+`b-say-agent` / `b-copy-quote`, `b-spoiler` / `b-details-more`. Значки с суффиксами `-hm`, `-iv`, `-rise`, `-tab`,
+`-screen` — вторые варианты одноимённых значков, нарисованные разными постами.

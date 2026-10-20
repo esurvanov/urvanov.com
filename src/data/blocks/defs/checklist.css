@@ -1,0 +1,6 @@
+/* Чек-лист в одну колонку: карточки с квадратиком */
+.s-rich.bk .bk-check { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.s-rich.bk .bk-check li { display: grid; grid-template-columns: 24px 1fr; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
+.s-rich.bk .bk-check-box { width: 20px; height: 20px; border-radius: 5px; border: 2px solid var(--accent); margin-top: 3px; }
+.s-rich.bk .bk-check b { display: block; font-size: 16px; font-weight: 600; }
+.s-rich.bk .bk-check-d { display: block; font-size: 14.5px; color: var(--ink-2); margin-top: 2px; }

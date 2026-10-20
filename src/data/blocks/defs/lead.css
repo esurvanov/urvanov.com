@@ -1,3 +1,5 @@
 /* Вводный абзац: крупнее, без выключки */
 .s-rich.bk .bk-lead { margin: 0 0 22px; font-size: 16.5px; line-height: 1.55; color: var(--ink-2); text-align: left; hyphens: manual; -webkit-hyphens: manual; }
 .s-rich.bk .bk-lead a { text-decoration-line: underline; text-underline-offset: 3px; }
+/* tight — отступы обычного абзаца, когда вводный абзац стоит в тексте как абзац (так он выглядел в постах серий) */
+.s-rich.bk .bk-lead.bk-tight { margin: 0 0 .8em; }

@@ -1,0 +1,3 @@
+/* Ссылка цветом текста: селектор сильнее правил ссылок внутри блоков (подпись, вывод — цвет акцента) */
+.s-rich.bk a[data-bk-ink][href] { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.s-rich.bk a[data-bk-ink="plain"][href] { text-decoration: none; }
