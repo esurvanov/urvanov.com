@@ -699,10 +699,12 @@ a.s-term:hover, a.s-term:focus-visible { text-decoration-style: solid; }
 
 /* Значки ссылок в тексте: ↗ уводит на другой сайт, → ведёт на другую статью, ↓ на место этой же страницы; термины без значка */
 /* inline, не inline-block: значок держится за последнее слово и не переносится на строку один */
-.s-prose :is(p, td, li, .fc, .fg, .fa, .why, .cap) > a:not(.s-term):not(.pq-copy)::after { margin-left: .2em; font-size: .85em; display: inline; white-space: nowrap; }
-.s-prose :is(p, td, li, .fc, .fg, .fa, .why, .cap) > a[target="_blank"]:not(.s-term)::after { content: "↗"; }
-.s-prose :is(p, td, li, .fc, .fg, .fa, .why, .cap) > a[href^="/blog/"]:not(.s-term)::after { content: "→"; }
-.s-prose :is(p, td, li, .fc, .fg, .fa, .why, .cap) > a[href^="#"]:not(.s-term)::after { content: "↓"; }
+/* Только обычные ссылки в тексте — без класса. Ссылка с классом (термин, значок источника, кнопка, чипс) — свой элемент
+   со своим оформлением, значок ей не ставится: так новый элемент не нужно помнить и добавлять в исключения */
+.s-prose :is(p, td, li, .fc, .fg, .fa, .why, .cap) > a:not([class])::after { margin-left: .2em; font-size: .85em; display: inline; white-space: nowrap; }
+.s-prose :is(p, td, li, .fc, .fg, .fa, .why, .cap) > a[target="_blank"]:not([class])::after { content: "↗"; }
+.s-prose :is(p, td, li, .fc, .fg, .fa, .why, .cap) > a[href^="/blog/"]:not([class])::after { content: "→"; }
+.s-prose :is(p, td, li, .fc, .fg, .fa, .why, .cap) > a[href^="#"]:not([class])::after { content: "↓"; }
 
 /* Офферы про AI: /ai. Тот же язык, что у главной: бумага, жирные линии, моно-подписи, один акцент */
 .ai-top { display: flex; justify-content: space-between; align-items: center; gap: var(--sp-2); }
