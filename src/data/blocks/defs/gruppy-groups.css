@@ -1,0 +1,11 @@
+/* Группы респондентов (gruppy): две колонки карточек, на узком экране — одна */
+.s-rich.bk .bk-gg { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (max-width: 700px) { .s-rich.bk .bk-gg { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-gg-g { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; display: grid; grid-template-columns: 38px 1fr; gap: 12px; }
+.s-rich.bk .bk-gg-ico { width: 36px; height: 36px; border-radius: 4px; display: grid; place-items: center; color: #fff; }
+.s-rich.bk .bk-gg-ico svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-gg-t { font-weight: 700; font-size: 16px; line-height: 1.3; }
+.s-rich.bk .bk-gg-c { display: inline-block; margin-top: 4px; font-family: "JetBrains Mono", monospace; font-size: 12.5px; background: var(--surface-2); padding: 2px 8px; border-radius: 6px; color: var(--ink); }
+.s-rich.bk .bk-gg-q { font-size: 14.5px; color: var(--ink-2); margin-top: 6px; line-height: 1.45; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-gg-q::before { content: attr(data-k); font-weight: 600; color: var(--ink); }
+.s-rich.bk .bk-gg-p { font-size: 13px; color: var(--muted); margin-top: 6px; }

@@ -1,0 +1,11 @@
+/* Доли работы 3 : 1 (hdd) */
+.s-rich.bk .bk-hsp { display: grid; grid-template-columns: 3fr 1fr; gap: 10px; }
+.s-rich.bk :is(.bk-hsp-a, .bk-hsp-b) { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.s-rich.bk .bk-hsp-b { border: 2px solid var(--line-2); }
+.s-rich.bk .bk-hsp-h { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 16px; }
+.s-rich.bk .bk-hsp-h svg { width: 20px; height: 20px; color: var(--accent); }
+.s-rich.bk .bk-hsp-b .bk-hsp-h svg { color: var(--muted); }
+.s-rich.bk .bk-hsp-dots { display: flex; flex-wrap: wrap; gap: 5px; }
+.s-rich.bk .bk-hsp-dots i { width: 12px; height: 12px; border-radius: 3px; background: var(--accent); }
+.s-rich.bk .bk-hsp-b .bk-hsp-dots i { background: var(--muted); }
+.s-rich.bk .bk-hsp small { font-size: 12.5px; color: var(--muted); }

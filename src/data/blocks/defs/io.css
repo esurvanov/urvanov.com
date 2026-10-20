@@ -4,3 +4,4 @@
 .s-rich.bk .bk-io > div { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px 18px; }
 .s-rich.bk .bk-io .bk-k { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
 .s-rich.bk .bk-io .bk-v { font-size: 15px; line-height: 1.5; color: var(--ink-2); text-align: left; }
+.s-rich.bk .bk-io.bk-justify .bk-v { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }

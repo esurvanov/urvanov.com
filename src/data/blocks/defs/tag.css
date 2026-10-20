@@ -3,3 +3,4 @@
 .s-rich.bk .bk-tag.bk-ok { background: var(--accent-soft); color: var(--accent); }
 .s-rich.bk .bk-tag.bk-no { background: var(--warn-soft); color: var(--warn); }
 .s-rich.bk .bk-tag.bk-plain { background: var(--surface-2); color: var(--ink-2); }
+.s-rich.bk .bk-tag.bk-inline { display: inline; line-height: inherit; }
