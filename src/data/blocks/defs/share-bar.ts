@@ -17,7 +17,7 @@ export default defineBlock({
       attrs: { w: { doc: 'доля: 2 (flex) или 20.9%', required: true }, color: { doc: 'фон: токен или CSS-цвет', required: true }, ink: { doc: 'цвет текста' } },
     },
   },
-  render: ({ attrs, slots }) => `<div class="bk-sbar bk-sbar-${attrs.kind}"${attrs.label ? ` aria-label="${attr(attrs.label)}"` : ''}>${slots.seg.map((s) => {
+  render: ({ attrs, slots }) => `<div class="bk-share-bar bk-share-bar-${attrs.kind}"${attrs.label ? ` aria-label="${attr(attrs.label)}"` : ''}>${slots.seg.map((s) => {
     const w = s.attrs.w.endsWith('%') ? `width:${s.attrs.w}` : `flex:${s.attrs.w}`
     return `<div style="${w};background:${color(s.attrs.color)}${s.attrs.ink ? `;color:${color(s.attrs.ink)}` : ''}">${s.html}</div>`
   }).join('')}</div>`,

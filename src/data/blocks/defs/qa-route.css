@@ -1,38 +1,38 @@
 /* Цепочка с шагом QA: звенья одной высоты, широкое звено QA — в 2,4 раза шире обычного */
-.s-rich.bk .bk-qr { display: flex; align-items: stretch; justify-content: space-between; gap: 6px; }
-.s-rich.bk .bk-qr-nd { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: var(--surface-2); border-radius: 4px; padding: 12px 6px; text-align: center; }
-.s-rich.bk .bk-qr-nd svg { width: 22px; height: 22px; color: var(--ink-2); }
-.s-rich.bk .bk-qr-nd b { font-size: 14px; line-height: 1.2; }
-.s-rich.bk .bk-qr-nd small { font-size: 12px; color: var(--muted); }
-.s-rich.bk .bk-qr-ar { color: var(--muted); display: grid; place-items: center; flex: none; }
-.s-rich.bk .bk-qr-ar svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-qa-route { display: flex; align-items: stretch; justify-content: space-between; gap: 6px; }
+.s-rich.bk .bk-qa-route-nd { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: var(--surface-2); border-radius: 4px; padding: 12px 6px; text-align: center; }
+.s-rich.bk .bk-qa-route-nd svg { width: 22px; height: 22px; color: var(--ink-2); }
+.s-rich.bk .bk-qa-route-nd b { font-size: 14px; line-height: 1.2; }
+.s-rich.bk .bk-qa-route-nd small { font-size: 12px; color: var(--muted); }
+.s-rich.bk .bk-qa-route-ar { color: var(--muted); display: grid; place-items: center; flex: none; }
+.s-rich.bk .bk-qa-route-ar svg { width: 18px; height: 18px; }
 /* Широкое звено: сверху QA и работы, снизу полоса времени QA на задачу */
-.s-rich.bk .bk-qr-big { flex: 2.4; justify-content: space-between; min-height: 210px; }
-.s-rich.bk .bk-qr-big small { font-size: 11px; font-weight: 700; color: var(--muted); }
-.s-rich.bk .bk-qr-solo { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; justify-content: center; }
-.s-rich.bk .bk-qr-chips { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
-.s-rich.bk .bk-qr-chip { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 12px; border: 1px solid var(--line-strong); border-radius: 4px; padding: 3px 8px; background: var(--surface-2); white-space: nowrap; }
-.s-rich.bk .bk-qr-tm { width: 100%; margin-top: 10px; }
-.s-rich.bk .bk-qr-tl { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
-.s-rich.bk .bk-qr-tl span { width: 16px; height: 16px; display: inline-grid; place-items: center; }
-.s-rich.bk .bk-qr-tl svg { width: 16px; height: 16px; }
-.s-rich.bk .bk-qr-bar { height: 14px; border-radius: 7px; background: var(--muted); margin-top: 6px; }
-.s-rich.bk .bk-qr-bl { height: 18px; display: flex; align-items: center; font-size: 12px; font-weight: 700; color: var(--muted); }
+.s-rich.bk .bk-qa-route-big { flex: 2.4; justify-content: space-between; min-height: 210px; }
+.s-rich.bk .bk-qa-route-big small { font-size: 11px; font-weight: 700; color: var(--muted); }
+.s-rich.bk .bk-qa-route-solo { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; justify-content: center; }
+.s-rich.bk .bk-qa-route-chips { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+.s-rich.bk .bk-qa-route-chip { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 12px; border: 1px solid var(--line-strong); border-radius: 4px; padding: 3px 8px; background: var(--surface-2); white-space: nowrap; }
+.s-rich.bk .bk-qa-route-tm { width: 100%; margin-top: 10px; }
+.s-rich.bk .bk-qa-route-tl { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.s-rich.bk .bk-qa-route-tl span { width: 16px; height: 16px; display: inline-grid; place-items: center; }
+.s-rich.bk .bk-qa-route-tl svg { width: 16px; height: 16px; }
+.s-rich.bk .bk-qa-route-bar { height: 14px; border-radius: 7px; background: var(--muted); margin-top: 6px; }
+.s-rich.bk .bk-qa-route-bl { height: 18px; display: flex; align-items: center; font-size: 12px; font-weight: 700; color: var(--muted); }
 /* QA в паре с агентами: пунктирная рамка, инструменты агентов + приёмка; полоса времени поделена */
-.s-rich.bk .bk-qr-pair { align-items: stretch; }
-.s-rich.bk .bk-qr-fr { position: relative; flex: 1; display: flex; gap: 6px; align-items: stretch; border: 1.5px dashed var(--accent); border-radius: 6px; padding: 12px 6px 6px; }
-.s-rich.bk .bk-qr-frl { position: absolute; top: -9px; left: 10px; background: var(--surface-2); padding: 0 6px; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
-.s-rich.bk .bk-qr-tools { flex: 1.5; min-width: 0; display: flex; flex-direction: column; gap: 5px; justify-content: center; }
-.s-rich.bk .bk-qr-tool { background: var(--accent); color: #fff; border-radius: 4px; padding: 5px 8px; font-size: 12.5px; line-height: 1.2; display: flex; align-items: center; gap: 6px; justify-content: center; }
-.s-rich.bk .bk-qr-tool span { width: 14px; height: 14px; display: inline-grid; place-items: center; }
-.s-rich.bk .bk-qr-tool svg { width: 14px; height: 14px; }
-.s-rich.bk .bk-qr-n { text-align: center; font-weight: 700; color: var(--accent); font-size: 15px; }
-.s-rich.bk .bk-qr-plus { color: var(--muted); display: grid; place-items: center; flex: none; align-self: center; font-weight: 700; }
-.s-rich.bk .bk-qr-qa { flex: 1; min-width: 0; outline: 2px solid var(--muted); outline-offset: -2px; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 6px; }
-.s-rich.bk .bk-qr-bar2 { display: flex; height: 14px; margin-top: 6px; }
-.s-rich.bk .bk-qr-bar2 > div:first-child { background: var(--muted); border-radius: 7px 0 0 7px; }
-.s-rich.bk .bk-qr-bar2 > div:last-child { flex: 1; border: 1.5px dashed var(--muted); border-left: 0; background: transparent; border-radius: 0 7px 7px 0; }
-.s-rich.bk .bk-qr-bl2 { display: flex; height: 18px; align-items: center; font-size: 12px; font-weight: 700; }
-.s-rich.bk .bk-qr-bl2 span { color: var(--muted); }
-.s-rich.bk .bk-qr-bl2 span:last-child { flex: 1; text-align: right; }
-.s-rich.bk .bk-qr-nd small::first-letter { text-transform: uppercase; }
+.s-rich.bk .bk-qa-route-pair { align-items: stretch; }
+.s-rich.bk .bk-qa-route-fr { position: relative; flex: 1; display: flex; gap: 6px; align-items: stretch; border: 1.5px dashed var(--accent); border-radius: 6px; padding: 12px 6px 6px; }
+.s-rich.bk .bk-qa-route-frl { position: absolute; top: -9px; left: 10px; background: var(--surface-2); padding: 0 6px; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+.s-rich.bk .bk-qa-route-tools { flex: 1.5; min-width: 0; display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+.s-rich.bk .bk-qa-route-tool { background: var(--accent); color: #fff; border-radius: 4px; padding: 5px 8px; font-size: 12.5px; line-height: 1.2; display: flex; align-items: center; gap: 6px; justify-content: center; }
+.s-rich.bk .bk-qa-route-tool span { width: 14px; height: 14px; display: inline-grid; place-items: center; }
+.s-rich.bk .bk-qa-route-tool svg { width: 14px; height: 14px; }
+.s-rich.bk .bk-qa-route-n { text-align: center; font-weight: 700; color: var(--accent); font-size: 15px; }
+.s-rich.bk .bk-qa-route-plus { color: var(--muted); display: grid; place-items: center; flex: none; align-self: center; font-weight: 700; }
+.s-rich.bk .bk-qa-route-qa { flex: 1; min-width: 0; outline: 2px solid var(--muted); outline-offset: -2px; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 6px; }
+.s-rich.bk .bk-qa-route-bar2 { display: flex; height: 14px; margin-top: 6px; }
+.s-rich.bk .bk-qa-route-bar2 > div:first-child { background: var(--muted); border-radius: 7px 0 0 7px; }
+.s-rich.bk .bk-qa-route-bar2 > div:last-child { flex: 1; border: 1.5px dashed var(--muted); border-left: 0; background: transparent; border-radius: 0 7px 7px 0; }
+.s-rich.bk .bk-qa-route-bl2 { display: flex; height: 18px; align-items: center; font-size: 12px; font-weight: 700; }
+.s-rich.bk .bk-qa-route-bl2 span { color: var(--muted); }
+.s-rich.bk .bk-qa-route-bl2 span:last-child { flex: 1; text-align: right; }
+.s-rich.bk .bk-qa-route-nd small::first-letter { text-transform: uppercase; }

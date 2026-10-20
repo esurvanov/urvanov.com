@@ -6,23 +6,23 @@ import { defineBlock, icon, inline } from '../core'
 // полоса времени поделена). Ставится внутрь <b-lane>; на витрине и в постах серии harness
 const list = (s?: string) => (s ?? '').split('|').map((x) => x.trim()).filter(Boolean)
 
-const time = (label: string, bar: string) => `<div class="bk-qr-tm"><div class="bk-qr-tl"><span>${icon('clock')}</span>${label}</div>${bar}</div>`
+const time = (label: string, bar: string) => `<div class="bk-qa-route-tm"><div class="bk-qa-route-tl"><span>${icon('clock')}</span>${label}</div>${bar}</div>`
 
 function solo(a: Record<string, string>, html: string): string {
-  const chips = list(a.chips).map((c) => `<span class="bk-qr-chip">${c}</span>`).join('')
-  return `<div class="bk-qr-nd bk-qr-big"><div class="bk-qr-solo">${icon(a.icon ?? 'user')}<b>${a.t}</b><small>${inline(html)}</small><div class="bk-qr-chips">${chips}</div></div>`
-    + time(a.time ?? '', `<div class="bk-qr-bar"></div><div class="bk-qr-bl">${list(a.bar).join('')}</div>`) + '</div>'
+  const chips = list(a.chips).map((c) => `<span class="bk-qa-route-chip">${c}</span>`).join('')
+  return `<div class="bk-qa-route-nd bk-qa-route-big"><div class="bk-qa-route-solo">${icon(a.icon ?? 'user')}<b>${a.t}</b><small>${inline(html)}</small><div class="bk-qa-route-chips">${chips}</div></div>`
+    + time(a.time ?? '', `<div class="bk-qa-route-bar"></div><div class="bk-qa-route-bl">${list(a.bar).join('')}</div>`) + '</div>'
 }
 
 function pair(a: Record<string, string>, html: string): string {
   const tools = list(a.tools).map((x) => {
     const [ic, ...t] = x.split(':')
-    return `<div class="bk-qr-tool"><span>${icon(ic.trim())}</span>${t.join(':').trim()}</div>`
+    return `<div class="bk-qa-route-tool"><span>${icon(ic.trim())}</span>${t.join(':').trim()}</div>`
   }).join('')
   const [b1, b2] = list(a.bar)
   const share = a.share ?? '30'
-  return `<div class="bk-qr-nd bk-qr-big bk-qr-pair"><div class="bk-qr-fr"><span class="bk-qr-frl">${a.frame ?? ''}</span><div class="bk-qr-tools">${tools}<div class="bk-qr-n">${a.n ?? ''}</div></div><span class="bk-qr-plus">+</span><div class="bk-qr-qa">${icon(a.icon ?? 'check')}<b>${a.t}</b><small>${inline(html)}</small></div></div>`
-    + time(a.time ?? '', `<div class="bk-qr-bar2"><div style="width:${share}%"></div><div></div></div><div class="bk-qr-bl2"><span style="width:${share}%">${b1 ?? ''}</span><span>${b2 ?? ''}</span></div>`) + '</div>'
+  return `<div class="bk-qa-route-nd bk-qa-route-big bk-qa-route-pair"><div class="bk-qa-route-fr"><span class="bk-qa-route-frl">${a.frame ?? ''}</span><div class="bk-qa-route-tools">${tools}<div class="bk-qa-route-n">${a.n ?? ''}</div></div><span class="bk-qa-route-plus">+</span><div class="bk-qa-route-qa">${icon(a.icon ?? 'check')}<b>${a.t}</b><small>${inline(html)}</small></div></div>`
+    + time(a.time ?? '', `<div class="bk-qa-route-bar2"><div style="width:${share}%"></div><div></div></div><div class="bk-qa-route-bl2"><span style="width:${share}%">${b1 ?? ''}</span><span>${b2 ?? ''}</span></div>`) + '</div>'
 }
 
 export default defineBlock({
@@ -47,12 +47,12 @@ export default defineBlock({
       },
     },
   },
-  render: ({ slots }) => `<div class="bk-qr">${slots.node.map((s) => {
+  render: ({ slots }) => `<div class="bk-qa-route">${slots.node.map((s) => {
     const a = s.attrs
     if (a.kind === 'solo') return solo(a, s.html)
     if (a.kind === 'pair') return pair(a, s.html)
-    return `<div class="bk-qr-nd">${icon(a.icon ?? 'user')}<b>${a.t}</b><small>${inline(s.html)}</small></div>`
-  }).join(`<span class="bk-qr-ar">${icon('arrow-right')}</span>`)}</div>`,
+    return `<div class="bk-qa-route-nd">${icon(a.icon ?? 'user')}<b>${a.t}</b><small>${inline(s.html)}</small></div>`
+  }).join(`<span class="bk-qa-route-ar">${icon('arrow-right')}</span>`)}</div>`,
   example: {
     ru: '<b-lane title="Стало" color="accent">\n  <b-qa-route>\n    <node icon="user" t="поддержка">принимает</node>\n    <node kind="pair" t="QA" frame="в паре" tools="monitor-screen:Claude in Chrome|code:API" n="× N" time="время QA на задачу" bar="приёмка|управление агентами">приёмка</node>\n    <node icon="user" t="разработчик">чинит</node>\n  </b-qa-route>\n</b-lane>',
     en: '<b-lane title="Now" color="accent">\n  <b-qa-route>\n    <node icon="user" t="support">takes it</node>\n    <node kind="pair" t="QA" frame="paired" tools="monitor-screen:Claude in Chrome|code:API" n="× N" time="QA time per task" bar="acceptance|managing agents">acceptance</node>\n    <node icon="user" t="developer">fixes</node>\n  </b-qa-route>\n</b-lane>',

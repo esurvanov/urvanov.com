@@ -82,6 +82,13 @@ for (const page of pages) {
   } catch (e) {
     console.warn(`  ! ${page.path}: без готового HTML (${e.message}), останется клиентская отрисовка`)
   }
+  // Ошибку внутри компонента React при отрисовке на сервере не бросает, а прячет в HTML и отдаёт страницу
+  // браузеру — так ошибка сборки (например, проверка блоков на витрине) прошла бы молча. Здесь она останавливает сборку
+  const swallowed = /Switched to client rendering because the server rendering errored:\s*([\s\S]*?)" data-stck/.exec(body)
+  if (swallowed) {
+    console.error(`  ✗ ${page.path}: ошибка при отрисовке на сервере:\n    ${swallowed[1].replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&').trim()}`)
+    process.exit(1)
+  }
   // слайды без текста не индексируем: иначе это пустой дубль /talk/spec-driven-development/ с тем же заголовком
   const noindex = page.path.startsWith('/slide/') || undefined
   write(page.path === '/' ? 'index.html' : join(page.path, 'index.html'), build(page, pages, { body, noindex }))

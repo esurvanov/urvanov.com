@@ -21,7 +21,7 @@ export const showcase = (lang: Lang): ShowcaseItem[] => blockList().map((b) => (
   doc: b.doc,
   attrs: Object.entries(b.attrs ?? {}).map(([name, s]) => ({ name, required: !!s.required, doc: !s.values ? s.doc : s.values.join() === '' ? `${s.doc}; флаг без значения` : `${s.doc}: ${s.values.join(' | ')}` })),
   slots: Object.entries(b.slots ?? {}).map(([name, s]) => ({ name, doc: s.doc, attrs: Object.entries(s.attrs ?? {}).map(([k, a]) => (a.required ? `${k}*` : k)) })),
-  html: withBlogArt(marked.parse(withBlocks(b.example[lang], lang, `витрина <b-${b.tag}>`), { async: false }) as string, lang),
+  html: withBlogArt(marked.parse(withBlocks(b.example[lang], lang, `витрина <b-${b.tag}>`, 0, b.tag), { async: false }) as string, lang),
 }))
 
 export const iconCount = (): number => Object.keys(ICONS).length

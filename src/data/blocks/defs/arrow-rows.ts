@@ -14,9 +14,9 @@ export default defineBlock({
       attrs: { t: { doc: 'понятие слева', required: true }, color: { doc: 'цвет полосы и стрелки: токен (accent, warn, muted) или CSS-цвет', required: true } },
     },
   },
-  render: ({ attrs, slots }) => `<div class="bk-arw${'wide' in attrs ? ' bk-arw-wide' : ''}">${slots.row.map((s) => {
+  render: ({ attrs, slots }) => `<div class="bk-arrow-rows${'wide' in attrs ? ' bk-arrow-rows-wide' : ''}">${slots.row.map((s) => {
     const c = color(s.attrs.color)
-    return `<div class="bk-arw-r" style="border-left-color:${c}"><b>${s.attrs.t}</b><span class="bk-arw-a" style="color:${c}">→</span><span class="bk-arw-d">${inline(s.html)}</span></div>`
+    return `<div class="bk-arrow-rows-r" style="border-left-color:${c}"><b>${s.attrs.t}</b><span class="bk-arrow-rows-a" style="color:${c}">→</span><span class="bk-arrow-rows-d">${inline(s.html)}</span></div>`
   }).join('')}</div>`,
   example: {
     ru: '<b-arrow-rows>\n  <row t="Что видит" color="muted">только ваш текст</row>\n  <row t="Что делает" color="warn">дописывает недостающее правдоподобно</row>\n  <row t="0–7% против 31%" color="accent">задач решено: модель против агента</row>\n</b-arrow-rows>',

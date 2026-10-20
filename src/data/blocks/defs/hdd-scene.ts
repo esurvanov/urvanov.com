@@ -12,7 +12,7 @@ export default defineBlock({
   },
   render: ({ attrs }) => {
     const art = `<iso-art name="${attr(attrs.name)}"></iso-art>`
-    return attrs.frame === 'loop' ? `<div class="bk-hloop">${art}</div>` : `<figure class="bk-hfig"><div class="bk-hsc">${art}</div></figure>`
+    return attrs.frame === 'loop' ? `<div class="bk-hdd-scene">${art}</div>` : `<figure class="bk-hdd-scene-hfig"><div class="bk-hdd-scene-hsc">${art}</div></figure>`
   },
   example: {
     ru: '<b-hdd-scene name="harness-driven-development/loop" frame="loop"></b-hdd-scene>',

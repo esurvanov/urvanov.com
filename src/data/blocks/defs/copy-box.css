@@ -1,22 +1,22 @@
 /* Кнопка «Копировать» в правом верхнем углу; после копирования — галочка (data-state="done" ставит скрипт) */
-.s-rich.bk .bk-cpy { position: absolute; top: 8px; right: 8px; display: inline-grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer; }
-.s-rich.bk .bk-cpy:hover { color: var(--ink); background: var(--surface); }
-.s-rich.bk .bk-cpy svg { width: 18px; height: 18px; }
-.s-rich.bk .bk-cpy-ok { display: none; }
-.s-rich.bk .bk-cpy[data-state="done"] { color: var(--accent); }
-.s-rich.bk .bk-cpy[data-state="done"] .bk-cpy-ok { display: block; }
-.s-rich.bk .bk-cpy[data-state="done"] .bk-cpy-ic { display: none; }
-.s-rich.bk .bk-cpy-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.s-rich.bk .bk-copy-code { position: absolute; top: 8px; right: 8px; display: inline-grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer; }
+.s-rich.bk .bk-copy-code:hover { color: var(--ink); background: var(--surface); }
+.s-rich.bk .bk-copy-code svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-copy-code-ok { display: none; }
+.s-rich.bk .bk-copy-code[data-state="done"] { color: var(--accent); }
+.s-rich.bk .bk-copy-code[data-state="done"] .bk-copy-code-ok { display: block; }
+.s-rich.bk .bk-copy-code[data-state="done"] .bk-copy-code-ic { display: none; }
+.s-rich.bk .bk-copy-code-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* Блок команд; без кнопки (bk-cb-nb) — поля со всех сторон одинаковые */
-.s-rich.bk .bk-cb { position: relative; }
-.s-rich.bk .bk-cb-pre { background: var(--surface-2); border: 1px solid var(--muted); border-radius: 6px; padding: 10px 52px 10px 10px; overflow: auto; font-size: 13px; margin-top: 10px; }
-.s-rich.bk .bk-cb-pre.bk-cb-wrap { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* Блок команд; без кнопки (bk-copy-code-cb-nb) — поля со всех сторон одинаковые */
+.s-rich.bk .bk-copy-code-cb { position: relative; }
+.s-rich.bk .bk-copy-code-cb-pre { background: var(--surface-2); border: 1px solid var(--muted); border-radius: 6px; padding: 10px 52px 10px 10px; overflow: auto; font-size: 13px; margin-top: 10px; }
+.s-rich.bk .bk-copy-code-cb-pre.bk-copy-code-cb-wrap { white-space: pre-wrap; overflow-wrap: anywhere; }
 
 /* Фраза агенту: полоса акцента слева, текст в кавычках */
-.s-rich.bk .bk-pq { position: relative; margin: 10px 0 0; padding: 14px 52px 14px 18px; border-left: 3px solid var(--accent); background: var(--surface-2); border-radius: 0 6px 6px 0; color: var(--ink); }
-.s-rich.bk .bk-pq-text { font-size: 15.5px; line-height: 1.55; font-style: italic; }
-.s-rich.bk .bk-pq-text::before { content: "«"; color: var(--accent); font-weight: 700; }
-.s-rich.bk .bk-pq-text::after { content: "»"; color: var(--accent); font-weight: 700; }
-@media (max-width: 600px) { .s-rich.bk .bk-pq { padding: 14px 48px 14px 16px; } }
-.s-rich.bk .bk-cb-pre.bk-cb-nb { padding: 10px; }
+.s-rich.bk .bk-copy-code-pq { position: relative; margin: 10px 0 0; padding: 14px 52px 14px 18px; border-left: 3px solid var(--accent); background: var(--surface-2); border-radius: 0 6px 6px 0; color: var(--ink); }
+.s-rich.bk .bk-copy-code-pq-text { font-size: 15.5px; line-height: 1.55; font-style: italic; }
+.s-rich.bk .bk-copy-code-pq-text::before { content: "«"; color: var(--accent); font-weight: 700; }
+.s-rich.bk .bk-copy-code-pq-text::after { content: "»"; color: var(--accent); font-weight: 700; }
+@media (max-width: 600px) { .s-rich.bk .bk-copy-code-pq { padding: 14px 48px 14px 16px; } }
+.s-rich.bk .bk-copy-code-cb-pre.bk-copy-code-cb-nb { padding: 10px; }

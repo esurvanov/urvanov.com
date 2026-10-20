@@ -1,5 +1,5 @@
 /* Заметка: плашка акцента со значком слева */
-.s-rich.bk .bk-note { margin-top: 12px; display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; background: var(--accent-soft); border-radius: 4px; padding: 11px 14px; font-size: 15px; line-height: 1.5; color: var(--ink); }
-.s-rich.bk .bk-note-i { width: 24px; height: 24px; color: var(--accent); display: grid; place-items: center; }
-.s-rich.bk .bk-note-i svg { width: 20px; height: 20px; }
-.s-rich.bk .bk-note a { color: var(--accent); text-decoration-line: underline; text-underline-offset: 3px; }
+.s-rich.bk .bk-info-note { margin-top: 12px; display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; background: var(--accent-soft); border-radius: 4px; padding: 11px 14px; font-size: 15px; line-height: 1.5; color: var(--ink); }
+.s-rich.bk .bk-info-note-i { width: 24px; height: 24px; color: var(--accent); display: grid; place-items: center; }
+.s-rich.bk .bk-info-note-i svg { width: 20px; height: 20px; }
+.s-rich.bk .bk-info-note a { color: var(--accent); text-decoration-line: underline; text-underline-offset: 3px; }

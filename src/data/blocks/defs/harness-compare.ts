@@ -8,11 +8,11 @@ const HEAD_ICONS = ['eye', 'wrench', 'cpu', 'dollar', 'link']
 
 // Рамки «что видит»: scope — сколько рамок изнутри закрашено (3 — всё, 1 — только внутренняя)
 const scopeSvg = (scope: number, label: string) =>
-  `<svg class="bk-cv-scope" viewBox="0 0 96 64" role="img" aria-label="${attr(label)}"><title>${label}</title>${[[4, 4, 88, 56], [18, 14, 60, 36], [32, 24, 32, 16]].map(([x, y, w, h], i) =>
-    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" class="${3 - i <= scope ? 'bk-on' : 'bk-off'}"/>`).join('')}</svg>`
+  `<svg class="bk-harness-compare-scope" viewBox="0 0 96 64" role="img" aria-label="${attr(label)}"><title>${label}</title>${[[4, 4, 88, 56], [18, 14, 60, 36], [32, 24, 32, 16]].map(([x, y, w, h], i) =>
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" class="${3 - i <= scope ? 'bk-harness-compare-on' : 'bk-harness-compare-off'}"/>`).join('')}</svg>`
 
 const usd = (n: number, sm = false, label?: string) =>
-  `<span class="bk-cv-usd${sm ? ' bk-sm' : ''}"${label ? ` title="${attr(label)}" aria-label="${attr(label)}"` : ''}>${'<i class="bk-on">$</i>'.repeat(n)}</span>`
+  `<span class="bk-harness-compare-usd${sm ? ' bk-harness-compare-sm' : ''}"${label ? ` title="${attr(label)}" aria-label="${attr(label)}"` : ''}>${'<i class="bk-harness-compare-on">$</i>'.repeat(n)}</span>`
 
 // Значки источников из HTML содержимого строки: первые n — к стоимости, остальные — в колонку источников
 const splitProofs = (html: string, n: number): [string, string] => {
@@ -53,24 +53,24 @@ export default defineBlock({
   render: ({ attrs, slots }) => {
     const heads = attrs.heads.split('|').map((x) => x.trim())
     const acts = attrs.acts.split('|').map((x) => x.trim())
-    const head = `<div class="bk-cv-h"><span></span>${heads.map((h, i) => `<span class="bk-cv-hi" title="${attr(h)}" aria-label="${attr(h)}">${icon(HEAD_ICONS[i])}</span>`).join('')}</div>`
+    const head = `<div class="bk-harness-compare-h"><span></span>${heads.map((h, i) => `<span class="bk-harness-compare-hi" title="${attr(h)}" aria-label="${attr(h)}">${icon(HEAD_ICONS[i])}</span>`).join('')}</div>`
     const rows = slots.row.map((s) => {
       const a = s.attrs
       const [cp, src] = splitProofs(s.html, Number(a.costproofs))
       const actsHtml = acts.map((name, i) => {
         const on = a.acts[i] === '1'
         const t = `${name}: ${on ? attrs.yes : attrs.no}`
-        return `<span class="bk-cv-a${on ? ' bk-on' : ''}" title="${attr(t)}" aria-label="${attr(t)}">${icon(ACT_ICONS[i])}</span>`
+        return `<span class="bk-harness-compare-a${on ? ' bk-harness-compare-on' : ''}" title="${attr(t)}" aria-label="${attr(t)}">${icon(ACT_ICONS[i])}</span>`
       }).join('')
-      return `<div class="bk-cv-r"><div class="bk-cv-n">${a.t}</div><div class="bk-cv-c">${scopeSvg(Number(a.scope), a.scopelabel)}</div>`
-        + `<div class="bk-cv-c bk-cv-acts">${actsHtml}</div>`
-        + `<div class="bk-cv-c"><span class="bk-cv-v" title="${attr(a.modelslabel)}" aria-label="${attr(a.modelslabel)}">${'<i></i>'.repeat(Number(a.models))}</span></div>`
-        + `<div class="bk-cv-c bk-cv-cost">${usd(Number(a.cost), false, a.costlabel)}<span class="bk-cv-cp">${cp}</span></div>`
-        + `<div class="bk-cv-c bk-cv-p">${src}</div></div>`
+      return `<div class="bk-harness-compare-r"><div class="bk-harness-compare-n">${a.t}</div><div class="bk-harness-compare-c">${scopeSvg(Number(a.scope), a.scopelabel)}</div>`
+        + `<div class="bk-harness-compare-c bk-harness-compare-acts">${actsHtml}</div>`
+        + `<div class="bk-harness-compare-c"><span class="bk-harness-compare-v" title="${attr(a.modelslabel)}" aria-label="${attr(a.modelslabel)}">${'<i></i>'.repeat(Number(a.models))}</span></div>`
+        + `<div class="bk-harness-compare-c bk-harness-compare-cost">${usd(Number(a.cost), false, a.costlabel)}<span class="bk-harness-compare-cp">${cp}</span></div>`
+        + `<div class="bk-harness-compare-c bk-harness-compare-p">${src}</div></div>`
     }).join('')
-    const leg = `<div class="bk-cv-leg"><span class="bk-cv-li">${usd(1, true)}<small>${attrs.cheap}</small>${usd(3, true)}<small>${attrs.dear}</small></span>${acts.map((name, i) =>
-      `<span class="bk-cv-li"><span class="bk-cv-a bk-on">${icon(ACT_ICONS[i])}</span><small>${name}</small></span>`).join('')}</div>`
-    return `<div class="bk-cv" aria-label="${attr(attrs.label)}">${head}${rows}${leg}</div>`
+    const leg = `<div class="bk-harness-compare-leg"><span class="bk-harness-compare-li">${usd(1, true)}<small>${attrs.cheap}</small>${usd(3, true)}<small>${attrs.dear}</small></span>${acts.map((name, i) =>
+      `<span class="bk-harness-compare-li"><span class="bk-harness-compare-a bk-harness-compare-on">${icon(ACT_ICONS[i])}</span><small>${name}</small></span>`).join('')}</div>`
+    return `<div class="bk-harness-compare" aria-label="${attr(attrs.label)}">${head}${rows}${leg}</div>`
   },
   example: {
     ru: '<b-harness-compare label="Что видит · Что делает сам · Модели" heads="Что видит|Что делает сам|Модели|Стоимость|Источники" acts="Правит файлы проекта|Запускает команды на вашем компьютере|Самостоятельно проходит цикл «правка → тест → правка»|Работает в изолированной среде" yes="есть" no="нет" cheap="дешевле" dear="дороже">\n  <row t="Cursor" scope="2" scopelabel="Открытый проект" acts="1100" models="4" modelslabel="Модели 4 вендоров" cost="2" costlabel="от $20/мес." costproofs="1"><b-proof href="https://example.com/" quote="Цены — example.com"></b-proof><b-proof href="https://example.com/" quote="Документация — example.com"></b-proof></row>\n</b-harness-compare>',

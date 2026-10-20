@@ -17,10 +17,10 @@ const loop = defineBlock({
   render: ({ attrs, children }) => {
     const cols = attrs.cols.split('|').map((s) => s.trim())
     let i = 0
-    const body = children.trim().replace(/<small class="bk-kl-m"><\/small>/g, () => `<small class="bk-kl-m">${cols[i++ % cols.length]}</small>`)
-    return `<div class="bk-kl" role="img" aria-label="${attr(attrs.label)}"><div class="bk-kl-hu">${icon('user')}${attrs.human} <span aria-hidden="true">↓</span></div>`
-      + `<div class="bk-kl-g"><div class="bk-kl-c"></div>${cols.map((c) => `<div class="bk-kl-h">${c}</div>`).join('')}${body}</div>`
-      + `<div class="bk-kl-bk">${icon('cycle')}${attrs.back}</div></div>`
+    const body = children.trim().replace(/<small class="bk-k8s-loop-m"><\/small>/g, () => `<small class="bk-k8s-loop-m">${cols[i++ % cols.length]}</small>`)
+    return `<div class="bk-k8s-loop" role="img" aria-label="${attr(attrs.label)}"><div class="bk-k8s-loop-hu">${icon('user')}${attrs.human} <span aria-hidden="true">↓</span></div>`
+      + `<div class="bk-k8s-loop-g"><div class="bk-k8s-loop-c"></div>${cols.map((c) => `<div class="bk-k8s-loop-h">${c}</div>`).join('')}${body}</div>`
+      + `<div class="bk-k8s-loop-bk">${icon('cycle')}${attrs.back}</div></div>`
   },
   example: {
     ru: '<b-k8s-loop label="Kubernetes и спеки: человек меняет желаемое, исполнитель сверяет замер по кругу" cols="желаемое | исполнитель | фактическое | замер" human="человек меняет желаемое" back="замер → исполнитель, по кругу">\n  <b-k8s-row icon="hub" sw="1.6" t="Kubernetes">\n    <cell on>чарт · манифест</cell>\n    <cell>контроллер</cell>\n    <cell>ноды · поды</cell>\n    <cell>пробы · метрики</cell>\n  </b-k8s-row>\n  <b-k8s-row icon="book" t="Спеки">\n    <cell on>словарь · MUST</cell>\n    <cell hz>агент</cell>\n    <cell>код</cell>\n    <cell hz>тесты · качество</cell>\n  </b-k8s-row>\n</b-k8s-loop>',
@@ -46,8 +46,8 @@ const row = defineBlock({
       attrs: { on: { doc: 'залита акцентом', values: [''] }, hz: { doc: 'рамка акцента', values: [''] } },
     },
   },
-  render: ({ attrs, slots }) => `<div class="bk-kl-r">${icon(attrs.icon, attrs.sw)}<b>${attrs.t}</b></div>${slots.cell.map((s) =>
-    `<div class="bk-kl-x${'on' in s.attrs ? ' bk-on' : ''}${'hz' in s.attrs ? ' bk-hz' : ''}"><small class="bk-kl-m"></small>${s.html}</div>`).join('')}`,
+  render: ({ attrs, slots }) => `<div class="bk-k8s-loop-r">${icon(attrs.icon, attrs.sw)}<b>${attrs.t}</b></div>${slots.cell.map((s) =>
+    `<div class="bk-k8s-loop-x${'on' in s.attrs ? ' bk-k8s-loop-on' : ''}${'hz' in s.attrs ? ' bk-k8s-loop-hz' : ''}"><small class="bk-k8s-loop-m"></small>${s.html}</div>`).join('')}`,
   example: {
     ru: '<b-k8s-loop label="Строка петли" cols="желаемое | исполнитель | фактическое | замер" human="человек меняет желаемое" back="по кругу">\n  <b-k8s-row icon="book" t="Спеки">\n    <cell on>словарь</cell>\n    <cell hz>агент</cell>\n    <cell>код</cell>\n    <cell hz>тесты</cell>\n  </b-k8s-row>\n</b-k8s-loop>',
     en: '<b-k8s-loop label="A loop row" cols="desired | actor | actual | measure" human="a human changes the desired state" back="in a loop">\n  <b-k8s-row icon="book" t="Specs">\n    <cell on>dictionary</cell>\n    <cell hz>agent</cell>\n    <cell>code</cell>\n    <cell hz>tests</cell>\n  </b-k8s-row>\n</b-k8s-loop>',

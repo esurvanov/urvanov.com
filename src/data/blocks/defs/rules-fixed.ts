@@ -1,7 +1,7 @@
 import { defineBlock, icon, inline, topStyle } from '../core'
 
 // Карточки правил в сетке с постоянным числом колонок (и на телефоне тоже): когда карточки короткие и сравниваются
-// в ряд. Значок необязателен. Карточки — те же, что у <b-rules> (классы bk-rule из rules.css)
+// в ряд. Значок необязателен. Карточки — те же, что у <b-rules> (классы bk-rules-rule из rules.css)
 export default defineBlock({
   tag: 'rules-fixed',
   title: 'Правила в ряд',
@@ -20,8 +20,8 @@ export default defineBlock({
   },
   render: ({ attrs, slots }) => {
     const top = topStyle(attrs.top).replace(/^ style="|"$/g, '')
-    return `<div class="bk-rfx" style="grid-template-columns:repeat(${attrs.cols},1fr)${top ? ';' + top : ''}">${slots.rule.map((s) =>
-      `<div class="bk-rule">${s.attrs.icon ? `<span class="bk-ri">${icon(s.attrs.icon, attrs.sw)}</span>` : ''}<b>${s.attrs.t}</b><span>${inline(s.html)}</span></div>`).join('')}</div>`
+    return `<div class="bk-rules-fixed-rfx" style="grid-template-columns:repeat(${attrs.cols},1fr)${top ? ';' + top : ''}">${slots.rule.map((s) =>
+      `<div class="bk-rules-rule">${s.attrs.icon ? `<span class="bk-rules-ri">${icon(s.attrs.icon, attrs.sw)}</span>` : ''}<b>${s.attrs.t}</b><span>${inline(s.html)}</span></div>`).join('')}</div>`
   },
   example: {
     ru: '<b-rules-fixed cols="3" top="12">\n  <rule t="Только рассуждает">Модель выдумывает ответ.</rule>\n  <rule t="Только действует">Вызывает всё подряд.</rule>\n  <rule t="Чередует">Берёт ровно то, чего не хватает.</rule>\n</b-rules-fixed>',

@@ -1,4 +1,4 @@
 /* Благодарность под разделом */
 .s-rich.bk .bk-credit { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
 .s-rich.bk .bk-credit a { color: var(--accent); text-decoration-line: underline; text-underline-offset: 3px; }
-.s-rich.bk .bk-credit.bk-para { margin: 0 0 .8em; }
+.s-rich.bk .bk-credit.bk-credit-para { margin: 0 0 .8em; }

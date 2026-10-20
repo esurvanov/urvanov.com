@@ -1,3 +1,3 @@
 /* Стрелки вниз под дорожками: на всю ширину сетки, с лёгким заходом на соседние блоки */
-.s-rich.bk .bk-drop { grid-column: 1 / -1; display: flex; justify-content: space-around; color: var(--muted); margin: -4px 0 -4px; }
-.s-rich.bk .bk-drop svg { width: 22px; height: 22px; }
+.s-rich.bk .bk-drop-arrows { grid-column: 1 / -1; display: flex; justify-content: space-around; color: var(--muted); margin: -4px 0 -4px; }
+.s-rich.bk .bk-drop-arrows svg { width: 22px; height: 22px; }

@@ -1,28 +1,28 @@
 /* Матрица с плашками (hdd): canons — 3 колонки, guides — 2 колонки; шапки на сером фоне, клетки в рамке */
-.s-rich.bk .bk-hmx { display: grid; gap: 8px; }
-.s-rich.bk .bk-hmx-canons { grid-template-columns: 170px repeat(3, 1fr); }
-.s-rich.bk .bk-hmx-guides { grid-template-columns: 170px 1fr 1fr; }
-.s-rich.bk :is(.bk-hmx-h, .bk-hmx-r) { display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 10px 12px; border-radius: 6px; background: var(--surface-2); }
-.s-rich.bk .bk-hmx-h { align-items: center; text-align: center; }
-.s-rich.bk :is(.bk-hmx-h, .bk-hmx-r) svg { width: 20px; height: 20px; color: var(--accent); }
-.s-rich.bk :is(.bk-hmx-h, .bk-hmx-r) b { font-size: 15px; }
-.s-rich.bk :is(.bk-hmx-h, .bk-hmx-r) small { font-size: 12px; color: var(--muted); }
-.s-rich.bk .bk-hmx-x { display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
-.s-rich.bk .bk-hmx-canons .bk-hmx-x { padding: 12px; min-height: 84px; }
-.s-rich.bk .bk-hmx-guides .bk-hmx-x { padding: 14px; min-height: 88px; }
-.s-rich.bk .bk-hmx-x.bk-empty { border-style: dashed; background: transparent; }
-.s-rich.bk .bk-hmx-x.bk-empty small { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
-.s-rich.bk .bk-hmx-chip { display: inline-flex; align-items: center; padding: 4px 10px; border: 1px solid var(--line-2); border-radius: 4px; font-size: 13px; font-weight: 600; color: var(--ink-2); background: var(--surface); }
-.s-rich.bk .bk-hmx-k { display: none; }
-.s-rich.bk .bk-hmx-spd { display: flex; gap: 3px; margin-top: 4px; }
-.s-rich.bk .bk-hmx-spd i { width: 14px; height: 5px; border-radius: 2px; background: var(--line-2); }
-.s-rich.bk .bk-hmx-spd i.bk-on { background: var(--accent); }
+.s-rich.bk .bk-hdd-matrix { display: grid; gap: 8px; }
+.s-rich.bk .bk-hdd-matrix-canons { grid-template-columns: 170px repeat(3, 1fr); }
+.s-rich.bk .bk-hdd-matrix-guides { grid-template-columns: 170px 1fr 1fr; }
+.s-rich.bk :is(.bk-hdd-matrix-h, .bk-hdd-matrix-r) { display: flex; flex-direction: column; justify-content: center; gap: 3px; padding: 10px 12px; border-radius: 6px; background: var(--surface-2); }
+.s-rich.bk .bk-hdd-matrix-h { align-items: center; text-align: center; }
+.s-rich.bk :is(.bk-hdd-matrix-h, .bk-hdd-matrix-r) svg { width: 20px; height: 20px; color: var(--accent); }
+.s-rich.bk :is(.bk-hdd-matrix-h, .bk-hdd-matrix-r) b { font-size: 15px; }
+.s-rich.bk :is(.bk-hdd-matrix-h, .bk-hdd-matrix-r) small { font-size: 12px; color: var(--muted); }
+.s-rich.bk .bk-hdd-matrix-x { display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.s-rich.bk .bk-hdd-matrix-canons .bk-hdd-matrix-x { padding: 12px; min-height: 84px; }
+.s-rich.bk .bk-hdd-matrix-guides .bk-hdd-matrix-x { padding: 14px; min-height: 88px; }
+.s-rich.bk .bk-hdd-matrix-x.bk-hdd-matrix-empty { border-style: dashed; background: transparent; }
+.s-rich.bk .bk-hdd-matrix-x.bk-hdd-matrix-empty small { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+.s-rich.bk .bk-hdd-matrix-chip { display: inline-flex; align-items: center; padding: 4px 10px; border: 1px solid var(--line-2); border-radius: 4px; font-size: 13px; font-weight: 600; color: var(--ink-2); background: var(--surface); }
+.s-rich.bk .bk-hdd-matrix-k { display: none; }
+.s-rich.bk .bk-hdd-matrix-spd { display: flex; gap: 3px; margin-top: 4px; }
+.s-rich.bk .bk-hdd-matrix-spd i { width: 14px; height: 5px; border-radius: 2px; background: var(--line-2); }
+.s-rich.bk .bk-hdd-matrix-spd i.bk-hdd-matrix-on { background: var(--accent); }
 @media (max-width: 640px) {
-  .s-rich.bk :is(.bk-hmx-canons, .bk-hmx-guides) { grid-template-columns: 1fr; }
-  .s-rich.bk .bk-hmx-c { display: none; }
-  .s-rich.bk .bk-hmx-canons .bk-hmx-h { display: none; }
-  .s-rich.bk .bk-hmx-canons .bk-hmx-r { margin-top: 10px; }
-  .s-rich.bk .bk-hmx-canons .bk-hmx-x { justify-content: flex-start; min-height: 0; }
-  .s-rich.bk .bk-hmx-k { display: flex; align-items: center; gap: 6px; width: 100%; font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-  .s-rich.bk .bk-hmx-k svg { width: 14px; height: 14px; color: var(--accent); }
+  .s-rich.bk :is(.bk-hdd-matrix-canons, .bk-hdd-matrix-guides) { grid-template-columns: 1fr; }
+  .s-rich.bk .bk-hdd-matrix-c { display: none; }
+  .s-rich.bk .bk-hdd-matrix-canons .bk-hdd-matrix-h { display: none; }
+  .s-rich.bk .bk-hdd-matrix-canons .bk-hdd-matrix-r { margin-top: 10px; }
+  .s-rich.bk .bk-hdd-matrix-canons .bk-hdd-matrix-x { justify-content: flex-start; min-height: 0; }
+  .s-rich.bk .bk-hdd-matrix-k { display: flex; align-items: center; gap: 6px; width: 100%; font-style: normal; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .s-rich.bk .bk-hdd-matrix-k svg { width: 14px; height: 14px; color: var(--accent); }
 }

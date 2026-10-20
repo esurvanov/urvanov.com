@@ -1,6 +1,6 @@
 /* Ссылки-плашки: рамка, подпись акцентом, значок 14px справа */
 /* Высота строки и выравнивание свои: внутри пояснения шага они не наследуются от его текста */
-.s-rich.bk .bk-lchips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; line-height: 1.75; text-align: start; hyphens: manual; -webkit-hyphens: manual; }
-.s-rich.bk .bk-lchip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--line-2); border-radius: 4px; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
-.s-rich.bk .bk-lchip:hover { border-color: var(--accent); }
-.s-rich.bk .bk-lchip svg { width: 14px; height: 14px; }
+.s-rich.bk .bk-link-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; line-height: 1.75; text-align: start; hyphens: manual; -webkit-hyphens: manual; }
+.s-rich.bk .bk-link-chips-lchip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--line-2); border-radius: 4px; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.s-rich.bk .bk-link-chips-lchip:hover { border-color: var(--accent); }
+.s-rich.bk .bk-link-chips-lchip svg { width: 14px; height: 14px; }

@@ -7,11 +7,11 @@ export default defineBlock({
   title: 'Чек-лист в столбик',
   doc: 'Дела с квадратиками в одну колонку; под пояснением могут быть <b-link-chips>.',
   slots: { item: { doc: 'дело; внутри — пояснение и ссылки', required: true, attrs: { t: { doc: 'что сделать', required: true } } } },
-  render: ({ slots }) => `<ul class="bk-check">${slots.item.map((s) => {
+  render: ({ slots }) => `<ul class="bk-checklist">${slots.item.map((s) => {
     // Ссылки-плашки идут отдельным блоком после пояснения
-    const i = s.html.indexOf('<div class="bk-lchips"')
+    const i = s.html.indexOf('<div class="bk-link-chips"')
     const [d, links] = i < 0 ? [s.html, ''] : [s.html.slice(0, i), s.html.slice(i)]
-    return `<li><span class="bk-check-box" aria-hidden="true"></span><div><b>${s.attrs.t}</b>${d.trim() ? `<span class="bk-check-d">${inline(d)}</span>` : ''}${links}</div></li>`
+    return `<li><span class="bk-checklist-box" aria-hidden="true"></span><div><b>${s.attrs.t}</b>${d.trim() ? `<span class="bk-checklist-d">${inline(d)}</span>` : ''}${links}</div></li>`
   }).join('')}</ul>`,
   example: {
     ru: '<b-checklist>\n  <item t="Выгрузить пользователей и таблицу лидеров за три месяца">Выгрузку можно поручить браузерному агенту<b-link-chips><item href="https://claude.com/claude-in-chrome" icon="arrow-up-right">Claude in Chrome</item></b-link-chips></item>\n  <item t="Посчитать глубину проникновения">Хоть раз / регулярно / каждую неделю</item>\n</b-checklist>',

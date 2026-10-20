@@ -12,7 +12,7 @@ export default defineBlock({
   },
   render: ({ slots }) => {
     if (slots.h.length !== 3 || slots.c.length % 3) throw new Error('blocks: <b-vs-grid> — три <h> и ячейки <c> по три на строку')
-    return `<div class="bk-vs">${slots.h.map((h) => `<div class="bk-vs-h">${h.html}</div>`).join('')}${slots.c.map((c) => `<div>${inline(c.html)}</div>`).join('')}</div>`
+    return `<div class="bk-vs-grid">${slots.h.map((h) => `<div class="bk-vs-grid-h">${h.html}</div>`).join('')}${slots.c.map((c) => `<div>${inline(c.html)}</div>`).join('')}</div>`
   },
   example: {
     ru: '<b-vs-grid>\n  <h>Замер в интервью</h>\n  <h>Пара в отчёте</h>\n  <h>Если не совпало — уточнить</h>\n  <c>**Как часто пользуется**</c>\n  <c>[активность по неделям](#)</c>\n  <c>какими инструментами и для каких задач</c>\n  <c>**Сколько времени экономит**</c>\n  <c>нет пары</c>\n  <c>только со слов</c>\n</b-vs-grid>',

@@ -1,44 +1,44 @@
 /* Состав харнесса: строки-слои по колонкам-типам; на телефоне подпись слоя повёрнута вертикально */
-.s-rich.bk .bk-hx { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px; }
-.s-rich.bk .bk-hx-row { display: grid; grid-template-columns: 120px repeat(var(--bk-hx-n, 4), minmax(0, 1fr)); gap: 8px; margin-top: 8px; align-items: stretch; }
-.s-rich.bk .bk-hx-row.bk-hx-h { margin-top: 0; }
-.s-rich.bk .bk-hx-hh { display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; min-width: 0; }
-.s-rich.bk .bk-hx-hh svg { width: 20px; height: 20px; }
-.s-rich.bk .bk-hx-hh small { font-size: 10.5px; letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 500; }
-.s-rich.bk .bk-hx-rl { display: flex; align-items: center; font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-.s-rich.bk .bk-hx-c { position: relative; background: var(--surface-2); border: 1px solid var(--line-strong); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 16px 6px 12px; min-height: 66px; text-align: center; min-width: 0; }
-.s-rich.bk .bk-hx-c > svg { width: 24px; height: 24px; color: var(--ink); }
-.s-rich.bk .bk-hx-cap { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--ink-2); line-height: 1.2; }
+.s-rich.bk .bk-harness-matrix { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px; }
+.s-rich.bk .bk-harness-matrix-row { display: grid; grid-template-columns: 120px repeat(var(--bk-hx-n, 4), minmax(0, 1fr)); gap: 8px; margin-top: 8px; align-items: stretch; }
+.s-rich.bk .bk-harness-matrix-row.bk-harness-matrix-h { margin-top: 0; }
+.s-rich.bk .bk-harness-matrix-hh { display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; min-width: 0; }
+.s-rich.bk .bk-harness-matrix-hh svg { width: 20px; height: 20px; }
+.s-rich.bk .bk-harness-matrix-hh small { font-size: 10.5px; letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 500; }
+.s-rich.bk .bk-harness-matrix-rl { display: flex; align-items: center; font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.s-rich.bk .bk-harness-matrix-c { position: relative; background: var(--surface-2); border: 1px solid var(--line-strong); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 16px 6px 12px; min-height: 66px; text-align: center; min-width: 0; }
+.s-rich.bk .bk-harness-matrix-c > svg { width: 24px; height: 24px; color: var(--ink); }
+.s-rich.bk .bk-harness-matrix-cap { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--ink-2); line-height: 1.2; }
 /* Значки источников — одним прямоугольником в правом верхнем углу */
-.s-rich.bk .bk-hx-ps { position: absolute; top: 3px; right: 3px; display: flex; gap: 2px; padding: 2px 3px; border: 1px solid var(--line-2); border-radius: 4px; background: var(--surface); }
-.s-rich.bk .bk-hx-ps .bk-proof { margin: 0; width: 14px; height: 14px; }
-.s-rich.bk .bk-hx-ps .bk-proof svg { width: 11px; height: 11px; }
-.s-rich.bk .bk-hx-c:nth-child(n+4) .bk-proof::after { left: auto; right: 0; }
+.s-rich.bk .bk-harness-matrix-ps { position: absolute; top: 3px; right: 3px; display: flex; gap: 2px; padding: 2px 3px; border: 1px solid var(--line-2); border-radius: 4px; background: var(--surface); }
+.s-rich.bk .bk-harness-matrix-ps .bk-proof { margin: 0; width: 14px; height: 14px; }
+.s-rich.bk .bk-harness-matrix-ps .bk-proof svg { width: 11px; height: 11px; }
+.s-rich.bk .bk-harness-matrix-c:nth-child(n+4) .bk-proof::after { left: auto; right: 0; }
 /* Отличие от эталонной колонки: знак ≠ в углу, подпись жирнее */
-.s-rich.bk .bk-hx-diff::before { content: "≠"; position: absolute; top: 4px; left: 7px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 14px; line-height: 1; color: var(--accent); }
-.s-rich.bk .bk-hx-diff .bk-hx-cap { color: var(--ink); font-weight: 700; }
+.s-rich.bk .bk-harness-matrix-diff::before { content: "≠"; position: absolute; top: 4px; left: 7px; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 14px; line-height: 1; color: var(--accent); }
+.s-rich.bk .bk-harness-matrix-diff .bk-harness-matrix-cap { color: var(--ink); font-weight: 700; }
 /* Слой есть частично: пунктир, значок и подпись бледнее, источники остаются яркими */
-.s-rich.bk .bk-hx-c.bk-hx-part { border: 1px dashed color-mix(in srgb, var(--line-2) 70%, transparent); background: transparent; }
-.s-rich.bk .bk-hx-c.bk-hx-part > :not(.bk-hx-ps) { opacity: .45; }
-.s-rich.bk .bk-hx-c.bk-hx-part > svg { color: var(--muted); stroke-dasharray: 2.5 2.5; }
-.s-rich.bk .bk-hx-c.bk-hx-part .bk-hx-cap { font-weight: 500; }
+.s-rich.bk .bk-harness-matrix-c.bk-harness-matrix-part { border: 1px dashed color-mix(in srgb, var(--line-2) 70%, transparent); background: transparent; }
+.s-rich.bk .bk-harness-matrix-c.bk-harness-matrix-part > :not(.bk-harness-matrix-ps) { opacity: .45; }
+.s-rich.bk .bk-harness-matrix-c.bk-harness-matrix-part > svg { color: var(--muted); stroke-dasharray: 2.5 2.5; }
+.s-rich.bk .bk-harness-matrix-c.bk-harness-matrix-part .bk-harness-matrix-cap { font-weight: 500; }
 /* Легенда под сеткой */
-.s-rich.bk .bk-hx-leg { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 13.5px; color: var(--ink-2); }
-.s-rich.bk .bk-hx-leg span { display: inline-flex; align-items: center; gap: 6px; }
-.s-rich.bk .bk-hx-leg i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
-.s-rich.bk .bk-hx-leg i.bk-hx-li-full { background: var(--surface-2); border: 1px solid var(--line-strong); }
-.s-rich.bk .bk-hx-leg i.bk-hx-li-part { background: transparent; border: 1px dashed var(--line-2); }
-.s-rich.bk .bk-hx-leg i.bk-hx-li-dif { width: auto; height: auto; border: 0; background: none; font-style: normal; font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--accent); }
-.s-rich.bk .bk-hx-leg i.bk-hx-li-dif::before { content: "≠"; }
+.s-rich.bk .bk-harness-matrix-leg { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 13.5px; color: var(--ink-2); }
+.s-rich.bk .bk-harness-matrix-leg span { display: inline-flex; align-items: center; gap: 6px; }
+.s-rich.bk .bk-harness-matrix-leg i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.s-rich.bk .bk-harness-matrix-leg i.bk-harness-matrix-li-full { background: var(--surface-2); border: 1px solid var(--line-strong); }
+.s-rich.bk .bk-harness-matrix-leg i.bk-harness-matrix-li-part { background: transparent; border: 1px dashed var(--line-2); }
+.s-rich.bk .bk-harness-matrix-leg i.bk-harness-matrix-li-dif { width: auto; height: auto; border: 0; background: none; font-style: normal; font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--accent); }
+.s-rich.bk .bk-harness-matrix-leg i.bk-harness-matrix-li-dif::before { content: "≠"; }
 @media (max-width: 640px) {
-  .s-rich.bk .bk-hx { padding: 10px 6px; }
-  .s-rich.bk .bk-hx-row { grid-template-columns: 28px repeat(var(--bk-hx-n, 4), minmax(0, 1fr)); gap: 4px; }
-  .s-rich.bk .bk-hx-rl { writing-mode: vertical-rl; transform: rotate(180deg); justify-content: center; font-size: 9.5px; }
-  .s-rich.bk .bk-hx-hh { font-size: 9px; }
-  .s-rich.bk .bk-hx-hh small { font-size: 8.5px; overflow-wrap: anywhere; }
-  .s-rich.bk .bk-hx-c { padding: 14px 2px 8px; }
-  .s-rich.bk .bk-hx-c > svg { width: 20px; height: 20px; }
-  .s-rich.bk .bk-hx-cap { font-size: 8.5px; overflow-wrap: anywhere; }
-  .s-rich.bk .bk-hx-ps .bk-proof { width: 12px; height: 12px; }
-  .s-rich.bk .bk-hx-ps .bk-proof svg { width: 9px; height: 9px; }
+  .s-rich.bk .bk-harness-matrix { padding: 10px 6px; }
+  .s-rich.bk .bk-harness-matrix-row { grid-template-columns: 28px repeat(var(--bk-hx-n, 4), minmax(0, 1fr)); gap: 4px; }
+  .s-rich.bk .bk-harness-matrix-rl { writing-mode: vertical-rl; transform: rotate(180deg); justify-content: center; font-size: 9.5px; }
+  .s-rich.bk .bk-harness-matrix-hh { font-size: 9px; }
+  .s-rich.bk .bk-harness-matrix-hh small { font-size: 8.5px; overflow-wrap: anywhere; }
+  .s-rich.bk .bk-harness-matrix-c { padding: 14px 2px 8px; }
+  .s-rich.bk .bk-harness-matrix-c > svg { width: 20px; height: 20px; }
+  .s-rich.bk .bk-harness-matrix-cap { font-size: 8.5px; overflow-wrap: anywhere; }
+  .s-rich.bk .bk-harness-matrix-ps .bk-proof { width: 12px; height: 12px; }
+  .s-rich.bk .bk-harness-matrix-ps .bk-proof svg { width: 9px; height: 9px; }
 }

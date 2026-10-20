@@ -1,11 +1,11 @@
 /* Правила карточками со значком */
 .s-rich.bk .bk-rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.s-rich.bk .bk-rules.bk-cols-2 { grid-template-columns: 1fr 1fr; }
+.s-rich.bk .bk-rules.bk-rules-cols-2 { grid-template-columns: 1fr 1fr; }
 @media (max-width: 760px) { .s-rich.bk .bk-rules { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 640px) { .s-rich.bk .bk-rules.bk-cols-2 { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .s-rich.bk .bk-rules.bk-rules-cols-2 { grid-template-columns: 1fr; } }
 @media (max-width: 460px) { .s-rich.bk .bk-rules { grid-template-columns: 1fr; } }
-.s-rich.bk .bk-rule { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 15px; display: flex; flex-direction: column; gap: 4px; }
-.s-rich.bk .bk-ri { width: 34px; height: 34px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; margin-bottom: 4px; }
-.s-rich.bk .bk-ri svg { width: 18px; height: 18px; }
-.s-rich.bk .bk-rule b { font-size: 15.5px; }
-.s-rich.bk .bk-rule > span:last-child { font-size: 14px; color: var(--ink-2); line-height: 1.4; }
+.s-rich.bk .bk-rules-rule { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 15px; display: flex; flex-direction: column; gap: 4px; }
+.s-rich.bk .bk-rules-ri { width: 34px; height: 34px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; margin-bottom: 4px; }
+.s-rich.bk .bk-rules-ri svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-rules-rule b { font-size: 15.5px; }
+.s-rich.bk .bk-rules-rule > span:last-child { font-size: 14px; color: var(--ink-2); line-height: 1.4; }

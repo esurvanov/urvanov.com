@@ -14,7 +14,7 @@ export default defineBlock({
     const v = Number(attrs.value)
     if (!(v >= 0 && v <= 100)) throw new Error(`blocks: <b-bar value="${attrs.value}"> — нужен процент от 0 до 100`)
     if (attrs.min && !/^\d+$/.test(attrs.min)) throw new Error(`blocks: <b-bar min="${attrs.min}"> — нужно число px`)
-    return `<div class="bk-dbar"${attrs.min ? ` style="min-width:${attrs.min}px"` : ''}><span style="width:${attrs.value}%${attrs.color ? `;background:${color(attrs.color)}` : ''}"></span></div>`
+    return `<div class="bk-bar"${attrs.min ? ` style="min-width:${attrs.min}px"` : ''}><span style="width:${attrs.value}%${attrs.color ? `;background:${color(attrs.color)}` : ''}"></span></div>`
   },
   example: { ru: '<b-bar value="74"></b-bar>', en: '<b-bar value="74"></b-bar>' },
 })

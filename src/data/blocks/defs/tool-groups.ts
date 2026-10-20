@@ -21,18 +21,18 @@ export default defineBlock({
       },
     },
   },
-  render: ({ attrs, slots }) => `<div class="bk-tg" aria-label="${attr(attrs.label)}">${slots.group.map((s) => {
+  render: ({ attrs, slots }) => `<div class="bk-tool-groups" aria-label="${attr(attrs.label)}">${slots.group.map((s) => {
     const a = s.attrs
-    const chip = (t: string) => `<span class="bk-tg-chip">${t.trim()}</span>`
+    const chip = (t: string) => `<span class="bk-tool-groups-chip">${t.trim()}</span>`
     let chips = ''
     if (a.chips) {
       const list = a.chips.split('|').map(chip)
-      const sw = a.swap ? `<span class="bk-tg-sw">${icon('swap', '1.8')}${a.swap}</span>` : ''
-      chips = `<div class="bk-tg-chips">${list[0]}${sw}${list.slice(1).join('')}</div>`
+      const sw = a.swap ? `<span class="bk-tool-groups-sw">${icon('swap', '1.8')}${a.swap}</span>` : ''
+      chips = `<div class="bk-tool-groups-chips">${list[0]}${sw}${list.slice(1).join('')}</div>`
     } else if (a.chip) chips = chip(a.chip)
-    const alts = a.alts ? `<small class="bk-tg-alts">${a.alts}</small>` : ''
+    const alts = a.alts ? `<small class="bk-tool-groups-alts">${a.alts}</small>` : ''
     const sub = s.html ? `<small>${inline(s.html)}</small>` : ''
-    return `<div class="bk-tg-g${a.kind ? ` bk-tg-${a.kind}` : ''}"><span class="bk-tg-k">${a.k}</span>${chips}${alts}${sub}</div>`
+    return `<div class="bk-tool-groups-g${a.kind ? ` bk-tool-groups-${a.kind}` : ''}"><span class="bk-tool-groups-k">${a.k}</span>${chips}${alts}${sub}</div>`
   }).join('')}</div>`,
   example: {
     ru: '<b-tool-groups label="Группы инструментов">\n  <group k="агенты вендоров" kind="pair" chips="Claude Code|Codex" swap="почти равнозначны"></group>\n  <group k="опенсорс-харнессы" kind="open" chips="Hermes Agent" alts="и аналоги: OpenCode, Aider">Любая модель через API или локально</group>\n  <group k="ИИ-редактор кода" chip="Cursor">Модели разных вендоров</group>\n  <group k="ИИ-ассистент в браузере" kind="chat" chip="ChatGPT, Claude">Без доступа к проекту</group>\n</b-tool-groups>',

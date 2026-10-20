@@ -32,7 +32,7 @@ export default function BlocksView() {
               </ul>
             )}
             <div className="s-prose bk-show-demo">
-              <div className="s-rich bk bk-prompts" data-block-demo={b.tag} dangerouslySetInnerHTML={{ __html: b.html }} />
+              <div className="s-rich bk bk-post-prompts" data-block-demo={b.tag} dangerouslySetInnerHTML={{ __html: b.html }} />
             </div>
           </section>
         ))}

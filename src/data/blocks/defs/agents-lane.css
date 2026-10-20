@@ -1,7 +1,7 @@
 /* Несколько агентов: плашки с обводкой акцентом и залитая плашка-итог; на телефоне — столбиком */
-.s-rich.bk .bk-al { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 10px; }
-@media (max-width: 460px) { .s-rich.bk .bk-al { flex-direction: column; gap: 6px; } }
-.s-rich.bk :is(.bk-al-chip, .bk-al-note) { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 15px; border: 1.5px solid var(--accent); border-radius: 4px; padding: 6px 12px; background: var(--surface-2); white-space: nowrap; }
-.s-rich.bk .bk-al-chip svg { width: 14px; height: 14px; vertical-align: -2px; margin-right: 4px; }
-.s-rich.bk .bk-al-note { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
-.s-rich.bk .bk-al-cap { font-size: 13px; color: var(--muted); margin: 8px 0 .8em; }
+.s-rich.bk .bk-agents-lane { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 10px; }
+@media (max-width: 460px) { .s-rich.bk .bk-agents-lane { flex-direction: column; gap: 6px; } }
+.s-rich.bk :is(.bk-agents-lane-chip, .bk-agents-lane-note) { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 15px; border: 1.5px solid var(--accent); border-radius: 4px; padding: 6px 12px; background: var(--surface-2); white-space: nowrap; }
+.s-rich.bk .bk-agents-lane-chip svg { width: 14px; height: 14px; vertical-align: -2px; margin-right: 4px; }
+.s-rich.bk .bk-agents-lane-note { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.s-rich.bk .bk-agents-lane-cap { font-size: 13px; color: var(--muted); margin: 8px 0 .8em; }

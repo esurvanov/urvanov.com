@@ -7,7 +7,7 @@ export default defineBlock({
   title: 'Панель вида',
   doc: 'Содержимое для вида «Иллюстрация» (pic) или «Структура» (struct) из <b-view-toggle>.',
   attrs: { kind: { doc: 'вид', required: true, values: ['pic', 'struct'] } },
-  render: ({ attrs, children }) => `<div class="${attrs.kind === 'pic' ? 'bk-v-c' : 'bk-v-s'}">${children.trim()}</div>`,
+  render: ({ attrs, children }) => `<div class="${attrs.kind === 'pic' ? 'bk-view-pic' : 'bk-view-struct'}">${children.trim()}</div>`,
   example: {
     ru: '<b-view kind="struct"><b-why>Карточки вида «Структура».</b-why></b-view>',
     en: '<b-view kind="struct"><b-why>Cards of the “Structure” view.</b-why></b-view>',

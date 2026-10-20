@@ -9,7 +9,7 @@ export default defineBlock({
   render: ({ children }) => {
     const t = children.trim()
     if (!t.startsWith('<table>')) throw new Error('blocks: <b-table-plain> — внутри нужна HTML-таблица <table>…</table>')
-    return t.replace(/^<table>/, '<table class="bk-tblp">')
+    return t.replace(/^<table>/, '<table class="bk-table-plain">')
   },
   example: {
     ru: '<b-table-plain>\n<table><thead><tr><th>Часть ответа</th><th>Опора</th></tr></thead><tbody><tr><td>Шаги воспроизведения</td><td>Jira, заявка PAY-142</td></tr><tr><td>Где падает код</td><td>GitLab, файл и строка</td></tr></tbody></table>\n</b-table-plain>',

@@ -1,8 +1,8 @@
 /* Принципы в ряд (hdd) */
-.s-rich.bk .bk-hpr { margin-top: 10px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-.s-rich.bk .bk-hpr-c { display: flex; flex-direction: column; gap: 4px; padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
-.s-rich.bk .bk-hpr-i { width: 34px; height: 34px; border-radius: 6px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 4px; }
-.s-rich.bk .bk-hpr-i svg { width: 18px; height: 18px; }
-.s-rich.bk .bk-hpr-c b { font-size: 14.5px; line-height: 1.3; }
-.s-rich.bk .bk-hpr-c small { font-size: 13px; color: var(--ink-2); line-height: 1.35; }
-@media (max-width: 760px) { .s-rich.bk .bk-hpr { grid-template-columns: 1fr 1fr; } }
+.s-rich.bk .bk-hdd-principles { margin-top: 10px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.s-rich.bk .bk-hdd-principles-c { display: flex; flex-direction: column; gap: 4px; padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.s-rich.bk .bk-hdd-principles-i { width: 34px; height: 34px; border-radius: 6px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 4px; }
+.s-rich.bk .bk-hdd-principles-i svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-hdd-principles-c b { font-size: 14.5px; line-height: 1.3; }
+.s-rich.bk .bk-hdd-principles-c small { font-size: 13px; color: var(--ink-2); line-height: 1.35; }
+@media (max-width: 760px) { .s-rich.bk .bk-hdd-principles { grid-template-columns: 1fr 1fr; } }

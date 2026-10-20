@@ -15,7 +15,7 @@ export default defineBlock({
   },
   render: ({ attrs, slots }) => `<div class="bk-stack"${attrs.label ? ` aria-label="${attr(attrs.label)}"` : ''}>${slots.seg.map((s) => {
     const w = s.attrs.w.endsWith('%') ? `width:${s.attrs.w}` : `flex:${s.attrs.w}`
-    return `<div class="bk-seg" style="${w};background:${color(s.attrs.color)}${s.attrs.ink ? `;color:${color(s.attrs.ink)}` : ''}">${s.html}</div>`
+    return `<div class="bk-stack-seg" style="${w};background:${color(s.attrs.color)}${s.attrs.ink ? `;color:${color(s.attrs.ink)}` : ''}">${s.html}</div>`
   }).join('')}</div>`,
   example: {
     ru: '<b-stack label="Распределение интервью по группам">\n  <seg w="2" color="c-code">2</seg>\n  <seg w="3" color="c-work">3</seg>\n  <seg w="2" color="c-chat">2</seg>\n  <seg w="1" color="c-none" ink="ink">1</seg>\n</b-stack>',

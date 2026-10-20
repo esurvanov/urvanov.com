@@ -1,4 +1,4 @@
 /* Сетка точек: 24 в ряд, выделенные — цветом проектов */
-.s-rich.bk .bk-dots { display: grid; grid-template-columns: repeat(24, 5px); gap: 2px; }
-.s-rich.bk .bk-dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--c-none); opacity: .55; }
-.s-rich.bk .bk-dots i.bk-on { background: var(--c-proj); opacity: 1; }
+.s-rich.bk .bk-dot-grid { display: grid; grid-template-columns: repeat(24, 5px); gap: 2px; }
+.s-rich.bk .bk-dot-grid i { width: 5px; height: 5px; border-radius: 50%; background: var(--c-none); opacity: .55; }
+.s-rich.bk .bk-dot-grid i.bk-dot-grid-on { background: var(--c-proj); opacity: 1; }

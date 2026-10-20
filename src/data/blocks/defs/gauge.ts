@@ -14,7 +14,7 @@ export default defineBlock({
     },
   },
   render: ({ attrs, slots }) => `<div class="bk-gauge" aria-label="${attr(attrs.label)}">${slots.row.map((r) =>
-    `<div class="bk-gg"><span>${r.attrs.k}</span><div class="bk-gbar"><i style="width:${r.attrs.w};background:${color(r.attrs.color)}"></i></div><em>${inline(r.html)}</em></div>`).join('')}</div>`,
+    `<div class="bk-gauge-gg"><span>${r.attrs.k}</span><div class="bk-gauge-gbar"><i style="width:${r.attrs.w};background:${color(r.attrs.color)}"></i></div><em>${inline(r.html)}</em></div>`).join('')}</div>`,
   example: {
     ru: '<b-gauge label="Что делать с повтором">\n  <row k="1 человек" w="15%" color="c-none">случай</row>\n  <row k="повторяется у нескольких" w="45%" color="c-light">проверить анкетой</row>\n  <row k="анкета подтвердила" w="100%" color="c-work">в процедуру решения</row>\n</b-gauge>',
     en: '<b-gauge label="What to do with a repeat">\n  <row k="1 person" w="15%" color="c-none">a case</row>\n  <row k="repeats for several" w="45%" color="c-light">check with a survey</row>\n  <row k="survey confirmed" w="100%" color="c-work">into the decision</row>\n</b-gauge>',

@@ -1,13 +1,13 @@
 /* Два списка рядом; меняющийся — с полосой слева и точками цвета предупреждения */
-.s-rich.bk .bk-sc { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-@media (max-width: 640px) { .s-rich.bk .bk-sc { grid-template-columns: 1fr; } }
-.s-rich.bk .bk-sc > div { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
-.s-rich.bk .bk-sc > .bk-sc-mv { border-left: 4px solid var(--warn); }
-.s-rich.bk .bk-sc-sh { display: flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); margin-bottom: 8px; }
-.s-rich.bk .bk-sc-mv .bk-sc-sh { color: var(--warn); }
-.s-rich.bk .bk-sc-sh > svg { width: 16px; height: 16px; }
-.s-rich.bk .bk-sc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
-.s-rich.bk .bk-sc li::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--line-2); margin-right: 10px; vertical-align: 1px; }
-.s-rich.bk .bk-sc-mv li::before { background: var(--warn); }
+.s-rich.bk .bk-two-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 640px) { .s-rich.bk .bk-two-lists { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-two-lists > div { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px 16px; }
+.s-rich.bk .bk-two-lists > .bk-two-lists-mv { border-left: 4px solid var(--warn); }
+.s-rich.bk .bk-two-lists-sh { display: flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); margin-bottom: 8px; }
+.s-rich.bk .bk-two-lists-mv .bk-two-lists-sh { color: var(--warn); }
+.s-rich.bk .bk-two-lists-sh > svg { width: 16px; height: 16px; }
+.s-rich.bk .bk-two-lists ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
+.s-rich.bk .bk-two-lists li::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--line-2); margin-right: 10px; vertical-align: 1px; }
+.s-rich.bk .bk-two-lists-mv li::before { background: var(--warn); }
 /* Подсказка источника в правой карточке раскрывается влево */
-.s-rich.bk .bk-sc-mv .bk-proof::after { left: auto; right: 0; }
+.s-rich.bk .bk-two-lists-mv .bk-proof::after { left: auto; right: 0; }

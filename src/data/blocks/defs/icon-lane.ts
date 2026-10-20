@@ -13,7 +13,7 @@ export default defineBlock({
     top: { doc: 'отступ сверху в px' },
   },
   render: ({ attrs, children }) =>
-    `<div class="bk-lane"${topStyle(attrs.top)}><div class="bk-lane-h" style="color:${color(attrs.color ?? 'accent')}"><span class="bk-il-ico">${icon(attrs.icon, '1.8')}</span>${attrs.title}</div>${children.trim()}</div>`,
+    `<div class="bk-lane"${topStyle(attrs.top)}><div class="bk-lane-h" style="color:${color(attrs.color ?? 'accent')}"><span class="bk-icon-lane-il-ico">${icon(attrs.icon, '1.8')}</span>${attrs.title}</div>${children.trim()}</div>`,
   example: {
     ru: '<b-icon-lane icon="search-alt" title="Исследование"><b-art-plain name="bug-report-to-reproduction-agent/investigation"></b-art-plain></b-icon-lane>',
     en: '<b-icon-lane icon="search-alt" title="Investigation"><b-art-plain name="bug-report-to-reproduction-agent/investigation"></b-art-plain></b-icon-lane>',

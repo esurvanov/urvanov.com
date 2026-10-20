@@ -4,6 +4,8 @@ import { attr, defineBlock, icon } from '../core'
 // Ставится вплотную к слову, без пробела: «…ответить „не знаю“<b-proof …/>.»
 export default defineBlock({
   tag: 'proof',
+  // Общий класс: значок-источник выводит и harness-compare
+  shared: ['bk-proof'],
   title: 'Источник',
   doc: 'Значок-ссылка на источник с цитатой во всплывающей подсказке.',
   attrs: {

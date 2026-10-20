@@ -6,7 +6,7 @@ export default defineBlock({
   title: 'Полоска-соотношение',
   doc: 'Короткая полоска из долей; parts — «цвет:доля» через пробел.',
   attrs: { parts: { doc: 'доли: «c-chat:28% c-work:72%»', required: true } },
-  render: ({ attrs }) => `<div class="bk-split">${attrs.parts.trim().split(/\s+/).map((p) => {
+  render: ({ attrs }) => `<div class="bk-split-bar">${attrs.parts.trim().split(/\s+/).map((p) => {
     const [c, w] = p.split(':')
     if (!w?.endsWith('%')) throw new Error(`blocks: <b-split-bar parts="${attrs.parts}"> — доля «цвет:NN%»`)
     return `<span style="width:${w};background:${color(c)}"></span>`

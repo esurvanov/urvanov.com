@@ -27,12 +27,12 @@ export default defineBlock({
       const on = new Set(t.attrs.on.split(',').filter(Boolean).map(Number))
       const probs = slots.prob.map((p, i) => {
         const has = on.has(i + 1)
-        return `<span role="listitem" class="bk-tt-pc${has ? ' bk-on' : ''}" title="${attr(p.attrs.title)}" aria-label="${attr(`${p.html}: ${has ? l('есть', 'present') : l('снята', 'removed')}`)}">${icon(has ? 'close-alt' : 'check-thin', '2.4')}${p.html}</span>`
+        return `<span role="listitem" class="bk-tool-types-pc${has ? ' bk-tool-types-on' : ''}" title="${attr(p.attrs.title)}" aria-label="${attr(`${p.html}: ${has ? l('есть', 'present') : l('снята', 'removed')}`)}">${icon(has ? 'close-alt' : 'check-thin', '2.4')}${p.html}</span>`
       }).join('')
-      return `<div class="bk-tt-c" style="--c:${color(t.attrs.color)}"><div class="bk-tt-h"><span class="bk-tt-n">${t.attrs.n}</span><a href="${attr(t.attrs.href)}" target="_blank" rel="noopener">${t.attrs.t}</a></div>`
-        + `<iso-art name="${attr(t.attrs.art)}"></iso-art><div class="bk-tt-ps" role="list" aria-label="${l('Проблемы', 'Problems')}">${probs}</div></div>`
+      return `<div class="bk-tool-types-c" style="--c:${color(t.attrs.color)}"><div class="bk-tool-types-h"><span class="bk-tool-types-n">${t.attrs.n}</span><a href="${attr(t.attrs.href)}" target="_blank" rel="noopener">${t.attrs.t}</a></div>`
+        + `<iso-art name="${attr(t.attrs.art)}"></iso-art><div class="bk-tool-types-ps" role="list" aria-label="${l('Проблемы', 'Problems')}">${probs}</div></div>`
     }
-    return `<div class="bk-tt">${slots.tool.map(card).join(`<span class="bk-tt-ar" aria-hidden="true">${icon('arrow-right')}</span>`)}</div>`
+    return `<div class="bk-tool-types">${slots.tool.map(card).join(`<span class="bk-tool-types-ar" aria-hidden="true">${icon('arrow-right')}</span>`)}</div>`
   },
   example: {
     ru: '<b-tool-types>\n  <prob title="много сообщений на одну задачу">Промпт</prob>\n  <prob title="подключений к приложениям мало">Галлюцинации</prob>\n  <tool n="1" href="https://openai.com/chatgpt/enterprise/" color="c-chat" t="Chat" art="chatgpt-enterprise-usage-report/tool-chat" on="1,2"></tool>\n  <tool n="2" href="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex" color="c-work" t="Work" art="chatgpt-enterprise-usage-report/tool-work" on="2"></tool>\n  <tool n="3" href="https://openai.com/codex/" color="c-code" t="Codex" art="chatgpt-enterprise-usage-report/tool-codex" on=""></tool>\n</b-tool-types>',

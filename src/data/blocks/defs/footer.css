@@ -1,4 +1,4 @@
 /* Подвал поста */
 .s-rich.bk .bk-footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
 .s-rich.bk .bk-footer a { color: var(--accent); text-decoration-line: underline; text-underline-offset: 3px; }
-.s-rich.bk .bk-footer.bk-compact { margin-top: 40px; padding-top: 16px; }
+.s-rich.bk .bk-footer.bk-footer-compact { margin-top: 40px; padding-top: 16px; }

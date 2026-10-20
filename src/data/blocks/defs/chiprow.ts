@@ -13,9 +13,9 @@ export default defineBlock({
   },
   slots: { chip: { doc: 'плашка; внутри — текст', required: true, attrs: { kind: { doc: 'вид плашки', values: ['del', 'on'] } } } },
   render: ({ attrs, slots, children }) => {
-    const row = `<div class="bk-cr${'start' in attrs ? ' bk-cr-start' : ''}"${topStyle(attrs.top)}>${slots.chip.map((s) =>
-      `<span class="bk-cr-chip${s.attrs.kind ? ` bk-cr-${s.attrs.kind}` : ''}">${s.html}</span>`).join('')}</div>`
-    return row + (children.trim() ? `<p class="bk-cr-cap">${inline(children)}</p>` : '')
+    const row = `<div class="bk-chiprow${'start' in attrs ? ' bk-chiprow-start' : ''}"${topStyle(attrs.top)}>${slots.chip.map((s) =>
+      `<span class="bk-chiprow-chip${s.attrs.kind ? ` bk-chiprow-${s.attrs.kind}` : ''}">${s.html}</span>`).join('')}</div>`
+    return row + (children.trim() ? `<p class="bk-chiprow-cap">${inline(children)}</p>` : '')
   },
   example: {
     ru: '<b-chiprow start>\n  <chip kind="del">вход</chip>\n  <chip kind="del">каталог</chip>\n  <chip kind="on">корзина</chip>\n  <chip kind="on">промокод</chip>\n  <chip>оплата</chip>\n  Вычеркнуто то, без чего баг всё равно воспроизводится.\n</b-chiprow>',

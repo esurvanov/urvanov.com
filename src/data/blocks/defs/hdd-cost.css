@@ -1,13 +1,13 @@
 /* Шкала стоимости (hdd) */
-.s-rich.bk .bk-hsh { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.s-rich.bk .bk-hsh-s { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 10px; background: var(--surface); text-align: center; position: relative; }
-.s-rich.bk .bk-hsh-s + .bk-hsh-s { border-left: 1px solid var(--line); }
-.s-rich.bk .bk-hsh-s:nth-child(1) { background: color-mix(in srgb, var(--accent) 14%, var(--surface)); }
-.s-rich.bk .bk-hsh-s:nth-child(2) { background: color-mix(in srgb, var(--accent) 7%, var(--surface)); }
-.s-rich.bk .bk-hsh-s:nth-child(4) { background: color-mix(in srgb, var(--warn) 12%, var(--surface)); }
-.s-rich.bk .bk-hsh-i { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--line-2); color: var(--ink-2); }
-.s-rich.bk .bk-hsh-i svg { width: 18px; height: 18px; }
-.s-rich.bk .bk-hsh-s b { font-size: 15px; }
-.s-rich.bk .bk-hsh-s small { font-size: 12px; color: var(--muted); }
-.s-rich.bk .bk-hsh-usd { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 18px; color: var(--accent); }
-@media (max-width: 640px) { .s-rich.bk .bk-hsh { grid-template-columns: 1fr 1fr; } }
+.s-rich.bk .bk-hdd-cost { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.s-rich.bk .bk-hdd-cost-s { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 10px; background: var(--surface); text-align: center; position: relative; }
+.s-rich.bk .bk-hdd-cost-s + .bk-hdd-cost-s { border-left: 1px solid var(--line); }
+.s-rich.bk .bk-hdd-cost-s:nth-child(1) { background: color-mix(in srgb, var(--accent) 14%, var(--surface)); }
+.s-rich.bk .bk-hdd-cost-s:nth-child(2) { background: color-mix(in srgb, var(--accent) 7%, var(--surface)); }
+.s-rich.bk .bk-hdd-cost-s:nth-child(4) { background: color-mix(in srgb, var(--warn) 12%, var(--surface)); }
+.s-rich.bk .bk-hdd-cost-i { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--line-2); color: var(--ink-2); }
+.s-rich.bk .bk-hdd-cost-i svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-hdd-cost-s b { font-size: 15px; }
+.s-rich.bk .bk-hdd-cost-s small { font-size: 12px; color: var(--muted); }
+.s-rich.bk .bk-hdd-cost-usd { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 18px; color: var(--accent); }
+@media (max-width: 640px) { .s-rich.bk .bk-hdd-cost { grid-template-columns: 1fr 1fr; } }

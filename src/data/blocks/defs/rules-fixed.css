@@ -1,2 +1,2 @@
 /* Правила в ряд: колонки задаёт атрибут cols, на узком экране сетка не перестраивается */
-.s-rich.bk .bk-rfx { display: grid; gap: 10px; }
+.s-rich.bk .bk-rules-fixed-rfx { display: grid; gap: 10px; }

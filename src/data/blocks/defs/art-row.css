@@ -1,14 +1,14 @@
 /* Ряд маленьких схем; со стрелками — колонки под стрелки, на телефоне всё столбиком и стрелки вниз.
    .dp-v — класс сцен из src/data/blogArt (рамка у каждой схемы); в старых стилях он был под классом серии kto */
-.s-rich.bk .bk-dp { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 8px 0 12px; }
-.s-rich.bk .bk-dp.bk-dp-1 { grid-template-columns: 1fr; }
-.s-rich.bk .bk-dp.bk-dp-seq { grid-template-columns: 1fr 22px 1fr 22px 1fr; gap: 6px; }
-.s-rich.bk .bk-dp-ar { display: grid; place-items: center; color: var(--muted); }
-.s-rich.bk .bk-dp-ar svg { width: 18px; height: 18px; }
-.s-rich.bk .dp-v { display: block; width: 100%; height: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 12px 10px; }
+.s-rich.bk .bk-art-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 8px 0 12px; }
+.s-rich.bk .bk-art-row.bk-art-row-1 { grid-template-columns: 1fr; }
+.s-rich.bk .bk-art-row.bk-art-row-seq { grid-template-columns: 1fr 22px 1fr 22px 1fr; gap: 6px; }
+.s-rich.bk .bk-art-row-ar { display: grid; place-items: center; color: var(--muted); }
+.s-rich.bk .bk-art-row-ar svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-art-row .dp-v { display: block; width: 100%; height: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 12px 10px; }
 @media (max-width: 640px) {
-  .s-rich.bk .bk-dp { gap: 6px; }
-  .s-rich.bk .dp-v { padding: 8px 4px; }
-  .s-rich.bk .bk-dp.bk-dp-seq { grid-template-columns: 1fr; }
-  .s-rich.bk .bk-dp-ar svg { transform: rotate(90deg); }
+  .s-rich.bk .bk-art-row { gap: 6px; }
+  .s-rich.bk .bk-art-row .dp-v { padding: 8px 4px; }
+  .s-rich.bk .bk-art-row.bk-art-row-seq { grid-template-columns: 1fr; }
+  .s-rich.bk .bk-art-row-ar svg { transform: rotate(90deg); }
 }

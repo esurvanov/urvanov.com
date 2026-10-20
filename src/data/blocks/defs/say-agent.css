@@ -1,16 +1,16 @@
 /* «Скажите агенту»: заголовок h3, фраза курсивом в кавычках с полосой слева и кнопка «Копировать» в углу */
-.s-rich.bk .bk-ask-h { margin-top: 14px; }
-.s-rich.bk .bk-say { position: relative; margin: 10px 0 0; padding: 14px 52px 14px 18px; border-left: 3px solid var(--accent); background: var(--surface-2); border-radius: 0 6px 6px 0; color: var(--ink); }
-.s-rich.bk .bk-say-text { font-size: 15.5px; line-height: 1.55; font-style: italic; }
-.s-rich.bk .bk-say-text::before { content: "«"; color: var(--accent); font-weight: 700; }
-.s-rich.bk .bk-say-text::after { content: "»"; color: var(--accent); font-weight: 700; }
-@media (max-width: 600px) { .s-rich.bk .bk-say { padding: 14px 48px 14px 16px; } }
+.s-rich.bk .bk-say-agent-ask-h { margin-top: 14px; }
+.s-rich.bk .bk-say-agent-say { position: relative; margin: 10px 0 0; padding: 14px 52px 14px 18px; border-left: 3px solid var(--accent); background: var(--surface-2); border-radius: 0 6px 6px 0; color: var(--ink); }
+.s-rich.bk .bk-say-agent-say-text { font-size: 15.5px; line-height: 1.55; font-style: italic; }
+.s-rich.bk .bk-say-agent-say-text::before { content: "«"; color: var(--accent); font-weight: 700; }
+.s-rich.bk .bk-say-agent-say-text::after { content: "»"; color: var(--accent); font-weight: 700; }
+@media (max-width: 600px) { .s-rich.bk .bk-say-agent-say { padding: 14px 48px 14px 16px; } }
 /* Кнопка «Копировать» (и у кода <b-code-copy>): после нажатия скрипт ставит data-state="done" — галочка вместо значка */
-.s-rich.bk .bk-copy { position: absolute; top: 8px; right: 8px; display: inline-grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer; }
-.s-rich.bk .bk-copy:hover { color: var(--ink); background: var(--surface); }
-.s-rich.bk .bk-copy svg { width: 18px; height: 18px; }
-.s-rich.bk .bk-copy-ok { display: none; }
-.s-rich.bk .bk-copy[data-state="done"] { color: var(--accent); }
-.s-rich.bk .bk-copy[data-state="done"] .bk-copy-ok { display: block; }
-.s-rich.bk .bk-copy[data-state="done"] .bk-copy-ic { display: none; }
-.s-rich.bk .bk-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.s-rich.bk .bk-say-agent-copy { position: absolute; top: 8px; right: 8px; display: inline-grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer; }
+.s-rich.bk .bk-say-agent-copy:hover { color: var(--ink); background: var(--surface); }
+.s-rich.bk .bk-say-agent-copy svg { width: 18px; height: 18px; }
+.s-rich.bk .bk-say-agent-ok { display: none; }
+.s-rich.bk .bk-say-agent-copy[data-state="done"] { color: var(--accent); }
+.s-rich.bk .bk-say-agent-copy[data-state="done"] .bk-say-agent-ok { display: block; }
+.s-rich.bk .bk-say-agent-copy[data-state="done"] .bk-say-agent-ic { display: none; }
+.s-rich.bk .bk-say-agent-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

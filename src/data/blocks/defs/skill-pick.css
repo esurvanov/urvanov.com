@@ -1,14 +1,14 @@
 /* Выбор скилла: строки «момент — содержимое — что в контексте», выбранный скилл и файл — акцентом */
-.s-rich.bk .bk-pl { margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px; display: grid; gap: 8px; }
-.s-rich.bk .bk-pl-r { display: grid; grid-template-columns: 120px 1fr 130px; gap: 12px; align-items: center; }
-@media (max-width: 640px) { .s-rich.bk .bk-pl-r { grid-template-columns: 1fr; gap: 6px; } }
-.s-rich.bk .bk-pl-k { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
-.s-rich.bk .bk-pl-s { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
-.s-rich.bk .bk-pl-cs { display: flex; flex-wrap: wrap; gap: 6px; }
-.s-rich.bk .bk-pl-c { font-size: 13px; padding: 5px 10px; border: 1px dashed var(--line-2); border-radius: 3px; color: var(--ink-2); }
-.s-rich.bk .bk-pl-c.bk-on { border: 1px solid var(--accent); color: var(--ink); background: var(--accent-soft); }
-.s-rich.bk .bk-pl-d { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--accent); padding-left: 132px; }
-@media (max-width: 640px) { .s-rich.bk .bk-pl-d { padding-left: 0; } }
-.s-rich.bk .bk-pl-x { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 12px 14px; }
-.s-rich.bk .bk-pl-x code { font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--ink); }
-.s-rich.bk .bk-pl-x span { font-size: 13.5px; color: var(--ink-2); }
+.s-rich.bk .bk-skill-pick { margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px; display: grid; gap: 8px; }
+.s-rich.bk .bk-skill-pick-r { display: grid; grid-template-columns: 120px 1fr 130px; gap: 12px; align-items: center; }
+@media (max-width: 640px) { .s-rich.bk .bk-skill-pick-r { grid-template-columns: 1fr; gap: 6px; } }
+.s-rich.bk .bk-skill-pick-k { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.s-rich.bk .bk-skill-pick-s { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+.s-rich.bk .bk-skill-pick-cs { display: flex; flex-wrap: wrap; gap: 6px; }
+.s-rich.bk .bk-skill-pick-c { font-size: 13px; padding: 5px 10px; border: 1px dashed var(--line-2); border-radius: 3px; color: var(--ink-2); }
+.s-rich.bk .bk-skill-pick-c.bk-skill-pick-on { border: 1px solid var(--accent); color: var(--ink); background: var(--accent-soft); }
+.s-rich.bk .bk-skill-pick-d { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--accent); padding-left: 132px; }
+@media (max-width: 640px) { .s-rich.bk .bk-skill-pick-d { padding-left: 0; } }
+.s-rich.bk .bk-skill-pick-x { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 4px; padding: 12px 14px; }
+.s-rich.bk .bk-skill-pick-x code { font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--ink); }
+.s-rich.bk .bk-skill-pick-x span { font-size: 13.5px; color: var(--ink-2); }

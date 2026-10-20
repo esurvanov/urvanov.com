@@ -16,10 +16,10 @@ export default defineBlock({
     'file-note': { doc: 'что в файле', required: true },
   },
   slots: { skill: { doc: 'скилл; внутри — имя', required: true, attrs: { on: { doc: 'выбранный', values: [''] } } } },
-  render: ({ attrs, slots }) => `<div class="bk-pl"><div class="bk-pl-r"><span class="bk-pl-k">${attrs.start}</span><div class="bk-pl-cs">${slots.skill.map((s) =>
-    `<span class="bk-pl-c${'on' in s.attrs ? ' bk-on' : ''}">${s.html}</span>`).join('')}</div><span class="bk-pl-s">${attrs['start-note']}</span></div>`
-    + `<div class="bk-pl-d">${attrs.picked}</div>`
-    + `<div class="bk-pl-r"><span class="bk-pl-k">${attrs.call}</span><div class="bk-pl-x"><code>${attrs.file}</code><span>${attrs['file-note']}</span></div><span class="bk-pl-s">${attrs['call-note']}</span></div></div>`,
+  render: ({ attrs, slots }) => `<div class="bk-skill-pick"><div class="bk-skill-pick-r"><span class="bk-skill-pick-k">${attrs.start}</span><div class="bk-skill-pick-cs">${slots.skill.map((s) =>
+    `<span class="bk-skill-pick-c${'on' in s.attrs ? ' bk-skill-pick-on' : ''}">${s.html}</span>`).join('')}</div><span class="bk-skill-pick-s">${attrs['start-note']}</span></div>`
+    + `<div class="bk-skill-pick-d">${attrs.picked}</div>`
+    + `<div class="bk-skill-pick-r"><span class="bk-skill-pick-k">${attrs.call}</span><div class="bk-skill-pick-x"><code>${attrs.file}</code><span>${attrs['file-note']}</span></div><span class="bk-skill-pick-s">${attrs['call-note']}</span></div></div>`,
   example: {
     ru: '<b-skill-pick start="Старт сессии" start-note="имя + описание" picked="↓ агент выбрал «ревью PR»" call="Вызов" call-note="тело целиком" file="SKILL.md" file-note="инструкция, примеры, скрипты">\n  <skill>отчёт</skill>\n  <skill on>ревью PR</skill>\n  <skill>релиз</skill>\n</b-skill-pick>',
     en: '<b-skill-pick start="Session start" start-note="name + description" picked="↓ the agent picked “PR review”" call="Call" call-note="the whole body" file="SKILL.md" file-note="instructions, examples, scripts">\n  <skill>report</skill>\n  <skill on>PR review</skill>\n  <skill>release</skill>\n</b-skill-pick>',

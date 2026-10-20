@@ -1,3 +1,3 @@
 /* Поля строками: подпись капсом фиксированной ширины, черта над каждой строкой */
-.s-rich.bk .bk-kv { border-top: 1px solid var(--line); padding: 6px 0; font-size: 14.5px; }
-.s-rich.bk .bk-kv > span { display: inline-block; min-width: 150px; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; opacity: .6; }
+.s-rich.bk .bk-kv-rows { border-top: 1px solid var(--line); padding: 6px 0; font-size: 14.5px; }
+.s-rich.bk .bk-kv-rows > span { display: inline-block; min-width: 150px; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; font-weight: 700; opacity: .6; }

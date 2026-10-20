@@ -9,8 +9,8 @@ export default defineBlock({
   slots: { node: { doc: 'шаг; внутри — подпись под названием', required: true, attrs: { t: { doc: 'название шага', required: true } } } },
   render: ({ slots }) => {
     const cols = slots.node.map(() => '1fr').join(' 28px ')
-    return `<div class="bk-stc" style="--bk-stc-cols:${cols}">${slots.node.map((s) => `<div class="bk-stc-n"><b>${s.attrs.t}</b><small>${inline(s.html)}</small></div>`)
-      .join(`<span class="bk-stc-a">${icon('arrow-right')}</span>`)}</div>`
+    return `<div class="bk-step-chain" style="--bk-stc-cols:${cols}">${slots.node.map((s) => `<div class="bk-step-chain-n"><b>${s.attrs.t}</b><small>${inline(s.html)}</small></div>`)
+      .join(`<span class="bk-step-chain-a">${icon('arrow-right')}</span>`)}</div>`
   },
   example: {
     ru: '<b-step-chain>\n  <node t="1">Дать доступ</node>\n  <node t="2">Записать в библию</node>\n  <node t="3">Напомнить фразой</node>\n</b-step-chain>',

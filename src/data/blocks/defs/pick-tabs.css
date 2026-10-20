@@ -1,58 +1,58 @@
 /* Вкладки под схемой: радиокнопки скрыты, вкладка — пилюля с номером, под ней карточка выбранного пункта */
-.s-rich.bk .bk-pick { margin-top: 12px; }
-.s-rich.bk .bk-pick > input { position: absolute; opacity: 0; pointer-events: none; }
-.s-rich.bk .bk-pick-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
-.s-rich.bk .bk-pick-tabs label { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px 5px 6px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--muted); }
-.s-rich.bk .bk-pick-tabs label i { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: var(--warn); color: #fff; font-style: normal; font-size: 12px; }
-.s-rich.bk .bk-pick-p { display: none; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; }
-.s-rich.bk .bk-pick-p > div { display: flex; flex-direction: column; gap: 4px; }
-.s-rich.bk .bk-pick-k { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-.s-rich.bk .bk-pick-k-w { color: var(--warn); }
-.s-rich.bk .bk-pick-k-a { color: var(--accent); }
-.s-rich.bk .bk-pick > input:nth-of-type(1):checked ~ .bk-pick-p1,
-.s-rich.bk .bk-pick > input:nth-of-type(2):checked ~ .bk-pick-p2,
-.s-rich.bk .bk-pick > input:nth-of-type(3):checked ~ .bk-pick-p3,
-.s-rich.bk .bk-pick > input:nth-of-type(4):checked ~ .bk-pick-p4,
-.s-rich.bk .bk-pick > input:nth-of-type(5):checked ~ .bk-pick-p5,
-.s-rich.bk .bk-pick > input:nth-of-type(6):checked ~ .bk-pick-p6,
-.s-rich.bk .bk-pick > input:nth-of-type(7):checked ~ .bk-pick-p7,
-.s-rich.bk .bk-pick > input:nth-of-type(8):checked ~ .bk-pick-p8 { display: grid; }
-.s-rich.bk .bk-pick > input:nth-of-type(1):checked ~ .bk-pick-tabs label:nth-child(1),
-.s-rich.bk .bk-pick > input:nth-of-type(2):checked ~ .bk-pick-tabs label:nth-child(2),
-.s-rich.bk .bk-pick > input:nth-of-type(3):checked ~ .bk-pick-tabs label:nth-child(3),
-.s-rich.bk .bk-pick > input:nth-of-type(4):checked ~ .bk-pick-tabs label:nth-child(4),
-.s-rich.bk .bk-pick > input:nth-of-type(5):checked ~ .bk-pick-tabs label:nth-child(5),
-.s-rich.bk .bk-pick > input:nth-of-type(6):checked ~ .bk-pick-tabs label:nth-child(6),
-.s-rich.bk .bk-pick > input:nth-of-type(7):checked ~ .bk-pick-tabs label:nth-child(7),
-.s-rich.bk .bk-pick > input:nth-of-type(8):checked ~ .bk-pick-tabs label:nth-child(8) { border-color: var(--warn); color: var(--ink); background: color-mix(in srgb, var(--warn) 14%, transparent); }
-.s-rich.bk .bk-pick > input:focus-visible ~ .bk-pick-tabs { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
-@media (max-width: 600px) { .s-rich.bk .bk-pick-p { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-pick-tabs { margin-top: 12px; }
+.s-rich.bk .bk-pick-tabs > input { position: absolute; opacity: 0; pointer-events: none; }
+.s-rich.bk .bk-pick-tabs-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.s-rich.bk .bk-pick-tabs-row label { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px 5px 6px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 700; color: var(--muted); }
+.s-rich.bk .bk-pick-tabs-row label i { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: var(--warn); color: #fff; font-style: normal; font-size: 12px; }
+.s-rich.bk .bk-pick-tabs-p { display: none; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; }
+.s-rich.bk .bk-pick-tabs-p > div { display: flex; flex-direction: column; gap: 4px; }
+.s-rich.bk .bk-pick-tabs-k { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.s-rich.bk .bk-pick-tabs-k-w { color: var(--warn); }
+.s-rich.bk .bk-pick-tabs-k-a { color: var(--accent); }
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(1):checked ~ .bk-pick-tabs-p1,
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(2):checked ~ .bk-pick-tabs-p2,
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(3):checked ~ .bk-pick-tabs-p3,
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(4):checked ~ .bk-pick-tabs-p4,
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(5):checked ~ .bk-pick-tabs-p5,
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(6):checked ~ .bk-pick-tabs-p6,
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(7):checked ~ .bk-pick-tabs-p7,
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(8):checked ~ .bk-pick-tabs-p8 { display: grid; }
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(1):checked ~ .bk-pick-tabs-row label:nth-child(1),
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(2):checked ~ .bk-pick-tabs-row label:nth-child(2),
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(3):checked ~ .bk-pick-tabs-row label:nth-child(3),
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(4):checked ~ .bk-pick-tabs-row label:nth-child(4),
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(5):checked ~ .bk-pick-tabs-row label:nth-child(5),
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(6):checked ~ .bk-pick-tabs-row label:nth-child(6),
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(7):checked ~ .bk-pick-tabs-row label:nth-child(7),
+.s-rich.bk .bk-pick-tabs > input:nth-of-type(8):checked ~ .bk-pick-tabs-row label:nth-child(8) { border-color: var(--warn); color: var(--ink); background: color-mix(in srgb, var(--warn) 14%, transparent); }
+.s-rich.bk .bk-pick-tabs > input:focus-visible ~ .bk-pick-tabs-row { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+@media (max-width: 600px) { .s-rich.bk .bk-pick-tabs-p { grid-template-columns: 1fr; } }
 /* Вариант accent: номера и выбранная вкладка синие */
-.s-rich.bk .bk-pick-a .bk-pick-tabs label i { background: var(--accent); }
-.s-rich.bk .bk-pick-a > input:nth-of-type(1):checked ~ .bk-pick-tabs label:nth-child(1),
-.s-rich.bk .bk-pick-a > input:nth-of-type(2):checked ~ .bk-pick-tabs label:nth-child(2),
-.s-rich.bk .bk-pick-a > input:nth-of-type(3):checked ~ .bk-pick-tabs label:nth-child(3),
-.s-rich.bk .bk-pick-a > input:nth-of-type(4):checked ~ .bk-pick-tabs label:nth-child(4),
-.s-rich.bk .bk-pick-a > input:nth-of-type(5):checked ~ .bk-pick-tabs label:nth-child(5),
-.s-rich.bk .bk-pick-a > input:nth-of-type(6):checked ~ .bk-pick-tabs label:nth-child(6),
-.s-rich.bk .bk-pick-a > input:nth-of-type(7):checked ~ .bk-pick-tabs label:nth-child(7),
-.s-rich.bk .bk-pick-a > input:nth-of-type(8):checked ~ .bk-pick-tabs label:nth-child(8) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.s-rich.bk .bk-pick-tabs-a .bk-pick-tabs-row label i { background: var(--accent); }
+.s-rich.bk .bk-pick-tabs-a > input:nth-of-type(1):checked ~ .bk-pick-tabs-row label:nth-child(1),
+.s-rich.bk .bk-pick-tabs-a > input:nth-of-type(2):checked ~ .bk-pick-tabs-row label:nth-child(2),
+.s-rich.bk .bk-pick-tabs-a > input:nth-of-type(3):checked ~ .bk-pick-tabs-row label:nth-child(3),
+.s-rich.bk .bk-pick-tabs-a > input:nth-of-type(4):checked ~ .bk-pick-tabs-row label:nth-child(4),
+.s-rich.bk .bk-pick-tabs-a > input:nth-of-type(5):checked ~ .bk-pick-tabs-row label:nth-child(5),
+.s-rich.bk .bk-pick-tabs-a > input:nth-of-type(6):checked ~ .bk-pick-tabs-row label:nth-child(6),
+.s-rich.bk .bk-pick-tabs-a > input:nth-of-type(7):checked ~ .bk-pick-tabs-row label:nth-child(7),
+.s-rich.bk .bk-pick-tabs-a > input:nth-of-type(8):checked ~ .bk-pick-tabs-row label:nth-child(8) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
 /* Схема над вкладками (части bk bk1…bk8 из ../../blogArt): выбранная часть обведена рамкой hl, остальные приглушены */
-.s-rich.bk .bk-lane .bk .hl { opacity: 0; transition: opacity .2s; }
-.s-rich.bk .bk-lane .bk { transition: opacity .2s; }
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(1):checked) .bk:not(.bk1),
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(2):checked) .bk:not(.bk2),
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(3):checked) .bk:not(.bk3),
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(4):checked) .bk:not(.bk4),
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(5):checked) .bk:not(.bk5),
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(6):checked) .bk:not(.bk6),
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(7):checked) .bk:not(.bk7),
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(8):checked) .bk:not(.bk8) { opacity: .22; }
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(1):checked) .bk1 .hl,
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(2):checked) .bk2 .hl,
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(3):checked) .bk3 .hl,
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(4):checked) .bk4 .hl,
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(5):checked) .bk5 .hl,
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(6):checked) .bk6 .hl,
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(7):checked) .bk7 .hl,
-.s-rich.bk .bk-lane:has(.bk-pick > input:nth-of-type(8):checked) .bk8 .hl { opacity: 1; }
+.s-rich.bk .bk-lane:has(.bk-pick-tabs) .bk .hl { opacity: 0; transition: opacity .2s; }
+.s-rich.bk .bk-lane:has(.bk-pick-tabs) .bk { transition: opacity .2s; }
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(1):checked) .bk:not(.bk1),
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(2):checked) .bk:not(.bk2),
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(3):checked) .bk:not(.bk3),
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(4):checked) .bk:not(.bk4),
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(5):checked) .bk:not(.bk5),
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(6):checked) .bk:not(.bk6),
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(7):checked) .bk:not(.bk7),
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(8):checked) .bk:not(.bk8) { opacity: .22; }
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(1):checked) .bk1 .hl,
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(2):checked) .bk2 .hl,
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(3):checked) .bk3 .hl,
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(4):checked) .bk4 .hl,
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(5):checked) .bk5 .hl,
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(6):checked) .bk6 .hl,
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(7):checked) .bk7 .hl,
+.s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(8):checked) .bk8 .hl { opacity: 1; }

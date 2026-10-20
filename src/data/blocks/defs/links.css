@@ -1,12 +1,12 @@
 /* «Дальше по теме»: карточки-ссылки */
 .s-rich.bk .bk-links { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 16px; }
-.s-rich.bk .bk-links.bk-cols-2 { grid-template-columns: 1fr 1fr; }
-.s-rich.bk .bk-links.bk-cols-3 { grid-template-columns: repeat(3, 1fr); }
-@media (max-width: 760px) { .s-rich.bk .bk-links.bk-cols-3 { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { .s-rich.bk .bk-links.bk-cols-2 { grid-template-columns: 1fr; } }
-.s-rich.bk .bk-link { display: block; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px 18px; }
-.s-rich.bk .bk-link:hover { border-color: var(--accent); }
-.s-rich.bk .bk-link .bk-k { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-.s-rich.bk .bk-link .bk-t { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 17px; color: var(--ink); margin: 4px 0 3px; }
-.s-rich.bk .bk-link .bk-d { font-size: 14px; color: var(--ink-2); line-height: 1.45; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
-.s-rich.bk .bk-link .bk-d::first-letter { text-transform: uppercase; }
+.s-rich.bk .bk-links.bk-links-cols-2 { grid-template-columns: 1fr 1fr; }
+.s-rich.bk .bk-links.bk-links-cols-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) { .s-rich.bk .bk-links.bk-links-cols-3 { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .s-rich.bk .bk-links.bk-links-cols-2 { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-links-link { display: block; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px 18px; }
+.s-rich.bk .bk-links-link:hover { border-color: var(--accent); }
+.s-rich.bk .bk-links-link .bk-links-k { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.s-rich.bk .bk-links-link .bk-links-t { font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 17px; color: var(--ink); margin: 4px 0 3px; }
+.s-rich.bk .bk-links-link .bk-links-d { font-size: 14px; color: var(--ink-2); line-height: 1.45; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-links-link .bk-links-d::first-letter { text-transform: uppercase; }
