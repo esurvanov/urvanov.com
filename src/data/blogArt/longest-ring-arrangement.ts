@@ -22,23 +22,68 @@ function ring(c: Canvas, cx: number, cy: number, R: number, arr: number[], o: { 
   o.under?.(at) // то, что лежит под шариками (линии троек)
   arr.forEach((v, k) => {
     const [x, y] = slot(cx, cy, R, n, k)
-    const col = o.hl?.includes(v) ? (o.hlCol ?? A) : (o.col ?? M)
-    c.ball(x, y, r, col)
-    if (o.labels !== false) c.text(x, y + r * 0.36, String(v), o.ink ?? '#fff', { size: o.size ?? Math.round(r * 0.95), w: 700 })
+    if (o.hl?.includes(v)) c.dot(x, y, r + 4.5, o.hlCol ?? A, { ring: 3 }) // выделение — обводкой, цвет шарика остаётся его номером
+    c.ball(x, y, r, o.col ?? BALL[(v - 1) % BALL.length])
+    if (o.labels !== false) c.text(x, y + r * 0.36, String(v), o.ink ?? 'var(--surface)', { size: o.size ?? Math.round(r * 0.95), w: 700 })
   })
   return at
 }
+// Цвет шарика — его номер (как наклейки кубика в посте про кубик): видно, куда переехал каждый
+const BALL = ['var(--pn-i)', 'var(--py-i)', 'var(--pg-i)', 'var(--pc-i)', 'var(--pr-i)', 'var(--pp-i)']
 const range = (a: number, b: number) => Array.from({ length: b - a + 1 }, (_, i) => a + i)
 const MIRROR = (n: number) => [2, 1, ...range(3, n).reverse()] // зеркало с номерами от 1: (2 1 n … 3)
 const FLOORS5 = [1, 3, 6, 10, 16, 24, 29, 21, 6, 3, 1] // этажи 5 шариков: этаж 0 … 10 (перебор)
 const pairs = (n: number) => (n * (n - 1)) / 2
 
+// Авторы в порядке статьи, как напечатано (латиницей — без догадок о русском написании); первые двое — равный вклад
+const AUTHORS = ['Alexander Chervov', 'Mark Obozov', 'Alexander Soibelman', 'Sergey Lytkin', 'Igor Kiselev', 'Sergei Fironov', 'Andrey Lukyanenko',
+  'Antonina Dolgorukova', 'Andrey Ogurtsov', 'Fedor Petrov', 'Stanislav Krymskii', 'Mikhail Evseev', 'Lilia Grunwald', 'Denis Gorodkov',
+  'Grigorii Antiufeev', 'Gordey Verbii', 'Vladislav Zamkovoy', 'Liuda Cheldieva', 'Ivan Koltsov', 'Arseniy Sychev', 'Anton Eliseev',
+  'Sergei Nikolenko', 'Nursultan Nanrynbaev', 'Rustem Turtaev', 'Nikita Rokotyan', 'Sviatoslav Kovalev', 'Alexei Rozanov', 'Veniamin Nelin',
+  'Sergei Ermilov', 'Lidia Shishina', 'Dariya Mamayeva', 'Antonina Korolkova', 'Kirill Khoruzhii', 'Alexey Romanov']
+
 const scenes: Record<string, Scene> = {
+  // Авторы: 34 человека; двое с равным вкладом, Антюфеев — позже доказал нижнюю границу
+  authors: {
+    ru: `Авторы в порядке статьи: ${AUTHORS.join(', ')}`, en: `Authors in paper order: ${AUTHORS.join(', ')}`,
+    viewBox: [0, 0, 660, 320], legend: false,
+    draw: (c, l) => {
+      AUTHORS.forEach((name, k) => {
+        const x = 70 + (k % 5) * 130, y = 22 + Math.floor(k / 5) * 37
+        const first = name.split(' ')[0], last = name.split(' ').slice(1).join(' ')
+        const hl = k < 2 || last === 'Antiufeev'
+        c.dot(x - 50, y + 4, 6, hl ? A : M)
+        c.text(x - 40, y, first, M, { size: 10.5, anchor: 'start' })
+        c.text(x - 40, y + 13, last, hl ? A : 'currentColor', { size: 12, w: 700, anchor: 'start' })
+      })
+      c.text(330, 290, l('34 автора · CayleyPy · arXiv, 25 февраля 2025 · журнал ATMP, 2026', '34 authors · CayleyPy · arXiv, 25 February 2025 · ATMP journal, 2026'), 'currentColor', { size: 13, w: 700 })
+      c.text(330, 310, l('синим — равный вклад (первые двое) и автор доказательства 2026 года', 'blue — equal contribution (first two) and the author of the 2026 proof'), M, { size: 11.5 })
+    },
+  },
+  // Компас — нейросеть: расстановка на входе, оценка этажа на выходе
+  net: {
+    ru: 'Компас — нейросеть: на входе расстановка шариков, внутри простая сеть (часто хватает одного слоя на 128 нейронов), на выходе — оценка, сколько ходов до порядка', en: 'The compass is a neural network: an arrangement of balls goes in, a simple network inside (one layer of 128 neurons is often enough), an estimate of moves to order comes out',
+    viewBox: [0, 0, 660, 220], legend: false,
+    draw: (c, l) => {
+      ring(c, 90, 92, 52, [3, 5, 1, 4, 2], { r: 13 })
+      c.text(90, 182, l('вход', 'input'), A, { size: 13, w: 700 }); c.text(90, 200, l('расстановка', 'arrangement'), M, { size: 12 })
+      c.thenArrow(165, 215, 92, M)
+      for (let k = 0; k < 12; k++) { const y = 26 + k * 12; c.line([[250, 50 + (k % 5) * 21], [300, y]], A, { w: 1, op: 0.3 }); c.line([[300, y], [360, 92]], A, { w: 1, op: 0.3 }) }
+      for (let k = 0; k < 5; k++) c.dot(250, 50 + k * 21, 4.5, A, { op: 0.6 })
+      for (let k = 0; k < 12; k++) c.dot(300, 26 + k * 12, 4.5, A)
+      c.dot(360, 92, 7, A)
+      c.text(305, 182, l('нейросеть', 'neural network'), A, { size: 13, w: 700 }); c.text(305, 200, l('часто хватает 1 слоя · 128 нейронов', 'often 1 layer · 128 neurons'), M, { size: 12 })
+      c.thenArrow(420, 470, 92, M)
+      c.text(555, 104, '≈ 7', A, { size: 34, w: 700 })
+      c.text(555, 182, l('выход', 'output'), A, { size: 13, w: 700 }); c.text(555, 200, l('этаж: ходов до порядка', 'floor: moves to order'), M, { size: 12 })
+    },
+  },
   // Три хода на кольце из шести шариков
   moves: {
     ru: 'Кольцо из шести шариков с номерами; ходы: повернуть кольцо влево, вправо или поменять два шарика в окошке наверху', en: 'A ring of six numbered balls; moves: turn the ring left, turn it right, or swap the two balls in the window at the top',
-    viewBox: [0, 0, 660, 250], legend: false,
+    viewBox: [0, 0, 660, 276], legend: false,
     draw: (c, l) => {
+      c.text(330, 266, l('рамка — окошко: менять местами можно только два шарика в нём · цвет шарика = его номер', 'frame — the window: only the two balls in it can be swapped · ball color = its number'), M, { size: 12 })
       const base = [1, 2, 3, 4, 5, 6]
       const panels: [number, number[], string][] = [
         [110, base, l('порядок', 'in order')],
@@ -70,17 +115,21 @@ const scenes: Record<string, Scene> = {
       c.text(470, 68, l('на нём ровно одна', 'exactly one sits there'), M, { size: 13, anchor: 'start' })
       c.text(470, 286, l('порядок', 'in order'), A, { size: 14, w: 700, anchor: 'start' })
       c.text(470, 170, l('всего 120', '120 in total'), M, { size: 13, anchor: 'start' })
+      c.text(470, 196, l('ширина полосы —', 'bar width —'), M, { size: 12, anchor: 'start' })
+      c.text(470, 212, l('сколько расстановок', 'arrangements'), M, { size: 12, anchor: 'start' })
+      c.text(470, 228, l('на этаже', 'on the floor'), M, { size: 12, anchor: 'start' })
     },
   },
   // Зеркало и задом наперёд
   mirror: {
     ru: 'Зеркало — кольцо, отражённое через окошко: у шести шариков оно на 15-м этаже, на потолке; задом наперёд — на 13-м', en: 'The mirror is the ring reflected through the window: for six balls it sits on floor 15, the ceiling; the reversed order sits on floor 13',
-    viewBox: [0, 0, 660, 270], legend: false,
+    viewBox: [0, 0, 660, 290], legend: false,
     draw: (c, l) => {
+      c.text(330, 280, l('пунктир — ось через окошко: шарики меняются местами парами напротив оси', 'dashed line — the axis through the window: balls swap in pairs across it'), M, { size: 12 })
       ring(c, 110, 125, 66, [1, 2, 3, 4, 5, 6], { r: 15 })
       c.text(110, 238, l('порядок', 'in order'), M, { size: 14, w: 700 })
       c.thenArrow(195, 245, 125, M)
-      ring(c, 330, 125, 66, MIRROR(6), { r: 15, col: 'currentColor', ink: 'var(--surface)' })
+      ring(c, 330, 125, 66, MIRROR(6), { r: 15 })
       c.line([[330, 30], [330, 210]], 'currentColor', { w: 1.6, dash: '5 4' })
       c.text(330, 238, l('зеркало · этаж 15', 'mirror · floor 15'), 'currentColor', { size: 14, w: 700 })
       ring(c, 550, 125, 66, [6, 5, 4, 3, 2, 1], { r: 15 })
@@ -109,23 +158,24 @@ const scenes: Record<string, Scene> = {
   // Пары: 5 шариков — 10 линий
   pairs: {
     ru: 'Пять шариков соединяются в пары десятью линиями, и потолок у них — 10; у шести — 15 пар и потолок 15', en: 'Five balls form ten pairs, and their ceiling is 10; six balls form 15 pairs and the ceiling is 15',
-    viewBox: [0, 0, 660, 260], legend: false,
+    viewBox: [0, 0, 660, 264], legend: false,
     draw: (c, l) => {
       const draw = (cx: number, n: number) => {
         const pts = range(0, n - 1).map((k) => slot(cx, 120, 72, n, k))
         for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) c.line([pts[i], pts[j]], A, { w: 1.8, op: 0.75 })
-        pts.forEach(([x, y]) => c.ball(x, y, 12, M))
+        pts.forEach(([x, y], k) => c.ball(x, y, 12, BALL[k % BALL.length]))
       }
       draw(150, 5); draw(420, 6)
       c.text(150, 226, l('5 шариков: 10 пар = потолок 10', '5 balls: 10 pairs = ceiling 10'), 'currentColor', { size: 14, w: 700 })
       c.text(420, 226, l('6 шариков: 15 пар = потолок 15', '6 balls: 15 pairs = ceiling 15'), 'currentColor', { size: 14, w: 700 })
       c.text(600, 120, 'n·(n−1)/2', A, { size: 16, w: 700 })
+      c.text(330, 252, l('каждая линия — одна пара шариков; пар столько же, сколько ходов до потолка', 'each line is one pair of balls; there are as many pairs as moves to the ceiling'), M, { size: 12 })
     },
   },
   // Классическая программа: 217 944 хода против 190 пар
   gap: {
     ru: 'Кольцо из 20 шариков: классическая программа нашла путь в 217 944 хода за 41 минуту, а пар всего 190 — в 1147 раз меньше', en: 'A 20-ball ring: the classic program found a 217,944-move path in 41 minutes, while there are only 190 pairs — 1,147 times fewer',
-    viewBox: [0, 0, 660, 200], legend: false,
+    viewBox: [0, 0, 660, 205], legend: false,
     draw: (c, l) => {
       const x0 = 210
       c.text(x0 - 14, 62, l('пар', 'pairs'), 'currentColor', { size: 14, w: 700, anchor: 'end' })
@@ -135,14 +185,16 @@ const scenes: Record<string, Scene> = {
       c.rect(x0, 106, 400, 24, { rx: 5, fill: W, fillOp: 0.6 })
       c.line([[x0 + 300, 100], [x0 + 312, 136]], 'var(--surface)', { w: 5 }); c.line([[x0 + 310, 100], [x0 + 322, 136]], 'var(--surface)', { w: 5 })
       c.text(x0 + 395, 123, l('217 944', '217,944'), '#fff', { size: 15, w: 700, anchor: 'end' })
-      c.text(x0, 168, l('41 минута · в 1147 раз длиннее · столбик с разрывом, не в масштабе', '41 minutes · 1,147 times longer · bar broken, not to scale'), M, { size: 13, anchor: 'start' })
+      c.text(330, 196, l('по гипотезе короче числа пар не бывает — программа даёт путь в тысячу раз длиннее', 'by the conjecture nothing beats the pairs — the program gives a path a thousand times longer'), 'currentColor', { size: 13, w: 700 })
+      c.text(330, 168, l('41 минута · в 1147 раз длиннее · столбик с разрывом, не в масштабе', '41 minutes · 1,147 times longer · bar broken, not to scale'), M, { size: 13 })
     },
   },
   // Прогулка: шаг прогулки против настоящего этажа
   walk: {
     ru: 'Прогулка из 12 случайных ходов от порядка на кольце из пяти шариков: шаг растёт до 12, а настоящий этаж к концу — 6', en: 'A walk of 12 random moves from order on a five-ball ring: the step count grows to 12, while the true floor at the end is 6',
-    viewBox: [0, 0, 660, 280], legend: false,
+    viewBox: [0, 0, 660, 300], legend: false,
     draw: (c, l) => {
+      c.text(330, 292, l('серая — сколько шагов сделала прогулка, синяя — настоящий этаж: прогулка завышает', 'grey — steps the walk made, blue — the true floor: the walk overestimates'), M, { size: 12 })
       const fl = [0, 1, 2, 3, 4, 4, 5, 6, 6, 7, 6, 5, 6]
       const xt = range(0, 12).map((i) => (i % 4 ? '' : String(i)))
       const pt = c.chart(70, 600, 40, 220, { yTicks: ['0', '3', '6', '9', '12'], xTicks: xt, xTitle: l('шаг прогулки', 'walk step'), title: l('ходов от порядка', 'moves from order') })
@@ -156,8 +208,9 @@ const scenes: Record<string, Scene> = {
   // Фронт: до 28 шариков — ровно число пар, до 44 — длиннее
   front: {
     ru: 'Компас с фронтом без подсказки: до 28 шариков путь ровно равен числу пар, от 29 до 44 — находится, но длиннее', en: 'Compass with a beam, no hint: up to 28 balls the path equals the number of pairs exactly, from 29 to 44 it is found but longer',
-    viewBox: [0, 0, 660, 190], legend: false,
+    viewBox: [0, 0, 660, 210], legend: false,
     draw: (c, l) => {
+      c.text(330, 202, l('под числом — сколько шариков; синие — найден путь ровно в число пар, серые — путь длиннее', 'number — balls; blue — path of exactly the pairs, grey — a longer path'), M, { size: 12 })
       // таблицы 2–3 статьи: длина пути / число пар
       const data: [number, number][] = [[9, 1], [12, 1], [16, 1], [20, 1], [24, 1], [28, 1], [29, 408 / 406], [32, 508 / 496], [36, 834 / 630], [40, 926 / 780], [44, 1060 / 946]]
       data.forEach(([n, q], j) => {
@@ -194,7 +247,7 @@ const scenes: Record<string, Scene> = {
   // Соревнование: кольца от 2 до 200 шариков
   contest: {
     ru: 'Открытое соревнование: кольца от 2 до 200 шариков; участники дошли до пути ровно в число пар, короче — никто', en: 'An open competition: rings from 2 to 200 balls; participants reached paths of exactly the number of pairs, nobody went shorter',
-    viewBox: [0, 0, 660, 170], legend: false,
+    viewBox: [0, 0, 660, 192], legend: false,
     draw: (c, l) => {
       const ns = [2, 5, 10, 20, 40, 80, 120, 160, 200]
       ns.forEach((n, j) => {
@@ -203,14 +256,16 @@ const scenes: Record<string, Scene> = {
         c.text(x, 60 + R + 16, String(n), M, { size: 12, w: 700 })
         c.badge(x, 60 + R + 36, A, '', { r: 8, mark: 'check' })
       })
+      c.text(330, 182, l('размер кольца растёт с числом шариков · галочка — дошли ровно до числа пар', 'ring size grows with the number of balls · check — reached exactly the pairs'), M, { size: 12 })
       c.text(330, 162, l('короче числа пар — 0 решений', 'shorter than the pairs — 0 solutions'), 'currentColor', { size: 14, w: 700 })
     },
   },
   // Тройки: поворот не переворачивает, обмен — переворачивает
   triples: {
     ru: 'Тройка шариков 1, 2, 4 идёт по часовой; поворот кольца это не меняет, обмен в окошке переворачивает её против часовой', en: 'The triple 1, 2, 4 runs clockwise; turning the ring keeps that, a swap in the window flips it counterclockwise',
-    viewBox: [0, 0, 660, 260], legend: false,
+    viewBox: [0, 0, 660, 280], legend: false,
     draw: (c, l) => {
+      c.text(330, 270, l('обведены шарики 1, 2, 4 · линия — их тройка · стрелка — направление обхода', 'balls 1, 2, 4 are circled · the line is their triple · the arrow is the direction'), M, { size: 12 })
       const panel = (x: number, arr: number[], t: string, flip: boolean) => {
         ring(c, x, 120, 62, arr, { r: 14, hl: [1, 2, 4], under: (at) => c.line([1, 2, 4, 1].map(at), flip ? W : A, { w: 2.5, op: 0.8 }) })
         c.text(x, 226, (flip ? '↺ ' : '↻ ') + t, flip ? W : 'currentColor', { size: 13, w: 700 })
