@@ -7,7 +7,7 @@ tags: AI, agents, Claude Code, Claude in Chrome, browser, QA, harness
 category: harness
 layout: wide
 mentions: Claude in Chrome, Claude Code, Chrome extension, browser automation, MCP, permissions, QA, Puppeteer, token cost
-toc: what=What it is | connect=Connecting | gives=What it does | qa=Example | risks=Permissions and risks | tradeoff=Price of flexibility | custom=Own tool | first=Where to start | next=Next
+toc: what=What it is | connect=Connecting | gives=What it does | qa=Example | risks=Permissions and risks | tradeoff=Price of flexibility | custom=Own script | first=Where to start | next=Next
 ---
 
 Claude in Chrome connects the agent to your browser: it opens tabs, reads pages and the console, clicks and types under your login. Below: how it works, how to connect it in a few minutes, what the agent can do and which permissions to give. The agent from the [QA with an agent](/blog/bug-report-to-reproduction-agent/) article uses this channel, and connecting works like [MCP](/blog/mcp-agent-access/).
@@ -131,8 +131,8 @@ Claude in Chrome connects the agent to your browser: it opens tabs, reads pages 
   </b-finding>
 </b-chapter>
 
-<b-chapter id="custom" icon="boxes-route" title="When you need your own tool">
-  <b-why align="left">Claude in Chrome suits one-off work, but production tasks often need a tool of your own.</b-why>
+<b-chapter id="custom" icon="boxes-route" title="When you need your own script">
+  <b-why align="left">Claude in Chrome suits one-off work, but production tasks often need a script of your own.</b-why>
   <b-rules sw="1.8">
     <rule icon="code" t="Puppeteer">A library that drives the browser from code: open a page, click, pull out what you need. It runs without an agent at every step.</rule>
     <rule icon="page-lines" t="Whole page">Claude Code takes the whole page: text, elements, screenshots. That is convenient for a one-off task.</rule>

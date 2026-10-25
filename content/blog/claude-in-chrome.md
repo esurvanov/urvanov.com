@@ -7,7 +7,7 @@ tags: AI, агенты, Claude Code, Claude in Chrome, браузер, QA, ха�
 category: harness
 layout: wide
 mentions: Claude in Chrome, Claude Code, Chrome extension, browser automation, MCP, permissions, QA, Puppeteer, token cost
-toc: what=Что это | connect=Подключение | gives=Что умеет | qa=Пример | risks=Права и риски | tradeoff=Цена гибкости | custom=Свой инструмент | first=С чего начать | next=Дальше по теме
+toc: what=Что это | connect=Подключение | gives=Что умеет | qa=Пример | risks=Права и риски | tradeoff=Цена гибкости | custom=Свой скрипт | first=С чего начать | next=Дальше по теме
 ---
 
 Claude in Chrome подключает агента к вашему браузеру: он открывает вкладки, читает страницы и консоль, нажимает и вводит текст под вашим входом. Ниже: как это устроено, как подключить за несколько минут, что агент умеет и какие права выдавать. Этот канал использует агент из статьи [QA с агентом](/blog/bug-report-to-reproduction-agent/), а подключение устроено по аналогии с [MCP](/blog/mcp-agent-access/).
@@ -131,8 +131,8 @@ Claude in Chrome подключает агента к вашему браузе�
   </b-finding>
 </b-chapter>
 
-<b-chapter id="custom" icon="boxes-route" title="Когда нужен свой инструмент">
-  <b-why align="left">Claude in Chrome подходит для разовой работы, а для промышленных задач часто нужен собственный инструмент.</b-why>
+<b-chapter id="custom" icon="boxes-route" title="Когда нужен свой скрипт">
+  <b-why align="left">Claude in Chrome подходит для разовой работы, а для промышленных задач часто нужен собственный скрипт.</b-why>
   <b-rules sw="1.8">
     <rule icon="code" t="Puppeteer">Библиотека, которая управляет браузером из кода: открыть страницу, нажать, достать нужное. Работает без агента на каждом шаге.</rule>
     <rule icon="page-lines" t="Страница целиком">Claude Code берёт всю страницу целиком: текст, элементы, снимки. Для разовой задачи это удобно.</rule>
