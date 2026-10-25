@@ -86,10 +86,39 @@ const scenes: Record<string, Scene> = {
       c.badge(402, 262, W, '!', { r: 9 })
     },
   },
+  // Агент берёт источники через MCP: Git — основной, Confluence — только если актуальна, записи встреч; результат — требования с пометками
+  'sources-mcp': {
+    ru: 'Агент через MCP берёт факты из источников и пишет требования с пометками: Git основной, Confluence только если страницы актуальны, записи встреч тоже источник', en: 'Through MCP the agent takes facts from sources and writes requirements with marks: Git is the main one, Confluence only if the pages are current, meeting recordings are a source too',
+    viewBox: [0, 0, 700, 300],
+    draw: (c, l) => {
+      const out = c.iso(90, 150, 26); out.tile(-1.5, -1.5, 3, 3); out.doc(-0.8, -0.6, 0, 1.6, 1.2, A, 3, true)
+      c.text(90, 222, l('требования', 'requirements'), A, { size: 12, w: 700 })
+      c.text(90, 238, l('со ссылкой и статусом', 'with a link and status'), M, { size: 11 })
+      const ag = c.iso(262, 150, 26); ag.tile(-1.5, -1.5, 3, 3); ag.agent(-0.4, -0.4, A, 1, '')
+      c.text(262, 222, l('агент', 'agent'), A, { size: 12, w: 700 })
+      c.arrow(214, 150, 156, 150, A)
+      const src: [number, string, string, string, string][] = [
+        [52, 'Git', l('основной источник', 'the main source'), l('история правок, автор и причина', 'edit history, author and reason'), A],
+        [150, 'Confluence', l('только если страницы актуальны', 'only if the pages are current'), l('иначе устаревшее станет «фактом»', 'otherwise stale text becomes a “fact”'), W],
+        [248, l('Протоколы встреч', 'Meeting notes'), l('о чём договорились', 'what was agreed'), l('сверять с кодом: бывают рассинхроны', 'check against the code: they can drift apart'), M],
+      ]
+      for (const [y, name, sub, sub2, col] of src) {
+        c.curve(316, 140, 384, y, col, { w: 2, dash: col === W ? '5 5' : undefined })
+        c.plug(384, y, col, { s: 10, rx: 3, halo: false })
+        const I = c.iso(436, y, 18)
+        I.tile(-1.2, -1.2, 2.4, 2.4, col === W ? { grid: false, dash: '6 5', edge: W } : { grid: false })
+        I.panel(-0.8, -0.7, 1.6, 1.3, col, undefined, 1)
+        c.text(478, y - 8, name, col, { size: 13, w: 700, anchor: 'start' })
+        c.text(478, y + 8, sub, col === W ? W : M, { size: 11, anchor: 'start' })
+        if (sub2) c.text(478, y + 23, sub2, M, { size: 10.5, anchor: 'start' })
+      }
+      c.text(340, 126, 'MCP', A, { size: 12, w: 700 })
+    },
+  },
   // Версии требования: v1.0 → v1.1 (мелкая правка, смысл тот же) → v2.0 (меняет поведение)
   versions: {
     ru: 'Версии требования: мелкая правка меняет второе число, существенная меняет первое', en: 'Requirement versions: a small edit changes the second number, a significant one changes the first',
-    viewBox: [0, 0, 700, 252],
+    viewBox: [0, 0, 700, 262],
     legend: false,
     draw: (c, l) => {
       const ver: [number, string, string, string, string][] = [
@@ -97,6 +126,7 @@ const scenes: Record<string, Scene> = {
         [350, 'v1.1', A, l('Минорное', 'Minor'), l('смысл тот же', 'same meaning')],
         [580, 'v2.0', W, l('Мажорное', 'Major'), l('меняет поведение', 'changes behavior')],
       ]
+      const who: [number, string, string][] = [[350, l('пруф есть · агент делает сам', 'proof found · the agent does it itself'), A], [580, l('пруфа нет · решает человек', 'no proof · a person decides'), W]]
       for (const [x] of ver) {
         const i = c.iso(x, 140, 26)
         i.tile(-1.6, -1.6, 3.2, 3.2)
@@ -112,6 +142,7 @@ const scenes: Record<string, Scene> = {
         c.text(x, 214, name, col, { size: 12, w: 700 })
         if (sub) c.text(x, 229, sub, M)
       }
+      for (const [x, t, col] of who) c.text(x, 246, t, col, { size: 12, w: 700 })
     },
   },
 }

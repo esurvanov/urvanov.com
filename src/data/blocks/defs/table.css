@@ -12,3 +12,14 @@
 .s-rich.bk .bk-table.bk-table-code-prose code { font-family: var(--mono); font-size: .9em; color: inherit; background: var(--surface); padding: 2px 6px; overflow-wrap: normal; }
 /* Значок в заголовке таблицы (<b-icon> в <th>, таблица оценок) — мелкий, по строке */
 .s-rich.bk .bk-table th > svg { width: 14px; height: 14px; vertical-align: -2px; margin-right: 4px; }
+/* Таблица «Мажорные и минорные»: пять текстовых колонок делят ширину поровну, ссылки переносятся */
+.s-rich.bk .bk-table#major-minor table { table-layout: fixed; min-width: 760px; }
+.s-rich.bk .bk-table#major-minor :is(td, th) { vertical-align: top; overflow-wrap: anywhere; }
+.s-rich.bk .bk-table#major-minor th { white-space: normal; }
+.s-rich.bk .bk-table#major-minor :is(td, th):nth-child(1) { width: 11%; }
+.s-rich.bk .bk-table#major-minor :is(td, th):nth-child(2) { width: 24%; }
+.s-rich.bk .bk-table#major-minor :is(td, th):nth-child(3) { width: 22%; }
+.s-rich.bk .bk-table#major-minor :is(td, th):nth-child(4) { width: 22%; }
+.s-rich.bk .bk-table#major-minor :is(td, th):nth-child(5) { width: 21%; }
+/* Отступ снизу: блок после таблицы (карточки, вывод, схема) не прилипает к её рамке */
+.s-rich.bk .bk-chapter > .bk-table { margin-bottom: 14px; }
