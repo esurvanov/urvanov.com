@@ -1,6 +1,7 @@
 ---
 title: Who to interview before buying AI tools: eight polar groups
 date: 2026-09-28
+updated: 2026-10-20
 description: How to pick 16 people from the report, a questionnaire and license lists, check team coverage and replacements, and decide what to ask them.
 tags: AI, custdev, research
 category: research

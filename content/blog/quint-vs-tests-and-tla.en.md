@@ -1,6 +1,7 @@
 ---
 title: How model checking differs from testing: Quint, QUnit and TLA+
 date: 2026-10-25
+updated: 2026-10-25
 description: A test checks a scenario you thought of, model checking tries every order of actions. What QUnit, Jest, Vitest catch, and what Quint, TLA+, Alloy catch.
 tags: AI, specs, Quint, TLA+, Alloy, QUnit, Jest, Vitest, testing, formal verification, Quint vs TLA+
 category: specs

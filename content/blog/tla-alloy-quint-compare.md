@@ -1,6 +1,7 @@
 ---
 title: Какой язык формальной верификации выбрать: TLA+, Alloy или Quint
 date: 2026-10-25
+updated: 2026-10-25
 description: TLA+, Alloy или Quint: что описывает каждый, как записывается, чем проверяется и кому подходит. Парные сравнения, таблица и вопросы.
 tags: AI, спеки, TLA+, Alloy, Quint, формальная верификация, проверка моделей, TLA+ vs Alloy, Alloy Analyzer, TLC
 category: specs

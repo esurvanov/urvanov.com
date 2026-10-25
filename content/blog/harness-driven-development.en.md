@@ -1,7 +1,7 @@
 ---
 title: Harness engineering in practice: turning AI agent mistakes into rules of its environment (HDD)
 date: 2026-09-28
-updated: 2026-10-04
+updated: 2026-10-20
 description: The mistake-to-rule loop, guides and sensors, three layers of checks, how it fits with specs, and five first steps in your own project.
 tags: AI, Claude Code, harness engineering, harness, HDD, agents
 category: harness

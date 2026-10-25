@@ -1,6 +1,7 @@
 ---
 title: Specs by aggregate: RFC requirements and bounded contexts instead of a spec per feature
 date: 2026-09-28
+updated: 2026-10-20
 description: Spec-driven development without spec sprawl: how to keep specs in one aggregate dictionary so they do not multiply with every feature: requirement levels, the aggregate card and context boundaries.
 tags: AI, spec-driven development, specs, DDD, agents
 category: specs

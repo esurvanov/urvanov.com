@@ -1,6 +1,7 @@
 ---
 title: How to find a race condition in code: a Quint model example
 date: 2026-10-25
+updated: 2026-10-25
 description: How to find a race condition in code: a Quint model tries every order of actions and shows the chain where a rule breaks. Examples and limits.
 tags: AI, specs, Quint, formal verification, testing, harness, race condition, model checking, data races
 category: specs

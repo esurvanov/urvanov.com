@@ -1,6 +1,7 @@
 ---
 title: How to run and analyze interviews about AI use: a 30-minute script, an analysis prompt and an Airtable table
 date: 2026-09-28
+updated: 2026-10-20
 description: A 30-minute call script, rules for staying on topic, a short company-wide questionnaire, interview analysis with ChatGPT or an agent using a ready prompt, and a said-versus-measured check against the report data.
 tags: AI, custdev, interviews
 category: research

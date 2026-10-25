@@ -1,6 +1,7 @@
 ---
 title: Incident investigation with an AI agent: Sentry and Grafana through MCP
 date: 2026-10-05
+updated: 2026-10-20
 description: How to investigate an incident with an AI agent: connect Sentry and Grafana through MCP, have it match errors, metrics and release time, limit permissions and verify the hypothesis.
 tags: AI, agents, MCP, Sentry, Grafana, incidents, harness
 category: harness

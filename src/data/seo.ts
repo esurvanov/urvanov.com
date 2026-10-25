@@ -183,8 +183,8 @@ const BASE: Base[] = [
   },
   {
     path: '/blog',
-    ru: { title: `Блог — ${SITE_NAME}`, description: 'Заметки про AI-разработку, Spec-Driven Development, инженерное управление и сообщества.' },
-    en: { title: 'Blog — Egor Urvanov', description: 'Notes on AI development, Spec-Driven Development, engineering management, and communities.' },
+    ru: { title: `Блог: мнение и опыт автора — ${SITE_NAME}`, description: 'Личный блог: мнение и опыт автора про AI-разработку, Spec-Driven Development, инженерное управление и сообщества.' },
+    en: { title: 'Blog: the author’s views and experience — Egor Urvanov', description: 'A personal blog: the author’s views and experience on AI development, Spec-Driven Development, engineering management and communities.' },
     noindex: { ru: POSTS.filter((p) => p.lang === 'ru').length === 0, en: POSTS.filter((p) => p.lang === 'en').length === 0 },
     jsonLd: (l) => ({ '@type': 'Blog', name: l === 'en' ? 'Blog — Egor Urvanov' : `Блог — ${SITE_NAME}`, url: url(withLang('/blog', l)), inLanguage: l, author: person() }),
     sources: ['src/data/blog.ts', 'content/blog'],

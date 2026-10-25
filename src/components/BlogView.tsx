@@ -47,8 +47,8 @@ export default function BlogView() {
     <Page className="s-blog-page">
       <Crumbs items={crumbs} />
       <header className="s-blog-head">
-        <h1 className="s-page-title">{cat ? t(cat.name) : t({ ru: 'Блог', en: 'Blog' })}</h1>
-        <p className="s-lead">{cat ? t(cat.description) : t({ ru: 'AI-разработка, инженерное управление, сообщества.', en: 'AI development, engineering management, communities.' })}</p>
+        <h1 className="s-page-title">{cat ? t(cat.name) : t({ ru: 'Блог: мнение и опыт автора', en: 'Blog: the author’s views and experience' })}</h1>
+        <p className="s-lead">{cat ? t(cat.description) : t({ ru: 'Личные заметки Егора Урванова про AI-разработку, инженерное управление и сообщества. Это взгляд и практика одного автора.', en: 'Personal notes by Egor Urvanov on AI development, engineering management and communities. They reflect one author’s views and practice.' })}</p>
         <p><a className="s-pill" href={lang === 'en' ? '/en/rss.xml' : '/rss.xml'}>RSS</a></p>
       </header>
       {all.length === 0 ? (

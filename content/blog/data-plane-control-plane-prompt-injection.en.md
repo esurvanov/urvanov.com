@@ -1,6 +1,7 @@
 ---
 title: The agent’s data plane and control plane: keeping data from becoming commands (prompt injection)
 date: 2026-10-05
+updated: 2026-10-20
 description: How an agent’s commands (control plane) differ from the data it reads (data plane), how prompt injection works and how to defend: least rights, approval of writes, separating read from write, trusted sources.
 tags: AI, agents, security, prompt injection, MCP, harness
 category: harness

@@ -1,7 +1,7 @@
 ---
 title: ChatGPT Enterprise usage report for a company: who uses it, for what, and which AI tools to buy next
 date: 2026-09-28
-updated: 2026-10-04
+updated: 2026-10-21
 description: How to find out how employees use ChatGPT Enterprise: five admin console exports turn into adoption depth, uniformity across teams, main tools, a task map, data checks and an interview shortlist.
 tags: AI, research, analytics
 category: research

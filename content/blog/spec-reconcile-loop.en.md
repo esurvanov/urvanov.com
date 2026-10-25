@@ -1,6 +1,7 @@
 ---
 title: A reconcile loop for specs: like Kubernetes, with the spec as desired state and code as actual
 date: 2026-09-28
+updated: 2026-10-20
 description: Spec-driven development with a reconcile loop: who changes the desired state and who brings the code to it, why green tests do not yet mean “correct”, and which six environment capabilities the agent needs to close the loop.
 tags: AI, spec-driven development, specs, Kubernetes, harness
 category: specs

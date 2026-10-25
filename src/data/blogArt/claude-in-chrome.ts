@@ -18,16 +18,24 @@ const scenes: Record<string, Scene> = {
   },
   // Три шага подключения: расширение → запуск claude --chrome → проверка /chrome (галочка)
   'setup-steps': {
-    ru: 'Поставить расширение → Запустить claude --chrome → Проверить /chrome', en: 'Install the extension → Run claude --chrome → Check /chrome',
-    viewBox: [0, 0, 700, 238],
+    ru: 'Три шага подключения: поставить расширение в Chrome, запустить claude --chrome в терминале, проверить связь командой /chrome', en: 'Three connection steps: install the extension in Chrome, run claude --chrome in the terminal, check the link with /chrome',
+    viewBox: [0, 0, 700, 256],
     draw: (c, l) => {
-      const ext = c.iso(130, 122, 26); ext.tile(-1.5, -1.5, 3, 3); ext.box(-0.6, -0.6, 0, 1.2, 1.2, 0.9, A); ext.box(-0.25, -0.25, 0.9, 0.5, 0.5, 0.4, A)
-      const run = c.iso(350, 122, 26); run.tile(-1.5, -1.5, 3, 3); run.panel(-1.1, -0.6, 2.2, 1.6, A, bandTitle('--chrome', 6.1), 2)
-      const chk = c.iso(570, 122, 26); chk.tile(-1.5, -1.5, 3, 3); chk.panel(-1.1, -0.8, 1.9, 1.5, A, bandTitle('Chrome', 6.1), 2)
-      chk.doc(0.6, 0.5, 0, 0.8, 0.7, A, 0, true)
-      c.arrow(200, 128, 282, 128, A); c.arrow(420, 128, 502, 128, A)
+      // 1. Chrome и в нём расширение
+      const ext = c.iso(130, 118, 26); ext.tile(-1.5, -1.5, 3, 3); ext.panel(-1.3, -0.9, 2.1, 1.7, M, bandTitle('Chrome', 6.1), 2); ext.box(0.7, 0.1, 0, 0.55, 0.55, 0.55, A)
+      c.text(176, 84, l('расширение', 'extension'), A, { size: 10, w: 600, anchor: 'start' })
+      c.line([[158, 118], [176, 88]], A, { w: 1, dash: '2 3' })
+      // 2. Терминал с командой и провод к Chrome
+      const run = c.iso(350, 118, 26); run.tile(-1.5, -1.5, 3, 3); run.panel(-1.5, -0.9, 1.4, 1.5, A, bandTitle('claude', 6.1), 2); run.panel(0.25, -0.9, 1.3, 1.5, M, bandTitle('Chrome', 6.1), 2); run.path([[-0.2, 0.85], [0.4, 0.85]], A, { w: 2.4 })
+      c.line([[326, 96], [300, 72]], A, { w: 1, dash: '2 3' }); c.text(297, 74, l('терминал', 'terminal'), A, { size: 10, w: 600, anchor: 'end' })
+      // 3. Проверка: статус «Enabled»
+      const chk = c.iso(570, 118, 26); chk.tile(-1.5, -1.5, 3, 3); chk.panel(-1.3, -0.9, 1.9, 1.5, A, bandTitle('claude', 6.1), 2); chk.doc(0.5, 0.5, 0, 0.8, 0.7, A, 0, true)
+      c.text(588, 158, 'Enabled', A, { size: 10, w: 600, anchor: 'start' })
+      c.arrow(200, 124, 282, 124, A); c.arrow(420, 124, 502, 124, A)
       const steps = [l('Поставить расширение', 'Install the extension'), l('Запустить claude --chrome', 'Run claude --chrome'), l('Проверить /chrome', 'Check /chrome')]
+      const subs = [l('из Chrome Web Store, один раз', 'from the Chrome Web Store, once'), l('в терминале, где работает агент', 'in the terminal where the agent runs'), l('Status: Enabled значит связь есть', 'Status: Enabled means it is linked')]
       steps.forEach((t, i) => c.step(130 + i * 220, 192, i + 1, t))
+      subs.forEach((t, i) => c.text(130 + i * 220, 236, t, M, { size: 10 }))
     },
   },
   // Chrome в центре, вокруг четыре дела агента: консоль, формы и тесты, документы под вашим входом, данные и GIF

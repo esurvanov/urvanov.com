@@ -1,6 +1,13 @@
 // Схемы поста «Баг-репорт → агент воспроизведения»
 import { type Scene, A, M, W, bandTitle } from '@/lib/infographic'
 
+type Cv = Parameters<Scene['draw']>[0]
+// Подпись на поле с тонкой пунктирной выноской к предмету
+const tag = (c: Cv, from: [number, number], to: [number, number], text: string, col: string, anchor: 'start' | 'middle' | 'end' = 'middle') => {
+  c.line([from, to], col, { w: 1, dash: '2 3' })
+  c.text(to[0] + (anchor === 'end' ? -3 : anchor === 'start' ? 3 : 0), to[1] + (anchor === 'middle' ? -4 : 4), text, col, { size: 10, w: 600, anchor })
+}
+
 const scenes: Record<string, Scene> = {
   // Один шаг цепочки: было — QA делает всё сам, стало — агенты делают, QA принимает
   'qa-step': {
@@ -33,12 +40,15 @@ const scenes: Record<string, Scene> = {
       const i0 = c.iso(180, 176, 26); i0.tile(-2.6, -2.6, 5.2, 5.2); i0.person(1.5, -0.4, M, ''); i0.text(1.5, -0.4, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 }); i0.box(-2.2, 1.8, 0, 4.4, 0.5, 0.3, M)
       for (const [x, y] of [[168.7, 128.1], [204.8, 135.9], [139.5, 142.4], [175.5, 150.2], [135, 163.2]]) c.bug(x, y)
       c.text(112.5, 219, l('время QA', 'QA time'), M, { size: 10, w: 600 })
+      tag(c, [138, 128], [92, 108], l('баги в работе', 'bugs in work'), W, 'end')
       const i1 = c.iso(530, 176, 26); i1.tile(-2.6, -2.6, 5.2, 5.2); i1.person(-1.8, -0.2, M, ''); i1.text(-1.8, -0.2, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 }); i1.agent(-0.6, -0.3, A, 0.8, ''); i1.box(-2.2, 1.8, 0, 1.3, 0.5, 0.3, M); i1.agent(0.6, -0.3, A, 0.8, ''); i1.agent(1.8, -0.3, A, 0.8, '')
       i1.zone(-0.9, 1.8, 3.1, 0.5, A, { gz: 0.3 })
       c.text(462.5, 219, l('время QA', 'QA time'), M, { size: 10, w: 600 })
+      tag(c, [582, 172], [632, 150], l('агенты', 'agents'), A, 'start')
+      tag(c, [498, 212], [430, 238], l('освободилось', 'freed up'), A, 'end')
       c.thenArrow(334, 362, 176)
-      c.text(180, 268, l('QA делает всё сам', 'QA does it all'), M, { size: 12 })
-      c.text(530, 268, l('агенты делают · QA принимает', 'agents do · QA accepts'), A, { size: 12 })
+      c.text(180, 268, l('QA делает все баги сам, по очереди', 'QA does every bug himself, one by one'), M, { size: 12 })
+      c.text(530, 268, l('агенты делают · QA принимает результат', 'agents do · QA accepts the result'), A, { size: 12 })
     },
   },
   // Исследование: QA сам идёт 6 шагов к багу → агент сжимает путь до 3, QA смотрит
@@ -53,17 +63,23 @@ const scenes: Record<string, Scene> = {
       // Площадки — отдельным слоем поверх островка
       const p0 = c.iso(180, 128, 26)
       for (const [x, y] of stops) p0.pad(x, y, M, 0.28)
-      c.bug(236.3, 145.1)
+      c.bug(254, 146)
       c.lens(198.2516, 61.3)
-      const i1 = c.iso(530, 128, 26); i1.tile(-2.6, -2.6, 5.2, 5.2); i1.path([[-2, 1.8], [-1.2, 0.5]], M, { w: 2, dash: '3 5', op: 0.5 }); i1.path([[-1.2, 0.5], [-0.4, 1.5]], M, { w: 2, dash: '3 5', op: 0.5 }); i1.path([[-0.4, 1.5], [0.4, 0.1]], M, { w: 2, dash: '3 5', op: 0.5 }); i1.path([[0.4, 0.1], [1.2, 1.1]], A, { w: 2 }); i1.path([[1.2, 1.1], [2, -0.2]], A, { w: 2 }); i1.agent(-1.6, -0.3, A, 0.8, ''); i1.person(1.2, -1.6, M, ''); i1.text(1.2, -1.6, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 })
+      stops.forEach(([x, y], k) => i0.text(x, y, String(k + 1), M, { size: 10, w: 700, halo: false, dy: k % 2 === 0 ? 15 : -9 }))
+      c.text(254, 168, l('баг', 'bug'), W, { size: 10, w: 600 })
+      const i1 = c.iso(530, 128, 26); i1.tile(-2.6, -2.6, 5.2, 5.2); i1.path([[-2, 1.8], [-1.2, 0.5]], M, { w: 2, dash: '3 5', op: 0.5 }); i1.path([[-1.2, 0.5], [-0.4, 1.5]], M, { w: 2, dash: '3 5', op: 0.5 }); i1.path([[-0.4, 1.5], [0.4, 0.1]], M, { w: 2, dash: '3 5', op: 0.5 }); i1.path([[0.4, 0.1], [1.2, 1.1]], A, { w: 2 }); i1.path([[1.2, 1.1], [2, -0.2]], A, { w: 2 }); i1.agent(-1.6, -0.3, A, 0.8, ''); i1.person(0, -2, M, ''); i1.text(0, -2, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 })
       // Первые три шага агент пропустил (бледные), три оставшихся — его
       const p1 = c.iso(530, 128, 26)
       stops.forEach(([x, y], k) => (k < 3 ? p1.pad(x, y, M, 0.28, 0.35) : p1.pad(x, y, A, 0.28)))
-      c.bug(586.3, 145.1)
-      c.eye(610.0448, 91.8)
+      c.bug(604, 146)
+      c.eye(592, 71)
+      stops.forEach(([x, y], k) => { if (k >= 3) i1.text(x, y, String(k - 2), A, { size: 10, w: 700, halo: false, dy: k === 4 ? 15 : -9 }) })
+      c.text(604, 168, l('баг', 'bug'), W, { size: 10, w: 600 })
+      tag(c, [490, 120], [452, 90], l('лишнее убрано', 'extras removed'), M, 'end')
+      tag(c, [498, 92], [470, 62], l('агент', 'agent'), A, 'end')
       c.thenArrow(334, 362, 128)
-      c.text(180, 230, l('6 действий, путь ищет QA', '6 actions, QA hunts the path'), M, { size: 12 })
-      c.text(530, 230, l('агент сжал до 3 · QA смотрит', 'agent narrows to 3 · QA reviews'), A, { size: 12 })
+      c.text(180, 230, l('6 действий, путь к багу ищет QA', '6 actions, QA hunts the path to the bug'), M, { size: 12 })
+      c.text(530, 230, l('лишнее убрано: 3 действия · QA смотрит', 'extras removed: 3 actions · QA reviews'), A, { size: 12 })
     },
   },
   // Описание: у каждого свой вид записи → агент заполняет один шаблон и рисует схемы
@@ -74,10 +90,16 @@ const scenes: Record<string, Scene> = {
       c.caps(180, 16, l('БЫЛО', 'BEFORE'), M); c.caps(530, 16, l('СТАЛО', 'AFTER'), A)
       const i0 = c.iso(180, 128, 26); i0.tile(-2.6, -2.6, 5.2, 5.2); i0.person(-1.5, -2, M, ''); i0.text(-1.5, -2, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 }); i0.doc(-2.3, -0.4, 0, 1.4, 1, M); i0.doc(0.9, -1.1, 0, 1.5, 0.8, M, 4); i0.doc(-0.5, 0.6, 0, 1, 1.4, M, 2)
       c.pen(206.258, 53.5)
-      const i1 = c.iso(530, 128, 26); i1.tile(-2.6, -2.6, 5.2, 5.2); i1.path([[-1.1, 0], [-0.5, 0]], A, { w: 1.8, arrow: true }); i1.path([[1.6, -0.4], [2.5, -0.4]], A, { w: 1.6, arrow: true }); i1.agent(-2.2, -0.4, A, 0.85, ''); i1.doc(-0.3, -0.9, 0, 1.6, 1.8, A); i1.box(1.8, -1, 0, 0.5, 0.5, 0.35, M, 0.9); i1.box(1.8, -0.1, 0, 0.5, 0.5, 0.35, M, 0.9); i1.box(1.8, 0.8, 0, 0.5, 0.5, 0.35, M, 0.9)
+      tag(c, [127, 104], [72, 90], l('шаги', 'steps'), M, 'end')
+      tag(c, [140, 150], [72, 172], l('заметки', 'notes'), M, 'end')
+      tag(c, [233, 132], [262, 78], l('ожидалось / факт', 'expected / actual'), M)
+      const i1 = c.iso(530, 128, 26); i1.tile(-2.6, -2.6, 5.2, 5.2); i1.path([[-1.1, 0], [-0.5, 0]], A, { w: 1.8, arrow: true }); i1.path([[1.6, -0.4], [2.5, -0.4]], A, { w: 1.6, arrow: true }); i1.agent(-2.2, -0.4, A, 0.85, ''); i1.doc(-0.3, -0.9, 0, 1.6, 1.8, A); i1.box(1.8, -1, 0, 0.5, 0.5, 0.35, M, 0.9); i1.box(1.8, 0.1, 0, 0.5, 0.5, 0.35, M, 0.9)
+      tag(c, [492, 88], [432, 62], l('агент', 'agent'), A, 'end')
+      tag(c, [545, 126], [566, 70], l('шаблон', 'template'), A)
+      tag(c, [595, 138], [628, 92], l('схемы: sequence, C4', 'diagrams: sequence, C4'), M)
       c.thenArrow(334, 362, 128)
-      c.text(180, 230, l('у каждого свой вид', 'each in its own style'), M, { size: 12 })
-      c.text(530, 230, l('один шаблон · схемы по запросу', 'one template · diagrams on request'), A, { size: 12 })
+      c.text(180, 230, l('QA описывает баг как ему удобно', 'QA writes the bug up in his own way'), M, { size: 12 })
+      c.text(530, 230, l('агент заполняет шаблон · схемы по запросу', 'agent fills a template · diagrams on request'), A, { size: 12 })
     },
   },
   // Документирование: QA переносит в Jira руками → агент пишет в Jira через MCP
@@ -86,13 +108,15 @@ const scenes: Record<string, Scene> = {
     viewBox: [0, 0, 700, 244],
     draw: (c, l) => {
       c.caps(180, 16, l('БЫЛО', 'BEFORE'), M); c.caps(530, 16, l('СТАЛО', 'AFTER'), A)
-      const i0 = c.iso(180, 128, 26); i0.tile(-2.6, -2.6, 5.2, 5.2); i0.path([[-0.7, -1.8], [0.8, -1.8]], M, { w: 1.4, dash: '4 4', arrow: true }); i0.path([[-0.7, -1.1], [0.8, -1.1]], M, { w: 1.4, dash: '4 4', arrow: true }); i0.path([[-0.7, -0.4], [0.8, -0.4]], M, { w: 1.4, dash: '4 4', arrow: true }); i0.panel(-2.5, -2.2, 1.7, 2, W, bandTitle(l('баг', 'bug')), 2, false); i0.panel(0.9, -2.2, 1.7, 2, M, bandTitle('Jira', 7.1), 2, false); i0.person(0, 1.5, M, ''); i0.text(0, 1.5, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 })
-      const i1 = c.iso(530, 128, 26); i1.tile(-2.6, -2.6, 5.2, 5.2); i1.path([[-1.2, -0.4], [0.8, -0.4]], A, { w: 2.4 }); i1.agent(-2.3, -0.9, A, 0.85, ''); i1.panel(1, -2.2, 1.9, 2, M, bandTitle('Jira'), 2); i1.box(0.62, -0.58, 0, 0.36, 0.36, 0.36, A); i1.person(2, 1.4, M, ''); i1.text(2, 1.4, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 })
+      const i0 = c.iso(180, 128, 26); i0.tile(-2.6, -2.6, 5.2, 5.2); i0.path([[-0.7, -1.8], [0.8, -1.8]], M, { w: 1.4, dash: '4 4', arrow: true }); i0.path([[-0.7, -1.1], [0.8, -1.1]], M, { w: 1.4, dash: '4 4', arrow: true }); i0.path([[-0.7, -0.4], [0.8, -0.4]], M, { w: 1.4, dash: '4 4', arrow: true }); i0.panel(-2.5, -2.2, 1.7, 2, W, bandTitle(l('черновик', 'draft'), 6.2), 2, false); i0.panel(0.9, -2.2, 1.7, 2, M, bandTitle('Jira', 7.1), 2, false); i0.person(0, 1.5, M, ''); i0.text(0, 1.5, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 })
+      const i1 = c.iso(530, 128, 26); i1.tile(-2.6, -2.6, 5.2, 5.2); i1.path([[-1.5, -0.9], [1.0, -1.9]], A, { w: 2.4 }); i1.path([[1.9, 0.9], [1.9, -1.8]], M, { w: 1.4, dash: '4 4', arrow: true }); i1.agent(-2.3, -0.9, A, 0.85, ''); i1.panel(1, -2.2, 1.9, 2, M, bandTitle('Jira'), 2); i1.box(0.85, -2.15, 0, 0.36, 0.36, 0.36, A); i1.person(2, 1.4, M, ''); i1.text(2, 1.4, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 })
       c.pen(527.5096, 143.2)
-      c.text(534.5, 112.2, 'MCP', A, { size: 10, w: 600 })
+      c.text(548, 92, l('MCP: агент ↔ Jira', 'MCP: agent ↔ Jira'), A, { size: 10, w: 600 })
+      tag(c, [496, 82], [466, 56], l('агент', 'agent'), A, 'end')
+      c.text(180, 210, l('скриншоты · ссылки · поля', 'screenshots · links · fields'), M, { size: 10 })
       c.thenArrow(334, 362, 128)
-      c.text(180, 230, l('QA переносит руками', 'QA carries it by hand'), M, { size: 12 })
-      c.text(530, 230, l('агент пишет сам · QA правит спорное', 'agent writes itself · QA fixes disputed'), A, { size: 12 })
+      c.text(180, 230, l('QA переносит всё в Jira руками', 'QA moves everything to Jira by hand'), M, { size: 12 })
+      c.text(530, 230, l('агент пишет в Jira сам · QA правит спорное', 'agent writes to Jira · QA fixes the disputed'), A, { size: 12 })
     },
   },
   // Доступы агента: Jira и документы через MCP, ломать можно только стенд в песочнице
@@ -149,19 +173,22 @@ const scenes: Record<string, Scene> = {
       // Жуки сидят на листах, поэтому тень ниже обычного
       for (const [x, y] of [[171, 120.2], [200.3, 137.1], [229.5, 154]]) c.bug(x, y, W, 9.6)
       c.text(112.5, 177, l('время QA', 'QA time'), M, { size: 10, w: 600 })
+      tag(c, [234, 148], [278, 118], l('3 бага', '3 bugs'), W, 'start')
       const i1 = c.iso(530, 134, 26); i1.tile(-2.6, -2.6, 5.2, 5.2); i1.path([[-1.3, -1.6], [-0.35, -1.6]], A, { w: 1.8, arrow: true }); i1.path([[0.9, -1.6], [1.7, -0.3]], A, { w: 1.3, dash: '3 3' }); i1.path([[-1.3, -0.3], [-0.35, -0.3]], A, { w: 1.8, arrow: true }); i1.path([[0.9, -0.3], [1.7, -0.3]], A, { w: 1.3, dash: '3 3' }); i1.path([[-1.3, 1], [-0.35, 1]], A, { w: 1.8, arrow: true }); i1.path([[0.9, 1], [1.7, -0.3]], A, { w: 1.3, dash: '3 3' }); i1.agent(-2.2, -1.95, A, 0.7, ''); i1.agent(-2.2, -0.65, A, 0.7, ''); i1.doc(-0.2, -2, 0, 1, 0.8, M, 2, true); i1.agent(-2.2, 0.65, A, 0.7, ''); i1.doc(-0.2, -0.7, 0, 1, 0.8, M, 2, true); i1.box(-2.2, 1.8, 0, 1.3, 0.5, 0.3, M); i1.doc(-0.2, 0.6, 0, 1, 0.8, M, 2, true); i1.person(2.2, -0.3, M, ''); i1.text(2.2, -0.3, 'QA', M, { size: 11, w: 600, halo: false, dy: 14 })
       i1.zone(-0.9, 1.8, 3.1, 0.5, A, { gz: 0.3 })
       c.eye(603.29, 127.7)
       c.text(462.5, 177, l('время QA', 'QA time'), M, { size: 10, w: 600 })
+      tag(c, [502, 76], [470, 48], l('3 агента', '3 agents'), A, 'end')
+      tag(c, [578, 106], [622, 76], l('отчёты', 'reports'), M, 'start')
       c.thenArrow(334, 362, 134)
-      c.text(180, 236, l('по очереди · всё время у QA', 'one by one · all time is QA’s'), M, { size: 12 })
-      c.text(530, 236, l('агенты параллельно · QA принимает', 'agents in parallel · QA accepts'), A, { size: 12 })
+      c.text(180, 236, l('QA берёт баги по очереди · всё время его', 'QA takes bugs one by one · all the time is his'), M, { size: 12 })
+      c.text(530, 236, l('агенты работают разом · QA принимает отчёты', 'agents work at once · QA accepts reports'), A, { size: 12 })
     },
   },
   // Пример: жалоба клиента → агент сжимает путь 6 → 3 → отчёт со схемой в Jira
   'complaint-to-report': {
     ru: 'Из одной жалобы клиента агент сжимает путь с шести действий до трёх и пишет отчёт со схемой в Jira', en: 'From one client complaint the agent narrows the path from six actions to three and writes a report with a diagram in Jira',
-    viewBox: [0, 0, 700, 222],
+    viewBox: [0, 0, 700, 240],
     draw: (c, l) => {
       const i0 = c.iso(120, 128, 26); i0.tile(-1.5, -1.5, 3, 3); i0.person(0, 0.3, M, '')
       c.bubble(55.2452, 42.9, 118, 38, M, { op: 0.3, rx: 9, tail: [44, 2, 9, 14] })
@@ -173,12 +200,19 @@ const scenes: Record<string, Scene> = {
       for (const [x, y] of [[332.5, 65.4], [346.5, 61.4], [362.5, 66.4], [376.5, 62.4], [340.5, 55.4], [368.5, 54.4]]) c.ball(x, y, 4, M)
       c.bug(341, 143.8)
       for (const [x, y] of [[305, 124], [315.1, 129.8], [325.2, 135.7]]) c.ball(x, y, 4.5, A)
-      const i2 = c.iso(580, 128, 26); i2.tile(-1.5, -1.5, 3, 3); i2.panel(-1.2, -1, 2.4, 2.2, M, bandTitle('Jira'), 2); i2.box(-1.1, 0.7, 0, 0.45, 0.4, 0.3, M, 0.9); i2.box(-0.3, 0.7, 0, 0.45, 0.4, 0.3, M, 0.9); i2.box(0.5, 0.7, 0, 0.45, 0.4, 0.3, M, 0.9)
+      c.text(354, 38, l('6 действий клиента', '6 client actions'), M, { size: 10, w: 600 })
+      c.text(292, 114, l('3 нужных', '3 needed'), A, { size: 10, w: 600, anchor: 'end' })
+      c.text(412, 96, l('агент убирает', 'agent drops'), A, { size: 10, w: 600, anchor: 'start' })
+      c.text(412, 108, l('лишнее', 'the extras'), A, { size: 10, anchor: 'start' })
+      c.text(360, 166, l('баг найден', 'bug found'), W, { size: 10, w: 600 })
+      const i2 = c.iso(580, 128, 26); i2.tile(-1.5, -1.5, 3, 3); i2.panel(-1.2, -1, 2.4, 2.2, M, bandTitle('Jira'), 2); i2.doc(-1.1, 0.1, 0, 0.9, 0.7, M, 3); i2.box(0.3, 0.2, 0, 0.6, 0.5, 0.3, A, 0.9)
+      c.text(553, 146, l('отчёт', 'report'), M, { size: 10, w: 600 })
+      c.text(594, 163, l('схема', 'diagram'), A, { size: 10, w: 600 })
       c.arrow(200, 134, 262, 134, A)
       c.arrow(438, 134, 500, 134, A)
-      c.text(120, 208, l('строка от клиента', 'client’s line'), M, { size: 12 })
-      c.text(350, 208, l('6 → 3 действия', '6 → 3 actions'), A, { size: 12 })
-      c.text(580, 208, l('отчёт и схема в Jira', 'report and diagram in Jira'), M, { size: 12 })
+      c.step(120, 208, 1, l('жалоба клиента', 'client complaint'), M)
+      c.step(350, 208, 2, l('агент сжимает путь 6 → 3', 'agent narrows the path 6 → 3'))
+      c.step(580, 208, 3, l('отчёт и схема в Jira', 'report and diagram in Jira'), M)
     },
   },
   // Ворота приёмки: QA проверяет отчёт по четырём вопросам; не повторилось — обратно агенту
@@ -236,9 +270,9 @@ const scenes: Record<string, Scene> = {
       ;['PAY-142', 'PAY-143', 'PAY-144'].forEach((t, i) => c.card(200 * i, 32, 196, 30, 'currentColor', { rx: 4, fill: 'var(--surface-2)', stroke: 'var(--line-strong)', sw: 1, lines: [{ t, dy: 20, ...body }] }))
       c.text(0, 100, l('СТАЛО · агенты выполняют одновременно, QA принимает', 'AFTER · agents execute at once, QA accepts the results'), A, head)
       ;[l('браузер · PAY-142', 'browser · PAY-142'), l('код · PAY-143', 'code · PAY-143'), 'API · PAY-144'].forEach((t, i) => c.card(0, 110 + 30 * i, 150, 24, A, { rx: 4, fill: A, stroke: 'none', lines: [{ t, dy: 16, ...body, col: '#fff' }] }))
-      for (const x of [154, 188, 222]) c.card(x, 200, 30, 24, M, { rx: 4, fill: 'none' })
+      ;['142', '143', '144'].forEach((t, i) => c.card(154 + 34 * i, 200, 30, 24, M, { rx: 4, fill: 'none', lines: [{ t, dy: 16, size: 11, w: 600 }] }))
       c.text(0, 216, 'QA', M, head)
-      c.text(262, 216, l('приёмка', 'acceptance'), M, { ...body, anchor: 'start' })
+      c.text(262, 216, l('короткая проверка каждого отчёта', 'a short check of each report'), M, { ...body, anchor: 'start' })
       c.card(256, 236, 344, 36, M, { rx: 6, fill: 'none', sw: 1, dash: '5 4', lines: [{ t: l('время QA: управление агентами и приёмка', 'QA time: managing agents and acceptance'), dy: 22, size: 12, w: 700 }] })
       c.line([[600, 32], [600, 272]], 'var(--line-strong)', { w: 1, dash: '3 4' })
       c.text(604, 50, l('конец «было»', 'end of “before”'), M, { ...body, anchor: 'start' })

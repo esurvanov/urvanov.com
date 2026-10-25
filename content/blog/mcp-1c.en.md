@@ -1,6 +1,7 @@
 ---
 title: MCP server and AI agent for 1C: how to let Claude Code, Codex or Cursor into the database without breaking it
 date: 2026-10-12
+updated: 2026-10-21
 description: An MCP server for 1C:Enterprise gives an AI agent (Claude Code, Codex or Cursor) access to the configuration code and the database data. How to connect it in 3 steps, what breaks in practice, how to separate reading from writing and check results.
 tags: AI, agents, MCP, 1C, permissions, security, Claude Code, Codex, Cursor
 category: harness

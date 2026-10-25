@@ -1,6 +1,7 @@
 ---
 title: Requirements and meeting notes with AI: source, assumption, fact — and what follows
 date: 2026-10-05
+updated: 2026-10-20
 description: What to demand from an agent in requirements and meeting notes: a source link, the model’s assumptions and a “fact or not a fact” status. Where major and minor edits come from and how they relate to use cases.
 tags: AI, agents, requirements, hallucinations, meeting notes, harness
 category: harness

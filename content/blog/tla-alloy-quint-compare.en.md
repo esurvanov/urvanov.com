@@ -1,6 +1,7 @@
 ---
 title: TLA+ vs Alloy vs Quint: which specification language to choose
 date: 2026-10-25
+updated: 2026-10-25
 description: TLA+ vs Alloy vs Quint: what each language describes, how it is written, what checks it, and who it suits, from event order to data relationships.
 tags: AI, specs, TLA+, Alloy, Quint, formal verification, model checking, TLA+ vs Alloy, Alloy Analyzer, TLC
 category: specs

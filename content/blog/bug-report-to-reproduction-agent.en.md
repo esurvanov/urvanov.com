@@ -1,6 +1,7 @@
 ---
 title: QA work after support with an AI agent: investigation, description and documentation via MCP and skills
 date: 2026-10-04
+updated: 2026-10-25
 description: We optimise one step of the chain: QA after support. An agent reproduces a Jira bug on a test stand via MCP, narrows the path, describes and documents it, a skill makes the steps a repeatable process, QA checks by hand. Support and development do not change.
 tags: AI, agents, QA, Jira, MCP, skills, bugs, harness
 category: harness
@@ -15,6 +16,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 <b-view-toggle/>
 
 <b-chapter id="route" icon="stairs" title="We optimise one step: QA after support">
+  <b-why align="left">A bug travels from the client to a fix in four steps: the client writes, support takes it, QA investigates, a developer fixes. Before, QA did its step entirely by hand, and the whole working day went into bugs. Now agents work on this step while QA accepts the result and manages them. The other three steps stay as they were.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/qa-step"/>
   </b-view>
@@ -45,16 +47,11 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 </b-chapter>
 
 <b-chapter id="stages" icon="lines" title="Three parts of QA work and what happens to them">
+  <b-why align="left">QA’s work on one bug splits into three parts: investigation, description and documentation. For each, the pictures below show how QA did it before, what the agent does and what stays with a human.</b-why>
   <b-view kind="pic">
     <b-lane-stack>
     <b-icon-lane icon="search-alt" title="Investigation">
       <b-art-plain name="bug-report-to-reproduction-agent/investigation"/>
-    </b-icon-lane>
-    <b-icon-lane icon="lines" title="Description">
-      <b-art-plain name="bug-report-to-reproduction-agent/description"/>
-    </b-icon-lane>
-    <b-icon-lane icon="file-text" title="Documentation">
-      <b-art-plain name="bug-report-to-reproduction-agent/documentation"/>
     </b-icon-lane>
     </b-lane-stack>
   </b-view>
@@ -74,6 +71,18 @@ A customer bug passes support and reaches QA. This is where investigation, descr
         <node icon="eye">QA reviews</node>
       </b-qa-row>
     </b-icon-lane>
+    </b-lane-stack>
+  </b-view>
+  <b-why align="left">Investigation is the search for the shortest path to the bug. A client’s complaint usually lists everything they did: login, catalog, address, cart, promo code, payment. QA repeated these actions and removed extras one by one until the bug stopped reproducing. The agent does the same on a test stand: it removes an action, checks whether the bug is still there, and goes on down to the minimum. In the example, three of six actions turn out to be needed. QA looks at the narrowed path and checks that what was removed really was extra: the agent may have struck out a step without which the bug actually does not reproduce.</b-why>
+  <b-view kind="pic">
+    <b-lane-stack>
+    <b-icon-lane icon="lines" title="Description">
+      <b-art-plain name="bug-report-to-reproduction-agent/description"/>
+    </b-icon-lane>
+    </b-lane-stack>
+  </b-view>
+  <b-view kind="struct">
+    <b-lane-stack>
     <b-icon-lane icon="lines" title="Description">
       <b-qa-row label="Before">
         <node icon="user">QA</node>
@@ -87,6 +96,18 @@ A customer bug passes support and reaches QA. This is where investigation, descr
         <node icon="workflow">sequence · C4</node>
       </b-qa-row>
     </b-icon-lane>
+    </b-lane-stack>
+  </b-view>
+  <b-why align="left">Description is the write-up of the bug report: steps, expected and actual result, environment. Before, every QA had their own style, and the developer had to get used to it again. The agent fills one report template, so all reports look the same. If the description does not show where it breaks, QA asks for a diagram: a sequence diagram (who calls whom and in what order) or a system structure diagram (C4). QA compares the description with what they saw personally and fixes inaccuracies.</b-why>
+  <b-view kind="pic">
+    <b-lane-stack>
+    <b-icon-lane icon="file-text" title="Documentation">
+      <b-art-plain name="bug-report-to-reproduction-agent/documentation"/>
+    </b-icon-lane>
+    </b-lane-stack>
+  </b-view>
+  <b-view kind="struct">
+    <b-lane-stack>
     <b-icon-lane icon="file-text" title="Documentation">
       <b-qa-row label="Before">
         <node icon="user">QA</node>
@@ -102,6 +123,9 @@ A customer bug passes support and reaches QA. This is where investigation, descr
       </b-qa-row>
     </b-icon-lane>
     </b-lane-stack>
+  </b-view>
+  <b-why align="left">Documentation is moving the result into Jira: screenshots, links, ticket fields. By hand it is a separate chore that eats a noticeable part of the time. The agent is connected to Jira through MCP and writes the comment and fields straight into the ticket. QA opens the ticket, reads the entry and fixes the disputed parts: priority, wording, extra attachments.</b-why>
+  <b-view kind="struct">
     <b-agents-lane title="One QA — several agents at once" agents="agent · PAY-142|agent · PAY-143|agent · PAY-144" note="QA time shifts to managing and accepting" top="10">Each of the three parts runs per bug in its own agent, and QA launches several at once.</b-agents-lane>
   </b-view>
   <b-finding>
@@ -113,6 +137,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 
 <b-chapter id="mcp" icon="plug" title="MCP: the agent works where QA works">
   <b-why>MCP (Model Context Protocol) is a way to connect an agent to work systems so it reads and writes in them itself instead of getting a retelling.</b-why>
+  <b-why align="left">The agent needs five things. Jira: it reads the ticket and writes the result into it. A stand: a test copy of the product where it walks the path as a user. Documents: diagrams and descriptions sit next to the ticket. Data: test data that can be reset. Permissions: only the stand may be broken, production systems are out of reach.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/access-sandbox"/>
   </b-view>
@@ -134,6 +159,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 
 <b-chapter id="skill" icon="doc-square" title="A skill: a written process instead of repeating by hand">
   <b-why>A skill is a way of working written down for the agent: steps, a report template, rules. Another person and another agent can repeat it.</b-why>
+  <b-why align="left">A skill takes the agent through six steps. It reads the ticket, walks the critical path on the stand, narrows it to the minimum, describes the bug by the template, draws diagrams on request and writes the result into Jira. The first three steps are investigation, the rest are description and documentation from the previous chapter. An agent mistake returns to the skill as a new rule, so it does not repeat next time.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/skill-pipeline"/>
   </b-view>
@@ -167,6 +193,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 
 <b-chapter id="parallel" icon="grid-alt" title="One QA — several agents: time shifts to managing and accepting">
   <b-why>Bugs can be reproduced through different channels, and each agent takes its own.</b-why>
+  <b-why align="left">Before (left), QA goes through three bugs one after another. Now (right) three agents work at once: one in the browser, one through the code, one through the API. QA briefly checks each finished report, and the freed time goes into managing agents and acceptance. In “Structure” mode the same is shown as time bars: bugs one by one on top, agents in parallel below, and three acceptance boxes (142, 143, 144) left for QA.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/parallel"/>
   </b-view>
@@ -187,9 +214,12 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 </b-chapter>
 
 <b-chapter id="example" icon="chat-square" title="Example: PAY-142 from ticket to report">
+  <b-why align="left">A client wrote one line to support: payment with a promo code fails. The picture below reads left to right in three steps: the client’s complaint, the agent’s work, the result in Jira. After that each step is shown in detail on the ticket PAY-142.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/complaint-to-report"/>
   </b-view>
+  <b-why align="left">Step 1: QA has only the client’s complaint with no steps and a screenshot of the error. Step 2: the agent walks all six client actions on the test stand and pushes them through the funnel. The extras stay outside, three actions remain, and the bug reproduces on them. Step 3: the agent writes the report and a diagram into Jira, and QA opens the ticket and checks the result.</b-why>
+  <b-why align="left">This is step 1 in Jira: the client’s headline, no reproduction steps, a screenshot of the error attached. The agent starts from here.</b-why>
   <b-lane title="Jira ticket · a customer request passed from support to QA" color="accent">
     <b-ticket key="PAY-142">Card payment fails when a promo code is entered</b-ticket>
     <b-chiprow start top="10">
@@ -199,6 +229,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
       <chip>error screenshot</chip>
     </b-chiprow>
   </b-lane>
+  <b-why align="left">Step 2, first part: narrowing the path. The agent struck out login, catalog and address because the bug stays without them. Cart, promo code and card payment remain.</b-why>
   <b-lane title="Investigation: 6 actions → 3 left" color="accent" top="10">
     <b-chiprow start>
       <chip kind="del">login</chip>
@@ -210,9 +241,11 @@ A customer bug passes support and reaches QA. This is where investigation, descr
       Narrowing down: the agent removes actions one by one and after each checks whether the bug still reproduces. Whatever the bug survives without is crossed out.
     </b-chiprow>
   </b-lane>
+  <b-why align="left">Step 2, second part: the diagram. So the developer can see where it breaks, the agent draws a sequence diagram. Four participants stand on top, arrows run down in time order, orange ones show the error: the promo service answered with error 500, and the payment failed.</b-why>
   <b-lane title="On request · sequence diagram" color="accent" top="10">
     <b-art-plain name="bug-report-to-reproduction-agent/promo-sequence"/>
   </b-lane>
+  <b-why align="left">Step 3: the entry in Jira. The agent writes the result as a comment on PAY-142: steps, what was expected, what happened, the environment and where to look for the cause.</b-why>
   <b-lane title="Description and Jira record · comment on PAY-142" color="accent" top="10">
     <b-kv-rows>
       <row k="Steps">cart → promo code → card payment</row>
@@ -225,6 +258,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
   <b-view kind="struct">
     <b-agents-lane title="One QA — several agents at once" agents="agent · PAY-142|agent · PAY-143|agent · PAY-144" note="QA time shifts to managing and accepting" top="10">While the agent handles PAY-142, other agents take PAY-143 and PAY-144, and QA checks what is already done.</b-agents-lane>
   </b-view>
+  <b-why align="left">From one client line came a short path, a diagram and a finished report. QA did not assemble them: QA opens the report, repeats the steps by hand and confirms it is the same bug.</b-why>
   <b-cap>The ticket and all names are invented for the example.</b-cap>
   <b-finding>
     <ex>From one line from the customer came a short path of three actions, a diagram and a ready report in Jira. QA did not do this; QA reviews the result.</ex>
@@ -234,6 +268,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 </b-chapter>
 
 <b-chapter id="human" icon="eye" title="What stays with QA">
+  <b-why align="left">QA stands at the acceptance gate. The agent brings a report, and QA answers four questions: is it the right path, is it the right error, was it narrowed correctly and how important is it. If the bug reproduces by hand, the ticket goes to the developer. If not, the report returns to the agent.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/acceptance-gate"/>
   </b-view>
@@ -255,6 +290,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 </b-chapter>
 
 <b-chapter id="first" icon="shield-check" title="How to start">
+  <b-why align="left">It is best to start on closed bugs where the answer is already known. Step 1: connect Jira and a test stand to the agent through MCP. Step 2: write your steps for one type of bug down as a skill. Step 3: run the skill on five closed bugs from last month and compare the agent’s reports with what you know about those bugs. Where the agent was wrong, add a rule to the skill. One QA checks the result by hand.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/start-steps"/>
   </b-view>

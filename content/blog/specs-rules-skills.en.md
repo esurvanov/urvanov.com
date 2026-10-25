@@ -1,6 +1,7 @@
 ---
 title: AGENTS.md and CLAUDE.md, specs, rules and skills: what an agent should know about a project and where to keep it
 date: 2026-09-28
+updated: 2026-10-20
 description: Four kinds of persistent context for AI (AGENTS.md, CLAUDE.md, skills): the task spec, the project bible, rules and skills. What goes into each, when it enters the context, and what ChatGPT and Claude offer. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.
 tags: AI, Claude Code, CLAUDE.md, harness, specs, skills
 category: specs

@@ -1,6 +1,7 @@
 ---
 title: AGENTS.md и CLAUDE.md, спеки, правила и скиллы: что агент должен знать о проекте и где это хранить
 date: 2026-09-28
+updated: 2026-10-20
 description: Четыре вида постоянного контекста для ИИ: спека задачи, библия проекта (CLAUDE.md, AGENTS.md), правила и скиллы Claude Code. Что в каждом, когда он попадает в контекст и что из этого есть в ChatGPT и Claude. По документации Anthropic, OpenAI, GitHub, Cursor и Cline.
 tags: AI, Claude Code, CLAUDE.md, харнесс, спеки, скиллы
 category: specs

@@ -1,6 +1,7 @@
 ---
 title: Vitest или Jest: что выбрать для JavaScript-проекта и когда хватит QUnit
 date: 2026-10-25
+updated: 2026-10-25
 description: Vitest или Jest: настройка, место запуска, стиль проверок. Когда брать Vitest на Vite, оставить Jest или хватит QUnit в браузере. Таблица и вопросы.
 tags: AI, тестирование, JavaScript, Jest, Vitest, QUnit, Vite, Jest vs Vitest, автотесты
 category: specs

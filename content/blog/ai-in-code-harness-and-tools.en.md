@@ -1,7 +1,7 @@
 ---
 title: Claude Code, Codex, Cursor and Hermes Agent: AI coding agents compared on one map
 date: 2026-09-28
-updated: 2026-10-04
+updated: 2026-10-20
 description: Claude Code or Codex, Cursor or Hermes Agent: where the agent runs, what it sees, which model it thinks with and what it costs — five harnesses side by side and which one to pick for the task. With links to the docs.
 tags: AI, harness, Claude Code, Codex, Cursor, Hermes Agent
 category: harness

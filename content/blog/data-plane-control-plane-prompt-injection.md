@@ -1,6 +1,7 @@
 ---
 title: Data plane и control plane агента: как не дать данным стать командами (prompt injection)
 date: 2026-10-05
+updated: 2026-10-20
 description: Чем отличаются команды агента (control plane) и данные, которые он читает (data plane), как работает prompt injection и как защититься: минимум прав, подтверждение записи, разделение чтения и записи, доверенные источники.
 tags: AI, агенты, безопасность, prompt injection, MCP, харнесс
 category: harness

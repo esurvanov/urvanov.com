@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 import { ActionLink } from '@/components/site/Links'
 import { ICONS } from '@/components/site/icons'
 import { noCode, ALL_TERMS, TERM_SETS, findTerm, glossaryPath, postsWithTerm, setOfTerm, splitTerms, termForTag, termShort } from '@/data/glossary'
-import { findCategory, type Post } from '@/data/blog'
+import { findCategory, formatDate, type Post } from '@/data/blog'
+import { TERM_DATES } from '@/data/termDates'
 import { useT } from '@/lib/i18n'
 import { plural } from '@/lib/plural'
 import { termArt } from '@/lib/termArt'
@@ -88,6 +89,7 @@ export function TermView() {
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { to: to('/materials/glossary'), label: t({ ru: 'Глоссарий', en: 'Glossary' }) }, { label: t(term.name) }]} />
       <h1 className="s-page-title">{t(term.name)}</h1>
       <p className="s-card-text">{ICONS[set.icon]} {t(set.name)}{term.aka && <> · {t(term.aka)}</>}</p>
+      {TERM_DATES[term.slug] && <p className="s-card-text">{t({ ru: 'создано', en: 'created' })} <time dateTime={TERM_DATES[term.slug][0]}>{formatDate(TERM_DATES[term.slug][0], lang)}</time> · {t({ ru: 'обновлено', en: 'updated' })} <time dateTime={TERM_DATES[term.slug][1]}>{formatDate(TERM_DATES[term.slug][1], lang)}</time></p>}
       <p className="s-lead"><TermText text={t(term.def)} self={term.slug} /></p>
       {art?.map && <AgentMap svg={art.svg} wide={art.wide} />}
       {art?.steps ? <LlmSteps /> : null}

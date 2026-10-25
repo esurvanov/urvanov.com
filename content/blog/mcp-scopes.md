@@ -1,6 +1,7 @@
 ---
 title: Области MCP в Claude Code: local, project и user — где хранится сервер и кто его видит
 date: 2026-10-05
+updated: 2026-10-20
 description: Три области MCP-серверов в Claude Code: local, project и user. Где лежит настройка, кто её видит, что победит при совпадении имён, как делиться серверами с командой и не коммитить секреты.
 tags: AI, агенты, MCP, Claude Code, команда, харнесс
 category: harness

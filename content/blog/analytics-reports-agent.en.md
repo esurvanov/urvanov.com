@@ -1,6 +1,7 @@
 ---
 title: Analytical reports with an AI agent: data from a database, sheets and documents through MCP
 date: 2026-10-05
+updated: 2026-10-20
 description: How to build an analytical report with an AI agent: connect a read-only database through MCP, delegate queries and the summary, check one number by hand and set permissions per source.
 tags: AI, agents, MCP, analytics, reports, database, harness
 category: harness

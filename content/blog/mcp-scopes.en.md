@@ -1,6 +1,7 @@
 ---
 title: MCP scopes in Claude Code: local, project and user — where a server lives and who sees it
 date: 2026-10-05
+updated: 2026-10-20
 description: The three MCP server scopes in Claude Code: local, project and user. Where the setup lives, who sees it, what wins when names collide, how to share servers with a team and keep secrets out of commits.
 tags: AI, agents, MCP, Claude Code, team, harness
 category: harness

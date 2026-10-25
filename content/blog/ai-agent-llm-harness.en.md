@@ -1,6 +1,7 @@
 ---
 title: AI agent = LLM + harness: LLM vs harness vs agent and what the harness includes
 date: 2026-10-12
+updated: 2026-10-21
 description: AI agent = LLM + harness. LLM vs harness vs agent in one table, the five groups a harness includes, and why the same model behaves differently in chat and in Claude Code.
 tags: AI, agents, AI agent, LLM, harness, agent harness, harness engineering
 category: harness
