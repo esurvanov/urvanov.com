@@ -1,7 +1,7 @@
 ---
 title: Requirements and meeting notes with AI: source, assumption, fact — and what follows
 date: 2026-10-05
-updated: 2026-10-20
+updated: 2026-10-26
 description: What to demand from an agent in requirements and meeting notes: a source link, the model’s assumptions and a “fact or not a fact” status. Where major and minor edits come from and how they relate to use cases.
 tags: AI, agents, requirements, hallucinations, meeting notes, harness
 category: harness
@@ -47,14 +47,25 @@ An agent writes requirements and notes with confidence, and guesses in them look
 </b-chapter>
 
 <b-chapter id="levels" icon="layers" title="Major and minor changes">
-  <b-why>The marks show how serious an edit is. A minor one leaves system behavior as is, a major one changes it.</b-why>
+  <b-why align="left">When an agent or a person edits a requirement, it matters how serious the edit is: that decides whether someone must be asked and what must be rechecked. Edits come in two kinds. A minor edit does not change system behavior: the item works the same, only the confidence in it or the wording changed. A major edit changes behavior: after it the system does something different, and the requirement owner must see that. Version numbers in software work the same way: v1.0 → v1.1 means a small clarification, v1.0 → v2.0 means a change people must be warned about.</b-why>
   <iso-art name="requirements-sources-facts-assumptions/versions"></iso-art>
+  <b-why align="left">On the left of the picture is the original version, v1.0. In the middle is a minor edit: a small block is added, the meaning is the same, the second number changes (v1.1). On the right is a major edit: a large block is added, behavior changed, the first number changes (v2.0).</b-why>
   <b-rules sw="1.8">
     <rule icon="eye" t="Guess confirmed">The status becomes “fact”, the text stays: a minor edit.</rule>
     <rule icon="bug" t="Guess refuted">The item’s text changes: a major edit.</rule>
     <rule icon="ban" t="A fact changed">If the new version of the source changes behavior, the edit is major.</rule>
     <rule icon="pause" t="Wording">A typo or a clearer wording with the same meaning goes to the change history.</rule>
   </b-rules>
+  <b-table id="major-minor">
+
+| Kind of edit | What happened | Does behavior change | What the agent does | Who decides |
+|---|---|---|---|---|
+| Minor | The guess “payment in rubles only” was confirmed by the meeting recording: the status changes from “not a fact” to “fact”, the text stays | no | writes it into the change history, version v1.1 | the edit can be made at once |
+| Minor | The wording was clarified: “Card payment” became “Bank card payment” | no | writes it into the history | the edit can be made at once |
+| Major | The guess was disproved: at the meeting they said euros are accepted too, so the item now reads “payment in rubles and euros” | yes | lists the affected use cases and tests, prepares version v2.0 | the requirement owner approves |
+| Major | In the new version of the payment service document, a payment is confirmed with a code from the bank | yes | lists the affected use cases and tests, prepares version v2.0 | the requirement owner approves |
+
+  </b-table>
   <b-finding>
     <ex>A minor edit goes to the history, a major one needs approval and a new version.</ex>
     <gen>By the marks the agent separates edits that can go in at once from those to show the requirement owner.</gen>
@@ -63,8 +74,9 @@ An agent writes requirements and notes with confidence, and guesses in them look
 </b-chapter>
 
 <b-chapter id="cases" icon="git-branch" title="Use cases">
-  <b-why>One requirement has several use cases: the normal path, an error, a repeat. An edit affects different cases differently.</b-why>
+  <b-why align="left">A use case is one scenario of how people use a requirement. The requirement “Card payment” has three: a normal payment, a bank decline and a repeat payment. They are written out because an edit usually touches one or two scenarios, and those are the ones to recheck. This is the link to the chapter above: a major edit changes behavior, so the agent lists the affected use cases and their tests. A minor edit does not change behavior, and the agent only confirms the use cases stayed as they were. That way a small edit does not mean rechecking the whole requirement.</b-why>
   <iso-art name="requirements-sources-facts-assumptions/use-cases"></iso-art>
+  <b-why align="left">The picture shows this with an example. On the left is the requirement “Card payment”. On the right are its three use cases: a normal payment (the customer pays at once), a bank decline (an error and a retry) and a repeat payment (protection from a double charge). The exclamation mark is on the third: say the meeting decided to change the double-charge protection. That is a major edit, and it touches only the repeat payment. The agent lists exactly that use case and its tests, while the normal payment and the bank decline stay as they were.</b-why>
   <b-pills>
     <pill>Case: normal path</pill>
     <pill>Case: error</pill>
