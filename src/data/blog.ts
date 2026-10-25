@@ -59,6 +59,8 @@ export interface Post {
   date: string
   /** Дата последней содержательной правки: показывается на странице, идёт в dateModified и lastmod */
   updated?: string
+  /** Слаги статей, которые не предлагать в блоке «С теми же терминами» этой статьи */
+  unrelated?: string[]
   tags: string[]
   category: CategorySlug
   html: string
@@ -115,6 +117,7 @@ function parse(path: string, raw: string): Post | null {
     description: meta.description ?? '',
     date: meta.date,
     updated: meta.updated || undefined,
+    unrelated: (meta.unrelated ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     category: category.slug,
     html: shieldEmails(withBlogArt(marked.parse(markdown, { async: false }) as string, lang)),

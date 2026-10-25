@@ -2,6 +2,7 @@
 title: MCP for an AI agent: what problem it solves and how to delegate setup to the agent
 date: 2026-10-04
 updated: 2026-10-25
+unrelated: mcp-1c
 description: MCP plugs an agent into GitLab, Jira, Confluence and meeting recordings. What problem it solves, how to set it up in minutes and delegate that to the agent itself, how it saves time and tokens and why the agent invents less.
 tags: AI, agents, MCP, Jira, context, hallucinations, tokens, harness
 category: harness

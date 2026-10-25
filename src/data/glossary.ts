@@ -1960,6 +1960,6 @@ export function termsInPost(post: Post): Term[] {
 /** Другие статьи с теми же терминами: чем больше общих терминов, тем выше */
 export function postsSharingTerms(post: Post, slugs: string[], limit = 4): Post[] {
   const score = new Map<Post, number>()
-  for (const slug of slugs) for (const p of postsWithTerm(slug, post.lang)) if (p.slug !== post.slug) score.set(p, (score.get(p) ?? 0) + 1)
+  for (const slug of slugs) for (const p of postsWithTerm(slug, post.lang)) if (p.slug !== post.slug && !post.unrelated?.includes(p.slug)) score.set(p, (score.get(p) ?? 0) + 1)
   return [...score.entries()].sort((a, b) => b[1] - a[1] || b[0].date.localeCompare(a[0].date)).slice(0, limit).map(([p]) => p)
 }
