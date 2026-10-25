@@ -36,7 +36,7 @@ Claude in Chrome connects the agent to your browser: it opens tabs, reads pages 
 </b-chapter>
 
 <b-chapter id="connect" icon="plug" title="How to connect">
-  <b-say-agent title="Tell the agent">Open code.claude.com/docs, find the search box, type “hooks” and tell me which results appear.</b-say-agent>
+  <b-say-agent title="Tell the agent">Install Claude in Chrome and connect it to Claude Code.</b-say-agent>
   <b-why align="left">If the extension is missing, Claude Code offers to install it<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code shows an install prompt titled"/>: you agree and sign in through the browser. [If the agent asks you to do it](/blog/agent-hands-work-back-to-you/).</b-why>
   <b-spoiler summary="How to do it by hand">
     <b-why align="left">Connecting takes three steps. Step 1: install the Claude extension in your Chrome from the extension store, once. Step 2: in the terminal where Claude Code runs, start claude --chrome, and the agent links to the browser. Step 3: type /chrome and look at the status: if it says “Enabled”, the link works.</b-why>
@@ -58,9 +58,9 @@ Claude in Chrome connects the agent to your browser: it opens tabs, reads pages 
     </b-spoiler>
   </b-spoiler>
   <b-finding>
-    <ex>The agent opens the docs, types a query into the search box and retells the results. That checks the connection works.</ex>
+    <ex>The agent installs the extension itself and connects it to Claude Code. You only agree and sign in through the browser.</ex>
     <gen>Connecting takes minutes: the extension comes from the Chrome Web Store, and Claude Code does the rest.</gen>
-    <do k="What to do">Run the example and make sure /chrome shows “Status: Enabled” and “Extension: Installed”<b-proof href="https://code.claude.com/docs/en/chrome" quote="The integration is working when the status panel shows"/>.</do>
+    <do k="What to do">Tell the agent to install the extension and make sure /chrome shows “Status: Enabled” and “Extension: Installed”<b-proof href="https://code.claude.com/docs/en/chrome" quote="The integration is working when the status panel shows"/>.</do>
   </b-finding>
 </b-chapter>
 
@@ -155,7 +155,7 @@ Claude in Chrome connects the agent to your browser: it opens tabs, reads pages 
   <b-finding>
     <ex>Three steps: extension, launch, check.</ex>
     <gen>Start with a local stand: a mistake there breaks nothing.</gen>
-    <do k="What to do">Today, install the extension and run the docs example.</do>
+    <do k="What to do">Today, tell the agent to install the extension and check the status with /chrome.</do>
   </b-finding>
 </b-chapter>
 

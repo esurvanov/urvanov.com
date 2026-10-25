@@ -36,7 +36,7 @@ Claude in Chrome подключает агента к вашему браузе�
 </b-chapter>
 
 <b-chapter id="connect" icon="plug" title="Как подключить">
-  <b-say-agent title="Скажите агенту">Открой code.claude.com/docs, найди поле поиска, введи «hooks» и перескажи, какие результаты появились.</b-say-agent>
+  <b-say-agent title="Скажите агенту">Поставь Claude in Chrome и подключи его к Claude Code.</b-say-agent>
   <b-why align="left">Если расширения нет, Claude Code предложит установить его<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code shows an install prompt titled"/>: нужно согласиться и войти в браузере. [Если агент просит сделать это вас](/blog/agent-hands-work-back-to-you/).</b-why>
   <b-spoiler summary="Как это делается руками">
     <b-why align="left">Подключение занимает три шага. Шаг 1: поставьте расширение Claude в свой Chrome из магазина расширений, это делается один раз. Шаг 2: в терминале, где работает Claude Code, запустите команду claude --chrome, и агент соединится с браузером. Шаг 3: введите /chrome и посмотрите статус: если там «Enabled», связь работает.</b-why>
@@ -58,9 +58,9 @@ Claude in Chrome подключает агента к вашему браузе�
     </b-spoiler>
   </b-spoiler>
   <b-finding>
-    <ex>Агент открывает документацию, вводит запрос в поиск и пересказывает результаты. Так проверяют, что связь работает.</ex>
+    <ex>Агент сам ставит расширение и подключает его к Claude Code. Вам остаётся согласиться и войти в браузере.</ex>
     <gen>Подключение занимает минуты: расширение ставится из Chrome Web Store, остальное делает Claude Code.</gen>
-    <do>Запустите пример и убедитесь, что /chrome показывает «Status: Enabled» и «Extension: Installed»<b-proof href="https://code.claude.com/docs/en/chrome" quote="The integration is working when the status panel shows"/>.</do>
+    <do>Скажите агенту поставить расширение и убедитесь, что /chrome показывает «Status: Enabled» и «Extension: Installed»<b-proof href="https://code.claude.com/docs/en/chrome" quote="The integration is working when the status panel shows"/>.</do>
   </b-finding>
 </b-chapter>
 
@@ -155,7 +155,7 @@ Claude in Chrome подключает агента к вашему браузе�
   <b-finding>
     <ex>Три шага: расширение, запуск, проверка.</ex>
     <gen>Начните с локального стенда: ошибка там ничего не ломает.</gen>
-    <do>Сегодня поставьте расширение и выполните пример с документацией.</do>
+    <do>Сегодня скажите агенту поставить расширение и проверьте статус командой /chrome.</do>
   </b-finding>
 </b-chapter>
 
