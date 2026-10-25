@@ -1,7 +1,7 @@
 ---
 title: MCP for an AI agent: what problem it solves and how to delegate setup to the agent
 date: 2026-10-04
-updated: 2026-10-20
+updated: 2026-10-25
 description: MCP plugs an agent into GitLab, Jira, Confluence and meeting recordings. What problem it solves, how to set it up in minutes and delegate that to the agent itself, how it saves time and tokens and why the agent invents less.
 tags: AI, agents, MCP, Jira, context, hallucinations, tokens, harness
 category: harness
@@ -10,7 +10,7 @@ mentions: Model Context Protocol, MCP, AI agent, Claude Code, Jira, Airtable, ha
 toc: what=What it is | ours=Contexts | connect=Connecting | saving=Savings | facts=Facts | risks=Risks | first=Where to start | cases=Cases | next=Read next
 ---
 
-MCP plugs an agent into working systems, so it reads facts from the source instead of a retelling. It is easy and quick: understand the problem it solves and delegate the setup to the agent itself. Below: the idea, connecting, what it gives and which rights to grant. The QA example with MCP is covered in the article [QA with an agent via MCP](/blog/bug-report-to-reproduction-agent/#mcp), and access to a 1C database in [MCP for 1C](/blog/mcp-1c/).
+MCP plugs an agent into working systems, so it reads facts from the source instead of a retelling. It is easy and quick: understand the problem it solves and delegate the setup to the agent itself. Below: the idea, connecting, what it gives and which rights to grant. The QA example with MCP is covered in the article [QA with an agent via MCP](/blog/bug-report-to-reproduction-agent/#mcp).
 
 <b-post series="harness">
 <b-chapter id="what" icon="plug" title="What MCP is">
@@ -25,7 +25,7 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
 </b-finding>
 </b-chapter>
 <b-chapter id="ours" icon="target-ring" title="Our context and others">
-<b-why align="left">Our context is everything the agent sees at once (the conversation with the agent, project files). Other contexts are everything else (GitLab, Jira, meeting recordings, a knowledge base). The bridge between them is MCP: the agent has an MCP client and the system has an MCP server. 1C connects the same way: it is one more other context, <a href="/blog/mcp-1c/#what">covered in the MCP for 1C article</a>.</b-why>
+<b-why align="left">Our context is everything the agent sees at once (the conversation with the agent, project files). Other contexts are everything else (GitLab, Jira, meeting recordings, a knowledge base). The bridge between them is MCP: the agent has an MCP client and the system has an MCP server.</b-why>
 <b-lane-art names="mcp-agent-access/contexts"/>
 <b-section-h3 top="18">What context is</b-section-h3>
 <b-why align="left"><a href="/materials/glossary/context/">Context</a> is everything the model sees at the moment. What is not in the context, the agent does not know.</b-why>
@@ -33,7 +33,7 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
 <b-scene names="term:context"/>
 </b-lane>
 <b-table-plain>
-<table><thead><tr><th>Where the fact lives</th><th>The agent sees it</th><th>What happens</th></tr></thead><tbody><tr><td><b>Our context</b>: the conversation, project files</td><td><b-tag-inline kind="ok">at once</b-tag-inline></td><td>an answer from data</td></tr><tr><td><b>Other context</b>: GitLab, Jira, 1C, meeting recordings</td><td><b-tag-inline kind="ok">through MCP</b-tag-inline></td><td>the agent fetches what it needs</td></tr><tr><td><b>Nowhere</b>: in heads, in a closed system</td><td><b-tag-inline kind="no">no</b-tag-inline></td><td>a guess instead of a fact</td></tr></tbody></table>
+<table><thead><tr><th>Where the fact lives</th><th>The agent sees it</th><th>What happens</th></tr></thead><tbody><tr><td><b>Our context</b>: the conversation, project files</td><td><b-tag-inline kind="ok">at once</b-tag-inline></td><td>an answer from data</td></tr><tr><td><b>Other context</b>: GitLab, Jira, meeting recordings</td><td><b-tag-inline kind="ok">through MCP</b-tag-inline></td><td>the agent fetches what it needs</td></tr><tr><td><b>Nowhere</b>: in heads, in a closed system</td><td><b-tag-inline kind="no">no</b-tag-inline></td><td>a guess instead of a fact</td></tr></tbody></table>
 </b-table-plain>
 <b-section-h3 top="18">How the agent fetches other context: ReAct</b-section-h3>
 <b-why align="left">The agent works in a <a href="/materials/glossary/react/">ReAct</a> loop: it reasons, acts, reads the result and reasons again. MCP is the “act” step: the call result lands in our context.</b-why>
@@ -56,7 +56,7 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
 <b-scene names="term:epimorphism"/>
 </b-lane>
 <b-table-plain>
-<table><thead><tr><th>Part of the answer</th><th>Support</th></tr></thead><tbody><tr><td>Reproduction steps</td><td>Jira, ticket PAY-142</td></tr><tr><td>Where the code fails</td><td>GitLab, file and line</td></tr><tr><td>Why it was decided</td><td>tldv, meeting recording</td></tr><tr><td>Which data is affected</td><td>1C, a database query</td></tr></tbody></table>
+<table><thead><tr><th>Part of the answer</th><th>Support</th></tr></thead><tbody><tr><td>Reproduction steps</td><td>Jira, ticket PAY-142</td></tr><tr><td>Where the code fails</td><td>GitLab, file and line</td></tr><tr><td>Why it was decided</td><td>tldv, meeting recording</td></tr></tbody></table>
 </b-table-plain>
 <b-section-h3 top="18">Hallucination: a part with no support</b-section-h3>
 <b-why align="left">A <a href="/materials/glossary/hallucination/">hallucination</a> is a confident guess where there is no support. It looks as smooth as an answer from data. Details and Anthropic advice are <a href="#facts">in the hallucinations section below</a>.</b-why>
@@ -66,7 +66,6 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
 <b-section-h3 top="18">Why these</b-section-h3>
 <b-source-rows>
   <row t="GitLab" note="Official MCP" href="https://docs.gitlab.com/user/model_context_protocol/mcp_server/" miss="The agent guesses the code from other contexts and is often wrong, which is how hallucinations appear; a person copies files and diffs into the conversation by hand">Code and merge requests: the agent reads real code</row>
-  <row t="1C" note="Open MCP servers" href="/blog/mcp-1c/#what" link="Details" miss="The agent invents methods and attributes that are not in the configuration and answers with numbers that are not in the database">Configuration code and accounting data: the agent reads real objects and numbers</row>
   <row t="Jira" note="Official Atlassian MCP" href="https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/" miss="There is a lot to copy by hand and the change history gets lost">Tasks and requirements: what was really asked</row>
   <row t="Confluence" note="Same Atlassian MCP" href="https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/" miss="The visualisation and display of requirements every developer is used to disappear. It is important to limit the agent and not let it wander far: old requirements may be outdated. Make it check the factual picture in GitLab">Knowledge base: rules, specs, decisions</row>
   <row t="tldv" note="Recording and open API" href="https://doc.tldv.io" miss="Decisions stay in heads, and meeting notes and requirements get written from memory hours later, with errors">Meeting recordings: decisions that exist nowhere in text. In our experience access appears 5–10 minutes after the meeting, so meeting notes and requirements can be written right away. The enterprise version, access control and MCP are weaker, but translations and transcripts are better quality</row>

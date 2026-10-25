@@ -1296,12 +1296,23 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'c4-model',
         name: { ru: 'Модель C4', en: 'C4 model' },
+        aka: { ru: 'схема устройства системы в четыре приближения', en: 'system structure in four zoom levels' },
         def: {
-          ru: 'Способ рисовать архитектуру на четырёх уровнях: контекст, контейнеры, компоненты, код. Диаграммы разной глубины читаются вместе и не смешиваются в одну картинку.',
-          en: 'A way to draw architecture at four levels: context, containers, components, code. Diagrams of different depth read together without mixing into one picture.',
+          ru: 'C4 — способ рисовать устройство программной системы в четыре приближения, как карту: от целой страны до отдельной улицы. На каждом уровне своя картинка, и уровни не смешивают в одну схему. Благодаря этому и новичок, и разработчик видят ровно столько подробностей, сколько им нужно. Название C4 — от четырёх слов на английском: context, containers, components, code.',
+          en: 'C4 is a way to draw the structure of a software system at four zoom levels, like a map: from a whole country down to a single street. Each level gets its own picture, and levels are not mixed into one diagram. That way a newcomer and a developer each see exactly as much detail as they need. The name C4 comes from four English words: context, containers, components, code.',
+        },
+        notes: {
+          title: { ru: 'Четыре уровня', en: 'Four levels' },
+          items: [
+            { name: { ru: 'Контекст', en: 'Context' }, text: { ru: 'система целиком одним блоком и те, кто с ней связан: люди и соседние системы. Вопрос: кто и зачем ею пользуется.', en: 'the whole system as one block and everyone linked to it: people and neighboring systems. The question: who uses it and why.' } },
+            { name: { ru: 'Контейнеры', en: 'Containers' }, text: { ru: 'из каких отдельно запускаемых частей она состоит: сайт, сервер, база данных. Вопрос: из чего собрана система.', en: 'the separately running parts it is made of: a website, a server, a database. The question: what the system is built from.' } },
+            { name: { ru: 'Компоненты', en: 'Components' }, text: { ru: 'из чего состоит одна такая часть, например сервер: оплата, заказы, промокоды. Вопрос: как устроена одна часть.', en: 'what one such part is made of, for example a server: payment, orders, promo codes. The question: how one part is organized.' } },
+            { name: { ru: 'Код', en: 'Code' }, text: { ru: 'как устроен один компонент внутри: классы и функции. Этот уровень рисуют редко: его и так показывает сам код.', en: 'how one component is organized inside: classes and functions. This level is rarely drawn: the code itself shows it.' } },
+          ],
         },
         match: { ru: ['C4(?:-диаграмм\\p{L}*| model)?', 'модел\\p{L}* C4'], en: ['C4 model', 'C4 diagrams?', 'C4'] },
-        related: ['spec-driven-development'],
+        related: ['sequence-diagram', 'bounded-context', 'ddd', 'spec-driven-development'],
+        more: { post: 'bug-report-to-reproduction-agent', label: { ru: 'Как агент рисует схемы по запросу: sequence и C4', en: 'How an agent draws diagrams on request: sequence and C4' } },
         source: { url: 'https://c4model.com/', label: { ru: 'c4model.com — сайт методологии, автор Саймон Браун', en: 'c4model.com, the method site by Simon Brown' } },
       },
       {
@@ -1850,9 +1861,22 @@ export function linkTerms(html: string, lang: Lang, ignore: string[] = [], perSe
   const found: string[] = []
   let seen = new Set(ignore)
   let skip = 0
+  // Панели видов («Иллюстрация», «Структура») ссылаются на термины сами: внутри панели счёт упоминаний свой, после неё возвращается счёт главы
+  let divDepth = 0
+  let viewDepth = -1
+  let outerSeen: Set<string> | null = null
   const out = html.split(/(<[^>]*>)/).map((part) => {
     if (part.startsWith('<')) {
       if (perSection && /^<section[\s>]/i.test(part)) seen = new Set(ignore)
+      if (perSection) {
+        if (/^<div[\s>]/i.test(part)) {
+          if (viewDepth < 0 && /^<div class="bk-view-(?:pic|struct)"/.test(part)) { viewDepth = divDepth; outerSeen = seen; seen = new Set(ignore) }
+          divDepth++
+        } else if (/^<\/div>/i.test(part)) {
+          divDepth--
+          if (viewDepth >= 0 && divDepth === viewDepth) { seen = outerSeen ?? seen; viewDepth = -1; outerSeen = null }
+        }
+      }
       const tag = /^<(\/?)([a-zA-Z][a-zA-Z0-9]*)/.exec(part)
       if (tag && SKIP.has(tag[2].toLowerCase())) {
         if (tag[1]) skip = Math.max(0, skip - 1)

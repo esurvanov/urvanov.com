@@ -47,9 +47,9 @@ const scenes: Record<string, Scene> = {
   },
   // Наш контекст (диалог и файлы) против других контекстов (GitLab, Jira, tldv, Confluence) за MCP-клиентом и сервером
   'contexts': {
-    ru: 'Слева наш контекст: диалог с агентом и файлы проекта, которые агент видит сразу. Справа другие контексты: GitLab, Jira, tldv с записями встреч, Confluence с базой знаний, 1С и другие. Агент их не видит, пока нет MCP: клиента у агента и сервера у системы',
-    en: 'On the left is our context: the conversation with the agent and project files the agent sees at once. On the right are other contexts: GitLab, Jira, tldv meeting recordings, Confluence knowledge base, 1C and more. The agent cannot see them until MCP is set up: a client on the agent side and a server on the system side',
-    viewBox: [0, 0, 700, 372],
+    ru: 'Слева наш контекст: диалог с агентом и файлы проекта, которые агент видит сразу. Справа другие контексты: GitLab, Jira, tldv с записями встреч, Confluence с базой знаний и другие. Агент их не видит, пока нет MCP: клиента у агента и сервера у системы',
+    en: 'On the left is our context: the conversation with the agent and project files the agent sees at once. On the right are other contexts: GitLab, Jira, tldv meeting recordings, Confluence knowledge base and more. The agent cannot see them until MCP is set up: a client on the agent side and a server on the system side',
+    viewBox: [0, 0, 700, 336],
     draw: (c, l) => {
       c.caps(150, 16, l('НАШ КОНТЕКСТ', 'OUR CONTEXT'), A); c.caps(560, 16, l('ДРУГИЕ КОНТЕКСТЫ', 'OTHER CONTEXTS'), 'currentColor')
       const ru = c.lang === 'ru'
@@ -78,7 +78,6 @@ const scenes: Record<string, Scene> = {
         ['Jira', l('Задачи и требования', 'Tasks and requirements'), atl, 124, 583.7],
         ['tldv', l('Записи встреч', 'Meeting recordings'), 'https://doc.tldv.io', 186, 585.5],
         ['Confluence', l('База знаний', 'Knowledge base'), atl, 248, 634.6],
-        [l('1С', '1C'), l('Код и данные учёта', 'Code and accounting data'), '/blog/mcp-1c/#what', 310, 0],
       ]
       for (const [name, sub, href, y, ix] of systems) {
         c.curve(456, 128, 484, y, A, { dash: '4 4' })
@@ -91,7 +90,7 @@ const scenes: Record<string, Scene> = {
           c.text(556, y + 14, sub, M, { anchor: 'start' })
         })
       }
-      c.text(556, 362, l('И другие', 'And more'), M, { size: 12, w: 600, anchor: 'start' })
+      c.text(556, 310, l('И другие', 'And more'), M, { size: 12, w: 600, anchor: 'start' })
     },
   },
   // Было три ручных действия → одна фраза агенту, он подключает Jira сам, вы только входите через браузер
