@@ -78,6 +78,16 @@ export const ICONS = {
     </Icon>
   ),
   // Рубрики блога
+  code: (
+    <Icon>
+      <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" />
+    </Icon>
+  ),
+  tests: (
+    <Icon>
+      <path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3M8 15h8" />
+    </Icon>
+  ),
   all: (
     <Icon>
       <rect x="4" y="4" width="6" height="6" rx="1" />

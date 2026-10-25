@@ -14,6 +14,8 @@ export interface Term {
   match: L<string[]>
   /** Слаги родственных терминов */
   related: string[]
+  /** Совпадение с учётом регистра: найденный в тексте фрагмент должен быть ровно такой (ReAct и React — разные термины, а поиск по `match` не различает регистр) */
+  exact?: string
   /** Свой заголовок и описание для поиска вместо шаблонных (описание до ~160 знаков) */
   seo?: { title: L; description: L }
   /** Ссылка «Подробнее» на статью блога: slug поста и подпись */
@@ -79,7 +81,7 @@ const AGENT_MATRIX: NonNullable<Term['matrix']> = {
 
 export interface TermSet {
   slug: string
-  icon: 'all' | 'harness' | 'specs' | 'prompts' | 'links' | 'research'
+  icon: 'all' | 'harness' | 'specs' | 'prompts' | 'links' | 'research' | 'code' | 'tests'
   name: L
   hint: L
   terms: Term[]
@@ -777,8 +779,9 @@ export const TERM_SETS: TermSet[] = [
           ru: 'Схема работы агента, где модель по очереди рассуждает и действует: решает, что сделать, вызывает инструмент, читает результат и снова рассуждает. Только рассуждая, модель выдумывает ответ; только действуя, блуждает без плана; чередуя, приходит к верному ответу. Описана в исследовании 2022 года, на ней держится агентный цикл современных агентов для кода.',
           en: 'A way for an agent to work in which the model alternates reasoning and acting: it decides what to do, calls a tool, reads the result and reasons again. Reasoning alone, the model makes the answer up; acting alone, it wanders without a plan; alternating, it gets to the right answer. Described in a 2022 paper; the agent loop of today’s coding agents rests on it.',
         },
-        // Флаг i: «React» (библиотека) тоже совпадёт — сейчас в статьях её нет
+        // Регистр важен: поле exact отделяет ReAct (схема агента) от React (библиотека для сайтов)
         match: { ru: ['ReAct'], en: ['ReAct'] },
+        exact: 'ReAct',
         related: ['agent-loop', 'tool', 'ai-agent'],
         source: { url: 'https://arxiv.org/abs/2210.03629', label: { ru: 'Yao и др., «ReAct» (arXiv, 2022)', en: 'Yao et al., “ReAct” (arXiv, 2022)' } },
       },
@@ -1328,6 +1331,326 @@ export const TERM_SETS: TermSet[] = [
     ],
   },
   {
+    slug: 'languages',
+    icon: 'code',
+    name: { ru: 'Языки и платформы', en: 'Languages and platforms' },
+    hint: { ru: 'JavaScript, его надстройки, среды запуска и каркасы для сайтов', en: 'JavaScript, its extensions, runtimes and web frameworks' },
+    terms: [
+      {
+        slug: 'javascript',
+        name: { ru: 'JavaScript', en: 'JavaScript' },
+        aka: { ru: 'язык сайтов и многих программ', en: 'the language of websites and many programs' },
+        def: {
+          ru: 'Язык программирования, на котором работают страницы сайтов в браузере: кнопки, формы и всё, что откликается на действия. Им же пишут программы на сервере, например в среде Node.js. Тесты для такого кода запускают движки вроде Jest, Vitest и QUnit.',
+          en: 'A programming language that makes web pages work in the browser: buttons, forms and everything that reacts to actions. It is also used for server programs, for example in Node.js. Tests for such code are run by engines such as Jest, Vitest and QUnit.',
+        },
+        match: { ru: ['JavaScript'], en: ['JavaScript'] },
+        related: ['automated-test', 'node-js', 'jest', 'vitest', 'qunit'],
+        source: { url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', label: { ru: 'MDN: JavaScript', en: 'MDN: JavaScript' } },
+      },
+      {
+        slug: 'typescript',
+        name: { ru: 'TypeScript', en: 'TypeScript' },
+        aka: { ru: 'JavaScript с типами', en: 'JavaScript with types' },
+        def: {
+          ru: 'Надстройка над JavaScript, в которой у значений указывают тип: число, строка и так далее. Благодаря этому ошибки вроде «вместо числа передали строку» находятся до запуска программы, а не у пользователя. Готовую программу переводят в обычный JavaScript.',
+          en: 'An extension of JavaScript in which values are given a type: number, string and so on. Thanks to this, errors like “a string was passed instead of a number” are found before the program runs, not at the user’s. The finished program is turned into ordinary JavaScript.',
+        },
+        match: { ru: ['TypeScript'], en: ['TypeScript'] },
+        related: ['javascript', 'babel', 'jest'],
+        source: { url: 'https://www.typescriptlang.org/', label: { ru: 'typescriptlang.org — сайт TypeScript', en: 'typescriptlang.org, the TypeScript site' } },
+      },
+      {
+        slug: 'babel',
+        name: { ru: 'Babel', en: 'Babel' },
+        aka: { ru: 'переводчик нового JavaScript', en: 'a translator of new JavaScript' },
+        def: {
+          ru: 'Программа, которая переводит новый JavaScript в такой, который понимают более старые браузеры и среды. Можно писать современным языком, а запускать там, где его ещё не знают. Тесты в Jest работают и с проектами, которые собираются через Babel.',
+          en: 'A program that turns new JavaScript into one that older browsers and environments understand. You can write in the modern language and run it where it is not yet known. Jest tests work with projects that are built through Babel too.',
+        },
+        match: { ru: ['Babel'], en: ['Babel'] },
+        related: ['javascript', 'typescript', 'jest'],
+        source: { url: 'https://babeljs.io/', label: { ru: 'babeljs.io — сайт Babel', en: 'babeljs.io, the Babel site' } },
+      },
+      {
+        slug: 'node-js',
+        name: { ru: 'Node.js', en: 'Node.js' },
+        aka: { ru: 'JavaScript вне браузера', en: 'JavaScript outside the browser' },
+        def: {
+          ru: 'Программа, которая запускает JavaScript вне браузера: на сервере, в командной строке и в скриптах. Без неё код на JavaScript работал бы только внутри страницы сайта. Благодаря Node.js на одном языке пишут и сайт, и серверную часть, и программы для разработчика. Тесты на Jest, Vitest и QUnit чаще всего тоже запускают в Node.js, а сборщик Vite сам работает на нём.',
+          en: 'A program that runs JavaScript outside the browser: on a server, on the command line and in scripts. Without it, JavaScript code would only work inside a web page. Thanks to Node.js one language is used for the site, the server side and developer programs. Tests with Jest, Vitest and QUnit are most often run in Node.js too, and the Vite bundler itself runs on it.',
+        },
+        match: { ru: ['Node\\.js'], en: ['Node\\.js'] },
+        related: ['javascript', 'vite', 'jest', 'vitest', 'qunit'],
+        source: { url: 'https://nodejs.org/', label: { ru: 'nodejs.org — сайт Node.js', en: 'nodejs.org, the Node.js site' } },
+      },
+      {
+        slug: 'vite',
+        name: { ru: 'Vite', en: 'Vite' },
+        aka: { ru: 'сборщик для сайтов', en: 'a bundler for web apps' },
+        def: {
+          ru: 'Программа, которая собирает код сайта и в процессе работы мгновенно показывает правки в браузере. Его настройки описывают, как собирать проект. Vitest берёт эти же настройки для тестов, поэтому отдельная конфигурация для тестов не нужна.',
+          en: 'A program that builds the code of a website and instantly shows edits in the browser while you work. Its settings describe how to build the project. Vitest reuses these same settings for tests, so no separate test configuration is needed.',
+        },
+        match: { ru: ['Vite'], en: ['Vite'] },
+        related: ['vitest', 'javascript', 'node-js'],
+        source: { url: 'https://vite.dev/', label: { ru: 'vite.dev — сайт Vite', en: 'vite.dev, the Vite site' } },
+      },
+      {
+        slug: 'react-js',
+        name: { ru: 'React', en: 'React' },
+        aka: { ru: 'библиотека для сайтов, не путать с ReAct', en: 'a web library, not to be confused with ReAct' },
+        def: {
+          ru: 'Библиотека на JavaScript для построения страниц сайтов: страница собирается из готовых блоков-компонентов, и при изменении данных обновляются только нужные блоки. Одна из самых распространённых наряду с Angular и Vue. К схеме работы агента ReAct отношения не имеет, у них только похожие названия.',
+          en: 'A JavaScript library for building web pages: a page is assembled from ready-made blocks called components, and when data changes only the needed blocks are updated. One of the most widespread along with Angular and Vue. It has nothing to do with the ReAct agent scheme: only the names are similar.',
+        },
+        match: { ru: ['React'], en: ['React'] },
+        exact: 'React',
+        related: ['javascript', 'angular', 'vue', 'react'],
+        source: { url: 'https://react.dev/', label: { ru: 'react.dev — сайт React', en: 'react.dev, the React site' } },
+      },
+      {
+        slug: 'angular',
+        name: { ru: 'Angular', en: 'Angular' },
+        aka: { ru: 'каркас для сайтов', en: 'a web framework' },
+        def: {
+          ru: 'Каркас для построения сайтов и веб-приложений на JavaScript и TypeScript: страница собирается из готовых блоков-компонентов. Один из самых распространённых наряду с React и Vue.',
+          en: 'A framework for building websites and web apps in JavaScript and TypeScript: a page is assembled from ready-made blocks called components. One of the most widespread along with React and Vue.',
+        },
+        match: { ru: ['Angular'], en: ['Angular'] },
+        related: ['javascript', 'typescript', 'react-js', 'vue'],
+        source: { url: 'https://angular.dev/', label: { ru: 'angular.dev — сайт Angular', en: 'angular.dev, the Angular site' } },
+      },
+      {
+        slug: 'vue',
+        name: { ru: 'Vue', en: 'Vue' },
+        aka: { ru: 'каркас для сайтов', en: 'a web framework' },
+        def: {
+          ru: 'Каркас для построения сайтов на JavaScript: страница собирается из блоков-компонентов, и его можно подключать к проекту постепенно. Один из самых распространённых наряду с Angular и React.',
+          en: 'A framework for building websites in JavaScript: a page is assembled from blocks called components, and it can be adopted in a project gradually. One of the most widespread along with Angular and React.',
+        },
+        match: { ru: ['Vue(?:\\.js)?'], en: ['Vue(?:\\.js)?'] },
+        related: ['javascript', 'react-js', 'angular', 'typescript'],
+        source: { url: 'https://vuejs.org/', label: { ru: 'vuejs.org — сайт Vue', en: 'vuejs.org, the Vue site' } },
+      },
+    ],
+  },
+  {
+    slug: 'testing',
+    icon: 'tests',
+    name: { ru: 'Тестирование', en: 'Testing' },
+    hint: { ru: 'Автоматические тесты, движки и проверка самих тестов', en: 'Automated tests, frameworks and checking the tests themselves' },
+    terms: [
+      {
+        slug: 'automated-test',
+        name: { ru: 'Автоматический тест', en: 'Automated test' },
+        aka: { ru: 'автотест, Jest, Vitest, QUnit', en: 'autotest, Jest, Vitest, QUnit' },
+        def: {
+          ru: 'Короткая программа, которая запускает код с заданным входом и сверяет результат с ожидаемым. Её пишут один раз, а запускают после каждой правки, и если правка сломала работавшее, тест падает. Движки вроде Jest, Vitest и QUnit запускают такие тесты для кода на JavaScript. Тест ловит только то, что вы заранее придумали проверить, поэтому его дополняют моделями правил и проверкой самих тестов.',
+          en: 'A short program that runs code with a given input and compares the result with the expected one. It is written once and run after every edit, and if an edit broke something that worked, the test fails. Engines such as Jest, Vitest and QUnit run such tests for JavaScript code. A test catches only what you thought of checking in advance, so it is complemented by models of rules and by checking the tests themselves.',
+        },
+        match: { ru: ['автоматическ\\p{L}* тест\\p{L}*', 'автотест\\p{L}*', 'тестов\\p{L}* движк\\p{L}*'], en: ['automated tests?', 'autotests?', 'test engines?', 'test frameworks?'] },
+        related: ['qunit', 'jest', 'vitest', 'mutation-testing', 'checks', 'quint'],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        source: { url: 'https://en.wikipedia.org/wiki/Test_automation', label: { ru: 'Википедия: автоматизация тестирования', en: 'Wikipedia: Test automation' } },
+      },
+      {
+        slug: 'jest',
+        name: { ru: 'Jest', en: 'Jest' },
+        aka: { ru: 'движок тестов для JavaScript', en: 'a JavaScript test framework' },
+        def: {
+          ru: 'Один из самых распространённых движков автоматических тестов для кода на JavaScript. Вы описываете, что функция должна вернуть на заданный вход, а Jest запускает все такие проверки и показывает, какие упали. Из той же семьи, что Vitest и QUnit, и проверяет готовый код, а не правила системы, как Quint.',
+          en: 'One of the most widespread automated test frameworks for JavaScript code. You describe what a function must return for a given input, and Jest runs all such checks and shows which ones failed. From the same family as Vitest and QUnit, and it checks finished code, not the rules of a system as Quint does.',
+        },
+        match: { ru: ['Jest'], en: ['Jest'] },
+        related: ['automated-test', 'javascript', 'vitest', 'qunit'],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        source: { url: 'https://jestjs.io/', label: { ru: 'jestjs.io — сайт Jest', en: 'jestjs.io, the Jest site' } },
+      },
+      {
+        slug: 'vitest',
+        name: { ru: 'Vitest', en: 'Vitest' },
+        aka: { ru: 'тесты на базе сборщика Vite', en: 'tests powered by Vite' },
+        def: {
+          ru: 'Движок автоматических тестов для JavaScript нового поколения, построенный на сборщике Vite. Делает то же, что Jest: запускает проверки готового кода и показывает упавшие, но использует настройки проекта на Vite и поэтому быстро перезапускается. Из той же семьи, что Jest и QUnit.',
+          en: 'A next-generation automated test framework for JavaScript, powered by the Vite bundler. It does what Jest does: runs checks of finished code and shows the failed ones, but it reuses the project’s Vite setup and so restarts quickly. From the same family as Jest and QUnit.',
+        },
+        match: { ru: ['Vitest'], en: ['Vitest'] },
+        related: ['automated-test', 'javascript', 'jest', 'qunit'],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        source: { url: 'https://vitest.dev/', label: { ru: 'vitest.dev — сайт Vitest', en: 'vitest.dev, the Vitest site' } },
+      },
+      {
+        slug: 'qunit',
+        name: { ru: 'QUnit', en: 'QUnit' },
+        aka: { ru: 'тестовый движок для JavaScript', en: 'a JavaScript test framework' },
+        def: {
+          ru: 'Движок автоматических тестов для кода на JavaScript, из той же семьи, что Jest и Vitest. Тест подаёт заданный вход в готовую функцию и сверяет ответ с ожидаемым. Названием похож на Quint, но это программа другого класса: QUnit проверяет написанный код, а Quint проверяет правила системы. Надёжность самих тестов проверяет мутационное тестирование: в код вносят порчу и смотрят, упадёт ли тест.',
+          en: 'An automated test framework for JavaScript code, from the same family as Jest and Vitest. A test feeds a given input to a finished function and compares the answer with the expected one. The name resembles Quint, but it is a program of a different class: QUnit checks written code, while Quint checks the rules of a system. The reliability of the tests themselves is checked by mutation testing: a defect is introduced into the code to see whether a test fails.',
+        },
+        match: { ru: ['QUnit'], en: ['QUnit'] },
+        related: ['automated-test', 'jest', 'vitest', 'mutation-testing', 'quint', 'model-checking'],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        source: { url: 'https://qunitjs.com/', label: { ru: 'qunitjs.com — сайт QUnit', en: 'qunitjs.com, the QUnit site' } },
+        compare: {
+          title: { ru: 'QUnit и Quint', en: 'QUnit and Quint' },
+          head: { ru: ['QUnit', 'Quint'], en: ['QUnit', 'Quint'] },
+          rows: [
+            { ru: ['Что проверяет', 'ответ готовой функции на заданные входы', 'отсутствие запрещённых состояний во всех порядках действий'], en: ['What it checks', 'a finished function’s answer for given inputs', 'no forbidden states in any order of actions'] },
+            { ru: ['Что нужно', 'написанный код', 'описание правил, кода может не быть'], en: ['What it needs', 'written code', 'a description of rules, the code may not exist'] },
+            { ru: ['Что сложно', 'придумать входы', 'сформулировать правила так, чтобы они отражали реальность'], en: ['What is hard', 'thinking up inputs', 'stating rules so that they reflect reality'] },
+          ],
+        },
+      },
+      {
+        slug: 'mutation-testing',
+        name: { ru: 'Мутационное тестирование', en: 'Mutation testing' },
+        aka: { ru: 'испорченная копия', en: 'a deliberately broken copy' },
+        def: {
+          ru: 'Способ проверить сами проверки: человек или агент нарочно портит копию кода или модели, например убирает одно условие, и смотрит, заметят ли это автоматические тесты и правила. Если порча прошла незамеченной, проверка ничего не проверяет. В моделях на Quint такие копии называют мутантами.',
+          en: 'A way to test the checks themselves: a person or an agent deliberately breaks a copy of the code or model, for example removes one condition, and sees whether tests and rules notice it. If the defect passes unnoticed, the check checks nothing. In Quint models such copies are called mutants.',
+        },
+        match: { ru: ['испорченн\\p{L}* коп\\p{L}*', 'мутационн\\p{L}* тестировани\\p{L}*', 'mutation testing'], en: ['mutation testing', 'broken cop(?:y|ies)'] },
+        related: ['automated-test', 'qunit', 'model-checking', 'quint'],
+        more: { post: 'quint-models-find-races', label: { ru: 'Проверка проверок в моделях на Quint', en: 'Checking the checks in Quint models' } },
+        source: { url: 'https://en.wikipedia.org/wiki/Mutation_testing', label: { ru: 'Википедия: мутационное тестирование', en: 'Wikipedia: Mutation testing' } },
+      },
+    ],
+  },
+  {
+    slug: 'formal',
+    icon: 'research',
+    name: { ru: 'Формальная верификация', en: 'Formal verification' },
+    hint: { ru: 'Языки моделей, проверяющие программы и ошибки, которые они находят', en: 'Modeling languages, checking programs and the errors they find' },
+    terms: [
+      {
+        slug: 'quint',
+        name: { ru: 'Quint', en: 'Quint' },
+        aka: { ru: 'язык формальных моделей', en: 'a language for formal models' },
+        def: {
+          ru: 'Язык, на котором описывают правила системы так, чтобы их можно было запускать и проверять до написания кода. Запись похожа на обычный код и читается инженерами без математической подготовки. Программа перебирает порядки действий и показывает цепочку шагов, где правило нарушается. Проверяют две программы: TLC и Apalache, есть и быстрый случайный прогон.',
+          en: 'A language for describing the rules of a system so that they can be run and checked before any code is written. The notation looks like ordinary code and engineers without a math background can read it. The program tries orders of actions and shows the chain of steps where a rule breaks. Two programs check it: TLC and Apalache, and there is also a quick random simulation.',
+        },
+        match: { ru: ['Quint'], en: ['Quint'] },
+        related: ['model-checking', 'apalache', 'tla-plus', 'invariant', 'qunit'],
+        more: { post: 'quint-models-find-races', label: { ru: 'Как найти гонки и потерянные данные моделями на Quint', en: 'Finding races and lost data with Quint models' } },
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        source: { url: 'https://quint-lang.org/', label: { ru: 'quint-lang.org — сайт и документация Quint', en: 'quint-lang.org, the Quint site and docs' } },
+      },
+      {
+        slug: 'tla-plus',
+        name: { ru: 'TLA+', en: 'TLA+' },
+        aka: { ru: 'автор Лесли Лэмпорт', en: 'by Leslie Lamport' },
+        def: {
+          ru: 'Способ описать, как система ведёт себя шаг за шагом, настолько точно, что описание можно проверить программой, как чертёж проверяют до стройки. Например, по чертежу денежного перевода находят, что при сбое между списанием и зачислением деньги пропадают, и делают это до написания кода. Запись похожа на математические формулы, поэтому порог входа выше, чем у Quint. Автор языка Лесли Лэмпорт.',
+          en: 'A way to describe how a system behaves step by step so precisely that the description can be checked by a program, the way a blueprint is checked before construction. For example, a blueprint of a money transfer reveals that if a failure hits between the debit and the credit, money vanishes, and this is found before any code is written. The notation resembles mathematical formulas, so the entry step is higher than with Quint. The language was created by Leslie Lamport.',
+        },
+        match: { ru: ['TLA\\+'], en: ['TLA\\+'] },
+        related: ['quint', 'alloy', 'apalache', 'model-checking'],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Quint против TLA+ и Alloy', en: 'Quint versus TLA+ and Alloy' } }],
+        source: { url: 'https://lamport.azurewebsites.net/tla/tla.html', label: { ru: 'Страница TLA+ Лесли Лэмпорта', en: 'Leslie Lamport’s TLA+ page' } },
+      },
+      {
+        slug: 'alloy',
+        name: { ru: 'Alloy', en: 'Alloy' },
+        aka: { ru: 'язык и анализатор моделей', en: 'a modeling language and analyzer' },
+        def: {
+          ru: 'Способ описать объекты и связи между ними и попросить программу найти небольшой пример, где правило нарушено. Например, правило «у сотрудника ровно один начальник»: программа находит пример, где у одного сотрудника сразу два начальника. Подходит для проверки устройства данных и прав доступа. Запись, как и у TLA+, математическая. Язык создан в группе проектирования ПО при MIT.',
+          en: 'A way to describe objects and the links between them and ask a program to find a small example where a rule is broken. For example, the rule “an employee has exactly one boss”: the program finds an example where one employee has two bosses at once. It suits checking the structure of data and access rights. Like TLA+, it uses a mathematical notation. The language was created in the Software Design Group at MIT.',
+        },
+        match: { ru: ['Alloy'], en: ['Alloy'] },
+        related: ['tla-plus', 'quint', 'model-checking'],
+        source: { url: 'https://alloytools.org/', label: { ru: 'alloytools.org — сайт Alloy', en: 'alloytools.org, the Alloy site' } },
+      },
+      {
+        slug: 'tlc',
+        name: { ru: 'TLC', en: 'TLC' },
+        aka: { ru: 'первая программа проверки TLA+', en: 'the first TLA+ checker' },
+        def: {
+          ru: 'Первая программа, которая проверяет модели на TLA+. Она перебирает все состояния модели по одному и для каждого проверяет правила, помня, где уже была. Поэтому её работа предсказуема, но мир модели должен быть небольшим: иначе состояний слишком много. Модели на Quint тоже можно проверять в TLC, но сначала их нужно перевести в запись для этой программы.',
+          en: 'The first program that checks TLA+ models. It goes through all states of a model one by one and checks the rules in each, remembering where it has been. So its work is predictable, but the world of the model must be small: otherwise there are too many states. Quint models can be checked in TLC too, but they first have to be translated into a form this program accepts.',
+        },
+        match: { ru: ['TLC'], en: ['TLC'] },
+        related: ['tla-plus', 'quint', 'apalache', 'model-checking'],
+        source: { url: 'https://github.com/tlaplus/tlaplus', label: { ru: 'TLA+ Tools и TLC на GitHub', en: 'TLA+ Tools and TLC on GitHub' } },
+      },
+      {
+        slug: 'apalache',
+        name: { ru: 'Apalache', en: 'Apalache' },
+        aka: { ru: 'символьная проверка моделей', en: 'a symbolic model checker' },
+        def: {
+          ru: 'Программа, которая проверяет модели на TLA+ и на Quint. Она переводит их в набор условий и отдаёт SMT-решателю, например Z3: тот рассуждает сразу обо всех исполнениях до заданной длины. Выдаёт цепочку шагов, где правило нарушается.',
+          en: 'A program that checks models written in TLA+ and Quint. It turns them into a set of conditions and hands them to an SMT solver, for example Z3, which reasons about all executions up to a given length at once. It outputs the chain of steps where a rule breaks.',
+        },
+        match: { ru: ['Apalache'], en: ['Apalache'] },
+        related: ['quint', 'tla-plus', 'tlc', 'model-checking', 'smt-solver', 'z3'],
+        source: { url: 'https://apalache-mc.org/', label: { ru: 'apalache-mc.org — сайт Apalache', en: 'apalache-mc.org, the Apalache site' } },
+      },
+      {
+        slug: 'z3',
+        name: { ru: 'Z3', en: 'Z3' },
+        aka: { ru: 'SMT-решатель от Microsoft Research', en: 'an SMT solver from Microsoft Research' },
+        def: {
+          ru: 'Самый известный SMT-решатель: программа подбирает значения под заданные условия. Например, на условия «x плюс y равно десяти, x минус y равно двум» она отвечает «x равен шести, y равен четырём» или доказывает, что решений нет. Apalache отдаёт Z3 условия, полученные из модели, и по ответу строит цепочку шагов до нарушения правила.',
+          en: 'The best-known SMT solver: a program that picks values for given conditions. For example, for “x plus y equals ten, x minus y equals two” it answers “x is six, y is four”, or proves that no solution exists. Apalache gives Z3 the conditions obtained from a model and builds the chain of steps to the rule violation from its answer.',
+        },
+        match: { ru: ['Z3'], en: ['Z3'] },
+        related: ['smt-solver', 'apalache', 'model-checking'],
+        source: { url: 'https://github.com/Z3Prover/z3', label: { ru: 'Z3 — репозиторий на GitHub', en: 'Z3, the GitHub repository' } },
+      },
+      {
+        slug: 'smt-solver',
+        name: { ru: 'SMT-решатель', en: 'SMT solver' },
+        aka: { ru: 'например, Z3', en: 'for example, Z3' },
+        def: {
+          ru: 'Программа, которая по набору условий вроде «сумма больше десяти, а счёт не отрицательный» сама находит значения, при которых все условия выполняются, или доказывает, что таких значений нет. Перебирать всё подряд ей не нужно: она рассуждает о целых классах случаев сразу. Самый известный решатель Z3 создала Microsoft Research. Движок Apalache переводит модель в такие условия и отдаёт их решателю.',
+          en: 'A program that, given a set of conditions such as “the sum is greater than ten and the balance is not negative”, finds values for which all conditions hold, or proves that no such values exist. It does not have to try everything one by one: it reasons about whole classes of cases at once. The best-known solver, Z3, was created by Microsoft Research. The Apalache engine turns a model into such conditions and hands them to a solver.',
+        },
+        match: { ru: ['SMT-решател\\p{L}*'], en: ['SMT solvers?'] },
+        related: ['z3', 'apalache', 'model-checking', 'quint'],
+        source: { url: 'https://github.com/Z3Prover/z3', label: { ru: 'Z3 — репозиторий решателя на GitHub', en: 'Z3, the solver repository on GitHub' } },
+      },
+      {
+        slug: 'model-checking',
+        name: { ru: 'Проверка моделей', en: 'Model checking' },
+        aka: { ru: 'model checking', en: 'automatic state exploration' },
+        def: {
+          ru: 'Метод, при котором программа автоматически обходит состояния описанной системы и проверяет, что в каждом из них правила соблюдены. Если правило нарушается, метод выдаёт точную цепочку шагов, которой это достигается. Например, модель магазина находит ход «оплата, сбой связи», после которого деньги списаны, а заказа нет: покупатель заплатил и ничего не получил. В отличие от теста, метод не ограничен сценариями, которые придумал человек, но ограничен размером выбранного мира.',
+          en: 'A method in which a program automatically walks the states of a described system and checks that the rules hold in each of them. If a rule breaks, the method outputs the exact chain of steps that leads there. For example, a shop model finds the move “payment, connection lost” after which the money is charged but there is no order: the buyer paid and got nothing. Unlike a test, the method is not limited to scenarios a person thought of, but it is limited by the size of the chosen world.',
+        },
+        match: { ru: ['проверк\\p{L}* моделей', 'model checking', 'формальн\\p{L}* модел\\p{L}*'], en: ['model checking', 'formal models?'] },
+        related: ['quint', 'invariant', 'apalache', 'mutation-testing'],
+        more: { post: 'quint-models-find-races', label: { ru: 'Как найти гонки и потерянные данные моделями на Quint', en: 'Finding races and lost data with Quint models' } },
+        source: { url: 'https://en.wikipedia.org/wiki/Model_checking', label: { ru: 'Википедия: проверка моделей', en: 'Wikipedia: Model checking' } },
+      },
+      {
+        slug: 'invariant',
+        name: { ru: 'Инвариант', en: 'Invariant' },
+        aka: { ru: 'правило «всегда верно»', en: 'an “always true” rule' },
+        def: {
+          ru: 'Условие, которое должно выполняться в каждом состоянии системы, в каком бы порядке ни шли действия. Например, в магазине деньги никогда не списаны без заказа, а в расшифровщике встреч приватная запись никогда не попадает в общее хранилище. Проверка моделей ищет цепочку шагов, после которой инвариант нарушается.',
+          en: 'A condition that must hold in every state of the system, in whatever order actions come. For example, in a shop money is never charged without an order, and in a meeting transcriber a private recording never reaches shared storage. Model checking looks for a chain of steps after which the invariant breaks.',
+        },
+        match: { ru: ['инвариант\\p{L}*'], en: ['invariants?'] },
+        related: ['model-checking', 'quint', 'rfc-2119'],
+        source: { url: 'https://en.wikipedia.org/wiki/Invariant_(computer_science)', label: { ru: 'Википедия: инвариант в программировании', en: 'Wikipedia: Invariant (computer science)' } },
+      },
+      {
+        slug: 'race-condition',
+        name: { ru: 'Гонка', en: 'Race condition' },
+        aka: { ru: 'состояние гонки', en: 'a race' },
+        def: {
+          ru: 'Ошибка, при которой результат зависит от того, какое из двух действий успело раньше. Каждое действие по отдельности работает верно, а вместе они дают потерю или путаницу данных. Классический случай: условие проверили один раз, а к моменту действия оно уже изменилось. Лечат повторной проверкой в момент действия или общим замком.',
+          en: 'A defect in which the result depends on which of two actions got there first. Each action works correctly on its own, but together they cause a loss or a mix-up of data. The classic case: a condition is checked once, and by the time of the action it has already changed. It is cured by rechecking at the moment of the action or by a shared lock.',
+        },
+        match: { ru: ['состояни\\p{L}* гонки', 'гонк\\p{L}* входа', 'race conditions?'], en: ['race conditions?', 'races'] },
+        related: ['model-checking', 'invariant', 'quint'],
+        more: { post: 'quint-models-find-races', label: { ru: 'Какие гонки нашли модели на Quint', en: 'The races found by Quint models' } },
+        source: { url: 'https://en.wikipedia.org/wiki/Race_condition', label: { ru: 'Википедия: состояние гонки', en: 'Wikipedia: Race condition' } },
+      },
+    ],
+  },
+  {
     slug: 'models',
     icon: 'prompts',
     name: { ru: 'Модель и промпты', en: 'Model and prompts' },
@@ -1479,16 +1802,23 @@ export function linkTerms(html: string, lang: Lang, ignore: string[] = [], perSe
     re.lastIndex = 0
     return part.replace(re, (...args) => {
       const groups = args[args.length - 1] as Record<string, string>
-      const slug = slugs.find((_, i) => groups[`t${i}`] !== undefined) ?? ''
       const text = args[0] as string
+      const slug = resolveSlug(slugs.find((_, i) => groups[`t${i}`] !== undefined) ?? '', text)
       if (!slug || seen.has(slug)) return text
+      const term = findTerm(slug)!
       seen.add(slug)
       if (!found.includes(slug)) found.push(slug)
-      const term = findTerm(slug)!
       return `<a class="s-term" href="${termHref(slug, lang)}" title="${noCode(termShort(term, lang)).replace(/"/g, '&quot;')}">${text}</a>`
     })
   }).join('')
   return { html: out, found }
+}
+
+// У терминов с `exact` регистр важен: если найденный фрагмент отличается от exact, ищем термин, у которого exact совпал (React ↔ ReAct), иначе фрагмент не термин
+function resolveSlug(slug: string, text: string): string {
+  const ex = findTerm(slug)?.exact
+  if (!ex || text === ex) return slug
+  return ALL_TERMS.find((t) => t.exact === text)?.slug ?? ''
 }
 
 /** Режет обычный текст на куски: первое вхождение каждого другого термина помечено слагом (для ссылок между терминами) */
@@ -1500,7 +1830,7 @@ export function splitTerms(text: string, lang: Lang, ignore: string[] = []): { t
   re.lastIndex = 0
   for (const m of text.matchAll(re)) {
     const groups = m.groups ?? {}
-    const slug = slugs.find((_, i) => groups[`t${i}`] !== undefined)
+    const slug = resolveSlug(slugs.find((_, i) => groups[`t${i}`] !== undefined) ?? '', m[0])
     if (!slug || seen.has(slug)) continue
     seen.add(slug)
     if (m.index! > last) out.push({ text: text.slice(last, m.index) })
@@ -1515,8 +1845,10 @@ export function splitTerms(text: string, lang: Lang, ignore: string[] = []): { t
 const plain = (html: string) => html.replace(/<(svg|pre|script|style)[\s\S]*?<\/\1>/g, ' ').replace(/<[^>]+>/g, ' ')
 function hasTerm(slug: string, lang: Lang, text: string): boolean {
   const term = findTerm(slug)!
-  const re = new RegExp(`(?<![\\p{L}\\p{N}_.-])(?:${term.match[lang].join('|')})(?![\\p{L}\\p{N}_-]|\\.(?=\\p{L}))`, 'iu')
-  return re.test(text)
+  const re = new RegExp(`(?<![\\p{L}\\p{N}_.-])(?:${term.match[lang].join('|')})(?![\\p{L}\\p{N}_-]|\\.(?=\\p{L}))`, term.exact ? 'giu' : 'iu')
+  if (!term.exact) return re.test(text)
+  for (const m of text.matchAll(re)) if (m[0] === term.exact) return true
+  return false
 }
 
 const cache = new Map<string, Post[]>()

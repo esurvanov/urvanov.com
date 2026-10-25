@@ -31,13 +31,13 @@ How many AI agents do you need? As many as there are bounded contexts: each mean
   </b-lane>
   <b-finding>
     <ex>Eight contexts: one agent drowns in meanings, while eight agents each work within their own borders.</ex>
-    <gen>The number of agents grows linearly with the number of contexts while each one's load stays flat. In our experience. The numbers in the charts are illustrative.</gen>
+    <gen>The number of agents grows linearly with the number of contexts while each one's load stays flat.</gen>
     <do k="What to do">Add an agent together with a new context instead of growing one agent's context.</do>
   </b-finding>
 </b-chapter>
 
 <b-chapter id="borders" icon="boxes-link" title="What sits between agents">
-  <b-why align="left">Agents talk through contracts: events and APIs. A foreign context is not under our control, so the agent reaches it only through the contract and with your confirmation. More on judging complexity: [where the complexity is real](/blog/agent-hands-work-back-to-you/#hard).</b-why>
+  <b-why align="left">Agents talk through contracts: events and APIs. A foreign context is not under your control, so the agent reaches it only through the contract and with your confirmation. More on judging complexity: [where the complexity is real](/blog/agent-hands-work-back-to-you/#hard).</b-why>
   <b-lane title="Context map" color="accent">
     <iso-art name="agents-per-bounded-context/context-map"></iso-art>
   </b-lane>
@@ -49,11 +49,9 @@ How many AI agents do you need? As many as there are bounded contexts: each mean
 </b-chapter>
 
 <b-chapter id="first" icon="shield-check" title="Where to start">
-  <b-numchain>
-    <step>draw the context map</step>
-    <step>assign an agent to each</step>
-    <step>write contracts on the borders</step>
-  </b-numchain>
+  <b-lane title="The first step" color="accent">
+    <iso-art name="agents-per-bounded-context/start"></iso-art>
+  </b-lane>
   <b-finding>
     <ex>Start with two neighbouring contexts and one contract between them.</ex>
     <gen>One context, one agent, one contract: that tests the scheme before you stretch it across the whole project.</gen>

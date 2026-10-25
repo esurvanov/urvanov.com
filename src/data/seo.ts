@@ -44,6 +44,24 @@ export interface PageMeta {
   next?: string
 }
 
+// Первый абзац поста — прямой ответ на вопрос заголовка: отдаём его в разметке (abstract), чтобы поисковики и ИИ-чаты брали ответ целиком
+const stripTags = (h: string) => h.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\s+/g, ' ').trim()
+const leadOf = (html: string): string | undefined => {
+  const m = html.match(/<p[^>]*>([\s\S]*?)<\/p>/)
+  return m ? stripTags(m[1]) : undefined
+}
+// Вопросы и ответы блока <b-faq-cards> — в разметку FAQPage рядом с основным узлом
+const faqOf = (html: string): { q: string; a: string }[] => {
+  const start = html.indexOf('<div class="bk-faq-cards">')
+  if (start < 0) return []
+  const out: { q: string; a: string }[] = []
+  // Блок — подряд идущие <div><b>вопрос</b><br>ответ</div>
+  const re = /<div><b>([\s\S]*?)<\/b><br>([\s\S]*?)<\/div>/y
+  re.lastIndex = start + '<div class="bk-faq-cards">'.length
+  for (let m = re.exec(html); m; m = re.exec(html)) out.push({ q: stripTags(m[1]), a: stripTags(m[2]) })
+  return out.filter((x) => x.q && x.a)
+}
+
 // Ссылка на канонический Person (полностью описан один раз в scripts/lib.mjs и добавляется
 // в @graph каждой страницы автоматически — здесь только связываем через @id, без повтора полей)
 const person = () => ({ '@id': PERSON_ID })
@@ -299,10 +317,12 @@ export function allPages(): PageMeta[] {
       modified: p.updated,
       image: p.image,
       alternates,
+      jsonLdExtra: faqOf(p.html).length ? [{ '@type': 'FAQPage', mainEntity: faqOf(p.html).map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) }] : undefined,
       jsonLd: {
         '@type': 'BlogPosting',
         headline: p.title,
         description: p.description,
+        ...(leadOf(p.html) ? { abstract: leadOf(p.html) } : {}),
         datePublished: p.date,
         dateModified: p.updated ?? p.date,
         inLanguage: p.lang,

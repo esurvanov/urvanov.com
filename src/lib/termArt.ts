@@ -1275,6 +1275,231 @@ export const ART: Record<string, Art> = {
     I.path([g(-0.0, -2.4), g(-0.0, 5.6)], W, { dash: '6 5', w: 2 }); t(-0.0, -2.4, l('выдано сейчас ← | → позже', 'granted now ← | → later'), W, { dy: -8, size: 11, w: 800 })
     arr(M, [1.6, 6.4], [6.6, 6.4]); t(4.1, 6.4, l('открывают, когда агент справился', 'opened once the agent has coped'), M, { dy: 16, size: 10, w: 700 })
   } },
+  // Формальные модели: схемы терминов про Quint, соседние языки и проверку правил
+  'quint': { ru: 'Правило записано до кода: Quint находит ход, где деньги ушли без заказа', en: 'A rule written before any code: Quint finds money gone with no order', tile: [0, 0, 0, 0], draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const st: [number, string, string, string][] = [[-9.0, l('оплата', 'payment'), l('деньги пошли', 'money sent'), A], [0, l('сбой связи', 'connection lost'), l('оборвалось', 'it broke'), M], [9.0, l('деньги ушли', 'money gone'), l('заказа нет', 'no order'), W]]
+    arr(M, [-7.2, 0], [-2.0, 0]); arr(W, [2.0, 0], [7.2, 0])
+    st.forEach(([X, n, d, c]) => { at(X, 0, (x, y) => I.box(x - 0.7, y - 0.7, 0, 1.4, 1.4, 0.8, c)); t(X, 1.4, n, c, { dy: 14, size: 13, w: 800 }); t(X, 1.4, d, M, { dy: 30, size: 12, w: 600 }) })
+    at(9.0, 0, (x, y) => I.bug(x, y, '#fff', 0.8))
+  } },
+  'tla-plus': { ru: 'TLA+ находит ошибку на чертеже денежного перевода, до написания кода', en: 'TLA+ finds the error on the money-transfer blueprint, before any code is written', tile: [0, 0, 0, 0], draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    I.path([g(-12.5, -3.4), g(12.5, -3.4), g(12.5, 4.2), g(-12.5, 4.2), g(-12.5, -3.4)], A, { dash: '7 5', w: 2.2 })
+    t(-12, -4.4, l('чертёж перевода денег', 'a money-transfer blueprint'), A, { size: 12, w: 800, anchor: 'start' })
+    const st: [number, string, string, string][] = [[-8.5, l('Анне', 'Anna'), l('списали 100', 'charged 100'), M], [0, l('сбой', 'a failure'), l('связь оборвалась', 'the link broke'), M], [8.5, l('Борису', 'Boris'), l('не пришло', 'got nothing'), W]]
+    arr(M, [-6.9, 0], [-1.7, 0]); arr(W, [1.7, 0], [6.9, 0])
+    st.forEach(([X, n, d, c]) => { at(X, 0, (x, y) => I.box(x - 0.7, y - 0.7, 0, 1.4, 1.4, 0.8, c)); t(X, 1.4, n, c, { dy: 14, size: 13, w: 800 }); t(X, 1.4, d, M, { dy: 30, size: 12, w: 600 }) })
+    at(8.5, 0, (x, y) => I.bug(x, y, '#fff', 0.8))
+    t(0, 6.6, l('код ещё не написан: ошибка найдена заранее', 'no code yet: the error is found in advance'), A, { size: 13, w: 800 })
+  } },
+  'alloy': { ru: 'Alloy находит пример: у сотрудника сразу два начальника', en: 'Alloy finds an example: an employee with two bosses at once', tile: [0, 0, 0, 0], draw: (I, l) => {
+    const { g, arr, t, person } = screen(I)
+    person(-10.0, -1.4, l('начальник А', 'boss A')); person(10.0, -1.4, l('начальник Б', 'boss B')); person(0, 2.4, l('Иван', 'Ivan'))
+    arr(W, [-8.4, -0.6], [-1.8, 1.6]); arr(W, [8.4, -0.6], [1.8, 1.6])
+    t(-5.2, 0.3, l('руководит', 'manages'), W, { dy: -10, size: 12, w: 700 }); t(5.2, 0.3, l('руководит', 'manages'), W, { dy: -10, size: 12, w: 700 })
+    const [bx, by] = g(0, 2.4); I.bug(bx + 0.9, by - 0.3, W, 0.3)
+  } },
+  'tlc': { ru: 'TLC проверяет состояния по очереди: их не должно быть слишком много', en: 'TLC checks states in turn: there must not be too many of them', tile: [0, 0, 0, 0], draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const st: [number, string, string][] = [[-10, l('корзина', 'cart'), 'ok'], [-5, l('оплата', 'payment'), 'ok'], [0, l('сбой связи', 'connection lost'), 'now'], [5, l('заказ создан', 'order created'), 'wait'], [10, l('возврат', 'refund'), 'wait']]
+    st.forEach(([X, n, k], i) => {
+      at(X, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.8, k === 'now' ? A : M, k === 'wait' ? 0.35 : 1))
+      if (k === 'ok') at(X, 0, (x, y) => I.doc(x - 0.45, y - 0.35, 0.8, 0.9, 0.7, A, 1, true))
+      t(X, 1.4, n, k === 'now' ? A : M, { dy: 14, size: 12, w: 800 })
+      t(X, 1.4, k === 'ok' ? l('проверено', 'checked') : k === 'now' ? l('проверяет сейчас', 'checking now') : l('ещё в очереди', 'still waiting'), k === 'ok' ? A : M, { dy: 30, size: 11, w: 600 })
+      if (i < 4) arr(M, [X + 1.4, 0], [X + 3.6, 0])
+    })
+    at(0, -3.6, (x, y) => I.cyl(x, y, 0, 0.6, 0.8, A)); t(0, -5.2, 'TLC', A, { size: 13, w: 800 }); arr(A, [0, -2.4], [0, -1.0])
+  } },
+  'apalache': { ru: 'Движок проверки: правила на входе, цепочка шагов до нарушения на выходе', en: 'The checking engine: rules go in, a chain of steps to a violation comes out', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.0, 0, (x, y) => I.doc(x - 0.9, y - 0.65, 0, 1.8, 1.3, A, 4)); t(-8.0, 1.6, l('модель', 'model'), A, { dy: 12, size: 12, w: 800 })
+    arr(A, [-5.8, 0], [-2.0, 0])
+    at(0, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(0, 1.8, 'Apalache', A, { dy: 12, size: 13, w: 800 }); t(0, 1.8, l('символьная проверка', 'symbolic checking'), M, { dy: 26, size: 10, w: 600 })
+    arr(A, [2.0, 0], [5.8, 0])
+    at(8.0, 0, (x, y) => I.doc(x - 0.9, y - 0.65, 0, 1.8, 1.3, W, 4)); at(8.0, 0, (x, y) => I.bug(x + 0.9, y + 0.5, W, 0.2)); t(8.0, 1.6, l('шаги до нарушения', 'steps to the violation'), W, { dy: 12, size: 12, w: 800 })
+    I.pulse([g(-5.8, 0), g(-2.0, 0), g(2.0, 0), g(5.8, 0)], A, 4)
+  } },
+  'automated-test': { ru: 'Тест запускают после каждой правки: сломанное видно сразу', en: 'A test runs after every edit: whatever broke shows at once', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-10, 0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 1.0, M, 0.85)); t(-10, 1.8, l('код после правки', 'code after an edit'), M, { dy: 14, size: 12, w: 800 })
+    arr(M, [-7.8, 0], [-3.2, 0])
+    const rows: [number, string, boolean][] = [[-3.2, l('тест 1: прошёл', 'test 1: passed'), true], [0, l('тест 2: прошёл', 'test 2: passed'), true], [3.2, l('тест 3: упал, правка сломала работавшее', 'test 3: failed, the edit broke something that worked'), false]]
+    rows.forEach(([Y, n, ok]) => { at(-1.2, Y, (x, y) => I.doc(x - 0.6, y - 0.4, 0, 1.2, 0.8, ok ? A : W, 1, ok)); t(1.2, Y, n, ok ? A : W, { size: 12.5, w: 800, anchor: 'start' }) })
+  } },
+  'typescript': { ru: 'Ошибку в типе находят до запуска программы', en: 'An error in a type is found before the program runs', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-9, 0, (x, y) => I.doc(x - 0.9, y - 0.65, 0, 1.8, 1.3, M, 3)); t(-9, 1.8, l('цена: число', 'price: number'), M, { dy: 14, size: 12.5, w: 800 }); t(-9, 1.8, l('а передали строку «десять»', 'but the string “ten” was passed'), W, { dy: 30, size: 11.5, w: 700 })
+    arr(A, [-6.8, 0], [-2.2, 0])
+    at(0, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(0, 1.8, 'TypeScript', A, { dy: 14, size: 13.5, w: 800 }); t(0, 1.8, l('проверяет типы', 'checks the types'), M, { dy: 30, size: 11.5, w: 600 })
+    arr(W, [2.2, 0], [6.8, 0])
+    at(9, 0, (x, y) => I.box(x - 0.8, y - 0.8, 0, 1.6, 1.6, 0.9, W)); at(9, 0, (x, y) => I.bug(x, y, '#fff', 0.9)); t(9, 1.8, l('ошибка найдена', 'the error is found'), W, { dy: 14, size: 12.5, w: 800 }); t(9, 1.8, l('до запуска', 'before the run'), M, { dy: 30, size: 11.5, w: 600 })
+  } },
+  'babel': { ru: 'Новый JavaScript переводят в такой, который понимают старые среды', en: 'New JavaScript is turned into one that older environments understand', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-9, 0, (x, y) => I.doc(x - 0.9, y - 0.65, 0, 1.8, 1.3, A, 3)); t(-9, 1.8, l('новый JavaScript', 'new JavaScript'), A, { dy: 14, size: 12.5, w: 800 }); t(-9, 1.8, l('современная запись', 'modern notation'), M, { dy: 30, size: 11.5, w: 600 })
+    arr(A, [-6.8, 0], [-2.2, 0])
+    at(0, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(0, 1.8, 'Babel', A, { dy: 14, size: 13.5, w: 800 }); t(0, 1.8, l('переводит', 'translates'), M, { dy: 30, size: 11.5, w: 600 })
+    arr(A, [2.2, 0], [6.8, 0])
+    at(9, 0, (x, y) => I.doc(x - 0.9, y - 0.65, 0, 1.8, 1.3, M, 3, true)); t(9, 1.8, l('старый JavaScript', 'old JavaScript'), M, { dy: 14, size: 12.5, w: 800 }); t(9, 1.8, l('понятен старым средам', 'old environments understand it'), M, { dy: 30, size: 11.5, w: 600 })
+  } },
+  'react-js': { ru: 'Страница собирается из блоков, при смене данных обновляются только нужные', en: 'A page is assembled from blocks, and only the needed ones update when data changes', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    ;[-9, -4.5, 0].forEach((X, i) => { at(X, 0, (x, y) => I.box(x - 0.7, y - 0.7, 0, 1.4, 1.4, 0.8, i === 1 ? A : M, i === 1 ? 1 : 0.55)) })
+    t(-9, 1.4, l('шапка', 'header'), M, { dy: 14, size: 12, w: 700 }); t(-4.5, 1.4, l('счётчик', 'counter'), A, { dy: 14, size: 12, w: 800 }); t(0, 1.4, l('список', 'list'), M, { dy: 14, size: 12, w: 700 })
+    t(-4.5, -2.6, l('данные изменились: 5 → 6', 'data changed: 5 → 6'), A, { size: 11.5, w: 800 })
+    arr(A, [2.2, 0], [5.6, 0]); t(3.9, 0, l('обновляется только он', 'only it updates'), A, { dy: -12, size: 11.5, w: 700 })
+    at(9, 0, (x, y) => I.panel(x - 1.3, y - 0.3, 2.6, 1.6, A, '', 3)); t(9, 1.6, l('страница сайта', 'the web page'), A, { dy: 14, size: 12.5, w: 800 })
+  } },
+  'angular': { ru: 'Страница собирается из готовых блоков-компонентов', en: 'A page is assembled from ready-made component blocks', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const names: [number, string, string][] = [[-9, 'шапка', 'header'], [-3, 'список', 'list'], [3, 'форма', 'form']]
+    names.forEach(([X, ru, en]) => { at(X, 0, (x, y) => I.box(x - 0.7, y - 0.7, 0, 1.4, 1.4, 0.8, A)); t(X, 1.4, l(ru, en), A, { dy: 14, size: 12.5, w: 800 }) })
+    t(0, -3, l('готовые блоки (компоненты)', 'ready-made blocks (components)'), M, { size: 11.5, w: 700 })
+    arr(A, [5.2, 0], [7.2, 0])
+    at(10, 0, (x, y) => I.panel(x - 1.3, y - 0.3, 2.6, 1.6, A, '', 3)); t(10, 1.6, l('страница сайта', 'the web page'), A, { dy: 14, size: 12.5, w: 800 })
+  } },
+  'vue': { ru: 'Страница собирается из блоков, и Vue можно подключать постепенно', en: 'A page is assembled from blocks, and Vue can be adopted gradually', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8, 0, (x, y) => I.panel(x - 1.3, y - 0.3, 2.6, 1.6, M, '', 3)); t(-8, 1.6, l('обычная страница', 'an ordinary page'), M, { dy: 14, size: 12.5, w: 800 })
+    arr(A, [-5.6, 0], [-1.4, 0]); t(-3.5, 0, l('+ один блок Vue', '+ one Vue block'), A, { dy: -12, size: 11.5, w: 700 })
+    at(0.4, 0, (x, y) => I.box(x - 0.7, y - 0.7, 0, 1.4, 1.4, 0.8, A)); t(0.4, 1.4, 'Vue', A, { dy: 14, size: 13, w: 800 })
+    arr(A, [2.4, 0], [5.2, 0]); t(3.8, 0, l('и так дальше', 'and so on'), A, { dy: -12, size: 11.5, w: 700 })
+    ;[7.2, 9.6, 12].forEach((X) => at(X, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.7, A, 0.8))); t(9.6, 1.4, l('блоков всё больше', 'more and more blocks'), A, { dy: 14, size: 12, w: 700 })
+  } },
+  'jest': { ru: 'Jest запускает проверки кода и показывает упавшие', en: 'Jest runs checks of code and shows the failed ones', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.0, 0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 1.0, M, 0.85)); t(-8.0, 1.8, l('код на JavaScript', 'JavaScript code'), M, { dy: 12, size: 12, w: 800 })
+    arr(M, [-6.0, 0], [-2.2, 0])
+    at(0, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(0, 1.8, 'Jest', A, { dy: 12, size: 13, w: 800 }); t(0, 1.8, l('движок тестов', 'test framework'), M, { dy: 26, size: 10, w: 600 })
+    arr(A, [2.2, 0], [5.6, 0])
+    ;[-1.4, 0, 1.4].forEach((Y, i) => at(8.0, Y, (x, y) => I.doc(x - 0.7, y - 0.3, 0, 1.4, 0.6, i === 2 ? W : A, 1, i !== 2)))
+    t(8.0, 3.0, l('какие проверки прошли, какие упали', 'which checks passed and which failed'), M, { dy: 12, size: 11, w: 700 })
+  } },
+  'vitest': { ru: 'Vitest делает то же, что Jest, но на базе Vite и быстро перезапускается', en: 'Vitest does what Jest does, but is built on Vite and restarts quickly', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.0, 0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 1.0, M, 0.85)); t(-8.0, 1.8, l('код на JavaScript', 'JavaScript code'), M, { dy: 12, size: 12, w: 800 })
+    arr(M, [-6.0, 0], [-2.2, 0])
+    at(0, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(0, 1.8, 'Vitest', A, { dy: 12, size: 13, w: 800 }); t(0, 1.8, l('на базе Vite', 'built on Vite'), M, { dy: 26, size: 10, w: 600 })
+    arr(A, [2.2, 0], [5.6, 0])
+    ;[-1.4, 0, 1.4].forEach((Y, i) => at(8.0, Y, (x, y) => I.doc(x - 0.7, y - 0.3, 0, 1.4, 0.6, i === 2 ? W : A, 1, i !== 2)))
+    t(8.0, 3.0, l('какие проверки прошли, какие упали', 'which checks passed and which failed'), M, { dy: 12, size: 11, w: 700 })
+  } },
+  'javascript': { ru: 'JavaScript работает и в браузере посетителя, и на сервере сайта', en: 'JavaScript runs both in the visitor’s browser and on the site’s server', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-9, 0, (x, y) => I.panel(x - 1.3, y - 0.1, 2.6, 1.6, A, '', 3)); t(-9, 1.6, l('браузер', 'browser'), A, { dy: 14, size: 13, w: 800 }); t(-9, 1.6, l('у посетителя сайта', 'at the site visitor'), M, { dy: 30, size: 11.5, w: 600 })
+    at(9, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, M)); t(9, 1.8, l('сервер', 'server'), M, { dy: 14, size: 13, w: 800 }); t(9, 1.8, l('у владельца сайта', 'at the site owner'), M, { dy: 30, size: 11.5, w: 600 })
+    arr(A, [-6.4, -0.9], [6.4, -0.9]); t(0, -0.9, l('запрос: открыть страницу', 'request: open the page'), A, { dy: -12, size: 11.5, w: 700 })
+    arr(M, [6.4, 0.9], [-6.4, 0.9]); t(0, 0.9, l('ответ: данные страницы', 'answer: the page data'), M, { dy: 18, size: 11.5, w: 700 })
+    ;[-9, 9].forEach((X) => { at(X, -3.6, (x, y) => I.doc(x - 0.6, y - 0.4, 0, 1.2, 0.8, A, 2)); t(X, -3.6, 'JS', '#fff', { gz: 0.1, size: 11, w: 800, halo: false }) })
+    t(0, -4.6, l('JavaScript работает в обеих частях', 'JavaScript runs in both parts'), A, { size: 12.5, w: 800 })
+  } },
+  'qunit': { ru: 'Тест готовой функции: заданный вход, ожидаемый ответ, совпало или нет', en: 'A test of a finished function: a given input, an expected answer, a match or not', tile: [0, 0, 0, 0], draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.0, 0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, M, 2)); t(-8.0, 1.4, l('вход', 'input'), M, { dy: 12, size: 12, w: 800 })
+    arr(M, [-6.0, 0], [-2.2, 0])
+    at(0, 0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 1.2, M, 0.85)); t(0, 1.8, l('функция', 'function'), M, { dy: 12, size: 12, w: 800 })
+    arr(M, [2.2, 0], [6.0, 0])
+    at(8.0, 0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(8.0, 1.4, l('ответ совпал', 'the answer matches'), A, { dy: 12, size: 12, w: 800 })
+    t(0, -4.4, l('проверена одна придуманная ситуация', 'one imagined situation is checked'), M, { size: 11, w: 700 })
+  } },
+  'model-checking': { ru: 'Программа пробует все ходы и находит тот, где деньги ушли без заказа', en: 'The program tries every move and finds the one with money gone and no order', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    t(0, -6.2, l('правило: деньги не списываются без заказа', 'the rule: money is never charged without an order'), A, { size: 12, w: 800 })
+    const st: [number, number, string, string, string][] = [
+      [-8.0, -2.0, l('корзина', 'cart'), l('покупатель выбрал товар', 'the buyer picked an item'), A],
+      [-1.0, -2.0, l('оплата идёт', 'payment'), l('деньги списываются', 'money is charged'), A],
+      [6.0, -2.0, l('заказ создан', 'order created'), l('всё в порядке', 'all fine'), A],
+      [-1.0, 3.6, l('сбой связи', 'connection lost'), l('на полпути оборвалось', 'it broke halfway'), M],
+      [6.0, 3.6, l('деньги списаны, заказа нет', 'charged, no order'), l('покупатель заплатил и ничего не получил', 'the buyer paid and got nothing'), W],
+    ]
+    arr(A, [-6.4, -2.0], [-2.6, -2.0]); arr(A, [0.6, -2.0], [4.4, -2.0]); arr(M, [-1.0, -0.2], [-1.0, 2.0]); arr(W, [0.6, 3.6], [4.4, 3.6])
+    st.forEach(([X, Y, n, d, c]) => { at(X, Y, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.7, c)); t(X, Y + 1.2, n, c, { dy: 12, size: 11, w: 800 }); t(X, Y + 1.2, d, M, { dy: 26, size: 10, w: 600 }) })
+    at(6.0, 3.6, (x, y) => I.bug(x, y, '#fff', 0.7))
+    t(2.6, -2.0, l('ход 1', 'move 1'), M, { dy: -12, size: 10, w: 700 }); t(2.6, 3.6, l('ход 2: заказ не создан', 'move 2: no order made'), W, { dy: -12, size: 10, w: 700, halo: false })
+  } },
+  'invariant': { ru: 'Правило верно в каждом состоянии: деньги не списаны без заказа', en: 'The rule holds in every state: no money charged without an order', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const st: [number, string][] = [[-7.2, l('корзина', 'cart')], [-2.4, l('оплата идёт', 'payment')], [2.4, l('заказ создан', 'order created')], [7.2, l('доставка', 'delivery')]]
+    st.forEach(([X, n]) => { at(X, 1.2, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.7, M)); at(X, -2.0, (x, y) => I.doc(x - 0.6, y - 0.45, 0, 1.2, 0.9, A, 2, true)); I.path([g(X, -1.0), g(X, 0.4)], A, { w: 1.4, dash: '2 4', op: 0.7 }); t(X, 2.4, n, M, { dy: 12, size: 11, w: 700 }) })
+    t(0, -4.6, l('правило верно в каждом состоянии: деньги не списаны без заказа', 'the rule holds in every state: no money charged without an order'), A, { size: 12, w: 800 })
+  } },
+  'race-condition': { ru: 'Два действия пересеклись, и итог зависит от того, кто успел', en: 'Two actions overlap and the outcome depends on who got there first', tile: [0, 0, 0, 0], draw: (I, l) => {
+    const { g, arr, t, person } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    person(-7.0, -2.0, l('действие 1', 'action 1')); person(-7.0, 3.0, l('действие 2', 'action 2'))
+    arr(M, [-5.4, -2.0], [-1.6, -0.4]); arr(M, [-5.4, 3.0], [-1.6, 0.8])
+    at(0.6, 0.2, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 0.9, W)); t(0.6, 0.2, '?', '#fff', { gz: 0.9, size: 15, w: 800 })
+    t(0.6, 2.6, l('общие данные', 'shared data'), W, { dy: 12, size: 12, w: 800 }); t(0.6, 2.6, l('результат зависит от порядка', 'the result depends on the order'), M, { dy: 26, size: 10, w: 600 })
+  } },
+  'smt-solver': { ru: 'Решатель подбирает значения под условия или показывает, что их нет', en: 'The solver picks values for conditions or shows that none exist', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    ;[-1.4, 0, 1.4].forEach((Y) => at(-9.0, Y, (x, y) => I.doc(x - 0.7, y - 0.4, 0, 1.4, 0.8, M, 1))); t(-9.0, 2.6, l('условия', 'conditions'), M, { dy: 12, size: 12, w: 800 })
+    t(-9.0, 2.6, l('сумма > 10, счёт ≥ 0', 'sum > 10, balance ≥ 0'), M, { dy: 26, size: 10, w: 600 })
+    arr(M, [-7.0, 0], [-2.4, 0])
+    at(0, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(0, 1.8, l('решатель', 'solver'), A, { dy: 12, size: 12, w: 800 }); t(0, 1.8, 'Z3', M, { dy: 26, size: 10, w: 600 })
+    arr(A, [2.4, -1.0], [6.4, -1.8]); arr(W, [2.4, 1.0], [6.4, 1.8])
+    at(8.0, -1.8, (x, y) => I.doc(x - 0.8, y - 0.5, 0, 1.6, 1.0, A, 2, true)); t(8.0, -0.4, l('нашёл значения: x = 7, y = 5', 'found values: x = 7, y = 5'), A, { dy: 6, size: 11, w: 800 })
+    at(8.0, 1.8, (x, y) => I.doc(x - 0.8, y - 0.5, 0, 1.6, 1.0, W, 2)); t(8.0, 3.2, l('таких значений нет, доказано', 'no such values exist, proven'), W, { dy: 6, size: 11, w: 800 })
+  } },
+  'z3': { ru: 'Z3 получает условия и сам подбирает значения, при которых они выполняются', en: 'Z3 takes conditions and picks the values for which they hold', tile: [0, 0, 0, 0], draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.4, 0, (x, y) => I.doc(x - 0.9, y - 0.65, 0, 1.8, 1.3, M, 3)); t(-8.4, 1.8, l('условия', 'conditions'), M, { dy: 14, size: 13, w: 800 }); t(-8.4, 1.8, 'x + y = 10', M, { dy: 30, size: 12, w: 700 }); t(-8.4, 1.8, 'x − y = 2', M, { dy: 46, size: 12, w: 700 })
+    arr(M, [-6.2, 0], [-2.2, 0])
+    at(0, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(0, 1.8, 'Z3', A, { dy: 14, size: 14, w: 800 }); t(0, 1.8, l('подбирает значения', 'picks the values'), M, { dy: 30, size: 12, w: 600 })
+    arr(A, [2.2, 0], [6.2, 0])
+    at(8.4, 0, (x, y) => I.doc(x - 0.9, y - 0.65, 0, 1.8, 1.3, A, 3, true)); t(8.4, 1.8, l('ответ', 'the answer'), A, { dy: 14, size: 13, w: 800 }); t(8.4, 1.8, 'x = 6', A, { dy: 30, size: 12, w: 700 }); t(8.4, 1.8, 'y = 4', A, { dy: 46, size: 12, w: 700 })
+  } },
+  'vite': { ru: 'Vite собирает сайт из файлов и сразу показывает правку в браузере', en: 'Vite builds a site from files and shows the edit in the browser at once', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g, person } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    person(-11, 0, l('разработчик', 'developer')); arr(M, [-9.6, 0], [-7.6, 0])
+    ;[-0.6, 0, 0.6].forEach((k) => at(-5.8, k * 1.2, (x, y) => I.doc(x - 0.8, y - 0.5, Math.abs(k) * 0.3, 1.6, 1.0, M, 2))); t(-5.8, 1.8, l('файлы сайта', 'site files'), M, { dy: 14, size: 12, w: 800 })
+    arr(A, [-3.6, 0], [-1.6, 0])
+    at(0.4, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(0.4, 1.8, 'Vite', A, { dy: 14, size: 14, w: 800 }); t(0.4, 1.8, l('собирает сайт', 'builds the site'), M, { dy: 30, size: 11.5, w: 600 })
+    arr(A, [2.4, 0], [5.6, 0])
+    at(8.6, 0, (x, y) => I.panel(x - 1.3, y - 0.3, 2.6, 1.6, A, '', 3)); t(8.6, 1.6, l('сайт в браузере', 'the site in the browser'), A, { dy: 14, size: 13, w: 800 }); t(8.6, 1.6, l('правка видна сразу', 'the edit shows at once'), A, { dy: 30, size: 11.5, w: 700 })
+  } },
+  'node-js': { ru: 'В браузере JavaScript запускает сам браузер, на сервере — Node.js', en: 'In a browser JavaScript is run by the browser itself, on a server by Node.js', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { arr, t, g } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(0, 0, (x, y) => I.doc(x - 0.9, y - 0.65, 0, 1.8, 1.3, A, 4)); t(0, 1.6, 'JavaScript', A, { dy: 14, size: 14, w: 800 }); t(0, 1.6, l('текст программы', 'the program text'), M, { dy: 30, size: 11.5, w: 600 })
+    arr(M, [-2.2, -0.6], [-6.4, -0.6]); arr(A, [2.2, 0.6], [6.4, 0.6])
+    at(-9, 0, (x, y) => I.panel(x - 1.3, y - 0.1, 2.6, 1.6, M, '', 3)); t(-9, 1.6, l('в браузере', 'in a browser'), M, { dy: 14, size: 13, w: 800 }); t(-9, 1.6, l('запускает сам браузер', 'the browser runs it itself'), M, { dy: 30, size: 11.5, w: 600 })
+    at(9, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(9, 1.8, l('на сервере', 'on a server'), A, { dy: 14, size: 13, w: 800 }); t(9, 1.8, l('запускает Node.js', 'Node.js runs it'), A, { dy: 30, size: 11.5, w: 700 })
+  } },
+  'mutation-testing': { ru: 'Копию портят нарочно: проверка должна это заметить', en: 'A copy is broken on purpose: the check must notice', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t, person, agent } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    agent(-12.6, -1.6, l('агент', 'agent')); person(-12.6, 2.4, l('или человек', 'or a person'))
+    arr(W, [-10.8, 0], [-8.6, 0]); t(-9.7, 0, l('портит', 'breaks'), W, { dy: -12, size: 12, w: 800 })
+    at(-6.4, 0, (x, y) => I.doc(x - 1.2, y - 0.8, 0, 2.4, 1.6, M, 3)); at(-6.4, 0, (x, y) => I.bug(x + 1.1, y + 0.7, W, 0.6))
+    t(-6.4, 2.0, l('копия модели', 'model copy'), M, { dy: 12, size: 12, w: 800 }); t(-6.4, 2.0, l('без условия «нужен заказ»', 'no “order needed” condition'), W, { dy: 28, size: 11, w: 700 })
+    arr(M, [-3.8, 0], [-1.8, 0])
+    at(0, 0, (x, y) => I.clipboard(x, y, 1.5, A)); t(0, 2.0, l('проверка', 'the check'), A, { dy: 12, size: 13, w: 800 })
+    arr(A, [1.8, -0.6], [5.6, -2.0]); arr(W, [1.8, 0.6], [5.6, 2.0])
+    at(8.4, -2.0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(8.4, -0.4, l('заметила', 'noticed'), A, { dy: 6, size: 12, w: 800 }); t(8.4, -0.4, l('проверка работает', 'the check works'), A, { dy: 22, size: 11, w: 700 })
+    at(8.4, 2.4, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, W, 2)); t(8.4, 4.0, l('не заметила', 'missed it'), W, { dy: 6, size: 12, w: 800 }); t(8.4, 4.0, l('проверка ничего не проверяет', 'the check checks nothing'), W, { dy: 22, size: 11, w: 700 })
+  } },
 }
 
 export function termArt(slug: string, lang: Lang, step = 0): { svg: string; caption: string; wide: boolean; map: boolean; steps: number } | null {
