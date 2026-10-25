@@ -185,34 +185,38 @@ const scenes: Record<string, Scene> = {
       c.text(530, 236, l('агенты работают разом · QA принимает отчёты', 'agents work at once · QA accepts reports'), A, { size: 12 })
     },
   },
-  // Пример: жалоба клиента → агент сжимает путь 6 → 3 → отчёт со схемой в Jira
+  // Пример: жалоба клиента → агент сжимает путь 6 → 3 и находит ошибку → отчёт со схемой в Jira
   'complaint-to-report': {
-    ru: 'Из одной жалобы клиента агент сжимает путь с шести действий до трёх и пишет отчёт со схемой в Jira', en: 'From one client complaint the agent narrows the path from six actions to three and writes a report with a diagram in Jira',
-    viewBox: [0, 0, 700, 240],
+    ru: 'Из одной жалобы клиента агент проходит шесть действий, оставляет три нужных, находит ошибку 500 у сервиса промокодов и пишет отчёт со схемой в Jira', en: 'From one client complaint the agent walks six actions, keeps the three needed ones, finds error 500 in the promo service and writes a report with a diagram in Jira',
+    viewBox: [0, 0, 700, 266],
     draw: (c, l) => {
-      const i0 = c.iso(120, 128, 26); i0.tile(-1.5, -1.5, 3, 3); i0.person(0, 0.3, M, '')
-      c.bubble(55.2452, 42.9, 118, 38, M, { op: 0.3, rx: 9, tail: [44, 2, 9, 14] })
-      c.text(114.2, 57.9, l('оплата с промокодом', 'payment with promo code'), 'currentColor', { size: 10.5, w: 500 })
-      c.text(114.2, 71.9, l('не проходит', 'fails'), 'currentColor', { size: 10.5, w: 500 })
-      const i1 = c.iso(350, 128, 26); i1.tile(-1.5, -1.5, 3, 3)
-      // Воронка: шесть серых действий сверху, баг и три синих действия на выходе
-      c.funnel(354.5, 75.4)
-      for (const [x, y] of [[332.5, 65.4], [346.5, 61.4], [362.5, 66.4], [376.5, 62.4], [340.5, 55.4], [368.5, 54.4]]) c.ball(x, y, 4, M)
-      c.bug(341, 143.8)
-      for (const [x, y] of [[305, 124], [315.1, 129.8], [325.2, 135.7]]) c.ball(x, y, 4.5, A)
-      c.text(354, 38, l('6 действий клиента', '6 client actions'), M, { size: 10, w: 600 })
-      c.text(292, 114, l('3 нужных', '3 needed'), A, { size: 10, w: 600, anchor: 'end' })
-      c.text(412, 96, l('агент убирает', 'agent drops'), A, { size: 10, w: 600, anchor: 'start' })
-      c.text(412, 108, l('лишнее', 'the extras'), A, { size: 10, anchor: 'start' })
-      c.text(360, 166, l('баг найден', 'bug found'), W, { size: 10, w: 600 })
-      const i2 = c.iso(580, 128, 26); i2.tile(-1.5, -1.5, 3, 3); i2.panel(-1.2, -1, 2.4, 2.2, M, bandTitle('Jira'), 2); i2.doc(-1.1, 0.1, 0, 0.9, 0.7, M, 3); i2.box(0.3, 0.2, 0, 0.6, 0.5, 0.3, A, 0.9)
-      c.text(553, 146, l('отчёт', 'report'), M, { size: 10, w: 600 })
-      c.text(594, 163, l('схема', 'diagram'), A, { size: 10, w: 600 })
-      c.arrow(200, 134, 262, 134, A)
-      c.arrow(438, 134, 500, 134, A)
-      c.step(120, 208, 1, l('жалоба клиента', 'client complaint'), M)
-      c.step(350, 208, 2, l('агент сжимает путь 6 → 3', 'agent narrows the path 6 → 3'))
-      c.step(580, 208, 3, l('отчёт и схема в Jira', 'report and diagram in Jira'), M)
+      // 1. Клиент: одна строка
+      const i0 = c.iso(100, 128, 26); i0.tile(-1.5, -1.5, 3, 3); i0.person(0, 0.3, M, '')
+      c.bubble(35.2, 36, 130, 40, M, { op: 0.3, rx: 9, tail: [44, 2, 9, 14] })
+      c.text(100, 52, l('оплата с промокодом', 'payment with promo code'), 'currentColor', { size: 10.5, w: 500 })
+      c.text(100, 66, l('не проходит', 'fails'), 'currentColor', { size: 10.5, w: 500 })
+      c.text(100, 188, l('больше в задаче ничего нет', 'nothing else in the ticket'), M, { size: 10 })
+      // 2. Агент: шесть действий, три лишних вычеркнуты, на трёх баг повторяется
+      c.card(244, 22, 212, 176, A, { rx: 12, fill: 'none', sw: 1.2 })
+      c.text(350, 42, l('агент проходит путь на стенде', 'the agent walks the path on the stand'), A, { size: 11, w: 700 })
+      const chip = (x: number, y: number, t: string, keep: boolean) => {
+        c.card(x, y, 62, 24, keep ? A : M, { rx: 6, fill: keep ? A : 'none', stroke: keep ? 'none' : M, lines: [{ t: keep ? t : '✗ ' + t, dy: 16, size: 10.5, w: 600, col: keep ? '#fff' : undefined }] })
+      }
+      ;[l('вход', 'login'), l('каталог', 'catalog'), l('адрес', 'address')].forEach((t, i) => chip(252 + i * 68, 54, t, false))
+      ;[l('корзина', 'cart'), l('промокод', 'promo'), l('оплата', 'payment')].forEach((t, i) => chip(252 + i * 68, 90, t, true))
+      c.text(350, 128, l('вычеркнуто лишнее: 3 из 6', 'extras struck out: 3 of 6'), M, { size: 10 })
+      c.bug(300, 154)
+      c.text(330, 158, l('баг повторяется:', 'the bug reproduces:'), W, { size: 10, w: 600, anchor: 'start' })
+      c.text(330, 172, l('ошибка 500 у промокодов', 'error 500 in promo service'), W, { size: 10, anchor: 'start' })
+      // 3. Jira: отчёт и схема
+      c.card(510, 22, 180, 176, M, { rx: 12, fill: 'none', sw: 1.2 })
+      c.card(510, 22, 180, 26, M, { rx: 12, fill: M, stroke: 'none', lines: [{ t: 'Jira · PAY-142', dy: 18, size: 11, w: 700, col: '#fff' }] })
+      ;[l('шаги: корзина → промокод →', 'steps: cart → promo →'), l('оплата картой', 'card payment'), l('ожидалось: платёж проходит', 'expected: payment passes'), l('получилось: ошибка 500', 'actual: error 500'), l('приложена схема вызовов', 'call diagram attached')].forEach((t, i) => c.text(524, 70 + i * 22, t, M, { size: 10.5, anchor: 'start' }))
+      c.arrow(206, 112, 240, 112, A)
+      c.arrow(462, 112, 506, 112, A)
+      c.step(100, 226, 1, l('жалоба клиента', 'client complaint'), M)
+      c.step(350, 226, 2, l('агент сжимает путь 6 → 3', 'agent narrows the path 6 → 3'))
+      c.step(600, 226, 3, l('отчёт и схема в Jira', 'report and diagram in Jira'), M)
     },
   },
   // Ворота приёмки: QA проверяет отчёт по четырём вопросам; не повторилось — обратно агенту

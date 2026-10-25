@@ -1,7 +1,7 @@
 ---
 title: Harness engineering in practice: turning AI agent mistakes into rules of its environment (HDD)
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-10-25
 description: The mistake-to-rule loop, guides and sensors, three layers of checks, how it fits with specs, and five first steps in your own project.
 tags: AI, Claude Code, harness engineering, harness, HDD, agents
 category: harness
@@ -15,11 +15,13 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
 
 <b-post series="hdd">
 <b-chapter id="loop" icon="refresh-cw" title="The HDD loop">
+  <b-why align="left">The loop works like this. The agent gets a task and produces a result. Sensors (a test, a linter, a review) check the result. If everything passes, the task is closed. If a sensor finds a mistake, a person does not just fix the result but changes the agent’s environment, the harness: adds a line to the instructions, a test or a hook. The next task runs with that rule, and the mistake does not repeat.</b-why>
   <b-hdd-scene name="harness-driven-development/loop" frame="loop"/>
   <b-cap>Mitchell Hashimoto's principle: when the agent makes a mistake, change the harness so that mistake can't happen again <a href="https://www.faros.ai/blog/harness-engineering" target="_blank" rel="noopener">Faros</a></b-cap>
   <b-why>A prompt fixes one request, context fixes what the model knows, the harness fixes every following run. Example: the agent edits code and does not run the tests.</b-why>
   <b-hdd-scene name="harness-driven-development/fix-levels" frame="fig"/>
   <b-cap>Stages as described by <a href="https://www.faros.ai/blog/harness-engineering" target="_blank" rel="noopener">Faros</a> and <a href="https://marmelab.com/blog/2026/09/24/the-state-of-ai-harness-engineering-2026.html" target="_blank" rel="noopener">marmelab</a></b-cap>
+  <b-why align="left">The table shows one mistake (the agent edits code and does not run the tests) and three ways to fix it. Prompt: add “run the tests after the edit”. That works for one request only, and the next one starts from scratch. Context: write the same into the project instructions file. The model reads it but may skip it. Harness: add a hook that runs the tests itself after every edit. It runs without the model, so the fix holds in all following runs.</b-why>
   <b-finding>
     <ex>A mistake caught by the sensors goes into the harness as a new rule, and the agent gets that rule on every following run.</ex>
     <gen>A result fixed by hand helps once. A rule in the harness (an instruction, a test or a hook) applies to all future tasks, so the harness gets more precise over time without changing the model.</gen>
@@ -58,6 +60,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
     <mode icon="table" t="snapshot">a table, updated after each new measurement</mode>
     <mode icon="broadcast-pole" t="live">a protocol, fresh every time, nothing stored</mode>
   </b-hdd-modes>
+  <b-why align="left">The matrix reads as three questions. Expectation: what the result should be (for example, “after the edit the tests pass”). Observation: what it actually turned out to be, which a sensor records. Loop: compares the two and decides what to do. Each of the three rows has three kinds of support: spec (what must be true), skill (how to act) and memory (what to lean on). The words “domain” and “canon” are just names here: a domain is a row of the matrix, a canon is one cell, for example the Expectation spec. The diagram below shows the direction of links: Expectation and Observation feed the Loop, and it yields either a patch (fix the action) or a revision of the rules. There is no link back to the Loop, so the domains do not tangle into each other. The memory modes: snapshot is a table updated when a new measurement arrives; live means the data is taken from the live system (for example through MCP) each time and is not stored.</b-why>
   <b-finding>
     <ex>The loop splits into Expectation, Observation and Loop, each with its own spec, skill and memory. Loop reads the other two domains; they never read Loop.</ex>
     <gen>It is a negative feedback loop: the target value is compared with the measured one, and something changes only on a mismatch. A strict reference direction keeps the domains from tangling, and the same concept repeating in two domains is not a defect.</gen>
@@ -66,6 +69,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
 </b-chapter>
 
 <b-chapter id="double" icon="loop-double" title="The double loop">
+  <b-why align="left">The double loop answers the question of what exactly to change after a mistake. Take the same mistake: the agent did not run the tests. In a single loop you remind the agent, it runs the tests, and the rules stay as they were. In a double loop you ask which rule allowed the mistake and change it: now a hook runs the tests after every edit. The idea comes from the theory of organizational learning (Chris Argyris and Donald Schön): a single loop corrects the action, a double loop revises the rules the action followed from. <a href="https://en.wikipedia.org/wiki/Double-loop_learning" target="_blank" rel="noopener">Wikipedia: Double-loop learning</a>.</b-why>
   <b-hdd-loops>
     <loop kind="single" t="single loop">fix the action under the same rules</loop>
     <loop kind="double" t="double loop" on>change the rules themselves</loop>
@@ -77,6 +81,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
     <principle icon="shield-check" t="No external check">discard it, with a record</principle>
   </b-hdd-principles>
   <b-cap>The loop applies to itself: every run ends with the residual risk, never with a “done” status.</b-cap>
+  <b-why align="left">Changing the rules after every complaint is risky: the harness starts to sprawl from chance edits. So the Loop applies four checks. If the fixes only plug holes and predict nothing new, they are replaced by one rule. If there are several complaints, first test whether they share a cause. A new rule is accepted only if the old cases are still explained with it. A rule without an outside check is dropped, but the record says what was dropped and why. The caption under the cards means the Loop applies to itself too: a run does not set “done” but ends with the residual risk.</b-why>
   <b-finding>
     <ex>A series of patches, complaints, a new rule and an external check are four checkable principles the Loop uses to decide whether to fix the action or change the rules.</ex>
     <gen>A single loop fixes the result within the old rules. A double loop changes the rules themselves, and does it by checkable principles, so the harness learns without drifting from random edits.</gen>
@@ -85,6 +90,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
 </b-chapter>
 
 <b-chapter id="controls" icon="grid" title="Guides and sensors">
+  <b-why align="left">Checks in a harness split by two features. The first is when they fire. Guides work before the agent acts and set the course: types, code templates, instructions, specs. Sensors work after the action and catch deviations: tests, a linter, an AI review. The second feature is how a check is built. Computable checks (types, tests, linter) fire in seconds and do not err within their rule. Checks through AI (an AI review, a model judge) are more flexible and more expensive, so they are kept for meaning: style, clarity, fit to the intent.</b-why>
   <b-hdd-matrix kind="guides" label="Matrix: guides act before the agent, sensors after; each is either computational or AI-based">
     <column icon="arrow-right" t="Guides">before the action</column>
     <column icon="eye" t="Sensors">after the action</column>
@@ -104,6 +110,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
 </b-chapter>
 
 <b-chapter id="layers" icon="layers" title="Three check layers">
+  <b-why align="left">Checks are laid out in three layers. Code quality: style, formatting, types, simple errors. Architecture: module boundaries and dependencies between them, speed requirements. Behavior: whether the product does what the user needs. The bars in the picture show how well that layer has been learned to be checked automatically: the first bar is almost full, behavior has the shortest.</b-why>
   <b-hdd-layers label="Three layers: code quality is the most mature, architecture is in the middle, behavior is the least mature">
     <layer icon="brush" t="Code quality" value="88">mature</layer>
     <layer icon="modules" t="Architecture" value="55">growing</layer>
@@ -118,12 +125,14 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
 </b-chapter>
 
 <b-chapter id="shift" icon="clock" title="Earlier is cheaper">
+  <b-why align="left">Any check fires at some moment, and the earlier it does, the cheaper the mistake is to fix. The picture shows four moments: before the agent works (instructions and specs), at write time (hooks and a linter), in CI (an automatic build and tests when code is pushed to the repository) and in a human review. The $ signs show the rising price of a mistake.</b-why>
   <b-hdd-cost label="The earlier a check runs, the cheaper the mistake: before the agent starts, on write, in CI, at review">
     <stage icon="arrow-right" t="Before work" cost="$">instructions · specs</stage>
     <stage icon="cpu" t="On write" cost="$$">hooks · linter</stage>
     <stage icon="refresh-cw" t="In CI" cost="$$$" sw="1.8">tests · build</stage>
     <stage icon="user-round" t="At review" cost="$$$$" sw="1.8">a person</stage>
   </b-hdd-cost>
+  <b-why align="left">Tests are run by engines such as [QUnit](/materials/glossary/qunit/), [Jest](/materials/glossary/jest/) and [Vitest](/materials/glossary/vitest/). How they differ and which to take is covered in the article [Vitest vs Jest: which to pick for a JavaScript project, and when QUnit is enough](/blog/jest-vs-vitest-vs-qunit/). Behavior rules that ordinary tests cannot check are found by a [model in Quint](/blog/quint-vs-tests-and-tla/).</b-why>
   <b-finding>
     <ex>The same mistake costs least before the agent starts and most at human review.</ex>
     <gen>Put fast checks as early as possible: the agent fixes the problem itself while the task context is still in front of it, and only the debatable points reach a person.</gen>
@@ -132,6 +141,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
 </b-chapter>
 
 <b-chapter id="human" icon="user-round" title="Where people matter">
+  <b-why align="left">The harness takes over routine checks: style, types, tests, module boundaries. A person decides what a formal check cannot cover: architecture, product questions and new rules. The numbers in the picture show an example ratio: 36 checks for the harness and 6 for a person.</b-why>
   <b-hdd-split label="The harness handles routine checks; a person decides architecture and product questions and improves the harness itself">
     <side icon="sun" t="Harness" n="36">style · types · tests · boundaries</side>
     <side icon="user-round" t="Person" n="6" sw="1.8">architecture · product · new rules</side>
@@ -145,6 +155,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
 </b-chapter>
 
 <b-chapter id="spec" icon="file-text" sw="2" title="HDD and specs">
+  <b-why align="left">A spec and a harness complement each other. The spec answers “what should come out”, the harness checks that exactly that came out. In the picture the spec sets the needed result, the harness checks it, and code is accepted by the results of checks rather than by reading every line.</b-why>
   <b-hdd-specflow label="The spec sets the goal; the harness checks that the agent reached it">
     <node icon="target" t="Spec">the result you need</node>
     <node icon="sun" t="Harness">how to check you got it</node>
@@ -159,6 +170,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
 </b-chapter>
 
 <b-chapter id="start" icon="flag" title="Where to start">
+  <b-why align="left">A harness does not have to be designed whole. Start with five steps: the first two set up the environment at once, the other three start the “mistake → rule” loop. A progress file is needed when a task is longer than one session: it holds a list of features with a status, and a new agent session continues from the same place.</b-why>
   <b-hdd-steps>
     <step t="An instructions file for the agent">AGENTS.md or CLAUDE.md in the project root: how to build, how to test, what not to do</step>
     <step t="Linter and tests after every edit">a hook the agent runs itself before handing over the result</step>

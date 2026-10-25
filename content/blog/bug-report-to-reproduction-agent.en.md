@@ -218,7 +218,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/complaint-to-report"/>
   </b-view>
-  <b-why align="left">Step 1: QA has only the client’s complaint with no steps and a screenshot of the error. Step 2: the agent walks all six client actions on the test stand and pushes them through the funnel. The extras stay outside, three actions remain, and the bug reproduces on them. Step 3: the agent writes the report and a diagram into Jira, and QA opens the ticket and checks the result.</b-why>
+  <b-why align="left">Step 1: QA has only the client’s complaint with no steps and a screenshot of the error. Step 2: the agent walks all six client actions on the test stand and removes the extras one by one. Login, catalog and address are struck out, cart, promo code and payment remain, and the bug reproduces on them: the promo service answers with error 500. Step 3: the agent writes the report and a diagram into Jira, and QA opens the ticket and checks the result.</b-why>
   <b-why align="left">This is step 1 in Jira: the client’s headline, no reproduction steps, a screenshot of the error attached. The agent starts from here.</b-why>
   <b-lane title="Jira ticket · a customer request passed from support to QA" color="accent">
     <b-ticket key="PAY-142">Card payment fails when a promo code is entered</b-ticket>

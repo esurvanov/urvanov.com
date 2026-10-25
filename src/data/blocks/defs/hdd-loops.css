@@ -5,6 +5,7 @@
 .s-rich.bk .bk-hdd-loops-a svg { width: 110px; height: 110px; }
 .s-rich.bk .bk-hdd-loops-a b { font-family: "JetBrains Mono", monospace; font-size: 13px; text-transform: uppercase; letter-spacing: .07em; }
 .s-rich.bk .bk-hdd-loops-a small { font-size: 13px; color: var(--muted); }
-.s-rich.bk .bk-hdd-loops-c1 { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; opacity: .55; }
+.s-rich.bk .bk-hdd-loops-c1 { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: .55; }
 .s-rich.bk .bk-hdd-loops-c2 { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 10 6; }
 @media (max-width: 760px) { .s-rich.bk .bk-hdd-loops { grid-template-columns: 1fr; } }
+.s-rich.bk .bk-hdd-loops-h { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }

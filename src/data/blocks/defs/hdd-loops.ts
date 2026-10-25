@@ -1,10 +1,10 @@
 import { defineBlock } from '../core'
 
 // Одинарная и двойная петля рядом (серия hdd): рисунок петли, название моноширинным капсом и пояснение.
-// Рисунки петель — здесь, выбор по kind; on — выделенная карточка
+// Рисунки петель — здесь, выбор по kind; on — выделенная карточка. Стрелка — дуга почти в полный круг с наконечником по касательной
 const LOOPS = {
-  single: '<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="34" class="bk-hdd-loops-c1"/><path d="M88,40 l6,-10 l4,11" class="bk-hdd-loops-c1"/></svg>',
-  double: '<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="24" class="bk-hdd-loops-c1"/><circle cx="60" cy="60" r="46" class="bk-hdd-loops-c2"/><path d="M100,34 l6,-10 l4,11" class="bk-hdd-loops-c2"/></svg>',
+  single: '<svg viewBox="0 0 120 120" aria-hidden="true"><path d="M77,30.6 A34,34 0 1 1 36,36" class="bk-hdd-loops-c1"/><path d="M27.4,38.6 L36,36 L33.3,44.6" class="bk-hdd-loops-c1"/></svg>',
+  double: '<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="24" class="bk-hdd-loops-c1"/><path d="M83,20.2 A46,46 0 1 1 27.5,27.5" class="bk-hdd-loops-c2"/><path d="M18.9,30.1 L27.5,27.5 L24.8,36.1" class="bk-hdd-loops-h"/></svg>',
 }
 
 export default defineBlock({
