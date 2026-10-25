@@ -55,22 +55,22 @@ A reconcile loop for specs works like a controller in Kubernetes: a person chang
   <b-why align="left">A check shows only what was put into it. In Kubernetes a probe is a short automatic request to a service: “are you responding?”. If the service answers “200” (the success code), the probe is green even though the service may not be doing the main thing: say, the order queue is stuck. In specs it is the same with tests. If a requirement has no test, all the tests stay green and nobody notices the requirement is not met.</b-why>
   <b-why>The example is the meeting room booking from <a href="/en/blog/specs-by-aggregates/">Specs by aggregate</a>: three MUST requirements and one SHOULD.</b-why>
   <b-probe-check>
-    <b-probe-panel icon="hub" sw="1.6" t="Kubernetes" verdict="probe is green, service is down">
-      <probe kind="ok">/healthz → 200</probe>
-      <probe kind="no">order queue is stuck</probe>
+    <b-probe-panel icon="hub" sw="1.6" t="Kubernetes" verdict="the probe is green, the service does not work">
+      <probe kind="ok" note="probe">the service answered “200: working”</probe>
+      <probe kind="no" note="not checked">orders are not being processed</probe>
     </b-probe-panel>
     <b-probe-panel icon="book" t="Specs" verdict="tests are green, one MUST is unchecked">
-      <probe kind="ok" note="test">MUST · no overlap</probe>
-      <probe kind="ok" note="test">MUST · forward only</probe>
-      <probe kind="no" note="no check">MUST · 15 min → closed</probe>
-      <probe kind="eye" note="review">SHOULD · channel</probe>
+      <probe kind="ok" note="has a test">MUST · bookings of one room do not overlap</probe>
+      <probe kind="ok" note="has a test">MUST · booking status moves only forward</probe>
+      <probe kind="no" note="no check">MUST · without confirmation a booking closes after 15 minutes</probe>
+      <probe kind="eye" note="a person looks">SHOULD · confirmation arrives in the same channel</probe>
       <cov t="MUST covered" value="67">2 / 3</cov>
     </b-probe-panel>
-    <rule>every MUST → its own check</rule>
-    <rule>MUST without a check = finding</rule>
-    <rule>green ≠ correct</rule>
+    <rule>every MUST needs its own check</rule>
+    <rule>a MUST without a check is a gap</rule>
+    <rule>green does not mean correct</rule>
   </b-probe-check>
-  <b-why align="left">How to read the picture. On the left is Kubernetes: the /healthz probe returned 200 and is green, but the order queue is stuck, so the probe did not check the main thing. On the right are specs, using a meeting-room booking: three MUST requirements and one SHOULD. Two MUSTs are covered by tests (“do not overlap” and “forward only”), the third (“15 minutes → closed”) has no check, and a person reviews the SHOULD about the channel. 2 of 3 MUSTs are covered, that is 67%. The three rules on the right: every MUST has its own check; a MUST without a check counts as a finding, a gap to close; a green result does not yet mean everything is correct.</b-why>
+  <b-why align="left">How to read the picture. On the left is Kubernetes: the probe got the answer “200: working” and is green, but orders are not being processed, so the probe did not check the main thing. On the right are specs, using a meeting-room booking: three MUST requirements and one SHOULD. Two MUSTs are covered by tests (bookings do not overlap, status moves only forward). The third, “without confirmation a booking closes after 15 minutes”, is checked by nobody. A person reviews the SHOULD about the channel. 2 of 3 MUSTs are covered, that is 67%. The three rules under the diagram: every MUST has its own check; a MUST without a check counts as a gap to close; a green result does not yet mean everything is correct.</b-why>
   <b-cap>Which probes exist and what they check: <a href="https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/" target="_blank" rel="noopener">Kubernetes: probes</a>.</b-cap>
   <b-finding>
     <ex>The probe answers “200” while orders are stuck, and the booking tests are green while nobody checks the 15-minute rule.</ex>
@@ -81,14 +81,14 @@ A reconcile loop for specs works like a controller in Kubernetes: a person chang
 <b-chapter id="env" title="The environment decides whether the loop closes" icon="terminal-screen">
   <b-why align="left">The loop closes only if the actor has everything needed for comparing. A Kubernetes controller works because the cluster gives it access to all it needs. For an agent this environment is called the harness: the surroundings it works in, with programs, permissions and checks.</b-why>
   <b-env-caps>
-    <side icon="hub" sw="1.6" t="cluster">the controller’s environment</side>
-    <side icon="terminal-screen" sw="1.8" t="harness">the agent’s environment</side>
-    <cap icon="play" t="Run code">guesses instead of facts</cap>
-    <cap icon="flask" t="Tests">MUST cannot be checked</cap>
-    <cap icon="log-lines" t="Logs">no way to see what broke</cap>
-    <cap icon="database" t="Test data">checks on empty tables</cap>
-    <cap icon="plug" t="Services via MCP">integrations in the dark</cap>
-    <cap icon="shield-check" t="Sandbox and permissions">too risky to let it act</cap>
+    <side icon="hub" sw="1.6" t="Kubernetes cluster">where the controller lives</side>
+    <side icon="terminal-screen" sw="1.8" t="Harness">where the agent lives</side>
+    <cap icon="play" t="Run code">the agent guesses how the program works</cap>
+    <cap icon="flask" t="Tests">nothing to check a MUST with</cap>
+    <cap icon="log-lines" t="Logs">cannot see what exactly broke</cap>
+    <cap icon="database" t="Test data">checks run on an empty database</cap>
+    <cap icon="plug" t="Services via MCP">integrations are checked blind</cap>
+    <cap icon="shield-check" t="Sandbox and permissions">too risky to let the agent act</cap>
   </b-env-caps>
   <b-cta href="/en/blog/ai-in-code-harness-and-tools/" k="Separate article" t="Choosing the environment: a harness comparison" icon="terminal-screen" sw="1.8">Claude Code, Codex, Cursor, Hermes and chat on one map</b-cta>
   <b-why align="left">The six capabilities in the picture are what an agent needs to close the loop, and what happens without each. Without code execution the agent guesses how the program works. Without tests a MUST cannot be checked. Without logs it is not visible what exactly broke. Without test data the check runs on an empty database and shows nothing. Without services through MCP, integrations are checked blind. Without a sandbox (an isolated place where it is safe to try and break things) it is scary to let the agent act. If some capability is missing, the loop is open at that point.</b-why>
