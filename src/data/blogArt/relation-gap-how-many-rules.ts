@@ -153,6 +153,143 @@ const scenes: Record<string, Scene> = {
       c.text(330, 205, l('у чисел 3 и 2 нет общего делителя, поэтому из двух записей получается одна', 'the numbers 3 and 2 share no divisor, so two entries can be merged into one'), M, { size: 12 })
     },
   },
+
+  // Три детали игры и кому каждая нужна
+  three: {
+    ru: 'Три детали игры и кому они нужны: шесть шагов и друзья, которые не меняются местами, нужны игроку; числа три и два нужны бухгалтеру',
+    en: 'Three details of the game and who needs them: six steps and friends that do not swap are for the player; the numbers three and two are for the accountant',
+    viewBox: [0, 0, 660, 300], legend: false,
+    draw: (c, l) => {
+      const card = (y: number, title: string, sub: string, icon: (x: number, y: number) => void) => {
+        c.rect(30, y, 300, 64, { rx: 10, stroke: M, sw: 1.6, fill: 'none' })
+        icon(70, y + 32)
+        c.text(112, y + 28, title, 'currentColor', { size: 13.5, w: 700, anchor: 'start' })
+        c.text(112, y + 47, sub, M, { size: 11.5, anchor: 'start' })
+      }
+      card(24, l('шесть шагов — на месте', 'six steps bring you back'), l('круг из шести точек', 'a circle of six points'), (x, y) => {
+        c.line([0, 1, 2, 3, 4, 5, 0].map((k) => hex(x, y, 24, 11, k)), 'currentColor', { w: 2 })
+        for (let k = 0; k < 6; k++) { const [px, py] = hex(x, y, 24, 11, k); c.dot(px, py, 2.6, 'currentColor') }
+      })
+      card(118, l('полкруга ⇄ крюк', 'half-circle ⇄ hook'), l('эти ходы можно менять местами', 'these moves can be swapped'), (x, y) => {
+        c.arrow(x - 22, y + 14, x + 20, y + 14, A, { w: 2 }); c.arrow(x - 22, y + 14, x - 22, y - 16, W, { w: 2 })
+        c.arrow(x - 22, y - 16, x + 20, y - 16, A, { w: 2 }); c.arrow(x + 20, y + 14, x + 20, y - 16, W, { w: 2 })
+      })
+      card(212, l('числа 3 и 2', 'the numbers 3 and 2'), l('у них нет общего делителя', 'they share no divisor'), (x, y) => {
+        c.ball(x - 12, y, 14, A); c.text(x - 12, y + 5, '3', 'var(--surface)', { size: 15, w: 700 })
+        c.ball(x + 16, y, 11, M); c.text(x + 16, y + 4, '2', 'var(--surface)', { size: 12, w: 700 })
+      })
+      const who = (y: number, h: number, t: string, sub: string[], col: string) => {
+        c.rect(450, y, 190, h, { rx: 12, stroke: col, sw: 2.4, fill: 'none' })
+        c.text(545, y + 30, t, col, { size: 17, w: 700 })
+        sub.forEach((ln, i) => c.text(545, y + 54 + i * 17, ln, 'currentColor', { size: 12.5 }))
+      }
+      who(24, 158, l('ИГРОК', 'PLAYER'), [l('считает правила честно,', 'counts rules honestly,'), l('порядок ходов важен:', 'the order of moves matters:'), l('ему нужны первые', 'needs the first'), l('две детали', 'two details')], W)
+      who(212, 64, l('БУХГАЛТЕР', 'ACCOUNTANT'), [], A)
+      c.text(545, 262, l('нужна третья деталь', 'needs the third'), 'currentColor', { size: 12.5 })
+      c.arrow(334, 56, 446, 80, W, { w: 2.2 }); c.arrow(334, 150, 446, 118, W, { w: 2.2 }); c.arrow(334, 244, 446, 244, A, { w: 2.2 })
+    },
+  },
+  // Список правил игрока: лишние вычёркиваются
+  player: {
+    ru: 'Список правил игрока: двенадцать шагов и обмен с шестью шагами — следствия первого правила и вычёркиваются; остаются два правила',
+    en: 'The player\'s list of rules: twelve steps and swapping with six steps follow from the first rule and are crossed out; two rules remain',
+    viewBox: [0, 0, 660, 270], legend: false,
+    draw: (c, l) => {
+      const rows: [string, string, boolean][] = [
+        [l('x⁶ = 1: шесть шагов — и фишка на месте', 'x⁶ = 1: six steps and the token is home'), l('первое правило', 'first rule'), true],
+        [l('x¹² = 1: двенадцать шагов — на месте', 'x¹² = 1: twelve steps and it is home'), l('первое правило дважды', 'the first rule twice'), false],
+        [l('x³ и крюк t·x²·t⁻¹ меняются местами', 'x³ and the hook t·x²·t⁻¹ swap places'), l('второе правило', 'second rule'), true],
+        [l('x⁶ и крюк меняются местами', 'x⁶ and the hook swap places'), l('следствие первого', 'follows from the first'), false],
+      ]
+      c.caps(240, 24, l('КАНДИДАТЫ В СПИСОК', 'CANDIDATES FOR THE LIST'), M, { size: 11 })
+      rows.forEach(([t, why, keep], i) => {
+        const y = 40 + i * 54, col = keep ? A : W
+        c.rect(40, y, 400, 42, { rx: 9, stroke: col, sw: 2, fill: 'none', op: keep ? 1 : 0.8 })
+        c.text(56, y + 26, t, keep ? 'currentColor' : M, { size: 13, w: keep ? 700 : 500, anchor: 'start' })
+        if (!keep) c.line([[52, y + 21], [424, y + 21]], W, { w: 2, op: 0.9 })
+        c.text(456, y + 26, why, col, { size: 12, w: 700, anchor: 'start' })
+        c.badge(630, y + 21, col, '', { r: 10, mark: keep ? 'check' : 'cross' })
+      })
+      c.text(330, 262, l('в списке остаются два правила: короче игрок его составить не может', 'two rules stay on the list: the player cannot make it shorter'), M, { size: 12 })
+    },
+  },
+  // Запись бухгалтера: счётчик проходов по отрезкам
+  loops: {
+    ru: 'Запись бухгалтера: две петли по одному квадрату с разным стартом дают одну и ту же запись — сколько раз пройден каждый отрезок',
+    en: 'The accountant\'s entry: two loops around the same square with different starts give the same entry, how many times each segment was passed',
+    viewBox: [0, 0, 660, 290], legend: false,
+    draw: (c, l) => {
+      const sq = (ox: number, oy: number, startK: number) => {
+        const P: Pt[] = [[ox, oy], [ox + 90, oy], [ox + 90, oy + 90], [ox, oy + 90]]
+        P.forEach((p, k) => { const q = P[(k + 1) % 4]; c.arrow(p[0] + (q[0] - p[0]) * 0.12, p[1] + (q[1] - p[1]) * 0.12, p[0] + (q[0] - p[0]) * 0.88, p[1] + (q[1] - p[1]) * 0.88, A, { w: 2.6 }) })
+        P.forEach((p, k) => c.dot(p[0], p[1], k === startK ? 8 : 5, k === startK ? W : 'currentColor'))
+        return P
+      }
+      sq(60, 60, 0); sq(240, 60, 2)
+      c.text(105, 40, l('петля 1: старт в точке A', 'loop 1: start at point A'), 'currentColor', { size: 12.5, w: 700 })
+      c.text(285, 40, l('петля 2: старт в точке C', 'loop 2: start at point C'), 'currentColor', { size: 12.5, w: 700 })
+      c.text(105, 178, l('A → B → C → D → A', 'A → B → C → D → A'), M, { size: 12 })
+      c.text(285, 178, l('C → D → A → B → C', 'C → D → A → B → C'), M, { size: 12 })
+      c.text(55, 56, 'A', M, { size: 12, w: 700, anchor: 'end' }); c.text(158, 56, 'B', M, { size: 12, w: 700, anchor: 'start' })
+      c.text(158, 164, 'C', M, { size: 12, w: 700, anchor: 'start' }); c.text(55, 164, 'D', M, { size: 12, w: 700, anchor: 'end' })
+      c.text(235, 56, 'A', M, { size: 12, w: 700, anchor: 'end' }); c.text(338, 56, 'B', M, { size: 12, w: 700, anchor: 'start' })
+      c.text(338, 164, 'C', M, { size: 12, w: 700, anchor: 'start' }); c.text(235, 164, 'D', M, { size: 12, w: 700, anchor: 'end' })
+      c.text(396, 120, '=', 'currentColor', { size: 34, w: 700 })
+      c.caps(520, 40, l('ЗАПИСЬ', 'ENTRY'), A, { size: 12 })
+      ;[['AB', '+1'], ['BC', '+1'], ['CD', '+1'], ['DA', '+1']].forEach(([seg, n], i) => {
+        const y = 56 + i * 34
+        c.rect(440, y, 160, 26, { rx: 7, stroke: A, sw: 1.6, fill: 'none' })
+        c.text(456, y + 18, l(`отрезок ${seg}`, `segment ${seg}`), 'currentColor', { size: 12.5, anchor: 'start' })
+        c.text(586, y + 18, n, A, { size: 13, w: 700, anchor: 'end' })
+      })
+      c.text(520, 214, l('пройден вперёд +1, назад −1:', 'passed forward +1, backward −1:'), M, { size: 11.5 })
+      c.text(520, 230, l('порядок и старт не запоминаются', 'order and start are not remembered'), M, { size: 11.5 })
+      c.text(330, 276, l('поэтому записи можно складывать в любом порядке и переносить в любое место карты', 'so entries can be added in any order and moved to any place on the map'), M, { size: 12 })
+    },
+  },
+  // Две записи сливаются в одну
+  merge: {
+    ru: 'Одна хитрая запись v: из её копий запись второго правила получается за одно действие, запись первого — за три; это возможно, потому что у чисел 3 и 2 нет общего делителя',
+    en: 'One clever entry v: from its copies the entry of the second rule comes out in one action, the entry of the first in three; possible because 3 and 2 share no divisor',
+    viewBox: [0, 0, 660, 290], legend: false,
+    draw: (c, l) => {
+      const node = (x: number, y: number, w: number, t: string, sub: string, col: string) => {
+        c.rect(x - w / 2, y - 28, w, 56, { rx: 11, stroke: col, sw: 2.4, fill: 'none' })
+        c.text(x, y - 5, t, 'currentColor', { size: 14, w: 700 }); c.text(x, y + 14, sub, M, { size: 11.5 })
+      }
+      node(330, 52, 250, l('хитрая запись v', 'the clever entry v'), l('смесь записей обоих правил', 'a mix of the entries of both rules'), A)
+      node(150, 196, 230, l('запись второго правила', 'entry of the second rule'), l('полкруга ⇄ крюк', 'half-circle ⇄ hook'), W)
+      node(510, 196, 230, l('запись первого правила', 'entry of the first rule'), l('шесть шагов — на месте', 'six steps bring you back'), W)
+      c.arrow(270, 84, 180, 164, A, { w: 2.6 }); c.arrow(390, 84, 480, 164, A, { w: 2.6 })
+      c.text(196, 114, l('сразу: 1 действие', 'at once: 1 action'), A, { size: 12.5, w: 700, anchor: 'end' })
+      c.text(464, 114, l('за 3 действия', 'in 3 actions'), A, { size: 12.5, w: 700, anchor: 'start' })
+      c.rect(120, 244, 420, 32, { rx: 16, stroke: M, sw: 1.6, fill: 'none' })
+      c.text(330, 265, l('получается, потому что у 3 и 2 нет общего делителя: 1 = 3 − 2', 'works because 3 and 2 share no divisor: 1 = 3 − 2'), 'currentColor', { size: 12.5, w: 600 })
+    },
+  },
+  // Словарь «ролик — статья»
+  dict: {
+    ru: 'Словарь: слова ролика и их запись в статье — шаг x, лифт t, первое правило x⁶ = 1, второе правило — коммутатор, счёт игрока 2, счёт бухгалтера 1',
+    en: 'Dictionary: words of the film and their notation in the paper: step x, lift t, first rule x⁶ = 1, second rule a commutator, player\'s count 2, accountant\'s count 1',
+    viewBox: [0, 0, 660, 318], legend: false,
+    draw: (c, l) => {
+      c.caps(130, 24, l('В РОЛИКЕ', 'IN THE FILM'), M, { size: 11 }); c.caps(470, 24, l('В СТАТЬЕ', 'IN THE PAPER'), A, { size: 11 })
+      const rows: [string, string, string][] = [
+        [l('шаг', 'step'), 'x', A], [l('лифт', 'lift'), 't', A],
+        [l('шесть шагов — на месте', 'six steps bring you back'), 'x⁶ = 1', W],
+        [l('полкруга ⇄ крюк', 'half-circle ⇄ hook'), '[x³, t·x²·t⁻¹] = 1', W],
+        [l('счёт игрока: два правила', 'player: two rules'), l('соотношений: 2', 'relations: 2'), 'currentColor'],
+        [l('счёт бухгалтера: одна запись', 'accountant: one entry'), l('образующих модуля: 1', 'module generators: 1'), 'currentColor'],
+      ]
+      rows.forEach(([a, b, col], i) => {
+        const y = 40 + i * 44
+        c.rect(30, y, 200, 34, { rx: 9, stroke: M, sw: 1.6, fill: 'none' }); c.text(130, y + 22, a, 'currentColor', { size: 12.5, w: 600 })
+        c.arrow(236, y + 17, 296, y + 17, M, { w: 2 })
+        c.rect(302, y, 328, 34, { rx: 9, stroke: col, sw: 2, fill: 'none' }); c.text(466, y + 23, b, col, { size: 14.5, w: 700 })
+      })
+      c.text(330, 308, l('x — ход «шаг», t — ход «лифт», t⁻¹ — лифт вниз, [u, v] = u·v·u⁻¹·v⁻¹: «u и v меняются местами»', 'x is the move “step”, t the move “lift”, t⁻¹ a lift down, [u, v] = u·v·u⁻¹·v⁻¹: “u and v can be swapped”'), M, { size: 11 })
+    },
+  },
 }
 
 export default scenes

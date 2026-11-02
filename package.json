@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
+    "katex": "^0.16.11",
     "marked": "^18.0.14",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.4",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@types/katex": "^0.16.7",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

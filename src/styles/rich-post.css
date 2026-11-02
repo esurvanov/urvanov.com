@@ -35,3 +35,9 @@
 
 /* Схема или таблица сразу после другого блока (не абзаца) — с зазором, чтобы блоки не слипались */
 .s-rich .chapter > :not(h2, h3, h4, p, .why) + :is(.lane, .tbl){ margin-top:14px; }
+
+/* Формулы KaTeX в постах: отдельная строка по центру, размер чуть крупнее текста, цвет — как у текста */
+.bk-math { margin: 1.1rem 0; padding: .7rem 1rem; overflow-x: auto; text-align: center; font-size: 1.18em; background: var(--surface-2); border: 1px solid var(--border, rgba(127,127,127,.25)); border-radius: 10px; }
+.bk-math .katex-display { margin: 0; }
+.katex { font-size: 1.08em; color: inherit; }
+td .katex, th .katex { font-size: 1.12em; }

@@ -1,7 +1,22 @@
 import { marked } from 'marked'
+import katex from 'katex'
 import { withBlogArt } from '@/data/blogArt'
 import { withBlocks } from '@/data/blocks'
 import type { Lang, L } from '@/lib/i18n'
+
+// Формулы: $…$ — в строке, $$…$$ — отдельной строкой по центру. Набирает KaTeX при сборке; до markdown формулы
+// заменяются метками, чтобы разметка не тронула знаки _ и *, и возвращаются в готовый HTML.
+const renderTex = (tex: string, display: boolean) =>
+  katex.renderToString(tex.trim(), { displayMode: display, throwOnError: true, strict: 'error', output: 'htmlAndMathml' })
+function hideMath(md: string): { md: string; restore: (html: string) => string } {
+  const found: { tex: string; display: boolean }[] = []
+  const put = (tex: string, display: boolean) => { found.push({ tex, display }); return `MATHPH${found.length - 1}X` }
+  const out = md.replace(/\$\$([\s\S]+?)\$\$/g, (_, t: string) => put(t, true)).replace(/(?<![\\$])\$([^$\n]+?)\$/g, (_, t: string) => put(t, false))
+  const restore = (html: string) => html
+    .replace(/<p>\s*MATHPH(\d+)X\s*<\/p>/g, (_, i: string) => `<div class="bk-math">${renderTex(found[+i].tex, found[+i].display)}</div>`)
+    .replace(/MATHPH(\d+)X/g, (_, i: string) => (found[+i].display ? `<div class="bk-math">${renderTex(found[+i].tex, true)}</div>` : renderTex(found[+i].tex, false)))
+  return { md: out, restore }
+}
 
 // Рубрики блога: у каждого поста одна, задаётся полем `category` во фронтматтере (у перевода — та же).
 // Сведены из тегов: харнесс / спеки / промпты и ревью / custdev и исследования.
@@ -109,6 +124,8 @@ function parse(path: string, raw: string): Post | null {
   const body = m[2].trim()
   const markdown = withBlocks(body, lang, path, raw.slice(0, raw.indexOf(body)).split('\n').length - 1)
   const text = texts[`/content/blog-text/${file}.md`]?.trim()
+  // Формулы набираются только в постах с `math: true` во фронтматтере: в остальных знак $ — обычный текст (цены, примеры)
+  const math = meta.math === 'true' ? hideMath(markdown) : { md: markdown, restore: (html: string) => html }
   const words = (text ?? markdown.replace(/<[^>]+>/g, ' ')).split(/\s+/).filter(Boolean).length
   return {
     slug,
@@ -120,7 +137,7 @@ function parse(path: string, raw: string): Post | null {
     unrelated: (meta.unrelated ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     category: category.slug,
-    html: shieldEmails(withBlogArt(marked.parse(markdown, { async: false }) as string, lang)),
+    html: shieldEmails(withBlogArt(math.restore(marked.parse(math.md, { async: false }) as string), lang)),
     markdown,
     // HTML-разметку внутри поста не считаем за слова
     minutes: Math.max(1, Math.round(words / (lang === 'en' ? 220 : 180))),
