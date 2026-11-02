@@ -1,0 +1,199 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Прототип 6: настоящий 3D</title>
+<style>
+:root{color-scheme:dark light;--bg:#0e0e0e;--fg:#e9e7df;--bd:#333;--muted:#9a998f}
+html[data-theme=light]{--bg:#f4f2ec;--fg:#1c1c19;--bd:#d6d2c4;--muted:#6b6a60}
+button{font:inherit;font-size:13px;padding:4px 12px;border-radius:999px;border:1px solid var(--bd);background:transparent;color:var(--fg);cursor:pointer;margin-left:10px}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px}
+h1{font-size:20px;margin:0 0 10px}
+#stage{position:relative;height:min(72vh,640px);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+#stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 50% at 82% 25%,var(--glow,rgba(224,144,107,.3)),transparent 70%)}
+canvas{display:block;width:100%;height:100%;position:relative;z-index:1}
+.hint{color:var(--muted);font-size:13px;margin-top:8px}
+</style>
+<div class="wrap">
+<h1>Прототип 6: настоящий 3D (можно вращать мышью)<button id="tg">Тема</button></h1>
+<div id="stage"></div>
+<div class="hint">Тяните мышью, чтобы повернуть. Анимация: работники тянут, погонщик щёлкает хлыстом.</div>
+</div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
+
+const stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.15;
+renderer.outputColorSpace=THREE.SRGBColorSpace;
+stage.appendChild(renderer.domElement);
+
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(36,1,.1,100);
+camera.position.set(2.5,6.8,20);
+const controls=new OrbitControls(camera,renderer.domElement);
+controls.target.set(-.5,2.2,0); controls.enableDamping=true; controls.enableZoom=false; controls.enablePan=false;
+controls.minPolarAngle=.9; controls.maxPolarAngle=1.5; controls.minAzimuthAngle=-.9; controls.maxAzimuthAngle=.9;
+
+// light
+const hemi=new THREE.HemisphereLight(0x9aa1f7,0x3a2a22,.75); scene.add(hemi);
+const sun=new THREE.DirectionalLight(0xfff0dd,2.4);
+sun.position.set(6,11,8); sun.castShadow=true;
+sun.shadow.mapSize.set(2048,2048); sun.shadow.camera.left=-12; sun.shadow.camera.right=12; sun.shadow.camera.top=10; sun.shadow.camera.bottom=-10; sun.shadow.bias=-.0004; sun.shadow.radius=5;
+scene.add(sun);
+const rimBlue=new THREE.PointLight(0x8e96f5,60,18); rimBlue.position.set(-7,3,4); scene.add(rimBlue);
+const rimOrange=new THREE.PointLight(0xe0906b,60,18); rimOrange.position.set(8,4,-2); scene.add(rimOrange);
+const THEMES={
+ dark:{bg:'radial-gradient(60% 70% at 28% 38%,#4b55b8 0%,#2b336f 48%,#171a33 100%)',glow:'rgba(224,144,107,.42)',sky:0xc4caff,ground:0x7a6050,hemi:1.5,sun:3.4,exp:1.45,plat:0x44443d,ring:0x9aa1ff,rimB:140,rimO:140,pill:'rgba(30,30,27,.94)',bt:'#ffffff',bub:'#f0a080',dust:.5},
+ light:{bg:'radial-gradient(60% 70% at 28% 38%,#ffffff 0%,#eceeff 50%,#d6daf7 100%)',glow:'rgba(224,144,107,.30)',sky:0xffffff,ground:0xd2c6aa,hemi:1.9,sun:2.6,exp:1.05,plat:0xeee8d8,ring:0x6a73e0,rimB:50,rimO:50,pill:'rgba(255,255,255,.96)',bt:'#2d2618',bub:'#b8532b',dust:.0}
+};
+let TH=THEMES.dark; let isDark=true;
+
+const M=(c,r=.55,m=0,extra={})=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m,...extra});
+const mBlue=M(0x8e96f5,.38), mBlueD=M(0x6f78e0,.4), mSkin=M(0xe8a07e,.42), mWhite=M(0xf1ecdf,.6), mGold=M(0xd8b25a,.3,.5), mStone=M(0xa89d80,.78), mStoneL=M(0xc4baa0,.8), mDark=M(0x1a1410,.5);
+const mk=(geo,mat)=>{const m=new THREE.Mesh(geo,mat);m.castShadow=true;m.receiveShadow=true;return m};
+
+// platform
+const plat=new THREE.Mesh(new THREE.CylinderGeometry(10.5,10.8,.5,96),M(0x1d1d1a,.85)); plat.position.y=-.25; plat.receiveShadow=true; scene.add(plat);
+const ring=new THREE.Mesh(new THREE.TorusGeometry(10.55,.04,12,128),new THREE.MeshBasicMaterial({color:0x8e96f5})); ring.rotation.x=Math.PI/2; ring.position.y=.02; scene.add(ring);
+
+// label sprites
+function label(text,color,w=512,h=128,fs=64,pill=true){
+  const c=document.createElement('canvas'); c.width=w; c.height=h; const x=c.getContext('2d');
+  x.font=`800 ${fs}px system-ui,sans-serif`; x.textAlign='center'; x.textBaseline='middle';
+  if(pill){x.fillStyle=TH.pill;x.strokeStyle=color;x.lineWidth=6;const r=h/2-4;x.beginPath();x.roundRect(6,6,w-12,h-12,r);x.fill();x.stroke();}
+  x.fillStyle=color; x.fillText(text,w/2,h/2+4);
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=8; return t;
+}
+function sprite(text,color,sx,sy,fs){const s=new THREE.Sprite(new THREE.SpriteMaterial({map:label(text,color,undefined,undefined,fs),transparent:true,depthWrite:false}));s.scale.set(sx,sy,1);return s}
+
+// block
+const block=mk(new RoundedBoxGeometry(4.4,2.6,3.2,8,.22),mStone); block.position.set(3.6,1.3,0); scene.add(block);
+const top=mk(new RoundedBoxGeometry(4.2,.16,3.0,4,.07),mStoneL); top.position.set(3.6,2.62,0); scene.add(top);
+// block seams
+for(const y of [.85,1.75]){const s=new THREE.Mesh(new THREE.BoxGeometry(4.42,.03,3.22),M(0x5d5540,.9));s.position.set(3.6,y,0);scene.add(s)}
+const bt=new THREE.Mesh(new THREE.PlaneGeometry(3.7,.95),new THREE.MeshBasicMaterial({map:label('ваша работа','#ffffff',512,128,74,false),transparent:true}));
+bt.position.set(3.6,1.3,1.62); scene.add(bt);
+
+// pyramid goal
+const pyr=mk(new THREE.ConeGeometry(2.6,3.4,4),M(0xa79c7f,.85)); pyr.rotation.y=Math.PI/4; pyr.position.set(-8,1.7,-1); scene.add(pyr);
+
+// characters
+function eyes(parent,x,y,r,mood){
+  for(const s of [-1,1]){const e=new THREE.Mesh(new THREE.SphereGeometry(r*.13,16,16),mDark);e.position.set(-r*.88,y,s*r*.36);parent.add(e);
+    const sh=new THREE.Mesh(new THREE.SphereGeometry(r*.045,8,8),new THREE.MeshBasicMaterial({color:0xffffff}));sh.position.set(-r*.97,y+r*.05,s*r*.34);parent.add(sh);
+    const b=new THREE.Mesh(new THREE.BoxGeometry(r*.05,r*.07,r*.3),mDark);b.position.set(-r*.86,y+r*.27,s*r*.36);b.rotation.x=(mood==='angry'? s*.55 : -s*.45);parent.add(b);}
+  const mo=new THREE.Mesh(new THREE.TorusGeometry(r*.17,r*.035,8,16,Math.PI),mDark);mo.position.set(-r*.93,y-r*.34,0);mo.rotation.y=-Math.PI/2;mo.rotation.z=mood==='angry'?0:Math.PI;parent.add(mo);
+}
+const workers=[];
+function makeWorker(x,z,phase){
+  const g=new THREE.Group(); g.position.set(x,0,z); g.rotation.y=.5;
+  const legL=new THREE.Group(),legR=new THREE.Group(); legL.position.set(0,1.0,.22); legR.position.set(0,1.0,-.22);
+  for(const l of [legL,legR]){const m=mk(new THREE.CapsuleGeometry(.17,.7,8,16),mBlueD);m.position.y=-.5;l.add(m);const f=mk(new THREE.SphereGeometry(.2,16,16),mBlue);f.position.set(-.08,-.98,0);f.scale.set(1.3,.7,1);l.add(f);g.add(l)}
+  const torso=new THREE.Group(); torso.position.set(0,1.0,0); torso.rotation.z=.62; g.add(torso);
+  const body=mk(new THREE.CapsuleGeometry(.42,.8,10,24),mBlue); body.position.y=.65; torso.add(body);
+  const cloth=mk(new THREE.CylinderGeometry(.46,.58,.5,24,1,true),mWhite); cloth.position.y=.05; cloth.material.side=THREE.DoubleSide; torso.add(cloth);
+  const head=new THREE.Group(); head.position.set(0,1.75,0); torso.add(head);
+  const hs=mk(new THREE.SphereGeometry(.5,32,32),mBlue); head.add(hs);
+  const band=mk(new THREE.CylinderGeometry(.51,.51,.14,32,1,true),mWhite); band.position.y=.28; head.add(band);
+  eyes(head,0,.02,.5,'tired');
+  const armG=new THREE.Group(); armG.position.set(-.1,1.15,0); torso.add(armG);
+  for(const s of [-1,1]){const a=mk(new THREE.CapsuleGeometry(.1,.55,6,12),mBlue);a.position.set(-.1,-.1,s*.36);a.rotation.z=-.7;armG.add(a)}
+  // sweat
+  const drops=[]; for(let i=0;i<3;i++){const d=new THREE.Mesh(new THREE.SphereGeometry(.07,10,10),new THREE.MeshBasicMaterial({color:0xdff0ff,transparent:true,opacity:.9}));d.scale.y=1.4;head.add(d);drops.push(d)}
+  scene.add(g); workers.push({g,torso,legL,legR,drops,phase,head}); return g;
+}
+makeWorker(-5.2,-1.2,0); makeWorker(-3.0,.1,1.3); makeWorker(-.9,1.3,2.4);
+
+// overseer
+const ov=new THREE.Group(); ov.position.set(3.6,2.7,0); ov.rotation.y=.55; scene.add(ov);
+for(const s of [-1,1]){const l=mk(new THREE.CapsuleGeometry(.16,.55,8,16),mSkin);l.position.set(0,.6,s*.22);ov.add(l);const f=mk(new THREE.SphereGeometry(.2,16,16),mWhite);f.position.set(-.05,.1,s*.22);f.scale.set(1.4,.6,1);ov.add(f)}
+const skirt=mk(new THREE.CylinderGeometry(.42,.62,.7,28),mWhite); skirt.position.y=1.15; ov.add(skirt);
+const belt=mk(new THREE.CylinderGeometry(.44,.44,.12,28),mBlue); belt.position.y=1.5; ov.add(belt);
+const torso=mk(new THREE.CapsuleGeometry(.5,.7,10,24),mSkin); torso.position.y=2.1; ov.add(torso);
+const collar=mk(new THREE.TorusGeometry(.48,.1,12,32),mGold); collar.position.y=2.55; collar.rotation.x=Math.PI/2; ov.add(collar);
+const oh=new THREE.Group(); oh.position.y=3.15; ov.add(oh);
+oh.add(mk(new THREE.SphereGeometry(.56,32,32),mSkin)); eyes(oh,0,.03,.56,'angry');
+const hat=mk(new THREE.CylinderGeometry(.52,.74,.95,32,1,false),mGold); hat.position.y=.48; oh.add(hat);
+for(let i=0;i<5;i++){const a=(i-2)*.22;const st=new THREE.Mesh(new THREE.BoxGeometry(.05,.9,.04),M(0x4650c4,.5));st.position.set(Math.sin(a)*.6-.0,.48,Math.cos(a)*.6-.0);st.rotation.y=a;oh.add(st)}
+const armLeft=mk(new THREE.CapsuleGeometry(.12,.7,6,12),mSkin); armLeft.position.set(.05,2.0,-.62); armLeft.rotation.x=.3; ov.add(armLeft);
+const armR=new THREE.Group(); armR.position.set(0,2.45,.5); ov.add(armR);
+const upper=mk(new THREE.CapsuleGeometry(.12,.7,6,12),mSkin); upper.position.set(-.1,.45,.1); upper.rotation.z=.5; armR.add(upper);
+const hand=mk(new THREE.SphereGeometry(.17,16,16),mSkin); hand.position.set(-.5,.88,.1); armR.add(hand);
+
+// whip
+const handWorld=new THREE.Vector3(); let whipMesh=null;
+const whipMat=M(0x5a3b24,.6);
+function updateWhip(t){
+  hand.getWorldPosition(handWorld);
+  const k=Math.sin(t*2.6); const crack=Math.max(0,Math.sin(t*2.6+1.2));
+  const p=[handWorld.clone(),
+    handWorld.clone().add(new THREE.Vector3(-1.1,1.5+k*.3,.2)),
+    handWorld.clone().add(new THREE.Vector3(-3.0,1.2-crack*.6,.3)),
+    handWorld.clone().add(new THREE.Vector3(-4.6,-.2-crack*.5,.2)),
+    handWorld.clone().add(new THREE.Vector3(-5.4+crack*.9,-.9-crack*.6,.15))];
+  const geo=new THREE.TubeGeometry(new THREE.CatmullRomCurve3(p),48,.045,8,false);
+  if(whipMesh){scene.remove(whipMesh);whipMesh.geometry.dispose()}
+  whipMesh=mk(geo,whipMat); scene.add(whipMesh);
+  
+}
+
+// ropes
+const ropeMat=M(0xc8a97a,.8);
+const ropes=[];
+workers.forEach((w,i)=>{
+  const a=new THREE.Vector3(w.g.position.x-.45,1.5,w.g.position.z+.2);
+  const b=new THREE.Vector3(1.4,1.0+i*.35,w.g.position.z);
+  const mid=a.clone().lerp(b,.5); mid.y-=.35;
+  const m=mk(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([a,mid,b]),32,.06,8,false),ropeMat); scene.add(m);
+});
+
+// labels in 3D
+let labelSprites=[]; let bubble=null;
+function buildLabels(){
+  labelSprites.forEach(l=>{scene.remove(l);l.material.map.dispose();l.material.dispose()}); labelSprites=[];
+  bubble=sprite('Вези! Быстрее!',TH.bub,4.6,1.15,60); bubble.position.set(6.4,7.0,0); scene.add(bubble);
+  const lb1=sprite('вы',isDark?'#a9b0ff':'#4f58d6',2.4,.6,70); lb1.position.set(-3,.6,3.6);
+  const lb2=sprite('агент',isDark?'#f0a888':'#c25f38',2.8,.7,70); lb2.position.set(3.6,.6,3.8);
+  const lb3=sprite('цель',isDark?'#cfc4a6':'#6e6650',2.6,.65,70); lb3.position.set(-8,.6,3.2);
+  [lb1,lb2,lb3].forEach(l=>scene.add(l)); labelSprites=[bubble,lb1,lb2,lb3];
+}
+function applyTheme(d){
+  isDark=d; TH=d?THEMES.dark:THEMES.light; document.documentElement.dataset.theme=d?'dark':'light';
+  stage.style.background=TH.bg; stage.style.setProperty('--glow',TH.glow);
+  hemi.color.setHex(TH.sky); hemi.groundColor.setHex(TH.ground); hemi.intensity=TH.hemi; sun.intensity=TH.sun; renderer.toneMappingExposure=TH.exp;
+  plat.material.color.setHex(TH.plat); ring.material.color.setHex(TH.ring); rimBlue.intensity=TH.rimB; rimOrange.intensity=TH.rimO;
+  if(typeof dust!=='undefined') dust.material.opacity=TH.dust;
+  bt.material.map=label('ваша работа',TH.bt,512,128,74,false); bt.material.needsUpdate=true;
+  buildLabels();
+}
+// dust particles
+const pts=[];for(let i=0;i<60;i++)pts.push(new THREE.Vector3((Math.random()-.5)*20,Math.random()*7,(Math.random()-.5)*10));
+const pg=new THREE.BufferGeometry().setFromPoints(pts); const dust=new THREE.Points(pg,new THREE.PointsMaterial({color:0xffffff,size:.06,transparent:true,opacity:.35})); scene.add(dust);
+
+applyTheme(matchMedia('(prefers-color-scheme: light)').matches?false:true);
+document.getElementById('tg').onclick=()=>applyTheme(!isDark);
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();camera.position.z=w/h<1.4?25:20}
+addEventListener('resize',resize); resize();
+
+const clock=new THREE.Clock();
+renderer.setAnimationLoop(()=>{
+  const t=clock.getElapsedTime();
+  workers.forEach(w=>{
+    const s=Math.sin(t*2.4+w.phase);
+    w.torso.rotation.z=.62+s*.05; w.legL.rotation.z=s*.35; w.legR.rotation.z=-s*.35;
+    w.head.rotation.z=-s*.06;
+    w.drops.forEach((d,i)=>{const f=((t*.7+i*.33+w.phase)%1);d.position.set(-.1-i*.12,.5-f*1.3,(i-1)*.45);d.material.opacity=1-f});
+  });
+  armR.rotation.z=Math.sin(t*2.6)*.18; oh.rotation.y=Math.sin(t*1.3)*.1;
+  bubble.position.y=7.0+Math.sin(t*1.6)*.1;
+  updateWhip(t);
+  dust.rotation.y=t*.01;
+  controls.update(); renderer.render(scene,camera);
+});
+</script>
