@@ -184,6 +184,7 @@ a.s-card:hover .s-card-title { color: var(--accent); }
 .s-list > .s-row:first-child { border-top: 0; }
 .s-row a { font-weight: 700; }
 .s-row a:hover { color: var(--accent); }
+.s-row .s-row-also { font-weight: 400; color: var(--ink-2); text-decoration: underline; }
 .s-row span { color: var(--ink-2); font-size: var(--t-small); }
 .s-group { display: flex; flex-direction: column; gap: var(--sp-3); border-top: 2px solid var(--line-strong); padding-top: var(--sp-3); counter-increment: sec; }
 .s-group::before { content: counter(sec, decimal-leading-zero); font-family: var(--mono); font-size: var(--t-label); letter-spacing: 0.1em; color: var(--accent); }

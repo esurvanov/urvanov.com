@@ -4,6 +4,8 @@ export interface LinkItem {
   url: string
   label: string
   comment?: string
+  // Дополнительные ссылки той же записи (справа в строке списка): другая площадка, пост про выпуск
+  also?: { url: string; label: string }[]
   // Английский вариант: подставляется вместо русского, если задан
   en?: { label?: string; comment?: string }
   // Координаты для карты (чаты по городам)
@@ -118,9 +120,7 @@ export const LINK_GROUPS: LinkGroup[] = [
           { url: 'https://slideslive.com/39049529/a-machine-learning-approach-that-beats-rubiks-cubes', label: 'NeurIPS · A machine learning approach that beats Rubik’s cubes', comment: 'Запись доклада по статье · 12 авторов', en: { comment: 'Talk recording · 12 authors' } },
           { url: 'https://design-practice.mave.digital/', label: 'Подкаст · Дизайн-практика', comment: 'Также: Telegram, Яндекс Музыка, Apple Podcasts, VK Подкасты', en: { label: 'Podcast · Design Practice (in Russian)', comment: 'Also on Telegram, Yandex Music, Apple Podcasts, VK Podcasts' } },
           { url: 'https://ysnit.mave.digital/ep-40', label: 'Подкаст · Знай и Умей ИТ', comment: 'Страх кода, event storming и будущее с ИИ', en: { label: 'Podcast · Znai i Umei IT (in Russian)', comment: 'Fear of code, event storming and the future with AI' } },
-          { url: 'https://music.amazon.com/podcasts/bc07673d-927f-47ba-ae59-a93b4f05744b/episodes/9c45f4a3-2229-4d87-925b-9b07a897658d', label: 'Подкаст · Ящик с усами (Amazon Music)', comment: 'AI-агенты, продуктовая разработка и сила сообществ в эмиграции', en: { label: 'Podcast · Yashchik s usami (Amazon Music, in Russian)', comment: 'AI agents, product development and the power of communities in emigration' } },
-          { url: 'https://open.spotify.com/episode/4KeNlN8BpZgqci8zzOXLnm', label: 'Подкаст · Ящик с усами (Spotify)', comment: 'Тот же выпуск', en: { label: 'Podcast · Yashchik s usami (Spotify, in Russian)', comment: 'Same episode' } },
-          { url: 'https://www.linkedin.com/posts/irina-rodriguez-25020b175_what-can-ai-agents-do-in-software-development-share-7522592474125713409-F5eh/', label: 'LinkedIn · Пост про выпуск «Ящика с усами»', comment: 'Что AI-агенты могут в разработке ПО', en: { label: 'LinkedIn · Post about the Yashchik s usami episode', comment: 'What AI agents can do in software development' } },
+          { url: 'https://music.amazon.com/podcasts/bc07673d-927f-47ba-ae59-a93b4f05744b/episodes/9c45f4a3-2229-4d87-925b-9b07a897658d', label: 'Подкаст · Ящик с усами', also: [{ label: 'Spotify', url: 'https://open.spotify.com/episode/4KeNlN8BpZgqci8zzOXLnm' }, { label: 'LinkedIn', url: 'https://www.linkedin.com/posts/irina-rodriguez-25020b175_what-can-ai-agents-do-in-software-development-share-7522592474125713409-F5eh/' }], comment: 'Amazon Music', en: { label: 'Podcast · Yashchik s usami (in Russian)', comment: 'Amazon Music' } },
           { url: 'https://www.youtube.com/watch?v=iGBzXh2Fj0c', label: 'YouTube · Работа AI-агента: архитектура, защита, экономика', comment: 'Podlodka Crew', en: { label: 'YouTube · How an AI agent works: architecture, security, economics (in Russian)', comment: 'Podlodka Crew' } },
           { url: 'https://www.youtube.com/watch?v=ycjmtkwQf8E', label: 'YouTube · SDD фреймворки для детерминированной AI разработки', comment: 'Podlodka Crew', en: { label: 'YouTube · SDD frameworks for deterministic AI development (in Russian)' } },
           { url: 'https://www.youtube.com/watch?v=O8VbhnRUyJQ', label: 'YouTube · Рождённые копипастить: LLM-подходы и паттерны', en: { label: 'YouTube · Born to copy-paste: LLM approaches and patterns (in Russian)' } },

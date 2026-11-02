@@ -39,7 +39,19 @@ function List({ items, lang }: { items: LinkItem[]; lang: Lang }) {
             <a href={hrefFor(item.url, lang)} {...linkProps(item.url)}>
               {x.label}
             </a>
-            {x.comment && <span>{x.comment}</span>}
+            {(x.comment || item.also) && (
+              <span>
+                {x.comment}
+                {item.also?.map((a) => (
+                  <span key={a.url}>
+                    {' · '}
+                    <a href={a.url} {...linkProps(a.url)} className="s-row-also">
+                      {a.label}
+                    </a>
+                  </span>
+                ))}
+              </span>
+            )}
           </li>
         )
       })}
