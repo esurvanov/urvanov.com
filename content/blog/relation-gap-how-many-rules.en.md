@@ -328,6 +328,8 @@ toc: video=Video | question=Question | paper=Paper and authors | rules=Two rules
 <b-chapter id="next" title="Further reading">
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2610.23637" k="Paper" t="arXiv 2610.23637" ext>Two-generator presentations with a relation gap</item>
+    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="Film source" t="papers/2610.23637-relation-gap" ext>Passport, narration, scenes and scenario of the film on GitHub</item>
+    <item href="https://github.com/esurvanov/awesome-papers" k="Repository" t="awesome-papers" ext>Films on scientific papers in plain words: code, rules, checks</item>
     <item href="https://youtu.be/yPvbfDa_GCk" k="Video" t="Walkthrough on YouTube" ext>The same story in 7.5 minutes, with the game map and formulas</item>
     <item href="/blog/longest-ring-arrangement/" k="The same Cayley graph" t="Ring of balls">A map of moves and the most tangled arrangement</item>
     <item href="/blog/rubik-cube-neural-network/" k="The same Cayley graph" t="Rubik's cube">Moves and rules where brute force is impossible</item>

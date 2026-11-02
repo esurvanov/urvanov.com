@@ -328,6 +328,8 @@ toc: video=Ролик | question=Вопрос | paper=Статья и автор
 <b-chapter id="next" title="Дальше по теме">
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2610.23637" k="Статья" t="arXiv 2610.23637" ext>Two-generator presentations with a relation gap</item>
+    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="Исходник ролика" t="papers/2610.23637-relation-gap" ext>Паспорт, текст диктора, сцены и сценарий ролика на GitHub</item>
+    <item href="https://github.com/esurvanov/awesome-papers" k="Репозиторий" t="awesome-papers" ext>Ролики по научным статьям «простыми словами»: код, правила, проверки</item>
     <item href="https://youtu.be/yPvbfDa_GCk" k="Ролик" t="Разбор на YouTube" ext>Та же история за 7,5 минуты, с картой игры и формулами</item>
     <item href="/blog/longest-ring-arrangement/" k="Тот же граф Кэли" t="Кольцо с шариками">Карта ходов и самая запутанная расстановка</item>
     <item href="/blog/rubik-cube-neural-network/" k="Тот же граф Кэли" t="Кубик Рубика">Ходы и правила, где перебор невозможен</item>
