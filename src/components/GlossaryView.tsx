@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { ActionLink } from '@/components/site/Links'
 import { ICONS } from '@/components/site/icons'
 import { noCode, ALL_TERMS, TERM_SETS, findTerm, glossaryPath, postsWithTerm, setOfTerm, splitTerms, termForTag, termShort } from '@/data/glossary'
-import { findCategory, formatDate, type Post } from '@/data/blog'
+import { findCategory, type Post } from '@/data/blog'
 import { TERM_DATES } from '@/data/termDates'
 import { useT } from '@/lib/i18n'
 import { plural } from '@/lib/plural'
@@ -46,6 +46,20 @@ function TermText({ text, self }: { text: string; self: string }) {
 const termWord = (n: number, lang: 'ru' | 'en') => plural(n, lang, ['термин', 'термина', 'терминов'], ['term', 'terms'])
 
 // /materials/glossary/ — наборы терминов; у каждого термина своя страница со статьями, где он встречается
+const shortDate = (iso: string, lang: 'ru' | 'en') =>
+  new Date(iso).toLocaleDateString(lang === 'en' ? 'en-US' : 'ru-RU', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).replace(' г.', '')
+
+function TermDates({ created, updated, lang }: { created: string; updated: string; lang: 'ru' | 'en' }) {
+  const ru = lang === 'ru'
+  const day = (iso: string) => <time dateTime={iso}>{shortDate(iso, lang)}</time>
+  return (
+    <ul className="s-gdates">
+      <li className="s-gdate" title={ru ? 'Дата создания' : 'Created'}>{ICONS.created}{day(created)}</li>
+      <li className="s-gdate" title={ru ? 'Дата обновления' : 'Updated'}>{ICONS.updated}{day(updated)}</li>
+    </ul>
+  )
+}
+
 export function GlossaryView() {
   const { lang, t, to } = useT()
   return (
@@ -88,8 +102,10 @@ export function TermView() {
     <Page className="s-gterm">
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { to: to('/materials/glossary'), label: t({ ru: 'Глоссарий', en: 'Glossary' }) }, { label: t(term.name) }]} />
       <h1 className="s-page-title">{t(term.name)}</h1>
-      <p className="s-card-text">{ICONS[set.icon]} {t(set.name)}{term.aka && <> · {t(term.aka)}</>}</p>
-      {TERM_DATES[term.slug] && <p className="s-card-text">{t({ ru: 'создано', en: 'created' })} <time dateTime={TERM_DATES[term.slug][0]}>{formatDate(TERM_DATES[term.slug][0], lang)}</time> · {t({ ru: 'обновлено', en: 'updated' })} <time dateTime={TERM_DATES[term.slug][1]}>{formatDate(TERM_DATES[term.slug][1], lang)}</time></p>}
+      <div className="s-gmeta">
+  <p className="s-gmeta-set">{ICONS[set.icon]} {t(set.name)}{term.aka && <> · {t(term.aka)}</>}</p>
+  {TERM_DATES[term.slug] && <TermDates created={TERM_DATES[term.slug][0]} updated={TERM_DATES[term.slug][1]} lang={lang} />}
+      </div>
       <p className="s-lead"><TermText text={t(term.def)} self={term.slug} /></p>
       {art?.map && <AgentMap svg={art.svg} wide={art.wide} />}
       {art?.steps ? <LlmSteps /> : null}

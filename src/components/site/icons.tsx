@@ -136,6 +136,16 @@ export const ICONS = {
       <path d="M7 4.5v15l12-7.5z" fill="currentColor" />
     </Icon>
   ),
+  created: (
+    <Icon>
+      <path d="M4 6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM4 10h16M8 3v4M16 3v4" />
+    </Icon>
+  ),
+  updated: (
+    <Icon>
+      <path d="M20 12a8 8 0 1 1-2.5-5.8M20 4v5h-5" />
+    </Icon>
+  ),
   doc: (
     <Icon>
       <path d="M6 3h8l4 4v14H6z" />
