@@ -62,6 +62,7 @@ export const LINK_GROUPS: LinkGroup[] = [
           { url: LI, label: 'LinkedIn', comment: 'CTO · AI' },
           { url: 'https://ru.stackoverflow.com/users/188116/eurvanov', label: 'Stack Overflow', comment: '10 256 репутации · 10+ лет', en: { comment: '10,256 reputation · 10+ years' } },
           { url: 'https://ru.wikipedia.org/wiki/Служебная:Вклад/Eurvanov', label: 'Википедия', comment: 'Вклад в русскую Википедию', en: { label: 'Wikipedia', comment: 'Contributions to Russian Wikipedia' } },
+          { url: 'https://ru.wiktionary.org/wiki/Участник:Eurvanov', label: 'Викисловарь', comment: 'Страница участника в русском Викисловаре', en: { label: 'Wiktionary', comment: 'User page on Russian Wiktionary' } },
           { url: 'https://github.com/esurvanov/', label: 'GitHub', comment: '100+ звёзд', en: { comment: '100+ stars' } },
           { url: 'https://getmentor.dev/mentor/egor-urvanov-1077', label: 'GetMentor', comment: 'Топ-1 ментор · 1500+ часов', en: { comment: 'Top-1 mentor · 1,500+ hours' } },
           { url: 'https://t.me/eurvanov', label: 'Telegram' },

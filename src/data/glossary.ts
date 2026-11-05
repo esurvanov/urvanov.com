@@ -433,8 +433,8 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Clauding', en: 'Clauding' },
         aka: { ru: 'клодинг, клодить', en: 'working with Claude' },
         def: {
-          ru: 'Clauding — неформальное слово для работы с Claude или через Claude: человек пишет задачу, смотрит результат и уточняет, пока не получит нужное. По образцу глагола «гуглить»: Google возвращает ссылки, Claude возвращает готовую работу, которую человек проверяет. Пример: вместо того чтобы самому писать письмо клиенту, вы поручаете его Claude, правите две фразы и отправляете.',
-          en: 'Clauding is an informal word for working with or through Claude: a person writes the task, reviews the result and refines it until it is right. It follows the verb “to google”: Google returns links, Claude returns finished work that the person checks. Example: instead of writing a client email yourself, you hand it to Claude, fix two phrases and send it.',
+          ru: 'Clauding — неформальное слово для работы с Claude или через Claude: человек пишет задачу, смотрит результат и уточняет, пока не получит нужное. По образцу глагола «гуглить»: Google возвращает ссылки, Claude возвращает готовую работу, которую человек проверяет. Слово берёт имя из Claude, но подходит к любому ИИ-помощнику, как «погугли» говорят и тому, кто ищет в Яндексе. Пример: вместо того чтобы самому писать письмо клиенту, вы поручаете его Claude, правите две фразы и отправляете.',
+          en: 'Clauding is an informal word for working with or through Claude: a person writes the task, reviews the result and refines it until it is right. It follows the verb “to google”: Google returns links, Claude returns finished work that the person checks. The word takes its name from Claude but fits any AI assistant, the way “google it” is said even to someone searching in Bing or Yandex. Example: instead of writing a client email yourself, you hand it to Claude, fix two phrases and send it.',
         },
         match: { ru: ['clauding\\p{L}*', 'клодинг\\p{L}*'], en: ['clauding'] },
         related: ['claude-code', 'ai-agent', 'human-in-the-loop'],
