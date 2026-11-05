@@ -38,7 +38,7 @@ const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 const PLAY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z"/></svg>'
 function gameLinks(g, lang) {
   const en = lang === 'en'
-  const pre = en ? '/en' : ''
+  const pre = en ? '' : '/ru'
   const T = en
     ? { h: 'About the game', k: 'Game page', cards: [['Game', 'Play in the browser', 'no install, no sign-up', g.play], ['Repository', 'Source code', 'this page and the diagrams live next to the game', `${REPO}${g.repoDir}/docs/architecture`], ['More', 'All games', 'pages of the other games', `${pre}/materials/games/`]] }
     : { h: 'Об игре', k: 'Страница игры', cards: [['Игра', 'Играть в браузере', 'без установки и регистрации', g.play], ['Репозиторий', 'Исходники', 'текст и схемы лежат рядом с игрой', `${REPO}${g.repoDir}/docs/architecture`], ['Ещё', 'Все игры', 'страницы остальных игр', `${pre}/materials/games/`]] }

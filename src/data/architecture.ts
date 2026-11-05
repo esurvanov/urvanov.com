@@ -2,7 +2,7 @@
 // и меняются вместе с ней. Файлы генерирует scripts/pull-game-posts.mjs из репозитория игр: content/game-architecture/<игра>[.en].md
 import { marked } from 'marked'
 import { shieldEmails } from '@/data/blog'
-import type { Lang } from '@/lib/i18n'
+import { localizeLinks, type Lang } from '@/lib/i18n'
 
 export interface Architecture {
   game: string                      // слаг игры (как в GamePage.slug)
@@ -45,8 +45,8 @@ function parse(path: string, raw: string): Architecture | null {
       const i = s.indexOf('=')
       return { id: s.slice(0, i).trim(), label: s.slice(i + 1).trim() }
     }),
-    html: shieldEmails(marked.parse(markdown, { async: false }) as string),
-    markdown,
+    html: shieldEmails(localizeLinks(marked.parse(markdown, { async: false }) as string, lang)),
+    markdown: localizeLinks(markdown, lang),
     words: markdown.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length,
   }
 }

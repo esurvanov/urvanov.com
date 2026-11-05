@@ -8,7 +8,7 @@ const scenes: Record<string, Scene> = {
     en: 'The agent formula. Left: the LLM, a grey cube that only writes text. Middle: the harness, a toolbox, a context tray, a checks clipboard and a rules sign around an empty spot for the model. Right: the agent, the same harness with a blue agent in the centre',
     viewBox: [0, 0, 700, 248],
     draw: (c, l) => {
-      const G = (slug: string) => l(`/materials/glossary/${slug}/`, `/en/materials/glossary/${slug}/`)
+      const G = (slug: string) => l(`/ru/materials/glossary/${slug}/`, `/materials/glossary/${slug}/`)
       const Y = 112, U = 30
       // Площадка харнесса: пол — ссылка на целое, каждый предмет — ссылка на свой термин (рисуем от дальних к ближним)
       const ring = (x: number, whole: string, center: () => void, mid?: () => void) => {
@@ -58,7 +58,7 @@ const scenes: Record<string, Scene> = {
     en: 'The agent loop on one platform. The goal (task) goes to the agent, the agent picks a step, a tool performs the action, a check looks at the result. If the check fails, an orange arrow leads back to the agent. If it passes, you get the result',
     viewBox: [0, 24, 700, 238],
     draw: (c, l) => {
-      const G = (slug: string) => l(`/materials/glossary/${slug}/`, `/en/materials/glossary/${slug}/`)
+      const G = (slug: string) => l(`/ru/materials/glossary/${slug}/`, `/materials/glossary/${slug}/`)
       // Цель и результат — на своих площадках снаружи, внутри большой площадки только цикл
       const g = c.iso(95, 140, 20); g.tile(-1.4, -1.4, 2.8, 2.8); g.doc(-0.6, -0.45, 0, 1.2, 0.9, M, 3)
       const r = c.iso(615, 140, 20); r.tile(-1.4, -1.4, 2.8, 2.8); r.doc(-0.6, -0.45, 0, 1.2, 0.9, A, 2, true)
@@ -87,7 +87,7 @@ const scenes: Record<string, Scene> = {
     en: 'On top, five parts of the project: your text with the task, the test and error text you copy yourself, an app, the project files, the terminal that runs the tests. Below, bars show what each one sees, what you get and what is left for you. The LLM: only your text. The chat: your text and what you pasted. The chatbot sees nothing of the project: no bar, it answers from its own script. The assistant: your text and the app it lives in, such as a Word document. The AI agent: the whole project',
     viewBox: [0, 0, 700, 404],
     draw: (c, l) => {
-      const G = (slug: string) => l(`/materials/glossary/${slug}/`, `/en/materials/glossary/${slug}/`)
+      const G = (slug: string) => l(`/ru/materials/glossary/${slug}/`, `/materials/glossary/${slug}/`)
       const X = [232, 326, 420, 514, 608], half = 44
       const parts = [l('Ваш текст', 'Your text'), l('Тест и ошибка', 'Test and error'), l('Приложение', 'An app'), l('Файлы', 'Files'), l('Терминал', 'Terminal')]
       c.caps(420, 18, l('ПРОЕКТ', 'PROJECT'), M, { size: 10.5 })

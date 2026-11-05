@@ -17,7 +17,7 @@ export default defineBlock({
   render: ({ slots }) => `<div class="bk-link-chips">${slots.item.map((s) =>
     `<a class="bk-link-chips-lchip" href="${attr(s.attrs.href)}"${/^https?:/.test(s.attrs.href) ? ' target="_blank" rel="noopener"' : ''}>${s.html} ${icon(s.attrs.icon)}</a>`).join('')}</div>`,
   example: {
-    ru: '<b-link-chips>\n  <item href="/blog/who-to-interview-before-buying-ai-tools/" icon="arrow-right">Кого звать на интервью</item>\n  <item href="https://claude.com/claude-in-chrome" icon="arrow-up-right">Claude in Chrome</item>\n</b-link-chips>',
-    en: '<b-link-chips>\n  <item href="/en/blog/who-to-interview-before-buying-ai-tools/" icon="arrow-right">Who to interview</item>\n  <item href="https://claude.com/claude-in-chrome" icon="arrow-up-right">Claude in Chrome</item>\n</b-link-chips>',
+    ru: '<b-link-chips>\n  <item href="/ru/blog/who-to-interview-before-buying-ai-tools/" icon="arrow-right">Кого звать на интервью</item>\n  <item href="https://claude.com/claude-in-chrome" icon="arrow-up-right">Claude in Chrome</item>\n</b-link-chips>',
+    en: '<b-link-chips>\n  <item href="/blog/who-to-interview-before-buying-ai-tools/" icon="arrow-right">Who to interview</item>\n  <item href="https://claude.com/claude-in-chrome" icon="arrow-up-right">Claude in Chrome</item>\n</b-link-chips>',
   },
 })

@@ -2,7 +2,7 @@ import { marked } from 'marked'
 import katex from 'katex'
 import { withBlogArt } from '@/data/blogArt'
 import { withBlocks } from '@/data/blocks'
-import type { Lang, L } from '@/lib/i18n'
+import { localizeLinks, type Lang, type L } from '@/lib/i18n'
 
 // Формулы: $…$ — в строке, $$…$$ — отдельной строкой по центру. Набирает KaTeX при сборке; до markdown формулы
 // заменяются метками, чтобы разметка не тронула знаки _ и *, и возвращаются в готовый HTML.
@@ -122,7 +122,7 @@ function parse(path: string, raw: string): Post | null {
   if (!category) throw new Error(`${path}: category «${meta.category ?? ''}» — нужна одна из: ${BLOG_CATEGORIES.map((c) => c.slug).join(', ')}`)
   // Метки блоков (<b-finding>…) разворачиваются в HTML до markdown: .md-копии и llms-full получают тот же HTML, что и раньше
   const body = m[2].trim()
-  const markdown = withBlocks(body, lang, path, raw.slice(0, raw.indexOf(body)).split('\n').length - 1)
+  const markdown = localizeLinks(withBlocks(body, lang, path, raw.slice(0, raw.indexOf(body)).split('\n').length - 1), lang)
   const text = texts[`/content/blog-text/${file}.md`]?.trim()
   // Формулы набираются только в постах с `math: true` во фронтматтере: в остальных знак $ — обычный текст (цены, примеры)
   const math = meta.math === 'true' ? hideMath(markdown) : { md: markdown, restore: (html: string) => html }
@@ -137,7 +137,7 @@ function parse(path: string, raw: string): Post | null {
     unrelated: (meta.unrelated ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     category: category.slug,
-    html: shieldEmails(withBlogArt(math.restore(marked.parse(math.md, { async: false }) as string), lang)),
+    html: shieldEmails(localizeLinks(withBlogArt(math.restore(marked.parse(math.md, { async: false }) as string), lang), lang)),
     markdown,
     // HTML-разметку внутри поста не считаем за слова
     minutes: Math.max(1, Math.round(words / (lang === 'en' ? 220 : 180))),

@@ -96,7 +96,7 @@ export function headTags({ title, description, path, type = 'website', noindex =
     `<meta name="twitter:title" content="${esc(social)}" />`,
     ...(image ? [`<meta name="twitter:image" content="${img}" />`] : []),
     `<meta name="twitter:description" content="${esc(description)}" />`,
-    `<link rel="alternate" type="application/rss+xml" title="${lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'}" href="${lang === 'en' ? '/en/rss.xml' : '/rss.xml'}" />`,
+    `<link rel="alternate" type="application/rss+xml" title="${lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'}" href="${lang === 'ru' ? '/ru/rss.xml' : '/rss.xml'}" />`,
   ]
   // canonical/og:url — не для страниц без реального адреса (404: canonical на /404/ был бы мусорным сигналом)
   if (canonical) {
@@ -106,11 +106,11 @@ export function headTags({ title, description, path, type = 'website', noindex =
   // Лента блога по страницам: соседние страницы (canonical у каждой — на саму себя)
   if (prev) tags.push(`<link rel="prev" href="${urlOf(prev)}" />`)
   if (next) tags.push(`<link rel="next" href="${urlOf(next)}" />`)
-  // hreflang: все языковые версии страницы и x-default (русская)
+  // hreflang: все языковые версии страницы и x-default (английская)
   if (alternates.length > 1) {
     for (const a of alternates) tags.push(`<link rel="alternate" hreflang="${a.lang}" href="${urlOf(a.path)}" />`)
-    const ru = alternates.find((a) => a.lang === 'ru')
-    if (ru) tags.push(`<link rel="alternate" hreflang="x-default" href="${urlOf(ru.path)}" />`)
+    const en = alternates.find((a) => a.lang === 'en')
+    if (en) tags.push(`<link rel="alternate" hreflang="x-default" href="${urlOf(en.path)}" />`)
   }
   if (type === 'article' && date) tags.push(`<meta property="article:published_time" content="${date}" />`, `<meta property="article:author" content="${SITE_URL}/about/" />`)
   if (type === 'article' && modified) tags.push(`<meta property="article:modified_time" content="${modified}" />`)

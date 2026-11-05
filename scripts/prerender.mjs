@@ -41,11 +41,11 @@ const CRUMBS = {
 
 function breadcrumbs(page, all) {
   const parts = page.path.split('/').filter(Boolean)
-  if (page.lang === 'en') parts.shift()
+  if (page.lang === 'ru') parts.shift()
   if (parts.length === 0) return null
-  const home = page.lang === 'en' ? '/en' : '/'
+  const home = page.lang === 'ru' ? '/ru' : '/'
   const items = [{ name: CRUMBS[page.lang].home, url: urlOf(home) }]
-  let acc = page.lang === 'en' ? '/en' : ''
+  let acc = page.lang === 'ru' ? '/ru' : ''
   for (const part of parts) {
     acc += '/' + part
     const p = all.find((x) => x.path === acc)
@@ -61,7 +61,7 @@ function build(page, all, { body, noindex, skipStructured } = {}) {
   const graph = skipStructured ? [] : [breadcrumbs(page, all), page.jsonLd && { '@id': urlOf(page.path) + '#main', ...page.jsonLd }, ...(page.jsonLdExtra ?? [])].filter(Boolean)
   const head = headTags({ ...page, noindex: noindex ?? page.noindex, jsonLd: graph.length ? graph : undefined, canonical: !skipStructured })
   return template
-    .replace('<html lang="ru">', `<html lang="${page.lang}">`)
+    .replace('<html lang="en">', `<html lang="${page.lang}">`)
     // Замена функцией: в строке-замене JS «$$» и «$&» — спецсимволы, и «$$$» в тексте поста превращался бы в «$$»
     .replace(/<title>[\s\S]*?<\/title>/, () => `${head}\n    ${analytics}`)
     .replace('<div id="root"></div>', () => `<div id="root">${body ?? ''}</div>`)
@@ -96,18 +96,23 @@ for (const page of pages) {
 
 // Jaiora переехала на jaiora.me: старые адреса не отдают 404, а переправляют туда и не индексируются
 const jaioraMoved = (to) => `<!doctype html>\n<html lang="ru"><head><meta charset="utf-8"><title>Jaiora → jaiora.me</title><meta name="robots" content="noindex"><link rel="canonical" href="${to}"><meta http-equiv="refresh" content="0; url=${to}"></head><body><a href="${to}">${to}</a></body></html>\n`
-write('jaiora/index.html', jaioraMoved('https://jaiora.me/'))
+write('jaiora/index.html', jaioraMoved('https://jaiora.me/en/'))
+write('ru/jaiora/index.html', jaioraMoved('https://jaiora.me/'))
 write('en/jaiora/index.html', jaioraMoved('https://jaiora.me/en/'))
+
+// Английский переехал из /en/… в корень: старые адреса переправляют на новые
+const moved = (to, title, lang) => jaioraMoved(to).replace('Jaiora → jaiora.me', title).replace('lang="ru"', `lang="${lang}"`)
+for (const p of pages.filter((x) => x.lang === 'en' && !x.noindex)) write(join('en', p.path, 'index.html'), moved(urlOf(p.path), p.title, 'en'))
 
 // Убранные термины глоссария: старые адреса переправляют на тот, что их заменил
 for (const [from, to, ru, en] of [['ai', 'ai-agent', 'ИИ-агент', 'AI agent'], ['language-model', 'llm', 'LLM', 'LLM']]) {
-  for (const pre of ['', 'en/']) write(`${pre}materials/glossary/${from}/index.html`, jaioraMoved(urlOf(`${pre ? '/en' : ''}/materials/glossary/${to}`)).replace('Jaiora → jaiora.me', pre ? en : ru).replace('lang="ru"', `lang="${pre ? 'en' : 'ru'}"`))
+  for (const pre of ['', 'ru/', 'en/']) write(`${pre}materials/glossary/${from}/index.html`, moved(urlOf(`${pre === 'ru/' ? '/ru' : ''}/materials/glossary/${to}`), pre === 'ru/' ? ru : en, pre === 'ru/' ? 'ru' : 'en'))
 }
 
 // Архитектура игр жила в блоге (/blog/<игра>-architecture/): старые адреса переправляют на страницу рядом с игрой
 for (const a of ARCHITECTURES) {
-  const pre = a.lang === 'en' ? 'en/' : ''
-  write(`${pre}blog/${a.oldSlug}/index.html`, jaioraMoved(urlOf(`${a.lang === 'en' ? '/en' : ''}/materials/games/${a.game}/architecture`)).replace('Jaiora → jaiora.me', a.title).replace('lang="ru"', `lang="${a.lang}"`))
+  const target = urlOf(`${a.lang === 'ru' ? '/ru' : ''}/materials/games/${a.game}/architecture`)
+  for (const pre of a.lang === 'ru' ? ['ru/'] : ['', 'en/']) write(`${pre}blog/${a.oldSlug}/index.html`, moved(target, a.title, a.lang))
 }
 
 // 404: реальная страница (NotFoundView), без canonical и хлебных крошек — адреса /404/ не существует
@@ -117,7 +122,7 @@ try {
 } catch (e) {
   console.warn(`  ! /404: без готового HTML (${e.message})`)
 }
-write('404.html', build({ path: '/404', lang: 'ru', alternates: [], title: 'Страница не найдена / Page not found — Егор Урванов', description: 'Такой страницы нет. Ссылки на главные разделы сайта на русском и английском.' }, pages, { noindex: true, skipStructured: true, body: body404 }))
+write('404.html', build({ path: '/404', lang: 'en', alternates: [], title: 'Страница не найдена / Page not found — Егор Урванов', description: 'Такой страницы нет. Ссылки на главные разделы сайта на русском и английском.' }, pages, { noindex: true, skipStructured: true, body: body404 }))
 
 // sitemap: страницы сайта на обоих языках со связями hreflang. Сами игры и интерактивы (холст) сюда не входят:
 // индексируются их посадочные страницы /materials/games/<игра>/ и /materials/interactive/<имя>/
@@ -128,10 +133,10 @@ const urls = [
   ...indexable.map((p) => {
     const alt = p.alternates.length > 1
       ? p.alternates.map((a) => `<xhtml:link rel="alternate" hreflang="${a.lang}" href="${loc(a.path)}"/>`).join('')
-        + `<xhtml:link rel="alternate" hreflang="x-default" href="${loc(p.alternates.find((a) => a.lang === 'ru').path)}"/>`
+        + `<xhtml:link rel="alternate" hreflang="x-default" href="${loc(p.alternates.find((a) => a.lang === 'en').path)}"/>`
       : ''
     const lastmod = p.modified ?? p.date ?? gitDate(p.sources)
-    return `  <url><loc>${loc(p.path)}</loc><lastmod>${lastmod}</lastmod><priority>${p.path === '/' || p.path === '/en' ? '1.0' : p.type === 'article' || /\/materials\/(games|interactive)\/[^/]+$/.test(p.path) ? '0.8' : '0.6'}</priority>${alt}</url>`
+    return `  <url><loc>${loc(p.path)}</loc><lastmod>${lastmod}</lastmod><priority>${p.path === '/' || p.path === '/ru' ? '1.0' : p.type === 'article' || /\/materials\/(games|interactive)\/[^/]+$/.test(p.path) ? '0.8' : '0.6'}</priority>${alt}</url>`
   }),
 ]
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`)
@@ -142,24 +147,27 @@ write('robots.txt', ['User-agent: *', 'Allow: /', 'Disallow: /presenter', '', ..
 
 // RSS по языкам
 const rfc = (d) => new Date(d).toUTCString()
-const postUrl = (p) => urlOf(p.lang === 'en' ? `/en/blog/${p.slug}` : `/blog/${p.slug}`)
+const postUrl = (p) => urlOf(p.lang === 'ru' ? `/ru/blog/${p.slug}` : `/blog/${p.slug}`)
 for (const lang of ['ru', 'en']) {
   const posts = POSTS.filter((p) => p.lang === lang)
-  const prefix = lang === 'en' ? '/en' : ''
+  const prefix = lang === 'ru' ? '/ru' : ''
   const title = lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'
   const desc = lang === 'en' ? 'AI development, engineering management, communities' : 'AI-разработка, инженерное управление, сообщества'
   write(`${prefix}/rss.xml`.replace(/^\//, ''), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>\n<title>${title}</title><link>${urlOf(prefix + '/blog')}</link><description>${desc}</description><language>${lang}</language>\n<atom:link href="${SITE_URL}${prefix}/rss.xml" rel="self" type="application/rss+xml" />\n${posts.map((p) => `<item><title>${esc(p.title)}</title><link>${postUrl(p)}</link><guid>${postUrl(p)}</guid><pubDate>${rfc(p.date)}</pubDate><description>${esc(p.description)}</description><content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[${p.html}]]></content:encoded></item>`).join('\n')}\n</channel></rss>\n`)
 }
 
+// Старый адрес английской ленты
+write('en/rss.xml', readFileSync(join(DIST, 'rss.xml'), 'utf8'))
+
 // Markdown-копии постов
-const mdPath = (p) => (p.lang === 'en' ? `en/blog/${p.slug}.md` : `blog/${p.slug}.md`)
+const mdPath = (p) => (p.lang === 'ru' ? `ru/blog/${p.slug}.md` : `blog/${p.slug}.md`)
 // у широких постов с инфографикой — чистый текст (content/blog-text), а не вёрстка
 const postMd = (p) => `# ${p.title}\n\n${p.date} · ${p.lang === 'en' ? 'Egor Urvanov' : 'Егор Урванов'} · ${postUrl(p)}\n\n> ${p.description}\n\n${p.text ?? p.markdown}\n`
 for (const p of POSTS) write(mdPath(p), postMd(p))
 
 // Архитектура игр: markdown-копии рядом со страницами (схемы-картинки заменены подписями)
-const archUrl = (a) => urlOf(`${a.lang === 'en' ? '/en' : ''}/materials/games/${a.game}/architecture`)
-const archMdPath = (a) => `${a.lang === 'en' ? 'en/' : ''}materials/games/${a.game}/architecture.md`
+const archUrl = (a) => urlOf(`${a.lang === 'ru' ? '/ru' : ''}/materials/games/${a.game}/architecture`)
+const archMdPath = (a) => `${a.lang === 'ru' ? 'ru/' : ''}materials/games/${a.game}/architecture.md`
 const archMd = (a) => `# ${a.title}\n\n${archUrl(a)}\n\n> ${a.description}\n\n${a.markdown.replace(/<figure class="arch">.*?<figcaption>(.*?)<\/figcaption><\/figure>/g, '[Схема / Diagram: $1]').replace(/<section class="arch-next">[\s\S]*$/, '').replace(/<h2 id="[^"]*">(.*?)<\/h2>/g, '## $1').trim()}\n`
 for (const a of ARCHITECTURES) write(archMdPath(a), archMd(a))
 
@@ -179,19 +187,19 @@ write('llms.txt', [
   ...(ruPosts.length ? ['## Блог (RU)', ...ruPosts, ''] : []),
   ...(enPosts.length ? ['## Blog (EN)', ...enPosts, ''] : []),
   '## Разделы / Sections',
-  `- [Обо мне](${SITE_URL}/about/) · [About](${SITE_URL}/en/about/): профиль, достижения, образование / profile, achievements, education`,
+  `- [Обо мне](${SITE_URL}/ru/about/) · [About](${SITE_URL}/about/): профиль, достижения, образование / profile, achievements, education`,
   `- [Jaiora](https://jaiora.me/): сообщество и встречи, отдельный сайт / community and meetups, a separate site`,
-  `- [Доклад: ${config.talkTitle}](${SITE_URL}/talk/spec-driven-development/) · [Talk](${SITE_URL}/en/talk/spec-driven-development/): полный текст слайдов / full slide text (RU)`,
+  `- [Доклад: ${config.talkTitle}](${SITE_URL}/ru/talk/spec-driven-development/) · [Talk](${SITE_URL}/talk/spec-driven-development/): полный текст слайдов / full slide text (RU)`,
   `- [Каталог AI-паттернов](${SITE_URL}/patterns/): паттерны разработки с AI-агентами (RU)`,
-  `- [Глоссарий](${SITE_URL}/materials/glossary/) · [Glossary](${SITE_URL}/en/materials/glossary/): ${ALL_TERMS.map((x) => x.name.ru).join(', ')} / ${TERM_SETS.map((s) => s.name.en).join(', ')}`,
-  `- [Презентации](${SITE_URL}/materials/presentations/) · [Presentations](${SITE_URL}/en/materials/presentations/)`,
-  ...LABS.map((l) => `- [${l.title}](${SITE_URL}/materials/interactive/${l.path.replace(/\//g, '')}/) · [${l.titleEn}](${SITE_URL}/en/materials/interactive/${l.path.replace(/\//g, '')}/): ${l.long} (RU/EN)`),
-  `- [Игры](${SITE_URL}/materials/games/) · [Games](${SITE_URL}/en/materials/games/): ${GAMES.map((g) => g.title).join(', ')}`,
+  `- [Глоссарий](${SITE_URL}/ru/materials/glossary/) · [Glossary](${SITE_URL}/materials/glossary/): ${ALL_TERMS.map((x) => x.name.ru).join(', ')} / ${TERM_SETS.map((s) => s.name.en).join(', ')}`,
+  `- [Презентации](${SITE_URL}/ru/materials/presentations/) · [Presentations](${SITE_URL}/materials/presentations/)`,
+  ...LABS.map((l) => `- [${l.title}](${SITE_URL}/ru/materials/interactive/${l.path.replace(/\//g, '')}/) · [${l.titleEn}](${SITE_URL}/materials/interactive/${l.path.replace(/\//g, '')}/): ${l.long} (RU/EN)`),
+  `- [Игры](${SITE_URL}/ru/materials/games/) · [Games](${SITE_URL}/materials/games/): ${GAMES.map((g) => g.title).join(', ')}`,
   ...GAME_PAGES.flatMap((g) => [
-    `  - [${g.name.ru}](${SITE_URL}/materials/games/${g.slug}/) · [${g.name.en}](${SITE_URL}/en/materials/games/${g.slug}/): ${g.tagline.ru} / ${g.tagline.en} (играть: ${SITE_URL}${g.play})`,
+    `  - [${g.name.ru}](${SITE_URL}/ru/materials/games/${g.slug}/) · [${g.name.en}](${SITE_URL}/materials/games/${g.slug}/): ${g.tagline.ru} / ${g.tagline.en} (играть: ${SITE_URL}${g.play})`,
     ...ARCHITECTURES.filter((a) => a.game === g.slug).map((a) => `    - [${a.title}](${SITE_URL}/${archMdPath(a)}): ${a.description}`),
   ]),
-  `- [Ссылки](${SITE_URL}/links/) · [Links](${SITE_URL}/en/links/)`,
+  `- [Ссылки](${SITE_URL}/ru/links/) · [Links](${SITE_URL}/links/)`,
   '',
   '## Полный текст / Full text',
   `- [llms-full.txt](${SITE_URL}/llms-full.txt): «Обо мне» и все посты блога целиком, RU и EN / “About” and all blog posts in full, RU and EN`,

@@ -9,7 +9,7 @@ export const DEFAULT_BASELINE = process.env.BASELINE_DIST
   || '/private/tmp/claude-501/-Users-egurvanov-python-urvanov-com/4724df9c-7c7a-4b1f-bbb9-a2d0c36b974b/scratchpad/baseline-dist'
 
 // Страницы вне sitemap, которые тоже стоит проверять (витрина блоков появляется вместе с библиотекой блоков)
-export const EXTRA_PAGES = ['/materials/blocks/', '/en/materials/blocks/']
+export const EXTRA_PAGES = ['/materials/blocks/', '/ru/materials/blocks/']
 
 // --key value / --flag → { key: value, flag: true }
 export function parseArgs(argv = process.argv.slice(2)) {

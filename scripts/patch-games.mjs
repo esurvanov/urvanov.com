@@ -150,7 +150,7 @@ if (existsSync(sitemapFile) && existsSync('games')) {
       date = execSync(`git -C games log -1 --format=%cI -- ${g.dir}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim().slice(0, 10) || null
     } catch { /* нет git-истории игр — оставляем дату сборки */ }
     if (!date) continue
-    for (const prefix of ['', '/en']) {
+    for (const prefix of ['', '/ru']) {
       const loc = (SITE_URL + `${prefix}/materials/games/${LANDING[g.dir]}/`).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
       sitemap = sitemap.replace(new RegExp(`(<url><loc>${loc}</loc><lastmod>)[^<]+(</lastmod>)`), `$1${date}$2`)
     }
@@ -167,7 +167,7 @@ if (existsSync(sitemapFile) && existsSync('project-euler')) {
       date = execSync(`git -C project-euler log -1 --format=%cI -- ${l.repoDir}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim().slice(0, 10) || null
     } catch { /* нет истории — оставляем дату сборки */ }
     if (!date) continue
-    for (const prefix of ['', '/en']) {
+    for (const prefix of ['', '/ru']) {
       const loc = (SITE_URL + `${prefix}/materials/interactive/${l.dir}/`).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
       sitemap = sitemap.replace(new RegExp(`(<url><loc>${loc}</loc><lastmod>)[^<]+(</lastmod>)`), `$1${date}$2`)
     }

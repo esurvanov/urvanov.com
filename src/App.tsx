@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import type { ReactElement } from 'react'
+import { stripLang } from '@/lib/i18n'
 import PatternsView from '@/components/PatternsView'
 import PatternsCategoryView from '@/components/PatternsCategoryView'
 import LinksView from '@/components/LinksView'
@@ -23,54 +25,45 @@ import { useSmoothNavigation } from '@/lib/useSmoothNavigation'
 const SlideView = lazy(() => import('@/components/SlideView'))
 const PresenterView = lazy(() => import('@/components/PresenterView'))
 
+const PAGES: [string, ReactElement][] = [
+  ['/', <HomeView />],
+  ['/about', <AboutView />],
+  ['/blog', <BlogView />],
+  ['/blog/page/:page', <BlogView />],
+  ['/blog/category/:category', <BlogView />],
+  ['/blog/category/:category/page/:page', <BlogView />],
+  ['/blog/:slug', <BlogPostView />],
+  ['/materials', <MaterialsView />],
+  ['/materials/presentations', <PresentationsView />],
+  ['/materials/games', <GamesView />],
+  ['/materials/games/:slug', <GameView />],
+  ['/materials/games/:slug/architecture', <ArchitectureView />],
+  ['/materials/glossary', <GlossaryView />],
+  ['/materials/glossary/:slug', <TermView />],
+  ['/materials/interactive', <InteractiveView />],
+  ['/materials/interactive/:slug', <LabView />],
+  ['/materials/blocks', <BlocksView />],
+  ['/ai', <AiHubView />],
+  ['/ai/:slug', <AiOfferView />],
+  ['/links', <LinksView />],
+  ['/talk/spec-driven-development', <TalkView />],
+]
+
+// Старые английские адреса /en/… ведут в корень; русские — под /ru/
+function EnAlias() {
+  const { pathname, search, hash } = useLocation()
+  return <Navigate replace to={stripLang(pathname) + search + hash} />
+}
+
 export default function App() {
   usePageMeta()
   useSmoothNavigation()
   return (
     <Suspense fallback={null}>
     <Routes>
-      <Route path="/" element={<HomeView />} />
-      <Route path="/about" element={<AboutView />} />
-      <Route path="/blog" element={<BlogView />} />
-      <Route path="/blog/page/:page" element={<BlogView />} />
-      <Route path="/blog/category/:category" element={<BlogView />} />
-      <Route path="/blog/category/:category/page/:page" element={<BlogView />} />
-      <Route path="/blog/:slug" element={<BlogPostView />} />
-      <Route path="/materials" element={<MaterialsView />} />
-      <Route path="/materials/presentations" element={<PresentationsView />} />
-      <Route path="/materials/games" element={<GamesView />} />
-      <Route path="/materials/games/:slug" element={<GameView />} />
-      <Route path="/materials/games/:slug/architecture" element={<ArchitectureView />} />
-      <Route path="/materials/glossary" element={<GlossaryView />} />
-      <Route path="/materials/glossary/:slug" element={<TermView />} />
-      <Route path="/materials/interactive" element={<InteractiveView />} />
-      <Route path="/materials/interactive/:slug" element={<LabView />} />
-      <Route path="/materials/blocks" element={<BlocksView />} />
-      <Route path="/ai" element={<AiHubView />} />
-      <Route path="/ai/:slug" element={<AiOfferView />} />
-      <Route path="/links" element={<LinksView />} />
-      <Route path="/talk/spec-driven-development" element={<TalkView />} />
-      <Route path="/en" element={<HomeView />} />
-      <Route path="/en/about" element={<AboutView />} />
-      <Route path="/en/blog" element={<BlogView />} />
-      <Route path="/en/blog/page/:page" element={<BlogView />} />
-      <Route path="/en/blog/category/:category" element={<BlogView />} />
-      <Route path="/en/blog/category/:category/page/:page" element={<BlogView />} />
-      <Route path="/en/blog/:slug" element={<BlogPostView />} />
-      <Route path="/en/materials" element={<MaterialsView />} />
-      <Route path="/en/materials/presentations" element={<PresentationsView />} />
-      <Route path="/en/materials/games" element={<GamesView />} />
-      <Route path="/en/materials/games/:slug" element={<GameView />} />
-      <Route path="/en/materials/games/:slug/architecture" element={<ArchitectureView />} />
-      <Route path="/en/materials/glossary" element={<GlossaryView />} />
-      <Route path="/en/materials/glossary/:slug" element={<TermView />} />
-      <Route path="/en/materials/interactive" element={<InteractiveView />} />
-      <Route path="/en/materials/interactive/:slug" element={<LabView />} />
-      <Route path="/en/materials/blocks" element={<BlocksView />} />
-      <Route path="/en/ai" element={<AiHubView />} />
-      <Route path="/en/ai/:slug" element={<AiOfferView />} />
-      <Route path="/en/links" element={<LinksView />} />
-      <Route path="/en/talk/spec-driven-development" element={<TalkView />} />
+      {(['', '/ru'] as const).flatMap((pre) => PAGES.map(([p, el]) => <Route key={pre + p} path={p === '/' ? pre || '/' : pre + p} element={el} />))}
+      <Route path="/en" element={<EnAlias />} />
+      <Route path="/en/*" element={<EnAlias />} />
       <Route path="/slide/:index" element={<SlideView />} />
       <Route path="/presenter" element={<PresenterView />} />
       <Route path="/patterns" element={<PatternsView />} />
