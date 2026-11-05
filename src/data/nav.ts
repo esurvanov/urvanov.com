@@ -7,6 +7,8 @@ export interface NavItem {
   hint: L
   jaiora?: boolean
   external?: boolean
+  /** Внешний адрес по языкам (если у сайта есть своя языковая версия) */
+  href?: L
 }
 
 export const NAV_ITEMS: NavItem[] = [
@@ -16,4 +18,5 @@ export const NAV_ITEMS: NavItem[] = [
   { to: '/materials', label: { ru: 'Материалы', en: 'Materials' }, hint: { ru: 'презентации · игры', en: 'talks · games' } },
   { to: '/links', label: { ru: 'Ссылки', en: 'Links' }, hint: { ru: 'профили · выступления', en: 'profiles · talks' } },
   { to: 'https://jaiora.me/', external: true, label: { ru: 'Jaiora', en: 'Jaiora' }, hint: { ru: 'оффлайн-LinkedIn', en: 'offline LinkedIn' }, jaiora: true },
+  { to: 'https://clauding.me/', href: { ru: 'https://clauding.me/ru/', en: 'https://clauding.me/' }, external: true, label: { ru: 'Clauding', en: 'Clauding' }, hint: { ru: 'мир из результатов', en: 'a world of results' } },
 ]

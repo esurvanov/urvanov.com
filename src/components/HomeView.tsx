@@ -4,7 +4,7 @@ import { postsFor } from '@/data/blog'
 import { NAV_ITEMS, type NavItem } from '@/data/nav'
 import { BIO } from '@/data/profile'
 import Page from '@/components/site/Page'
-import { otherLang, stripLang, useT, withLang, withSlash } from '@/lib/i18n'
+import { otherLang, stripLang, useT, withLang, withSlash, type Lang } from '@/lib/i18n'
 import ThemeToggle from '@/components/site/ThemeToggle'
 
 const CONTACTS = [
@@ -16,10 +16,10 @@ const CONTACTS = [
 ]
 
 // внешний раздел (Jaiora живёт на своём домене) — обычная ссылка, остальные — маршруты сайта
-function Wrap({ item, to, children }: { item: NavItem; to: string; children: React.ReactNode }) {
+function Wrap({ item, to, lang, children }: { item: NavItem; to: string; lang: Lang; children: React.ReactNode }) {
   const cls = item.jaiora ? 'jai' : undefined
   return item.external
-    ? <a href={item.to} className={cls} rel="noopener">{children}</a>
+    ? <a href={item.href?.[lang] ?? item.to} className={cls} rel="noopener">{children}</a>
     : <Link to={to} className={cls}>{children}</Link>
 }
 
@@ -59,7 +59,7 @@ export default function HomeView() {
         <ol className="s-index">
           {NAV_ITEMS.map((s, i) => (
             <li key={s.to}>
-              <Wrap item={s} to={to(s.to)}>
+              <Wrap item={s} to={to(s.to)} lang={lang}>
                 <span className="n">{String(i + 1).padStart(2, '0')}</span>
                 <span className="t">{t(s.label)}</span>
                 <span className="h">

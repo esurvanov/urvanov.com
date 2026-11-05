@@ -201,6 +201,12 @@ export function TermView() {
         </p>
       )}
 
+      {term.site && (
+        <p className="g-actions">
+          <a className="s-link" href={term.site.url} target="_blank" rel="noopener noreferrer">{ICONS.ext} {t(term.site.label)}</a>
+        </p>
+      )}
+
       {term.more && (
         <p className="g-actions">
           <ActionLink to={to(`/blog/${term.more.post}`)} icon={ICONS.doc} primary>{t({ ru: 'Подробнее', en: 'Read more' })}: {t(term.more.label)}</ActionLink>

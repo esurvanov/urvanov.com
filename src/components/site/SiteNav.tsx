@@ -15,7 +15,7 @@ export default function SiteNav({ alt }: { alt?: string }) {
       <Link to={to('/')} className="s-nav-home">{t({ ru: 'Егор Урванов', en: 'Egor Urvanov' })}</Link>
       <nav aria-label={t({ ru: 'Разделы', en: 'Sections' })}>
         {NAV_ITEMS.map((i) => i.external ? (
-          <a key={i.to} href={i.to} className="s-nav-link" rel="noopener">{t(i.label)}</a>
+          <a key={i.to} href={i.href?.[lang] ?? i.to} className="s-nav-link" rel="noopener">{t(i.label)}</a>
         ) : (
           <NavLink key={i.to} to={to(i.to)} className={({ isActive }) => `s-nav-link${isActive ? ' is-active' : ''}`}>
             {t(i.label)}

@@ -28,6 +28,8 @@ export interface Term {
   notes?: { title: L; items: { name: L; text: L }[] }
   /** Внешний первоисточник: стандарт, сайт методологии */
   source?: { url: string; label: L }
+  /** Собственный сайт или страница про термин (рядом с источником) */
+  site?: { url: string; label: L }
   /** Таблица свойств: столбцы — варианты, строки — [свойство, значение для каждого столбца] */
   table?: { title: L; head: L<string[]>; rows: L<string[]>[] }
   /** Таблица сравнения: заголовок и строки [что сравниваем, левый, правый] */
@@ -425,6 +427,25 @@ export const TERM_SETS: TermSet[] = [
           ],
         },
         matrix: CODING_MATRIX,
+      },
+      {
+        slug: 'clauding',
+        name: { ru: 'Clauding', en: 'Clauding' },
+        aka: { ru: 'клодинг, клодить', en: 'working with Claude' },
+        def: {
+          ru: 'Clauding — неформальное слово для работы с Claude или через Claude: человек пишет задачу, смотрит результат и уточняет, пока не получит нужное. По образцу глагола «гуглить»: Google возвращает ссылки, Claude возвращает готовую работу, которую человек проверяет. Пример: вместо того чтобы самому писать письмо клиенту, вы поручаете его Claude, правите две фразы и отправляете.',
+          en: 'Clauding is an informal word for working with or through Claude: a person writes the task, reviews the result and refines it until it is right. It follows the verb “to google”: Google returns links, Claude returns finished work that the person checks. Example: instead of writing a client email yourself, you hand it to Claude, fix two phrases and send it.',
+        },
+        match: { ru: ['clauding\\p{L}*', 'клодинг\\p{L}*'], en: ['clauding'] },
+        related: ['claude-code', 'ai-agent', 'human-in-the-loop'],
+        source: { url: 'https://explainx.ai/dictionary/clauding', label: { ru: 'explainx.ai: словарь ИИ-сленга, статья Clauding', en: 'explainx.ai AI dictionary: Clauding' } },
+        site: { url: 'https://clauding.me/', label: { ru: 'clauding.me — страница про термин', en: 'clauding.me, a page about the term' } },
+        notes: {
+          title: { ru: 'Слова из первоисточника', en: 'Words from the source' },
+          items: [
+            { name: { ru: 'Определение', en: 'Definition' }, text: { ru: '«Clauding is informal shorthand for working with or through Claude» (explainx.ai)', en: '“Clauding is informal shorthand for working with or through Claude” (explainx.ai)' } },
+          ],
+        },
       },
       {
         slug: 'codex',
