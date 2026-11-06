@@ -1753,7 +1753,7 @@ export const TERM_SETS: TermSet[] = [
   {
     slug: 'environments',
     icon: 'code',
-    name: { ru: 'Среды разработки', en: 'Environments' },
+    name: { ru: 'Среды и стенды', en: 'Environments' },
     hint: { ru: 'Где живёт система на пути изменения к пользователям', en: 'Where a system lives on a change’s way to users' },
     terms: [
       {
@@ -1768,9 +1768,9 @@ export const TERM_SETS: TermSet[] = [
         related: ['time-to-market', 'sandbox', 'human-in-the-loop'],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
-          title: { ru: 'Среды разработки: локальная, дев, тест, препрод, прод — что это и чем отличаются', en: 'Environments: local, dev, test, pre-prod, prod — what they are and how they differ' },
+          title: { ru: 'Среды: локальная, дев, тест, препрод, прод — что это и чем отличаются', en: 'Environments: local, dev, test, pre-prod, prod — what they are and how they differ' },
           description: {
-            ru: 'Среды разработки — отдельные копии системы на пути изменения к пользователям: локальная, дев, тест, препрод, демо, прод. Чем отличаются и кто там работает.',
+            ru: 'Среды (окружения) — отдельные копии системы на пути изменения к пользователям: локальная, дев, тест, препрод, демо, прод. Чем отличаются и кто там работает.',
             en: 'Environments are separate copies of a system on a change’s way to users: local, dev, test, pre-prod, demo, prod. How they differ and who works there.',
           },
         },
