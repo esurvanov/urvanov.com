@@ -151,6 +151,75 @@ const companyScene = (I: Iso, model: string, under: string, groups: Group[]) => 
   })
 }
 
+// Среды: одна дорожка для страниц глоссария; hl — какая среда подсвечена (индексы: 0 локальная, 1 фича-стенд, 2 дев, 3 тест, 4 препрод, 5 демо, 6 прод).
+// Фича-стенд стоит под девом: он работает параллельно с ним, стоит рядом с ним.
+const envScene = (I: Iso, l: (ru: string, en: string) => string, hl: number) => {
+  const { g, arr, t } = screen(I)
+  const S = 1.5, P = [-10.5, -6.3, -2.1, 2.1, 6.3, 10.5], D = 3.0
+  const at = [[P[0], 0], [P[1], D], [P[1], -D], [P[2], 0], [P[3], 0], [P[4], 0], [P[5], 0]]
+  const names = [l('локальная', 'local'), l('фича-стенд', 'feature'), l('дев', 'dev'), l('тест', 'test'), l('препрод', 'pre-prod'), l('демо', 'demo'), l('прод', 'prod')]
+  const asks = [l('пишу и пробую', 'write and try'), l('параллельно деву', 'next to dev'), l('код сходится', 'code fits'), l('все интегрируются часто', 'everyone integrates often'), l('как на проде', 'like prod'), l('показ, часто на проде', 'demo, often on prod'), l('работают люди', 'users at work')]
+  const edges = [M, A, A, A, A, A, W]
+  at.forEach(([X, Y], i) => {
+    const [x, y] = g(X, Y)
+    const col = i === hl ? `color-mix(in srgb, ${edges[i]} 26%, var(--surface-2))` : S2
+    I.tile(x - S / 2, y - S / 2, S, S, { col, h: i === hl ? 0.22 : 0.12, grid: false, edge: edges[i] })
+    if (i === 0) I.person(x, y, M, '')
+    else { const k = 0.8; I.box(x - k / 2, y - k / 2, 0, k, k, k, edges[i] === W ? W : A) }
+    t(X, Y + 1.5, names[i], edges[i], { dy: 6, size: 15, w: i === hl ? 900 : 800 })
+    t(X, Y + 1.5, asks[i], i === hl ? edges[i] : M, { dy: 23, size: 12, w: i === hl ? 800 : 600 })
+  })
+  // Ромб: от локальной две дороги — через дев (сверху) и через фича-стенд (снизу), обе сходятся на тесте
+  arr(A, [P[0] + 1.0, -0.4], [P[1] - 1.0, -D + 0.4]); arr(A, [P[0] + 1.0, 0.4], [P[1] - 1.0, D - 0.4])
+  arr(A, [P[1] + 1.0, -D + 0.4], [P[2] - 1.0, -0.4]); arr(A, [P[1] + 1.0, D - 0.4], [P[2] - 1.0, 0.4])
+  for (let k = 2; k < 5; k++) arr(A, [P[k] + 1.0, 0], [P[k + 1] - 1.0, 0])
+  // Тестовые стенды — одна пунктирная рамка: дев, тест, препрод, демо и фича-стенд под девом
+  const X1 = P[1] - 1.8, X2 = P[4] + 2.3, Y1 = -D - 2.7, Y2 = D + 3.0
+  I.path([g(X1, Y1), g(X2, Y1), g(X2, Y2), g(X1, Y2), g(X1, Y1)], A, { w: 2.2, dash: '8 6' })
+  // Демо часто и есть прод: оранжевая пунктирная рамка прода заходит на демо и пересекается с рамкой стендов
+  { const Q1 = P[4] - 2.0, Q2 = P[5] + 1.9, Z1 = -2.4, Z2 = 3.3
+    I.path([g(Q1, Z1), g(Q2, Z1), g(Q2, Z2), g(Q1, Z2), g(Q1, Z1)], W, { w: 2.2, dash: '8 6' }) }
+  t((P[2] + P[4]) / 2, D + 1.4, l('тестовые стенды', 'test stands'), A, { size: 17, w: 800 })
+}
+
+// Метрики поставки: одна и та же дорожка от идеи до пользователей, у каждой метрики своя отметка над ней
+const deliveryScene = (I: Iso, l: (ru: string, en: string) => string, kind: 'ttm' | 'lead' | 'freq' | 'fail' | 'recover' | 'rework') => {
+  const { g, arr, t } = screen(I)
+  const S = 1.7, P = [-9.2, -4.6, 0, 4.6, 9.2], YO = -2.6
+  const names = [l('идея', 'idea'), l('коммит', 'commit'), l('проверки', 'checks'), l('прод', 'prod'), l('пользователи', 'users')]
+  const edges = [M, A, A, W, M]
+  P.forEach((X, i) => {
+    const [x, y] = g(X, 0)
+    I.tile(x - S / 2, y - S / 2, S, S, { col: S2, h: 0.12, grid: false, edge: edges[i], dash: '6 5' })
+    if (i === 0) I.doc(x - 0.45, y - 0.3, 0, 0.9, 0.6, M, 2)
+    else if (i === 1) I.doc(x - 0.45, y - 0.3, 0, 0.9, 0.6, A, 3)
+    else if (i === 2) I.clipboard(x, y, 0.9, A)
+    else if (i === 3) I.box(x - 0.4, y - 0.4, 0, 0.8, 0.8, 0.8, W)
+    else I.person(x, y, M, '')
+    t(X, 1.6, names[i], edges[i], { dy: 6, size: 17, w: 800 })
+    if (i < 4) arr(A, [X + 1.3, 0], [P[i + 1] - 1.3, 0])
+  })
+  const span = (X1: number, X2: number, label: string) => { I.path([g(X1, YO), g(X2, YO)], A, { w: 3 }); t((X1 + X2) / 2, YO, label, A, { dy: -10, size: 17, w: 800 }) }
+  const rel = (X: number, col: string) => { const [x, y] = g(X, YO); I.box(x - 0.3, y - 0.3, 0, 0.6, 0.6, 0.6, col) }
+  const row = (cols: string[], label: string, under?: string) => {
+    const X0 = P[3] - 2.4
+    cols.forEach((c, i) => rel(X0 + i * 1.6, c))
+    t(P[3], YO, label, A, { dy: -26, size: 17, w: 800 })
+    if (under) t(X0 + (cols.length - 1) * 1.6, YO, under, W, { dy: 22, size: 13, w: 700 })
+  }
+  if (kind === 'ttm') span(P[0], P[4], l('time to market: от идеи до пользователей', 'time to market: idea to users'))
+  if (kind === 'lead') span(P[1], P[3], l('время изменения: от коммита до прода', 'lead time: commit to prod'))
+  if (kind === 'freq') row([A, A, A, A], l('частота выкладок: сколько в неделю', 'deployment frequency: per week'))
+  if (kind === 'fail') row([A, A, A, W], l('доля сбойных выкладок', 'change fail rate'), l('откат или хотфикс', 'rollback or hotfix'))
+  if (kind === 'rework') row([A, A, A, W], l('доля внеплановых выкладок', 'deployment rework rate'), l('после сбоя', 'after an incident'))
+  if (kind === 'recover') {
+    const X1 = P[3] - 0.8, X2 = P[3] + 2.4
+    rel(X1, W); rel(X2, A); arr(A, [X1 + 0.6, YO], [X2 - 0.6, YO])
+    t(X1, YO, l('сбой', 'failure'), W, { dy: 22, size: 13, w: 700 }); t(X2, YO, l('починили', 'fixed'), A, { dy: 22, size: 13, w: 700 })
+    t((X1 + X2) / 2, YO, l('время восстановления', 'recovery time'), A, { dy: -26, size: 17, w: 800 })
+  }
+}
+
 export const ART: Record<string, Art> = {
   'ai-agent': { ru: 'Агент = модель + харнесс', en: 'Agent = model + harness', tile: [-8.2, -8.2, 16.4, 16.4], wide: true, map: true, draw: (I, l) => {
     // Кольцо цикла в центре, вокруг четыре зоны. data-z — зона, data-t — термин: по ним схема подсвечивается и открывает термины
@@ -599,6 +668,21 @@ export const ART: Record<string, Art> = {
     ext(C + 1.0, 2.4); lab(C + 1.0, 3.3, l('тестовый сервис', 'test instance'), M); or(C + 2.65, 2.1)
     { const [x, y] = g(C + 4.3, 1.7); I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.6, A) } lab(C + 4.3, 2.6, l('мок сервиса', 'service mock'), A)
   } },
+  'environment': { ru: 'Изменение идёт по средам слева направо; в рамке — тестовые стенды', en: 'A change moves through the environments left to right; the frame holds the test stands', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => envScene(I, l, -1) },
+  'test-stand/2': { ru: 'Весь путь изменения: в рамке все тестовые стенды, локальная и прод стендами не считаются', en: 'The whole path of a change: the frame holds every test stand; local and production are not stands', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => envScene(I, l, -1) },
+  'local-env': { ru: 'Локальная среда — первая ступень, только у разработчика', en: 'The local environment is the first step, only on the developer’s machine', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => envScene(I, l, 0) },
+  'feature-stand': { ru: 'Feature-стенд — временный, под одну ветку кода', en: 'A feature stand is temporary, for one code branch', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => envScene(I, l, 1) },
+  'dev-env': { ru: 'Дев — общая среда команды после слияния кода', en: 'Dev is the shared team environment after the code is merged', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => envScene(I, l, 2) },
+  'test-env': { ru: 'Тест — сюда часто сводят изменения всех команд', en: 'Test is where all teams’ changes come together often', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => envScene(I, l, 3) },
+  'preprod': { ru: 'Каждая среда проверяет своё; препрод — предпоследняя', en: 'Each environment checks its own thing; pre-prod is the second to last', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => envScene(I, l, 4) },
+  'demo-env': { ru: 'Демо — показ клиенту перед продом', en: 'Demo is a showing to the client before production', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => envScene(I, l, 5) },
+  'prod': { ru: 'Прод — последняя ступень, с настоящими пользователями', en: 'Production is the last step, with real users', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => envScene(I, l, 6) },
+  'time-to-market': { ru: 'Время от идеи до пользователей', en: 'Time from an idea to users', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => deliveryScene(I, l, 'ttm') },
+  'change-lead-time': { ru: 'Время от коммита до работы на проде', en: 'Time from commit to running in production', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => deliveryScene(I, l, 'lead') },
+  'deployment-frequency': { ru: 'Сколько раз за период изменения доходят до прода', en: 'How many times a period changes reach production', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => deliveryScene(I, l, 'freq') },
+  'change-fail-rate': { ru: 'Какая часть выкладок потребовала отката или хотфикса', en: 'The share of releases that needed a rollback or a hotfix', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => deliveryScene(I, l, 'fail') },
+  'recovery-time': { ru: 'Сколько проходит от сбоя до починки', en: 'How long it takes from a failure to a fix', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => deliveryScene(I, l, 'recover') },
+  'deployment-rework-rate': { ru: 'Какая часть выкладок внеплановая из-за сбоя', en: 'The share of unplanned releases caused by an incident', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => deliveryScene(I, l, 'rework') },
   'human-in-the-loop': { ru: 'На важном шаге агент ждёт вашего решения', en: 'On the key step the agent waits for your decision', tile: [0, 0, 0, 0], draw: (I, l) => {
     const { g, arr, t, person, agent } = screen(I)
     agent(-6.5, 0, l('агент', 'agent'))

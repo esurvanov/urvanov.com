@@ -516,6 +516,12 @@ html { scrollbar-gutter: stable; }
 .g-cmp thead th { border-top: 0; font-family: inherit; font-weight: 700; color: var(--ink); white-space: normal; background: color-mix(in srgb, var(--ink) 4%, transparent); }
 .g-cmp tbody th { font-family: inherit; font-weight: 600; font-size: var(--t-small); color: var(--ink-3); white-space: normal; }
 .g-cmp tr > :first-child { width: 22%; }
+.g-cmp tbody th, .g-cmp tbody td { vertical-align: baseline; }
+.g-cmp-6 tr > :first-child { width: 17%; }
+.g-cmp-6 th, .g-cmp-6 td { padding: 12px 10px; }
+.g-cmp-7 tr > :first-child { width: 14%; }
+.g-cmp-7 th, .g-cmp-7 td { padding: 12px 8px; }
+.g-cmp-7 thead th { white-space: nowrap; }
 .g-cmp .is-own { background: color-mix(in srgb, var(--accent) 8%, transparent); }
 .g-cmp thead th.is-own { color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
 @media (max-width: 600px) { .g-cmp { table-layout: auto; min-width: 560px; } .g-cmp th, .g-cmp td { padding: 10px 12px; } }

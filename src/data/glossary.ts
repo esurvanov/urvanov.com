@@ -121,37 +121,6 @@ export const TERM_SETS: TermSet[] = [
         matrix: AGENT_MATRIX,
       },
       {
-        slug: 'test-stand',
-        name: { ru: 'Тестовый стенд', en: 'Staging environment' },
-        aka: { ru: 'стенд в IT, тестовая среда, тестовый контур, препрод', en: 'test environment, test stand, staging, pre-prod' },
-        def: {
-          ru: 'Стенд в IT — отдельная копия системы, где можно пробовать и ломать, не задевая рабочую (прод). Обычно сред три: локальная у разработчика, тестовая (стенд) и рабочая; изменение идёт по ним по порядку. Перед рабочей иногда ставят ещё препрод (stage) — стенд, максимально похожий на прод. Агент воспроизводит баги и проверяет изменения именно на стенде. Зависимости системы, данные и внешние сервисы, подключают к стенду копиями настоящих или моками: копии ближе к правде, моки дешевле, поэтому ими пользуются чаще. От песочницы стенд отличается задачей: песочница ограждает действия агента, а стенд — копия всей системы. В 1С стенд — это тестовая база.',
-          en: 'A separate copy of a system where you can try and break things without touching the live one (production). There are usually three environments: local on the developer’s machine, test (staging) and production; a change moves through them in order. Some teams add pre-prod right before production: a stand as close to production as possible. An agent reproduces bugs and checks changes on staging. The system’s dependencies, data and external services, are plugged in as copies of the real ones or as mocks: copies are closer to reality, mocks are cheaper and so used more often. Staging differs from a sandbox in purpose: a sandbox fences in the agent’s actions, while staging is a copy of the whole system. In 1C, staging is a test database.',
-        },
-        match: { ru: ['стенд\\p{L}*', 'тестов\\p{L}* сред\\p{L}*', 'тестов\\p{L}* контур\\p{L}*', 'препрод\\p{L}*'], en: ['test stands?', 'staging(?: environments?)?', 'test environments?'] },
-        related: ['sandbox', 'ai-agent', 'claude-in-chrome', 'human-in-the-loop'],
-        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
-        seo: {
-          title: { ru: 'Стенд в IT: что это, какие бывают — тестовый, препрод, прод — и что можно ИИ-агенту', en: 'Staging environment: what it is, staging vs production vs development' },
-          description: {
-            ru: 'Стенд в IT и программировании — копия системы, где команда и ИИ-агент проверяют изменения, не трогая рабочую. Какие бывают стенды: локальный, тестовый, препрод, прод — и чем стенд отличается от песочницы.',
-            en: 'A staging environment is a copy of the system where an agent and the team check changes without touching production. Development vs staging vs production, and how staging differs from a sandbox.',
-          },
-        },
-        more: { post: 'mcp-1c', label: { ru: 'Локальная, тестовая и рабочая база на примере 1С', en: 'Local, test and production databases in 1C' } },
-        compare: {
-          title: { ru: 'Какие бывают стенды: локальный, тестовый, препрод, прод', en: 'Development vs staging vs pre-prod vs production' },
-          head: { ru: ['Локальный', 'Тестовый', 'Препрод', 'Прод'], en: ['Development', 'Staging', 'Pre-prod', 'Production'] },
-          rows: [
-            { ru: ['Где', 'компьютер разработчика', 'отдельный сервер или база', 'сервер, настроенный как прод', 'сервер, с которым работают пользователи'], en: ['Where', 'the developer’s machine', 'a separate server or database', 'a server set up like production', 'the server users work with'] },
-            { ru: ['Данные', 'тестовые или обезличенная копия', 'копия рабочих или моки', 'свежая копия рабочих', 'настоящие'], en: ['Data', 'test or anonymized copy', 'a copy of production or mocks', 'a fresh copy of production', 'real'] },
-            { ru: ['Зачем', 'писать и сразу пробовать', 'проверить изменение целиком', 'последняя проверка перед выкладкой', 'работа пользователей'], en: ['What for', 'write and try right away', 'check the whole change', 'the last check before release', 'users’ work'] },
-            { ru: ['Есть всегда', 'да', 'да', 'не всегда', 'да'], en: ['Always there', 'yes', 'yes', 'not always', 'yes'] },
-            { ru: ['Что можно агенту', 'читать и писать', 'писать и запускать проверки', 'запускать проверки, правки — через выкладку', 'не пишет; читать — только если разрешили, переносит человек'], en: ['What the agent may do', 'read and write', 'write and run checks', 'run checks; changes only through a release', 'no writes; read only if allowed, a person moves changes'] },
-          ],
-        },
-      },
-      {
         slug: 'human-in-the-loop',
         name: { ru: 'Human-in-the-loop', en: 'Human in the loop' },
         aka: { ru: 'человек в контуре, человек в цикле, HITL', en: 'HITL, human approval' },
@@ -1778,6 +1747,358 @@ export const TERM_SETS: TermSet[] = [
         related: ['automated-test', 'qunit', 'model-checking', 'quint'],
         more: { post: 'quint-models-find-races', label: { ru: 'Проверка проверок в моделях на Quint', en: 'Checking the checks in Quint models' } },
         source: { url: 'https://en.wikipedia.org/wiki/Mutation_testing', label: { ru: 'Википедия: мутационное тестирование', en: 'Wikipedia: Mutation testing' } },
+      },
+    ],
+  },
+  {
+    slug: 'environments',
+    icon: 'code',
+    name: { ru: 'Среды разработки', en: 'Environments' },
+    hint: { ru: 'Где живёт система на пути изменения к пользователям', en: 'Where a system lives on a change’s way to users' },
+    terms: [
+      {
+        slug: 'environment',
+        name: { ru: 'Среда (окружение)', en: 'Environment' },
+        aka: { ru: 'окружение, среда развёртывания, environment', en: 'deployment environment, stage' },
+        def: {
+          ru: 'Среда (окружение) — отдельная копия системы со своей задачей: на одной пишут код, на другой проверяют, на третьей работают пользователи. Изменение проходит по средам по порядку: локальная, дев (рядом с ним — фича-стенды), тест, препрод, демо, прод. Чем ближе к проду, тем ближе к настоящим настройки и данные и тем дороже ошибка.',
+          en: 'An environment is a separate copy of a system with its own job: code is written on one, checked on another, and users work on a third. A change moves through the environments in order: local, dev (with feature stands alongside it), test, pre-prod, demo, prod. The closer to production, the closer the settings and data are to the real ones and the more a mistake costs.',
+        },
+        match: { ru: ['окружени\\p{L}*', 'сред\\p{L}* развёртывани\\p{L}*'], en: ['deployment environments?'] },
+        related: ['time-to-market', 'sandbox', 'human-in-the-loop'],
+        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
+        seo: {
+          title: { ru: 'Среды разработки: локальная, дев, тест, препрод, прод — что это и чем отличаются', en: 'Environments: local, dev, test, pre-prod, prod — what they are and how they differ' },
+          description: {
+            ru: 'Среды разработки — отдельные копии системы на пути изменения к пользователям: локальная, дев, тест, препрод, демо, прод. Чем отличаются и кто там работает.',
+            en: 'Environments are separate copies of a system on a change’s way to users: local, dev, test, pre-prod, demo, prod. How they differ and who works there.',
+          },
+        },
+        parts: { title: { ru: 'Какие бывают среды', en: 'Kinds of environments' }, slugs: ['local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env', 'prod'] },
+        compare: {
+          title: { ru: 'Все среды: что проверяют, кто заходит, какие данные', en: 'All environments: what they check, who uses them, what data' },
+          head: { ru: ['Локальная', 'Фича-стенд', 'Дев', 'Тест', 'Препрод', 'Демо', 'Прод'], en: ['Local', 'Feature', 'Dev', 'Test', 'Pre-prod', 'Demo', 'Prod'] },
+          headSlugs: ['local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env', 'prod'],
+          rows: [
+            { ru: ['Что проверяют', 'пишу и пробую', 'одна ветка отдельно', 'код сходится', 'все интегрируются часто', 'как на проде', 'показ клиенту', 'работают люди'], en: ['What it checks', 'write and try', 'one branch on its own', 'code fits together', 'everyone integrates often', 'like production', 'client demo', 'users at work'] },
+            { ru: ['Тестовый стенд', 'нет', 'да', 'да', 'да', 'да', 'не всегда', 'нет'], en: ['Test stand', 'no', 'yes', 'yes', 'yes', 'yes', 'not always', 'no'] },
+            { ru: ['Кто заходит', 'разработчик', 'автор ветки', 'команда', 'QA', 'команда', 'заказчик', 'клиенты'], en: ['Who uses it', 'a developer', 'the branch author', 'the team', 'QA', 'the team', 'the client', 'customers'] },
+            { ru: ['Данные', 'тестовые', 'тестовые', 'тестовые', 'копия рабочих или моки', 'свежая копия рабочих', 'примеры или настоящие', 'настоящие'], en: ['Data', 'test', 'test', 'test', 'a copy of production or mocks', 'a fresh copy of production', 'samples or real', 'real'] },
+            { ru: ['Есть всегда', 'да', 'не всегда', 'не всегда', 'почти всегда', 'не всегда', 'не всегда', 'да'], en: ['Always there', 'yes', 'not always', 'not always', 'almost always', 'not always', 'not always', 'yes'] },
+          ],
+        },
+      },
+      {
+        slug: 'local-env',
+        name: { ru: 'Локальная среда', en: 'Local environment' },
+        aka: { ru: 'локалка, среда разработчика, local', en: 'local, developer machine' },
+        def: {
+          ru: 'Локальная среда — копия системы на компьютере самого разработчика, в IT её зовут «локалкой». Здесь пишут код и сразу пробуют; ломать можно сколько угодно, потому что никто другой этого не видит. Данные тестовые или обезличенная копия рабочих. Тестовым стендом её не считают: стенд — общий сервер команды, он начинается со следующей ступени.',
+          en: 'The local environment is a copy of the system on the developer’s own computer. Code is written and tried here right away; breaking things is fine because nobody else sees it. The data is test data or an anonymized copy of production. It is not counted as a test stand: a stand is the team’s shared server, which starts at the next step.',
+        },
+        match: { ru: ['локальн\\p{L}* сред\\p{L}*', 'локалк\\p{L}*'], en: ['local environments?'] },
+        related: ['feature-stand', 'dev-env', 'test-stand'],
+        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
+        seo: {
+          title: { ru: 'Локальная среда: что это в IT и чем отличается от тестового стенда', en: 'Local environment: what it is and how it differs from a test stand' },
+          description: {
+            ru: 'Локальная среда — копия системы на компьютере разработчика, первая ступень пути изменения к проду. Чем отличается от дева и тестового стенда.',
+            en: 'The local environment is a copy of the system on the developer’s computer, the first step on a change’s way to production.',
+          },
+        },
+      },
+      {
+        slug: 'feature-stand',
+        name: { ru: 'Feature-стенд', en: 'Feature stand' },
+        aka: { ru: 'фича-стенд, ветка на стенде, review app, preview environment', en: 'feature environment, review app, preview environment' },
+        def: {
+          ru: 'Feature-стенд — временная копия системы под одну новую функцию, то есть под одну ветку кода. Его поднимают для проверки и убирают после слияния. Он работает параллельно с девом: функцию проверяют отдельно, не дожидаясь общего дева и не занимая тест. Такие стенды ещё называют preview- или review-средами.',
+          en: 'A feature stand is a temporary copy of the system for one new feature, that is one code branch. It is created for the check and removed after the merge. It runs in parallel with dev: a feature is checked on its own, without waiting for the shared dev and without occupying the test environment. Such stands are also called preview or review environments.',
+        },
+        match: { ru: ['feature[- ]?стенд\\p{L}*', 'фич\\p{L}*[- ]?стенд\\p{L}*', 'review app\\p{L}*', 'preview environments?'], en: ['feature (?:stands?|environments?)', 'preview environments?', 'review apps?'] },
+        related: ['local-env', 'dev-env', 'test-stand'],
+        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
+        seo: {
+          title: { ru: 'Feature-стенд: что это и зачем стенд под одну ветку', en: 'Feature stand: what it is and why one branch gets its own stand' },
+          description: {
+            ru: 'Feature-стенд — временная копия системы под одну ветку кода: проверка функции отдельно от общего дева. Review app и preview environment.',
+            en: 'A feature stand is a temporary copy of the system for one code branch. Also called a review app or preview environment.',
+          },
+        },
+      },
+      {
+        slug: 'dev-env',
+        name: { ru: 'Дев', en: 'Dev environment' },
+        aka: { ru: 'дев-среда, dev, среда разработки', en: 'dev, development environment' },
+        def: {
+          ru: 'Дев (dev, среда разработки) — общая для команды среда, куда попадает код после слияния: здесь проверяют, что код разных разработчиков собирается и работает вместе. Данные тестовые. Дев может ломаться, но его чинят быстро, потому что на нём работает вся команда. Это первый общий тестовый стенд после локальной среды. Фича-стенды обычно работают параллельно с девом.',
+          en: 'Dev (the development environment) is the environment shared by the team where code lands after a merge: it checks that the code of different developers builds and works together. The data is test data. Dev can break, but it is fixed quickly because the whole team works on it. It is the first shared test stand after the local environment. Feature stands usually run in parallel with dev.',
+        },
+        match: { ru: ['дев[- ]?сред\\p{L}*', 'дев[- ]?стенд\\p{L}*'], en: ['dev environments?', 'development environments?'] },
+        related: ['feature-stand', 'test-stand', 'local-env'],
+        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
+        seo: {
+          title: { ru: 'Дев (dev) среда: что это в IT и зачем нужна', en: 'Dev environment: what it is and what it is for' },
+          description: {
+            ru: 'Дев — общая среда команды, куда попадает код после слияния. Чем дев отличается от локальной среды, теста и препрода.',
+            en: 'Dev is the team’s shared environment where code lands after a merge. How dev differs from local, test and pre-prod.',
+          },
+        },
+      },
+      {
+        slug: 'test-env',
+        name: { ru: 'Тест (интеграционная среда)', en: 'Test (integration) environment' },
+        aka: { ru: 'тестовая среда, интеграционная среда, интеграционный стенд, тест, SIT', en: 'test environment, integration environment, SIT' },
+        def: {
+          ru: 'Тест — общая среда, куда часто, каждый день или после каждого слияния, сводят изменения всех команд и сервисов, чтобы проверить, что они работают вместе. Здесь работают QA и автотесты, данные — копия рабочих или моки. От дева отличается охватом: на дев попадает код одной команды, на тест интегрируются все. Тест — один из тестовых стендов, и он есть почти всегда, даже там, где дева нет.',
+          en: 'Test is a shared environment where the changes of all teams and services are brought together often, daily or after every merge, to check that they work together. QA and automated tests work here; the data is a copy of production or mocks. It differs from dev in scope: dev gets one team’s code, while everyone integrates on test. Test is one of the test stands, and it is almost always there, even where there is no dev.',
+        },
+        match: { ru: ['интеграционн\\p{L}* сред\\p{L}*', 'интеграционн\\p{L}* стенд\\p{L}*', 'тестов\\p{L}* сред\\p{L}*'], en: ['integration environments?', 'test environments?'] },
+        related: ['dev-env', 'preprod', 'test-stand', 'feature-stand', 'qa'],
+        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
+        seo: {
+          title: { ru: 'Тестовая (интеграционная) среда: что это и чем отличается от дева и препрода', en: 'Test (integration) environment: what it is and how it differs from dev and pre-prod' },
+          description: {
+            ru: 'Тест — интеграционная среда, где часто сводят изменения всех команд и проверяют, что они работают вместе. Чем отличается от дева, препрода и тестового стенда.',
+            en: 'Test is the integration environment where all teams’ changes come together often to check they work together. How it differs from dev, pre-prod and test stands.',
+          },
+        },
+      },
+      {
+        slug: 'test-stand',
+        name: { ru: 'Тестовый стенд', en: 'Staging environment' },
+        aka: { ru: 'стенд в IT, тестовый контур, staging', en: 'test stand, staging' },
+        def: {
+          ru: 'Тестовый стенд — общий класс сред: любая отдельная копия системы на сервере команды, где можно пробовать и ломать, не задевая рабочую (прод). К тестовым стендам относятся фича-стенд, дев, тест (интеграционная среда), препрод и демо; у каждого своя задача, а изменение идёт по ним по порядку. Локальная среда у разработчика и прод стендами не считаются. Агент воспроизводит баги и проверяет изменения именно на стенде. Зависимости системы, данные и внешние сервисы, подключают к стенду копиями настоящих или моками: копии ближе к правде, моки дешевле, поэтому ими пользуются чаще. От песочницы стенд отличается задачей: песочница ограждает действия агента, а стенд — копия всей системы.',
+          en: 'A test stand is a general class of environments: any separate copy of a system on the team’s server where you can try and break things without touching the live one (production). Test stands include the feature stand, dev, test (the integration environment), pre-prod and demo; each has its own job, and a change moves through them in order. The developer’s local environment and production are not stands. An agent reproduces bugs and checks changes on staging. The system’s dependencies, data and external services, are plugged in as copies of the real ones or as mocks: copies are closer to reality, mocks are cheaper and so used more often. Staging differs from a sandbox in purpose: a sandbox fences in the agent’s actions, while staging is a copy of the whole system.',
+        },
+        match: { ru: ['тестов\\p{L}* стенд\\p{L}*', 'стенд\\p{L}*', 'тестов\\p{L}* контур\\p{L}*'], en: ['test stands?', 'staging(?: environments?)?'] },
+        related: ['local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env', 'prod', 'sandbox', 'ai-agent', 'claude-in-chrome', 'human-in-the-loop'],
+        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
+        seo: {
+          title: { ru: 'Стенд в IT: что это, какие бывают — тестовый, препрод, прод — и что можно ИИ-агенту', en: 'Staging environment: what it is, staging vs production vs development' },
+          description: {
+            ru: 'Стенд в IT и программировании — копия системы, где команда и ИИ-агент проверяют изменения, не трогая рабочую. Какие бывают стенды: локальный, тестовый, препрод, прод — и чем стенд отличается от песочницы.',
+            en: 'A staging environment is a copy of the system where an agent and the team check changes without touching production. Development vs staging vs production, and how staging differs from a sandbox.',
+          },
+        },
+        screens: [
+          { ru: 'Стенд собирают как копию прода. Сервис копируют целиком, а его зависимости, то есть базу и внешние сервисы, подключают двумя способами: копиями настоящих, это ближе к правде, или моками, это дешевле и быстрее. Агент работает на стенде, а в прод не пишет.', en: 'A stand is built as a copy of production. The service is copied whole, and its dependencies, the database and outside services, are plugged in two ways: as copies of the real ones, which is closer to reality, or as mocks, which is cheaper and faster. The agent works on the stand and does not write to production.' },
+          { ru: 'Изменение идёт слева направо. С локальной среды код уходит двумя путями: на дев после слияния и на фича-стенд, где проверяют одну ветку. Оба пути сходятся на тесте, там интегрируются все. Дальше препрод проверяет, как изменение поведёт себя на проде, демо показывает его клиенту, и только потом оно попадает в прод. Всё, что в рамке, — тестовые стенды.', en: 'A change moves left to right. From the local environment code goes two ways: to dev after a merge and to a feature stand where one branch is checked. Both ways meet on test, where everyone integrates. Then pre-prod checks how the change behaves like on production, demo shows it to the client, and only then it reaches production. Everything inside the frame is a test stand.' },
+        ],
+        parts: { title: { ru: 'Где проверяют изменения: локальная среда и тестовые стенды', en: 'Where changes are checked: the local environment and test stands' }, slugs: ['local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env'] },
+        compare: {
+          title: { ru: 'Все среды: что проверяют, кто заходит, какие данные', en: 'All environments: what they check, who uses them, what data' },
+          head: { ru: ['Локальная', 'Фича-стенд', 'Дев', 'Тест', 'Препрод', 'Демо', 'Прод'], en: ['Local', 'Feature', 'Dev', 'Test', 'Pre-prod', 'Demo', 'Prod'] },
+          headSlugs: ['local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env', 'prod'],
+          rows: [
+            { ru: ['Что проверяют', 'пишу и пробую', 'одна ветка отдельно', 'код сходится', 'все интегрируются часто', 'как на проде', 'показ клиенту', 'работают люди'], en: ['What it checks', 'write and try', 'one branch on its own', 'code fits together', 'everyone integrates often', 'like production', 'client demo', 'users at work'] },
+            { ru: ['Тестовый стенд', 'нет', 'да', 'да', 'да', 'да', 'не всегда', 'нет'], en: ['Test stand', 'no', 'yes', 'yes', 'yes', 'yes', 'not always', 'no'] },
+            { ru: ['Кто заходит', 'разработчик', 'автор ветки', 'команда', 'QA', 'команда', 'заказчик', 'клиенты'], en: ['Who uses it', 'a developer', 'the branch author', 'the team', 'QA', 'the team', 'the client', 'customers'] },
+            { ru: ['Данные', 'тестовые', 'тестовые', 'тестовые', 'копия рабочих или моки', 'свежая копия рабочих', 'примеры или настоящие', 'настоящие'], en: ['Data', 'test', 'test', 'test', 'a copy of production or mocks', 'a fresh copy of production', 'samples or real', 'real'] },
+            { ru: ['Есть всегда', 'да', 'не всегда', 'не всегда', 'почти всегда', 'не всегда', 'не всегда', 'да'], en: ['Always there', 'yes', 'not always', 'not always', 'almost always', 'not always', 'not always', 'yes'] },
+          ],
+        },
+      },
+      {
+        slug: 'preprod',
+        name: { ru: 'Препрод', en: 'Pre-prod' },
+        aka: { ru: 'предпрод, предпроизводственная среда, pre-production, stage', en: 'preprod, pre-production, stage' },
+        def: {
+          ru: 'Пишут и «препрод», и «предпрод»: верны оба варианта. Это среда, настроенная как рабочая (прод), где изменение проверяют последним шагом перед выкладкой: те же настройки и свежая копия рабочих данных. Слово пришло из английского pre-production. В одних командах такую среду называют стейджингом, в других она стоит отдельной ступенью после теста (интеграционной среды).',
+          en: 'Both “preprod” and “pre-prod” are correct (in Russian, «препрод» and «предпрод»). It is an environment set up like production where a change gets its last check before release: the same settings and a fresh copy of production data. The word comes from pre-production. Some teams call it staging, others keep it as a separate step after the test environment.',
+        },
+        match: { ru: ['препрод\\p{L}*', 'предпрод\\p{L}*'], en: ['pre-?prod(?:uction)?'] },
+        related: ['test-stand', 'dev-env', 'demo-env', 'prod', 'time-to-market', 'sandbox'],
+        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
+        seo: {
+          title: { ru: 'Препрод или предпрод: как правильно писать и что это за среда в IT', en: 'What is pre-prod (preprod): pre-production vs staging vs production' },
+          description: {
+            ru: 'Препрод и предпрод — одно слово, верны оба написания. Что такое препрод в IT, чем он отличается от тестового стенда и прода и зачем нужен перед выкладкой.',
+            en: 'Pre-prod is an environment set up like production for the last check before release. How it differs from a test environment and production, and when teams use it.',
+          },
+        },
+        notes: {
+          title: { ru: 'Вопросы про препрод', en: 'Questions about pre-prod' },
+          items: [
+            { name: { ru: 'Препрод — это что?', en: 'What is pre-prod?' }, text: { ru: 'Предпоследняя ступень перед продом: копия рабочей среды, где проверяют, как изменение поведёт себя в боевых условиях.', en: 'The step right before production: a copy of the live environment where a change is checked under real conditions.' } },
+            { name: { ru: 'Препрод и стейджинг — одно и то же?', en: 'Are pre-prod and staging the same?' }, text: { ru: 'В одних командах да, в других препрод стоит после тестового стенда. Смотрите, как названо у вас, и договоритесь об одном слове.', en: 'In some teams yes, in others pre-prod comes after the test environment. Check how your team uses the words and agree on one.' } },
+            { name: { ru: 'Нужен ли препрод?', en: 'Do you need pre-prod?' }, text: { ru: 'Обычно небольшим командам хватает тестового стенда и прода. Препрод удлиняет цикл поставки: качество растёт, но растёт и time to market, потому что изменение дольше идёт до пользователей. Он нужен там, где ошибка на проде стоит дорого.', en: 'Small teams usually get by with a test environment and production. Pre-prod lengthens the delivery cycle: quality goes up, but so does time to market, because a change takes longer to reach users. It is for places where a mistake in production is expensive.' } },
+            { name: { ru: 'Откуда в препроде данные?', en: 'Where does pre-prod data come from?' }, text: { ru: 'Из дампа: копии данных рабочей базы в одном файле. Личные данные из него убирают.', en: 'From a dump: a copy of the live database data in one file. Personal data is removed from it.' } },
+            { name: { ru: 'Что делает ИИ-агент на препроде?', en: 'What does an AI agent do on pre-prod?' }, text: { ru: 'Запускает проверки. Правки попадают туда через выкладку, напрямую агент их не вносит.', en: 'Runs checks. Changes reach it through a release; the agent does not edit it directly.' } },
+          ],
+        },
+        compare: {
+          title: { ru: 'Чем препрод отличается от теста', en: 'How pre-prod differs from the test environment' },
+          head: { ru: ['Тест', 'Препрод'], en: ['Test', 'Pre-prod'] },
+          headSlugs: ['test-env', 'preprod'],
+          rows: [
+            { ru: ['Что проверяют', 'что изменения всех работают вместе', 'как оно поведёт себя как на проде'], en: ['What it checks', 'that everyone’s changes work together', 'how it behaves like on production'] },
+            { ru: ['Настройки', 'удобные для проверок', 'как на проде'], en: ['Settings', 'convenient for testing', 'same as production'] },
+            { ru: ['Данные', 'копия рабочих или моки', 'свежая копия рабочих'], en: ['Data', 'a copy of production or mocks', 'a fresh copy of production'] },
+            { ru: ['Есть всегда', 'почти всегда', 'не всегда'], en: ['Always there', 'almost always', 'not always'] },
+          ],
+        },
+      },
+      {
+        slug: 'demo-env',
+        name: { ru: 'Демо-стенд', en: 'Demo environment' },
+        aka: { ru: 'демо, демо-среда, demo', en: 'demo, demo stand' },
+        def: {
+          ru: 'Демо-стенд — среда для показа продукта заказчику или коллегам. Часто демо и есть сам прод: показывают на рабочей системе, например с отдельной демо-учётной записью. Но бывает и отдельный стенд со стабильной версией и подготовленными примерами данных, чтобы показ прошёл гладко. Правки на такой стенд попадают через выкладку, как и на прод.',
+          en: 'A demo environment is where a product is shown to a client or colleagues. Often the demo is production itself: the product is shown on the live system, for example with a separate demo account. But there can also be a separate stand with a stable version and prepared sample data so the showing goes smoothly. Changes reach such a stand through a release, as they do production.',
+        },
+        match: { ru: ['демо[- ]?стенд\\p{L}*', 'демо[- ]?сред\\p{L}*'], en: ['demo environments?', 'demo stands?'] },
+        related: ['preprod', 'prod', 'test-stand'],
+        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
+        seo: {
+          title: { ru: 'Демо-стенд: что это и чем отличается от препрода и прода', en: 'Demo environment: what it is and how it differs from pre-prod and production' },
+          description: {
+            ru: 'Демо-стенд — среда для показа продукта заказчику: стабильная версия и подготовленные данные. Чем отличается от препрода и прода.',
+            en: 'A demo environment is where a product is shown to a client: a stable version and prepared data. How it differs from pre-prod and production.',
+          },
+        },
+      },
+      {
+        slug: 'prod',
+        name: { ru: 'Прод', en: 'Production' },
+        aka: { ru: 'продакшен, production, боевая среда', en: 'prod, live environment' },
+        def: {
+          ru: 'Прод (production, боевая среда) — среда, с которой работают настоящие пользователи, и данные в ней настоящие. Ошибка здесь стоит дороже всего: пользователи теряют время или деньги. Поэтому изменения доходят до прода через проверки на стендах, а ИИ-агент в прод не пишет: правки переносит выкладка, обычно с подтверждением человека.',
+          en: 'Prod (production, the live environment) is the environment real users work with, and its data is real. A mistake here costs the most: users lose time or money. So changes reach production through checks on the stands, and an AI agent does not write to production: a release moves the changes, usually with a person’s confirmation.',
+        },
+        match: { ru: ['прод(?:а|е|у|ом)?', 'продакшен\\p{L}*', 'боев\\p{L}* сред\\p{L}*'], en: ['prod', 'production environments?'] },
+        related: ['preprod', 'demo-env', 'time-to-market'],
+        source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
+        seo: {
+          title: { ru: 'Прод (production): что это в IT и почему туда не пишут напрямую', en: 'Production (prod): what it is and why nobody writes there directly' },
+          description: {
+            ru: 'Прод — среда, с которой работают настоящие пользователи. Почему изменения идут туда через стенды и препрод, а не напрямую.',
+            en: 'Production is the environment real users work with. Why changes reach it through stands and pre-prod, not directly.',
+          },
+        },
+      },
+    ],
+  },
+  {
+    slug: 'delivery',
+    icon: 'tests',
+    name: { ru: 'Метрики поставки', en: 'Delivery metrics' },
+    hint: { ru: 'Как быстро и как надёжно изменения доходят до пользователей', en: 'How fast and how reliably changes reach users' },
+    terms: [
+      {
+        slug: 'time-to-market',
+        name: { ru: 'Time to market', en: 'Time to market' },
+        aka: { ru: 'TTM, time2market, время выхода на рынок', en: 'TTM, time2market' },
+        def: {
+          ru: 'Time to market (TTM, «время выхода на рынок») — сколько проходит от замысла до момента, когда продукт или изменение доступно пользователям. В разработке это длина цикла поставки: чем больше сред и проверок на пути (feature-стенд, дев, тест, препрод, демо), тем она длиннее, но тем меньше ошибок доходит до прода. Поэтому команды решают, сколько проверок оправдано: слишком мало — падает качество, слишком много — продукт опаздывает.',
+          en: 'Time to market (TTM) is how long it takes from an idea to the moment a product or a change is available to users. In software it is the length of the delivery cycle: the more environments and checks on the way (feature stand, dev, test, pre-prod, demo), the longer it gets, but the fewer mistakes reach production. So teams decide how many checks are worth it: too few and quality drops, too many and the product is late.',
+        },
+        match: { ru: ['time[- ]?to[- ]?market', 'time2market', 'врем\\p{L}* выхода на рынок'], en: ['time[- ]?to[- ]?market', 'time2market'] },
+        related: ['change-lead-time', 'deployment-frequency', 'preprod', 'test-stand'],
+        source: { url: 'https://en.wikipedia.org/wiki/Time_to_market', label: { ru: 'Википедия: Time to market', en: 'Wikipedia: Time to market' } },
+        seo: {
+          title: { ru: 'Time to market: что это простыми словами и как связан с качеством', en: 'What is time to market (TTM): delivery cycle, checks and quality' },
+          description: {
+            ru: 'Time to market (TTM) — время от замысла до выхода продукта к пользователям. Как цикл поставки, среды и проверки влияют на скорость и качество.',
+            en: 'Time to market (TTM) is the time from idea to users. How the delivery cycle, environments and checks affect speed and quality.',
+          },
+        },
+      },
+      {
+        slug: 'change-lead-time',
+        name: { ru: 'Время изменения', en: 'Change lead time' },
+        aka: { ru: 'change lead time, lead time for changes', en: 'lead time for changes' },
+        def: {
+          ru: 'Время изменения (change lead time) — сколько проходит от фиксации правки в хранилище кода (коммита) до момента, когда она работает на проде. Чем оно короче, тем быстрее команда доставляет мелкие правки. Отсчёт идёт от готового кода, а у time to market — от идеи.',
+          en: 'Change lead time is how long it takes from a change being committed to version control to it running in production. The shorter it is, the faster the team ships small changes. It counts from ready code, while time to market counts from the idea.',
+        },
+        match: { ru: ['change lead time', 'lead time'], en: ['change lead time', 'lead time'] },
+        related: ['time-to-market', 'deployment-frequency', 'preprod'],
+        source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
+        seo: {
+          title: { ru: 'Время изменения (change lead time): что это и как сократить', en: 'Change lead time: what it is and how to shorten it' },
+          description: {
+            ru: 'Время изменения — сколько проходит от коммита до работы правки на проде. Одна из метрик DORA; как среды и проверки удлиняют путь.',
+            en: 'Change lead time is the time from a commit to the change running in production. One of the DORA metrics; how environments and checks lengthen the path.',
+          },
+        },
+      },
+      {
+        slug: 'deployment-frequency',
+        name: { ru: 'Частота выкладок', en: 'Deployment frequency' },
+        aka: { ru: 'deployment frequency', en: 'deployment frequency' },
+        def: {
+          ru: 'Частота выкладок (deployment frequency) — сколько раз за период команда выкладывает изменения на прод или сколько времени проходит между выкладками. Чем больше сред и ручных проверок на пути, тем выкладки реже.',
+          en: 'Deployment frequency is how many times in a period a team releases changes to production, or how much time passes between releases. The more environments and manual checks on the way, the rarer the releases.',
+        },
+        match: { ru: ['частот\\p{L}* выкладок', 'deployment frequency'], en: ['deployment frequency'] },
+        related: ['change-lead-time', 'change-fail-rate', 'time-to-market'],
+        source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
+        seo: {
+          title: { ru: 'Частота выкладок (deployment frequency): что это и от чего зависит', en: 'Deployment frequency: what it is and what it depends on' },
+          description: {
+            ru: 'Частота выкладок — сколько раз за период изменения доходят до прода. Метрика DORA и связь с тестовыми стендами и препродом.',
+            en: 'Deployment frequency is how many times a period changes reach production. A DORA metric and how it relates to test environments and pre-prod.',
+          },
+        },
+      },
+      {
+        slug: 'change-fail-rate',
+        name: { ru: 'Доля сбойных выкладок', en: 'Change fail rate' },
+        aka: { ru: 'change fail rate', en: 'change fail rate, change failure rate' },
+        def: {
+          ru: 'Доля сбойных выкладок (change fail rate) — какая часть выкладок потребовала срочного вмешательства: отката или быстрой починки (хотфикса). Показывает, насколько хорошо проверки до прода ловят ошибки: для этого нужны тесты и препрод.',
+          en: 'Change fail rate is the share of releases that needed immediate intervention: a rollback or a quick fix (hotfix). It shows how well the checks before production catch mistakes, which is what tests and pre-prod are for.',
+        },
+        match: { ru: ['д\\p{L}* сбойных выкладок', 'change fail(?:ure)? rate'], en: ['change fail(?:ure)? rate'] },
+        related: ['deployment-rework-rate', 'recovery-time', 'preprod'],
+        source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
+        seo: {
+          title: { ru: 'Доля сбойных выкладок (change fail rate): что это и как снизить', en: 'Change fail rate: what it is and how to reduce it' },
+          description: {
+            ru: 'Доля сбойных выкладок — какая часть релизов потребовала отката или хотфикса. Метрика DORA: как тесты и препрод её снижают.',
+            en: 'Change fail rate is the share of releases that needed a rollback or a hotfix. A DORA metric: how tests and pre-prod reduce it.',
+          },
+        },
+      },
+      {
+        slug: 'recovery-time',
+        name: { ru: 'Время восстановления', en: 'Failed deployment recovery time' },
+        aka: { ru: 'failed deployment recovery time, MTTR', en: 'failed deployment recovery time, MTTR' },
+        def: {
+          ru: 'Время восстановления (failed deployment recovery time) — сколько проходит от сбойной выкладки до момента, когда сервис снова работает как нужно. В прежних версиях DORA эту метрику называли средним временем восстановления, MTTR.',
+          en: 'Failed deployment recovery time is how long it takes from a failed release until the service works properly again. Earlier DORA versions called this metric mean time to restore, MTTR.',
+        },
+        match: { ru: ['MTTR', 'failed deployment recovery time', 'врем\\p{L}* восстановления после сбо\\p{L}*'], en: ['MTTR', 'failed deployment recovery time'] },
+        related: ['change-fail-rate', 'change-lead-time'],
+        source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
+        seo: {
+          title: { ru: 'Время восстановления после сбоя выкладки (MTTR): что это', en: 'Failed deployment recovery time (MTTR): what it is' },
+          description: {
+            ru: 'Время восстановления — сколько проходит от сбойной выкладки до починки. Метрика DORA, ранее MTTR.',
+            en: 'Failed deployment recovery time is how long it takes from a failed release to a fix. A DORA metric, earlier called MTTR.',
+          },
+        },
+      },
+      {
+        slug: 'deployment-rework-rate',
+        name: { ru: 'Доля внеплановых выкладок', en: 'Deployment rework rate' },
+        aka: { ru: 'deployment rework rate', en: 'deployment rework rate' },
+        def: {
+          ru: 'Доля внеплановых выкладок (deployment rework rate) — какая часть выкладок не планировалась и появилась из-за сбоя на проде. Вместе с долей сбойных выкладок показывает нестабильность поставки.',
+          en: 'Deployment rework rate is the share of releases that were not planned and happened because of an incident in production. Together with change fail rate it shows the instability of delivery.',
+        },
+        match: { ru: ['д\\p{L}* внеплановых выкладок', 'deployment rework rate'], en: ['deployment rework rate'] },
+        related: ['change-fail-rate', 'recovery-time'],
+        source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
+        seo: {
+          title: { ru: 'Доля внеплановых выкладок (deployment rework rate): что это', en: 'Deployment rework rate: what it is' },
+          description: {
+            ru: 'Доля внеплановых выкладок — какая часть релизов появилась из-за сбоя на проде. Метрика DORA рядом с долей сбойных выкладок.',
+            en: 'Deployment rework rate is the share of releases that happened because of an incident in production. A DORA metric next to change fail rate.',
+          },
+        },
       },
     ],
   },
