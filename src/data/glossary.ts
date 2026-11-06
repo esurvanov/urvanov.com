@@ -110,6 +110,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['ИИ-агент\\p{L}*', 'AI-агент\\p{L}*', 'агент\\p{L}*', 'ИИ', '(?<!(?:Alice|JetBrains|Apple|Google|Meta|Microsoft|Yandex|Fission) )AI', 'искусственн\\p{L}* интеллект\\p{L}*'], en: ['AI agents?', 'coding agents?', 'agents?', '(?<!(?:Alice|JetBrains|Apple|Google|Meta|Microsoft|Yandex|Fission) )AI', 'artificial intelligence'] },
         related: ['llm', 'harness', 'agent-loop', 'tool', 'claude-code'],
+        faq: [
+          { q: { ru: 'Чем ИИ-агент отличается от чат-бота?', en: 'How is an AI agent different from a chatbot?' }, a: { ru: 'Чат-бот отвечает текстом. ИИ-агент сам выбирает шаги, читает файлы, запускает команды и проверяет результат в вашей среде.', en: 'A chatbot answers with text. An AI agent picks its own steps, reads files, runs commands and checks the result in your environment.' } },
+          { q: { ru: 'Как устроен ИИ-агент?', en: 'How is an AI agent built?' }, a: { ru: 'Нейросеть (LLM) работает внутри харнесса: модель думает, а харнесс даёт ей инструменты, права и проверки.', en: 'A neural network (LLM) works inside a harness: the model reasons, and the harness gives it tools, permissions and checks.' } },
+        ],
         source: { url: 'https://www.anthropic.com/engineering/building-effective-agents', label: { ru: 'Anthropic: как строить эффективных агентов', en: 'Anthropic: Building effective agents' } },
         seo: {
           title: { ru: 'ИИ-агент (LLM-агент): что это и как устроен — нейросеть + харнесс', en: 'AI agent (LLM agent) = LLM + harness: what it is' },
@@ -132,6 +136,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['human-in-the-loop', 'human in the loop', 'человек\\p{L}* в контуре', 'HITL'], en: ['human-in-the-loop', 'human in the loop', 'HITL'] },
         related: ['ai-agent', 'harness', 'permissions', 'test-stand'],
+        faq: [
+          { q: { ru: 'Human in the loop — что это?', en: 'What is human in the loop?' }, a: { ru: 'Принцип, по которому агент не завершает работу сам: на важных шагах решение принимает человек.', en: 'A principle where the agent does not finish the work on its own: a person makes the decision at key steps.' } },
+          { q: { ru: 'Где агент ждёт решения человека?', en: 'Where does the agent wait for a person?' }, a: { ru: 'Обычно перед выдачей прав, записью в рабочую систему и приёмом результата.', en: 'Usually before granting permissions, writing to a live system and accepting the result.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Human-in-the-loop', label: { ru: 'Википедия: Human-in-the-loop', en: 'Wikipedia: Human-in-the-loop' } },
         seo: {
           title: { ru: 'Human in the loop (человек в контуре): что означает принцип и где ИИ-агент ждёт решения', en: 'Human in the loop (HITL) for AI agents: where the agent stops for approval' },
@@ -161,6 +169,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['LLM', 'языков\\p{L}* модел\\p{L}*'], en: ['LLMs?', 'language models?'] },
         related: ['ai-agent', 'prompt', 'token', 'context', 'hallucination'],
+        faq: [
+          { q: { ru: 'LLM — что это в IT?', en: 'What does LLM mean in IT?' }, a: { ru: 'Большая языковая модель (large language model): нейросеть, обученная на больших объёмах текста и кода, которая продолжает текст по запросу.', en: 'A large language model: a neural network trained on large amounts of text and code that continues text on request.' } },
+          { q: { ru: 'Чем LLM отличается от ИИ-агента?', en: 'How is an LLM different from an AI agent?' }, a: { ru: 'Модель сама только отвечает текстом. Чтобы действовать в вашей среде, ей нужен харнесс, а модель вместе с харнессом и есть агент.', en: 'A model on its own only answers with text. To act in your environment it needs a harness, and the model plus the harness is the agent.' } },
+          { q: { ru: 'Как правильно: a LLM или an LLM?', en: 'Is it a LLM or an LLM?' }, a: { ru: 'Пишут an LLM: аббревиатуру читают по буквам, и первая буква звучит как «эл».', en: 'It is an LLM: the abbreviation is read letter by letter, and the first letter sounds like “el”.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Large_language_model', label: { ru: 'Википедия: большая языковая модель', en: 'Wikipedia: Large language model' } },
         seo: {
           title: { ru: 'LLM: что это в IT простыми словами — большая языковая модель и чем она отличается от ИИ-агента', en: 'LLM meaning: what a large language model is and how it differs from an AI agent' },
@@ -193,6 +206,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['IDE'], en: ['IDEs?'] },
         related: ['vs-code', 'jetbrains', 'terminal', 'cursor', 'claude-code'],
+        faq: [
+          { q: { ru: 'IDE — что это в программировании?', en: 'What is an IDE in programming?' }, a: { ru: 'Программа, в которой пишут код: редактор, подсказки, отладчик и запуск проекта в одном окне. Примеры — VS Code и JetBrains.', en: 'The program where code is written: editor, hints, debugger and project launcher in one window. Examples are VS Code and JetBrains.' } },
+          { q: { ru: 'Что такое AI IDE?', en: 'What is an AI IDE?' }, a: { ru: 'Среда, где ИИ-агент встроен с самого начала, как в Cursor.', en: 'An environment with an AI agent built in from the start, like Cursor.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Integrated_development_environment', label: { ru: 'Википедия: среда разработки', en: 'Wikipedia: Integrated development environment' } },
         seo: {
           title: { ru: 'IDE: что это в программировании — среда разработки и IDE с ИИ-агентом', en: 'AI IDE vs CLI agent: what an AI IDE is and how agents work in VS Code and JetBrains' },
@@ -221,6 +238,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['VS Code', 'Visual Studio Code'], en: ['VS Code', 'Visual Studio Code'] },
         related: ['ide', 'microsoft', 'cursor', 'jetbrains'],
+        faq: [
+          { q: { ru: 'Какие ИИ-агенты работают в VS Code?', en: 'Which AI agents work in VS Code?' }, a: { ru: 'GitHub Copilot, Claude Code, Codex, Cline и другие: они ставятся как расширения.', en: 'GitHub Copilot, Claude Code, Codex, Cline and others: they install as extensions.' } },
+          { q: { ru: 'Чем VS Code отличается от Cursor?', en: 'How is VS Code different from Cursor?' }, a: { ru: 'Cursor сделан на основе VS Code и в нём агент встроен с самого начала. В VS Code агента добавляют расширением.', en: 'Cursor is built on VS Code with the agent built in from the start. In VS Code an agent is added as an extension.' } },
+        ],
         source: { url: 'https://code.visualstudio.com/', label: { ru: 'Официальный сайт VS Code', en: 'VS Code official site' } },
         seo: {
           title: { ru: 'VS Code: что это и какие ИИ-агенты в нём работают — Copilot, Claude Code, Codex', en: 'AI agents in VS Code: Claude Code, Codex and Copilot in Visual Studio Code' },
@@ -251,6 +272,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['терминал\\p{L}*', 'командн\\p{L}* строк\\p{L}*'], en: ['terminals?', 'command line'] },
         related: ['ide', 'claude-code', 'codex', 'hermes-agent', 'permissions'],
+        faq: [
+          { q: { ru: 'CLI — что это?', en: 'What is a CLI?' }, a: { ru: 'Интерфейс командной строки: окно, где команды вводят текстом. Так называют и терминал.', en: 'A command-line interface: a window where commands are typed as text. The terminal is the same thing.' } },
+          { q: { ru: 'Какие бывают CLI-агенты?', en: 'Which CLI agents exist?' }, a: { ru: 'Claude Code и Codex CLI, а бесплатный открытый — OpenCode. Они работают прямо в терминале и сами запускают тесты, сборку и git.', en: 'Claude Code and Codex CLI, and a free open-source one is OpenCode. They work right in the terminal and run tests, builds and git themselves.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Command-line_interface', label: { ru: 'Википедия: командная строка', en: 'Wikipedia: Command-line interface' } },
         seo: {
           title: { ru: 'Терминал и CLI: что это и какие бывают CLI-агенты, в том числе бесплатные — Claude Code, Codex CLI, OpenCode', en: 'AI CLI agents: what the terminal (CLI) is and which coding agents run in it, free ones included' },
@@ -282,6 +307,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['инструмент\\p{L}*', 'тул(?:ы|ов|ам|ами|ах|а|у|ом|е)?(?!\\p{L})', 'tool calling', 'function calling'], en: ['tools?', 'tool calling', 'tool use', 'function calling'] },
         related: ['ai-agent', 'mcp', 'permissions', 'harness', 'llm'],
+        faq: [
+          { q: { ru: 'Что такое tool calling?', en: 'What is tool calling?' }, a: { ru: 'Вызов инструмента: модель возвращает имя функции и параметры, харнесс выполняет вызов и передаёт результат обратно модели.', en: 'Calling a tool: the model returns a function name and parameters, the harness runs the call and passes the result back to the model.' } },
+          { q: { ru: 'Чем MCP отличается от tool calling?', en: 'How is MCP different from tool calling?' }, a: { ru: 'Tool calling — способ, которым модель вызывает действие. MCP — открытый протокол, по которому к агенту подключают готовые наборы инструментов внешних систем.', en: 'Tool calling is how a model calls an action. MCP is an open protocol for plugging ready-made tool sets of outside systems into an agent.' } },
+        ],
         source: { url: 'https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview', label: { ru: 'Anthropic: вызов инструментов', en: 'Anthropic: Tool use docs' } },
         seo: {
           title: { ru: 'Tool calling: что такое инструменты ИИ-агента и вызов функций (function calling) — и при чём тут MCP', en: 'Tool calling vs MCP: what an AI agent tool is and how function calling works' },
@@ -312,6 +341,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['облачн\\p{L}* (?:ИИ-)?агент\\p{L}*', 'фонов\\p{L}* агент\\p{L}*', 'в облаке'], en: ['cloud (?:coding )?agents?', 'background agents?', 'in the cloud'] },
         related: ['ai-agent', 'sandbox', 'codex', 'claude-code', 'cursor'],
+        faq: [
+          { q: { ru: 'Облачный агент — что это?', en: 'What is a cloud agent?' }, a: { ru: 'ИИ-агент, который выполняет задачу на удалённом сервере с копией вашего репозитория и присылает готовую ветку или запрос на слияние.', en: 'An AI agent that runs a task on a remote server with a copy of your repository and sends back a ready branch or pull request.' } },
+          { q: { ru: 'Чем облачный агент отличается от локального?', en: 'How is a cloud agent different from a local one?' }, a: { ru: 'Облачному не нужен ваш компьютер: задачу можно поставить с телефона и закрыть ноутбук. Локальный работает, пока включён компьютер, но видит ваши файлы и программы.', en: 'A cloud agent does not need your computer: you can set a task from a phone and close the laptop. A local one runs while the computer is on, but sees your files and programs.' } },
+          { q: { ru: 'Какие есть облачные агенты?', en: 'Which cloud agents exist?' }, a: { ru: 'Codex в облаке, Claude Code в вебе и облачные агенты Cursor.', en: 'Codex cloud, Claude Code on the web and Cursor cloud agents.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/claude-code-on-the-web', label: { ru: 'Claude Code в облаке', en: 'Claude Code in the cloud docs' } },
         seo: {
           title: { ru: 'Облачный ИИ-агент: что это, чем отличается от локального и как запускать с телефона — Codex, Claude Code', en: 'Cloud coding agents: cloud vs local, and running Codex or Claude Code from your phone' },
@@ -346,6 +380,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['песочниц\\p{L}*'], en: ['sandbox\\p{L}*'] },
         related: ['cloud-agent', 'human-in-the-loop', 'prompt-injection'],
+        faq: [
+          { q: { ru: 'Песочница для ИИ-агента — что это?', en: 'What is a sandbox for an AI agent?' }, a: { ru: 'Огороженное место, где выполняются действия агента: видны только разрешённые папки, а в сеть можно только на разрешённые адреса.', en: 'A fenced place where the agent’s actions run: only allowed folders are visible and only allowed network hosts are reachable.' } },
+          { q: { ru: 'Зачем агенту песочница?', en: 'Why does an agent need a sandbox?' }, a: { ru: 'Если агент ошибётся или его обманут, ущерб останется внутри песочницы.', en: 'If the agent makes a mistake or is tricked, the damage stays inside the sandbox.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/sandboxing', label: { ru: 'Claude Code: песочница', en: 'Claude Code sandboxing docs' } },
       },
       {
@@ -357,6 +395,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['субагент\\p{L}*'], en: ['subagents?', 'sub-agents?'] },
         related: ['ai-agent', 'context', 'claude-code'],
+        faq: [
+          { q: { ru: 'Субагент — это что?', en: 'What is a subagent?' }, a: { ru: 'Помощник, которого главный агент запускает на отдельную часть работы, например поиск по коду или ревью.', en: 'A helper the main agent launches for a separate part of the work, such as code search or review.' } },
+          { q: { ru: 'Зачем нужны субагенты?', en: 'Why use subagents?' }, a: { ru: 'У субагента свой чистый контекст, а в основной разговор он возвращает только итог, поэтому главный агент не засоряет свой контекст.', en: 'A subagent has its own clean context and returns only the result to the main conversation, so the main agent keeps its context clear.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/sub-agents', label: { ru: 'Claude Code: субагенты', en: 'Claude Code subagents docs' } },
       },
     ],
@@ -377,6 +419,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Claude Code', 'Клод Код\\p{L}*'], en: ['Claude Code'] },
         related: ['ai-agent', 'claude-md', 'mcp', 'agent-skills', 'session'],
+        faq: [
+          { q: { ru: 'Чем Claude отличается от Claude Code?', en: 'How is Claude different from Claude Code?' }, a: { ru: 'Claude в чате отвечает текстом. Claude Code — агент для кода: сам читает проект, правит файлы, запускает команды и тесты.', en: 'Claude in a chat answers with text. Claude Code is a coding agent: it reads the project, edits files and runs commands and tests itself.' } },
+          { q: { ru: 'Где работает Claude Code?', en: 'Where does Claude Code run?' }, a: { ru: 'В терминале, в VS Code и JetBrains, в приложении для компьютера и в браузере. Везде это один и тот же агент.', en: 'In the terminal, in VS Code and JetBrains, in the desktop app and in the browser. It is the same agent everywhere.' } },
+          { q: { ru: 'На каких моделях работает Claude Code?', en: 'Which models does Claude Code use?' }, a: { ru: 'На моделях Claude: Opus, Sonnet и Haiku. Модель меняют командой /model.', en: 'On Claude models: Opus, Sonnet and Haiku. You switch the model with the /model command.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/overview', label: { ru: 'Документация Claude Code', en: 'Claude Code docs' } },
         seo: {
           title: { ru: 'Claude Code (Клод Код): что это и чем отличается от Claude в чате', en: 'What is Claude Code? Claude Code vs Claude chat, models and setup' },
@@ -411,6 +458,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['clauding\\p{L}*', 'клодинг\\p{L}*'], en: ['clauding'] },
         related: ['claude-code', 'ai-agent', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Clauding — что это значит?', en: 'What does clauding mean?' }, a: { ru: 'Неформальное слово для работы с Claude: человек пишет задачу, смотрит результат и уточняет, пока не получит нужное.', en: 'An informal word for working with Claude: a person writes a task, looks at the result and refines it until they get what they need.' } },
+          { q: { ru: 'Откуда слово clauding?', en: 'Where does the word clauding come from?' }, a: { ru: 'По образцу глагола «гуглить»: Google возвращает ссылки, Claude возвращает готовую работу.', en: 'It follows the pattern of “to google”: Google returns links, Claude returns finished work.' } },
+        ],
         source: { url: 'https://explainx.ai/dictionary/clauding', label: { ru: 'explainx.ai: словарь ИИ-сленга, статья Clauding', en: 'explainx.ai AI dictionary: Clauding' } },
         site: { url: 'https://clauding.me/', label: { ru: 'clauding.me — страница про термин', en: 'clauding.me, a page about the term' } },
         notes: {
@@ -430,6 +481,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['(?:OpenAI )?Codex(?: AI| CLI)?'], en: ['(?:OpenAI )?Codex(?: AI| CLI)?'] },
         related: ['openai', 'agents-md', 'claude-code', 'cursor', 'ai-agent'],
+        faq: [
+          { q: { ru: 'Codex и ChatGPT — это одно и то же?', en: 'Are Codex and ChatGPT the same thing?' }, a: { ru: 'Нет: ChatGPT — чат, который отвечает текстом, Codex — агент для кода, который сам читает проект, правит файлы и запускает тесты. Codex входит в тарифы ChatGPT.', en: 'No: ChatGPT is a chat that answers with text, Codex is a coding agent that reads the project, edits files and runs tests itself. Codex comes with ChatGPT plans.' } },
+          { q: { ru: 'Где работает Codex?', en: 'Where does Codex run?' }, a: { ru: 'В ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице. Везде это один и тот же агент.', en: 'In ChatGPT, in the desktop app, in the terminal, in the IDE and in the cloud, where tasks run in a separate sandbox. It is the same agent everywhere.' } },
+          { q: { ru: 'На каких моделях работает Codex?', en: 'Which models does Codex use?' }, a: { ru: 'На моделях GPT от OpenAI.', en: 'On OpenAI’s GPT models.' } },
+        ],
         source: { url: 'https://github.com/openai/codex', label: { ru: 'Репозиторий Codex на GitHub', en: 'Codex GitHub repo' } },
         seo: {
           title: { ru: 'Codex от OpenAI: что это и чем отличается от ChatGPT', en: 'What is OpenAI Codex: Codex vs ChatGPT Chat and Work' },
@@ -463,6 +519,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Cursor(?: AI| IDE)?', '[Кк]урсор\\p{L}* ИИ'], en: ['Cursor(?: AI| IDE)?'] },
         related: ['anysphere', 'vs-code', 'agents-md', 'claude-code', 'codex'],
+        faq: [
+          { q: { ru: 'Cursor AI — что это?', en: 'What is Cursor AI?' }, a: { ru: 'Редактор кода от Anysphere на основе VS Code со встроенным ИИ-агентом: вы работаете в редакторе, агент рядом читает проект, правит файлы и запускает команды.', en: 'A code editor by Anysphere built on VS Code with a built-in AI agent: you work in the editor, and the agent next to you reads the project, edits files and runs commands.' } },
+          { q: { ru: 'Какие модели есть в Cursor?', en: 'Which models does Cursor have?' }, a: { ru: 'Модели разных вендоров на выбор и собственная модель Cursor — Composer.', en: 'Models from different vendors to choose from, plus Cursor’s own model, Composer.' } },
+          { q: { ru: 'Cursor rules или AGENTS.md?', en: 'Cursor rules or AGENTS.md?' }, a: { ru: 'Cursor читает оба: AGENTS.md — общий файл для разных агентов, правила в .cursor/rules — свои у Cursor, их можно подключать к отдельным файлам.', en: 'Cursor reads both: AGENTS.md is a shared file for different agents, and the rules in .cursor/rules are Cursor’s own and can be scoped to specific files.' } },
+        ],
         source: { url: 'https://cursor.com/', label: { ru: 'Официальный сайт Cursor', en: 'Cursor official site' } },
         seo: {
           title: { ru: 'Cursor AI: что это за редактор, какие модели и как работает агент', en: 'What is Cursor AI: models, the agent and rules vs AGENTS.md' },
@@ -495,6 +556,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Hermes Agent', 'Гермес[- ]агент\\p{L}*'], en: ['Hermes Agent', 'Hermes AI agent'] },
         related: ['nous-research', 'ai-agent', 'memory', 'agent-skills', 'claude-code'],
+        faq: [
+          { q: { ru: 'Что такое Hermes Agent?', en: 'What is Hermes Agent?' }, a: { ru: 'Открытый бесплатный агент от Nous Research, который ставится на ваш сервер или компьютер и работает с любой моделью.', en: 'A free open-source agent by Nous Research that you install on your server or computer and run with any model.' } },
+          { q: { ru: 'Как общаться с Hermes Agent?', en: 'How do you talk to Hermes Agent?' }, a: { ru: 'Через терминал, приложение для компьютера или мессенджеры: Telegram, Slack, Discord и другие подключаются как интеграции.', en: 'Through the terminal, the desktop app or messengers: Telegram, Slack, Discord and others connect as integrations.' } },
+        ],
         source: { url: 'https://github.com/NousResearch/hermes-agent', label: { ru: 'Репозиторий Hermes Agent на GitHub', en: 'Hermes Agent GitHub repo' } },
         seo: {
           title: { ru: 'Гермес агент (Hermes Agent): что это — открытый ИИ-агент от Nous Research', en: 'What is Hermes Agent: Nous Research’s open agent, memory and skills' },
@@ -516,6 +581,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['OpenCode', 'Open Code'], en: ['OpenCode', 'Open Code'] },
         related: ['terminal', 'claude-code', 'codex', 'hermes-agent', 'agents-md'],
+        faq: [
+          { q: { ru: 'Что такое OpenCode?', en: 'What is OpenCode?' }, a: { ru: 'Бесплатный открытый агент для программирования в терминале; есть также приложение для компьютера и расширения для IDE. Модель выбираете сами, платите только её провайдеру.', en: 'A free open-source coding agent in the terminal, with a desktop app and IDE extensions too. You pick the model and pay only its provider.' } },
+          { q: { ru: 'Какие модели работают в OpenCode?', en: 'Which models work in OpenCode?' }, a: { ru: 'Claude, GPT, Gemini и десятки других через API, а также локальная модель на вашем компьютере.', en: 'Claude, GPT, Gemini and dozens of others through an API, as well as a local model on your computer.' } },
+          { q: { ru: 'Чем OpenCode отличается от Claude Code?', en: 'How is OpenCode different from Claude Code?' }, a: { ru: 'Устроены одинаково: оба читают проект, правят файлы и запускают команды. OpenCode открытый и работает с любой моделью, Claude Code — только с моделями Claude.', en: 'They are built the same way: both read the project, edit files and run commands. OpenCode is open source and works with any model, Claude Code only with Claude models.' } },
+        ],
         source: { url: 'https://opencode.ai/docs/rules/', label: { ru: 'Документация OpenCode', en: 'OpenCode docs' } },
         seo: {
           title: { ru: 'OpenCode: что это — бесплатный открытый ИИ-агент в терминале с любой моделью', en: 'What is OpenCode: a free open-source AI coding agent in the terminal' },
@@ -535,6 +605,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Gemini CLI'], en: ['Gemini CLI'] },
         related: ['antigravity-cli', 'terminal', 'claude-code', 'codex', 'opencode', 'ide'],
+        faq: [
+          { q: { ru: 'Что такое Gemini CLI?', en: 'What is Gemini CLI?' }, a: { ru: 'Открытый агент Google для программирования в терминале на моделях Gemini, вышел в июне 2025 года.', en: 'Google’s open-source coding agent for the terminal on Gemini models, released in June 2025.' } },
+          { q: { ru: 'Что стало с Gemini CLI?', en: 'What happened to Gemini CLI?' }, a: { ru: 'С 18 июня 2026 для обычных пользователей его заменил закрытый Antigravity CLI. Сам Gemini CLI остался открытым и работает для корпоративных тарифов и платных ключей API.', en: 'Since 18 June 2026 the closed Antigravity CLI replaced it for regular users. Gemini CLI itself stays open source and works for enterprise plans and paid API keys.' } },
+        ],
         source: { url: 'https://www.theregister.com/ai-ml/2026/05/20/bye-bye-gemini-cli-google-nudges-devs-toward-antigravity/5243605', label: { ru: 'The Register: Google переводит Gemini CLI в Antigravity', en: 'The Register: Google nudges Gemini CLI users to Antigravity' } },
         seo: {
           title: { ru: 'Gemini CLI: что это и что с ним стало — агент Google в терминале', en: 'What is Gemini CLI and what happened to it: Google’s terminal agent' },
@@ -554,6 +628,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Antigravity CLI', 'Google Antigravity'], en: ['Antigravity CLI', 'Google Antigravity'] },
         related: ['gemini-cli', 'terminal', 'claude-code', 'codex', 'opencode'],
+        faq: [
+          { q: { ru: 'Antigravity CLI — что это?', en: 'What is Antigravity CLI?' }, a: { ru: 'Закрытый агент Google для программирования в терминале, связанный с приложением Antigravity. Он заменил Gemini CLI для обычных пользователей.', en: 'Google’s closed coding agent for the terminal, tied to the Antigravity app. It replaced Gemini CLI for regular users.' } },
+          { q: { ru: 'Когда Antigravity CLI заменил Gemini CLI?', en: 'When did Antigravity CLI replace Gemini CLI?' }, a: { ru: 'Google объявил перенос в мае 2026, а с 18 июня 2026 Gemini CLI перестал работать для обычных пользователей.', en: 'Google announced the move in May 2026, and on 18 June 2026 Gemini CLI stopped working for regular users.' } },
+        ],
         source: { url: 'https://virtualizationreview.com/articles/2026/05/19/google-moves-gemini-cli-into-antigravity-cli-as-agent-platform-expands.aspx', label: { ru: 'Virtualization Review: Gemini CLI переходит в Antigravity CLI', en: 'Virtualization Review: Gemini CLI moves into Antigravity CLI' } },
         seo: {
           title: { ru: 'Antigravity CLI: что это — агент Google в терминале вместо Gemini CLI', en: 'What is Antigravity CLI: Google’s terminal agent that replaced Gemini CLI' },
@@ -573,6 +651,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Claude in Chrome', 'Claude for Chrome'], en: ['Claude in Chrome', 'Claude for Chrome'] },
         related: ['claude-code', 'mcp', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Что делает расширение Claude для Chrome?', en: 'What does the Claude Chrome extension do?' }, a: { ru: 'Даёт агенту работать в вашем браузере: открывать страницы, кликать, заполнять формы и читать консоль под вашим входом.', en: 'It lets the agent work in your browser: open pages, click, fill in forms and read the console under your sign-in.' } },
+          { q: { ru: 'Как пользоваться Claude in Chrome?', en: 'How do I use Claude in Chrome?' }, a: { ru: 'Есть два режима: боковая панель, где Claude сам выполняет задачу на открытой странице, и управление браузером из Claude Code.', en: 'There are two modes: a side panel where Claude does the task on the open page, and browser control from Claude Code.' } },
+          { q: { ru: 'Работает ли Claude in Chrome в других браузерах?', en: 'Does Claude in Chrome work in other browsers?' }, a: { ru: 'Боковая панель официально работает только в Chrome на компьютере. Режим для Claude Code работает ещё в Edge и других браузерах на Chromium.', en: 'The side panel officially works only in desktop Chrome. The Claude Code mode also works in Edge and other Chromium browsers.' } },
+        ],
         source: { url: 'https://support.claude.com/en/articles/12012173-get-started-with-claude-in-chrome', label: { ru: 'Справка: как начать с Claude in Chrome', en: 'Help: Get started with Claude in Chrome' } },
         seo: {
           title: { ru: 'Claude in Chrome: что это за расширение Claude для браузера', en: 'Claude in Chrome: what the Claude Chrome extension does' },
@@ -610,6 +693,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Anthropic'], en: ['Anthropic'] },
         related: ['claude-code', 'mcp', 'llm'],
+        faq: [
+          { q: { ru: 'Что такое Anthropic?', en: 'What is Anthropic?' }, a: { ru: 'Американская компания, которая делает модели Claude: Opus, Sonnet, Haiku и Fable.', en: 'A US company that builds the Claude models: Opus, Sonnet, Haiku and Fable.' } },
+          { q: { ru: 'Какие продукты у Anthropic?', en: 'What products does Anthropic have?' }, a: { ru: 'Приложения Claude, агент Cowork, расширение Claude in Chrome, агент для кода Claude Code, а для разработчиков — API, Managed Agents, Agent SDK и протокол MCP.', en: 'The Claude apps, the Cowork agent, the Claude in Chrome extension, the Claude Code coding agent, and for developers the API, Managed Agents, Agent SDK and the MCP protocol.' } },
+        ],
         source: { url: 'https://www.anthropic.com/', label: { ru: 'Официальный сайт Anthropic', en: 'Anthropic official site' } },
       },
       {
@@ -621,6 +708,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['OpenAI'], en: ['OpenAI'] },
         related: ['codex', 'agents-md', 'llm'],
+        faq: [
+          { q: { ru: 'Что такое OpenAI?', en: 'What is OpenAI?' }, a: { ru: 'Американская компания, которая делает модели GPT, чат ChatGPT и агента для кода Codex.', en: 'A US company that builds the GPT models, the ChatGPT chat and the Codex coding agent.' } },
+          { q: { ru: 'Что OpenAI даёт разработчикам?', en: 'What does OpenAI offer developers?' }, a: { ru: 'API к моделям, Agents SDK для своих агентов, Apps SDK для приложений внутри ChatGPT и формат инструкций AGENTS.md.', en: 'An API to the models, the Agents SDK for your own agents, the Apps SDK for apps inside ChatGPT and the AGENTS.md instruction format.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/OpenAI', label: { ru: 'Википедия: OpenAI', en: 'Wikipedia: OpenAI' } },
       },
       {
@@ -632,6 +723,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Nous Research'], en: ['Nous Research'] },
         related: ['hermes-agent', 'llm'],
+        faq: [
+          { q: { ru: 'Nous Research — что это?', en: 'What is Nous Research?' }, a: { ru: 'Американская исследовательская лаборатория, которая делает открытые языковые модели Hermes.', en: 'A US research lab that builds the open Hermes language models.' } },
+          { q: { ru: 'Какие продукты у Nous Research?', en: 'What products does Nous Research have?' }, a: { ru: 'Открытый агент Hermes Agent, чат Nous Chat, Forge для усиления рассуждений, а для обучения — Psyche и Atropos.', en: 'The open Hermes Agent, the Nous Chat app, Forge for stronger reasoning, and Psyche and Atropos for training.' } },
+        ],
         source: { url: 'https://nousresearch.com/', label: { ru: 'Официальный сайт Nous Research', en: 'Nous Research official site' } },
       },
       {
@@ -646,6 +741,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Anysphere'], en: ['Anysphere'] },
         related: ['cursor', 'llm'],
+        faq: [
+          { q: { ru: 'Anysphere — что это за компания?', en: 'What is Anysphere?' }, a: { ru: 'Американская компания, которая делает редактор кода Cursor со встроенным агентом.', en: 'A US company that makes the Cursor code editor with a built-in agent.' } },
+          { q: { ru: 'Что ещё делает Anysphere кроме Cursor?', en: 'What else does Anysphere make besides Cursor?' }, a: { ru: 'Свои модели для кода Composer, ревьюер пулл-реквестов Bugbot, агента для терминала и облачных агентов.', en: 'Its own Composer coding models, the Bugbot pull request reviewer, a terminal agent and cloud agents.' } },
+        ],
         source: { url: 'https://anysphere.inc/', label: { ru: 'Официальный сайт Anysphere', en: 'Anysphere official site' } },
       },
       {
@@ -658,6 +757,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['DeepSeek', 'Дипсик\\p{L}*'], en: ['DeepSeek'] },
         related: ['llm', 'hermes-agent', 'openai'],
+        faq: [
+          { q: { ru: 'DeepSeek — что это?', en: 'What is DeepSeek?' }, a: { ru: 'Китайская компания, которая делает языковые модели DeepSeek с открытыми весами: их можно скачать и запустить на своём сервере.', en: 'A Chinese company that builds the DeepSeek language models with open weights: you can download them and run them on your own server.' } },
+          { q: { ru: 'Сколько держит в контексте DeepSeek V4?', en: 'How much context does DeepSeek V4 hold?' }, a: { ru: 'До миллиона токенов.', en: 'Up to a million tokens.' } },
+        ],
         source: { url: 'https://www.deepseek.com/', label: { ru: 'Официальный сайт DeepSeek', en: 'DeepSeek official site' } },
       },
       {
@@ -671,6 +774,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['YandexGPT', 'Алис[аеуы]', 'Яндекс\\p{L}*(?! \\p{Lu})'], en: ['YandexGPT', 'Yandex'] },
         related: ['llm', 'ai-agent'],
+        faq: [
+          { q: { ru: 'Какие ИИ-продукты есть у Яндекса?', en: 'What AI products does Yandex have?' }, a: { ru: 'Модели Alice AI, ассистент Алиса для людей, корпоративный агент Алиса AI Про и Yandex AI Studio для компаний, а для кода — SourceCraft с агентом Code Assistant.', en: 'The Alice AI models, the Alice assistant for people, the Alice AI Pro corporate agent and Yandex AI Studio for companies, and SourceCraft with the Code Assistant agent for code.' } },
+          { q: { ru: 'Что было до Alice AI?', en: 'What came before Alice AI?' }, a: { ru: 'Линейка моделей YandexGPT.', en: 'The YandexGPT model line.' } },
+        ],
         source: { url: 'https://yandex.com/company', label: { ru: 'Яндекс: о компании', en: 'Yandex company page' } },
       },
       {
@@ -683,6 +790,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['JetBrains'], en: ['JetBrains'] },
         related: ['ide', 'vs-code', 'claude-code'],
+        faq: [
+          { q: { ru: 'JetBrains — что это за компания?', en: 'What is JetBrains?' }, a: { ru: 'Компания, основанная в Праге в 2000 году: делает IDE IntelliJ IDEA, PyCharm, WebStorm и другие, а также язык Kotlin.', en: 'A company founded in Prague in 2000: it makes the IntelliJ IDEA, PyCharm, WebStorm and other IDEs, and the Kotlin language.' } },
+          { q: { ru: 'Какие ИИ-агенты работают в IDE JetBrains?', en: 'Which AI agents work in JetBrains IDEs?' }, a: { ru: 'Свой агент Junie, встроенные Claude Agent и Codex, а другие агенты подключаются через открытый протокол ACP.', en: 'JetBrains’ own Junie agent, built-in Claude Agent and Codex, and other agents connect through the open ACP protocol.' } },
+        ],
         source: { url: 'https://www.jetbrains.com/', label: { ru: 'Официальный сайт JetBrains', en: 'JetBrains official site' } },
       },
       {
@@ -695,6 +806,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Microsoft', 'Copilot'], en: ['Microsoft', 'Copilot'] },
         related: ['vs-code', 'openai', 'anthropic', 'llm'],
+        faq: [
+          { q: { ru: 'Что Microsoft делает в ИИ?', en: 'What does Microsoft do in AI?' }, a: { ru: 'Ассистента Copilot, встроенного в Windows, Word, Excel, Outlook и Teams.', en: 'The Copilot assistant built into Windows, Word, Excel, Outlook and Teams.' } },
+          { q: { ru: 'Что Microsoft даёт разработчикам?', en: 'What does Microsoft offer developers?' }, a: { ru: 'Редактор VS Code, GitHub Copilot с агентом для кода и приложение GitHub Copilot.', en: 'The VS Code editor, GitHub Copilot with a coding agent and the GitHub Copilot app.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Microsoft', label: { ru: 'Википедия: Microsoft', en: 'Wikipedia: Microsoft' } },
       },
       {
@@ -706,6 +821,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Bing'], en: ['Bing'] },
         related: ['microsoft', 'yandex'],
+        faq: [
+          { q: { ru: 'Bing — что это?', en: 'What is Bing?' }, a: { ru: 'Поисковая система Microsoft. Рядом с выдачей ссылок в ней работает ассистент Copilot, который отвечает текстом со ссылками на источники.', en: 'Microsoft’s search engine. Next to the link results it runs the Copilot assistant, which answers with text and source links.' } },
+          { q: { ru: 'Где владельцу сайта смотреть Bing?', en: 'Where does a site owner check Bing?' }, a: { ru: 'В Bing Webmaster Tools — кабинете Bing для владельцев сайтов.', en: 'In Bing Webmaster Tools, Bing’s dashboard for site owners.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Microsoft_Bing', label: { ru: 'Википедия: Microsoft Bing', en: 'Wikipedia: Microsoft Bing' } },
       },
       {
@@ -718,6 +837,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Atlassian'], en: ['Atlassian'] },
         related: ['jira', 'confluence', 'mcp-server'],
+        faq: [
+          { q: { ru: 'Atlassian — что это за компания?', en: 'What is Atlassian?' }, a: { ru: 'Австралийская компания, которая делает Jira, Confluence и Bitbucket.', en: 'An Australian company that makes Jira, Confluence and Bitbucket.' } },
+          { q: { ru: 'Как зовут ИИ Atlassian?', en: 'What is Atlassian’s AI called?' }, a: { ru: 'Rovo: агенты Rovo берут задачи в Jira, а Rovo MCP Server даёт внешним агентам доступ к данным Atlassian.', en: 'Rovo: Rovo agents take on tasks in Jira, and the Rovo MCP Server gives outside agents access to Atlassian data.' } },
+        ],
         source: { url: 'https://www.atlassian.com/', label: { ru: 'Официальный сайт Atlassian', en: 'Atlassian official site' } },
       },
     ],
@@ -738,6 +861,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['харнесс\\p{L}*', 'harness'], en: ['harness(?:es)?'] },
         related: ['ai-agent', 'harness-engineering', 'hdd', 'llm'],
+        faq: [
+          { q: { ru: 'Харнесс в ИИ — что это?', en: 'What is a harness in AI?' }, a: { ru: 'Всё вокруг модели, что делает её рабочим агентом: инструкции, инструменты, права доступа, память и проверки.', en: 'Everything around a model that makes it a working agent: instructions, tools, access rights, memory and checks.' } },
+          { q: { ru: 'Почему результат зависит от харнесса?', en: 'Why does the result depend on the harness?' }, a: { ru: 'Модель одна и та же, а что агент знает, что может сделать и как проверяет себя, задаёт харнесс.', en: 'The model is the same, while what the agent knows, what it can do and how it checks itself is set by the harness.' } },
+        ],
         source: { url: 'https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents', label: { ru: 'Anthropic: харнессы для долгих агентов', en: 'Anthropic: Effective harnesses for agents' } },
         seo: {
           title: { ru: 'Харнесс в ИИ: что это и из чего состоит', en: 'Agent harness: what it is and what it includes' },
@@ -762,6 +889,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['хук\\p{L}*'], en: ['hooks?'] },
         related: ['harness', 'claude-md', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Хук — это что?', en: 'What is a hook?' }, a: { ru: 'Скрипт, который харнесс запускает автоматически в заданный момент работы агента: перед действием, после правки файла или при завершении.', en: 'A script the harness runs automatically at a set moment of the agent’s work: before an action, after a file edit or at the end.' } },
+          { q: { ru: 'Чем хук отличается от правила?', en: 'How is a hook different from a rule?' }, a: { ru: 'Правило агент считает советом и может нарушить, хук выполняется всегда. Поэтому запреты без исключений закрывают хуками.', en: 'The agent treats a rule as advice and may break it, while a hook always runs. That is why prohibitions with no exceptions are enforced with hooks.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/hooks', label: { ru: 'Claude Code: справочник хуков', en: 'Claude Code hooks reference' } },
       },
       {
@@ -774,6 +905,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['цикл\\p{L}* агента', 'агентн\\p{L}* цикл\\p{L}*', 'agent loop', 'луп(?:ом|е|ы|ов)?'], en: ['agent loop', 'agentic loop'] },
         related: ['harness', 'tool', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Agent loop — что это?', en: 'What is the agent loop?' }, a: { ru: 'Повторяющийся ход работы агента: подумать, вызвать инструмент, посмотреть результат и снова подумать.', en: 'The repeating rhythm of an agent’s work: think, call a tool, look at the result and think again.' } },
+          { q: { ru: 'Когда цикл агента останавливается?', en: 'When does the agent loop stop?' }, a: { ru: 'Когда задача решена или агенту нужна помощь человека.', en: 'When the task is done or the agent needs a person’s help.' } },
+        ],
         source: { url: 'https://arxiv.org/abs/2210.03629', label: { ru: 'Статья ReAct (arXiv)', en: 'ReAct paper (arXiv)' } },
       },
       {
@@ -788,6 +923,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['ReAct'], en: ['ReAct'] },
         exact: 'ReAct',
         related: ['agent-loop', 'tool', 'ai-agent'],
+        faq: [
+          { q: { ru: 'ReAct — что это?', en: 'What is ReAct?' }, a: { ru: 'Схема работы агента, где модель по очереди рассуждает и действует: решает, что сделать, вызывает инструмент, читает результат и снова рассуждает.', en: 'An agent pattern where the model takes turns reasoning and acting: it decides what to do, calls a tool, reads the result and reasons again.' } },
+          { q: { ru: 'Чем ReAct отличается от React?', en: 'How is ReAct different from React?' }, a: { ru: 'ReAct — схема работы ИИ-агента, React — библиотека на JavaScript для страниц сайтов. Совпадает только написание.', en: 'ReAct is an AI agent pattern, React is a JavaScript library for web pages. Only the spelling is similar.' } },
+        ],
         source: { url: 'https://arxiv.org/abs/2210.03629', label: { ru: 'Yao и др., «ReAct» (arXiv, 2022)', en: 'Yao et al., “ReAct” (arXiv, 2022)' } },
       },
       {
@@ -799,6 +938,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['сесси\\p{L}*'], en: ['sessions?'] },
         related: ['context', 'memory', 'claude-md'],
+        faq: [
+          { q: { ru: 'Сессия агента — что это?', en: 'What is an agent session?' }, a: { ru: 'Один непрерывный разговор с агентом: от запуска до выхода или очистки.', en: 'One continuous conversation with an agent: from start to exit or reset.' } },
+          { q: { ru: 'Что переходит в следующую сессию?', en: 'What carries over to the next session?' }, a: { ru: 'Только то, что записано в память и в файлы вроде CLAUDE.md. Остальное пропадает вместе с контекстом сессии.', en: 'Only what is written to memory and to files like CLAUDE.md. The rest disappears with the session’s context.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/sessions', label: { ru: 'Claude Code: управление сессиями', en: 'Claude Code sessions docs' } },
       },
       {
@@ -810,6 +953,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['памят\\p{L}* агента', 'автопамят\\p{L}*'], en: ['agent memory', 'auto memory'] },
         related: ['session', 'context', 'claude-md', 'bible'],
+        faq: [
+          { q: { ru: 'Память ИИ-агента — что это?', en: 'What is AI agent memory?' }, a: { ru: 'Заметки, которые агент сохраняет между сессиями: правила проекта, найденные ограничения, договорённости.', en: 'Notes the agent keeps between sessions: project rules, discovered constraints, agreements.' } },
+          { q: { ru: 'Что будет без памяти?', en: 'What happens without memory?' }, a: { ru: 'Каждый новый разговор начнётся с чистого листа.', en: 'Every new conversation starts from a blank slate.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/memory', label: { ru: 'Claude Code: память проекта', en: 'Claude Code memory docs' } },
       },
       {
@@ -821,6 +968,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['библи\\p{L}* проекта'], en: ['project bible'] },
         related: ['rules', 'claude-md', 'agents-md', 'memory'],
+        faq: [
+          { q: { ru: 'Библия проекта — что это?', en: 'What is a project bible?' }, a: { ru: 'Описание того, как устроен проект и почему: границы систем, договорённости, принципы и ценности. Агент читает её перед работой.', en: 'A description of how the project is built and why: system boundaries, agreements, principles and values. The agent reads it before working.' } },
+          { q: { ru: 'Где хранить библию проекта?', en: 'Where do you keep a project bible?' }, a: { ru: 'В CLAUDE.md для Claude Code или в AGENTS.md для Codex и Cursor, либо в отдельных файлах рядом.', en: 'In CLAUDE.md for Claude Code or AGENTS.md for Codex and Cursor, or in separate files next to them.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/best-practices', label: { ru: 'Claude Code: лучшие практики', en: 'Claude Code best practices' } },
         compare: {
           title: { ru: 'Правила и библия проекта', en: 'Rules and the project bible' },
@@ -845,6 +996,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['правил\\p{L}* агента', 'рул\\p{L}*'], en: ['agent rules?'] },
         related: ['bible', 'hooks', 'claude-md', 'agents-md'],
+        faq: [
+          { q: { ru: 'Правила агента — что это?', en: 'What are agent rules?' }, a: { ru: 'Короткие указания «делай так, не делай этого», которые харнесс подгружает в контекст агента всегда или когда агент трогает нужные файлы.', en: 'Short “do this, don’t do that” instructions the harness loads into the agent’s context always or when the agent touches matching files.' } },
+          { q: { ru: 'Где лежат правила агента?', en: 'Where do agent rules live?' }, a: { ru: 'В Claude Code — в CLAUDE.md и правилах по путям, у Cursor — в .cursor/rules, у других агентов — в AGENTS.md.', en: 'In Claude Code in CLAUDE.md and path rules, in Cursor in .cursor/rules, and for other agents in AGENTS.md.' } },
+        ],
         source: { url: 'https://cursor.com/docs/rules', label: { ru: 'Cursor: правила', en: 'Cursor Rules docs' } },
         compare: {
           title: { ru: 'Правила и библия проекта', en: 'Rules and the project bible' },
@@ -869,6 +1024,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['автопроверк\\p{L}*', 'самопроверк\\p{L}*', 'статическ\\p{L}* проверк\\p{L}*', 'статтест\\p{L}*'], en: ['self-checks?', 'automated checks?', 'static checks?'] },
         related: ['harness', 'hooks', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Что такое статические проверки для агента?', en: 'What are static checks for an agent?' }, a: { ru: 'Тесты, линтеры, сборка и другие автоматические сверки, которыми подтверждают результат агента до того, как на него посмотрит человек.', en: 'Tests, linters, builds and other automatic checks that confirm the agent’s result before a person looks at it.' } },
+          { q: { ru: 'Зачем агенту запускать проверки самому?', en: 'Why should the agent run checks itself?' }, a: { ru: 'Проверка, которую агент запускает сам, возвращает ему ошибки, и он чинит их до того, как отдать работу.', en: 'A check the agent runs itself returns errors to it, and it fixes them before handing over the work.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Static_program_analysis', label: { ru: 'Википедия: статический анализ кода', en: 'Wikipedia: Static program analysis' } },
       },
       {
@@ -880,6 +1039,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['оркестраци\\p{L}*'], en: ['orchestrat\\p{L}*'] },
         related: ['session-messaging', 'subagent', 'ai-agent', 'harness'],
+        faq: [
+          { q: { ru: 'Оркестрация агентов — что это?', en: 'What is agent orchestration?' }, a: { ru: 'Управление несколькими шагами или агентами: кто за что отвечает, в каком порядке работает и как передаёт результат дальше.', en: 'Managing several steps or agents: who is responsible for what, in which order they work and how results move on.' } },
+          { q: { ru: 'Как агенты передают результат друг другу?', en: 'How do agents pass results to each other?' }, a: { ru: 'Через файлы, через итог субагента или сообщениями между сессиями.', en: 'Through files, through a subagent’s result or with cross-session messages.' } },
+        ],
         source: { url: 'https://www.anthropic.com/engineering/multi-agent-research-system', label: { ru: 'Anthropic: мультиагентная система исследований', en: 'Anthropic: Multi-agent research system' } },
       },
       {
@@ -891,6 +1054,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['сообщени\\p{L}* между сесси\\p{L}*'], en: ['cross-session messag\\p{L}*'] },
         related: ['orchestration', 'session', 'subagent'],
+        faq: [
+          { q: { ru: 'Что такое сообщения между сессиями?', en: 'What is cross-session messaging?' }, a: { ru: 'Способ, которым параллельные сессии агентов передают друг другу текст: одна находит другую по имени и отправляет сообщение.', en: 'A way for parallel agent sessions to pass text to each other: one finds another by name and sends a message.' } },
+          { q: { ru: 'Зачем сообщения между сессиями?', en: 'Why use cross-session messaging?' }, a: { ru: 'Так оркестрация нескольких агентов обходится без человека-посредника, который копирует текст из одного окна в другое.', en: 'This way orchestrating several agents needs no person in the middle copying text from one window to another.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/agent-teams', label: { ru: 'Claude Code: команды агентов', en: 'Claude Code agent teams docs' } },
       },
       {
@@ -902,6 +1069,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['трассировк\\p{L}*'], en: ['tracing', 'agent traces?'] },
         related: ['harness', 'tool', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Трассировка агента — что это?', en: 'What is agent tracing?' }, a: { ru: 'Запись каждого шага агента: что он прочитал, какие инструменты вызвал и что получил в ответ.', en: 'A record of every agent step: what it read, which tools it called and what came back.' } },
+          { q: { ru: 'Зачем логи и трассировка?', en: 'Why logs and tracing?' }, a: { ru: 'По ним видно, где агент свернул не туда, и разбор можно повторить.', en: 'They show where the agent went wrong, and the analysis can be repeated.' } },
+        ],
         source: { url: 'https://opentelemetry.io/docs/concepts/signals/traces/', label: { ru: 'OpenTelemetry: трассировки', en: 'OpenTelemetry: Traces' } },
       },
       {
@@ -913,6 +1084,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['CLAUDE\\.md'], en: ['CLAUDE\\.md'] },
         related: ['agents-md', 'agent-skills', 'claude-code'],
+        faq: [
+          { q: { ru: 'CLAUDE.md — что это?', en: 'What is CLAUDE.md?' }, a: { ru: 'Файл в корне проекта с постоянными инструкциями для Claude Code: структура проекта, команды сборки и тестов, соглашения.', en: 'A file in the project root with standing instructions for Claude Code: project structure, build and test commands, conventions.' } },
+          { q: { ru: 'Когда Claude Code читает CLAUDE.md?', en: 'When does Claude Code read CLAUDE.md?' }, a: { ru: 'В начале каждой сессии: файл попадает в контекст агента.', en: 'At the start of every session: the file goes into the agent’s context.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/memory', label: { ru: 'Claude Code: CLAUDE.md и память', en: 'Claude Code CLAUDE.md docs' } },
       },
       {
@@ -924,6 +1099,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['AGENTS\\.md'], en: ['AGENTS\\.md'] },
         related: ['claude-md', 'codex', 'cursor'],
+        faq: [
+          { q: { ru: 'AGENTS.md — что это?', en: 'What is AGENTS.md?' }, a: { ru: 'Общий для разных агентов файл с инструкциями по проекту: команды, стиль, запреты.', en: 'A shared instruction file for different agents: commands, style, prohibitions.' } },
+          { q: { ru: 'Какие агенты читают AGENTS.md?', en: 'Which agents read AGENTS.md?' }, a: { ru: 'Codex, Cursor и другие агенты, поэтому файл служит нейтральной альтернативой CLAUDE.md.', en: 'Codex, Cursor and other agents, so the file serves as a neutral alternative to CLAUDE.md.' } },
+        ],
         source: { url: 'https://agents.md/', label: { ru: 'Официальный сайт AGENTS.md', en: 'AGENTS.md official site' } },
       },
       {
@@ -936,6 +1115,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['скилл\\p{L}*', 'Agent Skills'], en: ['Agent Skills', 'skills?'] },
         related: ['claude-md', 'harness', 'claude-code'],
+        faq: [
+          { q: { ru: 'Скилл ИИ-агента — что это?', en: 'What is an AI agent skill?' }, a: { ru: 'Папка с файлом SKILL.md: инструкция и вспомогательные файлы для одной повторяющейся задачи, например отчёта или миграции.', en: 'A folder with a SKILL.md file: instructions and helper files for one repeating task, such as a report or a migration.' } },
+          { q: { ru: 'Почему скиллы не тратят контекст?', en: 'Why don’t skills use up the context?' }, a: { ru: 'В начале сессии агент видит только название и описание скилла, а целиком подгружает его, когда задача подходит.', en: 'At the start of a session the agent sees only the skill’s name and description, and loads it fully when a task matches.' } },
+        ],
         source: { url: 'https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview', label: { ru: 'Anthropic: Agent Skills', en: 'Anthropic Agent Skills docs' } },
       },
     ],
@@ -956,6 +1139,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Model Context Protocol', 'MCP'], en: ['Model Context Protocol', 'MCP'] },
         related: ['mcp-scope', 'prompt-injection', 'claude-code'],
+        faq: [
+          { q: { ru: 'MCP — что это простыми словами?', en: 'What is MCP in plain words?' }, a: { ru: 'Открытый протокол, по которому агент подключается к внешним сервисам — Jira, базам данных — через единый интерфейс.', en: 'An open protocol that connects an agent to outside services like Jira or databases through one interface.' } },
+          { q: { ru: 'Кто управляет правами при подключении через MCP?', en: 'Who controls permissions over MCP?' }, a: { ru: 'Вы: MCP-сервер предлагает агенту набор инструментов, а права доступа задаются на стороне сервера.', en: 'You do: the MCP server offers the agent a set of tools, and access rights are set on the server side.' } },
+        ],
         source: { url: 'https://modelcontextprotocol.io/', label: { ru: 'Официальный сайт MCP', en: 'Model Context Protocol site' } },
       },
       {
@@ -967,6 +1154,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['MCP-клиент\\p{L}*'], en: ['MCP clients?'] },
         related: ['mcp', 'mcp-server', 'harness'],
+        faq: [
+          { q: { ru: 'MCP-клиент — что это?', en: 'What is an MCP client?' }, a: { ru: 'Часть на стороне агента, которая обращается к MCP-серверу системы, просит данные и вызывает инструменты.', en: 'The part on the agent’s side that talks to a system’s MCP server, asks for data and calls tools.' } },
+          { q: { ru: 'Где находится MCP-клиент?', en: 'Where is the MCP client?' }, a: { ru: 'Он встроен в харнесс, например в Claude Code.', en: 'It is built into the harness, for example Claude Code.' } },
+        ],
         source: { url: 'https://modelcontextprotocol.io/docs/learn/client-concepts', label: { ru: 'MCP: устройство клиентов', en: 'MCP: Understanding clients' } },
       },
       {
@@ -978,6 +1169,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['MCP-сервер\\p{L}*'], en: ['MCP servers?'] },
         related: ['mcp', 'mcp-client', 'mcp-scope'],
+        faq: [
+          { q: { ru: 'MCP-сервер — что это?', en: 'What is an MCP server?' }, a: { ru: 'Часть на стороне системы (Jira, GitLab, базы данных), которая отдаёт данные и принимает действия агента по единому протоколу.', en: 'The part on a system’s side (Jira, GitLab, databases) that serves data and accepts agent actions over one protocol.' } },
+          { q: { ru: 'Где задаются права MCP-сервера?', en: 'Where are MCP server permissions set?' }, a: { ru: 'На стороне сервера: он решает, что агенту можно читать и что менять.', en: 'On the server side: it decides what the agent may read and what it may change.' } },
+        ],
         source: { url: 'https://modelcontextprotocol.io/docs/learn/server-concepts', label: { ru: 'MCP: устройство серверов', en: 'MCP: Understanding servers' } },
         more: { post: 'mcp-1c', label: { ru: 'MCP-сервер для 1С: как пустить ИИ-агента к базе и не сломать её', en: 'MCP server for 1C: letting an AI agent into the database without breaking it' } },
       },
@@ -990,6 +1185,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['OAuth(?: 2\\.0)?'], en: ['OAuth(?: 2\\.0)?'] },
         related: ['mcp', 'token'],
+        faq: [
+          { q: { ru: 'Как работает OAuth для агента?', en: 'How does OAuth work for an agent?' }, a: { ru: 'Харнесс открывает страницу входа сервиса, вы вводите пароль там и подтверждаете доступ, а агент получает токен.', en: 'The harness opens the service’s sign-in page, you enter the password there and confirm access, and the agent gets a token.' } },
+          { q: { ru: 'Видит ли агент мой пароль при OAuth?', en: 'Does the agent see my password with OAuth?' }, a: { ru: 'Нет. Агент получает только токен, ограниченный выданными правами, и его можно отозвать.', en: 'No. The agent gets only a token limited to the rights you granted, and it can be revoked.' } },
+        ],
         source: { url: 'https://modelcontextprotocol.io/specification/latest/basic/authorization', label: { ru: 'Спецификация MCP: авторизация', en: 'MCP spec: Authorization' } },
       },
       {
@@ -1002,6 +1201,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['уровн\\p{L}* MCP-сервер\\p{L}*', 'област\\p{L}* MCP', 'MCP scope'], en: ['MCP server scopes?', 'MCP scopes?'] },
         related: ['mcp', 'claude-code'],
+        faq: [
+          { q: { ru: 'Какие уровни MCP есть в Claude Code?', en: 'What MCP scopes does Claude Code have?' }, a: { ru: 'Три: local — только вы и текущий проект, project — вся команда через файл в репозитории, user — вы во всех проектах.', en: 'Three: local for you in the current project, project for the whole team through a file in the repo, and user for you across all projects.' } },
+          { q: { ru: 'Когда выбирают уровень MCP-сервера?', en: 'When do you pick an MCP server scope?' }, a: { ru: 'При добавлении сервера; по умолчанию стоит local.', en: 'When adding the server; the default is local.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/mcp', label: { ru: 'Claude Code: подключение MCP', en: 'Claude Code MCP docs' } },
         table: {
           title: { ru: 'Три уровня рядом', en: 'The three scopes side by side' },
@@ -1026,6 +1229,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['prompt injection'], en: ['prompt injection'] },
         related: ['mcp', 'human-in-the-loop', 'planes'],
+        faq: [
+          { q: { ru: 'Prompt injection — что это?', en: 'What is prompt injection?' }, a: { ru: 'Атака, при которой в письме, тикете или веб-странице прячут инструкцию для агента, и агент принимает её за часть запроса.', en: 'An attack that hides an instruction for the agent in an email, ticket or web page, and the agent takes it as part of the request.' } },
+          { q: { ru: 'Как защититься от prompt injection?', en: 'How do you defend against prompt injection?' }, a: { ru: 'Держать чужой текст в плоскости данных, чтобы он не стал командой, и давать агенту минимум прав.', en: 'Keep outside text in the data plane so it cannot become a command, and give the agent minimal permissions.' } },
+        ],
         source: { url: 'https://genai.owasp.org/llmrisk/llm01-prompt-injection/', label: { ru: 'OWASP LLM01: промпт-инъекция', en: 'OWASP LLM01: Prompt Injection' } },
       },
       {
@@ -1038,6 +1245,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['(?:data|control) plane'], en: ['(?:data|control) plane'] },
         related: ['prompt-injection', 'mcp'],
+        faq: [
+          { q: { ru: 'Data plane — это что?', en: 'What is the data plane?' }, a: { ru: 'Всё, что агент читает: страницы, тикеты, документы и ответы серверов.', en: 'Everything the agent reads: pages, tickets, documents and server replies.' } },
+          { q: { ru: 'Чем control plane отличается от data plane?', en: 'How is the control plane different from the data plane?' }, a: { ru: 'Control plane — команды, то есть ваши сообщения и правила. Data plane — данные. Защита от prompt injection не даёт чужому тексту из данных стать командой.', en: 'The control plane is commands, meaning your messages and rules. The data plane is data. Prompt injection protection keeps outside text in the data from becoming a command.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Control_plane', label: { ru: 'Википедия: control plane', en: 'Wikipedia: Control plane' } },
       },
       {
@@ -1045,11 +1256,15 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Права доступа', en: 'Permissions' },
         aka: { ru: 'права ИИ-агента, разрешения, принцип минимальных привилегий', en: 'AI agent permissions, permission modes, least privilege' },
         def: {
-          ru: 'Права ИИ-агента — что ему разрешено делать в вашей среде и подключённых системах: только читать или ещё и писать, какие команды запускать. В Claude Code и Codex это режимы разрешений: от вопроса перед каждым действием до работы без подтверждений. Действует принцип минимальных привилегий: агент получает ровно те права, что нужны для задачи, и их повышают по ступеням.',
+          ru: 'Права доступа ИИ-агента — что ему разрешено делать в вашей среде и подключённых системах: только читать или ещё и писать, какие команды запускать. В Claude Code и Codex это режимы разрешений: от вопроса перед каждым действием до работы без подтверждений. Действует принцип минимальных привилегий: агент получает ровно те права, что нужны для задачи, и их повышают по ступеням.',
           en: 'Permissions — AI agent permissions define what the agent may do in your environment and connected systems: only read or write as well, and which commands to run. In Claude Code and Codex these are permission modes: from asking before every action to working without confirmations. The principle of least privilege applies: the agent gets exactly the rights the task needs, raised step by step.',
         },
         match: { ru: ['прав\\p{L}* доступа', 'права на (?:чтение|запись)', 'прав\\p{L}* ИИ-агент\\p{L}*', 'принцип\\p{L}* минимальных привилегий'], en: ['permissions?', 'access rights?', 'least privilege'] },
         related: ['mcp-scope', 'prompt-injection', 'tool', 'sandbox', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Какие права давать ИИ-агенту?', en: 'What permissions should an AI agent get?' }, a: { ru: 'Ровно те, что нужны для задачи, по принципу минимальных привилегий, и повышать их по ступеням.', en: 'Exactly what the task needs, following the principle of least privilege, raising them step by step.' } },
+          { q: { ru: 'Какие режимы разрешений есть в Claude Code и Codex?', en: 'What permission modes do Claude Code and Codex have?' }, a: { ru: 'От вопроса перед каждым действием до работы без подтверждений; между ними — режимы, где агент сам делает безопасные шаги.', en: 'From asking before every action to working without confirmations; in between are modes where the agent takes safe steps on its own.' } },
+        ],
         source: { url: 'https://code.claude.com/docs/en/permissions', label: { ru: 'Claude Code: настройка разрешений', en: 'Claude Code permissions docs' } },
         seo: {
           title: { ru: 'Права ИИ-агента: принцип минимальных привилегий и режимы разрешений — Claude Code, Codex', en: 'AI agent permissions: least privilege, Claude Code permission modes and --dangerously-skip-permissions' },
@@ -1085,6 +1300,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Jira'], en: ['Jira'] },
         related: ['atlassian', 'mcp', 'mcp-server', 'ai-agent'],
+        faq: [
+          { q: { ru: 'Как ИИ-агент работает с Jira?', en: 'How does an AI agent work with Jira?' }, a: { ru: 'Через MCP читает задачи вместе с комментариями и историей изменений.', en: 'Over MCP it reads tickets together with comments and change history.' } },
+          { q: { ru: 'Может ли агент менять задачи в Jira?', en: 'Can the agent change Jira tickets?' }, a: { ru: 'Только с вашего разрешения.', en: 'Only with your permission.' } },
+        ],
         source: { url: 'https://www.atlassian.com/software/jira', label: { ru: 'Официальная страница Jira', en: 'Jira official page' } },
       },
       {
@@ -1096,6 +1315,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Sentry'], en: ['Sentry'] },
         related: ['mcp', 'grafana', 'oauth'],
+        faq: [
+          { q: { ru: 'Sentry — что это?', en: 'What is Sentry?' }, a: { ru: 'Сервис мониторинга ошибок: собирает исключения из приложения вместе с контекстом.', en: 'An error monitoring service: it collects exceptions from the app together with their context.' } },
+          { q: { ru: 'Что агент находит в Sentry?', en: 'What does an agent find in Sentry?' }, a: { ru: 'Ошибки помечены версией приложения, поэтому агент видит, с какой выкладки ошибка началась, и ищет причину в этих изменениях.', en: 'Errors are tagged with the app version, so the agent sees which release the error started with and looks for the cause in those changes.' } },
+        ],
         source: { url: 'https://sentry.io/welcome/', label: { ru: 'Официальный сайт Sentry', en: 'Sentry official site' } },
       },
       {
@@ -1107,6 +1330,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Grafana'], en: ['Grafana'] },
         related: ['mcp', 'sentry', 'mcp-server'],
+        faq: [
+          { q: { ru: 'Grafana — что это?', en: 'What is Grafana?' }, a: { ru: 'Система графиков и дашбордов для метрик и логов.', en: 'A charts and dashboards system for metrics and logs.' } },
+          { q: { ru: 'Как подключить Grafana к агенту только на чтение?', en: 'How do I connect Grafana to an agent read-only?' }, a: { ru: 'Запустить MCP-сервер Grafana с флагом --disable-write: агент читает метрики и логи, но не меняет дашборды, алерты и инциденты.', en: 'Run the Grafana MCP server with the --disable-write flag: the agent reads metrics and logs but cannot change dashboards, alerts or incidents.' } },
+        ],
         source: { url: 'https://grafana.com/', label: { ru: 'Официальный сайт Grafana', en: 'Grafana official site' } },
       },
       {
@@ -1118,6 +1345,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['GitLab'], en: ['GitLab'] },
         related: ['mcp', 'jira'],
+        faq: [
+          { q: { ru: 'Что даёт агенту GitLab через MCP?', en: 'What does GitLab over MCP give an agent?' }, a: { ru: 'Агент видит код всех проектов сразу и не клонирует их: ищет по проектам, читает файлы, запросы на слияние и ревью.', en: 'The agent sees the code of all projects at once without cloning them: it searches projects and reads files, merge requests and reviews.' } },
+          { q: { ru: 'GitLab — что это?', en: 'What is GitLab?' }, a: { ru: 'Платформа для хранения кода и запросов на слияние.', en: 'A platform for hosting code and merge requests.' } },
+        ],
         source: { url: 'https://about.gitlab.com/', label: { ru: 'Официальный сайт GitLab', en: 'GitLab official site' } },
       },
       {
@@ -1129,6 +1360,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Confluence'], en: ['Confluence'] },
         related: ['atlassian', 'mcp', 'jira'],
+        faq: [
+          { q: { ru: 'Confluence — что это?', en: 'What is Confluence?' }, a: { ru: 'Вики-система Atlassian: база знаний команды.', en: 'Atlassian’s wiki: a team knowledge base.' } },
+          { q: { ru: 'Зачем агенту Confluence?', en: 'Why does an agent need Confluence?' }, a: { ru: 'Через MCP агент берёт оттуда статьи и прошлые решения команды.', en: 'Over MCP the agent pulls articles and the team’s past decisions from it.' } },
+        ],
         source: { url: 'https://www.atlassian.com/software/confluence', label: { ru: 'Официальная страница Confluence', en: 'Confluence official page' } },
       },
     ],
@@ -1149,6 +1384,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['harness engineering', 'харнесс-инжиниринг\\p{L}*'], en: ['harness engineering'] },
         related: ['harness', 'hdd'],
+        faq: [
+          { q: { ru: 'Harness engineering — что это?', en: 'What is harness engineering?' }, a: { ru: 'Дисциплина настройки харнесса: что агент знает о проекте, какими инструментами владеет, что ему разрешено и как проверяется результат.', en: 'The discipline of setting up a harness: what the agent knows about the project, which tools it has, what it may do and how its result is checked.' } },
+          { q: { ru: 'Чем harness engineering отличается от HDD?', en: 'How is harness engineering different from HDD?' }, a: { ru: 'Harness engineering охватывает всё окружение без заданного порядка. HDD — один метод внутри неё: каждая ошибка агента становится правилом среды.', en: 'Harness engineering covers the whole environment with no set order. HDD is one method inside it: every agent mistake becomes a rule of the environment.' } },
+        ],
         source: { url: 'https://martinfowler.com/articles/harness-engineering.html', label: { ru: 'Мартин Фаулер: harness engineering', en: 'martinfowler.com: Harness engineering' } },
       },
       {
@@ -1161,17 +1400,25 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['HDD', 'Harness-Driven Development'], en: ['HDD', 'Harness-Driven Development'] },
         related: ['harness', 'harness-engineering', 'claude-md'],
+        faq: [
+          { q: { ru: 'HDD — что это?', en: 'What is HDD?' }, a: { ru: 'Метод внутри harness engineering: каждая ошибка агента превращается в правило его среды — инструкцию, проверку или ограничение.', en: 'A method within harness engineering: every agent mistake turns into a rule of its environment — an instruction, a check or a limit.' } },
+          { q: { ru: 'Что даёт HDD?', en: 'What does HDD give you?' }, a: { ru: 'Среда растёт от реальных ошибок, и ошибка не повторяется в следующих запусках.', en: 'The environment grows from real mistakes, and a mistake does not repeat in later runs.' } },
+        ],
       },
       {
         slug: 'spec-driven-development',
         name: { ru: 'Spec-Driven Development', en: 'Spec-Driven Development' },
         aka: { ru: 'SDD', en: 'SDD' },
         def: {
-          ru: 'Подход, где сначала пишется спецификация — что система должна делать, — а код пишет и сверяет с ней агент. Спека становится главным документом, а код — её следствием.',
+          ru: 'Spec-Driven Development (разработка по спецификациям) — подход, где сначала пишется спецификация — что система должна делать, — а код пишет и сверяет с ней агент. Спека становится главным документом, а код — её следствием.',
           en: 'An approach where a specification — what the system must do — is written first, and an agent writes the code and checks it against the spec. The spec becomes the main document and the code its consequence.',
         },
         match: { ru: ['Spec-Driven Development', 'spec-driven development', 'SDD'], en: ['Spec-Driven Development', 'spec-driven development', 'SDD'] },
         related: ['openspec', 'spec-kit', 'reconcile-loop'],
+        faq: [
+          { q: { ru: 'Spec-Driven Development — что это?', en: 'What is spec-driven development?' }, a: { ru: 'Подход, где сначала пишется спецификация — что система должна делать, — а код по ней пишет и сверяет агент.', en: 'An approach where the specification of what the system must do comes first, and an agent writes and checks the code against it.' } },
+          { q: { ru: 'Какие программы есть для Spec-Driven Development?', en: 'Which frameworks support spec-driven development?' }, a: { ru: 'Например, OpenSpec от Fission AI и Spec Kit от GitHub.', en: 'For example, OpenSpec by Fission AI and Spec Kit by GitHub.' } },
+        ],
         source: { url: 'https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/', label: { ru: 'Блог GitHub: разработка от спецификаций', en: 'GitHub Blog: Spec-driven development' } },
         compare: {
           title: { ru: 'Reconcile loop: Kubernetes и агент', en: 'Reconcile loop: Kubernetes and the agent' },
@@ -1194,6 +1441,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['OpenSpec'], en: ['OpenSpec'] },
         related: ['spec-driven-development', 'spec-kit'],
+        faq: [
+          { q: { ru: 'OpenSpec — это что?', en: 'What is OpenSpec?' }, a: { ru: 'Бесплатная открытая программа от Fission AI для разработки по спецификациям: агент сначала пишет план изменения в файлы, вы его проверяете, потом агент пишет код.', en: 'A free open-source framework by Fission AI for spec-driven development: the agent first writes a change plan into files, you review it, then the agent writes code.' } },
+          { q: { ru: 'Какие команды у OpenSpec?', en: 'What are the OpenSpec commands?' }, a: { ru: 'Основные три: /opsx:propose создаёт план изменения, /opsx:apply пишет код по задачам, /opsx:archive вливает требования в общие спеки. Перед ними можно подумать вслух командой /opsx:explore.', en: 'The main three: /opsx:propose creates a change plan, /opsx:apply writes code by the tasks, /opsx:archive merges the requirements into the shared specs. Before them you can think out loud with /opsx:explore.' } },
+          { q: { ru: 'Чем OpenSpec отличается от Spec Kit?', en: 'How is OpenSpec different from Spec Kit?' }, a: { ru: 'OpenSpec легче: шаги можно повторять в любом порядке, и он рассчитан на уже работающий код. Spec Kit от GitHub ведёт по жёстким фазам.', en: 'OpenSpec is lighter: steps can repeat in any order, and it is built for code that already runs. GitHub’s Spec Kit walks through fixed phases.' } },
+        ],
         source: { url: 'https://github.com/Fission-AI/OpenSpec', label: { ru: 'Репозиторий OpenSpec на GitHub', en: 'OpenSpec GitHub repo' } },
         seo: {
           title: { ru: 'OpenSpec: что это — открытая программа для разработки по спецификациям', en: 'What is OpenSpec: an open-source spec-driven development framework' },
@@ -1213,6 +1465,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Spec Kit'], en: ['Spec Kit'] },
         related: ['spec-driven-development', 'openspec'],
+        faq: [
+          { q: { ru: 'Spec Kit — что это?', en: 'What is Spec Kit?' }, a: { ru: 'Набор GitHub для разработки по спецификациям: утилита specify ставит в проект команды для агента, и они ведут по шагам от принципов проекта до кода.', en: 'GitHub’s toolkit for spec-driven development: the specify utility installs agent commands in the project, which guide you step by step from project principles to code.' } },
+          { q: { ru: 'Какие шаги в Spec Kit?', en: 'What are the Spec Kit steps?' }, a: { ru: 'Принципы проекта, спека, технический план, задачи, код и сверка кода со спекой, которую повторяют, пока они не сойдутся.', en: 'Project principles, spec, technical plan, tasks, code and a check of the code against the spec, repeated until they match.' } },
+        ],
         source: { url: 'https://github.com/github/spec-kit', label: { ru: 'Репозиторий Spec Kit на GitHub', en: 'Spec Kit GitHub repo' } },
       },
       {
@@ -1225,6 +1481,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['RFC 2119'], en: ['RFC 2119'] },
         related: ['aggregate', 'spec-driven-development'],
+        faq: [
+          { q: { ru: 'RFC 2119 — что это?', en: 'What is RFC 2119?' }, a: { ru: 'Стандарт, который задаёт значение слов MUST, SHOULD и MAY в требованиях.', en: 'A standard that defines the meaning of MUST, SHOULD and MAY in requirements.' } },
+          { q: { ru: 'Зачем RFC 2119 в спеках для агента?', en: 'Why use RFC 2119 in specs for an agent?' }, a: { ru: 'Эти слова показывают агенту, что обязательно, что желательно, а что на его усмотрение.', en: 'These words tell the agent what is required, what is recommended and what is up to it.' } },
+        ],
         source: { url: 'https://www.rfc-editor.org/rfc/rfc2119', label: { ru: 'RFC 2119 — текст стандарта', en: 'RFC 2119, the standard text' } },
       },
       {
@@ -1237,6 +1497,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Domain-Driven Design', 'DDD'], en: ['Domain-Driven Design', 'DDD'] },
         related: ['aggregate', 'bounded-context', 'spec-driven-development'],
+        faq: [
+          { q: { ru: 'DDD — что это?', en: 'What is DDD?' }, a: { ru: 'Domain-Driven Design: подход, где код строится вокруг предметной области и её языка, общего с бизнесом.', en: 'Domain-Driven Design: an approach where code is built around the business domain and a language shared with the business.' } },
+          { q: { ru: 'Из чего состоит DDD?', en: 'What are the parts of DDD?' }, a: { ru: 'Предметная область делится на ограниченные контексты, внутри них живут агрегаты: принимают команды, держат бизнес-правила и отправляют события.', en: 'The domain is split into bounded contexts, and aggregates live inside them: they take commands, hold business rules and send events.' } },
+        ],
         source: { url: 'https://martinfowler.com/bliki/DomainDrivenDesign.html', label: { ru: 'Мартин Фаулер: Domain-Driven Design', en: 'Martin Fowler: Domain-Driven Design' } },
       },
       {
@@ -1248,6 +1512,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['агрегат(?!ор)\\p{L}*'], en: ['aggregates?'] },
         related: ['bounded-context', 'ddd', 'rfc-2119'],
+        faq: [
+          { q: { ru: 'Агрегат в DDD — что это?', en: 'What is an aggregate in DDD?' }, a: { ru: 'Группа связанных объектов предметной области, которая меняется как единое целое через корень и сама держит бизнес-правила.', en: 'A group of related domain objects that changes as one unit through its root and holds the business rules itself.' } },
+          { q: { ru: 'Зачем агрегат при работе с агентом?', en: 'Why does an aggregate matter when working with an agent?' }, a: { ru: 'На его границе удобно ставить проверку работы агента: там входят команды, выходят события и записаны правила.', en: 'Its boundary is a good place to check an agent’s work: commands come in, events go out and the rules are written there.' } },
+        ],
         source: { url: 'https://martinfowler.com/bliki/DDD_Aggregate.html', label: { ru: 'Мартин Фаулер: агрегат DDD', en: 'Martin Fowler: DDD Aggregate' } },
       },
       {
@@ -1259,6 +1527,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['ограниченн\\p{L}* контекст\\p{L}*'], en: ['bounded contexts?'] },
         related: ['aggregate', 'ddd', 'domain', 'ubiquitous-language', 'rice-theorem'],
+        faq: [
+          { q: { ru: 'Ограниченный контекст — что это?', en: 'What is a bounded context?' }, a: { ru: 'Граница, внутри которой термины имеют один смысл: слово «заказ» в продажах и в доставке может значить разное.', en: 'A boundary within which terms have one meaning: “order” in sales and in delivery can mean different things.' } },
+          { q: { ru: 'Как общаются ограниченные контексты?', en: 'How do bounded contexts talk to each other?' }, a: { ru: 'Через границу соседи обмениваются событиями агрегатов.', en: 'Across the boundary neighbours exchange aggregate events.' } },
+        ],
         source: { url: 'https://martinfowler.com/bliki/BoundedContext.html', label: { ru: 'Мартин Фаулер: ограниченный контекст', en: 'Martin Fowler: Bounded Context' } },
       },
       {
@@ -1271,6 +1543,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['предметн\\p{L}* област\\p{L}*'], en: ['business domains?'] },
         related: ['bounded-context', 'ubiquitous-language', 'ddd', 'aggregate'],
+        faq: [
+          { q: { ru: 'Предметная область — что это?', en: 'What is a business domain?' }, a: { ru: 'Часть реального мира, для которой пишут программу, со своими понятиями и правилами, например бронирование переговорных.', en: 'The part of the real world a program is written for, with its own concepts and rules, such as meeting room booking.' } },
+          { q: { ru: 'Как предметную область делят в DDD?', en: 'How is a domain split in DDD?' }, a: { ru: 'На поддомены, и модель каждого в коде живёт в своём ограниченном контексте.', en: 'Into subdomains, and each one’s model lives in its own bounded context in the code.' } },
+        ],
         source: { url: 'https://martinfowler.com/bliki/DomainDrivenDesign.html', label: { ru: 'Мартин Фаулер: Domain-Driven Design', en: 'Martin Fowler: Domain-Driven Design' } },
       },
       {
@@ -1283,6 +1559,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['един\\p{L}* язык\\p{L}*', 'язык\\p{L}* предметной области'], en: ['ubiquitous language'] },
         related: ['bounded-context', 'domain', 'ddd', 'rice-theorem'],
+        faq: [
+          { q: { ru: 'Единый язык в DDD — что это?', en: 'What is the ubiquitous language in DDD?' }, a: { ru: 'Общий словарь разработчиков и бизнеса внутри одного ограниченного контекста: одни и те же слова звучат в разговоре, в спеке и в коде.', en: 'A shared vocabulary of developers and the business within one bounded context: the same words appear in conversation, in the spec and in the code.' } },
+          { q: { ru: 'Может ли слово значить разное?', en: 'Can a word mean different things?' }, a: { ru: 'Внутри границы у слова один смысл, за границей то же слово может значить другое.', en: 'Inside the boundary a word has one meaning; outside it the same word can mean something else.' } },
+        ],
         source: { url: 'https://martinfowler.com/bliki/UbiquitousLanguage.html', label: { ru: 'Мартин Фаулер: Ubiquitous Language', en: 'Martin Fowler: Ubiquitous Language' } },
       },
       {
@@ -1295,6 +1575,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['императивн\\p{L}* (?:подход|стил|язык|программирован|код)\\p{L}*', 'императивн\\p{L}*(?= и декларативн)'], en: ['imperative (?:approach|style|programming|code|languages?)', 'imperative(?= and declarative)'] },
         related: ['declarative', 'rice-theorem', 'invariant'],
+        faq: [
+          { q: { ru: 'Императивный подход — что это?', en: 'What is the imperative approach?' }, a: { ru: 'Стиль записи программы, где по шагам расписано, как прийти к результату.', en: 'A style of writing a program that spells out step by step how to reach the result.' } },
+          { q: { ru: 'Чем императивный подход отличается от декларативного?', en: 'How is the imperative approach different from the declarative one?' }, a: { ru: 'Императивный код описывает шаги, а правило о результате складывается из них. Декларативный описывает, что должно быть верно, а шаги выбирает движок.', en: 'Imperative code describes the steps, and the rule about the result emerges from them. Declarative code describes what must hold, and an engine picks the steps.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Imperative_programming', label: { ru: 'Википедия: императивное программирование', en: 'Wikipedia: Imperative programming' } },
       },
       {
@@ -1302,7 +1586,7 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Декларативный подход', en: 'Declarative approach' },
         aka: { ru: 'что: правила и ограничения', en: 'what: rules and constraints' },
         def: {
-          ru: 'Стиль записи, где программа — система правил и ограничений, описывающих нужный результат, без порядка шагов: сказано, что должно быть верно, а как этого добиться, решает движок. Так устроены ограничения и запросы в базе данных, правила вывода, описание желаемого состояния системы. Пример: «брони одной комнаты не пересекаются», «бронь не дольше 4 часов» в виде ограничений в базе. Простые декларативные записи проверяются по тексту точно, потому что их поведение видно из самой записи. На мощном декларативном языке это уже не так, и теорема Райса задевает его так же, как императивный код.',
+          ru: 'Декларативный подход — стиль записи, где программа — система правил и ограничений, описывающих нужный результат, без порядка шагов: сказано, что должно быть верно, а как этого добиться, решает движок. Так устроены ограничения и запросы в базе данных, правила вывода, описание желаемого состояния системы. Пример: «брони одной комнаты не пересекаются», «бронь не дольше 4 часов» в виде ограничений в базе. Простые декларативные записи проверяются по тексту точно, потому что их поведение видно из самой записи. На мощном декларативном языке это уже не так, и теорема Райса задевает его так же, как императивный код.',
           en: 'A style of writing where a program is a system of rules and constraints describing the desired result, with no order of steps: it states what must hold, and an engine decides how to get there. Database constraints and queries, inference rules and descriptions of a system’s desired state work this way. Example: “bookings of one room never overlap” and “a booking lasts at most 4 hours” as database constraints. Simple declarative notations can be checked exactly from the text, because their behaviour is visible in the statement itself. In a powerful declarative language this no longer holds, and Rice’s theorem hits it just like imperative code.',
         },
         match: { ru: ['декларативн\\p{L}* (?:подход|стил|язык|запис|программирован)\\p{L}*'], en: ['declarative (?:approach|style|programming|notations?|languages?)'] },
@@ -1325,6 +1609,10 @@ export const TERM_SETS: TermSet[] = [
           { post: 'quint-vs-tests-and-tla', label: { ru: 'Чем model checking отличается от тестов', en: 'How model checking differs from testing' } },
           { post: 'specs-by-aggregates', label: { ru: 'Спеки по агрегатам', en: 'Specs by aggregate' } },
         ],
+        faq: [
+          { q: { ru: 'Декларативный подход — что это?', en: 'What is the declarative approach?' }, a: { ru: 'Стиль записи, где программа — система правил и ограничений, описывающих нужный результат, без порядка шагов.', en: 'A style where a program is a system of rules and constraints describing the result, with no order of steps.' } },
+          { q: { ru: 'Где используется декларативный подход?', en: 'Where is the declarative approach used?' }, a: { ru: 'В ограничениях и запросах баз данных, правилах вывода и описаниях желаемого состояния системы, например в SQL и Kubernetes.', en: 'In database constraints and queries, inference rules and descriptions of a system’s desired state, such as SQL and Kubernetes.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Declarative_programming', label: { ru: 'Википедия: декларативное программирование', en: 'Wikipedia: Declarative programming' } },
       },
       {
@@ -1338,6 +1626,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['Kubernetes', 'K8s'], en: ['Kubernetes', 'K8s'] },
         related: ['declarative', 'reconcile-loop'],
         more: { post: 'spec-reconcile-loop', label: { ru: 'Петля сверки для спек: как в Kubernetes', en: 'A reconcile loop for specs: like Kubernetes' } },
+        faq: [
+          { q: { ru: 'Kubernetes — что это?', en: 'What is Kubernetes?' }, a: { ru: 'Система, которая запускает программы в контейнерах на многих серверах и следит за ними.', en: 'A system that runs programs in containers across many servers and watches over them.' } },
+          { q: { ru: 'Как настраивают Kubernetes?', en: 'How is Kubernetes configured?' }, a: { ru: 'Декларативно: в файле описывают желаемое состояние, например «три копии сервиса», а контроллеры в петле сверки приводят систему к нему.', en: 'Declaratively: a file describes the desired state, such as “three copies of a service”, and controllers in a reconcile loop bring the system to it.' } },
+        ],
         source: { url: 'https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/', label: { ru: 'Kubernetes: декларативное управление объектами', en: 'Kubernetes: declarative management of objects' } },
       },
       {
@@ -1349,6 +1641,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['SQL'], en: ['SQL'] },
         related: ['declarative', 'invariant'],
+        faq: [
+          { q: { ru: 'SQL — что это?', en: 'What is SQL?' }, a: { ru: 'Декларативный язык запросов к реляционным базам данных: запрос говорит, какие данные нужны, а как их достать, выбирает база.', en: 'A declarative query language for relational databases: a query says which data is needed, and the database chooses how to get it.' } },
+          { q: { ru: 'Как SQL помогает проверять правила?', en: 'How does SQL help enforce rules?' }, a: { ru: 'Ограничения CHECK, UNIQUE и EXCLUDE записывают правила о данных прямо в базе, и база не даст их нарушить.', en: 'CHECK, UNIQUE and EXCLUDE constraints write data rules directly into the database, and the database will not let them be broken.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/SQL', label: { ru: 'Википедия: SQL', en: 'Wikipedia: SQL' } },
       },
       {
@@ -1360,6 +1656,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['JSON Schema'], en: ['JSON Schema'] },
         related: ['declarative', 'checks'],
+        faq: [
+          { q: { ru: 'JSON Schema — что это?', en: 'What is JSON Schema?' }, a: { ru: 'Декларативный язык, которым описывают форму данных в JSON: какие поля обязательны, какого они типа и какие значения допустимы.', en: 'A declarative language that describes the shape of JSON data: which fields are required, their types and allowed values.' } },
+          { q: { ru: 'Как работает проверка по JSON Schema?', en: 'How does JSON Schema validation work?' }, a: { ru: 'Валидатор берёт схему и документ и отвечает, подходит ли документ.', en: 'A validator takes the schema and a document and answers whether the document fits.' } },
+        ],
         source: { url: 'https://json-schema.org/', label: { ru: 'json-schema.org', en: 'json-schema.org' } },
       },
       {
@@ -1379,6 +1679,10 @@ export const TERM_SETS: TermSet[] = [
           },
         ],
         more: { post: 'rice-theorem-explained', label: { ru: 'Теорема Райса и связь с CAP', en: "Rice's theorem and the link to CAP" } },
+        faq: [
+          { q: { ru: 'Теорема CAP — что это простыми словами?', en: 'What is the CAP theorem in plain words?' }, a: { ru: 'Когда данные лежат на нескольких серверах и связь оборвалась, система не может одновременно отвечать на каждый запрос и показывать всем одни и те же данные.', en: 'When data lives on several servers and the link breaks, the system cannot both answer every request and show everyone the same data.' } },
+          { q: { ru: 'Что выбирает система при обрыве связи?', en: 'What does a system choose when the link breaks?' }, a: { ru: 'Либо ждать восстановления связи, либо отвечать по своим данным, которые могут устареть.', en: 'Either wait for the link to return, or answer from its own data, which may be stale.' } },
+        ],
         source: { url: 'https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/', label: { ru: 'Эрик Брюер: CAP двенадцать лет спустя', en: 'Eric Brewer: CAP twelve years later' } },
       },
       {
@@ -1392,6 +1696,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['[Aa]gile', 'аджайл\\p{L}*', 'гибк\\p{L}* разработк\\p{L}*'], en: ['[Aa]gile(?= (?:development|approach|cycles?|methods?|teams?))', 'Agile'] },
         related: ['bounded-context', 'domain'],
         more: { post: 'agent-checkpoint', label: { ru: 'Первая рамка: почему она ошибётся и как сделать её дешёвой', en: 'The first frame: why it will be wrong and how to make it cheap' } },
+        faq: [
+          { q: { ru: 'Agile — что это?', en: 'What is Agile?' }, a: { ru: 'Подход к разработке короткими циклами: сделать небольшую часть, показать её, получить обратную связь и поправить план.', en: 'An approach to development in short cycles: build a small part, show it, get feedback and adjust the plan.' } },
+          { q: { ru: 'На чём основан Agile?', en: 'What is Agile based on?' }, a: { ru: 'На Манифесте гибкой разработки 2001 года, где реакция на изменения ценится выше следования плану.', en: 'On the 2001 Agile Manifesto, which values responding to change over following a plan.' } },
+        ],
         source: { url: 'https://agilemanifesto.org/', label: { ru: 'Манифест гибкой разработки', en: 'Manifesto for Agile Software Development' } },
       },
       {
@@ -1399,11 +1707,15 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Prolog', en: 'Prolog' },
         aka: { ru: 'язык логического программирования', en: 'a logic programming language' },
         def: {
-          ru: 'Язык, в котором программа — это факты и правила вывода, а движок сам ищет ответ на вопрос. Факты: «бронь б1 — комната 2, с 10 до 11». Правило: «две брони пересекаются, если комната одна и время накладывается». Вопрос: «с какими бронями пересекается б1?». Создан в 1972 году во Франции. На Prolog можно написать любую программу, в том числе ту, что никогда не закончится, поэтому на него действует теорема Райса.',
+          ru: 'Prolog — язык, в котором программа — это факты и правила вывода, а движок сам ищет ответ на вопрос. Факты: «бронь б1 — комната 2, с 10 до 11». Правило: «две брони пересекаются, если комната одна и время накладывается». Вопрос: «с какими бронями пересекается б1?». Создан в 1972 году во Франции. На Prolog можно написать любую программу, в том числе ту, что никогда не закончится, поэтому на него действует теорема Райса.',
           en: 'Prolog is a language in which a program is facts and inference rules, and an engine finds the answer to a question by itself. Facts: “booking b1 is room 2, from 10 to 11”. A rule: “two bookings overlap if the room is the same and the times overlap”. A question: “which bookings overlap b1?”. Created in 1972 in France. Any program can be written in Prolog, including one that never finishes, so Rice’s theorem applies to it.',
         },
         match: { ru: ['Prolog'], en: ['Prolog'] },
         related: ['datalog', 'declarative', 'rice-theorem'],
+        faq: [
+          { q: { ru: 'Prolog — что это за язык?', en: 'What is the Prolog language?' }, a: { ru: 'Язык, в котором программа — это факты и правила вывода, а движок сам ищет ответ на вопрос.', en: 'A language where a program is facts and inference rules, and an engine finds the answer to a question itself.' } },
+          { q: { ru: 'Чем Prolog отличается от Datalog?', en: 'How is Prolog different from Datalog?' }, a: { ru: 'Datalog — урезанный Prolog без возможностей, из-за которых программа может работать вечно, поэтому любой его запрос к конечным данным заканчивается.', en: 'Datalog is a trimmed Prolog without the features that let a program run forever, so any of its queries over finite data finishes.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Prolog', label: { ru: 'Википедия: Prolog', en: 'Wikipedia: Prolog' } },
       },
       {
@@ -1416,6 +1728,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Datalog'], en: ['Datalog'] },
         related: ['prolog', 'declarative', 'rice-theorem'],
+        faq: [
+          { q: { ru: 'Datalog — что это?', en: 'What is Datalog?' }, a: { ru: 'Урезанный Prolog для запросов к данным: те же факты и правила вывода.', en: 'A trimmed Prolog for querying data: the same facts and inference rules.' } },
+          { q: { ru: 'Почему запрос на Datalog всегда заканчивается?', en: 'Why does a Datalog query always finish?' }, a: { ru: 'Из языка убраны возможности, из-за которых программа может работать вечно.', en: 'The language drops the features that would let a program run forever.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Datalog', label: { ru: 'Википедия: Datalog', en: 'Wikipedia: Datalog' } },
       },
       {
@@ -1428,6 +1744,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['петл\\p{L}* сверки', 'reconcile loop'], en: ['reconcile loops?', 'reconciliation loops?'] },
         related: ['spec-driven-development', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Петля сверки — что это?', en: 'What is a reconcile loop?' }, a: { ru: 'Цикл, в котором система постоянно сравнивает желаемое состояние с фактическим и приводит второе к первому.', en: 'A loop where a system keeps comparing the desired state with the actual one and brings the actual state in line.' } },
+          { q: { ru: 'Где работает петля сверки?', en: 'Where does a reconcile loop run?' }, a: { ru: 'Например, в Kubernetes: в манифестах описано, какие сервисы должны работать, а контроллеры их поднимают.', en: 'For example, in Kubernetes: manifests describe which services must run, and controllers bring them up.' } },
+        ],
         source: { url: 'https://kubernetes.io/docs/concepts/architecture/controller/', label: { ru: 'Kubernetes: контроллеры', en: 'Kubernetes: Controllers' } },
         compare: {
           title: { ru: 'Reconcile loop: Kubernetes и агент', en: 'Reconcile loop: Kubernetes and the agent' },
@@ -1450,6 +1770,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Memory Bank'], en: ['Memory Bank'] },
         related: ['memory', 'bible', 'claude-md', 'agent-skills'],
+        faq: [
+          { q: { ru: 'Memory Bank — что это?', en: 'What is a Memory Bank?' }, a: { ru: 'Папка memory-bank с шестью markdown-файлами, где агент держит контекст проекта между сессиями: цели, архитектуру, стек, текущий фокус и прогресс.', en: 'A memory-bank folder with six markdown files where the agent keeps project context between sessions: goals, architecture, stack, current focus and progress.' } },
+          { q: { ru: 'Когда агент обновляет Memory Bank?', en: 'When does the agent update the Memory Bank?' }, a: { ru: 'После крупных изменений или по команде «update memory bank». Читает файлы в начале каждой задачи.', en: 'After large changes or on the “update memory bank” command. It reads the files at the start of every task.' } },
+        ],
         source: { url: 'https://docs.cline.bot/best-practices/memory-bank', label: { ru: 'Cline: Memory Bank', en: 'Cline Memory Bank docs' } },
       },
       {
@@ -1461,6 +1785,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['требовани\\p{L}*'], en: ['requirements?'] },
         related: ['source', 'hallucination'],
+        faq: [
+          { q: { ru: 'Требования — что это?', en: 'What are requirements?' }, a: { ru: 'Описание того, что система должна делать и при каких условиях.', en: 'A description of what a system must do and under which conditions.' } },
+          { q: { ru: 'Зачем у требования источник?', en: 'Why does a requirement need a source?' }, a: { ru: 'От источника зависит, насколько серьёзной будет правка: мажорной или минорной.', en: 'The source decides how serious a change is: major or minor.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Requirements_engineering', label: { ru: 'Википедия: инженерия требований', en: 'Wikipedia: Requirements engineering' } },
       },
       {
@@ -1483,6 +1811,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['C4(?:-диаграмм\\p{L}*| model)?', 'модел\\p{L}* C4'], en: ['C4 model', 'C4 diagrams?', 'C4'] },
         related: ['sequence-diagram', 'bounded-context', 'ddd', 'spec-driven-development'],
         more: { post: 'bug-report-to-reproduction-agent', label: { ru: 'Как агент рисует схемы по запросу: sequence и C4', en: 'How an agent draws diagrams on request: sequence and C4' } },
+        faq: [
+          { q: { ru: 'Модель C4 — что это?', en: 'What is the C4 model?' }, a: { ru: 'Способ рисовать устройство программной системы в четыре приближения: context, containers, components и code.', en: 'A way to draw a software system’s structure at four zoom levels: context, containers, components and code.' } },
+          { q: { ru: 'Зачем четыре уровня?', en: 'Why four levels?' }, a: { ru: 'На каждом уровне своя картинка, поэтому и новичок, и разработчик видят ровно столько подробностей, сколько им нужно.', en: 'Each level has its own picture, so both a newcomer and a developer see exactly as much detail as they need.' } },
+        ],
         source: { url: 'https://c4model.com/', label: { ru: 'c4model.com — сайт методологии, автор Саймон Браун', en: 'c4model.com, the method site by Simon Brown' } },
       },
       {
@@ -1495,6 +1827,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['модел\\p{L}* OSI', 'OSI'], en: ['OSI model', 'OSI'] },
         related: ['bounded-context', 'c4-model'],
+        faq: [
+          { q: { ru: 'Модель OSI — что это?', en: 'What is the OSI model?' }, a: { ru: 'Эталонная модель, которая раскладывает сетевое взаимодействие на семь уровней: от физического до прикладного.', en: 'A reference model that splits network communication into seven layers, from physical to application.' } },
+          { q: { ru: 'Зачем модель OSI для ИИ-агента?', en: 'Why use the OSI model for an AI agent?' }, a: { ru: 'Чем больше уровней и систем на пути запроса, тем больше мест, где он ломается. По этой модели удобно оценивать, насколько задача сложна для агента.', en: 'The more layers and systems a request crosses, the more places it can break. The model helps estimate how hard a task really is for an agent.' } },
+        ],
         source: { url: 'https://www.iso.org/standard/20269.html', label: { ru: 'ISO/IEC 7498-1 — стандарт модели OSI', en: 'ISO/IEC 7498-1, the OSI model standard' } },
       },
       {
@@ -1507,6 +1843,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['эпиморфизм\\p{L}*'], en: ['epimorphisms?'] },
         related: ['hallucination', 'source', 'context'],
+        faq: [
+          { q: { ru: 'Эпиморфизм — что это простыми словами?', en: 'What is an epimorphism in plain words?' }, a: { ru: 'Соответствие, при котором каждая часть результата получена из чего-то в источнике: непокрытых частей нет.', en: 'A mapping where every part of the result comes from something in the source: no part is left uncovered.' } },
+          { q: { ru: 'Как эпиморфизм связан с галлюцинациями?', en: 'How does an epimorphism relate to hallucinations?' }, a: { ru: 'Если у каждого утверждения ответа есть опора в данных, галлюцинации нет. Там, где опоры нет, модель заполняет пустое место догадкой.', en: 'If every statement in the answer has support in the data, there is no hallucination. Where support is missing, the model fills the gap with a guess.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Epimorphism', label: { ru: 'Википедия: эпиморфизм', en: 'Wikipedia: Epimorphism' } },
       },
     ],
@@ -1527,6 +1867,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['JavaScript'], en: ['JavaScript'] },
         related: ['automated-test', 'node-js', 'jest', 'vitest', 'qunit'],
+        faq: [
+          { q: { ru: 'JavaScript — что это?', en: 'What is JavaScript?' }, a: { ru: 'Язык программирования, на котором работают страницы сайтов в браузере: кнопки, формы и всё, что откликается на действия.', en: 'The programming language that runs web pages in the browser: buttons, forms and everything that reacts to actions.' } },
+          { q: { ru: 'Где ещё работает JavaScript?', en: 'Where else does JavaScript run?' }, a: { ru: 'На сервере, например в среде Node.js.', en: 'On the server, for example in Node.js.' } },
+        ],
         source: { url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', label: { ru: 'MDN: JavaScript', en: 'MDN: JavaScript' } },
       },
       {
@@ -1539,6 +1883,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['TypeScript'], en: ['TypeScript'] },
         related: ['javascript', 'babel', 'jest'],
+        faq: [
+          { q: { ru: 'TypeScript — что это?', en: 'What is TypeScript?' }, a: { ru: 'Надстройка над JavaScript, в которой у значений указывают тип: число, строка и так далее.', en: 'A layer over JavaScript where values have declared types: number, string and so on.' } },
+          { q: { ru: 'Зачем TypeScript?', en: 'Why use TypeScript?' }, a: { ru: 'Ошибки вроде «вместо числа передали строку» находятся до запуска программы, а не у пользователя.', en: 'Mistakes like passing a string instead of a number are caught before the program runs, before a user sees them.' } },
+        ],
         source: { url: 'https://www.typescriptlang.org/', label: { ru: 'typescriptlang.org — сайт TypeScript', en: 'typescriptlang.org, the TypeScript site' } },
       },
       {
@@ -1551,6 +1899,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Babel'], en: ['Babel'] },
         related: ['javascript', 'typescript', 'jest'],
+        faq: [
+          { q: { ru: 'Babel — что это?', en: 'What is Babel?' }, a: { ru: 'Программа, которая переводит новый JavaScript в такой, который понимают более старые браузеры и среды.', en: 'A program that translates new JavaScript into code older browsers and environments understand.' } },
+          { q: { ru: 'Зачем Babel?', en: 'Why use Babel?' }, a: { ru: 'Чтобы писать современным языком и запускать код там, где его ещё не знают.', en: 'To write in the modern language and run the code where it is not yet supported.' } },
+        ],
         source: { url: 'https://babeljs.io/', label: { ru: 'babeljs.io — сайт Babel', en: 'babeljs.io, the Babel site' } },
       },
       {
@@ -1563,6 +1915,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Node\\.js'], en: ['Node\\.js'] },
         related: ['javascript', 'vite', 'jest', 'vitest', 'qunit'],
+        faq: [
+          { q: { ru: 'Node.js — что это?', en: 'What is Node.js?' }, a: { ru: 'Программа, которая запускает JavaScript вне браузера: на сервере, в командной строке и в скриптах.', en: 'A program that runs JavaScript outside the browser: on the server, on the command line and in scripts.' } },
+          { q: { ru: 'Зачем нужен Node.js?', en: 'Why is Node.js needed?' }, a: { ru: 'Благодаря ему на одном языке пишут и сайт, и сервер.', en: 'It lets one language serve both the website and the server.' } },
+        ],
         source: { url: 'https://nodejs.org/', label: { ru: 'nodejs.org — сайт Node.js', en: 'nodejs.org, the Node.js site' } },
       },
       {
@@ -1575,6 +1931,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Vite'], en: ['Vite'] },
         related: ['vitest', 'javascript', 'node-js'],
+        faq: [
+          { q: { ru: 'Vite — что это?', en: 'What is Vite?' }, a: { ru: 'Программа, которая собирает код сайта и в процессе работы мгновенно показывает правки в браузере.', en: 'A program that builds a site’s code and shows edits in the browser instantly while you work.' } },
+          { q: { ru: 'Как Vite связан с Vitest?', en: 'How is Vite related to Vitest?' }, a: { ru: 'Vitest берёт настройки Vite для тестов, поэтому отдельная настройка тестов не нужна.', en: 'Vitest reuses Vite’s settings for tests, so no separate test configuration is needed.' } },
+        ],
         source: { url: 'https://vite.dev/', label: { ru: 'vite.dev — сайт Vite', en: 'vite.dev, the Vite site' } },
       },
       {
@@ -1588,6 +1948,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['React'], en: ['React'] },
         exact: 'React',
         related: ['javascript', 'angular', 'vue', 'react'],
+        faq: [
+          { q: { ru: 'React — что это?', en: 'What is React?' }, a: { ru: 'Библиотека на JavaScript для построения страниц сайтов: страница собирается из блоков-компонентов.', en: 'A JavaScript library for building web pages: a page is assembled from component blocks.' } },
+          { q: { ru: 'Чем React отличается от ReAct?', en: 'How is React different from ReAct?' }, a: { ru: 'React — библиотека для страниц сайтов, ReAct — схема работы ИИ-агента. Совпадает только написание.', en: 'React is a library for web pages, ReAct is an AI agent pattern. Only the spelling is similar.' } },
+        ],
         source: { url: 'https://react.dev/', label: { ru: 'react.dev — сайт React', en: 'react.dev, the React site' } },
       },
       {
@@ -1600,6 +1964,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Angular'], en: ['Angular'] },
         related: ['javascript', 'typescript', 'react-js', 'vue'],
+        faq: [
+          { q: { ru: 'Angular — что это?', en: 'What is Angular?' }, a: { ru: 'Каркас для построения сайтов и веб-приложений на JavaScript и TypeScript: страница собирается из блоков-компонентов.', en: 'A framework for building websites and web apps in JavaScript and TypeScript: a page is assembled from component blocks.' } },
+          { q: { ru: 'Чем Angular отличается от React и Vue?', en: 'How is Angular different from React and Vue?' }, a: { ru: 'Все три собирают страницу из компонентов и входят в число самых распространённых. Angular — полный каркас, React — библиотека.', en: 'All three build a page from components and are among the most widely used. Angular is a full framework, React is a library.' } },
+        ],
         source: { url: 'https://angular.dev/', label: { ru: 'angular.dev — сайт Angular', en: 'angular.dev, the Angular site' } },
       },
       {
@@ -1612,6 +1980,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Vue(?:\\.js)?'], en: ['Vue(?:\\.js)?'] },
         related: ['javascript', 'react-js', 'angular', 'typescript'],
+        faq: [
+          { q: { ru: 'Vue — что это?', en: 'What is Vue?' }, a: { ru: 'Каркас для построения сайтов на JavaScript: страница собирается из блоков-компонентов.', en: 'A JavaScript framework for building websites: a page is assembled from component blocks.' } },
+          { q: { ru: 'Чем Vue удобен?', en: 'What makes Vue convenient?' }, a: { ru: 'Его можно подключать к проекту постепенно.', en: 'It can be added to a project gradually.' } },
+        ],
         source: { url: 'https://vuejs.org/', label: { ru: 'vuejs.org — сайт Vue', en: 'vuejs.org, the Vue site' } },
       },
     ],
@@ -1633,6 +2005,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['автоматическ\\p{L}* тест\\p{L}*', 'автотест\\p{L}*', 'тестов\\p{L}* движк\\p{L}*'], en: ['automated tests?', 'autotests?', 'test engines?', 'test frameworks?'] },
         related: ['qunit', 'jest', 'vitest', 'mutation-testing', 'checks', 'quint'],
         also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        faq: [
+          { q: { ru: 'Что такое автотест?', en: 'What is an automated test?' }, a: { ru: 'Короткая программа, которая запускает код с заданным входом и сверяет результат с ожидаемым после каждой правки.', en: 'A short program that runs code with a given input and compares the result with the expected one after every change.' } },
+          { q: { ru: 'Чего автотест не поймает?', en: 'What will an automated test miss?' }, a: { ru: 'Тест ловит только то, что вы заранее придумали проверить, поэтому его дополняют моделями правил и проверкой самих тестов.', en: 'A test catches only what you thought to check in advance, so it is complemented with rule models and checks of the tests themselves.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Test_automation', label: { ru: 'Википедия: автоматизация тестирования', en: 'Wikipedia: Test automation' } },
       },
       {
@@ -1646,6 +2022,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['QA', 'тестировщик\\p{L}*', 'инженер\\p{L}* по качеству'], en: ['QA', 'testers?', 'quality assurance'] },
         related: ['bug', 'automated-test', 'test-stand', 'ai-agent', 'jira'],
         more: { post: 'bug-report-to-reproduction-agent', label: { ru: 'Как QA отдаёт рутину по багу агенту', en: 'How QA hands bug routine to an agent' } },
+        faq: [
+          { q: { ru: 'QA — что это?', en: 'What is QA?' }, a: { ru: 'Quality assurance, «обеспечение качества»: роль человека, который проверяет, что продукт делает обещанное, и находит баги раньше пользователей.', en: 'Quality assurance: the role of a person who checks that the product does what it promises and finds bugs before users do.' } },
+          { q: { ru: 'Что делает QA, когда баги разбирает агент?', en: 'What does QA do when an agent handles bugs?' }, a: { ru: 'Проверяет результат агента руками и решает, насколько баг важен.', en: 'Checks the agent’s result by hand and decides how important the bug is.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Quality_assurance', label: { ru: 'Википедия: Quality assurance', en: 'Wikipedia: Quality assurance' } },
       },
       {
@@ -1659,6 +2039,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['баг(?:а|у|ом|е|и|ов|ам|ами|ах)?', 'дефект\\p{L}*'], en: ['bugs?'] },
         related: ['qa', 'test-stand', 'sequence-diagram', 'poc'],
         more: { post: 'bug-report-to-reproduction-agent', label: { ru: 'Как QA отдаёт рутину по багу агенту', en: 'How QA hands bug routine to an agent' } },
+        faq: [
+          { q: { ru: 'Что такое баг?', en: 'What is a bug?' }, a: { ru: 'Ошибка в программе: она делает не то, что задумано, или падает.', en: 'An error in a program: it does something other than intended, or crashes.' } },
+          { q: { ru: 'Как быстрее исправить баг?', en: 'How do you fix a bug faster?' }, a: { ru: 'Превратить жалобу в точные шаги, по которым ошибку повторит любой. Чем короче путь до бага, тем быстрее его чинят.', en: 'Turn the complaint into exact steps anyone can follow to reproduce it. The shorter the path to the bug, the faster it gets fixed.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Software_bug', label: { ru: 'Википедия: Software bug', en: 'Wikipedia: Software bug' } },
       },
       {
@@ -1671,6 +2055,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['диаграмм\\p{L}* последовательности', 'sequence(?:-диаграмм\\p{L}*)?'], en: ['sequence diagrams?'] },
         related: ['c4-model', 'bug', 'api'],
+        faq: [
+          { q: { ru: 'Диаграмма последовательности — что это?', en: 'What is a sequence diagram?' }, a: { ru: 'Схема, где участники системы стоят сверху, а стрелки сообщений идут вниз по порядку времени.', en: 'A diagram with the system’s participants at the top and message arrows running down in time order.' } },
+          { q: { ru: 'Зачем диаграмма последовательности?', en: 'Why use a sequence diagram?' }, a: { ru: 'По ней видно, кто кого вызвал и на каком шаге всё сломалось.', en: 'It shows who called whom and at which step things broke.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Sequence_diagram', label: { ru: 'Википедия: Sequence diagram', en: 'Wikipedia: Sequence diagram' } },
       },
       {
@@ -1683,6 +2071,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['API'], en: ['APIs?'] },
         related: ['mcp', 'sequence-diagram', 'poc'],
+        faq: [
+          { q: { ru: 'API — что это?', en: 'What is an API?' }, a: { ru: 'Набор правил, по которым одна программа обращается к другой: какие запросы можно отправить и какие ответы придут.', en: 'A set of rules for how one program talks to another: which requests can be sent and which responses come back.' } },
+          { q: { ru: 'Зачем агенту API?', en: 'Why does an agent use an API?' }, a: { ru: 'Через API агент вызывает сервис напрямую, без браузера.', en: 'Through an API the agent calls a service directly, without a browser.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/API', label: { ru: 'Википедия: API', en: 'Wikipedia: API' } },
       },
       {
@@ -1695,6 +2087,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['PoC', 'proof of concept'], en: ['PoC', 'proof of concept'] },
         related: ['bug', 'automated-test', 'test-stand'],
+        faq: [
+          { q: { ru: 'PoC — что это в программировании?', en: 'What is a PoC in programming?' }, a: { ru: 'Proof of concept: небольшой код или сценарий, который показывает, что проблема действительно воспроизводится.', en: 'Proof of concept: a small piece of code or a scenario that shows the problem really reproduces.' } },
+          { q: { ru: 'Зачем агенту PoC для бага?', en: 'Why does an agent write a PoC for a bug?' }, a: { ru: 'Чтобы подтвердить баг: короткий запуск без браузера повторяет ошибку, и её видно до исправления.', en: 'To confirm the bug: a short run without a browser repeats the error, so it is visible before the fix.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Proof_of_concept', label: { ru: 'Википедия: Proof of concept', en: 'Wikipedia: Proof of concept' } },
       },
       {
@@ -1708,6 +2104,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['Jest'], en: ['Jest'] },
         related: ['automated-test', 'javascript', 'vitest', 'qunit'],
         also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        faq: [
+          { q: { ru: 'Jest — что это?', en: 'What is Jest?' }, a: { ru: 'Один из самых распространённых движков автоматических тестов для кода на JavaScript.', en: 'One of the most widely used automated testing frameworks for JavaScript.' } },
+          { q: { ru: 'Jest или Vitest?', en: 'Jest or Vitest?' }, a: { ru: 'Делают одно и то же. На проекте с Vite удобнее Vitest, на остальных Jest остаётся надёжным выбором.', en: 'They do the same job. On a Vite project Vitest is handier; elsewhere Jest remains a solid choice.' } },
+        ],
         source: { url: 'https://jestjs.io/', label: { ru: 'jestjs.io — сайт Jest', en: 'jestjs.io, the Jest site' } },
       },
       {
@@ -1721,6 +2121,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['Vitest'], en: ['Vitest'] },
         related: ['automated-test', 'javascript', 'jest', 'qunit'],
         also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        faq: [
+          { q: { ru: 'Что такое Vitest?', en: 'What is Vitest?' }, a: { ru: 'Движок автоматических тестов для JavaScript, построенный на сборщике Vite.', en: 'An automated testing framework for JavaScript built on the Vite bundler.' } },
+          { q: { ru: 'Vitest или Jest?', en: 'Vitest or Jest?' }, a: { ru: 'На проекте с Vite берите Vitest: он использует те же настройки и быстро перезапускается. Делают они одно и то же.', en: 'On a Vite project take Vitest: it reuses the same settings and reruns quickly. They do the same job.' } },
+        ],
         source: { url: 'https://vitest.dev/', label: { ru: 'vitest.dev — сайт Vitest', en: 'vitest.dev, the Vitest site' } },
       },
       {
@@ -1734,6 +2138,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['QUnit'], en: ['QUnit'] },
         related: ['automated-test', 'jest', 'vitest', 'mutation-testing', 'quint', 'model-checking'],
         also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        faq: [
+          { q: { ru: 'QUnit — что это?', en: 'What is QUnit?' }, a: { ru: 'Движок автоматических тестов для JavaScript из той же семьи, что Jest и Vitest.', en: 'An automated testing framework for JavaScript from the same family as Jest and Vitest.' } },
+          { q: { ru: 'QUnit и Quint — одно и то же?', en: 'Are QUnit and Quint the same?' }, a: { ru: 'Нет: QUnit запускает тесты готового кода, Quint — язык для описания и проверки правил системы до кода.', en: 'No: QUnit runs tests on finished code, Quint is a language for describing and checking a system’s rules before the code.' } },
+        ],
         source: { url: 'https://qunitjs.com/', label: { ru: 'qunitjs.com — сайт QUnit', en: 'qunitjs.com, the QUnit site' } },
         compare: {
           title: { ru: 'QUnit и Quint', en: 'QUnit and Quint' },
@@ -1756,6 +2164,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['испорченн\\p{L}* коп\\p{L}*', 'мутационн\\p{L}* тестировани\\p{L}*', 'mutation testing'], en: ['mutation testing', 'broken cop(?:y|ies)'] },
         related: ['automated-test', 'qunit', 'model-checking', 'quint'],
         more: { post: 'quint-models-find-races', label: { ru: 'Проверка проверок в моделях на Quint', en: 'Checking the checks in Quint models' } },
+        faq: [
+          { q: { ru: 'Мутационное тестирование — что это?', en: 'What is mutation testing?' }, a: { ru: 'Способ проверить сами проверки: копию кода нарочно портят и смотрят, заметят ли это тесты.', en: 'A way to check the checks themselves: a copy of the code is broken on purpose to see whether the tests notice.' } },
+          { q: { ru: 'Что значит, если порча прошла незамеченной?', en: 'What does it mean if the break goes unnoticed?' }, a: { ru: 'Тесты этот случай не проверяют, и их нужно дополнить.', en: 'The tests do not cover this case and need to be extended.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Mutation_testing', label: { ru: 'Википедия: мутационное тестирование', en: 'Wikipedia: Mutation testing' } },
       },
     ],
@@ -1776,6 +2188,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['окружени\\p{L}*', 'сред\\p{L}* развёртывани\\p{L}*'], en: ['deployment environments?'] },
         related: ['time-to-market', 'sandbox', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Какие бывают среды разработки?', en: 'What environments are there?' }, a: { ru: 'Локальная, дев и фича-стенды рядом с ним, тест, препрод, демо и прод. Изменение проходит по ним по порядку.', en: 'Local, dev with feature stands alongside, test, pre-prod, demo and production. A change moves through them in order.' } },
+          { q: { ru: 'Чем среды отличаются друг от друга?', en: 'How do environments differ?' }, a: { ru: 'Задачей: на одной пишут код, на другой проверяют, на третьей работают пользователи. Чем ближе к проду, тем ближе к настоящим данные и тем дороже ошибка.', en: 'By purpose: code is written on one, checked on another, and users work on a third. The closer to production, the more real the data and the costlier a mistake.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Среды: локальная, дев, тест, препрод, прод — что это и чем отличаются', en: 'Environments: local, dev, test, pre-prod, prod — what they are and how they differ' },
@@ -1808,6 +2224,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['локальн\\p{L}* сред\\p{L}*', 'локалк\\p{L}*'], en: ['local environments?'] },
         related: ['feature-stand', 'dev-env', 'test-stand'],
+        faq: [
+          { q: { ru: 'Локальная среда — что это?', en: 'What is a local environment?' }, a: { ru: 'Копия системы на компьютере разработчика, её ещё зовут «локалкой». Здесь пишут код и сразу пробуют.', en: 'A copy of the system on the developer’s computer. Code is written and tried here right away.' } },
+          { q: { ru: 'Локальная среда — это тестовый стенд?', en: 'Is the local environment a test stand?' }, a: { ru: 'Нет: стенд — общий сервер команды, а локальная среда есть только у одного разработчика.', en: 'No: a stand is the team’s shared server, while the local environment belongs to one developer.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Локальная среда: что это в IT и чем отличается от тестового стенда', en: 'Local environment: what it is and how it differs from a test stand' },
@@ -1827,6 +2247,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['feature[- ]?стенд\\p{L}*', 'фич\\p{L}*[- ]?стенд\\p{L}*', 'review app\\p{L}*', 'preview environments?'], en: ['feature (?:stands?|environments?)', 'preview environments?', 'review apps?'] },
         related: ['local-env', 'dev-env', 'test-stand'],
+        faq: [
+          { q: { ru: 'Фича-стенд — что это?', en: 'What is a feature stand?' }, a: { ru: 'Временная копия системы под одну ветку кода: её поднимают для проверки и убирают после слияния.', en: 'A temporary copy of the system for one code branch: it is created for the check and removed after the merge.' } },
+          { q: { ru: 'Зачем фича-стенд, если есть дев?', en: 'Why a feature stand if there is dev?' }, a: { ru: 'Он работает параллельно с девом: функцию проверяют отдельно, не дожидаясь общего дева и не занимая тест.', en: 'It runs in parallel with dev: a feature is checked on its own without waiting for the shared dev or occupying test.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Feature-стенд: что это и зачем стенд под одну ветку', en: 'Feature stand: what it is and why one branch gets its own stand' },
@@ -1846,6 +2270,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['дев[- ]?сред\\p{L}*', 'дев[- ]?стенд\\p{L}*'], en: ['dev environments?', 'development environments?'] },
         related: ['feature-stand', 'test-stand', 'local-env'],
+        faq: [
+          { q: { ru: 'Дев-среда — что это?', en: 'What is a dev environment?' }, a: { ru: 'Общая для команды среда, куда попадает код после слияния: здесь проверяют, что код разных разработчиков работает вместе.', en: 'The team’s shared environment where code lands after a merge: it checks that different developers’ code works together.' } },
+          { q: { ru: 'Чем дев отличается от теста?', en: 'How is dev different from test?' }, a: { ru: 'На дев попадает код одной команды, на тест сводят изменения всех команд и сервисов.', en: 'Dev gets one team’s code, while test brings together the changes of all teams and services.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Дев (dev) среда: что это в IT и зачем нужна', en: 'Dev environment: what it is and what it is for' },
@@ -1865,6 +2293,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['интеграционн\\p{L}* сред\\p{L}*', 'интеграционн\\p{L}* стенд\\p{L}*', 'тестов\\p{L}* сред\\p{L}*'], en: ['integration environments?', 'test environments?'] },
         related: ['dev-env', 'preprod', 'test-stand', 'feature-stand', 'qa'],
+        faq: [
+          { q: { ru: 'Тестовая среда — что это?', en: 'What is a test environment?' }, a: { ru: 'Общая среда, куда часто сводят изменения всех команд и сервисов, чтобы проверить, что они работают вместе.', en: 'A shared environment where everyone’s changes are often brought together to check that they work together.' } },
+          { q: { ru: 'Чем тест отличается от препрода?', en: 'How is test different from pre-prod?' }, a: { ru: 'Тест проверяет, что изменения всех работают вместе. Препрод проверяет изменение в условиях, как на проде.', en: 'Test checks that everyone’s changes work together. Pre-prod checks a change under production-like conditions.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Тестовая (интеграционная) среда: что это и чем отличается от дева и препрода', en: 'Test (integration) environment: what it is and how it differs from dev and pre-prod' },
@@ -1884,6 +2316,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['тестов\\p{L}* стенд\\p{L}*', 'стенд\\p{L}*', 'тестов\\p{L}* контур\\p{L}*'], en: ['test stands?', 'staging(?: environments?)?'] },
         related: ['local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env', 'prod', 'sandbox', 'ai-agent', 'claude-in-chrome', 'human-in-the-loop'],
+        faq: [
+          { q: { ru: 'Что такое тестовый стенд?', en: 'What is a test stand?' }, a: { ru: 'Отдельная копия системы на сервере команды, где можно пробовать и ломать, не задевая прод. К стендам относятся фича-стенд, дев, тест, препрод и демо.', en: 'A separate copy of the system on the team’s server where you can try and break things without touching production. Stands include the feature stand, dev, test, pre-prod and demo.' } },
+          { q: { ru: 'Чем staging отличается от test environment?', en: 'How is staging different from a test environment?' }, a: { ru: 'Тестовая среда проверяет, что изменения всех работают вместе. Стейджинг, или препрод, проверяет изменение в условиях, как на проде.', en: 'A test environment checks that everyone’s changes work together. Staging, or pre-prod, checks a change under production-like conditions.' } },
+          { q: { ru: 'Что можно ИИ-агенту на стенде?', en: 'What may an AI agent do on a stand?' }, a: { ru: 'Воспроизводить баги и проверять изменения. В прод агент не пишет.', en: 'Reproduce bugs and check changes. The agent does not write to production.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Стенд в IT: что это, какие бывают — тестовый, препрод, прод — и что можно ИИ-агенту', en: 'Staging environment: what it is, staging vs production vs development' },
@@ -1958,6 +2395,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['демо[- ]?стенд\\p{L}*', 'демо[- ]?сред\\p{L}*'], en: ['demo environments?', 'demo stands?'] },
         related: ['preprod', 'prod', 'test-stand'],
+        faq: [
+          { q: { ru: 'Демо-стенд — что это?', en: 'What is a demo environment?' }, a: { ru: 'Среда для показа продукта заказчику или коллегам.', en: 'An environment for showing the product to a client or colleagues.' } },
+          { q: { ru: 'Демо — это прод?', en: 'Is demo the same as production?' }, a: { ru: 'Часто да: показывают на рабочей системе с отдельной демо-учётной записью. Бывает и отдельный стенд с подготовленными данными.', en: 'Often yes: the showing happens on the live system with a separate demo account. There can also be a separate stand with prepared data.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Демо-стенд: что это и чем отличается от препрода и прода', en: 'Demo environment: what it is and how it differs from pre-prod and production' },
@@ -1977,6 +2418,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['прод(?:а|е|у|ом)?', 'продакшен\\p{L}*', 'боев\\p{L}* сред\\p{L}*'], en: ['prod', 'production environments?'] },
         related: ['preprod', 'demo-env', 'time-to-market'],
+        faq: [
+          { q: { ru: 'Прод — что это в IT?', en: 'What is production in IT?' }, a: { ru: 'Среда, с которой работают настоящие пользователи, и данные в ней настоящие.', en: 'The environment real users work with, with real data.' } },
+          { q: { ru: 'Почему на прод не пишут напрямую?', en: 'Why not write to production directly?' }, a: { ru: 'Ошибка там стоит дороже всего, поэтому изменения идут через проверки на стендах, а выкладку обычно подтверждает человек.', en: 'A mistake there costs the most, so changes go through checks on the stands, and a person usually confirms the release.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Прод (production): что это в IT и почему туда не пишут напрямую', en: 'Production (prod): what it is and why nobody writes there directly' },
@@ -2004,6 +2449,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['time[- ]?to[- ]?market', 'time2market', 'врем\\p{L}* выхода на рынок'], en: ['time[- ]?to[- ]?market', 'time2market'] },
         related: ['change-lead-time', 'deployment-frequency', 'preprod', 'test-stand'],
+        faq: [
+          { q: { ru: 'Time to market — что это?', en: 'What is time to market?' }, a: { ru: 'Сколько проходит от замысла до момента, когда продукт или изменение доступно пользователям.', en: 'How long it takes from an idea until a product or change is available to users.' } },
+          { q: { ru: 'Как time to market связан с качеством?', en: 'How is time to market tied to quality?' }, a: { ru: 'Чем больше сред и проверок на пути, тем цикл длиннее, но тем меньше ошибок доходит до прода.', en: 'The more environments and checks on the way, the longer the cycle, but the fewer mistakes reach production.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Time_to_market', label: { ru: 'Википедия: Time to market', en: 'Wikipedia: Time to market' } },
         seo: {
           title: { ru: 'Time to market: что это простыми словами и как связан с качеством', en: 'What is time to market (TTM): delivery cycle, checks and quality' },
@@ -2023,6 +2472,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['change lead time', 'lead time'], en: ['change lead time', 'lead time'] },
         related: ['time-to-market', 'deployment-frequency', 'preprod'],
+        faq: [
+          { q: { ru: 'Change lead time — что это?', en: 'What is change lead time?' }, a: { ru: 'Сколько проходит от коммита до момента, когда правка работает на проде.', en: 'How long it takes from a commit until the change runs in production.' } },
+          { q: { ru: 'Как сократить время изменения?', en: 'How do you shorten change lead time?' }, a: { ru: 'Маленькими правками, автоматическими проверками и меньшим числом ручных шагов до прода.', en: 'With small changes, automated checks and fewer manual steps on the way to production.' } },
+        ],
         source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
         seo: {
           title: { ru: 'Время изменения (change lead time): что это и как сократить', en: 'Change lead time: what it is and how to shorten it' },
@@ -2042,6 +2495,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['частот\\p{L}* выкладок', 'deployment frequency'], en: ['deployment frequency'] },
         related: ['change-lead-time', 'change-fail-rate', 'time-to-market'],
+        faq: [
+          { q: { ru: 'Частота выкладок — что это?', en: 'What is deployment frequency?' }, a: { ru: 'Сколько раз за период команда выкладывает изменения на прод.', en: 'How many times in a period a team releases changes to production.' } },
+          { q: { ru: 'От чего зависит частота выкладок?', en: 'What does deployment frequency depend on?' }, a: { ru: 'Чем больше сред и ручных проверок на пути, тем выкладки реже.', en: 'The more environments and manual checks on the way, the rarer the releases.' } },
+        ],
         source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
         seo: {
           title: { ru: 'Частота выкладок (deployment frequency): что это и от чего зависит', en: 'Deployment frequency: what it is and what it depends on' },
@@ -2061,6 +2518,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['д\\p{L}* сбойных выкладок', 'change fail(?:ure)? rate'], en: ['change fail(?:ure)? rate'] },
         related: ['deployment-rework-rate', 'recovery-time', 'preprod'],
+        faq: [
+          { q: { ru: 'Change fail rate — что это?', en: 'What is change fail rate?' }, a: { ru: 'Доля выкладок, которые потребовали срочного вмешательства: отката или хотфикса.', en: 'The share of releases that needed immediate intervention: a rollback or a hotfix.' } },
+          { q: { ru: 'Как снизить долю сбойных выкладок?', en: 'How do you lower the change fail rate?' }, a: { ru: 'Ловить ошибки до прода: тестами и проверкой на препроде.', en: 'Catch mistakes before production: with tests and a check on pre-prod.' } },
+        ],
         source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
         seo: {
           title: { ru: 'Доля сбойных выкладок (change fail rate): что это и как снизить', en: 'Change fail rate: what it is and how to reduce it' },
@@ -2080,6 +2541,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['MTTR', 'failed deployment recovery time', 'врем\\p{L}* восстановления после сбо\\p{L}*'], en: ['MTTR', 'failed deployment recovery time'] },
         related: ['change-fail-rate', 'change-lead-time'],
+        faq: [
+          { q: { ru: 'Время восстановления после сбоя — что это?', en: 'What is failed deployment recovery time?' }, a: { ru: 'Сколько проходит от сбойной выкладки до момента, когда сервис снова работает как нужно.', en: 'How long it takes from a failed release until the service works properly again.' } },
+          { q: { ru: 'Это то же, что MTTR?', en: 'Is it the same as MTTR?' }, a: { ru: 'Да, в прежних версиях DORA эту метрику называли MTTR — средним временем восстановления.', en: 'Yes, earlier DORA versions called this metric MTTR, mean time to restore.' } },
+        ],
         source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
         seo: {
           title: { ru: 'Время восстановления после сбоя выкладки (MTTR): что это', en: 'Failed deployment recovery time (MTTR): what it is' },
@@ -2099,6 +2564,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['д\\p{L}* внеплановых выкладок', 'deployment rework rate'], en: ['deployment rework rate'] },
         related: ['change-fail-rate', 'recovery-time'],
+        faq: [
+          { q: { ru: 'Deployment rework rate — что это?', en: 'What is deployment rework rate?' }, a: { ru: 'Доля выкладок, которые не планировались и появились из-за сбоя на проде.', en: 'The share of releases that were not planned and came from an incident in production.' } },
+          { q: { ru: 'Что показывает эта метрика?', en: 'What does this metric show?' }, a: { ru: 'Вместе с долей сбойных выкладок — нестабильность поставки.', en: 'Together with the change fail rate, the instability of delivery.' } },
+        ],
         source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
         seo: {
           title: { ru: 'Доля внеплановых выкладок (deployment rework rate): что это', en: 'Deployment rework rate: what it is' },
@@ -2128,6 +2597,10 @@ export const TERM_SETS: TermSet[] = [
         related: ['model-checking', 'apalache', 'tla-plus', 'invariant', 'qunit'],
         more: { post: 'quint-models-find-races', label: { ru: 'Как найти гонки и потерянные данные моделями на Quint', en: 'Finding races and lost data with Quint models' } },
         also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        faq: [
+          { q: { ru: 'Quint — что это за язык?', en: 'What is the Quint language?' }, a: { ru: 'Язык, на котором описывают правила системы так, чтобы их можно было запускать и проверять до написания кода. Запись похожа на обычный код.', en: 'A language for describing a system’s rules so they can be run and checked before code is written. It reads like ordinary code.' } },
+          { q: { ru: 'Чем Quint отличается от TLA+?', en: 'How is Quint different from TLA+?' }, a: { ru: 'Quint читается как обычный код, TLA+ похож на математические формулы, поэтому порог входа у Quint ниже. Проверяют их одними программами: TLC и Apalache.', en: 'Quint reads like ordinary code, TLA+ looks like math formulas, so Quint is easier to start with. Both are checked by the same programs: TLC and Apalache.' } },
+        ],
         source: { url: 'https://quint-lang.org/', label: { ru: 'quint-lang.org — сайт и документация Quint', en: 'quint-lang.org, the Quint site and docs' } },
       },
       {
@@ -2141,6 +2614,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['TLA\\+'], en: ['TLA\\+'] },
         related: ['quint', 'alloy', 'apalache', 'model-checking'],
         also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Quint против TLA+ и Alloy', en: 'Quint versus TLA+ and Alloy' } }],
+        faq: [
+          { q: { ru: 'TLA+ — что это?', en: 'What is TLA+?' }, a: { ru: 'Способ описать, как система ведёт себя шаг за шагом, настолько точно, что описание можно проверить программой до написания кода. Автор — Лесли Лэмпорт.', en: 'A way to describe how a system behaves step by step so precisely that a program can check the description before code is written. Its author is Leslie Lamport.' } },
+          { q: { ru: 'Что находит TLA+?', en: 'What does TLA+ find?' }, a: { ru: 'Цепочки шагов, где правило нарушается. Например, что при сбое между списанием и зачислением деньги пропадают.', en: 'Step sequences that break a rule. For example, that money disappears if a failure happens between the debit and the credit.' } },
+        ],
         source: { url: 'https://lamport.azurewebsites.net/tla/tla.html', label: { ru: 'Страница TLA+ Лесли Лэмпорта', en: 'Leslie Lamport’s TLA+ page' } },
       },
       {
@@ -2153,6 +2630,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Alloy'], en: ['Alloy'] },
         related: ['tla-plus', 'quint', 'model-checking'],
+        faq: [
+          { q: { ru: 'Alloy — что это?', en: 'What is Alloy?' }, a: { ru: 'Способ описать объекты и связи между ними и попросить программу найти небольшой пример, где правило нарушено.', en: 'A way to describe objects and their relations and ask a program to find a small example where a rule breaks.' } },
+          { q: { ru: 'Чем Alloy отличается от TLA+?', en: 'How is Alloy different from TLA+?' }, a: { ru: 'Alloy проверяет структуру — объекты и связи. TLA+ проверяет поведение системы шаг за шагом.', en: 'Alloy checks structure: objects and relations. TLA+ checks a system’s behaviour step by step.' } },
+        ],
         source: { url: 'https://alloytools.org/', label: { ru: 'alloytools.org — сайт Alloy', en: 'alloytools.org, the Alloy site' } },
       },
       {
@@ -2165,6 +2646,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['TLC'], en: ['TLC'] },
         related: ['tla-plus', 'quint', 'apalache', 'model-checking'],
+        faq: [
+          { q: { ru: 'TLC — что это?', en: 'What is TLC?' }, a: { ru: 'Первая программа, которая проверяет модели на TLA+: перебирает все состояния модели и для каждого проверяет правила.', en: 'The first program that checks TLA+ models: it walks through every state of the model and checks the rules in each.' } },
+          { q: { ru: 'Когда подходит TLC?', en: 'When does TLC fit?' }, a: { ru: 'Когда мир модели небольшой: работа TLC предсказуема, но на большом мире перебор не закончится.', en: 'When the model’s world is small: TLC is predictable, but on a large world the search will not finish.' } },
+        ],
         source: { url: 'https://github.com/tlaplus/tlaplus', label: { ru: 'TLA+ Tools и TLC на GitHub', en: 'TLA+ Tools and TLC on GitHub' } },
       },
       {
@@ -2177,6 +2662,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Apalache'], en: ['Apalache'] },
         related: ['quint', 'tla-plus', 'tlc', 'model-checking', 'smt-solver', 'z3'],
+        faq: [
+          { q: { ru: 'Apalache — что это?', en: 'What is Apalache?' }, a: { ru: 'Программа, которая проверяет модели на TLA+ и Quint, переводя их в условия для SMT-решателя, например Z3.', en: 'A program that checks TLA+ and Quint models by turning them into conditions for an SMT solver such as Z3.' } },
+          { q: { ru: 'Чем Apalache отличается от TLC?', en: 'How is Apalache different from TLC?' }, a: { ru: 'TLC перебирает состояния по одному. Apalache рассуждает сразу обо всех исполнениях до заданной длины.', en: 'TLC walks states one by one. Apalache reasons about all runs up to a given length at once.' } },
+        ],
         source: { url: 'https://apalache-mc.org/', label: { ru: 'apalache-mc.org — сайт Apalache', en: 'apalache-mc.org, the Apalache site' } },
       },
       {
@@ -2189,6 +2678,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Z3'], en: ['Z3'] },
         related: ['smt-solver', 'apalache', 'model-checking'],
+        faq: [
+          { q: { ru: 'Z3 — что это?', en: 'What is Z3?' }, a: { ru: 'Самый известный SMT-решатель: программа подбирает значения под заданные условия или доказывает, что решений нет.', en: 'The best-known SMT solver: a program that finds values meeting given conditions or proves there are none.' } },
+          { q: { ru: 'Зачем Z3 при проверке моделей?', en: 'Why is Z3 used in model checking?' }, a: { ru: 'Apalache отдаёт Z3 условия из модели и по ответу строит цепочку шагов до нарушения правила.', en: 'Apalache passes Z3 the conditions from a model and builds a step sequence to the rule violation from its answer.' } },
+        ],
         source: { url: 'https://github.com/Z3Prover/z3', label: { ru: 'Z3 — репозиторий на GitHub', en: 'Z3, the GitHub repository' } },
       },
       {
@@ -2201,6 +2694,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['SMT-решател\\p{L}*'], en: ['SMT solvers?'] },
         related: ['z3', 'apalache', 'model-checking', 'quint'],
+        faq: [
+          { q: { ru: 'SMT-решатель — что это?', en: 'What is an SMT solver?' }, a: { ru: 'Программа, которая по набору условий находит значения, при которых все условия выполняются, или доказывает, что таких значений нет.', en: 'A program that, given a set of conditions, finds values that satisfy all of them or proves none exist.' } },
+          { q: { ru: 'Какой SMT-решатель самый известный?', en: 'Which SMT solver is best known?' }, a: { ru: 'Z3.', en: 'Z3.' } },
+        ],
         source: { url: 'https://github.com/Z3Prover/z3', label: { ru: 'Z3 — репозиторий решателя на GitHub', en: 'Z3, the solver repository on GitHub' } },
       },
       {
@@ -2214,6 +2711,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['проверк\\p{L}* моделей', 'model checking', 'формальн\\p{L}* модел\\p{L}*'], en: ['model checking', 'formal models?'] },
         related: ['quint', 'invariant', 'apalache', 'mutation-testing'],
         more: { post: 'quint-models-find-races', label: { ru: 'Как найти гонки и потерянные данные моделями на Quint', en: 'Finding races and lost data with Quint models' } },
+        faq: [
+          { q: { ru: 'Model checking — что это?', en: 'What is model checking?' }, a: { ru: 'Метод, при котором программа обходит все состояния описанной системы и проверяет, что в каждом правила соблюдены.', en: 'A method where a program walks through every state of a described system and checks that the rules hold in each.' } },
+          { q: { ru: 'Чем model checking отличается от тестов?', en: 'How is model checking different from tests?' }, a: { ru: 'Тест проверяет сценарий, который вы придумали. Model checking перебирает все порядки действий и при нарушении выдаёт точную цепочку шагов.', en: 'A test checks a scenario you thought of. Model checking tries every order of actions and gives the exact step sequence when a rule breaks.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Model_checking', label: { ru: 'Википедия: проверка моделей', en: 'Wikipedia: Model checking' } },
       },
       {
@@ -2226,6 +2727,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['инвариант\\p{L}*'], en: ['invariants?'] },
         related: ['model-checking', 'quint', 'rfc-2119'],
+        faq: [
+          { q: { ru: 'Инвариант — что это?', en: 'What is an invariant?' }, a: { ru: 'Условие, которое должно выполняться в каждом состоянии системы, в каком бы порядке ни шли действия.', en: 'A condition that must hold in every state of a system, whatever the order of actions.' } },
+          { q: { ru: 'Пример инварианта?', en: 'An example of an invariant?' }, a: { ru: 'В магазине деньги никогда не списаны без заказа.', en: 'In a shop, money is never charged without an order.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Invariant_(computer_science)', label: { ru: 'Википедия: инвариант в программировании', en: 'Wikipedia: Invariant (computer science)' } },
       },
       {
@@ -2233,13 +2738,17 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Теорема Райса', en: "Rice's theorem" },
         aka: { ru: 'неразрешимость свойств программ', en: 'undecidability of program properties' },
         def: {
-          ru: 'Нет программы, которая для любой программы точно скажет, есть ли у неё заданное свойство поведения, например «никогда не списывает деньги без заказа», если это свойство есть у одних программ и нет у других. Вопросы о тексте кода решаются чтением, вопросы о поведении — нет. Поэтому проверку сужают рамкой: перебирают маленький мир, пишут так, чтобы правило держалось по построению, или разрешают ответ «не знаю».',
-          en: 'No program can tell for every program whether it has a given behavioural property, such as “never charges money without an order”, if some programs have the property and others don’t. Questions about the code text are settled by reading; questions about behaviour are not. So checks are narrowed by a frame: try a small world in full, write code so the rule holds by construction, or allow a “don’t know” answer.',
+          ru: 'Теорема Райса: нет программы, которая для любой программы точно скажет, есть ли у неё заданное свойство поведения, например «никогда не списывает деньги без заказа», если это свойство есть у одних программ и нет у других. Вопросы о тексте кода решаются чтением, вопросы о поведении — нет. Поэтому проверку сужают рамкой: перебирают маленький мир, пишут так, чтобы правило держалось по построению, или разрешают ответ «не знаю».',
+          en: 'Rice’s theorem says no program can tell for every program whether it has a given behavioural property, such as “never charges money without an order”, if some programs have the property and others don’t. Questions about the code text are settled by reading; questions about behaviour are not. So checks are narrowed by a frame: try a small world in full, write code so the rule holds by construction, or allow a “don’t know” answer.',
         },
         match: { ru: ['теорем\\p{L}* Райса'], en: ["Rice['’]s theorem"] },
         related: ['predicate', 'halting-problem', 'barber-paradox', 'alan-turing', 'cap-theorem', 'imperative', 'declarative', 'model-checking', 'invariant', 'bounded-context', 'ubiquitous-language', 'domain'],
         more: { post: 'rice-theorem-explained', label: { ru: 'Теорема Райса простыми словами', en: "Rice's theorem in plain words" } },
         also: [{ post: 'agent-checkpoint', label: { ru: 'Где ставить проверку работы ИИ-агента', en: "Where to check an AI agent's work" } }],
+        faq: [
+          { q: { ru: 'Теорема Райса простыми словами?', en: 'Rice’s theorem in plain words?' }, a: { ru: 'Нет программы, которая для любой программы точно скажет, есть ли у неё заданное свойство поведения.', en: 'No program can tell for every program whether it has a given behavioural property.' } },
+          { q: { ru: 'Что делать с теоремой Райса на практике?', en: 'What do you do about Rice’s theorem in practice?' }, a: { ru: 'Сужать проверку: маленьким миром, узким языком или честным ответом «не знаю».', en: 'Narrow the check: a small world, a narrow language or an honest “don’t know”.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Rice%27s_theorem', label: { ru: 'Википедия: теорема Райса', en: "Wikipedia: Rice's theorem" } },
       },
       {
@@ -2263,6 +2772,10 @@ export const TERM_SETS: TermSet[] = [
           },
         ],
         more: { post: 'agent-checkpoint', label: { ru: 'Где ставить проверку работы ИИ-агента', en: "Where to check an AI agent's work" } },
+        faq: [
+          { q: { ru: 'Проблема остановки — что это?', en: 'What is the halting problem?' }, a: { ru: 'Вопрос, закончит ли программа работу на данном входе или будет работать вечно.', en: 'The question of whether a program finishes on a given input or runs forever.' } },
+          { q: { ru: 'Можно ли решить проблему остановки?', en: 'Can the halting problem be solved?' }, a: { ru: 'Нет: Алан Тьюринг доказал, что нет программы, которая отвечает верно для любой программы и любого входа.', en: 'No: Alan Turing proved that no program answers correctly for every program and every input.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Halting_problem', label: { ru: 'Википедия: проблема остановки', en: 'Wikipedia: Halting problem' } },
       },
       {
@@ -2275,6 +2788,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['предикат\\p{L}*'], en: ['predicates?'] },
         related: ['rice-theorem', 'invariant', 'halting-problem'],
+        faq: [
+          { q: { ru: 'Предикат — что это?', en: 'What is a predicate?' }, a: { ru: 'Утверждение с переменной, которое для каждого значения становится истинным или ложным: «x — чётное число».', en: 'A statement with a variable that becomes true or false for each value: “x is even”.' } },
+          { q: { ru: 'Где используют предикаты?', en: 'Where are predicates used?' }, a: { ru: 'В логике и в формулировке теоремы Райса: свойство программы записывают как предикат.', en: 'In logic and in stating Rice’s theorem: a program property is written as a predicate.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)', label: { ru: 'Википедия: предикат', en: 'Wikipedia: Predicate (mathematical logic)' } },
       },
       {
@@ -2287,6 +2804,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['(?:Алан\\p{L}* )?Тьюринг\\p{L}*'], en: ['(?:Alan )?Turing'] },
         related: ['halting-problem', 'rice-theorem'],
+        faq: [
+          { q: { ru: 'Кто такой Алан Тьюринг?', en: 'Who was Alan Turing?' }, a: { ru: 'Британский математик (1912–1954), один из основателей теории вычислений.', en: 'A British mathematician (1912–1954), one of the founders of computation theory.' } },
+          { q: { ru: 'Что такое машина Тьюринга?', en: 'What is a Turing machine?' }, a: { ru: 'Простейшая модель любой программы из статьи 1936 года: лента с клетками и головка, которая читает и пишет символы.', en: 'The simplest model of any program, from his 1936 paper: a tape of cells and a head that reads and writes symbols.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Alan_Turing', label: { ru: 'Википедия: Алан Тьюринг', en: 'Wikipedia: Alan Turing' } },
       },
       {
@@ -2309,6 +2830,10 @@ export const TERM_SETS: TermSet[] = [
             en: 'Russell’s original 1901 paradox is about sets. An ordinary set does not contain itself: the set of cats is not a cat. Some sets do contain themselves: the set of everything that is not a cat is itself not a cat, so it lies inside itself. Take $R$, the set of all sets that do not contain themselves: $R = \\{x : x \\notin x\\}$. If $R \\in R$, then by definition $R \\notin R$; if $R \\notin R$, then $R$ fits the definition and $R \\in R$. The barber is the same question in everyday clothes: villagers instead of sets and “shaves” instead of “contains”.',
           },
         ],
+        faq: [
+          { q: { ru: 'Парадокс брадобрея — в чём он?', en: 'What is the barber paradox?' }, a: { ru: 'Брадобрей бреет всех, кто не бреет себя сам: если он бреет себя, то не должен, а если не бреет, то должен. Значит, такого брадобрея нет.', en: 'A barber shaves everyone who does not shave themselves: if he shaves himself he must not, and if he does not he must. So no such barber exists.' } },
+          { q: { ru: 'Что показывает парадокс брадобрея?', en: 'What does the barber paradox show?' }, a: { ru: 'Что не всякое описание задаёт существующий объект. Бертран Рассел приводил его для объяснения своего парадокса о множествах.', en: 'That not every description defines something that exists. Bertrand Russell used it to explain his paradox about sets.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Barber_paradox', label: { ru: 'Википедия: парадокс брадобрея', en: 'Wikipedia: Barber paradox' } },
       },
       {
@@ -2321,6 +2846,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['event storming', 'EventStorming'], en: ['event storming', 'EventStorming'] },
         related: ['aggregate', 'ddd', 'bounded-context', 'invariant'],
         more: { post: 'agent-checkpoint', label: { ru: 'Агрегат как пост проверки работы агента', en: "The aggregate as a checkpoint for an agent's work" } },
+        faq: [
+          { q: { ru: 'Event storming — что это?', en: 'What is event storming?' }, a: { ru: 'Формат совместной работы, на котором команда раскладывает предметную область на события и находит команды, агрегаты и правила.', en: 'A team workshop format that lays out a domain as events and finds commands, aggregates and rules.' } },
+          { q: { ru: 'Что получается после event storming?', en: 'What comes out of event storming?' }, a: { ru: 'Границы агрегатов: что входит командами, что выходит событиями и какие правила внутри.', en: 'Aggregate boundaries: what comes in as commands, what goes out as events and which rules are inside.' } },
+        ],
         source: { url: 'https://www.eventstorming.com/', label: { ru: 'eventstorming.com', en: 'eventstorming.com' } },
       },
       {
@@ -2334,6 +2863,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['состояни\\p{L}* гонки', 'гонк\\p{L}* входа', 'race conditions?'], en: ['race conditions?', 'races'] },
         related: ['model-checking', 'invariant', 'quint'],
         more: { post: 'quint-models-find-races', label: { ru: 'Какие гонки нашли модели на Quint', en: 'The races found by Quint models' } },
+        faq: [
+          { q: { ru: 'Состояние гонки — что это?', en: 'What is a race condition?' }, a: { ru: 'Ошибка, при которой результат зависит от того, какое из двух действий успело раньше.', en: 'A defect where the result depends on which of two actions got there first.' } },
+          { q: { ru: 'Как найти гонку?', en: 'How do you find a race condition?' }, a: { ru: 'Перебрать все порядки, в которых могут выполняться действия, например моделью на Quint: тесты проверяют только один порядок.', en: 'Try every order in which the actions can run, for example with a Quint model: tests check only one order.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Race_condition', label: { ru: 'Википедия: состояние гонки', en: 'Wikipedia: Race condition' } },
       },
     ],
@@ -2353,6 +2886,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['промпт\\p{L}*'], en: ['prompts?'] },
         related: ['context', 'token', 'hallucination'],
+        faq: [
+          { q: { ru: 'Промпт — что это?', en: 'What is a prompt?' }, a: { ru: 'Запрос к модели: задача, контекст, формат ответа и ограничения.', en: 'A request to a model: the task, context, answer format and constraints.' } },
+          { q: { ru: 'Как написать хороший промпт?', en: 'How do you write a good prompt?' }, a: { ru: 'Собрать все части точно: чем точнее задача, данные и формат, тем меньше правок после первого ответа.', en: 'Put all parts together precisely: the more exact the task, data and format, the fewer edits after the first answer.' } },
+        ],
         source: { url: 'https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview', label: { ru: 'Anthropic: промпт-инжиниринг', en: 'Anthropic: Prompt engineering' } },
       },
       {
@@ -2364,6 +2901,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['источник\\p{L}*'], en: ['sources?(?! code)'] },
         related: ['epimorphism', 'hallucination', 'context'],
+        faq: [
+          { q: { ru: 'Источник — что это?', en: 'What is a source?' }, a: { ru: 'Система или документ, где лежит исходный факт: заявка, таблица, запись встречи.', en: 'The system or document that holds the original fact: a ticket, a table, a meeting recording.' } },
+          { q: { ru: 'Зачем ссылка на источник в ответе агента?', en: 'Why should an agent’s answer cite sources?' }, a: { ru: 'Ответ надёжен настолько, насколько его можно сверить с источником.', en: 'An answer is only as reliable as it can be checked against its source.' } },
+        ],
       },
       {
         slug: 'hallucination',
@@ -2375,6 +2916,11 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['галлюцинаци\\p{L}*', 'галлюцинир\\p{L}*'], en: ['hallucinat\\p{L}*'] },
         related: ['epimorphism', 'source', 'prompt', 'llm', 'checks'],
+        faq: [
+          { q: { ru: 'Галлюцинация LLM — что это?', en: 'What is an LLM hallucination?' }, a: { ru: 'Уверенный, но выдуманный ответ модели: несуществующий факт, функция или ссылка.', en: 'A confident but made-up model answer: a fact, function or link that does not exist.' } },
+          { q: { ru: 'Почему возникают галлюцинации?', en: 'Why do hallucinations happen?' }, a: { ru: 'Там, где у части ответа нет опоры в данных, модель заполняет пустое место правдоподобной догадкой.', en: 'Where part of the answer has no support in the data, the model fills the gap with a plausible guess.' } },
+          { q: { ru: 'Как снизить галлюцинации?', en: 'How do you reduce hallucinations?' }, a: { ru: 'Давать модели данные из надёжных источников и проверять результат.', en: 'Give the model data from reliable sources and check the result.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)', label: { ru: 'Википедия: галлюцинации ИИ', en: 'Wikipedia: AI hallucination' } },
         seo: {
           title: { ru: 'Галлюцинации LLM: что это и примеры галлюцинаций ИИ — в коде, пакетах и ссылках', en: 'LLM hallucination: meaning, examples and grounding in sources' },
@@ -2404,6 +2950,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['контекст\\p{L}*'], en: ['contexts?'] },
         related: ['token', 'prompt', 'source', 'mcp'],
+        faq: [
+          { q: { ru: 'Что такое контекст в ИИ?', en: 'What is context in AI?' }, a: { ru: 'Всё, что модель видит в данный момент: диалог, файлы проекта и данные подключённых систем.', en: 'Everything the model sees at the moment: the conversation, project files and data from connected systems.' } },
+          { q: { ru: 'Почему агент не знает про мой проект?', en: 'Why doesn’t the agent know about my project?' }, a: { ru: 'Чего нет в контексте, того агент не знает. Постоянные знания о проекте кладут в файлы инструкций вроде AGENTS.md или CLAUDE.md.', en: 'What is not in the context, the agent does not know. Standing project knowledge goes into instruction files like AGENTS.md or CLAUDE.md.' } },
+        ],
         source: { url: 'https://platform.claude.com/docs/en/build-with-claude/context-windows', label: { ru: 'Anthropic: контекстное окно', en: 'Anthropic: Context windows' } },
       },
       {
@@ -2415,6 +2965,10 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['токен\\p{L}*'], en: ['tokens?'] },
         related: ['context', 'llm', 'prompt'],
+        faq: [
+          { q: { ru: 'Что такое токен в ИИ?', en: 'What is a token in AI?' }, a: { ru: 'Единица текста, которую считает LLM: примерно слог или короткое слово.', en: 'A unit of text an LLM counts: roughly a syllable or a short word.' } },
+          { q: { ru: 'Почему важно число токенов?', en: 'Why does the token count matter?' }, a: { ru: 'От него зависят цена запроса и то, сколько поместится в контекст модели.', en: 'It sets the request price and how much fits into the model’s context.' } },
+        ],
         source: { url: 'https://platform.claude.com/docs/en/build-with-claude/token-counting', label: { ru: 'Anthropic: подсчёт токенов', en: 'Anthropic: Token counting' } },
       },
     ],
@@ -2439,6 +2993,10 @@ export const TERM_SETS: TermSet[] = [
         },
         related: ['generators', 'group-relation', 'group-presentation', 'cayley-graph'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Сколько правил нужно, чтобы описать игру: шаг и лифт', en: 'How many rules does a game need: a step and a lift' } },
+        faq: [
+          { q: { ru: 'Группа в математике — что это?', en: 'What is a group in mathematics?' }, a: { ru: 'Набор ходов, которые можно выполнять цепочкой и отменять: есть ход «ничего не делать», и у каждого хода есть обратный.', en: 'A set of moves that can be chained and undone: there is a “do nothing” move, and every move has an inverse.' } },
+          { q: { ru: 'Пример группы?', en: 'An example of a group?' }, a: { ru: 'Повороты кубика Рубика.', en: 'The turns of a Rubik’s Cube.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Group_(mathematics)', label: { ru: 'Википедия (англ.): Group (mathematics)', en: 'Wikipedia: Group (mathematics)' } },
       },
       {
@@ -2455,6 +3013,10 @@ export const TERM_SETS: TermSet[] = [
         },
         related: ['math-group', 'group-presentation', 'relation-module'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Сколько правил нужно, чтобы описать игру: шаг и лифт', en: 'How many rules does a game need: a step and a lift' } },
+        faq: [
+          { q: { ru: 'Образующие группы — что это?', en: 'What are the generators of a group?' }, a: { ru: 'Небольшой набор ходов, из которых цепочками получаются все остальные ходы группы.', en: 'A small set of moves from which chains produce every other move of the group.' } },
+          { q: { ru: 'Какие образующие у кубика Рубика?', en: 'What are a Rubik’s Cube’s generators?' }, a: { ru: 'Повороты шести граней.', en: 'The turns of its six faces.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Generating_set_of_a_group', label: { ru: 'Википедия (англ.): Generating set of a group', en: 'Wikipedia: Generating set of a group' } },
       },
       {
@@ -2471,6 +3033,10 @@ export const TERM_SETS: TermSet[] = [
         },
         related: ['group-presentation', 'commutator', 'relation-gap', 'one-relator-group'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Сколько правил нужно, чтобы описать игру: шаг и лифт', en: 'How many rules does a game need: a step and a lift' } },
+        faq: [
+          { q: { ru: 'Соотношение группы — что это?', en: 'What is a group relation?' }, a: { ru: 'Правило вида «эта цепочка ходов возвращает всё на место».', en: 'A rule of the form “this chain of moves puts everything back”.' } },
+          { q: { ru: 'Пример соотношения?', en: 'An example of a relation?' }, a: { ru: 'В игре «шаг и лифт» шесть шагов подряд оставляют фишку на месте: x⁶ = 1.', en: 'In the step-and-lift game six steps in a row leave the piece in place: x⁶ = 1.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Presentation_of_a_group', label: { ru: 'Википедия (англ.): Presentation of a group', en: 'Wikipedia: Presentation of a group' } },
       },
       {
@@ -2487,6 +3053,10 @@ export const TERM_SETS: TermSet[] = [
         },
         related: ['generators', 'group-relation', 'cayley-graph', 'computer-algebra-system'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Сколько правил нужно, чтобы описать игру: шаг и лифт', en: 'How many rules does a game need: a step and a lift' } },
+        faq: [
+          { q: { ru: 'Копредставление группы — что это?', en: 'What is a group presentation?' }, a: { ru: 'Запись группы буквами-ходами и списком соотношений.', en: 'A description of a group by letter moves and a list of relations.' } },
+          { q: { ru: 'Зачем копредставление?', en: 'Why use a presentation?' }, a: { ru: 'По нему строят карту группы и ведут вычисления в программах вроде GAP.', en: 'It is used to build the group’s map and to compute in programs like GAP.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Presentation_of_a_group', label: { ru: 'Википедия (англ.): Presentation of a group', en: 'Wikipedia: Presentation of a group' } },
       },
       {
@@ -2504,6 +3074,10 @@ export const TERM_SETS: TermSet[] = [
           { post: 'longest-ring-arrangement', label: { ru: 'Кольцо с шариками: карта ходов и самая запутанная расстановка', en: 'Balls on a ring: the move map and the most tangled arrangement' } },
           { post: 'relation-gap-how-many-rules', label: { ru: 'Карта игры «шаг и лифт»', en: 'The map of the game “step and lift”' } },
         ],
+        faq: [
+          { q: { ru: 'Граф Кэли — что это?', en: 'What is a Cayley graph?' }, a: { ru: 'Карта группы: точка — положение, стрелка — ход из одного положения в другое.', en: 'A map of a group: a point is a position, an arrow is a move from one position to another.' } },
+          { q: { ru: 'Где встречается граф Кэли?', en: 'Where do Cayley graphs appear?' }, a: { ru: 'Например, под кубиком Рубика: точки — все положения кубика, стрелки — повороты граней.', en: 'For example, behind a Rubik’s Cube: points are all cube positions, arrows are face turns.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Cayley_graph', label: { ru: 'Википедия (англ.): Cayley graph', en: 'Wikipedia: Cayley graph' } },
       },
       {
@@ -2517,6 +3091,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['коммутатор\\p{L}*', 'коммутир\\p{L}*'], en: ['commutators?'] },
         related: ['centralizer', 'group-relation', 'group-presentation'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Сколько правил нужно, чтобы описать игру: шаг и лифт', en: 'How many rules does a game need: a step and a lift' } },
+        faq: [
+          { q: { ru: 'Коммутатор — что это?', en: 'What is a commutator?' }, a: { ru: 'Цепочка из четырёх ходов: сделать u, сделать v, отменить u, отменить v.', en: 'A chain of four moves: do u, do v, undo u, undo v.' } },
+          { q: { ru: 'Что значит, что коммутатор равен единице?', en: 'What does it mean if a commutator equals one?' }, a: { ru: 'Ходы u и v можно менять местами: результат не зависит от порядка.', en: 'The moves u and v can be swapped: the result does not depend on their order.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Commutator', label: { ru: 'Википедия (англ.): Commutator', en: 'Wikipedia: Commutator' } },
       },
       {
@@ -2530,6 +3108,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['централизатор\\p{L}*'], en: ['centralis?ers?'] },
         related: ['commutator', 'one-relator-group', 'group-relation'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Почему игроку мало одного правила: друзья не дружат', en: 'Why one rule is not enough for the player: friends are not friends' } },
+        faq: [
+          { q: { ru: 'Централизатор — что это?', en: 'What is a centralizer?' }, a: { ru: 'Все ходы, которые можно менять местами с данным ходом, его «друзья».', en: 'All moves that can be swapped with a given move, its “friends”.' } },
+          { q: { ru: 'Что говорит теорема Ньюмана?', en: 'What does Newman’s theorem say?' }, a: { ru: 'Она описывает централизаторы в группах с одним соотношением, 1973 год.', en: 'It describes centralizers in one-relator groups, from 1973.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Centralizer_and_normalizer', label: { ru: 'Википедия (англ.): Centralizer and normalizer', en: 'Wikipedia: Centralizer and normalizer' } },
       },
       {
@@ -2543,6 +3125,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['групп\\p{L}* с одним соотношением'], en: ['one-relator groups?'] },
         related: ['centralizer', 'group-relation', 'relation-gap'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Почему игроку мало одного правила: друзья не дружат', en: 'Why one rule is not enough for the player: friends are not friends' } },
+        faq: [
+          { q: { ru: 'Группа с одним соотношением — что это?', en: 'What is a one-relator group?' }, a: { ru: 'Группа, которую можно задать любым числом ходов, но единственным правилом.', en: 'A group defined by any number of moves but a single rule.' } },
+          { q: { ru: 'Почему такие группы изучают?', en: 'Why study such groups?' }, a: { ru: 'Про них известно много, например теорема Ньюмана о друзьях любого хода.', en: 'A lot is known about them, such as Newman’s theorem on the friends of any move.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/One-relator_group', label: { ru: 'Википедия (англ.): One-relator group', en: 'Wikipedia: One-relator group' } },
       },
       {
@@ -2556,6 +3142,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['модул\\p{L}* соотношений'], en: ['relation modules?'] },
         related: ['relation-gap', 'group-homology', 'group-relation', 'generators'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Счёт бухгалтера: одна запись', en: 'The accountant’s count: one entry' } },
+        faq: [
+          { q: { ru: 'Модуль соотношений — что это?', en: 'What is a relation module?' }, a: { ru: 'Все следствия правил группы, записанные «бухгалтерски»: порядок ходов в записи не помнится.', en: 'All consequences of a group’s rules written “like bookkeeping”: the order of moves is not remembered.' } },
+          { q: { ru: 'Как модуль соотношений связан с разрывом?', en: 'How does the relation module relate to the gap?' }, a: { ru: 'Разрыв соотношений сравнивает число правил группы с числом образующих её модуля соотношений.', en: 'The relation gap compares the number of a group’s rules with the number of generators of its relation module.' } },
+        ],
         source: { url: 'https://arxiv.org/abs/2610.23637', label: { ru: 'arXiv 2610.23637: Two-generator presentations with a relation gap', en: 'arXiv 2610.23637: Two-generator presentations with a relation gap' } },
       },
       {
@@ -2576,6 +3166,10 @@ export const TERM_SETS: TermSet[] = [
             { name: { ru: 'Бухгалтер', en: 'Accountant' }, text: { ru: 'Правило — запись в книге, порядок ходов не помнится. Наименьшее число образующих модуля соотношений; в той же игре — 1.', en: 'A rule is a ledger entry, the order of moves is not remembered. The least number of generators of the relation module; in the same game it is 1.' } },
           ],
         },
+        faq: [
+          { q: { ru: 'Разрыв соотношений — что это?', en: 'What is a relation gap?' }, a: { ru: 'Ситуация, когда наименьшее число соотношений группы больше наименьшего числа образующих её модуля соотношений.', en: 'When a group’s least number of relations exceeds the least number of generators of its relation module.' } },
+          { q: { ru: 'Кто поставил этот вопрос?', en: 'Who posed this question?' }, a: { ru: 'Карл Грюнберг в 1976 году; в 1979 году вопрос вошёл в список задач Уолла.', en: 'Karl Gruenberg in 1976; in 1979 it entered Wall’s problem list.' } },
+        ],
         source: { url: 'https://arxiv.org/abs/2610.23637', label: { ru: 'arXiv 2610.23637: Two-generator presentations with a relation gap', en: 'arXiv 2610.23637: Two-generator presentations with a relation gap' } },
       },
       {
@@ -2589,6 +3183,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['гомологи\\p{L}*'], en: ['homology'] },
         related: ['relation-module', 'cayley-graph', 'wall-d2-problem'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Счёт бухгалтера: одна запись', en: 'The accountant’s count: one entry' } },
+        faq: [
+          { q: { ru: 'Гомология простыми словами?', en: 'Homology in plain words?' }, a: { ru: 'Запись петли числами: сколько раз пройден каждый отрезок вперёд минус сколько раз назад.', en: 'Recording a loop with numbers: how many times each segment is walked forward minus backward.' } },
+          { q: { ru: 'Что теряется в гомологии?', en: 'What does homology lose?' }, a: { ru: 'Порядок обхода: две петли по тем же отрезкам в разном порядке записываются одинаково.', en: 'The order of the walk: two loops over the same segments in a different order are recorded the same way.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Homology_(mathematics)', label: { ru: 'Википедия (англ.): Homology (mathematics)', en: 'Wikipedia: Homology (mathematics)' } },
       },
       {
@@ -2602,6 +3200,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['задач\\p{L}* Уолла(?: D2)?', 'комплекс\\p{L}* D2'], en: ['Wall[’\']s D2 problem', 'D2 complex(?:es)?'] },
         related: ['relation-gap', 'group-homology', 'one-relator-group'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Сколько правил нужно, чтобы описать игру: где это встречается', en: 'How many rules does a game need: where it shows up' } },
+        faq: [
+          { q: { ru: 'Задача Уолла D2 — что это?', en: 'What is Wall’s D2 problem?' }, a: { ru: 'Вопрос Уолла 1965 года: можно ли трёхмерную фигуру, у которой третье измерение не добавляет «дыр», деформировать в двумерную.', en: 'Wall’s 1965 question: can a three-dimensional shape whose third dimension adds no “holes” be deformed into a two-dimensional one.' } },
+          { q: { ru: 'Как она связана с разрывом соотношений?', en: 'How is it tied to the relation gap?' }, a: { ru: 'Группа с разрывом соотношений могла бы дать контрпример к задаче D2.', en: 'A group with a relation gap could give a counterexample to the D2 problem.' } },
+        ],
         source: { url: 'https://arxiv.org/abs/2610.23637', label: { ru: 'arXiv 2610.23637: следствие B и условие на предпринт OpenAI', en: 'arXiv 2610.23637: Corollary B and its dependence on the OpenAI preprint' } },
       },
       {
@@ -2615,6 +3217,10 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['наибольш\\p{L}+ общ\\p{L}+ делител\\p{L}*', 'НОД'], en: ['greatest common divisors?', 'GCD'] },
         related: ['relation-module', 'relation-gap'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Почему бухгалтеру хватает одной записи: три и два', en: 'Why the accountant needs one entry: three and two' } },
+        faq: [
+          { q: { ru: 'Наибольший общий делитель — что это?', en: 'What is the greatest common divisor?' }, a: { ru: 'Наибольшее число, на которое делятся оба числа: НОД(3, 2) = 1.', en: 'The largest number that divides both numbers: gcd(3, 2) = 1.' } },
+          { q: { ru: 'Как собрать НОД из самих чисел?', en: 'How do you build the gcd from the numbers?' }, a: { ru: 'Сложением и вычитанием: 1 = 3 − 2, как монеты в 3 и 2 рубля со сдачей.', en: 'With addition and subtraction: 1 = 3 − 2, like 3 and 2 coins with change.' } },
+        ],
         source: { url: 'https://en.wikipedia.org/wiki/Greatest_common_divisor', label: { ru: 'Википедия (англ.): Greatest common divisor', en: 'Wikipedia: Greatest common divisor' } },
       },
       {
@@ -2635,6 +3241,10 @@ export const TERM_SETS: TermSet[] = [
             { name: { ru: 'Правила', en: 'Rules' }, text: { ru: 'G := F / [ x^6, Comm(x^3, t*x^2*t^-1) ];;', en: 'G := F / [ x^6, Comm(x^3, t*x^2*t^-1) ];;' } },
           ],
         },
+        faq: [
+          { q: { ru: 'Система компьютерной алгебры — что это?', en: 'What is a computer algebra system?' }, a: { ru: 'Программа, которая считает с формулами и абстрактными объектами, а не только с числами.', en: 'A program that computes with formulas and abstract objects, beyond numbers.' } },
+          { q: { ru: 'Какие системы компьютерной алгебры бывают?', en: 'Which computer algebra systems exist?' }, a: { ru: 'Например, GAP и Magma: в них группы задают ходами и правилами.', en: 'For example, GAP and Magma: groups are defined there by moves and rules.' } },
+        ],
         source: { url: 'https://www.gap-system.org/', label: { ru: 'gap-system.org — сайт GAP', en: 'gap-system.org, the GAP site' } },
       },
     ],
