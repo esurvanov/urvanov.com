@@ -6,7 +6,7 @@ description: Claude Code or Codex, Cursor or Hermes Agent: where the agent runs,
 tags: AI, harness, Claude Code, Codex, Cursor, Hermes Agent
 category: harness
 layout: wide
-toc: tasks=Which harness for which task | stable=What stays the same | harness=What a harness is | compare=What they see and do | next=Further reading
+toc: tasks=Which harness for which task | stable=What stays the same | harness=What a harness is | compare=What they see and do | faq=Questions | next=Further reading
 ---
 
 Codex vs Claude Code: in project access and actions they are nearly the same, and they differ in the model family (GPT for Codex, Claude for Claude Code) and the plan. So take the one whose model and subscription your team already has. Cursor fits if you work in an editor and want models from different vendors, Hermes Agent if you need any model, local ones included. Below are a map, a table and a pick by task.
@@ -126,6 +126,15 @@ Codex vs Claude Code: in project access and actions they are nearly the same, an
     <gen>Cursor stands out with its built-in editor and multi-vendor models, chat with its lack of project access. Between Claude Code and Codex, the model and plan determine the choice.</gen>
     <do>If the task requires project files, chat is not suitable. Then choose by the model already available to the team.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="Codex or Claude Code: which to pick?">In project access and actions they are nearly the same; they differ in the model, GPT for Codex and Claude for Claude Code. Take the one whose model and subscription your team already has.</q>
+    <q t="Cursor or Claude Code?">Cursor works inside an editor and offers models from different vendors. Claude Code takes a task from start to result in the terminal on Claude models.</q>
+    <q t="What are the alternatives to Claude Code?">Codex, built the same way on GPT models, Cursor with its editor and Hermes Agent with any model. OpenCode, Aider, Cline and Goose work in a similar way.</q>
+    <q t="Why do feature comparisons go stale so fast?">New versions of Claude Code and Codex ship every week. Three things stay stable: the model family, the harness design and the ways of working with the agent.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Further reading">

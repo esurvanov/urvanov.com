@@ -1,13 +1,13 @@
 ---
 title: MCP server and AI agent for 1C: how to let Claude Code, Codex or Cursor into the database without breaking it
 date: 2026-10-12
-updated: 2026-10-25
+updated: 2026-11-07
 description: An MCP server for 1C:Enterprise gives an AI agent (Claude Code, Codex or Cursor) access to the configuration code and the database data. How to connect it in 3 steps, what breaks in practice, how to separate reading from writing and check results.
 tags: AI, agents, MCP, 1C, permissions, security, Claude Code, Codex, Cursor
 category: harness
 layout: wide
 mentions: Model Context Protocol, MCP, 1C:Enterprise, AI agent, Claude Code, Codex, Cursor, permissions, prompt injection
-toc: what=What it is | specifics=1C specifics | breaks=Where it breaks | servers=Servers | cases=What breaks | scheme=Scheme | rights=Rights | check=Checks | agents=Agents | start=Where to start | next=Read next
+toc: what=What it is | specifics=1C specifics | breaks=Where it breaks | servers=Servers | cases=What breaks | scheme=Scheme | rights=Rights | check=Checks | agents=Agents | start=Where to start | faq=Questions | next=Read next
 ---
 
 To let Claude Code, Codex or Cursor into a 1C database without breaking it, connect the AI agent through an MCP server for 1C — a bridge to the configuration code and the database data — and split the access. The agent only reads the production database under a user without write rights, makes changes in a test copy, and a person moves changes to production through the repository after review. Below: what servers exist, what breaks in practice, the ladder of rights and how to check results. How MCP works in general is covered in [MCP for an AI agent](/blog/mcp-agent-access/).
@@ -290,6 +290,15 @@ To let Claude Code, Codex or Cursor into a 1C database without breaking it, conn
   <do k="After that">Production stays read-only. Moving changes is up to a person.</do>
 </b-finding>
 </b-chapter>
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="How do you connect an AI agent to 1C?">Through an MCP server for 1C, a bridge to the configuration code and the database data. It works for Claude Code, Codex and Cursor.</q>
+    <q t="How do you avoid breaking the live 1C database?">The agent only reads the live database under a user without write rights, edits in a test copy, and a person moves the changes to the live base through the repository after review.</q>
+    <q t="What permissions should the agent get in 1C?">Follow a ladder of access: start with read-only and raise rights step by step only when the task needs it.</q>
+    <q t="Are there free MCP servers for 1C?">Yes, the article covers free MCP servers for 1C and 1C:EDT and what breaks in them in practice.</q>
+  </b-faq-cards>
+</b-chapter>
+
 <b-chapter id="next" icon="arrow-right" title="Read next">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="Connecting" t="MCP for an AI agent">how to connect and delegate it to the agent</item>

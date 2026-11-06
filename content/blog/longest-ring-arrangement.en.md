@@ -1,5 +1,5 @@
 ---
-title: Which arrangement of balls on a ring takes longest to untangle: AI, brute force and the number-of-pairs conjecture
+title: Which arrangement of balls on a ring takes longest to untangle: most likely the “mirror” — brute force, AI and the number-of-pairs conjecture
 date: 2026-10-22
 updated: 2026-11-07
 description: How many moves the most tangled arrangement of balls on a ring with a turn and a swap needs, and what the diameter of a Cayley graph is. How brute force, a neural network with beam search, a Kaggle competition and proofs converged on n(n−1)/2 — the CayleyPy RL paper (arXiv 2502.18663) explained with diagrams.

@@ -7,7 +7,7 @@ tags: AI, Claude Code, CLAUDE.md, harness, specs, skills
 category: specs
 layout: wide
 mentions: AGENTS.md, CLAUDE.md, Agent Skills, Spec Kit, Memory Bank
-toc: map=Four layers | spec=Spec | bible=Bible | rules=Rules | skills=Skills | chat=In a chat | pick=What goes where | next=Further reading
+toc: map=Four layers | spec=Spec | bible=Bible | rules=Rules | skills=Skills | chat=In a chat | pick=What goes where | faq=Questions | next=Further reading
 ---
 
 AGENTS.md and CLAUDE.md are files in the project root with standing instructions for an AI agent: build and test commands, code style, prohibitions. AGENTS.md is an open format read by Codex, Cursor, Gemini CLI, Copilot and other agents; CLAUDE.md is read by Claude Code. The harness puts such a file at the start of every session. Below are an example file and where to keep specs, the project bible and skills.
@@ -156,6 +156,15 @@ AGENTS.md and CLAUDE.md are files in the project root with standing instructions
     <do>Review the rules once a week: move procedures into skills and decisions into the bible with a date.</do>
   </b-finding>
 </b-chapter>
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What are AGENTS.md and CLAUDE.md?">Files in the project root with standing instructions for an AI agent: build and test commands, code style, prohibitions.</q>
+    <q t="Which agents read AGENTS.md?">Codex, Cursor, Gemini CLI, Copilot and others. Claude Code reads CLAUDE.md.</q>
+    <q t="How long should CLAUDE.md be?">Anthropic recommends under 200 lines per file: rules load into every session. Long and rare content moves into skills.</q>
+    <q t="How are rules different from skills?">The agent sees rules in every session. A skill is a procedure the agent loads fully only when a task matches.</q>
+  </b-faq-cards>
+</b-chapter>
+
 <b-chapter id="next" title="Further reading">
   <b-links cols="2">
     <item href="/en/blog/harness-driven-development/" k="Method" t="Harness-Driven Development">Agent error → environment rule</item>

@@ -1,5 +1,5 @@
 ---
-title: How many rules does a game need: the relation gap, a step and a lift
+title: How many rules does a game need: the step-and-lift game needs two rules, while a bookkeeper needs one entry — the relation gap
 date: 2026-11-02
 updated: 2026-11-07
 description: How to count the rules of a game honestly and quickly, and whether the two answers can differ. A walkthrough of the paper by Bartholdi, Bridson, Mikhailov and Nicholson on the relation gap (arXiv 2610.23637): a game with two moves where the player needs two rules and the accountant needs one entry, with diagrams, formulas and calculations.

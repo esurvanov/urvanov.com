@@ -1,5 +1,5 @@
 ---
-title: Who to interview before buying AI tools: eight polar groups
+title: Who to interview before buying AI tools: 16 people from eight polar groups
 date: 2026-09-28
 updated: 2026-11-07
 description: How to pick 16 people from the report, a questionnaire and license lists, check team coverage and replacements, and decide what to ask them.
@@ -8,7 +8,7 @@ category: research
 layout: wide
 image: /og/who-to-interview-before-buying-ai-tools.en.png
 mentions: ChatGPT Enterprise, Codex
-toc: why=Why sample | top=Top by activity | groups=Eight groups | teams=Team coverage | ask=What to learn | order=Workflow | next=Further reading
+toc: why=Why sample | top=Top by activity | groups=Eight groups | teams=Team coverage | ask=What to learn | order=Workflow | faq=Questions | next=Further reading
 ---
 
 Before buying AI tools, invite 16 people to interviews: two from each of eight polar groups, such as those who work only in Codex, dropped the tool or run many projects. The most active users matter, but together they describe one or two scenarios: the top by messages covers 2 scenarios out of 8. People are picked from the report, a survey and license lists. Below are the groups, thresholds and what to ask.
@@ -139,6 +139,15 @@ First, define which ways of getting tasks done you need to see: through the corp
     <step t="Schedule 30-minute interviews">The conversation starts from the last work task: what they needed to get, what means they had, what they chose, and how they got to the result. With those who quit, also discuss why they stopped</step>
   </b-gruppy-steps>
   <b-gruppy-limit t="Limitation.">16 interviews show which problems occur and what they look like in real work. They cannot tell you how many people in the company face each one. To learn the scale, send the whole company a short [questionnaire](/en/blog/ai-interviews-without-leading-questions/#form), written after the interviews. If the problems are not confirmed, that is also a result: no new tool is needed.</b-gruppy-limit>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="How many people should you interview before buying AI?">16 people: two from each of eight polar groups.</q>
+    <q t="Why isn’t interviewing the most active users enough?">They are alike and together describe one or two scenarios: the top by messages covers 2 scenarios out of 8.</q>
+    <q t="How do you pick people for the groups?">From the report, a survey and license lists: in each group take the two people with the most extreme values, from different teams where possible.</q>
+    <q t="What should you ask in the interview?">About the last real task: where the person chose AI, where another way, and why.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Further reading">

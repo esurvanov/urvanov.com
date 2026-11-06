@@ -1,13 +1,13 @@
 ---
 title: Analytical reports with an AI agent: data from a database, sheets and documents through MCP
 date: 2026-10-05
-updated: 2026-10-25
+updated: 2026-11-07
 description: How to build an analytical report with an AI agent: connect a read-only database through MCP, delegate queries and the summary, check one number by hand and set permissions per source.
 tags: AI, agents, MCP, analytics, reports, database, harness
 category: harness
 layout: wide
 mentions: MCP, Model Context Protocol, analytics, reports, SQL, database, Claude Code, permissions
-toc: flow=How a report gets built | access=Sources and permissions | connect=Connecting | verify=Checking | first=Where to start | next=Next
+toc: flow=How a report gets built | access=Sources and permissions | connect=Connecting | verify=Checking | first=Where to start | faq=Questions | next=Next
 ---
 
 A report by hand is an export from a database, a table, a chart and text, and every step waits for a person. An agent with access to the sources goes through the chain itself, while a person checks the numbers and decides what to do next. Below: how it looks, which permissions to give per source, how to connect the database and verify the result. The basics are in the [MCP for an AI agent](/blog/mcp-agent-access/) article.
@@ -69,6 +69,15 @@ Create the user as read-only so the agent’s queries cannot change anything. Ex
     <gen>Start with a report whose numbers you already know: that shows where the agent went wrong.</gen>
     <do k="What to do">Today create a read-only user and ask the agent to calculate a familiar figure.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="How does an AI agent build an analytics report?">It runs the chain itself: database export, table, chart and text. A person checks the numbers and decides what to do next.</q>
+    <q t="How do you connect a database to an agent?">Through MCP with read-only rights: the agent cannot change the data.</q>
+    <q t="How do you check an agent’s report?">Reread the queries it used and compare one or two numbers with known ones: a match raises trust in the rest.</q>
+    <q t="What does the agent see in the sources?">Exactly what was connected, and it does exactly what is allowed.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Next">

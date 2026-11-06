@@ -1,14 +1,14 @@
 ---
 title: Harness engineering in practice: turning AI agent mistakes into rules of its environment (HDD)
 date: 2026-09-28
-updated: 2026-10-25
+updated: 2026-11-07
 description: The mistake-to-rule loop, guides and sensors, three layers of checks, how it fits with specs, and five first steps in your own project.
 tags: AI, Claude Code, harness engineering, harness, HDD, agents
 category: harness
 layout: wide
 image: /og/harness-driven-development.en.png
 mentions: Harness engineering, Claude Code, AGENTS.md, CLAUDE.md, Spec-Driven Development
-toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | controls=Guides and sensors | layers=Three check layers | shift=Earlier is cheaper | human=Where people matter | spec=HDD and specs | start=Where to start | next=Further reading
+toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | controls=Guides and sensors | layers=Three check layers | shift=Earlier is cheaper | human=Where people matter | spec=HDD and specs | start=Where to start | faq=Questions | next=Further reading
 ---
 
 **Harness engineering** is the work of shaping the environment around an AI agent: instructions, tools, permissions and checks. **Harness-Driven Development (HDD)** is a working method built on it: every agent mistake becomes a rule of that environment.
@@ -183,6 +183,15 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
     <gen>Nobody designs a harness in full up front. It grows out of the agent's real mistakes in your project, and within a few weeks the agent stops repeating the most common ones.</gen>
     <do>Today, create the instructions file and the mistake log. In a week, move the first log entries into rules.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What is harness engineering?">Setting up the environment around an AI agent: instructions, tools, permissions and checks.</q>
+    <q t="What is HDD?">Harness-Driven Development: a method where every agent mistake becomes a rule of the environment, an instruction, a test or a hook.</q>
+    <q t="Why is a rule better than a manual fix?">A result fixed by hand helps once, while a rule in the harness works for every future task.</q>
+    <q t="How do you start with HDD?">Create an instruction file for the agent and a log of its mistakes, and once a week move log entries into rules, tests or hooks.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Further reading">

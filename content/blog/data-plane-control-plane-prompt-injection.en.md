@@ -1,13 +1,13 @@
 ---
 title: The agent’s data plane and control plane: keeping data from becoming commands (prompt injection)
 date: 2026-10-05
-updated: 2026-10-25
+updated: 2026-11-07
 description: How an agent’s commands (control plane) differ from the data it reads (data plane), how prompt injection works and how to defend: least rights, approval of writes, separating read from write, trusted sources.
 tags: AI, agents, security, prompt injection, MCP, harness
 category: harness
 layout: wide
 mentions: prompt injection, data plane, control plane, AI agent security, MCP, least privilege, human approval
-toc: what=Two planes | attack=Prompt injection | defense=Defence | cases=Where it shows up | next=Next
+toc: what=Two planes | attack=Prompt injection | defense=Defence | cases=Where it shows up | faq=Questions | next=Next
 ---
 
 The agent takes commands from you and reads data from outside: pages, tickets, server replies. If a command is hidden in the data, the agent may execute it. Below: the two planes, what prompt injection looks like and how to build the defence. Connecting servers is covered in the [MCP for an AI agent](/blog/mcp-agent-access/) article, and agent access to a 1C database in [MCP for 1C](/blog/mcp-1c/).
@@ -69,6 +69,15 @@ The agent takes commands from you and reads data from outside: pages, tickets, s
     <gen>The wider the list of sources, the more the rights and approval matter.</gen>
     <do k="What to do">Go through your connections and choose read, or write with approval, for each.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What are an agent’s data plane and control plane?">The control plane is commands, your messages and rules. The data plane is everything the agent reads from outside: pages, tickets, server replies.</q>
+    <q t="How does prompt injection work?">A command is hidden in the data, and the model gets data and commands as one text, so it may carry the command out.</q>
+    <q t="How do you defend against prompt injection?">Limit the consequences: give the agent minimal rights and require confirmation at key steps, so even a tricked agent cannot do too much.</q>
+    <q t="Why does the risk grow with MCP?">Every MCP server adds data sources, and with them more places where an outside command can hide.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Next">

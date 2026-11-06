@@ -1,13 +1,13 @@
 ---
-title: Incident investigation with an AI agent: Sentry and Grafana through MCP
+title: Incident investigation with an AI agent: Sentry errors and Grafana metrics in one picture through MCP
 date: 2026-10-05
-updated: 2026-10-25
+updated: 2026-11-07
 description: How to investigate an incident with an AI agent: connect Sentry and Grafana through MCP, have it match errors, metrics and release time, limit permissions and verify the hypothesis.
 tags: AI, agents, MCP, Sentry, Grafana, incidents, harness
 category: harness
 layout: wide
 mentions: MCP, Model Context Protocol, Sentry, Grafana, incident investigation, observability, Claude Code
-toc: flow=How it goes | connect=Connecting | timeline=What the agent matches | rights=Permissions and risks | first=Where to start | next=Next
+toc: flow=How it goes | connect=Connecting | timeline=What the agent matches | rights=Permissions and risks | first=Where to start | faq=Questions | next=Next
 ---
 
 During an incident a person hops between Sentry, Grafana and chat and stitches the picture together themselves. An agent with access to both systems gathers errors, metrics and event times into one draft, while a person checks the hypothesis and decides what to do. Below: how it goes, how to connect Sentry and Grafana, which permissions to give. The basics are in the [MCP for an AI agent](/blog/mcp-agent-access/) article.
@@ -87,6 +87,15 @@ This is the official server <a href="https://github.com/grafana/mcp-grafana" tar
     <gen>You know the past incident, so you can see where the agent found the cause and where it erred.</gen>
     <do k="What to do">Take a closed incident and ask the agent to find the cause through Sentry and Grafana.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="How does an AI agent help investigate an incident?">It gathers errors from Sentry, metrics from Grafana and event times into one draft, and a person checks the hypothesis and decides what to do.</q>
+    <q t="How do you connect Sentry and Grafana to an agent?">Through MCP with a command, with read-only access.</q>
+    <q t="Can you trust the agent’s conclusion?">A match in time gives a hypothesis and does not prove the cause. The check stays with a person.</q>
+    <q t="What permissions should the agent get?">Separately per source, read-only; the broadest rights stay closed.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Next">

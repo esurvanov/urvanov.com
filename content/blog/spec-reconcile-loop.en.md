@@ -1,14 +1,14 @@
 ---
 title: A reconcile loop for specs: like Kubernetes, with the spec as desired state and code as actual
 date: 2026-09-28
-updated: 2026-10-26
+updated: 2026-11-07
 description: Spec-driven development with a reconcile loop: who changes the desired state and who brings the code to it, why green tests do not yet mean “correct”, and which six environment capabilities the agent needs to close the loop.
 tags: AI, spec-driven development, specs, Kubernetes, harness
 category: specs
 layout: wide
 image: /og/spec-reconcile-loop.en.png
 mentions: Kubernetes, reconcile loop, human-in-the-loop, Model Context Protocol, Spec-Driven Development
-toc: k8s=Like Kubernetes | sensors=Limits of checks | env=Environment | next=Read next
+toc: k8s=Like Kubernetes | sensors=Limits of checks | env=Environment | faq=Questions | next=Read next
 ---
 
 A reconcile loop for specs works like a controller in Kubernetes: a person changes the desired state (the spec), the agent compares it with the actual state (the code) and brings the code in line, and tests measure the result. Green tests check only what is written into them, so every MUST needs its own check, and the agent’s environment needs code execution, tests, logs, data, services and a sandbox.
@@ -98,6 +98,15 @@ A reconcile loop for specs works like a controller in Kubernetes: a person chang
     <do>Mark which of the six capabilities your agent has. For each missing one, decide whether to add it to the harness or switch harnesses.</do>
   </b-finding>
 </b-chapter>
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What is a reconcile loop for specs?">A loop where a person changes the desired state, the spec, the agent compares the code with it and brings the code in line, and tests measure the result. This is how a Kubernetes controller works.</q>
+    <q t="Why are green tests not enough?">A test confirms only what is written in it. So every MUST requirement needs its own check.</q>
+    <q t="What does the agent’s environment need for the loop to close?">Running the code, tests, logs, data, services and a sandbox. What the environment lacks, the agent cannot check.</q>
+    <q t="What does the person change in this loop?">Only the desired state, the spec. Any edit becomes work for the agent right away.</q>
+  </b-faq-cards>
+</b-chapter>
+
 <b-chapter id="next" title="Read next">
   <b-links cols="3">
     <item href="/en/blog/specs-by-aggregates/" k="Desired state" t="Specs by aggregate">dictionary, RFC requirements and contexts</item>

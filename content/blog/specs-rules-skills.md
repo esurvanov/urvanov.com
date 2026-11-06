@@ -7,7 +7,7 @@ tags: AI, Claude Code, CLAUDE.md, харнесс, спеки, скиллы
 category: specs
 layout: wide
 mentions: AGENTS.md, CLAUDE.md, Agent Skills, Spec Kit, Memory Bank
-toc: map=Четыре слоя | spec=Спека | bible=Библия | rules=Правила | skills=Скиллы | chat=В чате | pick=Что куда | next=Дальше по теме
+toc: map=Четыре слоя | spec=Спека | bible=Библия | rules=Правила | skills=Скиллы | chat=В чате | pick=Что куда | faq=Вопросы | next=Дальше по теме
 ---
 
 AGENTS.md и CLAUDE.md — файлы в корне проекта с постоянными инструкциями для ИИ-агента: команды сборки и тестов, стиль кода, запреты. AGENTS.md — открытый формат, его читают Codex, Cursor, Gemini CLI, Copilot и другие агенты; CLAUDE.md читает Claude Code. Харнесс подставляет такой файл в начало каждой сессии. Ниже — пример файла и где хранить спеки, библию проекта и скиллы.
@@ -156,6 +156,15 @@ AGENTS.md и CLAUDE.md — файлы в корне проекта с посто
     <do>Раз в неделю просматривайте правила: процедуры переносите в скиллы, решения — в библию с датой.</do>
   </b-finding>
 </b-chapter>
+<b-chapter id="faq" icon="chat" title="Частые вопросы">
+  <b-faq-cards>
+    <q t="Что такое AGENTS.md и CLAUDE.md?">Файлы в корне проекта с постоянными инструкциями для ИИ-агента: команды сборки и тестов, стиль кода, запреты.</q>
+    <q t="Какие агенты читают AGENTS.md?">Codex, Cursor, Gemini CLI, Copilot и другие. Claude Code читает CLAUDE.md.</q>
+    <q t="Какой длины должен быть CLAUDE.md?">Anthropic рекомендует до 200 строк на файл: правила загружаются в каждую сессию. Длинное и редкое переносят в скиллы.</q>
+    <q t="Чем правила отличаются от скиллов?">Правила агент видит в каждой сессии. Скилл — процедура, которую агент подгружает целиком, только когда задача подходит.</q>
+  </b-faq-cards>
+</b-chapter>
+
 <b-chapter id="next" title="Дальше по теме">
   <b-links cols="2">
     <item href="/blog/harness-driven-development/" k="Метод" t="Harness-Driven Development">Ошибка агента → правило окружения</item>

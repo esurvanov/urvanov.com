@@ -1,13 +1,13 @@
 ---
 title: Claude in Chrome: how an agent works in your browser — tests, debugging and forms under your login
 date: 2026-10-05
-updated: 2026-10-25
+updated: 2026-11-07
 description: Claude in Chrome connects Claude Code to the browser: the agent opens tabs, reads the console, runs scenarios and fills forms under your login. How to connect it, what it does and which permissions to give.
 tags: AI, agents, Claude Code, Claude in Chrome, browser, QA, harness
 category: harness
 layout: wide
 mentions: Claude in Chrome, Claude Code, Chrome extension, browser automation, MCP, permissions, QA, Puppeteer, token cost
-toc: what=What it is | connect=Connecting | gives=What it does | qa=Example | risks=Permissions and risks | tradeoff=Price of flexibility | custom=Own script | first=Where to start | next=Next
+toc: what=What it is | connect=Connecting | gives=What it does | qa=Example | risks=Permissions and risks | tradeoff=Price of flexibility | custom=Own script | first=Where to start | faq=Questions | next=Next
 ---
 
 Claude in Chrome connects the agent to your browser: it opens tabs, reads pages and the console, clicks and types under your login. Below: how it works, how to connect it in a few minutes, what the agent can do and which permissions to give. The agent from the [QA with an agent](/blog/bug-report-to-reproduction-agent/) article uses this channel, and connecting works like [MCP](/blog/mcp-agent-access/).
@@ -157,6 +157,15 @@ Claude in Chrome connects the agent to your browser: it opens tabs, reads pages 
     <gen>Start with a local stand: a mistake there breaks nothing.</gen>
     <do k="What to do">Today, tell the agent to install the extension and check the status with /chrome.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="How do you connect Claude in Chrome?">Install the extension from the Chrome Web Store, and Claude Code does the rest. It takes minutes.</q>
+    <q t="What can the agent do in the browser?">It reads the console and page markup, walks through scenarios, fills in forms, uploads files up to 10 MB in total and records GIFs.</q>
+    <q t="Is it safe to give an agent the browser?">Actions are visible in the window in real time, and on a sign-in page or captcha the agent stops and waits for you. Permissions and risks are covered separately in the article.</q>
+    <q t="When is a script better?">An agent in the browser is slower than a script and can make mistakes. For repeated checks where speed and precision matter, write a script.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Next">

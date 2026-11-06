@@ -1,13 +1,13 @@
 ---
 title: Jira and an AI agent: pros, cons and where to draw the line
 date: 2026-10-20
-updated: 2026-10-25
+updated: 2026-11-07
 description: How an AI agent connects to Jira through MCP, what works, what breaks, and why bug intake belongs in a separate service. Alternatives to Jira included.
 tags: AI, agents, Jira, MCP, Claude Code, bug tracker, harness
 category: harness
 layout: wide
 mentions: Jira, Atlassian Rovo MCP, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
-toc: ways=How to connect | plus=Pros | minus=Cons | russia=Jira in Russia | trackers=Other trackers | border=The line | first=Where to start | next=Read next
+toc: ways=How to connect | plus=Pros | minus=Cons | russia=Jira in Russia | trackers=Other trackers | border=The line | first=Where to start | faq=Questions | next=Read next
 ---
 
 An AI agent connects to Jira through MCP. It works well for planning, statuses and links between issues, but struggles with bugs from non-technical staff: token cost, incomplete issues, security. Planning stays in Jira, bug collection moves to a separate service. How an agent reproduces a Jira bug: [QA work article](/blog/bug-report-to-reproduction-agent/).
@@ -132,6 +132,15 @@ An AI agent connects to Jira through MCP. It works well for planning, statuses a
     <gen>Narrow access is cheaper and safer than broad access.</gen>
     <do>Give the agent a read-only token for one project and see what it is missing.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="How do you connect an AI agent to Jira?">Through MCP. The agent’s rights equal those of the user whose sign-in or token it uses.</q>
+    <q t="What does an agent in Jira do well?">Planning, statuses and links between tickets, once the task is already clear.</q>
+    <q t="Where does an agent in Jira hit limits?">Bugs from non-technical staff: tickets are incomplete, they lack technical context and the analysis is expensive in tokens.</q>
+    <q t="Where do you draw the line?">Keep planning in Jira and move bug collection to a separate service that attaches the technical context automatically.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Read next">

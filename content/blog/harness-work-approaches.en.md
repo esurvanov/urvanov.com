@@ -6,7 +6,7 @@ description: What to do when an answer misses: three paths and a repeated loop. 
 tags: AI, harness, prompts, review
 category: prompts
 layout: wide
-toc: iterate=If it misses | review=Answer review | next=Further reading
+toc: iterate=If it misses | review=Answer review | faq=Questions | next=Further reading
 ---
 
 When an AI answer misses, there are three ways: clarify in the same chat, rewrite the original request, or first ask the model for questions. When a review finds a gap, it goes into the original request and the whole cycle runs again: edit, tests, review. The request becomes complete, and the next similar task starts from it. Below are both approaches per the Anthropic, OpenAI and Google guides.
@@ -65,6 +65,15 @@ When an AI answer misses, there are three ways: clarify in the same chat, rewrit
     <do>When the review finds something, add it to the original request and rerun the whole cycle: change, tests, review.</do>
   </b-finding>
   <b-cta href="/en/blog/harness-driven-development/" k="Next step · HDD" t="Harness-Driven Development">How to move a gap that keeps coming back from the request into the harness rules</b-cta>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What do you do when an AI answer misses?">Clarify in the same chat if the task was understood; rewrite the request if it was misunderstood; or first ask the model to ask questions.</q>
+    <q t="Why ask the model to ask questions?">When you are unsure about the task context, the model’s questions show what it lacks. The final request goes to a new chat.</q>
+    <q t="What do you do with review findings?">Add them to the original request and run the whole cycle again: edit, tests, review.</q>
+    <q t="Why edit the original request?">Then the request becomes complete, and the next similar task starts from it.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Further reading">

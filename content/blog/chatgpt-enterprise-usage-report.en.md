@@ -8,7 +8,7 @@ category: research
 layout: wide
 image: /og/chatgpt-enterprise-usage-report.en.png
 mentions: ChatGPT Enterprise, Codex, ChatGPT Work, Claude in Chrome
-toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big picture | layer2=Nature of work | layer3=Verification | layer4=People selection | start=Where to start | next=Further reading
+toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big picture | layer2=Nature of work | layer3=Verification | layer4=People selection | start=Where to start | faq=Questions | next=Further reading
 ---
 
 ChatGPT Enterprise is a version of ChatGPT for organizations with an admin console that shows who uses the tool and how. This report is built from five console exports and shows adoption depth, uniformity across teams, the nature of tasks and the people to interview. It is used to decide which AI tools to buy, whom to train and which assumptions to test.
@@ -362,6 +362,15 @@ ChatGPT Enterprise is a version of ChatGPT for organizations with an admin conso
     <q t="How to choose people to interview">People are picked for each direction found: in the example the final list is 16 people out of 340. Users of other tools and those who stopped are added by the rules in <a href="/en/blog/who-to-interview-before-buying-ai-tools/">“Who to interview”</a>.</q>
   </b-qa>
 </b-chapter>
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What does the ChatGPT Enterprise admin console show?">Users, the leaderboard, projects, an overview and tasks. From them you build adoption depth, consistency across teams and the nature of the work.</q>
+    <q t="How do you tell whether more licenses are needed?">From adoption depth: how many people use it at least once, regularly and weekly. A benchmark for broad adoption is 50–70% of employees.</q>
+    <q t="What does a big gap between teams mean?">Working scenarios already exist but live in one or two teams. It pays more to spread them to other teams than to buy something new.</q>
+    <q t="Whom should you interview after the report?">People for each direction found: 16 out of 340 in the example, including those who use other software or dropped it.</q>
+  </b-faq-cards>
+</b-chapter>
+
 <b-chapter id="next" title="Further reading">
   <b-links>
     <item href="/en/blog/who-to-interview-before-buying-ai-tools/" k="Interviews" t="Who to interview">How to build an interview sample from the table of people</item>

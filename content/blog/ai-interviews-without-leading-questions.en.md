@@ -8,7 +8,7 @@ category: research
 layout: wide
 image: /og/ai-interviews-without-leading-questions.en.png
 mentions: Airtable, tl;dv, ChatGPT, Claude Code, Model Context Protocol
-toc: format=Choosing a format | prep=Preparing for the meeting | script=A 30-minute script | focus=Staying on topic | base=Logging in Airtable | agent=With Claude Code | wording=Text: wording | form=Questionnaire | after=Interview analysis | next=Further reading
+toc: format=Choosing a format | prep=Preparing for the meeting | script=A 30-minute script | focus=Staying on topic | base=Logging in Airtable | agent=With Claude Code | wording=Text: wording | form=Questionnaire | after=Interview analysis | faq=Questions | next=Further reading
 ---
 
 An interview about working with AI takes 30 minutes and centres on the last real task: what was done, the result and the cost, then a success and a case where the person dropped AI or switched. The person picks the format: a call or text. Answers are analysed with a prompt in ChatGPT or an agent, put into an Airtable table and checked against usage data. Below are the script, a survey and the analysis prompt.
@@ -337,6 +337,15 @@ An interview about working with AI takes 30 minutes and centres on the last real
     <q t="How to analyze calls and text replies together">The text conversation is copied into the same Notes field with the time of each message. Text answers help find cases and themes, but they are not treated as equal to calls.</q>
   </b-qa>
 </b-chapter>
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="How do you run a 30-minute interview about working with AI?">Build the conversation around the last real task: what was done, the result and the cost, then a success and a case where the person dropped AI.</q>
+    <q t="A call or text?">The person picks the format. A call gives a detailed story with follow-ups, text gives short answers, so text answers are not treated as equal to calls.</q>
+    <q t="How do you analyse interviews with ChatGPT?">Give the conversation text to ChatGPT with the same prompt for every interview and copy the answer into the person’s row in Airtable.</q>
+    <q t="How do you check what people say against the data?">The table has two fields side by side: frequency as stated and frequency from the report. Differences are discussed with the person.</q>
+  </b-faq-cards>
+</b-chapter>
+
 <b-chapter id="next" title="Further reading">
   <b-links cols="2">
     <item href="/en/blog/chatgpt-enterprise-usage-report/" k="Report" t="ChatGPT Enterprise usage report">Who uses it, for which tasks, and which tools to buy next</item>

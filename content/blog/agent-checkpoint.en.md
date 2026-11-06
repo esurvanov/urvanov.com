@@ -1,7 +1,7 @@
 ---
-title: Where to check an AI agent's work: the aggregate boundary and Rice's theorem
+title: Where to check an AI agent’s work: at the aggregate boundary, because no one can check every program (Rice’s theorem)
 date: 2026-11-06
-updated: 2026-11-06
+updated: 2026-11-07
 description: Why no check can verify any agent code against any rule, which three ways make a check finite, how an aggregate boundary from event storming becomes a checkpoint, how checkability sets the size of a bounded context, and why the first frame must be cheap to move.
 tags: AI, agents, DDD, aggregate, bounded context, event storming, Rice's theorem, Quint, model checking
 category: specs

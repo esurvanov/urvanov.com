@@ -8,7 +8,7 @@ category: specs
 layout: wide
 image: /og/specs-by-aggregates.en.png
 mentions: RFC 2119, Domain-Driven Design, OpenSpec, Spec-Driven Development
-toc: growth=Why specs pile up | rfc=RFC levels | card=Aggregate card | contexts=Contexts | next=Read next
+toc: growth=Why specs pile up | rfc=RFC levels | card=Aggregate card | contexts=Contexts | faq=Questions | next=Read next
 ---
 
 Specs by aggregates mean one entry per domain concept, such as a booking or an order, instead of a separate spec per feature. A feature only adds requirements to the right entry, so files do not multiply with every task and a concept does not drift across specs. Requirements use RFC levels: MUST is checked by a test, SHOULD at review. Below are the aggregate card and context boundaries.
@@ -98,6 +98,15 @@ Specs by aggregates mean one entry per domain concept, such as a booking or an o
     <do>Sort your aggregates into contexts and find the words that appear in two of them. Give each such word separate entries and different labels in the interface.</do>
   </b-finding>
 </b-chapter>
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="Why do specs multiply?">If a spec is tied to a feature, files grow with every task and one concept drifts across several places.</q>
+    <q t="What is a spec by aggregate?">One entry per domain concept, such as a booking. A feature only adds requirements to it.</q>
+    <q t="Why MUST and SHOULD levels?">The word tells how to check the requirement: MUST is checked by a test, SHOULD at review. The agent reads MUST as a hard limit.</q>
+    <q t="What if a word means different things in two contexts?">Create two terms with different labels, or the agent will carry a rule from one context into the other.</q>
+  </b-faq-cards>
+</b-chapter>
+
 <b-chapter id="next" title="Read next">
   <b-cta href="/en/blog/spec-reconcile-loop/" k="Continued" t="A reconcile loop for specs" icon="hub" sw="1.6">like Kubernetes: desired state, checks and the agent’s environment</b-cta>
   <b-links cols="3">

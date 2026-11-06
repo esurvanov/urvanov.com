@@ -1,14 +1,14 @@
 ---
 title: MCP for an AI agent: what problem it solves and how to delegate setup to the agent
 date: 2026-10-04
-updated: 2026-10-26
+updated: 2026-11-07
 unrelated: mcp-1c
 description: MCP plugs an agent into GitLab, Jira, Confluence and meeting recordings. What problem it solves, how to set it up in minutes and delegate that to the agent itself, how it saves time and tokens and why the agent invents less.
 tags: AI, agents, MCP, Jira, context, hallucinations, tokens, harness
 category: harness
 layout: wide
 mentions: Model Context Protocol, MCP, AI agent, Claude Code, Jira, Airtable, hallucinations, tokens, permissions, prompt injection
-toc: what=What it is | ours=Contexts | connect=Connecting | saving=Savings | facts=Facts | risks=Risks | first=Where to start | cases=Cases | next=Read next
+toc: what=What it is | ours=Contexts | connect=Connecting | saving=Savings | facts=Facts | risks=Risks | first=Where to start | cases=Cases | faq=Questions | next=Read next
 ---
 
 MCP plugs an agent into working systems, so it reads facts from the source instead of a retelling. It is easy and quick: understand the problem it solves and delegate the setup to the agent itself. Below: the idea, connecting, what it gives and which rights to grant. The QA example with MCP is covered in the article [QA with an agent via MCP](/blog/bug-report-to-reproduction-agent/#mcp).
@@ -204,6 +204,15 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
 </b-table>
 <b-why align="left">How to read the table. Every row follows one order: the agent reads the sources, does the main work and brings a result, and a person checks it with one short action. In QA the steps of the report are repeated by hand on the stand. In analytics one number is recalculated another way. In incidents the hypothesis is compared with graphs and events. Details are in the articles behind the links.</b-why>
 </b-chapter>
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What problem does MCP solve?">Without MCP an agent knows only what it is told. MCP connects it to working systems, so it reads facts from the source.</q>
+    <q t="How do you connect MCP?">Ask the agent to do the connection itself: it takes minutes, and the project scope puts the setting in the repo for the whole team.</q>
+    <q t="Why are there fewer hallucinations with MCP?">When the answer is not in the context, the agent fills it with a guess. Every connected source fills that gap with facts.</q>
+    <q t="What permissions should MCP grant?">Start with read access and grant write only where the task needs it.</q>
+  </b-faq-cards>
+</b-chapter>
+
 <b-chapter id="next" icon="arrow-right" title="Read next">
   <b-links>
     <item href="/blog/bug-report-to-reproduction-agent/" k="QA with an agent" t="QA after support">MCP and skills in QA work</item>

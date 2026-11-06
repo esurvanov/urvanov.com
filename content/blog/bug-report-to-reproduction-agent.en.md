@@ -1,13 +1,13 @@
 ---
 title: QA work after support with an AI agent: investigation, description and documentation via MCP and skills
 date: 2026-10-04
-updated: 2026-10-25
+updated: 2026-11-07
 description: We optimise one step of the chain: QA after support. An agent reproduces a Jira bug on a test stand via MCP, narrows the path, describes and documents it, a skill makes the steps a repeatable process, QA checks by hand. Support and development do not change.
 tags: AI, agents, QA, Jira, MCP, skills, bugs, harness
 category: harness
 layout: wide
 mentions: Jira, AI agent, QA, Model Context Protocol, skills, bug reproduction, sequence diagram, C4 model, human-in-the-loop
-toc: route=QA step | stages=Three parts | mcp=MCP | skill=Skill | parallel=In parallel | example=Example | human=What QA keeps | first=How to start | next=Read next
+toc: route=QA step | stages=Three parts | mcp=MCP | skill=Skill | parallel=In parallel | example=Example | human=What QA keeps | first=How to start | faq=Questions | next=Read next
 ---
 
 A customer bug passes support and reaches QA. This is where investigation, description and documentation are done by hand, so this is the step we optimise. An agent connected to Jira and a test stand via MCP, plus a skill with the steps written down, take the routine over. QA checks the result by hand. Support and development work as before.
@@ -306,6 +306,15 @@ A customer bug passes support and reaches QA. This is where investigation, descr
     <gen>A new scenario is safer to launch on tasks with a known outcome, turning each mistake into a skill rule.</gen>
     <do k="What to do">Start with five bugs from last month and one QA who checks the result by hand.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="Which QA work can go to an AI agent?">Investigating, describing and documenting a bug: these are repeatable actions with a clear result. Deciding whether it is a bug and how important it is stays with a person.</q>
+    <q t="Why does the agent need MCP for QA work?">Through MCP the agent works in the same systems as QA, Jira and the test stand, and reads facts from the source instead of a retelling.</q>
+    <q t="What does a skill give you?">A written-down process that does not depend on who is on shift. An agent mistake goes into the skill as a new rule and does not repeat.</q>
+    <q t="What is left for QA?">Checking the agent’s result by hand and accepting it: QA manages several agents and decides what to accept.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" icon="arrow-right" title="Read next">

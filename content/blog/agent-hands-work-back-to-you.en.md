@@ -1,7 +1,7 @@
 ---
-title: Will AI agents take your job: what they actually do
+title: Will AI agents take your job: it depends on who loads work onto whom — you onto agents or agents onto you
 date: 2026-10-05
-updated: 2026-10-25
+updated: 2026-11-07
 description: Will an AI agent take your job? In practice it often asks the person to run a command, find a task or copy a file. What the agent does itself, what stays with you and how to stop being a courier between windows.
 tags: AI, agents, jobs, career, future of work, delegation, MCP, harness
 category: harness

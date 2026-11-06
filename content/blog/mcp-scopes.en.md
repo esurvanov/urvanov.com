@@ -1,13 +1,13 @@
 ---
 title: MCP scopes in Claude Code: local, project and user — where a server lives and who sees it
 date: 2026-10-05
-updated: 2026-10-25
+updated: 2026-11-07
 description: The three MCP server scopes in Claude Code: local, project and user. Where the setup lives, who sees it, what wins when names collide, how to share servers with a team and keep secrets out of commits.
 tags: AI, agents, MCP, Claude Code, team, harness
 category: harness
 layout: wide
 mentions: MCP, Model Context Protocol, Claude Code, mcp scope, .mcp.json, environment variables
-toc: what=Three scopes | pick=Which to pick | order=What wins | team=Project for a team | secrets=Secrets | first=Where to start | next=Next
+toc: what=Three scopes | pick=Which to pick | order=What wins | team=Project for a team | secrets=Secrets | first=Where to start | faq=Questions | next=Next
 ---
 
 An MCP server’s scope answers two questions: which projects it works in and who sees it. Claude Code has three scopes: local, project and user. Below: how they differ, which to pick, what wins when names collide and how to share servers with a team. What MCP is and how to connect it is in the [MCP for an AI agent](/blog/mcp-agent-access/) article.
@@ -110,6 +110,15 @@ If a variable is unset and has no default, the config loads as is, and claude mc
     <gen>First order in your own servers, then shared setup for the team.</gen>
     <do k="What to do">Run claude mcp list and find a server the whole team needs.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What MCP scopes does Claude Code have?">Three: local for you in the current project, project for the whole team through a .mcp.json file in the repo, and user for you across all your projects.</q>
+    <q t="Which scope is the default?">Local: the server is visible only to you and only in this project.</q>
+    <q t="What happens when server names collide?">The personal entry fully overrides the shared one with the same name: the fields of the two entries are not merged.</q>
+    <q t="How do you share an MCP server with the team?">Add it to the project scope: the setting goes into the repo, and secrets stay in environment variables.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Next">

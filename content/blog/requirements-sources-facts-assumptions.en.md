@@ -1,13 +1,13 @@
 ---
 title: Requirements and meeting notes with AI: source, assumption, fact — and what follows
 date: 2026-10-05
-updated: 2026-10-26
+updated: 2026-11-07
 description: Requirements with AI: source, assumption, status. Facts come through MCP from Git; the agent makes minor edits, a person decides major ones.
 tags: AI, agents, requirements, hallucinations, meeting notes, harness
 category: harness
 layout: wide
 mentions: requirements, meeting notes, hallucinations, sources, assumptions, use cases, change management
-toc: what=What to demand | sources=Sources through MCP | format=How to ask | levels=Major and minor | cases=Use cases | first=Where to start | next=Next
+toc: what=What to demand | sources=Sources through MCP | format=How to ask | levels=Major and minor | cases=Use cases | first=Where to start | faq=Questions | next=Next
 ---
 
 An agent writes requirements with confidence, and its guesses look like facts. Demand a proof, that is a source link, the model’s assumptions and a “fact or not a fact” status for every item, and connect sources through MCP, best of all from Git. The agent makes minor edits itself, and a person decides major ones. Basis: [MCP for an AI agent](/blog/mcp-agent-access/#facts).
@@ -154,6 +154,15 @@ An agent writes requirements with confidence, and its guesses look like facts. D
     <gen>Start with one meeting and one document: the result is visible within an hour.</gen>
     <do k="What to do">Today, parse one meeting record with the template.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="How do you stop AI from passing a guess off as fact in requirements?">Require a source link for every item, a list of the model’s assumptions and a “fact or not fact” status.</q>
+    <q t="Where should the agent get sources from?">Through MCP, best of all from Git: a change there has an author, a date and a history.</q>
+    <q t="What does the agent change itself, and what does a person decide?">Minor changes confirmed by a source the agent makes itself. Major and unconfirmed ones a person decides.</q>
+    <q t="Why check meeting notes against the code?">Meetings and code drift apart: the notes show what was agreed, Git shows what was actually done.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Next">

@@ -6,7 +6,7 @@ description: Prompts for work with an AI chat: the parts of a good work prompt, 
 tags: AI, prompts, ChatGPT, Claude
 category: prompts
 layout: wide
-toc: model=Human-in-the-loop | parts=Five parts | examples=Six examples | learn=What to study | next=Further reading
+toc: model=Human-in-the-loop | parts=Five parts | examples=Six examples | learn=What to study | faq=Questions | next=Further reading
 ---
 
 A work prompt for ChatGPT and Claude is built from five parts: a role, who the answer is for and why, the full data, an example and a format, with the question at the end. The model knows only what the request says. The check is simple: show the prompt to a colleague without context, and if they get lost, so will the model. Below are a weak and a strong request and six templates for common tasks.
@@ -224,6 +224,15 @@ A work prompt for ChatGPT and Claude is built from five parts: a role, who the a
     <item href="https://support.claude.com/en/articles/14782391-claude-enterprise-consumption-guide" k="Claude · help center" t="Claude Enterprise consumption guide" ext>How tokens are spent: Claude Code and Cowork use far more than plain chat; group limits and a default model</item>
   </b-links>
 </b-chapter>
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What makes a good prompt?">Five parts: a role, who the answer is for and why, the full data, an example and a format. The question goes at the end.</q>
+    <q t="How do you check a prompt?">Show it to a colleague without context: if they get lost, so will the model.</q>
+    <q t="Why put an example in a prompt?">An example of a past answer sets the tone more precisely than any adjectives.</q>
+    <q t="What do you do with a good prompt?">Save it as a template: the next task of the same kind starts from it.</q>
+  </b-faq-cards>
+</b-chapter>
+
 <b-chapter id="next" title="Further reading">
   <b-links cols="2">
     <item href="/en/blog/harness-work-approaches/" k="Approaches" t="If the answer misses">Answer loop and review that fixes the request</item>

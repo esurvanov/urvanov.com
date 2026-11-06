@@ -1,13 +1,13 @@
 ---
 title: Short bug feedback loop: from a “Report a bug” button to a fix with an AI agent
 date: 2026-10-20
-updated: 2026-10-25
+updated: 2026-11-07
 description: How to fix bugs faster with no game of telephone: staff report from the app, context is collected for them, an AI agent finds the cause, a human approves.
 tags: AI, agents, bugs, feedback, MTTR, MCP, Claude Code, harness
 category: harness
 layout: wide
 mentions: feedback loop, MTTR, DORA, bug report, AI agent, Claude Code, Model Context Protocol, human-in-the-loop
-toc: chain=Where time is lost | button=A button instead of retelling | agent=Agent and human | modes=Two modes | cases=Cases and numbers | risks=Risks | first=How to start | next=Read next
+toc: chain=Where time is lost | button=A button instead of retelling | agent=Agent and human | modes=Two modes | cases=Cases and numbers | risks=Risks | first=How to start | faq=Questions | next=Read next
 ---
 
 A short feedback loop works like this: an employee sends a bug with a button inside the app, the app attaches technical context itself, an AI agent finds the cause and proposes a plan, and a human approves the plan and the fix. No manager or ticket retells the bug. Below: where time goes, two modes, risks.
@@ -143,6 +143,15 @@ A short feedback loop works like this: an employee sends a bug with a button ins
     <gen>First a short chain of people, then the agent’s speed.</gen>
     <do>Start with one app and ten reports.</do>
   </b-finding>
+</b-chapter>
+
+<b-chapter id="faq" icon="chat" title="Frequently asked questions">
+  <b-faq-cards>
+    <q t="What is a short feedback loop?">An employee sends a bug with a button in the app, the app attaches technical context, an agent finds the cause and proposes a plan, and a person approves the plan and the fix.</q>
+    <q t="Why does a “Report a bug” button matter?">Developers need reproduction steps and the stack trace most, and users find them hardest to give. The button collects them itself.</q>
+    <q t="Where does a person decide?">At two points: approving the fix plan and the code merge.</q>
+    <q t="Which mode should you start with?">The on-demand mode: a developer filters out noise before the agent starts writing code.</q>
+  </b-faq-cards>
 </b-chapter>
 
 <b-chapter id="next" title="Read next">
