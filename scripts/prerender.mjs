@@ -202,6 +202,16 @@ const archMdPath = (a) => `${a.lang === 'ru' ? 'ru/' : ''}materials/games/${a.ga
 const archMd = (a) => `# ${a.title}\n\n${archUrl(a)}\n\n> ${a.description}\n\n${a.markdown.replace(/<figure class="arch">.*?<figcaption>(.*?)<\/figcaption><\/figure>/g, '[Схема / Diagram: $1]').replace(/<section class="arch-next">[\s\S]*$/, '').replace(/<h2 id="[^"]*">(.*?)<\/h2>/g, '## $1').trim()}\n`
 for (const a of ARCHITECTURES) write(archMdPath(a), archMd(a))
 
+// Глоссарий для ИИ: каждый термин отдельной строкой со ссылкой, в полном файле — определение и частые вопросы
+const termUrl = (x, lang) => `${SITE_URL}${lang === 'ru' ? '/ru' : ''}/materials/glossary/${x.slug}/`
+const plain = (s) => s.replace(/`/g, '').replace(/\$([^$]*)\$/g, '$1')
+const firstSentence = (s) => { const m = plain(s).match(/^[\s\S]*?[.!?](?=\s|$)/); return (m ? m[0] : plain(s)).trim() }
+const termLines = (lang) => ALL_TERMS.map((x) => `- [${x.name[lang]}](${termUrl(x, lang)}): ${firstSentence(x.def[lang])}`)
+const termMd = (x, lang) => [
+  `### ${x.name[lang]}`, '', termUrl(x, lang), '', plain(x.def[lang]), '',
+  ...(x.faq ? [lang === 'en' ? '#### Frequently asked questions' : '#### Частые вопросы', '', ...x.faq.flatMap((f) => [`**${plain(f.q[lang])}**`, plain(f.a[lang]), '']) ] : []),
+].join('\n')
+
 // llms.txt — факты в первом абзаце, пустые разделы блога не выводим, пока постов нет
 const postLines = (lang) => POSTS.filter((p) => p.lang === lang).map((p) => `- [${p.title}](${SITE_URL}/${mdPath(p)}): ${p.description}`)
 const ruPosts = postLines('ru')
@@ -217,6 +227,8 @@ write('llms.txt', [
   '',
   ...(ruPosts.length ? ['## Блог (RU)', ...ruPosts, ''] : []),
   ...(enPosts.length ? ['## Blog (EN)', ...enPosts, ''] : []),
+  '## Глоссарий (RU)', ...termLines('ru'), '',
+  '## Glossary (EN)', ...termLines('en'), '',
   '## Разделы / Sections',
   `- [Обо мне](${SITE_URL}/ru/about/) · [About](${SITE_URL}/about/): профиль, достижения, образование / profile, achievements, education`,
   `- [Jaiora](https://jaiora.me/): сообщество и встречи, отдельный сайт / community and meetups, a separate site`,
@@ -233,7 +245,7 @@ write('llms.txt', [
   `- [Ссылки](${SITE_URL}/ru/links/) · [Links](${SITE_URL}/links/)`,
   '',
   '## Полный текст / Full text',
-  `- [llms-full.txt](${SITE_URL}/llms-full.txt): «Обо мне» и все посты блога целиком, RU и EN / “About” and all blog posts in full, RU and EN`,
+  `- [llms-full.txt](${SITE_URL}/llms-full.txt): «Обо мне», все посты блога и глоссарий с частыми вопросами целиком, RU и EN / “About”, all blog posts and the glossary with FAQs in full, RU and EN`,
   '',
 ].join('\n'))
 
@@ -266,12 +278,14 @@ function aboutSection(lang) {
 }
 
 write('llms-full.txt', [
-  '# Егор Урванов / Egor Urvanov — «Обо мне» и блог целиком',
+  '# Егор Урванов / Egor Urvanov — «Обо мне», блог и глоссарий целиком',
   '',
   aboutSection('ru'),
   aboutSection('en'),
   ...(POSTS.length ? ['## Блог / Blog', '', ...POSTS.map((p) => postMd(p).replace(/^# /, '### '))] : []),
   ...(ARCHITECTURES.length ? ['## Архитектура игр / Game architecture', '', ...ARCHITECTURES.map((a) => archMd(a).replace(/^# /, '### '))] : []),
+  '## Глоссарий (RU)', '', ...ALL_TERMS.map((x) => termMd(x, 'ru')),
+  '## Glossary (EN)', '', ...ALL_TERMS.map((x) => termMd(x, 'en')),
 ].join('\n'))
 
 if (existsSync('dist-ssr')) rmSync('dist-ssr', { recursive: true })

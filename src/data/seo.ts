@@ -56,10 +56,10 @@ const faqOf = (html: string): { q: string; a: string }[] => {
   const start = html.indexOf('<div class="bk-faq-cards">')
   if (start < 0) return []
   const out: { q: string; a: string }[] = []
-  // Блок — подряд идущие <div><b>вопрос</b><br>ответ</div>
-  const re = /<div><b>([\s\S]*?)<\/b><br>([\s\S]*?)<\/div>/y
+  // Блок — подряд идущие <div><h3 class="bk-faq-cards-q">вопрос</h3>ответ</div> (раньше — <div><b>вопрос</b><br>ответ</div>)
+  const re = /<div>(?:<h3 class="bk-faq-cards-q">([\s\S]*?)<\/h3>|<b>([\s\S]*?)<\/b><br>)([\s\S]*?)<\/div>/y
   re.lastIndex = start + '<div class="bk-faq-cards">'.length
-  for (let m = re.exec(html); m; m = re.exec(html)) out.push({ q: stripTags(m[1]), a: stripTags(m[2]) })
+  for (let m = re.exec(html); m; m = re.exec(html)) out.push({ q: stripTags(m[1] ?? m[2]), a: stripTags(m[3]) })
   return out.filter((x) => x.q && x.a)
 }
 

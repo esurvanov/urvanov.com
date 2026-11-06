@@ -1,5 +1,5 @@
 ---
-title: AGENTS.md and CLAUDE.md: what they are, an example file and where to keep specs, rules and skills
+title: What are AGENTS.md and CLAUDE.md: an example file and where to keep specs, rules and skills
 date: 2026-09-28
 updated: 2026-11-07
 description: Four kinds of persistent context for AI (AGENTS.md, CLAUDE.md, skills): the task spec, the project bible, rules and skills. What goes into each, when it enters the context, and what ChatGPT and Claude offer. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.

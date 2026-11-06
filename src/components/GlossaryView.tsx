@@ -211,7 +211,7 @@ export function TermView() {
         <section className="s-section" aria-labelledby="t-faq">
           <h2 className="s-label" id="t-faq">{ICONS.links} {t({ ru: 'Частые вопросы', en: 'Frequently asked questions' })}</h2>
           <div className="s-rich bk"><div className="bk-faq-cards">
-            {term.faq.map((x) => <div key={t(x.q)}><b>{t(x.q)}</b><br /><TermText text={t(x.a)} self={term.slug} /></div>)}
+            {term.faq.map((x) => <div key={t(x.q)}><h3 className="bk-faq-cards-q">{t(x.q)}</h3><TermText text={t(x.a)} self={term.slug} /></div>)}
           </div></div>
         </section>
       )}

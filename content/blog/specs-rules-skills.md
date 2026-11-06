@@ -1,5 +1,5 @@
 ---
-title: AGENTS.md и CLAUDE.md: что это, пример файла и где хранить спеки, правила и скиллы
+title: Что такое AGENTS.md и CLAUDE.md: пример файла и где хранить спеки, правила и скиллы
 date: 2026-09-28
 updated: 2026-11-07
 description: Четыре вида постоянного контекста для ИИ: спека задачи, библия проекта (CLAUDE.md, AGENTS.md), правила и скиллы Claude Code. Что в каждом, когда он попадает в контекст и что из этого есть в ChatGPT и Claude. По документации Anthropic, OpenAI, GitHub, Cursor и Cline.

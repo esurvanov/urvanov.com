@@ -1,4 +1,6 @@
 /* Частые вопросы столбиком: серые карточки, вопрос акцентом */
 .s-rich.bk .bk-faq-cards { display: grid; gap: 8px; margin-top: 6px; }
 .s-rich.bk .bk-faq-cards > div { background: var(--surface-2); border: 1px solid var(--muted); border-radius: 8px; padding: 10px 12px; }
-.s-rich.bk .bk-faq-cards > div > b:first-child { color: var(--accent); }
+.s-rich.bk .bk-faq-cards > div > b:first-child,
+.s-rich.bk .bk-faq-cards > div > .bk-faq-cards-q { color: var(--accent); }
+.s-rich.bk .bk-faq-cards > div > .bk-faq-cards-q { font: inherit; font-weight: 700; margin: 0; padding: 0; letter-spacing: normal; text-transform: none; border: 0; }
