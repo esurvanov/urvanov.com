@@ -1,7 +1,7 @@
 ---
 title: How to run and analyze interviews about AI use: a 30-minute script, an analysis prompt and an Airtable table
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-11-07
 description: A 30-minute call script, rules for staying on topic, a short company-wide questionnaire, interview analysis with ChatGPT or an agent using a ready prompt, and a said-versus-measured check against the report data.
 tags: AI, custdev, interviews
 category: research
@@ -10,6 +10,8 @@ image: /og/ai-interviews-without-leading-questions.en.png
 mentions: Airtable, tl;dv, ChatGPT, Claude Code, Model Context Protocol
 toc: format=Choosing a format | prep=Preparing for the meeting | script=A 30-minute script | focus=Staying on topic | base=Logging in Airtable | agent=With Claude Code | wording=Text: wording | form=Questionnaire | after=Interview analysis | next=Further reading
 ---
+
+An interview about working with AI takes 30 minutes and centres on the last real task: what was done, the result and the cost, then a success and a case where the person dropped AI or switched. The person picks the format: a call or text. Answers are analysed with a prompt in ChatGPT or an agent, put into an Airtable table and checked against usage data. Below are the script, a survey and the analysis prompt.
 
 <b-post series="intervyu">
 <b-credit para>Interview design based on recommendations from <a href="https://t.me/Kseniya_Vasil" target="_blank" rel="noopener">@Kseniya_Vasil</a>. People, groups and numbers for the interviews come from the <a href="/en/blog/chatgpt-enterprise-usage-report/">ChatGPT Enterprise usage report</a>. It also holds the <a href="/en/blog/chatgpt-enterprise-usage-report/#why">business task</a>: what the company decides, who decides, and by which signs.</b-credit>

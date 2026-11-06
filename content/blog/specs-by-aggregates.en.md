@@ -1,7 +1,7 @@
 ---
 title: Specs by aggregate: RFC requirements and bounded contexts instead of a spec per feature
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-11-07
 description: Spec-driven development without spec sprawl: how to keep specs in one aggregate dictionary so they do not multiply with every feature: requirement levels, the aggregate card and context boundaries.
 tags: AI, spec-driven development, specs, DDD, agents
 category: specs
@@ -10,6 +10,8 @@ image: /og/specs-by-aggregates.en.png
 mentions: RFC 2119, Domain-Driven Design, OpenSpec, Spec-Driven Development
 toc: growth=Why specs pile up | rfc=RFC levels | card=Aggregate card | contexts=Contexts | next=Read next
 ---
+
+Specs by aggregates mean one entry per domain concept, such as a booking or an order, instead of a separate spec per feature. A feature only adds requirements to the right entry, so files do not multiply with every task and a concept does not drift across specs. Requirements use RFC levels: MUST is checked by a test, SHOULD at review. Below are the aggregate card and context boundaries.
 
 <b-post series="agg">
 <b-hchain label="Chain: bounded context, aggregate, MUST-level invariant, check">

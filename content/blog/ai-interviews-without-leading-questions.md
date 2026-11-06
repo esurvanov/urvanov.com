@@ -1,7 +1,7 @@
 ---
 title: Как провести и проанализировать интервью о работе с AI: сценарий на 30 минут, промпт разбора и таблица в Airtable
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-11-07
 description: Сценарий звонка на 30 минут, правила против ухода в сторону, короткая анкета на всю компанию, анализ интервью через ChatGPT или агента с готовым промптом и сверка «со слов» с данными отчёта.
 tags: AI, custdev, интервью
 category: research
@@ -10,6 +10,8 @@ image: /og/ai-interviews-without-leading-questions.png
 mentions: Airtable, tl;dv, ChatGPT, Claude Code, Model Context Protocol
 toc: format=Какой формат выбрать | prep=Подготовка ко встрече | script=Сценарий на 30 минут | focus=Как не уйти в сторону | base=Запись в Airtable | agent=Через Claude Code | wording=Текстом: формулировки | form=Анкета | after=Анализ интервью | next=Дальше по теме
 ---
+
+Интервью о работе с AI проводят за 30 минут вокруг последней реальной задачи: что делали, какой результат и сколько это стоило, потом удачный случай и случай, когда человек бросил AI или переключился. Формат человек выбирает сам: звонок или переписка. Ответы разбирают промптом через ChatGPT или агента, кладут в таблицу Airtable и сверяют со статистикой. Ниже — сценарий, анкета и промпт разбора.
 
 <b-post series="intervyu">
 <b-credit para>Дизайн интервью — по рекомендациям <a href="https://t.me/Kseniya_Vasil" target="_blank" rel="noopener">@Kseniya_Vasil</a>. Люди, группы и цифры для интервью — из <a href="/blog/chatgpt-enterprise-usage-report/">отчёта по ChatGPT Enterprise</a>. Там же <a href="/blog/chatgpt-enterprise-usage-report/#why">бизнес-задача</a>: какое решение принимает компания, кто и по каким признакам.</b-credit>

@@ -1,7 +1,7 @@
 ---
-title: AGENTS.md и CLAUDE.md, спеки, правила и скиллы: что агент должен знать о проекте и где это хранить
+title: AGENTS.md и CLAUDE.md: что это, пример файла и где хранить спеки, правила и скиллы
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-11-07
 description: Четыре вида постоянного контекста для ИИ: спека задачи, библия проекта (CLAUDE.md, AGENTS.md), правила и скиллы Claude Code. Что в каждом, когда он попадает в контекст и что из этого есть в ChatGPT и Claude. По документации Anthropic, OpenAI, GitHub, Cursor и Cline.
 tags: AI, Claude Code, CLAUDE.md, харнесс, спеки, скиллы
 category: specs
@@ -9,6 +9,8 @@ layout: wide
 mentions: AGENTS.md, CLAUDE.md, Agent Skills, Spec Kit, Memory Bank
 toc: map=Четыре слоя | spec=Спека | bible=Библия | rules=Правила | skills=Скиллы | chat=В чате | pick=Что куда | next=Дальше по теме
 ---
+
+AGENTS.md и CLAUDE.md — файлы в корне проекта с постоянными инструкциями для ИИ-агента: команды сборки и тестов, стиль кода, запреты. AGENTS.md — открытый формат, его читают Codex, Cursor, Gemini CLI, Copilot и другие агенты; CLAUDE.md читает Claude Code. Харнесс подставляет такой файл в начало каждой сессии. Ниже — пример файла и где хранить спеки, библию проекта и скиллы.
 
 <b-post series="prompts">
 <b-ctx-layers>
@@ -77,6 +79,22 @@ toc: map=Четыре слоя | spec=Спека | bible=Библия | rules=П
     <item k="AGENTS.md" mono>«README для агентов»: Codex, Cursor, Gemini CLI, Copilot и другие<b-proof href="https://agents.md/" quote="agents.md: «Think of AGENTS.md as a README for agents: a dedicated, predictable place to provide the context and instructions to help AI coding agents work on your project» — agents.md"/></item>
     <item k=".cursor/rules" mono>Cursor, четыре режима подключения<b-proof href="https://cursor.com/docs/context/rules" quote="Cursor: четыре режима — Always Apply, Apply Intelligently, Apply to Specific Files, Apply Manually — cursor.com/docs/context/rules"/></item>
   </b-io>
+  <b-why align="left">Пример AGENTS.md для веб-проекта. В файле только то, чего агент не узнает из кода: команды, стиль и запреты. CLAUDE.md для Claude Code устроен так же.</b-why>
+  <b-codebox title="Пример AGENTS.md">
+    # AGENTS.md
+    ## Команды
+    - Установка: npm ci
+    - Тесты: npm test
+    - Проверка типов: npx tsc --noEmit
+    ## Стиль
+    - TypeScript в строгом режиме, без any
+    - Имена файлов в kebab-case
+    ## Запреты
+    - Не менять папку migrations/ без задачи на это
+    - Не коммитить .env и ключи
+    ## Перед завершением
+    - Прогнать тесты и проверку типов
+  </b-codebox>
   <b-sublabel top="18">Когда правило попадает в контекст · Cursor</b-sublabel>
   <b-rule-modes>
     <mode t="Всегда">каждый чат</mode>

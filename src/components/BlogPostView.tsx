@@ -80,7 +80,12 @@ export default function BlogPostView() {
   const cat = findCategory(post.category)!
   const terms = linked!.found.map((f) => findTerm(f)!)
   const sharing = postsSharingTerms(post, linked!.found)
-  const { body, next, rich } = splitNext(linked!.html)
+  const split = splitNext(linked!.html)
+  const { next, rich } = split
+  // Первый абзац поста — ответ на вопрос заголовка: ставим его сразу под заголовок вместо анонса (анонс остаётся в метаданных)
+  const leadM = post.wide ? /^\s*(<p\b[^>]*>[\s\S]*?<\/p>)/.exec(split.body) : null
+  const lead = leadM ? leadM[1].replace(/^<p\b[^>]*>/, '').replace(/<\/p>$/, '') : null
+  const body = leadM ? split.body.slice(leadM[0].length) : split.body
   // Теги и термины — один ряд: термин ведёт в глоссарий, а тег того же термина не дублируем
   const leftTags = post.tags.filter((tag) => { const x = termForTag(tag, lang); return !(x && terms.some((y) => y.slug === x.slug)) })
 
@@ -90,7 +95,9 @@ export default function BlogPostView() {
         <h1 className={`s-page-title${post.title.length > 40 ? ' is-long' : ''}`} itemProp="headline">
           {main}{sub && <span className="s-title-sub">{sub}</span>}
         </h1>
-        {post.wide && post.description && <p className="s-lead" itemProp="description" dangerouslySetInnerHTML={{ __html: linkTerms(post.description.replace(/&/g, '&amp;').replace(/</g, '&lt;'), lang).html }} />}
+        {lead
+          ? <p className="s-lead" dangerouslySetInnerHTML={{ __html: lead }} />
+          : post.wide && post.description && <p className="s-lead" itemProp="description" dangerouslySetInnerHTML={{ __html: linkTerms(post.description.replace(/&/g, '&amp;').replace(/</g, '&lt;'), lang).html }} />}
         <div className="s-post-meta">
         <Dates created={post.date} updated={post.updated} lang={lang} schema />
         <p className="s-card-text">

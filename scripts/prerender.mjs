@@ -19,6 +19,37 @@ const analytics = analyticsHead()
 // Честная дата изменения: последний коммит, затронувший реальные источники страницы (не дата сборки).
 // Без git (например, локальный архив без .git) — тихо откатываемся на дату сборки.
 const gitDateCache = new Map()
+
+// Дата обновления — сигнал поисковикам (lastmod в sitemap.xml, article:modified_time, dateModified).
+// Поэтому сборка падает, если текст статьи правился позже её даты updated: правку без новой даты не выложить.
+// Правка одной строки updated: сама по себе правкой текста не считается.
+{
+  const sh = (cmd) => { try { return execSync(cmd, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 1 << 26 }).trim() } catch { return '' } }
+  const real = (diff) => diff.split('\n').some((s) => /^[+-]/.test(s) && !/^(\+\+\+|---)/.test(s) && !/^[+-]updated: /.test(s))
+  const today = new Date().toLocaleDateString('sv-SE')
+  const contentDate = (file) => {
+    if (real(sh(`git diff -U0 HEAD -- '${file}'`))) return today
+    for (const line of sh(`git log --format='%H %cs' -- '${file}'`).split('\n').filter(Boolean)) {
+      const [hash, day] = line.split(' ')
+      if (real(sh(`git show --format= -U0 ${hash} -- '${file}'`))) return day
+    }
+    return ''
+  }
+  if (sh('git rev-parse --is-inside-work-tree') === 'true') {
+    const stale = []
+    for (const p of POSTS) {
+      const file = `content/blog/${p.slug}${p.lang === 'en' ? '.en' : ''}.md`
+      if (!existsSync(file)) continue
+      const changed = contentDate(file)
+      const updated = p.updated ?? p.date
+      if (changed && updated < changed) stale.push(`${file}: updated ${updated}, правка текста ${changed}`)
+    }
+    if (stale.length) {
+      console.error(`prerender: у статей устарела дата обновления — поставьте updated не раньше даты правки:\n  ${stale.join('\n  ')}`)
+      process.exit(1)
+    }
+  }
+}
 function gitDate(sources) {
   if (!sources || !sources.length) return buildDate
   const key = sources.join('|')

@@ -1,7 +1,7 @@
 ---
 title: How many rules does a game need: the relation gap, a step and a lift
 date: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-07
 description: How to count the rules of a game honestly and quickly, and whether the two answers can differ. A walkthrough of the paper by Bartholdi, Bridson, Mikhailov and Nicholson on the relation gap (arXiv 2610.23637): a game with two moves where the player needs two rules and the accountant needs one entry, with diagrams, formulas and calculations.
 tags: research, mathematics, group theory, topology, AI in mathematics
 category: research
@@ -11,8 +11,9 @@ mentions: relation gap, group presentation, relation module, Cayley graph, Newma
 toc: video=Video | question=Question | paper=Paper and authors | rules=Two rules | why=Why this game | player=Player | accountant=Accountant | answer=Answer | friends=Friends | coins=Coins | main=Takeaway | formal=Formally | practice=Where it shows up | when=Who and when | faq=Questions | next=Next
 ---
 
+A game with two moves, a step and a lift, needs two rules if counted honestly, like a player, and one entry if counted fast, like an accountant who writes rules down as loops and forgets the order of moves. That is how four mathematicians settled the <a href="/materials/glossary/relation-gap/">relation gap</a> question in October 2026, open since 1976.
+
 <b-post series="kto">
-<b-lead tight>A game with two moves, a step and a lift, needs two rules if counted honestly, like a player, and one entry if counted fast, like an accountant who writes rules down as loops and forgets the order of moves. That is how four mathematicians settled the <a href="/materials/glossary/relation-gap/">relation gap</a> question in October 2026, open since 1976.</b-lead>
 
 <b-chapter id="video" icon="video" title="Video: the same story in 7.5 minutes">
   <b-why>The article follows the film scene by scene and goes into more detail. Under each diagram there is a link to that moment of the video.</b-why>

@@ -6,6 +6,7 @@ import { ARCHITECTURES, architecturePath } from '@/data/architecture'
 import { LAB_PAGES } from '@/data/labs'
 import { ALL_TERMS, glossaryPath, postsWithTerm, setOfTerm } from '@/data/glossary'
 import { AI_OFFERS } from '@/data/aiOffers'
+import { TERM_DATES } from '@/data/termDates'
 import { withLang, type Lang, type L } from '@/lib/i18n'
 
 export const SITE_URL = 'https://www.urvanov.com'
@@ -436,6 +437,9 @@ export function allPages(): PageMeta[] {
         path: withLang(glossaryPath(x.slug), l), lang: l, crumb: x.name[l],
         title: x.seo ? x.seo.title[l] : l === 'en' ? `${x.name.en}: what it is — AI development glossary` : `${x.name.ru}: что это — глоссарий AI-разработки`,
         description: x.seo ? x.seo.description[l] : x.def[l].replace(/`/g, ''), alternates, sources: ['src/data/glossary.ts', 'src/components/GlossaryView.tsx'],
+        // Даты термина (scripts/term-dates.py): создание и последняя правка — lastmod в карте сайта и dateModified в разметке
+        date: TERM_DATES[x.slug]?.[0], modified: TERM_DATES[x.slug]?.[1],
+        jsonLdExtra: TERM_DATES[x.slug] ? [{ '@type': 'WebPage', '@id': pageUrl + '#page', url: pageUrl, inLanguage: l, datePublished: TERM_DATES[x.slug][0], dateModified: TERM_DATES[x.slug][1] }] : undefined,
         jsonLd: {
           '@type': 'DefinedTerm', name: x.name[l], description: x.def[l].replace(/`/g, ''), url: pageUrl, inLanguage: l,
           ...(x.aka ? { alternateName: x.aka[l] } : {}),

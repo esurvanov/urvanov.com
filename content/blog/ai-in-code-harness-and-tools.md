@@ -1,13 +1,15 @@
 ---
-title: Claude Code, Codex, Cursor и Hermes Agent: сравнение ИИ-агентов для программирования на одной карте
+title: Codex или Claude Code, Cursor или Hermes Agent: сравнение ИИ-агентов для программирования
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-11-07
 description: Claude Code или Codex, Cursor или Hermes Agent: где работает агент, что он видит, на какой модели думает и сколько стоит — пять харнессов рядом и подсказка, какой брать под задачу. Со ссылками на документацию.
 tags: AI, харнесс, Claude Code, Codex, Cursor, Hermes Agent
 category: harness
 layout: wide
 toc: tasks=Какой харнесс под какую задачу | stable=Что не меняется | harness=Что такое харнесс | compare=Что видят и что делают | next=Дальше по теме
 ---
+
+Codex или Claude Code: по доступу к проекту и действиям они почти совпадают, а различаются семейством моделей (GPT у Codex, Claude у Claude Code) и тарифом. Поэтому берите тот, чья модель и подписка уже есть у команды. Cursor подходит, если работаете в редакторе и хотите выбирать модели разных вендоров, Hermes Agent — если нужна любая модель, включая локальную. Ниже — карта, таблица и выбор под задачу.
 
 <b-post series="harness">
 <b-tool-groups label="Три группы инструментов">

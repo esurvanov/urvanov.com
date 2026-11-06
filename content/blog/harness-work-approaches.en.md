@@ -1,13 +1,15 @@
 ---
 title: Approaches to working with a harness: the answer loop and review that fixes the original request
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-11-07
 description: What to do when an answer misses: three paths and a repeated loop. How review finds gaps, why they go into the original request and the pipeline runs again. Based on Anthropic, OpenAI and Google guides.
 tags: AI, harness, prompts, review
 category: prompts
 layout: wide
 toc: iterate=If it misses | review=Answer review | next=Further reading
 ---
+
+When an AI answer misses, there are three ways: clarify in the same chat, rewrite the original request, or first ask the model for questions. When a review finds a gap, it goes into the original request and the whole cycle runs again: edit, tests, review. The request becomes complete, and the next similar task starts from it. Below are both approaches per the Anthropic, OpenAI and Google guides.
 
 <b-post series="prompts">
 <b-flow lead label="Two approaches: the answer loop and review that fixes the request">

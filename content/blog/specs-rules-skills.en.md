@@ -1,7 +1,7 @@
 ---
-title: AGENTS.md and CLAUDE.md, specs, rules and skills: what an agent should know about a project and where to keep it
+title: AGENTS.md and CLAUDE.md: what they are, an example file and where to keep specs, rules and skills
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-11-07
 description: Four kinds of persistent context for AI (AGENTS.md, CLAUDE.md, skills): the task spec, the project bible, rules and skills. What goes into each, when it enters the context, and what ChatGPT and Claude offer. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.
 tags: AI, Claude Code, CLAUDE.md, harness, specs, skills
 category: specs
@@ -9,6 +9,8 @@ layout: wide
 mentions: AGENTS.md, CLAUDE.md, Agent Skills, Spec Kit, Memory Bank
 toc: map=Four layers | spec=Spec | bible=Bible | rules=Rules | skills=Skills | chat=In a chat | pick=What goes where | next=Further reading
 ---
+
+AGENTS.md and CLAUDE.md are files in the project root with standing instructions for an AI agent: build and test commands, code style, prohibitions. AGENTS.md is an open format read by Codex, Cursor, Gemini CLI, Copilot and other agents; CLAUDE.md is read by Claude Code. The harness puts such a file at the start of every session. Below are an example file and where to keep specs, the project bible and skills.
 
 <b-post series="prompts">
 <b-ctx-layers>
@@ -77,6 +79,22 @@ toc: map=Four layers | spec=Spec | bible=Bible | rules=Rules | skills=Skills | c
     <item k="AGENTS.md" mono>“A README for agents”: Codex, Cursor, Gemini CLI, Copilot and others<b-proof href="https://agents.md/" quote="agents.md: «Think of AGENTS.md as a README for agents: a dedicated, predictable place to provide the context and instructions to help AI coding agents work on your project» — agents.md"/></item>
     <item k=".cursor/rules" mono>Cursor, four ways to apply<b-proof href="https://cursor.com/docs/context/rules" quote="Cursor: четыре режима — Always Apply, Apply Intelligently, Apply to Specific Files, Apply Manually — cursor.com/docs/context/rules"/></item>
   </b-io>
+  <b-why align="left">An AGENTS.md example for a web project. The file holds only what the agent cannot learn from the code: commands, style and prohibitions. CLAUDE.md for Claude Code works the same way.</b-why>
+  <b-codebox title="AGENTS.md example">
+    # AGENTS.md
+    ## Commands
+    - Install: npm ci
+    - Tests: npm test
+    - Type check: npx tsc --noEmit
+    ## Style
+    - Strict TypeScript, no any
+    - kebab-case file names
+    ## Don't
+    - Don't change migrations/ without a task for it
+    - Don't commit .env or keys
+    ## Before finishing
+    - Run the tests and the type check
+  </b-codebox>
   <b-sublabel top="18">When a rule enters the context · Cursor</b-sublabel>
   <b-rule-modes>
     <mode t="Always">every chat</mode>

@@ -1,7 +1,7 @@
 ---
 title: AI Rubik's Cube solver beats 1,000+ teams on 4×4×4 and 5×5×5: how the neural network works
 date: 2026-10-22
-updated: 2026-10-22
+updated: 2026-11-07
 description: How the CayleyPy neural network solves a Rubik's Cube in the fewest moves: how many combinations a cube has, why brute force is impossible, how a compass learns from random scrambles, and why a wide search front and a squad of networks matter. Results on 3×3×3, 4×4×4 and 5×5×5, a diagram walkthrough of arXiv 2502.13266.
 tags: AI, research, neural networks, Rubik's Cube, Rubik's Cube solver, pathfinding
 category: research
@@ -10,8 +10,9 @@ mentions: AI Rubik's Cube solver, neural network Rubik's Cube, Rubik's Cube comb
 toc: video=Video | question=Question | count=How many combinations | paper=Paper and authors | maze=Maze | walk=Walk | compass=Compass | front=Front | squad=Squad | results=Results | width=Front width | team=Why a squad | surprise=Surprises | main=Takeaway | formal=Formally | practice=Where it helps | when=Who and when | faq=FAQ | next=Further
 ---
 
+The AI Rubik's Cube solver works in three steps: a neural network learns from random scrambles how many moves are left, a beam search follows its estimate through millions of positions at once, and several independent networks run in parallel, keeping the shortest solution. This beat the best of 1,000+ teams on 4×4×4 and 5×5×5 cubes.
+
 <b-post series="kto">
-<b-lead tight>The AI Rubik's Cube solver works in three steps: a neural network learns from random scrambles how many moves are left, a beam search follows its estimate through millions of positions at once, and several independent networks run in parallel, keeping the shortest solution. This beat the best of 1,000+ teams on 4×4×4 and 5×5×5 cubes.</b-lead>
 
 <b-chapter id="video" icon="video" title="Video: the same story in 12 minutes">
   <b-why>This post follows the video scene by scene and goes into more detail. Under the diagrams is a link to that moment of the video, which is narrated in Russian.</b-why>

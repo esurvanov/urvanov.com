@@ -1,7 +1,7 @@
 ---
 title: ChatGPT Enterprise usage report for a company: who uses it, for what, and which AI tools to buy next
 date: 2026-09-28
-updated: 2026-10-21
+updated: 2026-11-07
 description: How to find out how employees use ChatGPT Enterprise: five admin console exports turn into adoption depth, uniformity across teams, main tools, a task map, data checks and an interview shortlist.
 tags: AI, research, analytics
 category: research
@@ -11,8 +11,9 @@ mentions: ChatGPT Enterprise, Codex, ChatGPT Work, Claude in Chrome
 toc: why=Why the report | order=Workflow | data=What the admin sees | layer1=Big picture | layer2=Nature of work | layer3=Verification | layer4=People selection | start=Where to start | next=Further reading
 ---
 
+ChatGPT Enterprise is a version of ChatGPT for organizations with an admin console that shows who uses the tool and how. This report is built from five console exports and shows adoption depth, uniformity across teams, the nature of tasks and the people to interview. It is used to decide which AI tools to buy, whom to train and which assumptions to test.
+
 <b-post series="kto">
-<b-lead tight>ChatGPT Enterprise is a version of ChatGPT for organizations with an admin console that shows who uses the tool and how. This report is built from five console exports and shows adoption depth, uniformity across teams, the nature of tasks and the people to interview. It is used to decide which AI tools to buy, whom to train and which assumptions to test.</b-lead>
 <b-dir-map label="Four areas of analysis">
   <dir href="#layer1" n="01" color="c-chat" t="Big picture" big="21%" sub="Use it every week" dec="Where to invest in training"><b-mini-funnel><seg w="82%" color="d-rare" ink="d-rare-t">82%</seg><seg w="47%" color="d-reg" ink="d-reg-t">47%</seg><seg w="21%" color="d-week" ink="d-week-t">21%</seg></b-mini-funnel></dir>
   <dir href="#layer2" n="02" color="c-work" t="Nature of work" big="70%" sub="Of connections are Slack and Notion" dec="Which tool to buy" art="chatgpt-enterprise-usage-report/map-donut"></dir>

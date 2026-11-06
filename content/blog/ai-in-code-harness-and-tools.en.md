@@ -1,13 +1,15 @@
 ---
-title: Claude Code, Codex, Cursor and Hermes Agent: AI coding agents compared on one map
+title: Codex vs Claude Code, Cursor vs Hermes Agent: AI coding agents compared
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-11-07
 description: Claude Code or Codex, Cursor or Hermes Agent: where the agent runs, what it sees, which model it thinks with and what it costs — five harnesses side by side and which one to pick for the task. With links to the docs.
 tags: AI, harness, Claude Code, Codex, Cursor, Hermes Agent
 category: harness
 layout: wide
 toc: tasks=Which harness for which task | stable=What stays the same | harness=What a harness is | compare=What they see and do | next=Further reading
 ---
+
+Codex vs Claude Code: in project access and actions they are nearly the same, and they differ in the model family (GPT for Codex, Claude for Claude Code) and the plan. So take the one whose model and subscription your team already has. Cursor fits if you work in an editor and want models from different vendors, Hermes Agent if you need any model, local ones included. Below are a map, a table and a pick by task.
 
 <b-post series="harness">
 <b-tool-groups label="Three groups of tools">

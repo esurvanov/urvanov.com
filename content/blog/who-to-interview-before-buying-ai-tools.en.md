@@ -1,7 +1,7 @@
 ---
 title: Who to interview before buying AI tools: eight polar groups
 date: 2026-09-28
-updated: 2026-10-20
+updated: 2026-11-07
 description: How to pick 16 people from the report, a questionnaire and license lists, check team coverage and replacements, and decide what to ask them.
 tags: AI, custdev, research
 category: research
@@ -10,6 +10,8 @@ image: /og/who-to-interview-before-buying-ai-tools.en.png
 mentions: ChatGPT Enterprise, Codex
 toc: why=Why sample | top=Top by activity | groups=Eight groups | teams=Team coverage | ask=What to learn | order=Workflow | next=Further reading
 ---
+
+Before buying AI tools, invite 16 people to interviews: two from each of eight polar groups, such as those who work only in Codex, dropped the tool or run many projects. The most active users matter, but together they describe one or two scenarios: the top by messages covers 2 scenarios out of 8. People are picked from the report, a survey and license lists. Below are the groups, thresholds and what to ask.
 
 <b-post series="gruppy">
 <b-credit para>Interview sampling design based on recommendations from <a href="https://t.me/Kseniya_Vasil" target="_blank" rel="noopener">@Kseniya_Vasil</a></b-credit>

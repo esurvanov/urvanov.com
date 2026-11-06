@@ -1,7 +1,7 @@
 ---
 title: Which arrangement of balls on a ring takes longest to untangle: AI, brute force and the number-of-pairs conjecture
 date: 2026-10-22
-updated: 2026-10-22
+updated: 2026-11-07
 description: How many moves the most tangled arrangement of balls on a ring with a turn and a swap needs, and what the diameter of a Cayley graph is. How brute force, a neural network with beam search, a Kaggle competition and proofs converged on n(n−1)/2 — the CayleyPy RL paper (arXiv 2502.18663) explained with diagrams.
 tags: AI, research, neural networks, mathematics, Cayley graphs, pathfinding
 category: research
@@ -10,8 +10,9 @@ mentions: Cayley graph, Cayley graph diameter, God's number, symmetric group, pe
 toc: video=Video | question=Question | paper=Paper and authors | tower=Tower | mirror=Mirror | pairs=Pairs | gap=Twenty balls | compass=Compass | front=Front | hint=Hint | contest=Competition | triples=Triples | fork=Fork | main=Takeaway | formal=Formally | practice=Where it helps | when=Who and when | faq=Questions | next=Further
 ---
 
+The arrangement that takes longest to untangle is most likely the “mirror” — the ring reflected through the swap window — and it needs as many moves as there are pairs of balls: n(n−1)/2. Brute force up to 15 balls, a neural network with beam search up to 100 and an open competition up to 200 balls all agree, and proofs squeeze the answer into a narrow fork.
+
 <b-post series="kto">
-<b-lead tight>The arrangement that takes longest to untangle is most likely the “mirror” — the ring reflected through the swap window — and it needs as many moves as there are pairs of balls: n(n−1)/2. Brute force up to 15 balls, a neural network with beam search up to 100 and an open competition up to 200 balls all agree, and proofs squeeze the answer into a narrow fork.</b-lead>
 
 <b-chapter id="video" icon="video" title="Video: the same story in 11 minutes">
   <b-why>The article follows the video scene by scene, in more detail. Each diagram links to its moment in the video.</b-why>
