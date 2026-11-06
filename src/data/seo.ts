@@ -439,7 +439,10 @@ export function allPages(): PageMeta[] {
         description: x.seo ? x.seo.description[l] : x.def[l].replace(/`/g, ''), alternates, sources: ['src/data/glossary.ts', 'src/components/GlossaryView.tsx'],
         // Даты термина (scripts/term-dates.py): создание и последняя правка — lastmod в карте сайта и dateModified в разметке
         date: TERM_DATES[x.slug]?.[0], modified: TERM_DATES[x.slug]?.[1],
-        jsonLdExtra: TERM_DATES[x.slug] ? [{ '@type': 'WebPage', '@id': pageUrl + '#page', url: pageUrl, inLanguage: l, datePublished: TERM_DATES[x.slug][0], dateModified: TERM_DATES[x.slug][1] }] : undefined,
+        jsonLdExtra: [
+          ...(TERM_DATES[x.slug] ? [{ '@type': 'WebPage', '@id': pageUrl + '#page', url: pageUrl, inLanguage: l, datePublished: TERM_DATES[x.slug][0], dateModified: TERM_DATES[x.slug][1] }] : []),
+          ...(x.faq ? [{ '@type': 'FAQPage', mainEntity: x.faq.map((f) => ({ '@type': 'Question', name: f.q[l], acceptedAnswer: { '@type': 'Answer', text: f.a[l].replace(/`/g, '') } })) }] : []),
+        ],
         jsonLd: {
           '@type': 'DefinedTerm', name: x.name[l], description: x.def[l].replace(/`/g, ''), url: pageUrl, inLanguage: l,
           ...(x.aka ? { alternateName: x.aka[l] } : {}),

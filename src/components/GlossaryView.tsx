@@ -207,6 +207,15 @@ export function TermView() {
         </section>
       )}
 
+      {term.faq && (
+        <section className="s-section" aria-labelledby="t-faq">
+          <h2 className="s-label" id="t-faq">{ICONS.links} {t({ ru: 'Частые вопросы', en: 'Frequently asked questions' })}</h2>
+          <div className="s-rich bk"><div className="bk-faq-cards">
+            {term.faq.map((x) => <div key={t(x.q)}><b>{t(x.q)}</b><br /><TermText text={t(x.a)} self={term.slug} /></div>)}
+          </div></div>
+        </section>
+      )}
+
       {term.parts && (
         <section className="s-section" aria-labelledby="t-parts">
           <h2 className="s-label" id="t-parts">{ICONS.links} {t(term.parts.title)} · {term.parts.slugs.length}</h2>

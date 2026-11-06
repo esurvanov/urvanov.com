@@ -28,6 +28,8 @@ export interface Term {
   parts?: { title: L; slugs: string[] }
   /** Короткие пояснения текстом: заголовок раздела и пункты «название — пара фраз» */
   notes?: { title: L; items: { name: L; text: L }[] }
+  /** Частые вопросы под запросы из поиска: карточки «вопрос — ответ» и разметка FAQPage */
+  faq?: { q: L; a: L }[]
   /** Внешний первоисточник: стандарт, сайт методологии */
   source?: { url: string; label: L }
   /** Собственный сайт или страница про термин (рядом с источником) */
@@ -1926,16 +1928,14 @@ export const TERM_SETS: TermSet[] = [
             en: 'Pre-prod is an environment set up like production for the last check before release. How it differs from a test environment and production, and when teams use it.',
           },
         },
-        notes: {
-          title: { ru: 'Вопросы про препрод', en: 'Questions about pre-prod' },
-          items: [
-            { name: { ru: 'Препрод — это что?', en: 'What is pre-prod?' }, text: { ru: 'Предпоследняя ступень перед продом: копия рабочей среды, где проверяют, как изменение поведёт себя в боевых условиях.', en: 'The step right before production: a copy of the live environment where a change is checked under real conditions.' } },
-            { name: { ru: 'Препрод и стейджинг — одно и то же?', en: 'Are pre-prod and staging the same?' }, text: { ru: 'В одних командах да, в других препрод стоит после тестового стенда. Смотрите, как названо у вас, и договоритесь об одном слове.', en: 'In some teams yes, in others pre-prod comes after the test environment. Check how your team uses the words and agree on one.' } },
-            { name: { ru: 'Нужен ли препрод?', en: 'Do you need pre-prod?' }, text: { ru: 'Обычно небольшим командам хватает тестового стенда и прода. Препрод удлиняет цикл поставки: качество растёт, но растёт и time to market, потому что изменение дольше идёт до пользователей. Он нужен там, где ошибка на проде стоит дорого.', en: 'Small teams usually get by with a test environment and production. Pre-prod lengthens the delivery cycle: quality goes up, but so does time to market, because a change takes longer to reach users. It is for places where a mistake in production is expensive.' } },
-            { name: { ru: 'Откуда в препроде данные?', en: 'Where does pre-prod data come from?' }, text: { ru: 'Из дампа: копии данных рабочей базы в одном файле. Личные данные из него убирают.', en: 'From a dump: a copy of the live database data in one file. Personal data is removed from it.' } },
-            { name: { ru: 'Что делает ИИ-агент на препроде?', en: 'What does an AI agent do on pre-prod?' }, text: { ru: 'Запускает проверки. Правки попадают туда через выкладку, напрямую агент их не вносит.', en: 'Runs checks. Changes reach it through a release; the agent does not edit it directly.' } },
-          ],
-        },
+        faq: [
+          { q: { ru: 'Как правильно: препрод или предпрод?', en: 'How is it spelled: preprod or pre-prod?' }, a: { ru: 'Верны оба написания: слово пришло из английского pre-production, словарной нормы нет. Выберите одно и пишите так во всём документе.', en: 'Both spellings are fine: the word comes from pre-production and has no dictionary norm. Pick one and use it throughout a document.' } },
+          { q: { ru: 'Препрод — это что?', en: 'What is pre-prod?' }, a: { ru: 'Предпоследняя ступень перед продом: копия рабочей среды, где проверяют, как изменение поведёт себя в боевых условиях.', en: 'The step right before production: a copy of the live environment where a change is checked under real conditions.' } },
+          { q: { ru: 'Препрод и стейджинг — одно и то же?', en: 'Are pre-prod and staging the same?' }, a: { ru: 'В одних командах да, в других препрод стоит после тестового стенда. Смотрите, как названо у вас, и договоритесь об одном слове.', en: 'In some teams yes, in others pre-prod comes after the test environment. Check how your team uses the words and agree on one.' } },
+          { q: { ru: 'Нужен ли препрод?', en: 'Do you need pre-prod?' }, a: { ru: 'Обычно небольшим командам хватает тестового стенда и прода. Препрод удлиняет цикл поставки: качество растёт, но растёт и time to market, потому что изменение дольше идёт до пользователей. Он нужен там, где ошибка на проде стоит дорого.', en: 'Small teams usually get by with a test environment and production. Pre-prod lengthens the delivery cycle: quality goes up, but so does time to market, because a change takes longer to reach users. It is for places where a mistake in production is expensive.' } },
+          { q: { ru: 'Откуда в препроде данные?', en: 'Where does pre-prod data come from?' }, a: { ru: 'Из дампа: копии данных рабочей базы в одном файле. Личные данные из него убирают.', en: 'From a dump: a copy of the live database data in one file. Personal data is removed from it.' } },
+          { q: { ru: 'Что делает ИИ-агент на препроде?', en: 'What does an AI agent do on pre-prod?' }, a: { ru: 'Запускает проверки. Правки попадают туда через выкладку, напрямую агент их не вносит.', en: 'Runs checks. Changes reach it through a release; the agent does not edit it directly.' } },
+        ],
         compare: {
           title: { ru: 'Чем препрод отличается от теста', en: 'How pre-prod differs from the test environment' },
           head: { ru: ['Тест', 'Препрод'], en: ['Test', 'Pre-prod'] },
