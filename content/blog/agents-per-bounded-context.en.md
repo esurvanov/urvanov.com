@@ -65,6 +65,7 @@ How many AI agents do you need? As many as there are bounded contexts: each mean
     <item href="/blog/specs-by-aggregates/" k="Specs" t="Specs by aggregates">context boundaries in specs</item>
     <item href="/blog/agent-hands-work-back-to-you/" k="Agent" t="Will agents take your job">where the complexity is real</item>
     <item href="/materials/glossary/bounded-context/" k="Term" t="Bounded context">what it is and why</item>
+    <item href="/blog/agent-checkpoint/" k="Checks" t="Where to check an AI agent's work">the aggregate boundary and context size</item>
   </b-links>
 </b-chapter>
 </b-post>

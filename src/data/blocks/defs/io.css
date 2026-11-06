@@ -3,7 +3,7 @@
 @media (max-width: 640px) { .s-rich.bk .bk-io { grid-template-columns: 1fr; } }
 .s-rich.bk .bk-io > div { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px 18px; }
 .s-rich.bk .bk-io .bk-io-k { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
-.s-rich.bk .bk-io .bk-io-v { font-size: 15px; line-height: 1.5; color: var(--ink-2); text-align: left; }
+.s-rich.bk .bk-io .bk-io-v { font-size: 15px; line-height: 1.5; color: var(--ink-2); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 /* Подпись — имя файла (mono) и приписка без капса (eq); код в тексте карточки */
 .s-rich.bk .bk-io .bk-io-k.bk-io-mono { text-transform: none; letter-spacing: 0; font-family: "JetBrains Mono", monospace; font-size: 12.5px; }
 .s-rich.bk .bk-io .bk-io-k-eq { color: var(--muted); font-weight: 600; letter-spacing: 0; text-transform: none; margin-left: 4px; }

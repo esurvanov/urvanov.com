@@ -13,6 +13,9 @@ import { plural } from '@/lib/plural'
 import { termArt } from '@/lib/termArt'
 import AgentMap from '@/components/AgentMap'
 import LlmSteps from '@/components/LlmSteps'
+import Formula from '@/components/site/Formula'
+import Dates from '@/components/site/Dates'
+import { splitMath } from '@/lib/math'
 
 // Список статей: первые несколько на виду, остальное под «ещё N»
 function PostLinks({ posts, shown, className, linkClass }: { posts: Post[]; shown: number; className?: string; linkClass?: string }) {
@@ -34,32 +37,25 @@ function PostLinks({ posts, shown, className, linkClass }: { posts: Post[]; show
 }
 
 // Текст термина: первое упоминание другого термина — ссылка на него
-// `так` в тексте — код: имена файлов, команды, флаги; ссылкой внутри кода становится только файл-термин вроде CLAUDE.md
+// $так$ в тексте — формула, `так` — код: имена файлов, команды, флаги; ссылкой внутри кода становится только файл-термин вроде CLAUDE.md
 function TermText({ text, self }: { text: string; self: string }) {
   const { lang, to } = useT()
   const words = (part: string, k: number) => splitTerms(part, lang, [self]).map((c, i) => c.slug
     ? <Link key={`${k}-${i}`} className="s-term" to={to(glossaryPath(c.slug))} title={noCode(termShort(findTerm(c.slug)!, lang))}>{c.text}</Link>
     : <span key={`${k}-${i}`}>{c.text}</span>)
-  return <>{text.split('`').map((part, k) => k % 2 ? <code key={k} className="g-code">{/^[\w.-]+\.md$/.test(part) ? words(part, k) : part}</code> : words(part, k))}</>
+  const plain = (part: string, k: number) => part.split('`').map((p, j) => j % 2 ? <code key={`${k}-${j}`} className="g-code">{/^[\w.-]+\.md$/.test(p) ? words(p, k * 100 + j) : p}</code> : words(p, k * 100 + j))
+  // $…$ — формула: набирается тем же компонентом, что в статьях
+  return <>{splitMath(text).map((part, k) => k % 2 ? <Formula key={`m${k}`} tex={part} /> : plain(part, k))}</>
+}
+
+// Пояснение под схемой термина: пустая строка делит его на абзацы
+function ScreenText({ text, self }: { text: string; self: string }) {
+  return <div className="s-gscreen">{text.split('\n\n').map((p, i) => <p key={i}><TermText text={p} self={self} /></p>)}</div>
 }
 
 const termWord = (n: number, lang: 'ru' | 'en') => plural(n, lang, ['термин', 'термина', 'терминов'], ['term', 'terms'])
 
 // /materials/glossary/ — наборы терминов; у каждого термина своя страница со статьями, где он встречается
-const shortDate = (iso: string, lang: 'ru' | 'en') =>
-  new Date(iso).toLocaleDateString(lang === 'en' ? 'en-US' : 'ru-RU', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).replace(' г.', '')
-
-function TermDates({ created, updated, lang }: { created: string; updated: string; lang: 'ru' | 'en' }) {
-  const ru = lang === 'ru'
-  const day = (iso: string) => <time dateTime={iso}>{shortDate(iso, lang)}</time>
-  return (
-    <ul className="s-gdates">
-      <li className="s-gdate" title={ru ? 'Дата создания' : 'Created'}>{ICONS.created}{day(created)}</li>
-      <li className="s-gdate" title={ru ? 'Дата обновления' : 'Updated'}>{ICONS.updated}{day(updated)}</li>
-    </ul>
-  )
-}
-
 export function GlossaryView() {
   const { lang, t, to } = useT()
   return (
@@ -98,18 +94,27 @@ export function TermView() {
   const set = setOfTerm(term.slug)
   const posts = postsWithTerm(term.slug, lang)
   const art = termArt(term.slug, lang)
+  // Дополнительные экраны термина: схемы `slug/2`, `slug/3`… идут под основной
+  const more = [2, 3, 4].map((n) => termArt(`${term.slug}/${n}`, lang)).filter((a) => a !== null)
   return (
     <Page className="s-gterm">
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { to: to('/materials/glossary'), label: t({ ru: 'Глоссарий', en: 'Glossary' }) }, { label: t(term.name) }]} />
       <h1 className="s-page-title">{t(term.name)}</h1>
       <div className="s-gmeta">
   <p className="s-gmeta-set">{ICONS[set.icon]} {t(set.name)}{term.aka && <> · {t(term.aka)}</>}</p>
-  {TERM_DATES[term.slug] && <TermDates created={TERM_DATES[term.slug][0]} updated={TERM_DATES[term.slug][1]} lang={lang} />}
+  {TERM_DATES[term.slug] && <Dates created={TERM_DATES[term.slug][0]} updated={TERM_DATES[term.slug][1]} lang={lang} />}
       </div>
       <p className="s-lead"><TermText text={t(term.def)} self={term.slug} /></p>
       {art?.map && <AgentMap svg={art.svg} wide={art.wide} />}
       {art?.steps ? <LlmSteps /> : null}
       {art && !art.map && !art.steps && <div className={art.wide ? 's-art s-art-wide' : 's-art'} dangerouslySetInnerHTML={{ __html: art.svg }} />}
+      {term.screens?.[0] && <ScreenText text={t(term.screens[0])} self={term.slug} />}
+      {more.map((a, i) => (
+        <div key={i}>
+          <div className={a.wide ? 's-art s-art-wide' : 's-art'} dangerouslySetInnerHTML={{ __html: a.svg }} />
+          {term.screens?.[i + 1] && <ScreenText text={t(term.screens[i + 1])} self={term.slug} />}
+        </div>
+      ))}
 
       {term.table && (
         <section className="s-section" aria-labelledby="t-tbl">

@@ -1,6 +1,6 @@
 // Изометрический мини-мир: пол, фигуры (человек, агент, куб, документ, панель, цилиндр), стрелки, подписи, бегущая точка.
 // Сцена собирается вызовами методов и отдаётся строкой SVG через render(); рамку с легендой и подписью даёт frame().
-import { type Lang, S2, W, esc, f } from './palette'
+import { type Lang, S2, W, esc, f, txt } from './palette'
 import { bug } from './marks'
 
 export const DEFS =
@@ -167,7 +167,7 @@ export class Iso {
   text(gx: number, gy: number, t: string, col: string, o: { gz?: number; size?: number; w?: number; dx?: number; dy?: number; halo?: boolean; ls?: string; anchor?: 'start' | 'middle' | 'end' } = {}) {
     const { gz = 0, size = 11, w = 600, dx = 0, dy = 0, halo = t !== '' && col !== '#fff', ls, anchor = 'middle' } = o
     const [x, y] = this.p(gx, gy, gz)
-    this.add(999, `<text x="${f(x + dx)}" y="${f(y + dy)}" text-anchor="${anchor}" font-size="${size}" font-weight="${w}" fill="${col}"${ls ? ` letter-spacing="${ls}"` : ''}${halo ? ' stroke="var(--surface)" stroke-width="3.5" stroke-linejoin="round" paint-order="stroke"' : ''}>${esc(t)}</text>`)
+    this.add(999, `<text x="${f(x + dx)}" y="${f(y + dy)}" text-anchor="${anchor}" font-size="${size}" font-weight="${w}" fill="${col}"${ls ? ` letter-spacing="${ls}"` : ''}${halo ? ' stroke="var(--surface)" stroke-width="3.5" stroke-linejoin="round" paint-order="stroke"' : ''}>${txt(t)}</text>`)
   }
   render() { return this.ground.join('') + [...this.obj].sort((a, b) => a[0] - b[0]).map((t) => t[1]).join('') }
 

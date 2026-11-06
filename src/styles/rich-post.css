@@ -13,7 +13,9 @@
 .s-rich h2 .ico{ width:32px; height:32px; background:none; border:1px solid var(--line-2); color:var(--accent); border-radius:4px; }
 .s-rich h2 .ico svg{ width:17px; height:17px; }
 .s-rich h3{ font-size:1.5rem; font-weight:700; letter-spacing:-0.02em; }
-.s-rich p, .s-rich .finding, .s-rich .howto{ text-align:justify; hyphens:auto; -webkit-hyphens:auto; }
+/* Текст статей по ширине с переносами: абзацы, пункты списков, выводы. По левому краю остаются заголовки, заголовки столбцов и первый столбец таблиц, код и плашки */
+.s-rich p, .s-rich li, .s-rich .finding, .s-rich .howto{ text-align:justify; hyphens:auto; -webkit-hyphens:auto; }
+.s-rich th, .s-rich pre, .s-rich .bk-hchain{ text-align:left; }
 .s-rich .io .v, .s-rich .step-d, .s-rich .src-what, .s-rich .links .d, .s-rich .g-q{ text-align:left; }
 .s-rich .why, .s-rich .chapter > p{ color:var(--ink-2); }
 .s-rich .block{ border-top:1px solid var(--line); }

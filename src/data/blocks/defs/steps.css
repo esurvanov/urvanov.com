@@ -4,7 +4,7 @@
 .s-rich.bk .bk-steps li.bk-steps-hl { border-color: var(--accent); }
 .s-rich.bk .bk-steps-step-n { width: 32px; height: 32px; border-radius: 4px; background: var(--accent); color: #fff; display: grid; place-items: center; font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 14px; line-height: 1; }
 .s-rich.bk .bk-steps-step-t { font-weight: 600; font-size: 16px; line-height: 1.35; }
-.s-rich.bk .bk-steps-step-d { font-size: 14.5px; color: var(--ink-2); line-height: 1.45; margin-top: 2px; text-align: left; }
+.s-rich.bk .bk-steps-step-d { font-size: 14.5px; color: var(--ink-2); line-height: 1.45; margin-top: 2px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 .s-rich.bk .bk-steps-step-d::first-letter { text-transform: uppercase; }
 /* round — номера в кружках, пояснение с выключкой по ширине (так шаги выглядели в постах серий kto и intervyu) */
 .s-rich.bk .bk-steps-rnd .bk-steps-step-n { border-radius: 50%; }

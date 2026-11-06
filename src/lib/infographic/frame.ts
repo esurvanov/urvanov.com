@@ -1,6 +1,6 @@
 // Рамка схемы: подгоняет viewBox под нарисованное, добавляет легенду цветов и подпись снизу
 import { DEFS, type Iso } from './iso'
-import { LEGEND, type Lang, esc, f } from './palette'
+import { LEGEND, type Lang, esc, f, txt } from './palette'
 
 // Границы нарисованного: по точкам многоугольников, путям, кругам и подписям, чтобы схема занимала всё место
 export function bounds(body: string): [number, number, number, number] {
@@ -33,5 +33,5 @@ export function frame(I: Iso, o: { caption: string; lang: Lang; legend?: boolean
   const legend = withLegend ? legendRow(body, cx, y1 + 36, lang) : ''
   const legH = legend ? 30 : 0
   const vx = cx - w / 2, vy = y0 - 16, vh = y1 - y0 + 32 + 38 + legH
-  return `<svg viewBox="${f(vx)} ${f(vy)} ${f(w)} ${f(vh)}" role="img" aria-label="${esc(caption)}" xmlns="http://www.w3.org/2000/svg">${DEFS}${body}${legend}<text x="${f(cx)}" y="${f(vy + vh - 10)}" text-anchor="middle" font-size="16" font-weight="600" fill="currentColor">${esc(caption)}</text></svg>`
+  return `<svg viewBox="${f(vx)} ${f(vy)} ${f(w)} ${f(vh)}" role="img" aria-label="${esc(caption.replace(/\$/g, ''))}" xmlns="http://www.w3.org/2000/svg">${DEFS}${body}${legend}<text x="${f(cx)}" y="${f(vy + vh - 10)}" text-anchor="middle" font-size="16" font-weight="600" fill="currentColor">${txt(caption)}</text></svg>`
 }

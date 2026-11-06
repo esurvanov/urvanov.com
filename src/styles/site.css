@@ -415,9 +415,19 @@ a.s-pager-btn:hover { color: var(--accent); border-color: var(--accent); }
 /* Страница термина глоссария — колонка той же ширины, что текст широкого поста */
 .site.s-gterm { --col: 980px; }
 .s-gterm .s-lead { max-width: none; }
+/* Пояснения под схемами термина — как абзацы статьи (.bk-why): 16px, интервал 1.75, с переносами */
+.s-gterm .s-gscreen { margin: 14px 0 34px; font-size: 16px; line-height: 1.75; color: var(--ink-2); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-gterm .s-gscreen p { margin: 0 0 12px; }
+.s-gterm .s-gscreen p:last-child { margin-bottom: 0; }
+/* Определение термина — как вступление статьи: по ширине, с переносами; разделы — как абзацы статьи: по левому краю */
+.s-gterm .s-lead { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-gterm .s-section p, .s-gterm .s-section li { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.g-math .katex { font-size: 1.05em; }
 .s-gmeta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-2); margin-top: calc(var(--sp-4) - var(--sp-5)); }
 .s-gmeta-set { margin: 0; color: var(--ink-2); font-size: var(--t-small); }
 .s-gdates { display: flex; gap: var(--sp-1); list-style: none; margin: 0; padding: 0; }
+.s-post-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-2); }
+.s-post-meta .s-card-text { margin: 0; }
 .s-gdate { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--line-2); border-radius: var(--radius); color: var(--ink-2); font-size: var(--t-small); font-variant-numeric: tabular-nums; }
 .s-gdate svg { color: var(--accent); }
 .s-gterm .g-table { max-width: none; }

@@ -18,6 +18,8 @@ export interface Term {
   exact?: string
   /** Свой заголовок и описание для поиска вместо шаблонных (описание до ~160 знаков) */
   seo?: { title: L; description: L }
+  /** Пояснения к экранам схемы: i-й текст идёт под i-й схемой (основная, затем `slug/2`, `slug/3`…) */
+  screens?: L[]
   /** Ссылка «Подробнее» на статью блога: slug поста и подпись */
   more?: { post: string; label: L }
   /** Ещё статьи под нишевые запросы термина — вторичными ссылками рядом с «Подробнее» */
@@ -725,6 +727,17 @@ export const TERM_SETS: TermSet[] = [
         source: { url: 'https://en.wikipedia.org/wiki/Microsoft', label: { ru: 'Википедия: Microsoft', en: 'Wikipedia: Microsoft' } },
       },
       {
+        slug: 'bing',
+        name: { ru: 'Bing', en: 'Bing' },
+        def: {
+          ru: 'Поисковая система компании Microsoft. Рядом с обычной выдачей ссылок в ней работает ассистент Copilot: отвечает на вопрос текстом со ссылками на источники. Для владельцев сайтов у Bing свой кабинет, Bing Webmaster Tools: индексация страниц, запросы и показы в поиске.',
+          en: 'Microsoft’s search engine. Next to the usual list of links it runs the Copilot assistant, which answers a question in text with links to sources. For site owners Bing has its own console, Bing Webmaster Tools: page indexing, queries and impressions in search.',
+        },
+        match: { ru: ['Bing'], en: ['Bing'] },
+        related: ['microsoft', 'yandex'],
+        source: { url: 'https://en.wikipedia.org/wiki/Microsoft_Bing', label: { ru: 'Википедия: Microsoft Bing', en: 'Wikipedia: Microsoft Bing' } },
+      },
+      {
         // Rovo MCP Server — GA 04.02.2026 (developer.atlassian.com/cloud/rovo-mcp); агенты Rovo в Jira — февраль 2026
         slug: 'atlassian',
         name: { ru: 'Atlassian', en: 'Atlassian' },
@@ -1266,8 +1279,165 @@ export const TERM_SETS: TermSet[] = [
           en: 'A boundary inside which terms mean one thing. “Order” in sales and in delivery can mean different things, so each boundary gets its own specs and vocabulary. Across the border, contexts talk through aggregate events.',
         },
         match: { ru: ['ограниченн\\p{L}* контекст\\p{L}*'], en: ['bounded contexts?'] },
-        related: ['aggregate', 'ddd'],
+        related: ['aggregate', 'ddd', 'domain', 'ubiquitous-language', 'rice-theorem'],
         source: { url: 'https://martinfowler.com/bliki/BoundedContext.html', label: { ru: 'Мартин Фаулер: ограниченный контекст', en: 'Martin Fowler: Bounded Context' } },
+      },
+      {
+        slug: 'domain',
+        name: { ru: 'Предметная область', en: 'Business domain' },
+        aka: { ru: 'домен', en: 'domain' },
+        def: {
+          ru: 'Часть реального мира, для которой пишут программу, со своими понятиями и правилами: например, бронирование переговорных. В DDD предметную область делят на поддомены, а модель каждого в коде живёт в своём ограниченном контексте со своим единым языком.',
+          en: 'The part of the real world a program is written for, with its own concepts and rules: for example, booking meeting rooms. In DDD the domain is split into subdomains, and each one’s model lives in code in its own bounded context with its own ubiquitous language.',
+        },
+        match: { ru: ['предметн\\p{L}* област\\p{L}*'], en: ['business domains?'] },
+        related: ['bounded-context', 'ubiquitous-language', 'ddd', 'aggregate'],
+        source: { url: 'https://martinfowler.com/bliki/DomainDrivenDesign.html', label: { ru: 'Мартин Фаулер: Domain-Driven Design', en: 'Martin Fowler: Domain-Driven Design' } },
+      },
+      {
+        slug: 'ubiquitous-language',
+        name: { ru: 'Единый язык', en: 'Ubiquitous language' },
+        aka: { ru: 'язык предметной области', en: 'the language of the domain' },
+        def: {
+          ru: 'Общий словарь разработчиков и бизнеса внутри одного ограниченного контекста: одни и те же слова звучат в разговоре, в спеке и в коде. Внутри границы у каждого слова один смысл, за границей то же слово может значить другое. Чем уже язык, тем больше правил проверяется по тексту, без перебора запусков.',
+          en: 'A shared vocabulary of developers and the business inside one bounded context: the same words are used in conversation, in the spec and in the code. Inside the border each word has one meaning; across it the same word may mean something else. The narrower the language, the more rules can be checked from the text alone, without going through runs.',
+        },
+        match: { ru: ['един\\p{L}* язык\\p{L}*', 'язык\\p{L}* предметной области'], en: ['ubiquitous language'] },
+        related: ['bounded-context', 'domain', 'ddd', 'rice-theorem'],
+        source: { url: 'https://martinfowler.com/bliki/UbiquitousLanguage.html', label: { ru: 'Мартин Фаулер: Ubiquitous Language', en: 'Martin Fowler: Ubiquitous Language' } },
+      },
+      {
+        slug: 'imperative',
+        name: { ru: 'Императивный подход', en: 'Imperative approach' },
+        aka: { ru: 'как: шаги', en: 'how: steps' },
+        def: {
+          ru: 'Стиль записи программы, где по шагам расписано, как прийти к результату: найти брони комнаты, сравнить интервалы, записать новую. Правило о результате в таком коде нигде не записано целиком, оно складывается из шагов, поэтому проверять его приходится по поведению.',
+          en: 'A style of writing a program where the steps to reach a result are spelled out: find the room’s bookings, compare intervals, save the new one. A rule about the result is not written anywhere in full in such code; it emerges from the steps, so it has to be checked against behaviour.',
+        },
+        match: { ru: ['императивн\\p{L}* (?:подход|стил|язык|программирован|код)\\p{L}*', 'императивн\\p{L}*(?= и декларативн)'], en: ['imperative (?:approach|style|programming|code|languages?)', 'imperative(?= and declarative)'] },
+        related: ['declarative', 'rice-theorem', 'invariant'],
+        source: { url: 'https://en.wikipedia.org/wiki/Imperative_programming', label: { ru: 'Википедия: императивное программирование', en: 'Wikipedia: Imperative programming' } },
+      },
+      {
+        slug: 'declarative',
+        name: { ru: 'Декларативный подход', en: 'Declarative approach' },
+        aka: { ru: 'что: правила и ограничения', en: 'what: rules and constraints' },
+        def: {
+          ru: 'Стиль записи, где программа — система правил и ограничений, описывающих нужный результат, без порядка шагов: сказано, что должно быть верно, а как этого добиться, решает движок. Так устроены ограничения и запросы в базе данных, правила вывода, описание желаемого состояния системы. Пример: «брони одной комнаты не пересекаются», «бронь не дольше 4 часов» в виде ограничений в базе. Простые декларативные записи проверяются по тексту точно, потому что их поведение видно из самой записи. На мощном декларативном языке это уже не так, и теорема Райса задевает его так же, как императивный код.',
+          en: 'A style of writing where a program is a system of rules and constraints describing the desired result, with no order of steps: it states what must hold, and an engine decides how to get there. Database constraints and queries, inference rules and descriptions of a system’s desired state work this way. Example: “bookings of one room never overlap” and “a booking lasts at most 4 hours” as database constraints. Simple declarative notations can be checked exactly from the text, because their behaviour is visible in the statement itself. In a powerful declarative language this no longer holds, and Rice’s theorem hits it just like imperative code.',
+        },
+        match: { ru: ['декларативн\\p{L}* (?:подход|стил|язык|запис|программирован)\\p{L}*'], en: ['declarative (?:approach|style|programming|notations?|languages?)'] },
+        related: ['imperative', 'rice-theorem', 'invariant', 'ubiquitous-language', 'sql', 'kubernetes', 'json-schema', 'quint', 'z3', 'prolog', 'datalog'],
+        notes: {
+          title: { ru: 'Где встречается: языки, валидаторы, движки', en: 'Where it shows up: languages, validators, engines' },
+          items: [
+            { name: { ru: 'SQL', en: 'SQL' }, text: { ru: 'запрос описывает, какие данные нужны, а база сама выбирает, как их достать. Ограничения CHECK, UNIQUE и EXCLUDE — правила, которые база держит при каждой записи.', en: 'a query says which data is needed and the database picks how to fetch it. CHECK, UNIQUE and EXCLUDE constraints are rules the database enforces on every write.' } },
+            { name: { ru: 'Kubernetes', en: 'Kubernetes' }, text: { ru: 'описывают желаемое состояние: какие сервисы и сколько копий запустить. Контроллеры в петле сверки приводят систему к нему.', en: 'you describe the desired state: which services and how many copies to run. Controllers in a reconcile loop bring the system to it.' } },
+            { name: { ru: 'JSON Schema', en: 'JSON Schema' }, text: { ru: 'схема описывает форму данных, валидатор проверяет по ней каждый документ.', en: 'a schema describes the shape of data; a validator checks every document against it.' } },
+            { name: { ru: 'Quint', en: 'Quint' }, text: { ru: 'а также TLA+ и Alloy: правила и инварианты системы записаны как утверждения, проверка моделей перебирает состояния.', en: 'as well as TLA+ and Alloy: system rules and invariants are written as statements, and model checking goes through the states.' } },
+            { name: { ru: 'Z3', en: 'Z3' }, text: { ru: 'ограничения на значения; решатель ищет значения, которые им удовлетворяют, или доказывает, что таких нет.', en: 'constraints on values; the solver finds values that satisfy them or proves there are none.' } },
+            { name: { ru: 'Prolog', en: 'Prolog' }, text: { ru: 'факты и правила вывода; движок сам ищет ответ на вопрос. Язык полный: на нём можно написать и вечный цикл.', en: 'facts and inference rules; the engine finds the answer to a question itself. The language is complete: an endless loop can be written in it too.' } },
+            { name: { ru: 'Datalog', en: 'Datalog' }, text: { ru: 'урезанный Prolog для запросов к данным: любой запрос гарантированно заканчивается, поэтому ответ всегда точный.', en: 'a cut-down Prolog for querying data: every query is guaranteed to finish, so the answer is always exact.' } },
+          ],
+        },
+        more: { post: 'agent-checkpoint', label: { ru: 'Где ставить проверку работы ИИ-агента', en: "Where to check an AI agent's work" } },
+        also: [
+          { post: 'spec-reconcile-loop', label: { ru: 'Петля сверки для спек: как в Kubernetes', en: 'A reconcile loop for specs: like Kubernetes' } },
+          { post: 'quint-vs-tests-and-tla', label: { ru: 'Чем model checking отличается от тестов', en: 'How model checking differs from testing' } },
+          { post: 'specs-by-aggregates', label: { ru: 'Спеки по агрегатам', en: 'Specs by aggregate' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Declarative_programming', label: { ru: 'Википедия: декларативное программирование', en: 'Wikipedia: Declarative programming' } },
+      },
+      {
+        slug: 'kubernetes',
+        name: { ru: 'Kubernetes', en: 'Kubernetes' },
+        aka: { ru: 'K8s', en: 'K8s' },
+        def: {
+          ru: 'Система, которая запускает программы в контейнерах на многих серверах и следит за ними. Её настраивают декларативно: в файле описывают желаемое состояние, например «три копии сервиса броней», а контроллеры в петле сверки сравнивают его с фактическим и исправляют разницу: упала копия — поднимут новую.',
+          en: 'A system that runs programs in containers across many servers and watches over them. It is configured declaratively: a file describes the desired state, such as “three copies of the booking service”, and controllers in a reconcile loop compare it with the actual state and fix the difference: a copy crashes, a new one is started.',
+        },
+        match: { ru: ['Kubernetes', 'K8s'], en: ['Kubernetes', 'K8s'] },
+        related: ['declarative', 'reconcile-loop'],
+        more: { post: 'spec-reconcile-loop', label: { ru: 'Петля сверки для спек: как в Kubernetes', en: 'A reconcile loop for specs: like Kubernetes' } },
+        source: { url: 'https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/', label: { ru: 'Kubernetes: декларативное управление объектами', en: 'Kubernetes: declarative management of objects' } },
+      },
+      {
+        slug: 'sql',
+        name: { ru: 'SQL', en: 'SQL' },
+        def: {
+          ru: 'Декларативный язык запросов к реляционным базам данных. Запрос говорит, какие данные нужны: «брони комнаты 5 на завтра», а как их достать — по индексу или перебором — выбирает сама база. Ограничения CHECK, UNIQUE и EXCLUDE задают правила, которые база держит при каждой записи, поэтому они проверяются по тексту схемы.',
+          en: 'A declarative language for querying relational databases. A query says which data is needed, “room 5 bookings for tomorrow”, and the database itself decides how to fetch it, by index or by scanning. CHECK, UNIQUE and EXCLUDE constraints set rules the database enforces on every write, so they can be checked from the schema text.',
+        },
+        match: { ru: ['SQL'], en: ['SQL'] },
+        related: ['declarative', 'invariant'],
+        source: { url: 'https://en.wikipedia.org/wiki/SQL', label: { ru: 'Википедия: SQL', en: 'Wikipedia: SQL' } },
+      },
+      {
+        slug: 'json-schema',
+        name: { ru: 'JSON Schema', en: 'JSON Schema' },
+        def: {
+          ru: 'Декларативный язык, которым описывают форму данных в JSON: какие поля обязательны, какого они типа, какие значения допустимы. Валидатор берёт схему и документ и отвечает, подходит ли документ. Так проверяют ответы программ и агентов, настройки и входящие запросы.',
+          en: 'A declarative language for describing the shape of JSON data: which fields are required, of what type, which values are allowed. A validator takes the schema and a document and answers whether the document fits. This is how program and agent output, settings and incoming requests are checked.',
+        },
+        match: { ru: ['JSON Schema'], en: ['JSON Schema'] },
+        related: ['declarative', 'checks'],
+        source: { url: 'https://json-schema.org/', label: { ru: 'json-schema.org', en: 'json-schema.org' } },
+      },
+      {
+        slug: 'cap-theorem',
+        name: { ru: 'Теорема CAP', en: 'CAP theorem' },
+        aka: { ru: 'согласованность, доступность, разрыв связи', en: 'consistency, availability, partition' },
+        def: {
+          ru: 'Когда данные лежат на нескольких серверах и связь между ними оборвалась, система не может одновременно отвечать на каждый запрос и показывать всем одни и те же данные: приходится либо ждать восстановления связи, либо отвечать по своей, возможно устаревшей, копии. Эрик Брюер высказал это в 2000 году, Сет Гилберт и Нэнси Линч доказали в 2002-м. Позже Брюер писал, что формула «два из трёх» упрощает картину: выбор встаёт только во время разрыва.',
+          en: 'When data lives on several servers and the link between them breaks, the system can’t both answer every request and show everyone the same data: it must either wait for the link to return or answer from its own, possibly stale, copy. Eric Brewer stated this in 2000; Seth Gilbert and Nancy Lynch proved it in 2002. Brewer later wrote that the “two of three” formula oversimplifies: the choice arises only during a partition.',
+        },
+        match: { ru: ['теорем\\p{L}* CAP'], en: ['CAP theorem'] },
+        related: ['rice-theorem', 'halting-problem', 'aggregate', 'bounded-context'],
+        screens: [
+          {
+            ru: 'Буквы названия: C — согласованность, все видят одни и те же данные; A — доступность, каждый запрос получает ответ; P — устойчивость к разрыву связи, система продолжает работать, когда сообщения между серверами теряются или опаздывают. Разрывы связи случаются сами, поэтому на практике выбирают между C и A на время разрыва.\n\nОбщее ядро с теоремой Райса: пока событие не произошло, нельзя понять, случится ли оно позже или не случится никогда, сколько бы ни ждать. Сервер не знает, потеряно сообщение соседа или опаздывает; проверка программы не знает, закончится программа или будет работать вечно. Поэтому и выходы похожи: пока время не ограничено, выбирают одно из двух — ждать или ответить сейчас с риском ошибки; а ограничение времени снимает саму развилку, потому что после предела «никогда» уже известно. Причины невозможности разные: серверу не хватает сведений, а проверке программы сведений хватает, весь код перед ней, но ответ из него нельзя вычислить. Это сопоставление автора, единой теоремы для обоих случаев нет.',
+            en: 'The letters: C is consistency, everyone sees the same data; A is availability, every request gets an answer; P is partition tolerance, the system keeps working when messages between servers are lost or delayed. Partitions happen on their own, so in practice the choice is between C and A for the duration of a partition.\n\nThe common core with Rice’s theorem: while an event hasn’t happened yet, you can’t tell whether it will happen later or never, however long you wait. A server doesn’t know whether a neighbour’s message is lost or late; a program check doesn’t know whether the program will finish or run forever. So the ways out are similar: while time is unbounded, you pick one of two — wait, or answer now at the risk of being wrong; and bounding the time removes the fork itself, because after the limit “never” is already known. The reasons for the impossibility differ: a server lacks information, while a program check has it, the whole code is in front of it, but the answer can’t be computed from it. This comparison is the author’s; there is no single theorem covering both.',
+          },
+        ],
+        more: { post: 'rice-theorem-explained', label: { ru: 'Теорема Райса и связь с CAP', en: "Rice's theorem and the link to CAP" } },
+        source: { url: 'https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/', label: { ru: 'Эрик Брюер: CAP двенадцать лет спустя', en: 'Eric Brewer: CAP twelve years later' } },
+      },
+      {
+        slug: 'agile',
+        name: { ru: 'Agile', en: 'Agile' },
+        aka: { ru: 'гибкая разработка', en: 'agile development' },
+        def: {
+          ru: 'Подход к разработке короткими циклами: сделать небольшую часть, показать её, получить обратную связь и поправить план. Основа — Манифест гибкой разработки 2001 года, где реакция на изменения ценится выше следования плану. Подход нужен там, где будущее нельзя знать заранее: план всё равно будет ошибаться, поэтому важно, чтобы его было дёшево поправить.',
+          en: 'An approach to development in short cycles: build a small part, show it, get feedback and adjust the plan. It rests on the 2001 Manifesto for Agile Software Development, which values responding to change over following a plan. The approach fits where the future can’t be known in advance: the plan will be wrong anyway, so what matters is that it is cheap to adjust.',
+        },
+        match: { ru: ['[Aa]gile', 'аджайл\\p{L}*', 'гибк\\p{L}* разработк\\p{L}*'], en: ['[Aa]gile(?= (?:development|approach|cycles?|methods?|teams?))', 'Agile'] },
+        related: ['bounded-context', 'domain'],
+        more: { post: 'agent-checkpoint', label: { ru: 'Первая рамка: почему она ошибётся и как сделать её дешёвой', en: 'The first frame: why it will be wrong and how to make it cheap' } },
+        source: { url: 'https://agilemanifesto.org/', label: { ru: 'Манифест гибкой разработки', en: 'Manifesto for Agile Software Development' } },
+      },
+      {
+        slug: 'prolog',
+        name: { ru: 'Prolog', en: 'Prolog' },
+        aka: { ru: 'язык логического программирования', en: 'a logic programming language' },
+        def: {
+          ru: 'Язык, в котором программа — это факты и правила вывода, а движок сам ищет ответ на вопрос. Факты: «бронь б1 — комната 2, с 10 до 11». Правило: «две брони пересекаются, если комната одна и время накладывается». Вопрос: «с какими бронями пересекается б1?». Создан в 1972 году во Франции. На Prolog можно написать любую программу, в том числе ту, что никогда не закончится, поэтому на него действует теорема Райса.',
+          en: 'A language in which a program is facts and inference rules, and an engine finds the answer to a question by itself. Facts: “booking b1 is room 2, from 10 to 11”. A rule: “two bookings overlap if the room is the same and the times overlap”. A question: “which bookings overlap b1?”. Created in 1972 in France. Any program can be written in Prolog, including one that never finishes, so Rice’s theorem applies to it.',
+        },
+        match: { ru: ['Prolog'], en: ['Prolog'] },
+        related: ['datalog', 'declarative', 'rice-theorem'],
+        source: { url: 'https://en.wikipedia.org/wiki/Prolog', label: { ru: 'Википедия: Prolog', en: 'Wikipedia: Prolog' } },
+      },
+      {
+        slug: 'datalog',
+        name: { ru: 'Datalog', en: 'Datalog' },
+        aka: { ru: 'узкий Prolog для баз данных', en: 'a narrow Prolog for databases' },
+        def: {
+          ru: 'Урезанный Prolog для запросов к данным: те же факты и правила вывода, но без возможностей, из-за которых программа может работать вечно. Поэтому любой запрос на Datalog к конечным данным гарантированно заканчивается и даёт точный ответ. Это пример узкого языка: им нельзя написать любую программу, зато про его программы можно отвечать точно. Datalog-подобные языки используют в анализе кода и в правилах доступа.',
+          en: 'A cut-down Prolog for querying data: the same facts and inference rules, but without the features that let a program run forever. So any Datalog query over finite data is guaranteed to finish and give an exact answer. It is an example of a narrow language: you can’t write any program in it, but you can answer exactly about its programs. Datalog-like languages are used in code analysis and access rules.',
+        },
+        match: { ru: ['Datalog'], en: ['Datalog'] },
+        related: ['prolog', 'declarative', 'rice-theorem'],
+        source: { url: 'https://en.wikipedia.org/wiki/Datalog', label: { ru: 'Википедия: Datalog', en: 'Wikipedia: Datalog' } },
       },
       {
         slug: 'reconcile-loop',
@@ -1728,6 +1898,101 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['инвариант\\p{L}*'], en: ['invariants?'] },
         related: ['model-checking', 'quint', 'rfc-2119'],
         source: { url: 'https://en.wikipedia.org/wiki/Invariant_(computer_science)', label: { ru: 'Википедия: инвариант в программировании', en: 'Wikipedia: Invariant (computer science)' } },
+      },
+      {
+        slug: 'rice-theorem',
+        name: { ru: 'Теорема Райса', en: "Rice's theorem" },
+        aka: { ru: 'неразрешимость свойств программ', en: 'undecidability of program properties' },
+        def: {
+          ru: 'Нет программы, которая для любой программы точно скажет, есть ли у неё заданное свойство поведения, например «никогда не списывает деньги без заказа», если это свойство есть у одних программ и нет у других. Вопросы о тексте кода решаются чтением, вопросы о поведении — нет. Поэтому проверку сужают рамкой: перебирают маленький мир, пишут так, чтобы правило держалось по построению, или разрешают ответ «не знаю».',
+          en: 'No program can tell for every program whether it has a given behavioural property, such as “never charges money without an order”, if some programs have the property and others don’t. Questions about the code text are settled by reading; questions about behaviour are not. So checks are narrowed by a frame: try a small world in full, write code so the rule holds by construction, or allow a “don’t know” answer.',
+        },
+        match: { ru: ['теорем\\p{L}* Райса'], en: ["Rice['’]s theorem"] },
+        related: ['predicate', 'halting-problem', 'barber-paradox', 'alan-turing', 'cap-theorem', 'imperative', 'declarative', 'model-checking', 'invariant', 'bounded-context', 'ubiquitous-language', 'domain'],
+        more: { post: 'rice-theorem-explained', label: { ru: 'Теорема Райса простыми словами', en: "Rice's theorem in plain words" } },
+        also: [{ post: 'agent-checkpoint', label: { ru: 'Где ставить проверку работы ИИ-агента', en: "Where to check an AI agent's work" } }],
+        source: { url: 'https://en.wikipedia.org/wiki/Rice%27s_theorem', label: { ru: 'Википедия: теорема Райса', en: "Wikipedia: Rice's theorem" } },
+      },
+      {
+        slug: 'halting-problem',
+        name: { ru: 'Проблема остановки', en: 'Halting problem' },
+        aka: { ru: 'задача остановки', en: 'the halting question' },
+        def: {
+          ru: 'Вопрос: закончит ли данная программа работу на данном входе или будет работать вечно. Алан Тьюринг доказал, что нет программы, которая отвечает на него верно для любой программы и любого входа. Из этого выводится теорема Райса: проверка любого смыслового правила для любой программы тоже невозможна.',
+          en: 'The question of whether a given program finishes on a given input or runs forever. Alan Turing proved that no program answers it correctly for every program and input. Rice’s theorem follows from it: checking any behavioural rule for every program is impossible too.',
+        },
+        match: { ru: ['проблем\\p{L}* остановки', 'задач\\p{L}* остановки'], en: ['halting problem'] },
+        related: ['rice-theorem', 'barber-paradox', 'alan-turing', 'model-checking'],
+        screens: [
+          {
+            ru: 'Судья получает программу и её вход и должен сказать, закончит ли она работу или будет крутиться вечно. Для отдельных программ ответ найти можно. Тьюринг доказал, что нет судьи, который отвечает верно для всех программ сразу.',
+            en: 'The judge gets a program and its input and must say whether it finishes or loops forever. For particular programs an answer can be found. Turing proved that there is no judge that answers correctly for every program at once.',
+          },
+          {
+            ru: 'Почему такого судьи нет. Допустим, он есть. Напишем программу-спорщика: она спрашивает судью о самой себе и поступает наоборот. Судья сказал «остановится» — спорщик крутится вечно; сказал «не остановится» — спорщик сразу останавливается. Судья ошибается в любом случае, значит, его не бывает. Это тот же приём, что в парадоксе брадобрея, который бреет всех, кто не бреет себя сам.',
+            en: 'Why there is no such judge. Suppose there is one. Write a contrarian program: it asks the judge about itself and does the opposite. If the judge says “halts”, the contrarian loops forever; if it says “doesn’t halt”, the contrarian stops at once. The judge is wrong either way, so it can’t exist. This is the same trick as in the barber paradox, about a barber who shaves everyone who doesn’t shave themselves.',
+          },
+        ],
+        more: { post: 'agent-checkpoint', label: { ru: 'Где ставить проверку работы ИИ-агента', en: "Where to check an AI agent's work" } },
+        source: { url: 'https://en.wikipedia.org/wiki/Halting_problem', label: { ru: 'Википедия: проблема остановки', en: 'Wikipedia: Halting problem' } },
+      },
+      {
+        slug: 'predicate',
+        name: { ru: 'Предикат', en: 'Predicate' },
+        aka: { ru: 'вопрос с ответом «да» или «нет»', en: 'a yes-or-no question' },
+        def: {
+          ru: 'В математике — утверждение с переменной, которое для каждого значения переменной становится истинным или ложным: $P(x)$ = «$x$ — чётное число» даёт «да» при $x = 4$ и «нет» при $x = 3$. Формально это функция $P\\colon X \\to \\{\\text{да}, \\text{нет}\\}$. Предикат о программах берёт программу и отвечает «да» или «нет»: «есть ли в коде запись в таблицу платежей», «спишет ли программа деньги без заказа». Теорема Райса говорит, какие такие предикаты нельзя вычислить.',
+          en: 'In mathematics, a statement with a variable that becomes true or false for each value of the variable: $P(x)$ = “$x$ is even” gives “yes” for $x = 4$ and “no” for $x = 3$. Formally it is a function $P\\colon X \\to \\{\\text{yes}, \\text{no}\\}$. A predicate about programs takes a program and answers “yes” or “no”: “does the code write to the payments table”, “will the program charge money without an order”. Rice’s theorem says which such predicates cannot be computed.',
+        },
+        match: { ru: ['предикат\\p{L}*'], en: ['predicates?'] },
+        related: ['rice-theorem', 'invariant', 'halting-problem'],
+        source: { url: 'https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)', label: { ru: 'Википедия: предикат', en: 'Wikipedia: Predicate (mathematical logic)' } },
+      },
+      {
+        slug: 'alan-turing',
+        name: { ru: 'Алан Тьюринг', en: 'Alan Turing' },
+        aka: { ru: 'машина Тьюринга, 1936', en: 'the Turing machine, 1936' },
+        def: {
+          ru: 'Британский математик (1912–1954), один из основателей теории вычислений. В статье 1936 года «О вычислимых числах» описал машину Тьюринга — простейшую модель любой программы: лента с клетками и головка, которая читает, пишет и сдвигается по правилам. В той же работе показал, что есть вопросы о программах, на которые не ответит ни одна программа; отсюда проблема остановки, а из неё теорема Райса.',
+          en: 'A British mathematician (1912–1954), one of the founders of the theory of computation. In his 1936 paper “On Computable Numbers” he described the Turing machine, the simplest model of any program: a tape of cells and a head that reads, writes and moves by rules. In the same work he showed that some questions about programs cannot be answered by any program; the halting problem follows, and Rice’s theorem follows from that.',
+        },
+        match: { ru: ['(?:Алан\\p{L}* )?Тьюринг\\p{L}*'], en: ['(?:Alan )?Turing'] },
+        related: ['halting-problem', 'rice-theorem'],
+        source: { url: 'https://en.wikipedia.org/wiki/Alan_Turing', label: { ru: 'Википедия: Алан Тьюринг', en: 'Wikipedia: Alan Turing' } },
+      },
+      {
+        slug: 'barber-paradox',
+        name: { ru: 'Парадокс брадобрея', en: 'Barber paradox' },
+        aka: { ru: 'вопрос о самом себе', en: 'a question about itself' },
+        def: {
+          ru: 'Деревенский брадобрей бреет всех, кто не бреет себя сам, и только их. Бреет ли он себя? Если бреет, то не должен; если не бреет, то должен. Значит, такого брадобрея не бывает. Бертран Рассел приводил его как наглядный вариант своего парадокса о множествах. Тот же приём, вопрос о самом себе, доказывает неразрешимость проблемы остановки.',
+          en: 'A village barber shaves everyone who does not shave themselves, and only them. Does he shave himself? If he does, he must not; if he doesn’t, he must. So no such barber exists. Bertrand Russell used it as an illustration of his paradox about sets. The same trick, a question about itself, proves the halting problem undecidable.',
+        },
+        match: { ru: ['парадокс\\p{L}* брадобрея', 'парадокс\\p{L}* цирюльника'], en: ['barber paradox'] },
+        related: ['halting-problem', 'rice-theorem', 'alan-turing'],
+        screens: [
+          {
+            ru: 'Суть в двух множествах. Жители деревни делятся на множество $A$ — те, кто бреет себя сам, и множество $B$ — те, кого бреет брадобрей. Правило говорит, что $B$ — ровно все, кто не в $A$, поэтому каждый житель попадает в одно и только одно множество. Брадобрей тоже житель, и ему некуда встать. Если он в $A$, он бреет себя сам, то есть его бреет брадобрей, значит, он в $B$. Если он в $B$, его бреет брадобрей, то есть он сам, значит, он в $A$. Противоречие показывает, что такое правило выполнить нельзя.',
+            en: 'The point is two sets. The villagers split into set $A$, those who shave themselves, and set $B$, those the barber shaves. The rule says $B$ is exactly everyone not in $A$, so every villager is in one and only one set. The barber is a villager too, and he has nowhere to go. If he is in $A$, he shaves himself, so the barber shaves him, so he is in $B$. If he is in $B$, the barber shaves him, that is, he shaves himself, so he is in $A$. The contradiction shows that such a rule can’t be satisfied.',
+          },
+          {
+            ru: 'Исходный парадокс Рассела 1901 года — о множествах. Обычное множество не содержит само себя: множество кошек само не кошка. Бывают множества, которые содержат себя: множество всего, что не кошка, само не кошка, значит, лежит внутри себя. Возьмём $R$ — множество всех множеств, которые не содержат себя: $R = \\{x : x \\notin x\\}$. Если $R \\in R$, то по определению $R \\notin R$; если $R \\notin R$, то $R$ подходит под определение и $R \\in R$. Брадобрей — тот же вопрос в бытовой одежде: жители вместо множеств и «бреет» вместо «содержит».',
+            en: 'Russell’s original 1901 paradox is about sets. An ordinary set does not contain itself: the set of cats is not a cat. Some sets do contain themselves: the set of everything that is not a cat is itself not a cat, so it lies inside itself. Take $R$, the set of all sets that do not contain themselves: $R = \\{x : x \\notin x\\}$. If $R \\in R$, then by definition $R \\notin R$; if $R \\notin R$, then $R$ fits the definition and $R \\in R$. The barber is the same question in everyday clothes: villagers instead of sets and “shaves” instead of “contains”.',
+          },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Barber_paradox', label: { ru: 'Википедия: парадокс брадобрея', en: 'Wikipedia: Barber paradox' } },
+      },
+      {
+        slug: 'event-storming',
+        name: { ru: 'Event storming', en: 'Event storming' },
+        def: {
+          ru: 'Формат совместной работы, на котором команда раскладывает предметную область на события, а затем находит команды, агрегаты и правила. Результат — границы агрегатов: что входит командами, что выходит событиями, какие правила верны всегда.',
+          en: 'A workshop format where a team lays out the business domain as events, then finds commands, aggregates and rules. The result is aggregate boundaries: what comes in as commands, what goes out as events, which rules always hold.',
+        },
+        match: { ru: ['event storming', 'EventStorming'], en: ['event storming', 'EventStorming'] },
+        related: ['aggregate', 'ddd', 'bounded-context', 'invariant'],
+        more: { post: 'agent-checkpoint', label: { ru: 'Агрегат как пост проверки работы агента', en: "The aggregate as a checkpoint for an agent's work" } },
+        source: { url: 'https://www.eventstorming.com/', label: { ru: 'eventstorming.com', en: 'eventstorming.com' } },
       },
       {
         slug: 'race-condition',

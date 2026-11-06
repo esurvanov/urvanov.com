@@ -1,13 +1,11 @@
 import { marked } from 'marked'
-import katex from 'katex'
+import { renderTex } from '@/lib/math'
 import { withBlogArt } from '@/data/blogArt'
 import { withBlocks } from '@/data/blocks'
 import { localizeLinks, type Lang, type L } from '@/lib/i18n'
 
 // Формулы: $…$ — в строке, $$…$$ — отдельной строкой по центру. Набирает KaTeX при сборке; до markdown формулы
 // заменяются метками, чтобы разметка не тронула знаки _ и *, и возвращаются в готовый HTML.
-const renderTex = (tex: string, display: boolean) =>
-  katex.renderToString(tex.trim(), { displayMode: display, throwOnError: true, strict: 'error', output: 'htmlAndMathml' })
 function hideMath(md: string): { md: string; restore: (html: string) => string } {
   const found: { tex: string; display: boolean }[] = []
   const put = (tex: string, display: boolean) => { found.push({ tex, display }); return `MATHPH${found.length - 1}X` }
@@ -72,8 +70,8 @@ export interface Post {
   title: string
   description: string
   date: string
-  /** Дата последней содержательной правки: показывается на странице, идёт в dateModified и lastmod */
-  updated?: string
+  /** Дата последней содержательной правки: показывается на странице, идёт в dateModified и lastmod. Обязательна: без неё сборка падает */
+  updated: string
   /** Слаги статей, которые не предлагать в блоке «С теми же терминами» этой статьи */
   unrelated?: string[]
   tags: string[]
@@ -117,6 +115,11 @@ function parse(path: string, raw: string): Post | null {
   const file = path.split('/').pop()!.replace(/\.md$/, '')
   const lang: Lang = file.endsWith('.en') ? 'en' : 'ru'
   const slug = file.replace(/\.en$/, '')
+  // Обе даты обязательны и видны на странице: без них (или с датой обновления раньше создания) сборка падает
+  const iso = /^\d{4}-\d{2}-\d{2}$/
+  if (!iso.test(meta.date)) throw new Error(`${path}: date «${meta.date}» — нужна дата создания в виде ГГГГ-ММ-ДД`)
+  if (!iso.test(meta.updated ?? '')) throw new Error(`${path}: updated «${meta.updated ?? ''}» — нужна дата последнего обновления в виде ГГГГ-ММ-ДД`)
+  if (meta.updated < meta.date) throw new Error(`${path}: updated ${meta.updated} раньше date ${meta.date}`)
   const category = findCategory(meta.category)
   // Рубрика обязательна: без неё пост выпал бы из фильтров — лучше упасть на сборке
   if (!category) throw new Error(`${path}: category «${meta.category ?? ''}» — нужна одна из: ${BLOG_CATEGORIES.map((c) => c.slug).join(', ')}`)
@@ -133,7 +136,7 @@ function parse(path: string, raw: string): Post | null {
     title: meta.title,
     description: meta.description ?? '',
     date: meta.date,
-    updated: meta.updated || undefined,
+    updated: meta.updated,
     unrelated: (meta.unrelated ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     category: category.slug,

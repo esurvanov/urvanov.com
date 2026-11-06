@@ -3,7 +3,12 @@
 .s-rich.bk .bk-chapter > :not(h2, h3, h4, p) + .bk-table { margin-top: 14px; }
 .s-rich.bk .bk-table table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 520px; margin: 0; }
 .s-rich.bk .bk-table th { text-align: left; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 11px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-.s-rich.bk .bk-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-2); vertical-align: middle; }
+.s-rich.bk .bk-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--ink-2); vertical-align: top; }
+/* Первый столбец со значком («Малый мир», «Узкий язык») — название в одну строку, столбцы не прыгают */
+.s-rich.bk .bk-table td:first-child:has(> svg.bk-icon-i) { white-space: nowrap; }
+/* Текст в ячейках — по ширине с переносами, как абзацы статьи; первый столбец (короткие названия) — по левому краю */
+.s-rich.bk .bk-table td { text-align: justify; hyphens: auto; -webkit-hyphens: auto; min-width: 9em; }
+.s-rich.bk .bk-table td:first-child, .s-rich.bk .bk-table :is(td, th).bk-table-r { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
 .s-rich.bk .bk-table tbody tr:last-child td { border-bottom: none; }
 .s-rich.bk .bk-table td:first-child { color: var(--ink); font-weight: 600; }
 .s-rich.bk .bk-table :is(td, th).bk-table-r { text-align: right; font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }

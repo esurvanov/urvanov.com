@@ -4,6 +4,9 @@
 .s-rich.bk .bk-vs-grid > .bk-vs-grid-h { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: var(--muted); background: var(--surface-2); }
 .s-rich.bk .bk-vs-grid > div:nth-last-child(-n+3) { border-bottom: none; }
 .s-rich.bk .bk-vs-grid b { font-weight: 600; }
+/* Текст ячеек — по ширине с переносами, как в таблицах; первый столбец с названиями строк и заголовки — по левому краю */
+.s-rich.bk .bk-vs-grid > div:not(.bk-vs-grid-h) { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-vs-grid > div:nth-child(3n+1) { text-align: left; }
 @media (max-width: 640px) {
   .s-rich.bk .bk-vs-grid { grid-template-columns: 1fr; }
   .s-rich.bk .bk-vs-grid > .bk-vs-grid-h { display: none; }

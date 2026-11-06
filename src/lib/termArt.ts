@@ -52,6 +52,24 @@ const screen = (I: Iso) => {
   }
 }
 
+// Логическое программирование (Prolog, Datalog): факты и правило слева, вопрос, движок, ответ. narrow — Datalog: поиск всегда заканчивается
+const logicScene = (I: Iso, l: (ru: string, en: string) => string, narrow: boolean) => {
+  const { g, arr, t } = screen(I)
+  const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+  const rows: [number, string, string, string][] = [
+    [-4.2, 'факт', 'fact', 'бронь б1: комната 2, 10–11'], [-1.6, 'факт', 'fact', 'бронь б2: комната 2, 10:30–12'], [1.0, 'правило', 'rule', 'пересекаются, если комната одна и время накладывается'],
+  ]
+  const en: Record<string, string> = { 'бронь б1: комната 2, 10–11': 'booking b1: room 2, 10–11', 'бронь б2: комната 2, 10:30–12': 'booking b2: room 2, 10:30–12', 'пересекаются, если комната одна и время накладывается': 'overlap if same room and times overlap' }
+  rows.forEach(([Y, r1, e1, txtRu]) => { at(-10.4, Y, (x, y) => I.doc(x - 0.5, y - 0.35, 0, 1.0, 0.7, r1 === 'правило' ? A : M, 2)); t(-9.6, Y, l(r1, e1) + ': ' + l(txtRu, en[txtRu]), r1 === 'правило' ? A : M, { size: 10.5, w: 700, anchor: 'start', dy: 4 }) })
+  t(-10.4, 3.6, l('вопрос: с чем пересекается б1?', 'question: what overlaps b1?'), M, { size: 11.5, w: 800, anchor: 'start', dy: 4 })
+  arr(M, [1.4, -1.0], [3.4, -1.0])
+  at(5.0, -1.0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.7, A)); t(5.0, 0.4, l('движок ищет ответ', 'the engine searches'), A, { dy: 12, size: 11, w: 800 })
+  arr(narrow ? A : W, [6.8, -1.0], [8.6, -1.0])
+  if (narrow) { at(10.2, -1.0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, A, 2, true)); t(10.2, 0.4, l('б2 — всегда ответит', 'b2: always answers'), A, { dy: 12, size: 11, w: 800 }) }
+  else { at(10.2, -1.0, (x, y) => I.box(x - 0.5, y - 0.5, 0, 1.0, 1.0, 0.6, W)); t(10.2, -1.0, '?', '#fff', { gz: 0.6, size: 13, w: 800 }); t(10.2, 0.4, l('б2 — или поиск без конца', 'b2, or an endless search'), W, { dy: 12, size: 11, w: 800 }) }
+  t(0, 6.2, narrow ? l('узкий язык: любой запрос заканчивается — теорема Райса не мешает', 'a narrow language: every query finishes, Rice’s theorem doesn’t get in the way') : l('полный язык: можно написать и вечный цикл — действует теорема Райса', 'a complete language: an endless loop can be written, Rice’s theorem applies'), narrow ? A : W, { size: 11.5, w: 800 })
+}
+
 // Рабочая система, к которой агент ходит через MCP: агент → разъём → система, под системой — что агент оттуда берёт
 const sysScene = (I: Iso, l: (ru: string, en: string) => string, name: string, kind: 'panel' | 'cyl' | 'doc', reads: string[], note: string, noteCol = M, acts = '') => {
   const { g, arr, t, agent } = screen(I)
@@ -685,6 +703,10 @@ export const ART: Record<string, Art> = {
     { title: l('для кода', 'for code'), items: [{ kind: 'panel', name: 'VS Code', sub: l('редактор', 'editor') }, { kind: 'agent', name: 'GitHub Copilot', sub: l('агент и приложение', 'agent and app') }] },
     { title: l('компаниям', 'for companies'), items: [{ kind: 'cyl', name: 'Foundry', sub: l('модели и агенты', 'models and agents') }, { kind: 'doc', name: 'Copilot Studio', sub: l('свои агенты', 'own agents') }] },
   ]) },
+  'bing': { ru: 'Поиск Microsoft: ссылки и ответ Copilot людям, кабинет вебмастера сайтам', en: 'Microsoft search: links and a Copilot answer for people, a webmaster console for sites', tile: [0, 0, 0, 0], draw: (I, l) => companyScene(I, 'Bing', l('поиск Microsoft', 'Microsoft search'), [
+    { title: l('людям', 'for people'), items: [{ kind: 'panel', name: l('поиск', 'search'), sub: l('ссылки + ответ Copilot', 'links + Copilot answer') }] },
+    { title: l('сайтам', 'for sites'), items: [{ kind: 'panel', name: 'Webmaster Tools', sub: l('индексация, запросы, показы', 'indexing, queries, impressions') }] },
+  ]) },
   'llm': { ru: 'Продолжает текст по одному слову, выбирая самое вероятное', en: 'Continues the text one word at a time, picking the most likely', tile: [0, 0, 0, 0], steps: LLM_SEQ.ru.picks.length, draw: (I, _l, s = 0) => {
     // Сверху вниз: модель, под ней варианты по убыванию слева направо, внизу фраза по центру
     const g = (X: number, Y: number): Pt => [(X + Y) / 2, (Y - X) / 2]
@@ -1123,6 +1145,134 @@ export const ART: Record<string, Art> = {
     side(6.6, l('доставка', 'delivery'), l('посылка, адрес, курьер', 'parcel, address, courier'))
     I.path([g(0, -6.0), g(0, 6.0)], W, { dash: '6 5', w: 2, op: 0.9 }); t(0, 6.6, l('граница', 'border'), W, { size: 11, w: 800, dy: 4 })
   } },
+  // Императивный подход: программа — шаги, «как» прийти к результату
+  'imperative': { ru: 'Императивно: записаны шаги, как прийти к результату', en: 'Imperative: the steps to reach a result are written down', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    t(0, -5.0, l('как: шаг за шагом', 'how: step by step'), A, { size: 13, w: 800 })
+    const steps: [number, string, string][] = [[-8.4, 'найти брони комнаты', 'find the room’s bookings'], [-2.8, 'сравнить интервалы', 'compare the intervals'], [2.8, 'пересечений нет?', 'no overlap?'], [8.4, 'записать бронь', 'save the booking']]
+    steps.forEach(([X, ru, en], i) => {
+      at(X, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.6, A)); t(X, 0, String(i + 1), '#fff', { gz: 0.6, size: 13, w: 800 })
+      t(X, 1.3, l(ru, en), A, { dy: 12, size: 11, w: 800 })
+      if (i < 3) arr(A, [X + 1.2, 0], [X + 4.4, 0])
+    })
+    t(0, 4.4, l('забыли шаг 3 в одном месте — правило нарушено', 'forget step 3 in one place and the rule breaks'), W, { size: 11.5, w: 800 })
+  } },
+  // Декларативный подход: записано утверждение о результате, «что» должно быть; как добиться — решает движок
+  'declarative': { ru: 'Декларативно: записана система правил и ограничений на результат, а как их выполнить, решает движок', en: 'Declarative: a system of rules and constraints on the result is written down, and the engine decides how to satisfy it', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    t(0, -5.6, l('что: правила и ограничения на результат, без порядка шагов', 'what: rules and constraints on the result, no order of steps'), A, { size: 13, w: 800 })
+    const rules: [string, string][] = [['брони не пересекаются', 'bookings never overlap'], ['бронь не дольше 4 часов', 'a booking lasts ≤ 4 hours'], ['комната существует', 'the room exists']]
+    rules.forEach(([ru, en], i) => {
+      const Y = -2.6 + i * 2.4
+      at(-10.0, Y, (x, y) => I.doc(x - 0.6, y - 0.4, 0, 1.2, 0.8, A, 2))
+      t(-8.8, Y, l(ru, en), A, { size: 11, w: 800, anchor: 'start', dy: 4 })
+    })
+    arr(A, [-2.6, -0.2], [-1.0, -0.2])
+    at(0.8, -0.2, (x, y) => I.cyl(x, y, 0, 0.8, 1.0, M)); t(0.8, 1.3, l('движок: база данных', 'engine: the database'), M, { dy: 12, size: 11, w: 800 }); t(0.8, 1.3, l('сам решает, как проверять', 'decides how to check'), M, { dy: 26, size: 10, w: 600 })
+    arr(A, [2.8, -0.2], [5.2, -0.2])
+    at(7.6, -0.2, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(7.6, 1.3, l('держатся везде', 'hold everywhere'), A, { dy: 12, size: 11, w: 800 }); t(7.6, 1.3, l('видно из самой записи', 'visible from the rules themselves'), M, { dy: 26, size: 10, w: 600 })
+  } },
+  // Kubernetes: желаемое состояние → контроллер сверяет → фактическое; упавшую копию поднимают заново
+  'kubernetes': { ru: 'Описано желаемое: три копии. Контроллер сверяет с фактическим и поднимает упавшую копию', en: 'The desired state says three copies. The controller compares it with the actual state and restarts the crashed copy', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.6, 0, (x, y) => I.doc(x - 0.8, y - 0.6, 0, 1.6, 1.2, A, 3)); t(-8.6, 1.4, l('желаемое', 'desired'), A, { dy: 12, size: 12, w: 800 }); t(-8.6, 1.4, 'replicas: 3', M, { dy: 27, size: 10.5, w: 700 })
+    arr(A, [-6.6, 0], [-3.4, 0])
+    at(-1.6, 0, (x, y) => I.agent(x - 0.65, y - 0.65, A, 1.3, '')); t(-1.6, 1.4, l('контроллер', 'controller'), A, { dy: 12, size: 12, w: 800 }); t(-1.6, 1.4, l('сверяет в петле', 'compares in a loop'), M, { dy: 27, size: 10, w: 600 })
+    arr(A, [0.4, 0], [3.4, 0])
+    ;[[5.2, M], [7.2, M], [9.2, W]].forEach(([X, c]) => at(X as number, 0, (x, y) => I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.6, c as string)))
+    t(9.2, 0, '×', '#fff', { gz: 0.6, size: 13, w: 800 })
+    t(7.2, 1.4, l('фактически: 2 из 3', 'actual: 2 of 3'), M, { dy: 12, size: 12, w: 800 }); t(7.2, 1.4, l('упавшую копию поднимут заново', 'the crashed copy is restarted'), W, { dy: 27, size: 10.5, w: 700 })
+    I.path([g(9.2, -1.2), g(9.2, -3.0), g(-1.6, -3.0), g(-1.6, -1.6)], A, { w: 1.8, dash: '4 3', arrow: true })
+    t(3.8, -3.0, l('разница → исправить', 'difference → fix'), A, { size: 10.5, w: 800, dy: -8 })
+  } },
+  // SQL: запрос говорит «что», база выбирает «как»
+  'sql': { ru: 'Запрос говорит, какие данные нужны, а база сама выбирает, как их достать', en: 'The query says which data is needed, and the database picks how to fetch it', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.4, 0, (x, y) => I.doc(x - 0.9, y - 0.6, 0, 1.8, 1.2, A, 3)); t(-8.4, 1.4, l('что: запрос', 'what: the query'), A, { dy: 12, size: 12, w: 800 }); t(-8.4, 1.4, l('брони комнаты 5 на завтра', 'room 5 bookings for tomorrow'), M, { dy: 27, size: 10, w: 600 })
+    arr(A, [-6.2, 0], [-2.0, 0])
+    at(0, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.1, M)); t(0, 1.4, l('как: решает база', 'how: the database decides'), M, { dy: 12, size: 12, w: 800 }); t(0, 1.4, l('по индексу или перебором', 'by index or by scanning'), M, { dy: 27, size: 10, w: 600 })
+    arr(M, [2.0, 0], [5.6, 0])
+    ;[-0.9, 0, 0.9].forEach((d) => at(7.8, d, (x, y) => I.box(x - 0.9, y - 0.3, 0, 1.8, 0.6, 0.15, M)))
+    t(7.8, 1.6, l('строки ответа', 'result rows'), M, { dy: 12, size: 12, w: 800 })
+    t(0, -4.6, l('CHECK, UNIQUE, EXCLUDE — правила, которые база держит при каждой записи', 'CHECK, UNIQUE, EXCLUDE: rules the database enforces on every write'), A, { size: 11.5, w: 800 })
+  } },
+  // JSON Schema: схема + документ → валидатор → подходит / не подходит
+  'json-schema': { ru: 'Схема описывает форму данных, валидатор проверяет по ней каждый документ', en: 'The schema describes the shape of data, and the validator checks every document against it', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.4, -2.6, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 3)); t(-8.4, -1.4, l('схема', 'schema'), A, { dy: 12, size: 12, w: 800 }); t(-8.4, -1.4, l('комната: число, начало < конец', 'room: number, start < end'), M, { dy: 27, size: 10, w: 600 })
+    at(-8.4, 3.0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, M, 2)); t(-8.4, 4.2, l('документ', 'document'), M, { dy: 12, size: 12, w: 800 }); t(-8.4, 4.2, l('ответ агента, настройки', 'agent output, settings'), M, { dy: 27, size: 10, w: 600 })
+    arr(A, [-6.4, -2.0], [-2.4, -0.4]); arr(M, [-6.4, 2.6], [-2.4, 0.6])
+    at(-0.6, 0, (x, y) => I.box(x - 0.7, y - 0.7, 0, 1.4, 1.4, 0.7, A)); t(-0.6, 1.4, l('валидатор', 'validator'), A, { dy: 12, size: 12, w: 800 })
+    arr(A, [1.4, -0.6], [5.4, -2.4]); arr(W, [1.4, 0.6], [5.4, 2.4])
+    at(7.4, -2.4, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, A, 2, true)); t(7.4, -1.2, l('подходит', 'fits'), A, { dy: 12, size: 12, w: 800 })
+    at(7.4, 2.4, (x, y) => I.box(x - 0.5, y - 0.5, 0, 1.0, 1.0, 0.5, W)); t(7.4, 2.4, '×', '#fff', { gz: 0.5, size: 13, w: 800 }); t(7.4, 3.6, l('нет поля «комната»', 'no “room” field'), W, { dy: 12, size: 11, w: 800 })
+  } },
+  // Теорема CAP: связь между серверами оборвалась; ждать (данные верны, ответа нет) или ответить сейчас (ответ есть, данные могут быть старыми)
+  'cap-theorem': { ru: 'Связь между серверами оборвалась: либо ждать и не отвечать, либо отвечать по своей копии, которая может устареть', en: 'The link between servers is broken: either wait and not answer, or answer from your own copy, which may be stale', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t, person } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    person(-10.4, -0.2, ''); t(-10.4, 1.4, l('клиент', 'client'), M, { dy: 12, size: 11.5, w: 800 }); t(-10.4, 1.4, l('«сколько броней?»', '“how many bookings?”'), M, { dy: 27, size: 10, w: 600 })
+    arr(M, [-8.8, -0.2], [-6.2, -0.2])
+    at(-4.4, -0.2, (x, y) => I.cyl(x, y, 0, 0.8, 1.0, M)); t(-4.4, 1.4, l('сервер 1', 'server 1'), M, { dy: 12, size: 11.5, w: 800 })
+    at(3.0, -0.2, (x, y) => I.cyl(x, y, 0, 0.8, 1.0, M)); t(3.0, 1.4, l('сервер 2', 'server 2'), M, { dy: 12, size: 11.5, w: 800 }); t(3.0, 1.4, l('здесь свежая бронь', 'the fresh booking is here'), M, { dy: 27, size: 10, w: 600 })
+    I.path([g(-2.6, -0.2), g(-0.8, -0.2)], W, { w: 2.4, dash: '5 4' }); I.path([g(0.2, -0.2), g(1.4, -0.2)], W, { w: 2.4, dash: '5 4' })
+    t(-0.3, -0.2, '×', W, { size: 18, w: 800, dy: 6 }); t(-0.3, -2.2, l('связь оборвалась', 'link broken'), W, { size: 11, w: 800 })
+    t(-4.4, -5.6, l('C: ждать связи', 'C: wait for the link'), A, { size: 12, w: 800 }); t(-4.4, -5.6, l('данные верны, ответа пока нет', 'data is right, no answer yet'), M, { size: 10.5, w: 600, dy: 15 })
+    t(-4.4, 5.4, l('A: ответить сейчас', 'A: answer now'), W, { size: 12, w: 800, dy: 10 }); t(-4.4, 5.4, l('ответ есть, но без свежей брони', 'an answer, but without the fresh booking'), M, { size: 10.5, w: 600, dy: 25 })
+    arr(A, [-4.4, -1.8], [-4.4, -4.2]); arr(W, [-4.4, 2.8], [-4.4, 4.6])
+    t(8.6, -0.2, l('ждать или угадать —', 'wait or guess:'), M, { size: 11, w: 700, dy: -4 }); t(8.6, -0.2, l('как проверка программы', 'like a program check'), M, { size: 11, w: 700, dy: 12 })
+  } },
+  // Agile: короткий цикл — сделать часть, показать, получить отзыв, поправить план — и снова
+  'agile': { ru: 'Короткий цикл: сделать небольшую часть, показать, получить отзыв, поправить план, и снова', en: 'A short cycle: build a small part, show it, get feedback, adjust the plan, and again', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t, person } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    // Четыре шага по кругу
+    at(-6.0, -3.0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, A, 3)); t(-6.0, -1.8, l('1. план', '1. plan'), A, { dy: 12, size: 12, w: 800 }); t(-6.0, -1.8, l('что сделать за 1–2 недели', 'what to do in 1–2 weeks'), M, { dy: 27, size: 10, w: 600 })
+    at(6.0, -3.0, (x, y) => I.agent(x - 0.6, y - 0.6, A, 1.2, '')); t(6.0, -1.8, l('2. сделать', '2. build'), A, { dy: 12, size: 12, w: 800 }); t(6.0, -1.8, l('небольшую часть', 'a small part'), M, { dy: 27, size: 10, w: 600 })
+    person(6.0, 3.2, ''); t(6.0, 4.4, l('3. показать', '3. show'), M, { dy: 12, size: 12, w: 800 }); t(6.0, 4.4, l('и получить отзыв', 'and get feedback'), M, { dy: 27, size: 10, w: 600 })
+    at(-6.0, 3.2, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, W, 3)); t(-6.0, 4.4, l('4. поправить план', '4. adjust the plan'), W, { dy: 12, size: 12, w: 800 }); t(-6.0, 4.4, l('план ошибался — это нормально', 'the plan was wrong, and that is fine'), M, { dy: 27, size: 10, w: 600 })
+    arr(A, [-3.8, -3.0], [3.8, -3.0]); arr(A, [6.0, -0.6], [6.0, 1.6]); arr(M, [3.8, 3.2], [-3.8, 3.2]); arr(W, [-6.0, 1.6], [-6.0, -0.6])
+    t(0, 0.2, l('цикл повторяется', 'the cycle repeats'), M, { size: 12, w: 800 })
+  } },
+  // Prolog и Datalog: факты и правило → вопрос → движок ищет ответ; разница — может ли поиск не закончиться
+  'prolog': { ru: 'Факты и правило, вопрос — движок сам ищет ответ. Язык полный: поиск может не закончиться', en: 'Facts and a rule, a question: the engine finds the answer itself. The language is complete: the search may never finish', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => logicScene(I, l, false) },
+  'datalog': { ru: 'Те же факты и правило, но язык урезан: любой запрос заканчивается и даёт точный ответ', en: 'The same facts and rule, but the language is cut down: every query finishes and gives an exact answer', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => logicScene(I, l, true) },
+  // Предметная область делится на поддомены, у каждого свой ограниченный контекст с агрегатами
+  'domain': { ru: 'Предметная область делится на поддомены, у каждого свой ограниченный контекст', en: 'A business domain splits into subdomains, each with its own bounded context', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    I.path([g(-12, -5.4), g(12, -5.4), g(12, 5.0), g(-12, 5.0), g(-12, -5.4)], M, { dash: '6 5', w: 2, op: 0.8 })
+    t(0, -5.4, l('предметная область: переговорные комнаты', 'business domain: meeting rooms'), M, { size: 13, w: 800, dy: -10 })
+    const subs: [number, string, string, string, string][] = [[-7.6, 'бронирование', 'booking', 'Бронь', 'Booking'], [0, 'оплата', 'payment', 'Счёт', 'Invoice'], [7.6, 'уведомления', 'notifications', 'Письмо', 'Message']]
+    subs.forEach(([X, r1, e1, r2, e2], i) => {
+      at(X, -0.6, (x, y) => I.tile(x - 1.4, y - 1.4, 2.8, 2.8, { col: S2, h: 0.04, grid: false, edge: A, dash: '5 4' }))
+      at(X, -0.6, (x, y) => I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.6, A))
+      t(X, 2.6, l(r1, e1), A, { dy: 12, size: 12, w: 800 }); t(X, 2.6, l('агрегат «' + r2 + '»', 'aggregate “' + e2 + '”'), M, { dy: 27, size: 10, w: 600 })
+      if (i < 2) I.path([g(X + 3.8, -3.6), g(X + 3.8, 3.6)], W, { dash: '5 4', w: 2, op: 0.9 })
+    })
+    t(0, 5.0, l('поддомен = свой ограниченный контекст и свой язык', 'subdomain = its own bounded context and language'), A, { size: 11.5, w: 800, dy: 18 })
+  } },
+  // Единый язык: одно слово одинаково в разговоре, спеке и коде; за границей то же слово значит другое
+  'ubiquitous-language': { ru: 'Внутри контекста слово «бронь» одно и то же в разговоре, спеке и коде; за границей оно значит другое', en: 'Inside the context the word “booking” is the same in talk, spec and code; across the border it means something else', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t, person } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    I.path([g(-12, -4.6), g(4.2, -4.6), g(4.2, 4.6), g(-12, 4.6), g(-12, -4.6)], A, { dash: '6 5', w: 2, op: 0.9 })
+    t(-3.9, -4.6, l('контекст «Бронирование»', 'context “Booking”'), A, { size: 12.5, w: 800, dy: -10 })
+    person(-9.2, -0.4, ''); t(-9.2, 1.2, l('эксперт', 'expert'), M, { dy: 12, size: 11, w: 800 }); t(-9.2, 1.2, l('«бронь на час»', '“book for an hour”'), M, { dy: 27, size: 10, w: 600 })
+    arr(M, [-7.6, 0], [-5.6, 0])
+    at(-3.9, 0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, A, 3)); t(-3.9, 1.2, l('спека', 'spec'), A, { dy: 12, size: 11, w: 800 }); t(-3.9, 1.2, l('«бронь не пересекается»', '“bookings never overlap”'), M, { dy: 27, size: 10, w: 600 })
+    arr(A, [-2.2, 0], [-0.4, 0])
+    at(1.6, 0, (x, y) => I.box(x - 0.55, y - 0.55, 0, 1.1, 1.1, 0.7, A)); t(1.6, 1.2, l('код', 'code'), A, { dy: 12, size: 11, w: 800 }); t(1.6, 1.2, 'Booking', M, { dy: 27, size: 10, w: 600 })
+    t(-3.9, 4.6, l('одно слово — один смысл', 'one word, one meaning'), A, { size: 11.5, w: 800, dy: 18 })
+    I.path([g(5.6, -4.6), g(5.6, 4.6)], W, { dash: '6 5', w: 2, op: 0.9 })
+    at(9.0, 0, (x, y) => I.box(x - 0.55, y - 0.55, 0, 1.1, 1.1, 0.7, M)); t(9.0, -4.6, l('контекст «Склад»', 'context “Warehouse”'), M, { size: 12, w: 800, dy: -10 })
+    t(9.0, 1.2, l('«бронь»', '“booking”'), W, { dy: 12, size: 11, w: 800 }); t(9.0, 1.2, l('= резерв товара', '= a stock reservation'), M, { dy: 27, size: 10, w: 600 })
+  } },
   'reconcile-loop': { ru: 'Как в Kubernetes: сверить желаемое с фактическим и привести одно к другому — только для кода', en: 'Like Kubernetes: compare desired with actual and converge, only for code', tile: [0, 0, 0, 0], draw: (I, l) => {
     const { g, arr, t, agent } = screen(I)
     const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
@@ -1440,6 +1590,204 @@ export const ART: Record<string, Art> = {
     const st: [number, string][] = [[-7.2, l('корзина', 'cart')], [-2.4, l('оплата идёт', 'payment')], [2.4, l('заказ создан', 'order created')], [7.2, l('доставка', 'delivery')]]
     st.forEach(([X, n]) => { at(X, 1.2, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.7, M)); at(X, -2.0, (x, y) => I.doc(x - 0.6, y - 0.45, 0, 1.2, 0.9, A, 2, true)); I.path([g(X, -1.0), g(X, 0.4)], A, { w: 1.4, dash: '2 4', op: 0.7 }); t(X, 2.4, n, M, { dy: 12, size: 11, w: 700 }) })
     t(0, -4.6, l('правило верно в каждом состоянии: деньги не списаны без заказа', 'the rule holds in every state: no money charged without an order'), A, { size: 12, w: 800 })
+  } },
+  // Теорема Райса, суть: у любого судьи-проверки найдётся программа, на которой он ошибётся
+  'rice-theorem': { ru: 'Для любой проверки поведения найдётся программа, на которой она ошибётся', en: 'For any behaviour check there is a program on which it is wrong', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    t(0, -7.4, l('правило о поведении: «никогда не списывает деньги без заказа»', 'a behaviour rule: “never charges money without an order”'), A, { size: 12.5, w: 800 })
+    at(-8.6, -0.4, (x, y) => I.agent(x - 0.7, y - 0.7, A, 1.4, '')); t(-8.6, 1.2, l('проверка', 'the check'), A, { dy: 12, size: 12, w: 800 }); t(-8.6, 1.2, l('любая, самая умная', 'any, however clever'), M, { dy: 27, size: 10, w: 600 })
+    arr(A, [-6.6, -0.4], [-4.6, -0.4])
+    const res: [string, string][] = [['ok', ''], ['bad', ''], ['ok', ''], ['bad', ''], ['ok', ''], ['q', '']]
+    res.forEach(([r], i) => {
+      const X = -3.2 + i * 2.2
+      at(X, -1.6, (x, y) => I.doc(x - 0.55, y - 0.4, 0, 1.1, 0.8, M, 2))
+      if (r === 'q') { at(X, 1.0, (x, y) => I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.5, W)); t(X, 1.0, '?', '#fff', { gz: 0.5, size: 13, w: 800 }) }
+      else { at(X, 1.0, (x, y) => I.box(x - 0.35, y - 0.35, 0, 0.7, 0.7, 0.35, r === 'ok' ? A : M)); t(X, 1.0, r === 'ok' ? '✓' : '×', '#fff', { gz: 0.35, size: 11, w: 800 }) }
+    })
+    t(-0.0, -3.4, l('программы', 'programs'), M, { size: 11, w: 800 })
+    t(7.8, 2.4, l('всегда найдётся программа,', 'there is always a program'), W, { size: 11.5, w: 800, dy: 10 }); t(7.8, 2.4, l('где ответ неверен', 'where the answer is wrong'), W, { size: 11.5, w: 800, dy: 25 })
+    t(0, 6.2, l('о тексте кода ответить можно, о поведении любой программы — нет; выход — сузить рамку', 'about code text you can answer; about the behaviour of any program you can’t; the way out is a narrower frame'), M, { size: 11, w: 700 })
+  } },
+  // Теорема Райса, экран 1: один и тот же код, два вопроса. О тексте — просмотреть конечный список строк; о поведении — все запуски, их бесконечно
+  'rice-predicate': { ru: 'Как написано: прочитать конечный список строк. Что получится: перебрать все запуски, а их бесконечно', en: 'How it is written: read a finite list of lines. What comes out: go through every run, and there are infinitely many', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    // Шапка колонок
+    ;([[-9.8, l('код', 'code')], [-3.6, l('вопрос', 'question')], [3.0, l('что нужно просмотреть', 'what must be examined')], [9.6, l('ответ', 'answer')]] as [number, string][])
+      .forEach(([X, s0]) => t(X, -7.4, s0, M, { size: 11, w: 800, ls: '.06em' }))
+    // Ряд 1: вопрос о тексте — строки кода, их конечно
+    const Y1 = -3.4, Y2 = 3.6
+    t(-9.8, Y1 - 2.4, l('как написано', 'how it is written'), A, { size: 12, w: 800 })
+    at(-9.8, Y1, (x, y) => I.doc(x - 0.8, y - 0.6, 0, 1.6, 1.2, M, 4)); t(-9.8, Y1 + 1.3, l('40 строк', '40 lines'), M, { dy: 12, size: 10.5, w: 700 })
+    arr(M, [-7.8, Y1], [-6.6, Y1])
+    t(-3.6, Y1, l('есть ли в коде запись', 'does the code write'), M, { size: 11.5, w: 800, dy: -4 }); t(-3.6, Y1, l('в таблицу платежей?', 'to the payments table?'), M, { size: 11.5, w: 800, dy: 12 })
+    arr(M, [-0.6, Y1], [0.4, Y1])
+    for (let k = 0; k < 6; k++) at(1.2 + k * 0.85, Y1, (x, y) => I.box(x - 0.15, y - 0.3, 0, 0.3, 0.6, 0.12, A))
+    t(3.4, Y1 + 0.9, l('строки: 1, 2 … 40 — конец', 'lines: 1, 2 … 40 — the end'), A, { dy: 12, size: 10.5, w: 800 })
+    t(3.4, Y1 + 0.9, l('конечно: прочитать все', 'finite: read them all'), M, { dy: 26, size: 10, w: 600 })
+    arr(A, [6.6, Y1], [7.8, Y1])
+    at(9.6, Y1, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(9.6, Y1 + 1.3, l('да или нет', 'yes or no'), A, { dy: 12, size: 11, w: 800 })
+    // Ряд 2: вопрос о поведении — тот же код, но смотреть надо на запуски
+    t(-9.8, Y2 - 2.4, l('что получится', 'what comes out'), W, { size: 12, w: 800 })
+    at(-9.8, Y2, (x, y) => I.doc(x - 0.8, y - 0.6, 0, 1.6, 1.2, M, 4)); t(-9.8, Y2 + 1.3, l('тот же код', 'the same code'), M, { dy: 12, size: 10.5, w: 700 })
+    arr(M, [-7.8, Y2], [-6.6, Y2])
+    t(-3.6, Y2, l('спишет ли деньги без заказа', 'will it ever charge money'), M, { size: 11.5, w: 800, dy: -4 }); t(-3.6, Y2, l('хоть в одном запуске?', 'without an order?'), M, { size: 11.5, w: 800, dy: 12 })
+    // Веер запусков: каждый вход — свой путь, последние уходят в многоточие
+    const runs: [number, string, number][] = [[-1.8, l('вход 1', 'input 1'), 1], [-0.9, l('вход 2', 'input 2'), 1], [0, l('вход 3', 'input 3'), 0.8], [0.9, l('вход 4', 'input 4'), 0.55], [1.8, '…  ∞', 0.35]]
+    for (const [dy, lab, op] of runs) {
+      I.path([g(-0.4, Y2), g(4.0, Y2 + dy)], W, { w: 1.8, op, dash: dy > 1 ? '3 4' : undefined })
+      t(4.4, Y2 + dy, lab, W, { size: 10, w: 700, dx: 22 })
+    }
+    t(3.0, Y2 + 2.4, l('запусков бесконечно, часть не кончается', 'infinitely many runs, some never end'), W, { dy: 14, size: 10.5, w: 800 })
+    arr(W, [6.6, Y2], [7.8, Y2])
+    at(9.6, Y2, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.8, W)); t(9.6, Y2, '?', '#fff', { gz: 0.8, size: 15, w: 800 })
+    t(9.6, Y2 + 1.3, l('не решается', 'undecidable'), W, { dy: 12, size: 11, w: 800 }); t(9.6, Y2 + 1.3, l('если у одних программ «да»,', 'if some programs say “yes”'), M, { dy: 26, size: 10, w: 600 }); t(9.6, Y2 + 1.3, l('а у других «нет»', 'and others “no”'), M, { dy: 39, size: 10, w: 600 })
+  } },
+  // Теорема Райса, экран 2: из любой программы собирается Q, и проверка правила для Q отвечала бы на вопрос об остановке
+  'rice-proof': { ru: 'Проверка правила для $Q$ ответила бы, остановится ли $P(w)$, а это не решается', en: 'Checking the rule for $Q$ would tell whether $P(w)$ halts, and that is undecidable', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    t(0, -5.2, l('почему: такая проверка решила бы проблему остановки', 'why: such a check would solve the halting problem'), M, { size: 13, w: 800 })
+    at(-10.4, 0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, M, 3)); t(-10.4, 1.2, '$P(w)$', M, { dy: 12, size: 12, w: 800 }); t(-10.4, 1.2, l('любая программа', 'any program'), M, { dy: 26, size: 10, w: 600 })
+    arr(M, [-8.6, 0], [-6.6, 0])
+    I.path([g(-6.4, -2.8), g(-0.6, -2.8), g(-0.6, 2.6), g(-6.4, 2.6), g(-6.4, -2.8)], M, { dash: '4 4', w: 1.6, op: 0.8 })
+    at(-4.8, -0.2, (x, y) => I.box(x - 0.4, y - 0.4, 0, 0.8, 0.8, 0.45, M)); at(-2.2, -0.2, (x, y) => I.box(x - 0.4, y - 0.4, 0, 0.8, 0.8, 0.45, W)); arr(M, [-4.0, -0.2], [-3.0, -0.2])
+    t(-4.8, 1.0, '$P(w)$', M, { dy: 10, size: 10, w: 800 }); t(-2.2, 1.0, l('$B$: нарушить', '$B$: break'), W, { dy: 10, size: 10, w: 800 })
+    t(-3.5, 2.6, l('$Q$: сначала $P(w)$, потом $B$', '$Q$: first $P(w)$, then $B$'), M, { dy: 16, size: 11, w: 800 })
+    arr(M, [-0.4, 0], [1.6, 0])
+    at(3.0, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.7, A)); t(3.0, 1.2, l('проверка правила', 'rule check'), A, { dy: 12, size: 11, w: 800 })
+    arr(W, [4.4, 0], [6.2, 0])
+    t(9.0, 0, l('«$Q$ нарушит»', '“$Q$ breaks it”'), W, { size: 12, w: 800, dy: -8 }); t(9.0, 0, l('= «$P(w)$ остановится»', '= “$P(w)$ halts”'), W, { size: 12, w: 800, dy: 8 })
+    t(9.0, 1.4, l('а это не решается', 'and that is undecidable'), M, { dy: 14, size: 10.5, w: 600 })
+  } },
+  // Теорема Райса, экран 3: выход — сузить проверку рамкой
+  'rice-frames': { ru: 'Три способа сузить проверку так, чтобы ответ был точным', en: 'Three ways to narrow a check so the answer is exact', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t, person } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    I.path([g(-11.6, -3.4), g(11.6, -3.4), g(11.6, 3.6), g(-11.6, 3.6), g(-11.6, -3.4)], A, { dash: '6 5', w: 2, op: 0.9 })
+    t(0, -3.4, l('выход: сузить проверку рамкой', 'the way out: narrow the check with a frame'), A, { size: 13, w: 800, dy: -10 })
+    for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) at(-8.4 + i * 0.8, -0.8 + j * 0.8, (x, y) => I.box(x - 0.25, y - 0.25, 0, 0.5, 0.5, 0.3, A))
+    t(-7.6, 1.4, l('малый мир', 'small world'), A, { dy: 12, size: 12, w: 800 }); t(-7.6, 1.4, l('3 комнаты, 5 броней: перебрать всё', '3 rooms, 5 bookings: try everything'), M, { dy: 27, size: 10, w: 600 })
+    at(0, 0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, A, 2, true)); t(0, 1.4, l('узкий язык', 'narrow language'), A, { dy: 12, size: 12, w: 800 }); t(0, 1.4, l('вопрос о тексте вместо поведения', 'ask about text, not behaviour'), M, { dy: 27, size: 10, w: 600 })
+    at(6.2, 0, (x, y) => I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.6, W)); t(6.2, 0, '?', '#fff', { gz: 0.6, size: 13, w: 800 }); arr(W, [7.2, 0], [8.4, 0]); person(9.4, -0.2, '')
+    t(7.6, 1.4, l('«не знаю»', '“don’t know”'), A, { dy: 12, size: 12, w: 800 }); t(7.6, 1.4, l('решает человек или тест', 'a person or a test decides'), M, { dy: 27, size: 10, w: 600 })
+  } },
+  // Проблема остановки: программа на входе либо доходит до финиша, либо крутится вечно, а судья не может сказать заранее
+  'halting-problem': { ru: 'Закончит программа работу или будет крутиться вечно: заранее не скажет ни одна программа', en: 'Will the program finish or loop forever: no program can tell in advance', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-9.0, 0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, M, 3)); t(-9.0, 1.4, l('программа + вход', 'program + input'), M, { dy: 12, size: 11, w: 800 })
+    arr(M, [-7.0, 0], [-3.4, 0])
+    at(-1.6, 0, (x, y) => I.agent(x - 0.7, y - 0.7, A, 1.4, '')); t(-1.6, 1.4, l('судья', 'judge'), A, { dy: 12, size: 11, w: 800 })
+    at(0.2, -2.0, (x, y) => I.box(x - 0.3, y - 0.3, 0, 0.6, 0.6, 0.45, W)); t(0.2, -2.0, '?', '#fff', { gz: 0.45, size: 12, w: 800 })
+    arr(M, [0.2, -0.8], [4.6, -3.0]); arr(M, [0.2, 0.8], [4.6, 3.0])
+    at(6.6, -3.0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, M, 2, true)); t(6.6, -1.8, l('остановится', 'halts'), M, { dy: 12, size: 11, w: 800 })
+    at(6.6, 3.0, (x, y) => I.doc(x - 0.5, y - 0.35, 0, 1.0, 0.7, M, 2)); I.path(Array.from({ length: 15 }, (_, i) => g(6.6 + 1.6 * Math.cos(i * 0.42), 3.0 + 1.0 * Math.sin(i * 0.42))), W, { w: 2.2, arrow: true }); t(6.6, 4.4, l('крутится вечно', 'runs forever'), W, { dy: 12, size: 11, w: 800 })
+    t(0, -5.6, l('ни один судья не отвечает верно для всех программ', 'no judge answers correctly for every program'), W, { size: 12, w: 800 })
+    t(0, 7.0, l('Тьюринг, 1936–1937', 'Turing, 1936–1937'), M, { size: 10.5, w: 600 })
+  } },
+  // Предикат: на вход значение, на выход «да» или «нет». Сверху числа и «чётное?», снизу программы и вопрос о них
+  'predicate': { ru: 'Предикат берёт значение и отвечает «да» или «нет»: о числах, о программах — о чём угодно', en: 'A predicate takes a value and answers “yes” or “no”: about numbers, about programs, about anything', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const row = (Y: number, head: string, items: [string, boolean][], q: string, drawItem: (X: number, Y: number, i: number) => void) => {
+      t(-11.0, Y - 2.4, head, M, { size: 12, w: 800, anchor: 'start' })
+      items.forEach(([lab], i) => { const X = -9.8 + i * 2.4; drawItem(X, Y, i); t(X, Y + 1.0, lab, M, { dy: 12, size: 11, w: 800 }) })
+      arr(M, [-2.6, Y], [-0.6, Y])
+      at(1.2, Y, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.6, A)); t(1.2, Y + 1.0, q, A, { dy: 12, size: 11, w: 800 })
+      arr(A, [3.0, Y], [5.0, Y])
+      items.forEach(([lab, yes], i) => { const X = 6.4 + i * 1.9; at(X, Y, (x, y) => I.box(x - 0.35, y - 0.35, 0, 0.7, 0.7, 0.4, yes ? A : W)); t(X, Y, yes ? '✓' : '×', '#fff', { gz: 0.4, size: 11, w: 800 }); t(X, Y + 0.9, lab, M, { dy: 12, size: 10, w: 700 }) })
+    }
+    row(-2.6, l('числа', 'numbers'), [['3', false], ['4', true], ['7', false]], l('«чётное?»', '“even?”'), (X, Y) => at(X, Y, (x, y) => I.box(x - 0.4, y - 0.4, 0, 0.8, 0.8, 0.5, M)))
+    row(3.6, l('программы', 'programs'), [['A', true], ['B', false], ['C', true]], l('«пишет в платежи?»', '“writes to payments?”'), (X, Y) => at(X, Y, (x, y) => I.doc(x - 0.5, y - 0.35, 0, 1.0, 0.7, M, 2)))
+    t(0, -6.8, '$P$ : $X$ → { ' + l('да', 'yes') + ', ' + l('нет', 'no') + ' }', A, { size: 14, w: 800 })
+  } },
+  // Алан Тьюринг: машина Тьюринга — лента клеток и головка, читает, пишет, сдвигается по правилам
+  'alan-turing': { ru: 'Машина Тьюринга: лента с клетками и головка, которая читает, пишет и сдвигается по правилам', en: 'A Turing machine: a tape of cells and a head that reads, writes and moves by rules', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const cells = ['1', '0', '1', '1', '_', '0', '1']
+    cells.forEach((c, i) => { const X = -7.2 + i * 2.4; at(X, 1.0, (x, y) => I.box(x - 0.55, y - 0.55, 0, 1.1, 1.1, 0.35, i === 3 ? A : M)); t(X, 1.0, c, '#fff', { gz: 0.35, size: 13, w: 800 }) })
+    t(-10.6, 1.0, '…', M, { size: 16, w: 800 }); t(9.4, 1.0, '…', M, { size: 16, w: 800 })
+    at(0, -2.4, (x, y) => I.box(x - 0.5, y - 0.5, 0, 1.0, 1.0, 0.5, A)); t(0, -1.4, l('головка', 'head'), A, { dy: 8, size: 12, w: 800 })
+    I.path([g(0, -0.6), g(0, 0.3)], A, { w: 2.2, arrow: true })
+    t(5.2, -2.4, l('правило: прочитал 1 → пишет 0, шаг вправо', 'rule: read 1 → write 0, step right'), A, { size: 11, w: 700, dy: 4 })
+    t(0, 3.6, l('лента клеток', 'a tape of cells'), M, { size: 11.5, w: 800, dy: 10 })
+    t(0, -6.6, l('Алан Тьюринг, 1936: модель любой программы', 'Alan Turing, 1936: a model of any program'), M, { size: 13, w: 800 })
+  } },
+  // Проблема остановки, экран 2: спорщик спрашивает судью о себе и делает наоборот — судья ошибается в обоих случаях
+  'halting-problem/2': { ru: 'Спорщик спрашивает судью о себе и поступает наоборот: судья ошибается при любом ответе', en: 'The contrarian asks the judge about itself and does the opposite: the judge is wrong whatever it says', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.6, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.7, M)); t(-8.6, 1.3, l('спорщик', 'contrarian'), M, { dy: 12, size: 12, w: 800 }); t(-8.6, 1.3, l('«судья, а я остановлюсь?»', '“judge, will I halt?”'), M, { dy: 27, size: 10, w: 600 })
+    arr(M, [-6.8, 0], [-3.4, 0])
+    at(-1.6, 0, (x, y) => I.agent(x - 0.7, y - 0.7, A, 1.4, '')); t(-1.6, 1.3, l('судья', 'judge'), A, { dy: 12, size: 12, w: 800 })
+    arr(A, [0.2, -0.8], [3.6, -3.0]); arr(A, [0.2, 0.8], [3.6, 3.0])
+    t(1.9, -3.0, l('«остановится»', '“halts”'), A, { size: 10.5, w: 800 }); t(1.9, 3.0, l('«не остановится»', '“won’t halt”'), A, { size: 10.5, w: 800, dy: 10 })
+    t(7.6, -3.0, l('спорщик крутится вечно', 'the contrarian loops forever'), W, { size: 11.5, w: 800, dy: -4 }); t(7.6, -3.0, l('судья ошибся', 'the judge was wrong'), W, { size: 10.5, w: 600, dy: 12 })
+    t(7.6, 3.0, l('спорщик сразу останавливается', 'the contrarian stops at once'), W, { size: 11.5, w: 800, dy: -4 }); t(7.6, 3.0, l('судья ошибся', 'the judge was wrong'), W, { size: 10.5, w: 600, dy: 12 })
+    t(0, -6.0, l('как в парадоксе брадобрея: вопрос о самом себе', 'as in the barber paradox: a question about itself'), M, { size: 12, w: 800 })
+  } },
+  // Парадокс брадобрея, экран 1: жители делятся на два множества A и B, каждый ровно в одном; брадобрею места нет
+  'barber-paradox': { ru: 'Каждый житель ровно в одном множестве: $A$ или $B$. Брадобрей — ни в одном: встанет в $A$, окажется в $B$, и наоборот', en: 'Every villager is in exactly one set, $A$ or $B$. The barber is in neither: put him in $A$ and he lands in $B$, and vice versa', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t, person } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const set = (X: number, name: string, title: string, sub: string) => {
+      I.path([g(X - 3.6, 0.4), g(X + 3.6, 0.4), g(X + 3.6, 5.8), g(X - 3.6, 5.8), g(X - 3.6, 0.4)], M, { dash: '5 4', w: 1.8, op: 0.85 })
+      t(X - 3.0, 0.4, '$' + name + '$', M, { size: 16, w: 800, dy: 18 })
+      person(X - 1.0, 4.0, ''); person(X + 1.4, 4.0, '')
+      t(X, 5.8, title, M, { size: 12, w: 800, dy: 16 }); t(X, 5.8, sub, M, { size: 10.5, w: 600, dy: 31 })
+    }
+    set(-6.6, 'A', l('$A$ = бреют себя сами', '$A$ = shave themselves'), l('брадобрей их не бреет', 'the barber doesn’t shave them'))
+    set(6.6, 'B', l('$B$ = их бреет брадобрей', '$B$ = shaved by the barber'), l('правило: $B$ — все, кто не в $A$', 'rule: $B$ is everyone not in $A$'))
+    person(0, -3.4, ''); t(0, -3.4, l('брадобрей — тоже житель', 'the barber is a villager too'), M, { size: 12, w: 800, dy: 22 })
+    at(1.4, -4.6, (x, y) => I.box(x - 0.35, y - 0.35, 0, 0.7, 0.7, 0.4, W)); t(1.4, -4.6, '?', '#fff', { gz: 0.4, size: 12, w: 800 })
+    arr(W, [-1.4, -2.2], [-5.0, 0.2]); arr(W, [1.4, -2.2], [5.0, 0.2])
+    t(-5.6, -2.4, l('в $A$ → бреет себя сам,', 'in $A$ → shaves himself,'), W, { size: 10.5, w: 800, dy: -4 }); t(-5.6, -2.4, l('то есть его бреет брадобрей → он в $B$', 'so the barber shaves him → he is in $B$'), W, { size: 10.5, w: 800, dy: 10 })
+    t(5.6, -2.4, l('в $B$ → его бреет брадобрей,', 'in $B$ → the barber shaves him,'), W, { size: 10.5, w: 800, dy: -4 }); t(5.6, -2.4, l('то есть он сам → он в $A$', 'that is, himself → he is in $A$'), W, { size: 10.5, w: 800, dy: 10 })
+    t(0, -7.0, l('каждый житель — ровно в одном множестве; брадобрею места нет', 'every villager is in exactly one set; the barber has no place'), W, { size: 12.5, w: 800 })
+  } },
+  // Парадокс брадобрея, экран 2: исходный парадокс Рассела — множество всех множеств, которые не содержат себя
+  'barber-paradox/2': { ru: 'Множество $R$ всех множеств, которые не содержат себя: $R$ в $R$ тогда и только тогда, когда $R$ не в $R$', en: 'The set $R$ of all sets that do not contain themselves: $R$ is in $R$ exactly when $R$ is not in $R$', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    t(0, -7.0, l('Рассел, 1901: множества, которые содержат или не содержат сами себя', 'Russell, 1901: sets that do or do not contain themselves'), M, { size: 12.5, w: 800 })
+    // Обычное множество: кошки, само не кошка
+    I.path([g(-11.4, -4.6), g(-4.2, -4.6), g(-4.2, 0.6), g(-11.4, 0.6), g(-11.4, -4.6)], M, { dash: '5 4', w: 1.8, op: 0.85 })
+    ;[-9.8, -7.8, -5.8].forEach((X) => at(X, -2.2, (x, y) => I.box(x - 0.4, y - 0.4, 0, 0.8, 0.8, 0.5, M)))
+    t(-7.8, 0.6, l('множество кошек', 'the set of cats'), M, { size: 11.5, w: 800, dy: 16 }); t(-7.8, 0.6, l('само не кошка → не содержит себя', 'is not a cat → doesn’t contain itself'), M, { size: 10, w: 600, dy: 30 })
+    // Необычное множество: всё, что не кошка, — само не кошка, поэтому лежит внутри себя
+    I.path([g(4.2, -4.6), g(11.4, -4.6), g(11.4, 0.6), g(4.2, 0.6), g(4.2, -4.6)], M, { dash: '5 4', w: 1.8, op: 0.85 })
+    at(5.8, -2.2, (x, y) => I.doc(x - 0.5, y - 0.35, 0, 1.0, 0.7, M, 2)); at(7.8, -2.2, (x, y) => I.cyl(x, y, 0, 0.4, 0.6, M))
+    I.path([g(9.4, -3.8), g(10.9, -3.8), g(10.9, -0.6), g(9.4, -0.6), g(9.4, -3.8)], M, { dash: '3 3', w: 1.4, op: 0.85 }); t(10.15, -2.2, l('оно само', 'itself'), M, { size: 9.5, w: 800 })
+    t(7.8, 0.6, l('всё, что не кошка', 'everything that is not a cat'), M, { size: 11.5, w: 800, dy: 16 }); t(7.8, 0.6, l('само не кошка → лежит внутри себя', 'is not a cat → lies inside itself'), M, { size: 10, w: 600, dy: 30 })
+    // R и вопрос
+    at(0, 3.2, (x, y) => I.box(x - 0.7, y - 0.7, 0, 1.4, 1.4, 0.8, W)); t(0, 3.2, '$R$', '#fff', { gz: 0.8, size: 15, w: 800 })
+    t(0, 4.8, l('$R$ = все множества, которые не содержат себя', '$R$ = all sets that do not contain themselves'), W, { size: 11.5, w: 800, dy: 14 })
+    t(0, 4.8, '$R ∈ R ⇔ R ∉ R$', W, { size: 15, w: 800, dy: 36 })
+    arr(M, [-4.0, -1.4], [-1.6, 2.0]); t(-1.4, -0.6, l('такие идут в $R$', 'these go into $R$'), M, { size: 10.5, w: 700, anchor: 'start' })
+  } },
+  // Event storming: команда раскладывает события на ленте времени, над ними команды, группы складываются в агрегаты
+  'event-storming': { ru: 'События на ленте времени, над ними команды, группы событий становятся агрегатами', en: 'Events on a timeline, commands above them, groups of events become aggregates', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, t, person } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const doc = (X: number, Y: number, col: string) => at(X, Y, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, col, 2))
+    // Агрегат «Заказ»: рамка вокруг команд и событий, которые меняются вместе
+    I.path([g(-10.6, -4.6), g(2.4, -4.6), g(2.4, 4.6), g(-10.6, 4.6), g(-10.6, -4.6)], A, { dash: '6 5', w: 2, op: 0.9 })
+    t(-4.2, -5.0, l('агрегат «Заказ»', 'aggregate "Order"'), A, { size: 13, w: 800, dy: -4 })
+    t(-12.4, -2.4, l('команды', 'commands'), A, { size: 11, w: 800, anchor: 'end' })
+    t(-12.4, 2.0, l('события', 'events'), M, { size: 11, w: 800, anchor: 'end' })
+    const cols: [number, string, string, string, string][] = [[-8.4, 'Создать', 'Create', 'создан', 'created'], [-4.2, 'Оплатить', 'Pay', 'оплачен', 'paid'], [0, 'Отправить', 'Ship', 'отправлен', 'shipped']]
+    for (const [X, c1, c2, e1, e2] of cols) {
+      doc(X, -2.4, A); t(X, -1.4, l(c1, c2), A, { dy: 12, size: 10.5, w: 800 })
+      doc(X, 2.0, M); t(X, 3.0, l('заказ ' + e1, 'order ' + e2), M, { dy: 12, size: 10.5, w: 800 })
+    }
+    // Лента времени и событие в соседнем контексте
+    I.path([g(-11.0, 5.6), g(11.0, 5.6)], M, { w: 2, arrow: true, op: 0.8 }); t(11.0, 5.6, l('время', 'time'), M, { dy: 18, size: 10, w: 700 })
+    I.path([g(4.6, -4.6), g(4.6, 4.8)], W, { dash: '6 5', w: 2, op: 0.9 })
+    doc(8.0, 2.0, M); t(8.0, 3.0, l('посылка доставлена', 'parcel delivered'), M, { dy: 12, size: 10.5, w: 800 }); t(8.0, -2.4, l('Доставка', 'Delivery'), M, { size: 12, w: 800 })
+    person(-9.4, 8.2, ''); person(-7.4, 8.2, ''); t(-8.4, 9.6, l('команда у стены', 'the team at the wall'), M, { size: 11, w: 700, dy: 4 })
   } },
   'race-condition': { ru: 'Два действия пересеклись, и итог зависит от того, кто успел', en: 'Two actions overlap and the outcome depends on who got there first', tile: [0, 0, 0, 0], draw: (I, l) => {
     const { g, arr, t, person } = screen(I)

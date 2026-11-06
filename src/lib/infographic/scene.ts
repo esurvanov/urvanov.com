@@ -6,7 +6,7 @@ import { DEFS, Iso, type Pt } from './iso'
 import * as K from './marks'
 import * as F from './flat'
 import { bounds, legendRow } from './frame'
-import { type Lang, A, M, S2, esc, f } from './palette'
+import { type Lang, A, M, S2, esc, f, txt } from './palette'
 
 export type L = (ru: string, en: string) => string
 
@@ -32,7 +32,7 @@ export class Canvas {
   /** Подпись в координатах картинки; ls — разрядка ('.08em'), underline — подчёркнутая (ссылка) */
   text(x: number, y: number, t: string, col: string, o: { size?: number; w?: number; anchor?: 'start' | 'middle' | 'end'; halo?: boolean; op?: number; ls?: string; underline?: boolean } = {}) {
     const { size = 11, w, anchor = 'middle', halo = false, op, ls, underline } = o
-    this.layers.push(`<text x="${f(x)}" y="${f(y)}" text-anchor="${anchor}" font-size="${size}"${w ? ` font-weight="${w}"` : ''} fill="${col}"${ls ? ` letter-spacing="${ls}"` : ''}${underline ? ' text-decoration="underline"' : ''}${op !== undefined ? ` opacity="${op}"` : ''}${halo ? ' stroke="var(--surface)" stroke-width="3.5" stroke-linejoin="round" paint-order="stroke"' : ''}>${esc(t)}</text>`)
+    this.layers.push(`<text x="${f(x)}" y="${f(y)}" text-anchor="${anchor}" font-size="${size}"${w ? ` font-weight="${w}"` : ''} fill="${col}"${ls ? ` letter-spacing="${ls}"` : ''}${underline ? ' text-decoration="underline"' : ''}${op !== undefined ? ` opacity="${op}"` : ''}${halo ? ' stroke="var(--surface)" stroke-width="3.5" stroke-linejoin="round" paint-order="stroke"' : ''}>${txt(t)}</text>`)
   }
   /** Заголовок колонки капсом с разрядкой: БЫЛО / СТАЛО, РУКАМИ / С АГЕНТОМ */
   caps(x: number, y: number, t: string, col: string, o: { size?: number; ls?: string } = {}) { this.text(x, y, t, col, { size: o.size ?? 11, w: 700, ls: o.ls ?? '.08em' }) }

@@ -26,4 +26,7 @@ export const LEGEND: [string, string, string][] = [
 ]
 
 export const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+/** Подпись схемы: как esc, а $…$ — формула тем же шрифтом, что формулы в тексте (KaTeX_Math, курсив).
+ *  Цена вроде «$20» формулой не считается: после открывающего знака не может стоять цифра или пробел */
+export const txt = (s: string) => esc(s).replace(/(?<![\\$\w])\$(?![\s\d$])([^$\n]+?)(?<!\s)\$(?!\d)/g, '<tspan font-family="KaTeX_Math, \'Times New Roman\', serif" font-style="italic" font-weight="400" font-size="1.15em">$1</tspan>')
 export const f = (n: number) => n.toFixed(1)

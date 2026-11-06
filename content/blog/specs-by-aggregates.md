@@ -102,6 +102,7 @@ toc: growth=Почему спек много | rfc=Уровни RFC | card=Ка�
     <item href="/blog/harness-driven-development/" k="Петля ошибок" t="Harness-Driven Development">как ошибки агента становятся правилами</item>
     <item href="/blog/specs-rules-skills/" k="Контекст" t="Спеки, библия, правила и скиллы">что агент знает о проекте и где это лежит</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Среда" t="Сравнение харнессов">где работает агент и что он видит</item>
+    <item href="/blog/agent-checkpoint/" k="Проверка" t="Где ставить проверку работы ИИ-агента">агрегат как пост проверки</item>
   </b-links>
 </b-chapter>
 <b-footer compact>Пример с бронированием выдуман. Термины — по источникам в подписях под схемами.</b-footer>

@@ -65,6 +65,7 @@ toc: idea=Агент на контекст | scale=Масштабировани�
     <item href="/blog/specs-by-aggregates/" k="Спеки" t="Спеки по агрегатам">границы контекстов в спеках</item>
     <item href="/blog/agent-hands-work-back-to-you/" k="Агент" t="Заберут ли агенты вашу работу">где сложность настоящая</item>
     <item href="/materials/glossary/bounded-context/" k="Термин" t="Ограниченный контекст">что это и зачем</item>
+    <item href="/blog/agent-checkpoint/" k="Проверка" t="Где ставить проверку работы ИИ-агента">граница агрегата и размер контекста</item>
   </b-links>
 </b-chapter>
 </b-post>

@@ -1,9 +1,10 @@
 import { useEffect, useMemo } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { blogListPath, findCategory, findPost, formatDate } from '@/data/blog'
+import { blogListPath, findCategory, findPost } from '@/data/blog'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
 import Toc from '@/components/site/Toc'
+import Dates from '@/components/site/Dates'
 import { ICONS } from '@/components/site/icons'
 import { otherLang, useT, withLang, withSlash } from '@/lib/i18n'
 import { initHddGame } from '@/lib/hddGame'
@@ -90,12 +91,13 @@ export default function BlogPostView() {
           {main}{sub && <span className="s-title-sub">{sub}</span>}
         </h1>
         {post.wide && post.description && <p className="s-lead" itemProp="description" dangerouslySetInnerHTML={{ __html: linkTerms(post.description.replace(/&/g, '&amp;').replace(/</g, '&lt;'), lang).html }} />}
+        <div className="s-post-meta">
+        <Dates created={post.date} updated={post.updated} lang={lang} schema />
         <p className="s-card-text">
-          <span>{t({ ru: 'создано', en: 'created' })} <time dateTime={post.date} itemProp="datePublished">{formatDate(post.date, lang)}</time></span>
-          {' · '}<span>{t({ ru: 'обновлено', en: 'updated' })} <time dateTime={post.updated ?? post.date} itemProp="dateModified">{formatDate(post.updated ?? post.date, lang)}</time></span>
-          {' · '}{post.minutes} {t({ ru: 'мин', en: 'min' })} · <span itemProp="author">{author}</span>
+          {post.minutes} {t({ ru: 'мин', en: 'min' })} · <span itemProp="author">{author}</span>
           {' · '}<Link className="s-post-cat" to={to(blogListPath(cat.slug))} itemProp="articleSection" data-track="cta" data-track-id="blog_category" data-track-label={cat.slug}>{ICONS[cat.icon]}{t(cat.name)}</Link>
         </p>
+        </div>
       </header>
       <div className="s-prose" itemProp="articleBody" dangerouslySetInnerHTML={{ __html: body }} />
       {(next || sharing.length > 0) && (

@@ -102,6 +102,7 @@ toc: growth=Why specs pile up | rfc=RFC levels | card=Aggregate card | contexts=
     <item href="/en/blog/harness-driven-development/" k="Mistake loop" t="Harness-Driven Development">how agent mistakes become rules</item>
     <item href="/en/blog/specs-rules-skills/" k="Context" t="Specs, bible, rules and skills">what the agent knows about the project and where it lives</item>
     <item href="/en/blog/ai-in-code-harness-and-tools/" k="Environment" t="Harness comparison">where the agent works and what it sees</item>
+    <item href="/blog/agent-checkpoint/" k="Checks" t="Where to check an AI agent's work">the aggregate as a checkpoint</item>
   </b-links>
 </b-chapter>
 <b-footer compact>The booking example is made up. Terms and approaches follow the sources linked under the diagrams.</b-footer>

@@ -3,7 +3,7 @@
 // Каждая функция возвращает строку SVG; на холсте их рисуют одноимённые методы Canvas (c.card, c.edge, …).
 // cls — класс CSS вместо цветов: такие схемы раскрашивает CSS поста, а деталь пишет только геометрию.
 import { type Pt } from './iso'
-import { A, M, W, esc } from './palette'
+import { A, M, W, txt } from './palette'
 import { badge } from './marks'
 
 const f = (v: number) => String(+v.toFixed(4))
@@ -33,7 +33,7 @@ export const edge = (d: string, o: Paint & { marker?: string } = {}) =>
 /** Подпись: пишет только заданное (без anchor — от левого края, без col — цвет даёт CSS по cls) */
 export interface Txt { size?: number; w?: number | string; col?: string; anchor?: 'start' | 'middle' | 'end'; cls?: string; op?: number; ls?: string }
 export const label = (x: number, y: number, t: string, o: Txt = {}) =>
-  `<text${at({ class: o.cls, x, y, 'text-anchor': o.anchor, 'font-size': o.size, 'font-weight': o.w, fill: o.col, opacity: o.op, 'letter-spacing': o.ls })}>${esc(t)}</text>`
+  `<text${at({ class: o.cls, x, y, 'text-anchor': o.anchor, 'font-size': o.size, 'font-weight': o.w, fill: o.col, opacity: o.op, 'letter-spacing': o.ls })}>${txt(t)}</text>`
 
 /** Строка подписи внутри карточки: dy — от верха карточки; dx — от левого края (без dx — по центру) */
 export type CardLine = Txt & { t: string; dy: number; dx?: number }

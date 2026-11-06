@@ -1,3 +1,4 @@
 /* Пояснение под заголовком: приглушённый абзац */
 .s-rich.bk .bk-why { color: var(--ink-2); font-size: 16px; }
-.s-rich.bk .bk-why.bk-why-left { text-align: left; }
+/* Пояснение по левому краю (align="left") — тоже по ширине с переносами: так набраны все абзацы статей */
+.s-rich.bk .bk-why.bk-why-left { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
