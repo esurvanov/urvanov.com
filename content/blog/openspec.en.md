@@ -2,7 +2,7 @@
 title: What is OpenSpec: setup, commands and a change example
 date: 2026-11-07
 updated: 2026-11-07
-description: How OpenSpec by Fission AI works: a change folder with a plan, requirements and tasks, three agent commands and a merge into the shared specs. Setup in two commands, a live example from this site, a comparison with Spec Kit and ready prompts to start.
+description: How OpenSpec by Fission AI works: a change folder with a plan, requirements and tasks, three agent commands and a merge into the shared specs. Setup in two commands, a real change from the urvanov.com site repository, a comparison with Spec Kit and ready prompts to start.
 tags: AI, OpenSpec, specs, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
 layout: wide
@@ -10,13 +10,16 @@ mentions: OpenSpec, Spec-Driven Development, Spec Kit, Claude Code, Codex, Curso
 toc: what=What it is | install=Setup | flow=Three commands | example=Example | kit=OpenSpec or Spec Kit | start=How to start | faq=Questions | next=Further reading
 ---
 
-OpenSpec is a free open-source framework for spec-driven development. Before any code, an AI agent writes a change plan into the project folder: why the change is needed, the requirements, the approach and the tasks. You review the plan, the agent writes code by the tasks, and the finished requirements merge into the project's shared specs. Below are setup, three commands and a live example.
+OpenSpec is a free open-source framework for spec-driven development. Before any code, an AI agent writes a change plan into the project folder: why the change is needed, the requirements, the approach and the tasks. You review the plan, the agent writes code by the tasks, and the finished requirements merge into the project's shared specs. Below are setup, three commands and a walkthrough of a real change.
 
 <b-post series="specs">
 <b-chapter id="what" icon="file-lines" title="What OpenSpec is">
   <b-why align="left">Without a plan, an agent writes code straight from a chat message. The intent lives only in that chat: a week later nobody remembers why it was done this way, and the next agent starts from scratch and may redo it its own way.</b-why>
+  <iso-art name="openspec/chat-vs-files"></iso-art>
+  <b-why align="left">On the left is the usual way: you tell the agent “do it like this”, then “and also this”, and it writes code. The code stays, but the explanation of why it looks this way stays in the chat history. On the right is work with OpenSpec: the agent first puts a plan into the project files, you read and edit that plan, and only then the agent writes code strictly by it. The plan is stored in the repository together with the code, where every teammate and every later agent can see it.</b-why>
   <b-why align="left">OpenSpec moves the intent out of the chat into files next to the code. Every change gets its own folder in <code>openspec/changes</code>: it records why, which requirements change, how to do it and in which steps. The live requirements for the whole system sit separately, in <code>openspec/specs</code>. It is plain Markdown with no special syntax<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «Plain Markdown — requirements with concrete scenarios, no special syntax to learn» — github.com/Fission-AI/OpenSpec"/>, so both people and the agent read it.</b-why>
   <iso-art name="term:openspec"></iso-art>
+  <b-why align="left">The diagram shows two parts. The change folder is a draft: it holds what you are about to change. The shared specs describe the system as it already is. While a change is in progress, the shared specs stay untouched. When the code is done, the requirements from the change folder move into the shared specs, and the description of the system matches the code again. Every change consists of four files:</b-why>
   <b-table>
   | File | Which question it answers | What is inside |
   |---|---|---|
@@ -34,11 +37,8 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
 
 <b-chapter id="install" icon="terminal" title="Setup">
   <b-why align="left">OpenSpec has two parts. The first is the <code>openspec</code> command-line program: you install it once per computer. The second is setting up a specific project: <code>openspec init</code> creates an <code>openspec/</code> folder in it and adds commands like <code>/opsx:propose</code> to your agents.</b-why>
-  <b-pipe label="What happens during setup">
-    <node icon="terminal" color="c-code" sub="once per computer">install openspec</node>
-    <node icon="folder" color="c-proj" sub="in the project folder">openspec init</node>
-    <node icon="bot" color="c-chat" sub="commands for the chosen agents">/opsx:propose and others</node>
-  </b-pipe>
+  <iso-art name="openspec/install"></iso-art>
+  <b-why align="left">The order on the diagram: first the program appears on the computer, then an <code>openspec/</code> folder appears in the project with two subfolders — <code>specs</code> for the live requirements and <code>changes</code> for changes in progress — and finally your agents get new commands. The project code itself does not change: only the plans folder and the command files for the agents are added. The command for macOS and Linux:</b-why>
   <b-codebox title="Install on macOS and Linux">
     curl -fsSL https://openspec.dev/cli/install.sh | sh
   </b-codebox>
@@ -49,6 +49,7 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
     openspec init
   </b-codebox>
   <b-why align="left"><code>openspec init</code> asks which agents you use and installs commands for exactly those. The command name differs by agent: <code>/opsx:propose</code> in Claude Code, <code>/opsx-propose</code> in Cursor and GitHub Copilot, <code>$openspec-propose</code> in Codex<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «/opsx:propose is the canonical name; your tool may spell it /opsx-propose (Cursor, GitHub Copilot), @opsx-propose (Amazon Q) or $openspec-propose (Codex)» — github.com/Fission-AI/OpenSpec"/>. The rest of the article uses the Claude Code spelling.</b-why>
+  <b-why align="left">If the project uses several agents, for example part of the team works in Cursor and part in Claude Code, select them all: the change plan is shared, and each agent gets its own commands. The program is free, runs locally and needs no account.</b-why>
   <b-finding>
     <ex>Two commands: one installs the program, the other prepares the project and connects the agents.</ex>
     <gen>You do not have to set it up by hand: OpenSpec has a ready prompt with which the agent installs the program, runs <code>openspec init</code> and checks the result.</gen>
@@ -57,7 +58,10 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
 </b-chapter>
 
 <b-chapter id="flow" icon="list-arrow" title="Three commands: plan, code, merge">
-  <b-why align="left">Work goes around a loop of three commands. Before them you can think out loud with <code>/opsx:explore</code>: the agent reads the code, suggests options and changes nothing. Once it is clear what to do, the main path starts. A sample session based on the demo in the OpenSpec description<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /opsx:propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /opsx:archive / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
+  <b-why align="left">Work goes around a loop of three commands. Before them you can think out loud with <code>/opsx:explore</code>: the agent reads the code, suggests options and changes nothing. Once it is clear what to do, the main path starts.</b-why>
+  <iso-art name="openspec/loop"></iso-art>
+  <b-why align="left">Read the loop clockwise. The first command, <code>/opsx:propose</code>, asks the agent to write a plan: it creates a change folder and four files. Then it is your turn: you read the plan and edit it in the chat or right in the files. This is the main control point, because fixing a paragraph of text is cheaper than rewriting finished code. The second command, <code>/opsx:apply</code>, starts work by the tasks: the agent takes tasks from <code>tasks.md</code> one by one and ticks each off. The third command, <code>/opsx:archive</code>, closes the change: the requirements move into the shared specs, and the folder goes to the archive with its whole history of decisions. The next change starts from the updated specs.</b-why>
+  <b-why align="left">Here is what a short terminal session looks like. A sample session based on the demo in the OpenSpec description<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /opsx:propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /opsx:archive / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
   <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec · /opsx" path="~/projects/shop">
     <line kind="ask">/opsx:propose add-dark-mode</line>
     <line kind="act">Created openspec/changes/add-dark-mode/</line>
@@ -85,16 +89,18 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
   </b-finding>
 </b-chapter>
 
-<b-chapter id="example" icon="notebook" title="A live example from this site">
-  <b-why align="left">The change <code>fill-all-pattern-details</code> from this site’s repository. In the AI pattern catalog, 72 of 73 cards opened with only a title and one line on click. Each needed filling in: problem, solution, quote, when it works and when it breaks.</b-why>
+<b-chapter id="example" icon="notebook" title="Example: a change in the urvanov.com site repository">
+  <b-why align="left">This example comes from the repository of urvanov.com, the site where this article is published. The site code has an <code>openspec/</code> folder where this change is kept. The site has an <a href="/patterns">AI pattern catalog</a>: 73 techniques for working with AI agents, grouped into 10 topics such as context and memory, orchestration, security and quality control. Each technique is shown as a card. The catalog was made as a companion to the talk “Spec-Driven Development in Practice” at the Podlodka Crew conference.</b-why>
+  <b-why align="left">The problem: on click, 72 of the 73 cards showed only a name and one line of description. Every card had to open in full: which problem the technique solves, how it works, a practitioner’s quote, when it works and when it breaks. The material already existed in research notes; it had to be moved over carefully, without making anything up. The change was named <code>fill-all-pattern-details</code>. Here is what the agent wrote into its four files:</b-why>
   <b-table>
   | File | What it held |
   |---|---|
-  | <code>proposal.md</code> | why: the pattern catalog is a key part of the talk and empty cards spoil it; what changes: the detail field for every pattern |
+  | <code>proposal.md</code> | why: the catalog is a key part of the talk and empty cards spoil it; what changes: all 73 techniques get a detailed description |
   | <code>design.md</code> | one task per pattern category; quotes only from the source file, nothing invented; a diagram only where there is a data flow |
   | <code>specs/pattern-detail/spec.md</code> | the requirement “every pattern has a filled detail” and three scenarios for showing a card |
   | <code>tasks.md</code> | 10 tasks for 10 categories, all ticked |
   </b-table>
+  <b-why align="left">Below is a piece of the requirements file. SHALL marks a mandatory requirement. A Scenario is a check: WHEN describes the situation, THEN what must happen. Here detail is the full description of a technique, and problem and solution are its “problem” and “solution” parts.</b-why>
   <b-codebox title="A requirement excerpt from specs/pattern-detail/spec.md">
     ## MODIFIED Requirements
     ### Requirement: Pattern detail content structure
@@ -104,6 +110,7 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
     - THEN the card shows only those sections, with no empty blocks
   </b-codebox>
   <b-why align="left">The “quotes only from the source” decision was written in design.md before the code. So the agent did not make up quotes where there were none, and the “partial content” scenario set in advance how a card looks without a quote or a diagram.</b-why>
+  <b-why align="left">The work took 10 tasks, one per catalog topic. All 10 tasks are ticked, but the archive command was never run: the change folder still sits in <code>openspec/changes</code>, and the site has no shared specs. This is a common mistake. The requirement “every technique has a detailed description” lives only in the change draft, and the next agent reading the shared specs will not learn about it. One <code>/opsx:archive</code> command would move it into the shared specs.</b-why>
   <b-finding>
     <ex>The “partial content” scenario appeared in the plan before the code and set how a card behaves without a quote or a diagram.</ex>
     <gen>Requirements with “when — then” scenarios read like tests: the agent knows what counts as done.</gen>
