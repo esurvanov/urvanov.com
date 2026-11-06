@@ -3,6 +3,7 @@ import { POSTS, BLOG_CATEGORIES, blogListPath, findCategory, pageCount, postsIn 
 import { config } from '@/data/config'
 import { GAME_PAGES } from '@/data/games'
 import { ARCHITECTURES, architecturePath } from '@/data/architecture'
+import { ARCHITECTURE_EXTRA } from '@/data/architectureExtra'
 import { LAB_PAGES } from '@/data/labs'
 import { ALL_TERMS, glossaryPath, postsWithTerm, setOfTerm } from '@/data/glossary'
 import { AI_OFFERS } from '@/data/aiOffers'
@@ -380,21 +381,28 @@ export function allPages(): PageMeta[] {
     const alternates = [{ lang: a.lang, path: withLang(architecturePath(a.game), a.lang) }, ...(tr ? [{ lang: tr.lang, path: withLang(architecturePath(a.game), tr.lang) }] : [])]
     const path = withLang(architecturePath(a.game), a.lang), pageUrl = url(path)
     const image = `/games/${g.slug}/${g.shots[0].file}`
+    const ex = ARCHITECTURE_EXTRA[a.game]
+    const fullTitle = ex ? `${a.title.split(': ')[0]}: ${ex.sub[a.lang]}` : a.title
+    // Дата правки: разбор или дополнения сайта к нему — что позже
+    const modified = [a.date, ex?.updated].filter(Boolean).sort().pop() || undefined
     pages.push({
       path, lang: a.lang,
       title: `${a.title.split(': ')[0]} — ${a.lang === 'en' ? 'Egor Urvanov' : SITE_NAME}`,
-      ogTitle: a.title,
+      ogTitle: fullTitle,
       description: a.description,
       type: 'article',
-      modified: a.date || undefined,
+      date: a.date || undefined,
+      modified,
+      jsonLdExtra: ex ? [{ '@type': 'FAQPage', mainEntity: ex.faq.map((f) => ({ '@type': 'Question', name: f.q[a.lang], acceptedAnswer: { '@type': 'Answer', text: f.a[a.lang] } })) }] : undefined,
       image,
       alternates,
       sources: ['src/data/architecture.ts', 'src/components/ArchitectureView.tsx'],
       jsonLd: {
         '@type': 'TechArticle',
-        headline: a.title,
+        headline: fullTitle,
         description: a.description,
-        ...(a.date ? { dateModified: a.date } : {}),
+        ...(a.date ? { datePublished: a.date } : {}),
+        ...(modified ? { dateModified: modified } : {}),
         inLanguage: a.lang,
         keywords: a.tags.join(', '),
         wordCount: a.words,
