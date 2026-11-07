@@ -8,3 +8,22 @@
 /* «Дальше по теме» под статьёй (BlogPostView выносит главу id="next" вниз): без номера и черты */
 .s-rich.bk.s-next-wrap .bk-chapter { margin-top: 40px; padding-top: 0; border-top: 0; counter-increment: none; }
 .s-rich.bk.s-next-wrap .bk-chapter::before { display: none; }
+/* Серия «agg»: обычный текст главы (абзацы без класса, списки) набран как пояснения bk-why — без скачков размера и цвета */
+.s-rich.bk.bk-post-agg .bk-chapter > :is(p:not([class]), ul, ol) { font-size: 16px; line-height: 28px; color: var(--ink-2); }
+/* Теорема Райса: вкладки под схемой свойств (#rice-cond1…3) и под треугольником (#rice-tri1…3) — одна группа радиокнопок rice-k.
+   Номер k в обеих значит одно свойство: выбор в любой подсвечивает свойство k на обеих схемах, вкладку k в обоих рядах
+   и колонку k таблицы #rice-wishes. Таблица остаётся обычным текстом страницы, приглушается только прозрачностью */
+.s-rich.bk .bk-chapter:has(:is(#rice-cond1, #rice-tri1):checked) #rice-wishes :is(td, th):not(:nth-child(1)) { opacity: .35; }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond1, #rice-tri1):checked) .bk-lane .bk:not(.bk1) { opacity: .22; }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond1, #rice-tri1):checked) .bk-lane .bk1 .hl { opacity: 1; }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond1, #rice-tri1):checked) .bk-pick-tabs-row label:nth-child(1) { border-color: var(--accent); color: var(--ink); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond2, #rice-tri2):checked) #rice-wishes :is(td, th):not(:nth-child(2)) { opacity: .35; }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond2, #rice-tri2):checked) .bk-lane .bk:not(.bk2) { opacity: .22; }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond2, #rice-tri2):checked) .bk-lane .bk2 .hl { opacity: 1; }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond2, #rice-tri2):checked) .bk-pick-tabs-row label:nth-child(2) { border-color: var(--accent); color: var(--ink); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond3, #rice-tri3):checked) #rice-wishes :is(td, th):not(:nth-child(3)) { opacity: .35; }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond3, #rice-tri3):checked) .bk-lane .bk:not(.bk3) { opacity: .22; }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond3, #rice-tri3):checked) .bk-lane .bk3 .hl { opacity: 1; }
+.s-rich.bk .bk-chapter:has(:is(#rice-cond3, #rice-tri3):checked) .bk-pick-tabs-row label:nth-child(3) { border-color: var(--accent); color: var(--ink); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+/* Заголовки колонок таблицы — подписи к вкладкам: клик по колонке выбирает свойство */
+.s-rich.bk .bk-chapter #rice-wishes th label { cursor: pointer; }

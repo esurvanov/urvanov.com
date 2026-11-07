@@ -14,7 +14,7 @@ export interface Term {
   match: L<string[]>
   /** Слаги родственных терминов */
   related: string[]
-  /** Совпадение с учётом регистра: найденный в тексте фрагмент должен быть ровно такой (ReAct и React — разные термины, а поиск по `match` не различает регистр) */
+  /** Совпадение с учётом регистра: найденный в тексте фрагмент должен начинаться ровно так (Helm, Helm-чартами) (ReAct и React — разные термины, а поиск по `match` не различает регистр) */
   exact?: string
   /** Свой заголовок и описание для поиска вместо шаблонных (описание до ~160 знаков) */
   seo?: { title: L; description: L }
@@ -1620,17 +1620,222 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Kubernetes', en: 'Kubernetes' },
         aka: { ru: 'K8s', en: 'K8s' },
         def: {
-          ru: 'Kubernetes — система, которая запускает программы в контейнерах на многих серверах и следит за ними. Её настраивают декларативно: в файле описывают желаемое состояние, например «три копии сервиса броней», а контроллеры в петле сверки сравнивают его с фактическим и исправляют разницу: упала копия — поднимут новую.',
-          en: 'Kubernetes is a system that runs programs in containers across many servers and watches over them. It is configured declaratively: a file describes the desired state, such as “three copies of the booking service”, and controllers in a reconcile loop compare it with the actual state and fix the difference: a copy crashes, a new one is started.',
+          ru: 'Kubernetes — система, которая запускает программы в контейнерах на многих серверах и следит за ними. Её настраивают декларативно: в файле описывают желаемое состояние, например «три копии сервиса броней», а контроллеры в петле сверки (reconcile loop) сравнивают его с фактическим и исправляют разницу: упала копия — поднимут новую. Кластер состоит из нод, на которых в подах работают контейнеры; желаемое состояние лежит в etcd, приложения ставят Helm-чартами, а при нехватке памяти эвикшн переносит поды на другие ноды.',
+          en: 'Kubernetes is a system that runs programs in containers across many servers and watches over them. It is configured declaratively: a file describes the desired state, such as “three copies of the booking service”, and controllers in a reconcile loop compare it with the actual state and fix the difference: a copy crashes, a new one is started. A cluster is made of nodes where containers run in pods; the desired state lives in etcd, applications are installed with Helm charts, and when memory runs short, eviction moves pods to other nodes.',
         },
         match: { ru: ['Kubernetes', 'K8s'], en: ['Kubernetes', 'K8s'] },
-        related: ['declarative', 'reconcile-loop'],
+        related: ['declarative', 'reconcile-loop', 'chaos-engineering', 'etcd', 'helm', 'eviction'],
+        screens: [
+          { ru: 'Helm-чарт описывает желаемое: три копии. API-сервер хранит его в etcd, планировщик ставит поды на ноды, kubelet их запускает. Упала нода — контроллеры в петле сверки видят, что копий 2 из 3, и поднимают третью на другой ноде.', en: 'A Helm chart describes the desired state: three copies. The API server keeps it in etcd, the scheduler places pods on nodes, and kubelet runs them. When a node goes down, the controllers see 2 of 3 copies and start the third on another node.' },
+        ],
+        parts: { title: { ru: 'Из чего состоит', en: 'What it is made of' }, slugs: ['k8s-node', 'pod', 'etcd', 'kube-apiserver', 'kube-scheduler', 'reconcile-loop', 'kubelet', 'deployment', 'replicaset', 'eviction', 'helm'] },
+        notes: {
+          title: { ru: 'Петля сверки (reconcile loop): как Kubernetes держит желаемое', en: 'The reconcile loop: how Kubernetes holds the desired state' },
+          items: [
+            { name: { ru: '1. Желаемое', en: '1. Desired' }, text: { ru: 'в Deployment записано: три копии сервиса броней. Запись лежит в etcd.', en: 'a Deployment says: three copies of the booking service. The record lives in etcd.' } },
+            { name: { ru: '2. Фактическое', en: '2. Actual' }, text: { ru: 'контроллер смотрит, сколько подов сейчас работает: например, два, потому что нода упала.', en: 'a controller looks at how many pods are running now: say two, because a node went down.' } },
+            { name: { ru: '3. Разница', en: '3. Difference' }, text: { ru: 'нужно три, есть два — контроллер создаёт третий под, планировщик ставит его на живую ноду.', en: 'three are needed, two exist, so the controller creates a third pod and the scheduler places it on a healthy node.' } },
+            { name: { ru: '4. Снова', en: '4. Again' }, text: { ru: 'проверка не заканчивается: контроллер сверяет желаемое с фактическим всё время, поэтому система сама возвращается к описанному.', en: 'the check never ends: the controller compares desired and actual all the time, so the system returns to the description on its own.' } },
+          ],
+        },
         more: { post: 'spec-reconcile-loop', label: { ru: 'Петля сверки для спек: как в Kubernetes', en: 'A reconcile loop for specs: like Kubernetes' } },
         faq: [
           { q: { ru: 'Kubernetes — что это?', en: 'What is Kubernetes?' }, a: { ru: 'Система, которая запускает программы в контейнерах на многих серверах и следит за ними.', en: 'A system that runs programs in containers across many servers and watches over them.' } },
           { q: { ru: 'Как настраивают Kubernetes?', en: 'How is Kubernetes configured?' }, a: { ru: 'Декларативно: в файле описывают желаемое состояние, например «три копии сервиса», а контроллеры в петле сверки приводят систему к нему.', en: 'Declaratively: a file describes the desired state, such as “three copies of a service”, and controllers in a reconcile loop bring the system to it.' } },
         ],
         source: { url: 'https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/', label: { ru: 'Kubernetes: декларативное управление объектами', en: 'Kubernetes: declarative management of objects' } },
+      },
+      {
+        slug: 'k8s-node',
+        name: { ru: 'Нода', en: 'Node' },
+        def: {
+          ru: 'Нода — сервер в кластере Kubernetes, физический или виртуальный. На нодах запускаются поды, а планировщик решает, какой под на какую ноду поставить.',
+          en: 'A node is a server in a Kubernetes cluster, physical or virtual. Pods run on nodes, and the scheduler decides which pod goes to which node.',
+        },
+        match: { ru: ['нод(?:а|ы|е|у|ой|ам|ами|ах)'], en: ['Kubernetes nodes?', 'nodes? (?:in|of) (?:a |the )?Kubernetes(?: cluster)?'] },
+        related: ['kubernetes', 'pod', 'kube-scheduler', 'kubelet', 'eviction'],
+        faq: [
+          { q: { ru: 'Нода в Kubernetes — что это?', en: 'What is a node in Kubernetes?' }, a: { ru: 'Сервер в кластере Kubernetes, физический или виртуальный.', en: 'A server in a Kubernetes cluster, physical or virtual.' } },
+        ],
+        source: { url: 'https://kubernetes.io/docs/concepts/architecture/nodes/', label: { ru: 'Kubernetes: ноды', en: 'Kubernetes: Nodes' } },
+      },
+      {
+        slug: 'pod',
+        name: { ru: 'Под', en: 'Pod' },
+        def: {
+          ru: 'Под — самая маленькая единица запуска в Kubernetes: один или несколько контейнеров, которые работают вместе. Например, одна копия сервиса броней.',
+          en: 'A pod is the smallest unit that runs in Kubernetes: one or more containers working together. For example, one copy of the booking service.',
+        },
+        match: { ru: ['поды', 'подов', 'подами', 'подах'], en: ['pods?'] },
+        related: ['kubernetes', 'k8s-node', 'replicaset', 'eviction'],
+        faq: [
+          { q: { ru: 'Под в Kubernetes — что это?', en: 'What is a pod in Kubernetes?' }, a: { ru: 'Самая маленькая единица запуска в Kubernetes: один или несколько контейнеров, которые работают вместе.', en: 'The smallest unit that runs in Kubernetes: one or more containers working together.' } },
+        ],
+        source: { url: 'https://kubernetes.io/docs/concepts/workloads/pods/', label: { ru: 'Kubernetes: поды', en: 'Kubernetes: Pods' } },
+      },
+      {
+        slug: 'etcd',
+        name: { ru: 'etcd', en: 'etcd' },
+        def: {
+          ru: 'etcd — надёжное распределённое хранилище «ключ — значение». В Kubernetes в нём лежат все данные кластера, в том числе описанное желаемое состояние.',
+          en: 'etcd is a reliable distributed key-value store. In Kubernetes it holds all cluster data, including the described desired state.',
+        },
+        match: { ru: ['etcd'], en: ['etcd'] },
+        related: ['kubernetes', 'kube-apiserver', 'reconcile-loop'],
+        faq: [
+          { q: { ru: 'etcd — что это?', en: 'What is etcd?' }, a: { ru: 'Надёжное распределённое хранилище «ключ — значение».', en: 'A reliable distributed key-value store.' } },
+        ],
+        source: { url: 'https://etcd.io/', label: { ru: 'etcd', en: 'etcd' } },
+      },
+      {
+        slug: 'kube-apiserver',
+        name: { ru: 'API-сервер Kubernetes', en: 'Kubernetes API server' },
+        def: {
+          ru: 'API-сервер Kubernetes — точка входа в кластер. Через него люди, Helm и контроллеры читают и меняют состояние, а он хранит его в etcd.',
+          en: 'The Kubernetes API server is the entry point to a cluster. People, Helm and controllers read and change state through it, and it stores the state in etcd.',
+        },
+        match: { ru: ['kube-apiserver', 'API-сервер\\p{L}* Kubernetes'], en: ['kube-apiserver', 'Kubernetes API server'] },
+        related: ['kubernetes', 'etcd', 'helm', 'reconcile-loop'],
+        faq: [
+          { q: { ru: 'API-сервер Kubernetes — что это?', en: 'What is the Kubernetes API server?' }, a: { ru: 'Точка входа в кластер.', en: 'The entry point to a cluster.' } },
+        ],
+        source: { url: 'https://kubernetes.io/docs/concepts/overview/components/', label: { ru: 'Kubernetes: компоненты', en: 'Kubernetes: Components' } },
+      },
+      {
+        slug: 'kube-scheduler',
+        name: { ru: 'Планировщик Kubernetes', en: 'Kubernetes scheduler' },
+        def: {
+          ru: 'Планировщик Kubernetes — компонент, который находит поды без назначенной ноды и ставит каждый на подходящую, с учётом свободной памяти и процессора.',
+          en: 'The Kubernetes scheduler is a component that finds pods with no node assigned and places each on a suitable one, taking free memory and CPU into account.',
+        },
+        match: { ru: ['kube-scheduler', 'планировщик\\p{L}* Kubernetes'], en: ['kube-scheduler', 'Kubernetes scheduler'] },
+        related: ['kubernetes', 'pod', 'k8s-node'],
+        faq: [
+          { q: { ru: 'Планировщик Kubernetes — что это?', en: 'What is the Kubernetes scheduler?' }, a: { ru: 'Компонент, который находит поды без назначенной ноды и ставит каждый на подходящую, с учётом свободной памяти и процессора.', en: 'A component that finds pods with no node assigned and places each on a suitable one, taking free memory and CPU into account.' } },
+        ],
+        source: { url: 'https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/', label: { ru: 'Kubernetes: планировщик', en: 'Kubernetes: Scheduler' } },
+      },
+      {
+        slug: 'kubelet',
+        name: { ru: 'kubelet', en: 'kubelet' },
+        def: {
+          ru: 'kubelet — программа на каждой ноде Kubernetes. Она следит, чтобы назначенные ноде поды и их контейнеры были запущены.',
+          en: 'kubelet is a program on every Kubernetes node. It makes sure the pods assigned to the node and their containers are running.',
+        },
+        match: { ru: ['kubelet'], en: ['kubelet'] },
+        related: ['kubernetes', 'k8s-node', 'pod'],
+        faq: [
+          { q: { ru: 'kubelet — что это?', en: 'What is kubelet?' }, a: { ru: 'Программа на каждой ноде Kubernetes.', en: 'A program on every Kubernetes node.' } },
+        ],
+        source: { url: 'https://kubernetes.io/docs/concepts/overview/components/', label: { ru: 'Kubernetes: компоненты', en: 'Kubernetes: Components' } },
+      },
+      {
+        slug: 'deployment',
+        name: { ru: 'Deployment', en: 'Deployment' },
+        def: {
+          ru: 'Deployment — запись в Kubernetes о том, какую версию сервиса запускать и сколько копий держать, например «три копии сервиса броней». При обновлении он по очереди заменяет старые поды новыми.',
+          en: 'A Deployment is a Kubernetes record of which version of a service to run and how many copies to keep, such as “three copies of the booking service”. On an update it replaces old pods with new ones in turn.',
+        },
+        match: { ru: ['Deployment'], en: ['Deployment'] },
+        exact: 'Deployment',
+        related: ['kubernetes', 'replicaset', 'pod', 'reconcile-loop'],
+        faq: [
+          { q: { ru: 'Deployment в Kubernetes — что это?', en: 'What is a Deployment in Kubernetes?' }, a: { ru: 'Запись в Kubernetes о том, какую версию сервиса запускать и сколько копий держать, например «три копии сервиса броней».', en: 'A Kubernetes record of which version of a service to run and how many copies to keep, such as “three copies of the booking service”.' } },
+        ],
+        source: { url: 'https://kubernetes.io/docs/concepts/workloads/controllers/deployment/', label: { ru: 'Kubernetes: Deployment', en: 'Kubernetes: Deployments' } },
+      },
+      {
+        slug: 'replicaset',
+        name: { ru: 'ReplicaSet', en: 'ReplicaSet' },
+        def: {
+          ru: 'ReplicaSet — контроллер Kubernetes, который держит заданное число одинаковых подов. Упал под — он создаёт новый, лишний — убирает.',
+          en: 'A ReplicaSet is a Kubernetes controller that keeps a set number of identical pods. A pod crashes, it creates a new one; there is an extra, it removes it.',
+        },
+        match: { ru: ['ReplicaSet'], en: ['ReplicaSet'] },
+        related: ['kubernetes', 'deployment', 'pod', 'reconcile-loop'],
+        faq: [
+          { q: { ru: 'ReplicaSet — что это?', en: 'What is a ReplicaSet?' }, a: { ru: 'Контроллер Kubernetes, который держит заданное число одинаковых подов.', en: 'A Kubernetes controller that keeps a set number of identical pods.' } },
+        ],
+        source: { url: 'https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/', label: { ru: 'Kubernetes: ReplicaSet', en: 'Kubernetes: ReplicaSet' } },
+      },
+      {
+        slug: 'eviction',
+        name: { ru: 'Эвикшн', en: 'Eviction' },
+        aka: { ru: 'выселение подов, «эвиктить»', en: 'evicting pods' },
+        def: {
+          ru: 'Эвикшн — выселение подов с ноды Kubernetes: система завершает поды, например когда на ноде кончаются память или диск. Контроллер замечает нехватку копий и поднимает их заново на другой ноде. На жаргоне говорят «эвиктить»: «под эвиктнули» значит, что Kubernetes выселил его с ноды.',
+          en: 'Eviction is the removal of pods from a Kubernetes node: the system terminates pods, for example when the node runs low on memory or disk. A controller notices the missing copies and starts them again on another node. In jargon this is “to evict”: “the pod got evicted” means Kubernetes removed it from its node.',
+        },
+        match: { ru: ['эвикшн\\p{L}*', 'эвикт\\p{L}*', 'выселени\\p{L}* под\\p{L}*'], en: ['evictions?', 'evict(?:s|ed|ing)?', 'evicted pods?'] },
+        related: ['kubernetes', 'k8s-node', 'pod', 'replicaset', 'kubelet', 'reconcile-loop', 'chaos-engineering'],
+        notes: {
+          title: { ru: 'Когда под эвиктят', en: 'When a pod gets evicted' },
+          items: [
+            { name: { ru: 'Нехватка на ноде', en: 'Node pressure' }, text: { ru: 'на ноде кончаются память или диск, и kubelet сам выселяет часть подов, чтобы нода не упала целиком. Первыми уходят поды, которые берут больше, чем просили.', en: 'a node runs low on memory or disk, and kubelet evicts some pods on its own so the whole node does not go down. Pods using more than they asked for go first.' } },
+            { name: { ru: 'По запросу', en: 'On request' }, text: { ru: 'ноду выводят на обслуживание командой kubectl drain: она эвиктит поды по очереди и аккуратно завершает каждый.', en: 'a node is taken out for maintenance with kubectl drain: it evicts pods one by one and shuts each down gracefully.' } },
+            { name: { ru: 'Что дальше', en: 'What happens next' }, text: { ru: 'эвикт сам ничего не поднимает: новую копию на другой ноде создаёт контроллер в петле сверки, потому что копий стало меньше, чем описано.', en: 'eviction itself starts nothing: a controller in the reconcile loop creates a new copy on another node, because there are fewer copies than described.' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Эвикшн в Kubernetes — что это?', en: 'What is eviction in Kubernetes?' }, a: { ru: 'Выселение подов с ноды Kubernetes: система завершает поды, например когда на ноде кончаются память или диск.', en: 'The removal of pods from a Kubernetes node: the system terminates pods, for example when the node runs low on memory or disk.' } },
+        ],
+        source: { url: 'https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/', label: { ru: 'Kubernetes: выселение при нехватке ресурсов', en: 'Kubernetes: Node-pressure eviction' } },
+      },
+      {
+        slug: 'helm',
+        name: { ru: 'Helm', en: 'Helm' },
+        def: {
+          ru: 'Helm — менеджер пакетов для Kubernetes. Чарт описывает приложение целиком, со всеми его частями, и его ставят и обновляют одной командой.',
+          en: 'Helm is the package manager for Kubernetes. A chart describes a whole application with all its parts, and it is installed and upgraded with one command.',
+        },
+        match: { ru: ['Helm-чарт\\p{L}*', 'Helm', 'хельм\\p{L}*'], en: ['Helm charts?', 'Helm'] },
+        exact: 'Helm',
+        related: ['kubernetes', 'deployment', 'kube-apiserver', 'declarative'],
+        faq: [
+          { q: { ru: 'Helm — что это?', en: 'What is Helm?' }, a: { ru: 'Менеджер пакетов для Kubernetes.', en: 'The package manager for Kubernetes.' } },
+        ],
+        source: { url: 'https://helm.sh/', label: { ru: 'Helm', en: 'Helm' } },
+      },
+      {
+        slug: 'chaos-engineering',
+        name: { ru: 'Хаос-инжиниринг', en: 'Chaos engineering' },
+        aka: { ru: 'намеренные сбои на проде', en: 'deliberate failures in production' },
+        def: {
+          ru: 'Хаос-инжиниринг — практика, в которой в работающую систему намеренно вносят сбои: выключают сервер, замедляют сеть, роняют базу, — и смотрят, выдержит ли она. Это проверка на примерах: она показывает, как система ведёт себя в устроенных сбоях, но доказательства для всех случаев не даёт. В системах с декларативным подходом, как Kubernetes, такой эксперимент проверяет петлю сверки: упавшую копию система должна поднять сама.',
+          en: 'Chaos engineering is a practice of deliberately injecting failures into a running system: shutting down a server, slowing the network, dropping a database, and watching whether it holds. It is checking by example: it shows how the system behaves in the staged failures but gives no proof for every case. In systems with a declarative approach, like Kubernetes, such an experiment tests the reconcile loop: the system should restart the crashed copy on its own.',
+        },
+        match: { ru: ['хаос-инжиниринг\\p{L}*', 'chaos engineering'], en: ['chaos engineering'] },
+        related: ['declarative', 'kubernetes', 'reconcile-loop', 'rice-theorem', 'checks'],
+        faq: [
+          { q: { ru: 'Хаос-инжиниринг — что это?', en: 'What is chaos engineering?' }, a: { ru: 'Практика, в которой в работающую систему намеренно вносят сбои и смотрят, выдержит ли она.', en: 'A practice of deliberately injecting failures into a running system and watching whether it holds.' } },
+          { q: { ru: 'Доказывает ли хаос-инжиниринг надёжность?', en: 'Does chaos engineering prove reliability?' }, a: { ru: 'Нет, это проверка на примерах: она показывает поведение в устроенных сбоях, но не во всех возможных.', en: 'No, it is checking by example: it shows behaviour in the staged failures, not in every possible one.' } },
+        ],
+        source: { url: 'https://principlesofchaos.org/', label: { ru: 'Principles of Chaos Engineering', en: 'Principles of Chaos Engineering' } },
+      },
+      {
+        slug: 'fail-fast',
+        name: { ru: 'Fail-fast', en: 'Fail-fast' },
+        aka: { ru: 'падать сразу', en: 'fail immediately' },
+        def: {
+          ru: 'Fail-fast — принцип, по которому программа сообщает о проблеме сразу, как только её заметила, и останавливает действие, вместо того чтобы молча продолжать с неверными данными. Ошибка видна там, где она возникла, и её дешевле найти. В Kubernetes на этом построена работа с сервисами: сервис падает сразу при ошибке, а система сама перезапускает его и не пускает к нему запросы, пока он не готов.',
+          en: 'Fail-fast is a principle where a program reports a problem as soon as it notices it and stops the action, instead of silently carrying on with wrong data. The error shows up where it arose and is cheaper to find. Kubernetes builds service handling on this: a service fails right away on an error, and the system restarts it on its own and sends it no requests until it is ready.',
+        },
+        match: { ru: ['fail-fast', 'fail fast'], en: ['fail-fast', 'fail fast'] },
+        related: ['kubernetes', 'kubelet', 'pod', 'deployment', 'chaos-engineering', 'checks'],
+        notes: {
+          title: { ru: 'Fail-fast в Kubernetes', en: 'Fail-fast in Kubernetes' },
+          items: [
+            { name: { ru: 'Упасть при старте', en: 'Crash on start' }, text: { ru: 'сервис с неверной настройкой сразу завершается с ошибкой, вместо того чтобы работать наполовину. kubelet перезапускает контейнер, а при повторных падениях делает паузы между попытками: под в состоянии CrashLoopBackOff виден сразу.', en: 'a service with a bad setting exits with an error at once instead of half-working. kubelet restarts the container and waits longer between repeated failures: a pod in CrashLoopBackOff is visible right away.' } },
+            { name: { ru: 'Проверка живости', en: 'Liveness probe' }, text: { ru: 'kubelet регулярно спрашивает сервис «жив?». Не ответил — контейнер перезапускают, зависший сервис не висит молча.', en: 'kubelet regularly asks the service “are you alive?”. No answer, and the container is restarted: a hung service does not hang silently.' } },
+            { name: { ru: 'Проверка готовности', en: 'Readiness probe' }, text: { ru: 'пока сервис не готов, на него не идут запросы покупателей: Kubernetes убирает под из списка получателей.', en: 'until the service is ready, no customer requests reach it: Kubernetes removes the pod from the list of receivers.' } },
+            { name: { ru: 'Остановка выкладки', en: 'Halting a rollout' }, text: { ru: 'Deployment заменяет старые поды новыми по очереди. Если новые не становятся готовыми, замена дальше не идёт, и старые копии продолжают работать.', en: 'a Deployment replaces old pods with new ones in turn. If the new ones never become ready, the replacement goes no further, and the old copies keep running.' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Fail-fast — что это?', en: 'What is fail-fast?' }, a: { ru: 'Принцип, по которому программа сообщает о проблеме сразу и останавливает действие, вместо того чтобы молча продолжать.', en: 'A principle where a program reports a problem right away and stops the action instead of silently carrying on.' } },
+          { q: { ru: 'Зачем нужен fail-fast?', en: 'Why fail fast?' }, a: { ru: 'Ошибка видна там, где возникла, поэтому её дешевле найти и исправить.', en: 'The error shows up where it arose, so it is cheaper to find and fix.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Fail-fast_system', label: { ru: 'Википедия: fail-fast', en: 'Wikipedia: Fail-fast system' } },
       },
       {
         slug: 'sql',
@@ -3348,8 +3553,8 @@ export function linkTerms(html: string, lang: Lang, ignore: string[] = [], perSe
 // У терминов с `exact` регистр важен: если найденный фрагмент отличается от exact, ищем термин, у которого exact совпал (React ↔ ReAct), иначе фрагмент не термин
 function resolveSlug(slug: string, text: string): string {
   const ex = findTerm(slug)?.exact
-  if (!ex || text === ex) return slug
-  return ALL_TERMS.find((t) => t.exact === text)?.slug ?? ''
+  if (!ex || text.startsWith(ex)) return slug
+  return ALL_TERMS.find((t) => t.exact && text.startsWith(t.exact))?.slug ?? ''
 }
 
 /** Режет обычный текст на куски: первое вхождение каждого другого термина помечено слагом (для ссылок между терминами) */
@@ -3378,7 +3583,7 @@ function hasTerm(slug: string, lang: Lang, text: string): boolean {
   const term = findTerm(slug)!
   const re = new RegExp(`(?<![\\p{L}\\p{N}_.-])(?:${term.match[lang].join('|')})(?![\\p{L}\\p{N}_-]|\\.(?=\\p{L}))`, term.exact ? 'giu' : 'iu')
   if (!term.exact) return re.test(text)
-  for (const m of text.matchAll(re)) if (m[0] === term.exact) return true
+  for (const m of text.matchAll(re)) if (m[0].startsWith(term.exact)) return true
   return false
 }
 

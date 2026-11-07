@@ -416,7 +416,8 @@ a.s-pager-btn:hover { color: var(--accent); border-color: var(--accent); }
 .site.s-gterm { --col: 980px; }
 .s-gterm .s-lead { max-width: none; }
 /* Пояснения под схемами термина — как абзацы статьи (.bk-why): 16px, интервал 1.75, с переносами */
-.s-gterm .s-gscreen { margin: 14px 0 34px; font-size: 16px; line-height: 1.75; color: var(--ink-2); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+/* Пояснение под схемой термина — тем же кеглем, что и определение над ней, без скачка размера */
+.s-gterm .s-gscreen { margin: 14px 0 34px; font-size: var(--t-lead); line-height: 1.55; color: var(--ink-2); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 .s-gterm .s-gscreen p { margin: 0 0 12px; }
 .s-gterm .s-gscreen p:last-child { margin-bottom: 0; }
 /* Определение термина — как вступление статьи: по ширине, с переносами; разделы — как абзацы статьи: по левому краю */

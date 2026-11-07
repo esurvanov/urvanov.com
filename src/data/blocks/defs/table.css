@@ -26,5 +26,9 @@
 .s-rich.bk .bk-table#major-minor :is(td, th):nth-child(3) { width: 22%; }
 .s-rich.bk .bk-table#major-minor :is(td, th):nth-child(4) { width: 22%; }
 .s-rich.bk .bk-table#major-minor :is(td, th):nth-child(5) { width: 21%; }
+/* Таблица «Три свойства проверки» (теорема Райса): колонки = колонки схемы над ней, текст по левому краю; выбранное свойство приглушает остальные колонки (../defs/chapter.css) */
+.s-rich.bk .bk-table#rice-wishes table { table-layout: fixed; }
+.s-rich.bk .bk-table#rice-wishes :is(td, th) { width: 33.33%; text-align: left; hyphens: manual; -webkit-hyphens: manual; white-space: normal; transition: opacity .2s; }
+.s-rich.bk .bk-table#rice-wishes td:first-child { color: var(--ink-2); font-weight: 400; }
 /* Отступ снизу: блок после таблицы (карточки, вывод, схема) не прилипает к её рамке */
 .s-rich.bk .bk-chapter > .bk-table { margin-bottom: 14px; }

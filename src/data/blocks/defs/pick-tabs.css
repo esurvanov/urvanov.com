@@ -56,3 +56,5 @@
 .s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(6):checked) .bk6 .hl,
 .s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(7):checked) .bk7 .hl,
 .s-rich.bk .bk-lane:has(.bk-pick-tabs > input:nth-of-type(8):checked) .bk8 .hl { opacity: 1; }
+/* Вкладка без карточки (только подсветка схемы): пустую рамку не показываем */
+.s-rich.bk .bk-pick-tabs-p:empty { display: none !important; }

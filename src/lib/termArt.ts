@@ -1259,18 +1259,35 @@ export const ART: Record<string, Art> = {
     at(7.6, -0.2, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(7.6, 1.3, l('держатся везде', 'hold everywhere'), A, { dy: 12, size: 11, w: 800 }); t(7.6, 1.3, l('видно из самой записи', 'visible from the rules themselves'), M, { dy: 26, size: 10, w: 600 })
   } },
   // Kubernetes: желаемое состояние → контроллер сверяет → фактическое; упавшую копию поднимают заново
-  'kubernetes': { ru: 'Описано желаемое: три копии. Контроллер сверяет с фактическим и поднимает упавшую копию', en: 'The desired state says three copies. The controller compares it with the actual state and restarts the crashed copy', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+  // Kubernetes: одна сцена. Helm-чарт с желаемым (3 копии) → API-сервер, желаемое лежит в etcd → контроллеры и планировщик → ноды с подами; одна нода упала, петля сверки поднимает под на другой
+  'kubernetes': { ru: 'Желаемое — 3 копии. Упала нода — копию поднимают на другой', en: 'Desired: 3 copies. A node fails, the copy restarts on another', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
     const { g, arr, t } = screen(I)
     const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
-    at(-8.6, 0, (x, y) => I.doc(x - 0.8, y - 0.6, 0, 1.6, 1.2, A, 3)); t(-8.6, 1.4, l('желаемое', 'desired'), A, { dy: 12, size: 12, w: 800 }); t(-8.6, 1.4, 'replicas: 3', M, { dy: 27, size: 10.5, w: 700 })
-    arr(A, [-6.6, 0], [-3.4, 0])
-    at(-1.6, 0, (x, y) => I.agent(x - 0.65, y - 0.65, A, 1.3, '')); t(-1.6, 1.4, l('контроллер', 'controller'), A, { dy: 12, size: 12, w: 800 }); t(-1.6, 1.4, l('сверяет в петле', 'compares in a loop'), M, { dy: 27, size: 10, w: 600 })
-    arr(A, [0.4, 0], [3.4, 0])
-    ;[[5.2, M], [7.2, M], [9.2, W]].forEach(([X, c]) => at(X as number, 0, (x, y) => I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.6, c as string)))
-    t(9.2, 0, '×', '#fff', { gz: 0.6, size: 13, w: 800 })
-    t(7.2, 1.4, l('фактически: 2 из 3', 'actual: 2 of 3'), M, { dy: 12, size: 12, w: 800 }); t(7.2, 1.4, l('упавшую копию поднимут заново', 'the crashed copy is restarted'), W, { dy: 27, size: 10.5, w: 700 })
-    I.path([g(9.2, -1.2), g(9.2, -3.0), g(-1.6, -3.0), g(-1.6, -1.6)], A, { w: 1.8, dash: '4 3', arrow: true })
-    t(3.8, -3.0, l('разница → исправить', 'difference → fix'), A, { size: 10.5, w: 800, dy: -8 })
+    const sys = (X: number, Y: number) => at(X, Y, (x, y) => I.box(x - 0.75, y - 0.75, 0, 1.5, 1.5, 1.1, M))
+    // Желаемое: файл-чарт
+    at(-10.4, 0, (x, y) => I.doc(x - 0.8, y - 0.6, 0, 1.6, 1.2, M, 3)); t(-10.4, 1.5, l('Helm-чарт', 'Helm chart'), M, { dy: 14, size: 15, w: 800 }); t(-10.4, 1.5, l('желаемое: 3 копии', 'desired: 3 copies'), M, { dy: 33, size: 13, w: 700 })
+    arr(M, [-8.4, 0], [-7.0, 0])
+    // API-сервер, под ним etcd
+    sys(-5.4, 0); t(-5.4, 1.5, l('API-сервер', 'API server'), M, { dy: 14, size: 15, w: 800 })
+    I.path([g(-5.4, 2.9), g(-5.4, 3.7)], M, { w: 1.6, dash: '3 3' })
+    at(-5.4, 4.6, (x, y) => I.cyl(x, y, 0, 0.5, 0.7, M)); t(-4.4, 4.6, 'etcd', M, { size: 15, w: 800, anchor: 'start', dy: -2 }); t(-4.4, 4.6, l('хранит желаемое', 'keeps the desired state'), M, { size: 13, w: 700, anchor: 'start', dy: 16 })
+    arr(M, [-3.6, 0], [-2.4, 0])
+    // Контроллеры и планировщик
+    sys(-0.6, 0); t(-0.6, 1.5, l('контроллеры', 'controllers'), M, { dy: 14, size: 15, w: 800 }); t(-0.6, 1.5, l('и планировщик', 'and scheduler'), M, { dy: 33, size: 13, w: 700 })
+    arr(M, [1.2, 0], [2.8, 0])
+    // Ноды с подами; третья упала
+    const nodes: [number, string][] = [[4.4, M], [7.6, M], [10.8, W]]
+    nodes.forEach(([X, c], k) => {
+      at(X, 0, (x, y) => I.box(x - 0.75, y - 0.75, 0, 1.5, 1.5, 0.25, c))
+      if (k !== 2) at(X, 0, (x, y) => I.box(x - 0.35, y - 0.35, 0.25, 0.7, 0.7, 0.7, M, 0.75))
+      else t(X, 0, '×', '#fff', { gz: 0.25, size: 22, w: 800 })
+      t(X, 1.5, k === 2 ? l('нода упала', 'node down') : l('нода · под', 'node · pod'), k === 2 ? W : M, { dy: 14, size: 14, w: 800 })
+    })
+    t(6.0, 1.5, l('поды запускает kubelet', 'kubelet runs the pods'), M, { dy: 33, size: 13, w: 700 })
+    // Петля сверки — синяя: программа сверяет и исправляет
+    I.path([g(10.8, -1.2), g(10.8, -3.8), g(-0.6, -3.8), g(-0.6, -2.0)], A, { w: 2.2, dash: '4 3', arrow: true, cls: 'fl' })
+    t(5.1, -3.8, l('петля сверки', 'reconcile loop'), A, { size: 16, w: 800, dy: -24 })
+    t(5.1, -3.8, l('копий 2 из 3 → поднять на другой ноде', '2 of 3 copies → restart on another node'), A, { size: 13, w: 700, dy: -6 })
   } },
   // SQL: запрос говорит «что», база выбирает «как»
   'sql': { ru: 'Запрос говорит, какие данные нужны, а база сама выбирает, как их достать', en: 'The query says which data is needed, and the database picks how to fetch it', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
@@ -1675,23 +1692,214 @@ export const ART: Record<string, Art> = {
     st.forEach(([X, n]) => { at(X, 1.2, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.7, M)); at(X, -2.0, (x, y) => I.doc(x - 0.6, y - 0.45, 0, 1.2, 0.9, A, 2, true)); I.path([g(X, -1.0), g(X, 0.4)], A, { w: 1.4, dash: '2 4', op: 0.7 }); t(X, 2.4, n, M, { dy: 12, size: 11, w: 700 }) })
     t(0, -4.6, l('правило верно в каждом состоянии: деньги не списаны без заказа', 'the rule holds in every state: no money charged without an order'), A, { size: 12, w: 800 })
   } },
-  // Теорема Райса, суть: у любого судьи-проверки найдётся программа, на которой он ошибётся
-  'rice-theorem': { ru: 'Для любой проверки поведения найдётся программа, на которой она ошибётся', en: 'For any behaviour check there is a program on which it is wrong', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+  // Хаос-инжиниринг: человек намеренно роняет одну копию сервиса на проде; петля сверки поднимает её заново; проверен только этот сбой.
+  // Сервисы — серые системы (как на схеме kubernetes), синяя только петля сверки
+  // Kubernetes по частям: серые системы, синие потоки и петля сверки, оранжевый — сбой. Подписи короткие, чтобы рисунок не мельчил
+  // Нода: сервер в кластере, на ней kubelet и поды; планировщик ставит новый под на ноду со свободной памятью
+  'k8s-node': { ru: 'Нода — сервер в кластере: на ней kubelet запускает поды', en: 'A node is a server in the cluster: kubelet runs pods on it', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const node = (X: number) => at(X, 0, (x, y) => I.box(x - 1.2, y - 1.2, 0, 2.4, 2.4, 0.25, M))
+    const pod = (X: number, col = M) => at(X, 0, (x, y) => I.box(x - 0.3, y - 0.3, 0.25, 0.6, 0.6, 0.6, col))
+    at(-10, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.9, M)); t(-10, 2.2, l('планировщик', 'scheduler'), M, { dy: 14, size: 15, w: 800 }); t(-10, 2.2, l('новый под', 'a new pod'), A, { dy: 33, size: 13, w: 700 })
+    node(-2.6); pod(-3.8); pod(-2.6); pod(-1.4)
+    t(-2.6, 3.6, l('нода 1 · занята', 'node 1 · full'), M, { dy: 14, size: 15, w: 800 })
+    node(4.6); pod(3.8); pod(5.4, A)
+    t(4.6, 3.6, l('нода 2 · есть память', 'node 2 · has memory'), M, { dy: 14, size: 15, w: 800 }); t(4.6, 3.6, l('kubelet запускает под', 'kubelet runs the pod'), A, { dy: 33, size: 13, w: 700 })
+    I.path([g(-10, -2.4), g(-10, -5.2), g(5.4, -5.2), g(5.4, -1.6)], A, { w: 2.2, dash: '4 3', arrow: true, cls: 'fl' })
+    t(-2.3, -5.2, l('ставит под на ноду со свободной памятью', 'places the pod on a node with free memory'), A, { size: 14, w: 800, dy: -8 })
+  } },
+  // Под: один или несколько контейнеров с общим адресом и диском
+  'pod': { ru: 'Под — контейнеры, которые работают вместе: общий адрес и общий диск', en: 'A pod is containers working together: one address, one disk', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(0, 0, (x, y) => I.box(x - 2.4, y - 2.4, 0, 4.8, 4.8, 0.25, M))
+    at(0, 0, (x, y) => I.box(x - 1.9, y - 1.9, 0.25, 3.8, 3.8, 1.6, M, 0.18))
+    at(-0.8, 0, (x, y) => I.box(x - 0.55, y - 0.55, 0.25, 1.1, 1.1, 1.0, M))
+    at(0.8, 0, (x, y) => I.box(x - 0.4, y - 0.4, 0.25, 0.8, 0.8, 0.7, M))
+    t(-7.4, -0.6, l('контейнер', 'container'), M, { size: 15, w: 800 }); t(-7.4, -0.6, l('сервис броней', 'booking service'), M, { dy: 18, size: 13, w: 700 })
+    t(7.4, -0.6, l('контейнер', 'container'), M, { size: 15, w: 800 }); t(7.4, -0.6, l('помощник: пишет логи', 'helper: ships logs'), M, { dy: 18, size: 13, w: 700 })
+    t(0, -7.2, l('под: общий адрес и общий диск', 'pod: one address, one disk'), A, { size: 16, w: 800 })
+    t(0, 4.6, l('нода', 'node'), M, { dy: 14, size: 15, w: 800 })
+  } },
+  // kubelet: получает от API-сервера список подов своей ноды, запускает их и перезапускает упавший
+  'kubelet': { ru: 'kubelet на каждой ноде запускает назначенные поды и перезапускает упавшие', en: 'kubelet on every node runs the assigned pods and restarts crashed ones', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
     const { g, arr, t } = screen(I)
     const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
-    t(0, -7.4, l('правило о поведении: «никогда не списывает деньги без заказа»', 'a behaviour rule: “never charges money without an order”'), A, { size: 12.5, w: 800 })
-    at(-8.6, -0.4, (x, y) => I.agent(x - 0.7, y - 0.7, A, 1.4, '')); t(-8.6, 1.2, l('проверка', 'the check'), A, { dy: 12, size: 12, w: 800 }); t(-8.6, 1.2, l('любая, самая умная', 'any, however clever'), M, { dy: 27, size: 10, w: 600 })
-    arr(A, [-6.6, -0.4], [-4.6, -0.4])
-    const res: [string, string][] = [['ok', ''], ['bad', ''], ['ok', ''], ['bad', ''], ['ok', ''], ['q', '']]
-    res.forEach(([r], i) => {
-      const X = -3.2 + i * 2.2
-      at(X, -1.6, (x, y) => I.doc(x - 0.55, y - 0.4, 0, 1.1, 0.8, M, 2))
-      if (r === 'q') { at(X, 1.0, (x, y) => I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.5, W)); t(X, 1.0, '?', '#fff', { gz: 0.5, size: 13, w: 800 }) }
-      else { at(X, 1.0, (x, y) => I.box(x - 0.35, y - 0.35, 0, 0.7, 0.7, 0.35, r === 'ok' ? A : M)); t(X, 1.0, r === 'ok' ? '✓' : '×', '#fff', { gz: 0.35, size: 11, w: 800 }) }
+    at(-9, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.9, M)); t(-9, 2.2, l('API-сервер', 'API server'), M, { dy: 14, size: 15, w: 800 }); t(-9, 2.2, l('поды этой ноды', "this node's pods"), M, { dy: 33, size: 13, w: 700 })
+    arr(A, [-7.2, 0], [-3.4, 0])
+    at(2, 0, (x, y) => I.box(x - 2.0, y - 2.0, 0, 4.0, 4.0, 0.25, M))
+    const items: [number, string, string][] = [[-0.6, M, ''], [1.2, M, '✓'], [3.0, M, '✓'], [4.8, W, '×']]
+    items.forEach(([X, c, m]) => { at(X, 0, (x, y) => I.box(x - 0.35, y - 0.35, 0.25, 0.7, 0.7, 0.7, c)); if (m) t(X, 0, m, '#fff', { gz: 0.95, size: 16, w: 800 }) })
+    t(-0.6, 5.0, 'kubelet', A, { dy: 14, size: 15, w: 800 })
+    t(3.0, 5.0, l('поды на ноде', 'pods on the node'), M, { dy: 14, size: 15, w: 800 }); t(3.0, 5.0, l('упавший перезапускает', 'restarts a crashed one'), W, { dy: 33, size: 13, w: 700 })
+    I.path([g(-0.6, -1.6), g(-0.6, -6.4), g(4.8, -6.4), g(4.8, -1.6)], A, { w: 2.2, dash: '4 3', arrow: true, cls: 'fl' })
+    t(2.1, -6.4, l('запускает, проверяет «жив?», перезапускает', 'runs, checks “alive?”, restarts'), A, { size: 14, w: 800, dy: -8 })
+  } },
+  // etcd: хранилище «ключ — значение» с данными кластера; API-сервер пишет и читает, только он
+  'etcd': { ru: 'etcd хранит все данные кластера парами «ключ — значение»', en: 'etcd keeps all cluster data as key-value pairs', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-9.4, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.9, M)); t(-9.4, 1.4, l('API-сервер', 'API server'), M, { dy: 14, size: 15, w: 800 }); t(-9.4, 1.4, l('единственный, кто пишет', 'the only writer'), M, { dy: 33, size: 13, w: 700 })
+    arr(A, [-7.8, 0], [-5.0, 0]); t(-6.4, 0, l('записать, прочитать', 'write, read'), A, { size: 13, w: 800, dy: -26 })
+    at(-2.6, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.3, M)); t(-2.6, 1.6, 'etcd', M, { dy: 14, size: 16, w: 800 })
+    const rows: [string, string][] = [[l('/deployments/booking', '/deployments/booking'), l('копий: 3', 'replicas: 3')], [l('/pods/booking-1', '/pods/booking-1'), l('нода 2', 'node 2')], [l('/pods/booking-2', '/pods/booking-2'), l('нода 3', 'node 3')]]
+    rows.forEach(([k, v], i) => { t(1.6, -1.4 + i * 1.5, k, M, { size: 13, w: 700, anchor: 'start', ls: '.02em' }); t(7.4, -1.4 + i * 1.5, `→ ${v}`, A, { size: 13, w: 800, anchor: 'start' }) })
+    t(4.6, -3.2, l('ключ → значение', 'key → value'), M, { size: 14, w: 800 })
+  } },
+  // API-сервер: точка входа; люди, Helm и контроллеры ходят только через него, состояние лежит в etcd
+  'kube-apiserver': { ru: 'API-сервер — единственная точка входа в кластер; состояние он хранит в etcd', en: 'The API server is the single entry point to the cluster; it keeps state in etcd', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    // Слева — все, кто обращается к кластеру; общая шина ведёт в API-сервер
+    const ys = [-5.4, 0, 5.4]
+    at(-10, ys[0], (x, y) => I.person(x, y, M, '')); t(-10, ys[0] + 1.2, 'kubectl', M, { dy: 14, size: 14, w: 800 })
+    at(-10, ys[1], (x, y) => I.doc(x - 0.6, y - 0.45, 0, 1.2, 0.9, M, 3)); t(-10, ys[1] + 1.2, l('Helm-чарт', 'Helm chart'), M, { dy: 14, size: 14, w: 800 })
+    at(-10, ys[2], (x, y) => I.box(x - 0.5, y - 0.5, 0, 1.0, 1.0, 0.7, M)); t(-10, ys[2] + 1.4, l('контроллеры', 'controllers'), M, { dy: 14, size: 14, w: 800 }); t(-10, ys[2] + 1.4, l('следят за изменениями', 'watch for changes'), A, { dy: 32, size: 12, w: 700 })
+    ys.forEach((Y) => I.path([g(-8.4, Y), g(-6, Y)], A, { w: 2, dash: '4 3' }))
+    I.path([g(-6, ys[0]), g(-6, ys[2])], A, { w: 2, dash: '4 3' })
+    arr(A, [-6, 0], [-2.6, 0])
+    at(0, 0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 1.3, M)); t(0, 2.8, l('API-сервер', 'API server'), M, { dy: 14, size: 16, w: 800 }); t(0, 2.8, l('проверяет и принимает', 'checks and accepts'), M, { dy: 34, size: 13, w: 700 })
+    arr(A, [2.6, 0], [5.4, 0])
+    at(7.4, 0, (x, y) => I.cyl(x, y, 0, 0.7, 1.0, M)); t(7.4, 2.2, 'etcd', M, { dy: 14, size: 15, w: 800 }); t(7.4, 2.2, l('хранит состояние', 'keeps the state'), M, { dy: 33, size: 13, w: 700 })
+  } },
+  // Планировщик: под без ноды ставят на ту, где хватает памяти; перегруженную ноду пропускают
+  'kube-scheduler': { ru: 'Планировщик ставит новый под на ноду, где хватает памяти', en: 'The scheduler places a new pod on a node with enough memory', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-10.4, 0, (x, y) => I.box(x - 0.4, y - 0.4, 0, 0.8, 0.8, 0.8, A)); t(-10.4, 2.0, l('новый под', 'a new pod'), A, { dy: 14, size: 15, w: 800 }); t(-10.4, 2.0, l('без ноды', 'no node yet'), M, { dy: 33, size: 13, w: 700 })
+    arr(A, [-9.0, 0], [-7.4, 0])
+    at(-5.8, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.9, M)); t(-5.8, 2.2, l('планировщик', 'scheduler'), M, { dy: 14, size: 15, w: 800 })
+    const nodes: [number, string, string, string][] = [[-1.4, W, l('памяти нет', 'no memory'), '×'], [3.4, M, l('мало памяти', 'little memory'), ''], [8.2, M, l('памяти хватает', 'enough memory'), '✓']]
+    nodes.forEach(([X, c, lab, m]) => {
+      at(X, 0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 0.3, c))
+      if (m) t(X, 0, m, '#fff', { gz: 0.3, size: 18, w: 800 })
+      t(X, 2.8, l('нода', 'node'), M, { dy: 14, size: 15, w: 800 }); t(X, 2.8, lab, c === W ? W : (m ? A : M), { dy: 33, size: 13, w: 700 })
     })
-    t(-0.0, -3.4, l('программы', 'programs'), M, { size: 11, w: 800 })
-    t(7.8, 2.4, l('всегда найдётся программа,', 'there is always a program'), W, { size: 11.5, w: 800, dy: 10 }); t(7.8, 2.4, l('где ответ неверен', 'where the answer is wrong'), W, { size: 11.5, w: 800, dy: 25 })
-    t(0, 6.2, l('о тексте кода ответить можно, о поведении любой программы — нет; выход — сузить рамку', 'about code text you can answer; about the behaviour of any program you can’t; the way out is a narrower frame'), M, { size: 11, w: 700 })
+    I.path([g(-5.8, -2.2), g(-5.8, -4.2), g(8.2, -4.2), g(8.2, -2.0)], A, { w: 2.2, dash: '4 3', arrow: true, cls: 'fl' })
+    t(1.2, -4.2, l('ставит туда, где хватает', 'places it where there is room'), A, { size: 14, w: 800, dy: -8 })
+  } },
+  // Deployment: новая версия заменяет старые поды по очереди — сначала новый готов, потом старый уходит
+  'deployment': { ru: 'Deployment меняет поды на новую версию по очереди', en: 'A Deployment swaps pods to a new version in turn', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const pod = (X: number, Y: number, col: string, tag: string, op = 1) => { at(X, Y, (x, y) => I.box(x - 0.35, y - 0.35, 0, 0.7, 0.7, 0.7, col, op)); t(X, Y, tag, '#fff', { gz: 0.7, size: 13, w: 800 }) }
+    at(-10, 0, (x, y) => I.doc(x - 0.8, y - 0.6, 0, 1.6, 1.2, M, 3)); t(-10, 1.4, 'Deployment', M, { dy: 14, size: 15, w: 800 }); t(-10, 1.4, l('версия 2 · копий: 3', 'version 2 · replicas: 3'), A, { dy: 33, size: 13, w: 700 })
+    arr(A, [-8.2, 0], [-6.4, 0])
+    const step = (X: number, olds: number, news: number, title: string) => {
+      for (let k = 0; k < 3; k++) pod(X - 1.3 + k * 1.3, 0, k < news ? A : M, k < news ? 'v2' : 'v1', k < news || k >= 3 - olds ? 1 : 0.25)
+      t(X, 1.4, title, M, { dy: 14, size: 15, w: 800 })
+    }
+    step(-4.0, 3, 0, l('было: 3 × v1', 'before: 3 × v1')); arr(M, [-2.0, 0], [-0.6, 0])
+    step(1.6, 2, 1, l('1 новый готов', '1 new is ready')); arr(M, [3.6, 0], [5.0, 0])
+    step(7.2, 0, 3, l('стало: 3 × v2', 'after: 3 × v2'))
+    t(1.6, -2.8, l('новый не готов — старые работают', 'new one not ready, old ones run'), W, { size: 14, w: 800 })
+  } },
+  // ReplicaSet: держит ровно столько копий, сколько записано; упал под — создаёт новый
+  'replicaset': { ru: 'ReplicaSet держит ровно столько подов, сколько записано', en: 'A ReplicaSet keeps exactly as many pods as written', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const pod = (X: number, col: string, m: string) => { at(X, 0, (x, y) => I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.8, col)); t(X, 0, m, '#fff', { gz: 0.8, size: 16, w: 800 }) }
+    at(-10, 0, (x, y) => I.doc(x - 0.8, y - 0.6, 0, 1.6, 1.2, M, 3)); t(-10, 1.4, 'ReplicaSet', M, { dy: 14, size: 15, w: 800 }); t(-10, 1.4, l('копий: 3', 'replicas: 3'), A, { dy: 33, size: 13, w: 700 })
+    arr(A, [-8.2, 0], [-6.4, 0])
+    pod(-5.2, M, '✓'); pod(-3.6, M, '✓'); pod(-2.0, W, '×'); t(-3.6, 1.4, l('есть 2 из 3', '2 of 3 now'), W, { dy: 14, size: 14, w: 800 })
+    pod(3.0, M, '✓'); pod(4.6, M, '✓'); pod(6.2, M, '✓'); t(4.6, 1.4, l('снова 3 из 3', '3 of 3 again'), M, { dy: 14, size: 14, w: 800 })
+    I.path([g(-2.0, -1.2), g(-2.0, -3.4), g(6.2, -3.4), g(6.2, -1.2)], A, { w: 2.2, dash: '4 3', arrow: true, cls: 'fl' })
+    t(2.1, -3.4, l('петля сверки: создать недостающий под', 'reconcile loop: create the missing pod'), A, { size: 14, w: 800, dy: -8 })
+  } },
+  // Helm: чарт с шаблонами и настройками одной командой превращается в набор объектов кластера
+  'helm': { ru: 'Helm ставит приложение одной командой: из чарта получаются все его объекты', en: 'Helm installs an app with one command: a chart becomes all its objects', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-10, 0, (x, y) => I.doc(x - 0.9, y - 0.7, 0, 1.8, 1.4, M, 3)); t(-10, 1.6, l('чарт', 'chart'), M, { dy: 14, size: 15, w: 800 }); t(-10, 1.6, l('шаблоны + настройки', 'templates + values'), M, { dy: 33, size: 13, w: 700 })
+    arr(A, [-7.8, 0], [-5.4, 0]); t(-6.6, 0, 'helm install', A, { size: 14, w: 800, dy: -14 })
+    at(-3.4, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.9, M)); t(-3.4, 1.4, l('API-сервер', 'API server'), M, { dy: 14, size: 15, w: 800 })
+    const objs: [number, string][] = [[1.4, 'Deployment'], [4.6, 'Service'], [7.8, 'ConfigMap']]
+    objs.forEach(([X, n]) => { at(X, 0, (x, y) => I.doc(x - 0.6, y - 0.45, 0, 1.2, 0.9, M, 2)); t(X, 1.4, n, M, { dy: 14, size: 14, w: 800 }) })
+    arr(A, [-1.8, 0], [0.2, 0])
+    t(4.6, -2.6, l('все объекты приложения разом', 'all app objects at once'), A, { size: 14, w: 800 })
+  } },
+  // Эвикшн: на ноде кончилась память, kubelet выселяет под; контроллер в петле сверки поднимает копию на другой ноде
+  'eviction': { ru: 'Память на ноде кончилась — под эвиктят, копию поднимают на другой ноде', en: 'The node runs out of memory, the pod is evicted, a copy starts on another node', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const node = (X: number, col: string) => at(X, 0, (x, y) => I.box(x - 1.3, y - 1.3, 0, 2.6, 2.6, 0.3, col))
+    const pod = (X: number, col: string, mark = '') => { at(X, 0, (x, y) => I.box(x - 0.4, y - 0.4, 0.3, 0.8, 0.8, 0.8, col)); if (mark) t(X, 0, mark, '#fff', { gz: 1.1, size: 16, w: 800 }) }
+    // Перегруженная нода: два пода, один выселяют
+    node(-5, M); pod(-5.7, M); pod(-4.3, W, '×')
+    t(-5, 2.0, l('нода · память кончилась', 'node · out of memory'), W, { dy: 14, size: 15, w: 800 })
+    t(-5, 2.0, l('kubelet эвиктит под', 'kubelet evicts a pod'), M, { dy: 33, size: 13, w: 700 })
+    // Живая нода: копия поднимается здесь
+    node(5, M); pod(4.3, M); pod(5.7, M, '✓')
+    t(5, 2.0, l('другая нода', 'another node'), M, { dy: 14, size: 15, w: 800 })
+    t(5, 2.0, l('копия снова работает', 'the copy runs again'), M, { dy: 33, size: 13, w: 700 })
+    // Перенос: петля сверки создаёт копию на другой ноде
+    I.path([g(-4.3, -1.4), g(-4.3, -3.6), g(5.7, -3.6), g(5.7, -1.4)], A, { w: 2.2, dash: '4 3', arrow: true, cls: 'fl' })
+    t(0.5, -3.6, l('петля сверки: копий меньше, чем описано → создать новую', 'reconcile loop: fewer copies than described → create one'), A, { size: 14, w: 800, dy: -8 })
+  } },
+  'chaos-engineering': { ru: 'Уронить копию на проде и посмотреть, поднимет ли её система', en: 'Drop a copy in production and see whether the system brings it back', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const copy = (X: number, col: string, mark: string) => { at(X, 0, (x, y) => I.box(x - 0.5, y - 0.5, 0, 1.0, 1.0, 0.8, col)); t(X, 0, mark, '#fff', { gz: 0.8, size: 16, w: 800 }) }
+    // Кто ставит эксперимент: человек
+    at(-11.6, 0, (x, y) => I.person(x, y, M, '')); t(-11.6, 1.4, l('эксперимент', 'experiment'), W, { dy: 14, size: 15, w: 800 }); t(-11.6, 1.4, l('выключить сервер', 'shut down a server'), M, { dy: 33, size: 13, w: 700 })
+    arr(W, [-9.8, 0], [-8.2, 0])
+    // Те же три копии: сразу после сбоя и через минуту
+    copy(-6.6, M, '✓'); copy(-4.0, M, '✓'); copy(-1.4, W, '×')
+    t(-4.0, 1.4, l('сразу после сбоя', 'right after the failure'), M, { dy: 14, size: 15, w: 800 }); t(-4.0, 1.4, l('копий 2 из 3', '2 of 3 copies'), W, { dy: 33, size: 13, w: 800 })
+    copy(3.4, M, '✓'); copy(6.0, M, '✓'); copy(8.6, M, '✓')
+    t(6.0, 1.4, l('через минуту', 'a minute later'), M, { dy: 14, size: 15, w: 800 }); t(6.0, 1.4, l('снова 3 из 3, третья — новая', '3 of 3 again, the third is new'), A, { dy: 33, size: 13, w: 800 })
+    // Петля сверки: от упавшей копии к новой
+    I.path([g(-1.4, -1.0), g(-1.4, -4.4), g(8.6, -4.4), g(8.6, -1.2)], A, { w: 2.2, dash: '4 3', arrow: true, cls: 'fl' })
+    t(3.6, -4.4, l('петля сверки поднимает новую копию', 'the reconcile loop starts a new copy'), A, { size: 14, w: 800, dy: -8 })
+    t(0, 5.0, l('проверен только этот сбой', 'only this failure is checked'), W, { size: 15, w: 800 })
+  } },
+  // Fail-fast: одна и та же неверная сумма. Сверху её останавливает первый шаг, снизу она молча проходит в базу и всплывает у клиента
+  'fail-fast': { ru: 'Fail-fast: ошибка остановлена там, где возникла', en: 'Fail-fast: the error stops where it arose', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const step = (X: number, Y: number, col: string, op = 1) => at(X, Y, (x, y) => I.box(x - 0.7, y - 0.7, 0, 1.4, 1.4, 0.8, col, op))
+    const stop = (X: number, Y: number) => { at(X, Y, (x, y) => I.box(x - 0.5, y - 0.5, 0, 1.0, 1.0, 0.6, W)); t(X, Y, '×', '#fff', { gz: 0.6, size: 22, w: 800 }) }
+    const input = (Y: number) => { at(-10, Y, (x, y) => I.doc(x - 0.6, y - 0.45, 0, 1.2, 0.9, M, 2)); t(-10, Y, l('сумма −500 ₽', 'amount −500'), M, { dy: 30, size: 12, w: 700 }) }
+    // Сверху: fail-fast
+    t(-10, -4.4, l('fail-fast', 'fail-fast'), A, { size: 15, w: 800, anchor: 'start', dy: -6 })
+    input(-2.2); arr(M, [-8.4, -2.2], [-6.4, -2.2])
+    step(-4.6, -2.2, M); t(-4.6, -2.2, l('проверка входа', 'input check'), M, { dy: 30, size: 12, w: 700 })
+    stop(-1.6, -2.2); t(-1.6, -2.2, l('стоп сразу', 'stop at once'), W, { dy: 30, size: 13, w: 800 })
+    t(1.2, -2.2, l('ошибка видна там, где возникла', 'the error shows where it arose'), A, { size: 14, w: 800, anchor: 'start', dy: -4 }); t(1.2, -2.2, l('дальше не идёт', 'and goes no further'), M, { size: 13, w: 700, anchor: 'start', dy: 14 })
+    // Снизу: молча дальше
+    t(-10, 1.6, l('молча дальше', 'silently on'), W, { size: 15, w: 800, anchor: 'start', dy: -6 })
+    input(4.2); arr(M, [-8.4, 4.2], [-6.4, 4.2])
+    step(-4.6, 4.2, M); t(-4.6, 4.2, l('расчёт', 'pricing'), M, { dy: 30, size: 12, w: 700 })
+    arr(M, [-3.0, 4.2], [-1.4, 4.2])
+    step(0, 4.2, M); t(0, 4.2, l('списание', 'charge'), M, { dy: 30, size: 12, w: 700 })
+    arr(M, [1.6, 4.2], [3.2, 4.2])
+    at(4.6, 4.2, (x, y) => I.cyl(x, y, 0, 0.6, 0.9, M)); t(4.6, 4.2, l('база', 'database'), M, { dy: 30, size: 12, w: 700 })
+    arr(W, [6.0, 4.2], [7.6, 4.2])
+    stop(9.0, 4.2); t(9.0, 4.2, l('жалоба клиента', 'customer complaint'), W, { dy: 30, size: 13, w: 800 }); t(9.0, 4.2, l('через неделю', 'a week later'), W, { dy: 47, size: 12, w: 700 })
+  } },
+  // Теорема Райса, суть: у любого судьи-проверки найдётся программа, на которой он ошибётся
+  'rice-theorem': { ru: 'Для любой проверки поведения найдётся программа, на которой она ошибётся или не ответит', en: 'For any behaviour check there is a program on which it is wrong or never answers', tile: [0, 0, 0, 0], wide: true, legend: false, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    t(0, -7.4, l('Правило о поведении: «никогда не списывает деньги без заказа»', 'A behaviour rule: “never charges money without an order”'), A, { size: 12.5, w: 800 })
+    at(-8.6, -0.4, (x, y) => I.agent(x - 0.7, y - 0.7, A, 1.4, '')); t(-8.6, 1.2, l('проверка', 'the check'), A, { dy: 12, size: 12, w: 800 }); t(-8.6, 1.2, l('любая, самая умная', 'any, however clever'), M, { dy: 27, size: 10, w: 600 })
+    arr(A, [-6.6, -0.4], [-4.6, -0.4]); t(-5.6, -0.4, l('смотрит каждую', 'looks at each'), A, { dy: -10, size: 9.5, w: 700 })
+    const res = ['ok', 'bad', 'ok', 'bad', 'ok', 'q']
+    res.forEach((r, i) => {
+      const X = -3.2 + i * 2.2
+      at(X, -1.6, (x, y) => I.doc(x - 0.55, y - 0.4, 0, 1.1, 0.8, r === 'q' ? W : M, 2))
+      I.path([g(X, -0.9), g(X, 0.3)], M, { w: 1.4, dash: '2 4', op: 0.7 })
+      if (r === 'q') { at(X, 1.0, (x, y) => I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.5, W)); t(X, 1.0, '?', '#fff', { gz: 0.5, size: 13, w: 800 }) }
+      else {
+        at(X, 1.0, (x, y) => I.box(x - 0.35, y - 0.35, 0, 0.7, 0.7, 0.35, r === 'ok' ? A : M)); t(X, 1.0, r === 'ok' ? '✓' : '×', '#fff', { gz: 0.35, size: 11, w: 800 })
+        t(X, 1.0, r === 'ok' ? l('соблюдает', 'keeps it') : l('нарушает', 'breaks it'), r === 'ok' ? A : M, { dy: 26, size: 10, w: 700 })
+      }
+    })
+    t(-0.0, -3.4, l('программы на проверку', 'programs to check'), M, { size: 11, w: 800 })
+    t(-0.0, 3.6, l('ответ проверки', 'the check’s answer'), M, { size: 11, w: 800 })
+    t(7.8, -3.0, l('построена против', 'built against'), W, { size: 10.5, w: 800, dy: -14 }); t(7.8, -3.0, l('этой проверки', 'this check'), W, { size: 10.5, w: 800, dy: 0 })
+    t(7.8, 2.4, l('ответ неверен', 'the answer is wrong'), W, { size: 11.5, w: 800, dy: 30 }); t(7.8, 2.4, l('или его нет', 'or never comes'), W, { size: 11.5, w: 800, dy: 45 })
   } },
   // Теорема Райса, экран 1: один и тот же код, два вопроса. О тексте — просмотреть конечный список строк; о поведении — все запуски, их бесконечно
   'rice-predicate': { ru: 'Как написано: прочитать конечный список строк. Что получится: перебрать все запуски, а их бесконечно', en: 'How it is written: read a finite list of lines. What comes out: go through every run, and there are infinitely many', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {

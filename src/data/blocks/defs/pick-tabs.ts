@@ -11,13 +11,14 @@ export default [
     attrs: {
       id: { doc: 'имя группы радиокнопок, уникальное на странице (вкладки — id1, id2…)', required: true },
       tone: { doc: 'warn — проблемы, accent — шаги', required: true, values: ['warn', 'accent'] },
+      group: { doc: 'общее имя радиокнопок у нескольких вкладок: выбор в одних снимает выбор в других (синхронизацию подсветки задаёт CSS статьи)' },
     },
     slots: { tab: { doc: 'пункт; внутри — колонки <b-pick-cell>', required: true, attrs: { t: { doc: 'подпись вкладки', required: true } } } },
     render: ({ attrs, slots }) => {
       if (slots.tab.length > 8) throw new Error(`blocks: <b-pick-tabs id="${attrs.id}"> — не больше 8 вкладок`)
-      const id = attr(attrs.id)
+      const id = attr(attrs.id), name = attrs.group ? attr(attrs.group) : id
       return `<div class="bk-pick-tabs${attrs.tone === 'accent' ? ' bk-pick-tabs-a' : ''}">`
-        + slots.tab.map((_, i) => `<input type="radio" name="${id}" id="${id}${i + 1}"${i ? '' : ' checked'}>`).join('')
+        + slots.tab.map((_, i) => `<input type="radio" name="${name}" id="${id}${i + 1}"${i || attrs.group ? '' : ' checked'}>`).join('')
         + `<div class="bk-pick-tabs-row">${slots.tab.map((s, i) => `<label for="${id}${i + 1}"><i>${i + 1}</i>${s.attrs.t}</label>`).join('')}</div>`
         + slots.tab.map((s, i) => `<div class="bk-pick-tabs-p bk-pick-tabs-p${i + 1}">${s.html}</div>`).join('')
         + '</div>'
