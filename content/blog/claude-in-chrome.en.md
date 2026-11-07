@@ -1,7 +1,7 @@
 ---
-title: Claude in Chrome: how an agent works in your browser — tests, debugging and forms under your login
+title: How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login
 date: 2026-10-05
-updated: 2026-11-07
+updated: 2026-11-08
 description: Claude in Chrome connects Claude Code to the browser: the agent opens tabs, reads the console, runs scenarios and fills forms under your login. How to connect it, what it does and which permissions to give.
 tags: AI, agents, Claude Code, Claude in Chrome, browser, QA, harness
 category: harness

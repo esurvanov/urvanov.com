@@ -1,16 +1,16 @@
 ---
-title: TLA+ vs Alloy vs Quint: TLA+ and Quint for step-by-step behaviour, Alloy for data structure
+title: TLA+ vs Quint vs Alloy: which formal verification language to choose
 date: 2026-10-25
-updated: 2026-11-07
+updated: 2026-11-08
 description: TLA+ vs Alloy vs Quint: what each language describes, how it is written, what checks it, and who it suits, from event order to data relationships.
-tags: AI, specs, TLA+, Alloy, Quint, formal verification, model checking, TLA+ vs Alloy, Alloy Analyzer, TLC
+tags: AI, specs, TLA+, Alloy, Quint, formal verification, model checking, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide
 mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, model checking, formal specification, formal methods, TLA+ vs Alloy vs Quint, Leslie Lamport
 toc: idea=One task | table=Summary | tla-alloy=TLA+ and Alloy | tla-quint=TLA+ and Quint | alloy-quint=Alloy and Quint | choose=What to choose | faq=FAQ | next=Further reading
 ---
 
-Choose the language by what breaks in your system: TLA+ and Quint describe behavior step by step, Alloy describes objects and the links between them. Quint reads like ordinary code, TLA+ and Alloy like formulas. Use Quint for product rules over time, TLA+ for strict proofs, Alloy for the structure of data and access rights.
+Among formal verification languages, TLA+ and Quint both describe the behavior of a system step by step and differ in notation: Quint reads like ordinary code, TLA+ like formulas. Alloy describes objects and the links between them. Use Quint for product rules over time, TLA+ for strict proofs, Alloy for the structure of data and access rights.
 
 <b-post series="harness">
 <b-art names="tla-alloy-quint-compare/trio" wide/>
@@ -97,7 +97,7 @@ Choose the language by what breaks in your system: TLA+ and Quint describe behav
 <b-chapter id="faq" icon="chat" title="FAQ">
   <b-faq-cards>
     <q t="How is TLA+ different from Alloy?">TLA+ describes the behavior of a system step by step and looks for the chain of steps where a rule breaks. Alloy describes objects and the links between them and looks for an example of a structure where a rule is violated.</q>
-    <q t="How is Quint different from TLA+?">They describe the same thing, and only the notation differs: Quint looks like ordinary code, while TLA+ uses mathematical notation. The same programs check both notations, TLC and Apalache.</q>
+    <q t="Quint or TLA+: which to choose?">Quint, if the team is closer to ordinary code and needs to check product rules over time. TLA+, if you need strict proofs about a complex distributed system. They describe the same thing, and the same programs check both notations, TLC and Apalache.</q>
     <q t="Which should I choose: TLA+, Alloy or Quint?">For product rules over time and a team without maths, take Quint; for strict proofs about a complex distributed system, TLA+; for the structure of data and access rights, Alloy.</q>
     <q t="What checks models written in TLA+, Alloy and Quint?">TLA+ and Quint are checked by TLC and Apalache. Alloy has its own analyzer, Alloy Analyzer, which takes the constraints of a model and finds structures that satisfy them.</q>
   </b-faq-cards>

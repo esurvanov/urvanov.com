@@ -1,7 +1,7 @@
 ---
-title: Что такое OpenSpec: установка, команды и пример изменения
+title: Установка и команды OpenSpec: пример изменения от плана до слияния
 date: 2026-11-07
-updated: 2026-11-07
+updated: 2026-11-08
 description: Как устроен OpenSpec от Fission AI: папка изменения с планом, требованиями и задачами, три команды агенту и слияние в общие спеки. Установка за две команды, реальный пример изменения из репозитория сайта urvanov.com, сравнение со Spec Kit и готовые запросы, чтобы начать.
 tags: AI, OpenSpec, спеки, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs

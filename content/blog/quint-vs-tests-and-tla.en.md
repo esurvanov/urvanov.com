@@ -1,12 +1,12 @@
 ---
 title: How model checking differs from testing: a test checks one scenario, a model checks every order of actions (Quint, QUnit and TLA+)
 date: 2026-10-25
-updated: 2026-11-07
+updated: 2026-11-08
 description: A test checks a scenario you thought of, model checking tries every order of actions. What QUnit, Jest, Vitest catch, and what Quint, TLA+, Alloy catch.
-tags: AI, specs, Quint, TLA+, Alloy, QUnit, Jest, Vitest, testing, formal verification, Quint vs TLA+
+tags: AI, specs, Quint, TLA+, Alloy, QUnit, Jest, Vitest, testing, formal verification
 category: specs
 layout: wide
-mentions: Quint, QUnit, Jest, Vitest, TLA+, Alloy, Apalache, model checking, formal verification, Quint vs QUnit, Quint vs TLA+, test framework
+mentions: Quint, QUnit, Jest, Vitest, TLA+, Alloy, Apalache, model checking, formal verification, Quint vs QUnit, test framework
 toc: names=Two names | tests=Test engines | tla=TLA+ and Alloy | choose=What to choose | together=Together | faq=FAQ | next=Further reading
 ---
 
@@ -132,7 +132,7 @@ A test checks a scenario you thought of, while model checking tries every order 
 <b-chapter id="faq" icon="chat" title="FAQ">
   <b-faq-cards>
     <q t="How is Quint different from QUnit?">QUnit runs tests of finished JavaScript code, while Quint describes the rules of a system and tries the orders of actions itself. The names are similar, but these are programs of different kinds.</q>
-    <q t="How is Quint different from TLA+?">They describe the same thing, and only the notation differs: Quint looks like ordinary code, while TLA+ uses mathematical notation. The same programs check both notations, TLC and Apalache.</q>
+    <q t="How is Quint different from TLA+?">They describe the same thing and differ in notation: Quint looks like ordinary code, TLA+ uses formulas. A detailed comparison of the three languages is in the article “TLA+ vs Quint vs Alloy”.</q>
     <q t="What should I choose: Quint, Jest or TLA+?">If the question is whether a function works correctly, take a test. If it is whether a rule can break in some sequence of events, take Quint; for heavy proofs about a distributed system, people take TLA+.</q>
     <q t="Can Quint be used together with tests?">Yes, they complement each other. A model finds the chain of steps where a rule breaks, and a short test pins it in the code so the error does not come back.</q>
   </b-faq-cards>
