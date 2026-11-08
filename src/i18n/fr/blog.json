@@ -1,0 +1,18 @@
+{
+  "harness": {
+    "name": "Harness",
+    "description": "Les harness des agents IA : Claude Code, Codex, Cursor, et comment transformer les erreurs d’un agent en règles de son environnement."
+  },
+  "specs": {
+    "name": "Spécifications et contexte",
+    "description": "Spécifications, règles et skills pour les agents IA : ce qu’un agent doit savoir d’un projet, spécifications par agrégat et boucle de réconciliation."
+  },
+  "prompts": {
+    "name": "Prompts et revue",
+    "description": "Prompts pour les tâches de travail et revue des réponses d’un modèle : comment formuler une demande et que faire quand la réponse rate sa cible."
+  },
+  "research": {
+    "name": "Recherche",
+    "description": "Entretiens et recherche sur l’usage de l’IA en entreprise : qui interroger, comment éviter les questions orientées, ce que montrent les rapports d’usage."
+  }
+}
