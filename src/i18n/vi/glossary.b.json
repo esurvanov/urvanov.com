@@ -1,0 +1,1162 @@
+{
+  "harness-engineering": {
+    "aka": "kỹ thuật harness",
+    "def": "Harness engineering (kỹ thuật harness) là bộ môn tinh chỉnh harness: tác nhân AI biết gì về dự án, có những công cụ nào, được phép làm gì và kết quả được kiểm tra ra sao. Nó bao trùm toàn bộ môi trường, không có thứ tự bước cố định.",
+    "faq.0.q": "Harness engineering là gì?",
+    "faq.0.a": "Bộ môn thiết lập harness: tác nhân biết gì về dự án, có những công cụ nào, được phép làm gì và kết quả của nó được kiểm tra ra sao.",
+    "faq.1.q": "Harness engineering khác HDD ở đâu?",
+    "faq.1.a": "Harness engineering bao trùm toàn bộ môi trường và không có thứ tự cố định. HDD là một phương pháp nằm trong đó: mỗi lỗi của tác nhân trở thành một quy tắc của môi trường.",
+    "source.label": "martinfowler.com: Harness engineering"
+  },
+  "hdd": {
+    "def": "HDD là một phương pháp cụ thể trong harness engineering: mỗi lỗi của tác nhân AI trở thành một quy tắc của môi trường, có thể là chỉ dẫn, phép kiểm tra hoặc giới hạn. Môi trường lớn dần từ các lỗi thật và lỗi đó không quay lại ở những lần chạy sau.",
+    "faq.0.q": "HDD là gì?",
+    "faq.0.a": "Một phương pháp trong harness engineering: mỗi lỗi của tác nhân biến thành một quy tắc của môi trường, tức là chỉ dẫn, phép kiểm tra hoặc giới hạn.",
+    "faq.1.q": "HDD mang lại gì?",
+    "faq.1.a": "Môi trường lớn dần từ các lỗi thật, và một lỗi không lặp lại ở những lần chạy sau."
+  },
+  "spec-driven-development": {
+    "def": "Phát triển dựa trên đặc tả (Spec-Driven Development) là cách làm viết trước đặc tả, tức hệ thống phải làm gì, rồi để tác nhân AI viết mã và đối chiếu mã với đặc tả. Đặc tả trở thành tài liệu chính, còn mã là hệ quả của nó.",
+    "faq.0.q": "Phát triển dựa trên đặc tả (spec-driven development) là gì?",
+    "faq.0.a": "Cách làm đặt đặc tả về việc hệ thống phải làm lên trước, còn tác nhân viết mã và kiểm tra mã theo đặc tả đó.",
+    "faq.1.q": "Những framework nào hỗ trợ spec-driven development?",
+    "faq.1.a": "Ví dụ OpenSpec của Fission AI và Spec Kit của GitHub.",
+    "source.label": "GitHub Blog: Spec-driven development",
+    "compare.title": "Vòng đối chiếu: Kubernetes và tác nhân",
+    "compare.rows.0": [
+      "Mong muốn",
+      "manifest, Helm chart",
+      "đặc tả (spec)"
+    ],
+    "compare.rows.1": [
+      "Thực tế",
+      "các dịch vụ trong cụm",
+      "mã trong repository"
+    ],
+    "compare.rows.2": [
+      "Ai so sánh",
+      "bộ điều khiển (controller)",
+      "tác nhân"
+    ],
+    "compare.rows.3": [
+      "Làm gì khi lệch",
+      "khởi chạy hoặc gỡ pod",
+      "sửa mã cho đến khi kiểm thử và đặc tả khớp nhau"
+    ],
+    "compare.rows.4": [
+      "Cách thay đổi hệ thống",
+      "sửa manifest, không sửa cụm",
+      "sửa đặc tả, không sửa mã"
+    ]
+  },
+  "openspec": {
+    "def": "OpenSpec là framework mã nguồn mở miễn phí của Fission AI cho phát triển dựa trên đặc tả (Spec-Driven Development): tác nhân AI trước hết viết kế hoạch thay đổi vào các tệp, bạn duyệt, rồi tác nhân mới viết mã. Các spec đang hiệu lực nằm trong `openspec/specs`, mỗi thay đổi là một thư mục riêng trong `openspec/changes`: `proposal.md` (vì sao và làm gì), delta của spec, `design.md` và `tasks.md`. Tác nhân đi theo `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; khi lưu trữ, delta được gộp vào spec. Nhẹ hơn Spec Kit, không có các giai đoạn cứng nhắc và chạy được với hơn 30 tác nhân.",
+    "faq.0.q": "OpenSpec là gì?",
+    "faq.0.a": "Framework mã nguồn mở miễn phí của Fission AI cho phát triển dựa trên đặc tả: tác nhân trước hết viết kế hoạch thay đổi vào các tệp, bạn duyệt, rồi tác nhân mới viết mã.",
+    "faq.1.q": "OpenSpec có những lệnh nào?",
+    "faq.1.a": "Ba lệnh chính: /opsx:propose tạo kế hoạch thay đổi, /opsx:apply viết mã theo các nhiệm vụ, /opsx:archive gộp yêu cầu vào các spec chung. Trước đó có thể suy nghĩ thành lời bằng /opsx:explore.",
+    "faq.2.q": "Cài OpenSpec như thế nào?",
+    "faq.2.a": "Bằng `npm install -g @fission-ai/openspec@latest` (cần Node.js 22.12 trở lên) hoặc `brew install openspec`. Sau đó chạy `openspec init` trong thư mục dự án. Công cụ miễn phí, theo giấy phép MIT.",
+    "faq.3.q": "OpenSpec khác Spec Kit ở đâu?",
+    "faq.3.a": "OpenSpec nhẹ hơn: các bước có thể lặp lại theo thứ tự bất kỳ và được làm cho mã đang chạy sẵn. Spec Kit của GitHub đi qua các giai đoạn cố định.",
+    "source.label": "Repo GitHub của OpenSpec",
+    "seo.title": "OpenSpec là gì: framework phát triển dựa trên đặc tả",
+    "seo.description": "OpenSpec của Fission AI: kế hoạch thay đổi viết bằng Markdown trước khi có mã, ba lệnh cho tác nhân (propose, apply, archive), yêu cầu được gộp vào spec dự án.",
+    "more.label": "OpenSpec: cài đặt, lệnh và ví dụ một thay đổi",
+    "compare.title": "OpenSpec, Spec Kit và Kiro",
+    "compare.rows.0": [
+      "Là gì",
+      "framework mã nguồn mở của Fission AI cho tác nhân của bạn",
+      "bộ công cụ mã nguồn mở của GitHub cho tác nhân của bạn",
+      "môi trường phát triển của AWS với tác nhân riêng"
+    ],
+    "compare.rows.1": [
+      "Giá",
+      "miễn phí, giấy phép MIT",
+      "miễn phí, giấy phép MIT",
+      "gói miễn phí có giới hạn, các gói trả phí cao hơn"
+    ],
+    "compare.rows.2": [
+      "Tệp thay đổi",
+      "proposal.md, delta của spec, design.md, tasks.md",
+      "constitution, spec, plan, tasks",
+      "requirements.md (hoặc bugfix.md), design.md, tasks.md"
+    ],
+    "compare.rows.3": [
+      "Thứ tự bước",
+      "các bước có thể lặp lại theo thứ tự bất kỳ",
+      "theo giai đoạn: constitution → spec → plan → tasks → mã",
+      "requirements → design → tasks"
+    ],
+    "compare.rows.4": [
+      "Tác nhân nào",
+      "hơn 30 tác nhân qua các lệnh slash",
+      "nhiều tác nhân: Copilot, Claude Code và các tác nhân khác",
+      "tác nhân riêng của Kiro"
+    ]
+  },
+  "spec-kit": {
+    "def": "Spec Kit là bộ công cụ của GitHub cho phát triển dựa trên đặc tả (Spec-Driven Development): CLI `specify` cài các lệnh cho tác nhân AI dẫn đi từng bước: nguyên tắc dự án (`/speckit-constitution`), đặc tả (`/speckit-specify`), kế hoạch kỹ thuật (`/speckit-plan`), nhiệm vụ (`/speckit-tasks`), mã (`/speckit-implement`) và đối chiếu với các sản phẩm trung gian (`/speckit-converge`), lặp lại cho đến khi mã và đặc tả khớp nhau. Chạy với Copilot, Claude Code và các tác nhân khác.",
+    "faq.0.q": "Spec Kit là gì?",
+    "faq.0.a": "Bộ công cụ của GitHub cho phát triển dựa trên đặc tả: tiện ích specify cài các lệnh cho tác nhân vào dự án, dẫn bạn từng bước từ nguyên tắc dự án đến mã.",
+    "faq.1.q": "Spec Kit gồm những bước nào?",
+    "faq.1.a": "Nguyên tắc dự án, đặc tả, kế hoạch kỹ thuật, nhiệm vụ, mã và đối chiếu mã với đặc tả, lặp lại cho đến khi khớp nhau.",
+    "source.label": "Repo GitHub của Spec Kit"
+  },
+  "rfc-2119": {
+    "def": "RFC 2119 là chuẩn quy định nghĩa của MUST, SHOULD và MAY trong các yêu cầu. Trong spec, các mức này cho tác nhân AI biết điều gì bắt buộc, điều gì nên làm và điều gì tùy chọn.",
+    "faq.0.q": "RFC 2119 là gì?",
+    "faq.0.a": "Chuẩn xác định nghĩa của MUST, SHOULD và MAY trong các yêu cầu.",
+    "faq.1.q": "Vì sao dùng RFC 2119 trong spec cho tác nhân?",
+    "faq.1.a": "Những từ này cho tác nhân biết điều gì bắt buộc, điều gì được khuyến nghị và điều gì tùy nó quyết định.",
+    "source.label": "RFC 2119, văn bản chuẩn"
+  },
+  "ddd": {
+    "def": "Domain-Driven Design (thiết kế hướng miền, DDD) là cách thiết kế xây mã quanh miền nghiệp vụ và ngôn ngữ chung với phía nghiệp vụ. Miền được chia thành các bounded context; bên trong có các aggregate nhận lệnh, giữ quy tắc nghiệp vụ và gửi sự kiện cho các context lân cận.",
+    "faq.0.q": "DDD là gì?",
+    "faq.0.a": "Domain-Driven Design: cách tiếp cận xây mã quanh miền nghiệp vụ và ngôn ngữ chung với phía nghiệp vụ.",
+    "faq.1.q": "DDD gồm những phần nào?",
+    "faq.1.a": "Miền được chia thành các bounded context, bên trong có các aggregate: chúng nhận lệnh, giữ quy tắc nghiệp vụ và gửi sự kiện.",
+    "source.label": "Martin Fowler: Domain-Driven Design"
+  },
+  "aggregate": {
+    "name": "Aggregate",
+    "def": "Aggregate là một nhóm các đối tượng miền có liên quan, thay đổi như một khối thông qua gốc (root) của nó và tự giữ các quy tắc nghiệp vụ. Aggregate có các lệnh làm nó thay đổi; một phiên bản tăng lên sau mỗi thay đổi; các read model để xem bên trong có gì; và các sự kiện nó gửi cho bounded context khác. Trong spec theo aggregate, mỗi spec mô tả một aggregate.",
+    "faq.0.q": "Aggregate trong DDD là gì?",
+    "faq.0.a": "Nhóm các đối tượng miền có liên quan, thay đổi như một khối thông qua gốc của nó và tự giữ các quy tắc nghiệp vụ.",
+    "faq.1.q": "Vì sao aggregate quan trọng khi làm việc với tác nhân?",
+    "faq.1.a": "Ranh giới của nó là chỗ tốt để kiểm tra công việc của tác nhân: lệnh đi vào, sự kiện đi ra và các quy tắc được viết ngay tại đó.",
+    "source.label": "Martin Fowler: DDD Aggregate"
+  },
+  "bounded-context": {
+    "name": "Bounded context",
+    "def": "Bounded context là ranh giới mà bên trong đó các thuật ngữ chỉ có một nghĩa. “Đơn hàng” ở bộ phận bán hàng và ở bộ phận giao hàng có thể mang nghĩa khác nhau, nên mỗi ranh giới có spec và bộ từ vựng riêng. Qua biên giới, các context trao đổi với nhau bằng sự kiện của aggregate.",
+    "faq.0.q": "Bounded context là gì?",
+    "faq.0.a": "Ranh giới mà trong đó các thuật ngữ chỉ có một nghĩa: “đơn hàng” ở bán hàng và ở giao hàng có thể khác nhau.",
+    "faq.1.q": "Các bounded context trao đổi với nhau như thế nào?",
+    "faq.1.a": "Qua ranh giới, các context lân cận trao đổi sự kiện của aggregate.",
+    "source.label": "Martin Fowler: Bounded Context"
+  },
+  "domain": {
+    "name": "Miền nghiệp vụ",
+    "aka": "domain",
+    "def": "Miền nghiệp vụ (business domain) là phần của thế giới thực mà chương trình được viết cho, với các khái niệm và quy tắc riêng: ví dụ đặt phòng họp. Trong DDD, miền được chia thành các miền con, và mô hình của mỗi miền con nằm trong mã ở bounded context riêng với ngôn ngữ chung (ubiquitous language) riêng.",
+    "faq.0.q": "Miền nghiệp vụ là gì?",
+    "faq.0.a": "Phần của thế giới thực mà chương trình được viết cho, với các khái niệm và quy tắc riêng, chẳng hạn đặt phòng họp.",
+    "faq.1.q": "Miền được chia như thế nào trong DDD?",
+    "faq.1.a": "Thành các miền con, và mô hình của mỗi miền con nằm trong bounded context riêng trong mã.",
+    "source.label": "Martin Fowler: Domain-Driven Design"
+  },
+  "ubiquitous-language": {
+    "name": "Ngôn ngữ chung (ubiquitous language)",
+    "aka": "ngôn ngữ của miền",
+    "def": "Ngôn ngữ chung (ubiquitous language) là bộ từ vựng dùng chung của lập trình viên và phía nghiệp vụ bên trong một bounded context: cùng những từ đó xuất hiện trong trao đổi, trong spec và trong mã. Trong ranh giới, mỗi từ có một nghĩa; qua ranh giới, cùng từ đó có thể mang nghĩa khác. Ngôn ngữ càng hẹp thì càng nhiều quy tắc có thể kiểm tra chỉ từ văn bản mà không cần chạy thử.",
+    "faq.0.q": "Ngôn ngữ chung (ubiquitous language) trong DDD là gì?",
+    "faq.0.a": "Bộ từ vựng dùng chung của lập trình viên và phía nghiệp vụ trong một bounded context: cùng những từ xuất hiện trong trao đổi, trong spec và trong mã.",
+    "faq.1.q": "Một từ có thể mang nghĩa khác nhau không?",
+    "faq.1.a": "Trong ranh giới, một từ có một nghĩa; bên ngoài, cùng từ đó có thể có nghĩa khác.",
+    "source.label": "Martin Fowler: Ubiquitous Language"
+  },
+  "imperative": {
+    "name": "Cách tiếp cận mệnh lệnh (imperative)",
+    "aka": "làm thế nào: các bước",
+    "def": "Cách tiếp cận mệnh lệnh (imperative) là kiểu viết chương trình trong đó các bước dẫn đến kết quả được nêu rõ từng bước: tìm các lượt đặt của phòng, so sánh các khoảng thời gian, lưu lượt đặt mới. Quy tắc về kết quả không được viết đầy đủ ở đâu trong mã như vậy; nó hình thành từ các bước, nên phải kiểm tra dựa trên hành vi.",
+    "faq.0.q": "Cách tiếp cận mệnh lệnh là gì?",
+    "faq.0.a": "Kiểu viết chương trình nêu rõ từng bước để đạt kết quả.",
+    "faq.1.q": "Cách tiếp cận mệnh lệnh khác cách tiếp cận khai báo ở đâu?",
+    "faq.1.a": "Mã mệnh lệnh mô tả các bước, còn quy tắc về kết quả hình thành từ chúng. Mã khai báo mô tả điều gì phải đúng, và một engine chọn các bước.",
+    "source.label": "Wikipedia: Imperative programming"
+  },
+  "declarative": {
+    "name": "Cách tiếp cận khai báo (declarative)",
+    "aka": "cái gì: quy tắc và ràng buộc",
+    "def": "Cách tiếp cận khai báo (declarative) là kiểu viết trong đó chương trình là một hệ quy tắc và ràng buộc mô tả kết quả mong muốn, không có thứ tự các bước: nó nêu điều gì phải đúng, còn engine quyết định đạt tới đó bằng cách nào. Ràng buộc và truy vấn cơ sở dữ liệu, quy tắc suy diễn và mô tả trạng thái mong muốn của hệ thống hoạt động theo cách này. Ví dụ: “các lượt đặt của một phòng không bao giờ chồng nhau” và “một lượt đặt kéo dài tối đa 4 giờ” dưới dạng ràng buộc cơ sở dữ liệu. Các ký pháp khai báo đơn giản có thể kiểm tra chính xác từ văn bản, vì hành vi của chúng lộ ra ngay trong câu khai báo. Ở ngôn ngữ khai báo mạnh thì điều này không còn đúng, và định lý Rice tác động lên nó giống như lên mã mệnh lệnh.",
+    "notes.title": "Nó xuất hiện ở đâu: ngôn ngữ, bộ kiểm tra, engine",
+    "notes.items.0.text": "truy vấn nói cần dữ liệu nào, còn cơ sở dữ liệu chọn cách lấy. Các ràng buộc CHECK, UNIQUE và EXCLUDE là quy tắc mà cơ sở dữ liệu thực thi ở mỗi lần ghi.",
+    "notes.items.1.text": "bạn mô tả trạng thái mong muốn: chạy những dịch vụ nào và bao nhiêu bản. Các controller trong vòng đối chiếu (reconcile loop) đưa hệ thống về trạng thái đó.",
+    "notes.items.2.text": "schema mô tả hình dạng dữ liệu; bộ kiểm tra (validator) kiểm tra từng tài liệu theo schema.",
+    "notes.items.3.text": "cũng như TLA+ và Alloy: quy tắc và bất biến của hệ thống được viết dưới dạng khẳng định, còn kiểm chứng mô hình duyệt qua các trạng thái.",
+    "notes.items.4.text": "ràng buộc trên các giá trị; solver tìm giá trị thỏa mãn chúng hoặc chứng minh rằng không có.",
+    "notes.items.5.text": "các sự kiện và quy tắc suy diễn; engine tự tìm câu trả lời cho câu hỏi. Ngôn ngữ này đầy đủ: trong đó cũng viết được vòng lặp vô tận.",
+    "notes.items.6.text": "Prolog được cắt giảm để truy vấn dữ liệu: mọi truy vấn đều chắc chắn kết thúc, nên câu trả lời luôn chính xác.",
+    "more.label": "Kiểm tra công việc của tác nhân AI ở đâu",
+    "also.0.label": "Vòng đối chiếu cho spec: giống Kubernetes",
+    "also.1.label": "Kiểm chứng mô hình khác kiểm thử ở đâu",
+    "also.2.label": "Spec theo aggregate",
+    "faq.0.q": "Cách tiếp cận khai báo là gì?",
+    "faq.0.a": "Kiểu viết trong đó chương trình là một hệ quy tắc và ràng buộc mô tả kết quả, không có thứ tự các bước.",
+    "faq.1.q": "Cách tiếp cận khai báo được dùng ở đâu?",
+    "faq.1.a": "Trong ràng buộc và truy vấn cơ sở dữ liệu, quy tắc suy diễn và mô tả trạng thái mong muốn của hệ thống, chẳng hạn SQL và Kubernetes.",
+    "source.label": "Wikipedia: Declarative programming"
+  },
+  "kubernetes": {
+    "def": "Kubernetes là hệ thống chạy các chương trình trong container trên nhiều máy chủ và theo dõi chúng. Nó được cấu hình theo kiểu khai báo: một tệp mô tả trạng thái mong muốn, chẳng hạn “ba bản của dịch vụ đặt phòng”, và các controller trong vòng đối chiếu (reconcile loop) so sánh nó với trạng thái thực rồi sửa phần chênh lệch: một bản bị sập thì khởi chạy bản mới. Cụm (cluster) gồm các node, nơi container chạy trong các pod; trạng thái mong muốn được lưu trong etcd, ứng dụng được cài bằng Helm chart, và khi thiếu bộ nhớ, eviction chuyển pod sang node khác.",
+    "screens.0": "Helm chart mô tả trạng thái mong muốn: ba bản. API server lưu nó trong etcd, scheduler đặt pod lên các node, còn kubelet chạy chúng. Khi một node sập, các controller thấy chỉ có 2 trên 3 bản và khởi chạy bản thứ ba trên node khác.",
+    "parts.title": "Gồm những gì",
+    "notes.title": "Vòng đối chiếu: Kubernetes giữ trạng thái mong muốn như thế nào",
+    "notes.items.0.name": "1. Mong muốn",
+    "notes.items.0.text": "một Deployment nói: ba bản của dịch vụ đặt phòng. Bản ghi nằm trong etcd.",
+    "notes.items.1.name": "2. Thực tế",
+    "notes.items.1.text": "controller xem hiện có bao nhiêu pod đang chạy: giả sử hai, vì một node đã sập.",
+    "notes.items.2.name": "3. Chênh lệch",
+    "notes.items.2.text": "cần ba, đang có hai, nên controller tạo pod thứ ba và scheduler đặt nó lên một node khỏe mạnh.",
+    "notes.items.3.name": "4. Lại từ đầu",
+    "notes.items.3.text": "việc kiểm tra không bao giờ dừng: controller liên tục so sánh mong muốn với thực tế, nên hệ thống tự quay về đúng bản mô tả.",
+    "more.label": "Vòng đối chiếu cho spec: giống Kubernetes",
+    "faq.0.q": "Kubernetes là gì?",
+    "faq.0.a": "Hệ thống chạy các chương trình trong container trên nhiều máy chủ và theo dõi chúng.",
+    "faq.1.q": "Kubernetes được cấu hình như thế nào?",
+    "faq.1.a": "Theo kiểu khai báo: một tệp mô tả trạng thái mong muốn, chẳng hạn “ba bản của một dịch vụ”, và các controller trong vòng đối chiếu đưa hệ thống về trạng thái đó.",
+    "source.label": "Kubernetes: declarative management of objects"
+  },
+  "k8s-node": {
+    "name": "Node",
+    "def": "Node là một máy chủ trong cụm Kubernetes, vật lý hoặc ảo. Các pod chạy trên node, và scheduler quyết định pod nào đến node nào.",
+    "faq.0.q": "Node trong Kubernetes là gì?",
+    "faq.0.a": "Một máy chủ trong cụm Kubernetes, vật lý hoặc ảo.",
+    "source.label": "Kubernetes: Nodes"
+  },
+  "pod": {
+    "name": "Pod",
+    "def": "Pod là đơn vị nhỏ nhất chạy trong Kubernetes: một hoặc nhiều container làm việc cùng nhau. Ví dụ, một bản của dịch vụ đặt phòng.",
+    "faq.0.q": "Pod trong Kubernetes là gì?",
+    "faq.0.a": "Đơn vị nhỏ nhất chạy trong Kubernetes: một hoặc nhiều container làm việc cùng nhau.",
+    "source.label": "Kubernetes: Pods"
+  },
+  "etcd": {
+    "def": "etcd là kho khóa-giá trị phân tán đáng tin cậy. Trong Kubernetes, nó lưu toàn bộ dữ liệu của cụm, kể cả trạng thái mong muốn đã được mô tả.",
+    "faq.0.q": "etcd là gì?",
+    "faq.0.a": "Kho khóa-giá trị phân tán đáng tin cậy."
+  },
+  "kube-apiserver": {
+    "name": "Kubernetes API server",
+    "def": "Kubernetes API server là cổng vào của cụm. Con người, Helm và các controller đọc và thay đổi trạng thái qua nó, và nó lưu trạng thái trong etcd.",
+    "faq.0.q": "Kubernetes API server là gì?",
+    "faq.0.a": "Cổng vào của cụm.",
+    "source.label": "Kubernetes: Components"
+  },
+  "kube-scheduler": {
+    "name": "Kubernetes scheduler",
+    "def": "Kubernetes scheduler là thành phần tìm các pod chưa được gán node và đặt từng pod lên một node phù hợp, có tính đến bộ nhớ và CPU còn trống.",
+    "faq.0.q": "Kubernetes scheduler là gì?",
+    "faq.0.a": "Thành phần tìm các pod chưa được gán node và đặt từng pod lên một node phù hợp, có tính đến bộ nhớ và CPU còn trống.",
+    "source.label": "Kubernetes: Scheduler"
+  },
+  "kubelet": {
+    "def": "kubelet là chương trình chạy trên mỗi node của Kubernetes. Nó bảo đảm các pod được gán cho node và container của chúng đang chạy.",
+    "faq.0.q": "kubelet là gì?",
+    "faq.0.a": "Chương trình chạy trên mỗi node của Kubernetes.",
+    "source.label": "Kubernetes: Components"
+  },
+  "deployment": {
+    "def": "Deployment là bản ghi của Kubernetes về việc chạy phiên bản nào của một dịch vụ và giữ bao nhiêu bản, chẳng hạn “ba bản của dịch vụ đặt phòng”. Khi cập nhật, nó lần lượt thay pod cũ bằng pod mới.",
+    "faq.0.q": "Deployment trong Kubernetes là gì?",
+    "faq.0.a": "Bản ghi của Kubernetes về việc chạy phiên bản nào của một dịch vụ và giữ bao nhiêu bản, chẳng hạn “ba bản của dịch vụ đặt phòng”.",
+    "source.label": "Kubernetes: Deployments"
+  },
+  "replicaset": {
+    "def": "ReplicaSet là controller của Kubernetes giữ một số lượng pod giống hệt nhau đã định. Một pod sập thì nó tạo pod mới; có thừa thì nó gỡ bớt.",
+    "faq.0.q": "ReplicaSet là gì?",
+    "faq.0.a": "Controller của Kubernetes giữ một số lượng pod giống hệt nhau đã định."
+  },
+  "eviction": {
+    "name": "Eviction",
+    "aka": "trục xuất pod",
+    "def": "Eviction là việc gỡ pod khỏi một node Kubernetes: hệ thống kết thúc các pod, chẳng hạn khi node sắp hết bộ nhớ hoặc dung lượng đĩa. Một controller nhận ra các bản còn thiếu và khởi chạy lại chúng trên node khác. Trong tiếng lóng, đây là “to evict”: “pod bị evict” nghĩa là Kubernetes đã gỡ nó khỏi node.",
+    "notes.title": "Khi nào pod bị evict",
+    "notes.items.0.name": "Node quá tải",
+    "notes.items.0.text": "node sắp hết bộ nhớ hoặc dung lượng đĩa, và kubelet tự evict một số pod để cả node không sập. Các pod dùng nhiều hơn mức đã xin sẽ bị gỡ trước.",
+    "notes.items.1.name": "Theo yêu cầu",
+    "notes.items.1.text": "node được đưa ra khỏi cụm để bảo trì bằng kubectl drain: lệnh này evict từng pod một và tắt mỗi pod một cách nhẹ nhàng.",
+    "notes.items.2.name": "Chuyện gì xảy ra sau đó",
+    "notes.items.2.text": "bản thân eviction không khởi chạy gì cả: một controller trong vòng đối chiếu tạo bản mới trên node khác, vì số bản ít hơn so với bản mô tả.",
+    "faq.0.q": "Eviction trong Kubernetes là gì?",
+    "faq.0.a": "Việc gỡ pod khỏi một node Kubernetes: hệ thống kết thúc các pod, chẳng hạn khi node sắp hết bộ nhớ hoặc dung lượng đĩa.",
+    "source.label": "Kubernetes: Node-pressure eviction"
+  },
+  "helm": {
+    "def": "Helm là trình quản lý gói cho Kubernetes. Một chart mô tả cả ứng dụng cùng mọi phần của nó, và được cài đặt, nâng cấp chỉ bằng một lệnh.",
+    "faq.0.q": "Helm là gì?",
+    "faq.0.a": "Trình quản lý gói cho Kubernetes."
+  },
+  "chaos-engineering": {
+    "name": "Chaos engineering",
+    "aka": "cố ý gây lỗi trên môi trường sản xuất",
+    "def": "Chaos engineering là thực hành cố ý gây lỗi cho một hệ thống đang chạy: tắt một máy chủ, làm chậm mạng, làm sập cơ sở dữ liệu, rồi xem hệ thống có trụ được không. Đây là kiểm tra bằng ví dụ: nó cho thấy hệ thống cư xử ra sao trong các lỗi đã dàn dựng nhưng không chứng minh cho mọi trường hợp. Ở các hệ thống theo cách tiếp cận khai báo như Kubernetes, thí nghiệm như vậy kiểm tra vòng đối chiếu: hệ thống phải tự khởi chạy lại bản đã sập.",
+    "faq.0.q": "Chaos engineering là gì?",
+    "faq.0.a": "Thực hành cố ý gây lỗi cho một hệ thống đang chạy và xem nó có trụ được không.",
+    "faq.1.q": "Chaos engineering có chứng minh độ tin cậy không?",
+    "faq.1.a": "Không, đây là kiểm tra bằng ví dụ: nó cho thấy hành vi trong các lỗi đã dàn dựng, không phải trong mọi lỗi có thể xảy ra."
+  },
+  "fail-fast": {
+    "aka": "lỗi là dừng ngay",
+    "def": "Fail-fast là nguyên tắc chương trình báo vấn đề ngay khi phát hiện và dừng hành động, thay vì lặng lẽ chạy tiếp với dữ liệu sai. Lỗi lộ ra đúng chỗ phát sinh và rẻ hơn để tìm. Kubernetes xây việc xử lý dịch vụ trên nguyên tắc này: dịch vụ gặp lỗi thì dừng ngay, còn hệ thống tự khởi động lại nó và không gửi yêu cầu nào đến cho tới khi nó sẵn sàng.",
+    "notes.title": "Fail-fast trong Kubernetes",
+    "notes.items.0.name": "Sập ngay khi khởi động",
+    "notes.items.0.text": "dịch vụ có cấu hình sai sẽ thoát ngay với lỗi thay vì chạy nửa vời. kubelet khởi động lại container và chờ lâu hơn giữa các lần lỗi lặp lại: pod ở trạng thái CrashLoopBackOff hiện ra ngay.",
+    "notes.items.1.name": "Liveness probe",
+    "notes.items.1.text": "kubelet đều đặn hỏi dịch vụ “bạn còn sống không?”. Không trả lời thì container được khởi động lại: dịch vụ bị treo không treo trong im lặng.",
+    "notes.items.2.name": "Readiness probe",
+    "notes.items.2.text": "cho đến khi dịch vụ sẵn sàng, không có yêu cầu của khách hàng nào đến được nó: Kubernetes gỡ pod khỏi danh sách nơi nhận.",
+    "notes.items.3.name": "Dừng một đợt triển khai",
+    "notes.items.3.text": "Deployment lần lượt thay pod cũ bằng pod mới. Nếu các pod mới mãi không sẵn sàng, việc thay thế không đi xa hơn, và các bản cũ vẫn tiếp tục chạy.",
+    "faq.0.q": "Fail-fast là gì?",
+    "faq.0.a": "Nguyên tắc chương trình báo vấn đề ngay và dừng hành động thay vì lặng lẽ chạy tiếp.",
+    "faq.1.q": "Vì sao nên fail-fast?",
+    "faq.1.a": "Lỗi lộ ra đúng chỗ phát sinh, nên tìm và sửa rẻ hơn.",
+    "source.label": "Wikipedia: Fail-fast system"
+  },
+  "sql": {
+    "def": "SQL là ngôn ngữ khai báo để truy vấn cơ sở dữ liệu quan hệ. Một truy vấn nói cần dữ liệu nào, “các lượt đặt phòng 5 ngày mai”, còn cơ sở dữ liệu tự quyết định cách lấy, qua chỉ mục hay quét toàn bộ. Các ràng buộc CHECK, UNIQUE và EXCLUDE đặt ra quy tắc mà cơ sở dữ liệu thực thi ở mỗi lần ghi, nên có thể kiểm tra chúng từ văn bản schema.",
+    "faq.0.q": "SQL là gì?",
+    "faq.0.a": "Ngôn ngữ truy vấn khai báo cho cơ sở dữ liệu quan hệ: truy vấn nói cần dữ liệu nào, còn cơ sở dữ liệu chọn cách lấy.",
+    "faq.1.q": "SQL giúp thực thi quy tắc như thế nào?",
+    "faq.1.a": "Các ràng buộc CHECK, UNIQUE và EXCLUDE ghi quy tắc dữ liệu thẳng vào cơ sở dữ liệu, và cơ sở dữ liệu không cho vi phạm chúng.",
+    "source.label": "Wikipedia: SQL"
+  },
+  "json-schema": {
+    "def": "JSON Schema là ngôn ngữ khai báo mô tả hình dạng dữ liệu JSON: trường nào bắt buộc, kiểu gì, giá trị nào được phép. Bộ kiểm tra (validator) nhận schema và một tài liệu rồi trả lời tài liệu có khớp hay không. Đây là cách kiểm tra đầu ra của chương trình và tác nhân, cấu hình và các yêu cầu đến.",
+    "faq.0.q": "JSON Schema là gì?",
+    "faq.0.a": "Ngôn ngữ khai báo mô tả hình dạng dữ liệu JSON: trường nào bắt buộc, kiểu của chúng và các giá trị được phép.",
+    "faq.1.q": "Việc kiểm tra bằng JSON Schema hoạt động ra sao?",
+    "faq.1.a": "Bộ kiểm tra nhận schema và một tài liệu rồi trả lời tài liệu có khớp hay không."
+  },
+  "cap-theorem": {
+    "name": "Định lý CAP",
+    "aka": "nhất quán, sẵn sàng, phân vùng",
+    "def": "Định lý CAP nói rằng khi dữ liệu nằm trên nhiều máy chủ và đường liên lạc giữa chúng đứt, hệ thống không thể vừa trả lời mọi yêu cầu vừa cho mọi người thấy cùng một dữ liệu: nó phải chờ đường liên lạc trở lại, hoặc trả lời từ bản sao của riêng mình, có thể đã cũ. Eric Brewer nêu điều này năm 2000; Seth Gilbert và Nancy Lynch chứng minh năm 2002. Sau đó Brewer viết rằng công thức “chọn hai trong ba” đơn giản hóa quá mức: lựa chọn chỉ nảy sinh trong lúc phân vùng.",
+    "screens.0": "Các chữ cái: C là nhất quán (consistency), mọi người thấy cùng một dữ liệu; A là sẵn sàng (availability), mọi yêu cầu đều nhận được câu trả lời; P là chịu được phân vùng (partition tolerance), hệ thống vẫn chạy khi thông điệp giữa các máy chủ bị mất hoặc chậm. Phân vùng tự xảy ra, nên trên thực tế lựa chọn là giữa C và A trong suốt thời gian phân vùng.\n\nĐiểm chung với định lý Rice: khi một sự kiện chưa xảy ra, bạn không thể biết nó sẽ xảy ra sau đó hay không bao giờ xảy ra, dù chờ bao lâu. Máy chủ không biết thông điệp của máy lân cận đã mất hay chỉ đến muộn; phép kiểm tra chương trình không biết chương trình sẽ kết thúc hay chạy mãi. Vì vậy lối ra giống nhau: khi thời gian không bị chặn, bạn chọn một trong hai, chờ hoặc trả lời ngay và chấp nhận rủi ro sai; còn đặt giới hạn thời gian thì gỡ được chính ngã rẽ đó, vì sau giới hạn thì “không bao giờ” đã được biết. Nguyên nhân của sự bất khả thi thì khác nhau: máy chủ thiếu thông tin, còn phép kiểm tra chương trình có đủ thông tin, toàn bộ mã nằm trước mắt, nhưng không thể tính ra câu trả lời từ đó. Phép so sánh này là của tác giả; không có một định lý duy nhất bao trùm cả hai.",
+    "more.label": "Định lý Rice và mối liên hệ với CAP",
+    "faq.0.q": "Định lý CAP nói gì, nói đơn giản?",
+    "faq.0.a": "Khi dữ liệu nằm trên nhiều máy chủ và đường liên lạc đứt, hệ thống không thể vừa trả lời mọi yêu cầu vừa cho mọi người thấy cùng một dữ liệu.",
+    "faq.1.q": "Hệ thống chọn gì khi đường liên lạc đứt?",
+    "faq.1.a": "Hoặc chờ đường liên lạc trở lại, hoặc trả lời từ dữ liệu của riêng mình, có thể đã cũ.",
+    "source.label": "Eric Brewer: CAP twelve years later"
+  },
+  "agile": {
+    "aka": "phát triển linh hoạt",
+    "def": "Agile là cách tiếp cận phát triển theo chu kỳ ngắn: làm một phần nhỏ, đưa ra cho xem, nhận phản hồi và điều chỉnh kế hoạch. Nó dựa trên Tuyên ngôn Agile năm 2001 về phát triển phần mềm, coi trọng việc ứng phó với thay đổi hơn việc bám theo kế hoạch. Cách này hợp với nơi không thể biết trước tương lai: kế hoạch rồi cũng sai, nên điều quan trọng là điều chỉnh nó rẻ.",
+    "more.label": "Khung đầu tiên: vì sao nó sẽ sai và làm sao để sửa rẻ",
+    "faq.0.q": "Agile là gì?",
+    "faq.0.a": "Cách tiếp cận phát triển theo chu kỳ ngắn: làm một phần nhỏ, đưa ra cho xem, nhận phản hồi và điều chỉnh kế hoạch.",
+    "faq.1.q": "Agile dựa trên điều gì?",
+    "faq.1.a": "Trên Tuyên ngôn Agile năm 2001, coi trọng việc ứng phó với thay đổi hơn việc bám theo kế hoạch.",
+    "source.label": "Manifesto for Agile Software Development"
+  },
+  "prolog": {
+    "aka": "ngôn ngữ lập trình logic",
+    "def": "Prolog là ngôn ngữ trong đó chương trình là các sự kiện (fact) và quy tắc suy diễn, còn engine tự tìm câu trả lời cho câu hỏi. Sự kiện: “lượt đặt b1 là phòng 2, từ 10 đến 11 giờ”. Quy tắc: “hai lượt đặt chồng nhau nếu cùng phòng và thời gian chồng lên nhau”. Câu hỏi: “những lượt đặt nào chồng với b1?”. Prolog ra đời năm 1972 ở Pháp. Chương trình nào cũng viết được bằng Prolog, kể cả chương trình không bao giờ kết thúc, nên định lý Rice áp dụng cho nó.",
+    "faq.0.q": "Ngôn ngữ Prolog là gì?",
+    "faq.0.a": "Ngôn ngữ trong đó chương trình là các sự kiện và quy tắc suy diễn, còn engine tự tìm câu trả lời cho câu hỏi.",
+    "faq.1.q": "Prolog khác Datalog ở đâu?",
+    "faq.1.a": "Datalog là Prolog được cắt gọn, bỏ những tính năng cho phép chương trình chạy mãi, nên mọi truy vấn của nó trên dữ liệu hữu hạn đều kết thúc.",
+    "source.label": "Wikipedia: Prolog"
+  },
+  "datalog": {
+    "aka": "Prolog hẹp cho cơ sở dữ liệu",
+    "def": "Datalog là Prolog được cắt giảm để truy vấn dữ liệu: cùng các sự kiện và quy tắc suy diễn, nhưng không có những tính năng cho phép chương trình chạy mãi. Vì vậy mọi truy vấn Datalog trên dữ liệu hữu hạn chắc chắn kết thúc và cho câu trả lời chính xác. Đây là ví dụ về ngôn ngữ hẹp: không viết được mọi chương trình trong đó, nhưng có thể trả lời chính xác về các chương trình của nó. Các ngôn ngữ kiểu Datalog được dùng trong phân tích mã và quy tắc truy cập.",
+    "faq.0.q": "Datalog là gì?",
+    "faq.0.a": "Prolog được cắt gọn để truy vấn dữ liệu: cùng các sự kiện và quy tắc suy diễn.",
+    "faq.1.q": "Vì sao truy vấn Datalog luôn kết thúc?",
+    "faq.1.a": "Ngôn ngữ bỏ đi những tính năng cho phép chương trình chạy mãi.",
+    "source.label": "Wikipedia: Datalog"
+  },
+  "reconcile-loop": {
+    "name": "Vòng đối chiếu (reconcile loop)",
+    "aka": "như trong Kubernetes",
+    "def": "Vòng đối chiếu (reconcile loop) là vòng lặp trong đó hệ thống liên tục so sánh trạng thái mong muốn với trạng thái thực rồi đưa trạng thái thực về đúng mong muốn. Kubernetes hoạt động như vậy: manifest hoặc Helm chart mô tả những dịch vụ nào phải chạy, và một controller liên tục kiểm tra điều đó với cụm rồi khởi chạy những gì còn thiếu. Phát triển dựa trên đặc tả (Spec-Driven Development) cũng vậy: trạng thái mong muốn là đặc tả, trạng thái thực là mã, và tác nhân đưa mã về đúng đặc tả.",
+    "faq.0.q": "Vòng đối chiếu (reconcile loop) là gì?",
+    "faq.0.a": "Vòng lặp trong đó hệ thống liên tục so sánh trạng thái mong muốn với trạng thái thực và đưa trạng thái thực về khớp.",
+    "faq.1.q": "Vòng đối chiếu chạy ở đâu?",
+    "faq.1.a": "Ví dụ trong Kubernetes: manifest mô tả những dịch vụ nào phải chạy, và các controller dựng chúng lên.",
+    "source.label": "Kubernetes: Controllers",
+    "compare.title": "Vòng đối chiếu: Kubernetes và tác nhân",
+    "compare.rows.0": [
+      "Mong muốn",
+      "manifest, Helm chart",
+      "đặc tả (spec)"
+    ],
+    "compare.rows.1": [
+      "Thực tế",
+      "các dịch vụ trong cụm",
+      "mã trong repository"
+    ],
+    "compare.rows.2": [
+      "Ai so sánh",
+      "bộ điều khiển (controller)",
+      "tác nhân"
+    ],
+    "compare.rows.3": [
+      "Làm gì khi lệch",
+      "khởi chạy hoặc gỡ pod",
+      "sửa mã cho đến khi kiểm thử và đặc tả khớp nhau"
+    ],
+    "compare.rows.4": [
+      "Cách thay đổi hệ thống",
+      "sửa manifest, không sửa cụm",
+      "sửa đặc tả, không sửa mã"
+    ]
+  },
+  "memory-bank": {
+    "def": "Memory Bank là thư mục `memory-bank` với sáu tệp markdown, nơi tác nhân AI giữ ngữ cảnh dự án giữa các phiên: `projectbrief` (mục tiêu và phạm vi), `productContext` (vì sao sản phẩm tồn tại), `systemPatterns` (kiến trúc), `techContext` (stack), `activeContext` (trọng tâm hiện tại) và `progress` (đã làm xong gì). Tác nhân đọc chúng khi bắt đầu mỗi nhiệm vụ và cập nhật sau các thay đổi lớn hoặc khi có lệnh \"update memory bank\". Đây là bộ chỉ dẫn cho tác nhân của Cline, cũng chạy được với các tác nhân khác: một trường hợp của bộ nhớ dự án lưu trong tệp, giống CLAUDE.md.",
+    "faq.0.q": "Memory Bank là gì?",
+    "faq.0.a": "Thư mục memory-bank với sáu tệp markdown, nơi tác nhân giữ ngữ cảnh dự án giữa các phiên: mục tiêu, kiến trúc, stack, trọng tâm hiện tại và tiến độ.",
+    "faq.1.q": "Khi nào tác nhân cập nhật Memory Bank?",
+    "faq.1.a": "Sau các thay đổi lớn hoặc khi có lệnh “update memory bank”. Nó đọc các tệp khi bắt đầu mỗi nhiệm vụ.",
+    "source.label": "Tài liệu Memory Bank của Cline"
+  },
+  "requirements": {
+    "name": "Yêu cầu",
+    "def": "Yêu cầu (requirements) là mô tả hệ thống phải làm gì và trong điều kiện nào. Mỗi yêu cầu có một nguồn, và nguồn quyết định một chỉnh sửa nghiêm trọng đến đâu: lớn hay nhỏ.",
+    "faq.0.q": "Yêu cầu (requirements) là gì?",
+    "faq.0.a": "Mô tả hệ thống phải làm gì và trong điều kiện nào.",
+    "faq.1.q": "Vì sao một yêu cầu cần có nguồn?",
+    "faq.1.a": "Nguồn quyết định một thay đổi nghiêm trọng đến đâu: lớn hay nhỏ.",
+    "source.label": "Wikipedia: Requirements engineering"
+  },
+  "c4-model": {
+    "name": "Mô hình C4",
+    "aka": "cấu trúc hệ thống ở bốn mức phóng to",
+    "def": "C4 là cách vẽ cấu trúc của một hệ thống phần mềm ở bốn mức phóng to, giống bản đồ: từ cả một quốc gia đến một con phố. Mỗi mức có một hình riêng và các mức không bị trộn vào một sơ đồ. Nhờ vậy người mới và lập trình viên mỗi bên thấy đúng lượng chi tiết mình cần. Tên C4 đến từ bốn từ tiếng Anh: context, containers, components, code.",
+    "notes.title": "Bốn mức",
+    "notes.items.0.name": "Context",
+    "notes.items.0.text": "cả hệ thống là một khối và mọi thứ liên kết với nó: con người và các hệ thống lân cận. Câu hỏi: ai dùng nó và để làm gì.",
+    "notes.items.1.name": "Containers",
+    "notes.items.1.text": "các phần chạy riêng cấu thành nó: một website, một máy chủ, một cơ sở dữ liệu. Câu hỏi: hệ thống được dựng từ những gì.",
+    "notes.items.2.name": "Components",
+    "notes.items.2.text": "một phần như vậy gồm những gì, ví dụ máy chủ: thanh toán, đơn hàng, mã khuyến mãi. Câu hỏi: một phần được tổ chức ra sao.",
+    "notes.items.3.name": "Code",
+    "notes.items.3.text": "một component được tổ chức bên trong như thế nào: các lớp và hàm. Mức này hiếm khi được vẽ: bản thân mã đã cho thấy điều đó.",
+    "more.label": "Tác nhân vẽ sơ đồ theo yêu cầu như thế nào: sequence và C4",
+    "faq.0.q": "Mô hình C4 là gì?",
+    "faq.0.a": "Cách vẽ cấu trúc của một hệ thống phần mềm ở bốn mức phóng to: context, containers, components và code.",
+    "faq.1.q": "Vì sao có bốn mức?",
+    "faq.1.a": "Mỗi mức có một hình riêng, nên cả người mới lẫn lập trình viên đều thấy đúng lượng chi tiết mình cần.",
+    "source.label": "c4model.com, trang về phương pháp của Simon Brown"
+  },
+  "osi": {
+    "name": "Mô hình OSI",
+    "aka": "bảy tầng",
+    "def": "Mô hình OSI là mô hình tham chiếu chia truyền thông mạng thành bảy tầng, từ vật lý đến ứng dụng. Mỗi tầng có thể nằm trên một hệ thống vật lý khác nhau, nên đường đi của yêu cầu càng có nhiều tầng và hệ thống thì càng có nhiều chỗ có thể hỏng. Đây là một lăng kính tiện để đánh giá một nhiệm vụ thực sự khó đến đâu với tác nhân AI.",
+    "faq.0.q": "Mô hình OSI là gì?",
+    "faq.0.a": "Mô hình tham chiếu chia truyền thông mạng thành bảy tầng, từ vật lý đến ứng dụng.",
+    "faq.1.q": "Vì sao dùng mô hình OSI cho tác nhân AI?",
+    "faq.1.a": "Yêu cầu đi qua càng nhiều tầng và hệ thống thì càng có nhiều chỗ có thể hỏng. Mô hình giúp ước lượng một nhiệm vụ thực sự khó đến đâu với tác nhân.",
+    "source.label": "ISO/IEC 7498-1, chuẩn mô hình OSI"
+  },
+  "epimorphism": {
+    "name": "Epimorphism (toàn cấu)",
+    "aka": "phép ánh xạ không có chỗ trống",
+    "def": "Epimorphism (toàn cấu) là phép ánh xạ trong đó mọi phần của kết quả đều đến từ một thứ nào đó ở nguồn: không còn phần nào bị bỏ trống. Với câu trả lời của tác nhân AI, điều này nghĩa là mọi khẳng định đều có chỗ dựa trong dữ liệu. Nơi nào thiếu chỗ dựa thì còn một chỗ trống, và mô hình lấp nó bằng suy đoán: đó là cách ảo giác (hallucination) hình thành.",
+    "faq.0.q": "Epimorphism là gì, nói đơn giản?",
+    "faq.0.a": "Phép ánh xạ trong đó mọi phần của kết quả đều đến từ một thứ nào đó ở nguồn: không còn phần nào bị bỏ trống.",
+    "faq.1.q": "Epimorphism liên quan thế nào đến ảo giác?",
+    "faq.1.a": "Nếu mọi khẳng định trong câu trả lời đều có chỗ dựa trong dữ liệu thì không có ảo giác. Nơi thiếu chỗ dựa, mô hình lấp khoảng trống bằng suy đoán.",
+    "source.label": "Wikipedia: Epimorphism"
+  },
+  "automated-test": {
+    "name": "Kiểm thử tự động",
+    "aka": "autotest, Jest, Vitest, QUnit",
+    "def": "Kiểm thử tự động (automated test) là chương trình ngắn chạy mã với một đầu vào cho trước và so kết quả với kết quả mong đợi. Nó được viết một lần và chạy sau mỗi lần sửa; nếu một chỉnh sửa làm hỏng thứ vốn chạy được thì kiểm thử thất bại. Các engine như Jest, Vitest và QUnit chạy những kiểm thử này cho mã JavaScript. Một kiểm thử chỉ bắt được điều bạn đã nghĩ đến để kiểm tra từ trước, nên nó được bổ sung bằng mô hình quy tắc và bằng việc kiểm tra chính các kiểm thử.",
+    "also.0.label": "Quint khác QUnit, Jest và TLA+ ở đâu",
+    "faq.0.q": "Kiểm thử tự động là gì?",
+    "faq.0.a": "Chương trình ngắn chạy mã với một đầu vào cho trước và so kết quả với kết quả mong đợi sau mỗi thay đổi.",
+    "faq.1.q": "Kiểm thử tự động bỏ sót điều gì?",
+    "faq.1.a": "Một kiểm thử chỉ bắt được điều bạn đã nghĩ đến để kiểm tra từ trước, nên nó được bổ sung bằng mô hình quy tắc và bằng việc kiểm tra chính các kiểm thử.",
+    "source.label": "Wikipedia: Test automation"
+  },
+  "qa": {
+    "aka": "đảm bảo chất lượng, tester",
+    "def": "QA (quality assurance, đảm bảo chất lượng) là vai trò của người kiểm tra sản phẩm có làm đúng điều nó hứa hay không và tìm lỗi trước người dùng. QA tái hiện lỗi, mô tả sao cho lập trình viên lặp lại được và nghiệm thu bản sửa. Khi một tác nhân AI đảm nhận phần việc lặp đi lặp lại quanh lỗi, QA kiểm tra kết quả của nó bằng tay và quyết định lỗi quan trọng đến đâu.",
+    "more.label": "QA giao phần việc lặp lại quanh lỗi cho tác nhân như thế nào",
+    "faq.0.q": "QA là gì?",
+    "faq.0.a": "Quality assurance (đảm bảo chất lượng): vai trò của người kiểm tra sản phẩm có làm đúng điều nó hứa hay không và tìm lỗi trước người dùng.",
+    "faq.1.q": "QA làm gì khi tác nhân xử lý lỗi?",
+    "faq.1.a": "Kiểm tra kết quả của tác nhân bằng tay và quyết định lỗi quan trọng đến đâu.",
+    "source.label": "Wikipedia: Quality assurance"
+  },
+  "bug": {
+    "name": "Bug",
+    "aka": "lỗi phần mềm, khiếm khuyết",
+    "def": "Bug là lỗi trong chương trình: nó làm điều khác với dự định, hoặc bị sập. Bug thường đến từ khách hàng dưới dạng một lời phàn nàn một dòng, và QA biến nó thành các bước chính xác mà ai cũng dùng được để lặp lại lỗi. Đường đến bug càng ngắn thì bug càng được sửa nhanh.",
+    "more.label": "QA giao phần việc lặp lại quanh lỗi cho tác nhân như thế nào",
+    "faq.0.q": "Bug là gì?",
+    "faq.0.a": "Lỗi trong chương trình: nó làm điều khác với dự định, hoặc bị sập.",
+    "faq.1.q": "Làm sao sửa bug nhanh hơn?",
+    "faq.1.a": "Biến lời phàn nàn thành các bước chính xác mà ai cũng làm theo được để tái hiện lỗi. Đường đến bug càng ngắn thì bug càng được sửa nhanh.",
+    "source.label": "Wikipedia: Software bug"
+  },
+  "sequence-diagram": {
+    "name": "Sơ đồ tuần tự (sequence diagram)",
+    "aka": "sequence chart",
+    "def": "Sơ đồ tuần tự (sequence diagram) cho thấy các phần của hệ thống trao đổi thông điệp với nhau theo thứ tự thời gian: các bên tham gia đứng ở phía trên và các mũi tên chạy xuống dưới. Nó cho biết ai gọi ai và hỏng ở bước nào. Tác nhân AI vẽ sơ đồ này theo yêu cầu để lập trình viên thấy ngay chỗ lỗi.",
+    "faq.0.q": "Sơ đồ tuần tự là gì?",
+    "faq.0.a": "Sơ đồ có các bên tham gia của hệ thống ở phía trên và các mũi tên thông điệp chạy xuống theo thứ tự thời gian.",
+    "faq.1.q": "Vì sao dùng sơ đồ tuần tự?",
+    "faq.1.a": "Nó cho biết ai gọi ai và hỏng ở bước nào.",
+    "source.label": "Wikipedia: Sequence diagram"
+  },
+  "api": {
+    "aka": "giao diện lập trình ứng dụng",
+    "def": "API là tập quy tắc để một chương trình gọi chương trình khác: có thể gửi những yêu cầu nào và nhận về những phản hồi nào. Qua API, tác nhân AI gọi thẳng một dịch vụ mà không cần trình duyệt. Ví dụ, dịch vụ thanh toán gọi dịch vụ mã khuyến mãi qua API của nó.",
+    "faq.0.q": "API là gì?",
+    "faq.0.a": "Tập quy tắc về cách một chương trình nói chuyện với chương trình khác: có thể gửi những yêu cầu nào và nhận về những phản hồi nào.",
+    "faq.1.q": "Vì sao tác nhân dùng API?",
+    "faq.1.a": "Qua API, tác nhân gọi thẳng một dịch vụ mà không cần trình duyệt.",
+    "source.label": "Wikipedia: API"
+  },
+  "poc": {
+    "aka": "bằng chứng khái niệm",
+    "def": "PoC (proof of concept, bằng chứng khái niệm) là một đoạn mã nhỏ hoặc một script cho thấy vấn đề thực sự tái hiện được. Với một bug, đó là một lần chạy ngắn không cần trình duyệt, lặp lại được lỗi. Tác nhân AI viết PoC như vậy từ mã và kiểm thử để xác nhận bug.",
+    "faq.0.q": "PoC trong lập trình là gì?",
+    "faq.0.a": "Proof of concept: đoạn mã nhỏ hoặc kịch bản cho thấy vấn đề thực sự tái hiện được.",
+    "faq.1.q": "Vì sao tác nhân viết PoC cho bug?",
+    "faq.1.a": "Để xác nhận bug: một lần chạy ngắn không cần trình duyệt lặp lại được lỗi, nên thấy được lỗi trước khi sửa.",
+    "source.label": "Wikipedia: Proof of concept"
+  },
+  "jest": {
+    "aka": "framework kiểm thử JavaScript",
+    "def": "Jest là một trong những framework kiểm thử tự động phổ biến nhất cho mã JavaScript. Bạn mô tả một hàm phải trả về gì với đầu vào cho trước, và Jest chạy tất cả các kiểm tra như vậy rồi cho biết cái nào thất bại. Cùng họ với Vitest và QUnit, và nó kiểm tra mã đã viết xong, không phải quy tắc của hệ thống như Quint.",
+    "also.0.label": "Quint khác QUnit, Jest và TLA+ ở đâu",
+    "faq.0.q": "Jest là gì?",
+    "faq.0.a": "Một trong những framework kiểm thử tự động được dùng rộng rãi nhất cho JavaScript.",
+    "faq.1.q": "Jest hay Vitest?",
+    "faq.1.a": "Chúng làm cùng một việc. Với dự án dùng Vite thì Vitest tiện hơn; ở nơi khác Jest vẫn là lựa chọn vững.",
+    "source.label": "jestjs.io, trang của Jest"
+  },
+  "vitest": {
+    "aka": "kiểm thử chạy trên Vite",
+    "def": "Vitest là framework kiểm thử tự động thế hệ mới cho JavaScript, chạy trên bundler Vite. Nó làm việc giống Jest: chạy các kiểm tra trên mã đã viết xong và cho biết cái nào thất bại, nhưng dùng lại cấu hình Vite của dự án nên khởi động lại rất nhanh. Cùng họ với Jest và QUnit.",
+    "also.0.label": "Quint khác QUnit, Jest và TLA+ ở đâu",
+    "faq.0.q": "Vitest là gì?",
+    "faq.0.a": "Framework kiểm thử tự động cho JavaScript xây trên bundler Vite.",
+    "faq.1.q": "Vitest hay Jest?",
+    "faq.1.a": "Với dự án dùng Vite thì chọn Vitest: nó dùng lại cùng cấu hình và chạy lại nhanh. Chúng làm cùng một việc.",
+    "source.label": "vitest.dev, trang của Vitest"
+  },
+  "qunit": {
+    "aka": "framework kiểm thử JavaScript",
+    "def": "QUnit là framework kiểm thử tự động cho mã JavaScript, cùng họ với Jest và Vitest. Một kiểm thử đưa đầu vào cho trước vào hàm đã viết xong và so câu trả lời với kết quả mong đợi. Tên gọi giống Quint, nhưng đây là chương trình thuộc lớp khác: QUnit kiểm tra mã đã viết, còn Quint kiểm tra quy tắc của hệ thống. Độ tin cậy của chính các kiểm thử được kiểm tra bằng mutation testing: cố ý đưa một khiếm khuyết vào mã để xem kiểm thử có thất bại không.",
+    "also.0.label": "Quint khác QUnit, Jest và TLA+ ở đâu",
+    "faq.0.q": "QUnit là gì?",
+    "faq.0.a": "Framework kiểm thử tự động cho JavaScript, cùng họ với Jest và Vitest.",
+    "faq.1.q": "QUnit và Quint có giống nhau không?",
+    "faq.1.a": "Không: QUnit chạy kiểm thử trên mã đã viết xong, còn Quint là ngôn ngữ để mô tả và kiểm tra quy tắc của hệ thống trước khi có mã.",
+    "source.label": "qunitjs.com, trang của QUnit",
+    "compare.title": "QUnit và Quint",
+    "compare.rows.0": [
+      "Kiểm tra gì",
+      "câu trả lời của hàm đã viết xong với các đầu vào cho trước",
+      "không có trạng thái bị cấm nào, với mọi thứ tự hành động"
+    ],
+    "compare.rows.1": [
+      "Cần gì",
+      "mã đã viết",
+      "mô tả quy tắc, mã có thể chưa tồn tại"
+    ],
+    "compare.rows.2": [
+      "Khó ở đâu",
+      "nghĩ ra các đầu vào",
+      "phát biểu quy tắc sao cho phản ánh đúng thực tế"
+    ]
+  },
+  "mutation-testing": {
+    "name": "Mutation testing (kiểm thử đột biến)",
+    "aka": "bản sao cố ý làm hỏng",
+    "def": "Mutation testing (kiểm thử đột biến) là cách kiểm tra chính các phép kiểm tra: một người hoặc một tác nhân cố ý làm hỏng bản sao của mã hay mô hình, chẳng hạn bỏ đi một điều kiện, rồi xem kiểm thử và quy tắc có phát hiện ra không. Nếu khiếm khuyết lọt qua mà không ai nhận ra thì phép kiểm tra chẳng kiểm tra gì cả. Trong các mô hình Quint, những bản sao như vậy gọi là mutant.",
+    "more.label": "Kiểm tra các phép kiểm tra trong mô hình Quint",
+    "faq.0.q": "Mutation testing là gì?",
+    "faq.0.a": "Cách kiểm tra chính các phép kiểm tra: bản sao của mã bị cố ý làm hỏng để xem kiểm thử có phát hiện không.",
+    "faq.1.q": "Nếu chỗ hỏng không bị phát hiện thì có nghĩa là gì?",
+    "faq.1.a": "Kiểm thử không phủ trường hợp này và cần được mở rộng.",
+    "source.label": "Wikipedia: Mutation testing"
+  },
+  "environment": {
+    "name": "Môi trường",
+    "aka": "môi trường triển khai, stage",
+    "def": "Môi trường (environment) là một bản sao riêng của hệ thống với nhiệm vụ riêng: mã được viết ở một nơi, được kiểm tra ở nơi khác, và người dùng làm việc ở nơi thứ ba. Một thay đổi đi qua các môi trường theo thứ tự: local, dev (cùng các feature stand bên cạnh), test, tiền sản xuất (pre-prod), demo, prod. Càng gần môi trường sản xuất thì cấu hình và dữ liệu càng gần thật và một sai lầm càng tốn kém.",
+    "faq.0.q": "Có những môi trường nào?",
+    "faq.0.a": "Local, dev cùng các feature stand bên cạnh, test, tiền sản xuất (pre-prod), demo và sản xuất (prod). Một thay đổi đi qua chúng theo thứ tự.",
+    "faq.1.q": "Các môi trường khác nhau ở đâu?",
+    "faq.1.a": "Ở mục đích: mã được viết ở một nơi, được kiểm tra ở nơi khác, và người dùng làm việc ở nơi thứ ba. Càng gần môi trường sản xuất thì dữ liệu càng thật và một sai lầm càng tốn kém.",
+    "source.label": "Wikipedia: Deployment environment",
+    "seo.title": "Môi trường: local, dev, test, pre-prod, prod là gì, khác nhau ra sao",
+    "seo.description": "Môi trường là các bản sao riêng của hệ thống trên đường một thay đổi đến người dùng: local, dev, test, pre-prod, demo, prod. Khác nhau ra sao và ai làm việc ở đó.",
+    "parts.title": "Các loại môi trường",
+    "compare.title": "Tất cả các môi trường: kiểm tra gì, ai dùng, dữ liệu nào",
+    "compare.head": [
+      "Local",
+      "Feature",
+      "Dev",
+      "Test",
+      "Pre-prod",
+      "Demo",
+      "Prod"
+    ],
+    "compare.rows.0": [
+      "Kiểm tra gì",
+      "viết và thử",
+      "một nhánh riêng lẻ",
+      "mã khớp với nhau",
+      "mọi người tích hợp thường xuyên",
+      "giống môi trường sản xuất",
+      "demo cho khách hàng",
+      "người dùng đang làm việc"
+    ],
+    "compare.rows.1": [
+      "Môi trường kiểm thử",
+      "không",
+      "có",
+      "có",
+      "có",
+      "có",
+      "không phải lúc nào cũng có",
+      "không"
+    ],
+    "compare.rows.2": [
+      "Ai dùng",
+      "lập trình viên",
+      "tác giả của nhánh",
+      "nhóm",
+      "QA",
+      "nhóm",
+      "khách hàng",
+      "khách hàng cuối"
+    ],
+    "compare.rows.3": [
+      "Dữ liệu",
+      "thử nghiệm",
+      "thử nghiệm",
+      "thử nghiệm",
+      "bản sao của môi trường sản xuất hoặc dữ liệu giả",
+      "bản sao mới của môi trường sản xuất",
+      "mẫu hoặc dữ liệu thật",
+      "thật"
+    ],
+    "compare.rows.4": [
+      "Luôn có",
+      "có",
+      "không phải lúc nào cũng có",
+      "không phải lúc nào cũng có",
+      "gần như luôn có",
+      "không phải lúc nào cũng có",
+      "không phải lúc nào cũng có",
+      "có"
+    ]
+  },
+  "local-env": {
+    "name": "Môi trường local",
+    "aka": "local, máy của lập trình viên",
+    "def": "Môi trường local là bản sao của hệ thống trên máy tính riêng của lập trình viên. Mã được viết và thử ngay tại đây; làm hỏng cũng không sao vì không ai khác thấy. Dữ liệu là dữ liệu thử nghiệm hoặc bản sao đã ẩn danh của môi trường sản xuất. Nó không được tính là một stand kiểm thử: stand là máy chủ dùng chung của nhóm, bắt đầu từ bước tiếp theo.",
+    "faq.0.q": "Môi trường local là gì?",
+    "faq.0.a": "Bản sao của hệ thống trên máy tính của lập trình viên. Mã được viết và thử ngay tại đây.",
+    "faq.1.q": "Môi trường local có phải là stand kiểm thử không?",
+    "faq.1.a": "Không: stand là máy chủ dùng chung của nhóm, còn môi trường local thuộc về một lập trình viên.",
+    "source.label": "Wikipedia: Deployment environment",
+    "seo.title": "Môi trường local là gì và khác stand kiểm thử ở đâu",
+    "seo.description": "Môi trường local là bản sao của hệ thống trên máy tính của lập trình viên, bước đầu tiên trên đường một thay đổi đến môi trường sản xuất."
+  },
+  "feature-stand": {
+    "name": "Feature stand",
+    "aka": "feature environment, review app, preview environment",
+    "def": "Feature stand là bản sao tạm thời của hệ thống cho một tính năng mới, tức một nhánh mã. Nó được tạo ra để kiểm tra và bị gỡ sau khi merge. Nó chạy song song với dev: tính năng được kiểm tra riêng, không phải chờ dev dùng chung và không chiếm môi trường kiểm thử. Những stand như vậy còn gọi là môi trường preview hay review.",
+    "faq.0.q": "Feature stand là gì?",
+    "faq.0.a": "Bản sao tạm thời của hệ thống cho một nhánh mã: nó được tạo ra để kiểm tra và bị gỡ sau khi merge.",
+    "faq.1.q": "Đã có dev thì cần feature stand làm gì?",
+    "faq.1.a": "Nó chạy song song với dev: tính năng được kiểm tra riêng, không phải chờ dev dùng chung hay chiếm môi trường test.",
+    "source.label": "Wikipedia: Deployment environment",
+    "seo.title": "Feature stand là gì và vì sao mỗi nhánh có stand riêng",
+    "seo.description": "Feature stand là bản sao tạm thời của hệ thống cho một nhánh mã. Còn gọi là review app hay môi trường preview."
+  },
+  "dev-env": {
+    "name": "Môi trường dev",
+    "aka": "dev, môi trường phát triển",
+    "def": "Dev (môi trường phát triển) là môi trường dùng chung của nhóm, nơi mã đổ vào sau khi merge: nó kiểm tra xem mã của các lập trình viên khác nhau có build được và chạy cùng nhau không. Dữ liệu là dữ liệu thử nghiệm. Dev có thể hỏng, nhưng được sửa nhanh vì cả nhóm làm việc trên đó. Đây là stand kiểm thử dùng chung đầu tiên sau môi trường local. Các feature stand thường chạy song song với dev.",
+    "faq.0.q": "Môi trường dev là gì?",
+    "faq.0.a": "Môi trường dùng chung của nhóm, nơi mã đổ vào sau khi merge: nó kiểm tra mã của các lập trình viên khác nhau có chạy cùng nhau không.",
+    "faq.1.q": "Dev khác test ở đâu?",
+    "faq.1.a": "Dev nhận mã của một nhóm, còn test gom các thay đổi của mọi nhóm và dịch vụ.",
+    "source.label": "Wikipedia: Deployment environment",
+    "seo.title": "Môi trường dev là gì và dùng để làm gì",
+    "seo.description": "Dev là môi trường dùng chung của nhóm, nơi mã đổ vào sau khi merge. Dev khác local, test và pre-prod ở đâu."
+  },
+  "test-env": {
+    "name": "Môi trường test (tích hợp)",
+    "aka": "môi trường kiểm thử, môi trường tích hợp, SIT",
+    "def": "Test là môi trường dùng chung, nơi các thay đổi của mọi nhóm và dịch vụ được gom lại thường xuyên, hằng ngày hoặc sau mỗi lần merge, để kiểm tra chúng chạy được cùng nhau. QA và kiểm thử tự động làm việc ở đây; dữ liệu là bản sao của môi trường sản xuất hoặc dữ liệu giả. Nó khác dev ở phạm vi: dev nhận mã của một nhóm, còn trên test mọi người tích hợp. Test là một trong các môi trường kiểm thử, và gần như luôn có, kể cả khi không có dev.",
+    "faq.0.q": "Môi trường test là gì?",
+    "faq.0.a": "Môi trường dùng chung, nơi các thay đổi của mọi người thường xuyên được gom lại để kiểm tra chúng chạy được cùng nhau.",
+    "faq.1.q": "Test khác pre-prod ở đâu?",
+    "faq.1.a": "Test kiểm tra các thay đổi của mọi người chạy được cùng nhau. Pre-prod kiểm tra một thay đổi trong điều kiện giống môi trường sản xuất.",
+    "source.label": "Wikipedia: Deployment environment",
+    "seo.title": "Môi trường test (tích hợp) là gì, khác dev và pre-prod ở đâu",
+    "seo.description": "Test là môi trường tích hợp, nơi thay đổi của mọi nhóm thường xuyên được gom lại để kiểm tra chạy cùng nhau. Khác dev, pre-prod và các môi trường kiểm thử ở đâu."
+  },
+  "test-stand": {
+    "name": "Môi trường staging",
+    "aka": "stand kiểm thử, staging",
+    "def": "Stand kiểm thử (test stand) là tên chung của một lớp môi trường: bất kỳ bản sao riêng nào của hệ thống trên máy chủ của nhóm, nơi bạn có thể thử và làm hỏng mà không đụng đến hệ thống đang chạy thật (production). Các stand kiểm thử gồm feature stand, dev, test (môi trường tích hợp), pre-prod và demo; mỗi cái có nhiệm vụ riêng và một thay đổi đi qua chúng theo thứ tự. Môi trường local của lập trình viên và môi trường sản xuất không phải stand. Tác nhân AI tái hiện bug và kiểm tra thay đổi trên staging. Các phụ thuộc của hệ thống, dữ liệu và dịch vụ bên ngoài, được nối vào dưới dạng bản sao của thứ thật hoặc mock: bản sao gần thực tế hơn, mock rẻ hơn nên dùng nhiều hơn. Staging khác sandbox ở mục đích: sandbox rào các hành động của tác nhân, còn staging là bản sao của cả hệ thống.",
+    "faq.0.q": "Stand kiểm thử là gì?",
+    "faq.0.a": "Bản sao riêng của hệ thống trên máy chủ của nhóm, nơi bạn có thể thử và làm hỏng mà không đụng đến môi trường sản xuất. Các stand gồm feature stand, dev, test, pre-prod và demo.",
+    "faq.1.q": "Staging khác môi trường test ở đâu?",
+    "faq.1.a": "Môi trường test kiểm tra thay đổi của mọi người chạy được cùng nhau. Staging, hay pre-prod, kiểm tra một thay đổi trong điều kiện giống môi trường sản xuất.",
+    "faq.2.q": "Tác nhân AI được làm gì trên stand?",
+    "faq.2.a": "Tái hiện bug và kiểm tra thay đổi. Tác nhân không ghi vào môi trường sản xuất.",
+    "source.label": "Wikipedia: Deployment environment",
+    "seo.title": "Môi trường staging là gì: staging, production và development",
+    "seo.description": "Môi trường staging là bản sao của hệ thống, nơi tác nhân và nhóm kiểm tra thay đổi mà không đụng đến môi trường sản xuất. Development, staging và production; staging khác sandbox ở đâu.",
+    "screens.0": "Stand được dựng như bản sao của môi trường sản xuất. Dịch vụ được sao chép nguyên vẹn, còn các phụ thuộc của nó, cơ sở dữ liệu và dịch vụ bên ngoài, được nối theo hai cách: bản sao của thứ thật, gần thực tế hơn, hoặc mock, rẻ và nhanh hơn. Tác nhân làm việc trên stand và không ghi vào môi trường sản xuất.",
+    "screens.1": "Một thay đổi đi từ trái sang phải. Từ môi trường local, mã đi hai đường: tới dev sau khi merge và tới feature stand, nơi một nhánh được kiểm tra. Hai đường gặp nhau ở test, nơi mọi người tích hợp. Sau đó pre-prod kiểm tra thay đổi cư xử ra sao như trên môi trường sản xuất, demo cho khách hàng xem, và chỉ sau đó nó mới đến môi trường sản xuất. Mọi thứ trong khung là stand kiểm thử.",
+    "parts.title": "Nơi thay đổi được kiểm tra: môi trường local và các stand kiểm thử",
+    "compare.title": "Tất cả các môi trường: kiểm tra gì, ai dùng, dữ liệu nào",
+    "compare.head": [
+      "Local",
+      "Feature",
+      "Dev",
+      "Test",
+      "Pre-prod",
+      "Demo",
+      "Prod"
+    ],
+    "compare.rows.0": [
+      "Kiểm tra gì",
+      "viết và thử",
+      "một nhánh riêng lẻ",
+      "mã khớp với nhau",
+      "mọi người tích hợp thường xuyên",
+      "giống môi trường sản xuất",
+      "demo cho khách hàng",
+      "người dùng đang làm việc"
+    ],
+    "compare.rows.1": [
+      "Stand kiểm thử",
+      "không",
+      "có",
+      "có",
+      "có",
+      "có",
+      "không phải lúc nào cũng có",
+      "không"
+    ],
+    "compare.rows.2": [
+      "Ai dùng",
+      "lập trình viên",
+      "tác giả của nhánh",
+      "nhóm",
+      "QA",
+      "nhóm",
+      "khách hàng",
+      "khách hàng cuối"
+    ],
+    "compare.rows.3": [
+      "Dữ liệu",
+      "thử nghiệm",
+      "thử nghiệm",
+      "thử nghiệm",
+      "bản sao của môi trường sản xuất hoặc dữ liệu giả",
+      "bản sao mới của môi trường sản xuất",
+      "mẫu hoặc dữ liệu thật",
+      "thật"
+    ],
+    "compare.rows.4": [
+      "Luôn có",
+      "có",
+      "không phải lúc nào cũng có",
+      "không phải lúc nào cũng có",
+      "gần như luôn có",
+      "không phải lúc nào cũng có",
+      "không phải lúc nào cũng có",
+      "có"
+    ]
+  },
+  "preprod": {
+    "name": "Pre-prod",
+    "aka": "preprod, pre-production, stage",
+    "def": "Pre-prod (cả “preprod” lẫn “pre-prod” đều đúng; trong tiếng Nga là «препрод» và «предпрод») là môi trường tiền sản xuất được dựng giống môi trường sản xuất, nơi một thay đổi được kiểm tra lần cuối trước khi phát hành: cùng cấu hình và một bản sao mới của dữ liệu sản xuất. Từ này đến từ pre-production. Một số nhóm gọi nó là staging, nhóm khác giữ nó làm một bước riêng sau môi trường test.",
+    "source.label": "Wikipedia: Deployment environment",
+    "seo.title": "Pre-prod (preprod) là gì: pre-production, staging và production",
+    "seo.description": "Pre-prod là môi trường dựng giống môi trường sản xuất để kiểm tra lần cuối trước khi phát hành. Khác môi trường test và production ở đâu, khi nào các nhóm dùng nó.",
+    "faq.0.q": "Viết thế nào: preprod hay pre-prod?",
+    "faq.0.a": "Cả hai cách viết đều được: từ này đến từ pre-production và không có chuẩn từ điển. Chọn một cách và dùng thống nhất trong cả tài liệu.",
+    "faq.1.q": "Pre-prod là gì?",
+    "faq.1.a": "Bước ngay trước môi trường sản xuất: bản sao của môi trường đang chạy thật, nơi một thay đổi được kiểm tra trong điều kiện thực.",
+    "faq.2.q": "Pre-prod và staging có giống nhau không?",
+    "faq.2.a": "Ở một số nhóm thì giống, ở nhóm khác pre-prod đứng sau môi trường test. Hãy xem nhóm của bạn dùng các từ này ra sao và thống nhất một cách.",
+    "faq.3.q": "Có cần pre-prod không?",
+    "faq.3.a": "Nhóm nhỏ thường chỉ cần môi trường test và môi trường sản xuất. Pre-prod kéo dài chu kỳ chuyển giao: chất lượng tăng nhưng thời gian đưa ra thị trường cũng tăng, vì một thay đổi mất nhiều thời gian hơn để đến người dùng. Nó dành cho nơi một sai lầm ở môi trường sản xuất rất đắt.",
+    "faq.4.q": "Dữ liệu của pre-prod đến từ đâu?",
+    "faq.4.a": "Từ một bản dump: bản sao dữ liệu của cơ sở dữ liệu đang chạy thật trong một tệp. Dữ liệu cá nhân được loại bỏ khỏi đó.",
+    "faq.5.q": "Tác nhân AI làm gì trên pre-prod?",
+    "faq.5.a": "Chạy các phép kiểm tra. Thay đổi đến đây qua một đợt phát hành; tác nhân không sửa trực tiếp.",
+    "compare.title": "Pre-prod khác môi trường test ở đâu",
+    "compare.head": [
+      "Test",
+      "Pre-prod"
+    ],
+    "compare.rows.0": [
+      "Kiểm tra gì",
+      "thay đổi của mọi người chạy được cùng nhau",
+      "cư xử ra sao như trên môi trường sản xuất"
+    ],
+    "compare.rows.1": [
+      "Cấu hình",
+      "thuận tiện cho kiểm thử",
+      "giống môi trường sản xuất"
+    ],
+    "compare.rows.2": [
+      "Dữ liệu",
+      "bản sao của môi trường sản xuất hoặc dữ liệu giả",
+      "bản sao mới của môi trường sản xuất"
+    ],
+    "compare.rows.3": [
+      "Luôn có",
+      "gần như luôn có",
+      "không phải lúc nào cũng có"
+    ]
+  },
+  "demo-env": {
+    "name": "Môi trường demo",
+    "aka": "demo, demo stand",
+    "def": "Môi trường demo là nơi sản phẩm được trình diễn cho khách hàng hoặc đồng nghiệp. Nó khác pre-prod ở mục đích: pre-prod kiểm tra một thay đổi trong điều kiện sản xuất, còn demo cho mọi người xem một phiên bản hoàn chỉnh. Thường thì demo chính là môi trường sản xuất: sản phẩm được trình diễn trên hệ thống đang chạy thật, chẳng hạn với một tài khoản demo riêng. Nhưng cũng có thể có stand riêng với phiên bản ổn định và dữ liệu mẫu chuẩn bị sẵn để buổi trình diễn trơn tru. Thay đổi đến stand như vậy qua một đợt phát hành, giống như môi trường sản xuất.",
+    "faq.0.q": "Môi trường demo là gì?",
+    "faq.0.a": "Môi trường để trình diễn sản phẩm cho khách hàng hoặc đồng nghiệp.",
+    "faq.1.q": "Demo có phải là môi trường sản xuất không?",
+    "faq.1.a": "Thường là có: buổi trình diễn diễn ra trên hệ thống đang chạy thật với một tài khoản demo riêng. Cũng có thể có stand riêng với dữ liệu chuẩn bị sẵn.",
+    "source.label": "Wikipedia: Deployment environment",
+    "seo.title": "Môi trường demo là gì, khác pre-prod và production ở đâu",
+    "seo.description": "Môi trường demo là nơi sản phẩm được trình diễn cho khách hàng: phiên bản ổn định và dữ liệu chuẩn bị sẵn. Khác pre-prod và production ở đâu."
+  },
+  "prod": {
+    "name": "Môi trường sản xuất (production)",
+    "aka": "prod, môi trường đang chạy thật",
+    "def": "Prod (production, môi trường sản xuất) là môi trường mà người dùng thật làm việc cùng, và dữ liệu của nó là dữ liệu thật. Sai lầm ở đây tốn kém nhất: người dùng mất thời gian hoặc tiền bạc. Vì vậy thay đổi đến môi trường sản xuất sau các phép kiểm tra trên các stand, và tác nhân AI không ghi vào môi trường sản xuất: một đợt phát hành chuyển các thay đổi, thường có sự xác nhận của con người.",
+    "faq.0.q": "Production trong IT là gì?",
+    "faq.0.a": "Môi trường mà người dùng thật làm việc cùng, với dữ liệu thật.",
+    "faq.1.q": "Vì sao không ghi thẳng vào production?",
+    "faq.1.a": "Sai lầm ở đó tốn kém nhất, nên thay đổi đi qua các phép kiểm tra trên các stand, và thường có một người xác nhận đợt phát hành.",
+    "source.label": "Wikipedia: Deployment environment",
+    "seo.title": "Production (prod) là gì và vì sao không ai ghi thẳng vào đó",
+    "seo.description": "Production là môi trường mà người dùng thật làm việc cùng. Vì sao thay đổi đến đó qua các stand và pre-prod, không ghi trực tiếp."
+  },
+  "quint": {
+    "aka": "ngôn ngữ cho mô hình hình thức",
+    "def": "Quint là ngôn ngữ để mô tả quy tắc của một hệ thống sao cho có thể chạy và kiểm tra chúng trước khi viết bất kỳ mã nào. Ký pháp trông như mã thông thường, và kỹ sư không có nền tảng toán cũng đọc được. Chương trình thử các thứ tự hành động và cho thấy chuỗi bước mà tại đó một quy tắc bị phá. Hai chương trình kiểm tra nó là TLC và Apalache, ngoài ra còn có mô phỏng ngẫu nhiên nhanh.",
+    "more.label": "Tìm race condition và dữ liệu bị mất bằng mô hình Quint",
+    "also.0.label": "Quint khác QUnit, Jest và TLA+ ở đâu",
+    "faq.0.q": "Ngôn ngữ Quint là gì?",
+    "faq.0.a": "Ngôn ngữ để mô tả quy tắc của hệ thống sao cho có thể chạy và kiểm tra chúng trước khi viết mã. Đọc giống mã thông thường.",
+    "faq.1.q": "Quint khác TLA+ ở đâu?",
+    "faq.1.a": "Quint đọc giống mã thông thường, TLA+ trông như công thức toán, nên Quint dễ bắt đầu hơn. Cả hai được kiểm tra bằng cùng các chương trình: TLC và Apalache.",
+    "source.label": "quint-lang.org, trang và tài liệu của Quint"
+  },
+  "tla-plus": {
+    "aka": "của Leslie Lamport",
+    "def": "TLA+ là cách mô tả hệ thống cư xử ra sao từng bước một cách chính xác đến mức chương trình có thể kiểm tra bản mô tả, giống như bản vẽ được kiểm tra trước khi xây. Ví dụ, bản vẽ của một lần chuyển tiền cho thấy nếu có lỗi xảy ra giữa lúc ghi nợ và ghi có thì tiền biến mất, và điều này được phát hiện trước khi viết bất kỳ mã nào. Ký pháp giống công thức toán, nên bước vào cao hơn so với Quint. Ngôn ngữ do Leslie Lamport tạo ra.",
+    "also.0.label": "Quint so với TLA+ và Alloy",
+    "faq.0.q": "TLA+ là gì?",
+    "faq.0.a": "Cách mô tả hệ thống cư xử ra sao từng bước chính xác đến mức chương trình có thể kiểm tra bản mô tả trước khi viết mã. Tác giả là Leslie Lamport.",
+    "faq.1.q": "TLA+ tìm ra điều gì?",
+    "faq.1.a": "Những chuỗi bước phá một quy tắc. Ví dụ, tiền biến mất nếu có lỗi xảy ra giữa lúc ghi nợ và ghi có.",
+    "source.label": "Trang TLA+ của Leslie Lamport"
+  },
+  "alloy": {
+    "aka": "ngôn ngữ mô hình hóa và bộ phân tích",
+    "def": "Alloy là cách mô tả các đối tượng và mối liên hệ giữa chúng, rồi nhờ chương trình tìm một ví dụ nhỏ trong đó một quy tắc bị phá. Ví dụ, quy tắc “mỗi nhân viên có đúng một sếp”: chương trình tìm ra ví dụ trong đó một nhân viên có hai sếp cùng lúc. Nó hợp để kiểm tra cấu trúc dữ liệu và quyền truy cập. Giống TLA+, nó dùng ký pháp toán học. Ngôn ngữ được tạo ra tại Software Design Group của MIT.",
+    "faq.0.q": "Alloy là gì?",
+    "faq.0.a": "Cách mô tả các đối tượng và quan hệ của chúng, rồi nhờ chương trình tìm một ví dụ nhỏ trong đó một quy tắc bị phá.",
+    "faq.1.q": "Alloy khác TLA+ ở đâu?",
+    "faq.1.a": "Alloy kiểm tra cấu trúc: đối tượng và quan hệ. TLA+ kiểm tra hành vi của hệ thống từng bước.",
+    "source.label": "alloytools.org, trang của Alloy"
+  },
+  "tlc": {
+    "aka": "bộ kiểm tra TLA+ đầu tiên",
+    "def": "TLC là chương trình đầu tiên kiểm tra các mô hình TLA+. Nó đi qua lần lượt mọi trạng thái của mô hình và kiểm tra các quy tắc ở từng trạng thái, ghi nhớ những nơi đã đi qua. Vì vậy công việc của nó dễ đoán, nhưng thế giới của mô hình phải nhỏ: nếu không sẽ có quá nhiều trạng thái. Mô hình Quint cũng kiểm tra được bằng TLC, nhưng trước tiên phải dịch sang dạng mà chương trình này nhận.",
+    "faq.0.q": "TLC là gì?",
+    "faq.0.a": "Chương trình đầu tiên kiểm tra các mô hình TLA+: nó đi qua mọi trạng thái của mô hình và kiểm tra các quy tắc ở từng trạng thái.",
+    "faq.1.q": "Khi nào TLC phù hợp?",
+    "faq.1.a": "Khi thế giới của mô hình nhỏ: TLC dễ đoán, nhưng với thế giới lớn thì việc tìm kiếm sẽ không kết thúc.",
+    "source.label": "TLA+ Tools và TLC trên GitHub"
+  },
+  "apalache": {
+    "aka": "bộ kiểm chứng mô hình dạng biểu tượng",
+    "def": "Apalache là chương trình kiểm tra các mô hình viết bằng TLA+ và Quint. Nó biến chúng thành một tập điều kiện và đưa cho một SMT solver, chẳng hạn Z3, vốn suy luận cùng lúc về mọi lần thực thi tới một độ dài cho trước. Nó đưa ra chuỗi bước mà tại đó một quy tắc bị phá.",
+    "faq.0.q": "Apalache là gì?",
+    "faq.0.a": "Chương trình kiểm tra các mô hình TLA+ và Quint bằng cách biến chúng thành điều kiện cho một SMT solver như Z3.",
+    "faq.1.q": "Apalache khác TLC ở đâu?",
+    "faq.1.a": "TLC đi qua từng trạng thái một. Apalache suy luận cùng lúc về mọi lần chạy tới một độ dài cho trước.",
+    "source.label": "apalache-mc.org, trang của Apalache"
+  },
+  "z3": {
+    "aka": "SMT solver của Microsoft Research",
+    "def": "Z3 là SMT solver nổi tiếng nhất: chương trình chọn giá trị cho các điều kiện cho trước. Ví dụ, với “x cộng y bằng mười, x trừ y bằng hai” nó trả lời “x bằng sáu, y bằng bốn”, hoặc chứng minh rằng không có nghiệm. Apalache đưa cho Z3 các điều kiện lấy từ mô hình và dựng chuỗi bước dẫn đến chỗ phá quy tắc từ câu trả lời của nó.",
+    "faq.0.q": "Z3 là gì?",
+    "faq.0.a": "SMT solver nổi tiếng nhất: chương trình tìm giá trị thỏa các điều kiện cho trước hoặc chứng minh rằng không có.",
+    "faq.1.q": "Vì sao Z3 được dùng trong kiểm chứng mô hình?",
+    "faq.1.a": "Apalache đưa cho Z3 các điều kiện từ mô hình và dựng chuỗi bước dẫn đến chỗ phá quy tắc từ câu trả lời của nó.",
+    "source.label": "Z3, kho GitHub"
+  },
+  "smt-solver": {
+    "name": "SMT solver",
+    "aka": "ví dụ Z3",
+    "def": "SMT solver là chương trình nhận một tập điều kiện, chẳng hạn “tổng lớn hơn mười và số dư không âm”, rồi tìm các giá trị thỏa mọi điều kiện, hoặc chứng minh rằng không có giá trị nào như vậy. Nó không phải thử từng cái một: nó suy luận cùng lúc về cả lớp trường hợp. Solver nổi tiếng nhất, Z3, do Microsoft Research tạo ra. Engine Apalache biến mô hình thành các điều kiện như vậy và đưa cho solver.",
+    "faq.0.q": "SMT solver là gì?",
+    "faq.0.a": "Chương trình nhận một tập điều kiện, tìm các giá trị thỏa tất cả chúng hoặc chứng minh rằng không có.",
+    "faq.1.q": "SMT solver nào nổi tiếng nhất?",
+    "source.label": "Z3, kho solver trên GitHub"
+  },
+  "model-checking": {
+    "name": "Kiểm chứng mô hình (model checking)",
+    "aka": "tự động duyệt các trạng thái",
+    "def": "Kiểm chứng mô hình (model checking) là phương pháp trong đó chương trình tự động duyệt các trạng thái của một hệ thống đã mô tả và kiểm tra các quy tắc đúng ở từng trạng thái. Nếu một quy tắc bị phá, phương pháp đưa ra chính xác chuỗi bước dẫn đến đó. Ví dụ, mô hình cửa hàng tìm ra nước đi “thanh toán, mất kết nối” sau đó tiền bị trừ nhưng không có đơn hàng: người mua đã trả tiền mà không nhận được gì. Khác với kiểm thử, phương pháp này không bị giới hạn ở các kịch bản con người nghĩ ra, nhưng bị giới hạn bởi kích thước của thế giới được chọn.",
+    "more.label": "Tìm race condition và dữ liệu bị mất bằng mô hình Quint",
+    "faq.0.q": "Kiểm chứng mô hình là gì?",
+    "faq.0.a": "Phương pháp trong đó chương trình đi qua mọi trạng thái của một hệ thống đã mô tả và kiểm tra các quy tắc đúng ở từng trạng thái.",
+    "faq.1.q": "Kiểm chứng mô hình khác kiểm thử ở đâu?",
+    "faq.1.a": "Kiểm thử kiểm tra một kịch bản bạn đã nghĩ ra. Kiểm chứng mô hình thử mọi thứ tự hành động và đưa ra chính xác chuỗi bước khi một quy tắc bị phá.",
+    "source.label": "Wikipedia: Model checking"
+  },
+  "invariant": {
+    "name": "Bất biến (invariant)",
+    "aka": "quy tắc “luôn đúng”",
+    "def": "Bất biến (invariant) là điều kiện phải đúng ở mọi trạng thái của hệ thống, dù các hành động đến theo thứ tự nào. Ví dụ, trong cửa hàng, tiền không bao giờ bị trừ khi không có đơn hàng, và trong chương trình ghi biên bản cuộc họp, một bản ghi riêng tư không bao giờ đến kho lưu trữ chung. Kiểm chứng mô hình tìm chuỗi bước sau đó bất biến bị phá.",
+    "faq.0.q": "Bất biến (invariant) là gì?",
+    "faq.0.a": "Điều kiện phải đúng ở mọi trạng thái của hệ thống, dù các hành động theo thứ tự nào.",
+    "faq.1.q": "Ví dụ về bất biến?",
+    "faq.1.a": "Trong cửa hàng, tiền không bao giờ bị trừ khi không có đơn hàng.",
+    "source.label": "Wikipedia: Invariant (computer science)"
+  },
+  "rice-theorem": {
+    "name": "Định lý Rice",
+    "aka": "tính bất khả quyết định của các thuộc tính chương trình",
+    "def": "Định lý Rice nói rằng không có chương trình nào có thể cho biết, với mọi chương trình, nó có một thuộc tính hành vi cho trước hay không, chẳng hạn “không bao giờ trừ tiền khi không có đơn hàng”, nếu một số chương trình có thuộc tính đó còn số khác thì không. Câu hỏi về văn bản mã được giải quyết bằng cách đọc; câu hỏi về hành vi thì không. Vì vậy các phép kiểm tra được thu hẹp bằng một khung: thử trọn vẹn một thế giới nhỏ, viết mã sao cho quy tắc đúng ngay từ cấu trúc, hoặc cho phép câu trả lời “không biết”.",
+    "more.label": "Định lý Rice nói đơn giản",
+    "also.0.label": "Kiểm tra công việc của tác nhân AI ở đâu",
+    "faq.0.q": "Định lý Rice nói đơn giản là gì?",
+    "faq.0.a": "Không có chương trình nào có thể cho biết, với mọi chương trình, nó có một thuộc tính hành vi cho trước hay không.",
+    "faq.1.q": "Trên thực tế người ta làm gì với định lý Rice?",
+    "faq.1.a": "Thu hẹp phép kiểm tra: một thế giới nhỏ, một ngôn ngữ hẹp hoặc một câu “không biết” trung thực.",
+    "source.label": "Wikipedia: Rice's theorem"
+  },
+  "halting-problem": {
+    "name": "Bài toán dừng (halting problem)",
+    "aka": "câu hỏi về việc dừng",
+    "def": "Bài toán dừng (halting problem) là câu hỏi một chương trình cho trước, với một đầu vào cho trước, sẽ kết thúc hay chạy mãi. Alan Turing đã chứng minh rằng không có chương trình nào trả lời đúng cho mọi chương trình và đầu vào. Định lý Rice suy ra từ đó: việc kiểm tra bất kỳ quy tắc hành vi nào cho mọi chương trình cũng là bất khả.",
+    "screens.0": "Thẩm phán nhận một chương trình cùng đầu vào của nó và phải nói nó kết thúc hay lặp mãi. Với những chương trình cụ thể thì có thể tìm ra câu trả lời. Turing đã chứng minh rằng không có thẩm phán nào trả lời đúng cho mọi chương trình cùng lúc.",
+    "screens.1": "Vì sao không có thẩm phán như vậy. Giả sử có một thẩm phán. Viết một chương trình phản nghịch: nó hỏi thẩm phán về chính mình rồi làm điều ngược lại. Nếu thẩm phán nói “dừng”, chương trình phản nghịch lặp mãi; nếu nói “không dừng”, nó dừng ngay. Thẩm phán sai trong cả hai trường hợp, nên nó không thể tồn tại. Đây cũng là mẹo như trong nghịch lý thợ cạo, về người thợ cạo cạo râu cho mọi người không tự cạo.",
+    "more.label": "Kiểm tra công việc của tác nhân AI ở đâu",
+    "faq.0.q": "Bài toán dừng là gì?",
+    "faq.0.a": "Câu hỏi một chương trình với đầu vào cho trước sẽ kết thúc hay chạy mãi.",
+    "faq.1.q": "Bài toán dừng có giải được không?",
+    "faq.1.a": "Không: Alan Turing đã chứng minh rằng không có chương trình nào trả lời đúng cho mọi chương trình và mọi đầu vào.",
+    "source.label": "Wikipedia: Halting problem"
+  },
+  "predicate": {
+    "name": "Vị từ (predicate)",
+    "aka": "câu hỏi có hoặc không",
+    "def": "Vị từ (predicate) trong toán học là một phát biểu có biến, trở thành đúng hoặc sai với mỗi giá trị của biến: $P(x)$ = “$x$ là số chẵn” cho “có” với $x = 4$ và “không” với $x = 3$. Về hình thức, nó là hàm $P\\colon X \\to \\{\\text{yes}, \\text{no}\\}$. Vị từ về chương trình nhận một chương trình và trả lời “có” hoặc “không”: “mã có ghi vào bảng thanh toán không”, “chương trình có trừ tiền khi không có đơn hàng không”. Định lý Rice nói những vị từ nào như vậy không thể tính được.",
+    "faq.0.q": "Vị từ là gì?",
+    "faq.0.a": "Phát biểu có biến, trở thành đúng hoặc sai với mỗi giá trị: “x là số chẵn”.",
+    "faq.1.q": "Vị từ được dùng ở đâu?",
+    "faq.1.a": "Trong logic và trong phát biểu định lý Rice: thuộc tính của chương trình được viết dưới dạng vị từ.",
+    "source.label": "Wikipedia: Predicate (mathematical logic)"
+  },
+  "alan-turing": {
+    "name": "Alan Turing",
+    "aka": "máy Turing, 1936",
+    "def": "Alan Turing là nhà toán học người Anh (1912–1954), một trong những người đặt nền móng cho lý thuyết tính toán. Trong bài báo năm 1936 “On Computable Numbers”, ông mô tả máy Turing, mô hình đơn giản nhất của mọi chương trình: một băng gồm các ô và một đầu đọc đọc, ghi và di chuyển theo quy tắc. Trong cùng công trình, ông chỉ ra rằng một số câu hỏi về chương trình không chương trình nào trả lời được; bài toán dừng suy ra từ đó, và định lý Rice suy ra từ bài toán dừng.",
+    "faq.0.q": "Alan Turing là ai?",
+    "faq.0.a": "Nhà toán học người Anh (1912–1954), một trong những người đặt nền móng cho lý thuyết tính toán.",
+    "faq.1.q": "Máy Turing là gì?",
+    "faq.1.a": "Mô hình đơn giản nhất của mọi chương trình, từ bài báo năm 1936 của ông: một băng gồm các ô và một đầu đọc đọc và ghi ký hiệu.",
+    "source.label": "Wikipedia: Alan Turing"
+  },
+  "barber-paradox": {
+    "name": "Nghịch lý thợ cạo",
+    "aka": "câu hỏi về chính nó",
+    "def": "Nghịch lý thợ cạo là câu đố cho thấy không phải mô tả nào cũng xác định một thứ có tồn tại. Người thợ cạo của một ngôi làng cạo râu cho mọi người không tự cạo, và chỉ cho họ. Ông có cạo cho chính mình không? Nếu có, ông không được cạo; nếu không, ông phải cạo. Vậy không tồn tại người thợ cạo như thế. Bertrand Russell dùng nó để minh họa nghịch lý của mình về tập hợp. Cũng mẹo đó, một câu hỏi về chính nó, chứng minh bài toán dừng là bất khả quyết định.",
+    "screens.0": "Điểm mấu chốt là hai tập hợp. Dân làng chia thành tập $A$, những người tự cạo, và tập $B$, những người thợ cạo cạo cho. Quy tắc nói $B$ chính là mọi người không thuộc $A$, nên mỗi dân làng thuộc một và chỉ một tập. Thợ cạo cũng là dân làng, và ông không có chỗ nào để đứng. Nếu ông thuộc $A$, ông tự cạo, nên thợ cạo cạo cho ông, nên ông thuộc $B$. Nếu ông thuộc $B$, thợ cạo cạo cho ông, tức là ông tự cạo, nên ông thuộc $A$. Mâu thuẫn cho thấy quy tắc như vậy không thể thỏa mãn.",
+    "screens.1": "Nghịch lý gốc của Russell năm 1901 nói về tập hợp. Một tập hợp thông thường không chứa chính nó: tập hợp các con mèo không phải là một con mèo. Một số tập hợp lại chứa chính chúng: tập hợp mọi thứ không phải mèo tự nó không phải là mèo, nên nằm trong chính nó. Lấy $R$, tập hợp mọi tập hợp không chứa chính nó: $R = \\{x : x \\notin x\\}$. Nếu $R \\in R$, theo định nghĩa $R \\notin R$; nếu $R \\notin R$, thì $R$ khớp với định nghĩa và $R \\in R$. Thợ cạo chính là câu hỏi đó trong trang phục đời thường: dân làng thay cho tập hợp và “cạo” thay cho “chứa”.",
+    "faq.0.q": "Nghịch lý thợ cạo là gì?",
+    "faq.0.a": "Một thợ cạo cạo râu cho mọi người không tự cạo: nếu ông tự cạo thì ông không được cạo, nếu không tự cạo thì ông phải cạo. Vậy không tồn tại người thợ cạo như thế.",
+    "faq.1.q": "Nghịch lý thợ cạo cho thấy điều gì?",
+    "faq.1.a": "Rằng không phải mô tả nào cũng xác định một thứ có tồn tại. Bertrand Russell dùng nó để giải thích nghịch lý của mình về tập hợp.",
+    "source.label": "Wikipedia: Barber paradox"
+  },
+  "event-storming": {
+    "def": "Event storming là dạng workshop trong đó nhóm bày miền nghiệp vụ ra dưới dạng các sự kiện, rồi tìm các lệnh, aggregate và quy tắc. Kết quả là ranh giới của các aggregate: cái gì đi vào dưới dạng lệnh, cái gì đi ra dưới dạng sự kiện, những quy tắc nào luôn đúng.",
+    "more.label": "Aggregate làm điểm kiểm tra công việc của tác nhân",
+    "faq.0.q": "Event storming là gì?",
+    "faq.0.a": "Dạng workshop của nhóm, bày một miền ra dưới dạng các sự kiện rồi tìm các lệnh, aggregate và quy tắc.",
+    "faq.1.q": "Event storming cho ra gì?",
+    "faq.1.a": "Ranh giới của các aggregate: cái gì đi vào dưới dạng lệnh, cái gì đi ra dưới dạng sự kiện và bên trong có những quy tắc nào."
+  },
+  "race-condition": {
+    "name": "Race condition",
+    "aka": "tình trạng đua",
+    "def": "Race condition là khiếm khuyết mà kết quả phụ thuộc vào việc trong hai hành động, hành động nào đến trước. Mỗi hành động tự nó chạy đúng, nhưng cùng nhau chúng gây mất hoặc lẫn dữ liệu. Trường hợp kinh điển: một điều kiện được kiểm tra một lần, và đến lúc hành động thì nó đã thay đổi. Cách chữa là kiểm tra lại đúng lúc hành động hoặc dùng khóa chung.",
+    "more.label": "Các race condition mà mô hình Quint tìm ra",
+    "faq.0.q": "Race condition là gì?",
+    "faq.0.a": "Khiếm khuyết mà kết quả phụ thuộc vào việc trong hai hành động, hành động nào đến trước.",
+    "faq.1.q": "Làm sao tìm race condition?",
+    "faq.1.a": "Thử mọi thứ tự mà các hành động có thể chạy, chẳng hạn bằng mô hình Quint: kiểm thử chỉ kiểm tra một thứ tự.",
+    "source.label": "Wikipedia: Race condition"
+  },
+  "math-group": {
+    "name": "Nhóm (trong toán học)",
+    "aka": "tập các nước đi",
+    "def": "Nhóm (group) trong toán học là một tập các nước đi có thể thực hiện thành chuỗi, cái này nối tiếp cái kia, và có thể hoàn tác: có nước đi “không làm gì”, và mỗi nước đi có nước đi ngược. Các lần xoay của khối Rubik tạo thành một nhóm. Trong trò chơi “bước và nâng”, các nước đi là một bước quanh vòng sáu điểm (sáu bước liên tiếp đưa về điểm xuất phát), nâng lên vòng ở tầng trên và hạ xuống.",
+    "more.label": "Một trò chơi cần bao nhiêu quy tắc: bước và nâng",
+    "faq.0.q": "Nhóm trong toán học là gì?",
+    "faq.0.a": "Tập các nước đi có thể nối thành chuỗi và hoàn tác: có nước đi “không làm gì”, và mỗi nước đi có nước đi ngược.",
+    "faq.1.q": "Ví dụ về nhóm?",
+    "faq.1.a": "Các lần xoay của khối Rubik.",
+    "source.label": "Wikipedia: Group (mathematics)"
+  },
+  "generators": {
+    "name": "Phần tử sinh của nhóm",
+    "aka": "các nước đi cơ bản",
+    "def": "Phần tử sinh (generators) của một nhóm là một tập nhỏ các nước đi mà từ đó các chuỗi tạo ra mọi nước đi khác của nhóm. Trong trò chơi “bước và nâng” có hai: bước x và nâng t, còn hạ xuống được viết là t⁻¹. Với khối Rubik, các phần tử sinh là các lần xoay của sáu mặt.",
+    "more.label": "Một trò chơi cần bao nhiêu quy tắc: bước và nâng",
+    "faq.0.q": "Phần tử sinh của một nhóm là gì?",
+    "faq.0.a": "Tập nhỏ các nước đi mà từ đó các chuỗi tạo ra mọi nước đi khác của nhóm.",
+    "faq.1.q": "Phần tử sinh của khối Rubik là gì?",
+    "faq.1.a": "Các lần xoay của sáu mặt.",
+    "source.label": "Wikipedia: Generating set of a group"
+  },
+  "group-relation": {
+    "name": "Quan hệ của nhóm",
+    "aka": "một quy tắc của trò chơi",
+    "def": "Quan hệ (relation) của một nhóm là quy tắc có dạng “chuỗi nước đi này đưa mọi thứ về đúng chỗ”. Trong trò chơi “bước và nâng”, quy tắc thứ nhất là x⁶ = 1: sáu bước liên tiếp để quân cờ lại chỗ cũ. Đẳng thức giữa hai chuỗi cũng là một quy tắc: u·v = v·u được viết thành u·v·u⁻¹·v⁻¹ = 1. Cần bao nhiêu quy tắc để xác định hoàn toàn một nhóm là câu hỏi về khe quan hệ (relation gap).",
+    "more.label": "Một trò chơi cần bao nhiêu quy tắc: bước và nâng",
+    "faq.0.q": "Quan hệ của nhóm là gì?",
+    "faq.0.a": "Quy tắc có dạng “chuỗi nước đi này đưa mọi thứ về chỗ cũ”.",
+    "faq.1.q": "Ví dụ về quan hệ?",
+    "faq.1.a": "Trong trò chơi bước và nâng, sáu bước liên tiếp để quân cờ lại chỗ cũ: x⁶ = 1.",
+    "source.label": "Wikipedia: Presentation of a group"
+  },
+  "group-presentation": {
+    "name": "Biểu diễn nhóm (group presentation)",
+    "aka": "nước đi và quy tắc trong một dòng",
+    "def": "Biểu diễn nhóm (group presentation) là cách viết một nhóm bằng các chữ cái cho nước đi và một danh sách quan hệ. Trò chơi “bước và nâng” được viết là ⟨x, t | x⁶, [x³, t·x²·t⁻¹]⟩: hai nước đi bên trái dấu gạch, hai quy tắc bên phải. Từ bản ghi như vậy người ta dựng bản đồ của nhóm và tính toán, kể cả trong các hệ đại số máy tính.",
+    "more.label": "Một trò chơi cần bao nhiêu quy tắc: bước và nâng",
+    "faq.0.q": "Biểu diễn nhóm là gì?",
+    "faq.0.a": "Cách mô tả một nhóm bằng các nước đi dạng chữ cái và một danh sách quan hệ.",
+    "faq.1.q": "Vì sao dùng biểu diễn nhóm?",
+    "faq.1.a": "Dùng để dựng bản đồ của nhóm và tính toán trong các chương trình như GAP.",
+    "source.label": "Wikipedia: Presentation of a group"
+  },
+  "cayley-graph": {
+    "name": "Đồ thị Cayley",
+    "aka": "bản đồ nước đi của nhóm",
+    "def": "Đồ thị Cayley là bản đồ của một nhóm: mỗi điểm là một vị trí, mỗi mũi tên là một nước đi từ vị trí này sang vị trí khác. Bản đồ của trò chơi “bước và nâng” là các vòng sáu điểm nối với nhau bằng các cú nâng. Cùng loại đồ thị nằm bên dưới khối Rubik: các điểm là mọi vị trí của khối, các mũi tên là các lần xoay mặt.",
+    "more.label": "Mạng nơ-ron giải khối Rubik: đồ thị các vị trí và nước đi",
+    "also.0.label": "Các quả bóng trên vòng: bản đồ nước đi và cách sắp xếp rối nhất",
+    "also.1.label": "Bản đồ của trò chơi “bước và nâng”",
+    "faq.0.q": "Đồ thị Cayley là gì?",
+    "faq.0.a": "Bản đồ của một nhóm: mỗi điểm là một vị trí, mỗi mũi tên là một nước đi từ vị trí này sang vị trí khác.",
+    "faq.1.q": "Đồ thị Cayley xuất hiện ở đâu?",
+    "faq.1.a": "Ví dụ, đằng sau khối Rubik: các điểm là mọi vị trí của khối, các mũi tên là các lần xoay mặt.",
+    "source.label": "Wikipedia: Cayley graph"
+  },
+  "commutator": {
+    "name": "Hoán tử (commutator)",
+    "def": "Hoán tử (commutator) là chuỗi bốn nước đi: làm u, làm v, hoàn tác u, hoàn tác v. Nếu các nước đi u và v có thể đổi chỗ cho nhau (chúng là “bạn”), hoán tử bằng “không có gì được làm”. Trong trò chơi “bước và nâng”, quy tắc thứ hai nói rằng hoán tử của nửa vòng x³ và cái móc t·x²·t⁻¹ bằng một.",
+    "more.label": "Một trò chơi cần bao nhiêu quy tắc: bước và nâng",
+    "faq.0.q": "Hoán tử là gì?",
+    "faq.0.a": "Chuỗi bốn nước đi: làm u, làm v, hoàn tác u, hoàn tác v.",
+    "faq.1.q": "Hoán tử bằng một nghĩa là gì?",
+    "faq.1.a": "Các nước đi u và v có thể đổi chỗ: kết quả không phụ thuộc vào thứ tự của chúng.",
+    "source.label": "Wikipedia: Commutator"
+  },
+  "centralizer": {
+    "name": "Tâm hóa tử (centralizer)",
+    "aka": "mọi “bạn” của một nước đi",
+    "def": "Tâm hóa tử (centralizer) là tất cả các nước đi có thể đổi chỗ với một nước đi cho trước: các “bạn” của nó. Trong trò chơi “bước và nâng”, các bạn của nửa vòng x³ gồm hai bước liên tiếp x² và cái móc t·x²·t⁻¹, nhưng chúng không là bạn của nhau. Định lý Newman (1973): trong nhóm có một quan hệ và một nước đi trở về điểm xuất phát sau vài lần lặp, các bạn của mọi nước đi tạo thành một chuỗi lặp của một nước đi duy nhất, và do đó là bạn của nhau. Đó là lý do trò chơi này có nhiều hơn một quy tắc.",
+    "more.label": "Vì sao một quy tắc không đủ cho người chơi: các bạn không là bạn của nhau",
+    "faq.0.q": "Tâm hóa tử là gì?",
+    "faq.0.a": "Tất cả các nước đi có thể đổi chỗ với một nước đi cho trước, các “bạn” của nó.",
+    "faq.1.q": "Định lý Newman nói gì?",
+    "faq.1.a": "Nó mô tả các tâm hóa tử trong nhóm một quan hệ, từ năm 1973.",
+    "source.label": "Wikipedia: Centralizer and normalizer"
+  },
+  "one-relator-group": {
+    "name": "Nhóm một quan hệ",
+    "aka": "bao nhiêu nước đi cũng được, một quy tắc",
+    "def": "Nhóm một quan hệ (one-relator group) là nhóm có thể xác định bằng số nước đi bất kỳ nhưng chỉ một quy tắc. Người ta biết rất nhiều về các nhóm này, chẳng hạn định lý Newman về các bạn của mọi nước đi. Trò chơi “bước và nâng”, với hai quy tắc, không thuộc loại này; bài báo arXiv 2610.23637 suy ra điều đó từ định lý Newman.",
+    "more.label": "Vì sao một quy tắc không đủ cho người chơi: các bạn không là bạn của nhau",
+    "faq.0.q": "Nhóm một quan hệ là gì?",
+    "faq.0.a": "Nhóm được xác định bằng số nước đi bất kỳ nhưng chỉ một quy tắc.",
+    "faq.1.q": "Vì sao nghiên cứu các nhóm này?",
+    "faq.1.a": "Người ta biết rất nhiều về chúng, chẳng hạn định lý Newman về các bạn của mọi nước đi.",
+    "source.label": "Wikipedia: One-relator group"
+  },
+  "relation-module": {
+    "name": "Mô-đun quan hệ (relation module)",
+    "aka": "cách đếm của “kế toán”",
+    "def": "Mô-đun quan hệ (relation module) gồm mọi hệ quả của các quy tắc của một nhóm, được ghi “như kế toán”: thứ tự các nước đi không được nhớ trong một mục ghi, các mục ghi cộng lại với nhau và được mang đi khắp bản đồ của nhóm. Trong trò chơi “bước và nâng”, một mục ghi là một vòng lặp trên bản đồ. Trong bài báo, nó là R/[R, R] với nhóm tác động bằng liên hợp, và với trò chơi này số phần tử sinh ít nhất của nó là 1.",
+    "more.label": "Cách đếm của kế toán: một mục ghi",
+    "faq.0.q": "Mô-đun quan hệ là gì?",
+    "faq.0.a": "Mọi hệ quả của các quy tắc của một nhóm, được ghi “như sổ sách kế toán”: thứ tự các nước đi không được nhớ.",
+    "faq.1.q": "Mô-đun quan hệ liên quan thế nào đến khe quan hệ?",
+    "faq.1.a": "Khe quan hệ so sánh số quy tắc của một nhóm với số phần tử sinh của mô-đun quan hệ của nó."
+  },
+  "relation-gap": {
+    "name": "Khe quan hệ (relation gap)",
+    "def": "Khe quan hệ (relation gap) là tình huống trong đó số quan hệ ít nhất của một nhóm lớn hơn số phần tử sinh ít nhất của mô-đun quan hệ của nó. Karl Gruenberg nêu câu hỏi liệu điều này có xảy ra không vào năm 1976, và năm 1979 nó vào danh sách bài toán của Wall (bài toán B15). Trong trò chơi “bước và nâng”, người chơi cần hai quy tắc trong khi kế toán chỉ cần một mục ghi: bài báo arXiv 2610.23637 ngày 16 tháng 10 năm 2026 đã giải quyết câu hỏi.",
+    "more.label": "Một trò chơi cần bao nhiêu quy tắc: khe quan hệ",
+    "notes.title": "Hai cách đếm quy tắc",
+    "notes.items.0.name": "Người chơi",
+    "notes.items.0.text": "Một quy tắc là một lộ trình trên bản đồ, thứ tự các nước đi quan trọng. Số quan hệ ít nhất; trong “bước và nâng” là 2.",
+    "notes.items.1.name": "Kế toán",
+    "notes.items.1.text": "Một quy tắc là một mục trong sổ cái, thứ tự các nước đi không được nhớ. Số phần tử sinh ít nhất của mô-đun quan hệ; trong cùng trò chơi là 1.",
+    "faq.0.q": "Khe quan hệ là gì?",
+    "faq.0.a": "Khi số quan hệ ít nhất của một nhóm vượt quá số phần tử sinh ít nhất của mô-đun quan hệ của nó.",
+    "faq.1.q": "Ai nêu câu hỏi này?",
+    "faq.1.a": "Karl Gruenberg năm 1976; năm 1979 nó vào danh sách bài toán của Wall."
+  },
+  "group-homology": {
+    "name": "Đồng điều (homology)",
+    "aka": "đồng điều bậc nhất của đồ thị",
+    "def": "Đồng điều (homology) là cách ghi một vòng lặp bằng các con số: mỗi đoạn được đi bao nhiêu lần theo chiều xuôi trừ đi số lần theo chiều ngược. Thứ tự đi bị mất: hai vòng lặp đi qua cùng các đoạn theo thứ tự khác nhau được ghi giống nhau. Trong bài báo về trò chơi “bước và nâng”, mô-đun quan hệ là đồng điều bậc nhất của bản đồ trò chơi (đồ thị Cayley).",
+    "more.label": "Cách đếm của kế toán: một mục ghi",
+    "faq.0.q": "Đồng điều nói đơn giản là gì?",
+    "faq.0.a": "Ghi một vòng lặp bằng các con số: mỗi đoạn được đi bao nhiêu lần theo chiều xuôi trừ đi theo chiều ngược.",
+    "faq.1.q": "Đồng điều làm mất điều gì?",
+    "faq.1.a": "Thứ tự đi: hai vòng lặp qua cùng các đoạn theo thứ tự khác nhau được ghi giống nhau.",
+    "source.label": "Wikipedia: Homology (mathematics)"
+  },
+  "wall-d2-problem": {
+    "name": "Bài toán D2 của Wall",
+    "def": "Bài toán D2 của Wall là câu hỏi năm 1965 của Wall: nếu với một hình ba chiều, chiều thứ ba không thêm gì vào số “lỗ hổng” (những hình như vậy gọi là phức D2), thì có thể biến dạng nó thành hình hai chiều hay không. Bài báo arXiv 2610.23637 dựng từ nhóm “bước và nâng” một hình gồm sáu ô bằng cách gắn thêm một ô đặc: nó không thu gọn được thành hình hai chiều. Kết luận này có điều kiện: nó dựa trên một preprint của OpenAI ngày 6 tháng 10 năm 2026, và chưa có kiểm tra độc lập.",
+    "more.label": "Một trò chơi cần bao nhiêu quy tắc: nó xuất hiện ở đâu",
+    "faq.0.q": "Bài toán D2 của Wall là gì?",
+    "faq.0.a": "Câu hỏi năm 1965 của Wall: một hình ba chiều mà chiều thứ ba không thêm “lỗ hổng” nào có thể biến dạng thành hình hai chiều hay không.",
+    "faq.1.q": "Nó liên quan thế nào đến khe quan hệ?",
+    "faq.1.a": "Một nhóm có khe quan hệ có thể cho phản ví dụ của bài toán D2.",
+    "source.label": "arXiv 2610.23637: Corollary B và sự phụ thuộc vào preprint của OpenAI"
+  },
+  "gcd": {
+    "name": "Ước chung lớn nhất",
+    "aka": "GCD",
+    "def": "Ước chung lớn nhất (GCD) là số lớn nhất chia hết cả hai số. GCD(3, 2) = 1, và số một có thể ghép từ chúng bằng phép cộng và trừ: 1 = 3 − 2. Giống như các đồng xu 3 và 2 rúp: bạn đưa 3, nhận lại 2 tiền thối và còn lại 1 rúp. Đây là điều giúp trò chơi “bước và nâng” có một mục ghi thay vì hai.",
+    "more.label": "Vì sao kế toán cần một mục ghi: ba và hai",
+    "faq.0.q": "Ước chung lớn nhất là gì?",
+    "faq.0.a": "Số lớn nhất chia hết cả hai số: gcd(3, 2) = 1.",
+    "faq.1.q": "Làm sao dựng ước chung lớn nhất từ các số?",
+    "faq.1.a": "Bằng phép cộng và trừ: 1 = 3 − 2, giống đồng xu 3 và 2 có tiền thối.",
+    "source.label": "Wikipedia: Greatest common divisor"
+  },
+  "computer-algebra-system": {
+    "name": "Hệ đại số máy tính",
+    "def": "Hệ đại số máy tính (computer algebra system) là chương trình tính toán với công thức và các đối tượng trừu tượng chứ không chỉ với số. Trong GAP và Magma, các nhóm được định nghĩa bằng nước đi và quy tắc. Nhóm trong bài báo arXiv 2610.23637 được định nghĩa trong GAP chỉ với vài dòng: nhóm tự do trên x và t, chia cho hai quan hệ.",
+    "more.label": "Một trò chơi cần bao nhiêu quy tắc: dạng hình thức",
+    "notes.title": "Nhóm trong bài báo, viết trong GAP",
+    "notes.items.0.name": "Nước đi",
+    "notes.items.1.name": "Quy tắc",
+    "faq.0.q": "Hệ đại số máy tính là gì?",
+    "faq.0.a": "Chương trình tính toán với công thức và các đối tượng trừu tượng, không chỉ với số.",
+    "faq.1.q": "Có những hệ đại số máy tính nào?",
+    "faq.1.a": "Ví dụ GAP và Magma: các nhóm được định nghĩa ở đó bằng nước đi và quy tắc.",
+    "source.label": "gap-system.org, trang của GAP"
+  }
+}
