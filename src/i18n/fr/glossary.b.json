@@ -1,0 +1,1162 @@
+{
+  "harness-engineering": {
+    "aka": "ingénierie du harness",
+    "def": "L’ingénierie du harness (harness engineering) est la discipline générale qui consiste à régler le harness d’un agent : ce que l’agent sait du projet, de quels outils il dispose, ce qu’il a le droit de faire et comment son résultat est vérifié. Elle couvre tout l’environnement, sans ordre d’étapes imposé.",
+    "faq.0.q": "Qu’est-ce que l’ingénierie du harness ?",
+    "faq.0.a": "La discipline qui consiste à mettre en place le harness d’un agent : ce que l’agent sait du projet, de quels outils il dispose, ce qu’il peut faire et comment son résultat est vérifié.",
+    "faq.1.q": "En quoi l’ingénierie du harness diffère-t-elle du HDD ?",
+    "faq.1.a": "L’ingénierie du harness couvre tout l’environnement, sans ordre fixe. Le HDD est une méthode à l’intérieur de cette discipline : chaque erreur de l’agent devient une règle de l’environnement.",
+    "source.label": "martinfowler.com : Harness engineering"
+  },
+  "hdd": {
+    "def": "Le HDD (Harness-Driven Development) est une méthode précise de l’ingénierie du harness : chaque erreur de l’agent devient une règle de son environnement, sous forme d’instruction, de vérification ou de limite. L’environnement grandit à partir d’erreurs réelles, et une erreur corrigée ne revient pas lors des exécutions suivantes.",
+    "faq.0.q": "Qu’est-ce que le HDD ?",
+    "faq.0.a": "Une méthode de l’ingénierie du harness : chaque erreur de l’agent se transforme en règle de son environnement, sous forme d’instruction, de vérification ou de limite.",
+    "faq.1.q": "Qu’apporte le HDD ?",
+    "faq.1.a": "L’environnement se construit à partir d’erreurs réelles, et une erreur ne se répète pas lors des exécutions suivantes."
+  },
+  "spec-driven-development": {
+    "def": "Le développement piloté par les spécifications (Spec-Driven Development) est une approche où l’on écrit d’abord la spécification, c’est-à-dire ce que le système doit faire, puis un agent écrit le code et le vérifie par rapport à la spec. La spec devient le document principal, et le code en est la conséquence.",
+    "faq.0.q": "Qu’est-ce que le développement piloté par les spécifications ?",
+    "faq.0.a": "Une approche où la spécification de ce que le système doit faire vient en premier, et où un agent écrit le code et le vérifie par rapport à elle.",
+    "faq.1.q": "Quels frameworks prennent en charge le développement piloté par les spécifications ?",
+    "faq.1.a": "Par exemple OpenSpec de Fission AI et Spec Kit de GitHub.",
+    "source.label": "GitHub Blog : Spec-driven development",
+    "compare.title": "Boucle de réconciliation : Kubernetes et l’agent",
+    "compare.rows.0": [
+      "Souhaité",
+      "manifestes, un chart Helm",
+      "la spec"
+    ],
+    "compare.rows.1": [
+      "Réel",
+      "services dans le cluster",
+      "code dans le dépôt"
+    ],
+    "compare.rows.2": [
+      "Qui compare",
+      "un contrôleur",
+      "l’agent"
+    ],
+    "compare.rows.3": [
+      "Que fait-il en cas d’écart",
+      "démarre ou supprime des pods",
+      "corrige le code jusqu’à ce que tests et spec concordent"
+    ],
+    "compare.rows.4": [
+      "Comment changer le système",
+      "modifier le manifeste, pas le cluster",
+      "modifier la spec, pas le code"
+    ]
+  },
+  "openspec": {
+    "def": "OpenSpec est un framework gratuit et open source de Fission AI pour le développement piloté par les spécifications (Spec-Driven Development) : l’agent écrit d’abord un plan de changement dans des fichiers, vous le relisez, puis l’agent écrit le code. Les specs en vigueur se trouvent dans `openspec/specs`, et chaque changement a son propre dossier dans `openspec/changes` : `proposal.md` (pourquoi et quoi), un delta de specs, `design.md` et `tasks.md`. L’agent suit `/opsx:propose` → `/opsx:apply` → `/opsx:archive` ; l’archivage fusionne le delta dans les specs. Plus léger que Spec Kit, sans phases rigides, et compatible avec plus de 30 agents.",
+    "faq.0.q": "Qu’est-ce qu’OpenSpec ?",
+    "faq.0.a": "Un framework gratuit et open source de Fission AI pour le développement piloté par les spécifications : l’agent écrit d’abord un plan de changement dans des fichiers, vous le relisez, puis l’agent écrit le code.",
+    "faq.1.q": "Quelles sont les commandes d’OpenSpec ?",
+    "faq.1.a": "Trois commandes principales : /opsx:propose crée un plan de changement, /opsx:apply écrit le code selon les tâches, /opsx:archive fusionne les exigences dans les specs communes. Avant elles, /opsx:explore permet de réfléchir à voix haute.",
+    "faq.2.q": "Comment installer OpenSpec ?",
+    "faq.2.a": "Avec `npm install -g @fission-ai/openspec@latest` (Node.js 22.12 ou plus récent requis) ou `brew install openspec`. Lancez ensuite `openspec init` dans le dossier du projet. L’outil est gratuit, sous licence MIT.",
+    "faq.3.q": "En quoi OpenSpec diffère-t-il de Spec Kit ?",
+    "faq.3.a": "OpenSpec est plus léger : les étapes peuvent se répéter dans n’importe quel ordre, et il convient au code déjà en production. Spec Kit de GitHub suit des phases fixes.",
+    "source.label": "Dépôt GitHub d’OpenSpec",
+    "seo.title": "Qu’est-ce qu’OpenSpec : framework open source de spécifications",
+    "seo.description": "OpenSpec de Fission AI : un plan de changement en Markdown avant le code, trois commandes d’agent (propose, apply, archive) et des exigences fusionnées dans les specs du projet.",
+    "more.label": "OpenSpec : installation, commandes et exemple de changement",
+    "compare.title": "OpenSpec, Spec Kit et Kiro",
+    "compare.rows.0": [
+      "Ce que c’est",
+      "un framework open source de Fission AI pour votre agent",
+      "une boîte à outils open source de GitHub pour votre agent",
+      "un environnement de développement AWS avec son propre agent"
+    ],
+    "compare.rows.1": [
+      "Prix",
+      "gratuit, licence MIT",
+      "gratuit, licence MIT",
+      "une offre gratuite limitée, des offres payantes au-dessus"
+    ],
+    "compare.rows.2": [
+      "Fichiers de changement",
+      "proposal.md, un delta de specs, design.md, tasks.md",
+      "constitution, spec, plan, tâches",
+      "requirements.md (ou bugfix.md), design.md, tasks.md"
+    ],
+    "compare.rows.3": [
+      "Ordre des étapes",
+      "les étapes peuvent se répéter dans n’importe quel ordre",
+      "par phases : constitution → spec → plan → tâches → code",
+      "exigences → conception → tâches"
+    ],
+    "compare.rows.4": [
+      "Quels agents",
+      "plus de 30 agents via des commandes slash",
+      "agents variés : Copilot, Claude Code et d’autres",
+      "l’agent propre à Kiro"
+    ]
+  },
+  "spec-kit": {
+    "def": "Spec Kit est une boîte à outils de GitHub pour le développement piloté par les spécifications (Spec-Driven Development) : le CLI `specify` installe des commandes d’agent qui guident pas à pas : principes du projet (`/speckit-constitution`), spec (`/speckit-specify`), plan technique (`/speckit-plan`), tâches (`/speckit-tasks`), code (`/speckit-implement`) et vérification par rapport aux artefacts (`/speckit-converge`), répétée jusqu’à ce que le code et la spec concordent. Fonctionne avec Copilot, Claude Code et d’autres agents.",
+    "faq.0.q": "Qu’est-ce que Spec Kit ?",
+    "faq.0.a": "La boîte à outils de GitHub pour le développement piloté par les spécifications : l’utilitaire specify installe dans le projet des commandes d’agent qui guident pas à pas, des principes du projet jusqu’au code.",
+    "faq.1.q": "Quelles sont les étapes de Spec Kit ?",
+    "faq.1.a": "Principes du projet, spec, plan technique, tâches, code, puis vérification du code par rapport à la spec, répétée jusqu’à ce qu’ils concordent.",
+    "source.label": "Dépôt GitHub de Spec Kit"
+  },
+  "rfc-2119": {
+    "def": "La RFC 2119 est une norme qui fixe le sens de MUST, SHOULD et MAY dans les exigences. Dans les specs, ces niveaux indiquent à l’agent ce qui est obligatoire, ce qui est conseillé et ce qui est facultatif.",
+    "faq.0.q": "Qu’est-ce que la RFC 2119 ?",
+    "faq.0.a": "Une norme qui définit le sens de MUST, SHOULD et MAY dans les exigences.",
+    "faq.1.q": "Pourquoi utiliser la RFC 2119 dans les specs destinées à un agent ?",
+    "faq.1.a": "Ces mots indiquent à l’agent ce qui est exigé, ce qui est recommandé et ce qui relève de son choix.",
+    "source.label": "RFC 2119, le texte de la norme"
+  },
+  "ddd": {
+    "def": "Le Domain-Driven Design (conception pilotée par le domaine) est une approche de conception où le code est construit autour du domaine métier et d’un langage partagé avec le métier. Le domaine est découpé en contextes délimités ; à l’intérieur vivent des agrégats qui reçoivent des commandes, portent les règles métier et envoient des événements aux contextes voisins.",
+    "faq.0.q": "Qu’est-ce que le DDD ?",
+    "faq.0.a": "Le Domain-Driven Design : une approche où le code est construit autour du domaine métier et d’un langage partagé avec le métier.",
+    "faq.1.q": "Quelles sont les parties du DDD ?",
+    "faq.1.a": "Le domaine est découpé en contextes délimités, et les agrégats vivent à l’intérieur : ils reçoivent des commandes, portent les règles métier et envoient des événements.",
+    "source.label": "Martin Fowler : Domain-Driven Design"
+  },
+  "aggregate": {
+    "name": "Agrégat",
+    "def": "Un agrégat est un groupe d’objets du domaine liés entre eux, qui change comme un tout par sa racine et porte ses propres règles métier. Un agrégat a des commandes qui le modifient, une version qui augmente à chaque changement, des modèles de lecture pour voir son contenu et des événements qu’il envoie à d’autres contextes délimités. Dans les specs par agrégat, une spec décrit un agrégat.",
+    "faq.0.q": "Qu’est-ce qu’un agrégat en DDD ?",
+    "faq.0.a": "Un groupe d’objets du domaine liés entre eux, qui change comme un tout par sa racine et porte lui-même les règles métier.",
+    "faq.1.q": "Pourquoi l’agrégat compte-t-il quand on travaille avec un agent ?",
+    "faq.1.a": "Sa frontière est un bon endroit pour vérifier le travail d’un agent : les commandes entrent, les événements sortent et les règles y sont écrites.",
+    "source.label": "Martin Fowler : DDD Aggregate"
+  },
+  "bounded-context": {
+    "name": "Contexte délimité",
+    "def": "Un contexte délimité (bounded context) est une frontière à l’intérieur de laquelle les termes n’ont qu’un seul sens. « Commande » en vente et en livraison peut désigner des choses différentes, c’est pourquoi chaque frontière a ses propres specs et son vocabulaire. D’une frontière à l’autre, les contextes communiquent par des événements d’agrégat.",
+    "faq.0.q": "Qu’est-ce qu’un contexte délimité ?",
+    "faq.0.a": "Une frontière à l’intérieur de laquelle les termes ont un seul sens : « commande » en vente et en livraison peut désigner des choses différentes.",
+    "faq.1.q": "Comment les contextes délimités communiquent-ils entre eux ?",
+    "faq.1.a": "À travers la frontière, les voisins échangent des événements d’agrégat.",
+    "source.label": "Martin Fowler : Bounded Context"
+  },
+  "domain": {
+    "name": "Domaine métier",
+    "aka": "domaine",
+    "def": "Un domaine métier est la partie du monde réel pour laquelle un programme est écrit, avec ses propres concepts et règles : par exemple, la réservation de salles de réunion. En DDD, le domaine est découpé en sous-domaines, et le modèle de chacun vit dans le code, dans son propre contexte délimité, avec son propre langage omniprésent.",
+    "faq.0.q": "Qu’est-ce qu’un domaine métier ?",
+    "faq.0.a": "La partie du monde réel pour laquelle un programme est écrit, avec ses propres concepts et règles, comme la réservation de salles de réunion.",
+    "faq.1.q": "Comment un domaine est-il découpé en DDD ?",
+    "faq.1.a": "En sous-domaines, et le modèle de chacun vit dans son propre contexte délimité dans le code.",
+    "source.label": "Martin Fowler : Domain-Driven Design"
+  },
+  "ubiquitous-language": {
+    "name": "Langage omniprésent",
+    "aka": "le langage du domaine",
+    "def": "Le langage omniprésent (ubiquitous language) est un vocabulaire commun aux développeurs et au métier à l’intérieur d’un contexte délimité : les mêmes mots sont employés dans la conversation, dans la spec et dans le code. À l’intérieur de la frontière, chaque mot a un seul sens ; de l’autre côté, le même mot peut désigner autre chose. Plus le langage est étroit, plus de règles peuvent être vérifiées à partir du seul texte, sans passer par des exécutions.",
+    "faq.0.q": "Qu’est-ce que le langage omniprésent en DDD ?",
+    "faq.0.a": "Un vocabulaire commun aux développeurs et au métier à l’intérieur d’un contexte délimité : les mêmes mots apparaissent dans la conversation, dans la spec et dans le code.",
+    "faq.1.q": "Un mot peut-il avoir plusieurs sens ?",
+    "faq.1.a": "À l’intérieur de la frontière, un mot a un seul sens ; à l’extérieur, le même mot peut désigner autre chose.",
+    "source.label": "Martin Fowler : Ubiquitous Language"
+  },
+  "imperative": {
+    "name": "Approche impérative",
+    "aka": "comment : les étapes",
+    "def": "L’approche impérative est un style d’écriture de programme où les étapes pour atteindre un résultat sont détaillées : trouver les réservations de la salle, comparer les intervalles, enregistrer la nouvelle. Une règle sur le résultat n’est écrite nulle part en entier dans un tel code ; elle découle des étapes, et il faut donc la vérifier sur le comportement.",
+    "faq.0.q": "Qu’est-ce que l’approche impérative ?",
+    "faq.0.a": "Un style d’écriture de programme qui détaille pas à pas comment atteindre le résultat.",
+    "faq.1.q": "En quoi l’approche impérative diffère-t-elle de l’approche déclarative ?",
+    "faq.1.a": "Le code impératif décrit les étapes, et la règle sur le résultat en découle. Le code déclaratif décrit ce qui doit être vrai, et un moteur choisit les étapes.",
+    "source.label": "Wikipédia : Programmation impérative"
+  },
+  "declarative": {
+    "name": "Approche déclarative",
+    "aka": "quoi : règles et contraintes",
+    "def": "L’approche déclarative est un style d’écriture où un programme est un système de règles et de contraintes décrivant le résultat voulu, sans ordre d’étapes : il dit ce qui doit être vrai, et un moteur décide comment y parvenir. Les contraintes et requêtes de bases de données, les règles d’inférence et les descriptions de l’état souhaité d’un système fonctionnent ainsi. Exemple : « les réservations d’une même salle ne se chevauchent jamais » et « une réservation dure au plus 4 heures », écrites comme contraintes de base de données. Les notations déclaratives simples peuvent être vérifiées exactement à partir du texte, parce que leur comportement se lit dans l’énoncé lui-même. Dans un langage déclaratif puissant, ce n’est plus vrai, et le théorème de Rice s’y applique tout comme au code impératif.",
+    "notes.title": "Où on la rencontre : langages, validateurs, moteurs",
+    "notes.items.0.text": "une requête dit quelles données sont nécessaires, et la base choisit comment les récupérer. Les contraintes CHECK, UNIQUE et EXCLUDE sont des règles que la base applique à chaque écriture.",
+    "notes.items.1.text": "on décrit l’état souhaité : quels services et combien de copies lancer. Les contrôleurs d’une boucle de réconciliation y ramènent le système.",
+    "notes.items.2.text": "un schéma décrit la forme des données ; un validateur vérifie chaque document par rapport à lui.",
+    "notes.items.3.text": "ainsi que TLA+ et Alloy : les règles et invariants du système s’écrivent comme des énoncés, et la vérification de modèles parcourt les états.",
+    "notes.items.4.text": "des contraintes sur des valeurs ; le solveur trouve des valeurs qui les satisfont ou prouve qu’il n’y en a pas.",
+    "notes.items.5.text": "des faits et des règles d’inférence ; le moteur trouve lui-même la réponse à une question. Le langage est complet : on peut aussi y écrire une boucle infinie.",
+    "notes.items.6.text": "un Prolog allégé pour interroger des données : toute requête se termine à coup sûr, donc la réponse est toujours exacte.",
+    "more.label": "Où vérifier le travail d’un agent IA",
+    "also.0.label": "Une boucle de réconciliation pour les specs : comme Kubernetes",
+    "also.1.label": "En quoi la vérification de modèles diffère des tests",
+    "also.2.label": "Specs par agrégat",
+    "faq.0.q": "Qu’est-ce que l’approche déclarative ?",
+    "faq.0.a": "Un style où un programme est un système de règles et de contraintes décrivant le résultat, sans ordre d’étapes.",
+    "faq.1.q": "Où l’approche déclarative est-elle utilisée ?",
+    "faq.1.a": "Dans les contraintes et requêtes de bases de données, les règles d’inférence et les descriptions de l’état souhaité d’un système, comme SQL et Kubernetes.",
+    "source.label": "Wikipédia : Programmation déclarative"
+  },
+  "kubernetes": {
+    "def": "Kubernetes est un système qui exécute des programmes dans des conteneurs sur de nombreux serveurs et veille sur eux. Il se configure de façon déclarative : un fichier décrit l’état souhaité, par exemple « trois copies du service de réservation », et des contrôleurs, dans une boucle de réconciliation, le comparent à l’état réel et corrigent l’écart : une copie plante, une nouvelle est démarrée. Un cluster est fait de nœuds où les conteneurs tournent dans des pods ; l’état souhaité est conservé dans etcd, les applications s’installent avec des charts Helm, et quand la mémoire manque, l’éviction déplace des pods vers d’autres nœuds.",
+    "screens.0": "Un chart Helm décrit l’état souhaité : trois copies. Le serveur d’API le conserve dans etcd, le scheduler place les pods sur les nœuds et kubelet les lance. Quand un nœud tombe, les contrôleurs constatent 2 copies sur 3 et démarrent la troisième sur un autre nœud.",
+    "parts.title": "De quoi il est fait",
+    "notes.title": "La boucle de réconciliation : comment Kubernetes maintient l’état souhaité",
+    "notes.items.0.name": "1. Souhaité",
+    "notes.items.0.text": "un Deployment dit : trois copies du service de réservation. L’enregistrement vit dans etcd.",
+    "notes.items.1.name": "2. Réel",
+    "notes.items.1.text": "un contrôleur regarde combien de pods tournent en ce moment : disons deux, parce qu’un nœud est tombé.",
+    "notes.items.2.name": "3. Écart",
+    "notes.items.2.text": "trois sont nécessaires, deux existent : le contrôleur crée un troisième pod et le scheduler le place sur un nœud sain.",
+    "notes.items.3.name": "4. Et on recommence",
+    "notes.items.3.text": "la vérification ne s’arrête jamais : le contrôleur compare sans cesse le souhaité et le réel, et le système revient tout seul à la description.",
+    "more.label": "Une boucle de réconciliation pour les specs : comme Kubernetes",
+    "faq.0.q": "Qu’est-ce que Kubernetes ?",
+    "faq.0.a": "Un système qui exécute des programmes dans des conteneurs sur de nombreux serveurs et veille sur eux.",
+    "faq.1.q": "Comment Kubernetes se configure-t-il ?",
+    "faq.1.a": "De façon déclarative : un fichier décrit l’état souhaité, par exemple « trois copies d’un service », et des contrôleurs, dans une boucle de réconciliation, y ramènent le système.",
+    "source.label": "Kubernetes : gestion déclarative des objets"
+  },
+  "k8s-node": {
+    "name": "Nœud",
+    "def": "Un nœud est un serveur d’un cluster Kubernetes, physique ou virtuel. Les pods tournent sur des nœuds, et le scheduler décide quel pod va sur quel nœud.",
+    "faq.0.q": "Qu’est-ce qu’un nœud dans Kubernetes ?",
+    "faq.0.a": "Un serveur d’un cluster Kubernetes, physique ou virtuel.",
+    "source.label": "Kubernetes : Nodes"
+  },
+  "pod": {
+    "name": "Pod",
+    "def": "Un pod est la plus petite unité exécutée dans Kubernetes : un ou plusieurs conteneurs qui travaillent ensemble. Par exemple, une copie du service de réservation.",
+    "faq.0.q": "Qu’est-ce qu’un pod dans Kubernetes ?",
+    "faq.0.a": "La plus petite unité exécutée dans Kubernetes : un ou plusieurs conteneurs qui travaillent ensemble.",
+    "source.label": "Kubernetes : Pods"
+  },
+  "etcd": {
+    "def": "etcd est un magasin clé-valeur distribué et fiable. Dans Kubernetes, il conserve toutes les données du cluster, y compris l’état souhaité décrit.",
+    "faq.0.q": "Qu’est-ce qu’etcd ?",
+    "faq.0.a": "Un magasin clé-valeur distribué et fiable."
+  },
+  "kube-apiserver": {
+    "name": "Serveur d’API Kubernetes",
+    "def": "Le serveur d’API Kubernetes est le point d’entrée d’un cluster. Les personnes, Helm et les contrôleurs lisent et modifient l’état par son intermédiaire, et il conserve cet état dans etcd.",
+    "faq.0.q": "Qu’est-ce que le serveur d’API Kubernetes ?",
+    "faq.0.a": "Le point d’entrée d’un cluster.",
+    "source.label": "Kubernetes : Components"
+  },
+  "kube-scheduler": {
+    "name": "Scheduler Kubernetes",
+    "def": "Le scheduler Kubernetes est un composant qui repère les pods sans nœud attribué et place chacun sur un nœud adapté, en tenant compte de la mémoire et du CPU disponibles.",
+    "faq.0.q": "Qu’est-ce que le scheduler Kubernetes ?",
+    "faq.0.a": "Un composant qui repère les pods sans nœud attribué et place chacun sur un nœud adapté, en tenant compte de la mémoire et du CPU disponibles.",
+    "source.label": "Kubernetes : Scheduler"
+  },
+  "kubelet": {
+    "def": "kubelet est un programme présent sur chaque nœud Kubernetes. Il s’assure que les pods attribués au nœud et leurs conteneurs tournent.",
+    "faq.0.q": "Qu’est-ce que kubelet ?",
+    "faq.0.a": "Un programme présent sur chaque nœud Kubernetes.",
+    "source.label": "Kubernetes : Components"
+  },
+  "deployment": {
+    "def": "Un Deployment est un enregistrement Kubernetes qui indique quelle version d’un service exécuter et combien de copies maintenir, par exemple « trois copies du service de réservation ». Lors d’une mise à jour, il remplace les anciens pods par de nouveaux, à tour de rôle.",
+    "faq.0.q": "Qu’est-ce qu’un Deployment dans Kubernetes ?",
+    "faq.0.a": "Un enregistrement Kubernetes qui indique quelle version d’un service exécuter et combien de copies maintenir, par exemple « trois copies du service de réservation ».",
+    "source.label": "Kubernetes : Deployments"
+  },
+  "replicaset": {
+    "def": "Un ReplicaSet est un contrôleur Kubernetes qui maintient un nombre fixé de pods identiques. Un pod plante, il en crée un nouveau ; il y en a un de trop, il le supprime.",
+    "faq.0.q": "Qu’est-ce qu’un ReplicaSet ?",
+    "faq.0.a": "Un contrôleur Kubernetes qui maintient un nombre fixé de pods identiques."
+  },
+  "eviction": {
+    "name": "Éviction",
+    "aka": "expulsion de pods",
+    "def": "L’éviction (eviction) est le retrait de pods d’un nœud Kubernetes : le système arrête des pods, par exemple quand le nœud manque de mémoire ou de disque. Un contrôleur remarque les copies manquantes et les redémarre sur un autre nœud. Dans le jargon, on dit « to evict » : « le pod a été évincé » signifie que Kubernetes l’a retiré de son nœud.",
+    "notes.title": "Quand un pod est évincé",
+    "notes.items.0.name": "Pression sur le nœud",
+    "notes.items.0.text": "un nœud manque de mémoire ou de disque, et kubelet évince lui-même certains pods pour que le nœud entier ne tombe pas. Les pods qui consomment plus que demandé partent en premier.",
+    "notes.items.1.name": "Sur demande",
+    "notes.items.1.text": "un nœud est retiré pour maintenance avec kubectl drain : il évince les pods un par un et arrête chacun proprement.",
+    "notes.items.2.name": "Ce qui se passe ensuite",
+    "notes.items.2.text": "l’éviction elle-même ne démarre rien : un contrôleur de la boucle de réconciliation crée une nouvelle copie sur un autre nœud, parce qu’il y a moins de copies que décrit.",
+    "faq.0.q": "Qu’est-ce que l’éviction dans Kubernetes ?",
+    "faq.0.a": "Le retrait de pods d’un nœud Kubernetes : le système arrête des pods, par exemple quand le nœud manque de mémoire ou de disque.",
+    "source.label": "Kubernetes : Node-pressure eviction"
+  },
+  "helm": {
+    "def": "Helm est le gestionnaire de paquets de Kubernetes. Un chart décrit une application entière avec toutes ses parties, et s’installe et se met à jour avec une seule commande.",
+    "faq.0.q": "Qu’est-ce que Helm ?",
+    "faq.0.a": "Le gestionnaire de paquets de Kubernetes."
+  },
+  "chaos-engineering": {
+    "name": "Ingénierie du chaos",
+    "aka": "pannes volontaires en production",
+    "def": "L’ingénierie du chaos (chaos engineering) est une pratique qui consiste à provoquer volontairement des pannes dans un système en fonctionnement : éteindre un serveur, ralentir le réseau, faire tomber une base de données, et observer si le système tient. C’est une vérification par l’exemple : elle montre comment le système se comporte dans les pannes mises en scène, mais ne prouve rien pour tous les cas. Dans les systèmes à approche déclarative comme Kubernetes, une telle expérience teste la boucle de réconciliation : le système doit relancer seul la copie plantée.",
+    "faq.0.q": "Qu’est-ce que l’ingénierie du chaos ?",
+    "faq.0.a": "Une pratique qui consiste à provoquer volontairement des pannes dans un système en fonctionnement et à observer s’il tient.",
+    "faq.1.q": "L’ingénierie du chaos prouve-t-elle la fiabilité ?",
+    "faq.1.a": "Non, c’est une vérification par l’exemple : elle montre le comportement dans les pannes mises en scène, pas dans toutes les pannes possibles."
+  },
+  "fail-fast": {
+    "aka": "échouer immédiatement",
+    "def": "Le fail-fast (échouer vite) est un principe selon lequel un programme signale un problème dès qu’il le remarque et arrête l’action, au lieu de continuer en silence avec des données erronées. L’erreur apparaît là où elle est née et coûte moins cher à trouver. Kubernetes bâtit la gestion des services là-dessus : un service échoue aussitôt sur une erreur, et le système le redémarre seul et ne lui envoie aucune requête tant qu’il n’est pas prêt.",
+    "notes.title": "Le fail-fast dans Kubernetes",
+    "notes.items.0.name": "Plantage au démarrage",
+    "notes.items.0.text": "un service mal configuré se termine tout de suite avec une erreur au lieu de fonctionner à moitié. kubelet redémarre le conteneur et attend de plus en plus longtemps entre deux échecs répétés : un pod en CrashLoopBackOff se voit immédiatement.",
+    "notes.items.1.name": "Sonde de vivacité",
+    "notes.items.1.text": "kubelet demande régulièrement au service « es-tu vivant ? ». Sans réponse, le conteneur est redémarré : un service bloqué ne reste pas bloqué en silence.",
+    "notes.items.2.name": "Sonde de disponibilité",
+    "notes.items.2.text": "tant que le service n’est pas prêt, aucune requête de client ne l’atteint : Kubernetes retire le pod de la liste des destinataires.",
+    "notes.items.3.name": "Arrêt d’un déploiement",
+    "notes.items.3.text": "un Deployment remplace les anciens pods par de nouveaux, à tour de rôle. Si les nouveaux ne deviennent jamais prêts, le remplacement s’arrête là, et les anciennes copies continuent de tourner.",
+    "faq.0.q": "Qu’est-ce que le fail-fast ?",
+    "faq.0.a": "Un principe selon lequel un programme signale un problème tout de suite et arrête l’action au lieu de continuer en silence.",
+    "faq.1.q": "Pourquoi échouer vite ?",
+    "faq.1.a": "L’erreur apparaît là où elle est née : elle est donc moins chère à trouver et à corriger.",
+    "source.label": "Wikipédia : Fail-fast system"
+  },
+  "sql": {
+    "def": "SQL est un langage déclaratif d’interrogation des bases de données relationnelles. Une requête dit quelles données sont nécessaires, « les réservations de la salle 5 pour demain », et la base décide elle-même comment les récupérer, par index ou par balayage. Les contraintes CHECK, UNIQUE et EXCLUDE fixent des règles que la base applique à chaque écriture, si bien qu’on peut les vérifier à partir du texte du schéma.",
+    "faq.0.q": "Qu’est-ce que SQL ?",
+    "faq.0.a": "Un langage d’interrogation déclaratif pour les bases de données relationnelles : une requête dit quelles données sont nécessaires, et la base choisit comment les obtenir.",
+    "faq.1.q": "En quoi SQL aide-t-il à faire respecter des règles ?",
+    "faq.1.a": "Les contraintes CHECK, UNIQUE et EXCLUDE inscrivent les règles sur les données directement dans la base, qui ne laissera pas les enfreindre.",
+    "source.label": "Wikipédia : SQL"
+  },
+  "json-schema": {
+    "def": "JSON Schema est un langage déclaratif qui décrit la forme de données JSON : quels champs sont obligatoires, de quel type, quelles valeurs sont permises. Un validateur prend le schéma et un document, et répond si le document convient. C’est ainsi que l’on vérifie les sorties de programmes et d’agents, les réglages et les requêtes entrantes.",
+    "faq.0.q": "Qu’est-ce que JSON Schema ?",
+    "faq.0.a": "Un langage déclaratif qui décrit la forme de données JSON : quels champs sont obligatoires, leurs types et les valeurs permises.",
+    "faq.1.q": "Comment fonctionne la validation avec JSON Schema ?",
+    "faq.1.a": "Un validateur prend le schéma et un document, et répond si le document convient."
+  },
+  "cap-theorem": {
+    "name": "Théorème CAP",
+    "aka": "cohérence, disponibilité, partition",
+    "def": "Le théorème CAP dit que lorsque des données vivent sur plusieurs serveurs et que la liaison entre eux est rompue, le système ne peut pas à la fois répondre à toutes les requêtes et montrer à tout le monde les mêmes données : il doit soit attendre le retour de la liaison, soit répondre depuis sa propre copie, peut-être périmée. Eric Brewer l’a énoncé en 2000 ; Seth Gilbert et Nancy Lynch l’ont démontré en 2002. Brewer a écrit plus tard que la formule « deux sur trois » simplifie trop : le choix ne se pose que pendant une partition.",
+    "screens.0": "Les lettres : C est la cohérence (consistency), tout le monde voit les mêmes données ; A est la disponibilité (availability), chaque requête reçoit une réponse ; P est la tolérance au partitionnement (partition tolerance), le système continue de fonctionner quand des messages entre serveurs sont perdus ou retardés. Les partitions surviennent d’elles-mêmes ; en pratique, le choix se fait donc entre C et A pendant la durée d’une partition.\n\nLe point commun avec le théorème de Rice : tant qu’un événement n’a pas eu lieu, on ne peut pas savoir s’il aura lieu plus tard ou jamais, quelle que soit la durée d’attente. Un serveur ne sait pas si le message d’un voisin est perdu ou en retard ; une vérification de programme ne sait pas si le programme se terminera ou tournera sans fin. Les issues se ressemblent donc : tant que le temps n’est pas borné, on choisit l’une de deux options, attendre ou répondre tout de suite au risque de se tromper ; et borner le temps supprime la bifurcation elle-même, car après la limite, « jamais » est déjà connu. Les raisons de l’impossibilité diffèrent : un serveur manque d’information, alors qu’une vérification de programme l’a, tout le code est devant elle, mais la réponse ne peut pas en être calculée. Cette comparaison est celle de l’auteur ; aucun théorème unique ne couvre les deux.",
+    "more.label": "Le théorème de Rice et le lien avec CAP",
+    "faq.0.q": "Qu’est-ce que le théorème CAP en termes simples ?",
+    "faq.0.a": "Quand des données vivent sur plusieurs serveurs et que la liaison est rompue, le système ne peut pas à la fois répondre à toutes les requêtes et montrer à tout le monde les mêmes données.",
+    "faq.1.q": "Que choisit un système quand la liaison est rompue ?",
+    "faq.1.a": "Soit attendre le retour de la liaison, soit répondre avec ses propres données, qui peuvent être périmées.",
+    "source.label": "Eric Brewer : CAP twelve years later"
+  },
+  "agile": {
+    "aka": "développement agile",
+    "def": "L’agilité (Agile) est une approche du développement par cycles courts : construire une petite partie, la montrer, recueillir des retours et ajuster le plan. Elle repose sur le Manifeste pour le développement logiciel agile de 2001, qui valorise l’adaptation au changement plutôt que le suivi d’un plan. Cette approche convient là où l’avenir ne peut pas être connu d’avance : le plan sera faux de toute façon, l’essentiel est donc qu’il soit peu coûteux à ajuster.",
+    "more.label": "Le premier cadre : pourquoi il sera faux et comment le rendre peu coûteux",
+    "faq.0.q": "Qu’est-ce qu’Agile ?",
+    "faq.0.a": "Une approche du développement par cycles courts : construire une petite partie, la montrer, recueillir des retours et ajuster le plan.",
+    "faq.1.q": "Sur quoi repose Agile ?",
+    "faq.1.a": "Sur le Manifeste agile de 2001, qui valorise l’adaptation au changement plutôt que le suivi d’un plan.",
+    "source.label": "Manifesto for Agile Software Development"
+  },
+  "prolog": {
+    "aka": "un langage de programmation logique",
+    "def": "Prolog est un langage dans lequel un programme est fait de faits et de règles d’inférence, et où un moteur trouve lui-même la réponse à une question. Des faits : « la réservation b1 concerne la salle 2, de 10 h à 11 h ». Une règle : « deux réservations se chevauchent si la salle est la même et que les horaires se recoupent ». Une question : « quelles réservations chevauchent b1 ? ». Créé en 1972 en France. On peut écrire n’importe quel programme en Prolog, y compris un programme qui ne se termine jamais ; le théorème de Rice s’y applique donc.",
+    "faq.0.q": "Qu’est-ce que le langage Prolog ?",
+    "faq.0.a": "Un langage où un programme est fait de faits et de règles d’inférence, et où un moteur trouve lui-même la réponse à une question.",
+    "faq.1.q": "En quoi Prolog diffère-t-il de Datalog ?",
+    "faq.1.a": "Datalog est un Prolog allégé, sans les fonctionnalités qui permettent à un programme de tourner sans fin : toutes ses requêtes sur des données finies se terminent donc.",
+    "source.label": "Wikipédia : Prolog"
+  },
+  "datalog": {
+    "aka": "un Prolog étroit pour les bases de données",
+    "def": "Datalog est un Prolog allégé pour interroger des données : mêmes faits et mêmes règles d’inférence, mais sans les fonctionnalités qui permettent à un programme de tourner sans fin. Toute requête Datalog sur des données finies est donc assurée de se terminer et de donner une réponse exacte. C’est un exemple de langage étroit : on ne peut pas y écrire n’importe quel programme, mais on peut répondre exactement à propos de ses programmes. Des langages de type Datalog servent à l’analyse de code et aux règles d’accès.",
+    "faq.0.q": "Qu’est-ce que Datalog ?",
+    "faq.0.a": "Un Prolog allégé pour interroger des données : mêmes faits et mêmes règles d’inférence.",
+    "faq.1.q": "Pourquoi une requête Datalog se termine-t-elle toujours ?",
+    "faq.1.a": "Le langage supprime les fonctionnalités qui permettraient à un programme de tourner sans fin.",
+    "source.label": "Wikipédia : Datalog"
+  },
+  "reconcile-loop": {
+    "name": "Boucle de réconciliation",
+    "aka": "comme dans Kubernetes",
+    "def": "Une boucle de réconciliation (reconcile loop) est une boucle dans laquelle un système compare sans cesse l’état souhaité à l’état réel et ramène le second au premier. Kubernetes fonctionne ainsi : des manifestes ou un chart Helm décrivent quels services doivent tourner, et un contrôleur le confronte en permanence au cluster et démarre ce qui manque. Le développement piloté par les spécifications (Spec-Driven Development) fait de même : l’état souhaité est la spec, l’état réel est le code, et l’agent ramène le code à la spec.",
+    "faq.0.q": "Qu’est-ce qu’une boucle de réconciliation ?",
+    "faq.0.a": "Une boucle où un système compare sans cesse l’état souhaité à l’état réel et aligne l’état réel.",
+    "faq.1.q": "Où une boucle de réconciliation tourne-t-elle ?",
+    "faq.1.a": "Par exemple dans Kubernetes : des manifestes décrivent quels services doivent tourner, et des contrôleurs les démarrent.",
+    "source.label": "Kubernetes : Controllers",
+    "compare.title": "Boucle de réconciliation : Kubernetes et l’agent",
+    "compare.rows.0": [
+      "Souhaité",
+      "manifestes, un chart Helm",
+      "la spec"
+    ],
+    "compare.rows.1": [
+      "Réel",
+      "services dans le cluster",
+      "code dans le dépôt"
+    ],
+    "compare.rows.2": [
+      "Qui compare",
+      "un contrôleur",
+      "l’agent"
+    ],
+    "compare.rows.3": [
+      "Que fait-il en cas d’écart",
+      "démarre ou supprime des pods",
+      "corrige le code jusqu’à ce que tests et spec concordent"
+    ],
+    "compare.rows.4": [
+      "Comment changer le système",
+      "modifier le manifeste, pas le cluster",
+      "modifier la spec, pas le code"
+    ]
+  },
+  "memory-bank": {
+    "def": "Memory Bank est un dossier `memory-bank` de six fichiers markdown où l’agent conserve le contexte du projet d’une session à l’autre : `projectbrief` (objectifs et périmètre), `productContext` (pourquoi le produit existe), `systemPatterns` (architecture), `techContext` (stack), `activeContext` (priorité du moment) et `progress` (ce qui est fait). L’agent les lit au début de chaque tâche et les met à jour après les gros changements ou sur la commande « update memory bank ». C’est un jeu d’instructions d’agent créé par Cline, qui fonctionne aussi avec d’autres agents : un cas de mémoire de projet conservée dans des fichiers, comme CLAUDE.md.",
+    "faq.0.q": "Qu’est-ce qu’un Memory Bank ?",
+    "faq.0.a": "Un dossier memory-bank de six fichiers markdown où l’agent conserve le contexte du projet d’une session à l’autre : objectifs, architecture, stack, priorité du moment et avancement.",
+    "faq.1.q": "Quand l’agent met-il à jour le Memory Bank ?",
+    "faq.1.a": "Après de gros changements ou sur la commande « update memory bank ». Il lit les fichiers au début de chaque tâche.",
+    "source.label": "Documentation Cline : Memory Bank"
+  },
+  "requirements": {
+    "name": "Exigences",
+    "def": "Les exigences sont la description de ce que le système doit faire et dans quelles conditions. Chaque exigence a une source, et c’est elle qui décide de la gravité d’une modification : majeure ou mineure.",
+    "faq.0.q": "Que sont les exigences ?",
+    "faq.0.a": "La description de ce qu’un système doit faire et dans quelles conditions.",
+    "faq.1.q": "Pourquoi une exigence a-t-elle besoin d’une source ?",
+    "faq.1.a": "La source décide de la gravité d’un changement : majeur ou mineur.",
+    "source.label": "Wikipédia : Ingénierie des exigences"
+  },
+  "c4-model": {
+    "name": "Modèle C4",
+    "aka": "structure d’un système en quatre niveaux de zoom",
+    "def": "C4 est une façon de dessiner la structure d’un système logiciel à quatre niveaux de zoom, comme une carte : du pays entier jusqu’à une seule rue. Chaque niveau a son propre dessin, et les niveaux ne sont pas mélangés dans un même diagramme. Ainsi, un nouvel arrivant et un développeur voient chacun exactement le niveau de détail dont ils ont besoin. Le nom C4 vient de quatre mots anglais : context, containers, components, code.",
+    "notes.title": "Quatre niveaux",
+    "notes.items.0.name": "Contexte",
+    "notes.items.0.text": "le système entier en un seul bloc et tout ce qui y est relié : personnes et systèmes voisins. La question : qui l’utilise et pourquoi.",
+    "notes.items.1.name": "Conteneurs",
+    "notes.items.1.text": "les parties qui tournent séparément et le composent : un site web, un serveur, une base de données. La question : de quoi le système est construit.",
+    "notes.items.2.name": "Composants",
+    "notes.items.2.text": "de quoi est faite l’une de ces parties, par exemple un serveur : paiement, commandes, codes promo. La question : comment une partie est organisée.",
+    "notes.items.3.name": "Code",
+    "notes.items.3.text": "l’organisation interne d’un composant : classes et fonctions. Ce niveau est rarement dessiné : le code lui-même le montre.",
+    "more.label": "Comment un agent dessine des diagrammes à la demande : séquence et C4",
+    "faq.0.q": "Qu’est-ce que le modèle C4 ?",
+    "faq.0.a": "Une façon de dessiner la structure d’un système logiciel à quatre niveaux de zoom : contexte, conteneurs, composants et code.",
+    "faq.1.q": "Pourquoi quatre niveaux ?",
+    "faq.1.a": "Chaque niveau a son propre dessin : un nouvel arrivant comme un développeur voit exactement le niveau de détail dont il a besoin.",
+    "source.label": "c4model.com, le site de la méthode par Simon Brown"
+  },
+  "osi": {
+    "name": "Modèle OSI",
+    "aka": "sept couches",
+    "def": "Le modèle OSI est un modèle de référence qui découpe la communication réseau en sept couches, de la couche physique à la couche application. Chaque couche peut vivre sur un système physique différent : plus il y a de couches et de systèmes sur le chemin d’une requête, plus il y a d’endroits où elle peut échouer. Un bon filtre pour juger de la difficulté réelle d’une tâche pour un agent.",
+    "faq.0.q": "Qu’est-ce que le modèle OSI ?",
+    "faq.0.a": "Un modèle de référence qui découpe la communication réseau en sept couches, de la couche physique à la couche application.",
+    "faq.1.q": "Pourquoi utiliser le modèle OSI pour un agent IA ?",
+    "faq.1.a": "Plus une requête traverse de couches et de systèmes, plus il y a d’endroits où elle peut échouer. Le modèle aide à estimer la difficulté réelle d’une tâche pour un agent.",
+    "source.label": "ISO/IEC 7498-1, la norme du modèle OSI"
+  },
+  "epimorphism": {
+    "name": "Épimorphisme",
+    "aka": "une correspondance sans trous",
+    "def": "Un épimorphisme est une correspondance où chaque partie du résultat vient de quelque chose dans la source : aucune partie n’est laissée sans couverture. Pour la réponse d’un agent, cela signifie que chaque énoncé s’appuie sur les données. Là où il n’y a pas d’appui, un trou reste, et le modèle le comble par une supposition : c’est ainsi qu’apparaît une hallucination.",
+    "faq.0.q": "Qu’est-ce qu’un épimorphisme en termes simples ?",
+    "faq.0.a": "Une application où chaque partie du résultat vient de quelque chose dans la source : aucune partie n’est laissée sans couverture.",
+    "faq.1.q": "Quel est le lien entre épimorphisme et hallucinations ?",
+    "faq.1.a": "Si chaque énoncé de la réponse s’appuie sur les données, il n’y a pas d’hallucination. Là où l’appui manque, le modèle comble le vide par une supposition.",
+    "source.label": "Wikipédia : Épimorphisme"
+  },
+  "automated-test": {
+    "name": "Test automatisé",
+    "aka": "autotest, Jest, Vitest, QUnit",
+    "def": "Un test automatisé est un court programme qui exécute du code avec une entrée donnée et compare le résultat à celui qui est attendu. Il s’écrit une fois et se lance après chaque modification ; si une modification casse quelque chose qui marchait, le test échoue. Des moteurs comme Jest, Vitest et QUnit exécutent ces tests pour du code JavaScript. Un test n’attrape que ce qu’on a pensé à vérifier d’avance : il se complète donc par des modèles de règles et par la vérification des tests eux-mêmes.",
+    "also.0.label": "En quoi Quint diffère de QUnit, Jest et TLA+",
+    "faq.0.q": "Qu’est-ce qu’un test automatisé ?",
+    "faq.0.a": "Un court programme qui exécute du code avec une entrée donnée et compare le résultat à celui qui est attendu après chaque changement.",
+    "faq.1.q": "Que laisse passer un test automatisé ?",
+    "faq.1.a": "Un test n’attrape que ce qu’on a pensé à vérifier d’avance : il se complète donc par des modèles de règles et par la vérification des tests eux-mêmes.",
+    "source.label": "Wikipédia : Test automation"
+  },
+  "qa": {
+    "aka": "assurance qualité, testeur",
+    "def": "La QA (quality assurance, assurance qualité) est le rôle de la personne qui vérifie qu’un produit fait ce qu’il promet et trouve les bugs avant les utilisateurs. La QA reproduit une erreur, la décrit pour qu’un développeur puisse la répéter, et valide la correction. Quand un agent prend en charge la routine autour des bugs, la QA vérifie son résultat à la main et décide de l’importance du bug.",
+    "more.label": "Comment la QA confie la routine des bugs à un agent",
+    "faq.0.q": "Qu’est-ce que la QA ?",
+    "faq.0.a": "Quality assurance : le rôle de la personne qui vérifie que le produit fait ce qu’il promet et trouve les bugs avant les utilisateurs.",
+    "faq.1.q": "Que fait la QA quand un agent s’occupe des bugs ?",
+    "faq.1.a": "Elle vérifie à la main le résultat de l’agent et décide de l’importance du bug.",
+    "source.label": "Wikipédia : Assurance qualité"
+  },
+  "bug": {
+    "name": "Bug",
+    "aka": "bogue logiciel, défaut",
+    "def": "Un bug est une erreur dans un programme : il fait autre chose que prévu, ou plante. Un bug arrive généralement d’un client sous forme d’une plainte d’une ligne, et la QA la transforme en étapes exactes que n’importe qui peut suivre pour répéter l’erreur. Plus le chemin vers le bug est court, plus vite il est corrigé.",
+    "more.label": "Comment la QA confie la routine des bugs à un agent",
+    "faq.0.q": "Qu’est-ce qu’un bug ?",
+    "faq.0.a": "Une erreur dans un programme : il fait autre chose que prévu, ou plante.",
+    "faq.1.q": "Comment corriger un bug plus vite ?",
+    "faq.1.a": "Transformer la plainte en étapes exactes que n’importe qui peut suivre pour le reproduire. Plus le chemin vers le bug est court, plus vite il est corrigé.",
+    "source.label": "Wikipédia : Bug informatique"
+  },
+  "sequence-diagram": {
+    "name": "Diagramme de séquence",
+    "aka": "diagramme chronologique",
+    "def": "Un diagramme de séquence montre comment les parties d’un système échangent des messages dans l’ordre du temps : les participants sont placés en haut et les flèches descendent. Il montre qui a appelé qui et à quelle étape les choses ont cassé. Un agent dessine un tel diagramme à la demande, pour que le développeur voie tout de suite l’endroit de l’erreur.",
+    "faq.0.q": "Qu’est-ce qu’un diagramme de séquence ?",
+    "faq.0.a": "Un diagramme avec les participants du système en haut et des flèches de messages qui descendent dans l’ordre du temps.",
+    "faq.1.q": "Pourquoi utiliser un diagramme de séquence ?",
+    "faq.1.a": "Il montre qui a appelé qui et à quelle étape les choses ont cassé.",
+    "source.label": "Wikipédia : Diagramme de séquence"
+  },
+  "api": {
+    "aka": "interface de programmation d’application",
+    "def": "Une API est un ensemble de règles par lesquelles un programme en appelle un autre : quelles requêtes peuvent être envoyées et quelles réponses reviennent. Par une API, un agent appelle directement un service, sans navigateur. Par exemple, le paiement appelle le service de codes promo par son API.",
+    "faq.0.q": "Qu’est-ce qu’une API ?",
+    "faq.0.a": "Un ensemble de règles qui disent comment un programme parle à un autre : quelles requêtes peuvent être envoyées et quelles réponses reviennent.",
+    "faq.1.q": "Pourquoi un agent utilise-t-il une API ?",
+    "faq.1.a": "Par une API, l’agent appelle directement un service, sans navigateur.",
+    "source.label": "Wikipédia : API"
+  },
+  "poc": {
+    "aka": "preuve de concept",
+    "def": "Un PoC (proof of concept, preuve de concept) est un petit morceau de code ou un script qui montre que le problème se reproduit vraiment. Pour un bug, c’est une courte exécution sans navigateur qui répète l’erreur. Un agent écrit un tel PoC à partir du code et des tests pour confirmer le bug.",
+    "faq.0.q": "Qu’est-ce qu’un PoC en programmation ?",
+    "faq.0.a": "Proof of concept : un petit morceau de code ou un scénario qui montre que le problème se reproduit vraiment.",
+    "faq.1.q": "Pourquoi un agent écrit-il un PoC pour un bug ?",
+    "faq.1.a": "Pour confirmer le bug : une courte exécution sans navigateur répète l’erreur, qui est ainsi visible avant la correction.",
+    "source.label": "Wikipédia : Preuve de concept"
+  },
+  "jest": {
+    "aka": "un framework de tests JavaScript",
+    "def": "Jest est l’un des frameworks de tests automatisés les plus répandus pour le code JavaScript. On décrit ce qu’une fonction doit renvoyer pour une entrée donnée, et Jest exécute toutes ces vérifications et montre lesquelles ont échoué. De la même famille que Vitest et QUnit, il vérifie du code terminé, et non les règles d’un système comme le fait Quint.",
+    "also.0.label": "En quoi Quint diffère de QUnit, Jest et TLA+",
+    "faq.0.q": "Qu’est-ce que Jest ?",
+    "faq.0.a": "L’un des frameworks de tests automatisés les plus utilisés pour JavaScript.",
+    "faq.1.q": "Jest ou Vitest ?",
+    "faq.1.a": "Ils font le même travail. Sur un projet Vite, Vitest est plus pratique ; ailleurs, Jest reste un choix solide.",
+    "source.label": "jestjs.io, le site de Jest"
+  },
+  "vitest": {
+    "aka": "tests propulsés par Vite",
+    "def": "Vitest est un framework de tests automatisés de nouvelle génération pour JavaScript, propulsé par le bundler Vite. Il fait ce que fait Jest : exécuter des vérifications de code terminé et montrer celles qui échouent, mais il réutilise la configuration Vite du projet et redémarre donc vite. De la même famille que Jest et QUnit.",
+    "also.0.label": "En quoi Quint diffère de QUnit, Jest et TLA+",
+    "faq.0.q": "Qu’est-ce que Vitest ?",
+    "faq.0.a": "Un framework de tests automatisés pour JavaScript construit sur le bundler Vite.",
+    "faq.1.q": "Vitest ou Jest ?",
+    "faq.1.a": "Sur un projet Vite, prenez Vitest : il réutilise les mêmes réglages et se relance vite. Ils font le même travail.",
+    "source.label": "vitest.dev, le site de Vitest"
+  },
+  "qunit": {
+    "aka": "un framework de tests JavaScript",
+    "def": "QUnit est un framework de tests automatisés pour le code JavaScript, de la même famille que Jest et Vitest. Un test envoie une entrée donnée à une fonction terminée et compare la réponse à celle qui est attendue. Le nom ressemble à Quint, mais c’est un programme d’une autre classe : QUnit vérifie du code écrit, tandis que Quint vérifie les règles d’un système. La fiabilité des tests eux-mêmes se vérifie par les tests de mutation : on introduit un défaut dans le code pour voir si un test échoue.",
+    "also.0.label": "En quoi Quint diffère de QUnit, Jest et TLA+",
+    "faq.0.q": "Qu’est-ce que QUnit ?",
+    "faq.0.a": "Un framework de tests automatisés pour JavaScript, de la même famille que Jest et Vitest.",
+    "faq.1.q": "QUnit et Quint, est-ce la même chose ?",
+    "faq.1.a": "Non : QUnit exécute des tests sur du code terminé, Quint est un langage pour décrire et vérifier les règles d’un système avant le code.",
+    "source.label": "qunitjs.com, le site de QUnit",
+    "compare.title": "QUnit et Quint",
+    "compare.rows.0": [
+      "Ce qu’il vérifie",
+      "la réponse d’une fonction terminée pour des entrées données",
+      "aucun état interdit, quel que soit l’ordre des actions"
+    ],
+    "compare.rows.1": [
+      "Ce dont il a besoin",
+      "du code écrit",
+      "une description de règles, le code peut ne pas exister"
+    ],
+    "compare.rows.2": [
+      "Ce qui est difficile",
+      "inventer les entrées",
+      "énoncer les règles pour qu’elles reflètent la réalité"
+    ]
+  },
+  "mutation-testing": {
+    "name": "Test de mutation",
+    "aka": "une copie volontairement cassée",
+    "def": "Le test de mutation (mutation testing) est une façon de tester les vérifications elles-mêmes : une personne ou un agent casse volontairement une copie du code ou du modèle, par exemple en retirant une condition, et regarde si les tests et les règles s’en aperçoivent. Si le défaut passe inaperçu, la vérification ne vérifie rien. Dans les modèles Quint, ces copies s’appellent des mutants.",
+    "more.label": "Vérifier les vérifications dans les modèles Quint",
+    "faq.0.q": "Qu’est-ce que le test de mutation ?",
+    "faq.0.a": "Une façon de vérifier les vérifications elles-mêmes : on casse volontairement une copie du code pour voir si les tests s’en aperçoivent.",
+    "faq.1.q": "Que signifie un défaut qui passe inaperçu ?",
+    "faq.1.a": "Les tests ne couvrent pas ce cas et doivent être étendus.",
+    "source.label": "Wikipédia : Mutation testing"
+  },
+  "environment": {
+    "name": "Environnement",
+    "aka": "environnement de déploiement, stage",
+    "def": "Un environnement est une copie distincte d’un système avec son propre rôle : on écrit le code sur l’un, on le vérifie sur un autre, et les utilisateurs travaillent sur un troisième. Un changement traverse les environnements dans l’ordre : local, dev (avec les stands de feature à côté), test, préproduction, démo, production. Plus on s’approche de la production, plus les réglages et les données ressemblent aux vrais et plus une erreur coûte cher.",
+    "faq.0.q": "Quels environnements existe-t-il ?",
+    "faq.0.a": "Local, dev avec les stands de feature à côté, test, préproduction, démo et production. Un changement les traverse dans l’ordre.",
+    "faq.1.q": "En quoi les environnements diffèrent-ils ?",
+    "faq.1.a": "Par leur rôle : on écrit le code sur l’un, on le vérifie sur un autre, et les utilisateurs travaillent sur un troisième. Plus on s’approche de la production, plus les données sont réelles et plus une erreur coûte cher.",
+    "source.label": "Wikipédia : Deployment environment",
+    "seo.title": "Environnements : local, dev, test, préprod, prod, c’est quoi ?",
+    "seo.description": "Les environnements sont des copies distinctes d’un système sur le chemin d’un changement vers les utilisateurs : local, dev, test, préprod, démo, prod. En quoi ils diffèrent.",
+    "parts.title": "Types d’environnements",
+    "compare.title": "Tous les environnements : ce qu’ils vérifient, qui les utilise, quelles données",
+    "compare.head": [
+      "Local",
+      "Feature",
+      "Dev",
+      "Test",
+      "Préprod",
+      "Démo",
+      "Prod"
+    ],
+    "compare.rows.0": [
+      "Ce qu’il vérifie",
+      "écrire et essayer",
+      "une branche isolée",
+      "le code s’assemble",
+      "tout le monde intègre souvent",
+      "comme la production",
+      "démo client",
+      "utilisateurs au travail"
+    ],
+    "compare.rows.1": [
+      "Stand de test",
+      "non",
+      "oui",
+      "oui",
+      "oui",
+      "oui",
+      "pas toujours",
+      "non"
+    ],
+    "compare.rows.2": [
+      "Qui l’utilise",
+      "un développeur",
+      "l’auteur de la branche",
+      "l’équipe",
+      "la QA",
+      "l’équipe",
+      "le client",
+      "les clients"
+    ],
+    "compare.rows.3": [
+      "Données",
+      "de test",
+      "de test",
+      "de test",
+      "une copie de la production ou des mocks",
+      "une copie récente de la production",
+      "échantillons ou réelles",
+      "réelles"
+    ],
+    "compare.rows.4": [
+      "Toujours présent",
+      "oui",
+      "pas toujours",
+      "pas toujours",
+      "presque toujours",
+      "pas toujours",
+      "pas toujours",
+      "oui"
+    ]
+  },
+  "local-env": {
+    "name": "Environnement local",
+    "aka": "local, poste du développeur",
+    "def": "L’environnement local est une copie du système sur l’ordinateur du développeur. On y écrit et on y essaie le code tout de suite ; casser des choses n’est pas grave puisque personne d’autre ne le voit. Les données sont des données de test ou une copie anonymisée de la production. Il n’est pas compté comme stand de test : un stand est le serveur commun de l’équipe, qui commence à l’étape suivante.",
+    "faq.0.q": "Qu’est-ce qu’un environnement local ?",
+    "faq.0.a": "Une copie du système sur l’ordinateur du développeur. On y écrit et on y essaie le code tout de suite.",
+    "faq.1.q": "L’environnement local est-il un stand de test ?",
+    "faq.1.a": "Non : un stand est le serveur commun de l’équipe, alors que l’environnement local appartient à un seul développeur.",
+    "source.label": "Wikipédia : Deployment environment",
+    "seo.title": "Environnement local : définition et différence avec un stand de test",
+    "seo.description": "L’environnement local est une copie du système sur l’ordinateur du développeur, la première étape du chemin d’un changement vers la production."
+  },
+  "feature-stand": {
+    "name": "Stand de feature",
+    "aka": "environnement de feature, review app, environnement de prévisualisation",
+    "def": "Un stand de feature est une copie temporaire du système pour une seule nouvelle fonctionnalité, c’est-à-dire une seule branche de code. Il est créé pour la vérification et supprimé après la fusion. Il tourne en parallèle de dev : une fonctionnalité est vérifiée seule, sans attendre le dev commun et sans occuper l’environnement de test. On appelle aussi ces stands environnements de prévisualisation (preview) ou de revue (review).",
+    "faq.0.q": "Qu’est-ce qu’un stand de feature ?",
+    "faq.0.a": "Une copie temporaire du système pour une seule branche de code : elle est créée pour la vérification et supprimée après la fusion.",
+    "faq.1.q": "Pourquoi un stand de feature s’il y a un dev ?",
+    "faq.1.a": "Il tourne en parallèle de dev : une fonctionnalité est vérifiée seule, sans attendre le dev commun ni occuper le test.",
+    "source.label": "Wikipédia : Deployment environment",
+    "seo.title": "Stand de feature : définition et intérêt d’un stand par branche",
+    "seo.description": "Un stand de feature est une copie temporaire du système pour une branche de code. On l’appelle aussi review app ou environnement de prévisualisation."
+  },
+  "dev-env": {
+    "name": "Environnement dev",
+    "aka": "dev, environnement de développement",
+    "def": "Dev (l’environnement de développement) est l’environnement commun de l’équipe où le code arrive après une fusion : il vérifie que le code de différents développeurs se construit et fonctionne ensemble. Les données sont des données de test. Dev peut tomber en panne, mais il est réparé vite parce que toute l’équipe y travaille. C’est le premier stand de test partagé après l’environnement local. Les stands de feature tournent généralement en parallèle de dev.",
+    "faq.0.q": "Qu’est-ce qu’un environnement dev ?",
+    "faq.0.a": "L’environnement commun de l’équipe où le code arrive après une fusion : il vérifie que le code de différents développeurs fonctionne ensemble.",
+    "faq.1.q": "En quoi dev diffère-t-il de test ?",
+    "faq.1.a": "Dev reçoit le code d’une seule équipe, alors que test réunit les changements de toutes les équipes et de tous les services.",
+    "source.label": "Wikipédia : Deployment environment",
+    "seo.title": "Environnement dev : définition et rôle",
+    "seo.description": "Dev est l’environnement commun de l’équipe où le code arrive après une fusion. En quoi dev diffère de local, test et préprod."
+  },
+  "test-env": {
+    "name": "Environnement de test (intégration)",
+    "aka": "environnement de test, environnement d’intégration, SIT",
+    "def": "Test est un environnement commun où les changements de toutes les équipes et de tous les services sont réunis souvent, chaque jour ou après chaque fusion, pour vérifier qu’ils fonctionnent ensemble. La QA et les tests automatisés y travaillent ; les données sont une copie de la production ou des mocks. Il diffère de dev par son périmètre : dev reçoit le code d’une équipe, tandis que sur test, tout le monde intègre. Test est l’un des stands de test, et il est presque toujours présent, même là où il n’y a pas de dev.",
+    "faq.0.q": "Qu’est-ce qu’un environnement de test ?",
+    "faq.0.a": "Un environnement commun où les changements de tous sont souvent réunis pour vérifier qu’ils fonctionnent ensemble.",
+    "faq.1.q": "En quoi test diffère-t-il de la préproduction ?",
+    "faq.1.a": "Test vérifie que les changements de tous fonctionnent ensemble. La préproduction vérifie un changement dans des conditions proches de la production.",
+    "source.label": "Wikipédia : Deployment environment",
+    "seo.title": "Environnement de test (intégration) : définition, différence avec dev et préprod",
+    "seo.description": "Test est l’environnement d’intégration où les changements de toutes les équipes sont réunis souvent pour vérifier qu’ils fonctionnent ensemble. Différences avec dev, préprod et les stands de test."
+  },
+  "test-stand": {
+    "name": "Environnement de staging",
+    "aka": "stand de test, staging",
+    "def": "Un stand de test est une classe générale d’environnements : toute copie distincte d’un système sur le serveur de l’équipe où l’on peut essayer et casser des choses sans toucher au système réel (la production). Les stands de test comprennent le stand de feature, dev, test (l’environnement d’intégration), la préproduction et la démo ; chacun a son rôle, et un changement les traverse dans l’ordre. L’environnement local du développeur et la production ne sont pas des stands. Un agent reproduit les bugs et vérifie les changements sur le staging. Les dépendances du système, données et services externes, y sont branchées sous forme de copies des vraies ou de mocks : les copies sont plus proches de la réalité, les mocks coûtent moins cher et sont donc plus utilisés. Le staging diffère d’un bac à sable (sandbox) par son but : un sandbox encadre les actions de l’agent, alors que le staging est une copie du système entier.",
+    "faq.0.q": "Qu’est-ce qu’un stand de test ?",
+    "faq.0.a": "Une copie distincte du système sur le serveur de l’équipe où l’on peut essayer et casser des choses sans toucher à la production. Les stands comprennent le stand de feature, dev, test, la préproduction et la démo.",
+    "faq.1.q": "En quoi le staging diffère-t-il d’un environnement de test ?",
+    "faq.1.a": "Un environnement de test vérifie que les changements de tous fonctionnent ensemble. Le staging, ou préproduction, vérifie un changement dans des conditions proches de la production.",
+    "faq.2.q": "Que peut faire un agent IA sur un stand ?",
+    "faq.2.a": "Reproduire des bugs et vérifier des changements. L’agent n’écrit pas en production.",
+    "source.label": "Wikipédia : Deployment environment",
+    "seo.title": "Environnement de staging : définition, staging vs production vs développement",
+    "seo.description": "Un environnement de staging est une copie du système où un agent et l’équipe vérifient des changements sans toucher à la production. Développement, staging, production, et différence avec un sandbox.",
+    "screens.0": "Un stand est construit comme une copie de la production. Le service est copié en entier, et ses dépendances, la base de données et les services externes, sont branchées de deux façons : sous forme de copies des vraies, plus proches de la réalité, ou sous forme de mocks, moins chers et plus rapides. L’agent travaille sur le stand et n’écrit pas en production.",
+    "screens.1": "Un changement avance de gauche à droite. Depuis l’environnement local, le code prend deux chemins : vers dev après une fusion, et vers un stand de feature où une branche est vérifiée. Les deux chemins se rejoignent sur test, où tout le monde intègre. Ensuite, la préproduction vérifie comment le changement se comporte comme en production, la démo le montre au client, et seulement après il arrive en production. Tout ce qui est dans le cadre est un stand de test.",
+    "parts.title": "Où les changements sont vérifiés : l’environnement local et les stands de test",
+    "compare.title": "Tous les environnements : ce qu’ils vérifient, qui les utilise, quelles données",
+    "compare.head": [
+      "Local",
+      "Feature",
+      "Dev",
+      "Test",
+      "Préprod",
+      "Démo",
+      "Prod"
+    ],
+    "compare.rows.0": [
+      "Ce qu’il vérifie",
+      "écrire et essayer",
+      "une branche isolée",
+      "le code s’assemble",
+      "tout le monde intègre souvent",
+      "comme la production",
+      "démo client",
+      "utilisateurs au travail"
+    ],
+    "compare.rows.1": [
+      "Stand de test",
+      "non",
+      "oui",
+      "oui",
+      "oui",
+      "oui",
+      "pas toujours",
+      "non"
+    ],
+    "compare.rows.2": [
+      "Qui l’utilise",
+      "un développeur",
+      "l’auteur de la branche",
+      "l’équipe",
+      "la QA",
+      "l’équipe",
+      "le client",
+      "les clients"
+    ],
+    "compare.rows.3": [
+      "Données",
+      "de test",
+      "de test",
+      "de test",
+      "une copie de la production ou des mocks",
+      "une copie récente de la production",
+      "échantillons ou réelles",
+      "réelles"
+    ],
+    "compare.rows.4": [
+      "Toujours présent",
+      "oui",
+      "pas toujours",
+      "pas toujours",
+      "presque toujours",
+      "pas toujours",
+      "pas toujours",
+      "oui"
+    ]
+  },
+  "preprod": {
+    "name": "Préproduction",
+    "aka": "préprod, pré-production, stage",
+    "def": "La préproduction (« préprod », « pre-prod » ou « preprod » : les trois écritures se rencontrent) est un environnement configuré comme la production où un changement subit sa dernière vérification avant la mise en production : mêmes réglages et copie récente des données de production. Le mot vient de pre-production. Certaines équipes l’appellent staging, d’autres la gardent comme une étape distincte après l’environnement de test.",
+    "source.label": "Wikipédia : Deployment environment",
+    "seo.title": "Qu’est-ce que la préprod (preprod) : préproduction, staging, production",
+    "seo.description": "La préprod est un environnement configuré comme la production pour la dernière vérification avant la mise en production. Différences avec l’environnement de test et la production.",
+    "faq.0.q": "Comment l’écrire : preprod ou pre-prod ?",
+    "faq.0.a": "Les deux écritures conviennent : le mot vient de pre-production et n’a pas de norme de dictionnaire. Choisissez-en une et gardez-la dans tout le document.",
+    "faq.1.q": "Qu’est-ce que la préprod ?",
+    "faq.1.a": "L’étape juste avant la production : une copie de l’environnement réel où un changement est vérifié dans des conditions réelles.",
+    "faq.2.q": "Préprod et staging, est-ce la même chose ?",
+    "faq.2.a": "Dans certaines équipes oui, dans d’autres la préprod vient après l’environnement de test. Vérifiez comment votre équipe emploie ces mots et mettez-vous d’accord sur un seul.",
+    "faq.3.q": "Faut-il une préprod ?",
+    "faq.3.a": "Les petites équipes se contentent généralement d’un environnement de test et de la production. La préprod allonge le cycle de livraison : la qualité monte, mais le délai de mise sur le marché aussi, parce qu’un changement met plus de temps à atteindre les utilisateurs. Elle sert là où une erreur en production coûte cher.",
+    "faq.4.q": "D’où viennent les données de la préprod ?",
+    "faq.4.a": "D’un dump : une copie des données de la base réelle dans un seul fichier. Les données personnelles en sont retirées.",
+    "faq.5.q": "Que fait un agent IA en préprod ?",
+    "faq.5.a": "Il lance des vérifications. Les changements y arrivent par une mise en production ; l’agent ne la modifie pas directement.",
+    "compare.title": "En quoi la préprod diffère de l’environnement de test",
+    "compare.head": [
+      "Test",
+      "Préprod"
+    ],
+    "compare.rows.0": [
+      "Ce qu’il vérifie",
+      "que les changements de tous fonctionnent ensemble",
+      "comment il se comporte comme en production"
+    ],
+    "compare.rows.1": [
+      "Réglages",
+      "pratiques pour tester",
+      "identiques à la production"
+    ],
+    "compare.rows.2": [
+      "Données",
+      "une copie de la production ou des mocks",
+      "une copie récente de la production"
+    ],
+    "compare.rows.3": [
+      "Toujours présent",
+      "presque toujours",
+      "pas toujours"
+    ]
+  },
+  "demo-env": {
+    "name": "Environnement de démo",
+    "aka": "démo, stand de démo",
+    "def": "Un environnement de démo est l’endroit où un produit est montré à un client ou à des collègues. Il diffère de la préprod par son but : la préprod vérifie un changement dans les conditions de la production, tandis que la démo montre une version terminée à des personnes. Souvent la démo est la production elle-même : le produit est présenté sur le système réel, par exemple avec un compte de démo distinct. Mais il peut aussi exister un stand séparé avec une version stable et des données d’exemple préparées pour que la présentation se passe bien. Les changements y arrivent par une mise en production, comme pour la production.",
+    "faq.0.q": "Qu’est-ce qu’un environnement de démo ?",
+    "faq.0.a": "Un environnement pour montrer le produit à un client ou à des collègues.",
+    "faq.1.q": "La démo est-elle la même chose que la production ?",
+    "faq.1.a": "Souvent oui : la présentation a lieu sur le système réel avec un compte de démo distinct. Il peut aussi exister un stand séparé avec des données préparées.",
+    "source.label": "Wikipédia : Deployment environment",
+    "seo.title": "Environnement de démo : définition, différence avec la préprod et la production",
+    "seo.description": "Un environnement de démo est l’endroit où un produit est montré à un client : version stable et données préparées. Différences avec la préprod et la production."
+  },
+  "prod": {
+    "name": "Production",
+    "aka": "prod, environnement réel",
+    "def": "Prod (production, l’environnement réel) est l’environnement avec lequel travaillent les vrais utilisateurs, et ses données sont réelles. Une erreur y coûte le plus cher : les utilisateurs perdent du temps ou de l’argent. Les changements y arrivent donc après des vérifications sur les stands, et un agent IA n’écrit pas en production : une mise en production transporte les changements, en général avec la confirmation d’une personne.",
+    "faq.0.q": "Qu’est-ce que la production en informatique ?",
+    "faq.0.a": "L’environnement avec lequel travaillent les vrais utilisateurs, avec des données réelles.",
+    "faq.1.q": "Pourquoi ne pas écrire directement en production ?",
+    "faq.1.a": "Une erreur y coûte le plus cher : les changements passent donc par des vérifications sur les stands, et une personne confirme en général la mise en production.",
+    "source.label": "Wikipédia : Deployment environment",
+    "seo.title": "Production (prod) : définition et pourquoi personne n’y écrit directement",
+    "seo.description": "La production est l’environnement avec lequel travaillent les vrais utilisateurs. Pourquoi les changements y arrivent par des stands et la préprod, pas directement."
+  },
+  "quint": {
+    "aka": "un langage de modèles formels",
+    "def": "Quint est un langage pour décrire les règles d’un système de sorte qu’on puisse les exécuter et les vérifier avant d’écrire le moindre code. La notation ressemble à du code ordinaire et des ingénieurs sans formation mathématique peuvent la lire. Le programme essaie des ordres d’actions et montre la chaîne d’étapes où une règle est violée. Deux programmes le vérifient, TLC et Apalache, et il existe aussi une simulation aléatoire rapide.",
+    "more.label": "Trouver des courses critiques et des données perdues avec des modèles Quint",
+    "also.0.label": "En quoi Quint diffère de QUnit, Jest et TLA+",
+    "faq.0.q": "Qu’est-ce que le langage Quint ?",
+    "faq.0.a": "Un langage pour décrire les règles d’un système afin de les exécuter et de les vérifier avant d’écrire le code. Il se lit comme du code ordinaire.",
+    "faq.1.q": "En quoi Quint diffère-t-il de TLA+ ?",
+    "faq.1.a": "Quint se lit comme du code ordinaire, TLA+ ressemble à des formules mathématiques : Quint est donc plus facile pour débuter. Les deux sont vérifiés par les mêmes programmes : TLC et Apalache.",
+    "source.label": "quint-lang.org, le site et la documentation de Quint"
+  },
+  "tla-plus": {
+    "aka": "de Leslie Lamport",
+    "def": "TLA+ est une façon de décrire le comportement d’un système pas à pas, avec assez de précision pour qu’un programme puisse vérifier la description, comme on vérifie un plan avant la construction. Par exemple, le plan d’un virement d’argent révèle que si une panne survient entre le débit et le crédit, l’argent disparaît, et on le découvre avant d’avoir écrit le moindre code. La notation ressemble à des formules mathématiques : la marche d’entrée est donc plus haute qu’avec Quint. Le langage a été créé par Leslie Lamport.",
+    "also.0.label": "Quint face à TLA+ et Alloy",
+    "faq.0.q": "Qu’est-ce que TLA+ ?",
+    "faq.0.a": "Une façon de décrire le comportement d’un système pas à pas, avec assez de précision pour qu’un programme puisse vérifier la description avant d’écrire le code. Son auteur est Leslie Lamport.",
+    "faq.1.q": "Que trouve TLA+ ?",
+    "faq.1.a": "Des suites d’étapes qui violent une règle. Par exemple, que l’argent disparaît si une panne survient entre le débit et le crédit.",
+    "source.label": "Page de Leslie Lamport sur TLA+"
+  },
+  "alloy": {
+    "aka": "un langage de modélisation et un analyseur",
+    "def": "Alloy est une façon de décrire des objets et les liens entre eux, puis de demander à un programme de trouver un petit exemple où une règle est violée. Par exemple, avec la règle « un employé a exactement un supérieur » : le programme trouve un exemple où un employé a deux supérieurs à la fois. Il convient pour vérifier la structure des données et les droits d’accès. Comme TLA+, il utilise une notation mathématique. Le langage a été créé au Software Design Group du MIT.",
+    "faq.0.q": "Qu’est-ce qu’Alloy ?",
+    "faq.0.a": "Une façon de décrire des objets et leurs relations, puis de demander à un programme de trouver un petit exemple où une règle est violée.",
+    "faq.1.q": "En quoi Alloy diffère-t-il de TLA+ ?",
+    "faq.1.a": "Alloy vérifie la structure : objets et relations. TLA+ vérifie le comportement d’un système pas à pas.",
+    "source.label": "alloytools.org, le site d’Alloy"
+  },
+  "tlc": {
+    "aka": "le premier vérificateur de TLA+",
+    "def": "TLC est le premier programme qui vérifie des modèles TLA+. Il parcourt un à un tous les états d’un modèle et vérifie les règles dans chacun, en mémorisant où il est déjà passé. Son travail est donc prévisible, mais le monde du modèle doit rester petit : sinon, il y a trop d’états. Les modèles Quint peuvent aussi être vérifiés dans TLC, mais ils doivent d’abord être traduits sous une forme que ce programme accepte.",
+    "faq.0.q": "Qu’est-ce que TLC ?",
+    "faq.0.a": "Le premier programme qui vérifie des modèles TLA+ : il parcourt chaque état du modèle et vérifie les règles dans chacun.",
+    "faq.1.q": "Quand TLC convient-il ?",
+    "faq.1.a": "Quand le monde du modèle est petit : TLC est prévisible, mais sur un grand monde la recherche ne se terminera pas.",
+    "source.label": "TLA+ Tools et TLC sur GitHub"
+  },
+  "apalache": {
+    "aka": "un vérificateur de modèles symbolique",
+    "def": "Apalache est un programme qui vérifie des modèles écrits en TLA+ et en Quint. Il les transforme en un ensemble de conditions et les confie à un solveur SMT, par exemple Z3, qui raisonne d’un coup sur toutes les exécutions jusqu’à une longueur donnée. Il produit la chaîne d’étapes où une règle est violée.",
+    "faq.0.q": "Qu’est-ce qu’Apalache ?",
+    "faq.0.a": "Un programme qui vérifie des modèles TLA+ et Quint en les transformant en conditions pour un solveur SMT comme Z3.",
+    "faq.1.q": "En quoi Apalache diffère-t-il de TLC ?",
+    "faq.1.a": "TLC parcourt les états un par un. Apalache raisonne d’un coup sur toutes les exécutions jusqu’à une longueur donnée.",
+    "source.label": "apalache-mc.org, le site d’Apalache"
+  },
+  "z3": {
+    "aka": "un solveur SMT de Microsoft Research",
+    "def": "Z3 est le solveur SMT le plus connu : un programme qui choisit des valeurs pour des conditions données. Par exemple, pour « x plus y égale dix, x moins y égale deux », il répond « x vaut six, y vaut quatre », ou prouve qu’aucune solution n’existe. Apalache donne à Z3 les conditions obtenues à partir d’un modèle et construit, à partir de sa réponse, la chaîne d’étapes jusqu’à la violation de la règle.",
+    "faq.0.q": "Qu’est-ce que Z3 ?",
+    "faq.0.a": "Le solveur SMT le plus connu : un programme qui trouve des valeurs satisfaisant des conditions données ou prouve qu’il n’y en a pas.",
+    "faq.1.q": "Pourquoi Z3 est-il utilisé en vérification de modèles ?",
+    "faq.1.a": "Apalache transmet à Z3 les conditions issues d’un modèle et construit, à partir de sa réponse, une suite d’étapes jusqu’à la violation de la règle.",
+    "source.label": "Z3, le dépôt GitHub"
+  },
+  "smt-solver": {
+    "name": "Solveur SMT",
+    "aka": "par exemple Z3",
+    "def": "Un solveur SMT est un programme qui, à partir d’un ensemble de conditions comme « la somme est supérieure à dix et le solde n’est pas négatif », trouve des valeurs pour lesquelles toutes les conditions sont vraies, ou prouve qu’il n’en existe pas. Il n’a pas besoin de tout essayer un par un : il raisonne d’un coup sur des classes entières de cas. Le solveur le plus connu, Z3, a été créé par Microsoft Research. Le moteur Apalache transforme un modèle en de telles conditions et les confie à un solveur.",
+    "faq.0.q": "Qu’est-ce qu’un solveur SMT ?",
+    "faq.0.a": "Un programme qui, à partir d’un ensemble de conditions, trouve des valeurs qui les satisfont toutes ou prouve qu’il n’en existe pas.",
+    "faq.1.q": "Quel est le solveur SMT le plus connu ?",
+    "source.label": "Z3, le dépôt du solveur sur GitHub"
+  },
+  "model-checking": {
+    "name": "Vérification de modèles",
+    "aka": "exploration automatique des états",
+    "def": "La vérification de modèles (model checking) est une méthode dans laquelle un programme parcourt automatiquement les états d’un système décrit et vérifie que les règles tiennent dans chacun. Si une règle est violée, la méthode produit la chaîne exacte d’étapes qui y mène. Par exemple, un modèle de boutique trouve le coup « paiement, connexion perdue » après lequel l’argent est débité mais il n’y a pas de commande : l’acheteur a payé et n’a rien reçu. Contrairement à un test, la méthode ne se limite pas aux scénarios auxquels une personne a pensé, mais elle est limitée par la taille du monde choisi.",
+    "more.label": "Trouver des courses critiques et des données perdues avec des modèles Quint",
+    "faq.0.q": "Qu’est-ce que la vérification de modèles ?",
+    "faq.0.a": "Une méthode où un programme parcourt chaque état d’un système décrit et vérifie que les règles tiennent dans chacun.",
+    "faq.1.q": "En quoi la vérification de modèles diffère-t-elle des tests ?",
+    "faq.1.a": "Un test vérifie un scénario auquel on a pensé. La vérification de modèles essaie tous les ordres d’actions et donne la suite exacte d’étapes quand une règle est violée.",
+    "source.label": "Wikipédia : Model checking"
+  },
+  "invariant": {
+    "name": "Invariant",
+    "aka": "une règle « toujours vraie »",
+    "def": "Un invariant est une condition qui doit tenir dans chaque état du système, quel que soit l’ordre des actions. Par exemple, dans une boutique, l’argent n’est jamais débité sans commande, et dans un transcripteur de réunions, un enregistrement privé n’arrive jamais dans le stockage partagé. La vérification de modèles cherche une chaîne d’étapes après laquelle l’invariant est violé.",
+    "faq.0.q": "Qu’est-ce qu’un invariant ?",
+    "faq.0.a": "Une condition qui doit tenir dans chaque état d’un système, quel que soit l’ordre des actions.",
+    "faq.1.q": "Un exemple d’invariant ?",
+    "faq.1.a": "Dans une boutique, l’argent n’est jamais débité sans commande.",
+    "source.label": "Wikipédia : Invariant (informatique)"
+  },
+  "rice-theorem": {
+    "name": "Théorème de Rice",
+    "aka": "indécidabilité des propriétés de programmes",
+    "def": "Le théorème de Rice dit qu’aucun programme ne peut dire pour tout programme s’il possède une propriété de comportement donnée, comme « ne débite jamais d’argent sans commande », si certains programmes ont cette propriété et d’autres non. Les questions sur le texte du code se règlent par la lecture ; les questions sur le comportement, non. Les vérifications sont donc restreintes par un cadre : essayer un petit monde en entier, écrire le code de sorte que la règle tienne par construction, ou autoriser une réponse « je ne sais pas ».",
+    "more.label": "Le théorème de Rice en termes simples",
+    "also.0.label": "Où vérifier le travail d’un agent IA",
+    "faq.0.q": "Le théorème de Rice en termes simples ?",
+    "faq.0.a": "Aucun programme ne peut dire pour tout programme s’il possède une propriété de comportement donnée.",
+    "faq.1.q": "Que faire du théorème de Rice en pratique ?",
+    "faq.1.a": "Restreindre la vérification : un petit monde, un langage étroit ou un honnête « je ne sais pas ».",
+    "source.label": "Wikipédia : Théorème de Rice"
+  },
+  "halting-problem": {
+    "name": "Problème de l’arrêt",
+    "aka": "la question de l’arrêt",
+    "def": "Le problème de l’arrêt est la question de savoir si un programme donné se termine sur une entrée donnée ou tourne indéfiniment. Alan Turing a prouvé qu’aucun programme n’y répond correctement pour tous les programmes et toutes les entrées. Le théorème de Rice en découle : vérifier une règle de comportement pour tous les programmes est impossible aussi.",
+    "screens.0": "Le juge reçoit un programme et son entrée et doit dire s’il se termine ou boucle indéfiniment. Pour des programmes particuliers, on peut trouver une réponse. Turing a prouvé qu’il n’existe aucun juge qui réponde correctement pour tous les programmes à la fois.",
+    "screens.1": "Pourquoi un tel juge n’existe pas. Supposons qu’il existe. Écrivons un programme contrariant : il interroge le juge sur lui-même et fait le contraire. Si le juge dit « il s’arrête », le contrariant boucle indéfiniment ; s’il dit « il ne s’arrête pas », le contrariant s’arrête aussitôt. Le juge se trompe dans les deux cas : il ne peut donc pas exister. C’est le même procédé que dans le paradoxe du barbier, qui rase tous ceux qui ne se rasent pas eux-mêmes.",
+    "more.label": "Où vérifier le travail d’un agent IA",
+    "faq.0.q": "Qu’est-ce que le problème de l’arrêt ?",
+    "faq.0.a": "La question de savoir si un programme se termine sur une entrée donnée ou tourne indéfiniment.",
+    "faq.1.q": "Le problème de l’arrêt peut-il être résolu ?",
+    "faq.1.a": "Non : Alan Turing a prouvé qu’aucun programme ne répond correctement pour tous les programmes et toutes les entrées.",
+    "source.label": "Wikipédia : Problème de l’arrêt"
+  },
+  "predicate": {
+    "name": "Prédicat",
+    "aka": "une question oui ou non",
+    "def": "Un prédicat, en mathématiques, est un énoncé avec une variable qui devient vrai ou faux pour chaque valeur de la variable : $P(x)$ = « $x$ est pair » donne « oui » pour $x = 4$ et « non » pour $x = 3$. Formellement, c’est une fonction $P\\colon X \\to \\{\\text{yes}, \\text{no}\\}$. Un prédicat sur les programmes prend un programme et répond « oui » ou « non » : « le code écrit-il dans la table des paiements », « le programme débitera-t-il de l’argent sans commande ». Le théorème de Rice dit quels prédicats de ce genre ne sont pas calculables.",
+    "faq.0.q": "Qu’est-ce qu’un prédicat ?",
+    "faq.0.a": "Un énoncé avec une variable qui devient vrai ou faux pour chaque valeur : « x est pair ».",
+    "faq.1.q": "Où les prédicats sont-ils utilisés ?",
+    "faq.1.a": "En logique et dans l’énoncé du théorème de Rice : une propriété de programme s’écrit comme un prédicat.",
+    "source.label": "Wikipédia : Prédicat (logique mathématique)"
+  },
+  "alan-turing": {
+    "name": "Alan Turing",
+    "aka": "la machine de Turing, 1936",
+    "def": "Alan Turing est un mathématicien britannique (1912–1954), l’un des fondateurs de la théorie du calcul. Dans son article de 1936 « On Computable Numbers », il a décrit la machine de Turing, le modèle le plus simple de tout programme : un ruban de cases et une tête qui lit, écrit et se déplace selon des règles. Dans le même travail, il a montré que certaines questions sur les programmes ne peuvent être résolues par aucun programme ; le problème de l’arrêt en découle, et le théorème de Rice en découle à son tour.",
+    "faq.0.q": "Qui était Alan Turing ?",
+    "faq.0.a": "Un mathématicien britannique (1912–1954), l’un des fondateurs de la théorie du calcul.",
+    "faq.1.q": "Qu’est-ce qu’une machine de Turing ?",
+    "faq.1.a": "Le modèle le plus simple de tout programme, issu de son article de 1936 : un ruban de cases et une tête qui lit et écrit des symboles.",
+    "source.label": "Wikipédia : Alan Turing"
+  },
+  "barber-paradox": {
+    "name": "Paradoxe du barbier",
+    "aka": "une question sur soi-même",
+    "def": "Le paradoxe du barbier est une énigme qui montre que toute description ne définit pas quelque chose d’existant. Le barbier d’un village rase tous ceux qui ne se rasent pas eux-mêmes, et eux seuls. Se rase-t-il lui-même ? S’il se rase, il ne doit pas ; s’il ne se rase pas, il doit. Un tel barbier n’existe donc pas. Bertrand Russell l’a utilisé pour illustrer son paradoxe sur les ensembles. Le même procédé, une question sur soi-même, prouve que le problème de l’arrêt est indécidable.",
+    "screens.0": "Le point central, ce sont deux ensembles. Les villageois se répartissent entre l’ensemble $A$, ceux qui se rasent eux-mêmes, et l’ensemble $B$, ceux que le barbier rase. La règle dit que $B$ est exactement l’ensemble de tous ceux qui ne sont pas dans $A$ : chaque villageois est donc dans un seul ensemble. Le barbier est aussi un villageois, et il n’a nulle part où aller. S’il est dans $A$, il se rase lui-même, donc le barbier le rase, donc il est dans $B$. S’il est dans $B$, le barbier le rase, c’est-à-dire qu’il se rase lui-même, donc il est dans $A$. La contradiction montre qu’une telle règle ne peut pas être satisfaite.",
+    "screens.1": "Le paradoxe original de Russell, en 1901, porte sur les ensembles. Un ensemble ordinaire ne se contient pas lui-même : l’ensemble des chats n’est pas un chat. Certains ensembles se contiennent eux-mêmes : l’ensemble de tout ce qui n’est pas un chat n’est lui-même pas un chat, donc il se trouve à l’intérieur de lui-même. Prenons $R$, l’ensemble de tous les ensembles qui ne se contiennent pas eux-mêmes : $R = \\{x : x \\notin x\\}$. Si $R \\in R$, alors par définition $R \\notin R$ ; si $R \\notin R$, alors $R$ répond à la définition et $R \\in R$. Le barbier est la même question en habits de tous les jours : des villageois au lieu d’ensembles et « rase » au lieu de « contient ».",
+    "faq.0.q": "Qu’est-ce que le paradoxe du barbier ?",
+    "faq.0.a": "Un barbier rase tous ceux qui ne se rasent pas eux-mêmes : s’il se rase lui-même il ne doit pas, et s’il ne se rase pas il doit. Un tel barbier n’existe donc pas.",
+    "faq.1.q": "Que montre le paradoxe du barbier ?",
+    "faq.1.a": "Que toute description ne définit pas quelque chose d’existant. Bertrand Russell l’a utilisé pour expliquer son paradoxe sur les ensembles.",
+    "source.label": "Wikipédia : Paradoxe du barbier"
+  },
+  "event-storming": {
+    "def": "L’event storming est un format d’atelier où une équipe déroule le domaine métier sous forme d’événements, puis trouve les commandes, les agrégats et les règles. Le résultat, ce sont les frontières des agrégats : ce qui entre sous forme de commandes, ce qui sort sous forme d’événements, quelles règles tiennent toujours.",
+    "more.label": "L’agrégat comme point de contrôle du travail d’un agent",
+    "faq.0.q": "Qu’est-ce que l’event storming ?",
+    "faq.0.a": "Un format d’atelier d’équipe qui déroule un domaine sous forme d’événements et trouve les commandes, les agrégats et les règles.",
+    "faq.1.q": "Que produit l’event storming ?",
+    "faq.1.a": "Les frontières des agrégats : ce qui entre sous forme de commandes, ce qui sort sous forme d’événements et quelles règles sont à l’intérieur."
+  },
+  "race-condition": {
+    "name": "Condition de course",
+    "aka": "une course critique",
+    "def": "Une condition de course (race condition) est un défaut où le résultat dépend de laquelle de deux actions est arrivée la première. Chaque action fonctionne correctement seule, mais ensemble elles provoquent une perte ou un mélange de données. Le cas classique : une condition est vérifiée une fois, et au moment de l’action elle a déjà changé. On la corrige en revérifiant au moment de l’action ou par un verrou partagé.",
+    "more.label": "Les courses critiques trouvées par les modèles Quint",
+    "faq.0.q": "Qu’est-ce qu’une condition de course ?",
+    "faq.0.a": "Un défaut où le résultat dépend de laquelle de deux actions est arrivée la première.",
+    "faq.1.q": "Comment trouver une condition de course ?",
+    "faq.1.a": "Essayer tous les ordres dans lesquels les actions peuvent s’exécuter, par exemple avec un modèle Quint : les tests ne vérifient qu’un seul ordre.",
+    "source.label": "Wikipédia : Race condition"
+  },
+  "math-group": {
+    "name": "Groupe (en mathématiques)",
+    "aka": "un ensemble de mouvements",
+    "def": "Un groupe (en mathématiques) est un ensemble de mouvements qui peuvent s’enchaîner, l’un après l’autre, et s’annuler : il existe un mouvement « ne rien faire », et chaque mouvement a un inverse. Les rotations d’un Rubik’s Cube forment un groupe. Dans le jeu « pas et montée », les mouvements sont un pas sur un cercle de six points (six pas d’affilée ramènent au départ), une montée vers un cercle situé un étage plus haut, et une descente.",
+    "more.label": "De combien de règles un jeu a-t-il besoin : un pas et une montée",
+    "faq.0.q": "Qu’est-ce qu’un groupe en mathématiques ?",
+    "faq.0.a": "Un ensemble de mouvements qui peuvent s’enchaîner et s’annuler : il existe un mouvement « ne rien faire », et chaque mouvement a un inverse.",
+    "faq.1.q": "Un exemple de groupe ?",
+    "faq.1.a": "Les rotations d’un Rubik’s Cube.",
+    "source.label": "Wikipédia : Groupe (mathématiques)"
+  },
+  "generators": {
+    "name": "Générateurs d’un groupe",
+    "aka": "les mouvements de base",
+    "def": "Les générateurs d’un groupe sont un petit ensemble de mouvements dont les enchaînements produisent tous les autres mouvements du groupe. Dans le jeu « pas et montée », il y en a deux : le pas x et la montée t, la descente s’écrivant t⁻¹. Pour un Rubik’s Cube, les générateurs sont les rotations des six faces.",
+    "more.label": "De combien de règles un jeu a-t-il besoin : un pas et une montée",
+    "faq.0.q": "Que sont les générateurs d’un groupe ?",
+    "faq.0.a": "Un petit ensemble de mouvements dont les enchaînements produisent tous les autres mouvements du groupe.",
+    "faq.1.q": "Quels sont les générateurs d’un Rubik’s Cube ?",
+    "faq.1.a": "Les rotations de ses six faces.",
+    "source.label": "Wikipédia : Partie génératrice d’un groupe"
+  },
+  "group-relation": {
+    "name": "Relation d’un groupe",
+    "aka": "une règle du jeu",
+    "def": "Une relation d’un groupe est une règle de la forme « cet enchaînement de mouvements remet tout en place ». Dans le jeu « pas et montée », la première règle est x⁶ = 1 : six pas d’affilée laissent le jeton là où il était. L’égalité de deux enchaînements est aussi une règle : u·v = v·u s’écrit u·v·u⁻¹·v⁻¹ = 1. Le nombre de règles nécessaires pour définir complètement un groupe est la question de l’écart de relations (relation gap).",
+    "more.label": "De combien de règles un jeu a-t-il besoin : un pas et une montée",
+    "faq.0.q": "Qu’est-ce qu’une relation de groupe ?",
+    "faq.0.a": "Une règle de la forme « cet enchaînement de mouvements remet tout en place ».",
+    "faq.1.q": "Un exemple de relation ?",
+    "faq.1.a": "Dans le jeu pas et montée, six pas d’affilée laissent la pièce en place : x⁶ = 1.",
+    "source.label": "Wikipédia : Présentation d’un groupe"
+  },
+  "group-presentation": {
+    "name": "Présentation d’un groupe",
+    "aka": "mouvements et règles en une ligne",
+    "def": "Une présentation d’un groupe est une façon d’écrire un groupe avec des lettres pour les mouvements et une liste de relations. Le jeu « pas et montée » s’écrit ⟨x, t | x⁶, [x³, t·x²·t⁻¹]⟩ : deux mouvements à gauche de la barre, deux règles à droite. À partir d’une telle écriture, on construit la carte du groupe et on fait des calculs, y compris dans des systèmes de calcul formel.",
+    "more.label": "De combien de règles un jeu a-t-il besoin : un pas et une montée",
+    "faq.0.q": "Qu’est-ce qu’une présentation de groupe ?",
+    "faq.0.a": "Une description d’un groupe par des mouvements notés avec des lettres et une liste de relations.",
+    "faq.1.q": "Pourquoi utiliser une présentation ?",
+    "faq.1.a": "Elle sert à construire la carte du groupe et à calculer dans des programmes comme GAP.",
+    "source.label": "Wikipédia : Présentation d’un groupe"
+  },
+  "cayley-graph": {
+    "name": "Graphe de Cayley",
+    "aka": "la carte des mouvements d’un groupe",
+    "def": "Un graphe de Cayley est la carte d’un groupe : un point est une position, une flèche est un mouvement d’une position à une autre. La carte du jeu « pas et montée » est faite de cercles de six points reliés par des montées. Le même type de graphe se trouve sous le Rubik’s Cube : les points sont toutes les positions du cube, les flèches sont les rotations de faces.",
+    "more.label": "Un réseau de neurones résout le Rubik’s Cube : le graphe des positions et des mouvements",
+    "also.0.label": "Des billes sur un anneau : la carte des mouvements et l’arrangement le plus emmêlé",
+    "also.1.label": "La carte du jeu « pas et montée »",
+    "faq.0.q": "Qu’est-ce qu’un graphe de Cayley ?",
+    "faq.0.a": "Une carte d’un groupe : un point est une position, une flèche est un mouvement d’une position à une autre.",
+    "faq.1.q": "Où rencontre-t-on des graphes de Cayley ?",
+    "faq.1.a": "Par exemple derrière un Rubik’s Cube : les points sont toutes les positions du cube, les flèches sont les rotations de faces.",
+    "source.label": "Wikipédia : Graphe de Cayley"
+  },
+  "commutator": {
+    "name": "Commutateur",
+    "def": "Un commutateur est un enchaînement de quatre mouvements : faire u, faire v, défaire u, défaire v. Si les mouvements u et v peuvent être échangés (ce sont des « amis »), le commutateur est égal à « rien n’a été fait ». Dans le jeu « pas et montée », la deuxième règle dit que le commutateur du demi-cercle x³ et du crochet t·x²·t⁻¹ est égal à un.",
+    "more.label": "De combien de règles un jeu a-t-il besoin : un pas et une montée",
+    "faq.0.q": "Qu’est-ce qu’un commutateur ?",
+    "faq.0.a": "Un enchaînement de quatre mouvements : faire u, faire v, défaire u, défaire v.",
+    "faq.1.q": "Que signifie un commutateur égal à un ?",
+    "faq.1.a": "Les mouvements u et v peuvent être échangés : le résultat ne dépend pas de leur ordre.",
+    "source.label": "Wikipédia : Commutateur"
+  },
+  "centralizer": {
+    "name": "Centralisateur",
+    "aka": "tous les « amis » d’un mouvement",
+    "def": "Le centralisateur est l’ensemble de tous les mouvements qui peuvent être échangés avec un mouvement donné : ses « amis ». Dans le jeu « pas et montée », les amis du demi-cercle x³ comprennent deux pas d’affilée x² et le crochet t·x²·t⁻¹, mais ceux-ci ne sont pas amis entre eux. Le théorème de Newman (1973) : dans un groupe à une seule relation et avec un mouvement qui revient au départ après plusieurs répétitions, les amis de tout mouvement forment une chaîne de répétitions d’un seul mouvement et sont donc amis entre eux. C’est pourquoi ce jeu a plus d’une règle.",
+    "more.label": "Pourquoi une règle ne suffit pas au joueur : les amis ne sont pas amis",
+    "faq.0.q": "Qu’est-ce qu’un centralisateur ?",
+    "faq.0.a": "L’ensemble de tous les mouvements qui peuvent être échangés avec un mouvement donné, ses « amis ».",
+    "faq.1.q": "Que dit le théorème de Newman ?",
+    "faq.1.a": "Il décrit les centralisateurs dans les groupes à une seule relation, depuis 1973.",
+    "source.label": "Wikipédia : Centralisateur et normalisateur"
+  },
+  "one-relator-group": {
+    "name": "Groupe à une relation",
+    "aka": "autant de mouvements qu’on veut, une seule règle",
+    "def": "Un groupe à une relation (one-relator group) est un groupe qui peut être défini par un nombre quelconque de mouvements mais une seule règle. On sait beaucoup de choses sur ces groupes, par exemple le théorème de Newman sur les amis de tout mouvement. Le jeu « pas et montée », avec ses deux règles, n’en fait pas partie ; l’article arXiv 2610.23637 le déduit du théorème de Newman.",
+    "more.label": "Pourquoi une règle ne suffit pas au joueur : les amis ne sont pas amis",
+    "faq.0.q": "Qu’est-ce qu’un groupe à une relation ?",
+    "faq.0.a": "Un groupe défini par un nombre quelconque de mouvements mais une seule règle.",
+    "faq.1.q": "Pourquoi étudier ces groupes ?",
+    "faq.1.a": "On sait beaucoup de choses sur eux, comme le théorème de Newman sur les amis de tout mouvement.",
+    "source.label": "Wikipédia : One-relator group"
+  },
+  "relation-module": {
+    "name": "Module des relations",
+    "aka": "le décompte du « comptable »",
+    "def": "Le module des relations est l’ensemble de toutes les conséquences des règles d’un groupe, écrites « comme le ferait un comptable » : l’ordre des mouvements n’est pas retenu dans une écriture, les écritures s’additionnent et se transportent autour de la carte du groupe. Dans le jeu « pas et montée », une écriture est une boucle sur la carte. Dans l’article, c’est R/[R, R] avec le groupe agissant par conjugaison, et pour ce jeu le plus petit nombre de ses générateurs est 1.",
+    "more.label": "Le décompte du comptable : une seule écriture",
+    "faq.0.q": "Qu’est-ce que le module des relations ?",
+    "faq.0.a": "L’ensemble de toutes les conséquences des règles d’un groupe écrites « comme en comptabilité » : l’ordre des mouvements n’est pas retenu.",
+    "faq.1.q": "Quel est le lien entre le module des relations et l’écart ?",
+    "faq.1.a": "L’écart de relations compare le nombre de règles d’un groupe au nombre de générateurs de son module des relations."
+  },
+  "relation-gap": {
+    "name": "Écart de relations",
+    "def": "Un écart de relations (relation gap) est la situation où le plus petit nombre de relations d’un groupe est supérieur au plus petit nombre de générateurs de son module des relations. Karl Gruenberg a posé la question de savoir si cela se produit en 1976, et en 1979 elle est entrée dans la liste de problèmes de Wall (problème B15). Dans le jeu « pas et montée », le joueur a besoin de deux règles alors que le comptable n’a besoin que d’une écriture : l’article arXiv 2610.23637 du 16 octobre 2026 a tranché la question.",
+    "more.label": "De combien de règles un jeu a-t-il besoin : l’écart de relations",
+    "notes.title": "Deux façons de compter les règles",
+    "notes.items.0.name": "Joueur",
+    "notes.items.0.text": "Une règle est un itinéraire sur la carte, l’ordre des mouvements compte. Le plus petit nombre de relations ; dans « pas et montée », c’est 2.",
+    "notes.items.1.name": "Comptable",
+    "notes.items.1.text": "Une règle est une écriture dans un registre, l’ordre des mouvements n’est pas retenu. Le plus petit nombre de générateurs du module des relations ; dans le même jeu, c’est 1.",
+    "faq.0.q": "Qu’est-ce qu’un écart de relations ?",
+    "faq.0.a": "Quand le plus petit nombre de relations d’un groupe dépasse le plus petit nombre de générateurs de son module des relations.",
+    "faq.1.q": "Qui a posé cette question ?",
+    "faq.1.a": "Karl Gruenberg en 1976 ; en 1979, elle est entrée dans la liste de problèmes de Wall."
+  },
+  "group-homology": {
+    "name": "Homologie",
+    "aka": "première homologie d’un graphe",
+    "def": "L’homologie est une façon d’écrire une boucle avec des nombres : combien de fois chaque segment est parcouru dans le sens avant moins combien de fois dans le sens arrière. L’ordre du parcours est perdu : deux boucles qui passent par les mêmes segments dans un ordre différent s’écrivent de la même façon. Dans l’article sur le jeu « pas et montée », le module des relations est la première homologie de la carte du jeu (le graphe de Cayley).",
+    "more.label": "Le décompte du comptable : une seule écriture",
+    "faq.0.q": "L’homologie en termes simples ?",
+    "faq.0.a": "Noter une boucle avec des nombres : combien de fois chaque segment est parcouru dans le sens avant moins dans le sens arrière.",
+    "faq.1.q": "Que perd l’homologie ?",
+    "faq.1.a": "L’ordre du parcours : deux boucles sur les mêmes segments dans un ordre différent sont notées de la même façon.",
+    "source.label": "Wikipédia : Homologie (mathématiques)"
+  },
+  "wall-d2-problem": {
+    "name": "Problème D2 de Wall",
+    "def": "Le problème D2 de Wall est une question posée par Wall en 1965 : si, pour une forme tridimensionnelle, la troisième dimension n’ajoute rien au décompte des « trous » (ces formes s’appellent des complexes D2), peut-on la déformer en une forme bidimensionnelle. L’article arXiv 2610.23637 construit, à partir du groupe « pas et montée », une forme de six cellules en y attachant une cellule pleine : elle ne se ramène pas à une forme bidimensionnelle. Cette conclusion est conditionnelle : elle repose sur un preprint d’OpenAI du 6 octobre 2026, et il n’y a pas encore eu de vérification indépendante.",
+    "more.label": "De combien de règles un jeu a-t-il besoin : où cela apparaît",
+    "faq.0.q": "Qu’est-ce que le problème D2 de Wall ?",
+    "faq.0.a": "La question de Wall de 1965 : une forme tridimensionnelle dont la troisième dimension n’ajoute aucun « trou » peut-elle être déformée en une forme bidimensionnelle.",
+    "faq.1.q": "Quel est son lien avec l’écart de relations ?",
+    "faq.1.a": "Un groupe avec un écart de relations pourrait fournir un contre-exemple au problème D2.",
+    "source.label": "arXiv 2610.23637 : corollaire B et sa dépendance au preprint d’OpenAI"
+  },
+  "gcd": {
+    "name": "Plus grand commun diviseur",
+    "aka": "PGCD",
+    "def": "Le plus grand commun diviseur est le plus grand nombre qui divise les deux nombres. PGCD(3, 2) = 1, et le nombre un peut être construit à partir d’eux par additions et soustractions : 1 = 3 − 2. Comme des pièces de 3 et de 2 roubles : on tend 3, on reçoit 2 de monnaie, et il reste 1 rouble. C’est ce qui permet au jeu « pas et montée » d’obtenir une seule écriture au lieu de deux.",
+    "more.label": "Pourquoi le comptable n’a besoin que d’une écriture : trois et deux",
+    "faq.0.q": "Qu’est-ce que le plus grand commun diviseur ?",
+    "faq.0.a": "Le plus grand nombre qui divise les deux nombres : pgcd(3, 2) = 1.",
+    "faq.1.q": "Comment construit-on le pgcd à partir des nombres ?",
+    "faq.1.a": "Par additions et soustractions : 1 = 3 − 2, comme des pièces de 3 et de 2 avec de la monnaie.",
+    "source.label": "Wikipédia : Plus grand commun diviseur"
+  },
+  "computer-algebra-system": {
+    "name": "Système de calcul formel",
+    "def": "Un système de calcul formel est un programme qui calcule avec des formules et des objets abstraits, et pas seulement avec des nombres. Dans GAP et Magma, les groupes sont définis par des mouvements et des règles. Le groupe de l’article arXiv 2610.23637 se définit dans GAP en quelques lignes : le groupe libre sur x et t, quotienté par deux relations.",
+    "more.label": "De combien de règles un jeu a-t-il besoin : formellement",
+    "notes.title": "Le groupe de l’article dans GAP",
+    "notes.items.0.name": "Mouvements",
+    "notes.items.1.name": "Règles",
+    "faq.0.q": "Qu’est-ce qu’un système de calcul formel ?",
+    "faq.0.a": "Un programme qui calcule avec des formules et des objets abstraits, au-delà des nombres.",
+    "faq.1.q": "Quels systèmes de calcul formel existe-t-il ?",
+    "faq.1.a": "Par exemple GAP et Magma : les groupes y sont définis par des mouvements et des règles.",
+    "source.label": "gap-system.org, le site de GAP"
+  }
+}
