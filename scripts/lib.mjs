@@ -76,6 +76,9 @@ export function analyticsHead() {
   return out.join('\n    ')
 }
 
+// Заголовки RSS-лент по языкам: заполняет prerender.mjs (для новых языков — из src/i18n/<язык>/seo.json, раздел /blog)
+export const RSS_TITLE = { en: 'Blog — Egor Urvanov', ru: 'Блог — Егор Урванов' }
+
 // og:locale по языку страницы
 const OG_LOCALE = { ru: 'ru_RU', en: 'en_US', th: 'th_TH', ka: 'ka_GE', vi: 'vi_VN', es: 'es_ES', fr: 'fr_FR' }
 
@@ -90,6 +93,9 @@ export function headTags({ title, description, path, type = 'website', noindex =
     `<meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'}" />`,
     `<meta property="og:site_name" content="Егор Урванов" />`,
     `<meta property="og:locale" content="${OG_LOCALE[lang] ?? 'en_US'}" />`,
+    // Другие языки этой же страницы: og:locale:alternate (Open Graph), content-language — язык страницы для Bing
+    ...alternates.filter((a) => a.lang !== lang && OG_LOCALE[a.lang]).map((a) => `<meta property="og:locale:alternate" content="${OG_LOCALE[a.lang]}" />`),
+    `<meta http-equiv="content-language" content="${lang}" />`,
     `<meta property="og:type" content="${type}" />`,
     `<meta property="og:title" content="${esc(social)}" />`,
     `<meta property="og:description" content="${esc(description)}" />`,
@@ -100,8 +106,8 @@ export function headTags({ title, description, path, type = 'website', noindex =
     ...(image ? [`<meta name="twitter:image" content="${img}" />`] : []),
     `<meta name="twitter:description" content="${esc(description)}" />`,
   ]
-  // RSS — только русская и английская ленты
-  if (lang === 'ru' || lang === 'en') tags.push(`<link rel="alternate" type="application/rss+xml" title="${lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'}" href="${lang === 'ru' ? '/ru/rss.xml' : '/rss.xml'}" />`)
+  // RSS — лента блога на языке страницы (у каждого языка своя: /rss.xml, /ru/rss.xml, /es/rss.xml…)
+  if (RSS_TITLE[lang]) tags.push(`<link rel="alternate" type="application/rss+xml" hreflang="${lang}" title="${esc(RSS_TITLE[lang])}" href="${lang === 'en' ? '' : '/' + lang}/rss.xml" />`)
   // Шрифт с буквами языка (тайский, грузинский), если в шрифтах сайта их нет
   if (font) tags.push(`<link rel="stylesheet" href="${esc(font)}" />`)
   // canonical/og:url — не для страниц без реального адреса (404: canonical на /404/ был бы мусорным сигналом)

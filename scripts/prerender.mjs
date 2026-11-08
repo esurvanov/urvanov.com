@@ -4,7 +4,7 @@ import { mkdirSync, readdirSync, readFileSync, writeFileSync, existsSync, rmSync
 import { dirname, join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { execSync } from 'node:child_process'
-import { analyticsHead, headTags, esc, urlOf, SITE_URL } from './lib.mjs'
+import { analyticsHead, headTags, esc, urlOf, SITE_URL, RSS_TITLE } from './lib.mjs'
 
 const DIST = 'dist'
 const {
@@ -20,6 +20,10 @@ if (I18N_PROBLEMS.length) console.warn(`prerender: в файлах перево�
 const postFile = (p) => `content/blog/${p.slug}${p.lang === 'ru' ? '' : `.${p.lang}`}.md`
 // Префикс языка в адресе: английский — в корне, остальные — /<язык>
 const prefixOf = (lang) => (lang === 'en' ? '' : `/${lang}`)
+const LANG_LABEL = { en: 'English', ru: 'Русский', th: 'ไทย (Thai)', ka: 'ქართული (Georgian)', vi: 'Tiếng Việt (Vietnamese)', es: 'Español (Spanish)', fr: 'Français (French)' }
+// RSS-ленты новых языков: у языка есть лента, если на нём есть хотя бы один пост; заголовок — раздел /blog из seo.json
+const NEW_LANGS_RSS = [...new Set(POSTS.map((p) => p.lang))].filter((l) => l !== 'en' && l !== 'ru' && existsSync(`src/i18n/${l}/seo.json`))
+for (const l of NEW_LANGS_RSS) RSS_TITLE[l] = JSON.parse(readFileSync(`src/i18n/${l}/seo.json`, 'utf8'))['/blog']?.title ?? RSS_TITLE.en
 const buildDate = new Date().toISOString().slice(0, 10)
 const analytics = analyticsHead()
 
@@ -208,11 +212,14 @@ write('robots.txt', ['User-agent: *', 'Allow: /', 'Disallow: /presenter', '', ..
 // RSS по языкам
 const rfc = (d) => new Date(d).toUTCString()
 const postUrl = (p) => urlOf(`${prefixOf(p.lang)}/blog/${p.slug}`)
-for (const lang of ['ru', 'en']) {
+const RSS_LANGS = ['en', 'ru', ...NEW_LANGS_RSS]
+for (const lang of RSS_LANGS) {
   const posts = POSTS.filter((p) => p.lang === lang)
-  const prefix = lang === 'ru' ? '/ru' : ''
-  const title = lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'
-  const desc = lang === 'en' ? 'AI development, engineering management, communities' : 'AI-разработка, инженерное управление, сообщества'
+  if (!posts.length) continue
+  const prefix = prefixOf(lang)
+  const seo = lang === 'en' || lang === 'ru' ? null : JSON.parse(readFileSync(`src/i18n/${lang}/seo.json`, 'utf8'))['/blog']
+  const title = RSS_TITLE[lang] ?? seo.title
+  const desc = lang === 'en' ? 'AI development, engineering management, communities' : lang === 'ru' ? 'AI-разработка, инженерное управление, сообщества' : seo.description
   write(`${prefix}/rss.xml`.replace(/^\//, ''), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>\n<title>${title}</title><link>${urlOf(prefix + '/blog')}</link><description>${desc}</description><language>${lang}</language>\n<atom:link href="${SITE_URL}${prefix}/rss.xml" rel="self" type="application/rss+xml" />\n${posts.map((p) => `<item><title>${esc(p.title)}</title><link>${postUrl(p)}</link><guid>${postUrl(p)}</guid><pubDate>${rfc(p.date)}</pubDate><description>${esc(p.description)}</description><content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[${p.html}]]></content:encoded></item>`).join('\n')}\n</channel></rss>\n`)
 }
 
@@ -272,6 +279,10 @@ write('llms.txt', [
     ...ARCHITECTURES.filter((a) => a.game === g.slug).map((a) => `    - [${a.title}](${SITE_URL}/${archMdPath(a)}): ${a.description}`),
   ]),
   `- [Ссылки](${SITE_URL}/ru/links/) · [Links](${SITE_URL}/links/)`,
+  '',
+  '## Языки / Languages',
+  'Сайт на семи языках: оригинал статей — русский, остальные версии — переводы; у каждой страницы в sitemap.xml и в <head> перечислены её версии (hreflang). / The site is in seven languages: posts are written in Russian, other versions are translations; every page lists its versions (hreflang) in sitemap.xml and in <head>.',
+  ...['en', 'ru', ...NEW_LANGS_RSS].map((l) => `- ${LANG_LABEL[l]}: ${SITE_URL}${prefixOf(l)}/ · RSS ${SITE_URL}${prefixOf(l)}/rss.xml`),
   '',
   '## Полный текст / Full text',
   `- [llms-full.txt](${SITE_URL}/llms-full.txt): «Обо мне», все посты блога и глоссарий с частыми вопросами целиком, RU и EN / “About”, all blog posts and the glossary with FAQs in full, RU and EN`,
