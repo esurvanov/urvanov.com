@@ -1,5 +1,5 @@
 import { POSTS, type Post } from '@/data/blog'
-import { withLang, withSlash, type L, type Lang } from '@/lib/i18n'
+import { localHref, tr, withSlash, type L, type Lang } from '@/lib/i18n'
 
 // Глоссарий: наборы терминов. Термин = страница /materials/glossary/<slug>/.
 // `match` — фрагменты регулярных выражений (без границ слова): по ним термин находится в тексте статей,
@@ -3460,17 +3460,21 @@ export const ALL_TERMS: Term[] = TERM_SETS.flatMap((s) => s.terms)
 export const findTerm = (slug: string | undefined): Term | undefined => ALL_TERMS.find((t) => t.slug === slug)
 export const setOfTerm = (slug: string): TermSet => TERM_SETS.find((s) => s.terms.some((t) => t.slug === slug))!
 export const glossaryPath = (slug?: string) => `/materials/glossary${slug ? `/${slug}` : ''}`
-export const termHref = (slug: string, lang: Lang) => withSlash(withLang(glossaryPath(slug), lang))
+// На новом языке ссылка ведёт на перевод термина, если он есть, иначе — на английскую страницу
+export const termHref = (slug: string, lang: Lang) => withSlash(localHref(glossaryPath(slug), lang))
 
 /** Текст без разметки кода — для подсказок и мета-описаний */
 export const noCode = (s: string) => s.replace(/`/g, '')
 
 // Первое предложение определения — подпись в карточках и подсказка у ссылки в тексте
 export const termShort = (t: Term, lang: Lang): string => {
-  const d = t.def[lang]
+  const d = tr(t.def, lang)
   const m = d.match(/^.*?[.!?](?=\s|$)/)
   return m ? m[0] : d
 }
+
+// Шаблоны поиска термина в тексте: на новом языке — свои (src/i18n/<язык>/glossary.json, поле match), иначе английские
+const matchOf = (t: Term, lang: Lang): string[] => t.match[lang] ?? t.match.en
 
 // Одно регулярное выражение на язык: длинные варианты раньше коротких («Harness engineering» раньше «harness»)
 // Длина шаблона без проверок вокруг ((?<!…), (?=…) и т. п.): иначе короткий «AI» с длинной проверкой встаёт раньше «AI agent»
@@ -3487,7 +3491,7 @@ const coreLength = (src: string) => {
   return out.length
 }
 const alternatives = (lang: Lang) =>
-  ALL_TERMS.flatMap((t) => t.match[lang].map((src) => ({ slug: t.slug, src })))
+  ALL_TERMS.flatMap((t) => matchOf(t, lang).map((src) => ({ slug: t.slug, src })))
     .sort((a, b) => coreLength(b.src) - coreLength(a.src))
 const matchers: Partial<Record<Lang, { re: RegExp; slugs: string[] }>> = {}
 function matcher(lang: Lang) {
@@ -3581,7 +3585,9 @@ export function splitTerms(text: string, lang: Lang, ignore: string[] = []): { t
 const plain = (html: string) => html.replace(/<(svg|pre|script|style)[\s\S]*?<\/\1>/g, ' ').replace(/<[^>]+>/g, ' ')
 function hasTerm(slug: string, lang: Lang, text: string): boolean {
   const term = findTerm(slug)!
-  const re = new RegExp(`(?<![\\p{L}\\p{N}_.-])(?:${term.match[lang].join('|')})(?![\\p{L}\\p{N}_-]|\\.(?=\\p{L}))`, term.exact ? 'giu' : 'iu')
+  const match = matchOf(term, lang)
+  if (!match.length) return false
+  const re = new RegExp(`(?<![\\p{L}\\p{N}_.-])(?:${match.join('|')})(?![\\p{L}\\p{N}_-]|\\.(?=\\p{L}))`, term.exact ? 'giu' : 'iu')
   if (!term.exact) return re.test(text)
   for (const m of text.matchAll(re)) if (m[0].startsWith(term.exact)) return true
   return false
@@ -3599,8 +3605,8 @@ export function postsWithTerm(slug: string, lang: Lang): Post[] {
 /** Термин, которому соответствует тег статьи целиком (например «агенты», «MCP», «токены»); тегу без термина вернёт undefined */
 export function termForTag(tag: string, lang: Lang): Term | undefined {
   const name = tag.trim()
-  return ALL_TERMS.find((x) => x.name[lang].toLowerCase() === name.toLowerCase()
-    || x.match[lang].some((src) => new RegExp(`^(?:${src})$`, 'iu').test(name)))
+  return ALL_TERMS.find((x) => tr(x.name, lang).toLowerCase() === name.toLowerCase()
+    || matchOf(x, lang).some((src) => new RegExp(`^(?:${src})$`, 'iu').test(name)))
 }
 /** Термины, которые встречаются в статье (для блока «Термины» под текстом) */
 export function termsInPost(post: Post): Term[] {

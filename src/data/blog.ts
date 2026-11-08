@@ -2,7 +2,7 @@ import { marked } from 'marked'
 import { renderTex } from '@/lib/math'
 import { withBlogArt } from '@/data/blogArt'
 import { withBlocks } from '@/data/blocks'
-import { localizeLinks, type Lang, type L } from '@/lib/i18n'
+import { LOCALES, NEW_LANGS, baseOf, localizeLinks, type Lang, type L } from '@/lib/i18n'
 
 // Формулы: $…$ — в строке, $$…$$ — отдельной строкой по центру. Набирает KaTeX при сборке; до markdown формулы
 // заменяются метками, чтобы разметка не тронула знаки _ и *, и возвращаются в готовый HTML.
@@ -102,6 +102,8 @@ const EMAIL = /([A-Za-z0-9._%+-]+)@([A-Za-z0-9.-]+\.[A-Za-z]{2,})/g
 export const shieldEmails = (html: string): string =>
   html.split(/(<[^>]*>)/).map((part) => (part.startsWith('<') ? part : part.replace(EMAIL, '<!--email_off-->$1&#64;$2<!--/email_off-->'))).join('')
 
+const LANG_SUFFIX = new RegExp(`\\.(en|${NEW_LANGS.join('|')})$`)
+
 function parse(path: string, raw: string): Post | null {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
   if (!m) return null
@@ -111,10 +113,11 @@ function parse(path: string, raw: string): Post | null {
     if (i > 0) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim().replace(/^["']|["']$/g, '')
   }
   if (meta.draft === 'true' || !meta.title || !meta.date) return null
-  // Файл slug.md — русская версия, slug.en.md — английская
+  // Файл slug.md — русская версия, slug.en.md — английская, slug.<язык>.md — перевод на новый язык (th, ka, vi, es, fr)
   const file = path.split('/').pop()!.replace(/\.md$/, '')
-  const lang: Lang = file.endsWith('.en') ? 'en' : 'ru'
-  const slug = file.replace(/\.en$/, '')
+  const suffix = LANG_SUFFIX.exec(file)
+  const lang: Lang = suffix ? (suffix[1] as Lang) : 'ru'
+  const slug = file.replace(LANG_SUFFIX, '')
   // Обе даты обязательны и видны на странице: без них (или с датой обновления раньше создания) сборка падает
   const iso = /^\d{4}-\d{2}-\d{2}$/
   if (!iso.test(meta.date)) throw new Error(`${path}: date «${meta.date}» — нужна дата создания в виде ГГГГ-ММ-ДД`)
@@ -140,10 +143,10 @@ function parse(path: string, raw: string): Post | null {
     unrelated: (meta.unrelated ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     category: category.slug,
-    html: shieldEmails(localizeLinks(withBlogArt(math.restore(marked.parse(math.md, { async: false }) as string), lang), lang)),
+    html: shieldEmails(localizeLinks(withBlogArt(math.restore(marked.parse(math.md, { async: false }) as string), baseOf(lang)), lang)),
     markdown,
     // HTML-разметку внутри поста не считаем за слова
-    minutes: Math.max(1, Math.round(words / (lang === 'en' ? 220 : 180))),
+    minutes: Math.max(1, Math.round(words / (lang === 'ru' ? 180 : 220))),
     words,
     text,
     image: meta.image || undefined,
@@ -163,7 +166,7 @@ export const POSTS: Post[] = Object.entries(files)
   .sort((a, b) => b.date.localeCompare(a.date))
 
 export const formatDate = (iso: string, lang: Lang = 'ru') =>
-  new Date(iso).toLocaleDateString(lang === 'en' ? 'en-US' : 'ru-RU', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+  new Date(iso).toLocaleDateString(LOCALES[lang], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
 
 export const postsFor = (lang: Lang): Post[] => POSTS.filter((p) => p.lang === lang)
 export const findPost = (slug: string, lang: Lang): Post | undefined => POSTS.find((p) => p.slug === slug && p.lang === lang)

@@ -44,7 +44,7 @@ export function LabView() {
         <section className="s-section" aria-labelledby="l-src">
           <h2 className="s-label" id="l-src">{t({ ru: 'Источники', en: 'Sources' })}</h2>
           <ul className="g-list g-links">
-            {lab.source.links.map((l) => <li key={l.href}><TextLink href={l.href}>{l[lang]}</TextLink></li>)}
+            {lab.source.links.map((l) => <li key={l.href}><TextLink href={l.href}>{t(l)}</TextLink></li>)}
           </ul>
         </section>
       )}

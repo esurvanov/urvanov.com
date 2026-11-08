@@ -1,4 +1,4 @@
-import type { Lang } from '@/lib/i18n'
+import { isNewLang, type Lang, type NewLang } from '@/lib/i18n'
 
 export interface LinkItem {
   url: string
@@ -29,10 +29,19 @@ export interface LinkGroup {
   blocks: LinkBlock[]
 }
 
-export const itemText = (item: LinkItem, lang: Lang) => ({
-  label: (lang === 'en' && item.en?.label) || item.label,
-  comment: lang === 'en' && item.en && 'comment' in item.en ? item.en.comment : item.comment,
-})
+// Переводы записей на новые языки: src/i18n/<язык>/links.json, ключ — url записи (заполняет src/i18n/index.ts)
+export const LINK_TR: Partial<Record<NewLang, Record<string, { label?: string; comment?: string }>>> = {}
+
+export const itemText = (item: LinkItem, lang: Lang) => {
+  const en = {
+    label: (lang !== 'ru' && item.en?.label) || item.label,
+    comment: lang !== 'ru' && item.en && 'comment' in item.en ? item.en.comment : item.comment,
+  }
+  if (!isNewLang(lang)) return en
+  // Новый язык: перевод записи, иначе английский текст
+  const x = LINK_TR[lang]?.[item.url]
+  return { label: x?.label ?? en.label, comment: en.comment === undefined ? undefined : x?.comment ?? en.comment }
+}
 
 const LI = 'https://www.linkedin.com/in/eurvanov/'
 

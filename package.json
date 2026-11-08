@@ -13,7 +13,8 @@
     "check:text": "node scripts/check-text.mjs",
     "check:layout": "node scripts/check-layout.mjs",
     "check:visual": "node scripts/check-visual.mjs",
-    "check:states": "node scripts/check-states.mjs"
+    "check:states": "node scripts/check-states.mjs",
+    "i18n:status": "node scripts/i18n-status.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

@@ -22,3 +22,7 @@ export { MILESTONES, ABOUT_LEAD } from './data/about'
 export { PLACES } from './data/places'
 export { LINK_GROUPS, itemText, CITY_CHATS, THEME_CHATS } from './data/links'
 export { CURRENT_ROLE, CITIES, TOPICS, BIO } from './data/profile'
+// Новые языки: строки интерфейса для крошек в разметке, шрифты тайского и грузинского, ошибки файлов переводов и сводка покрытия
+export { ui, NEW_LANGS, LOCALES } from './lib/i18n'
+export { LANG_FONTS } from './lib/langFonts'
+export { I18N_PROBLEMS, i18nStatus } from './i18n'

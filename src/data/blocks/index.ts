@@ -4,6 +4,7 @@
 // общего списка нет. Неизвестная метка, лишний или недостающий атрибут — ошибка сборки с понятным сообщением.
 import type { Block, BlockCtx, Lang, SlotItem } from './core'
 import { cssErrors, htmlClasses, makeRegistry, renderError } from './namespace'
+import { ui } from '@/lib/i18n'
 
 const modules = import.meta.glob('./defs/*.ts', { eager: true, import: 'default' }) as Record<string, Block | Block[]>
 
@@ -179,7 +180,8 @@ function render(nodes: Node[], lang: Lang, flow: boolean, where: string, parent:
       children: render(rest, lang, !!b.flow, where, b),
       slots,
       raw: n.raw,
-      l: (ru, en) => (lang === 'en' ? en : ru),
+      // На новых языках подписи блоков — из ui.json по английскому тексту, иначе по-английски
+      l: (ru, en) => (lang === 'ru' ? ru : ui(lang, en)),
     }
     const html = b.render(ctx)
     if (CHECK) checkClasses(html, b, [ctx.children, ...Object.values(slots).flat().map((s) => s.html)], fail)

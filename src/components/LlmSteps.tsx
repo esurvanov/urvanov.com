@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { LLM_SEQ, termArt } from '@/lib/termArt'
-import { useT } from '@/lib/i18n'
+import { baseOf, useT } from '@/lib/i18n'
 
 // Модель дописывает фразу: каждое нажатие добавляет самое вероятное слово
 export default function LlmSteps() {
-  const { lang, t } = useT()
+  const { lang: pageLang, t } = useT()
+  // Пример фразы есть на двух языках: на новых языках — английский
+  const lang = baseOf(pageLang)
   const [step, setStep] = useState(0)
   const art = termArt('llm', lang, step)!
   const q = LLM_SEQ[lang]

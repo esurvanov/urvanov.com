@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import type { ReactElement } from 'react'
-import { stripLang } from '@/lib/i18n'
+import { NEW_LANGS, hasPage, isNewLang, langOf, stripLang } from '@/lib/i18n'
 import PatternsView from '@/components/PatternsView'
 import PatternsCategoryView from '@/components/PatternsCategoryView'
 import LinksView from '@/components/LinksView'
@@ -55,13 +55,22 @@ function EnAlias() {
   return <Navigate replace to={stripLang(pathname) + search + hash} />
 }
 
+// Новые языки (/th/, /ka/, …): адрес есть, только если страница переведена (src/i18n/README.md).
+// Непереведённый адрес не рисуем английским текстом под чужим языком — это 404, как и в готовой сборке.
+function Translated({ children }: { children: ReactElement }) {
+  const { pathname } = useLocation()
+  const lang = langOf(pathname)
+  return isNewLang(lang) && !hasPage(pathname) ? <NotFoundView /> : children
+}
+
 export default function App() {
   usePageMeta()
   useSmoothNavigation()
   return (
     <Suspense fallback={null}>
     <Routes>
-      {(['', '/ru'] as const).flatMap((pre) => PAGES.map(([p, el]) => <Route key={pre + p} path={p === '/' ? pre || '/' : pre + p} element={el} />))}
+      {['', '/ru'].flatMap((pre) => PAGES.map(([p, el]) => <Route key={pre + p} path={p === '/' ? pre || '/' : pre + p} element={el} />))}
+      {NEW_LANGS.map((l) => `/${l}`).flatMap((pre) => PAGES.map(([p, el]) => <Route key={pre + p} path={p === '/' ? pre : pre + p} element={<Translated>{el}</Translated>} />))}
       <Route path="/en" element={<EnAlias />} />
       <Route path="/en/*" element={<EnAlias />} />
       <Route path="/slide/:index" element={<SlideView />} />
