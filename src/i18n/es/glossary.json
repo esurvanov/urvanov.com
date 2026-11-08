@@ -1,15 +1,48 @@
 {
   "openspec": {
-    "def": "OpenSpec es un marco ligero de Spec-Driven Development creado por Fission AI. Las especificaciones vigentes están en `openspec/specs`, y cada cambio es su propia carpeta en `openspec/changes`: `proposal.md` (por qué y qué), un delta de las especificaciones, `design.md` y `tasks.md`. El agente sigue `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; al archivar, el delta se fusiona con las especificaciones. Más ligero que Spec Kit: sin fases rígidas y compatible con más de 30 agentes.",
+    "def": "OpenSpec es un marco gratuito y de código abierto de Fission AI para el desarrollo guiado por especificaciones (Spec-Driven Development): primero el agente escribe un plan del cambio en archivos, tú lo revisas y después el agente escribe el código. Las especificaciones vigentes están en `openspec/specs`, y cada cambio es su propia carpeta en `openspec/changes`: `proposal.md` (por qué y qué), un delta de las especificaciones, `design.md` y `tasks.md`. El agente sigue `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; al archivar, el delta se fusiona con las especificaciones. Más ligero que Spec Kit: sin fases rígidas y compatible con más de 30 agentes.",
     "faq.0.q": "¿Qué es OpenSpec?",
-    "faq.0.a": "Un marco gratuito y de código abierto de Fission AI para el desarrollo guiado por especificaciones: primero el agente escribe un plan del cambio en archivos, usted lo revisa y después el agente escribe el código.",
+    "faq.0.a": "Un marco gratuito y de código abierto de Fission AI para el desarrollo guiado por especificaciones: primero el agente escribe un plan del cambio en archivos, tú lo revisas y después el agente escribe el código.",
     "faq.1.q": "¿Cuáles son los comandos de OpenSpec?",
     "faq.1.a": "Los tres principales: /opsx:propose crea un plan del cambio, /opsx:apply escribe el código según las tareas y /opsx:archive fusiona los requisitos con las especificaciones comunes. Antes se puede pensar en voz alta con /opsx:explore.",
-    "faq.2.q": "¿En qué se diferencia OpenSpec de Spec Kit?",
-    "faq.2.a": "OpenSpec es más ligero: los pasos se pueden repetir en cualquier orden y está pensado para código que ya funciona. Spec Kit, de GitHub, recorre fases fijas.",
+    "faq.2.q": "¿Cómo se instala OpenSpec?",
+    "faq.2.a": "Con `npm install -g @fission-ai/openspec@latest` (hace falta Node.js 22.12 o superior) o con `brew install openspec`. Después, ejecuta `openspec init` en la carpeta del proyecto. Es gratuito, con licencia MIT.",
     "source.label": "Repositorio de OpenSpec en GitHub",
     "seo.title": "Qué es OpenSpec: marco de código abierto para el desarrollo guiado por especificaciones",
     "seo.description": "OpenSpec de Fission AI: un plan del cambio en Markdown antes del código, tres comandos para el agente (propose, apply, archive) y requisitos fusionados con las especificaciones del proyecto.",
-    "more.label": "OpenSpec: instalación, comandos y un ejemplo de cambio"
+    "more.label": "OpenSpec: instalación, comandos y un ejemplo de cambio",
+    "faq.3.q": "¿En qué se diferencia OpenSpec de Spec Kit?",
+    "faq.3.a": "OpenSpec es más ligero: los pasos se pueden repetir en cualquier orden y está pensado para código que ya funciona. Spec Kit, de GitHub, recorre fases fijas.",
+    "compare.title": "OpenSpec, Spec Kit y Kiro",
+    "compare.rows.0": [
+      "Qué es",
+      "un marco de código abierto de Fission AI para tu agente",
+      "un kit de código abierto de GitHub para tu agente",
+      "un entorno de desarrollo de AWS con su propio agente"
+    ],
+    "compare.rows.1": [
+      "Precio",
+      "gratuito, licencia MIT",
+      "gratuito, licencia MIT",
+      "un plan gratuito con límites; los demás son de pago"
+    ],
+    "compare.rows.2": [
+      "Archivos del cambio",
+      "proposal.md, un delta de las especificaciones, design.md, tasks.md",
+      "constitución, especificación, plan, tareas",
+      "requirements.md (o bugfix.md), design.md, tasks.md"
+    ],
+    "compare.rows.3": [
+      "Orden de los pasos",
+      "los pasos se pueden repetir en cualquier orden",
+      "por fases: constitución → especificación → plan → tareas → código",
+      "requisitos → diseño → tareas"
+    ],
+    "compare.rows.4": [
+      "Con qué agentes",
+      "más de 30 agentes mediante comandos con barra",
+      "distintos agentes: Copilot, Claude Code y otros",
+      "el propio agente de Kiro"
+    ]
   }
 }

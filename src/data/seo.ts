@@ -237,8 +237,8 @@ const BASE: Base[] = [
   },
   {
     path: '/materials/games',
-    ru: { title: `Игры в браузере — ${SITE_NAME}`, description: 'Семь бесплатных браузерных игр без установки: стратегия Хроники Королевств, выживание Сибирь, 3D-миры Эхо Разлома и Березовка, аркада, симулятор жизни и Сходка.' },
-    en: { title: 'Browser games — Egor Urvanov', description: 'Seven free browser games, no install: the RTS Chronicles of Kingdoms, the survival game Sibiria, 3D worlds Echo of the Rift and Berezovka, an arcade, a life sim and Skhodka.' },
+    ru: { title: `Игры в браузере — ${SITE_NAME}`, description: 'Восемь бесплатных браузерных игр без установки: стратегия Хроники Королевств, выживание Сибирь, 3D-миры Эхо Разлома и Березовка, 3D-аркада Северный Разлом, головоломка Аптайм, симулятор жизни Житьё и социальная симуляция Сходка.' },
+    en: { title: 'Browser games — Egor Urvanov', description: 'Eight free browser games, no install: the RTS Chronicles of Kingdoms, the survival game Sibiria, 3D worlds Echo of the Rift and Berezovka, the 3D arcade Northern Rift, the puzzle Uptime, the life sim Zhitiyo and the social sim Skhodka.' },
     sources: ['src/components/MaterialsView.tsx', 'src/data/seo.ts', 'src/data/games.ts'],
     needs: ['games'],
   },

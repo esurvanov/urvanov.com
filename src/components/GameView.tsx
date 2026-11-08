@@ -53,7 +53,7 @@ export function GameView() {
         {g.architecture && <ActionLink to={to(`/materials/games/${g.slug}/architecture`)} icon={ICONS.doc}>{t({ ru: 'Архитектура', en: 'Architecture' })}</ActionLink>}
         <ActionLink href={REPO + g.repoDir} icon={ICONS.github}>{t({ ru: 'Исходный код', en: 'Source code' })}</ActionLink>
         {chat && (
-          <ActionLink href={chat.url} icon={ICONS.telegram} track={`chat_${g.slug}`}>{t({ ru: `Чат ${chat.label}`, en: `${chat.en?.label ?? chat.label} chat` })}</ActionLink>
+          <ActionLink href={chat.url} icon={ICONS.telegram} track={`chat_${g.slug}`}>{t({ ru: 'Чат {place}', en: '{place} chat' }).replace('{place}', lang === 'ru' ? chat.label : (chat.en?.label ?? chat.label))}</ActionLink>
         )}
       </p>
       <p className="g-genre">{t(g.genre)} · {t({ ru: 'бесплатно, без установки и регистрации', en: 'free, no install, no sign-up' })} · MIT</p>
@@ -61,7 +61,7 @@ export function GameView() {
         <p className="g-community">
           {t({ ru: 'Прототип — IT-сообщество ', en: 'Inspired by the ' })}
           <TextLink href={JAIORA_URL}>Jaiora</TextLink>
-          {t({ ru: ` в ${chat.label}`, en: ` IT community in ${chat.en?.label ?? chat.label}` })}
+          {t({ ru: ' в {place}', en: ' IT community in {place}' }).replace('{place}', lang === 'ru' ? chat.label : (chat.en?.label ?? chat.label))}
         </p>
       )}
       <figure className="g-hero">{img(hero, true)}</figure>
