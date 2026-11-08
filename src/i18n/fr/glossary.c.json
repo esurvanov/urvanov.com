@@ -1,0 +1,11 @@
+{
+  "node-js": {
+    "aka": "JavaScript en dehors du navigateur",
+    "def": "Node.js est un programme qui exécute du JavaScript en dehors du navigateur : sur un serveur, en ligne de commande et dans des scripts. Sans lui, le code JavaScript ne fonctionnerait que dans une page web. Grâce à Node.js, un seul langage sert pour le site, la partie serveur et les programmes des développeurs. Les tests avec Jest, Vitest et QUnit s'exécutent eux aussi le plus souvent dans Node.js, et le bundler Vite tourne lui-même dessus.",
+    "faq.0.q": "Qu'est-ce que Node.js ?",
+    "faq.0.a": "Un programme qui exécute du JavaScript en dehors du navigateur : sur le serveur, en ligne de commande et dans des scripts.",
+    "faq.1.q": "À quoi sert Node.js ?",
+    "faq.1.a": "Il permet d'utiliser un seul langage à la fois pour le site web et pour le serveur.",
+    "source.label": "nodejs.org, le site de Node.js"
+  }
+}
