@@ -10,7 +10,7 @@ mentions: Claude in Chrome, Claude Code, Chrome extension, browser automation, M
 toc: what=რა არის | connect=დაკავშირება | gives=რას აკეთებს | qa=მაგალითი | risks=ნებართვები და რისკები | tradeoff=მოქნილობის ფასი | custom=საკუთარი სკრიპტი | first=საიდან დავიწყოთ | faq=კითხვები | next=შემდეგი
 ---
 
-Claude in Chrome აგენტს თქვენს ბრაუზერს აკავშირებს: ის ხსნის ჩანართებს, კითხულობს გვერდებსა და კონსოლს, აწკაპუნებს და წერს თქვენი ავტორიზაციით. ქვემოთ: როგორ მუშაობს, როგორ დავაკავშიროთ რამდენიმე წუთში, რას აკეთებს აგენტი და რა ნებართვები მივცეთ. სტატიის [QA აგენტთან ერთად](/blog/bug-report-to-reproduction-agent/) აგენტი ამ არხს იყენებს, დაკავშირება კი [MCP](/blog/mcp-agent-access/)-ის მსგავსად მუშაობს.
+Claude in Chrome აგენტს თქვენს ბრაუზერთან აკავშირებს: ის ხსნის ჩანართებს, კითხულობს გვერდებსა და კონსოლს, აწკაპუნებს და წერს თქვენი ავტორიზაციით. ქვემოთ: როგორ მუშაობს, როგორ დავაკავშიროთ რამდენიმე წუთში, რას აკეთებს აგენტი და რა ნებართვები მივცეთ. სტატიის [QA აგენტთან ერთად](/blog/bug-report-to-reproduction-agent/) აგენტი ამ არხს იყენებს, დაკავშირება კი [MCP](/blog/mcp-agent-access/)-ის მსგავსად მუშაობს.
 
 <b-post series="harness">
 
@@ -18,7 +18,7 @@ Claude in Chrome აგენტს თქვენს ბრაუზერს 
   <b-why>Chrome-ის გაფართოება Claude Code-ს ბრაუზერთან აკავშირებს. აგენტი ხსნის ახალ ჩანართებს და ხილულ ფანჯარაში მუშაობს<b-proof href="https://code.claude.com/docs/en/chrome" quote="Browser actions run in a visible Chrome window in real time."/>.</b-why>
   <iso-art name="claude-in-chrome/terminal-to-browser"></iso-art>
   <b-why align="left">სურათზე მარცხნიდან მარჯვნივ სამი მონაწილეა: Claude Code ტერმინალში, გაფართოება და თქვენი ბრაუზერი. აგენტი გაფართოებას ბრძანებებს აძლევს (გახსენი ჩანართი, დააწკაპუნე, წაიკითხე გვერდი), გაფართოება კი მათ ბრაუზერში ასრულებს, სადაც თქვენს სერვისებში უკვე შესული ხართ. ამიტომ აგენტს პაროლების აკრეფა არ სჭირდება: თქვენი სესია უკვე გახსნილია<b-proof href="https://code.claude.com/docs/en/chrome" quote="shares your browser's login state"/>. მუშაობა ხილულ ფანჯარაში მიმდინარეობს და ნაბიჯებს თვალს ადევნებთ.</b-why>
-  <b-why align="left">ქვემოთ მოცემული ტეგები გვიჩვენებს, რომელ ბრაუზერებთან მუშაობს გაფართოება. Chrome და Edge ოფიციალურად არის მხარდაჭერილი<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi და Opera იმავე Chromium ძრავზეა აგებული: Claude Code მათში გაფართოებას პოულობს და უკავშირდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. ბოლო ტეგი, „WSL: no", ნიშნავს, რომ ეს კავშირი Windows Subsystem for Linux-ში (WSL) არ მუშაობს<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
+  <b-why align="left">ქვემოთ მოცემული ტეგები გვიჩვენებს, რომელ ბრაუზერებთან მუშაობს გაფართოება. Chrome და Edge ოფიციალურად არის მხარდაჭერილი<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi და Opera იმავე Chromium ძრავზეა აგებული: Claude Code მათში გაფართოებას პოულობს და უკავშირდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. ბოლო ტეგი, „WSL: no“, ნიშნავს, რომ ეს კავშირი Windows Subsystem for Linux-ში (WSL) არ მუშაობს<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
   <b-pills>
     <pill>Chrome</pill>
     <pill>Edge</pill>
@@ -39,14 +39,14 @@ Claude in Chrome აგენტს თქვენს ბრაუზერს 
   <b-say-agent title="უთხარით აგენტს">დააყენე Claude in Chrome და დააკავშირე Claude Code-თან.</b-say-agent>
   <b-why align="left">თუ გაფართოება არ არის, Claude Code დაყენებას გთავაზობთ<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code shows an install prompt titled"/>: თანხმდებით და ბრაუზერში შედიხართ. [თუ აგენტი ამას თქვენ გთხოვთ](/blog/agent-hands-work-back-to-you/).</b-why>
   <b-spoiler summary="როგორ გავაკეთოთ ხელით">
-    <b-why align="left">დაკავშირება სამ ნაბიჯს მოიცავს. ნაბიჯი 1: Chrome-ში გაფართოებების მაღაზიიდან დააყენეთ Claude-ის გაფართოება, ერთხელ. ნაბიჯი 2: ტერმინალში, სადაც Claude Code მუშაობს, გაუშვით claude --chrome და აგენტი ბრაუზერს დაუკავშირდება. ნაბიჯი 3: აკრიფეთ /chrome და შეხედეთ სტატუსს: თუ წერია „Enabled", კავშირი მუშაობს.</b-why>
+    <b-why align="left">დაკავშირება სამ ნაბიჯს მოიცავს. ნაბიჯი 1: Chrome-ში გაფართოებების მაღაზიიდან დააყენეთ Claude-ის გაფართოება, ერთხელ. ნაბიჯი 2: ტერმინალში, სადაც Claude Code მუშაობს, გაუშვით claude --chrome და აგენტი ბრაუზერს დაუკავშირდება. ნაბიჯი 3: აკრიფეთ /chrome და შეხედეთ სტატუსს: თუ წერია „Enabled“, კავშირი მუშაობს.</b-why>
     <iso-art name="claude-in-chrome/setup-steps"></iso-art>
     <b-codebox copy>
       claude --chrome
       /chrome   # status, permissions, reconnect
     </b-codebox>
 
-<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">გაფართოება Chrome Web Store-ში</a>. რომ ფლაგი აღარ აკრიფოთ, გახსენით /chrome და ჩართეთ „Enabled by default". მაშინ ბრაუზერის ინსტრუმენტები ყოველთვის კონტექსტში იქნება და ტოკენების ხარჯი გაიზრდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>.
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">გაფართოება Chrome Web Store-ში</a>. რომ ფლაგი აღარ აკრიფოთ, გახსენით /chrome და ჩართეთ „Enabled by default“. მაშინ ბრაუზერის ინსტრუმენტები ყოველთვის კონტექსტში იქნება და ტოკენების ხარჯი გაიზრდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>.
 
     <b-spoiler summary="თუ არ უკავშირდება">
       <b-node-grid min="170">
@@ -60,7 +60,7 @@ Claude in Chrome აგენტს თქვენს ბრაუზერს 
   <b-finding>
     <ex>აგენტი გაფართოებას თავად აყენებს და Claude Code-თან აკავშირებს. თქვენ მხოლოდ თანხმდებით და ბრაუზერში შედიხართ.</ex>
     <gen>დაკავშირებას წუთები სჭირდება: გაფართოება Chrome Web Store-დან მოდის, დანარჩენს Claude Code აკეთებს.</gen>
-    <do k="რა ვქნათ">უთხარით აგენტს, დააყენოს გაფართოება, და დარწმუნდით, რომ /chrome აჩვენებს „Status: Enabled" და „Extension: Installed"<b-proof href="https://code.claude.com/docs/en/chrome" quote="The integration is working when the status panel shows"/>.</do>
+    <do k="რა ვქნათ">უთხარით აგენტს, დააყენოს გაფართოება, და დარწმუნდით, რომ /chrome აჩვენებს „Status: Enabled“ და „Extension: Installed“<b-proof href="https://code.claude.com/docs/en/chrome" quote="The integration is working when the status panel shows"/>.</do>
   </b-finding>
 </b-chapter>
 
@@ -91,16 +91,16 @@ Claude in Chrome აგენტს თქვენს ბრაუზერს 
 <b-chapter id="risks" icon="shield-check" title="ნებართვები და რისკები">
   <b-why align="left">აგენტი თქვენს ბრაუზერში მუშაობს, ამიტომ ყველაფერი, რაშიც შესული ხართ, მისთვის ხელმისაწვდომია. სურათზე დაცვის პირველი ხაზია დაშვებული საიტების სია და ახალ საიტებზე ნებართვის მოთხოვნა.</b-why>
   <iso-art name="claude-in-chrome/site-permissions"></iso-art>
-  <b-why align="left">სურათის მარცხენა მხარეს თქვენ წყვეტთ: აგენტი კითხულობს „დავუშვა?". ცენტრში A და B საიტებია, რომლებიც დაუშვით და სადაც აგენტი მუშაობს. მარჯვნივ C საიტია, აგენტისთვის დახურული. ახალ საიტზე მოქმედება თქვენი თანხმობით იწყება. ქვემოთ წესები სათითაოდ: რას ხედავს აგენტი, სად ჩერდება და რას უნდა დააკვირდეთ ჩანაწერის გაგზავნამდე.</b-why>
+  <b-why align="left">სურათის მარცხენა მხარეს თქვენ წყვეტთ: აგენტი კითხულობს „დავუშვა?“. ცენტრში A და B საიტებია, რომლებიც დაუშვით და სადაც აგენტი მუშაობს. მარჯვნივ C საიტია, აგენტისთვის დახურული. ახალ საიტზე მოქმედება თქვენი თანხმობით იწყება. ქვემოთ წესები სათითაოდ: რას ხედავს აგენტი, სად ჩერდება და რას უნდა დააკვირდეთ ჩანაწერის გაგზავნამდე.</b-why>
   <b-rules sw="1.8">
     <rule icon="lines" t="საიტები">გაფართოების პარამეტრები განსაზღვრავს, რომელ საიტებზე შეუძლია აგენტს დათვალიერება, წკაპუნი და წერა.</rule>
-    <rule icon="bell" t="მოთხოვნა">დიალოგი „Claude in Chrome wants to" დაუშვებს მოქმედებას ან მთელ საიტს სესიისთვის.</rule>
+    <rule icon="bell" t="მოთხოვნა">დიალოგი „Claude in Chrome wants to“ დაუშვებს მოქმედებას ან მთელ საიტს სესიისთვის.</rule>
     <rule icon="key" t="თქვენი ავტორიზაციები">აგენტს შეუძლია მიწვდეს ყველაფერს, რაშიც ამ ბრაუზერში შესული ხართ.</rule>
     <rule icon="pause" t="ავტორიზაცია და CAPTCHA">აგენტი ჩერდება და თქვენ გელოდებათ.</rule>
     <rule icon="video" t="GIF">ჩანაწერში შედის ყველაფერი, რაც ჩანს, ანგარიშის მონაცემებიც: გაზიარებამდე გადახედეთ.</rule>
     <rule icon="ban" t="დიალოგები">alert, confirm და prompt დიალოგები ბრძანებებს ბლოკავს: დახურეთ ხელით და სთხოვეთ აგენტს გაგრძელება.</rule>
   </b-rules>
-  <b-why align="left">თითოეული ეს წესი Claude Code-ის დოკუმენტაციაშია. აგენტი ჩერდება ავტორიზაციასა და CAPTCHA-ზე<b-proof href="https://code.claude.com/docs/en/chrome" quote="When Claude encounters a login page or CAPTCHA, it pauses and asks you to handle it manually."/>. ნებართვის მოთხოვნა იწყება სიტყვებით „Claude in Chrome wants to"<b-proof href="https://code.claude.com/docs/en/chrome" quote="The dialog starts with"/>. GIF-ის ჩაწერა იჭერს ყველაფერს, რაც ჩანს, ანგარიშის მონაცემებიც<b-proof href="https://code.claude.com/docs/en/chrome" quote="The recording captures everything visible in the browser, including account details on logged-in pages"/>. alert, confirm და prompt დიალოგები ბრძანებებს ბლოკავს<b-proof href="https://code.claude.com/docs/en/chrome" quote="JavaScript dialogs block browser events and prevent Claude from receiving commands."/>. საიტების სია გაფართოების პარამეტრებში მოიცემა<b-proof href="https://code.claude.com/docs/en/chrome" quote="Manage permissions in the Chrome extension settings to control which sites Claude can browse, click, and type on."/>.</b-why>
+  <b-why align="left">თითოეული ეს წესი Claude Code-ის დოკუმენტაციაშია. აგენტი ჩერდება ავტორიზაციასა და CAPTCHA-ზე<b-proof href="https://code.claude.com/docs/en/chrome" quote="When Claude encounters a login page or CAPTCHA, it pauses and asks you to handle it manually."/>. ნებართვის მოთხოვნა იწყება სიტყვებით „Claude in Chrome wants to“<b-proof href="https://code.claude.com/docs/en/chrome" quote="The dialog starts with"/>. GIF-ის ჩაწერა იჭერს ყველაფერს, რაც ჩანს, ანგარიშის მონაცემებიც<b-proof href="https://code.claude.com/docs/en/chrome" quote="The recording captures everything visible in the browser, including account details on logged-in pages"/>. alert, confirm და prompt დიალოგები ბრძანებებს ბლოკავს<b-proof href="https://code.claude.com/docs/en/chrome" quote="JavaScript dialogs block browser events and prevent Claude from receiving commands."/>. საიტების სია გაფართოების პარამეტრებში მოიცემა<b-proof href="https://code.claude.com/docs/en/chrome" quote="Manage permissions in the Chrome extension settings to control which sites Claude can browse, click, and type on."/>.</b-why>
   <b-cap>გვერდის ტექსტი შეიძლება აგენტზე იყოს მიმართული. ეს რისკი განხილულია [ცალკე სტატიაში](/blog/data-plane-control-plane-prompt-injection/).</b-cap>
   <b-finding>
     <ex>დაშვებული საიტები აგენტისთვის ღიაა, დანარჩენი დახურული რჩება, ახალ საიტზე მოქმედებას კი თქვენი თანხმობა სჭირდება.</ex>

@@ -117,7 +117,7 @@ race condition-ის პოვნა ორი ოპერაციის გ�
   <b-why align="left">სვეტები აჩვენებს, წესების რა წილს არღვევს მიმდინარე კოდი. რაც უფრო გრძელია სვეტი, მით მეტი წესი დაიჭირა მოდელმა რეალურ კოდზე. „მონაწილეები 2 / 2“ ნიშნავს, რომ ორივე შემოწმებამ პრობლემა იპოვა. „კონფიდენციალურობა 1 / 4“ ნიშნავს, რომ კოდი ძირითადად იცავს წესს, მაგრამ ერთი ხვრელი არსებობს.</b-why>
   <b-why align="left">ეს კოდის ხარისხის შეფასება არ არის. სვეტი დამოკიდებულია იმაზე, რომელი წესები აირჩიეს, და მეტს აჩვენებს იქ, სადაც მოდელმა ყველაზე მეტი სარგებელი მოიტანა.</b-why>
   <b-art names="quint-models-find-races/mutant" wide/>
-  <b-cap>მოდელის გატეხილი ასლი წესს უნდა გაუშვას. თუ გადავიდა და არაფერი ამუშავდა, წესი არაფერს ამოწმებს.</b-cap>
+  <b-cap>მოდელის გატეხილ ასლზე წესი უნდა ამუშავდეს. თუ გადავიდა და არაფერი ამუშავდა, წესი არაფერს ამოწმებს.</b-cap>
   <b-sublabel top="22">ავტომატური შემოწმება მოდელის ყოველი ცვლილების შემდეგ</b-sublabel>
   <b-art names="quint-models-find-races/hook" wide/>
   <b-cap>მოდელის ყოველი ცვლილების შემდეგ შემოწმება ავტომატურად ეშვება. თუ წესი ირღვევა, აგენტი ნაბიჯების ჯაჭვს იღებს და მოდელს ან კოდს მაშინვე ასწორებს.</b-cap>
@@ -185,12 +185,12 @@ race condition-ის პოვნა ორი ოპერაციის გ�
   <b-art names="quint-models-find-races/agent" wide/>
   <b-why align="left">**1. დააყენეთ Quint.** აგენტი მას თავად აყენებს npm-ით<b-proof href="https://github.com/informalsystems/quint" quote="The quickest way to install Quint is using npm."/>.</b-why>
   <b-prompt>
-    Install Quint for yourself and make sure it runs.
+    დააყენე Quint შენთვის და დარწმუნდი, რომ ის ეშვება.
   </b-prompt>
   <b-why align="left">**2. ჯერ მოთხოვნები და არა კოდი.** ასე [აგენტი](/materials/glossary/ai-agent/) ჯერ სამყაროს აღწერს და კოდს მხოლოდ შემდეგ ცვლის.</b-why>
   <b-prompt>
-    Do not change the code. Make requirements in Quint for [area].
-    For each rule show two versions: as it is now and as it should be.
+    კოდი არ შეცვალო. Quint-ში მოთხოვნები გააკეთე [სფერო]-სთვის.
+    თითოეული წესისთვის აჩვენე ორი ვერსია: როგორც არის ახლა და როგორც უნდა იყოს.
   </b-prompt>
   <b-why align="left">**3. შეამოწმეთ შედეგი.**</b-why>
   <b-rules cols="2">
@@ -201,9 +201,9 @@ race condition-ის პოვნა ორი ოპერაციის გ�
   </b-rules>
   <b-why align="left">**4. ლოგიკა და ეკრანი ცალ-ცალკეა.** ნაგულისხმევად აგენტი მათ ერევს: ეკრანის წესებს ლოგიკად წერს და ლოგიკის შემთხვევებს გამოტოვებს.</b-why>
   <b-prompt>
-    Make two lists of requirements.
-    1. Logic: only "always" and "never", checked by a Quint model.
-    2. Screen: clarity and convenience, which I will check myself on a mockup.
+    შეადგინე მოთხოვნების ორი სია.
+    1. ლოგიკა: მხოლოდ „ყოველთვის“ და „არასოდეს“, რომლებსაც Quint-ის მოდელი ამოწმებს.
+    2. ეკრანი: სიცხადე და მოხერხებულობა, რომლებსაც მაკეტზე თავად შევამოწმებ.
   </b-prompt>
 </b-chapter>
 
@@ -218,7 +218,7 @@ race condition-ის პოვნა ორი ოპერაციის გ�
 
 <b-chapter id="next" title="დამატებით წასაკითხი">
   <b-links>
-    <item href="/blog/quint-vs-tests-and-tla/" k="შედარება" t="მოდელების ვერიფიკაცია ტესტირების წინააღმდეგ: Quint, QUnit, TLA+">როგორ განსხვავდება Quint QUnit-ისგან, Jest-ისგან და TLA+-ისგან და რა ავირჩიოთ</item>
+    <item href="/blog/quint-vs-tests-and-tla/" k="შედარება" t="მოდელების ვერიფიკაცია და ტესტირება: Quint, QUnit, TLA+">როგორ განსხვავდება Quint QUnit-ისგან, Jest-ისგან და TLA+-ისგან და რა ავირჩიოთ</item>
     <item href="/blog/agents-per-bounded-context/" k="აგენტები" t="რამდენი AI აგენტი გჭირდებათ">ერთი აგენტი თითო bounded context-ზე</item>
     <item href="/blog/spec-reconcile-loop/" k="სპეციფიკაციები" t="სპეციფიკაციების reconcile loop">სასურველ მდგომარეობას, კოდსა და გაზომვას შორის წრის დახურვა</item>
     <item href="/blog/specs-by-aggregates/" k="სპეციფიკაციები" t="სპეციფიკაციები აგრეგატების მიხედვით">ერთი ჩანაწერი თითო ცნებაზე, მოთხოვნები MUST-ით და SHOULD-ით</item>

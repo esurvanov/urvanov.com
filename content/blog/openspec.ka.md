@@ -10,7 +10,7 @@ mentions: OpenSpec, Spec-Driven Development, Spec Kit, Claude Code, Codex, Curso
 toc: what=რა არის | install=დაყენება | flow=სამი ბრძანება | example=მაგალითი | kit=OpenSpec თუ Spec Kit | start=როგორ დავიწყოთ | faq=კითხვები | next=დამატებით წასაკითხი
 ---
 
-OpenSpec უფასო ღია კოდის ფრეიმვორკია სპეციფიკაციებზე დაფუძნებული დეველოპმენტისთვის. კოდამდე AI აგენტი პროექტის საქაღალდეში წერს ცვლილების გეგმას: რატომ არის ცვლილება საჭირო, მოთხოვნები, მიდგომა და ამოცანები. თქვენ გეგმას განიხილავთ, აგენტი კოდს ამოცანებით წერს, მზა მოთხოვნები კი პროექტის საერთო სპეციფიკაციებში ერწყმის. ქვემოთ: დაყენება, სამი ბრძანება და რეალური ცვლილების განხილვა.
+OpenSpec უფასო ღია კოდის ფრეიმვორკია სპეციფიკაციებზე დაფუძნებული დეველოპმენტისთვის (Spec-Driven Development). კოდამდე AI აგენტი პროექტის საქაღალდეში წერს ცვლილების გეგმას: რატომ არის ცვლილება საჭირო, მოთხოვნები, მიდგომა და ამოცანები. თქვენ გეგმას განიხილავთ, აგენტი კოდს ამოცანებით წერს, მზა მოთხოვნები კი პროექტის საერთო სპეციფიკაციებში ერწყმის. ქვემოთ: დაყენება, სამი ბრძანება და რეალური ცვლილების განხილვა.
 
 <b-post series="specs">
 <b-chapter id="what" icon="file-lines" title="რა არის OpenSpec">
@@ -66,12 +66,12 @@ OpenSpec უფასო ღია კოდის ფრეიმვორკ�
     <line kind="ask">/opsx:propose add-dark-mode</line>
     <line kind="act">Created openspec/changes/add-dark-mode/</line>
     <line kind="out">proposal.md · specs/ · design.md · tasks.md</line>
-    <line kind="you" note="თქვენ გეგმას განიხილავთ">Add a scenario: the theme survives a reload</line>
+    <line kind="you" note="თქვენ გეგმას განიხილავთ">დაამატე სცენარი: თემა გვერდის გადატვირთვის შემდეგ ინახება</line>
     <line kind="ask">/opsx:apply</line>
     <line kind="act">1.1 theme context ✓ · 1.2 toggle ✓ · 2.1 colours ✓</line>
     <line kind="out">all tasks complete</line>
     <line kind="ask">/opsx:archive</line>
-    <line kind="act">Moved the requirements into openspec/specs and the change folder to the archive</line>
+    <line kind="act">მოთხოვნები გადავიდა openspec/specs-ში, ცვლილების საქაღალდე კი არქივში</line>
   </b-agent-term>
   <b-table>
   | ბრძანება | რას აკეთებს აგენტი | რა ჩნდება პროექტში | რას აკეთებთ თქვენ |
