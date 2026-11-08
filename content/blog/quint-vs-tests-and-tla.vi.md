@@ -10,7 +10,7 @@ mentions: Quint, QUnit, Jest, Vitest, TLA+, Alloy, Apalache, model checking, for
 toc: names=Hai cái tên | tests=Framework test | tla=TLA+ và Alloy | choose=Chọn gì | together=Kết hợp | faq=FAQ | next=Đọc thêm
 ---
 
-Test kiểm tra một kịch bản bạn đã nghĩ tới, còn kiểm chứng mô hình (model checking) thử mọi thứ tự hành động và tìm ra vi phạm quy tắc mà không ai hình dung được. Các framework test như QUnit, Jest và Vitest kiểm tra code đã viết xong bằng các ví dụ. Quint và TLA+ kiểm tra quy tắc của hệ thống ngay cả khi chưa có code, kể cả code do tác nhân AI viết.
+Test kiểm tra một kịch bản bạn đã nghĩ tới, còn kiểm chứng mô hình (model checking) thử mọi thứ tự hành động và tìm ra vi phạm quy tắc mà không ai hình dung được. Các framework test như QUnit, Jest và Vitest kiểm tra code đã viết xong bằng các ví dụ. Quint và TLA+ kiểm tra quy tắc của hệ thống ngay cả khi chưa có code, kể cả code do tác nhân AI (AI agent) viết.
 
 <b-post series="harness">
 <b-art names="quint-vs-tests-and-tla/names" wide/>
@@ -39,11 +39,11 @@ Test kiểm tra một kịch bản bạn đã nghĩ tới, còn kiểm chứng m
     <c>nghĩ ra các đầu vào</c>
     <c>phát biểu quy tắc sao cho phản ánh đúng thực tế</c>
   </b-vs-grid>
-  <b-why align="left">Nên đọc bảng theo từng hàng. Hàng "Kiểm tra gì" cho thấy khác biệt chính: test trả lời "hàm này có chạy đúng với dữ liệu này không", mô hình trả lời "tình huống mà quy tắc cấm có thể xảy ra hay không". Test bị giới hạn bởi những gì bạn nghĩ ra. Mô hình bị giới hạn bởi những gì bạn đưa vào.</b-why>
+  <b-why align="left">Nên đọc bảng theo từng hàng. Hàng “Kiểm tra gì” cho thấy khác biệt chính: test trả lời “hàm này có chạy đúng với dữ liệu này không”, mô hình trả lời “tình huống mà quy tắc cấm có thể xảy ra hay không”. Test bị giới hạn bởi những gì bạn nghĩ ra. Mô hình bị giới hạn bởi những gì bạn đưa vào.</b-why>
   <b-finding>
     <ex>QUnit kiểm tra code đã viết, còn Quint kiểm tra một ý định có thể chưa nằm trong code.</ex>
     <gen>Vì vậy QUnit, Jest và Vitest không thay thế Quint, và ngược lại: chúng trả lời những câu hỏi khác nhau.</gen>
-    <do>Nếu ai đó nói "nó giống Jest", hãy hỏi chính xác ý là gì: kiểm tra một hàm hay kiểm tra quy tắc.</do>
+    <do>Nếu ai đó nói “nó giống Jest”, hãy hỏi chính xác ý là gì: kiểm tra một hàm hay kiểm tra quy tắc.</do>
   </b-finding>
 </b-chapter>
 
@@ -65,10 +65,10 @@ Test kiểm tra một kịch bản bạn đã nghĩ tới, còn kiểm chứng m
     <c>mô hình có thể không khớp thực tế, nên nó được đối chiếu với các dữ kiện đã xác nhận</c>
   </b-vs-grid>
   <b-why align="left">Test bắt tốt những gì: lỗi ngay trong hàm, chẳng hạn tính giảm giá sai hoặc phân tích ngày sai. Đầu vào ở đây biết trước, và test nhanh chóng cho thấy cái gì hỏng. Test bỏ sót những gì: [race condition](/materials/glossary/race-condition/) và các lỗi khác chỉ xuất hiện ở một thứ tự sự kiện nhất định. Trong các ví dụ thực tế, đó là cách phát hiện việc đăng nhập và đăng xuất của quản trị viên chồng nhau về thời gian và sự cố giữa lúc ghi âm cuộc họp. Không hành động nào sai khi đứng riêng, nên test cho từng hành động đều qua.</b-why>
-  <b-why align="left">Điểm yếu của Quint là nó kiểm tra mô hình chứ không kiểm tra code. Nếu mô hình được mô tả không chính xác, nó chứng minh điều gì đó về một hệ thống tưởng tượng. Vì vậy mô hình được đối chiếu với các ca thực đã xác nhận, và trong đó giữ một cặp "hiện trạng và yêu cầu". Xem thêm trong [bài về các mô hình](/blog/quint-models-find-races/).</b-why>
+  <b-why align="left">Điểm yếu của Quint là nó kiểm tra mô hình chứ không kiểm tra code. Nếu mô hình được mô tả không chính xác, nó chứng minh điều gì đó về một hệ thống tưởng tượng. Vì vậy mô hình được đối chiếu với các ca thực đã xác nhận, và trong đó giữ một cặp “hiện trạng và yêu cầu”. Xem thêm trong [bài về các mô hình](/blog/quint-models-find-races/).</b-why>
   <b-finding>
-    <ex>Test và mô hình trả lời những câu hỏi khác nhau, nên "cái nào tốt hơn" là câu hỏi sai.</ex>
-    <gen>Để kiểm tra "hai người cùng lúc có thể phá thứ tự hành động không" thì framework test gần như vô dụng, còn để kiểm tra "ngày có được phân tích đúng không" thì mô hình là thừa.</gen>
+    <ex>Test và mô hình trả lời những câu hỏi khác nhau, nên “cái nào tốt hơn” là câu hỏi sai.</ex>
+    <gen>Để kiểm tra “hai người cùng lúc có thể phá thứ tự hành động không” thì framework test gần như vô dụng, còn để kiểm tra “ngày có được phân tích đúng không” thì mô hình là thừa.</gen>
     <do>Với mỗi quy tắc muốn kiểm tra, hãy ghi ra nó nói về điều gì: dữ liệu đầu vào hay thứ tự hành động.</do>
   </b-finding>
 </b-chapter>
@@ -111,7 +111,7 @@ Test kiểm tra một kịch bản bạn đã nghĩ tới, còn kiểm chứng m
     <rule icon="workflow" t="Thứ tự hành động">Tìm tổ hợp bước làm vỡ một quy tắc sản phẩm, kể cả khi code chưa tồn tại: Quint</rule>
     <rule icon="scales" t="Chứng minh nặng">Bảo đảm chặt cho hệ thống phân tán lớn: TLA+, với nhiều kinh nghiệm và ví dụ hơn</rule>
   </b-rules>
-  <b-why align="left">Lựa chọn do câu hỏi quyết định, không phải do chương trình yêu thích. Nếu câu hỏi là "hàm này có chạy đúng không", hãy dùng test. Nếu câu hỏi là "quy tắc có thể vỡ trong một chuỗi sự kiện nào đó không", hãy dùng mô hình. Nếu cần bảo đảm ở mức giao thức phân tán, hãy dùng TLA+ và dành thời gian để học nó.</b-why>
+  <b-why align="left">Lựa chọn do câu hỏi quyết định, không phải do chương trình yêu thích. Nếu câu hỏi là “hàm này có chạy đúng không”, hãy dùng test. Nếu câu hỏi là “quy tắc có thể vỡ trong một chuỗi sự kiện nào đó không”, hãy dùng mô hình. Nếu cần bảo đảm ở mức giao thức phân tán, hãy dùng TLA+ và dành thời gian để học nó.</b-why>
   <b-finding>
     <ex>Ba lựa chọn trả lời ba câu hỏi khác nhau, và cái này không thay thế cái kia.</ex>
     <gen>Với logic sản phẩm có tác nhân và nhiều bên tham gia, thường cần cả test lẫn Quint.</gen>
@@ -121,7 +121,7 @@ Test kiểm tra một kịch bản bạn đã nghĩ tới, còn kiểm chứng m
 
 <b-chapter id="together" icon="link" title="Chúng phối hợp với nhau thế nào">
   <b-why align="left">Trong thực tế test và mô hình đứng cạnh nhau. Test bảo vệ một hàm cụ thể khỏi bị hỏng khi sửa. Mô hình bảo vệ một quy tắc đi qua nhiều hàm và phụ thuộc vào thứ tự sự kiện. Khi mô hình tìm ra một chuỗi bước, từ đó có thể rút ra một regression test ngắn: nó thất bại trên code cũ và qua trên code đã sửa.</b-why>
-  <b-why align="left">Như vậy mô hình trao cho test thứ nó tìm được, và test giữ nó trong code. Phần kể chi tiết về các phát hiện, cặp "hiện trạng và yêu cầu" và việc kiểm tra chính các phép kiểm tra nằm trong [bài chính về Quint](/blog/quint-models-find-races/), còn ranh giới ngữ cảnh mà các mô hình được viết cho nó được nêu trong bài về [tác nhân theo từng ngữ cảnh](/blog/agents-per-bounded-context/).</b-why>
+  <b-why align="left">Như vậy mô hình trao cho test thứ nó tìm được, và test giữ nó trong code. Phần kể chi tiết về các phát hiện, cặp “hiện trạng và yêu cầu” và việc kiểm tra chính các phép kiểm tra nằm trong [bài chính về Quint](/blog/quint-models-find-races/), còn ranh giới các bounded context mà các mô hình được viết cho được nêu trong bài về [tác nhân cho mỗi context](/blog/agents-per-bounded-context/).</b-why>
   <b-finding>
     <ex>Mô hình tìm ra một chuỗi bước, và test ghim nó vào code để lỗi không quay lại.</ex>
     <gen>Kết quả là một cặp: mô hình tìm cái chưa biết, test canh giữ cái đã tìm ra.</gen>

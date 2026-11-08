@@ -7,7 +7,7 @@ tags: AI, nghiên cứu, mạng nơ-ron, toán học, đồ thị Cayley, tìm �
 category: research
 layout: wide
 mentions: Cayley graph, Cayley graph diameter, God's number, symmetric group, permutations, LRX, OEIS A186783, n(n−1)/2 conjecture, CayleyPy, beam search, Bellman equation, GAP, Kaggle, TopSpin puzzle, Hungarian Rings
-toc: video=Video | question=Câu hỏi | paper=Bài báo và tác giả | tower=Tòa tháp | mirror=Gương | pairs=Số cặp | gap=Hai mươi quả bóng | compass=La bàn | front=Tuyến đầu | hint=Gợi ý | contest=Cuộc thi | triples=Bộ ba | fork=Khoảng kẹp | main=Kết luận | formal=Dạng hình thức | practice=Dùng vào đâu | when=Ai và khi nào | faq=Câu hỏi | next=Đọc tiếp
+toc: video=Video | question=Câu hỏi | paper=Bài báo và tác giả | tower=Tòa tháp | mirror=Gương | pairs=Số cặp | gap=Hai mươi quả bóng | compass=La bàn | front=Mặt trận | hint=Gợi ý | contest=Cuộc thi | triples=Bộ ba | fork=Khoảng kẹp | main=Kết luận | formal=Dạng hình thức | practice=Dùng vào đâu | when=Ai và khi nào | faq=Câu hỏi | next=Đọc tiếp
 ---
 
 Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bóng được phản chiếu qua ô cửa đổi chỗ — và nó cần đúng bằng số cặp bóng nước đi: n(n−1)/2. Vét cạn đến 15 quả bóng, mạng nơ-ron với beam search đến 100 quả và một cuộc thi mở đến 200 quả đều cho cùng kết quả, còn các chứng minh kẹp đáp án vào một khoảng hẹp.
@@ -17,7 +17,7 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
 <b-chapter id="video" icon="video" title="Video: cùng câu chuyện trong 11 phút">
   <b-why>Bài viết đi theo video từng cảnh, chi tiết hơn. Mỗi sơ đồ dẫn đến đúng khoảnh khắc của nó trong video.</b-why>
   <b-embed-frame src="https://www.youtube.com/embed/ecc2GvvZGvM" title="Cách xếp bóng nào gỡ lâu nhất — giải thích đơn giản arXiv 2502.18663 (bằng tiếng Nga)" ratio="16/9"/>
-  <b-cap>Bài báo: <a href="https://arxiv.org/abs/2502.18663" target="_blank" rel="noopener">CayleyPy RL: Pathfinding and Reinforcement Learning on Cayley Graphs</a>, arXiv 2502.18663, ngày 25 tháng 2 năm 2025; Advances in Theoretical and Mathematical Physics, 2026. Vòng bóng, tầng, trần, la bàn và tuyến đầu là hình ảnh để giải thích; trong bài báo chúng là đồ thị Cayley, khoảng cách, đường kính, mạng nơ-ron và beam search. Video bằng tiếng Nga.</b-cap>
+  <b-cap>Bài báo: <a href="https://arxiv.org/abs/2502.18663" target="_blank" rel="noopener">CayleyPy RL: Pathfinding and Reinforcement Learning on Cayley Graphs</a>, arXiv 2502.18663, ngày 25 tháng 2 năm 2025; Advances in Theoretical and Mathematical Physics, 2026. Vòng bóng, tầng, trần, la bàn và mặt trận là hình ảnh để giải thích; trong bài báo chúng là đồ thị Cayley, khoảng cách, đường kính, mạng nơ-ron và beam search. Video bằng tiếng Nga.</b-cap>
 </b-chapter>
 
 <b-chapter id="question" icon="grid" title="Câu hỏi: một vòng bóng, ba nước đi và cách xếp rối nhất">
@@ -52,10 +52,10 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
   <b-art names="longest-ring-arrangement/tower"/>
   <b-cap>Độ rộng thanh là số cách xếp ở tầng đó; tính bằng vét cạn. <a href="https://youtu.be/ecc2GvvZGvM?t=73" target="_blank" rel="noopener">▶ 1:13</a></b-cap>
 
-  Trần chính là <a href="/blog/rubik-cube-neural-network/">God's number của khối Rubik</a>: số nước đi lớn nhất mà lời giải ngắn nhất có thể cần. Trong toán học đó là đường kính của đồ thị. Nếu biết tầng của mọi cách xếp, việc gỡ sẽ dễ: luôn bước xuống một tầng.
+  Trần chính là <a href="/blog/rubik-cube-neural-network/">số của Chúa (God's number) của khối Rubik</a>: số nước đi lớn nhất mà lời giải ngắn nhất có thể cần. Trong toán học đó là đường kính của đồ thị. Nếu biết tầng của mọi cách xếp, việc gỡ sẽ dễ: luôn bước xuống một tầng.
   <b-steps top="14" round>
     <step t="Tầng">Số nước đi từ cách xếp về thứ tự chuẩn theo đường ngắn nhất</step>
-    <step t="Trần">Tầng cao nhất: đủ nước đi cho mọi cách xếp; God's number, đường kính đồ thị</step>
+    <step t="Trần">Tầng cao nhất: đủ nước đi cho mọi cách xếp; số của Chúa, đường kính đồ thị</step>
     <step t="Câu hỏi">Ai ở trên trần và trần cao bao nhiêu với số bóng bất kỳ</step>
   </b-steps>
 </b-chapter>
@@ -125,17 +125,17 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
   </b-io>
 </b-chapter>
 
-<b-chapter id="front" icon="flag-alt" title="Tuyến đầu: nhiều cách xếp cùng lúc">
-  <b-why>Sai số của la bàn dẫn một đường đi đơn lẻ vào ngõ cụt. Vì vậy tìm kiếm tiến lên như một tuyến đầu — beam search trong bài báo.</b-why>
+<b-chapter id="front" icon="flag-alt" title="Mặt trận: nhiều cách xếp cùng lúc">
+  <b-why>Sai số của la bàn dẫn một đường đi đơn lẻ vào ngõ cụt. Vì vậy tìm kiếm tiến lên như một mặt trận — beam search trong bài báo.</b-why>
 
-  Tuyến đầu là nhiều cách xếp cùng lúc. Ở mỗi bước, cả ba nước đi được thử từ mỗi cách xếp, la bàn chấm điểm các lân cận mới, và chỉ những cái triển vọng nhất được giữ cho bước sau. Nếu la bàn sai ở một cách xếp, vẫn còn những cách khác trong tuyến đầu, và đường đi không bị đứt.
+  Mặt trận là nhiều cách xếp cùng lúc. Ở mỗi bước, cả ba nước đi được thử từ mỗi cách xếp, la bàn chấm điểm các lân cận mới, và chỉ những cái triển vọng nhất được giữ cho bước sau. Nếu la bàn sai ở một cách xếp, vẫn còn những cách khác trong mặt trận, và đường đi không bị đứt.
 
   Với 20 quả bóng, cách này tìm ra đường đi đúng 190 nước — trong 3 phút 48 giây thay vì 41 phút. Đến 28 quả bóng, đường đi bằng số cặp; đến 44 quả thì vẫn tìm được nhưng dài hơn.
 
   <b-art names="longest-ring-arrangement/front"/>
   <b-cap>Chiều cao thanh là đường đi tìm được chia cho số cặp; đường kẻ là đúng số cặp. Bảng 2–3 của bài báo. <a href="https://youtu.be/ecc2GvvZGvM?t=258" target="_blank" rel="noopener">▶ 4:18</a></b-cap>
   <b-numchain>
-    <step>thử ba nước đi từ mọi cách xếp trong tuyến đầu</step>
+    <step>thử ba nước đi từ mọi cách xếp trong mặt trận</step>
     <step>bỏ các bản trùng, la bàn chấm điểm chúng</step>
     <step>giữ lại những cái tốt nhất và lặp lại</step>
   </b-numchain>
@@ -144,7 +144,7 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
 <b-chapter id="hint" icon="bulb" title="Gợi ý một dòng">
   <b-why>Các tác giả thêm một dòng vào tìm kiếm: đừng đổi chỗ các quả bóng trong ô cửa nếu chúng đã đúng thứ tự.</b-why>
 
-  Ý tưởng đơn giản: đổi chỗ một cặp đã đúng thứ tự hầu như không bao giờ có lợi, trong khi lựa chọn thừa làm phình tuyến đầu. Dòng đó đẩy giới hạn từ 40 lên 100 quả bóng. Với 100 quả bóng, đường đi tìm được trong 9 giờ, dù vẫn dài hơn số cặp hơn ba lần: 16.632 nước đi so với 4.950 cặp. Và gợi ý này được thiết kế riêng cho vòng bóng này: với các bài toán khác thì còn phải tìm.
+  Ý tưởng đơn giản: đổi chỗ một cặp đã đúng thứ tự hầu như không bao giờ có lợi, trong khi lựa chọn thừa làm phình mặt trận. Dòng đó đẩy giới hạn từ 40 lên 100 quả bóng. Với 100 quả bóng, đường đi tìm được trong 9 giờ, dù vẫn dài hơn số cặp hơn ba lần: 16.632 nước đi so với 4.950 cặp. Và gợi ý này được thiết kế riêng cho vòng bóng này: với các bài toán khác thì còn phải tìm.
 
   <b-art names="longest-ring-arrangement/hint"/>
   <b-cap>Trái: ô cửa nơi cấm đổi chỗ; phải: có thể gỡ được bao nhiêu quả bóng. <a href="https://youtu.be/ecc2GvvZGvM?t=294" target="_blank" rel="noopener">▶ 4:54</a></b-cap>
@@ -187,7 +187,7 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
 
   <b-step-chain>
     <node t="Vét cạn">đến 15 quả bóng: gương và số cặp</node>
-    <node t="La bàn và tuyến đầu">chính xác đến 28, đến 100 với gợi ý</node>
+    <node t="La bàn và mặt trận">chính xác đến 28, đến 100 với gợi ý</node>
     <node t="Cuộc thi">đến 200 quả bóng, không có gì ngắn hơn</node>
     <node t="Chứng minh">một khoảng kẹp quanh số cặp</node>
   </b-step-chain>
@@ -208,7 +208,7 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
     <tr><td>trần</td><td>đường kính đồ thị</td><td>giả thuyết: n(n−1)/2 với n ≥ 4</td></tr>
     <tr><td>gương</td><td>phần tử dài nhất ℓₙ</td><td>(1 0 n−1 … 3 2) = R² · (thứ tự ngược)</td></tr>
     <tr><td>la bàn</td><td>mạng trên khoảng cách khuếch tán + Q-learning</td><td>trước hết học từ các lượt đi ngẫu nhiên, sau đó được đối chiếu với phương trình Bellman d(s) = 1 + min d(t) trên các lân cận t</td></tr>
-    <tr><td>tuyến đầu</td><td>beam search</td><td>độ rộng đến 2²⁰; gợi ý là mẹo X</td></tr>
+    <tr><td>mặt trận</td><td>beam search</td><td>độ rộng đến 2²⁰; gợi ý là mẹo X</td></tr>
     <tr><td>khoảng kẹp</td><td>mệnh đề 4.2 và 4.3</td><td>n(n−1)/2 − n/2 − 1 ≤ đường kính ≤ n(n−1)/2 + 3n</td></tr>
     </tbody></table>
   </b-table>
@@ -229,7 +229,7 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
 </b-chapter>
 
 <b-chapter id="practice" icon="grid" title="Dùng vào đâu">
-  <b-why>La bàn và tuyến đầu không quan tâm đó là vòng bóng: chúng chỉ cần các trạng thái, nước đi và mục tiêu. Vì vậy cùng cách tiếp cận này hợp với mọi bài toán đi từ trạng thái này sang trạng thái khác theo đường ngắn nhất.</b-why>
+  <b-why>La bàn và mặt trận không quan tâm đó là vòng bóng: chúng chỉ cần các trạng thái, nước đi và mục tiêu. Vì vậy cùng cách tiếp cận này hợp với mọi bài toán đi từ trạng thái này sang trạng thái khác theo đường ngắn nhất.</b-why>
   <b-table>
     <table><thead>
     <tr><th>Mối liên hệ</th><th>Ở đâu</th></tr>
@@ -258,7 +258,7 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
 <b-chapter id="faq" icon="chat" title="Câu hỏi thường gặp">
   <b-faq-cards>
     <q t="Đồ thị Cayley là gì?">Bản đồ của mọi trạng thái của một câu đố hoặc một nhóm: mỗi trạng thái là một điểm, mỗi nước đi hợp lệ là một đường nối đến trạng thái lân cận. Với vòng bóng, đó là mọi cách xếp và ba nước đi giữa chúng.</q>
-    <q t="Đường kính của đồ thị và God's number là gì?">Số nước đi lớn nhất mà đường ngắn nhất giữa hai trạng thái có thể cần. Với khối Rubik, nó được gọi là God's number: 20 nước nếu nửa vòng xoay được tính là một nước.</q>
+    <q t="Đường kính của đồ thị và số của Chúa là gì?">Số nước đi lớn nhất mà đường ngắn nhất giữa hai trạng thái có thể cần. Với khối Rubik, nó được gọi là số của Chúa (God's number): 20 nước nếu nửa vòng xoay được tính là một nước.</q>
     <q t="Đường kính của vòng bóng có phép xoay và đổi chỗ là bao nhiêu?">Theo giả thuyết, là n(n−1)/2 — số cặp bóng, từ bốn quả bóng trở lên. Vét cạn xác nhận điều đó đến 15 quả bóng; đã chứng minh nó nằm giữa n(n−1)/2 − n/2 − 1 và n(n−1)/2 + 3n.</q>
     <q t="Giả thuyết đã được chứng minh chưa?">Chưa hoàn toàn. Năm 2026 một trong các tác giả đã đăng chứng minh cho cận dưới đúng bằng số cặp, nhưng đó là preprint; cận trên vẫn cao hơn 3 nước cho mỗi quả bóng.</q>
     <q t="Mạng nơ-ron tìm đường trong đồ thị khổng lồ như thế nào?">Mạng la bàn học từ các lượt đi ngẫu nhiên để đoán khoảng cách đến mục tiêu, và beam search giữ nhiều trạng thái tốt nhất theo ước lượng của nó cùng lúc để một sai sót không dẫn vào ngõ cụt.</q>
@@ -270,7 +270,7 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2502.18663" k="Bài báo" t="arXiv 2502.18663" ext>CayleyPy RL: Pathfinding and Reinforcement Learning on Cayley Graphs</item>
     <item href="https://github.com/cayleypy/cayleypy" k="Mã" t="CayleyPy trên GitHub" ext>Thư viện tìm đường trong các đồ thị hoán vị</item>
-    <item href="/blog/rubik-cube-neural-network/" k="Bài trước" t="Khối Rubik">Cùng nhóm: la bàn, tuyến đầu và đội hình trên khối 4×4×4 và 5×5×5</item>
+    <item href="/blog/rubik-cube-neural-network/" k="Bài trước" t="Khối Rubik">Cùng nhóm: la bàn, mặt trận và đội hình trên khối 4×4×4 và 5×5×5</item>
     <item href="https://youtu.be/ecc2GvvZGvM" k="Video" t="Trên YouTube" ext>Cùng câu chuyện trong 11 phút, có 3D và công thức (bằng tiếng Nga)</item>
   </b-links>
 </b-chapter>

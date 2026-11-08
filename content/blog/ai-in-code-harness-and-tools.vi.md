@@ -62,7 +62,7 @@ Codex và Claude Code gần như giống nhau về quyền truy cập dự án v
 </b-chapter>
 
 <b-chapter id="harness" icon="layers" title="Harness là gì">
-  <b-why>Mô hình trả lời bằng văn bản. Harness là mọi thứ xung quanh nó: skill, công cụ, môi trường, con người trong vòng lặp. Sản phẩm AI nào cũng có harness, từ tác nhân trong terminal đến chat trong trình duyệt<b-proof href="https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code" quote="Anthropic calls Claude Code a harness: the post “A harness for every task” — claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code"/>. Chỗ khác nhau là thành phần. Cột "Qua API" lấy Hermes Agent làm ví dụ; có nhiều harness mã nguồn mở, như OpenCode, Aider, Cline và Goose, và chúng được xây dựng giống nhau.</b-why>
+  <b-why>Mô hình trả lời bằng văn bản. Harness là mọi thứ xung quanh nó: skill, công cụ, môi trường, con người trong vòng lặp. Sản phẩm AI nào cũng có harness, từ tác nhân trong terminal đến chat trong trình duyệt<b-proof href="https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code" quote="Anthropic calls Claude Code a harness: the post “A harness for every task” — claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code"/>. Chỗ khác nhau là thành phần. Cột “Qua API” lấy Hermes Agent làm ví dụ; có nhiều harness mã nguồn mở, như OpenCode, Aider, Cline và Goose, và chúng được xây dựng giống nhau.</b-why>
   <b-drift>snapshot · tháng 9 năm 2026</b-drift>
   <b-harness-matrix label="Các lớp của harness theo cột" diff="khác bản enterprise" legend="khác bản enterprise|có|một phần">
     <col icon="code-wide" t="Qua API">Hermes Agent · API công khai</col>
