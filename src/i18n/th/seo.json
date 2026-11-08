@@ -1,6 +1,6 @@
 {
   "/": {
-    "title": "Egor Urvanov — CTO, AI, เครือข่ายคนทำงาน",
+    "title": "Egor Urvanov — CTO, AI, การสร้างเครือข่าย",
     "description": "Egor Urvanov: CTO การพัฒนาด้วย AI การเป็นที่ปรึกษา (mentoring) และ Jaiora (LinkedIn แบบออฟไลน์) บล็อก การบรรยาย แคตตาล็อกแพตเทิร์น AI และเกมในเบราว์เซอร์"
   },
   "/about": {
@@ -33,7 +33,7 @@
   },
   "/materials/glossary": {
     "title": "อภิธานศัพท์การพัฒนาด้วย AI — Egor Urvanov",
-    "description": "คำศัพท์การพัฒนาด้วย AI แยกตามหมวด: เอเจนต์ harness MCP ข้อกำหนด (spec) แต่ละคำมีคำนิยามและบทความที่อธิบายไว้"
+    "description": "คำศัพท์การพัฒนาด้วย AI แยกตามหมวด: เอเจนต์ harness MCP ข้อกำหนด (spec) และ prompt แต่ละคำมีคำนิยามและบทความที่อธิบายไว้"
   },
   "/ai": {
     "title": "AI ในการทำงาน: การอบรมและการนำไปใช้ — Egor Urvanov",
