@@ -56,7 +56,7 @@ kịch bản:
 
 ## Tám nhóm
 
-Sáu nhóm xuất phát từ ngưỡng trong báo cáo, nhóm "đã bỏ" từ ngày hoạt động gần nhất, và nhóm "công cụ khác" từ bảng khảo sát. Mỗi nhóm có một câu hỏi mà nó giúp kiểm chứng. Câu trả lời có thể là bất cứ điều gì, kể cả "không cần công cụ mới". Các ngưỡng ở đây chỉ để tham khảo: hãy chỉnh sao cho mỗi nhóm có 2–5 người.
+Sáu nhóm xuất phát từ ngưỡng trong báo cáo, nhóm “đã bỏ” từ ngày hoạt động gần nhất, và nhóm “công cụ khác” từ bảng khảo sát. Mỗi nhóm có một câu hỏi mà nó giúp kiểm chứng. Câu trả lời có thể là bất cứ điều gì, kể cả “không cần công cụ mới”. Các ngưỡng ở đây chỉ để tham khảo: hãy chỉnh sao cho mỗi nhóm có 2–5 người.
 
 Tích cực nhất về code
 
@@ -202,7 +202,7 @@ Bỏ và chuyển đổi
 
 Gom ứng viên vào tám nhóm
 
-Sáu nhóm từ ngưỡng trong báo cáo, nhóm "đã bỏ" từ ngày hoạt động gần nhất, nhóm "công cụ khác" từ bảng khảo sát
+Sáu nhóm từ ngưỡng trong báo cáo, nhóm “đã bỏ” từ ngày hoạt động gần nhất, nhóm “công cụ khác” từ bảng khảo sát
 
 2
 

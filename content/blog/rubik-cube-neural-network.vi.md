@@ -55,9 +55,9 @@ AI giải Rubik hoạt động qua ba bước: mạng nơ-ron học từ các l�
     <table><thead>
     <tr><th>Khối</th><th class="bk-table-r">Số vị trí</th><th>Đã biết gì về đường đi ngắn nhất</th></tr>
     </thead><tbody>
-    <tr><td>3×3×3</td><td class="bk-table-r">4.3·10¹⁹</td><td>số của Chúa: 20 nước (nửa vòng = 1 nước), 26 nước (chỉ xoay một phần tư)</td></tr>
-    <tr><td>4×4×4</td><td class="bk-table-r">7.4·10⁴⁵</td><td>giả thuyết 48 nước, chưa chứng minh</td></tr>
-    <tr><td>5×5×5</td><td class="bk-table-r">2.8·10⁷⁴</td><td>chưa biết</td></tr>
+    <tr><td>3×3×3</td><td class="bk-table-r">4,3·10¹⁹</td><td>số của Chúa: 20 nước (nửa vòng = 1 nước), 26 nước (chỉ xoay một phần tư)</td></tr>
+    <tr><td>4×4×4</td><td class="bk-table-r">7,4·10⁴⁵</td><td>giả thuyết 48 nước, chưa chứng minh</td></tr>
+    <tr><td>5×5×5</td><td class="bk-table-r">2,8·10⁷⁴</td><td>chưa biết</td></tr>
     </tbody></table>
   </b-table>
   <b-finding>
@@ -95,7 +95,7 @@ AI giải Rubik hoạt động qua ba bước: mạng nơ-ron học từ các l�
 
   Tất cả các phòng hợp lại thành mê cung — trong toán học là đồ thị Cayley của nhóm khối. **Luôn có đúng một lối ra: khối đã giải.** **Điểm xuất phát là khối đã xáo trộn của bạn**, vị trí cần giải. Giải khối bằng ít nước đi nhất nghĩa là đi từ điểm xuất phát đến lối ra qua ít cánh cửa nhất.
 
-  Dưới đây là mê cung đồ chơi 40 phòng. Mê cung thật có 4.3·10¹⁹ phòng, mỗi phòng 12 cửa, nên không vẽ được; mê cung nhỏ cho thấy từng phần của chương trình hoạt động ra sao.
+  Dưới đây là mê cung đồ chơi 40 phòng. Mê cung thật có 4,3·10¹⁹ phòng, mỗi phòng 12 cửa, nên không vẽ được; mê cung nhỏ cho thấy từng phần của chương trình hoạt động ra sao.
 
   <b-art names="rubik-cube-neural-network/map"/>
   <b-cap>Lối ra bên trái, điểm xuất phát bên phải, đường dày là tường. <a href="https://youtu.be/bg7tVawVWMc?t=132" target="_blank" rel="noopener">▶ 2:12</a></b-cap>

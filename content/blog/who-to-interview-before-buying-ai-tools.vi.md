@@ -50,7 +50,7 @@ Trước hết, xác định cần thấy những cách hoàn thành tác vụ n
 </b-chapter>
 
 <b-chapter id="groups" icon="grid" title="Tám nhóm">
-  <b-why>Sáu nhóm xuất phát từ ngưỡng trong báo cáo, nhóm "đã bỏ" từ ngày hoạt động gần nhất, và nhóm "công cụ khác" từ bảng khảo sát. Mỗi nhóm có một câu hỏi mà nó giúp kiểm chứng. Câu trả lời có thể là bất cứ điều gì, kể cả "không cần công cụ mới". Các ngưỡng ở đây chỉ để tham khảo: hãy chỉnh sao cho mỗi nhóm có 2–5 người.</b-why>
+  <b-why>Sáu nhóm xuất phát từ ngưỡng trong báo cáo, nhóm “đã bỏ” từ ngày hoạt động gần nhất, và nhóm “công cụ khác” từ bảng khảo sát. Mỗi nhóm có một câu hỏi mà nó giúp kiểm chứng. Câu trả lời có thể là bất cứ điều gì, kể cả “không cần công cụ mới”. Các ngưỡng ở đây chỉ để tham khảo: hãy chỉnh sao cho mỗi nhóm có 2–5 người.</b-why>
   <b-gruppy-groups>
     <group icon="code-alt" color="c-code" t="Tích cực nhất về code" c="code &gt; $200 / 3 tháng" p="Hana Sato, Luis Moreno">thiếu gì trong phát triển: công cụ, quyền truy cập repository, hay không thiếu gì</group>
     <group icon="zap-alt" color="c-work" t="Tác vụ của tác nhân" c="agent &gt; $60 / 3 tháng" p="Mira Castellano, Tomás Reid">tác nhân chưa đáp ứng ở đâu và vì sao: dữ liệu, tác vụ, hay chính tác nhân</group>
@@ -133,7 +133,7 @@ Trước hết, xác định cần thấy những cách hoàn thành tác vụ n
 
 <b-chapter id="order" icon="list-dotted" title="Quy trình">
   <b-gruppy-steps>
-    <step t="Gom ứng viên vào tám nhóm">Sáu nhóm từ ngưỡng trong báo cáo, nhóm "đã bỏ" từ ngày hoạt động gần nhất, nhóm "công cụ khác" từ bảng khảo sát</step>
+    <step t="Gom ứng viên vào tám nhóm">Sáu nhóm từ ngưỡng trong báo cáo, nhóm “đã bỏ” từ ngày hoạt động gần nhất, nhóm “công cụ khác” từ bảng khảo sát</step>
     <step t="Giữ 2 người mỗi nhóm">Từ các nhóm làm việc khác nhau nếu có lựa chọn; mỗi người chỉ ở một nhóm</step>
     <step t="Kiểm tra độ phủ các nhóm làm việc">Nếu một nhóm không có ai, thay một ứng viên bằng người của nhóm đó có cùng hành vi</step>
     <step t="Lên lịch phỏng vấn 30 phút">Cuộc trò chuyện bắt đầu từ tác vụ công việc gần nhất: họ cần đạt được gì, có những phương tiện nào, chọn gì và đi đến kết quả bằng cách nào. Với người đã bỏ, hãy bàn thêm vì sao họ dừng</step>

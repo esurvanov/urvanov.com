@@ -250,7 +250,7 @@ toc: essence=Ý chính | predicate=Lối thoát 1: văn bản mã | small-model=
 
   Lấy chương trình $P$ bất kỳ với đầu vào $w$ và dựng từ nó một chương trình mới $Q$:
 
-  Q(x) là: chạy $P(w)$; khi nó kết thúc, chạy $B(x)$.
+  $Q(x)$ là: chạy $P(w)$; khi nó kết thúc, chạy $B(x)$.
 
   $$Q(x) \;=\; P(w);\, B(x)$$
 
