@@ -137,6 +137,14 @@ export const GAMES = [
     long: 'Игра в браузере про работу инженера: собери сервис из блоков, пусти поток пользователей и посмотри, что сломается первым. 43 уровня от одного сервера до распила монолита: кэши, очереди, Kubernetes, мультирегион, мониторинг. Разбор решения после каждого уровня. Без установки.',
     longEn: 'A browser game about an engineer’s job: build a service from blocks, send a stream of users through it and see what breaks first. 43 levels from a single server to splitting a monolith: caches, queues, Kubernetes, multi-region, monitoring. A debrief of your decision after every level. No installation.',
   },
+  {
+    path: '/malenkie-bombery/',
+    title: 'Маленькие бомберы',
+    titleEn: 'Little Bombers',
+    text: 'Аркада в духе бомбермена · 15 уровней и редактор',
+    long: 'Бесплатный бомбермен в браузере: ставь бомбы, взрывай ящики и врагов, ищи выход. 15 уровней в трёх мирах, три вида врагов, бонусы и редактор своих уровней. Прогресс сохраняется в браузере. Без установки.',
+    longEn: 'A free Bomberman-style game in your browser: drop bombs, blow up crates and enemies, find the exit. 15 levels in three worlds, three enemy types, power-ups and a level editor. Progress is saved in the browser. No installation.',
+  },
 ]
 
 // Интерактивные учебные страницы: живут в отдельном репозитории project-euler и копируются при выкладке

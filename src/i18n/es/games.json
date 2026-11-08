@@ -383,5 +383,53 @@
       "simulador de infraestructura en el navegador",
       "juego de arquitectura de software"
     ]
+  },
+  "little-bombers": {
+    "name": "Little Bombers",
+    "title": "Little Bombers: juega online a un Bomberman en el navegador",
+    "tagline": "Coloca bombas, vuela cajas y enemigos, encuentra la salida: 15 niveles y un editor propio en un solo archivo",
+    "genre": "Arcade",
+    "description": "Little Bombers: juego gratuito estilo Bomberman en el navegador. 15 niveles en tres mundos, tres tipos de enemigos, mejoras y un editor de niveles. El progreso se guarda. Sin instalar.",
+    "intro": [
+      "Little Bombers es un arcade al estilo del clásico Bomberman: colocas bombas, vuelas cajas, derrotas a todos los enemigos y entras por la salida escondida bajo una de las cajas. Se juega directamente en el navegador, en ordenador y en móvil.",
+      "La campaña tiene 15 niveles en tres mundos: prado, dunas y hielo. Cuanto más rápido terminas un nivel, más estrellas consigues. Tus propios niveles se dibujan en el editor, se guardan en el navegador y se pueden compartir con un código corto. Todo el juego es un solo archivo sin librerías."
+    ],
+    "features": [
+      "15 niveles en tres mundos: prado, dunas y hielo",
+      "Hasta tres estrellas por nivel, según la rapidez",
+      "Tres enemigos: la babosa deambula, el murciélago embiste en línea recta, el fantasma atraviesa las cajas",
+      "Mejoras bajo las cajas: una bomba extra, llamas más largas, pasos más rápidos",
+      "Editor de niveles: dibuja, prueba, guarda y comparte con un código",
+      "El progreso, los mejores tiempos y tus niveles se guardan en el navegador",
+      "Controles táctiles: joystick y botón de bomba en el móvil",
+      "Interfaz en ruso e inglés"
+    ],
+    "controls": [
+      ["← ↑ → ↓ / W A S D", "moverse"],
+      ["Espacio / X", "colocar una bomba"],
+      ["Esc / P", "pausa"],
+      ["R", "reiniciar el nivel"],
+      ["1 … =", "herramienta del editor"]
+    ],
+    "facts": [
+      ["Plataforma", "navegador en ordenador y móvil"],
+      ["Niveles", "15 en la campaña y todos los propios que quieras"],
+      ["Tamaño", "un archivo, las fuentes se cargan desde la red"],
+      ["Guardado", "en el navegador (localStorage)"],
+      ["Código", "abierto, MIT"]
+    ],
+    "faq": [
+      ["¿Dónde se guarda el progreso?", "En el propio navegador de tu dispositivo: niveles superados, estrellas, mejores tiempos y tus niveles. Si borras los datos del sitio, desaparecen."],
+      ["¿Cómo consigo tres estrellas?", "Termina el nivel en menos del tiempo objetivo que aparece en la pantalla de victoria."],
+      ["¿Cómo comparto mi nivel?", "En el editor pulsa el botón de código y envía el texto resultante a un amigo. Él lo pega en la sección «Mis niveles»."],
+      ["¿Se puede jugar en el móvil?", "Sí, en las pantallas táctiles aparecen un joystick y un botón de bomba."]
+    ],
+    "shots.0.alt": "Little Bombers: una explosión en un nivel de dunas",
+    "shots.1.alt": "Little Bombers: el menú principal",
+    "keywords": [
+      "bomberman online",
+      "juego de bombas en el navegador",
+      "editor de niveles de bomberman"
+    ]
   }
 }
