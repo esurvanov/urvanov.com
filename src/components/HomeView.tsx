@@ -5,6 +5,7 @@ import { NAV_ITEMS, type NavItem } from '@/data/nav'
 import { BIO } from '@/data/profile'
 import Page from '@/components/site/Page'
 import { useT, type Lang } from '@/lib/i18n'
+import { plural } from '@/lib/plural'
 import LangSwitch from '@/components/site/LangSwitch'
 import ThemeToggle from '@/components/site/ThemeToggle'
 
@@ -60,7 +61,7 @@ export default function HomeView() {
                 <span className="n">{String(i + 1).padStart(2, '0')}</span>
                 <span className="t">{t(s.label)}</span>
                 <span className="h">
-                  {s.to === '/blog' && posts > 0 ? t({ ru: `${posts} постов`, en: `${posts} posts` }) : t(s.hint)}
+                  {s.to === '/blog' && posts > 0 ? plural(posts, lang, ['пост', 'поста', 'постов'], ['post', 'posts']) : t(s.hint)}
                 </span>
                 <span className="ar" aria-hidden="true">→</span>
               </Wrap>
