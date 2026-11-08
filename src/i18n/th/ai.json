@@ -1,0 +1,26 @@
+{
+  "group:personal": {
+    "name": "รายบุคคล",
+    "hint": "ตัวต่อตัว ตรงกับงานของคุณ"
+  },
+  "group:roles": {
+    "name": "ทีมตามบทบาท",
+    "hint": "การอบรมสำหรับแต่ละบทบาท"
+  },
+  "group:company": {
+    "name": "ทั้งบริษัท",
+    "hint": "การนำไปใช้และกลยุทธ์"
+  },
+  "proof:CTO": {
+    "label": "แพลตฟอร์ม SaaS ด้านการดูแลลูกค้า iGaming"
+  },
+  "proof:1500+": {
+    "label": "ชั่วโมงการเป็นที่ปรึกษา อันดับ 1 บน GetMentor"
+  },
+  "proof:10 000": {
+    "label": "คนในชุมชน Jaiora"
+  },
+  "proof:Podlodka": {
+    "label": "การบรรยายเรื่อง Spec-Driven Development"
+  }
+}

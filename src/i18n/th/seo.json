@@ -1,0 +1,42 @@
+{
+  "/": {
+    "title": "Egor Urvanov — CTO, AI, เครือข่ายคนทำงาน",
+    "description": "Egor Urvanov: CTO การพัฒนาด้วย AI การเป็นที่ปรึกษา (mentoring) และ Jaiora (LinkedIn แบบออฟไลน์) บล็อก การบรรยาย แคตตาล็อกแพตเทิร์น AI และเกมในเบราว์เซอร์"
+  },
+  "/about": {
+    "title": "เกี่ยวกับผม — Egor Urvanov",
+    "description": "Egor Urvanov: CTO แมชชีนเลิร์นนิง และการพัฒนาด้วย AI จากวิศวกรสู่ CTO ผู้ชนะการแข่งขัน ผู้เขียนบทความบน arXiv เมนเทอร์อันดับ 1 บน GetMentor และผู้ก่อตั้ง Jaiora"
+  },
+  "/blog": {
+    "title": "บล็อก: มุมมองและประสบการณ์ของผู้เขียน — Egor Urvanov",
+    "description": "บล็อกส่วนตัว: มุมมองและประสบการณ์ของผู้เขียนเรื่องการพัฒนาด้วย AI, Spec-Driven Development, การบริหารงานวิศวกรรม และชุมชน"
+  },
+  "/links": {
+    "title": "ลิงก์ — Egor Urvanov",
+    "description": "โปรไฟล์ โปรเจกต์ การบรรยาย และช่อง Telegram ของ Egor Urvanov รวมไว้ที่เดียว"
+  },
+  "/materials": {
+    "title": "สื่อ — Egor Urvanov",
+    "description": "สไลด์การนำเสนอ แคตตาล็อกแพตเทิร์น AI เวิร์กช็อปวิธีแก้โจทย์แบบ 3 มิติ และเกมในเบราว์เซอร์"
+  },
+  "/materials/presentations": {
+    "title": "การนำเสนอ — Egor Urvanov",
+    "description": "Podlodka Crew: “Spec-Driven Development in practice” (ภาษารัสเซีย) และแคตตาล็อกแพตเทิร์นการพัฒนาร่วมกับเอเจนต์ AI"
+  },
+  "/materials/games": {
+    "title": "เกมในเบราว์เซอร์ — Egor Urvanov",
+    "description": "เกมในเบราว์เซอร์ฟรี 8 เกม ไม่ต้องติดตั้ง: เกมวางแผน Chronicles of Kingdoms เกมเอาชีวิตรอด Sibiria โลก 3 มิติ Echo of the Rift และ Berezovka อาร์เคด Northern Rift ปริศนา Uptime เกมจำลองชีวิต Zhitiyo และเกมจำลองสังคม Skhodka"
+  },
+  "/materials/interactive": {
+    "title": "อินเทอร์แอกทีฟ — Egor Urvanov",
+    "description": "หน้าอินเทอร์แอกทีฟ: วิธีแก้โจทย์แบบ 3 มิติทีละขั้น ในเบราว์เซอร์"
+  },
+  "/materials/glossary": {
+    "title": "อภิธานศัพท์การพัฒนาด้วย AI — Egor Urvanov",
+    "description": "คำศัพท์การพัฒนาด้วย AI แยกตามหมวด: เอเจนต์ harness MCP ข้อกำหนด (spec) แต่ละคำมีคำนิยามและบทความที่อธิบายไว้"
+  },
+  "/ai": {
+    "title": "AI ในการทำงาน: การอบรมและการนำไปใช้ — Egor Urvanov",
+    "description": "อบรมและนำ AI ไปใช้สำหรับบริษัท ทีมตามบทบาท และรายบุคคล"
+  }
+}
