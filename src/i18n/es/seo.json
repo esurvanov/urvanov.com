@@ -1,0 +1,42 @@
+{
+  "/": {
+    "title": "Egor Urvanov: CTO, IA y networking",
+    "description": "Egor Urvanov: CTO, desarrollo con IA, mentoría y Jaiora (el LinkedIn offline). Blog, charlas, catálogo de patrones de IA y juegos para el navegador."
+  },
+  "/about": {
+    "title": "Sobre mí: Egor Urvanov",
+    "description": "Egor Urvanov: CTO, aprendizaje automático y desarrollo con IA. De ingeniero a CTO, ganador de competiciones, autor en arXiv, mentor n.º 1 en GetMentor y fundador de Jaiora."
+  },
+  "/blog": {
+    "title": "Blog: opinión y experiencia del autor — Egor Urvanov",
+    "description": "Blog personal: opinión y experiencia del autor sobre desarrollo con IA, Spec-Driven Development, gestión de ingeniería y comunidades."
+  },
+  "/links": {
+    "title": "Enlaces — Egor Urvanov",
+    "description": "Perfiles, proyectos, charlas y canales de Telegram de Egor Urvanov en un solo lugar."
+  },
+  "/materials": {
+    "title": "Materiales — Egor Urvanov",
+    "description": "Presentaciones, un catálogo de patrones de IA, un taller de métodos en 3D y juegos para el navegador."
+  },
+  "/materials/presentations": {
+    "title": "Presentaciones — Egor Urvanov",
+    "description": "Charlas sobre agentes de IA: «Spec-Driven Development en la práctica» (en ruso) y un catálogo de patrones de desarrollo con agentes de IA."
+  },
+  "/materials/games": {
+    "title": "Juegos para el navegador — Egor Urvanov",
+    "description": "Juegos gratuitos para el navegador, sin instalar nada: estrategia, supervivencia, mundos 3D, arcade, simulador de vida y un simulador de sistemas."
+  },
+  "/materials/interactive": {
+    "title": "Páginas interactivas — Egor Urvanov",
+    "description": "Páginas interactivas: métodos para resolver problemas en 3D, paso a paso, directamente en el navegador."
+  },
+  "/materials/glossary": {
+    "title": "Glosario de desarrollo con IA — Egor Urvanov",
+    "description": "Términos de desarrollo con IA por conjuntos: agentes, harness, MCP, specs, prompts. Cada término tiene una definición y los artículos que lo explican."
+  },
+  "/ai": {
+    "title": "IA en el trabajo: formación y adopción — Egor Urvanov",
+    "description": "Formación y adopción de IA para empresas, equipos por rol y particulares."
+  }
+}

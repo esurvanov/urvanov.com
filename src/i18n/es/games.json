@@ -1,0 +1,387 @@
+{
+  "chronicles-of-kingdoms": {
+    "name": "Chronicles of Kingdoms",
+    "title": "Chronicles of Kingdoms: RTS para el navegador como Age of Empires II",
+    "tagline": "Un juego de estrategia en tiempo real al estilo de Age of Empires II, directamente en tu navegador",
+    "genre": "Estrategia en tiempo real (RTS)",
+    "description": "Chronicles of Kingdoms: RTS gratuito para el navegador al estilo de Age of Empires II. 14 civilizaciones, 4 edades, más de 130 tecnologías y hasta 7 rivales con IA. Sin instalar.",
+    "intro": [
+      "Construye una aldea en la Edad Oscura, rodéala de murallas, levanta un castillo, investiga hasta la Edad Imperial y rompe al enemigo con trabuquetes, contra hasta siete jugadores de IA en seis mapas aleatorios.",
+      "Es un juego original de código abierto escrito desde cero: las reglas y los números siguen el Age of Empires II clásico (la comparación con la Definitive Edition está documentada), pero sin nada del arte, la música ni los nombres originales. Funciona como una web normal, sin instalar ni registrarse."
+    ],
+    "features": [
+      "14 civilizaciones, con unidades, tecnologías y bonificaciones de equipo únicas",
+      "4 edades (Oscura → Feudal → de los Castillos → Imperial) y un árbol de más de 130 tecnologías (F5 en el juego)",
+      "Más de 75 tipos de unidades: infantería, arqueros, caballería, asedio, monjes, barcos",
+      "Economía: comercio en el mercado, carros de comercio, reliquias, granjas; murallas, puertas, torres, guarniciones",
+      "Guerra naval: muelles, pesca, transportes, galeras, brulotes",
+      "6 mapas aleatorios (Arabia, Arena, Bosque Negro, Nómada, Islas, Mediterráneo), 6 niveles de IA, hasta 8 jugadores, diplomacia",
+      "Guardar y cargar, estadísticas al terminar la partida, 7 idiomas de interfaz"
+    ],
+    "controls": [
+      ["Botón izquierdo del ratón", "seleccionar una unidad o un edificio; arrastra un recuadro para seleccionar varias"],
+      ["Doble clic", "seleccionar todas las unidades del mismo tipo en pantalla"],
+      ["Botón derecho del ratón", "dar una orden en ese punto: mover, recolectar, construir, atacar, guarnecer"],
+      ["Q · W · E · R · T", "órdenes de la unidad seleccionada, igual que los botones del panel inferior (las teclas siguen una cuadrícula de 5×3)"],
+      ["Ctrl + 1…9", "guardar las unidades seleccionadas como grupo"],
+      ["1…9", "seleccionar el grupo guardado; púlsalo de nuevo para llevar la cámara hasta él"],
+      ["H", "cámara al centro urbano"],
+      [". · ,", "buscar un aldeano inactivo · buscar un soldado inactivo"],
+      ["Espacio", "cámara a las unidades seleccionadas"],
+      ["Rueda del ratón · flechas", "zoom · desplazar el mapa"],
+      ["F5", "árbol de tecnologías"],
+      ["F7 · F8", "guardado rápido · carga rápida"]
+    ],
+    "facts": [
+      ["Plataforma", "navegador de escritorio, sin instalar"],
+      ["Primera carga", "≈ 60 MB, luego se descarga sobre la marcha mientras juegas"],
+      ["Rivales", "hasta 7 jugadores de IA, 6 niveles de dificultad"],
+      ["Idiomas de la interfaz", "inglés, ruso, alemán, francés, español, portugués de Brasil, italiano"],
+      ["Código", "código abierto, MIT (también hay una versión en Python)"],
+      ["Arte y sonido", "0 A.D. y Millennium A.D., CC BY-SA 3.0"]
+    ],
+    "faq": [
+      ["¿Es una copia de Age of Empires II?", "No. Es un juego independiente de código abierto: la mecánica y los números se contrastaron con Age of Empires II, pero el arte, la música y los nombres son propios (la música y las voces vienen del juego de código abierto 0 A.D.)."],
+      ["¿Tengo que instalar algo?", "No. El juego funciona como una página web normal. El primer arranque descarga unos 60 MB de recursos."],
+      ["¿Cómo guardo la partida?", "F7 guarda rápido y F8 carga; también hay ranuras en el menú del juego. Las partidas se guardan en tu navegador."],
+      ["¿Puedo conseguir el código?", "Sí, todo está abierto con licencia MIT: github.com/esurvanov/awesome-games."]
+    ],
+    "shots.0.alt": "Chronicles of Kingdoms: una batalla en campo abierto con máquinas de asedio",
+    "shots.1.alt": "Chronicles of Kingdoms: una ciudad bizantina",
+    "shots.2.alt": "Chronicles of Kingdoms: una flota y un muelle en el mapa de Islas",
+    "shots.3.alt": "Chronicles of Kingdoms: colinas y acantilados",
+    "shots.4.alt": "Chronicles of Kingdoms: el árbol de tecnologías",
+    "shots.5.alt": "Chronicles of Kingdoms: el lobby de escaramuza",
+    "keywords": [
+      "RTS en el navegador",
+      "juego como Age of Empires",
+      "juego de estrategia online gratis",
+      "RTS de código abierto"
+    ]
+  },
+  "berezovka": {
+    "name": "Berezovka",
+    "tagline": "Un pueblo ruso cubierto de nieve en el que puedes entrar: un juego 3D de mundo abierto en tu navegador",
+    "genre": "Aventura 3D de mundo abierto",
+    "description": "Berezovka: juego 3D para el navegador en un pueblo ruso nevado. Mundo abierto de aproximadamente 1 km², una historia en 12 pasos, un Zhiguli para conducir, pesca en hielo y ventiscas. Sin instalar.",
+    "intro": [
+      "Bajas del viejo autobús en Berezovka después de cinco años fuera. La abuela necesita leña, el Zhiguli de 1979 del abuelo no arranca, a la campana de la iglesia le falta la cuerda y el gato de la tendera se ha perdido en el bosque, más allá del oso. Al caer la tarde, todo el pueblo depende de ti.",
+      "El mundo ocupa casi un kilómetro cuadrado: el pueblo, un asentamiento soviético, una iglesia en una colina, un río helado y un bosque profundo. Funciona directamente en el navegador, sin instalar nada."
+    ],
+    "features": [
+      "Un mundo abierto de unos 1 km²: pueblo, asentamiento, iglesia, río, bosque; 14 patios habitados",
+      "Una historia en 12 pasos: cinco personajes, diálogos con opciones, un final",
+      "Conduce el Zhiguli: suspensión, balanceo de la carrocería, una radio del coche con acordeón",
+      "Fauna: un oso que embiste, un husky, un gato fugitivo, una manada de ciervos",
+      "Pesca en hielo: perca, lucio, breca, acerina, lota",
+      "Día y noche, aurora boreal, ventiscas y niebla; sonido grabado (pasos en la nieve, una campana de iglesia real)",
+      "12 matrioskas escondidas por el mapa"
+    ],
+    "controls": [
+      ["W A S D + ratón", "caminar, mirar (haz clic para capturar el ratón)"],
+      ["Shift · C", "correr · alternar caminar/correr"],
+      ["Espacio", "saltar · freno de mano en el coche"],
+      ["E", "hablar, recoger, pescar, tocar la campana"],
+      ["F", "subir al coche / bajar de él"],
+      ["R · M · H", "radio (en el coche) · mapa grande · controles"]
+    ],
+    "facts": [
+      ["Plataforma", "navegador de escritorio con WebGL 2 (Chrome, Edge, Firefox, Safari 16+)"],
+      ["Primera carga", "unos 33 MB"],
+      ["Controles", "teclado y ratón; un joystick en pantallas táctiles"],
+      ["Guardado", "en el navegador, sin servidor"],
+      ["Código", "código abierto, MIT (three.js)"]
+    ],
+    "faq": [
+      ["¿Tengo que instalarlo?", "No, funciona en el navegador. Necesitas un ordenador con WebGL 2."],
+      ["¿Cuánto se descarga?", "Unos 33 MB en el primer arranque."],
+      ["¿Funciona en el móvil?", "Las pantallas táctiles tienen un joystick y botones en pantalla, pero el juego está pensado sobre todo para ordenador."],
+      ["¿Dónde se guarda mi progreso?", "En tu navegador. Si borras los datos del sitio, se pierde la partida guardada."],
+      ["¿Por qué puede verse más plano en un ordenador poco potente?", "Cuando los fotogramas van lentos, el juego desactiva por sí solo parte del sombreado de las esquinas para seguir fluido."]
+    ],
+    "shots.0.alt": "Berezovka: la calle del pueblo en un día de invierno",
+    "shots.1.alt": "Berezovka: la iglesia en la colina",
+    "shots.2.alt": "Berezovka: el bosque nevado",
+    "keywords": [
+      "juego 3D en el navegador",
+      "juego de mundo abierto con nieve",
+      "juego de un pueblo ruso",
+      "jugar en el navegador"
+    ]
+  },
+  "sibiria": {
+    "name": "Sibiria",
+    "title": "Sibiria: juego de supervivencia en la taiga, gratis en tu navegador",
+    "tagline": "Sobrevive cuatro noches en la taiga evenki en 1993 y luego construye un asentamiento alrededor de tu cabaña",
+    "genre": "Supervivencia y asentamiento en vista cenital",
+    "description": "Sibiria: juego de supervivencia en vista cenital en la taiga evenki, 1993. Frío, lobos, un oso rabioso, tu cabaña y un asentamiento. Siete capítulos, cinco finales. Juega en el navegador.",
+    "intro": [
+      "Enero de 1993. El Mi-8 con matrícula 24713 se estrella en un meandro del río en Evenkia. Eres Lyosha, el radiotelegrafista. La radio está destrozada, la tripulación ha desaparecido y la gente más cercana está a días de distancia. Encuentra la vieja cabaña de los cazadores, enciende su estufa, conoce al viejo evenki Urkachan y sobrevive cuatro noches.",
+      "Después el juego se convierte en la historia de un asentamiento: contrata ayudantes, construye y avanza por las edades, comercia a cambio de rublos, todo en una taiga que no perdona errores. Funciona en el navegador sin instalar ni compilar nada, y también en el móvil."
+    ],
+    "features": [
+      "Siete capítulos: Restos del naufragio, Urkachan, La manada, La señal y después Caza con trampas, Invernada o Expedición; notas que se encuentran y diálogos de humor seco",
+      "Frío de verdad: calor corporal, hambre, congelación, ventiscas; el fuego es el único lugar seguro",
+      "Una manada de lobos cazadores y un oso rabioso que destroza el ahumadero y roba la comida",
+      "Tu propia cabaña y tu asentamiento: hasta 8 tipos de edificios, 4 edades, contratación de ayudantes, comercio a cambio de rublos",
+      "Control al estilo RTS: selección por recuadro, órdenes con clic derecho, grupos, una campana de alarma",
+      "Unos 11 × 11 km de taiga en ocho zonas: aufeis, bosque quemado, un campo de rocas, una cima pelada y más",
+      "Cinco finales, tres ranuras de guardado más guardado automático; un diseño adaptado al móvil"
+    ],
+    "controls": [
+      ["W A S D", "moverse"],
+      ["E", "actuar: talar, pescar, leer, hablar"],
+      ["F · Q · R", "fuego · comer · trampa"],
+      ["C · B", "taller · construir"],
+      ["Arrastrar recuadro · botón derecho", "seleccionar personas · dar una orden"],
+      ["H · Esc", "alarma / fin de la alarma · pausa"],
+      ["Rueda · 0", "zoom · volver al héroe"]
+    ],
+    "facts": [
+      ["Plataforma", "navegador en ordenador y móvil"],
+      ["Instalación", "ninguna"],
+      ["Partida completa", "siete capítulos, cinco finales"],
+      ["Código", "código abierto, MIT; sin paso de compilación y sin librerías (solo Google Fonts)"]
+    ],
+    "faq": [
+      ["¿Es una historia real?", "No, es ficción ambientada en la realidad de Evenkia en 1993: los personajes y los hechos son inventados."],
+      ["¿Puedo jugar en el móvil?", "Sí: hay un joystick, un modo de órdenes y zoom con los dedos."],
+      ["¿Cómo guardo la partida?", "Duerme en la cabaña para guardar el progreso; hay tres ranuras más guardado automático."],
+      ["¿Cuánto dura?", "La historia lleva unas cuantas tardes; el asentamiento y los distintos finales dan motivos para volver."]
+    ],
+    "shots.0.alt": "Sibiria: vista diurna de la cabaña y el asentamiento",
+    "shots.1.alt": "Sibiria: el interior de la cabaña",
+    "shots.2.alt": "Sibiria: colonos trabajando",
+    "keywords": [
+      "juego de supervivencia en el navegador",
+      "juego de supervivencia en la taiga",
+      "constructor de asentamientos",
+      "juego de Siberia 1993"
+    ]
+  },
+  "echo-of-the-rift": {
+    "name": "Echo of the Rift",
+    "tagline": "Un piloto accidentado, una isla polar y una grieta luminosa en el hielo: un juego narrativo 3D en tu navegador",
+    "genre": "Juego narrativo 3D de mundo abierto",
+    "description": "Echo of the Rift: juego narrativo 3D de mundo abierto. Un piloto se estrella en una isla polar bajo la aurora boreal. Un ermitaño, cristales, una grieta que canta, dos finales. En el navegador.",
+    "intro": [
+      "Tu avión, el «Kestrel», cae en una isla polar sin nombre bajo la aurora boreal. La IA de la estación, IRIS, te despierta entre los restos. Un viejo ermitaño, Orm, lleva once años viviendo solo aquí, junto a una grieta en el hielo que canta.",
+      "La isla mide 900 × 900 m: el lugar del accidente, una estación polar, un lago helado, ruinas, bosque, hielo marino y la Grieta. La nieve recuerda cada paso, la noche se ve como una noche de verdad, y todo arranca directamente en el navegador, sin instalar nada."
+    ],
+    "features": [
+      "Una isla abierta de 900 × 900 m: lugar del accidente, estación, lago, ruinas, bosque, hielo marino, la Grieta",
+      "5 capítulos y 2 finales: diálogos con opciones, 8 grabaciones de eco, 24 fragmentos de cristal",
+      "Un vehículo para la nieve, el skimmer: llámalo con T",
+      "Una nieve con memoria: cada bota, pezuña y pata deja su propia huella",
+      "El piloto se apoya en rocas y muros, se afianza en las pendientes y salta obstáculos bajos",
+      "Fauna: ciervos y otros animales; una noche con aurora, sombras de luna, niebla y nieve cayendo",
+      "Un poco de combate: pequeños monstruos de cristal y un gólem en la Grieta"
+    ],
+    "controls": [
+      ["W A S D · Shift · Espacio · C", "moverse · correr · saltar · rodar"],
+      ["E · botón izquierdo · Q · G", "interactuar · cortador · escáner · saludar"],
+      ["T", "llamar al skimmer"],
+      ["M · J · Esc", "mapa · diario · pausa"],
+      ["Y", "hablar con Orm"]
+    ],
+    "facts": [
+      ["Plataforma", "navegador de escritorio con WebGL 2"],
+      ["Calidad", "se adapta al equipo; en pantallas Retina la imagen se renderiza a 1× y se escala"],
+      ["Motor", "sin motor y sin compilación: three.js, física Rapier"],
+      ["Código", "código abierto, MIT"]
+    ],
+    "faq": [
+      ["¿Tengo que instalarlo?", "No. Basta con un navegador de escritorio con WebGL 2."],
+      ["¿Y si va lento?", "El juego elige un nivel de calidad para tu equipo; los ordenadores más modestos tienen un modo más ligero."],
+      ["¿Está relacionado con Northern Rift?", "Sí: Northern Rift es un arcade del mismo mundo, la misma isla vista desde el aire."]
+    ],
+    "shots.0.alt": "Echo of the Rift: el piloto junto a los restos del Kestrel en la nieve",
+    "shots.1.alt": "Echo of the Rift: la isla desde arriba, con el bosque, la Grieta y la aurora",
+    "shots.2.alt": "Echo of the Rift: el campamento de noche",
+    "keywords": [
+      "juego narrativo 3D en el navegador",
+      "juego de isla polar",
+      "juego de aurora boreal",
+      "juego de mundo abierto con three.js"
+    ]
+  },
+  "northern-rift": {
+    "name": "Northern Rift",
+    "tagline": "Vuela por un cañón de hielo interminable bajo la aurora boreal: un arcade 3D de un solo archivo",
+    "genre": "Arcade 3D",
+    "description": "Northern Rift: arcade 3D para el navegador. Una pequeña nave vuela por un cañón de hielo interminable, recoge fragmentos y atraviesa el hielo. Combos de hasta ×8, tres golpes. Juega gratis.",
+    "intro": [
+      "El cañón no se acaba nunca. Recoge fragmentos de cristal, conviértelos en energía y atraviesa los muros de hielo. Rodea los obstáculos, pasa por encima y por debajo, mantén vivo el combo y comprueba hasta dónde llegas antes de que tres golpes te derriben.",
+      "Es el primer juego hecho en el mundo de Echo of the Rift: la misma isla, vista desde el aire. Todo el mundo está dibujado con código, sin archivos de imagen, y el juego cabe en un único archivo."
+    ],
+    "features": [
+      "Un cañón interminable, generado mientras vuelas y nunca igual dos veces",
+      "Fragmentos → energía → romper el hielo: impulso directo a través de los muros",
+      "Combo ×2 … ×8 por esquivar, pasar por encima y por debajo",
+      "3 golpes y se acaba la partida",
+      "Aurora, estrellas, cristales brillantes: todo dibujado con código",
+      "Controles táctiles: en el móvil aparece un botón de impulso"
+    ],
+    "controls": [
+      ["W A S D / flechas", "dirigir"],
+      ["Espacio / Shift", "impulso para atravesar el hielo"],
+      ["Enter", "empezar"]
+    ],
+    "facts": [
+      ["Plataforma", "navegador en ordenador y móvil"],
+      ["Tamaño", "un archivo (three.js y las fuentes se cargan desde la red)"],
+      ["Modo", "partida infinita de puntuación"],
+      ["Código", "código abierto, MIT"]
+    ],
+    "faq": [
+      ["¿Cuánto dura una partida?", "Hasta que te golpean tres veces: es interminable, decide la habilidad."],
+      ["¿Funciona en el móvil?", "Sí, en las pantallas táctiles aparece un botón de impulso."],
+      ["¿De dónde viene?", "Es el primer juego del mundo de Echo of the Rift."]
+    ],
+    "shots.0.alt": "Northern Rift: la nave en el cañón de hielo",
+    "shots.1.alt": "Northern Rift: la pantalla de inicio",
+    "keywords": [
+      "arcade 3D en el navegador",
+      "juego de vuelo infinito",
+      "juego de un solo archivo con three.js"
+    ]
+  },
+  "skhodka": {
+    "name": "Skhodka",
+    "tagline": "Una tarde de sábado de una comunidad IT en un bar de Batumi: un juego 3D sobre conocer gente",
+    "genre": "Simulación social",
+    "description": "Skhodka: juego 3D para el navegador. Una tarde de sábado de la comunidad IT en el bar SushiGO de Batumi, de 19:00 a 01:00. Conoce gente, encuentra temas en común y preséntalos entre sí.",
+    "intro": [
+      "Una tarde de sábado en el bar SushiGO de Batumi, de 19:00 a 01:00, unos 18 minutos de juego. Eres miembro del chat IT local: conoce gente, encuentra puntos en común y presenta a quienes se necesitan.",
+      "Todos los del bar son personajes compuestos con nombres inventados. El juego funciona en el navegador, sin servidor y sin instalar nada (three.js va incluido); si añades ?seed=42 a la dirección, se repite la misma tarde."
+    ],
+    "features": [
+      "Una tarde en el bar de 19:00 a 01:00: saxofón, karaoke, lluvia y una foto de grupo al final",
+      "Acércate a los invitados, responde con tarjetas (teclas 1–4), encuentra temas en común",
+      "Presenta a dos personas con el botón «Познакомить» (Presentar)",
+      "Pide bebidas, haz la foto de grupo, usa el teléfono con el chat",
+      "Cámara: arrastrar, girar, zoom; controles de ratón y táctiles",
+      "Tardes repetibles mediante un número en la dirección (?seed=…)"
+    ],
+    "controls": [
+      ["Clic en una persona o en su etiqueta", "acercarte y hablar"],
+      ["Clic en el suelo · en un asiento", "caminar · sentarte"],
+      ["Tarjeta · 1–4", "responder"],
+      ["«Познакомить» (Presentar)", "presentar a dos personas"],
+      ["Esc", "pausa, calidad, sonido"]
+    ],
+    "facts": [
+      ["Duración", "unos 18 minutos"],
+      ["Idioma del juego", "ruso"],
+      ["Plataforma", "navegador, ratón y pantalla táctil"],
+      ["Código", "código abierto, MIT; sin servidor y sin compilación"]
+    ],
+    "faq": [
+      ["¿Son personas reales?", "No, todos los invitados son personajes compuestos con nombres inventados."],
+      ["¿Tengo que instalar algo?", "No hace falta instalar nada; funciona en el navegador."],
+      ["¿Puedo repetir la misma tarde?", "Sí: la dirección con ?seed=42 repite siempre la misma."]
+    ],
+    "shots.0.alt": "Skhodka: el perfil de un invitado",
+    "shots.1.alt": "Skhodka: la sala del bar en el punto álgido de la tarde",
+    "shots.2.alt": "Skhodka: hablando con un invitado",
+    "keywords": [
+      "juego de simulación social en el navegador",
+      "juego de networking",
+      "comunidad IT de Batumi"
+    ]
+  },
+  "zhitie": {
+    "name": "Zhitiyo",
+    "tagline": "Un simulador de vida al estilo de Los Sims 1: un barrio isométrico low-poly de diez hogares",
+    "genre": "Simulación de vida",
+    "description": "Zhitiyo: simulador de vida para el navegador al estilo de Los Sims 1. 3D isométrico low-poly, diez hogares, necesidades, carreras, relaciones y modos Comprar y Construir. Sin instalar.",
+    "intro": [
+      "Múdate a Berёzovaya Roshcha (el Bosquecillo de Abedules), un barrio pequeño con diez hogares, un parque, un café, una tienda, un gimnasio y una biblioteca. Toma el control de una familia, procura que todos coman, descansen y sean felices, mantén un trabajo, haz amistades y romances, amuebla y amplía la casa.",
+      "Es un clon original de las mecánicas, construido desde cero: sin nombres, arte, música ni interfaz de Los Sims ni de EA; con su propio lenguaje visual y su propia jerigonza hablada. Funciona en el navegador, sin instalar ni compilar nada."
+    ],
+    "features": [
+      "Un barrio vivo: 10 hogares entre los que puedes cambiar, además de parcelas comunes",
+      "Necesidades y estado de ánimo: hambre, energía, higiene, vejiga, diversión, vida social, comodidad",
+      "Relaciones: amistades, romances, aventuras secretas, disputas familiares; 86 interacciones sociales",
+      "Modos Comprar y Construir: 38 muebles, paredes, suelos, ventanas, varias plantas y tejados",
+      "Ciclo de día y noche, una cámara isométrica clásica (4 rotaciones, 3 niveles de zoom)",
+      "3D low-poly, con todos los modelos y animaciones bajo CC0"
+    ],
+    "controls": [
+      ["Clic en un sim o en un objeto", "menú radial de acciones"],
+      ["Clic en una casilla", "ir hasta ella"],
+      ["F1 · F2 · F3", "Vivir · Comprar · Construir"],
+      ["P · 0–3", "pausa · velocidad del juego"],
+      ["Espacio", "siguiente miembro del hogar"],
+      ["Arrastrar · rueda", "girar · zoom"]
+    ],
+    "facts": [
+      ["Plataforma", "un navegador de escritorio moderno"],
+      ["Motor", "three.js, módulos ES"],
+      ["Instalación", "ninguna"],
+      ["Código", "código abierto, MIT; recursos CC0"]
+    ],
+    "faq": [
+      ["¿Es Los Sims?", "No. Es un juego independiente que sigue las mecánicas del género, sin nombres, arte ni música de nadie más."],
+      ["¿Tengo que instalarlo?", "No, funciona en el navegador."],
+      ["¿Puedo reformar la casa?", "Sí, en los modos Comprar y Construir: muebles, paredes, suelos, ventanas, plantas y tejados."]
+    ],
+    "shots.0.alt": "Zhitiyo: el mapa del barrio Bosquecillo de Abedules",
+    "shots.1.alt": "Zhitiyo: el interior de una casa",
+    "keywords": [
+      "simulador de vida en el navegador",
+      "juego como Los Sims",
+      "juego isométrico low-poly"
+    ]
+  },
+  "uptime": {
+    "name": "Uptime",
+    "tagline": "Construyes un servicio. Se rompe. Lo arreglas. Un juego sobre el trabajo de un ingeniero",
+    "genre": "Puzle, simulador de diseño de sistemas",
+    "description": "Uptime es un juego para el navegador sobre diseño de sistemas de servidores: construye un servicio con bloques, haz pasar un flujo de usuarios y sobrevive a los incidentes. 43 niveles, de un solo servidor a dividir un monolito.",
+    "intro": [
+      "Un flujo de usuarios corre por tuberías: el grosor es el volumen y el color indica si un bloque aguanta. Colocas servidores, cachés, colas y bases de datos, apuestas por lo que fallará primero y pulsas iniciar.",
+      "Después de la ejecución llega el análisis: la decisión con sus pros y contras, el camino de la petición y dónde se quedó corta. Un juego para quien quiera ver qué hace un ingeniero, sin necesidad de programar."
+    ],
+    "features": [
+      "43 niveles en cinco etapas: fundamentos, carga, observabilidad, plataforma, arquitectura",
+      "Cachés, brokers, Kubernetes, sockets, certificados, VPN, multirregión y multicloud",
+      "Monolito, monolito modular, división, monolito distribuido, infierno de microservicios, DDD y sagas",
+      "27 tipos de incidentes: pico de carga, caída de una zona, mal despliegue, certificado caducado, fuga",
+      "Un tutorial de 3 minutos, una predicción antes de empezar, un análisis al terminar",
+      "Tarea diaria, supervivencia, sandbox; en ruso e inglés"
+    ],
+    "controls": [
+      ["Bloque de la izquierda", "colocarlo en el tablero"],
+      ["Punto de un bloque → otro bloque", "dibujar una tubería"],
+      ["Clic en un bloque o una tubería", "ajustes"],
+      ["Espacio", "pausa"],
+      ["Supr", "eliminar la selección (no durante la ejecución)"],
+      ["Rueda, pellizco", "zoom"]
+    ],
+    "facts": [
+      ["Duración", "2–4 minutos por nivel"],
+      ["Idiomas", "ruso, inglés"],
+      ["Plataforma", "navegador, ratón y pantalla táctil"],
+      ["Código", "abierto, MIT; sin servidor y sin compilación"]
+    ],
+    "faq": [
+      ["¿Necesito saber programar?", "No: cada bloque se explica con una analogía cotidiana y ves lo que ocurre."],
+      ["¿Qué tan cerca está de la realidad?", "Los números están simplificados, pero las causas y los efectos son reales: colas, timeouts, reintentos, caídas de zonas."],
+      ["¿Tengo que instalar algo?", "No, el juego se abre en el navegador y funciona sin conexión."]
+    ],
+    "shots.0.alt": "Uptime: flujo a través de servicios, comandos y eventos",
+    "shots.1.alt": "Uptime: pantalla de inicio",
+    "shots.2.alt": "Uptime: tutorial",
+    "shots.3.alt": "Uptime: predicción antes de empezar",
+    "shots.4.alt": "Uptime: resultado y análisis de la decisión",
+    "shots.5.alt": "Uptime: encontrar el servicio roto mediante los logs",
+    "shots.6.alt": "Uptime: prueba de carga",
+    "shots.7.alt": "Uptime: niveles por etapa, en inglés",
+    "keywords": [
+      "juego de diseño de sistemas",
+      "simulador de infraestructura en el navegador",
+      "juego de arquitectura de software"
+    ]
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "company": {
+    "short": "Adopción en la empresa",
+    "job": "Implantar la IA para obtener impacto real, no licencias sin usar",
+    "name": "Adopción de IA en tu empresa",
+    "hook": "De «cada uno prueba por su cuenta» a un solo proceso",
+    "pains": [
+      "Licencias compradas, sin mejora visible",
+      "Cada persona usa la IA a su manera",
+      "Sin reglas para datos, calidad y seguridad"
+    ],
+    "outcomes": [
+      "Un mapa de tareas donde la IA compensa",
+      "Reglas y herramientas comunes",
+      "Equipos formados",
+      "Métricas de impacto"
+    ],
+    "program": [
+      "Auditoría de procesos y tareas",
+      "Piloto con un equipo",
+      "Reglas y herramientas",
+      "Despliegue al resto"
+    ],
+    "format": [
+      "Auditoría",
+      "Piloto",
+      "Acompañamiento"
+    ]
+  },
+  "executives": {
+    "short": "Directivos",
+    "job": "Saber dónde invertir en IA y dónde no",
+    "name": "IA para directivos",
+    "hook": "Decisiones sobre IA sin humo: dónde invertir y dónde no",
+    "pains": [
+      "No está claro qué es real y qué es marketing",
+      "Riesgo de repartir mal el presupuesto y a las personas",
+      "La competencia ya ha lanzado algo"
+    ],
+    "outcomes": [
+      "Una estrategia de IA en lenguaje claro",
+      "Prioridades y presupuesto",
+      "Riesgos y cómo cubrirlos",
+      "Una visión propia, no el discurso del proveedor"
+    ],
+    "program": [
+      "Qué puede hacer la IA hoy",
+      "Dónde compensa en tu negocio",
+      "Equipo, procesos, riesgos",
+      "Un plan para el trimestre"
+    ],
+    "format": [
+      "Sesión 1:1",
+      "Sesión de estrategia",
+      "Briefing para el consejo"
+    ]
+  },
+  "engineers": {
+    "short": "Ingeniería",
+    "job": "Entregar código con agentes más rápido y sin basura",
+    "name": "Desarrollo con IA para ingenieros",
+    "hook": "Los agentes escriben el código, el ingeniero responde del resultado",
+    "pains": [
+      "El código de la IA es inestable y rompe lo de al lado",
+      "El agente olvida el contexto del proyecto",
+      "No está claro cómo revisarlo"
+    ],
+    "outcomes": [
+      "Un flujo de trabajo con agentes que funciona sobre código real",
+      "Specs y un harness para tu proyecto",
+      "Comprobaciones que atrapan los errores del agente",
+      "Velocidad sin perder calidad"
+    ],
+    "program": [
+      "Desarrollo guiado por especificaciones (Spec-Driven Development)",
+      "Harness: contexto, reglas, comprobaciones",
+      "MCP y herramientas del agente",
+      "Revisión y pruebas del código de la IA"
+    ],
+    "format": [
+      "Taller",
+      "Práctica en tu repositorio",
+      "Acompañamiento"
+    ]
+  },
+  "managers": {
+    "short": "Gestión",
+    "job": "Reducir la rutina de gestión: estados, planes, requisitos",
+    "name": "IA para managers",
+    "hook": "Menos rutina, más gestión",
+    "pains": [
+      "El tiempo se va en estados e informes",
+      "Las tareas y los requisitos son vagos",
+      "No está claro cómo ayuda la IA al equipo"
+    ],
+    "outcomes": [
+      "Rutinas listas para cada día",
+      "Requisitos y planes más claros, y más rápido",
+      "Una visión para cambiar el proceso del equipo"
+    ],
+    "program": [
+      "Definición de tareas y requisitos",
+      "Planificación, estados, informes",
+      "Reuniones: preparación y seguimiento",
+      "Liderar un equipo con IA"
+    ],
+    "format": [
+      "Taller",
+      "Tus propias tareas",
+      "Plantillas para quedarte"
+    ]
+  },
+  "recruiters": {
+    "short": "Selección",
+    "job": "Cubrir vacantes más rápido",
+    "name": "IA para reclutadores",
+    "hook": "Más rápido de la vacante a la oferta",
+    "pains": [
+      "La búsqueda de candidatos se come días",
+      "Cientos de candidaturas parecidas",
+      "Vacantes y mensajes escritos a mano"
+    ],
+    "outcomes": [
+      "Búsqueda y cribado mucho más rápidos",
+      "Vacantes y mensajes más sólidos",
+      "Evaluaciones de candidatos estructuradas"
+    ],
+    "program": [
+      "Perfil de la vacante y búsqueda",
+      "Cribado de currículums",
+      "Mensajes y texto de las vacantes",
+      "Entrevistas: preguntas y resúmenes"
+    ],
+    "format": [
+      "Taller",
+      "Tus propias vacantes",
+      "Plantillas para quedarte"
+    ]
+  },
+  "marketers": {
+    "short": "Marketing",
+    "job": "Producir más contenido y pruebas con el mismo equipo",
+    "name": "IA para especialistas en marketing",
+    "hook": "Más hipótesis y más contenido con el mismo equipo",
+    "pains": [
+      "El contenido se come el presupuesto de tiempo",
+      "Los informes se analizan a mano",
+      "Los textos suenan genéricos y «a IA»"
+    ],
+    "outcomes": [
+      "Un flujo de contenido con IA con tu propia voz",
+      "Analítica e hipótesis más rápidas",
+      "Rutina automatizada"
+    ],
+    "program": [
+      "Investigación y segmentos",
+      "Contenido y voz de marca",
+      "Analítica e informes",
+      "Automatización de cadenas de tareas"
+    ],
+    "format": [
+      "Taller",
+      "Tus propias campañas",
+      "Plantillas para quedarte"
+    ]
+  },
+  "operations": {
+    "short": "Operaciones",
+    "job": "Automatizar los procesos repetitivos",
+    "name": "IA para responsables de operaciones",
+    "hook": "Automatiza lo repetitivo y deja a las personas lo importante",
+    "pains": [
+      "Procesos manuales, copiar datos entre sistemas",
+      "Los informes tardan horas en prepararse",
+      "Errores en los traspasos entre equipos"
+    ],
+    "outcomes": [
+      "Una lista de procesos listos para automatizar",
+      "Automatizaciones que funcionan",
+      "Menos errores y menos esperas"
+    ],
+    "program": [
+      "Mapa de procesos",
+      "Qué automatizar primero",
+      "Creación de automatizaciones y agentes",
+      "Control de calidad y riesgos"
+    ],
+    "format": [
+      "Taller",
+      "Tus propios procesos",
+      "Apoyo en el lanzamiento"
+    ]
+  },
+  "appsec": {
+    "short": "Seguridad y AppSec",
+    "job": "Revisar la seguridad del código más rápido con IA y cubrir los riesgos de los propios agentes de IA",
+    "name": "IA para ciberseguridad y AppSec",
+    "hook": "La IA ayuda a encontrar vulnerabilidades y trae riesgos nuevos: cubrimos ambos lados",
+    "pains": [
+      "El código escrito por IA sale más rápido de lo que se puede revisar",
+      "Los agentes acceden a código, secretos y sistemas sin reglas",
+      "Inyección de prompts y fugas de datos a través de servicios de IA"
+    ],
+    "outcomes": [
+      "Comprobaciones de seguridad asistidas por IA en tu flujo: revisión de código, búsqueda de vulnerabilidades, triaje",
+      "Reglas para los agentes: permisos, sandbox, secretos",
+      "Un modelo de amenazas para los agentes de IA de tu equipo",
+      "Menos triaje manual de falsos positivos"
+    ],
+    "program": [
+      "Dónde ayuda la IA en AppSec: revisión, hallazgos de escáneres, modelado de amenazas",
+      "Riesgos de los agentes: inyección de prompts, permisos, fugas",
+      "Comprobaciones en CI y en los flujos de los agentes",
+      "Práctica sobre tu propio código"
+    ],
+    "format": [
+      "Taller",
+      "Revisión de tu flujo de desarrollo",
+      "Reglas y plantillas para quedarte"
+    ]
+  },
+  "personal": {
+    "short": "Mentoría personal",
+    "job": "Aprender IA con tus propias tareas, no en cursos",
+    "name": "Mentoría personal de IA",
+    "hook": "Un programa individual para tu trabajo",
+    "pains": [
+      "Muchos cursos, poca práctica",
+      "No está claro por dónde empezar",
+      "Necesitas resultados con tus propias tareas"
+    ],
+    "outcomes": [
+      "Un conjunto de herramientas personal para tu rol",
+      "Trabajo seguro con herramientas de IA",
+      "Tareas reales resueltas juntos"
+    ],
+    "program": [
+      "Revisión de tu trabajo",
+      "Plan de aprendizaje",
+      "Práctica con tus tareas",
+      "Seguimiento y feedback"
+    ],
+    "format": [
+      "Sesiones 1:1",
+      "Deberes entre sesiones",
+      "Chat de apoyo"
+    ]
+  }
+}
