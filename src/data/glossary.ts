@@ -476,8 +476,8 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Codex', en: 'Codex' },
         aka: { ru: 'OpenAI Codex, Codex AI, Codex в ChatGPT', en: 'OpenAI Codex, Codex AI, ChatGPT Codex' },
         def: {
-          ru: 'Codex — программа-агент от OpenAI для программирования на моделях GPT: читает проект, правит файлы, запускает команды и тесты, готовит пулл-реквесты. От чата ChatGPT отличается тем, что сам делает эту работу в проекте, а чат отвечает текстом. Работает в ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице; везде это один агент, и он входит в тарифы ChatGPT, лимиты зависят от тарифа. Устроен как Claude Code и Cursor. Инструкции проекта читает из `AGENTS.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP.',
-          en: 'Codex is a coding agent app from OpenAI on GPT models: it reads the project, edits files, runs commands and tests, and prepares pull requests. Unlike the ChatGPT chat it does this work in the project itself, while the chat answers with text. It runs in ChatGPT, in the desktop app, in the terminal, in the IDE and in the cloud, where tasks run in a separate sandbox; it is one agent everywhere and comes with ChatGPT plans, with limits that depend on the plan. It is built like Claude Code and Cursor. It reads project instructions from `AGENTS.md`, keeps repeatable processes in skills and connects outside systems through MCP.',
+          ru: 'Codex — программа-агент от OpenAI для программирования на моделях GPT; с ChatGPT это разные вещи: чат отвечает текстом, а Codex сам работает в проекте — читает код, правит файлы, запускает команды и тесты, готовит пулл-реквесты. Работает в ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице; везде это один агент, и он входит в тарифы ChatGPT, лимиты зависят от тарифа. Устроен как Claude Code и Cursor. Инструкции проекта читает из `AGENTS.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP.',
+          en: 'Codex is a coding agent app from OpenAI on GPT models, and it is a different thing from ChatGPT: the chat answers with text, while Codex works in the project itself — it reads the code, edits files, runs commands and tests, and prepares pull requests. It runs in ChatGPT, in the desktop app, in the terminal, in the IDE and in the cloud, where tasks run in a separate sandbox; it is one agent everywhere and comes with ChatGPT plans, with limits that depend on the plan. It is built like Claude Code and Cursor. It reads project instructions from `AGENTS.md`, keeps repeatable processes in skills and connects outside systems through MCP.',
         },
         match: { ru: ['(?:OpenAI )?Codex(?: AI| CLI)?'], en: ['(?:OpenAI )?Codex(?: AI| CLI)?'] },
         related: ['openai', 'agents-md', 'claude-code', 'cursor', 'ai-agent'],
@@ -1475,6 +1475,18 @@ export const TERM_SETS: TermSet[] = [
           },
         },
         more: { post: 'openspec', label: { ru: 'OpenSpec: установка, команды и пример изменения', en: 'OpenSpec: setup, commands and a change example' } },
+        compare: {
+          title: { ru: 'OpenSpec, Spec Kit и Kiro', en: 'OpenSpec, Spec Kit and Kiro' },
+          head: { ru: ['OpenSpec', 'Spec Kit', 'Kiro'], en: ['OpenSpec', 'Spec Kit', 'Kiro'] },
+          headSlugs: ['openspec', 'spec-kit'],
+          rows: [
+            { ru: ['Что это', 'открытая программа от Fission AI для вашего агента', 'открытая программа от GitHub для вашего агента', 'среда разработки от AWS со своим агентом'], en: ['What it is', 'an open-source framework by Fission AI for your agent', 'an open-source toolkit by GitHub for your agent', 'an AWS development environment with its own agent'] },
+            { ru: ['Цена', 'бесплатно, лицензия MIT', 'бесплатно, лицензия MIT', 'бесплатный план с лимитами, остальные платные'], en: ['Price', 'free, MIT license', 'free, MIT license', 'a free plan with limits, paid plans above it'] },
+            { ru: ['Файлы изменения', 'proposal.md, дельта к спекам, design.md, tasks.md', 'конституция, спецификация, план, задачи', 'requirements.md (или bugfix.md), design.md, tasks.md'], en: ['Change files', 'proposal.md, a spec delta, design.md, tasks.md', 'constitution, spec, plan, tasks', 'requirements.md (or bugfix.md), design.md, tasks.md'] },
+            { ru: ['Порядок шагов', 'шаги можно повторять в любом порядке', 'по фазам: конституция → спецификация → план → задачи → код', 'требования → дизайн → задачи'], en: ['Step order', 'steps can repeat in any order', 'by phases: constitution → spec → plan → tasks → code', 'requirements → design → tasks'] },
+            { ru: ['С какими агентами', '30+ агентов через команды', 'разные агенты: Copilot, Claude Code и другие', 'свой агент Kiro'], en: ['Which agents', '30+ agents through slash commands', 'different agents: Copilot, Claude Code and others', 'Kiro’s own agent'] },
+          ],
+        },
       },
       {
         slug: 'spec-kit',
