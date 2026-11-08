@@ -1,0 +1,1402 @@
+{
+ "ai-agent": {
+  "name": "Agent IA",
+  "aka": "agent LLM, IA agentique",
+  "def": "Un agent IA (agent LLM, IA agentique) est un programme dans lequel un LLM travaille à l’intérieur d’un harness (le harnais de l’agent) : il choisit lui-même ses étapes, lit des fichiers, exécute des commandes, appelle des outils et vérifie le résultat directement dans votre environnement. Exemple : Claude Code reçoit la tâche « corriger le test qui échoue », lit le code, fait une modification, lance les tests et recommence jusqu’à ce que le test passe.",
+  "faq.0.q": "En quoi un agent IA diffère-t-il d’un chatbot ?",
+  "faq.0.a": "Un chatbot répond par du texte. Un agent IA choisit lui-même ses étapes, lit des fichiers, exécute des commandes et vérifie le résultat dans votre environnement.",
+  "faq.1.q": "Comment un agent IA est-il construit ?",
+  "faq.1.a": "Un réseau de neurones (LLM) travaille à l’intérieur d’un harness : le modèle raisonne, et le harness lui donne des outils, des permissions et des vérifications.",
+  "source.label": "Anthropic : Building effective agents",
+  "seo.title": "Agent IA (agent LLM) = LLM + harness : définition",
+  "seo.description": "Un agent IA est un programme où un LLM travaille dans un harness et mène la tâche jusqu’au résultat. Architecture d’un agent LLM en un tableau, avec des exemples : Claude Code, Codex, Cursor.",
+  "parts.title": "Exemples d’agents IA",
+  "more.label": "Agent IA = LLM + harness : LLM, harness et agent comparés",
+  "matrix.title": "De quoi est fait un agent IA",
+  "matrix.head": [
+   "LLM",
+   "Harness",
+   "Agent IA"
+  ],
+  "matrix.legend": "Architecture d’un agent LLM : LLM + harness (boucle, outils, contexte, règles, vérifications). ✓ présent · ✗ absent",
+  "matrix.rows.1": [
+   "Boucle",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Outils",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.3": [
+   "Connexions MCP",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Contexte",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.5": [
+   "Mémoire",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Règles, bible, skills",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.7": [
+   "Permissions sur les outils",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.8": [
+   "Sandbox",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.9": [
+   "Hooks",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.10": [
+   "Vérifications statiques",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.12": [
+   "Orchestration",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.13": [
+   "Logs et traçage",
+   "no",
+   "yes",
+   "yes"
+  ]
+ },
+ "human-in-the-loop": {
+  "name": "Humain dans la boucle",
+  "aka": "HITL, validation humaine",
+  "def": "L’humain dans la boucle (HITL, human in the loop) signifie que l’agent ne termine pas seul : aux étapes importantes, il attend l’accord d’une personne. Points d’arrêt typiques : l’octroi de permissions, l’écriture dans un système en production, l’acceptation du résultat. À côté existe l’humain sur la boucle (human on the loop) : l’agent travaille sans s’arrêter, et une personne suit son journal d’actions et peut interrompre le travail.",
+  "faq.0.q": "Qu’est-ce que l’humain dans la boucle ?",
+  "faq.0.a": "Un principe selon lequel l’agent ne termine pas le travail seul : une personne tranche aux étapes clés.",
+  "faq.1.q": "Où l’agent attend-il une personne ?",
+  "faq.1.a": "En général avant d’accorder des permissions, d’écrire dans un système en production et d’accepter le résultat.",
+  "source.label": "Wikipédia : Human-in-the-loop",
+  "seo.title": "Humain dans la boucle (HITL) pour les agents IA : où l’agent attend une validation",
+  "seo.description": "Ce que signifie l’humain dans la boucle pour les agents IA : aux étapes importantes, l’agent attend la décision d’une personne. Où placer les points de validation et en quoi cela diffère de l’humain sur la boucle.",
+  "compare.title": "Quelle part de décision revient à la personne",
+  "compare.head": [
+   "Humain dans la boucle",
+   "Humain sur la boucle",
+   "Sans humain"
+  ],
+  "compare.rows.0": [
+   "Qui décide à une étape importante",
+   "la personne valide",
+   "l’agent ; la personne surveille",
+   "l’agent"
+  ],
+  "compare.rows.1": [
+   "Quand la personne intervient",
+   "à chaque point d’arrêt",
+   "quand quelque chose semble anormal",
+   "jamais"
+  ],
+  "compare.rows.2": [
+   "Exemple pour un agent",
+   "une invite « autoriser l’écriture dans la base de données ? »",
+   "l’agent travaille, vous suivez le journal et pouvez l’arrêter",
+   "un agent dans un bac à sable (sandbox) sur le staging"
+  ],
+  "compare.rows.3": [
+   "Où cela convient",
+   "systèmes en production, argent, données d’autrui",
+   "tâches longues aux risques connus",
+   "tout ce qui se défait facilement"
+  ]
+ },
+ "llm": {
+  "aka": "grand modèle de langage, modèle LLM",
+  "def": "Un LLM (grand modèle de langage, large language model) est un réseau de neurones entraîné sur de gros volumes de texte et de code, qui prolonge un texte à partir d’un prompt ; il lit et écrit le texte en tokens. Seul, il se contente de répondre ; pour agir dans votre environnement, il lui faut un harness (le harnais de l’agent), et un modèle associé à un harness forme un agent.",
+  "faq.0.q": "Que signifie LLM en informatique ?",
+  "faq.0.a": "Un grand modèle de langage : un réseau de neurones entraîné sur de grandes quantités de texte et de code, qui prolonge un texte à la demande.",
+  "faq.1.q": "En quoi un LLM diffère-t-il d’un agent IA ?",
+  "faq.1.a": "Un modèle seul répond uniquement par du texte. Pour agir dans votre environnement, il lui faut un harness, et le modèle plus le harness forment l’agent.",
+  "faq.2.q": "Dit-on un LLM ou une LLM ?",
+  "faq.2.a": "On dit un LLM : le sigle s’épelle lettre par lettre, et la première lettre se prononce « èl » ; en français, on parle d’un modèle, donc au masculin.",
+  "source.label": "Wikipédia : Grand modèle de langage",
+  "seo.title": "LLM : définition d’un grand modèle de langage et différence avec un agent IA",
+  "seo.description": "Le LLM en termes simples : un grand modèle de langage lit le texte en tokens, garde un contexte et ne fait que répondre seul ; avec un harness, il devient un agent. Exemples : GPT, Claude, DeepSeek, Alice AI.",
+  "compare.title": "Exemples de LLM : qui les fabrique et quels agents tournent dessus",
+  "compare.head": [
+   "Modèles (LLM)",
+   "Agents et outils par-dessus"
+  ],
+  "compare.rows.2": [
+   "Anysphere",
+   "Composer",
+   "Cursor (avec aussi les modèles d’autres éditeurs)"
+  ],
+  "compare.rows.3": [
+   "DeepSeek",
+   "les séries V et R",
+   "son propre chat et son API ; branché aux agents via l’API"
+  ],
+  "compare.rows.4": [
+   "Yandex",
+   "Alice AI (anciennement YandexGPT)",
+   "l’assistant et l’agent d’entreprise Alice AI Pro"
+  ],
+  "compare.rows.5": [
+   "Nous Research",
+   "Hermes",
+   "Hermes Agent (fonctionne aussi avec les modèles d’autres éditeurs)"
+  ]
+ },
+ "ide": {
+  "aka": "environnement de développement intégré, IDE IA, IDE natif IA",
+  "def": "Un IDE est le programme dans lequel on écrit du code : éditeur, suggestions, débogueur et lanceur de projet dans une seule fenêtre. VS Code et JetBrains en sont des exemples typiques. Les agents se branchent à un IDE par des extensions et montrent les modifications directement dans les fichiers. Un IDE IA (IDE natif IA) est un IDE où l’agent est intégré dès le départ, comme dans Cursor, un fork de VS Code. L’alternative est un agent en ligne de commande dans le terminal, comme Claude Code et Codex.",
+  "faq.0.q": "Qu’est-ce qu’un IDE en programmation ?",
+  "faq.0.a": "Le programme dans lequel on écrit du code : éditeur, suggestions, débogueur et lanceur de projet dans une seule fenêtre. VS Code et JetBrains en sont des exemples.",
+  "faq.1.q": "Qu’est-ce qu’un IDE IA ?",
+  "faq.1.a": "Un environnement où un agent IA est intégré dès le départ, comme Cursor.",
+  "source.label": "Wikipédia : Environnement de développement intégré",
+  "seo.title": "IDE IA ou agent en ligne de commande : ce qu’est un IDE IA et comment les agents travaillent dans VS Code et JetBrains",
+  "seo.description": "Ce qu’est un IDE IA : un IDE avec un agent intégré, comme Cursor, un fork de VS Code. IDE IA, agent en ligne de commande dans le terminal (Claude Code, Codex) et VS Code ou JetBrains avec extensions d’agent comparés.",
+  "notes.title": "IDE classique, IDE IA et agent en ligne de commande",
+  "notes.items.0.name": "IDE classique",
+  "notes.items.0.text": "VS Code, JetBrains. Vous écrivez le code ; l’environnement suggère et l’exécute.",
+  "notes.items.1.name": "IDE + extension d’agent",
+  "notes.items.1.text": "VS Code ou JetBrains avec Claude Code ou Codex. L’agent s’installe séparément, écrit du code à partir de votre tâche avec les modèles de son éditeur, et vous relisez les modifications dans les fichiers.",
+  "notes.items.2.name": "IDE IA",
+  "notes.items.2.text": "Cursor. L’agent fait partie du programme lui-même, et vous choisissez des modèles de plusieurs éditeurs.",
+  "notes.items.3.name": "Agent en ligne de commande",
+  "notes.items.3.text": "Claude Code, Codex CLI. Un programme séparé, sans IDE nécessaire ; vous relisez les modifications dans votre éditeur ou dans git."
+ },
+ "vs-code": {
+  "def": "VS Code (Visual Studio Code) est un éditeur de code gratuit et open source de Microsoft. Les fonctions s’ajoutent par des extensions, y compris des agents IA : GitHub Copilot, Claude Code, Codex, Cline. Cursor est construit dessus.",
+  "faq.0.q": "Quels agents IA fonctionnent dans VS Code ?",
+  "faq.0.a": "GitHub Copilot, Claude Code, Codex, Cline et d’autres : ils s’installent comme extensions.",
+  "faq.1.q": "En quoi VS Code diffère-t-il de Cursor ?",
+  "faq.1.a": "Cursor est construit sur VS Code avec l’agent intégré dès le départ. Dans VS Code, un agent s’ajoute comme extension.",
+  "source.label": "Site officiel de VS Code",
+  "seo.title": "Agents IA dans VS Code : Claude Code, Codex et Copilot dans Visual Studio Code",
+  "seo.description": "VS Code est l’éditeur de code gratuit de Microsoft. Quels agents IA y fonctionnent : GitHub Copilot, Claude Code, Codex, Cline — lesquels sont gratuits et comment Claude Code travaille dans VS Code.",
+  "notes.title": "Agents IA pour VS Code",
+  "notes.items.0.text": "intégré à VS Code par Microsoft, avec un mode agent et une offre gratuite limitée.",
+  "notes.items.1.text": "une extension d’Anthropic : le même agent que dans le terminal, avec un abonnement Claude ou l’API à l’usage.",
+  "notes.items.2.text": "une extension d’OpenAI, incluse dans les abonnements ChatGPT.",
+  "notes.items.3.text": "une extension gratuite et open source : vous branchez votre propre clé pour n’importe quel modèle et ne payez que le modèle.",
+  "notes.items.4.text": "l’agent de Sber avec une extension VS Code.",
+  "notes.items.5.text": "un éditeur à part construit sur VS Code avec un agent intégré ; il s’installe à la place de VS Code, et les extensions de VS Code y fonctionnent."
+ },
+ "terminal": {
+  "name": "Terminal",
+  "aka": "ligne de commande, CLI",
+  "def": "Un terminal est une fenêtre où l’on saisit des commandes sous forme de texte, aussi appelée CLI (interface en ligne de commande, command-line interface). Un agent IA en ligne de commande travaille directement dans le terminal : il voit les mêmes fichiers et programmes que vous et les lance lui-même — tests, builds, git. Claude Code et Codex CLI en sont des exemples, et OpenCode est un agent gratuit et open source. L’accès est limité par des règles de permissions.",
+  "faq.0.q": "Qu’est-ce qu’une CLI ?",
+  "faq.0.a": "Une interface en ligne de commande : une fenêtre où l’on saisit des commandes sous forme de texte. Le terminal, c’est la même chose.",
+  "faq.1.q": "Quels agents en ligne de commande existent ?",
+  "faq.1.a": "Claude Code et Codex CLI, et OpenCode, gratuit et open source. Ils travaillent directement dans le terminal et lancent eux-mêmes les tests, les builds et git.",
+  "source.label": "Wikipédia : Interface en ligne de commande",
+  "seo.title": "Agents IA en ligne de commande : ce qu’est le terminal (CLI) et quels agents de code y tournent, gratuits compris",
+  "seo.description": "Le terminal (CLI) est l’endroit où l’on saisit des commandes sous forme de texte. Ce qu’est un agent IA en ligne de commande : il lance lui-même les tests, les builds et git dans le terminal. Claude Code, Codex CLI, OpenCode et Hermes Agent gratuits, ce qui est arrivé à Gemini CLI, et en quoi un agent CLI diffère de celui d’un IDE.",
+  "notes.title": "Agents IA en ligne de commande",
+  "notes.items.0.text": "l’agent d’Anthropic : on le lance avec la commande claude dans le dossier du projet ; avec un abonnement Claude ou l’API à l’usage.",
+  "notes.items.1.text": "l’agent d’OpenAI : la commande codex, incluse dans les abonnements ChatGPT.",
+  "notes.items.2.text": "un agent gratuit et open source : il fonctionne avec les modèles de nombreux éditeurs et avec des modèles locaux ; vous ne payez que le modèle.",
+  "notes.items.3.text": "l’agent open source de Google sur les modèles Gemini ; depuis le 18 juin 2026, il ne fonctionne que pour les entreprises et avec des clés d’API payantes.",
+  "notes.items.4.text": "l’agent de Google ; depuis le 18 juin 2026, il a remplacé Gemini CLI pour les particuliers, et son code est fermé.",
+  "notes.items.5.text": "l’agent gratuit et open source de Nous Research : il tourne sur votre serveur avec n’importe quel modèle ; on le pilote depuis le terminal ou par des messageries.",
+  "notes.items.6.name": "En quoi il diffère d’un agent dans un IDE",
+  "notes.items.6.text": "pas d’éditeur nécessaire : vous relisez les modifications dans votre propre éditeur ou dans git, et vous pouvez lancer l’agent depuis des scripts."
+ },
+ "tool": {
+  "name": "Outil et appel d’outil",
+  "aka": "appel d’outil, utilisation d’outils, appel de fonction",
+  "def": "Un outil est une action que l’agent peut appeler : lire un fichier, trouver un ticket dans Jira, lancer une requête sur une base de données. MCP est une manière ouverte de brancher à un agent des jeux d’outils prêts à l’emploi de systèmes externes. L’ensemble des outils définit ce que l’agent peut faire et ce qu’il peut atteindre. L’appel d’outil (appel de fonction, function calling) fonctionne ainsi : le modèle renvoie un nom de fonction et des arguments, par exemple `search_jira` avec la requête « login » ; le harness (le harnais de l’agent) exécute l’appel et retransmet le résultat au modèle.",
+  "faq.0.q": "Qu’est-ce qu’un appel d’outil ?",
+  "faq.0.a": "L’appel d’un outil : le modèle renvoie un nom de fonction et des paramètres, le harness exécute l’appel et retransmet le résultat au modèle.",
+  "faq.1.q": "En quoi MCP diffère-t-il de l’appel d’outil ?",
+  "faq.1.a": "L’appel d’outil est la manière dont un modèle appelle une action. MCP est un protocole ouvert pour brancher à un agent des jeux d’outils prêts à l’emploi de systèmes externes.",
+  "source.label": "Anthropic : documentation Tool use",
+  "seo.title": "Appel d’outil ou MCP : ce qu’est un outil d’agent IA et comment fonctionne l’appel de fonction",
+  "seo.description": "L’appel d’outil (function calling) en termes simples : le modèle choisit un outil et ses arguments, comme lire un fichier ou interroger une base de données, et le harness exécute l’appel. Les étapes d’un appel d’outil, et appel d’outil ou MCP.",
+  "notes.title": "Comment fonctionne un appel d’outil",
+  "notes.items.0.name": "1. Description",
+  "notes.items.0.text": "avec la tâche, le harness envoie au modèle une liste d’outils. Pour chacun : un nom (`search_jira`), ce qu’il fait (« cherche des tickets Jira ») et des paramètres (`query`, une chaîne de recherche).",
+  "notes.items.1.name": "2. L’appel du modèle",
+  "notes.items.1.text": "le modèle renvoie un appel en JSON : `{\"name\": \"search_jira\", \"arguments\": {\"query\": \"login\"}}`.",
+  "notes.items.2.name": "3. Exécution",
+  "notes.items.2.text": "le harness vérifie l’appel par rapport aux permissions et interroge Jira. Les écritures et les suppressions sont d’abord soumises à une personne pour validation.",
+  "notes.items.3.name": "4. Le résultat",
+  "notes.items.3.text": "le harness ajoute la réponse de Jira (« 3 tickets : … ») au contexte et relance le modèle. Le modèle appelle l’outil suivant ou rédige la réponse.",
+  "notes.items.4.name": "Quels modèles le gèrent",
+  "notes.items.4.text": "les modèles d’OpenAI (GPT), d’Anthropic (Claude), de DeepSeek et d’autres LLM récents ; les modèles locaux via Ollama, si le modèle gère les outils.",
+  "notes.items.5.name": "Appel d’outil ou MCP",
+  "notes.items.5.text": "l’appel d’outil est le format d’appel des étapes 2 à 4. MCP est un protocole par lequel un système externe (Jira, une base 1C) donne à l’agent sa propre liste d’outils et exécute leurs appels."
+ },
+ "cloud-agent": {
+  "name": "Agent de code dans le cloud",
+  "aka": "agent cloud, agent en arrière-plan, agent distant",
+  "def": "Un agent de code dans le cloud est un agent IA qui exécute une tâche sur un serveur distant, dans un environnement isolé contenant une copie de votre dépôt. Contrairement à un agent local, il n’a pas besoin de votre ordinateur : vous donnez la tâche depuis un téléphone, dans l’application ou le navigateur, et vous fermez l’ordinateur portable. Le résultat arrive sous forme d’une branche ou d’une pull request prête. Codex cloud, Claude Code sur le web et les agents cloud de Cursor fonctionnent ainsi.",
+  "faq.0.q": "Qu’est-ce qu’un agent cloud ?",
+  "faq.0.a": "Un agent IA qui exécute une tâche sur un serveur distant avec une copie de votre dépôt et renvoie une branche ou une pull request prête.",
+  "faq.1.q": "En quoi un agent cloud diffère-t-il d’un agent local ?",
+  "faq.1.a": "Un agent cloud n’a pas besoin de votre ordinateur : vous pouvez donner une tâche depuis un téléphone et fermer l’ordinateur portable. Un agent local tourne tant que l’ordinateur est allumé, mais il voit vos fichiers et vos programmes.",
+  "faq.2.q": "Quels agents cloud existent ?",
+  "faq.2.a": "Codex cloud, Claude Code sur le web et les agents cloud de Cursor.",
+  "source.label": "Documentation de Claude Code dans le cloud",
+  "seo.title": "Agents de code dans le cloud : cloud ou local, et lancer Codex ou Claude Code depuis un téléphone",
+  "seo.description": "Un agent de code dans le cloud travaille sur un serveur distant avec une copie de votre dépôt et renvoie une branche prête. Codex cloud ou local, agents en arrière-plan ou cloud, et comment lancer Codex ou Claude Code depuis un téléphone, avec ou sans ordinateur allumé.",
+  "notes.title": "Agent cloud ou agent local",
+  "notes.items.0.name": "Où il s’exécute",
+  "notes.items.0.text": "un agent cloud tourne sur le serveur de l’éditeur de l’agent ; un agent local tourne sur votre ordinateur.",
+  "notes.items.1.name": "A-t-il besoin de votre ordinateur",
+  "notes.items.1.text": "un agent cloud, non : vous pouvez lancer une tâche depuis votre téléphone et fermer l’ordinateur portable. Un agent local travaille tant que votre ordinateur est allumé.",
+  "notes.items.2.name": "Depuis votre téléphone",
+  "notes.items.2.text": "vous donnez une tâche à un agent cloud dans l’application mobile ou le navigateur, sans ordinateur. Vous pouvez aussi piloter un agent local depuis votre téléphone, avec Remote Control dans Claude Code et Remote dans l’application ChatGPT pour Codex, mais votre ordinateur doit être allumé et connecté.",
+  "notes.items.3.name": "Ce qu’il voit",
+  "notes.items.3.text": "un agent cloud ne voit que le dépôt et ce que vous connectez à son environnement ; un agent local voit vos fichiers, vos programmes et vos connexions.",
+  "notes.items.4.name": "Ce que vous obtenez",
+  "notes.items.4.text": "un agent cloud renvoie une branche ou une pull request ; un agent local modifie les fichiers sous vos yeux.",
+  "notes.items.5.name": "Quand choisir lequel",
+  "notes.items.5.text": "le cloud pour plusieurs tâches en parallèle et les tâches longues ; le local quand il faut votre banc de test, votre navigateur ou des retouches rapides au fil de l’eau."
+ },
+ "sandbox": {
+  "name": "Bac à sable (sandbox)",
+  "def": "Un bac à sable (sandbox) est un espace cloisonné où s’exécutent les actions d’un agent : seuls les dossiers autorisés sont visibles et seuls les hôtes réseau autorisés sont joignables. Si l’agent se trompe ou se fait piéger, les dégâts restent à l’intérieur. Certains produits ne cloisonnent que les commandes du terminal, d’autres exécutent tout l’agent dans un conteneur ou une machine virtuelle.",
+  "faq.0.q": "Qu’est-ce qu’un sandbox pour un agent IA ?",
+  "faq.0.a": "Un espace cloisonné où s’exécutent les actions de l’agent : seuls les dossiers autorisés sont visibles et seuls les hôtes réseau autorisés sont joignables.",
+  "faq.1.q": "Pourquoi un agent a-t-il besoin d’un sandbox ?",
+  "faq.1.a": "Si l’agent fait une erreur ou se fait piéger, les dégâts restent à l’intérieur du sandbox.",
+  "source.label": "Documentation du sandboxing de Claude Code"
+ },
+ "subagent": {
+  "name": "Sous-agent",
+  "def": "Un sous-agent est un assistant que l’agent principal lance pour une partie distincte du travail, comme une recherche dans le code ou une relecture. Il a son propre contexte vierge et ne renvoie que le résultat à la conversation principale.",
+  "faq.0.q": "Qu’est-ce qu’un sous-agent ?",
+  "faq.0.a": "Un assistant que l’agent principal lance pour une partie distincte du travail, comme la recherche dans le code ou la relecture.",
+  "faq.1.q": "Pourquoi utiliser des sous-agents ?",
+  "faq.1.a": "Un sous-agent a son propre contexte vierge et ne renvoie que le résultat à la conversation principale, ce qui garde le contexte de l’agent principal propre.",
+  "source.label": "Documentation des sous-agents de Claude Code"
+ },
+ "claude-code": {
+  "aka": "Claude Code CLI, agent de code d’Anthropic",
+  "def": "Claude Code est un agent de code d’Anthropic : il lit le projet, modifie des fichiers, lance des commandes et des tests, et travaille avec git. Contrairement à Claude dans un chat, il a accès au projet : le chat répond par du texte, tandis que Claude Code modifie lui-même les fichiers et lance les commandes. Il fonctionne dans le terminal (CLI), dans VS Code et JetBrains, dans l’application de bureau et dans le navigateur, et c’est le même agent partout. Il n’a pas de modèle propre : il tourne sur les modèles Claude (Opus, Sonnet, Haiku) ; on change de modèle avec `/model`. Il lit les règles du projet dans `CLAUDE.md`, garde les processus répétables dans des skills et connecte les systèmes externes via MCP. Ses alternatives les plus proches sont Codex et Cursor.",
+  "faq.0.q": "En quoi Claude diffère-t-il de Claude Code ?",
+  "faq.0.a": "Claude dans un chat répond par du texte. Claude Code est un agent de code : il lit le projet, modifie des fichiers et lance lui-même des commandes et des tests.",
+  "faq.1.q": "Où fonctionne Claude Code ?",
+  "faq.1.a": "Dans le terminal, dans VS Code et JetBrains, dans l’application de bureau et dans le navigateur. C’est le même agent partout.",
+  "faq.2.q": "Quels modèles utilise Claude Code ?",
+  "faq.2.a": "Les modèles Claude : Opus, Sonnet et Haiku. On change de modèle avec la commande /model.",
+  "source.label": "Documentation de Claude Code",
+  "seo.title": "Qu’est-ce que Claude Code ? Claude Code ou chat Claude, modèles et mise en route",
+  "seo.description": "À quoi sert Claude Code : il lit votre projet, modifie des fichiers et lance des tests. Claude Code ou chat Claude, modèles utilisés, CLAUDE.md, skills et MCP.",
+  "more.label": "Claude Code, Codex, Cursor et Hermes Agent : lequel choisir",
+  "compare.title": "Claude Code ou Claude : la différence",
+  "compare.head": [
+   "Chat Claude",
+   "Claude Code"
+  ],
+  "compare.rows.0": [
+   "Où il fonctionne",
+   "navigateur, téléphone, application",
+   "terminal, VS Code et JetBrains, application, navigateur"
+  ],
+  "compare.rows.1": [
+   "Voit votre projet",
+   "non, seulement ce que vous collez",
+   "oui, il lit les fichiers"
+  ],
+  "compare.rows.2": [
+   "Ce qu’il fait",
+   "répond par du texte",
+   "modifie des fichiers, lance des commandes et des tests, travaille avec git"
+  ],
+  "compare.rows.3": [
+   "Modèle",
+   "modèles Claude",
+   "les mêmes modèles Claude, changés avec /model"
+  ],
+  "compare.rows.4": [
+   "Règles du projet",
+   "projets et instructions",
+   "un fichier CLAUDE.md dans le dépôt"
+  ],
+  "compare.rows.5": [
+   "Systèmes externes",
+   "connecteurs",
+   "serveurs MCP"
+  ],
+  "compare.rows.6": [
+   "Tarifs",
+   "un abonnement Claude",
+   "le même abonnement Claude (Pro, Max) ou l’API à l’usage"
+  ],
+  "matrix.title": "Ce qu’ils ont en commun et en quoi ils diffèrent",
+  "matrix.legend": "✓ présent · ✗ absent",
+  "matrix.rows.0": [
+   "Modifie le code, lance des commandes",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.1": [
+   "Fichier de règles",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Éditeur propre",
+   "no",
+   "no",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.3": [
+   "Terminal",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Tâches dans le cloud",
+   "yes",
+   "yes",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.5": [
+   "Modèles de plusieurs éditeurs",
+   "no",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Votre propre serveur",
+   "no",
+   "no",
+   "no",
+   "yes"
+  ]
+ },
+ "clauding": {
+  "aka": "travailler avec Claude",
+  "def": "Clauding est un mot informel pour désigner le travail avec Claude ou par son intermédiaire : une personne écrit la tâche, relit le résultat et l’affine jusqu’à ce qu’il soit juste. Il suit le modèle du verbe « googler » : Google renvoie des liens, Claude renvoie un travail terminé que la personne vérifie. Le mot tire son nom de Claude mais convient à n’importe quel assistant IA, comme on dit « googler » même à quelqu’un qui cherche dans Bing ou Yandex. Exemple : au lieu d’écrire soi-même un e-mail à un client, on le confie à Claude, on corrige deux formulations et on l’envoie.",
+  "faq.0.q": "Que signifie clauding ?",
+  "faq.0.a": "Un mot informel pour désigner le travail avec Claude : une personne écrit une tâche, regarde le résultat et l’affine jusqu’à obtenir ce dont elle a besoin.",
+  "faq.1.q": "D’où vient le mot clauding ?",
+  "faq.1.a": "Il suit le modèle de « googler » : Google renvoie des liens, Claude renvoie un travail terminé.",
+  "source.label": "explainx.ai AI dictionary : Clauding",
+  "site.label": "clauding.me, une page sur le terme",
+  "notes.title": "Mots de la source",
+  "notes.items.0.name": "Définition",
+  "notes.items.0.text": "« Clauding is informal shorthand for working with or through Claude » (explainx.ai)"
+ },
+ "codex": {
+  "aka": "OpenAI Codex, Codex AI, ChatGPT Codex",
+  "def": "Codex est une application d’agent de code d’OpenAI fondée sur les modèles GPT, et ce n’est pas la même chose que ChatGPT : le chat répond par du texte, tandis que Codex travaille dans le projet lui-même — il lit le code, modifie des fichiers, lance des commandes et des tests, et prépare des pull requests. Il fonctionne dans ChatGPT, dans l’application de bureau, dans le terminal, dans l’IDE et dans le cloud, où les tâches s’exécutent dans un bac à sable (sandbox) séparé ; c’est un seul agent partout, fourni avec les abonnements ChatGPT, avec des limites qui dépendent de l’abonnement. Il est construit comme Claude Code et Cursor. Il lit les instructions du projet dans `AGENTS.md`, garde les processus répétables dans des skills et connecte les systèmes externes via MCP.",
+  "faq.0.q": "Codex et ChatGPT, est-ce la même chose ?",
+  "faq.0.a": "Non : ChatGPT est un chat qui répond par du texte, Codex est un agent de code qui lit le projet, modifie des fichiers et lance lui-même les tests. Codex est fourni avec les abonnements ChatGPT.",
+  "faq.1.q": "Où fonctionne Codex ?",
+  "faq.1.a": "Dans ChatGPT, dans l’application de bureau, dans le terminal, dans l’IDE et dans le cloud, où les tâches s’exécutent dans un sandbox séparé. C’est le même agent partout.",
+  "faq.2.q": "Quels modèles utilise Codex ?",
+  "faq.2.a": "Les modèles GPT d’OpenAI.",
+  "faq.3.q": "Codex est-il un modèle ou un agent ?",
+  "faq.3.a": "Un agent aujourd’hui. En 2021, Codex était le nom d’un modèle d’OpenAI qui complétait le code et faisait tourner GitHub Copilot ; le nom est resté, et il désigne désormais un agent fondé sur les modèles GPT.",
+  "faq.4.q": "Combien coûte Codex ?",
+  "faq.4.a": "Il n’y a pas de tarif séparé : Codex est fourni avec les abonnements ChatGPT Free, Go, Plus, Pro, Business, Edu et Enterprise. Les limites sont partagées avec ChatGPT Work et dépendent de l’abonnement.",
+  "faq.5.q": "Codex fonctionne-t-il en Russie ?",
+  "faq.5.a": "Pas officiellement : la Russie ne figure pas dans la liste des pays où OpenAI propose ses services.",
+  "source.label": "Dépôt GitHub de Codex",
+  "seo.title": "Qu’est-ce qu’OpenAI Codex : Codex et ChatGPT Chat et Work",
+  "seo.description": "OpenAI Codex est un agent de code qui lit votre dépôt, modifie des fichiers et lance des tests. En quoi il diffère de ChatGPT Chat et Work, où il fonctionne et quels abonnements l’incluent.",
+  "more.label": "Claude Code, Codex, Cursor et Hermes Agent : lequel choisir",
+  "compare.title": "Codex et ChatGPT : Chat et Work",
+  "compare.rows.0": [
+   "Ce que c’est",
+   "un chat",
+   "un agent pour les tâches en plusieurs étapes",
+   "un agent de code"
+  ],
+  "compare.rows.1": [
+   "Ce que vous obtenez",
+   "une réponse en texte",
+   "un livrable terminé : recherche, document, diapositives, tableur",
+   "des modifications de code, des tests qui passent, une pull request"
+  ],
+  "compare.rows.2": [
+   "Voit votre projet",
+   "non, seulement ce que vous collez",
+   "les fichiers auxquels vous lui donnez accès",
+   "oui, il lit le dépôt"
+  ],
+  "compare.rows.3": [
+   "Où l’ouvrir",
+   "l’application et le site de ChatGPT",
+   "l’application et le site de ChatGPT",
+   "l’application de bureau ChatGPT, le terminal (Codex CLI), l’IDE, le cloud"
+  ],
+  "compare.rows.4": [
+   "Modèle",
+   "modèles GPT",
+   "modèles GPT",
+   "les mêmes modèles GPT"
+  ],
+  "compare.rows.5": [
+   "Abonnement",
+   "abonnements ChatGPT",
+   "limites partagées avec Codex",
+   "inclus dans les abonnements ChatGPT ; limites partagées avec Work"
+  ],
+  "matrix.title": "Ce qu’ils ont en commun et en quoi ils diffèrent",
+  "matrix.legend": "✓ présent · ✗ absent",
+  "matrix.rows.0": [
+   "Modifie le code, lance des commandes",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.1": [
+   "Fichier de règles",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Éditeur propre",
+   "no",
+   "no",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.3": [
+   "Terminal",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Tâches dans le cloud",
+   "yes",
+   "yes",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.5": [
+   "Modèles de plusieurs éditeurs",
+   "no",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Votre propre serveur",
+   "no",
+   "no",
+   "no",
+   "yes"
+  ]
+ },
+ "cursor": {
+  "aka": "Cursor AI, Cursor IDE",
+  "def": "Cursor est une application d’éditeur de code d’Anysphere, construite sur VS Code, avec un agent IA intégré : vous travaillez dans l’éditeur, l’agent est à côté de vous, et vous choisissez un modèle parmi ceux de différents éditeurs ou utilisez son propre modèle Composer. L’agent fait ce que font Claude Code et Codex : il lit le projet, modifie des fichiers, lance des commandes ; il existe aussi une version pour le terminal et des agents cloud. Il lit les règles du projet dans `AGENTS.md` et ses propres règles dans `.cursor/rules`, et connecte les systèmes externes via MCP.",
+  "faq.0.q": "Qu’est-ce que Cursor AI ?",
+  "faq.0.a": "Un éditeur de code d’Anysphere construit sur VS Code avec un agent IA intégré : vous travaillez dans l’éditeur, et l’agent à côté de vous lit le projet, modifie des fichiers et lance des commandes.",
+  "faq.1.q": "Quels modèles propose Cursor ?",
+  "faq.1.a": "Des modèles de différents éditeurs au choix, plus le modèle propre à Cursor, Composer.",
+  "faq.2.q": "Règles Cursor ou AGENTS.md ?",
+  "faq.2.a": "Cursor lit les deux : AGENTS.md est un fichier commun à différents agents, et les règles de .cursor/rules sont propres à Cursor et peuvent cibler des fichiers précis.",
+  "source.label": "Site officiel de Cursor",
+  "seo.title": "Qu’est-ce que Cursor AI : modèles, agent et règles ou AGENTS.md",
+  "seo.description": "Cursor est un éditeur de code fondé sur VS Code avec un agent IA intégré. Les modèles proposés, où se trouvent les règles (.cursor/rules ou AGENTS.md) et en quoi il diffère de Claude Code.",
+  "more.label": "Claude Code, Codex, Cursor et Hermes Agent : lequel choisir",
+  "also.0.label": "Cursor pour 1C via MCP",
+  "notes.title": "Cursor : modèles, agent et règles",
+  "notes.items.0.name": "Modèles",
+  "notes.items.0.text": "son propre Composer, Grok, Claude et Gemini ; les modèles d’OpenAI jusqu’à la coupure annoncée pour le 12 novembre 2026. La gamme dépend de l’abonnement : l’offre gratuite en reçoit moins. Si un fournisseur bloque votre région, vous pouvez ajouter votre propre clé d’API.",
+  "notes.items.1.name": "L’agent",
+  "notes.items.1.text": "modes : Agent modifie les fichiers et lance les commandes lui-même, Ask ne fait que répondre, Plan écrit d’abord un plan. Il fonctionne dans l’éditeur, dans le terminal et comme agent cloud.",
+  "notes.items.2.name": "Règles du projet",
+  "notes.items.2.text": "le dossier `.cursor/rules` (l’ancien fichier `.cursorrules` fonctionne encore) et `AGENTS.md` à la racine du dépôt.",
+  "notes.items.3.name": "Abonnements",
+  "notes.items.3.text": "Hobby gratuit avec limites, Pro à 20 $, Pro+ à 60 $ et Ultra à 200 $ par mois, Teams à 40 $ par utilisateur.",
+  "notes.items.4.name": "Sur quoi il est construit",
+  "notes.items.4.text": "construit sur VS Code : les extensions de VS Code y fonctionnent.",
+  "matrix.title": "Ce qu’ils ont en commun et en quoi ils diffèrent",
+  "matrix.legend": "✓ présent · ✗ absent",
+  "matrix.rows.0": [
+   "Modifie le code, lance des commandes",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.1": [
+   "Fichier de règles",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Éditeur propre",
+   "no",
+   "no",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.3": [
+   "Terminal",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Tâches dans le cloud",
+   "yes",
+   "yes",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.5": [
+   "Modèles de plusieurs éditeurs",
+   "no",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Votre propre serveur",
+   "no",
+   "no",
+   "no",
+   "yes"
+  ]
+ },
+ "hermes-agent": {
+  "aka": "agent IA Hermes",
+  "def": "Hermes Agent est un agent gratuit et open source de Nous Research que l’on installe sur son propre serveur ou ordinateur et que l’on connecte à n’importe quel modèle, via l’API d’un éditeur ou en local. Il fait ce que font les agents de code, et pas seulement pour le code : l’agent lui-même tourne sur votre serveur ou votre ordinateur, et vous lui parlez par le terminal, une application de bureau (en préversion) ou des messageries : Telegram, Slack, Discord et d’autres se branchent comme intégrations. Il se souvient du contexte d’une session à l’autre et transforme ce qui a marché en skills. Il lit les règles du projet dans `AGENTS.md`.",
+  "faq.0.q": "Qu’est-ce que Hermes Agent ?",
+  "faq.0.a": "Un agent gratuit et open source de Nous Research que l’on installe sur son serveur ou son ordinateur et que l’on fait tourner avec n’importe quel modèle.",
+  "faq.1.q": "Comment parle-t-on à Hermes Agent ?",
+  "faq.1.a": "Par le terminal, l’application de bureau ou des messageries : Telegram, Slack, Discord et d’autres se connectent comme intégrations.",
+  "source.label": "Dépôt GitHub de Hermes Agent",
+  "seo.title": "Qu’est-ce que Hermes Agent : l’agent ouvert de Nous Research, mémoire et skills",
+  "seo.description": "Ce qu’est Hermes Agent : un agent gratuit et open source de Nous Research qui tourne sur votre serveur ou votre ordinateur avec des modèles locaux, se souvient du contexte et écrit ses propres skills.",
+  "more.label": "Claude Code, Codex, Cursor et Hermes Agent : lequel choisir",
+  "matrix.title": "Ce qu’ils ont en commun et en quoi ils diffèrent",
+  "matrix.legend": "✓ présent · ✗ absent",
+  "matrix.rows.0": [
+   "Modifie le code, lance des commandes",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.1": [
+   "Fichier de règles",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Éditeur propre",
+   "no",
+   "no",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.3": [
+   "Terminal",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Tâches dans le cloud",
+   "yes",
+   "yes",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.5": [
+   "Modèles de plusieurs éditeurs",
+   "no",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Votre propre serveur",
+   "no",
+   "no",
+   "no",
+   "yes"
+  ]
+ },
+ "opencode": {
+  "aka": "Open Code",
+  "def": "OpenCode est un agent de code gratuit et open source qui fonctionne dans le terminal ; il existe aussi une application de bureau et des extensions d’IDE. Vous choisissez le modèle : Claude, GPT, Gemini et des dizaines d’autres via une API, ou un modèle local ; vous ne payez que le fournisseur du modèle. Modes : Build modifie le code, Plan ne fait que planifier et ne change pas les fichiers. Il lit les règles du projet dans `AGENTS.md`, et la commande `/init` crée ce fichier à partir du dépôt.",
+  "faq.0.q": "Qu’est-ce qu’OpenCode ?",
+  "faq.0.a": "Un agent de code gratuit et open source dans le terminal, avec aussi une application de bureau et des extensions d’IDE. Vous choisissez le modèle et ne payez que son fournisseur.",
+  "faq.1.q": "Quels modèles fonctionnent dans OpenCode ?",
+  "faq.1.a": "Claude, GPT, Gemini et des dizaines d’autres via une API, ainsi qu’un modèle local sur votre ordinateur.",
+  "faq.2.q": "Comment installer OpenCode ?",
+  "faq.2.a": "Sur macOS et Linux : `curl -fsSL https://opencode.ai/v2/install | bash` ; avec Homebrew : `brew install anomalyco/tap/opencode-v2` ; avec npm : `npm install -g @opencode/cli`. Sous Windows, les gestionnaires de paquets ne sont pas pris en charge : téléchargez le binaire depuis le site d’OpenCode.",
+  "faq.3.q": "Combien coûte OpenCode, et existe-t-il une option gratuite ?",
+  "faq.3.a": "L’agent lui-même est gratuit ; vous ne payez que le modèle. Il existe l’abonnement OpenCode Go à 10 $ par mois et OpenCode Console avec une tarification au token ; Console propose des modèles gratuits, certains pour une durée limitée. Un modèle local sur votre ordinateur fonctionne aussi gratuitement.",
+  "faq.4.q": "En quoi OpenCode diffère-t-il de Claude Code ?",
+  "faq.4.a": "Ils sont construits de la même façon : tous deux lisent le projet, modifient des fichiers et lancent des commandes. OpenCode est open source et fonctionne avec n’importe quel modèle, Claude Code seulement avec les modèles Claude.",
+  "source.label": "Documentation d’OpenCode",
+  "seo.title": "Qu’est-ce qu’OpenCode : un agent de code IA gratuit et open source dans le terminal",
+  "seo.description": "OpenCode est un agent de code IA gratuit et open source pour le terminal : n’importe quel modèle ou un modèle local, modes Build et Plan, règles dans AGENTS.md."
+ },
+ "gemini-cli": {
+  "aka": "Google Gemini CLI",
+  "def": "Gemini CLI est l’agent de code open source de Google pour le terminal, fondé sur les modèles Gemini et sorti en juin 2025. Il est construit comme Claude Code et Codex : il lit le projet, modifie des fichiers et lance des commandes ; il prend les règles du projet dans `GEMINI.md` et connecte les systèmes externes via MCP. Il se relie aux IDE par une extension compagnon pour VS Code et par ACP pour JetBrains et Zed. Jusqu’au 18 juin 2026, tout le monde pouvait l’utiliser gratuitement avec un compte Google ; désormais, Antigravity CLI, à code fermé, le remplace pour les particuliers. Gemini CLI lui-même reste open source et fonctionne pour les entreprises avec des abonnements entreprise et pour les clés d’API payantes.",
+  "faq.0.q": "Qu’est-ce que Gemini CLI ?",
+  "faq.0.a": "L’agent de code open source de Google pour le terminal, fondé sur les modèles Gemini et sorti en juin 2025.",
+  "faq.1.q": "Qu’est-il arrivé à Gemini CLI ?",
+  "faq.1.a": "Depuis le 18 juin 2026, Antigravity CLI, fermé, l’a remplacé pour les utilisateurs ordinaires. Gemini CLI lui-même reste open source et fonctionne avec les abonnements entreprise et les clés d’API payantes.",
+  "source.label": "The Register : Google nudges Gemini CLI users to Antigravity",
+  "seo.title": "Qu’est-ce que Gemini CLI et qu’en est-il advenu : l’agent de terminal de Google",
+  "seo.description": "Gemini CLI est l’agent de terminal open source de Google sur les modèles Gemini. Ce qu’il fait, pourquoi les particuliers ont perdu l’accès le 18 juin 2026 et qui peut encore l’utiliser."
+ },
+ "antigravity-cli": {
+  "def": "Antigravity CLI est l’agent de code de Google pour le terminal, lié à l’application Antigravity. En mai 2026, Google a annoncé y transférer Gemini CLI, son agent open source sur les modèles Gemini ; depuis le 18 juin 2026, Gemini CLI ne sert plus les particuliers, accès gratuit compris. Antigravity CLI est à code fermé ; l’ancien Gemini CLI reste open source mais ne fonctionne que pour les entreprises avec des abonnements entreprise et pour les clés d’API payantes.",
+  "faq.0.q": "Qu’est-ce qu’Antigravity CLI ?",
+  "faq.0.a": "L’agent de code fermé de Google pour le terminal, lié à l’application Antigravity. Il a remplacé Gemini CLI pour les utilisateurs ordinaires.",
+  "faq.1.q": "Quand Antigravity CLI a-t-il remplacé Gemini CLI ?",
+  "faq.1.a": "Google a annoncé la transition en mai 2026, et le 18 juin 2026 Gemini CLI a cessé de fonctionner pour les utilisateurs ordinaires.",
+  "source.label": "Virtualization Review : Gemini CLI moves into Antigravity CLI",
+  "seo.title": "Qu’est-ce qu’Antigravity CLI : l’agent de terminal de Google qui a remplacé Gemini CLI",
+  "seo.description": "Gemini CLI était l’agent de terminal open source de Google ; depuis juin 2026, Antigravity CLI, à code fermé, l’a remplacé pour les particuliers. Ce qui a changé et qui peut encore utiliser Gemini CLI."
+ },
+ "claude-in-chrome": {
+  "aka": "Claude for Chrome, extension Chrome de Claude",
+  "def": "Claude in Chrome est une extension de Claude pour le navigateur Chrome qui permet à un agent de travailler dans votre navigateur : ouvrir des pages, cliquer, remplir des formulaires et lire la console. Il travaille sous votre session de connexion, donc il voit ce que vous voyez. Il y a deux modes : un panneau latéral où Claude exécute la tâche sur la page ouverte, et le pilotage du navigateur depuis Claude Code. Le panneau latéral ne fonctionne officiellement que dans Chrome pour ordinateur ; le mode Claude Code fonctionne aussi dans Edge et d’autres navigateurs Chromium.",
+  "faq.0.q": "Que fait l’extension Chrome de Claude ?",
+  "faq.0.a": "Elle permet à l’agent de travailler dans votre navigateur : ouvrir des pages, cliquer, remplir des formulaires et lire la console sous votre connexion.",
+  "faq.1.q": "Comment utiliser Claude in Chrome ?",
+  "faq.1.a": "Il y a deux modes : un panneau latéral où Claude exécute la tâche sur la page ouverte, et le pilotage du navigateur depuis Claude Code.",
+  "faq.2.q": "Claude in Chrome fonctionne-t-il dans d’autres navigateurs ?",
+  "faq.2.a": "Le panneau latéral ne fonctionne officiellement que dans Chrome pour ordinateur. Le mode Claude Code fonctionne aussi dans Edge et d’autres navigateurs Chromium.",
+  "source.label": "Aide : Get started with Claude in Chrome",
+  "seo.title": "Claude in Chrome : ce que fait l’extension Chrome de Claude",
+  "seo.description": "Claude in Chrome est l’extension Chrome de Claude : un agent ouvre des pages, clique et remplit des formulaires sous votre connexion. Deux modes, le panneau latéral et Claude Code, et les navigateurs compatibles.",
+  "more.label": "Claude in Chrome : comment un agent travaille dans votre navigateur",
+  "compare.title": "Deux modes : le panneau latéral et Claude Code",
+  "compare.head": [
+   "Panneau latéral",
+   "Depuis Claude Code"
+  ],
+  "compare.rows.0": [
+   "Où le lancer",
+   "un panneau à droite dans Chrome",
+   "dans le terminal ou l’IDE, dans Claude Code"
+  ],
+  "compare.rows.1": [
+   "Qui exécute la tâche",
+   "Claude dans le panneau",
+   "l’agent Claude Code ; le navigateur est son outil"
+  ],
+  "compare.rows.2": [
+   "Pour quoi faire",
+   "recherche, collecte de données, formulaires sur des sites",
+   "vérifier le site que vous modifiez : l’ouvrir, naviguer, lire la console"
+  ],
+  "compare.rows.3": [
+   "Navigateurs",
+   "Chrome pour ordinateur uniquement",
+   "Chrome, Edge et d’autres navigateurs Chromium"
+  ]
+ },
+ "anthropic": {
+  "def": "Anthropic est une entreprise américaine qui développe la famille de modèles de langage Claude : Opus, Sonnet, Haiku et Fable. Pour le grand public : les applications Claude, l’agent Cowork qui travaille dans un dossier de votre ordinateur, et l’extension Claude in Chrome. Pour le code : l’agent Claude Code. Pour les développeurs : l’API, Managed Agents (des agents dans le cloud d’Anthropic), l’Agent SDK et le protocole ouvert MCP que les agents utilisent pour se connecter à des systèmes externes.",
+  "faq.0.q": "Qu’est-ce qu’Anthropic ?",
+  "faq.0.a": "Une entreprise américaine qui développe les modèles Claude : Opus, Sonnet, Haiku et Fable.",
+  "faq.1.q": "Quels produits propose Anthropic ?",
+  "faq.1.a": "Les applications Claude, l’agent Cowork, l’extension Claude in Chrome, l’agent de code Claude Code et, pour les développeurs, l’API, Managed Agents, l’Agent SDK et le protocole MCP.",
+  "source.label": "Site officiel d’Anthropic"
+ },
+ "openai": {
+  "def": "OpenAI est une entreprise américaine qui développe la famille de modèles de langage GPT. Pour le grand public : le chat ChatGPT, qui réunit sur ordinateur une seule application avec Codex. Pour le code : l’agent Codex. Pour les développeurs : l’API, l’Agents SDK, l’Apps SDK pour les applications dans ChatGPT et le format d’instructions `AGENTS.md` que lisent aussi d’autres agents.",
+  "faq.0.q": "Qu’est-ce qu’OpenAI ?",
+  "faq.0.a": "Une entreprise américaine qui développe les modèles GPT, le chat ChatGPT et l’agent de code Codex.",
+  "faq.1.q": "Que propose OpenAI aux développeurs ?",
+  "faq.1.a": "Une API vers les modèles, l’Agents SDK pour créer ses propres agents, l’Apps SDK pour les applications dans ChatGPT et le format d’instructions AGENTS.md.",
+  "source.label": "Wikipédia : OpenAI"
+ },
+ "nous-research": {
+  "def": "Nous Research est un laboratoire de recherche américain qui développe les modèles de langage ouverts Hermes. Produits : Hermes Agent, ouvert, que l’on installe sur son propre serveur et que l’on fait tourner avec n’importe quel modèle, le chat Nous Chat et Forge, qui renforce le raisonnement d’un modèle. Infrastructure : Psyche pour l’entraînement distribué et Atropos, un environnement ouvert pour l’apprentissage par renforcement.",
+  "faq.0.q": "Qu’est-ce que Nous Research ?",
+  "faq.0.a": "Un laboratoire de recherche américain qui développe les modèles de langage ouverts Hermes.",
+  "faq.1.q": "Quels produits propose Nous Research ?",
+  "faq.1.a": "Hermes Agent, ouvert, l’application Nous Chat, Forge pour un raisonnement plus solide, ainsi que Psyche et Atropos pour l’entraînement.",
+  "source.label": "Site officiel de Nous Research"
+ },
+ "anysphere": {
+  "def": "Anysphere est l’entreprise américaine derrière Cursor, un éditeur de code avec un agent intégré. En plus de l’éditeur, elle fabrique ses propres modèles de code Composer, le relecteur de pull requests Bugbot, un agent de terminal et des agents cloud. Propriété de SpaceX depuis août 2026.",
+  "faq.0.q": "Qu’est-ce qu’Anysphere ?",
+  "faq.0.a": "Une entreprise américaine qui fabrique l’éditeur de code Cursor avec un agent intégré.",
+  "faq.1.q": "Que fabrique Anysphere en plus de Cursor ?",
+  "faq.1.a": "Ses propres modèles de code Composer, le relecteur de pull requests Bugbot, un agent de terminal et des agents cloud.",
+  "source.label": "Site officiel d’Anysphere"
+ },
+ "deepseek": {
+  "def": "DeepSeek est une entreprise chinoise qui développe les modèles de langage DeepSeek à poids ouverts : on peut les télécharger et les faire tourner sur son propre serveur. La génération actuelle V4 gère jusqu’à un million de tokens de contexte. Pour le grand public : le chat DeepSeek sur le web et sur mobile. Pour les développeurs : l’API. Les modèles DeepSeek se branchent à des agents ouverts comme Hermes Agent.",
+  "faq.0.q": "Qu’est-ce que DeepSeek ?",
+  "faq.0.a": "Une entreprise chinoise qui développe les modèles de langage DeepSeek à poids ouverts : on peut les télécharger et les faire tourner sur son propre serveur.",
+  "faq.1.q": "Quelle taille de contexte gère DeepSeek V4 ?",
+  "faq.1.a": "Jusqu’à un million de tokens.",
+  "source.label": "Site officiel de DeepSeek"
+ },
+ "yandex": {
+  "name": "Yandex",
+  "def": "Yandex est une entreprise russe qui développe les modèles de langage Alice AI, et auparavant la gamme YandexGPT. Pour le grand public : l’assistant Alice dans une application, un navigateur et des enceintes connectées, qui répond aux questions et agit sur demande. Pour les entreprises : l’agent d’entreprise Alice AI Pro et Yandex AI Studio, où les équipes construisent leurs propres agents sur Alice AI et des modèles ouverts. Pour le code : la plateforme SourceCraft avec l’agent Code Assistant.",
+  "faq.0.q": "Quels produits d’IA propose Yandex ?",
+  "faq.0.a": "Les modèles Alice AI, l’assistant Alice pour le grand public, l’agent d’entreprise Alice AI Pro et Yandex AI Studio pour les entreprises, et SourceCraft avec l’agent Code Assistant pour le code.",
+  "faq.1.q": "Qu’y avait-il avant Alice AI ?",
+  "faq.1.a": "La gamme de modèles YandexGPT.",
+  "source.label": "Page de l’entreprise Yandex"
+ },
+ "jetbrains": {
+  "def": "JetBrains est une entreprise fondée à Prague en 2000 qui fabrique les IDE IntelliJ IDEA, PyCharm, WebStorm et d’autres, ainsi que le langage Kotlin. Son propre agent de code Junie fonctionne dans l’IDE et dans le terminal ; Claude Agent et Codex sont intégrés à l’IDE à côté, et d’autres agents se connectent via le protocole ouvert ACP. La complétion de code repose sur son propre modèle Mellum. Air est un espace de travail où plusieurs agents tournent en parallèle (préversion).",
+  "faq.0.q": "Qu’est-ce que JetBrains ?",
+  "faq.0.a": "Une entreprise fondée à Prague en 2000 : elle fabrique les IDE IntelliJ IDEA, PyCharm, WebStorm et d’autres, ainsi que le langage Kotlin.",
+  "faq.1.q": "Quels agents IA fonctionnent dans les IDE JetBrains ?",
+  "faq.1.a": "L’agent propre à JetBrains, Junie, Claude Agent et Codex intégrés, et d’autres agents qui se connectent via le protocole ouvert ACP.",
+  "source.label": "Site officiel de JetBrains"
+ },
+ "microsoft": {
+  "def": "Microsoft est une entreprise américaine qui fabrique l’assistant Copilot, intégré à Windows, Word, Excel, Outlook et Teams. Pour les développeurs : l’éditeur VS Code, GitHub Copilot avec un agent de code et l’application GitHub Copilot pour lancer plusieurs agents. Pour les entreprises : Copilot Studio et Foundry pour construire leurs propres agents. Elle s’appuie sur ses propres modèles MAI et sur des modèles de partenaires, dont OpenAI et Anthropic.",
+  "faq.0.q": "Que fait Microsoft dans l’IA ?",
+  "faq.0.a": "L’assistant Copilot intégré à Windows, Word, Excel, Outlook et Teams.",
+  "faq.1.q": "Que propose Microsoft aux développeurs ?",
+  "faq.1.a": "L’éditeur VS Code, GitHub Copilot avec un agent de code et l’application GitHub Copilot.",
+  "source.label": "Wikipédia : Microsoft"
+ },
+ "bing": {
+  "def": "Bing est le moteur de recherche de Microsoft. À côté de la liste habituelle de liens, il propose l’assistant Copilot, qui répond à une question par du texte avec des liens vers les sources. Pour les propriétaires de sites, Bing a sa propre console, Bing Webmaster Tools : indexation des pages, requêtes et impressions dans la recherche.",
+  "faq.0.q": "Qu’est-ce que Bing ?",
+  "faq.0.a": "Le moteur de recherche de Microsoft. À côté des résultats sous forme de liens, il propose l’assistant Copilot, qui répond par du texte avec des liens vers les sources.",
+  "faq.1.q": "Où un propriétaire de site vérifie-t-il Bing ?",
+  "faq.1.a": "Dans Bing Webmaster Tools, le tableau de bord de Bing pour les propriétaires de sites.",
+  "source.label": "Wikipédia : Microsoft Bing"
+ },
+ "atlassian": {
+  "def": "Atlassian est une entreprise australienne qui fabrique Jira, Confluence et Bitbucket, les systèmes de travail de nombreuses équipes de développement. Son IA s’appelle Rovo : les agents Rovo prennent des tâches dans Jira, et le Rovo MCP Server permet à des agents externes comme Claude Code et Cursor de lire et de modifier les données de Jira et de Confluence.",
+  "faq.0.q": "Qu’est-ce qu’Atlassian ?",
+  "faq.0.a": "Une entreprise australienne qui fabrique Jira, Confluence et Bitbucket.",
+  "faq.1.q": "Comment s’appelle l’IA d’Atlassian ?",
+  "faq.1.a": "Rovo : les agents Rovo prennent en charge des tâches dans Jira, et le Rovo MCP Server donne aux agents externes l’accès aux données d’Atlassian.",
+  "source.label": "Site officiel d’Atlassian"
+ },
+ "harness": {
+  "name": "Harness",
+  "aka": "harness d’agent, harnais de l’agent",
+  "def": "Le harness (le harnais de l’agent) est tout ce qui entoure le modèle et en fait un agent qui fonctionne : instructions, outils, permissions, mémoire et vérifications. Le modèle est le même, le résultat dépend du harness.",
+  "faq.0.q": "Qu’est-ce qu’un harness en IA ?",
+  "faq.0.a": "Tout ce qui entoure un modèle et en fait un agent qui fonctionne : instructions, outils, droits d’accès, mémoire et vérifications.",
+  "faq.1.q": "Pourquoi le résultat dépend-il du harness ?",
+  "faq.1.a": "Le modèle est le même, mais ce que l’agent sait, ce qu’il peut faire et la façon dont il se vérifie sont fixés par le harness.",
+  "source.label": "Anthropic : Effective harnesses for agents",
+  "seo.title": "Harness d’agent : définition et contenu",
+  "seo.description": "Un harness d’agent est tout ce qui entoure le modèle et en fait un agent : boucle, outils, contexte, mémoire, règles, permissions et vérifications. Chaque partie, avec ses liens.",
+  "more.label": "Agent IA = LLM + harness : LLM, harness et agent comparés",
+  "parts.title": "De quoi est fait un harness"
+ },
+ "hooks": {
+  "name": "Hooks",
+  "def": "Les hooks sont des scripts que le harness lance automatiquement à des moments précis du travail de l’agent : avant une action, après la modification d’un fichier, à la fin. Un agent traite une règle des instructions comme un conseil, alors qu’un hook s’exécute toujours ; les hooks servent donc à verrouiller ce qui n’admet aucune exception.",
+  "faq.0.q": "Qu’est-ce qu’un hook ?",
+  "faq.0.a": "Un script que le harness lance automatiquement à un moment précis du travail de l’agent : avant une action, après la modification d’un fichier ou à la fin.",
+  "faq.1.q": "En quoi un hook diffère-t-il d’une règle ?",
+  "faq.1.a": "L’agent traite une règle comme un conseil et peut l’enfreindre, alors qu’un hook s’exécute toujours. C’est pourquoi les interdictions sans exception sont appliquées par des hooks.",
+  "source.label": "Référence des hooks de Claude Code"
+ },
+ "agent-loop": {
+  "name": "Boucle d’agent",
+  "aka": "boucle agentique",
+  "def": "La boucle d’agent est le rythme répété du travail d’un agent : réfléchir, appeler un outil, regarder le résultat, réfléchir à nouveau. La boucle tourne jusqu’à ce que la tâche soit résolue ou que l’agent ait besoin d’un humain.",
+  "faq.0.q": "Qu’est-ce que la boucle d’agent ?",
+  "faq.0.a": "Le rythme répété du travail d’un agent : réfléchir, appeler un outil, regarder le résultat et réfléchir à nouveau.",
+  "faq.1.q": "Quand la boucle d’agent s’arrête-t-elle ?",
+  "faq.1.a": "Quand la tâche est terminée ou que l’agent a besoin de l’aide d’une personne.",
+  "source.label": "Article ReAct (arXiv)"
+ },
+ "react": {
+  "aka": "Reason + Act",
+  "def": "ReAct est une manière de faire travailler un agent où le modèle alterne raisonnement et action : il décide quoi faire, appelle un outil, lit le résultat et raisonne à nouveau. En ne faisant que raisonner, le modèle invente la réponse ; en ne faisant qu’agir, il erre sans plan ; en alternant, il arrive à la bonne réponse. Décrit dans un article de 2022 ; la boucle d’agent des agents de code actuels repose dessus.",
+  "faq.0.q": "Qu’est-ce que ReAct ?",
+  "faq.0.a": "Un schéma d’agent où le modèle alterne raisonnement et action : il décide quoi faire, appelle un outil, lit le résultat et raisonne à nouveau.",
+  "faq.1.q": "En quoi ReAct diffère-t-il de React ?",
+  "faq.1.a": "ReAct est un schéma d’agent IA, React est une bibliothèque JavaScript pour les pages web. Seule l’orthographe se ressemble.",
+  "source.label": "Yao et al., « ReAct » (arXiv, 2022)"
+ },
+ "session": {
+  "name": "Session",
+  "def": "Une session est une conversation continue avec un agent, du lancement à la sortie ou à une réinitialisation. Tout ce que l’agent y a appris reste dans son contexte et disparaît à la fin de la session ; seul ce qui a été écrit dans la mémoire et dans des fichiers comme `CLAUDE.md` passe à la session suivante. Le harness garde la conversation elle-même dans un journal de session, d’où l’on peut ramener une session passée en entier ; dans Claude Code avec `/resume` ou `claude --continue`.",
+  "faq.0.q": "Qu’est-ce qu’une session d’agent ?",
+  "faq.0.a": "Une conversation continue avec un agent : du démarrage à la sortie ou à la réinitialisation.",
+  "faq.1.q": "Que garde-t-on pour la session suivante ?",
+  "faq.1.a": "Seulement ce qui est écrit dans la mémoire et dans des fichiers comme CLAUDE.md. Le reste disparaît avec le contexte de la session.",
+  "source.label": "Documentation des sessions de Claude Code"
+ },
+ "memory": {
+  "name": "Mémoire de l’agent",
+  "def": "La mémoire de l’agent, ce sont des notes qu’un agent garde d’une session à l’autre : règles du projet, contraintes découvertes, accords. Sans mémoire, chaque nouvelle conversation repart d’une page blanche.",
+  "faq.0.q": "Qu’est-ce que la mémoire d’un agent IA ?",
+  "faq.0.a": "Des notes que l’agent garde d’une session à l’autre : règles du projet, contraintes découvertes, accords.",
+  "faq.1.q": "Que se passe-t-il sans mémoire ?",
+  "faq.1.a": "Chaque nouvelle conversation repart de zéro.",
+  "source.label": "Documentation de la mémoire de Claude Code"
+ },
+ "bible": {
+  "name": "Bible du projet",
+  "def": "La bible du projet est une description de la façon dont le projet est construit et pourquoi : limites du système, accords, principes et valeurs — ce qui compte le plus au moment de choisir et ce qui n’est jamais permis. L’agent la lit avant de travailler, ce qui évite de se répéter à chaque tâche. Les consignes concrètes de ce qu’il faut faire et ne pas faire en sont tirées sous forme de règles. La bible vit dans `CLAUDE.md` pour Claude Code ou `AGENTS.md` pour Codex et Cursor, ou dans des fichiers séparés vers lesquels ils renvoient.",
+  "faq.0.q": "Qu’est-ce que la bible du projet ?",
+  "faq.0.a": "Une description de la façon dont le projet est construit et pourquoi : limites du système, accords, principes et valeurs. L’agent la lit avant de travailler.",
+  "faq.1.q": "Où conserver la bible du projet ?",
+  "faq.1.a": "Dans CLAUDE.md pour Claude Code ou AGENTS.md pour Codex et Cursor, ou dans des fichiers séparés à côté.",
+  "source.label": "Bonnes pratiques de Claude Code",
+  "compare.title": "Règles et bible du projet",
+  "compare.head": [
+   "Règles",
+   "Bible du projet"
+  ],
+  "compare.rows.0": [
+   "Répond à",
+   "comment agir ici",
+   "comment le projet est construit et pourquoi"
+  ],
+  "compare.rows.1": [
+   "Forme",
+   "consignes courtes de ce qu’il faut faire et ne pas faire",
+   "une description cohérente et des principes"
+  ],
+  "compare.rows.2": [
+   "Quand l’agent la lit",
+   "toujours ou quand il touche des fichiers correspondants",
+   "avant le travail, en entier"
+  ],
+  "compare.rows.3": [
+   "Exemple",
+   "« lancer les tests avec `npm test` »",
+   "« les paiements forment un système séparé, à ne pas modifier »"
+  ],
+  "compare.rows.4": [
+   "D’où elle vient",
+   "tirée de la bible et des erreurs de l’agent",
+   "écrite par des personnes qui connaissent le projet"
+  ]
+ },
+ "rules": {
+  "name": "Règles de l’agent",
+  "aka": "règles",
+  "def": "Les règles de l’agent sont des consignes courtes de ce qu’il faut faire et ne pas faire, que le harness charge dans le contexte de l’agent : toujours, ou seulement quand l’agent touche des fichiers correspondants. Le concept est commun : dans Claude Code, les règles vivent dans `CLAUDE.md` et le dossier `.claude/rules`, dans Cursor dans `.cursor/rules`, dans Codex dans `AGENTS.md`. L’agent traite une règle comme un conseil ; une interdiction sans exception est appliquée par un hook.",
+  "faq.0.q": "Qu’est-ce que les règles d’un agent ?",
+  "faq.0.a": "Des consignes courtes « fais ceci, ne fais pas cela » que le harness charge dans le contexte de l’agent, toujours ou quand l’agent touche des fichiers correspondants.",
+  "faq.1.q": "Où vivent les règles d’un agent ?",
+  "faq.1.a": "Dans Claude Code, dans CLAUDE.md et les règles par chemin, dans Cursor dans .cursor/rules, et pour les autres agents dans AGENTS.md.",
+  "source.label": "Documentation des règles de Cursor",
+  "compare.title": "Règles et bible du projet",
+  "compare.head": [
+   "Règles",
+   "Bible du projet"
+  ],
+  "compare.rows.0": [
+   "Répond à",
+   "comment agir ici",
+   "comment le projet est construit et pourquoi"
+  ],
+  "compare.rows.1": [
+   "Forme",
+   "consignes courtes de ce qu’il faut faire et ne pas faire",
+   "une description cohérente et des principes"
+  ],
+  "compare.rows.2": [
+   "Quand l’agent la lit",
+   "toujours ou quand il touche des fichiers correspondants",
+   "avant le travail, en entier"
+  ],
+  "compare.rows.3": [
+   "Exemple",
+   "« lancer les tests avec `npm test` »",
+   "« les paiements forment un système séparé, à ne pas modifier »"
+  ],
+  "compare.rows.4": [
+   "D’où elle vient",
+   "tirée de la bible et des erreurs de l’agent",
+   "écrite par des personnes qui connaissent le projet"
+  ]
+ },
+ "checks": {
+  "name": "Vérifications statiques",
+  "aka": "tests statiques · vérifications automatiques",
+  "def": "Les vérifications statiques sont les tests, linters, builds et autres contrôles automatiques qui confirment le résultat de l’agent avant qu’une personne le regarde. Une vérification que l’agent peut lancer lui-même lui renvoie les erreurs et l’amène à les corriger sans vous.",
+  "faq.0.q": "Que sont les vérifications statiques pour un agent ?",
+  "faq.0.a": "Les tests, linters, builds et autres contrôles automatiques qui confirment le résultat de l’agent avant qu’une personne le regarde.",
+  "faq.1.q": "Pourquoi l’agent doit-il lancer lui-même les vérifications ?",
+  "faq.1.a": "Une vérification que l’agent lance lui-même lui renvoie les erreurs, et il les corrige avant de rendre son travail.",
+  "source.label": "Wikipédia : Analyse statique de programmes"
+ },
+ "orchestration": {
+  "name": "Orchestration",
+  "def": "L’orchestration consiste à gérer plusieurs étapes ou plusieurs agents : qui est responsable de quoi, dans quel ordre ils travaillent et comment les résultats sont transmis, par des fichiers, le résultat d’un sous-agent ou la messagerie entre sessions.",
+  "faq.0.q": "Qu’est-ce que l’orchestration d’agents ?",
+  "faq.0.a": "La gestion de plusieurs étapes ou agents : qui est responsable de quoi, dans quel ordre ils travaillent et comment les résultats circulent.",
+  "faq.1.q": "Comment les agents se transmettent-ils des résultats ?",
+  "faq.1.a": "Par des fichiers, par le résultat d’un sous-agent ou par des messages entre sessions.",
+  "source.label": "Anthropic : Multi-agent research system"
+ },
+ "session-messaging": {
+  "name": "Messagerie entre sessions",
+  "def": "La messagerie entre sessions est un moyen pour des sessions d’agents parallèles de se transmettre du texte : l’une trouve l’autre par son nom et lui envoie un message, et l’autre le lit à son étape suivante. Dans Claude Code, il s’agit de la messagerie entre sessions et des équipes d’agents expérimentales ; dans Cursor, le passage de relais entre agents locaux et cloud joue un rôle semblable. L’orchestration fonctionne alors sans qu’un humain recopie les réponses d’une fenêtre à l’autre.",
+  "faq.0.q": "Qu’est-ce que la messagerie entre sessions ?",
+  "faq.0.a": "Un moyen pour des sessions d’agents parallèles de se transmettre du texte : l’une trouve l’autre par son nom et lui envoie un message.",
+  "faq.1.q": "Pourquoi utiliser la messagerie entre sessions ?",
+  "faq.1.a": "Ainsi, l’orchestration de plusieurs agents n’exige aucune personne au milieu pour recopier le texte d’une fenêtre à l’autre.",
+  "source.label": "Documentation des équipes d’agents de Claude Code"
+ },
+ "tracing": {
+  "name": "Logs et traçage",
+  "def": "Les logs et le traçage forment un enregistrement de chaque étape de l’agent : ce qu’il a lu, quels outils il a appelés et ce qui est revenu. Ils montrent où l’agent a pris un mauvais tournant et permettent de rejouer l’analyse.",
+  "faq.0.q": "Qu’est-ce que le traçage d’un agent ?",
+  "faq.0.a": "Un enregistrement de chaque étape de l’agent : ce qu’il a lu, quels outils il a appelés et ce qui est revenu.",
+  "faq.1.q": "Pourquoi des logs et du traçage ?",
+  "faq.1.a": "Ils montrent où l’agent s’est trompé, et l’analyse peut être répétée.",
+  "source.label": "OpenTelemetry : Traces"
+ },
+ "claude-md": {
+  "def": "CLAUDE.md est un fichier à la racine du projet contenant des instructions permanentes pour Claude Code : structure du projet, commandes de build et de test, conventions. Il entre dans le contexte de l’agent au début de chaque session.",
+  "faq.0.q": "Qu’est-ce que CLAUDE.md ?",
+  "faq.0.a": "Un fichier à la racine du projet avec des instructions permanentes pour Claude Code : structure du projet, commandes de build et de test, conventions.",
+  "faq.1.q": "Quand Claude Code lit-il CLAUDE.md ?",
+  "faq.1.a": "Au début de chaque session : le fichier entre dans le contexte de l’agent.",
+  "source.label": "Documentation de CLAUDE.md dans Claude Code"
+ },
+ "agents-md": {
+  "def": "AGENTS.md est un fichier d’instructions commun à un projet, lu par de nombreux agents. Codex, Cursor et d’autres l’utilisent : c’est l’équivalent de `CLAUDE.md` neutre vis-à-vis des éditeurs.",
+  "faq.0.q": "Qu’est-ce qu’AGENTS.md ?",
+  "faq.0.a": "Un fichier d’instructions commun à différents agents : commandes, style, interdictions.",
+  "faq.1.q": "Quels agents lisent AGENTS.md ?",
+  "faq.1.a": "Codex, Cursor et d’autres agents ; le fichier sert donc d’alternative neutre à CLAUDE.md.",
+  "source.label": "Site officiel d’AGENTS.md"
+ },
+ "agent-skills": {
+  "name": "Skill",
+  "aka": "skills",
+  "def": "Un skill est un dossier avec un fichier `SKILL.md` : des instructions et des fichiers d’appoint pour une tâche récurrente, comme un rapport ou une migration. Au début d’une session, l’agent ne voit que le nom et la description du skill et charge le skill entier quand la tâche s’y prête ; l’espace du contexte n’est donc pas dépensé d’avance.",
+  "faq.0.q": "Qu’est-ce qu’un skill d’agent IA ?",
+  "faq.0.a": "Un dossier avec un fichier SKILL.md : des instructions et des fichiers d’appoint pour une tâche répétée, comme un rapport ou une migration.",
+  "faq.1.q": "Pourquoi les skills ne consomment-ils pas le contexte ?",
+  "faq.1.a": "Au début d’une session, l’agent ne voit que le nom et la description du skill, et le charge en entier quand une tâche correspond.",
+  "source.label": "Documentation des Agent Skills d’Anthropic"
+ },
+ "mcp": {
+  "def": "MCP est un protocole ouvert par lequel un agent se connecte à des services externes — Jira, Airtable, bases de données — via une seule interface. Un serveur MCP propose à l’agent un jeu d’outils, tandis que les permissions restent entre vos mains.",
+  "faq.0.q": "Qu’est-ce que MCP en termes simples ?",
+  "faq.0.a": "Un protocole ouvert qui connecte un agent à des services externes comme Jira ou des bases de données via une seule interface.",
+  "faq.1.q": "Qui contrôle les permissions via MCP ?",
+  "faq.1.a": "Vous : le serveur MCP propose à l’agent un jeu d’outils, et les droits d’accès se règlent côté serveur.",
+  "source.label": "Site du Model Context Protocol"
+ },
+ "mcp-client": {
+  "name": "Client MCP",
+  "def": "Le client MCP est la partie côté agent : il appelle le serveur MCP d’un système, demande des données et invoque des outils. Il est intégré au harness, par exemple Claude Code.",
+  "faq.0.q": "Qu’est-ce qu’un client MCP ?",
+  "faq.0.a": "La partie côté agent qui dialogue avec le serveur MCP d’un système, demande des données et appelle des outils.",
+  "faq.1.q": "Où se trouve le client MCP ?",
+  "faq.1.a": "Il est intégré au harness, par exemple Claude Code.",
+  "source.label": "MCP : Understanding clients"
+ },
+ "mcp-server": {
+  "name": "Serveur MCP",
+  "def": "Le serveur MCP est la partie côté système (Jira, GitLab, une base de données) : il fournit des données et accepte les actions de l’agent via un seul protocole. Les permissions se règlent de ce côté.",
+  "faq.0.q": "Qu’est-ce qu’un serveur MCP ?",
+  "faq.0.a": "La partie côté système (Jira, GitLab, bases de données) qui fournit des données et accepte les actions de l’agent via un seul protocole.",
+  "faq.1.q": "Où se règlent les permissions d’un serveur MCP ?",
+  "faq.1.a": "Côté serveur : c’est lui qui décide ce que l’agent peut lire et ce qu’il peut modifier.",
+  "source.label": "MCP : Understanding servers",
+  "more.label": "Serveur MCP pour 1C : laisser un agent IA entrer dans la base sans la casser"
+ },
+ "oauth": {
+  "def": "OAuth est une connexion via le navigateur : quand l’agent se connecte à un service, le harness ouvre la page de connexion de ce service, vous y saisissez le mot de passe et approuvez l’accès, et l’agent reçoit un jeton. L’agent ne voit jamais le mot de passe ; le jeton est limité aux permissions accordées et peut être révoqué. C’est ainsi que les serveurs MCP se connectent à Jira et à Sentry, par exemple.",
+  "faq.0.q": "Comment fonctionne OAuth pour un agent ?",
+  "faq.0.a": "Le harness ouvre la page de connexion du service, vous y saisissez le mot de passe et confirmez l’accès, et l’agent reçoit un jeton.",
+  "faq.1.q": "L’agent voit-il mon mot de passe avec OAuth ?",
+  "faq.1.a": "Non. L’agent reçoit seulement un jeton limité aux droits que vous avez accordés, et il peut être révoqué.",
+  "source.label": "Spécification MCP : Authorization"
+ },
+ "mcp-scope": {
+  "name": "Portées des serveurs MCP",
+  "def": "Les portées des serveurs MCP répondent à deux questions : dans quels projets un serveur MCP fonctionne et qui le voit. Claude Code en a trois, choisies à l’ajout d’un serveur : `local`, par défaut, vous seul et le `project` courant ; `project`, toute l’équipe via un fichier `.mcp.json` dans le dépôt, chacun approuve le serveur avant la première utilisation ; `user`, vous seul et tous vos projets. En cas de conflit de noms, la couche supérieure l’emporte entièrement : `local` l’emporte sur `project`, `project` l’emporte sur `user`.",
+  "faq.0.q": "Quelles portées MCP a Claude Code ?",
+  "faq.0.a": "Trois : local pour vous dans le projet courant, project pour toute l’équipe via un fichier du dépôt, et user pour vous dans tous les projets.",
+  "faq.1.q": "Quand choisit-on la portée d’un serveur MCP ?",
+  "faq.1.a": "À l’ajout du serveur ; par défaut, c’est local.",
+  "source.label": "Documentation MCP de Claude Code",
+  "table.title": "Les trois portées côte à côte",
+  "table.rows.0": [
+   "Qui le voit",
+   "vous seul",
+   "toute l’équipe",
+   "vous seul"
+  ],
+  "table.rows.1": [
+   "Dans quels projets",
+   "le projet courant",
+   "ce dépôt",
+   "tous les vôtres"
+  ],
+  "table.rows.2": [
+   "Où c’est stocké",
+   "`~/.claude.json`, sous le chemin du projet",
+   "`.mcp.json` à la racine du dépôt",
+   "`~/.claude.json`, section commune"
+  ],
+  "table.rows.3": [
+   "Comment l’ajouter",
+   "`claude mcp add` par défaut",
+   "`claude mcp add --scope project`",
+   "`claude mcp add --scope user`"
+  ],
+  "table.rows.4": [
+   "Avant la première utilisation",
+   "rien",
+   "chacun approuve le serveur",
+   "rien"
+  ],
+  "table.rows.5": [
+   "En cas de conflit de noms",
+   "l’emporte sur `project` et `user`",
+   "l’emporte sur `user`",
+   "cède aux autres"
+  ]
+ },
+ "prompt-injection": {
+  "aka": "injection de prompt, prompt injection",
+  "def": "L’injection de prompt est une attaque où quelqu’un cache une instruction destinée à l’agent dans son propre texte : un e-mail, un ticket, une page web. L’agent la lit avec les données, la prend pour une partie de la demande, et son comportement est détourné : il fait ce que veut l’attaquant au lieu de ce que vous avez demandé. Plus l’agent a d’accès, plus le détournement coûte cher.",
+  "faq.0.q": "Qu’est-ce que l’injection de prompt ?",
+  "faq.0.a": "Une attaque qui cache une instruction pour l’agent dans un e-mail, un ticket ou une page web, et l’agent la prend pour une partie de la demande.",
+  "faq.1.q": "Comment se défendre contre l’injection de prompt ?",
+  "faq.1.a": "Garder le texte externe dans le plan de données pour qu’il ne puisse pas devenir une commande, et donner à l’agent un minimum de permissions.",
+  "source.label": "OWASP LLM01 : Prompt Injection"
+ },
+ "planes": {
+  "name": "Plan de données et plan de contrôle",
+  "aka": "plans de données et de contrôle",
+  "def": "Le plan de données et le plan de contrôle sont deux plans du fonctionnement d’un système : le plan de contrôle décide quoi faire et où, et le plan de données le fait sur les données elles-mêmes. Les termes viennent des réseaux : dans un routeur, le plan de contrôle construit la table de routage et le plan de données transmet les paquets. Pour un agent IA, le plan de contrôle est constitué de vos messages et de vos règles, et le plan de données de tout ce qu’il lit : pages, tickets, documents et réponses de serveurs. La défense contre l’injection de prompt garde le texte étranger dans le plan de données pour qu’il ne devienne jamais une commande.",
+  "faq.0.q": "Qu’est-ce que le plan de données ?",
+  "faq.0.a": "Le plan de données est la partie d’un système qui traite les données elles-mêmes : dans un réseau, il transmet les paquets ; dans Kubernetes, ce sont les nœuds avec les pods. Pour un agent IA, c’est tout ce qu’il lit : pages, tickets, documents et réponses de serveurs.",
+  "faq.1.q": "En quoi le plan de contrôle diffère-t-il du plan de données ?",
+  "faq.1.a": "Le plan de contrôle, ce sont les commandes, c’est-à-dire vos messages et vos règles. Le plan de données, ce sont les données. La protection contre l’injection de prompt empêche le texte externe, placé dans les données, de devenir une commande.",
+  "source.label": "Wikipédia : Control plane",
+  "seo.title": "Plan de données et plan de contrôle : réseaux, Kubernetes et agents IA",
+  "seo.description": "Le plan de contrôle décide quoi faire et où ; le plan de données le fait sur les données. Comment fonctionnent les plans dans un routeur, un cluster Kubernetes et un agent IA, et leur lien avec l’injection de prompt.",
+  "compare.title": "Les deux plans dans un réseau, Kubernetes et un agent IA",
+  "compare.head": [
+   "Réseau",
+   "Kubernetes",
+   "Agent IA"
+  ],
+  "compare.rows.0": [
+   "Plan de contrôle",
+   "la table de routage : où envoyer les paquets",
+   "les composants de contrôle du cluster : quoi lancer et où",
+   "vos messages et vos règles"
+  ],
+  "compare.rows.1": [
+   "Plan de données",
+   "la transmission des paquets eux-mêmes",
+   "les nœuds où tournent les pods avec les applications",
+   "pages, tickets, documents, réponses de serveurs"
+  ]
+ },
+ "permissions": {
+  "name": "Permissions",
+  "aka": "permissions d’un agent IA, modes de permission, moindre privilège",
+  "def": "Les permissions d’un agent IA définissent ce que l’agent peut faire dans votre environnement et dans les systèmes connectés : lire seulement ou aussi écrire, et quelles commandes lancer. Dans Claude Code et Codex, ce sont des modes de permission : de la demande avant chaque action au travail sans confirmation. Le principe du moindre privilège s’applique : l’agent reçoit exactement les droits dont la tâche a besoin, élargis pas à pas.",
+  "faq.0.q": "Quelles permissions donner à un agent IA ?",
+  "faq.0.a": "Exactement celles dont la tâche a besoin, selon le principe du moindre privilège, en les élargissant pas à pas.",
+  "faq.1.q": "Quels modes de permission ont Claude Code et Codex ?",
+  "faq.1.a": "De la demande avant chaque action au travail sans confirmation ; entre les deux, des modes où l’agent fait seul les étapes sûres.",
+  "source.label": "Documentation des permissions de Claude Code",
+  "seo.title": "Permissions d’un agent IA : moindre privilège, modes de permission de Claude Code et --dangerously-skip-permissions",
+  "seo.description": "Permissions d’un agent IA et moindre privilège : quels droits donner à un agent et comment les élargir pas à pas. Modes de permission dans Claude Code et Codex, et ce que fait --dangerously-skip-permissions.",
+  "notes.title": "Permissions dans les agents",
+  "notes.items.0.name": "Étapes",
+  "notes.items.0.text": "d’abord la lecture seule, puis les écritures dans un environnement de test ; les écritures dans un système en production passent uniquement par une personne.",
+  "notes.items.1.name": "Claude Code : règles",
+  "notes.items.1.text": "les réglages disent quoi autoriser, sur quoi demander et quoi refuser. Une règle de refus l’emporte sur n’importe quel mode.",
+  "notes.items.2.name": "Claude Code : modes",
+  "notes.items.2.text": "par défaut, il demande avant les modifications et les commandes ; acceptEdits accepte seul les modifications ; plan ne fait que lire et planifier ; auto décide de ce qui est sûr ; bypassPermissions, équivalent de l’option `--dangerously-skip-permissions`, ne demande rien et ne convient qu’à un bac à sable (sandbox).",
+  "notes.items.3.name": "Codex : modes",
+  "notes.items.3.text": "lecture seule ; mode espace de travail, avec modifications et commandes dans le dossier du projet sans demander et tout le reste avec validation ; accès complet, sans sandbox et sans validation."
+ },
+ "jira": {
+  "def": "Jira est un système de suivi de tâches et de bugs d’Atlassian. Via MCP, un agent lit les tâches avec leurs commentaires et leur historique de modifications, et ne peut y écrire qu’avec votre permission.",
+  "faq.0.q": "Comment un agent IA travaille-t-il avec Jira ?",
+  "faq.0.a": "Via MCP, il lit les tickets avec les commentaires et l’historique des modifications.",
+  "faq.1.q": "L’agent peut-il modifier les tickets Jira ?",
+  "faq.1.a": "Seulement avec votre permission.",
+  "source.label": "Page officielle de Jira"
+ },
+ "sentry": {
+  "def": "Sentry est un service de suivi des erreurs qui collecte les exceptions de l’application avec leur contexte. Chaque erreur est étiquetée avec la version de l’application où elle s’est produite ; via MCP, l’agent voit donc à partir de quel déploiement elle a commencé et cherche la cause dans les changements de cette version.",
+  "faq.0.q": "Qu’est-ce que Sentry ?",
+  "faq.0.a": "Un service de suivi des erreurs : il collecte les exceptions de l’application avec leur contexte.",
+  "faq.1.q": "Que trouve un agent dans Sentry ?",
+  "faq.1.a": "Les erreurs sont étiquetées avec la version de l’application ; l’agent voit donc à partir de quelle release l’erreur a commencé et cherche la cause dans ces changements.",
+  "source.label": "Site officiel de Sentry"
+ },
+ "grafana": {
+  "def": "Grafana est un système de graphiques et de tableaux de bord pour les métriques et les logs. Via MCP, l’agent lit les métriques et les logs et reconstitue le tableau de l’incident. Pour qu’il ne puisse rien modifier, le serveur MCP de Grafana est lancé avec l’option `--disable-write` : l’agent peut alors seulement lire et ne peut ni créer ni modifier de tableaux de bord, d’alertes ou d’incidents.",
+  "faq.0.q": "Qu’est-ce que Grafana ?",
+  "faq.0.a": "Un système de graphiques et de tableaux de bord pour les métriques et les logs.",
+  "faq.1.q": "Comment connecter Grafana à un agent en lecture seule ?",
+  "faq.1.a": "Lancer le serveur MCP de Grafana avec l’option --disable-write : l’agent lit les métriques et les logs mais ne peut pas modifier les tableaux de bord, les alertes ou les incidents.",
+  "source.label": "Site officiel de Grafana"
+ },
+ "gitlab": {
+  "def": "GitLab est une plateforme pour le code et les merge requests. Via MCP, l’agent voit d’un coup le code de tous les projets sans les cloner : il cherche dans les projets et lit les fichiers, les merge requests et les relectures de première main plutôt que racontés par un tiers.",
+  "faq.0.q": "Que donne GitLab via MCP à un agent ?",
+  "faq.0.a": "L’agent voit d’un coup le code de tous les projets sans les cloner : il cherche dans les projets et lit les fichiers, les merge requests et les relectures.",
+  "faq.1.q": "Qu’est-ce que GitLab ?",
+  "faq.1.a": "Une plateforme d’hébergement du code et des merge requests.",
+  "source.label": "Site officiel de GitLab"
+ },
+ "confluence": {
+  "def": "Confluence est le wiki d’Atlassian : la base de connaissances de l’équipe. Via MCP, un agent y puise des articles et des décisions passées.",
+  "faq.0.q": "Qu’est-ce que Confluence ?",
+  "faq.0.a": "Le wiki d’Atlassian : une base de connaissances d’équipe.",
+  "faq.1.q": "Pourquoi un agent a-t-il besoin de Confluence ?",
+  "faq.1.a": "Via MCP, l’agent y puise des articles et les décisions passées de l’équipe.",
+  "source.label": "Page officielle de Confluence"
+ },
+ "javascript": {
+  "aka": "le langage des sites web et de nombreux programmes",
+  "def": "JavaScript est un langage de programmation qui fait fonctionner les pages web dans le navigateur : boutons, formulaires et tout ce qui réagit aux actions. Il sert aussi aux programmes côté serveur, par exemple dans Node.js. Les tests de ce code sont lancés par des moteurs comme Jest, Vitest et QUnit.",
+  "faq.0.q": "Qu’est-ce que JavaScript ?",
+  "faq.0.a": "Le langage de programmation qui fait fonctionner les pages web dans le navigateur : boutons, formulaires et tout ce qui réagit aux actions.",
+  "faq.1.q": "Où JavaScript fonctionne-t-il encore ?",
+  "faq.1.a": "Sur le serveur, par exemple dans Node.js."
+ },
+ "typescript": {
+  "aka": "JavaScript avec des types",
+  "def": "TypeScript est une extension de JavaScript dans laquelle les valeurs reçoivent un type : nombre, chaîne et ainsi de suite. Grâce à cela, les erreurs du genre « une chaîne a été passée à la place d’un nombre » sont trouvées avant l’exécution du programme, et non chez l’utilisateur. Le programme fini est converti en JavaScript ordinaire.",
+  "faq.0.q": "Qu’est-ce que TypeScript ?",
+  "faq.0.a": "Une couche au-dessus de JavaScript où les valeurs ont des types déclarés : nombre, chaîne et ainsi de suite.",
+  "faq.1.q": "Pourquoi utiliser TypeScript ?",
+  "faq.1.a": "Les erreurs comme passer une chaîne à la place d’un nombre sont attrapées avant l’exécution du programme, avant qu’un utilisateur les voie.",
+  "source.label": "typescriptlang.org, le site de TypeScript"
+ },
+ "babel": {
+  "aka": "un traducteur du JavaScript récent",
+  "def": "Babel est un programme qui transforme le JavaScript récent en un JavaScript que comprennent les navigateurs et environnements plus anciens. On peut écrire dans le langage moderne et l’exécuter là où il n’est pas encore connu. Les tests Jest fonctionnent aussi avec les projets construits via Babel.",
+  "faq.0.q": "Qu’est-ce que Babel ?",
+  "faq.0.a": "Un programme qui traduit le JavaScript récent en code que comprennent les navigateurs et environnements plus anciens.",
+  "faq.1.q": "Pourquoi utiliser Babel ?",
+  "faq.1.a": "Pour écrire dans le langage moderne et exécuter le code là où il n’est pas encore pris en charge.",
+  "source.label": "babeljs.io, le site de Babel"
+ },
+ "vite": {
+  "aka": "un bundler pour applications web",
+  "def": "Vite est un programme qui construit le code d’un site web et affiche instantanément les modifications dans le navigateur pendant le travail. Ses réglages décrivent comment construire le projet. Vitest réutilise ces mêmes réglages pour les tests, donc aucune configuration de test séparée n’est nécessaire.",
+  "faq.0.q": "Qu’est-ce que Vite ?",
+  "faq.0.a": "Un programme qui construit le code d’un site et affiche instantanément les modifications dans le navigateur pendant le travail.",
+  "faq.1.q": "Quel est le lien entre Vite et Vitest ?",
+  "faq.1.a": "Vitest réutilise les réglages de Vite pour les tests, donc aucune configuration de test séparée n’est nécessaire.",
+  "source.label": "vite.dev, le site de Vite"
+ },
+ "react-js": {
+  "aka": "une bibliothèque web, à ne pas confondre avec ReAct",
+  "def": "React est une bibliothèque JavaScript pour construire des pages web : une page est assemblée à partir de blocs prêts à l’emploi appelés composants, et quand les données changent, seuls les blocs nécessaires sont mis à jour. L’une des plus répandues avec Angular et Vue. Elle n’a rien à voir avec le schéma d’agent ReAct : seuls les noms se ressemblent.",
+  "faq.0.q": "Qu’est-ce que React ?",
+  "faq.0.a": "Une bibliothèque JavaScript pour construire des pages web : une page est assemblée à partir de blocs de composants.",
+  "faq.1.q": "En quoi React diffère-t-il de ReAct ?",
+  "faq.1.a": "React est une bibliothèque pour les pages web, ReAct est un schéma d’agent IA. Seule l’orthographe se ressemble.",
+  "source.label": "react.dev, le site de React"
+ },
+ "angular": {
+  "aka": "un framework web",
+  "def": "Angular est un framework pour construire des sites et des applications web en JavaScript et TypeScript : une page est assemblée à partir de blocs prêts à l’emploi appelés composants. L’un des plus répandus avec React et Vue.",
+  "faq.0.q": "Qu’est-ce qu’Angular ?",
+  "faq.0.a": "Un framework pour construire des sites et des applications web en JavaScript et TypeScript : une page est assemblée à partir de blocs de composants.",
+  "faq.1.q": "En quoi Angular diffère-t-il de React et de Vue ?",
+  "faq.1.a": "Les trois construisent une page à partir de composants et comptent parmi les plus utilisés. Angular est un framework complet, React est une bibliothèque.",
+  "source.label": "angular.dev, le site d’Angular"
+ },
+ "vue": {
+  "aka": "un framework web",
+  "def": "Vue est un framework pour construire des sites web en JavaScript : une page est assemblée à partir de blocs appelés composants, et il peut être adopté dans un projet progressivement. L’un des plus répandus avec Angular et React.",
+  "faq.0.q": "Qu’est-ce que Vue ?",
+  "faq.0.a": "Un framework JavaScript pour construire des sites web : une page est assemblée à partir de blocs de composants.",
+  "faq.1.q": "Qu’est-ce qui rend Vue pratique ?",
+  "faq.1.a": "Il peut être ajouté à un projet progressivement.",
+  "source.label": "vuejs.org, le site de Vue"
+ },
+ "time-to-market": {
+  "aka": "TTM, time2market, délai de mise sur le marché",
+  "def": "Le time to market (TTM, délai de mise sur le marché) est le temps qui sépare une idée du moment où un produit ou un changement devient disponible pour les utilisateurs. En logiciel, c’est la durée du cycle de livraison : plus il y a d’environnements et de vérifications sur le chemin (banc de fonctionnalité, dev, test, préproduction, démo), plus il s’allonge, mais moins d’erreurs atteignent la production. Les équipes décident donc du nombre de vérifications qui valent la peine : trop peu et la qualité baisse, trop et le produit arrive en retard.",
+  "faq.0.q": "Qu’est-ce que le time to market ?",
+  "faq.0.a": "Le temps qui sépare une idée du moment où un produit ou un changement devient disponible pour les utilisateurs.",
+  "faq.1.q": "Quel est le lien entre time to market et qualité ?",
+  "faq.1.a": "Plus il y a d’environnements et de vérifications sur le chemin, plus le cycle est long, mais moins d’erreurs atteignent la production.",
+  "source.label": "Wikipédia : Time to market",
+  "seo.title": "Qu’est-ce que le time to market (TTM) : cycle de livraison, vérifications et qualité",
+  "seo.description": "Le time to market (TTM) est le temps entre l’idée et les utilisateurs. Comment le cycle de livraison, les environnements et les vérifications influencent la vitesse et la qualité."
+ },
+ "change-lead-time": {
+  "name": "Délai de livraison des changements",
+  "aka": "lead time for changes, change lead time",
+  "def": "Le délai de livraison des changements (change lead time) est le temps qui s’écoule entre l’enregistrement d’un changement dans le gestionnaire de versions et son exécution en production. On le raccourcit avec de petits changements, des vérifications automatiques et moins d’étapes manuelles sur le chemin de la production. Plus il est court, plus vite l’équipe livre de petits changements. Il se compte à partir du code prêt, alors que le time to market se compte à partir de l’idée.",
+  "faq.0.q": "Qu’est-ce que le délai de livraison des changements ?",
+  "faq.0.a": "Le temps entre un commit et l’exécution du changement en production.",
+  "faq.1.q": "Comment raccourcir le délai de livraison des changements ?",
+  "faq.1.a": "Avec de petits changements, des vérifications automatiques et moins d’étapes manuelles sur le chemin de la production.",
+  "source.label": "DORA : software delivery metrics",
+  "seo.title": "Délai de livraison des changements (change lead time) : définition et comment le raccourcir",
+  "seo.description": "Le délai de livraison des changements est le temps entre un commit et l’exécution du changement en production. Une des métriques DORA ; comment les environnements et les vérifications allongent le chemin."
+ },
+ "deployment-frequency": {
+  "name": "Fréquence de déploiement",
+  "def": "La fréquence de déploiement est le nombre de fois, sur une période, où une équipe livre des changements en production, ou le temps qui s’écoule entre deux livraisons. Plus il y a d’environnements et de vérifications manuelles sur le chemin, plus les livraisons sont rares.",
+  "faq.0.q": "Qu’est-ce que la fréquence de déploiement ?",
+  "faq.0.a": "Le nombre de fois, sur une période, où une équipe livre des changements en production.",
+  "faq.1.q": "De quoi dépend la fréquence de déploiement ?",
+  "faq.1.a": "Plus il y a d’environnements et de vérifications manuelles sur le chemin, plus les livraisons sont rares.",
+  "source.label": "DORA : software delivery metrics",
+  "seo.title": "Fréquence de déploiement : définition et facteurs",
+  "seo.description": "La fréquence de déploiement est le nombre de fois, sur une période, où des changements atteignent la production. Une métrique DORA et son lien avec les environnements de test et la préproduction."
+ },
+ "change-fail-rate": {
+  "name": "Taux d’échec des changements",
+  "aka": "change fail rate, change failure rate",
+  "def": "Le taux d’échec des changements (change fail rate) est la part des livraisons qui ont exigé une intervention immédiate : un retour arrière (rollback) ou un correctif rapide (hotfix). Il montre à quel point les vérifications avant la production attrapent les erreurs, ce à quoi servent les tests et la préproduction.",
+  "faq.0.q": "Qu’est-ce que le taux d’échec des changements ?",
+  "faq.0.a": "La part des livraisons qui ont exigé une intervention immédiate : un rollback ou un hotfix.",
+  "faq.1.q": "Comment réduire le taux d’échec des changements ?",
+  "faq.1.a": "Attraper les erreurs avant la production : avec des tests et une vérification en préproduction.",
+  "source.label": "DORA : software delivery metrics",
+  "seo.title": "Taux d’échec des changements (change fail rate) : définition et comment le réduire",
+  "seo.description": "Le taux d’échec des changements est la part des livraisons qui ont exigé un rollback ou un hotfix. Une métrique DORA : comment les tests et la préproduction le réduisent."
+ },
+ "recovery-time": {
+  "name": "Temps de rétablissement après un déploiement raté",
+  "def": "Le temps de rétablissement après un déploiement raté est le temps qui s’écoule entre une livraison ratée et le moment où le service fonctionne de nouveau correctement. Les versions antérieures de DORA appelaient cette métrique temps moyen de rétablissement, MTTR (mean time to restore).",
+  "faq.0.q": "Qu’est-ce que le temps de rétablissement après un déploiement raté ?",
+  "faq.0.a": "Le temps entre une livraison ratée et le moment où le service fonctionne de nouveau correctement.",
+  "faq.1.q": "Est-ce la même chose que le MTTR ?",
+  "faq.1.a": "Oui, les versions antérieures de DORA appelaient cette métrique MTTR, temps moyen de rétablissement.",
+  "source.label": "DORA : software delivery metrics",
+  "seo.title": "Temps de rétablissement après un déploiement raté (MTTR) : définition",
+  "seo.description": "Le temps de rétablissement après un déploiement raté est le temps entre une livraison ratée et sa correction. Une métrique DORA, auparavant appelée MTTR."
+ },
+ "deployment-rework-rate": {
+  "name": "Taux de reprise des déploiements",
+  "def": "Le taux de reprise des déploiements (deployment rework rate) est la part des livraisons qui n’étaient pas prévues et ont eu lieu à cause d’un incident en production. Avec le taux d’échec des changements, il montre l’instabilité de la livraison.",
+  "faq.0.q": "Qu’est-ce que le taux de reprise des déploiements ?",
+  "faq.0.a": "La part des livraisons qui n’étaient pas prévues et sont venues d’un incident en production.",
+  "faq.1.q": "Que montre cette métrique ?",
+  "faq.1.a": "Avec le taux d’échec des changements, l’instabilité de la livraison.",
+  "source.label": "DORA : software delivery metrics",
+  "seo.title": "Taux de reprise des déploiements (deployment rework rate) : définition",
+  "seo.description": "Le taux de reprise des déploiements est la part des livraisons qui ont eu lieu à cause d’un incident en production. Une métrique DORA à côté du taux d’échec des changements."
+ },
+ "prompt": {
+  "name": "Prompt",
+  "def": "Un prompt est une demande adressée à un modèle : tâche, contexte, format de réponse et contraintes. Plus ces éléments sont assemblés avec précision, moins il faut de corrections après la première réponse.",
+  "faq.0.q": "Qu’est-ce qu’un prompt ?",
+  "faq.0.a": "Une demande adressée à un modèle : la tâche, le contexte, le format de réponse et les contraintes.",
+  "faq.1.q": "Comment écrire un bon prompt ?",
+  "faq.1.a": "Assembler précisément tous les éléments : plus la tâche, les données et le format sont exacts, moins il faut de corrections après la première réponse.",
+  "source.label": "Anthropic : Prompt engineering"
+ },
+ "source": {
+  "name": "Source",
+  "def": "Une source est le système ou le document où vit le fait d’origine : un ticket, une feuille de calcul, un compte rendu de réunion. La réponse d’un agent est aussi fiable qu’elle peut être vérifiée par rapport à sa source ; chaque affirmation de la réponse porte donc un lien vers sa source.",
+  "faq.0.q": "Qu’est-ce qu’une source ?",
+  "faq.0.a": "Le système ou le document qui contient le fait d’origine : un ticket, un tableau, un enregistrement de réunion.",
+  "faq.1.q": "Pourquoi la réponse d’un agent doit-elle citer ses sources ?",
+  "faq.1.a": "Une réponse n’est fiable que dans la mesure où elle peut être vérifiée par rapport à sa source."
+ },
+ "hallucination": {
+  "name": "Hallucination",
+  "aka": "hallucination de LLM, hallucination d’IA",
+  "def": "Une hallucination de LLM est une réponse assurée mais inventée d’un modèle : un fait, une fonction ou un lien qui n’existe pas. Dans le code, c’est par exemple l’appel d’une fonction qui n’existe pas ou l’installation d’un paquet qui n’existe pas. Elle apparaît là où une partie de la réponse n’a aucun appui dans les données, et le modèle comble le trou par une supposition plausible. Le cas inverse, où chaque partie de la réponse a un appui, s’appelle un épimorphisme. On la réduit en ancrant le modèle dans des sources fiables et en vérifiant le résultat.",
+  "faq.0.q": "Qu’est-ce qu’une hallucination de LLM ?",
+  "faq.0.a": "Une réponse assurée mais inventée par un modèle : un fait, une fonction ou un lien qui n’existe pas.",
+  "faq.1.q": "Pourquoi les hallucinations se produisent-elles ?",
+  "faq.1.a": "Là où une partie de la réponse n’a aucun appui dans les données, le modèle comble le vide par une supposition plausible.",
+  "faq.2.q": "Comment réduire les hallucinations ?",
+  "faq.2.a": "Donner au modèle des données issues de sources fiables et vérifier le résultat.",
+  "source.label": "Wikipédia : Hallucination (intelligence artificielle)",
+  "seo.title": "Hallucination de LLM : définition, exemples et ancrage dans des sources",
+  "seo.description": "Ce que signifie une hallucination de LLM, avec des exemples d’agents de code : une fonction inventée, un paquet inexistant, un lien mort. Pourquoi elle se produit, comment l’ancrage dans des sources la réduit et comment les vérifications la détectent.",
+  "notes.title": "Exemples d’hallucinations et comment les réduire",
+  "notes.items.0.name": "Une fonction inventée",
+  "notes.items.0.text": "l’agent appelle une méthode que la bibliothèque n’a pas, ou un paramètre que la fonction n’accepte pas. Le code paraît plausible et échoue à l’exécution.",
+  "notes.items.1.name": "Un paquet inexistant",
+  "notes.items.1.text": "l’agent propose d’installer un paquet qui n’existe pas sur npm ou PyPI. Les modèles répètent souvent les mêmes noms inventés, et des attaquants enregistrent des paquets sous ces noms pour y glisser leur code (slopsquatting).",
+  "notes.items.2.name": "Un lien mort",
+  "notes.items.2.text": "un lien vers un article, une documentation ou une section qui n’existe pas.",
+  "notes.items.3.name": "« Terminé » sans aucun changement",
+  "notes.items.3.text": "l’agent rapporte un travail qu’il n’a pas fait.",
+  "notes.items.4.name": "Comment la réduire",
+  "notes.items.4.text": "ancrer le modèle : lui donner des sources et du contexte et exiger une référence à l’appui de chaque affirmation (c’est un épimorphisme) ; autoriser « je ne sais pas » dans le prompt.",
+  "notes.items.5.name": "Comment la détecter",
+  "notes.items.5.text": "avec des vérifications : les tests, les builds et les linters attrapent le code inventé, une liste blanche de paquets attrape les paquets inventés, le suivi des liens attrape les sources inventées."
+ },
+ "context": {
+  "name": "Contexte",
+  "def": "Le contexte est tout ce que le modèle voit à l’instant : la conversation, les fichiers du projet et les données des systèmes connectés. Ce qui n’est pas dans le contexte, l’agent ne le connaît pas.",
+  "faq.0.q": "Qu’est-ce que le contexte en IA ?",
+  "faq.0.a": "Tout ce que le modèle voit à l’instant : la conversation, les fichiers du projet et les données des systèmes connectés.",
+  "faq.1.q": "Pourquoi l’agent ne connaît-il pas mon projet ?",
+  "faq.1.a": "Ce qui n’est pas dans le contexte, l’agent ne le connaît pas. Les connaissances permanentes du projet vont dans des fichiers d’instructions comme AGENTS.md ou CLAUDE.md.",
+  "source.label": "Anthropic : Context windows"
+ },
+ "token": {
+  "name": "Token",
+  "def": "Un token est une unité de texte que compte un LLM : à peu près une syllabe ou un mot court. Le nombre de tokens fixe le prix d’une requête et la quantité qui tient dans le contexte.",
+  "faq.0.q": "Qu’est-ce qu’un token en IA ?",
+  "faq.0.a": "Une unité de texte que compte un LLM : à peu près une syllabe ou un mot court.",
+  "faq.1.q": "Pourquoi le nombre de tokens compte-t-il ?",
+  "faq.1.a": "Il fixe le prix de la requête et la quantité qui tient dans le contexte du modèle.",
+  "source.label": "Anthropic : Token counting"
+ }
+}
