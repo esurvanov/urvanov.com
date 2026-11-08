@@ -425,8 +425,9 @@
     "faq": [
       ["Có thể chơi Little Bombers online mà không cần tải về không?", "Có. Game mở bằng nút «Chơi trên trình duyệt» trên trang này và chạy ngay trong thẻ trình duyệt, trên máy tính lẫn điện thoại. Không cần cài đặt hay tạo tài khoản."],
       ["Đây có phải game Little Bombers Returns của Alawar không?", "Không. Game của Alawar ra mắt năm 2004 dưới dạng chương trình Windows. Game này được làm lại từ đầu cho trình duyệt, với màn chơi riêng, trình tạo màn và 18 thành tích. Điểm chung là ý tưởng Bomberman: mê cung, bom và lối ra dưới một chiếc thùng."],
+      ["Little Bombers Returns của Alawar không chạy trên Windows 10 hoặc 11: phải làm gì?", "Trên các diễn đàn, người chơi cho biết game cũ của Alawar bị nhấp nháy, hiện màn hình trắng hoặc không khởi động trên Windows mới. Với một số người, sửa fullscreen=1 thành fullscreen=0 trong tệp config.ini ở thư mục game giúp chơi ở chế độ cửa sổ; với người khác thì không. Nếu chỉ muốn chơi một game kiểu Bomberman, game này mở ngay trên trình duyệt mà không cần cài đặt."],
       ["Game có những ngôn ngữ nào?", "Tiếng Nga, tiếng Anh, tiếng Thái, tiếng Gruzia, tiếng Việt, tiếng Tây Ban Nha và tiếng Pháp. Game khởi động bằng ngôn ngữ của trang web nơi bạn bấm «Chơi», và bạn có thể đổi bằng nút ngôn ngữ trong menu."],
-      ["Có chế độ hai người chơi không?", "Chưa có: game có chiến dịch một người chơi gồm 50 màn, cộng với các màn do bạn tự tạo trong trình chỉnh sửa."],
+      ["Có chế độ hai người chơi không?", "Chưa có: game này chỉ một người chơi, với chiến dịch 50 màn và các màn do bạn tự tạo trong trình chỉnh sửa. Game của Alawar hỗ trợ tối đa bốn người chơi."],
       ["Tiến trình được lưu ở đâu?", "Ngay trong trình duyệt trên thiết bị của bạn: các màn đã qua, số sao, thành tích tốt nhất và màn tự tạo. Nếu xóa dữ liệu trang web thì chúng sẽ mất."],
       ["Làm sao để được ba sao?", "Hoàn thành màn nhanh hơn thời gian mục tiêu hiển thị trên màn hình chiến thắng."],
       ["Làm sao chia sẻ màn của tôi?", "Trong trình chỉnh sửa, nhấn nút mã rồi gửi đoạn văn bản nhận được cho bạn bè. Bạn ấy dán vào mục «Màn của tôi»."],
@@ -441,7 +442,8 @@
       "bomberman online",
       "chơi bomberman không cần tải",
       "game đặt bom trên trình duyệt",
-      "trình tạo màn bomberman"
+      "trình tạo màn bomberman",
+      "little bombers returns windows 10"
     ]
   }
 }

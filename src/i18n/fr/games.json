@@ -764,8 +764,9 @@
     "faq": [
       ["Peut-on jouer à Little Bombers en ligne sans téléchargement ?", "Oui. Le jeu s’ouvre avec le bouton « Jouez dans votre navigateur » de cette page et tourne directement dans l’onglet, sur ordinateur et sur mobile. Rien à installer, aucun compte à créer."],
       ["Est-ce le même jeu que Little Bombers Returns d’Alawar ?", "Non. Le jeu d’Alawar est sorti en 2004 comme programme Windows. Celui-ci est refait de zéro pour le navigateur, avec ses propres niveaux, un éditeur et 18 succès. Ils partagent l’idée de Bomberman : un labyrinthe, des bombes et une sortie sous une caisse."],
+      ["Little Bombers Returns d’Alawar ne démarre pas sous Windows 10 ou 11 : que faire ?", "Sur les forums, des joueurs signalent que l’ancien jeu d’Alawar scintille, affiche un écran blanc ou ne démarre pas sur les Windows récents. Pour certains, il suffit de remplacer fullscreen=1 par fullscreen=0 dans le fichier config.ini du dossier du jeu pour jouer en fenêtre ; pour d’autres, cela ne change rien. Si vous voulez simplement jouer à un Bomberman, ce jeu s’ouvre dans le navigateur, sans rien installer."],
       ["Dans quelles langues est le jeu ?", "En russe, anglais, thaï, géorgien, vietnamien, espagnol et français. Le jeu démarre dans la langue de la page du site depuis laquelle vous avez appuyé sur « Jouer », et vous pouvez en changer avec le bouton de langue du menu."],
-      ["Y a-t-il un mode à deux joueurs ?", "Pas encore : le jeu propose une campagne solo de 50 niveaux, plus vos propres niveaux créés dans l’éditeur."],
+      ["Y a-t-il un mode à deux joueurs ?", "Pas encore : ce jeu est solo, avec une campagne de 50 niveaux et vos propres niveaux créés dans l’éditeur. Le jeu d’Alawar accepte jusqu’à quatre joueurs."],
       ["Où est sauvegardée la progression ?", "Dans le navigateur de ton appareil : niveaux terminés, étoiles, meilleurs temps et tes niveaux. Si tu effaces les données du site, ils disparaissent."],
       ["Comment obtenir trois étoiles ?", "Termine le niveau plus vite que le temps cible affiché sur l’écran de victoire."],
       ["Comment partager mon niveau ?", "Dans l’éditeur, appuie sur le bouton de code et envoie le texte obtenu à un ami. Il le colle dans la section « Mes niveaux »."],
@@ -780,7 +781,8 @@
       "bomberman en ligne",
       "jouer à bomberman sans téléchargement",
       "jeu de bombes dans le navigateur",
-      "éditeur de niveaux bomberman"
+      "éditeur de niveaux bomberman",
+      "little bombers returns windows 10"
     ]
   }
 }
