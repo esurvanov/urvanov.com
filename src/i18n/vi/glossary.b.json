@@ -398,7 +398,7 @@
     ]
   },
   "memory-bank": {
-    "def": "Memory Bank là thư mục `memory-bank` với sáu tệp markdown, nơi tác nhân AI giữ ngữ cảnh dự án giữa các phiên: `projectbrief` (mục tiêu và phạm vi), `productContext` (vì sao sản phẩm tồn tại), `systemPatterns` (kiến trúc), `techContext` (stack), `activeContext` (trọng tâm hiện tại) và `progress` (đã làm xong gì). Tác nhân đọc chúng khi bắt đầu mỗi nhiệm vụ và cập nhật sau các thay đổi lớn hoặc khi có lệnh \"update memory bank\". Đây là bộ chỉ dẫn cho tác nhân của Cline, cũng chạy được với các tác nhân khác: một trường hợp của bộ nhớ dự án lưu trong tệp, giống CLAUDE.md.",
+    "def": "Memory Bank là thư mục `memory-bank` với sáu tệp markdown, nơi tác nhân AI giữ ngữ cảnh dự án giữa các phiên: `projectbrief` (mục tiêu và phạm vi), `productContext` (vì sao sản phẩm tồn tại), `systemPatterns` (kiến trúc), `techContext` (stack), `activeContext` (trọng tâm hiện tại) và `progress` (đã làm xong gì). Tác nhân đọc chúng khi bắt đầu mỗi nhiệm vụ và cập nhật sau các thay đổi lớn hoặc khi có lệnh “update memory bank”. Đây là bộ chỉ dẫn cho tác nhân của Cline, cũng chạy được với các tác nhân khác: một trường hợp của bộ nhớ dự án lưu trong tệp, giống CLAUDE.md.",
     "faq.0.q": "Memory Bank là gì?",
     "faq.0.a": "Thư mục memory-bank với sáu tệp markdown, nơi tác nhân giữ ngữ cảnh dự án giữa các phiên: mục tiêu, kiến trúc, stack, trọng tâm hiện tại và tiến độ.",
     "faq.1.q": "Khi nào tác nhân cập nhật Memory Bank?",
@@ -683,14 +683,14 @@
   "test-env": {
     "name": "Môi trường test (tích hợp)",
     "aka": "môi trường kiểm thử, môi trường tích hợp, SIT",
-    "def": "Test là môi trường dùng chung, nơi các thay đổi của mọi nhóm và dịch vụ được gom lại thường xuyên, hằng ngày hoặc sau mỗi lần merge, để kiểm tra chúng chạy được cùng nhau. QA và kiểm thử tự động làm việc ở đây; dữ liệu là bản sao của môi trường sản xuất hoặc dữ liệu giả. Nó khác dev ở phạm vi: dev nhận mã của một nhóm, còn trên test mọi người tích hợp. Test là một trong các môi trường kiểm thử, và gần như luôn có, kể cả khi không có dev.",
+    "def": "Test là môi trường dùng chung, nơi các thay đổi của mọi nhóm và dịch vụ được gom lại thường xuyên, hằng ngày hoặc sau mỗi lần merge, để kiểm tra chúng chạy được cùng nhau. QA và kiểm thử tự động làm việc ở đây; dữ liệu là bản sao của môi trường sản xuất hoặc dữ liệu giả. Nó khác dev ở phạm vi: dev nhận mã của một nhóm, còn trên test mọi người tích hợp. Test là một trong các stand kiểm thử, và gần như luôn có, kể cả khi không có dev.",
     "faq.0.q": "Môi trường test là gì?",
     "faq.0.a": "Môi trường dùng chung, nơi các thay đổi của mọi người thường xuyên được gom lại để kiểm tra chúng chạy được cùng nhau.",
     "faq.1.q": "Test khác pre-prod ở đâu?",
     "faq.1.a": "Test kiểm tra các thay đổi của mọi người chạy được cùng nhau. Pre-prod kiểm tra một thay đổi trong điều kiện giống môi trường sản xuất.",
     "source.label": "Wikipedia: Deployment environment",
     "seo.title": "Môi trường test (tích hợp) là gì, khác dev và pre-prod ở đâu",
-    "seo.description": "Test là môi trường tích hợp, nơi thay đổi của mọi nhóm thường xuyên được gom lại để kiểm tra chạy cùng nhau. Khác dev, pre-prod và các môi trường kiểm thử ở đâu."
+    "seo.description": "Test là môi trường tích hợp, nơi thay đổi của mọi nhóm thường xuyên được gom lại để kiểm tra chạy cùng nhau. Khác dev, pre-prod và các stand kiểm thử ở đâu."
   },
   "test-stand": {
     "name": "Môi trường staging",
