@@ -181,6 +181,28 @@ export const AI_OFFERS: AiOffer[] = [
     format: { ru: ['Воркшоп', 'Разбор ваших процессов', 'Сопровождение запуска'], en: ['Workshop', 'Your own processes', 'Launch support'] },
   },
   {
+    slug: 'appsec',
+    group: 'roles',
+    icon: 'SEC',
+    short: { ru: 'Безопасность и AppSec', en: 'Security & AppSec' },
+    job: { ru: 'Проверять код с AI быстрее и закрыть риски самих AI-агентов', en: 'Review code security faster with AI and cover the risks of AI agents themselves' },
+    name: { ru: 'AI для кибербезопасности и AppSec', en: 'AI for cybersecurity and AppSec' },
+    hook: { ru: 'AI помогает искать уязвимости и сам приносит новые риски: разбираем обе стороны', en: 'AI helps find vulnerabilities and brings new risks of its own: we cover both sides' },
+    pains: {
+      ru: ['Код с AI пишут быстрее, чем его успевают проверять', 'Агенты получают доступ к коду, секретам и системам без правил', 'Prompt injection и утечки данных через AI-сервисы'],
+      en: ['AI-written code ships faster than it can be reviewed', 'Agents get access to code, secrets and systems without rules', 'Prompt injection and data leaks through AI services'],
+    },
+    outcomes: {
+      ru: ['Проверки безопасности с AI в процессе: ревью кода, поиск уязвимостей, разбор находок', 'Правила для агентов: права, песочница, секреты', 'Модель угроз для AI-агентов вашей команды', 'Меньше ручного разбора ложных срабатываний'],
+      en: ['AI-assisted security checks in your flow: code review, vulnerability search, triage', 'Rules for agents: permissions, sandbox, secrets', 'A threat model for your team’s AI agents', 'Less manual triage of false positives'],
+    },
+    program: {
+      ru: ['Где AI помогает AppSec: ревью, находки сканеров, моделирование угроз', 'Риски агентов: prompt injection, права, утечки', 'Проверки в CI и в работе агентов', 'Практика на вашем коде'],
+      en: ['Where AI helps AppSec: review, scanner findings, threat modeling', 'Agent risks: prompt injection, permissions, leaks', 'Checks in CI and in agent workflows', 'Practice on your own code'],
+    },
+    format: { ru: ['Воркшоп', 'Разбор вашего процесса разработки', 'Правила и шаблоны на руки'], en: ['Workshop', 'Review of your development flow', 'Rules and templates to keep'] },
+  },
+  {
     slug: 'personal',
     group: 'personal',
     icon: '1:1',
