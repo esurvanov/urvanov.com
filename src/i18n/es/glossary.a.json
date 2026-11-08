@@ -823,5 +823,388 @@
   "faq.1.q": "¿Cómo se llama la IA de Atlassian?",
   "faq.1.a": "Rovo: los agentes de Rovo asumen tareas en Jira, y el Rovo MCP Server da a agentes externos acceso a los datos de Atlassian.",
   "source.label": "Sitio oficial de Atlassian"
+ },
+ "harness": {
+  "name": "Harness",
+  "aka": "arnés del agente",
+  "def": "Harness (arnés del agente) es todo lo que rodea al modelo y lo convierte en un agente que funciona: instrucciones, herramientas, permisos, memoria y comprobaciones. El modelo es el mismo; el resultado depende del harness.",
+  "faq.0.q": "¿Qué es un harness en IA?",
+  "faq.0.a": "Todo lo que rodea a un modelo y lo convierte en un agente que funciona: instrucciones, herramientas, derechos de acceso, memoria y comprobaciones.",
+  "faq.1.q": "¿Por qué el resultado depende del harness?",
+  "faq.1.a": "El modelo es el mismo, pero lo que el agente sabe, lo que puede hacer y cómo se comprueba a sí mismo lo define el harness.",
+  "source.label": "Anthropic: Effective harnesses for agents",
+  "seo.title": "Harness de un agente: qué es y qué incluye",
+  "seo.description": "El harness de un agente es todo lo que rodea al modelo y lo convierte en agente: bucle, herramientas, contexto, memoria, reglas, permisos y comprobaciones. Cada parte, con enlaces.",
+  "more.label": "Agente de IA = LLM + harness: LLM vs harness vs agente",
+  "parts.title": "De qué se compone un harness"
+ },
+ "hooks": {
+  "name": "Hooks",
+  "def": "Los hooks son scripts que el harness ejecuta automáticamente en momentos fijos del trabajo del agente: antes de una acción, después de editar un archivo, al terminar. El agente trata una regla de las instrucciones como un consejo, mientras que un hook siempre se ejecuta; por eso los hooks cierran los bloqueos que no admiten excepciones.",
+  "faq.0.q": "¿Qué es un hook?",
+  "faq.0.a": "Un script que el harness ejecuta automáticamente en un momento fijo del trabajo del agente: antes de una acción, después de editar un archivo o al final.",
+  "faq.1.q": "¿En qué se diferencia un hook de una regla?",
+  "faq.1.a": "El agente trata una regla como un consejo y puede romperla, mientras que un hook siempre se ejecuta. Por eso las prohibiciones sin excepciones se aplican con hooks.",
+  "source.label": "Referencia de hooks de Claude Code"
+ },
+ "agent-loop": {
+  "name": "Bucle del agente",
+  "aka": "bucle agéntico",
+  "def": "El bucle del agente es el ritmo repetido del trabajo de un agente: pensar, llamar a una herramienta, mirar el resultado, volver a pensar. El bucle se ejecuta hasta que la tarea se resuelve o el agente necesita a una persona.",
+  "faq.0.q": "¿Qué es el bucle del agente?",
+  "faq.0.a": "El ritmo repetido del trabajo de un agente: pensar, llamar a una herramienta, mirar el resultado y volver a pensar.",
+  "faq.1.q": "¿Cuándo se detiene el bucle del agente?",
+  "faq.1.a": "Cuando la tarea está hecha o el agente necesita la ayuda de una persona.",
+  "source.label": "Artículo de ReAct (arXiv)"
+ },
+ "react": {
+  "aka": "Reason + Act (razonar + actuar)",
+  "def": "ReAct es una forma de trabajar de un agente en la que el modelo alterna razonar y actuar: decide qué hacer, llama a una herramienta, lee el resultado y vuelve a razonar. Solo razonando, el modelo se inventa la respuesta; solo actuando, vaga sin un plan; alternando, llega a la respuesta correcta. Se describió en un artículo de 2022; el bucle del agente de los agentes de código actuales se apoya en él.",
+  "faq.0.q": "¿Qué es ReAct?",
+  "faq.0.a": "Un patrón de agente en el que el modelo alterna razonar y actuar: decide qué hacer, llama a una herramienta, lee el resultado y vuelve a razonar.",
+  "faq.1.q": "¿En qué se diferencia ReAct de React?",
+  "faq.1.a": "ReAct es un patrón de agentes de IA; React es una biblioteca de JavaScript para páginas web. Solo se parece la escritura.",
+  "source.label": "Yao et al., «ReAct» (arXiv, 2022)"
+ },
+ "session": {
+  "name": "Sesión",
+  "def": "Una sesión es una conversación continua con un agente, desde el inicio hasta la salida o un reinicio. Todo lo que el agente aprendió en ella está en su contexto y desaparece cuando termina la sesión; a la siguiente sesión pasa solo lo que se escribió en la memoria y en archivos como `CLAUDE.md`. El harness guarda la conversación en un registro de sesión, desde el cual se puede recuperar una sesión pasada completa; en Claude Code, con `/resume` o `claude --continue`.",
+  "faq.0.q": "¿Qué es una sesión de un agente?",
+  "faq.0.a": "Una conversación continua con un agente: desde el inicio hasta la salida o el reinicio.",
+  "faq.1.q": "¿Qué pasa a la siguiente sesión?",
+  "faq.1.a": "Solo lo que se escribe en la memoria y en archivos como CLAUDE.md. Lo demás desaparece con el contexto de la sesión.",
+  "source.label": "Documentación de sesiones de Claude Code"
+ },
+ "memory": {
+  "name": "Memoria del agente",
+  "def": "La memoria del agente son las notas que un agente guarda entre sesiones: reglas del proyecto, restricciones que encontró, acuerdos. Sin memoria, cada conversación nueva empieza desde una página en blanco.",
+  "faq.0.q": "¿Qué es la memoria de un agente de IA?",
+  "faq.0.a": "Notas que el agente guarda entre sesiones: reglas del proyecto, restricciones descubiertas, acuerdos.",
+  "faq.1.q": "¿Qué pasa sin memoria?",
+  "faq.1.a": "Cada conversación nueva empieza desde cero.",
+  "source.label": "Documentación de memoria de Claude Code"
+ },
+ "bible": {
+  "name": "Biblia del proyecto",
+  "def": "La biblia del proyecto es una descripción de cómo está construido el proyecto y por qué: límites del sistema, acuerdos, principios y valores: qué importa más al elegir y qué nunca está permitido. El agente la lee antes de trabajar, así que no te repites en cada tarea. De ella se derivan en reglas las instrucciones concretas de qué hacer y qué no. La biblia vive en `CLAUDE.md` para Claude Code o en `AGENTS.md` para Codex y Cursor, o en archivos aparte a los que estos apuntan.",
+  "faq.0.q": "¿Qué es la biblia del proyecto?",
+  "faq.0.a": "Una descripción de cómo está construido el proyecto y por qué: límites del sistema, acuerdos, principios y valores. El agente la lee antes de trabajar.",
+  "faq.1.q": "¿Dónde se guarda la biblia del proyecto?",
+  "faq.1.a": "En CLAUDE.md para Claude Code o en AGENTS.md para Codex y Cursor, o en archivos aparte a su lado.",
+  "source.label": "Buenas prácticas de Claude Code",
+  "compare.title": "Reglas y biblia del proyecto",
+  "compare.head": [
+   "Reglas",
+   "Biblia del proyecto"
+  ],
+  "compare.rows.0": [
+   "Responde",
+   "cómo actuar aquí",
+   "cómo está construido el proyecto y por qué"
+  ],
+  "compare.rows.1": [
+   "Forma",
+   "instrucciones cortas de qué hacer y qué no",
+   "una descripción conectada y principios"
+  ],
+  "compare.rows.2": [
+   "Cuándo la lee el agente",
+   "siempre o al tocar archivos que coinciden",
+   "antes de trabajar, entera"
+  ],
+  "compare.rows.3": [
+   "Ejemplo",
+   "«ejecuta las pruebas con `npm test`»",
+   "«los pagos son un sistema aparte que no editamos»"
+  ],
+  "compare.rows.4": [
+   "De dónde sale",
+   "se deriva de la biblia y de los errores del agente",
+   "la escriben personas que conocen el proyecto"
+  ]
+ },
+ "rules": {
+  "name": "Reglas del agente",
+  "aka": "reglas",
+  "def": "Las reglas del agente son instrucciones cortas de qué hacer y qué no que el harness carga en el contexto del agente: siempre, o solo cuando el agente toca archivos que coinciden. Es un concepto común: en Claude Code las reglas viven en `CLAUDE.md` y la carpeta `.claude/rules`, en Cursor en `.cursor/rules`, en Codex en `AGENTS.md`. El agente trata una regla como un consejo; una prohibición sin excepciones se aplica con un hook.",
+  "faq.0.q": "¿Qué son las reglas de un agente?",
+  "faq.0.a": "Instrucciones cortas de «haz esto, no hagas aquello» que el harness carga en el contexto del agente siempre o cuando el agente toca archivos que coinciden.",
+  "faq.1.q": "¿Dónde viven las reglas de un agente?",
+  "faq.1.a": "En Claude Code, en CLAUDE.md y en reglas por ruta; en Cursor, en .cursor/rules; y para otros agentes, en AGENTS.md.",
+  "source.label": "Documentación de reglas de Cursor",
+  "compare.title": "Reglas y biblia del proyecto",
+  "compare.head": [
+   "Reglas",
+   "Biblia del proyecto"
+  ],
+  "compare.rows.0": [
+   "Responde",
+   "cómo actuar aquí",
+   "cómo está construido el proyecto y por qué"
+  ],
+  "compare.rows.1": [
+   "Forma",
+   "instrucciones cortas de qué hacer y qué no",
+   "una descripción conectada y principios"
+  ],
+  "compare.rows.2": [
+   "Cuándo la lee el agente",
+   "siempre o al tocar archivos que coinciden",
+   "antes de trabajar, entera"
+  ],
+  "compare.rows.3": [
+   "Ejemplo",
+   "«ejecuta las pruebas con `npm test`»",
+   "«los pagos son un sistema aparte que no editamos»"
+  ],
+  "compare.rows.4": [
+   "De dónde sale",
+   "se deriva de la biblia y de los errores del agente",
+   "la escriben personas que conocen el proyecto"
+  ]
+ },
+ "checks": {
+  "name": "Comprobaciones estáticas",
+  "aka": "pruebas estáticas · comprobaciones automáticas",
+  "def": "Las comprobaciones estáticas son pruebas, linters, compilaciones y otras verificaciones automáticas que confirman el resultado del agente antes de que una persona lo mire. Una comprobación que el agente puede ejecutar por sí mismo le devuelve los errores y le hace corregirlos sin ti.",
+  "faq.0.q": "¿Qué son las comprobaciones estáticas de un agente?",
+  "faq.0.a": "Pruebas, linters, compilaciones y otras comprobaciones automáticas que confirman el resultado del agente antes de que una persona lo mire.",
+  "faq.1.q": "¿Por qué debe el agente ejecutar las comprobaciones él mismo?",
+  "faq.1.a": "Una comprobación que el agente ejecuta por sí mismo le devuelve los errores, y los corrige antes de entregar el trabajo.",
+  "source.label": "Wikipedia: Static program analysis"
+ },
+ "orchestration": {
+  "name": "Orquestación",
+  "def": "La orquestación es la gestión de varios pasos o varios agentes: quién se encarga de qué, en qué orden trabajan y cómo se pasan los resultados, mediante archivos, el resultado de un subagente o mensajería entre sesiones.",
+  "faq.0.q": "¿Qué es la orquestación de agentes?",
+  "faq.0.a": "La gestión de varios pasos o agentes: quién se encarga de qué, en qué orden trabajan y cómo avanzan los resultados.",
+  "faq.1.q": "¿Cómo se pasan los resultados los agentes entre sí?",
+  "faq.1.a": "Mediante archivos, mediante el resultado de un subagente o con mensajes entre sesiones.",
+  "source.label": "Anthropic: Multi-agent research system"
+ },
+ "session-messaging": {
+  "name": "Mensajería entre sesiones",
+  "def": "La mensajería entre sesiones es una forma de que sesiones paralelas de agentes se pasen texto entre sí: una encuentra a otra por su nombre y le envía un mensaje, y la otra lo lee en su siguiente paso. En Claude Code son la mensajería entre sesiones y los equipos de agentes experimentales; en Cursor, el traspaso entre agentes locales y en la nube cumple un papel parecido. Así la orquestación funciona sin que una persona copie respuestas entre ventanas.",
+  "faq.0.q": "¿Qué es la mensajería entre sesiones?",
+  "faq.0.a": "Una forma de que sesiones paralelas de agentes se pasen texto entre sí: una encuentra a otra por su nombre y le envía un mensaje.",
+  "faq.1.q": "¿Para qué sirve la mensajería entre sesiones?",
+  "faq.1.a": "Así, orquestar varios agentes no requiere una persona en medio copiando texto de una ventana a otra.",
+  "source.label": "Documentación de equipos de agentes de Claude Code"
+ },
+ "tracing": {
+  "name": "Logs y trazas",
+  "def": "Logs y trazas son un registro de cada paso del agente: qué leyó, qué herramientas llamó y qué devolvieron. Muestra dónde el agente tomó un camino equivocado y permite repetir el análisis.",
+  "faq.0.q": "¿Qué es el trazado de un agente?",
+  "faq.0.a": "Un registro de cada paso del agente: qué leyó, qué herramientas llamó y qué devolvieron.",
+  "faq.1.q": "¿Para qué sirven los logs y las trazas?",
+  "faq.1.a": "Muestran dónde se equivocó el agente, y el análisis puede repetirse.",
+  "source.label": "OpenTelemetry: Traces"
+ },
+ "claude-md": {
+  "def": "CLAUDE.md es un archivo en la raíz del proyecto con instrucciones permanentes para Claude Code: estructura del proyecto, comandos de compilación y pruebas, convenciones. Entra en el contexto del agente al inicio de cada sesión.",
+  "faq.0.q": "¿Qué es CLAUDE.md?",
+  "faq.0.a": "Un archivo en la raíz del proyecto con instrucciones permanentes para Claude Code: estructura del proyecto, comandos de compilación y pruebas, convenciones.",
+  "faq.1.q": "¿Cuándo lee Claude Code el archivo CLAUDE.md?",
+  "faq.1.a": "Al inicio de cada sesión: el archivo entra en el contexto del agente.",
+  "source.label": "Documentación de CLAUDE.md de Claude Code"
+ },
+ "agents-md": {
+  "def": "AGENTS.md es un archivo común de instrucciones para un proyecto que leen muchos agentes. Lo usan Codex, Cursor y otros, así que es la contraparte neutral respecto a proveedores de `CLAUDE.md`.",
+  "faq.0.q": "¿Qué es AGENTS.md?",
+  "faq.0.a": "Un archivo común de instrucciones para distintos agentes: comandos, estilo, prohibiciones.",
+  "faq.1.q": "¿Qué agentes leen AGENTS.md?",
+  "faq.1.a": "Codex, Cursor y otros agentes, así que el archivo sirve como alternativa neutral a CLAUDE.md.",
+  "source.label": "Sitio oficial de AGENTS.md"
+ },
+ "agent-skills": {
+  "name": "Skill",
+  "aka": "skills",
+  "def": "Un skill es una carpeta con un archivo `SKILL.md`: instrucciones y archivos auxiliares para una tarea recurrente, como un informe o una migración. Al inicio de una sesión el agente ve solo el nombre y la descripción del skill y carga el skill entero cuando la tarea encaja, así no se gasta espacio de contexto por adelantado.",
+  "faq.0.q": "¿Qué es un skill de un agente de IA?",
+  "faq.0.a": "Una carpeta con un archivo SKILL.md: instrucciones y archivos auxiliares para una tarea repetida, como un informe o una migración.",
+  "faq.1.q": "¿Por qué los skills no consumen el contexto?",
+  "faq.1.a": "Al inicio de una sesión el agente ve solo el nombre y la descripción del skill, y lo carga entero cuando una tarea encaja.",
+  "source.label": "Documentación de Agent Skills de Anthropic"
+ },
+ "mcp": {
+  "def": "MCP es un protocolo abierto mediante el cual un agente se conecta a servicios externos (Jira, Airtable, bases de datos) a través de una sola interfaz. Un servidor MCP ofrece al agente un conjunto de herramientas, mientras que los permisos los controlas tú.",
+  "faq.0.q": "¿Qué es MCP en palabras simples?",
+  "faq.0.a": "Un protocolo abierto que conecta a un agente con servicios externos como Jira o bases de datos a través de una sola interfaz.",
+  "faq.1.q": "¿Quién controla los permisos en MCP?",
+  "faq.1.a": "Tú: el servidor MCP ofrece al agente un conjunto de herramientas y los derechos de acceso se fijan en el lado del servidor.",
+  "source.label": "Sitio de Model Context Protocol"
+ },
+ "mcp-client": {
+  "name": "Cliente MCP",
+  "def": "El cliente MCP es la parte del lado del agente: llama al servidor MCP de un sistema, pide datos e invoca herramientas. Está integrado en el harness, por ejemplo en Claude Code.",
+  "faq.0.q": "¿Qué es un cliente MCP?",
+  "faq.0.a": "La parte del lado del agente que habla con el servidor MCP de un sistema, pide datos y llama a herramientas.",
+  "faq.1.q": "¿Dónde está el cliente MCP?",
+  "faq.1.a": "Está integrado en el harness, por ejemplo en Claude Code.",
+  "source.label": "MCP: Understanding clients"
+ },
+ "mcp-server": {
+  "name": "Servidor MCP",
+  "def": "El servidor MCP es la parte del lado del sistema (Jira, GitLab, una base de datos): sirve datos y acepta acciones del agente a través de un solo protocolo. Los permisos se fijan en este lado.",
+  "faq.0.q": "¿Qué es un servidor MCP?",
+  "faq.0.a": "La parte del lado de un sistema (Jira, GitLab, bases de datos) que sirve datos y acepta acciones del agente a través de un solo protocolo.",
+  "faq.1.q": "¿Dónde se fijan los permisos de un servidor MCP?",
+  "faq.1.a": "En el lado del servidor: él decide qué puede leer el agente y qué puede cambiar.",
+  "source.label": "MCP: Understanding servers",
+  "more.label": "Servidor MCP para 1C: dejar entrar a un agente de IA en la base de datos sin romperla"
+ },
+ "oauth": {
+  "def": "OAuth es el inicio de sesión a través del navegador: cuando el agente se conecta a un servicio, el harness abre la página de inicio de sesión de ese servicio, tú escribes allí la contraseña y apruebas el acceso, y el agente recibe un token. El agente nunca ve la contraseña; el token está limitado a los permisos concedidos y se puede revocar. Así se conectan los servidores MCP a Jira y Sentry, por ejemplo.",
+  "faq.0.q": "¿Cómo funciona OAuth para un agente?",
+  "faq.0.a": "El harness abre la página de inicio de sesión del servicio, tú introduces allí la contraseña y confirmas el acceso, y el agente recibe un token.",
+  "faq.1.q": "¿Ve el agente mi contraseña con OAuth?",
+  "faq.1.a": "No. El agente recibe solo un token limitado a los derechos que concediste, y se puede revocar.",
+  "source.label": "Especificación de MCP: Authorization"
+ },
+ "mcp-scope": {
+  "name": "Ámbitos de servidores MCP",
+  "def": "Los ámbitos de servidores MCP responden a dos preguntas: en qué proyectos funciona un servidor MCP y quién lo ve. Claude Code tiene tres, que se eligen al añadir un servidor: `local`, el predeterminado, solo tú y el `project` actual; `project`, todo el equipo mediante un archivo `.mcp.json` en el repositorio, y cada persona aprueba el servidor antes del primer uso; `user`, solo tú y todos tus proyectos. Si los nombres chocan, gana por completo la capa superior: `local` anula a `project`, y `project` anula a `user`.",
+  "faq.0.q": "¿Qué ámbitos MCP tiene Claude Code?",
+  "faq.0.a": "Tres: local para ti en el proyecto actual, project para todo el equipo mediante un archivo en el repositorio, y user para ti en todos los proyectos.",
+  "faq.1.q": "¿Cuándo se elige el ámbito de un servidor MCP?",
+  "faq.1.a": "Al añadir el servidor; el predeterminado es local.",
+  "source.label": "Documentación de MCP de Claude Code",
+  "table.title": "Los tres ámbitos lado a lado",
+  "table.rows.0": [
+   "Quién lo ve",
+   "solo tú",
+   "todo el equipo",
+   "solo tú"
+  ],
+  "table.rows.1": [
+   "En qué proyectos",
+   "el actual",
+   "este repositorio",
+   "todos los tuyos"
+  ],
+  "table.rows.2": [
+   "Dónde se guarda",
+   "`~/.claude.json`, bajo la ruta del proyecto",
+   "`.mcp.json` en la raíz del repositorio",
+   "`~/.claude.json`, sección compartida"
+  ],
+  "table.rows.3": [
+   "Cómo añadirlo",
+   "`claude mcp add` por defecto",
+   "`claude mcp add --scope project`",
+   "`claude mcp add --scope user`"
+  ],
+  "table.rows.4": [
+   "Antes del primer uso",
+   "nada",
+   "todos aprueban el servidor",
+   "nada"
+  ],
+  "table.rows.5": [
+   "Si los nombres chocan",
+   "anula a `project` y a `user`",
+   "anula a `user`",
+   "cede ante los demás"
+  ]
+ },
+ "prompt-injection": {
+  "aka": "inyección de prompts, prompt injection",
+  "def": "La inyección de prompts (prompt injection) es un ataque en el que alguien esconde una instrucción para el agente dentro de su propio texto: un correo, un ticket, una página web. El agente la lee junto con los datos, la toma como parte de la petición y su comportamiento cambia: hace lo que quiere el atacante en lugar de lo que pediste. Cuanto más acceso tiene el agente, más caro es el cambio.",
+  "faq.0.q": "¿Qué es la inyección de prompts?",
+  "faq.0.a": "Un ataque que esconde una instrucción para el agente en un correo, un ticket o una página web, y el agente la toma como parte de la petición.",
+  "faq.1.q": "¿Cómo te defiendes de la inyección de prompts?",
+  "faq.1.a": "Mantén el texto externo en el plano de datos para que no pueda convertirse en una orden, y da al agente permisos mínimos.",
+  "source.label": "OWASP LLM01: Prompt Injection"
+ },
+ "planes": {
+  "name": "Plano de datos y plano de control",
+  "aka": "planos de datos y de control",
+  "def": "Plano de datos y plano de control son dos planos del funcionamiento de un sistema: el plano de control decide qué hacer y dónde, y el plano de datos lo hace con los propios datos. Los términos vienen de las redes: en un router el plano de control construye la tabla de rutas y el plano de datos reenvía los paquetes. Para un agente de IA, el plano de control son tus mensajes y reglas, y el plano de datos es todo lo que lee: páginas, tickets, documentos y respuestas de servidores. La defensa contra la inyección de prompts mantiene el texto ajeno en el plano de datos para que nunca se convierta en una orden.",
+  "faq.0.q": "¿Qué es el plano de datos?",
+  "faq.0.a": "El plano de datos es la parte de un sistema que maneja los propios datos: en una red reenvía paquetes, en Kubernetes son los nodos con pods. Para un agente de IA es todo lo que lee: páginas, tickets, documentos y respuestas de servidores.",
+  "faq.1.q": "¿En qué se diferencia el plano de control del plano de datos?",
+  "faq.1.a": "El plano de control son las órdenes, es decir, tus mensajes y reglas. El plano de datos son los datos. La protección contra la inyección de prompts evita que el texto externo que está en los datos se convierta en una orden.",
+  "source.label": "Wikipedia: Control plane",
+  "seo.title": "Qué son el plano de datos y el plano de control: redes, Kubernetes y agentes de IA",
+  "seo.description": "El plano de control decide qué hacer y dónde; el plano de datos lo hace con los datos. Cómo funcionan los planos en un router, un clúster de Kubernetes y un agente de IA, y su relación con la inyección de prompts.",
+  "compare.title": "Los dos planos en una red, Kubernetes y un agente de IA",
+  "compare.head": [
+   "Red",
+   "Kubernetes",
+   "Agente de IA"
+  ],
+  "compare.rows.0": [
+   "Plano de control",
+   "la tabla de rutas: adónde enviar los paquetes",
+   "los componentes de control del clúster: qué ejecutar y dónde",
+   "tus mensajes y reglas"
+  ],
+  "compare.rows.1": [
+   "Plano de datos",
+   "el reenvío de los propios paquetes",
+   "los nodos donde se ejecutan los pods con las apps",
+   "páginas, tickets, documentos, respuestas de servidores"
+  ]
+ },
+ "permissions": {
+  "name": "Permisos",
+  "aka": "permisos de agentes de IA, modos de permisos, mínimo privilegio",
+  "def": "Los permisos de un agente de IA definen lo que el agente puede hacer en tu entorno y en los sistemas conectados: solo leer o también escribir, y qué comandos ejecutar. En Claude Code y Codex son los modos de permisos: desde preguntar antes de cada acción hasta trabajar sin confirmaciones. Se aplica el principio de mínimo privilegio: el agente recibe exactamente los derechos que necesita la tarea, que se amplían paso a paso.",
+  "faq.0.q": "¿Qué permisos debe recibir un agente de IA?",
+  "faq.0.a": "Exactamente los que necesita la tarea, según el principio de mínimo privilegio, ampliándolos paso a paso.",
+  "faq.1.q": "¿Qué modos de permisos tienen Claude Code y Codex?",
+  "faq.1.a": "Desde preguntar antes de cada acción hasta trabajar sin confirmaciones; en medio hay modos en los que el agente da por sí solo los pasos seguros.",
+  "source.label": "Documentación de permisos de Claude Code",
+  "seo.title": "Permisos de agentes de IA: mínimo privilegio, modos de Claude Code y --dangerously-skip-permissions",
+  "seo.description": "Permisos de agentes de IA y mínimo privilegio: qué derechos dar a un agente y cómo ampliarlos paso a paso. Modos de permisos en Claude Code y Codex, y qué hace --dangerously-skip-permissions.",
+  "notes.title": "Permisos en los agentes",
+  "notes.items.0.name": "Pasos",
+  "notes.items.0.text": "primero solo lectura, luego escritura en un entorno de pruebas; la escritura en un sistema en producción pasa solo por una persona.",
+  "notes.items.1.name": "Claude Code: reglas",
+  "notes.items.1.text": "la configuración dice qué permitir, sobre qué preguntar y qué denegar. Una regla de denegación gana a cualquier modo.",
+  "notes.items.2.name": "Claude Code: modos",
+  "notes.items.2.text": "por defecto pregunta antes de editar y de ejecutar comandos; acceptEdits acepta las ediciones por sí mismo; plan solo lee y planifica; auto decide qué es seguro; bypassPermissions, igual que la opción `--dangerously-skip-permissions`, no pregunta nada y solo sirve para un sandbox.",
+  "notes.items.3.name": "Codex: modos",
+  "notes.items.3.text": "solo lectura; modo de espacio de trabajo, con ediciones y comandos dentro de la carpeta del proyecto sin preguntar y todo lo demás con aprobación; acceso total, sin sandbox y sin aprobaciones."
+ },
+ "jira": {
+  "def": "Jira es un gestor de tareas y errores de Atlassian. Mediante MCP, un agente lee las tareas con sus comentarios e historial de cambios, y solo puede escribir en él con tu permiso.",
+  "faq.0.q": "¿Cómo trabaja un agente de IA con Jira?",
+  "faq.0.a": "Mediante MCP lee los tickets junto con los comentarios y el historial de cambios.",
+  "faq.1.q": "¿Puede el agente cambiar los tickets de Jira?",
+  "faq.1.a": "Solo con tu permiso.",
+  "source.label": "Página oficial de Jira"
+ },
+ "sentry": {
+  "def": "Sentry es un servicio de monitorización de errores que recoge las excepciones de la app con su contexto. Cada error se etiqueta con la versión de la app en la que ocurrió, así que mediante MCP el agente ve con qué despliegue empezó y busca la causa en los cambios de esa versión.",
+  "faq.0.q": "¿Qué es Sentry?",
+  "faq.0.a": "Un servicio de monitorización de errores: recoge las excepciones de la app junto con su contexto.",
+  "faq.1.q": "¿Qué encuentra un agente en Sentry?",
+  "faq.1.a": "Los errores se etiquetan con la versión de la app, así que el agente ve con qué versión empezó el error y busca la causa en esos cambios.",
+  "source.label": "Sitio oficial de Sentry"
+ },
+ "grafana": {
+  "def": "Grafana es un sistema de gráficos y paneles para métricas y logs. Mediante MCP, el agente lee métricas y logs y construye el cuadro del incidente. Para que no cambie nada, el servidor MCP de Grafana se inicia con la opción `--disable-write`: así el agente solo puede leer y no puede crear ni editar paneles, alertas ni incidentes.",
+  "faq.0.q": "¿Qué es Grafana?",
+  "faq.0.a": "Un sistema de gráficos y paneles para métricas y logs.",
+  "faq.1.q": "¿Cómo conecto Grafana a un agente solo en lectura?",
+  "faq.1.a": "Ejecuta el servidor MCP de Grafana con la opción --disable-write: el agente lee métricas y logs pero no puede cambiar paneles, alertas ni incidentes.",
+  "source.label": "Sitio oficial de Grafana"
+ },
+ "gitlab": {
+  "def": "GitLab es una plataforma para código y merge requests. Mediante MCP, el agente ve el código de todos los proyectos a la vez sin clonarlos: busca entre proyectos y lee archivos, merge requests y revisiones de primera mano, en lugar de un resumen contado por otros.",
+  "faq.0.q": "¿Qué aporta GitLab mediante MCP a un agente?",
+  "faq.0.a": "El agente ve el código de todos los proyectos a la vez sin clonarlos: busca entre proyectos y lee archivos, merge requests y revisiones.",
+  "faq.1.q": "¿Qué es GitLab?",
+  "faq.1.a": "Una plataforma para alojar código y merge requests.",
+  "source.label": "Sitio oficial de GitLab"
+ },
+ "confluence": {
+  "def": "Confluence es el wiki de Atlassian: la base de conocimiento del equipo. Mediante MCP, un agente saca de él artículos y decisiones pasadas.",
+  "faq.0.q": "¿Qué es Confluence?",
+  "faq.0.a": "El wiki de Atlassian: una base de conocimiento del equipo.",
+  "faq.1.q": "¿Para qué necesita un agente Confluence?",
+  "faq.1.a": "Mediante MCP, el agente saca de él artículos y decisiones pasadas del equipo.",
+  "source.label": "Página oficial de Confluence"
  }
 }
