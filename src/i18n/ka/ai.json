@@ -1,0 +1,9 @@
+{
+  "group:personal": { "name": "ერთი ადამიანი", "hint": "ინდივიდუალურად, თქვენი სამუშაოსთვის" },
+  "group:roles": { "name": "გუნდი როლების მიხედვით", "hint": "სწავლება თითოეული როლისთვის" },
+  "group:company": { "name": "მთელი კომპანია", "hint": "დანერგვა და სტრატეგია" },
+  "proof:CTO": { "label": "SaaS მხარდაჭერის პლატფორმა, iGaming" },
+  "proof:1500+": { "label": "მენტორინგის საათი, №1 GetMentor-ზე" },
+  "proof:10 000": { "label": "ადამიანი Jaiora-ს თემში" },
+  "proof:Podlodka": { "label": "მოხსენება Spec-Driven Development-ზე" }
+}
