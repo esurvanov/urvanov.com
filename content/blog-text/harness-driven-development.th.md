@@ -64,25 +64,25 @@ Harness
 
 **Expectation:** สิ่งที่ควรเป็น
 
-Spec genres, schemas requirement levels number passport
+Spec ประเภทของ spec, schema ระดับข้อกำหนด พาสปอร์ตตัวเลข
 
-Skill prediction before acting
+Skill คาดการณ์ก่อนลงมือ
 
-Memory actuator roles live · MCP
+Memory บทบาทของ actuator live · MCP
 
 **Observation:** สิ่งที่วัดได้
 
-Spec evidence rank finding format scale
+Spec ลำดับชั้นหลักฐาน รูปแบบข้อค้นพบ สเกล
 
-Skill sensor records the fact
+Skill sensor บันทึกข้อเท็จจริง
 
-Memory live only
+Memory live เท่านั้น
 
 **Loop:** เทียบและตัดสินใจ
 
-Spec rule completeness criteria findings registry
+Spec เกณฑ์ความครบของกฎ ทะเบียนข้อค้นพบ
 
-Skill compare count repeats patch or revise
+Skill เทียบ นับครั้งที่ซ้ำ patch หรือทบทวน
 
 Memory ว่างไว้ก่อน
 
@@ -90,7 +90,7 @@ Expectation Observation
 
 Loop ✕ ไม่มีลิงก์ย้อนกลับ
 
-patch revise rules
+patch ทบทวนกฎ
 
 → skill → spec ของโดเมนตัวเอง· สคริปต์ commit hook ตรวจทิศทาง
 
@@ -138,15 +138,15 @@ patch revise rules
 
 **แบบคำนวณได้:** เร็ว · เชื่อถือได้
 
-types code templates generators
+ชนิดข้อมูล แม่แบบโค้ด ตัวสร้างโค้ด
 
-tests linter type checking
+เทสต์ linter การตรวจชนิดข้อมูล
 
 **แบบ AI:** ยืดหยุ่น · แพงกว่า
 
-AGENTS.md · CLAUDE.md skills specs
+AGENTS.md · CLAUDE.md skill spec
 
-AI review LLM judge
+การรีวิวด้วย AI LLM ผู้ตัดสิน
 
 การแบ่งตามที่อธิบายใน Martin Fowler: Harness engineering
 

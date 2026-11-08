@@ -35,8 +35,8 @@ toc: format=เลือกรูปแบบ | prep=เตรียมตัว
     <col w="1fr" mw="1fr" kind="ours">ความถี่ ที่ผู้ตอบบอกเอง</col>
     <col w="1fr" mw="1fr">ตามรายงาน</col>
     <col w=".9fr" kind="wide">สถานะ</col>
-    <row>Hana Sato | Host [00:00]: Think back to the last… | <b-select-pill tone="cyan">เสียง</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill></row>
-    <row>Pavel Novak | [27.09 10:15] Host: Describe the last… | <b-select-pill tone="purple">ข้อความ</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-select-pill tone="red">ไม่ใช้</b-select-pill><b-match-mark kind="diff">≠</b-match-mark> | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill></row>
+    <row>Hana Sato | Host [00:00]: นึกย้อนถึงครั้งล่าสุด… | <b-select-pill tone="cyan">เสียง</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill></row>
+    <row>Pavel Novak | [27.09 10:15] Host: เล่าถึงครั้งล่าสุด… | <b-select-pill tone="purple">ข้อความ</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-select-pill tone="red">ไม่ใช้</b-select-pill><b-match-mark kind="diff">≠</b-match-mark> | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill></row>
     <row>Nadia Rahimi | Host [00:00] | <b-select-pill tone="cyan">เสียง</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill></row>
   </b-airtable-preview>
 </b-flow>
@@ -88,7 +88,7 @@ toc: format=เลือกรูปแบบ | prep=เตรียมตัว
   </b-share-bar>
   <b-cap>นาทีต่อช่วง</b-cap>
   <b-call-script>
-    <step color="c-none" ink="ink" t="เริ่มต้น" q="&quot;ผมกำลังดูว่าคนในบริษัททำงานของตัวเองให้เสร็จจริงๆ อย่างไร นี่ไม่ใช่การประเมินตัวคุณ กรณีที่สำเร็จและไม่สำเร็จมีประโยชน์กับผมเท่ากัน มีผู้ช่วยจดบันทึกอยู่กับผมด้วย ข้อความถอดความเห็นได้เฉพาะเรา และคำตอบจะเข้ารายงานโดยไม่มีชื่อ ขอเปิดได้ไหมครับ&quot;"></step>
+    <step color="c-none" ink="ink" t="เริ่มต้น" q="&quot;ผมกำลังดูว่าคนในบริษัททำงานของตัวเองให้เสร็จจริงๆ อย่างไร นี่ไม่ใช่การประเมินตัวคุณ กรณีที่สำเร็จและไม่สำเร็จมีประโยชน์กับผมเท่ากัน มีผู้ช่วยจดบันทึกอยู่กับผมด้วย ข้อความถอดความเห็นได้เฉพาะเรา และคำตอบจะเข้ารายงานโดยไม่มีชื่อ ขอเปิดได้ไหม&quot;"></step>
     <step color="c-light" t="บทบาทและบริบท" q='"ปกติสัปดาห์หนึ่งคุณใช้เวลากับอะไรมากที่สุด"'>งานอะไรที่ทำซ้ำ · หาข้อมูลและร่างงานจากที่ไหน</step>
     <step color="c-chat" t="งานล่าสุด" q='"ลองนึกถึงงานล่าสุดที่ใช้เวลาไปพอสมควร คุณต้องการได้อะไร"'>มีวิธีหรือเครื่องมืออะไรให้เลือก · เลือกอะไรและเพราะอะไร · ไปถึงผลลัพธ์ได้อย่างไร</step>
     <step color="c-proj" t="ผลลัพธ์และแรงที่ใช้" q='"สุดท้ายได้อะไร และต้องใช้แรงมากแค่ไหน"'>อะไรใช้ได้เลย · อะไรต้องแก้เอง · มีข้อจำกัดอะไรบ้าง: ข้อมูล สิทธิ์เข้าถึง ความปลอดภัย</step>
@@ -155,14 +155,14 @@ toc: format=เลือกรูปแบบ | prep=เตรียมตัว
     <field type="#" kind="num">โทเคน · 3 เดือน</field>
     <field type="#" kind="num">$ / 3 เดือน</field>
     <field type="▦" kind="num">กิจกรรม</field>
-    <row>Hana Sato | Host [00:00]: Think back to the last time you… | <b-select-pill tone="cyan">เสียง</b-select-pill> | โค้ด | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 21.9M | 438 | 25.09</row>
-    <row>Luis Moreno | Host [00:00]: Thanks for making the time… | <b-select-pill tone="cyan">เสียง</b-select-pill> | โค้ด | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 12.7M | 396 | 24.09</row>
-    <row>Mira Castellano | [26.09 18:40] Host: What result were you expecting… | <b-select-pill tone="purple">ข้อความ</b-select-pill> | เอเจนต์ | <b-select-pill tone="yellow">ไม่ครบ</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 3.9M | 97 | 26.09</row>
-    <row>Jonas Keller | Host [00:00]: What do you spend most of your… | <b-select-pill tone="cyan">เสียง</b-select-pill> | วิจัย | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 1.1M | 19 | 26.09</row>
+    <row>Hana Sato | Host [00:00]: นึกย้อนถึงครั้งล่าสุดที่คุณ… | <b-select-pill tone="cyan">เสียง</b-select-pill> | โค้ด | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 21.9M | 438 | 25.09</row>
+    <row>Luis Moreno | Host [00:00]: ขอบคุณที่สละเวลา… | <b-select-pill tone="cyan">เสียง</b-select-pill> | โค้ด | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 12.7M | 396 | 24.09</row>
+    <row>Mira Castellano | [26.09 18:40] Host: คุณคาดหวังผลลัพธ์แบบไหน… | <b-select-pill tone="purple">ข้อความ</b-select-pill> | เอเจนต์ | <b-select-pill tone="yellow">ไม่ครบ</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 3.9M | 97 | 26.09</row>
+    <row>Jonas Keller | Host [00:00]: เวลาส่วนใหญ่ของคุณใช้ไปกับ… | <b-select-pill tone="cyan">เสียง</b-select-pill> | วิจัย | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 1.1M | 19 | 26.09</row>
     <row>Ben Ortiz |  |  | ใช้ Codex อย่างเดียว | <b-select-pill tone="cyan">รอคำตอบ</b-select-pill> |  | <b-select-pill tone="purple">ใช้ Codex อย่างเดียว</b-select-pill> |  | 3.2M | 64 | 22.09</row>
-    <row>Pavel Novak | [27.09 10:15] Host: Describe the last task… | <b-select-pill tone="purple">ข้อความ</b-select-pill> | ไม่ได้ใช้งาน | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-select-pill tone="red">ไม่ใช้</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
+    <row>Pavel Novak | [27.09 10:15] Host: เล่างานชิ้นล่าสุด… | <b-select-pill tone="purple">ข้อความ</b-select-pill> | ไม่ได้ใช้งาน | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-select-pill tone="red">ไม่ใช้</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
     <row>Sara Quinn |  |  | ไม่ได้ใช้งาน | <b-select-pill tone="red">ปฏิเสธ</b-select-pill> |  | <b-select-pill tone="red">ไม่ใช้</b-select-pill> |  | 0 | 0 | —</row>
-    <row>Nadia Rahimi | Host [00:00]: What did you do in ChatGPT yesterday… | <b-select-pill tone="cyan">เสียง</b-select-pill> | เครื่องมืออื่น | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
+    <row>Nadia Rahimi | Host [00:00]: เมื่อวานคุณทำอะไรใน ChatGPT… | <b-select-pill tone="cyan">เสียง</b-select-pill> | เครื่องมืออื่น | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
     <row>Elif Demir |  |  | โปรเจกต์ | <b-select-pill tone="gray">กำลังดำเนินการ</b-select-pill> |  | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> |  | 1.8M | 41 | 27.09</row>
   </b-airtable-grid>
   <b-cap>ChatGPT กรอกช่องสีส้มจากบทสนทนาในช่องบันทึก ส่วน "ตามรายงาน" "โทเคน" "$" และ "กิจกรรม" มาจาก<a href="/blog/chatgpt-enterprise-usage-report/">รายงานการใช้งาน ChatGPT Enterprise</a> ช่อง "≠" เป็นสูตรที่เทียบความถี่สองค่า</b-cap>
@@ -304,20 +304,20 @@ toc: format=เลือกรูปแบบ | prep=เตรียมตัว
   </b-steps>
   <b-subhead>Prompt วิเคราะห์บทสัมภาษณ์</b-subhead>
   <b-prompt>
-    Below is a conversation with an employee about their work tasks.
-    Return strictly by field, only what the person said themselves:
-    1. Task: the last specific work task
-    2. Context: for whom and why, what means they had
-    3. Chosen tool or way, and why
-    4. Result
-    5. Effort: time and manual rework
-    6. Constraints: data, access, security
-    7. Difficulties: categories from the list {categories from the report's sign table} or "no difficulties"; if none fits, a new category in your own words
-    8. Self-reported frequency: weekly / regularly / occasionally / doesn't use / unknown
-    9. 1–2 verbatim quotes
-    If something is not in the conversation, write "no data" and don't make it up.
+    ด้านล่างคือบทสนทนากับพนักงานเกี่ยวกับงานที่เขาทำ
+    ตอบแยกตามช่องอย่างเคร่งครัด เฉพาะสิ่งที่คนคนนั้นพูดเอง:
+    1. งาน: งานชิ้นล่าสุดที่เจาะจง
+    2. บริบท: ทำให้ใครและเพื่ออะไร มีอะไรให้ใช้บ้าง
+    3. เครื่องมือหรือวิธีที่เลือก และเหตุผล
+    4. ผลลัพธ์
+    5. แรงที่ใช้: เวลาและการแก้ด้วยมือ
+    6. ข้อจำกัด: ข้อมูล สิทธิ์เข้าถึง ความปลอดภัย
+    7. ความยุ่งยาก: หมวดจากรายการ {หมวดจากตารางสัญญาณในรายงาน} หรือ "ไม่มีความยุ่งยาก" ถ้าไม่มีหมวดไหนตรง ให้ตั้งหมวดใหม่ด้วยคำของตัวเอง
+    8. ความถี่ตามที่บอกเอง: ทุกสัปดาห์ / เป็นประจำ / นานๆ ครั้ง / ไม่ใช้ / ไม่ทราบ
+    9. คำพูดตรงตัว 1–2 ประโยค
+    ถ้าสิ่งใดไม่มีในบทสนทนา ให้เขียนว่า "ไม่มีข้อมูล" และอย่าแต่งขึ้นเอง
 
-    {text from Notes}
+    {ข้อความจาก Notes}
   </b-prompt>
   <b-gauge label="ทำอย่างไรกับสิ่งที่ซ้ำ">
     <row k="1 คน" w="15%" color="c-none">กรณีเดี่ยว</row>

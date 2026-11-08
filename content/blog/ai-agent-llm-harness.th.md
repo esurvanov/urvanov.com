@@ -2,7 +2,7 @@
 title: เอเจนต์ AI = LLM + harness: LLM, harness และเอเจนต์ต่างกันอย่างไร และ harness มีอะไรบ้าง
 date: 2026-10-12
 updated: 2026-11-08
-description: เอเจนต์ AI = LLM + harness LLM, harness และเอเจนต์ในตารางเดียว ห้ากลุ่มที่ harness ประกอบด้วย และทำไมโมเดลเดียวกันจึงทำงานต่างกันในแชตกับใน Claude Code
+description: เอเจนต์ AI = LLM + harness เทียบ LLM, harness และเอเจนต์ในตารางเดียว ห้ากลุ่มที่ harness ประกอบด้วย และทำไมโมเดลเดียวกันจึงทำงานต่างกันในแชตกับใน Claude Code
 tags: AI, เอเจนต์, เอเจนต์ AI, LLM, harness, agent harness, harness engineering
 category: harness
 layout: wide
