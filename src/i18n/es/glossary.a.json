@@ -824,6 +824,136 @@
   "faq.1.a": "Rovo: los agentes de Rovo asumen tareas en Jira, y el Rovo MCP Server da a agentes externos acceso a los datos de Atlassian.",
   "source.label": "Sitio oficial de Atlassian"
  },
+ "time-to-market": {
+  "aka": "TTM, time2market, tiempo de salida al mercado",
+  "def": "Time to market (TTM, tiempo de salida al mercado) es lo que tarda un producto o un cambio en estar disponible para los usuarios desde que nace la idea. En software es la duración del ciclo de entrega: cuantos más entornos y comprobaciones hay por el camino (entorno de la funcionalidad, dev, pruebas, preproducción, demo), más se alarga, pero menos errores llegan a producción. Por eso los equipos deciden cuántas comprobaciones valen la pena: muy pocas y baja la calidad, demasiadas y el producto llega tarde.",
+  "faq.0.q": "¿Qué es el time to market?",
+  "faq.0.a": "Lo que se tarda desde la idea hasta que un producto o cambio está disponible para los usuarios.",
+  "faq.1.q": "¿Cómo se relaciona el time to market con la calidad?",
+  "faq.1.a": "Cuantos más entornos y comprobaciones hay por el camino, más largo es el ciclo, pero menos errores llegan a producción.",
+  "source.label": "Wikipedia: Time to market",
+  "seo.title": "Qué es el time to market (TTM): ciclo de entrega, comprobaciones y calidad",
+  "seo.description": "El time to market (TTM) es el tiempo desde la idea hasta los usuarios. Cómo afectan a la velocidad y la calidad el ciclo de entrega, los entornos y las comprobaciones."
+ },
+ "change-lead-time": {
+  "name": "Lead time de los cambios",
+  "aka": "tiempo de entrega de cambios, change lead time",
+  "def": "El lead time de los cambios (change lead time) es lo que tarda un cambio desde que se confirma en el control de versiones hasta que funciona en producción. Se acorta con cambios pequeños, comprobaciones automáticas y menos pasos manuales hasta producción. Cuanto más corto es, más rápido entrega el equipo cambios pequeños. Se cuenta desde el código listo, mientras que el time to market se cuenta desde la idea.",
+  "faq.0.q": "¿Qué es el lead time de los cambios?",
+  "faq.0.a": "Lo que se tarda desde un commit hasta que el cambio funciona en producción.",
+  "faq.1.q": "¿Cómo se acorta el lead time de los cambios?",
+  "faq.1.a": "Con cambios pequeños, comprobaciones automáticas y menos pasos manuales hasta producción.",
+  "source.label": "DORA: software delivery metrics",
+  "seo.title": "Lead time de los cambios: qué es y cómo acortarlo",
+  "seo.description": "El lead time de los cambios es el tiempo desde un commit hasta que el cambio funciona en producción. Una de las métricas DORA; cómo los entornos y las comprobaciones alargan el camino."
+ },
+ "deployment-frequency": {
+  "name": "Frecuencia de despliegue",
+  "def": "La frecuencia de despliegue (deployment frequency) es cuántas veces en un periodo un equipo lanza cambios a producción, o cuánto tiempo pasa entre lanzamientos. Cuantos más entornos y comprobaciones manuales hay por el camino, más espaciados son los lanzamientos.",
+  "faq.0.q": "¿Qué es la frecuencia de despliegue?",
+  "faq.0.a": "Cuántas veces en un periodo un equipo lanza cambios a producción.",
+  "faq.1.q": "¿De qué depende la frecuencia de despliegue?",
+  "faq.1.a": "Cuantos más entornos y comprobaciones manuales hay por el camino, más espaciados son los lanzamientos.",
+  "source.label": "DORA: software delivery metrics",
+  "seo.title": "Frecuencia de despliegue: qué es y de qué depende",
+  "seo.description": "La frecuencia de despliegue es cuántas veces en un periodo llegan cambios a producción. Una métrica DORA y su relación con los entornos de pruebas y la preproducción."
+ },
+ "change-fail-rate": {
+  "name": "Tasa de fallos de los cambios",
+  "aka": "change fail rate, change failure rate",
+  "def": "La tasa de fallos de los cambios (change fail rate) es la proporción de lanzamientos que necesitaron una intervención inmediata: una reversión o una corrección rápida (hotfix). Muestra lo bien que las comprobaciones previas a producción detectan los errores, que es para lo que sirven las pruebas y la preproducción.",
+  "faq.0.q": "¿Qué es la tasa de fallos de los cambios?",
+  "faq.0.a": "La proporción de lanzamientos que necesitaron una intervención inmediata: una reversión o un hotfix.",
+  "faq.1.q": "¿Cómo se reduce la tasa de fallos de los cambios?",
+  "faq.1.a": "Detectando los errores antes de producción: con pruebas y una comprobación en preproducción.",
+  "source.label": "DORA: software delivery metrics",
+  "seo.title": "Tasa de fallos de los cambios: qué es y cómo reducirla",
+  "seo.description": "La tasa de fallos de los cambios es la proporción de lanzamientos que necesitaron una reversión o un hotfix. Una métrica DORA: cómo la reducen las pruebas y la preproducción."
+ },
+ "recovery-time": {
+  "name": "Tiempo de recuperación tras un despliegue fallido",
+  "def": "El tiempo de recuperación tras un despliegue fallido (failed deployment recovery time) es lo que tarda el servicio en volver a funcionar bien desde un lanzamiento fallido. Versiones anteriores de DORA llamaban a esta métrica tiempo medio de recuperación, MTTR.",
+  "faq.0.q": "¿Qué es el tiempo de recuperación tras un despliegue fallido?",
+  "faq.0.a": "Lo que tarda el servicio en volver a funcionar bien desde un lanzamiento fallido.",
+  "faq.1.q": "¿Es lo mismo que el MTTR?",
+  "faq.1.a": "Sí, versiones anteriores de DORA llamaban a esta métrica MTTR, tiempo medio de recuperación (mean time to restore).",
+  "source.label": "DORA: software delivery metrics",
+  "seo.title": "Tiempo de recuperación tras un despliegue fallido (MTTR): qué es",
+  "seo.description": "El tiempo de recuperación tras un despliegue fallido es lo que pasa desde un lanzamiento fallido hasta su corrección. Una métrica DORA, antes llamada MTTR."
+ },
+ "deployment-rework-rate": {
+  "name": "Tasa de retrabajo de despliegues",
+  "def": "La tasa de retrabajo de despliegues (deployment rework rate) es la proporción de lanzamientos que no estaban planificados y se hicieron por un incidente en producción. Junto con la tasa de fallos de los cambios muestra la inestabilidad de la entrega.",
+  "faq.0.q": "¿Qué es la tasa de retrabajo de despliegues?",
+  "faq.0.a": "La proporción de lanzamientos que no estaban planificados y surgieron de un incidente en producción.",
+  "faq.1.q": "¿Qué muestra esta métrica?",
+  "faq.1.a": "Junto con la tasa de fallos de los cambios, la inestabilidad de la entrega.",
+  "source.label": "DORA: software delivery metrics",
+  "seo.title": "Tasa de retrabajo de despliegues: qué es",
+  "seo.description": "La tasa de retrabajo de despliegues es la proporción de lanzamientos que se hicieron por un incidente en producción. Una métrica DORA junto a la tasa de fallos de los cambios."
+ },
+ "prompt": {
+  "name": "Prompt",
+  "def": "Un prompt es una petición a un modelo: tarea, contexto, formato de respuesta y restricciones. Cuanto más precisamente se arman estas partes, menos correcciones siguen a la primera respuesta.",
+  "faq.0.q": "¿Qué es un prompt?",
+  "faq.0.a": "Una petición a un modelo: la tarea, el contexto, el formato de respuesta y las restricciones.",
+  "faq.1.q": "¿Cómo se escribe un buen prompt?",
+  "faq.1.a": "Arma todas las partes con precisión: cuanto más exactos son la tarea, los datos y el formato, menos correcciones hay tras la primera respuesta.",
+  "source.label": "Anthropic: Prompt engineering"
+ },
+ "source": {
+  "name": "Fuente",
+  "def": "Una fuente es el sistema o documento donde vive el hecho original: un ticket, una hoja de cálculo, el registro de una reunión. La respuesta de un agente es tan fiable como se pueda comprobar contra su fuente, así que cada afirmación de la respuesta lleva un enlace a su fuente.",
+  "faq.0.q": "¿Qué es una fuente?",
+  "faq.0.a": "El sistema o documento que contiene el hecho original: un ticket, una tabla, la grabación de una reunión.",
+  "faq.1.q": "¿Por qué debe la respuesta de un agente citar fuentes?",
+  "faq.1.a": "Una respuesta es tan fiable como se pueda comprobar contra su fuente."
+ },
+ "hallucination": {
+  "name": "Alucinación",
+  "aka": "alucinación de LLM, alucinación de IA",
+  "def": "Una alucinación de LLM es una respuesta segura pero inventada de un modelo: un hecho, una función o un enlace que no existe. En código es, por ejemplo, una llamada a una función que no existe o la instalación de un paquete que no está. Aparece donde parte de la respuesta no tiene respaldo en los datos y el modelo rellena el hueco con una suposición plausible. El caso contrario, en que cada parte de la respuesta tiene respaldo, se llama epimorfismo. Se reduce con el anclaje en fuentes fiables y con la comprobación del resultado.",
+  "faq.0.q": "¿Qué es una alucinación de LLM?",
+  "faq.0.a": "Una respuesta segura pero inventada de un modelo: un hecho, una función o un enlace que no existe.",
+  "faq.1.q": "¿Por qué ocurren las alucinaciones?",
+  "faq.1.a": "Donde parte de la respuesta no tiene respaldo en los datos, el modelo rellena el hueco con una suposición plausible.",
+  "faq.2.q": "¿Cómo se reducen las alucinaciones?",
+  "faq.2.a": "Da al modelo datos de fuentes fiables y comprueba el resultado.",
+  "source.label": "Wikipedia: AI hallucination",
+  "seo.title": "Alucinación de LLM: qué es, ejemplos y anclaje en fuentes",
+  "seo.description": "Qué significa una alucinación de LLM, con ejemplos de agentes de código: una función inventada, un paquete inexistente, un enlace roto. Por qué ocurre, cómo la reduce el anclaje en fuentes y cómo la detectan las comprobaciones.",
+  "notes.title": "Ejemplos de alucinación y cómo reducirla",
+  "notes.items.0.name": "Una función inventada",
+  "notes.items.0.text": "el agente llama a un método que la biblioteca no tiene, o a un parámetro que la función no admite. El código parece plausible y falla al ejecutarse.",
+  "notes.items.1.name": "Un paquete inexistente",
+  "notes.items.1.text": "el agente propone instalar un paquete que no existe en npm ni en PyPI. Los modelos suelen repetir los mismos nombres inventados, y los atacantes registran paquetes con ellos para colar su código (slopsquatting).",
+  "notes.items.2.name": "Un enlace roto",
+  "notes.items.2.text": "un enlace a un artículo, documento o sección que no existe.",
+  "notes.items.3.name": "«Hecho» sin cambios",
+  "notes.items.3.text": "el agente informa de un trabajo que no hizo.",
+  "notes.items.4.name": "Cómo reducirla",
+  "notes.items.4.text": "ancla el modelo: dale fuentes y contexto y exige una referencia que respalde cada afirmación (eso es un epimorfismo); permite «no lo sé» en el prompt.",
+  "notes.items.5.name": "Cómo detectarla",
+  "notes.items.5.text": "con comprobaciones: las pruebas, las compilaciones y los linters detectan el código inventado, una lista de paquetes permitidos detecta los paquetes inventados, seguir los enlaces detecta las fuentes inventadas."
+ },
+ "context": {
+  "name": "Contexto",
+  "def": "El contexto es todo lo que el modelo ve en el momento: la conversación, los archivos del proyecto y los datos de los sistemas conectados. Lo que no está en el contexto, el agente no lo sabe.",
+  "faq.0.q": "¿Qué es el contexto en IA?",
+  "faq.0.a": "Todo lo que el modelo ve en el momento: la conversación, los archivos del proyecto y los datos de los sistemas conectados.",
+  "faq.1.q": "¿Por qué el agente no conoce mi proyecto?",
+  "faq.1.a": "Lo que no está en el contexto, el agente no lo sabe. El conocimiento permanente del proyecto va en archivos de instrucciones como AGENTS.md o CLAUDE.md.",
+  "source.label": "Anthropic: Context windows"
+ },
+ "token": {
+  "name": "Token",
+  "def": "Un token es una unidad de texto que cuenta un LLM: aproximadamente una sílaba o una palabra corta. El número de tokens fija el precio de una petición y cuánto cabe en el contexto.",
+  "faq.0.q": "¿Qué es un token en IA?",
+  "faq.0.a": "Una unidad de texto que cuenta un LLM: aproximadamente una sílaba o una palabra corta.",
+  "faq.1.q": "¿Por qué importa el número de tokens?",
+  "faq.1.a": "Fija el precio de la petición y cuánto cabe en el contexto del modelo.",
+  "source.label": "Anthropic: Token counting"
+ },
  "harness": {
   "name": "Harness",
   "aka": "arnés del agente",
@@ -1025,6 +1155,77 @@
   "faq.1.q": "¿Por qué los skills no consumen el contexto?",
   "faq.1.a": "Al inicio de una sesión el agente ve solo el nombre y la descripción del skill, y lo carga entero cuando una tarea encaja.",
   "source.label": "Documentación de Agent Skills de Anthropic"
+ },
+ "javascript": {
+  "aka": "el lenguaje de los sitios web y de muchos programas",
+  "def": "JavaScript es un lenguaje de programación que hace funcionar las páginas web en el navegador: botones, formularios y todo lo que reacciona a las acciones. También se usa para programas de servidor, por ejemplo en Node.js. Las pruebas de este código las ejecutan motores como Jest, Vitest y QUnit.",
+  "faq.0.q": "¿Qué es JavaScript?",
+  "faq.0.a": "El lenguaje de programación que hace funcionar las páginas web en el navegador: botones, formularios y todo lo que reacciona a las acciones.",
+  "faq.1.q": "¿Dónde más se ejecuta JavaScript?",
+  "faq.1.a": "En el servidor, por ejemplo en Node.js."
+ },
+ "typescript": {
+  "aka": "JavaScript con tipos",
+  "def": "TypeScript es una extensión de JavaScript en la que los valores tienen un tipo: número, cadena, etc. Gracias a esto, errores como «se pasó una cadena en lugar de un número» se encuentran antes de que el programa se ejecute, no en el equipo del usuario. El programa terminado se convierte en JavaScript normal.",
+  "faq.0.q": "¿Qué es TypeScript?",
+  "faq.0.a": "Una capa sobre JavaScript en la que los valores tienen tipos declarados: número, cadena, etc.",
+  "faq.1.q": "¿Para qué sirve TypeScript?",
+  "faq.1.a": "Los errores como pasar una cadena en lugar de un número se detectan antes de que el programa se ejecute, antes de que los vea un usuario.",
+  "source.label": "typescriptlang.org, el sitio de TypeScript"
+ },
+ "babel": {
+  "aka": "un traductor del JavaScript nuevo",
+  "def": "Babel es un programa que convierte el JavaScript nuevo en uno que entienden los navegadores y entornos más antiguos. Puedes escribir en el lenguaje moderno y ejecutarlo donde todavía no se conoce. Las pruebas de Jest también funcionan con proyectos que se compilan con Babel.",
+  "faq.0.q": "¿Qué es Babel?",
+  "faq.0.a": "Un programa que traduce el JavaScript nuevo a código que entienden los navegadores y entornos más antiguos.",
+  "faq.1.q": "¿Para qué sirve Babel?",
+  "faq.1.a": "Para escribir en el lenguaje moderno y ejecutar el código donde aún no es compatible.",
+  "source.label": "babeljs.io, el sitio de Babel"
+ },
+ "node-js": {
+  "aka": "JavaScript fuera del navegador",
+  "def": "Node.js es un programa que ejecuta JavaScript fuera del navegador: en un servidor, en la línea de comandos y en scripts. Sin él, el código JavaScript solo funcionaría dentro de una página web. Gracias a Node.js se usa un solo lenguaje para el sitio, la parte del servidor y los programas de los desarrolladores. Las pruebas con Jest, Vitest y QUnit también se ejecutan casi siempre en Node.js, y el propio empaquetador Vite funciona sobre él.",
+  "faq.0.q": "¿Qué es Node.js?",
+  "faq.0.a": "Un programa que ejecuta JavaScript fuera del navegador: en el servidor, en la línea de comandos y en scripts.",
+  "faq.1.q": "¿Para qué hace falta Node.js?",
+  "faq.1.a": "Permite que un solo lenguaje sirva tanto para el sitio web como para el servidor.",
+  "source.label": "nodejs.org, el sitio de Node.js"
+ },
+ "vite": {
+  "aka": "un empaquetador para apps web",
+  "def": "Vite es un programa que compila el código de un sitio web y muestra al instante los cambios en el navegador mientras trabajas. Su configuración describe cómo compilar el proyecto. Vitest reutiliza esa misma configuración para las pruebas, así que no hace falta una configuración de pruebas aparte.",
+  "faq.0.q": "¿Qué es Vite?",
+  "faq.0.a": "Un programa que compila el código de un sitio y muestra al instante los cambios en el navegador mientras trabajas.",
+  "faq.1.q": "¿Qué relación tiene Vite con Vitest?",
+  "faq.1.a": "Vitest reutiliza la configuración de Vite para las pruebas, así que no hace falta una configuración de pruebas aparte.",
+  "source.label": "vite.dev, el sitio de Vite"
+ },
+ "react-js": {
+  "aka": "una biblioteca web, no confundir con ReAct",
+  "def": "React es una biblioteca de JavaScript para construir páginas web: una página se arma con bloques ya hechos llamados componentes, y cuando cambian los datos solo se actualizan los bloques necesarios. Es una de las más extendidas junto con Angular y Vue. No tiene nada que ver con el esquema de agentes ReAct: solo se parecen los nombres.",
+  "faq.0.q": "¿Qué es React?",
+  "faq.0.a": "Una biblioteca de JavaScript para construir páginas web: una página se arma con bloques de componentes.",
+  "faq.1.q": "¿En qué se diferencia React de ReAct?",
+  "faq.1.a": "React es una biblioteca para páginas web, ReAct es un patrón de agentes de IA. Solo se parece la escritura.",
+  "source.label": "react.dev, el sitio de React"
+ },
+ "angular": {
+  "aka": "un framework web",
+  "def": "Angular es un framework para construir sitios y apps web en JavaScript y TypeScript: una página se arma con bloques ya hechos llamados componentes. Es uno de los más extendidos junto con React y Vue.",
+  "faq.0.q": "¿Qué es Angular?",
+  "faq.0.a": "Un framework para construir sitios y apps web en JavaScript y TypeScript: una página se arma con bloques de componentes.",
+  "faq.1.q": "¿En qué se diferencia Angular de React y Vue?",
+  "faq.1.a": "Los tres construyen una página con componentes y están entre los más usados. Angular es un framework completo, React es una biblioteca.",
+  "source.label": "angular.dev, el sitio de Angular"
+ },
+ "vue": {
+  "aka": "un framework web",
+  "def": "Vue es un framework para construir sitios web en JavaScript: una página se arma con bloques llamados componentes, y se puede adoptar en un proyecto de forma gradual. Es uno de los más extendidos junto con Angular y React.",
+  "faq.0.q": "¿Qué es Vue?",
+  "faq.0.a": "Un framework de JavaScript para construir sitios web: una página se arma con bloques de componentes.",
+  "faq.1.q": "¿Qué hace cómodo a Vue?",
+  "faq.1.a": "Se puede añadir a un proyecto de forma gradual.",
+  "source.label": "vuejs.org, el sitio de Vue"
  },
  "mcp": {
   "def": "MCP es un protocolo abierto mediante el cual un agente se conecta a servicios externos (Jira, Airtable, bases de datos) a través de una sola interfaz. Un servidor MCP ofrece al agente un conjunto de herramientas, mientras que los permisos los controlas tú.",
