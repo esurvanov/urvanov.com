@@ -167,7 +167,7 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
 <b-chapter id="triples" icon="shield-check" title="Vì sao không thể ngắn hơn: bộ ba">
   <b-why>Lấy ba quả bóng bất kỳ. Quanh vòng, chúng chạy theo chiều kim đồng hồ hoặc ngược chiều kim đồng hồ.</b-why>
 
-  Xoay vòng không đảo chiều một bộ ba: mọi quả bóng cùng di chuyển và thứ tự xung quanh được giữ nguyên. Chỉ phép đổi chỗ trong ô cửa mới đảo chiều được, và chỉ khi hai quả bóng của bộ ba đang ở trong ô cửa. Còn gương đảo chiều tất cả các bộ ba cùng lúc. Từ đó các tác giả chứng minh rằng gương cần gần bằng số cặp nước đi: ít hơn nhiều nhất là một nửa số bóng cộng một nước.
+  Xoay vòng không đảo chiều một bộ ba: mọi quả bóng cùng di chuyển và thứ tự xung quanh được giữ nguyên. Chỉ phép đổi chỗ trong ô cửa mới đảo chiều được, và chỉ khi hai quả bóng của bộ ba đang ở trong ô cửa. Còn gương đảo chiều tất cả các bộ ba cùng lúc. Từ đó các tác giả chứng minh rằng gương cần gần bằng số cặp nước đi: ít hơn số cặp nhiều nhất là nửa số bóng cộng một nước.
 
   <b-art names="longest-ring-arrangement/triples"/>
   <b-cap>Bộ ba 1, 2, 4: trái là nguyên trạng, giữa là sau khi xoay, phải là sau khi đổi chỗ. <a href="https://youtu.be/ecc2GvvZGvM?t=351" target="_blank" rel="noopener">▶ 5:51</a></b-cap>
