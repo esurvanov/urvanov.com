@@ -1,0 +1,1411 @@
+{
+ "jira": {
+  "def": "Jira là hệ thống theo dõi công việc và lỗi của Atlassian. Qua MCP, tác nhân AI đọc được task kèm bình luận và lịch sử thay đổi, và chỉ được ghi vào đó khi bạn cho phép.",
+  "faq.0.q": "Tác nhân AI làm việc với Jira như thế nào?",
+  "faq.0.a": "Qua MCP, tác nhân đọc ticket cùng bình luận và lịch sử thay đổi.",
+  "faq.1.q": "Tác nhân có sửa được ticket trong Jira không?",
+  "faq.1.a": "Chỉ khi bạn cho phép.",
+  "source.label": "Trang chính thức của Jira"
+ },
+ "sentry": {
+  "def": "Sentry là dịch vụ giám sát lỗi, thu thập exception từ ứng dụng cùng ngữ cảnh. Mỗi lỗi được gắn phiên bản ứng dụng nơi nó xảy ra, nên qua MCP tác nhân thấy lỗi bắt đầu từ lần triển khai nào và tìm nguyên nhân trong các thay đổi của phiên bản đó.",
+  "faq.0.q": "Sentry là gì?",
+  "faq.0.a": "Dịch vụ giám sát lỗi: thu thập exception từ ứng dụng cùng ngữ cảnh của chúng.",
+  "faq.1.q": "Tác nhân tìm thấy gì trong Sentry?",
+  "faq.1.a": "Lỗi được gắn phiên bản ứng dụng, nên tác nhân biết lỗi bắt đầu từ bản phát hành nào và tìm nguyên nhân trong các thay đổi của bản đó.",
+  "source.label": "Trang chính thức của Sentry"
+ },
+ "grafana": {
+  "def": "Grafana là hệ thống biểu đồ và dashboard cho metric và log. Qua MCP, tác nhân đọc metric và log rồi dựng bức tranh sự cố. Để tác nhân không thay đổi được gì, MCP server của Grafana được chạy với cờ `--disable-write`: khi đó tác nhân chỉ đọc, không tạo hay sửa dashboard, cảnh báo hay sự cố.",
+  "faq.0.q": "Grafana là gì?",
+  "faq.0.a": "Hệ thống biểu đồ và dashboard cho metric và log.",
+  "faq.1.q": "Làm sao kết nối Grafana với tác nhân ở chế độ chỉ đọc?",
+  "faq.1.a": "Chạy MCP server của Grafana với cờ --disable-write: tác nhân đọc được metric và log nhưng không đổi được dashboard, cảnh báo hay sự cố.",
+  "source.label": "Trang chính thức của Grafana"
+ },
+ "gitlab": {
+  "def": "GitLab là nền tảng lưu mã nguồn và merge request. Qua MCP, tác nhân thấy mã của mọi dự án cùng lúc mà không cần clone: tìm kiếm xuyên dự án và đọc trực tiếp tệp, merge request, review thay vì nghe kể lại.",
+  "faq.0.q": "GitLab qua MCP mang lại gì cho tác nhân?",
+  "faq.0.a": "Tác nhân thấy mã của tất cả dự án cùng lúc mà không cần clone: tìm kiếm trong các dự án và đọc tệp, merge request, review.",
+  "faq.1.q": "GitLab là gì?",
+  "faq.1.a": "Nền tảng lưu trữ mã nguồn và merge request.",
+  "source.label": "Trang chính thức của GitLab"
+ },
+ "confluence": {
+  "def": "Confluence là wiki của Atlassian: cơ sở tri thức của nhóm. Qua MCP, tác nhân lấy từ đó các bài viết và những quyết định trước đây.",
+  "faq.0.q": "Confluence là gì?",
+  "faq.0.a": "Wiki của Atlassian: cơ sở tri thức của nhóm.",
+  "faq.1.q": "Tác nhân cần Confluence để làm gì?",
+  "faq.1.a": "Qua MCP, tác nhân lấy từ đó các bài viết và quyết định trước đây của nhóm.",
+  "source.label": "Trang chính thức của Confluence"
+ },
+ "time-to-market": {
+  "aka": "TTM, time2market",
+  "def": "Time to market (TTM) là khoảng thời gian từ ý tưởng đến khi sản phẩm hoặc một thay đổi đến tay người dùng. Trong phần mềm, đó là độ dài chu kỳ giao hàng: càng nhiều môi trường và bước kiểm tra trên đường (feature stand, dev, test, pre-prod, demo) thì càng lâu, nhưng càng ít lỗi lọt vào production. Vì vậy nhóm phải quyết định bao nhiêu bước kiểm tra là đáng: quá ít thì chất lượng giảm, quá nhiều thì sản phẩm ra trễ.",
+  "faq.0.q": "Time to market là gì?",
+  "faq.0.a": "Khoảng thời gian từ ý tưởng đến khi sản phẩm hoặc thay đổi đến tay người dùng.",
+  "faq.1.q": "Time to market liên quan thế nào đến chất lượng?",
+  "faq.1.a": "Càng nhiều môi trường và bước kiểm tra trên đường thì chu kỳ càng dài, nhưng càng ít lỗi lọt vào production.",
+  "source.label": "Wikipedia: Time to market",
+  "seo.title": "Time to market (TTM) là gì: chu kỳ giao hàng và chất lượng",
+  "seo.description": "Time to market (TTM) là thời gian từ ý tưởng đến người dùng. Chu kỳ giao hàng, môi trường và bước kiểm tra ảnh hưởng thế nào đến tốc độ và chất lượng."
+ },
+ "change-lead-time": {
+  "name": "Change lead time",
+  "aka": "lead time for changes",
+  "def": "Change lead time là thời gian từ lúc một thay đổi được commit vào hệ thống quản lý phiên bản đến lúc nó chạy trên production. Rút ngắn bằng các thay đổi nhỏ, kiểm tra tự động và ít thao tác thủ công hơn trên đường tới production. Càng ngắn thì nhóm càng nhanh đưa ra các thay đổi nhỏ. Chỉ số này tính từ mã đã sẵn sàng, còn time to market tính từ ý tưởng.",
+  "faq.0.q": "Change lead time là gì?",
+  "faq.0.a": "Thời gian từ commit đến khi thay đổi chạy trên production.",
+  "faq.1.q": "Làm sao rút ngắn change lead time?",
+  "faq.1.a": "Bằng thay đổi nhỏ, kiểm tra tự động và ít thao tác thủ công hơn trên đường tới production.",
+  "source.label": "DORA: các chỉ số giao phần mềm",
+  "seo.title": "Change lead time là gì và cách rút ngắn",
+  "seo.description": "Change lead time là thời gian từ commit đến khi thay đổi chạy trên production. Một chỉ số DORA; môi trường và bước kiểm tra kéo dài đường đi thế nào."
+ },
+ "deployment-frequency": {
+  "name": "Deployment frequency",
+  "def": "Deployment frequency là số lần trong một khoảng thời gian nhóm đưa thay đổi lên production, hay khoảng cách giữa các lần phát hành. Càng nhiều môi trường và bước kiểm tra thủ công trên đường thì phát hành càng thưa.",
+  "faq.0.q": "Deployment frequency là gì?",
+  "faq.0.a": "Số lần trong một khoảng thời gian nhóm đưa thay đổi lên production.",
+  "faq.1.q": "Deployment frequency phụ thuộc vào đâu?",
+  "faq.1.a": "Càng nhiều môi trường và bước kiểm tra thủ công trên đường thì phát hành càng thưa.",
+  "source.label": "DORA: các chỉ số giao phần mềm",
+  "seo.title": "Deployment frequency là gì và phụ thuộc vào đâu",
+  "seo.description": "Deployment frequency là số lần thay đổi lên production trong một khoảng thời gian. Chỉ số DORA và mối liên hệ với môi trường kiểm thử, pre-prod."
+ },
+ "change-fail-rate": {
+  "name": "Change fail rate",
+  "aka": "change fail rate, change failure rate",
+  "def": "Change fail rate là tỷ lệ bản phát hành phải can thiệp ngay: rollback hoặc sửa nhanh (hotfix). Nó cho thấy các bước kiểm tra trước production bắt lỗi tốt đến đâu, đó chính là việc của test và pre-prod.",
+  "faq.0.q": "Change fail rate là gì?",
+  "faq.0.a": "Tỷ lệ bản phát hành phải can thiệp ngay: rollback hoặc hotfix.",
+  "faq.1.q": "Làm sao giảm change fail rate?",
+  "faq.1.a": "Bắt lỗi trước production: bằng test và kiểm tra trên pre-prod.",
+  "source.label": "DORA: các chỉ số giao phần mềm",
+  "seo.title": "Change fail rate là gì và cách giảm",
+  "seo.description": "Change fail rate là tỷ lệ bản phát hành phải rollback hoặc hotfix. Chỉ số DORA: test và pre-prod giúp giảm nó thế nào."
+ },
+ "recovery-time": {
+  "name": "Failed deployment recovery time",
+  "def": "Failed deployment recovery time là thời gian từ một bản phát hành lỗi đến khi dịch vụ hoạt động bình thường trở lại. Các phiên bản DORA trước gọi chỉ số này là mean time to restore, MTTR.",
+  "faq.0.q": "Failed deployment recovery time là gì?",
+  "faq.0.a": "Thời gian từ bản phát hành lỗi đến khi dịch vụ hoạt động bình thường trở lại.",
+  "faq.1.q": "Có phải là MTTR không?",
+  "faq.1.a": "Đúng, các phiên bản DORA trước gọi chỉ số này là MTTR, mean time to restore.",
+  "source.label": "DORA: các chỉ số giao phần mềm",
+  "seo.title": "Failed deployment recovery time (MTTR) là gì",
+  "seo.description": "Failed deployment recovery time là thời gian từ bản phát hành lỗi đến khi sửa xong. Chỉ số DORA, trước đây gọi là MTTR."
+ },
+ "deployment-rework-rate": {
+  "name": "Deployment rework rate",
+  "def": "Deployment rework rate là tỷ lệ bản phát hành không nằm trong kế hoạch mà phát sinh do sự cố trên production. Cùng với change fail rate, nó cho thấy mức bất ổn của quá trình giao hàng.",
+  "faq.0.q": "Deployment rework rate là gì?",
+  "faq.0.a": "Tỷ lệ bản phát hành không nằm trong kế hoạch mà phát sinh từ sự cố trên production.",
+  "faq.1.q": "Chỉ số này cho thấy điều gì?",
+  "faq.1.a": "Cùng với change fail rate, nó cho thấy mức bất ổn của quá trình giao hàng.",
+  "source.label": "DORA: các chỉ số giao phần mềm",
+  "seo.title": "Deployment rework rate là gì",
+  "seo.description": "Deployment rework rate là tỷ lệ bản phát hành phát sinh do sự cố trên production. Chỉ số DORA đi cùng change fail rate."
+ },
+ "javascript": {
+  "aka": "ngôn ngữ của trang web và nhiều chương trình",
+  "def": "JavaScript là ngôn ngữ lập trình làm cho trang web hoạt động trong trình duyệt: nút bấm, biểu mẫu và mọi thứ phản ứng với thao tác của người dùng. Nó cũng được dùng cho chương trình phía máy chủ, ví dụ trong Node.js. Test cho mã như vậy được chạy bằng các công cụ như Jest, Vitest và QUnit.",
+  "faq.0.q": "JavaScript là gì?",
+  "faq.0.a": "Ngôn ngữ lập trình làm trang web chạy trong trình duyệt: nút bấm, biểu mẫu và mọi thứ phản ứng với thao tác.",
+  "faq.1.q": "JavaScript còn chạy ở đâu nữa?",
+  "faq.1.a": "Trên máy chủ, ví dụ trong Node.js."
+ },
+ "typescript": {
+  "aka": "JavaScript có kiểu",
+  "def": "TypeScript là phần mở rộng của JavaScript trong đó giá trị được gán kiểu: số, chuỗi và v.v. Nhờ vậy, lỗi kiểu “truyền chuỗi thay vì số” được phát hiện trước khi chương trình chạy, chứ không phải ở phía người dùng. Chương trình hoàn chỉnh được chuyển thành JavaScript thông thường.",
+  "faq.0.q": "TypeScript là gì?",
+  "faq.0.a": "Lớp phủ trên JavaScript trong đó giá trị có kiểu khai báo: số, chuỗi và v.v.",
+  "faq.1.q": "Vì sao dùng TypeScript?",
+  "faq.1.a": "Những lỗi như truyền chuỗi thay vì số bị bắt trước khi chương trình chạy, trước khi người dùng nhìn thấy.",
+  "source.label": "typescriptlang.org, trang chủ TypeScript"
+ },
+ "babel": {
+  "aka": "bộ chuyển đổi JavaScript mới",
+  "def": "Babel là chương trình chuyển JavaScript mới thành bản mà trình duyệt và môi trường cũ hơn hiểu được. Bạn có thể viết bằng ngôn ngữ hiện đại và chạy ở nơi chưa hỗ trợ nó. Test Jest cũng chạy được với các dự án build qua Babel.",
+  "faq.0.q": "Babel là gì?",
+  "faq.0.a": "Chương trình dịch JavaScript mới sang mã mà trình duyệt và môi trường cũ hơn hiểu được.",
+  "faq.1.q": "Vì sao dùng Babel?",
+  "faq.1.a": "Để viết bằng ngôn ngữ hiện đại và chạy mã ở nơi chưa được hỗ trợ.",
+  "source.label": "babeljs.io, trang chủ Babel"
+ },
+ "node-js": {
+  "aka": "JavaScript bên ngoài trình duyệt",
+  "def": "Node.js là chương trình chạy JavaScript bên ngoài trình duyệt: trên máy chủ, trên dòng lệnh và trong script. Không có nó, mã JavaScript chỉ chạy được bên trong trang web. Nhờ Node.js, một ngôn ngữ phục vụ cho cả trang web, phía máy chủ và các chương trình của lập trình viên. Test bằng Jest, Vitest và QUnit thường cũng chạy trên Node.js, và bản thân công cụ build Vite chạy trên nó.",
+  "faq.0.q": "Node.js là gì?",
+  "faq.0.a": "Chương trình chạy JavaScript bên ngoài trình duyệt: trên máy chủ, trên dòng lệnh và trong script.",
+  "faq.1.q": "Node.js dùng để làm gì?",
+  "faq.1.a": "Nó cho phép một ngôn ngữ phục vụ cả trang web lẫn máy chủ.",
+  "source.label": "nodejs.org, trang chủ Node.js"
+ },
+ "vite": {
+  "aka": "công cụ build cho ứng dụng web",
+  "def": "Vite là chương trình build mã của trang web và hiển thị ngay các chỉnh sửa trong trình duyệt khi bạn làm việc. Phần cấu hình của nó mô tả cách build dự án. Vitest dùng lại chính cấu hình này cho test, nên không cần cấu hình test riêng.",
+  "faq.0.q": "Vite là gì?",
+  "faq.0.a": "Chương trình build mã của trang web và hiển thị ngay các chỉnh sửa trong trình duyệt khi bạn làm việc.",
+  "faq.1.q": "Vite liên quan thế nào đến Vitest?",
+  "faq.1.a": "Vitest dùng lại cấu hình của Vite cho test, nên không cần cấu hình test riêng.",
+  "source.label": "vite.dev, trang chủ Vite"
+ },
+ "react-js": {
+  "aka": "thư viện web, đừng nhầm với ReAct",
+  "def": "React là thư viện JavaScript để dựng trang web: trang được ghép từ các khối dựng sẵn gọi là component, và khi dữ liệu thay đổi chỉ những khối cần thiết được cập nhật. Cùng với Angular và Vue, đây là một trong những thư viện phổ biến nhất. Nó không liên quan gì đến sơ đồ tác nhân ReAct: chỉ tên gọi giống nhau.",
+  "faq.0.q": "React là gì?",
+  "faq.0.a": "Thư viện JavaScript để dựng trang web: trang được ghép từ các khối component.",
+  "faq.1.q": "React khác ReAct thế nào?",
+  "faq.1.a": "React là thư viện cho trang web, còn ReAct là mẫu thiết kế tác nhân AI. Chỉ cách viết giống nhau.",
+  "source.label": "react.dev, trang chủ React"
+ },
+ "angular": {
+  "aka": "framework web",
+  "def": "Angular là framework để dựng website và ứng dụng web bằng JavaScript và TypeScript: trang được ghép từ các khối dựng sẵn gọi là component. Cùng với React và Vue, đây là một trong những framework phổ biến nhất.",
+  "faq.0.q": "Angular là gì?",
+  "faq.0.a": "Framework để dựng website và ứng dụng web bằng JavaScript và TypeScript: trang được ghép từ các khối component.",
+  "faq.1.q": "Angular khác React và Vue thế nào?",
+  "faq.1.a": "Cả ba đều dựng trang từ component và nằm trong nhóm được dùng nhiều nhất. Angular là framework đầy đủ, còn React là thư viện.",
+  "source.label": "angular.dev, trang chủ Angular"
+ },
+ "vue": {
+  "aka": "framework web",
+  "def": "Vue là framework để dựng website bằng JavaScript: trang được ghép từ các khối gọi là component, và có thể đưa vào dự án từng bước. Cùng với Angular và React, đây là một trong những framework phổ biến nhất.",
+  "faq.0.q": "Vue là gì?",
+  "faq.0.a": "Framework JavaScript để dựng website: trang được ghép từ các khối component.",
+  "faq.1.q": "Vue tiện ở điểm nào?",
+  "faq.1.a": "Có thể thêm vào dự án từng bước.",
+  "source.label": "vuejs.org, trang chủ Vue"
+ },
+ "prompt": {
+  "name": "Prompt",
+  "def": "Prompt là yêu cầu gửi cho mô hình: nhiệm vụ, ngữ cảnh, định dạng câu trả lời và các ràng buộc. Các phần này được ghép càng chính xác thì sau câu trả lời đầu tiên càng ít phải sửa.",
+  "faq.0.q": "Prompt là gì?",
+  "faq.0.a": "Yêu cầu gửi cho mô hình: nhiệm vụ, ngữ cảnh, định dạng câu trả lời và ràng buộc.",
+  "faq.1.q": "Làm sao viết một prompt tốt?",
+  "faq.1.a": "Ghép các phần thật chính xác: nhiệm vụ, dữ liệu và định dạng càng rõ thì sau câu trả lời đầu tiên càng ít phải sửa.",
+  "source.label": "Anthropic: Prompt engineering"
+ },
+ "source": {
+  "name": "Nguồn",
+  "def": "Nguồn là hệ thống hoặc tài liệu chứa sự kiện gốc: một ticket, một bảng tính, biên bản cuộc họp. Câu trả lời của tác nhân chỉ đáng tin ở mức có thể đối chiếu với nguồn, nên mỗi khẳng định trong câu trả lời đi kèm liên kết tới nguồn của nó.",
+  "faq.0.q": "Nguồn là gì?",
+  "faq.0.a": "Hệ thống hoặc tài liệu chứa sự kiện gốc: một ticket, một bảng, bản ghi cuộc họp.",
+  "faq.1.q": "Vì sao câu trả lời của tác nhân nên dẫn nguồn?",
+  "faq.1.a": "Câu trả lời chỉ đáng tin ở mức có thể đối chiếu với nguồn của nó."
+ },
+ "hallucination": {
+  "name": "Ảo giác (hallucination)",
+  "aka": "ảo giác LLM, ảo giác AI",
+  "def": "Ảo giác LLM (hallucination) là câu trả lời tự tin nhưng bịa của mô hình: một sự kiện, hàm hoặc liên kết không tồn tại. Trong mã, ví dụ, đó là gọi một hàm không có hoặc cài một gói không tồn tại. Nó xuất hiện khi một phần câu trả lời không có dữ liệu làm căn cứ, và mô hình lấp chỗ trống bằng một phỏng đoán nghe hợp lý. Trường hợp ngược lại, khi mọi phần của câu trả lời đều có căn cứ, gọi là epimorphism. Có thể giảm ảo giác bằng cách neo vào nguồn đáng tin và kiểm tra kết quả.",
+  "faq.0.q": "Ảo giác LLM là gì?",
+  "faq.0.a": "Câu trả lời tự tin nhưng bịa của mô hình: một sự kiện, hàm hoặc liên kết không tồn tại.",
+  "faq.1.q": "Vì sao xảy ra ảo giác?",
+  "faq.1.a": "Khi một phần câu trả lời không có dữ liệu làm căn cứ, mô hình lấp chỗ trống bằng một phỏng đoán nghe hợp lý.",
+  "faq.2.q": "Làm sao giảm ảo giác?",
+  "faq.2.a": "Cung cấp cho mô hình dữ liệu từ nguồn đáng tin và kiểm tra kết quả.",
+  "source.label": "Wikipedia: AI hallucination",
+  "seo.title": "Ảo giác LLM là gì: ví dụ và cách neo vào nguồn",
+  "seo.description": "Ảo giác LLM nghĩa là gì, kèm ví dụ từ tác nhân lập trình: hàm bịa, gói không tồn tại, liên kết chết. Vì sao xảy ra, neo vào nguồn giúp giảm thế nào và kiểm tra phát hiện ra sao.",
+  "notes.title": "Ví dụ ảo giác và cách giảm",
+  "notes.items.0.name": "Hàm bịa",
+  "notes.items.0.text": "tác nhân gọi một phương thức mà thư viện không có, hoặc một tham số mà hàm không nhận. Mã trông hợp lý nhưng lỗi khi chạy.",
+  "notes.items.1.name": "Gói không tồn tại",
+  "notes.items.1.text": "tác nhân đề nghị cài một gói không có trên npm hay PyPI. Mô hình thường lặp lại cùng những cái tên bịa, và kẻ tấn công đăng ký gói dưới các tên đó để cài cắm mã của chúng (slopsquatting).",
+  "notes.items.2.name": "Liên kết chết",
+  "notes.items.2.text": "liên kết tới bài viết, tài liệu hoặc mục không tồn tại.",
+  "notes.items.3.name": "“Xong” mà không có thay đổi nào",
+  "notes.items.3.text": "tác nhân báo cáo công việc mà nó chưa làm.",
+  "notes.items.4.name": "Cách giảm",
+  "notes.items.4.text": "neo mô hình: cung cấp nguồn và ngữ cảnh, yêu cầu mỗi khẳng định có dẫn chứng đi kèm (đó là epimorphism); cho phép trả lời “tôi không biết” ngay trong prompt.",
+  "notes.items.5.name": "Cách phát hiện",
+  "notes.items.5.text": "bằng kiểm tra: test, build và linter bắt mã bịa, danh sách gói được phép bắt gói bịa, việc truy cập liên kết bắt nguồn bịa."
+ },
+ "context": {
+  "name": "Ngữ cảnh (context)",
+  "def": "Ngữ cảnh (context) là mọi thứ mô hình nhìn thấy tại thời điểm đó: cuộc trò chuyện, tệp của dự án và dữ liệu từ các hệ thống được kết nối. Cái gì không có trong ngữ cảnh thì tác nhân không biết.",
+  "faq.0.q": "Ngữ cảnh trong AI là gì?",
+  "faq.0.a": "Mọi thứ mô hình nhìn thấy tại thời điểm đó: cuộc trò chuyện, tệp của dự án và dữ liệu từ các hệ thống được kết nối.",
+  "faq.1.q": "Vì sao tác nhân không biết về dự án của tôi?",
+  "faq.1.a": "Cái gì không có trong ngữ cảnh thì tác nhân không biết. Kiến thức lâu dài về dự án được đưa vào các tệp chỉ dẫn như AGENTS.md hoặc CLAUDE.md.",
+  "source.label": "Anthropic: Context windows"
+ },
+ "token": {
+  "name": "Token",
+  "def": "Token là đơn vị văn bản mà LLM đếm: xấp xỉ một âm tiết hoặc một từ ngắn. Số token quyết định giá của một yêu cầu và lượng nội dung vừa trong ngữ cảnh.",
+  "faq.0.q": "Token trong AI là gì?",
+  "faq.0.a": "Đơn vị văn bản mà LLM đếm: xấp xỉ một âm tiết hoặc một từ ngắn.",
+  "faq.1.q": "Vì sao số token quan trọng?",
+  "faq.1.a": "Nó quyết định giá của yêu cầu và lượng nội dung vừa trong ngữ cảnh của mô hình.",
+  "source.label": "Anthropic: Token counting"
+ },
+ "anthropic": {
+  "def": "Anthropic là công ty Mỹ phát triển dòng mô hình ngôn ngữ Claude: Opus, Sonnet, Haiku và Fable. Cho người dùng: các ứng dụng Claude, tác nhân Cowork làm việc trong một thư mục trên máy tính của bạn và tiện ích Claude in Chrome. Cho lập trình: tác nhân Claude Code. Cho nhà phát triển: API, Managed Agents (tác nhân chạy trên đám mây của Anthropic), Agent SDK và giao thức mở MCP mà tác nhân dùng để kết nối với các hệ thống bên ngoài.",
+  "faq.0.q": "Anthropic là gì?",
+  "faq.0.a": "Công ty Mỹ phát triển các mô hình Claude: Opus, Sonnet, Haiku và Fable.",
+  "faq.1.q": "Anthropic có những sản phẩm nào?",
+  "faq.1.a": "Các ứng dụng Claude, tác nhân Cowork, tiện ích Claude in Chrome, tác nhân lập trình Claude Code, và cho nhà phát triển có API, Managed Agents, Agent SDK và giao thức MCP.",
+  "source.label": "Trang chính thức của Anthropic"
+ },
+ "openai": {
+  "def": "OpenAI là công ty Mỹ phát triển dòng mô hình ngôn ngữ GPT. Cho người dùng: chat ChatGPT, trên máy tính nằm chung một ứng dụng với Codex. Cho lập trình: tác nhân Codex. Cho nhà phát triển: API, Agents SDK, Apps SDK cho ứng dụng bên trong ChatGPT và định dạng chỉ dẫn `AGENTS.md` mà các tác nhân khác cũng đọc.",
+  "faq.0.q": "OpenAI là gì?",
+  "faq.0.a": "Công ty Mỹ phát triển các mô hình GPT, chat ChatGPT và tác nhân lập trình Codex.",
+  "faq.1.q": "OpenAI cung cấp gì cho nhà phát triển?",
+  "faq.1.a": "API tới các mô hình, Agents SDK để dựng tác nhân riêng, Apps SDK cho ứng dụng bên trong ChatGPT và định dạng chỉ dẫn AGENTS.md.",
+  "source.label": "Wikipedia: OpenAI"
+ },
+ "nous-research": {
+  "def": "Nous Research là phòng nghiên cứu của Mỹ phát triển các mô hình ngôn ngữ mở Hermes. Sản phẩm: Hermes Agent mã nguồn mở, cài trên máy chủ riêng và chạy với bất kỳ mô hình nào, chat Nous Chat và Forge, công cụ tăng cường khả năng suy luận của mô hình. Hạ tầng: Psyche để huấn luyện phân tán và Atropos, môi trường mở cho học tăng cường.",
+  "faq.0.q": "Nous Research là gì?",
+  "faq.0.a": "Phòng nghiên cứu của Mỹ phát triển các mô hình ngôn ngữ mở Hermes.",
+  "faq.1.q": "Nous Research có những sản phẩm nào?",
+  "faq.1.a": "Hermes Agent mã nguồn mở, ứng dụng Nous Chat, Forge để suy luận mạnh hơn, và Psyche cùng Atropos để huấn luyện.",
+  "source.label": "Trang chính thức của Nous Research"
+ },
+ "anysphere": {
+  "def": "Anysphere là công ty Mỹ đứng sau Cursor, trình soạn thảo mã có tác nhân tích hợp sẵn. Ngoài trình soạn thảo, công ty làm các mô hình lập trình Composer riêng, công cụ review pull request Bugbot, tác nhân trong terminal và tác nhân đám mây. Thuộc sở hữu của SpaceX từ tháng 8 năm 2026.",
+  "faq.0.q": "Anysphere là gì?",
+  "faq.0.a": "Công ty Mỹ làm trình soạn thảo mã Cursor có tác nhân tích hợp sẵn.",
+  "faq.1.q": "Ngoài Cursor, Anysphere còn làm gì?",
+  "faq.1.a": "Các mô hình lập trình Composer riêng, công cụ review pull request Bugbot, tác nhân trong terminal và tác nhân đám mây.",
+  "source.label": "Trang chính thức của Anysphere"
+ },
+ "deepseek": {
+  "def": "DeepSeek là công ty Trung Quốc phát triển các mô hình ngôn ngữ DeepSeek với trọng số mở: có thể tải về và chạy trên máy chủ riêng. Thế hệ V4 hiện tại chứa được tới một triệu token ngữ cảnh. Cho người dùng: chat DeepSeek trên web và di động. Cho nhà phát triển: API. Mô hình DeepSeek gắn được vào các tác nhân mở như Hermes Agent.",
+  "faq.0.q": "DeepSeek là gì?",
+  "faq.0.a": "Công ty Trung Quốc phát triển các mô hình ngôn ngữ DeepSeek với trọng số mở: có thể tải về và chạy trên máy chủ riêng.",
+  "faq.1.q": "DeepSeek V4 chứa được bao nhiêu ngữ cảnh?",
+  "faq.1.a": "Tới một triệu token.",
+  "source.label": "Trang chính thức của DeepSeek"
+ },
+ "yandex": {
+  "name": "Yandex",
+  "def": "Yandex là công ty Nga phát triển các mô hình ngôn ngữ Alice AI và trước đó là dòng YandexGPT. Cho người dùng: trợ lý Alice trong ứng dụng, trình duyệt và loa thông minh, trả lời câu hỏi và làm theo yêu cầu. Cho doanh nghiệp: tác nhân doanh nghiệp Alice AI Pro và Yandex AI Studio, nơi các nhóm dựng tác nhân riêng trên Alice AI và các mô hình mở. Cho lập trình: nền tảng SourceCraft với tác nhân Code Assistant.",
+  "faq.0.q": "Yandex có những sản phẩm AI nào?",
+  "faq.0.a": "Các mô hình Alice AI, trợ lý Alice cho người dùng, tác nhân doanh nghiệp Alice AI Pro và Yandex AI Studio cho doanh nghiệp, và SourceCraft với tác nhân Code Assistant cho lập trình.",
+  "faq.1.q": "Trước Alice AI là gì?",
+  "faq.1.a": "Dòng mô hình YandexGPT.",
+  "source.label": "Trang giới thiệu công ty Yandex"
+ },
+ "jetbrains": {
+  "def": "JetBrains là công ty thành lập ở Praha năm 2000, làm các IDE IntelliJ IDEA, PyCharm, WebStorm và nhiều IDE khác, cùng ngôn ngữ Kotlin. Tác nhân lập trình riêng Junie chạy trong IDE và terminal; Claude Agent và Codex được tích hợp ngay cạnh trong IDE, còn các tác nhân khác kết nối qua giao thức mở ACP. Gợi ý hoàn thành mã chạy trên mô hình Mellum riêng. Air là không gian làm việc để chạy song song nhiều tác nhân (bản xem trước).",
+  "faq.0.q": "JetBrains là gì?",
+  "faq.0.a": "Công ty thành lập ở Praha năm 2000: làm các IDE IntelliJ IDEA, PyCharm, WebStorm và nhiều IDE khác, cùng ngôn ngữ Kotlin.",
+  "faq.1.q": "Những tác nhân AI nào chạy được trong IDE của JetBrains?",
+  "faq.1.a": "Tác nhân Junie của chính JetBrains, Claude Agent và Codex tích hợp sẵn, còn các tác nhân khác kết nối qua giao thức mở ACP.",
+  "source.label": "Trang chính thức của JetBrains"
+ },
+ "microsoft": {
+  "def": "Microsoft là công ty Mỹ làm trợ lý Copilot, tích hợp trong Windows, Word, Excel, Outlook và Teams. Cho nhà phát triển: trình soạn thảo VS Code, GitHub Copilot với tác nhân lập trình và ứng dụng GitHub Copilot để chạy nhiều tác nhân. Cho doanh nghiệp: Copilot Studio và Foundry để dựng tác nhân riêng. Chạy trên các mô hình MAI riêng và mô hình của đối tác, gồm OpenAI và Anthropic.",
+  "faq.0.q": "Microsoft làm gì trong lĩnh vực AI?",
+  "faq.0.a": "Trợ lý Copilot tích hợp trong Windows, Word, Excel, Outlook và Teams.",
+  "faq.1.q": "Microsoft cung cấp gì cho nhà phát triển?",
+  "faq.1.a": "Trình soạn thảo VS Code, GitHub Copilot với tác nhân lập trình và ứng dụng GitHub Copilot.",
+  "source.label": "Wikipedia: Microsoft"
+ },
+ "bing": {
+  "def": "Bing là công cụ tìm kiếm của Microsoft. Bên cạnh danh sách liên kết thông thường, nó chạy trợ lý Copilot, trả lời câu hỏi bằng văn bản kèm liên kết tới nguồn. Với chủ website, Bing có bảng điều khiển riêng, Bing Webmaster Tools: tình trạng lập chỉ mục trang, truy vấn và lượt hiển thị trong tìm kiếm.",
+  "faq.0.q": "Bing là gì?",
+  "faq.0.a": "Công cụ tìm kiếm của Microsoft. Bên cạnh kết quả dạng liên kết, nó chạy trợ lý Copilot trả lời bằng văn bản kèm liên kết nguồn.",
+  "faq.1.q": "Chủ website kiểm tra Bing ở đâu?",
+  "faq.1.a": "Trong Bing Webmaster Tools, bảng điều khiển của Bing dành cho chủ website.",
+  "source.label": "Wikipedia: Microsoft Bing"
+ },
+ "atlassian": {
+  "def": "Atlassian là công ty Úc làm Jira, Confluence và Bitbucket, những hệ thống làm việc của nhiều nhóm phát triển. AI của hãng tên là Rovo: tác nhân Rovo nhận task trong Jira, còn Rovo MCP Server cho phép các tác nhân bên ngoài như Claude Code và Cursor đọc và sửa dữ liệu Jira và Confluence.",
+  "faq.0.q": "Atlassian là gì?",
+  "faq.0.a": "Công ty Úc làm Jira, Confluence và Bitbucket.",
+  "faq.1.q": "AI của Atlassian tên là gì?",
+  "faq.1.a": "Rovo: tác nhân Rovo nhận task trong Jira, còn Rovo MCP Server cho các tác nhân bên ngoài truy cập dữ liệu Atlassian.",
+  "source.label": "Trang chính thức của Atlassian"
+ },
+ "mcp": {
+  "def": "MCP là giao thức mở để tác nhân kết nối với các dịch vụ bên ngoài, như Jira, Airtable, cơ sở dữ liệu, qua một giao diện chung. MCP server đưa cho tác nhân một bộ công cụ, còn quyền hạn vẫn do bạn quyết định.",
+  "faq.0.q": "MCP là gì, nói đơn giản?",
+  "faq.0.a": "Giao thức mở nối tác nhân với các dịch vụ bên ngoài như Jira hay cơ sở dữ liệu qua một giao diện chung.",
+  "faq.1.q": "Ai kiểm soát quyền hạn qua MCP?",
+  "faq.1.a": "Bạn: MCP server đưa cho tác nhân một bộ công cụ, còn quyền truy cập được đặt ở phía server.",
+  "source.label": "Trang Model Context Protocol"
+ },
+ "mcp-client": {
+  "name": "MCP client",
+  "def": "MCP client là phần nằm ở phía tác nhân: nó gọi MCP server của một hệ thống, yêu cầu dữ liệu và kích hoạt các công cụ. Nó được tích hợp trong harness, ví dụ Claude Code.",
+  "faq.0.q": "MCP client là gì?",
+  "faq.0.a": "Phần ở phía tác nhân làm việc với MCP server của một hệ thống, yêu cầu dữ liệu và gọi công cụ.",
+  "faq.1.q": "MCP client nằm ở đâu?",
+  "faq.1.a": "Nó được tích hợp trong harness, ví dụ Claude Code.",
+  "source.label": "MCP: Understanding clients"
+ },
+ "mcp-server": {
+  "name": "MCP server",
+  "def": "MCP server là phần nằm ở phía hệ thống (Jira, GitLab, cơ sở dữ liệu): nó cung cấp dữ liệu và nhận hành động từ tác nhân qua một giao thức chung. Quyền hạn được đặt ở phía này.",
+  "faq.0.q": "MCP server là gì?",
+  "faq.0.a": "Phần ở phía một hệ thống (Jira, GitLab, cơ sở dữ liệu) cung cấp dữ liệu và nhận hành động của tác nhân qua một giao thức chung.",
+  "faq.1.q": "Quyền của MCP server được đặt ở đâu?",
+  "faq.1.a": "Ở phía server: nó quyết định tác nhân được đọc gì và được sửa gì.",
+  "source.label": "MCP: Understanding servers",
+  "more.label": "MCP server cho 1C: cho tác nhân AI vào cơ sở dữ liệu mà không làm hỏng nó"
+ },
+ "oauth": {
+  "def": "OAuth là cách đăng nhập qua trình duyệt: khi tác nhân kết nối với một dịch vụ, harness mở trang đăng nhập của dịch vụ đó, bạn nhập mật khẩu ở đó và đồng ý cấp quyền, rồi tác nhân nhận một token. Tác nhân không bao giờ thấy mật khẩu; token bị giới hạn trong phạm vi quyền đã cấp và có thể thu hồi. Đây là cách MCP server kết nối với Jira và Sentry, chẳng hạn.",
+  "faq.0.q": "OAuth hoạt động thế nào với tác nhân?",
+  "faq.0.a": "Harness mở trang đăng nhập của dịch vụ, bạn nhập mật khẩu ở đó và xác nhận quyền truy cập, rồi tác nhân nhận một token.",
+  "faq.1.q": "Với OAuth, tác nhân có thấy mật khẩu của tôi không?",
+  "faq.1.a": "Không. Tác nhân chỉ nhận token bị giới hạn trong quyền bạn đã cấp, và token có thể thu hồi.",
+  "source.label": "MCP spec: Authorization"
+ },
+ "mcp-scope": {
+  "name": "Phạm vi (scope) của MCP server",
+  "def": "Phạm vi của MCP server trả lời hai câu hỏi: MCP server làm việc trong những dự án nào và ai nhìn thấy nó. Claude Code có ba phạm vi, chọn khi thêm server: `local`, mặc định, chỉ bạn và `project` hiện tại; `project`, cả nhóm qua tệp `.mcp.json` trong repo, mỗi người duyệt server trước lần dùng đầu tiên; `user`, chỉ bạn và mọi dự án của bạn. Khi trùng tên, lớp trên thắng hoàn toàn: `local` đè `project`, `project` đè `user`.",
+  "faq.0.q": "Claude Code có những phạm vi MCP nào?",
+  "faq.0.a": "Ba: local cho riêng bạn trong dự án hiện tại, project cho cả nhóm qua tệp trong repo, và user cho riêng bạn trong mọi dự án.",
+  "faq.1.q": "Chọn phạm vi cho MCP server vào lúc nào?",
+  "faq.1.a": "Khi thêm server; mặc định là local.",
+  "source.label": "Tài liệu MCP của Claude Code",
+  "table.title": "Ba phạm vi cạnh nhau",
+  "table.rows.0": [
+   "Ai nhìn thấy",
+   "chỉ bạn",
+   "cả nhóm",
+   "chỉ bạn"
+  ],
+  "table.rows.1": [
+   "Trong những dự án nào",
+   "dự án hiện tại",
+   "repository này",
+   "mọi dự án của bạn"
+  ],
+  "table.rows.2": [
+   "Lưu ở đâu",
+   "`~/.claude.json`, dưới đường dẫn của dự án",
+   "`.mcp.json` ở gốc repo",
+   "`~/.claude.json`, phần chung"
+  ],
+  "table.rows.3": [
+   "Cách thêm",
+   "`claude mcp add` theo mặc định",
+   "`claude mcp add --scope project`",
+   "`claude mcp add --scope user`"
+  ],
+  "table.rows.4": [
+   "Trước lần dùng đầu tiên",
+   "không cần gì",
+   "mọi người duyệt server",
+   "không cần gì"
+  ],
+  "table.rows.5": [
+   "Khi trùng tên",
+   "đè `project` và `user`",
+   "đè `user`",
+   "nhường các phạm vi còn lại"
+  ]
+ },
+ "prompt-injection": {
+  "aka": "tấn công chèn prompt",
+  "def": "Tấn công chèn prompt (prompt injection) là kiểu tấn công trong đó kẻ xấu giấu chỉ dẫn dành cho tác nhân vào văn bản của mình: email, ticket, trang web. Tác nhân đọc nó cùng với dữ liệu, coi như một phần của yêu cầu, và hành vi bị tráo: nó làm theo ý kẻ tấn công thay vì điều bạn nhờ. Tác nhân càng có nhiều quyền truy cập thì cú tráo càng đắt giá.",
+  "faq.0.q": "Prompt injection là gì?",
+  "faq.0.a": "Kiểu tấn công giấu chỉ dẫn cho tác nhân trong email, ticket hoặc trang web, và tác nhân coi nó như một phần của yêu cầu.",
+  "faq.1.q": "Phòng thủ trước prompt injection như thế nào?",
+  "faq.1.a": "Giữ văn bản bên ngoài ở mặt phẳng dữ liệu để nó không trở thành lệnh, và cấp cho tác nhân quyền tối thiểu.",
+  "source.label": "OWASP LLM01: Prompt Injection"
+ },
+ "planes": {
+  "name": "Mặt phẳng dữ liệu và mặt phẳng điều khiển",
+  "aka": "mặt phẳng dữ liệu và mặt phẳng điều khiển",
+  "def": "Mặt phẳng dữ liệu (data plane) và mặt phẳng điều khiển (control plane) là hai mặt phẳng trong cách một hệ thống làm việc: mặt phẳng điều khiển quyết định làm gì và ở đâu, còn mặt phẳng dữ liệu thực hiện việc đó trên chính dữ liệu. Các thuật ngữ này đến từ mạng máy tính: trong router, mặt phẳng điều khiển dựng bảng định tuyến còn mặt phẳng dữ liệu chuyển tiếp gói tin. Với tác nhân AI, mặt phẳng điều khiển là tin nhắn và quy tắc của bạn, còn mặt phẳng dữ liệu là mọi thứ nó đọc: trang web, ticket, tài liệu và phản hồi của máy chủ. Phòng thủ trước prompt injection là giữ văn bản lạ ở mặt phẳng dữ liệu để nó không bao giờ thành lệnh.",
+  "faq.0.q": "Mặt phẳng dữ liệu là gì?",
+  "faq.0.a": "Mặt phẳng dữ liệu là phần của hệ thống xử lý chính dữ liệu: trong mạng, nó chuyển tiếp gói tin; trong Kubernetes, đó là các node chứa pod. Với tác nhân AI, đó là mọi thứ nó đọc: trang web, ticket, tài liệu và phản hồi của máy chủ.",
+  "faq.1.q": "Mặt phẳng điều khiển khác mặt phẳng dữ liệu thế nào?",
+  "faq.1.a": "Mặt phẳng điều khiển là lệnh, tức tin nhắn và quy tắc của bạn. Mặt phẳng dữ liệu là dữ liệu. Chống prompt injection là giữ cho văn bản bên ngoài nằm trong dữ liệu không trở thành lệnh.",
+  "source.label": "Wikipedia: Control plane",
+  "seo.title": "Mặt phẳng dữ liệu và mặt phẳng điều khiển là gì: mạng, Kubernetes, tác nhân AI",
+  "seo.description": "Mặt phẳng điều khiển quyết định làm gì và ở đâu; mặt phẳng dữ liệu thực hiện trên chính dữ liệu. Cách hai mặt phẳng hoạt động trong router, cụm Kubernetes và tác nhân AI, và liên hệ với prompt injection.",
+  "compare.title": "Hai mặt phẳng trong mạng, Kubernetes và tác nhân AI",
+  "compare.head": [
+   "Mạng",
+   "Kubernetes",
+   "Tác nhân AI"
+  ],
+  "compare.rows.0": [
+   "Mặt phẳng điều khiển",
+   "bảng định tuyến: gửi gói tin đi đâu",
+   "các thành phần điều khiển của cụm: chạy gì và ở đâu",
+   "tin nhắn và quy tắc của bạn"
+  ],
+  "compare.rows.1": [
+   "Mặt phẳng dữ liệu",
+   "chuyển tiếp chính các gói tin",
+   "các node nơi pod chứa ứng dụng chạy",
+   "trang web, ticket, tài liệu, phản hồi của máy chủ"
+  ]
+ },
+ "permissions": {
+  "name": "Quyền hạn (permissions)",
+  "aka": "quyền của tác nhân AI, chế độ quyền, quyền tối thiểu",
+  "def": "Quyền hạn (permissions) của tác nhân AI xác định tác nhân được làm gì trong môi trường của bạn và các hệ thống được kết nối: chỉ đọc hay cả ghi, và chạy những lệnh nào. Trong Claude Code và Codex đó là các chế độ quyền: từ hỏi trước mỗi hành động đến làm việc không cần xác nhận. Áp dụng nguyên tắc quyền tối thiểu: tác nhân nhận đúng những quyền mà nhiệm vụ cần, nâng dần từng bước.",
+  "faq.0.q": "Nên cấp quyền gì cho tác nhân AI?",
+  "faq.0.a": "Đúng những gì nhiệm vụ cần, theo nguyên tắc quyền tối thiểu, nâng dần từng bước.",
+  "faq.1.q": "Claude Code và Codex có những chế độ quyền nào?",
+  "faq.1.a": "Từ hỏi trước mỗi hành động đến làm việc không cần xác nhận; ở giữa là các chế độ mà tác nhân tự thực hiện những bước an toàn.",
+  "source.label": "Tài liệu về quyền của Claude Code",
+  "seo.title": "Quyền của tác nhân AI: quyền tối thiểu, chế độ quyền Claude Code và --dangerously-skip-permissions",
+  "seo.description": "Quyền của tác nhân AI và nguyên tắc quyền tối thiểu: nên cấp quyền gì và nâng dần từng bước ra sao. Các chế độ quyền trong Claude Code và Codex, và --dangerously-skip-permissions làm gì.",
+  "notes.title": "Quyền hạn trong tác nhân",
+  "notes.items.0.name": "Các bước",
+  "notes.items.0.text": "đầu tiên chỉ đọc, sau đó ghi vào môi trường kiểm thử; ghi vào hệ thống thật chỉ qua con người.",
+  "notes.items.1.name": "Claude Code: quy tắc",
+  "notes.items.1.text": "trong cài đặt nói rõ cho phép gì, hỏi về gì và cấm gì. Quy tắc deny thắng mọi chế độ.",
+  "notes.items.2.name": "Claude Code: chế độ",
+  "notes.items.2.text": "theo mặc định, hỏi trước khi sửa và chạy lệnh; acceptEdits tự chấp nhận các chỉnh sửa; plan chỉ đọc và lập kế hoạch; auto tự quyết điều gì an toàn; bypassPermissions, tương đương cờ `--dangerously-skip-permissions`, không hỏi gì và chỉ hợp với sandbox.",
+  "notes.items.3.name": "Codex: chế độ",
+  "notes.items.3.text": "chỉ đọc; chế độ workspace, sửa và chạy lệnh trong thư mục dự án không cần hỏi, còn mọi thứ khác phải được duyệt; toàn quyền, không sandbox và không cần duyệt."
+ },
+ "harness": {
+  "name": "Harness",
+  "aka": "agent harness",
+  "def": "Harness là toàn bộ phần bao quanh mô hình biến nó thành một tác nhân làm việc được: chỉ dẫn, công cụ, quyền hạn, bộ nhớ và các bước kiểm tra. Mô hình vẫn là một, kết quả phụ thuộc vào harness.",
+  "faq.0.q": "Harness trong AI là gì?",
+  "faq.0.a": "Toàn bộ phần bao quanh mô hình khiến nó thành một tác nhân làm việc được: chỉ dẫn, công cụ, quyền truy cập, bộ nhớ và các bước kiểm tra.",
+  "faq.1.q": "Vì sao kết quả phụ thuộc vào harness?",
+  "faq.1.a": "Mô hình vẫn là một, còn việc tác nhân biết gì, làm được gì và tự kiểm tra ra sao đều do harness quyết định.",
+  "source.label": "Anthropic: Effective harnesses for agents",
+  "seo.title": "Agent harness là gì và gồm những phần nào",
+  "seo.description": "Agent harness là toàn bộ phần bao quanh mô hình để nó thành tác nhân: vòng lặp, công cụ, ngữ cảnh, bộ nhớ, quy tắc, quyền hạn và kiểm tra. Từng phần, có liên kết.",
+  "more.label": "Tác nhân AI = LLM + harness: LLM, harness và tác nhân khác nhau thế nào",
+  "parts.title": "Harness gồm những gì"
+ },
+ "hooks": {
+  "name": "Hook",
+  "def": "Hook là các script mà harness tự động chạy vào những thời điểm định sẵn trong quá trình tác nhân làm việc: trước một hành động, sau khi sửa tệp, khi kết thúc. Tác nhân coi quy tắc trong chỉ dẫn là lời khuyên, còn hook thì luôn chạy, nên hook dùng để chặn những điều không có ngoại lệ.",
+  "faq.0.q": "Hook là gì?",
+  "faq.0.a": "Script mà harness tự động chạy vào một thời điểm định sẵn trong quá trình tác nhân làm việc: trước một hành động, sau khi sửa tệp hoặc khi kết thúc.",
+  "faq.1.q": "Hook khác quy tắc thế nào?",
+  "faq.1.a": "Tác nhân coi quy tắc là lời khuyên và có thể vi phạm, còn hook thì luôn chạy. Vì vậy những điều cấm không có ngoại lệ được thực thi bằng hook.",
+  "source.label": "Tài liệu tham chiếu hook của Claude Code"
+ },
+ "agent-loop": {
+  "name": "Vòng lặp tác nhân (agent loop)",
+  "aka": "agentic loop",
+  "def": "Vòng lặp tác nhân (agent loop) là nhịp lặp đi lặp lại trong công việc của tác nhân: suy nghĩ, gọi công cụ, xem kết quả, suy nghĩ tiếp. Vòng lặp chạy cho đến khi nhiệm vụ xong hoặc tác nhân cần con người.",
+  "faq.0.q": "Vòng lặp tác nhân là gì?",
+  "faq.0.a": "Nhịp lặp trong công việc của tác nhân: suy nghĩ, gọi công cụ, xem kết quả rồi suy nghĩ tiếp.",
+  "faq.1.q": "Khi nào vòng lặp tác nhân dừng?",
+  "faq.1.a": "Khi nhiệm vụ xong hoặc tác nhân cần con người giúp.",
+  "source.label": "Bài báo ReAct (arXiv)"
+ },
+ "react": {
+  "aka": "Reason + Act",
+  "def": "ReAct là cách làm việc của tác nhân trong đó mô hình xen kẽ suy luận và hành động: quyết định làm gì, gọi công cụ, đọc kết quả rồi suy luận tiếp. Chỉ suy luận thì mô hình tự bịa câu trả lời; chỉ hành động thì nó lang thang không có kế hoạch; xen kẽ cả hai thì đến được câu trả lời đúng. Được mô tả trong một bài báo năm 2022; vòng lặp tác nhân của các tác nhân lập trình ngày nay dựa trên nó.",
+  "faq.0.q": "ReAct là gì?",
+  "faq.0.a": "Mẫu thiết kế tác nhân trong đó mô hình luân phiên suy luận và hành động: quyết định làm gì, gọi công cụ, đọc kết quả rồi suy luận tiếp.",
+  "faq.1.q": "ReAct khác React thế nào?",
+  "faq.1.a": "ReAct là mẫu thiết kế tác nhân AI, còn React là thư viện JavaScript cho trang web. Chỉ cách viết giống nhau.",
+  "source.label": "Yao et al., “ReAct” (arXiv, 2022)"
+ },
+ "session": {
+  "name": "Phiên (session)",
+  "def": "Phiên (session) là một cuộc trò chuyện liền mạch với tác nhân, từ lúc khởi chạy đến khi thoát hoặc đặt lại. Mọi thứ tác nhân học được trong phiên nằm trong ngữ cảnh của nó và mất khi phiên kết thúc; chỉ những gì đã ghi vào bộ nhớ và các tệp như `CLAUDE.md` mới sang được phiên sau. Harness lưu chính cuộc trò chuyện trong nhật ký phiên, từ đó có thể khôi phục nguyên vẹn một phiên cũ; trong Claude Code bằng `/resume` hoặc `claude --continue`.",
+  "faq.0.q": "Phiên của tác nhân là gì?",
+  "faq.0.a": "Một cuộc trò chuyện liền mạch với tác nhân: từ lúc bắt đầu đến khi thoát hoặc đặt lại.",
+  "faq.1.q": "Cái gì sang được phiên sau?",
+  "faq.1.a": "Chỉ những gì đã ghi vào bộ nhớ và các tệp như CLAUDE.md. Phần còn lại biến mất cùng ngữ cảnh của phiên.",
+  "source.label": "Tài liệu về phiên của Claude Code"
+ },
+ "memory": {
+  "name": "Bộ nhớ của tác nhân",
+  "def": "Bộ nhớ của tác nhân là các ghi chú tác nhân giữ lại giữa các phiên: quy tắc dự án, ràng buộc đã phát hiện, thỏa thuận. Không có bộ nhớ thì mỗi cuộc trò chuyện mới bắt đầu từ trang giấy trắng.",
+  "faq.0.q": "Bộ nhớ của tác nhân AI là gì?",
+  "faq.0.a": "Các ghi chú tác nhân giữ lại giữa các phiên: quy tắc dự án, ràng buộc đã phát hiện, thỏa thuận.",
+  "faq.1.q": "Chuyện gì xảy ra nếu không có bộ nhớ?",
+  "faq.1.a": "Mỗi cuộc trò chuyện mới bắt đầu từ con số không.",
+  "source.label": "Tài liệu về bộ nhớ của Claude Code"
+ },
+ "bible": {
+  "name": "Bible của dự án",
+  "def": "Bible của dự án là mô tả dự án được xây dựng thế nào và vì sao: ranh giới hệ thống, các thỏa thuận, nguyên tắc và giá trị, tức điều gì quan trọng hơn khi phải chọn và điều gì không bao giờ được phép. Tác nhân đọc nó trước khi làm việc, nên bạn không phải nhắc lại trong từng nhiệm vụ. Từ đó suy ra các chỉ dẫn cụ thể nên làm và không nên làm, thành quy tắc. Bible nằm trong `CLAUDE.md` cho Claude Code hoặc `AGENTS.md` cho Codex và Cursor, hay trong các tệp riêng mà chúng trỏ tới.",
+  "faq.0.q": "Bible của dự án là gì?",
+  "faq.0.a": "Mô tả dự án được xây dựng thế nào và vì sao: ranh giới hệ thống, các thỏa thuận, nguyên tắc và giá trị. Tác nhân đọc nó trước khi làm việc.",
+  "faq.1.q": "Giữ bible của dự án ở đâu?",
+  "faq.1.a": "Trong CLAUDE.md cho Claude Code hoặc AGENTS.md cho Codex và Cursor, hay trong các tệp riêng bên cạnh.",
+  "source.label": "Claude Code best practices",
+  "compare.title": "Quy tắc và bible của dự án",
+  "compare.head": [
+   "Quy tắc",
+   "Bible của dự án"
+  ],
+  "compare.rows.0": [
+   "Trả lời",
+   "ở đây nên hành động thế nào",
+   "dự án được xây dựng thế nào và vì sao"
+  ],
+  "compare.rows.1": [
+   "Dạng",
+   "chỉ dẫn ngắn nên làm và không nên làm",
+   "mô tả liền mạch và các nguyên tắc"
+  ],
+  "compare.rows.2": [
+   "Khi nào tác nhân đọc",
+   "luôn luôn, hoặc khi đụng đến các tệp phù hợp",
+   "trước khi làm việc, đọc toàn bộ"
+  ],
+  "compare.rows.3": [
+   "Ví dụ",
+   "\"chạy test bằng `npm test`\"",
+   "\"thanh toán là một hệ thống riêng mà ta không sửa\""
+  ],
+  "compare.rows.4": [
+   "Nguồn gốc",
+   "suy ra từ bible và từ lỗi của tác nhân",
+   "do những người hiểu dự án viết"
+  ]
+ },
+ "rules": {
+  "name": "Quy tắc của tác nhân",
+  "aka": "rules",
+  "def": "Quy tắc của tác nhân (rules) là các chỉ dẫn ngắn nên làm và không nên làm mà harness nạp vào ngữ cảnh của tác nhân: luôn luôn, hoặc chỉ khi tác nhân đụng đến các tệp phù hợp. Đây là khái niệm chung: trong Claude Code, quy tắc nằm trong `CLAUDE.md` và thư mục `.claude/rules`, trong Cursor ở `.cursor/rules`, trong Codex ở `AGENTS.md`. Tác nhân coi quy tắc là lời khuyên; điều cấm không có ngoại lệ được thực thi bằng hook.",
+  "faq.0.q": "Quy tắc của tác nhân là gì?",
+  "faq.0.a": "Các chỉ dẫn ngắn “làm thế này, đừng làm thế kia” mà harness nạp vào ngữ cảnh của tác nhân luôn luôn hoặc khi tác nhân đụng đến các tệp phù hợp.",
+  "faq.1.q": "Quy tắc của tác nhân nằm ở đâu?",
+  "faq.1.a": "Trong Claude Code ở CLAUDE.md và các quy tắc theo đường dẫn, trong Cursor ở .cursor/rules, và với các tác nhân khác ở AGENTS.md.",
+  "source.label": "Tài liệu Cursor Rules",
+  "compare.title": "Quy tắc và bible của dự án",
+  "compare.head": [
+   "Quy tắc",
+   "Bible của dự án"
+  ],
+  "compare.rows.0": [
+   "Trả lời",
+   "ở đây nên hành động thế nào",
+   "dự án được xây dựng thế nào và vì sao"
+  ],
+  "compare.rows.1": [
+   "Dạng",
+   "chỉ dẫn ngắn nên làm và không nên làm",
+   "mô tả liền mạch và các nguyên tắc"
+  ],
+  "compare.rows.2": [
+   "Khi nào tác nhân đọc",
+   "luôn luôn, hoặc khi đụng đến các tệp phù hợp",
+   "trước khi làm việc, đọc toàn bộ"
+  ],
+  "compare.rows.3": [
+   "Ví dụ",
+   "\"chạy test bằng `npm test`\"",
+   "\"thanh toán là một hệ thống riêng mà ta không sửa\""
+  ],
+  "compare.rows.4": [
+   "Nguồn gốc",
+   "suy ra từ bible và từ lỗi của tác nhân",
+   "do những người hiểu dự án viết"
+  ]
+ },
+ "checks": {
+  "name": "Kiểm tra tĩnh",
+  "aka": "test tĩnh · kiểm tra tự động",
+  "def": "Kiểm tra tĩnh là các test, linter, bản build và những phép kiểm tra tự động khác xác nhận kết quả của tác nhân trước khi con người xem. Một phép kiểm tra mà tác nhân tự chạy được sẽ trả lỗi về cho nó và buộc nó sửa mà không cần bạn.",
+  "faq.0.q": "Kiểm tra tĩnh cho tác nhân là gì?",
+  "faq.0.a": "Test, linter, bản build và những phép kiểm tra tự động khác xác nhận kết quả của tác nhân trước khi con người xem.",
+  "faq.1.q": "Vì sao tác nhân nên tự chạy kiểm tra?",
+  "faq.1.a": "Phép kiểm tra tác nhân tự chạy trả lỗi về cho nó, và nó sửa trước khi bàn giao công việc.",
+  "source.label": "Wikipedia: Static program analysis"
+ },
+ "orchestration": {
+  "name": "Điều phối (orchestration)",
+  "def": "Điều phối (orchestration) là quản lý nhiều bước hoặc nhiều tác nhân: ai chịu trách nhiệm việc gì, làm theo thứ tự nào và kết quả được chuyển tiếp ra sao, qua tệp, qua kết quả của subagent hay qua tin nhắn giữa các phiên.",
+  "faq.0.q": "Điều phối tác nhân là gì?",
+  "faq.0.a": "Quản lý nhiều bước hoặc nhiều tác nhân: ai chịu trách nhiệm việc gì, làm theo thứ tự nào và kết quả chuyển tiếp ra sao.",
+  "faq.1.q": "Các tác nhân chuyển kết quả cho nhau bằng cách nào?",
+  "faq.1.a": "Qua tệp, qua kết quả của subagent hoặc bằng tin nhắn giữa các phiên.",
+  "source.label": "Anthropic: Multi-agent research system"
+ },
+ "session-messaging": {
+  "name": "Tin nhắn giữa các phiên",
+  "def": "Tin nhắn giữa các phiên là cách để các phiên tác nhân chạy song song chuyển văn bản cho nhau: phiên này tìm phiên kia theo tên và gửi tin nhắn, phiên kia đọc ở bước kế tiếp. Trong Claude Code đó là tin nhắn giữa các phiên và agent teams ở mức thử nghiệm; trong Cursor, việc chuyển giao giữa tác nhân cục bộ và đám mây đóng vai trò tương tự. Nhờ vậy điều phối chạy được mà không cần người sao chép câu trả lời giữa các cửa sổ.",
+  "faq.0.q": "Tin nhắn giữa các phiên là gì?",
+  "faq.0.a": "Cách để các phiên tác nhân chạy song song chuyển văn bản cho nhau: phiên này tìm phiên kia theo tên và gửi tin nhắn.",
+  "faq.1.q": "Vì sao dùng tin nhắn giữa các phiên?",
+  "faq.1.a": "Nhờ đó điều phối nhiều tác nhân không cần người ở giữa sao chép văn bản từ cửa sổ này sang cửa sổ khác.",
+  "source.label": "Tài liệu agent teams của Claude Code"
+ },
+ "tracing": {
+  "name": "Log và truy vết (tracing)",
+  "def": "Log và truy vết (tracing) là bản ghi từng bước của tác nhân: nó đã đọc gì, gọi công cụ nào và nhận lại gì. Nó cho thấy tác nhân rẽ sai ở đâu và cho phép phát lại quá trình phân tích.",
+  "faq.0.q": "Truy vết tác nhân là gì?",
+  "faq.0.a": "Bản ghi từng bước của tác nhân: nó đã đọc gì, gọi công cụ nào và nhận lại gì.",
+  "faq.1.q": "Vì sao cần log và truy vết?",
+  "faq.1.a": "Chúng cho thấy tác nhân sai ở đâu, và quá trình phân tích có thể lặp lại.",
+  "source.label": "OpenTelemetry: Traces"
+ },
+ "claude-md": {
+  "def": "CLAUDE.md là tệp ở thư mục gốc dự án chứa chỉ dẫn thường trực cho Claude Code: cấu trúc dự án, lệnh build và test, quy ước. Nó được nạp vào ngữ cảnh của tác nhân ở đầu mỗi phiên.",
+  "faq.0.q": "CLAUDE.md là gì?",
+  "faq.0.a": "Tệp ở thư mục gốc dự án chứa chỉ dẫn thường trực cho Claude Code: cấu trúc dự án, lệnh build và test, quy ước.",
+  "faq.1.q": "Claude Code đọc CLAUDE.md khi nào?",
+  "faq.1.a": "Ở đầu mỗi phiên: tệp được nạp vào ngữ cảnh của tác nhân.",
+  "source.label": "Tài liệu CLAUDE.md của Claude Code"
+ },
+ "agents-md": {
+  "def": "AGENTS.md là tệp chỉ dẫn chung cho dự án mà nhiều tác nhân cùng đọc. Codex, Cursor và các tác nhân khác dùng nó, nên đây là bản tương ứng trung lập về nhà cung cấp của `CLAUDE.md`.",
+  "faq.0.q": "AGENTS.md là gì?",
+  "faq.0.a": "Tệp chỉ dẫn chung cho nhiều tác nhân khác nhau: lệnh, phong cách, điều cấm.",
+  "faq.1.q": "Những tác nhân nào đọc AGENTS.md?",
+  "faq.1.a": "Codex, Cursor và các tác nhân khác, nên tệp này là lựa chọn trung lập thay cho CLAUDE.md.",
+  "source.label": "Trang chính thức của AGENTS.md"
+ },
+ "agent-skills": {
+  "name": "Skill",
+  "aka": "skills",
+  "def": "Skill là thư mục có tệp `SKILL.md`: chỉ dẫn và các tệp phụ trợ cho một nhiệm vụ lặp lại, như báo cáo hay migration. Ở đầu phiên, tác nhân chỉ thấy tên và mô tả của skill, và nạp toàn bộ skill khi nhiệm vụ phù hợp, nên không tốn chỗ trong ngữ cảnh từ trước.",
+  "faq.0.q": "Skill của tác nhân AI là gì?",
+  "faq.0.a": "Thư mục có tệp SKILL.md: chỉ dẫn và các tệp phụ trợ cho một nhiệm vụ lặp lại, như báo cáo hay migration.",
+  "faq.1.q": "Vì sao skill không chiếm hết ngữ cảnh?",
+  "faq.1.a": "Ở đầu phiên, tác nhân chỉ thấy tên và mô tả của skill, và nạp đầy đủ khi có nhiệm vụ phù hợp.",
+  "source.label": "Tài liệu Agent Skills của Anthropic"
+ },
+ "ai-agent": {
+  "name": "Tác nhân AI (AI agent)",
+  "aka": "tác nhân LLM, AI tác nhân (agentic AI)",
+  "def": "Tác nhân AI (AI agent, còn gọi là tác nhân LLM hay agentic AI) là chương trình trong đó một LLM làm việc bên trong một harness: tự chọn các bước, đọc tệp, chạy lệnh, gọi công cụ và kiểm tra kết quả ngay trong môi trường của bạn. Ví dụ: Claude Code nhận nhiệm vụ “sửa test đang lỗi”, đọc mã, chỉnh sửa, chạy test và lặp lại cho đến khi test qua.",
+  "faq.0.q": "Tác nhân AI khác chatbot thế nào?",
+  "faq.0.a": "Chatbot trả lời bằng văn bản. Tác nhân AI tự chọn các bước, đọc tệp, chạy lệnh và kiểm tra kết quả trong môi trường của bạn.",
+  "faq.1.q": "Tác nhân AI được cấu tạo như thế nào?",
+  "faq.1.a": "Một mạng nơ-ron (LLM) làm việc bên trong một harness: mô hình suy luận, còn harness cung cấp công cụ, quyền hạn và các bước kiểm tra.",
+  "source.label": "Anthropic: Building effective agents",
+  "seo.title": "Tác nhân AI (AI agent) = LLM + harness là gì",
+  "seo.description": "Tác nhân AI là chương trình trong đó LLM làm việc bên trong harness và đưa nhiệm vụ đến kết quả. Kiến trúc tác nhân LLM trong một bảng, kèm ví dụ: Claude Code, Codex, Cursor.",
+  "parts.title": "Ví dụ về tác nhân AI",
+  "more.label": "Tác nhân AI = LLM + harness: LLM, harness và tác nhân khác nhau thế nào",
+  "matrix.title": "Tác nhân AI gồm những gì",
+  "matrix.head": [
+   "LLM",
+   "Harness",
+   "Tác nhân AI"
+  ],
+  "matrix.legend": "Kiến trúc tác nhân LLM: LLM + harness (vòng lặp, công cụ, ngữ cảnh, quy tắc, kiểm tra). ✓ có · ✗ không",
+  "matrix.rows.1": [
+   "Vòng lặp",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Công cụ",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.3": [
+   "Kết nối MCP",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Ngữ cảnh",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.5": [
+   "Bộ nhớ",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Quy tắc, bible, skill",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.7": [
+   "Quyền đối với công cụ",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.8": [
+   "Sandbox",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.9": [
+   "Hook",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.10": [
+   "Kiểm tra tĩnh",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.12": [
+   "Điều phối",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.13": [
+   "Log và truy vết",
+   "no",
+   "yes",
+   "yes"
+  ]
+ },
+ "human-in-the-loop": {
+  "name": "Con người trong vòng lặp (human in the loop)",
+  "aka": "HITL, con người phê duyệt",
+  "def": "Con người trong vòng lặp (human in the loop, HITL) nghĩa là tác nhân không tự hoàn tất: ở những bước quan trọng nó chờ con người phê duyệt. Các điểm dừng điển hình: cấp quyền, ghi vào hệ thống thật, chấp nhận kết quả. Bên cạnh đó có human on the loop: tác nhân chạy không dừng, còn con người theo dõi nhật ký hành động và có thể ngắt công việc.",
+  "faq.0.q": "Human in the loop là gì?",
+  "faq.0.a": "Nguyên tắc tác nhân không tự hoàn tất công việc: con người đưa ra quyết định ở các bước then chốt.",
+  "faq.1.q": "Tác nhân chờ con người ở đâu?",
+  "faq.1.a": "Thường là trước khi cấp quyền, ghi vào hệ thống thật và chấp nhận kết quả.",
+  "source.label": "Wikipedia: Human-in-the-loop",
+  "seo.title": "Human in the loop (HITL) cho tác nhân AI: khi nào tác nhân dừng chờ duyệt",
+  "seo.description": "Human in the loop nghĩa là gì với tác nhân AI: ở những bước quan trọng tác nhân chờ con người quyết định. Đặt điểm duyệt ở đâu và khác human on the loop thế nào.",
+  "compare.title": "Con người quyết định đến đâu",
+  "compare.head": [
+   "Human in the loop",
+   "Human on the loop",
+   "Không có con người"
+  ],
+  "compare.rows.0": [
+   "Ai quyết định ở bước quan trọng",
+   "con người duyệt",
+   "tác nhân; con người theo dõi",
+   "tác nhân"
+  ],
+  "compare.rows.1": [
+   "Khi nào con người can thiệp",
+   "ở mỗi điểm dừng",
+   "khi có gì đó trông sai",
+   "không bao giờ"
+  ],
+  "compare.rows.2": [
+   "Ví dụ với tác nhân",
+   "hộp thoại “cho phép ghi vào cơ sở dữ liệu?”",
+   "tác nhân làm việc, bạn xem nhật ký và có thể dừng nó",
+   "tác nhân trong sandbox trên staging"
+  ],
+  "compare.rows.3": [
+   "Phù hợp ở đâu",
+   "hệ thống thật, tiền, dữ liệu của người khác",
+   "nhiệm vụ dài với rủi ro đã biết",
+   "mọi thứ dễ hoàn tác"
+  ]
+ },
+ "llm": {
+  "aka": "mô hình ngôn ngữ lớn, mô hình LLM",
+  "def": "LLM (mô hình ngôn ngữ lớn, large language model) là mạng nơ-ron được huấn luyện trên lượng lớn văn bản và mã, viết tiếp văn bản từ một prompt; nó đọc và viết văn bản theo token. Tự nó chỉ trả lời; để hành động trong môi trường của bạn, nó cần một harness, và mô hình cùng harness là một tác nhân.",
+  "faq.0.q": "LLM trong IT nghĩa là gì?",
+  "faq.0.a": "Mô hình ngôn ngữ lớn: mạng nơ-ron được huấn luyện trên lượng lớn văn bản và mã, viết tiếp văn bản theo yêu cầu.",
+  "faq.1.q": "LLM khác tác nhân AI thế nào?",
+  "faq.1.a": "Mô hình tự nó chỉ trả lời bằng văn bản. Để hành động trong môi trường của bạn, nó cần một harness, và mô hình cộng harness là tác nhân.",
+  "faq.2.q": "Trong tiếng Anh viết “a LLM” hay “an LLM”?",
+  "faq.2.a": "“An LLM”: chữ viết tắt đọc từng chữ cái, và chữ L đầu đọc là “el”, bắt đầu bằng nguyên âm.",
+  "source.label": "Wikipedia: Large language model",
+  "seo.title": "LLM là gì: mô hình ngôn ngữ lớn và khác tác nhân AI thế nào",
+  "seo.description": "LLM là gì nói đơn giản: mô hình ngôn ngữ lớn đọc văn bản theo token, giữ ngữ cảnh và tự nó chỉ trả lời; thêm harness thì thành tác nhân. Ví dụ: GPT, Claude, DeepSeek, Alice AI.",
+  "compare.title": "Ví dụ về LLM: ai làm ra và tác nhân nào chạy trên chúng",
+  "compare.head": [
+   "Mô hình (LLM)",
+   "Tác nhân và công cụ chạy trên đó"
+  ],
+  "compare.rows.2": [
+   "Anysphere",
+   "Composer",
+   "Cursor (cũng chạy được mô hình của hãng khác)"
+  ],
+  "compare.rows.3": [
+   "DeepSeek",
+   "dòng V và R",
+   "chat và API riêng; gắn vào tác nhân qua API"
+  ],
+  "compare.rows.4": [
+   "Yandex",
+   "Alice AI (trước đây là YandexGPT)",
+   "trợ lý và tác nhân doanh nghiệp Alice AI Pro"
+  ],
+  "compare.rows.5": [
+   "Nous Research",
+   "Hermes",
+   "Hermes Agent (cũng chạy được mô hình của hãng khác)"
+  ]
+ },
+ "ide": {
+  "aka": "môi trường phát triển tích hợp, AI IDE, IDE gốc AI (AI-native IDE)",
+  "def": "IDE là chương trình để viết mã: trình soạn thảo, gợi ý, trình gỡ lỗi và trình chạy dự án trong một cửa sổ. VS Code và JetBrains là ví dụ điển hình. Tác nhân gắn vào IDE qua tiện ích mở rộng và hiển thị các chỉnh sửa ngay trong tệp. AI IDE (IDE gốc AI) là IDE có tác nhân tích hợp ngay từ đầu, như Cursor, một bản fork của VS Code. Lựa chọn khác là tác nhân CLI trong terminal, như Claude Code và Codex.",
+  "faq.0.q": "IDE trong lập trình là gì?",
+  "faq.0.a": "Chương trình để viết mã: trình soạn thảo, gợi ý, trình gỡ lỗi và trình chạy dự án trong một cửa sổ. Ví dụ là VS Code và JetBrains.",
+  "faq.1.q": "AI IDE là gì?",
+  "faq.1.a": "Môi trường có tác nhân AI tích hợp ngay từ đầu, như Cursor.",
+  "source.label": "Wikipedia: Integrated development environment",
+  "seo.title": "AI IDE và tác nhân CLI: AI IDE là gì và tác nhân chạy thế nào trong VS Code, JetBrains",
+  "seo.description": "AI IDE là IDE có tác nhân tích hợp sẵn, như Cursor, bản fork của VS Code. So sánh AI IDE với tác nhân CLI trong terminal (Claude Code, Codex) và với VS Code, JetBrains có tiện ích tác nhân.",
+  "notes.title": "IDE thường, AI IDE và tác nhân CLI",
+  "notes.items.0.name": "IDE thường",
+  "notes.items.0.text": "VS Code, JetBrains. Bạn tự viết mã; môi trường gợi ý và chạy nó.",
+  "notes.items.1.name": "IDE + tiện ích tác nhân",
+  "notes.items.1.text": "VS Code hoặc JetBrains với Claude Code hoặc Codex. Tác nhân được cài riêng, viết mã theo nhiệm vụ của bạn trên mô hình của hãng làm ra nó, và bạn xem lại các chỉnh sửa trong tệp.",
+  "notes.items.2.name": "AI IDE",
+  "notes.items.2.text": "Cursor. Tác nhân là một phần của chính chương trình, và bạn chọn mô hình từ nhiều hãng.",
+  "notes.items.3.name": "Tác nhân CLI",
+  "notes.items.3.text": "Claude Code, Codex CLI. Chương trình riêng, không cần IDE; bạn xem lại các chỉnh sửa trong trình soạn thảo của mình hoặc trong git."
+ },
+ "vs-code": {
+  "def": "VS Code (Visual Studio Code) là trình soạn thảo mã miễn phí, mã nguồn mở của Microsoft. Tính năng được thêm bằng tiện ích mở rộng, gồm cả các tác nhân AI: GitHub Copilot, Claude Code, Codex, Cline. Cursor được xây dựng dựa trên nó.",
+  "faq.0.q": "Những tác nhân AI nào chạy trong VS Code?",
+  "faq.0.a": "GitHub Copilot, Claude Code, Codex, Cline và các tác nhân khác: chúng được cài như tiện ích mở rộng.",
+  "faq.1.q": "VS Code khác Cursor thế nào?",
+  "faq.1.a": "Cursor xây dựng trên VS Code với tác nhân tích hợp ngay từ đầu. Trong VS Code, tác nhân được thêm dưới dạng tiện ích mở rộng.",
+  "source.label": "Trang chính thức của VS Code",
+  "seo.title": "Tác nhân AI trong VS Code: Claude Code, Codex và Copilot trong Visual Studio Code",
+  "seo.description": "VS Code là trình soạn thảo mã miễn phí của Microsoft. Những tác nhân AI chạy trong đó: GitHub Copilot, Claude Code, Codex, Cline, cái nào miễn phí và Claude Code hoạt động thế nào trong VS Code.",
+  "notes.title": "Tác nhân AI cho VS Code",
+  "notes.items.0.text": "Microsoft tích hợp sẵn trong VS Code, có chế độ tác nhân và gói miễn phí có giới hạn.",
+  "notes.items.1.text": "tiện ích mở rộng của Anthropic: cùng tác nhân như trong terminal, dùng gói Claude hoặc API trả theo mức dùng.",
+  "notes.items.2.text": "tiện ích mở rộng của OpenAI, đã gồm trong các gói ChatGPT.",
+  "notes.items.3.text": "tiện ích mở rộng mã nguồn mở miễn phí: bạn gắn khóa của riêng mình cho bất kỳ mô hình nào và chỉ trả tiền cho mô hình.",
+  "notes.items.4.text": "tác nhân của Sber có tiện ích mở rộng cho VS Code.",
+  "notes.items.5.text": "trình soạn thảo riêng xây dựng trên VS Code với tác nhân tích hợp; bạn cài nó thay cho VS Code, và các tiện ích mở rộng của VS Code chạy được trong đó."
+ },
+ "terminal": {
+  "name": "Terminal",
+  "aka": "dòng lệnh, CLI",
+  "def": "Terminal là cửa sổ để gõ lệnh dưới dạng văn bản, còn gọi là CLI (giao diện dòng lệnh, command-line interface). Tác nhân CLI của AI làm việc ngay trong terminal: nó thấy cùng các tệp và chương trình như bạn và tự chạy chúng, như test, build, git. Ví dụ là Claude Code và Codex CLI, còn OpenCode là tác nhân mã nguồn mở miễn phí. Quyền truy cập bị giới hạn bởi các quy tắc về quyền.",
+  "faq.0.q": "CLI là gì?",
+  "faq.0.a": "Giao diện dòng lệnh: cửa sổ để gõ lệnh dưới dạng văn bản. Terminal cũng là thứ đó.",
+  "faq.1.q": "Có những tác nhân CLI nào?",
+  "faq.1.a": "Claude Code và Codex CLI, còn OpenCode là tác nhân mã nguồn mở miễn phí. Chúng làm việc ngay trong terminal và tự chạy test, build và git.",
+  "source.label": "Wikipedia: Command-line interface",
+  "seo.title": "Tác nhân CLI của AI: terminal (CLI) là gì và tác nhân lập trình nào chạy trong đó, gồm cả loại miễn phí",
+  "seo.description": "Terminal (CLI) là nơi gõ lệnh dưới dạng văn bản. Tác nhân CLI của AI tự chạy test, build và git trong terminal. Claude Code, Codex CLI, OpenCode và Hermes Agent miễn phí, chuyện gì xảy ra với Gemini CLI, và tác nhân CLI khác tác nhân trong IDE thế nào.",
+  "notes.title": "Tác nhân CLI của AI",
+  "notes.items.0.text": "tác nhân của Anthropic: khởi chạy bằng lệnh claude trong thư mục dự án; dùng gói Claude hoặc API trả theo mức dùng.",
+  "notes.items.1.text": "tác nhân của OpenAI: lệnh codex, đã gồm trong các gói ChatGPT.",
+  "notes.items.2.text": "tác nhân mã nguồn mở miễn phí: làm việc với mô hình của nhiều hãng và với mô hình chạy cục bộ; bạn chỉ trả tiền cho mô hình.",
+  "notes.items.3.text": "tác nhân mã nguồn mở của Google trên các mô hình Gemini; từ ngày 18 tháng 6 năm 2026 chỉ dùng được cho doanh nghiệp và khóa API trả phí.",
+  "notes.items.4.text": "tác nhân của Google; từ ngày 18 tháng 6 năm 2026 nó thay Gemini CLI cho người dùng cá nhân, và bản thân nó là mã nguồn đóng.",
+  "notes.items.5.text": "tác nhân mã nguồn mở miễn phí của Nous Research: chạy trên máy chủ của bạn với bất kỳ mô hình nào; bạn điều khiển từ terminal hoặc qua ứng dụng nhắn tin.",
+  "notes.items.6.name": "Khác tác nhân trong IDE thế nào",
+  "notes.items.6.text": "không cần trình soạn thảo: bạn xem lại các chỉnh sửa trong trình soạn thảo của mình hoặc trong git, và có thể chạy tác nhân từ script."
+ },
+ "tool": {
+  "name": "Công cụ và gọi công cụ (tool calling)",
+  "aka": "tool call, tool use, function calling",
+  "def": "Công cụ (tool) là một hành động mà tác nhân có thể gọi: đọc tệp, tìm ticket trong Jira, chạy truy vấn cơ sở dữ liệu. MCP là cách mở để gắn các bộ công cụ dựng sẵn của hệ thống bên ngoài vào tác nhân. Bộ công cụ quyết định tác nhân làm được gì và với tới được đâu. Gọi công cụ (tool calling, function calling) hoạt động như sau: mô hình trả về tên hàm và đối số, ví dụ `search_jira` với truy vấn “login”; harness chạy lời gọi và chuyển kết quả lại cho mô hình.",
+  "faq.0.q": "Gọi công cụ (tool calling) là gì?",
+  "faq.0.a": "Gọi một công cụ: mô hình trả về tên hàm và tham số, harness chạy lời gọi và chuyển kết quả lại cho mô hình.",
+  "faq.1.q": "MCP khác gọi công cụ thế nào?",
+  "faq.1.a": "Gọi công cụ là cách mô hình gọi một hành động. MCP là giao thức mở để gắn các bộ công cụ dựng sẵn của hệ thống bên ngoài vào tác nhân.",
+  "source.label": "Anthropic: Tool use docs",
+  "seo.title": "Tool calling và MCP: công cụ của tác nhân AI là gì và function calling hoạt động thế nào",
+  "seo.description": "Tool calling (function calling) nói đơn giản: mô hình chọn công cụ và đối số của nó, như đọc tệp hay truy vấn cơ sở dữ liệu, còn harness chạy lời gọi. Các bước của một lần gọi công cụ, và tool calling khác MCP thế nào.",
+  "notes.title": "Một lần gọi công cụ hoạt động thế nào",
+  "notes.items.0.name": "1. Mô tả",
+  "notes.items.0.text": "cùng với nhiệm vụ, harness gửi cho mô hình danh sách công cụ. Với mỗi công cụ: tên (`search_jira`), việc nó làm (“tìm ticket Jira”) và tham số (`query`, chuỗi tìm kiếm).",
+  "notes.items.1.name": "2. Lời gọi của mô hình",
+  "notes.items.1.text": "mô hình trả về lời gọi dưới dạng JSON: `{\"name\": \"search_jira\", \"arguments\": {\"query\": \"login\"}}`.",
+  "notes.items.2.name": "3. Thực thi",
+  "notes.items.2.text": "harness đối chiếu lời gọi với quyền hạn rồi truy vấn Jira. Các thao tác ghi và xóa được đưa cho con người duyệt trước.",
+  "notes.items.3.name": "4. Kết quả",
+  "notes.items.3.text": "harness thêm câu trả lời của Jira (“3 ticket: …”) vào ngữ cảnh và chạy lại mô hình. Mô hình gọi công cụ tiếp theo hoặc viết câu trả lời.",
+  "notes.items.4.name": "Mô hình nào hỗ trợ",
+  "notes.items.4.text": "các mô hình của OpenAI (GPT), Anthropic (Claude), DeepSeek và các LLM hiện đại khác; mô hình cục bộ qua Ollama, nếu mô hình hỗ trợ công cụ.",
+  "notes.items.5.name": "Tool calling và MCP",
+  "notes.items.5.text": "tool calling là định dạng lời gọi ở các bước 2–4. MCP là giao thức qua đó một hệ thống bên ngoài (Jira, cơ sở dữ liệu 1C) đưa cho tác nhân danh sách công cụ của riêng nó và chạy các lời gọi."
+ },
+ "cloud-agent": {
+  "name": "Tác nhân lập trình đám mây",
+  "aka": "tác nhân đám mây, tác nhân nền, tác nhân từ xa",
+  "def": "Tác nhân lập trình đám mây là tác nhân AI chạy nhiệm vụ trên máy chủ từ xa, trong môi trường cô lập có bản sao repo của bạn. Khác với tác nhân cục bộ, nó không cần máy tính của bạn: bạn giao việc từ điện thoại trong ứng dụng hoặc trình duyệt rồi đóng laptop. Kết quả đến dưới dạng một nhánh hoặc pull request hoàn chỉnh. Codex cloud, Claude Code trên web và các tác nhân đám mây của Cursor hoạt động theo cách này.",
+  "faq.0.q": "Tác nhân đám mây là gì?",
+  "faq.0.a": "Tác nhân AI chạy nhiệm vụ trên máy chủ từ xa với bản sao repository của bạn và gửi lại một nhánh hoặc pull request hoàn chỉnh.",
+  "faq.1.q": "Tác nhân đám mây khác tác nhân cục bộ thế nào?",
+  "faq.1.a": "Tác nhân đám mây không cần máy tính của bạn: bạn giao việc từ điện thoại rồi đóng laptop. Tác nhân cục bộ chạy khi máy tính đang bật, nhưng thấy được tệp và chương trình của bạn.",
+  "faq.2.q": "Có những tác nhân đám mây nào?",
+  "faq.2.a": "Codex cloud, Claude Code trên web và các tác nhân đám mây của Cursor.",
+  "source.label": "Tài liệu Claude Code trên đám mây",
+  "seo.title": "Tác nhân lập trình đám mây: đám mây và cục bộ, chạy Codex hoặc Claude Code từ điện thoại",
+  "seo.description": "Tác nhân lập trình đám mây làm việc trên máy chủ từ xa với bản sao repo của bạn và gửi lại một nhánh hoàn chỉnh. Codex cloud và cục bộ, tác nhân nền và đám mây, cách chạy Codex hay Claude Code từ điện thoại, có hoặc không cần bật máy tính.",
+  "notes.title": "Tác nhân đám mây và tác nhân cục bộ",
+  "notes.items.0.name": "Chạy ở đâu",
+  "notes.items.0.text": "tác nhân đám mây chạy trên máy chủ của hãng làm ra tác nhân; tác nhân cục bộ chạy trên máy tính của bạn.",
+  "notes.items.1.name": "Có cần máy tính của bạn không",
+  "notes.items.1.text": "tác nhân đám mây thì không: bạn có thể giao việc từ điện thoại rồi đóng laptop. Tác nhân cục bộ làm việc khi máy tính của bạn đang bật.",
+  "notes.items.2.name": "Từ điện thoại",
+  "notes.items.2.text": "bạn giao việc cho tác nhân đám mây trong ứng dụng điện thoại hoặc trình duyệt, không cần máy tính. Bạn cũng có thể điều khiển tác nhân cục bộ từ điện thoại, qua Remote Control trong Claude Code và Remote trong ứng dụng ChatGPT cho Codex, nhưng máy tính phải bật và có mạng.",
+  "notes.items.3.name": "Nó thấy gì",
+  "notes.items.3.text": "tác nhân đám mây chỉ thấy repo và những gì bạn kết nối vào môi trường của nó; tác nhân cục bộ thấy tệp, chương trình và các tài khoản đăng nhập của bạn.",
+  "notes.items.4.name": "Bạn nhận được gì",
+  "notes.items.4.text": "tác nhân đám mây gửi một nhánh hoặc pull request; tác nhân cục bộ sửa tệp ngay trước mắt bạn.",
+  "notes.items.5.name": "Khi nào dùng loại nào",
+  "notes.items.5.text": "đám mây cho nhiều nhiệm vụ song song và nhiệm vụ dài; cục bộ khi cần môi trường test, trình duyệt của bạn hoặc chỉnh sửa nhanh trong lúc làm."
+ },
+ "sandbox": {
+  "name": "Sandbox",
+  "def": "Sandbox là một nơi được rào lại để chạy các hành động của tác nhân: chỉ thấy các thư mục được phép và chỉ truy cập được các máy chủ mạng được phép. Nếu tác nhân sai hoặc bị lừa, thiệt hại nằm gọn bên trong. Một số sản phẩm chỉ rào các lệnh terminal, số khác chạy cả tác nhân bên trong container hoặc máy ảo.",
+  "faq.0.q": "Sandbox cho tác nhân AI là gì?",
+  "faq.0.a": "Nơi được rào lại để chạy các hành động của tác nhân: chỉ thấy các thư mục được phép và chỉ truy cập được các máy chủ mạng được phép.",
+  "faq.1.q": "Vì sao tác nhân cần sandbox?",
+  "faq.1.a": "Nếu tác nhân mắc lỗi hoặc bị lừa, thiệt hại nằm lại bên trong sandbox.",
+  "source.label": "Tài liệu sandbox của Claude Code"
+ },
+ "subagent": {
+  "name": "Subagent",
+  "def": "Subagent là trợ lý mà tác nhân chính khởi chạy cho một phần việc riêng, như tìm kiếm mã hay review. Nó có ngữ cảnh sạch của riêng mình và chỉ trả kết quả về cuộc trò chuyện chính.",
+  "faq.0.q": "Subagent là gì?",
+  "faq.0.a": "Trợ lý mà tác nhân chính khởi chạy cho một phần việc riêng, như tìm kiếm mã hay review.",
+  "faq.1.q": "Vì sao dùng subagent?",
+  "faq.1.a": "Subagent có ngữ cảnh sạch của riêng mình và chỉ trả kết quả về cuộc trò chuyện chính, nên tác nhân chính giữ được ngữ cảnh gọn.",
+  "source.label": "Tài liệu subagent của Claude Code"
+ },
+ "claude-code": {
+  "aka": "Claude Code CLI, tác nhân lập trình của Anthropic",
+  "def": "Claude Code là tác nhân lập trình của Anthropic: đọc dự án, sửa tệp, chạy lệnh và test, làm việc với git. Khác với Claude trong chat, nó có quyền truy cập vào dự án: chat trả lời bằng văn bản, còn Claude Code tự thay đổi tệp và chạy lệnh. Nó chạy trong terminal (CLI), trong VS Code và JetBrains, trong ứng dụng desktop và trong trình duyệt, và ở đâu cũng là cùng một tác nhân. Nó không có mô hình riêng: chạy trên các mô hình Claude (Opus, Sonnet, Haiku); đổi mô hình bằng `/model`. Nó đọc quy tắc dự án từ `CLAUDE.md`, giữ các quy trình lặp lại trong skill và kết nối hệ thống bên ngoài qua MCP. Các lựa chọn gần nhất là Codex và Cursor.",
+  "faq.0.q": "Claude khác Claude Code thế nào?",
+  "faq.0.a": "Claude trong chat trả lời bằng văn bản. Claude Code là tác nhân lập trình: tự đọc dự án, sửa tệp, chạy lệnh và test.",
+  "faq.1.q": "Claude Code chạy ở đâu?",
+  "faq.1.a": "Trong terminal, trong VS Code và JetBrains, trong ứng dụng desktop và trong trình duyệt. Ở đâu cũng là cùng một tác nhân.",
+  "faq.2.q": "Claude Code dùng những mô hình nào?",
+  "faq.2.a": "Các mô hình Claude: Opus, Sonnet và Haiku. Đổi mô hình bằng lệnh /model.",
+  "source.label": "Tài liệu Claude Code",
+  "seo.title": "Claude Code là gì? Claude Code và chat Claude, mô hình, cách cài đặt",
+  "seo.description": "Claude Code dùng để làm gì: đọc dự án, sửa tệp và chạy test. Claude Code và chat Claude, mô hình nó dùng, CLAUDE.md, skill và MCP.",
+  "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào",
+  "compare.title": "Claude Code và Claude: khác nhau ở đâu",
+  "compare.head": [
+   "Chat Claude",
+   "Claude Code"
+  ],
+  "compare.rows.0": [
+   "Chạy ở đâu",
+   "trình duyệt, điện thoại, ứng dụng",
+   "terminal, VS Code và JetBrains, ứng dụng, trình duyệt"
+  ],
+  "compare.rows.1": [
+   "Thấy dự án của bạn",
+   "không, chỉ thấy những gì bạn dán vào",
+   "có, đọc được các tệp"
+  ],
+  "compare.rows.2": [
+   "Làm gì",
+   "trả lời bằng văn bản",
+   "sửa tệp, chạy lệnh và test, làm việc với git"
+  ],
+  "compare.rows.3": [
+   "Mô hình",
+   "các mô hình Claude",
+   "cũng là các mô hình Claude, đổi bằng /model"
+  ],
+  "compare.rows.4": [
+   "Quy tắc dự án",
+   "projects và chỉ dẫn",
+   "tệp CLAUDE.md trong repo"
+  ],
+  "compare.rows.5": [
+   "Hệ thống bên ngoài",
+   "connector",
+   "MCP server"
+  ],
+  "compare.rows.6": [
+   "Giá",
+   "một gói Claude",
+   "cùng gói Claude (Pro, Max) hoặc API trả theo mức dùng"
+  ],
+  "matrix.title": "Điểm chung và điểm khác",
+  "matrix.legend": "✓ có · ✗ không",
+  "matrix.rows.0": [
+   "Sửa mã, chạy lệnh",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.1": [
+   "Tệp quy tắc",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Trình soạn thảo riêng",
+   "no",
+   "no",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.3": [
+   "Terminal",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Nhiệm vụ trên đám mây",
+   "yes",
+   "yes",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.5": [
+   "Mô hình của nhiều hãng",
+   "no",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Máy chủ của riêng bạn",
+   "no",
+   "no",
+   "no",
+   "yes"
+  ]
+ },
+ "clauding": {
+  "aka": "làm việc với Claude",
+  "def": "Clauding là từ không chính thức chỉ việc làm việc với hoặc thông qua Claude: người dùng viết nhiệm vụ, xem lại kết quả và chỉnh cho đến khi đúng. Nó theo mẫu của động từ “to google”: Google trả về các liên kết, còn Claude trả về công việc đã hoàn thành để con người kiểm tra. Từ này lấy tên từ Claude nhưng dùng được cho mọi trợ lý AI, giống như người ta nói “google it” cả với người đang tìm trên Bing hay Yandex. Ví dụ: thay vì tự viết email cho khách hàng, bạn giao cho Claude, sửa hai cụm từ rồi gửi.",
+  "faq.0.q": "Clauding nghĩa là gì?",
+  "faq.0.a": "Từ không chính thức chỉ việc làm việc với Claude: người dùng viết nhiệm vụ, xem kết quả và chỉnh cho đến khi có thứ mình cần.",
+  "faq.1.q": "Từ clauding từ đâu ra?",
+  "faq.1.a": "Nó theo mẫu của “to google”: Google trả về các liên kết, Claude trả về công việc đã hoàn thành.",
+  "source.label": "explainx.ai AI dictionary: Clauding",
+  "site.label": "clauding.me, trang về thuật ngữ này",
+  "notes.title": "Lời từ nguồn gốc",
+  "notes.items.0.name": "Định nghĩa",
+  "notes.items.0.text": "“Clauding is informal shorthand for working with or through Claude” (explainx.ai)"
+ },
+ "codex": {
+  "aka": "OpenAI Codex, Codex AI, ChatGPT Codex",
+  "def": "Codex là ứng dụng tác nhân lập trình của OpenAI trên các mô hình GPT, và là thứ khác với ChatGPT: chat trả lời bằng văn bản, còn Codex làm việc ngay trong dự án — đọc mã, sửa tệp, chạy lệnh và test, chuẩn bị pull request. Nó chạy trong ChatGPT, trong ứng dụng desktop, trong terminal, trong IDE và trên đám mây, nơi nhiệm vụ chạy trong một sandbox riêng; ở đâu cũng là một tác nhân và đi kèm các gói ChatGPT, với giới hạn tùy theo gói. Cấu tạo giống Claude Code và Cursor. Nó đọc chỉ dẫn dự án từ `AGENTS.md`, giữ các quy trình lặp lại trong skill và kết nối hệ thống bên ngoài qua MCP.",
+  "faq.0.q": "Codex và ChatGPT có phải là một không?",
+  "faq.0.a": "Không: ChatGPT là chat trả lời bằng văn bản, Codex là tác nhân lập trình tự đọc dự án, sửa tệp và chạy test. Codex đi kèm các gói ChatGPT.",
+  "faq.1.q": "Codex chạy ở đâu?",
+  "faq.1.a": "Trong ChatGPT, trong ứng dụng desktop, trong terminal, trong IDE và trên đám mây, nơi nhiệm vụ chạy trong một sandbox riêng. Ở đâu cũng là cùng một tác nhân.",
+  "faq.2.q": "Codex dùng những mô hình nào?",
+  "faq.2.a": "Các mô hình GPT của OpenAI.",
+  "faq.3.q": "Codex là mô hình hay tác nhân?",
+  "faq.3.a": "Ngày nay là tác nhân. Năm 2021, Codex là tên một mô hình của OpenAI hoàn thành mã và chạy phía sau GitHub Copilot; cái tên được giữ lại, và giờ chỉ một tác nhân trên các mô hình GPT.",
+  "faq.4.q": "Codex giá bao nhiêu?",
+  "faq.4.a": "Không có phí riêng: Codex đi kèm các gói ChatGPT Free, Go, Plus, Pro, Business, Edu và Enterprise. Giới hạn dùng chung với ChatGPT Work và tùy theo gói.",
+  "faq.5.q": "Codex có dùng được ở Nga không?",
+  "faq.5.a": "Không chính thức: Nga không nằm trong danh sách các nước mà OpenAI cung cấp dịch vụ.",
+  "source.label": "Repo GitHub của Codex",
+  "seo.title": "OpenAI Codex là gì: Codex và ChatGPT Chat, Work",
+  "seo.description": "OpenAI Codex là tác nhân lập trình đọc repo, sửa tệp và chạy test. Khác ChatGPT Chat và Work thế nào, chạy ở đâu và gói nào có sẵn.",
+  "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào",
+  "compare.title": "Codex và ChatGPT: Chat và Work",
+  "compare.rows.0": [
+   "Là gì",
+   "một chat",
+   "tác nhân cho nhiệm vụ nhiều bước",
+   "một tác nhân lập trình"
+  ],
+  "compare.rows.1": [
+   "Bạn nhận được gì",
+   "câu trả lời bằng văn bản",
+   "sản phẩm hoàn chỉnh: nghiên cứu, tài liệu, slide, bảng tính",
+   "thay đổi mã, test qua, pull request"
+  ],
+  "compare.rows.2": [
+   "Thấy dự án của bạn",
+   "không, chỉ thấy những gì bạn dán vào",
+   "các tệp bạn cho phép truy cập",
+   "có, đọc được repo"
+  ],
+  "compare.rows.3": [
+   "Mở ở đâu",
+   "ứng dụng và website ChatGPT",
+   "ứng dụng và website ChatGPT",
+   "ứng dụng desktop ChatGPT, terminal (Codex CLI), IDE, đám mây"
+  ],
+  "compare.rows.4": [
+   "Mô hình",
+   "các mô hình GPT",
+   "các mô hình GPT",
+   "cũng là các mô hình GPT"
+  ],
+  "compare.rows.5": [
+   "Gói",
+   "các gói ChatGPT",
+   "dùng chung giới hạn với Codex",
+   "đi kèm các gói ChatGPT; dùng chung giới hạn với Work"
+  ],
+  "matrix.title": "Điểm chung và điểm khác",
+  "matrix.legend": "✓ có · ✗ không",
+  "matrix.rows.0": [
+   "Sửa mã, chạy lệnh",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.1": [
+   "Tệp quy tắc",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Trình soạn thảo riêng",
+   "no",
+   "no",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.3": [
+   "Terminal",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Nhiệm vụ trên đám mây",
+   "yes",
+   "yes",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.5": [
+   "Mô hình của nhiều hãng",
+   "no",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Máy chủ của riêng bạn",
+   "no",
+   "no",
+   "no",
+   "yes"
+  ]
+ },
+ "cursor": {
+  "aka": "Cursor AI, Cursor IDE",
+  "def": "Cursor là ứng dụng trình soạn thảo mã của Anysphere, xây dựng trên VS Code, có tác nhân AI tích hợp: bạn làm việc trong trình soạn thảo, tác nhân ngồi ngay bên cạnh, và bạn chọn mô hình từ nhiều hãng hoặc dùng mô hình Composer của chính nó. Tác nhân làm những gì Claude Code và Codex làm: đọc dự án, sửa tệp, chạy lệnh; còn có bản terminal và tác nhân đám mây. Nó đọc quy tắc dự án từ `AGENTS.md` và quy tắc riêng trong `.cursor/rules`, và kết nối hệ thống bên ngoài qua MCP.",
+  "faq.0.q": "Cursor AI là gì?",
+  "faq.0.a": "Trình soạn thảo mã của Anysphere xây dựng trên VS Code với tác nhân AI tích hợp: bạn làm việc trong trình soạn thảo, còn tác nhân bên cạnh đọc dự án, sửa tệp và chạy lệnh.",
+  "faq.1.q": "Cursor có những mô hình nào?",
+  "faq.1.a": "Mô hình của nhiều hãng để chọn, cùng mô hình riêng của Cursor là Composer.",
+  "faq.2.q": "Cursor rules hay AGENTS.md?",
+  "faq.2.a": "Cursor đọc cả hai: AGENTS.md là tệp chung cho nhiều tác nhân, còn các quy tắc trong .cursor/rules là của riêng Cursor và có thể giới hạn cho những tệp cụ thể.",
+  "source.label": "Trang chính thức của Cursor",
+  "seo.title": "Cursor AI là gì: mô hình, tác nhân và rules so với AGENTS.md",
+  "seo.description": "Cursor là trình soạn thảo mã dựa trên VS Code với tác nhân AI tích hợp. Có những mô hình nào, quy tắc nằm ở đâu (.cursor/rules hay AGENTS.md) và khác Claude Code thế nào.",
+  "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào",
+  "also.0.label": "Cursor cho 1C qua MCP",
+  "notes.title": "Cursor: mô hình, tác nhân và quy tắc",
+  "notes.items.0.name": "Mô hình",
+  "notes.items.0.text": "Composer của riêng nó, Grok, Claude và Gemini; mô hình OpenAI đến thời điểm cắt đã thông báo là 12/11/2026. Danh sách mô hình tùy theo gói: gói miễn phí có ít hơn. Nếu nhà cung cấp chặn khu vực của bạn, có thể thêm khóa API riêng.",
+  "notes.items.1.name": "Tác nhân",
+  "notes.items.1.text": "các chế độ: Agent tự sửa tệp và chạy lệnh, Ask chỉ trả lời, Plan viết kế hoạch trước. Hoạt động trong trình soạn thảo, trong terminal và dưới dạng tác nhân đám mây.",
+  "notes.items.2.name": "Quy tắc dự án",
+  "notes.items.2.text": "thư mục `.cursor/rules` (tệp `.cursorrules` cũ vẫn dùng được) và `AGENTS.md` ở gốc repo.",
+  "notes.items.3.name": "Gói",
+  "notes.items.3.text": "Hobby miễn phí có giới hạn, Pro 20 USD, Pro+ 60 USD và Ultra 200 USD mỗi tháng, Teams 40 USD mỗi người dùng.",
+  "notes.items.4.name": "Xây dựng trên gì",
+  "notes.items.4.text": "xây dựng trên VS Code: các tiện ích mở rộng của VS Code chạy được trong đó.",
+  "matrix.title": "Điểm chung và điểm khác",
+  "matrix.legend": "✓ có · ✗ không",
+  "matrix.rows.0": [
+   "Sửa mã, chạy lệnh",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.1": [
+   "Tệp quy tắc",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Trình soạn thảo riêng",
+   "no",
+   "no",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.3": [
+   "Terminal",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Nhiệm vụ trên đám mây",
+   "yes",
+   "yes",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.5": [
+   "Mô hình của nhiều hãng",
+   "no",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Máy chủ của riêng bạn",
+   "no",
+   "no",
+   "no",
+   "yes"
+  ]
+ },
+ "hermes-agent": {
+  "aka": "Hermes AI agent",
+  "def": "Hermes Agent là tác nhân mã nguồn mở, miễn phí của Nous Research, cài trên máy chủ hoặc máy tính của riêng bạn và kết nối với bất kỳ mô hình nào, qua API của hãng hoặc mô hình cục bộ. Nó làm những gì tác nhân lập trình làm, và không chỉ với mã: chính tác nhân chạy trên máy chủ hoặc máy tính của bạn, còn bạn trò chuyện với nó qua terminal, ứng dụng desktop (bản xem trước) hoặc ứng dụng nhắn tin: Telegram, Slack, Discord và các ứng dụng khác gắn vào dưới dạng tích hợp. Nó nhớ ngữ cảnh giữa các phiên và biến những gì hiệu quả thành skill. Nó đọc quy tắc dự án từ `AGENTS.md`.",
+  "faq.0.q": "Hermes Agent là gì?",
+  "faq.0.a": "Tác nhân mã nguồn mở miễn phí của Nous Research, cài trên máy chủ hoặc máy tính của bạn và chạy với bất kỳ mô hình nào.",
+  "faq.1.q": "Trò chuyện với Hermes Agent bằng cách nào?",
+  "faq.1.a": "Qua terminal, ứng dụng desktop hoặc ứng dụng nhắn tin: Telegram, Slack, Discord và các ứng dụng khác kết nối dưới dạng tích hợp.",
+  "source.label": "Repo GitHub của Hermes Agent",
+  "seo.title": "Hermes Agent là gì: tác nhân mở của Nous Research, bộ nhớ và skill",
+  "seo.description": "Hermes Agent là gì: tác nhân mã nguồn mở, miễn phí của Nous Research, chạy trên máy chủ hoặc máy tính của bạn với mô hình cục bộ, nhớ ngữ cảnh và tự viết skill.",
+  "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào",
+  "matrix.title": "Điểm chung và điểm khác",
+  "matrix.legend": "✓ có · ✗ không",
+  "matrix.rows.0": [
+   "Sửa mã, chạy lệnh",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.1": [
+   "Tệp quy tắc",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.2": [
+   "Trình soạn thảo riêng",
+   "no",
+   "no",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.3": [
+   "Terminal",
+   "yes",
+   "yes",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.4": [
+   "Nhiệm vụ trên đám mây",
+   "yes",
+   "yes",
+   "yes",
+   "no"
+  ],
+  "matrix.rows.5": [
+   "Mô hình của nhiều hãng",
+   "no",
+   "no",
+   "yes",
+   "yes"
+  ],
+  "matrix.rows.6": [
+   "Máy chủ của riêng bạn",
+   "no",
+   "no",
+   "no",
+   "yes"
+  ]
+ },
+ "opencode": {
+  "aka": "Open Code",
+  "def": "OpenCode là tác nhân lập trình mã nguồn mở, miễn phí, chạy trong terminal; còn có ứng dụng desktop và tiện ích mở rộng cho IDE. Bạn chọn mô hình: Claude, GPT, Gemini và hàng chục mô hình khác qua API, hoặc mô hình cục bộ; chỉ trả tiền cho nhà cung cấp mô hình. Các chế độ: Build sửa mã, Plan chỉ lập kế hoạch và không đổi tệp. Nó đọc quy tắc dự án từ `AGENTS.md`, và lệnh `/init` tạo tệp đó từ repo.",
+  "faq.0.q": "OpenCode là gì?",
+  "faq.0.a": "Tác nhân lập trình mã nguồn mở miễn phí trong terminal, còn có ứng dụng desktop và tiện ích mở rộng cho IDE. Bạn chọn mô hình và chỉ trả tiền cho nhà cung cấp của nó.",
+  "faq.1.q": "Những mô hình nào chạy được trong OpenCode?",
+  "faq.1.a": "Claude, GPT, Gemini và hàng chục mô hình khác qua API, cũng như mô hình cục bộ trên máy tính của bạn.",
+  "faq.2.q": "Cài OpenCode như thế nào?",
+  "faq.2.a": "Trên macOS và Linux: `curl -fsSL https://opencode.ai/v2/install | bash`; với Homebrew: `brew install anomalyco/tap/opencode-v2`; với npm: `npm install -g @opencode/cli`. Trên Windows không hỗ trợ trình quản lý gói: tải bản thực thi từ trang OpenCode.",
+  "faq.3.q": "OpenCode giá bao nhiêu và có cách dùng miễn phí không?",
+  "faq.3.a": "Bản thân tác nhân miễn phí; chỉ trả tiền cho mô hình. Có gói đăng ký OpenCode Go 10 USD mỗi tháng và OpenCode Console tính theo token; Console có các mô hình miễn phí, một số chỉ trong thời gian giới hạn. Mô hình cục bộ trên máy tính của bạn cũng chạy miễn phí.",
+  "faq.4.q": "OpenCode khác Claude Code thế nào?",
+  "faq.4.a": "Cấu tạo giống nhau: cả hai đều đọc dự án, sửa tệp và chạy lệnh. OpenCode là mã nguồn mở và làm việc với bất kỳ mô hình nào, còn Claude Code chỉ với các mô hình Claude.",
+  "source.label": "Tài liệu OpenCode",
+  "seo.title": "OpenCode là gì: tác nhân lập trình AI mã nguồn mở, miễn phí trong terminal",
+  "seo.description": "OpenCode là tác nhân lập trình AI mã nguồn mở, miễn phí cho terminal: dùng bất kỳ mô hình nào hoặc mô hình cục bộ, chế độ Build và Plan, quy tắc trong AGENTS.md."
+ },
+ "gemini-cli": {
+  "aka": "Google Gemini CLI",
+  "def": "Gemini CLI là tác nhân lập trình mã nguồn mở của Google cho terminal trên các mô hình Gemini, ra mắt tháng 6 năm 2025. Cấu tạo giống Claude Code và Codex: đọc dự án, sửa tệp và chạy lệnh; lấy quy tắc dự án từ `GEMINI.md` và kết nối hệ thống bên ngoài qua MCP. Nó liên kết với IDE qua tiện ích mở rộng đi kèm cho VS Code và qua ACP cho JetBrains và Zed. Đến ngày 18/6/2026, ai cũng dùng miễn phí được bằng tài khoản Google; nay Antigravity CLI mã nguồn đóng thay thế nó cho người dùng cá nhân. Bản thân Gemini CLI vẫn là mã nguồn mở và dùng được cho doanh nghiệp theo gói enterprise và cho khóa API trả phí.",
+  "faq.0.q": "Gemini CLI là gì?",
+  "faq.0.a": "Tác nhân lập trình mã nguồn mở của Google cho terminal trên các mô hình Gemini, ra mắt tháng 6 năm 2025.",
+  "faq.1.q": "Chuyện gì đã xảy ra với Gemini CLI?",
+  "faq.1.a": "Từ ngày 18/6/2026, Antigravity CLI mã nguồn đóng thay thế nó cho người dùng thường. Bản thân Gemini CLI vẫn là mã nguồn mở và dùng được cho các gói enterprise và khóa API trả phí.",
+  "source.label": "The Register: Google nudges Gemini CLI users to Antigravity",
+  "seo.title": "Gemini CLI là gì và chuyện gì đã xảy ra: tác nhân terminal của Google",
+  "seo.description": "Gemini CLI là tác nhân terminal mã nguồn mở của Google trên các mô hình Gemini. Nó làm gì, vì sao người dùng cá nhân mất quyền truy cập ngày 18/6/2026 và ai vẫn còn dùng được."
+ },
+ "antigravity-cli": {
+  "def": "Antigravity CLI là tác nhân lập trình của Google cho terminal, gắn với ứng dụng Antigravity. Tháng 5 năm 2026, Google thông báo chuyển Gemini CLI, tác nhân mã nguồn mở của hãng trên các mô hình Gemini, vào đó; từ ngày 18/6/2026, Gemini CLI không còn phục vụ người dùng cá nhân, kể cả truy cập miễn phí. Antigravity CLI là mã nguồn đóng; Gemini CLI cũ vẫn là mã nguồn mở nhưng chỉ dùng được cho doanh nghiệp theo gói enterprise và cho khóa API trả phí.",
+  "faq.0.q": "Antigravity CLI là gì?",
+  "faq.0.a": "Tác nhân lập trình mã nguồn đóng của Google cho terminal, gắn với ứng dụng Antigravity. Nó thay Gemini CLI cho người dùng thường.",
+  "faq.1.q": "Antigravity CLI thay Gemini CLI khi nào?",
+  "faq.1.a": "Google thông báo việc chuyển vào tháng 5 năm 2026, và ngày 18/6/2026 Gemini CLI ngừng hoạt động với người dùng thường.",
+  "source.label": "Virtualization Review: Gemini CLI moves into Antigravity CLI",
+  "seo.title": "Antigravity CLI là gì: tác nhân terminal của Google thay thế Gemini CLI",
+  "seo.description": "Gemini CLI từng là tác nhân terminal mã nguồn mở của Google; từ tháng 6 năm 2026, Antigravity CLI mã nguồn đóng thay nó cho người dùng cá nhân. Điều gì thay đổi và ai vẫn dùng được Gemini CLI."
+ },
+ "claude-in-chrome": {
+  "aka": "Claude for Chrome, tiện ích Claude cho Chrome",
+  "def": "Claude in Chrome là tiện ích mở rộng Claude cho trình duyệt Chrome, cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console. Nó làm việc dưới tài khoản đăng nhập của bạn, nên thấy những gì bạn thấy. Có hai chế độ: bảng bên cạnh, nơi Claude tự làm nhiệm vụ trên trang đang mở, và điều khiển trình duyệt từ Claude Code. Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính; chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
+  "faq.0.q": "Tiện ích Claude cho Chrome làm gì?",
+  "faq.0.a": "Cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console dưới tài khoản đăng nhập của bạn.",
+  "faq.1.q": "Dùng Claude in Chrome như thế nào?",
+  "faq.1.a": "Có hai chế độ: bảng bên cạnh, nơi Claude làm nhiệm vụ trên trang đang mở, và điều khiển trình duyệt từ Claude Code.",
+  "faq.2.q": "Claude in Chrome có chạy trong các trình duyệt khác không?",
+  "faq.2.a": "Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính. Chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
+  "source.label": "Trợ giúp: Get started with Claude in Chrome",
+  "seo.title": "Claude in Chrome: tiện ích Claude cho Chrome làm gì",
+  "seo.description": "Claude in Chrome là tiện ích Claude cho Chrome: tác nhân mở trang, bấm nút và điền biểu mẫu dưới tài khoản đăng nhập của bạn. Hai chế độ, bảng bên cạnh và Claude Code, và các trình duyệt hỗ trợ.",
+  "more.label": "Claude in Chrome: tác nhân làm việc trong trình duyệt của bạn thế nào",
+  "compare.title": "Hai chế độ: bảng bên cạnh và Claude Code",
+  "compare.head": [
+   "Bảng bên cạnh",
+   "Từ Claude Code"
+  ],
+  "compare.rows.0": [
+   "Khởi chạy ở đâu",
+   "bảng ở bên phải trong Chrome",
+   "trong terminal hoặc IDE, trong Claude Code"
+  ],
+  "compare.rows.1": [
+   "Ai chạy nhiệm vụ",
+   "Claude trong bảng",
+   "tác nhân Claude Code; trình duyệt là công cụ của nó"
+  ],
+  "compare.rows.2": [
+   "Dùng để làm gì",
+   "nghiên cứu, thu thập dữ liệu, biểu mẫu trên website",
+   "kiểm tra website bạn đang sửa: mở, bấm qua các trang, đọc console"
+  ],
+  "compare.rows.3": [
+   "Trình duyệt",
+   "chỉ Chrome trên máy tính",
+   "Chrome, Edge và các trình duyệt Chromium khác"
+  ]
+ }
+}
