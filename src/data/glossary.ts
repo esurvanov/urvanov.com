@@ -485,6 +485,9 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Codex и ChatGPT — это одно и то же?', en: 'Are Codex and ChatGPT the same thing?' }, a: { ru: 'Нет: ChatGPT — чат, который отвечает текстом, Codex — агент для кода, который сам читает проект, правит файлы и запускает тесты. Codex входит в тарифы ChatGPT.', en: 'No: ChatGPT is a chat that answers with text, Codex is a coding agent that reads the project, edits files and runs tests itself. Codex comes with ChatGPT plans.' } },
           { q: { ru: 'Где работает Codex?', en: 'Where does Codex run?' }, a: { ru: 'В ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице. Везде это один и тот же агент.', en: 'In ChatGPT, in the desktop app, in the terminal, in the IDE and in the cloud, where tasks run in a separate sandbox. It is the same agent everywhere.' } },
           { q: { ru: 'На каких моделях работает Codex?', en: 'Which models does Codex use?' }, a: { ru: 'На моделях GPT от OpenAI.', en: 'On OpenAI’s GPT models.' } },
+          { q: { ru: 'Codex — это модель или агент?', en: 'Is Codex a model or an agent?' }, a: { ru: 'Сейчас агент. В 2021 году Codex называлась модель OpenAI, которая дописывала код и работала внутри GitHub Copilot; имя осталось, а под ним теперь агент на моделях GPT.', en: 'An agent today. In 2021 Codex was the name of an OpenAI model that completed code and powered GitHub Copilot; the name stayed, and it now means an agent on GPT models.' } },
+          { q: { ru: 'Сколько стоит Codex?', en: 'How much does Codex cost?' }, a: { ru: 'Отдельной оплаты нет: Codex входит в тарифы ChatGPT Free, Go, Plus, Pro, Business, Edu и Enterprise. Лимиты общие с ChatGPT Work и зависят от тарифа.', en: 'There is no separate fee: Codex comes with the ChatGPT Free, Go, Plus, Pro, Business, Edu and Enterprise plans. Limits are shared with ChatGPT Work and depend on the plan.' } },
+          { q: { ru: 'Работает ли Codex в России?', en: 'Does Codex work in Russia?' }, a: { ru: 'Официально нет: России нет в списке стран, где OpenAI предоставляет свои сервисы.', en: 'Not officially: Russia is not on the list of countries where OpenAI offers its services.' } },
         ],
         source: { url: 'https://github.com/openai/codex', label: { ru: 'Репозиторий Codex на GitHub', en: 'Codex GitHub repo' } },
         seo: {
@@ -584,11 +587,13 @@ export const TERM_SETS: TermSet[] = [
         faq: [
           { q: { ru: 'Что такое OpenCode?', en: 'What is OpenCode?' }, a: { ru: 'Бесплатный открытый агент для программирования в терминале; есть также приложение для компьютера и расширения для IDE. Модель выбираете сами, платите только её провайдеру.', en: 'A free open-source coding agent in the terminal, with a desktop app and IDE extensions too. You pick the model and pay only its provider.' } },
           { q: { ru: 'Какие модели работают в OpenCode?', en: 'Which models work in OpenCode?' }, a: { ru: 'Claude, GPT, Gemini и десятки других через API, а также локальная модель на вашем компьютере.', en: 'Claude, GPT, Gemini and dozens of others through an API, as well as a local model on your computer.' } },
+          { q: { ru: 'Как установить OpenCode?', en: 'How do you install OpenCode?' }, a: { ru: 'На macOS и Linux — `curl -fsSL https://opencode.ai/v2/install | bash`, через Homebrew — `brew install anomalyco/tap/opencode-v2`, через npm — `npm install -g @opencode/cli`. Для Windows менеджеры пакетов не поддерживаются: файл программы скачивают с сайта OpenCode.', en: 'On macOS and Linux: `curl -fsSL https://opencode.ai/v2/install | bash`; with Homebrew: `brew install anomalyco/tap/opencode-v2`; with npm: `npm install -g @opencode/cli`. On Windows package managers are not supported: download the binary from the OpenCode site.' } },
+          { q: { ru: 'Сколько стоит OpenCode и можно ли бесплатно?', en: 'How much does OpenCode cost, and is there a free way?' }, a: { ru: 'Сам агент бесплатный, платите только за модель. Есть подписка OpenCode Go за $10 в месяц и OpenCode Console с оплатой за токены; в Console есть бесплатные модели, часть — на ограниченное время. Бесплатно работает и локальная модель на вашем компьютере.', en: 'The agent itself is free; you pay only for the model. There is the OpenCode Go subscription at $10 a month and OpenCode Console with pay-per-token pricing; Console has free models, some for a limited time. A local model on your computer also works for free.' } },
           { q: { ru: 'Чем OpenCode отличается от Claude Code?', en: 'How is OpenCode different from Claude Code?' }, a: { ru: 'Устроены одинаково: оба читают проект, правят файлы и запускают команды. OpenCode открытый и работает с любой моделью, Claude Code — только с моделями Claude.', en: 'They are built the same way: both read the project, edit files and run commands. OpenCode is open source and works with any model, Claude Code only with Claude models.' } },
         ],
         source: { url: 'https://opencode.ai/docs/rules/', label: { ru: 'Документация OpenCode', en: 'OpenCode docs' } },
         seo: {
-          title: { ru: 'OpenCode: что это — бесплатный открытый ИИ-агент в терминале с любой моделью', en: 'What is OpenCode: a free open-source AI coding agent in the terminal' },
+          title: { ru: 'OpenCode (опенкод): что это — бесплатный открытый ИИ-агент в терминале с любой моделью', en: 'What is OpenCode: a free open-source AI coding agent in the terminal' },
           description: {
             ru: 'OpenCode — бесплатный открытый ИИ-агент для программирования в терминале: подключаете любую модель или локальную, режимы Build и Plan, правила в AGENTS.md.',
             en: 'OpenCode is a free open-source AI coding agent for the terminal: any model or a local one, Build and Plan modes, rules in AGENTS.md.',
@@ -1240,16 +1245,30 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Data plane и control plane', en: 'Data plane and control plane' },
         aka: { ru: 'плоскость данных и плоскость управления', en: 'data and control planes' },
         def: {
-          ru: 'Data plane и control plane — две плоскости работы агента. Control plane: команды, то есть ваши сообщения и правила. Data plane: всё, что агент читает, то есть страницы, тикеты, документы и ответы серверов. Защита от prompt injection держит чужой текст в плоскости данных, чтобы он не стал командой.',
-          en: 'Data plane and control plane — two planes of an agent’s work. Control plane: commands, meaning your messages and rules. Data plane: everything the agent reads, meaning pages, tickets, documents and server replies. Defence against prompt injection keeps foreign text in the data plane so it never becomes a command.',
+          ru: 'Data plane и control plane — две плоскости работы системы: control plane (плоскость управления) решает, что и куда делать, а data plane (плоскость данных) делает это с самими данными. Термины пришли из сетей: в маршрутизаторе control plane строит таблицу маршрутов, а data plane пересылает пакеты. У ИИ-агента control plane — ваши сообщения и правила, data plane — всё, что он читает: страницы, тикеты, документы и ответы серверов. Защита от prompt injection держит чужой текст в плоскости данных, чтобы он не стал командой.',
+          en: 'Data plane and control plane — two planes of how a system works: the control plane decides what to do and where, and the data plane does it to the data itself. The terms come from networking: in a router the control plane builds the routing table and the data plane forwards packets. For an AI agent the control plane is your messages and rules, and the data plane is everything it reads: pages, tickets, documents and server replies. Defence against prompt injection keeps foreign text in the data plane so it never becomes a command.',
         },
         match: { ru: ['(?:data|control) plane'], en: ['(?:data|control) plane'] },
-        related: ['prompt-injection', 'mcp'],
+        related: ['prompt-injection', 'mcp', 'kubernetes', 'k8s-node'],
         faq: [
           { q: { ru: 'Data plane — это что?', en: 'What is the data plane?' }, a: { ru: 'Всё, что агент читает: страницы, тикеты, документы и ответы серверов.', en: 'Everything the agent reads: pages, tickets, documents and server replies.' } },
           { q: { ru: 'Чем control plane отличается от data plane?', en: 'How is the control plane different from the data plane?' }, a: { ru: 'Control plane — команды, то есть ваши сообщения и правила. Data plane — данные. Защита от prompt injection не даёт чужому тексту из данных стать командой.', en: 'The control plane is commands, meaning your messages and rules. The data plane is data. Prompt injection protection keeps outside text in the data from becoming a command.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Control_plane', label: { ru: 'Википедия: control plane', en: 'Wikipedia: Control plane' } },
+        seo: {
+          title: { ru: 'Data plane и control plane: что это — в сетях, Kubernetes и ИИ-агентах', en: 'What are the data plane and control plane: networks, Kubernetes and AI agents' },
+          description: {
+            ru: 'Control plane решает, что и куда делать, data plane выполняет это с данными. Как плоскости устроены в маршрутизаторе, в кластере Kubernetes и у ИИ-агента, и при чём тут prompt injection.',
+            en: 'The control plane decides what to do and where; the data plane does it to the data. How the planes work in a router, a Kubernetes cluster and an AI agent, and how they relate to prompt injection.',
+          },
+        },
+        compare: {
+          title: { ru: 'Две плоскости в сети, Kubernetes и ИИ-агенте', en: 'The two planes in a network, Kubernetes and an AI agent' },
+          head: { ru: ['Сеть', 'Kubernetes', 'ИИ-агент'], en: ['Network', 'Kubernetes', 'AI agent'] },
+          rows: [
+            { ru: ['Control plane', 'таблица маршрутов: куда слать пакеты', 'управляющие компоненты кластера: что и где запустить', 'ваши сообщения и правила'], en: ['Control plane', 'the routing table: where to send packets', 'the cluster’s control components: what to run and where', 'your messages and rules'] },
+            { ru: ['Data plane', 'пересылка самих пакетов', 'узлы, где работают поды с приложениями', 'страницы, тикеты, документы, ответы серверов'], en: ['Data plane', 'forwarding the packets themselves', 'the nodes where pods with apps run', 'pages, tickets, documents, server replies'] },          ],
+        },
       },
       {
         slug: 'permissions',
@@ -1436,14 +1455,15 @@ export const TERM_SETS: TermSet[] = [
         slug: 'openspec',
         name: { ru: 'OpenSpec', en: 'OpenSpec' },
         def: {
-          ru: 'OpenSpec — лёгкий инструмент для Spec-Driven Development от Fission AI. Действующие спеки лежат в `openspec/specs`, а каждое изменение — отдельная папка в `openspec/changes`: `proposal.md` (зачем и что), дельта к спекам, `design.md` и `tasks.md`. Агент идёт по командам `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; при архивации дельта вливается в спеки. Легче Spec Kit: без жёстких фаз, работает с 30+ агентами.',
-          en: 'OpenSpec is a lightweight Spec-Driven Development tool by Fission AI. Live specs sit in `openspec/specs`, and every change is its own folder in `openspec/changes`: `proposal.md` (why and what), a spec delta, `design.md` and `tasks.md`. The agent follows `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; archiving merges the delta into the specs. Lighter than Spec Kit, with no rigid phases, and works with 30+ agents.',
+          ru: 'OpenSpec — бесплатная открытая программа от Fission AI для разработки по спецификациям (Spec-Driven Development): агент сначала пишет план изменения в файлы, вы его проверяете, потом агент пишет код. Действующие спеки лежат в `openspec/specs`, а каждое изменение — отдельная папка в `openspec/changes`: `proposal.md` (зачем и что), дельта к спекам, `design.md` и `tasks.md`. Агент идёт по командам `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; при архивации дельта вливается в спеки. Легче Spec Kit: без жёстких фаз, работает с 30+ агентами.',
+          en: 'OpenSpec is a free, open-source framework by Fission AI for Spec-Driven Development: the agent first writes a change plan into files, you review it, then the agent writes code. Live specs sit in `openspec/specs`, and every change is its own folder in `openspec/changes`: `proposal.md` (why and what), a spec delta, `design.md` and `tasks.md`. The agent follows `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; archiving merges the delta into the specs. Lighter than Spec Kit, with no rigid phases, and works with 30+ agents.',
         },
         match: { ru: ['OpenSpec'], en: ['OpenSpec'] },
         related: ['spec-driven-development', 'spec-kit'],
         faq: [
           { q: { ru: 'OpenSpec — это что?', en: 'What is OpenSpec?' }, a: { ru: 'Бесплатная открытая программа от Fission AI для разработки по спецификациям: агент сначала пишет план изменения в файлы, вы его проверяете, потом агент пишет код.', en: 'A free open-source framework by Fission AI for spec-driven development: the agent first writes a change plan into files, you review it, then the agent writes code.' } },
           { q: { ru: 'Какие команды у OpenSpec?', en: 'What are the OpenSpec commands?' }, a: { ru: 'Основные три: /opsx:propose создаёт план изменения, /opsx:apply пишет код по задачам, /opsx:archive вливает требования в общие спеки. Перед ними можно подумать вслух командой /opsx:explore.', en: 'The main three: /opsx:propose creates a change plan, /opsx:apply writes code by the tasks, /opsx:archive merges the requirements into the shared specs. Before them you can think out loud with /opsx:explore.' } },
+          { q: { ru: 'Как установить OpenSpec?', en: 'How do you install OpenSpec?' }, a: { ru: 'Командой `npm install -g @fission-ai/openspec@latest` (нужен Node.js 22.12 или новее) или `brew install openspec`. Затем в папке проекта — `openspec init`. Программа бесплатная, лицензия MIT.', en: 'With `npm install -g @fission-ai/openspec@latest` (needs Node.js 22.12 or newer) or `brew install openspec`. Then run `openspec init` in the project folder. It is free, under the MIT license.' } },
           { q: { ru: 'Чем OpenSpec отличается от Spec Kit?', en: 'How is OpenSpec different from Spec Kit?' }, a: { ru: 'OpenSpec легче: шаги можно повторять в любом порядке, и он рассчитан на уже работающий код. Spec Kit от GitHub ведёт по жёстким фазам.', en: 'OpenSpec is lighter: steps can repeat in any order, and it is built for code that already runs. GitHub’s Spec Kit walks through fixed phases.' } },
         ],
         source: { url: 'https://github.com/Fission-AI/OpenSpec', label: { ru: 'Репозиторий OpenSpec на GitHub', en: 'OpenSpec GitHub repo' } },
