@@ -146,6 +146,13 @@ for (const a of ARCHITECTURES) {
   for (const pre of a.lang === 'ru' ? ['ru/'] : ['', 'en/']) write(`${pre}blog/${a.oldSlug}/index.html`, moved(target, a.title, a.lang))
 }
 
+// Рубрики «Архитектура» в блоге больше нет: её старые адреса (до 06.11 корень был русским) ведут в раздел игр
+for (const [from, lang] of [['blog/category/architecture', 'ru'], ['ru/blog/category/architecture', 'ru'], ['en/blog/category/architecture', 'en']]) {
+  const target = urlOf(`${lang === 'ru' ? '/ru' : ''}/materials/games`)
+  const title = lang === 'ru' ? 'Игры' : 'Games'
+  for (const sub of ['', '/page/2']) write(`${from}${sub}/index.html`, moved(target, title, lang))
+}
+
 // 404: реальная страница (NotFoundView), без canonical и хлебных крошек — адреса /404/ не существует
 let body404 = ''
 try {
