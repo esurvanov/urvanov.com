@@ -13,12 +13,12 @@ import { NAV_ITEMS } from '@/data/nav'
 import { AI_GROUPS, AI_OFFERS, AI_PROOF } from '@/data/aiOffers'
 import { GAME_PAGES } from '@/data/games'
 import { LAB_PAGES } from '@/data/labs'
-import { BLOG_CATEGORIES } from '@/data/blog'
+import { BLOG_CATEGORIES, addPosts } from '@/data/blog'
 import { ABOUT_LEAD, MILESTONES } from '@/data/about'
 import { BIO, CITIES, CURRENT_ROLE, TOPICS } from '@/data/profile'
 import { PLACES } from '@/data/places'
 import { CITY_CHATS, LINK_GROUPS, LINK_TR, THEME_CHATS, type LinkItem } from '@/data/links'
-import { NEW_LANGS, UI, isNewLang, type NewLang } from '@/lib/i18n'
+import { NEW_LANGS, UI, isNewLang, markLangLoaded, withoutPageIndex, type NewLang } from '@/lib/i18n'
 
 type Obj = Record<string, unknown>
 interface Module {
@@ -45,28 +45,23 @@ export const MODULES: Record<string, Module> = {
   places: { units: () => [['places', PLACES]] },
 }
 
-// Все файлы переводов (ui.json читает сам src/lib/i18n.ts)
+// Файлы переводов приходят пакетами языка (src/i18n/packs/<язык>.ts → registerLang): у каждого языка свой кусок сборки.
 // Модуль может лежать в нескольких файлах: <модуль>.json и <модуль>.<часть>.json (например, glossary.a.json у второго
 // переводчика) — они сливаются по id единицы, чтобы двое не правили один файл
-const FILES = import.meta.glob('/src/i18n/*/*.json', { eager: true, import: 'default' }) as Record<string, Obj>
 const MERGED = new Map<string, Obj>()
-for (const [file, data] of Object.entries(FILES).sort(([a], [b]) => a.localeCompare(b))) {
-  const [, , , lang, name] = file.split('/')
-  const key = `${lang}/${name.split('.')[0]}`
-  const into = MERGED.get(key) ?? {}
-  for (const [id, keys] of Object.entries(data)) into[id] = keys && typeof keys === 'object' && !Array.isArray(keys) ? { ...(into[id] as Obj | undefined), ...(keys as Obj) } : keys
-  MERGED.set(key, into)
-}
 const fileOf = (lang: NewLang, mod: string): Obj | undefined => MERGED.get(`${lang}/${mod}`)
 
 /** Ошибки файлов переводов: неизвестный id или путь, тип не совпадает с английским. Печатает сборка и scripts/i18n-status.mjs */
 export const I18N_PROBLEMS: string[] = []
 
-// Файл с неизвестным именем модуля (опечатка) иначе молча не применился бы
-for (const key of MERGED.keys()) {
-  const [lang, mod] = key.split('/')
-  if (!isNewLang(lang)) I18N_PROBLEMS.push(`src/i18n/${lang}/: такого языка нет (есть ${NEW_LANGS.join(', ')})`)
-  else if (!(mod in MODULES) && !['ui', 'seo', 'links'].includes(mod)) I18N_PROBLEMS.push(`src/i18n/${key}.json: такого модуля нет`)
+// Проверка имён всех файлов переводов (вызывает только сборка страниц): опечатка в языке или модуле иначе молча не применилась бы
+export function checkI18nFiles(files: string[]) {
+  for (const file of files) {
+    const [, , , lang, name] = file.split('/')
+    const mod = name.split('.')[0]
+    if (!isNewLang(lang)) I18N_PROBLEMS.push(`src/i18n/${lang}/: такого языка нет (есть ${NEW_LANGS.join(', ')})`)
+    else if (!(mod in MODULES) && !['ui', 'seo', 'links'].includes(mod)) I18N_PROBLEMS.push(`src/i18n/${lang}/${name}: такого модуля нет`)
+  }
 }
 
 const isL = (o: unknown): o is Obj => !!o && typeof o === 'object' && !Array.isArray(o) && 'ru' in o && 'en' in o
@@ -88,8 +83,35 @@ export function pairs(unit: unknown, mod?: Module, path = '', out: [string, Obj]
   return out
 }
 
+export interface LangPack {
+  /** src/i18n/<язык>/*.json */
+  json: Record<string, unknown>
+  /** content/blog/*.<язык>.md (сырой текст) */
+  posts: Record<string, string>
+  /** content/blog-text/*.<язык>.md */
+  texts: Record<string, string>
+}
+
+/** Подключает пакет языка: строки интерфейса, переводы в данные, ссылки, посты. Вызывает сам пакет при загрузке */
+export function registerLang(lang: NewLang, pack: LangPack) {
+  const files = Object.entries(pack.json as Record<string, Obj>).sort(([a], [b]) => a.localeCompare(b))
+  for (const [file, data] of files) {
+    const name = file.split('/')[4]
+    const key = `${lang}/${name.split('.')[0]}`
+    const into = MERGED.get(key) ?? {}
+    for (const [id, keys] of Object.entries(data)) into[id] = keys && typeof keys === 'object' && !Array.isArray(keys) ? { ...(into[id] as Obj | undefined), ...(keys as Obj) } : keys
+    MERGED.set(key, into)
+  }
+  const ui = pack.json[`/src/i18n/${lang}/ui.json`]
+  if (ui) UI[lang] = ui as Record<string, string>
+  mix(lang)
+  // Посты разбираются без реестра страниц: ссылки на новых языках досчитывает страница при отрисовке (localizeLinks)
+  withoutPageIndex(() => addPosts(pack.posts, pack.texts))
+  markLangLoaded(lang)
+}
+
 // Подмешиваем переводы в данные: пара получает поле <язык>
-for (const lang of NEW_LANGS) {
+function mix(lang: NewLang) {
   for (const [name, mod] of Object.entries(MODULES)) {
     const file = fileOf(lang, name)
     if (!file) continue

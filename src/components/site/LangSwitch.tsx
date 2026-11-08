@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { metaFor } from '@/data/seo'
+import { unloadedLangsOf } from '@/i18n/pageLangs'
 import { LANGS, LANG_NAMES, isNewLang, otherLang, stripLang, useT, withLang, withSlash, type Lang } from '@/lib/i18n'
 
 // Переключатель языка: только языки, на которых эта страница есть (те же, что в hreflang).
@@ -10,6 +11,8 @@ export default function LangSwitch({ alt, className = 's-nav-lang' }: { alt?: st
   const { pathname } = useLocation()
   const meta = metaFor(pathname.replace(/(.)\/$/, '$1'))
   const has = new Map<Lang, string>((meta?.alternates ?? []).map((a) => [a.lang, withSlash(a.path)]))
+  // Языки, чьи переводы ещё не загружены: берём из списка адресов, собранного при сборке
+  for (const l of unloadedLangsOf(stripLang(pathname).replace(/(.)\/$/, '$1'))) if (!has.has(l)) has.set(l, withSlash(withLang(stripLang(pathname), l)))
   const other = otherLang(lang)
   // Второй исходный язык есть всегда: перевод страницы, иначе alt, иначе тот же путь (как было до новых языков)
   if (!has.has(other)) has.set(other, alt ?? withSlash(withLang(stripLang(pathname), other)))

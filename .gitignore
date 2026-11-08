@@ -28,3 +28,6 @@ content/game-architecture/
 # Страницы игр из репозитория игр (scripts/pull-game-pages.mjs)
 src/data/games.generated.json
 public/games/
+
+# Список страниц с переводами для переключателя языка (пишет scripts/i18n-pages.mjs при сборке)
+src/i18n/pages.generated.json

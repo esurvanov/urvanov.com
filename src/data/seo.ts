@@ -8,7 +8,7 @@ import { LAB_PAGES } from '@/data/labs'
 import { ALL_TERMS, glossaryPath, postsWithTerm, setOfTerm } from '@/data/glossary'
 import { AI_OFFERS } from '@/data/aiOffers'
 import { TERM_DATES } from '@/data/termDates'
-import { NEW_LANGS, isNewLang, setPageIndex, tr, ui, withLang, type BaseLang, type Lang, type L, type NewLang } from '@/lib/i18n'
+import { NEW_LANGS, isNewLang, onLangLoaded, setPageIndex, tr, ui, withLang, type BaseLang, type Lang, type L, type NewLang } from '@/lib/i18n'
 import { moduleReady, seoMeta, unitReady } from '@/i18n'
 
 export const SITE_URL = 'https://www.urvanov.com'
@@ -306,6 +306,8 @@ export function allPages(): PageMeta[] {
 // Реестр существующих адресов: по нему ссылки на новых языках решают, вести на перевод или на английскую страницу
 let pathSet: Set<string> | undefined
 setPageIndex((path) => (pathSet ??= new Set(allPages().map((p) => p.path))).has(path))
+// В браузере переводы языка приходят позже основной сборки (src/i18n/packs): со словом о новом пакете список страниц считается заново
+onLangLoaded(() => { cached = undefined; pathSet = undefined })
 
 function buildPages(): PageMeta[] {
   const pages: PageMeta[] = []

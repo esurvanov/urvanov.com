@@ -7,7 +7,7 @@
     "dev": "vite",
     "pull": "node scripts/pull-game-pages.mjs && node scripts/pull-game-posts.mjs",
     "predev": "node scripts/pull-game-pages.mjs",
-    "build": "node scripts/pull-game-pages.mjs && node scripts/pull-game-posts.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build": "node scripts/pull-game-pages.mjs && node scripts/pull-game-posts.mjs && tsc -b && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/i18n-pages.mjs && vite build && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "check:text": "node scripts/check-text.mjs",

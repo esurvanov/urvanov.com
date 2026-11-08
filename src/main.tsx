@@ -1,6 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import { langOf } from '@/lib/i18n'
+import { loadLang } from '@/i18n/packs'
 import App from './App'
 import 'katex/dist/katex.min.css'
 import './styles/theme.css'
@@ -24,6 +26,9 @@ const app = (
   </StrictMode>
 )
 
-// Страницы выложены готовым HTML: оживляем его; иначе (dev, 404) рисуем с нуля
-if (rootElement.hasChildNodes()) hydrateRoot(rootElement, app)
-else createRoot(rootElement).render(app)
+// Страницы выложены готовым HTML: оживляем его; иначе (dev, 404) рисуем с нуля.
+// Переводы языка страницы подгружаются до оживления: иначе разметка разойдётся с готовым HTML
+loadLang(langOf(window.location.pathname)).then(() => {
+  if (rootElement.hasChildNodes()) hydrateRoot(rootElement, app)
+  else createRoot(rootElement).render(app)
+})

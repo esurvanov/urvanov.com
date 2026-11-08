@@ -1,3 +1,10 @@
+// Сборка страниц видит все языки сразу: пакеты переводов подключаются здесь (в браузере их грузит src/main.tsx)
+import './i18n/packs/th'
+import './i18n/packs/ka'
+import './i18n/packs/vi'
+import './i18n/packs/es'
+import './i18n/packs/fr'
+import { checkI18nFiles } from './i18n'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import App from './App'
@@ -26,3 +33,4 @@ export { CURRENT_ROLE, CITIES, TOPICS, BIO } from './data/profile'
 export { ui, NEW_LANGS, LOCALES } from './lib/i18n'
 export { LANG_FONTS } from './lib/langFonts'
 export { I18N_PROBLEMS, i18nStatus } from './i18n'
+checkI18nFiles(Object.keys(import.meta.glob('/src/i18n/*/*.json')))

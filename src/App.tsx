@@ -1,7 +1,8 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import type { ReactElement } from 'react'
-import { NEW_LANGS, hasPage, isNewLang, langOf, stripLang } from '@/lib/i18n'
+import { NEW_LANGS, hasPage, isLangLoaded, isNewLang, langOf, stripLang } from '@/lib/i18n'
+import { loadLang } from '@/i18n/packs'
 import PatternsView from '@/components/PatternsView'
 import PatternsCategoryView from '@/components/PatternsCategoryView'
 import LinksView from '@/components/LinksView'
@@ -63,7 +64,20 @@ function Translated({ children }: { children: ReactElement }) {
   return isNewLang(lang) && !hasPage(pathname) ? <NotFoundView /> : children
 }
 
+// Переводы языка страницы должны быть загружены до отрисовки (иначе мелькнёт английский). Первый вход ждёт их в main.tsx,
+// переход по ссылке на другой язык — в useSmoothNavigation; здесь запасной путь (например, адрес вписан в историю вручную).
 export default function App() {
+  const { pathname } = useLocation()
+  const lang = langOf(pathname)
+  const [, bump] = useState(0)
+  const ready = isLangLoaded(lang)
+  useEffect(() => {
+    if (!ready) void loadLang(lang).then(() => bump((n) => n + 1))
+  }, [lang, ready])
+  return ready ? <Site /> : null
+}
+
+function Site() {
   usePageMeta()
   useSmoothNavigation()
   return (

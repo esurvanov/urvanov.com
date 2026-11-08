@@ -18,14 +18,10 @@ export const baseOf = (l: Lang): BaseLang => (l === 'ru' ? 'ru' : 'en')
 // Пара текстов на двух исходных языках; переводы на новые языки — необязательные поля, их заполняет src/i18n/index.ts
 export type L<T = string> = { ru: T; en: T } & { [K in NewLang]?: T }
 
-// Общие строки интерфейса: src/i18n/<язык>/ui.json, ключ — английский текст строки (как в t({ ru, en })).
+// Общие строки интерфейса: src/i18n/<язык>/ui.json (приходят в пакете языка), ключ — английский текст строки (как в t({ ru, en })).
 // Сменился английский текст — перевод перестаёт находиться и строка показывается по-английски (scripts/i18n-status.mjs покажет такие ключи).
-const uiFiles = import.meta.glob('/src/i18n/*/ui.json', { eager: true, import: 'default' }) as Record<string, Record<string, string>>
+// Заполняет registerLang (src/i18n/index.ts) при загрузке пакета языка (src/i18n/packs/<язык>.ts)
 export const UI: Partial<Record<NewLang, Record<string, string>>> = {}
-for (const [file, dict] of Object.entries(uiFiles)) {
-  const l = file.split('/')[3]
-  if (isNewLang(l)) UI[l] = dict
-}
 /** Строка интерфейса на языке lang по её английскому тексту; нет перевода — английский текст */
 export const ui = (lang: Lang, en: string): string => (isNewLang(lang) ? UI[lang]?.[en] ?? en : en)
 
@@ -54,13 +50,26 @@ export const withLang = (path: string, lang: Lang): string =>
 /** Второй исходный язык (для пары ru ↔ en) */
 export const otherLang = (lang: Lang): BaseLang => (baseOf(lang) === 'en' ? 'ru' : 'en')
 
+// Пакеты языков. Переводы каждого нового языка (ui.json, модули, посты) лежат в отдельном куске сборки: страница
+// на языке L показывается, только когда его пакет загружен (src/main.tsx ждёт его до отрисовки, переключатель языка — до перехода).
+// Сборка для prerender (SSR) подключает все пакеты сразу.
+const loadedLangs = new Set<Lang>(['en', 'ru'])
+const packListeners: (() => void)[] = []
+export const isLangLoaded = (l: Lang): boolean => loadedLangs.has(l)
+export const markLangLoaded = (l: Lang) => { loadedLangs.add(l); packListeners.forEach((f) => f()) }
+/** Подписка на загрузку пакета языка (сбросить кэши, зависящие от переводов) */
+export const onLangLoaded = (f: () => void) => { packListeners.push(f) }
+
 // Какие страницы реально существуют: реестр заполняет src/data/seo.ts (allPages). На новом языке ссылка ведёт
 // на свою версию страницы, только если она переведена; иначе — на английскую. До заполнения реестра (разбор постов при загрузке)
 // ссылки на новых языках остаются английскими, страница поста досчитывает их при отрисовке (см. localizeLinks).
 let pageIndex: ((path: string) => boolean) | null = null
+let pageIndexOff = 0
+/** Выполнить f так, будто реестр страниц ещё пуст (разбор постов при загрузке пакета языка: ссылки досчитывает страница) */
+export const withoutPageIndex = <T>(f: () => T): T => { pageIndexOff++; try { return f() } finally { pageIndexOff-- } }
 export const setPageIndex = (f: (path: string) => boolean) => { pageIndex = f }
 const bare = (p: string) => p.replace(/[?#].*$/, '').replace(/(.)\/$/, '$1')
-export const hasPage = (path: string): boolean => (pageIndex ? pageIndex(bare(path)) : false)
+export const hasPage = (path: string): boolean => (pageIndex && !pageIndexOff ? pageIndex(bare(path)) : false)
 /** Адрес страницы на языке lang, если она там есть; для новых языков без перевода — английский адрес */
 export const localHref = (path: string, lang: Lang): string => {
   const p = withLang(path, lang)

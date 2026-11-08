@@ -91,9 +91,11 @@ export interface Post {
   words: number
 }
 
-const files = import.meta.glob('/content/blog/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
+// Посты на ru и en лежат в основной сборке; переводы на новые языки (content/blog/<слаг>.<язык>.md) — в пакетах языков
+// (src/i18n/packs/<язык>.ts) и добавляются через addPosts. При добавлении языка в NEW_LANGS дополнить исключения ниже.
+const files = import.meta.glob(['/content/blog/*.md', '!/content/blog/*.{th,ka,vi,es,fr}.md'], { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 // Текстовые копии широких постов: content/blog-text/<тот же файл>.md
-const texts = import.meta.glob('/content/blog-text/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
+const texts: Record<string, string> = import.meta.glob(['/content/blog-text/*.md', '!/content/blog-text/*.{th,ka,vi,es,fr}.md'], { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 
 // Cloudflare «Email Obfuscation» переписывает адреса в HTML в ссылки /cdn-cgi/l/email-protection, которых нет на GitHub Pages
 // (битые ссылки). Адреса в тексте поста (примеры вида hana@example.com) прячем от него официальной меткой email_off
@@ -160,10 +162,28 @@ function parse(path: string, raw: string): Post | null {
   }
 }
 
-export const POSTS: Post[] = Object.entries(files)
-  .map(([p, raw]) => parse(p, raw))
-  .filter((p): p is Post => p !== null)
-  .sort((a, b) => b.date.localeCompare(a.date))
+// Порядок постов не зависит от того, какие пакеты языков загружены: по пути файла (как раньше шёл glob), затем по дате
+const entries: { path: string; post: Post }[] = []
+export const POSTS: Post[] = []
+function resort() {
+  entries.sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0))
+  POSTS.length = 0
+  POSTS.push(...entries.map((e) => e.post).sort((a, b) => b.date.localeCompare(a.date)))
+}
+function add(found: Record<string, string>) {
+  for (const [p, raw] of Object.entries(found)) {
+    const post = parse(p, raw)
+    if (post) entries.push({ path: p, post })
+  }
+  resort()
+}
+add(files)
+
+/** Добавляет посты пакета языка (сырые тексты md и текстовые копии) */
+export function addPosts(found: Record<string, string>, copies: Record<string, string>) {
+  Object.assign(texts, copies)
+  add(found)
+}
 
 export const formatDate = (iso: string, lang: Lang = 'ru') =>
   new Date(iso).toLocaleDateString(LOCALES[lang], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
