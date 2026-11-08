@@ -34,5 +34,8 @@ const ORDER = ['chronicles-of-kingdoms', 'berezovka', 'sibiria', 'echo-of-the-ri
 const rank = (slug: string) => { const i = ORDER.indexOf(slug); return i < 0 ? ORDER.length : i }
 export const GAME_PAGES: GamePage[] = [...(raw as unknown as GamePage[])].sort((a, b) => rank(a.slug) - rank(b.slug))
 
+// Игры, которые сами выбирают язык по ?lang= в адресе: кнопка «Играть» передаёт им язык страницы сайта
+export const LANG_AWARE_GAMES = new Set(['little-bombers'])
+
 export const gamePage = (slug: string) => GAME_PAGES.find((g) => g.slug === slug)
 export const gamePageByPlay = (play: string) => GAME_PAGES.find((g) => g.play === play)

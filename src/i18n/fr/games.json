@@ -725,15 +725,17 @@
   },
   "little-bombers": {
     "name": "Little Bombers",
-    "title": "Little Bombers : jouer en ligne à un Bomberman dans le navigateur",
+    "title": "Little Bombers : jouer en ligne dans le navigateur, sans téléchargement",
     "tagline": "Pose des bombes, fais sauter caisses et ennemis, trouve la sortie : 50 niveaux, 18 succès et un éditeur dans un seul fichier",
     "genre": "Arcade",
-    "description": "Little Bombers : un jeu gratuit façon Bomberman dans le navigateur. 50 niveaux dans dix mondes, trois types d’ennemis, bonus et éditeur de niveaux. La progression est sauvegardée. Sans installation.",
+    "description": "Little Bombers en ligne : jeu gratuit façon Bomberman dans le navigateur, sans téléchargement. 50 niveaux, éditeur de niveaux, 18 succès, 7 langues. Mobile, PC.",
     "intro": [
-      "Little Bombers est un jeu d’arcade dans l’esprit du Bomberman classique : tu poses des bombes, fais sauter les caisses, élimines tous les ennemis et franchis la sortie cachée sous l’une des caisses. Le jeu se lance directement dans le navigateur, sur ordinateur comme sur téléphone.",
+      "Little Bombers est un jeu gratuit façon Bomberman auquel on joue en ligne dans le navigateur, sans téléchargement ni inscription, sur ordinateur comme sur mobile. Vous posez des bombes, faites sauter des caisses, vainquez tous les ennemis et gagnez la sortie cachée sous l’une des caisses.",
+      "C’est un nouveau jeu, et non une réédition de Little Bombers Returns d’Alawar (2004) : un autre auteur et d’autres niveaux, mais la même idée de labyrinthe, de bombes et de quête de la sortie.",
       "La campagne compte 50 niveaux dans dix mondes : prairie, dunes, glace, lave, marais, espace, jungle, ruines, néon et crépuscule. Plus tu termines un niveau vite, plus tu gagnes d’étoiles. Tes propres niveaux se dessinent dans l’éditeur, se sauvegardent dans le navigateur et se partagent avec un court code. Tout le jeu tient dans un seul fichier, sans bibliothèque."
     ],
     "features": [
+      "Sans téléchargement ni inscription : il s’ouvre dans le navigateur, sur ordinateur, tablette et mobile",
       "50 niveaux dans dix mondes : prairie, dunes, glace, lave, marais, espace, jungle, ruines, néon et crépuscule",
       "Jusqu’à trois étoiles par niveau, selon la rapidité",
       "Trois ennemis : la limace erre, la chauve-souris fonce en ligne droite, le fantôme traverse les caisses",
@@ -742,7 +744,7 @@
       "18 succès : pour les étoiles, les ennemis, les caisses, la vitesse et tes propres niveaux",
       "La progression, les succès, les meilleurs temps et tes niveaux sont sauvegardés dans le navigateur et se transfèrent avec un code",
       "Commandes tactiles : joystick et bouton de bombe sur téléphone",
-      "Interface en russe et en anglais"
+      "Sept langues d’interface : le jeu démarre dans la langue du site, avec un sélecteur dans le menu"
     ],
     "controls": [
       ["← ↑ → ↓ / W A S D", "déplacement"],
@@ -756,9 +758,14 @@
       ["Niveaux", "50 en campagne et autant de niveaux perso que tu veux"],
       ["Taille", "un seul fichier, les polices sont chargées depuis le réseau"],
       ["Sauvegarde", "dans le navigateur (localStorage)"],
-      ["Code", "ouvert, MIT"]
+      ["Code", "ouvert, MIT"],
+      ["Langues", "russe, anglais, thaï, géorgien, vietnamien, espagnol, français"]
     ],
     "faq": [
+      ["Peut-on jouer à Little Bombers en ligne sans téléchargement ?", "Oui. Le jeu s’ouvre avec le bouton « Jouez dans votre navigateur » de cette page et tourne directement dans l’onglet, sur ordinateur et sur mobile. Rien à installer, aucun compte à créer."],
+      ["Est-ce le même jeu que Little Bombers Returns d’Alawar ?", "Non. Le jeu d’Alawar est sorti en 2004 comme programme Windows. Celui-ci est refait de zéro pour le navigateur, avec ses propres niveaux, un éditeur et 18 succès. Ils partagent l’idée de Bomberman : un labyrinthe, des bombes et une sortie sous une caisse."],
+      ["Dans quelles langues est le jeu ?", "En russe, anglais, thaï, géorgien, vietnamien, espagnol et français. Le jeu démarre dans la langue de la page du site depuis laquelle vous avez appuyé sur « Jouer », et vous pouvez en changer avec le bouton de langue du menu."],
+      ["Y a-t-il un mode à deux joueurs ?", "Pas encore : le jeu propose une campagne solo de 50 niveaux, plus vos propres niveaux créés dans l’éditeur."],
       ["Où est sauvegardée la progression ?", "Dans le navigateur de ton appareil : niveaux terminés, étoiles, meilleurs temps et tes niveaux. Si tu effaces les données du site, ils disparaissent."],
       ["Comment obtenir trois étoiles ?", "Termine le niveau plus vite que le temps cible affiché sur l’écran de victoire."],
       ["Comment partager mon niveau ?", "Dans l’éditeur, appuie sur le bouton de code et envoie le texte obtenu à un ami. Il le colle dans la section « Mes niveaux »."],
@@ -768,7 +775,10 @@
     "shots.0.alt": "Little Bombers : une explosion sur un niveau de dunes",
     "shots.1.alt": "Little Bombers : le menu principal",
     "keywords": [
+      "little bombers en ligne",
+      "little bombers jeu",
       "bomberman en ligne",
+      "jouer à bomberman sans téléchargement",
       "jeu de bombes dans le navigateur",
       "éditeur de niveaux bomberman"
     ]

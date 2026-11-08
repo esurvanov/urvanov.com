@@ -4,7 +4,7 @@ import Crumbs from '@/components/site/Crumbs'
 import NotFoundView from '@/components/NotFoundView'
 import { ActionLink, CardLinks, Faq, Fold, More, TextLink } from '@/components/site/Links'
 import { ICONS } from '@/components/site/icons'
-import { GAME_PAGES, gamePage } from '@/data/games'
+import { GAME_PAGES, LANG_AWARE_GAMES, gamePage } from '@/data/games'
 import { CITY_CHATS, JAIORA_URL } from '@/data/links'
 import { useT } from '@/lib/i18n'
 import { plural } from '@/lib/plural'
@@ -49,7 +49,7 @@ export function GameView() {
       <h1 className="s-page-title is-long">{t(g.name)}</h1>
       <p className="s-lead">{t(g.tagline)}</p>
       <p className="g-actions">
-        <ActionLink primary href={g.play} icon={ICONS.play} track={`play_${g.slug}`}>{t({ ru: 'Играть в браузере', en: 'Play in your browser' })}</ActionLink>
+        <ActionLink primary href={LANG_AWARE_GAMES.has(g.slug) ? `${g.play}?lang=${lang}` : g.play} icon={ICONS.play} track={`play_${g.slug}`}>{t({ ru: 'Играть в браузере', en: 'Play in your browser' })}</ActionLink>
         {g.architecture && <ActionLink to={to(`/materials/games/${g.slug}/architecture`)} icon={ICONS.doc}>{t({ ru: 'Архитектура', en: 'Architecture' })}</ActionLink>}
         <ActionLink href={REPO + g.repoDir} icon={ICONS.github}>{t({ ru: 'Исходный код', en: 'Source code' })}</ActionLink>
         {chat && (

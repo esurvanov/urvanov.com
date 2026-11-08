@@ -386,15 +386,17 @@
   },
   "little-bombers": {
     "name": "Little Bombers",
-    "title": "Little Bombers: chơi game kiểu Bomberman online ngay trên trình duyệt",
+    "title": "Little Bombers: chơi online trên trình duyệt, không cần tải về",
     "tagline": "Đặt bom, phá thùng và quái vật, tìm lối ra: 50 màn chơi, 18 thành tựu và trình chỉnh sửa màn trong một tệp",
     "genre": "Arcade",
-    "description": "Little Bombers: game miễn phí kiểu Bomberman trên trình duyệt. 50 màn chơi ở mười thế giới, ba loại kẻ địch, vật phẩm tăng sức mạnh và trình chỉnh sửa màn. Tiến trình được lưu lại. Không cần cài đặt.",
+    "description": "Little Bombers online: game kiểu Bomberman miễn phí trên trình duyệt, không cần tải. 50 màn, trình tạo màn, 18 thành tích, 7 ngôn ngữ. Cả điện thoại lẫn PC.",
     "intro": [
-      "Little Bombers là game arcade theo tinh thần Bomberman kinh điển: bạn đặt bom, phá thùng, tiêu diệt mọi kẻ địch rồi đi vào lối ra giấu dưới một chiếc thùng. Game chạy ngay trên trình duyệt, cả trên máy tính lẫn điện thoại.",
+      "Little Bombers là game miễn phí kiểu Bomberman, chơi online ngay trên trình duyệt, không cần tải về hay đăng ký, trên máy tính và điện thoại. Bạn đặt bom, cho nổ thùng, hạ mọi kẻ địch và đi vào lối ra giấu dưới một chiếc thùng.",
+      "Đây là một game mới, không phải bản phát hành lại Little Bombers Returns của Alawar (2004): tác giả khác và màn chơi khác, nhưng chung ý tưởng về mê cung, bom và hành trình tìm lối ra.",
       "Chiến dịch có 50 màn ở mười thế giới: đồng cỏ, cồn cát, băng, dung nham, đầm lầy, vũ trụ, rừng rậm, tàn tích, neon và hoàng hôn. Qua màn càng nhanh, bạn càng được nhiều sao. Bạn có thể tự vẽ màn chơi trong trình chỉnh sửa, màn được lưu trong trình duyệt và chia sẻ bằng một mã ngắn. Toàn bộ game chỉ là một tệp, không dùng thư viện."
     ],
     "features": [
+      "Không cần tải về hay đăng ký: mở ngay trên trình duyệt, trên máy tính, máy tính bảng và điện thoại",
       "50 màn chơi ở mười thế giới: đồng cỏ, cồn cát, băng, dung nham, đầm lầy, vũ trụ, rừng rậm, tàn tích, neon và hoàng hôn",
       "Tối đa ba sao mỗi màn, tính theo tốc độ hoàn thành",
       "Ba loại kẻ địch: chất nhầy đi lang thang, dơi lao thẳng tới, bóng ma xuyên qua thùng",
@@ -403,7 +405,7 @@
       "18 thành tựu: cho sao, kẻ địch, thùng, tốc độ và màn tự tạo",
       "Tiến trình, thành tựu, thành tích tốt nhất và màn tự tạo được lưu trong trình duyệt và chuyển sang máy khác bằng một mã",
       "Điều khiển cảm ứng: cần điều khiển và nút đặt bom trên điện thoại",
-      "Giao diện tiếng Nga và tiếng Anh"
+      "Bảy ngôn ngữ giao diện: game khởi động bằng ngôn ngữ của trang web, có nút đổi ngôn ngữ trong menu"
     ],
     "controls": [
       ["← ↑ → ↓ / W A S D", "di chuyển"],
@@ -417,9 +419,14 @@
       ["Số màn", "50 màn chiến dịch và không giới hạn màn tự tạo"],
       ["Dung lượng", "một tệp, phông chữ tải từ mạng"],
       ["Lưu trữ", "trong trình duyệt (localStorage)"],
-      ["Mã nguồn", "mở, MIT"]
+      ["Mã nguồn", "mở, MIT"],
+      ["Ngôn ngữ", "tiếng Nga, tiếng Anh, tiếng Thái, tiếng Gruzia, tiếng Việt, tiếng Tây Ban Nha, tiếng Pháp"]
     ],
     "faq": [
+      ["Có thể chơi Little Bombers online mà không cần tải về không?", "Có. Game mở bằng nút «Chơi trên trình duyệt» trên trang này và chạy ngay trong thẻ trình duyệt, trên máy tính lẫn điện thoại. Không cần cài đặt hay tạo tài khoản."],
+      ["Đây có phải game Little Bombers Returns của Alawar không?", "Không. Game của Alawar ra mắt năm 2004 dưới dạng chương trình Windows. Game này được làm lại từ đầu cho trình duyệt, với màn chơi riêng, trình tạo màn và 18 thành tích. Điểm chung là ý tưởng Bomberman: mê cung, bom và lối ra dưới một chiếc thùng."],
+      ["Game có những ngôn ngữ nào?", "Tiếng Nga, tiếng Anh, tiếng Thái, tiếng Gruzia, tiếng Việt, tiếng Tây Ban Nha và tiếng Pháp. Game khởi động bằng ngôn ngữ của trang web nơi bạn bấm «Chơi», và bạn có thể đổi bằng nút ngôn ngữ trong menu."],
+      ["Có chế độ hai người chơi không?", "Chưa có: game có chiến dịch một người chơi gồm 50 màn, cộng với các màn do bạn tự tạo trong trình chỉnh sửa."],
       ["Tiến trình được lưu ở đâu?", "Ngay trong trình duyệt trên thiết bị của bạn: các màn đã qua, số sao, thành tích tốt nhất và màn tự tạo. Nếu xóa dữ liệu trang web thì chúng sẽ mất."],
       ["Làm sao để được ba sao?", "Hoàn thành màn nhanh hơn thời gian mục tiêu hiển thị trên màn hình chiến thắng."],
       ["Làm sao chia sẻ màn của tôi?", "Trong trình chỉnh sửa, nhấn nút mã rồi gửi đoạn văn bản nhận được cho bạn bè. Bạn ấy dán vào mục «Màn của tôi»."],
@@ -429,9 +436,12 @@
     "shots.0.alt": "Little Bombers: vụ nổ ở màn cồn cát",
     "shots.1.alt": "Little Bombers: menu chính",
     "keywords": [
+      "little bombers online",
+      "game little bombers",
       "bomberman online",
+      "chơi bomberman không cần tải",
       "game đặt bom trên trình duyệt",
-      "trình chỉnh sửa màn bomberman"
+      "trình tạo màn bomberman"
     ]
   }
 }
