@@ -1,6 +1,6 @@
 // Постсборка: превращает SPA в набор готовых HTML-страниц на двух языках (для поисковиков и ИИ-краулеров),
 // а также пишет sitemap.xml, robots.txt, rss.xml, llms.txt и markdown-копии постов.
-import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs'
+import { mkdirSync, readdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { execSync } from 'node:child_process'
@@ -101,6 +101,11 @@ function breadcrumbs(page, all) {
   return { '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })) }
 }
 
+// Пакет переводов языка (dist/assets/<язык>-<хэш>.js, см. src/i18n/packs): страница на этом языке ждёт его до оживления,
+// поэтому в её HTML он подгружается сразу, не дожидаясь основного скрипта
+const LANG_PACKS = new Map(readdirSync(join(DIST, 'assets')).flatMap((f) => (/^(th|ka|vi|es|fr)-[\w-]+\.js$/.test(f) ? [[f.split('-')[0], f]] : [])))
+const packLink = (lang) => (LANG_PACKS.has(lang) ? `\n    <link rel="modulepreload" crossorigin href="/assets/${LANG_PACKS.get(lang)}">` : '')
+
 function build(page, all, { body, noindex, skipStructured } = {}) {
   // Свой @id (например, у Organization/PresentationDigitalDocument) важнее заглушки #main
   const graph = skipStructured ? [] : [breadcrumbs(page, all), page.jsonLd && { '@id': urlOf(page.path) + '#main', ...page.jsonLd }, ...(page.jsonLdExtra ?? [])].filter(Boolean)
@@ -110,6 +115,7 @@ function build(page, all, { body, noindex, skipStructured } = {}) {
     // Замена функцией: в строке-замене JS «$$» и «$&» — спецсимволы, и «$$$» в тексте поста превращался бы в «$$»
     .replace(/<title>[\s\S]*?<\/title>/, () => `${head}\n    ${analytics}`)
     .replace('<div id="root"></div>', () => `<div id="root">${body ?? ''}</div>`)
+    .replace('</head>', () => `${packLink(page.lang)}\n  </head>`)
 }
 
 function write(file, content) {

@@ -1,6 +1,8 @@
 import { useEffect, useLayoutEffect } from 'react'
 import { flushSync } from 'react-dom'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { isLangLoaded, langOf } from '@/lib/i18n'
+import { loadLang } from '@/i18n/packs'
 
 type VTDocument = Document & { startViewTransition?: (update: () => void) => unknown }
 
@@ -22,6 +24,22 @@ export function useSmoothNavigation() {
     // hash — только для первого входа на страницу с якорем, дальше якоря листает браузер
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
+
+  // Ссылка на страницу другого языка: сначала загружаем его переводы, потом переходим (иначе страница мелькнёт без перевода).
+  // Объявлен раньше эффекта переходов, поэтому срабатывает первым и отменяет клик для остальных.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+      const a = (e.target as Element | null)?.closest?.('a[data-discover]') as HTMLAnchorElement | null
+      if (!a || (a.target && a.target !== '_self')) return
+      const url = new URL(a.href, window.location.href)
+      if (url.origin !== window.location.origin || isLangLoaded(langOf(url.pathname))) return
+      e.preventDefault()
+      void loadLang(langOf(url.pathname)).then(() => navigate(url.pathname + url.search + url.hash), () => { window.location.href = a.href })
+    }
+    document.addEventListener('click', onClick, true)
+    return () => document.removeEventListener('click', onClick, true)
+  }, [navigate])
 
   useEffect(() => {
     const doc = document as VTDocument
