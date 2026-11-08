@@ -856,3 +856,10 @@ html:lang(ka) .site { --font: 'Manrope', 'Inter', 'Noto Sans Georgian', system-u
 /* Грузинский и тайский: без выключки по ширине. У грузинского нет словаря переносов — строки растягиваются пустотами, у тайского нет пробелов */
 :lang(ka) .s-gterm .s-gscreen, :lang(ka) .s-gterm .s-lead, :lang(ka) .s-gterm .s-section p, :lang(ka) .s-gterm .s-section li, :lang(ka) .s-wide .s-article > header .s-lead,
 :lang(th) .s-gterm .s-gscreen, :lang(th) .s-gterm .s-lead, :lang(th) .s-gterm .s-section p, :lang(th) .s-gterm .s-section li, :lang(th) .s-wide .s-article > header .s-lead { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
+
+/* Переключатель языка: пока грузятся переводы выбранного языка — пункт с крутилкой, курсор ожидания */
+.s-lang-list a[aria-busy="true"], .s-nav-lang[aria-busy="true"] { cursor: progress; color: var(--ink); }
+.s-lang-list a[aria-busy="true"]::after { content: ''; width: 12px; height: 12px; margin-left: auto; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: s-spin .7s linear infinite; }
+.s-lang-list a { grid-template-columns: 18px 24px auto 12px; }
+@keyframes s-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .s-lang-list a[aria-busy="true"]::after { animation: none; border-right-color: currentColor; opacity: .5; } }
