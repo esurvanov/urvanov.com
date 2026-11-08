@@ -23,7 +23,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
 <b-chapter id="why" title="Báo cáo giúp đưa ra những quyết định nào">
   <b-lead-large><b>Bài toán kinh doanh:</b> tìm ra bộ công cụ AI hiện tại còn thiếu ở những tác vụ công việc nào và nên thử giải pháp nào trước khi mua. Quyết định thuộc về người nắm ngân sách công cụ AI cùng trưởng các nhóm chạy thử nghiệm. Quyền truy cập dữ liệu và bảo mật do bộ phận an toàn thông tin phê duyệt. Tiêu chí quyết định là các dấu hiệu trong bảng dưới đây.</b-lead-large>
 
-  Việc bộ công cụ hiện tại chưa tối ưu ở đâu đó là một giả định: báo cáo và các cuộc phỏng vấn dùng để kiểm chứng nó. "Chưa tối ưu" được tách thành các dấu hiệu có thể kiểm tra. Kết luận "không cần công cụ mới" cũng là một kết quả.
+  Việc bộ công cụ hiện tại chưa tối ưu ở đâu đó là một giả định: báo cáo và các cuộc phỏng vấn dùng để kiểm chứng nó. “Chưa tối ưu” được tách thành các dấu hiệu có thể kiểm tra. Kết luận “không cần công cụ mới” cũng là một kết quả.
 
   <b-table id="signs">
     <table><thead>
@@ -45,7 +45,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
     <step t="Khảo sát toàn công ty">Bao nhiêu người gặp khó khăn đó, gặp thường xuyên đến đâu và nó cản trở nhiều không</step>
     <step t="So sánh">Quy mô tác vụ, mức nghiêm trọng của hậu quả, cách xoay xở hiện có, chi phí giải pháp</step>
     <step t="Thử công cụ">Các lựa chọn triển vọng, thử trên tác vụ thật cùng nhân viên</step>
-    <step t="Quyết định">Người nắm ngân sách quyết định theo sáu <a href="#signs">dấu hiệu ở trên</a>: chất lượng, thời gian và sửa tay, khả năng lặp lại, quy mô, truy cập dữ liệu, chi phí; "không cần công cụ mới" là một kết quả hợp lệ</step>
+    <step t="Quyết định">Người nắm ngân sách quyết định theo sáu <a href="#signs">dấu hiệu ở trên</a>: chất lượng, thời gian và sửa tay, khả năng lặp lại, quy mô, truy cập dữ liệu, chi phí; “không cần công cụ mới” là một kết quả hợp lệ</step>
   </b-steps>
   <b-io justify>
     <item k="Đầu vào">Các bản xuất từ bảng quản trị: tin nhắn, chi tiêu, dự án và trình kết nối của từng người</item>
@@ -58,7 +58,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
   Năm bước từ xuất dữ liệu đến danh sách người hoàn chỉnh.
 
   <b-steps top="18" round>
-    <step t="Xuất dữ liệu">Năm mục của bảng quản trị, chi tiết ở phần "Lấy dữ liệu ở đâu"</step>
+    <step t="Xuất dữ liệu">Năm mục của bảng quản trị, chi tiết ở phần “Lấy dữ liệu ở đâu”</step>
     <step t="Dựng bức tranh chung">Mức độ áp dụng, độ đồng đều giữa các nhóm, công cụ chính, các nhóm hành vi</step>
     <step t="Vẽ bản chất công việc">Mọi người giải những tác vụ nào, bằng công cụ tích hợp nào và qua tích hợp nào</step>
     <step t="Đối chiếu với dữ liệu gốc">Kiểm tra từng bản tổng hợp với bản xuất gốc</step>
@@ -72,10 +72,10 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
   <b-subhead>Cách xuất dữ liệu từ bảng quản trị ChatGPT Enterprise: làm tay và nhờ tác nhân trình duyệt Claude in Chrome</b-subhead>
   <b-howto><b>Cách xuất.</b> Bảng quản trị có API, nhưng chúng chỉ phủ một phần dữ liệu: <a href="https://learn.chatgpt.com/docs/enterprise/analytics-api" target="_blank" rel="noopener">phân tích Codex</a>, chi phí theo credit và nhật ký hội thoại phục vụ tuân thủ. Các bản xuất về người dùng, dự án, skill và bảng xếp hạng theo từng sản phẩm dễ lấy hơn qua giao diện. Việc xuất rất hợp để giao cho <a href="https://claude.com/claude-in-chrome" target="_blank" rel="noopener">Claude in Chrome</a>: nó mở đúng mục, đặt bộ lọc, bấm xuất và lưu file CSV. Mỗi bước đều hiện trên màn hình, nên chọn sai bộ lọc hay sai mục sẽ bị phát hiện ngay, trước khi con số vào báo cáo.<warn icon="shield-alert"><b>Quyền truy cập.</b> API của bảng quản trị không phải lúc nào cũng dùng được: chính sách bảo mật của công ty thường hạn chế khóa API quản trị. Khi đó, hãy xuất từng mục qua giao diện.</warn></b-howto>
   <b-sources>
-    <src icon="users-alt" href="https://chatgpt.com/admin/usage/users" t="Người dùng" path="chatgpt.com/admin/usage/users" what="Tin nhắn, ngày hoạt động và công cụ tích hợp của từng người" tip-label="Mục Người dùng chứa gì">Xuất CSV cho kỳ tối đa 12 tháng. Các trường: messages, tool_messages, gpt_messages, project_messages, department, groups, seat_type, last_day_active. Bảng quản trị tự gắn huy hiệu cho "power user".</src>
-    <src icon="trophy" href="https://admin.openai.com" t="Bảng xếp hạng" path="admin.openai.com → Analytics → Leaderboard" what="Chi tiêu, token và số dòng code của từng người, tách riêng cho các sản phẩm Chat, Work và Codex" tip-label="Bảng xếp hạng chứa gì">Nút xuất cạnh tiêu đề → "User ranking", CSV hoặc JSON. Các trường: Name, Email, Credits, Estimated costs, Tokens, Lines of code. Bộ lọc "Product" thay đổi nội dung bản xuất. Lịch sử khoảng 120 ngày.</src>
+    <src icon="users-alt" href="https://chatgpt.com/admin/usage/users" t="Người dùng" path="chatgpt.com/admin/usage/users" what="Tin nhắn, ngày hoạt động và công cụ tích hợp của từng người" tip-label="Mục Người dùng chứa gì">Xuất CSV cho kỳ tối đa 12 tháng. Các trường: messages, tool_messages, gpt_messages, project_messages, department, groups, seat_type, last_day_active. Bảng quản trị tự gắn huy hiệu cho “power user”.</src>
+    <src icon="trophy" href="https://admin.openai.com" t="Bảng xếp hạng" path="admin.openai.com → Analytics → Leaderboard" what="Chi tiêu, token và số dòng code của từng người, tách riêng cho các sản phẩm Chat, Work và Codex" tip-label="Bảng xếp hạng chứa gì">Nút xuất cạnh tiêu đề → “User ranking”, CSV hoặc JSON. Các trường: Name, Email, Credits, Estimated costs, Tokens, Lines of code. Bộ lọc “Product” thay đổi nội dung bản xuất. Lịch sử khoảng 120 ngày.</src>
     <src icon="folder-iv" href="https://chatgpt.com/admin/usage/projects" t="Dự án" path="chatgpt.com/admin/usage/projects" what="Ai tạo dự án, dự án có bao nhiêu tin nhắn và còn hoạt động không" tip-label="Mục Dự án chứa gì">Các trường: project_name, project_creator_email, messages_workspace, unique_messagers_workspace, is_active. Một số tên hiện là [content redacted]: bảng quản trị tự ẩn chúng.</src>
-    <src icon="plug-alt" href="https://chatgpt.com/admin/usage" t="Tổng quan: trình kết nối và skill" path="chatgpt.com/admin/usage" what="Trợ lý được nối với những ứng dụng nào và mọi người dùng những skill nào" tip-label="Mục Tổng quan chứa gì">Hai khối "App interactions" và "Skills": số lần gọi từng trình kết nối và từng skill trong kỳ đã chọn.</src>
+    <src icon="plug-alt" href="https://chatgpt.com/admin/usage" t="Tổng quan: trình kết nối và skill" path="chatgpt.com/admin/usage" what="Trợ lý được nối với những ứng dụng nào và mọi người dùng những skill nào" tip-label="Mục Tổng quan chứa gì">Hai khối “App interactions” và “Skills”: số lần gọi từng trình kết nối và từng skill trong kỳ đã chọn.</src>
     <src icon="chart-line-iv" href="https://admin.openai.com" t="Phân tích: tác vụ" path="admin.openai.com → Analytics → Tasks" what="Cách bảng quản trị tự phân loại tác vụ: code hoặc công việc tri thức (mọi thứ trừ code)" tip-label="Thẻ Tác vụ chứa gì">Tỷ lệ code và công việc tri thức, các tác vụ đứng đầu theo credit. Một mô hình của OpenAI gán nhãn tác vụ trên mẫu khoảng 10% yêu cầu trong 30 ngày.</src>
   </b-sources>
 </b-chapter>
@@ -103,11 +103,11 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
     <b-cap>340 người</b-cap>
     <b-cap>Nguồn: <a href="https://chatgpt.com/admin/usage/users" target="_blank" rel="noopener">Người dùng</a> · <a href="https://admin.openai.com" target="_blank" rel="noopener">Bảng xếp hạng</a> cho những người chỉ làm việc qua Codex</b-cap>
     <b-finding>
-      <ex>82% số người đã thử công cụ, 47% dùng nó trong công việc và với 21% nó đã thành thói quen hằng tuần. Chỗ còn có thể làm sâu thêm là 97 người ở nhóm "thỉnh thoảng".</ex>
-      <gen>Khoảng cách giữa "đã thử" và "dùng hằng tuần" cho thấy có bao nhiêu người dừng lại sau vài lần thử đầu. Mốc tham chiếu cho việc áp dụng đại trà là 50–70% nhân viên dùng trong công việc hằng ngày. Khi chưa đạt mốc đó, mua thêm giấy phép sẽ không tạo ra tăng trưởng: có thứ gì khác ngoài quyền truy cập đang cản mọi người.</gen>
-      <do>Dồn đào tạo vào nhóm lớn nhất nằm giữa "đã thử" và "hằng tuần": nhóm này cho mức tăng nhanh nhất ở việc dùng thường xuyên. Sau đào tạo, tính lại phân bổ để xem mọi người đã chuyển đi đâu.</do>
+      <ex>82% số người đã thử công cụ, 47% dùng nó trong công việc và với 21% nó đã thành thói quen hằng tuần. Chỗ còn có thể làm sâu thêm là 97 người ở nhóm “thỉnh thoảng”.</ex>
+      <gen>Khoảng cách giữa “đã thử” và “dùng hằng tuần” cho thấy có bao nhiêu người dừng lại sau vài lần thử đầu. Mốc tham chiếu cho việc áp dụng đại trà là 50–70% nhân viên dùng trong công việc hằng ngày. Khi chưa đạt mốc đó, mua thêm giấy phép sẽ không tạo ra tăng trưởng: có thứ gì khác ngoài quyền truy cập đang cản mọi người.</gen>
+      <do>Dồn đào tạo vào nhóm lớn nhất nằm giữa “đã thử” và “hằng tuần”: nhóm này cho mức tăng nhanh nhất ở việc dùng thường xuyên. Sau đào tạo, tính lại phân bổ để xem mọi người đã chuyển đi đâu.</do>
     </b-finding>
-    <b-info-note icon="flag-alt-iv"><b>Quan trọng.</b> Chọn 5–10 người từ nhóm "thỉnh thoảng", hỏi qua phỏng vấn xem hiện giờ họ hoàn thành việc bằng cách nào, rồi cùng họ xem lại các ca công việc thật. Sau buổi xem lại, tính lại tỷ lệ dùng hằng tuần. Cách hỏi mà không gợi ý sẵn đáp án có trong bài <a href="/blog/ai-interviews-without-leading-questions/">"Cách phỏng vấn mọi người về việc dùng AI"</a>.</b-info-note>
+    <b-info-note icon="flag-alt-iv"><b>Quan trọng.</b> Chọn 5–10 người từ nhóm “thỉnh thoảng”, hỏi qua phỏng vấn xem hiện giờ họ hoàn thành việc bằng cách nào, rồi cùng họ xem lại các ca công việc thật. Sau buổi xem lại, tính lại tỷ lệ dùng hằng tuần. Cách hỏi mà không gợi ý sẵn đáp án có trong bài <a href="/blog/ai-interviews-without-leading-questions/">“Cách phỏng vấn mọi người về việc dùng AI”</a>.</b-info-note>
   </b-subsection>
   <b-subsection id="uniformity" title="Độ đồng đều">
     <b-art-row names="chatgpt-enterprise-usage-report/team-groups" cols="1"/>
@@ -148,7 +148,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
       <seg w="26.8%" color="c-none" ink="ink">91 · không chi tiêu</seg>
     </b-share-bar>
     <b-cap>340 người, cửa sổ 3 tháng</b-cap>
-    <b-cap>Nguồn: <a href="https://admin.openai.com" target="_blank" rel="noopener">Bảng xếp hạng</a> · ba bản xuất: bộ lọc "Product" = Chat, Work, Codex</b-cap>
+    <b-cap>Nguồn: <a href="https://admin.openai.com" target="_blank" rel="noopener">Bảng xếp hạng</a> · ba bản xuất: bộ lọc “Product” = Chat, Work, Codex</b-cap>
     <b-finding>
       <ex>Chat là sản phẩm chính của 164 trong 340 người, Codex của 38 người, Work của 47 người.</ex>
       <gen>Công cụ chính cho thấy kiểu công việc: trò chuyện, giao việc cho tác nhân hoặc viết code. Nó quyết định người đó cần gì tiếp theo và nên đưa vào thử nghiệm nào. Quy mô nhóm quyết định quy mô thử nghiệm: thử nghiệm rộng cho kịch bản phổ biến, hẹp cho kịch bản hiếm.</gen>
@@ -189,7 +189,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
       <tr><th>Nhóm hành vi</th><th class="bk-table-r">Số người</th><th>Chi tiết</th></tr>
       </thead><tbody>
       <tr><td>Viết code ở bất kỳ sản phẩm nào</td><td class="bk-table-r">44</td><td>19 người trong số đó không thuộc nhóm kỹ thuật</td></tr>
-      <tr><td>Nghiên cứu chuyên sâu trong chat</td><td class="bk-table-r">58</td><td>trung bình hơn 1,900 tin nhắn</td></tr>
+      <tr><td>Nghiên cứu chuyên sâu trong chat</td><td class="bk-table-r">58</td><td>trung bình hơn 1.900 tin nhắn</td></tr>
       <tr><td>Tác vụ giao cho tác nhân</td><td class="bk-table-r">33</td><td>kịch bản nhiều bước, trình kết nối</td></tr>
       <tr><td>Tạo ảnh</td><td class="bk-table-r">21</td><td>hai phần ba đến từ một nhóm</td></tr>
       <tr><td>Hoàn toàn không hoạt động</td><td class="bk-table-r">61</td><td>0 tin nhắn, $0 trong cả kỳ</td></tr>
@@ -216,10 +216,10 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
       <bar k="GitHub" w="40%" color="c-work">210</bar>
       <bar k="Lịch" w="29%" color="c-work">150</bar>
     </b-count-bars>
-    <b-cap>Nguồn: <a href="https://chatgpt.com/admin/usage" target="_blank" rel="noopener">Tổng quan</a> · khối "App interactions"</b-cap>
+    <b-cap>Nguồn: <a href="https://chatgpt.com/admin/usage" target="_blank" rel="noopener">Tổng quan</a> · khối “App interactions”</b-cap>
     <b-finding>
       <ex>Slack và Notion chiếm 70% tổng số kết nối. Mô hình không thấy các hệ thống ngoài danh sách này: hỏi về chúng thì nó trả lời bằng cách đoán.</ex>
-      <gen>Lượng ảo giác giảm ở nơi mô hình có đủ ngữ cảnh cần thiết. Thiếu nó, tác nhân cố tự lấp chỗ trống. Những nhóm có số kết nối bằng không là làm việc với mô hình khi nó mù, và hầu như câu trả lời nào về quy trình của họ cũng là đoán. Dấu hiệu trong phỏng vấn khách hàng: "Tôi phải kiểm tra lại mọi thứ".</gen>
+      <gen>Lượng ảo giác giảm ở nơi mô hình có đủ ngữ cảnh cần thiết. Thiếu nó, tác nhân cố tự lấp chỗ trống. Những nhóm có số kết nối bằng không là làm việc với mô hình khi nó mù, và hầu như câu trả lời nào về quy trình của họ cũng là đoán. Dấu hiệu trong phỏng vấn khách hàng: “Tôi phải kiểm tra lại mọi thứ”.</gen>
       <do>Tìm các nhóm có số kết nối bằng không và hỏi trong phỏng vấn dữ liệu công việc của họ nằm ở đâu. Kết nối một nguồn như vậy rồi so trước và sau trên 10 câu hỏi giống hệt nhau: bao nhiêu câu trả lời sai và bao nhiêu câu dựa trên dữ liệu công việc.</do>
     </b-finding>
   </b-subsection>
@@ -231,7 +231,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
       <bar k="pdf" w="65%" color="c-code">57</bar>
       <bar k="skill-creator" w="33%" color="c-code">29</bar>
     </b-count-bars>
-    <b-cap>Nguồn: <a href="https://chatgpt.com/admin/usage" target="_blank" rel="noopener">Tổng quan</a> · khối "Skills"</b-cap>
+    <b-cap>Nguồn: <a href="https://chatgpt.com/admin/usage" target="_blank" rel="noopener">Tổng quan</a> · khối “Skills”</b-cap>
     <b-finding>
       <ex>Skill bảng tính và PDF có 88 và 57 lượt gọi: các quy trình này đã lặp lại được. 29 lượt gọi skill-creator: một số người đang biến kịch bản của mình thành skill.</ex>
       <gen>Mức trưởng thành của quy trình tăng theo từng bậc: yêu cầu dùng một lần → skill cá nhân → skill dùng chung của nhóm. Ở bậc đầu, kết quả phụ thuộc vào người hỏi và cách hỏi. Với skill thì kết quả lặp lại được: cùng đầu vào cho cùng kết quả. Skill dùng chung giúp quy trình chuyển được sang các nhóm khác.</gen>
@@ -245,9 +245,9 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
       <table><thead>
       <tr><th>Chủ đề</th><th class="bk-table-r">Dự án</th><th>Tác vụ</th><th>Câu hỏi cho tác giả</th></tr>
       </thead><tbody>
-      <tr><td>Bán hàng<b-cell-sub>Pitch library · Elif Demir</b-cell-sub></td><td class="bk-table-r">11</td><td>bài chào hàng, xử lý từ chối, đề xuất thương mại</td><td><b-cell-quote>"Mô hình làm tốt phần nào của bài chào hàng, và bạn viết lại phần nào?"</b-cell-quote></td></tr>
-      <tr><td>Hội nhập nhân viên mới<b-cell-sub>New hire guide · Rafael Costa</b-cell-sub></td><td class="bk-table-r">8</td><td>hướng dẫn cho người mới, trả lời các câu hỏi thường gặp</td><td><b-cell-quote>"Những câu hỏi nào của người mới mà mô hình đã tự xử lý được khi không có bạn?"</b-cell-quote></td></tr>
-      <tr><td>Nghiên cứu thị trường<b-cell-sub>Competitor notes · Jonas Keller</b-cell-sub></td><td class="bk-table-r">5</td><td>tóm tắt đối thủ, so sánh giá</td><td><b-cell-quote>"Bạn lấy dữ liệu từ đâu và nó cũ đi nhanh đến mức nào?"</b-cell-quote></td></tr>
+      <tr><td>Bán hàng<b-cell-sub>Pitch library · Elif Demir</b-cell-sub></td><td class="bk-table-r">11</td><td>bài chào hàng, xử lý từ chối, đề xuất thương mại</td><td><b-cell-quote>“Mô hình làm tốt phần nào của bài chào hàng, và bạn viết lại phần nào?”</b-cell-quote></td></tr>
+      <tr><td>Hội nhập nhân viên mới<b-cell-sub>New hire guide · Rafael Costa</b-cell-sub></td><td class="bk-table-r">8</td><td>hướng dẫn cho người mới, trả lời các câu hỏi thường gặp</td><td><b-cell-quote>“Những câu hỏi nào của người mới mà mô hình đã tự xử lý được khi không có bạn?”</b-cell-quote></td></tr>
+      <tr><td>Nghiên cứu thị trường<b-cell-sub>Competitor notes · Jonas Keller</b-cell-sub></td><td class="bk-table-r">5</td><td>tóm tắt đối thủ, so sánh giá</td><td><b-cell-quote>“Bạn lấy dữ liệu từ đâu và nó cũ đi nhanh đến mức nào?”</b-cell-quote></td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Nguồn: <a href="https://chatgpt.com/admin/usage/projects" target="_blank" rel="noopener">Dự án</a> · tên được nhóm theo ý nghĩa</b-cap>
@@ -275,7 +275,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
     </b-table>
     <b-cap>Nguồn: <a href="https://chatgpt.com/admin/usage/projects" target="_blank" rel="noopener">Dự án</a></b-cap>
     <b-finding>
-      <ex>Dự án "Personal draft" có không tin nhắn nào.</ex>
+      <ex>Dự án “Personal draft” có không tin nhắn nào.</ex>
       <gen>Dự án trống là một lần thử bị bỏ dở: người đó đã bắt đầu nhưng công cụ chưa bao giờ trở thành một phần công việc của họ. Nếu giữ những dự án như vậy, bản tổng hợp theo chủ đề sẽ phóng đại mức sử dụng.</gen>
       <do>Lọc bỏ các dự án có không tin nhắn trước khi đếm và mời 2–3 tác giả của chúng: lý do họ bỏ là một câu trả lời có giá trị.</do>
     </b-finding>
@@ -291,7 +291,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
       <tr><td>Jonas Keller</td><td>jonas@example.com</td><td class="bk-table-r">470</td><td class="bk-table-r">18.80</td></tr>
       </tbody></table>
     </b-table>
-    <b-cap>Nguồn: <a href="https://admin.openai.com" target="_blank" rel="noopener">Bảng xếp hạng</a> · ba bản xuất với các bộ lọc "Product" khác nhau</b-cap>
+    <b-cap>Nguồn: <a href="https://admin.openai.com" target="_blank" rel="noopener">Bảng xếp hạng</a> · ba bản xuất với các bộ lọc “Product” khác nhau</b-cap>
     <b-finding>
       <ex>Ba bản xuất theo sản phẩm cộng lại đúng bằng tổng chi tiêu của từng người trong danh sách.</ex>
       <gen>Ba bản xuất với các bộ lọc Product khác nhau cộng lại bằng tổng chi tiêu của mỗi người. Chênh lệch trên 2% nghĩa là một bản xuất chưa đầy đủ hoặc các kỳ không khớp nhau.</gen>
@@ -304,14 +304,14 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
   <b>Mục tiêu:</b> chỉ ra những người cụ thể cho từng cách hoàn thành tác vụ.
 
   <b-subsection id="candidates" title="Ứng viên phỏng vấn">
-    <b-why>Danh sách ngắn những người cho mỗi hướng đã tìm ra. Ở ví dụ, danh sách cuối cùng là 16 người trong 340; bảng hiện ba người đầu. Công ty của bạn sẽ có con số riêng. Báo cáo ChatGPT chỉ là một trong các nguồn để chọn mẫu: người dùng công cụ khác và những người đã bỏ được thêm theo quy tắc trong bài <a href="/blog/who-to-interview-before-buying-ai-tools/#groups">"Phỏng vấn ai"</a>, còn việc kiểm tra trên toàn bộ nhân viên làm bằng <a href="/blog/ai-interviews-without-leading-questions/#form">bảng khảo sát</a>.</b-why>
+    <b-why>Danh sách ngắn những người cho mỗi hướng đã tìm ra. Ở ví dụ, danh sách cuối cùng là 16 người trong 340; bảng hiện ba người đầu. Công ty của bạn sẽ có con số riêng. Báo cáo ChatGPT chỉ là một trong các nguồn để chọn mẫu: người dùng công cụ khác và những người đã bỏ được thêm theo quy tắc trong bài <a href="/blog/who-to-interview-before-buying-ai-tools/#groups">“Phỏng vấn ai”</a>, còn việc kiểm tra trên toàn bộ nhân viên làm bằng <a href="/blog/ai-interviews-without-leading-questions/#form">bảng khảo sát</a>.</b-why>
     <b-table>
       <table><thead>
       <tr><th>Người</th><th>Hướng</th><th class="bk-table-r">Tín hiệu</th></tr>
       </thead><tbody>
       <tr><td>Hana Sato</td><td><b-status-dot color="c-code">code</b-status-dot></td><td class="bk-table-r">$438 / 3 tháng</td></tr>
       <tr><td>Mira Castellano</td><td><b-status-dot color="c-work">tác vụ giao cho tác nhân</b-status-dot></td><td class="bk-table-r">$97 / 3 tháng</td></tr>
-      <tr><td>Jonas Keller</td><td><b-status-dot color="c-chat">nghiên cứu</b-status-dot></td><td class="bk-table-r">3,200+ tin nhắn</td></tr>
+      <tr><td>Jonas Keller</td><td><b-status-dot color="c-chat">nghiên cứu</b-status-dot></td><td class="bk-table-r">3.200+ tin nhắn</td></tr>
       </tbody></table>
     </b-table>
     <b-cap>Nguồn: các bản xuất người dùng, bảng xếp hạng và dự án, ghép theo email</b-cap>
@@ -338,7 +338,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
     </b-table>
     <b-cap>Nguồn: các bản xuất người dùng, bảng xếp hạng và dự án, ghép theo email</b-cap>
     <b-finding>
-      <ex>Bộ lọc "Nhóm B" và "Công cụ: Work" còn lại hai người: Mira Castellano và Tomás Reid.</ex>
+      <ex>Bộ lọc “Nhóm B” và “Công cụ: Work” còn lại hai người: Mira Castellano và Tomás Reid.</ex>
       <gen>Bảng tất cả mọi người với bộ lọc theo nhóm, mức hoạt động và công cụ chính là nền cho mọi lần chọn mẫu tiếp theo: danh sách cho một câu hỏi mới không cần xuất lại dữ liệu.</gen>
       <do>Lưu mỗi bộ lọc thành một chế độ xem riêng của bảng để danh sách lần sau chỉ cần một cú bấm.</do>
     </b-finding>
@@ -352,7 +352,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
     <item t="Xuất danh sách người dùng và bảng xếp hạng cho ba tháng">Bảng xếp hạng xuất ba lần, mỗi sản phẩm một lần. Tác nhân trình duyệt có thể làm việc xuất này<b-link-chips><item href="https://claude.com/claude-in-chrome" icon="arrow-up-right">Claude in Chrome</item><item href="https://support.google.com/gemini/answer/16821166" icon="arrow-up-right">Gemini in Chrome</item><item href="https://www.perplexity.ai/comet" icon="arrow-up-right">Perplexity Comet</item></b-link-chips></item>
     <item t="Tính công cụ chính và top theo số tiền">Danh sách đầu tiên về những người dùng tích cực nhất đã có</item>
     <item t="Tính mức độ áp dụng">Ít nhất một lần / thường xuyên / hằng tuần, người chỉ làm việc qua Codex được đếm riêng</item>
-    <item t="Lập danh sách người và đặt lịch phỏng vấn">Cách chọn những người này có trong bài "Phỏng vấn ai"</item>
+    <item t="Lập danh sách người và đặt lịch phỏng vấn">Cách chọn những người này có trong bài “Phỏng vấn ai”</item>
   </b-checklist>
   <b-sublabel top="22">Câu hỏi thường gặp</b-sublabel>
   <b-qa>

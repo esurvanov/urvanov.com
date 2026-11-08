@@ -21,7 +21,7 @@ Vòng đối chiếu (reconcile loop) cho đặc tả hoạt động như một 
   <step icon="gauge" sw="1.8" t="Phép đo">test</step>
 </b-hchain>
 <b-chapter id="k8s" title="Cùng một vòng lặp như trong Kubernetes" icon="hub" sw="1.6">
-  <b-why align="left">Kubernetes là hệ thống chạy các dịch vụ và giữ cho chúng hoạt động trên nhiều máy chủ. Ý chính của nó đơn giản: con người mô tả mọi thứ phải như thế nào (“giữ ba bản sao của dịch vụ”), và một chương trình giám sát, controller, liên tục so bản mô tả với thứ đang thực sự tồn tại và sửa những chỗ khác biệt. Đó là vòng đối chiếu. Với đặc tả, sơ đồ này hoạt động như vậy: con người đặt trạng thái mong muốn, và tác nhân có thể đưa code về đó.</b-why>
+  <b-why align="left">Kubernetes là hệ thống chạy các dịch vụ và giữ cho chúng hoạt động trên nhiều máy chủ. Ý chính của nó đơn giản: con người mô tả mọi thứ phải như thế nào (“giữ ba bản sao của dịch vụ”), và một chương trình giám sát, controller, liên tục so bản mô tả với thứ đang thực sự tồn tại và sửa những chỗ khác biệt. Đó là vòng đối chiếu. Với đặc tả, cơ chế này cũng hoạt động như vậy: con người đặt trạng thái mong muốn, và tác nhân có thể đưa code về đó.</b-why>
   <b-why>Trạng thái mong muốn ở đây là <a href="/blog/specs-by-aggregates/">từ điển aggregate</a>: mỗi khái niệm một mục, các yêu cầu được đánh dấu MUST và SHOULD.</b-why>
   <b-k8s-loop label="Kubernetes: chart, controller, node, probe. Đặc tả: từ điển, tác nhân, code, test. Con người chỉ thay đổi trạng thái mong muốn, còn người thực hiện liên tục đối chiếu phép đo với nó." cols="mong muốn | người thực hiện | thực tế | phép đo" human="con người thay đổi trạng thái mong muốn" back="phép đo → người thực hiện, lặp đi lặp lại">
     <b-k8s-row icon="hub" sw="1.6" t="Kubernetes">
@@ -81,8 +81,8 @@ Vòng đối chiếu (reconcile loop) cho đặc tả hoạt động như một 
 <b-chapter id="env" title="Môi trường quyết định vòng lặp có khép lại được không" icon="terminal-screen">
   <b-why align="left">Vòng lặp chỉ khép lại nếu người thực hiện có mọi thứ cần để đối chiếu. Controller của Kubernetes hoạt động được vì cluster cho nó quyền truy cập vào mọi thứ nó cần. Với tác nhân, môi trường này gọi là harness: môi trường xung quanh nó làm việc, với các chương trình, quyền và phép kiểm tra.</b-why>
   <b-env-caps>
-    <side icon="hub" sw="1.6" t="Cluster Kubernetes">nơi controller sống</side>
-    <side icon="terminal-screen" sw="1.8" t="Harness">nơi tác nhân sống</side>
+    <side icon="hub" sw="1.6" t="Cluster Kubernetes">nơi controller hoạt động</side>
+    <side icon="terminal-screen" sw="1.8" t="Harness">nơi tác nhân hoạt động</side>
     <cap icon="play" t="Chạy code">tác nhân đoán chương trình hoạt động thế nào</cap>
     <cap icon="flask" t="Test">không có gì để kiểm tra MUST</cap>
     <cap icon="log-lines" t="Log">không thấy chính xác cái gì hỏng</cap>

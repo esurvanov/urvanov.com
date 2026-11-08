@@ -82,32 +82,32 @@ Tác nhân AI (AI agent) có cướp việc của bạn không? Nó nhận phầ
 </b-finding>
 </b-chapter>
 <b-chapter id="fix" icon="arrow-right" title="Cách bỏ thói quen">
-<b-why align="left">Điểm neo là “cuốn kinh thánh” của dự án: mô tả cố định về sản phẩm và các quy tắc mà tác nhân đọc ở mỗi phiên. Ba mức: quyền truy cập, ghi chú trong cuốn kinh thánh, lời nhắc. <a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">Chi tiết</a></b-why>
+<b-why align="left">Điểm neo là “bible” của dự án: mô tả cố định về sản phẩm và các quy tắc mà tác nhân đọc ở mỗi phiên. Ba mức: quyền truy cập, ghi chú trong bible, lời nhắc. <a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">Chi tiết</a></b-why>
 <b-lane-art names="agent-hands-work-back-to-you/project-bible" top="10"/>
 <b-step-chain>
   <node t="1">Cấp quyền truy cập</node>
-  <node t="2">Ghi vào cuốn kinh thánh</node>
+  <node t="2">Ghi vào bible</node>
   <node t="3">Nhắc bằng một câu</node>
 </b-step-chain>
-<b-section-h3 top="14">Nên ghi gì vào cuốn kinh thánh</b-section-h3>
+<b-section-h3 top="14">Nên ghi gì vào bible</b-section-h3>
 <b-arrow-rows wide>
   <row t="Tác nhân ước lượng thay vì làm" color="accent">Thử trước, ước lượng sau khi thử</row>
   <row t="Thử 2–3 lần không được" color="warn">Chia tác vụ thành các bước, nêu chỗ có thể gặp vấn đề và giải thích vì sao không chạy</row>
-  <row t="Hệ thống của người khác: hộp đen" color="muted">Tìm hiểu bằng thăm dò từ bên ngoài và ghi kết quả vào cuốn kinh thánh để không phải tìm lại</row>
+  <row t="Hệ thống của người khác: hộp đen" color="muted">Tìm hiểu bằng thăm dò từ bên ngoài và ghi kết quả vào bible để không phải tìm lại</row>
   <row t="Cần đăng nhập, bí mật, xác nhận, thanh toán" color="accent">Con người làm phần đó, phần còn lại do tác nhân</row>
 </b-arrow-rows>
-<b-section-h3 top="14">Quy tắc trong cuốn kinh thánh của dự án</b-section-h3>
+<b-section-h3 top="14">Quy tắc trong bible của dự án</b-section-h3>
 <b-code-text wrap>
   Thử trước, ước lượng sau khi thử.
   Nếu thử 2–3 lần không được: chia tác vụ thành các bước, nêu chỗ có thể gặp vấn đề và giải thích vì sao không chạy.
   Tìm hiểu hệ thống của người khác bằng thăm dò từ bên ngoài và ghi kết quả vào đây.
   Nếu tự làm được thì tự làm. Chỉ nhờ người những việc cần đến người: đăng nhập, mật khẩu, xác nhận thao tác ghi, thanh toán.
 </b-code-text>
-<b-why align="left">Cuốn kinh thánh nằm trong các tệp <a href="/materials/glossary/claude-md/">CLAUDE.md</a> và <a href="/materials/glossary/agents-md/">AGENTS.md</a>: tác nhân đọc chúng ở mỗi phiên nhưng coi là ngữ cảnh chứ không phải rào chắn cứng. Quy tắc càng cụ thể và ngắn thì càng chạy đáng tin. Các quy trình lặp lại được đóng gói thành <a href="/materials/glossary/agent-skills/">skill</a>. Thêm về cuốn kinh thánh, quy tắc, đặc tả và skill: <a href="/blog/specs-rules-skills/">Đặc tả, cuốn kinh thánh, quy tắc và skill</a>.</b-why>
+<b-why align="left">Bible nằm trong các tệp <a href="/materials/glossary/claude-md/">CLAUDE.md</a> và <a href="/materials/glossary/agents-md/">AGENTS.md</a>: tác nhân đọc chúng ở mỗi phiên nhưng coi là ngữ cảnh chứ không phải rào chắn cứng. Quy tắc càng cụ thể và ngắn thì càng chạy đáng tin. Các quy trình lặp lại được đóng gói thành <a href="/materials/glossary/agent-skills/">skill</a>. Thêm về bible, quy tắc, đặc tả và skill: <a href="/blog/specs-rules-skills/">Đặc tả, bible, quy tắc và skill</a>.</b-why>
 <b-finding>
   <ex>Tác nhân đã được kết nối với Jira và biết quy tắc. Thay vì “hãy mở Jira”, nó tự đọc tác vụ.</ex>
   <gen>Không có quyền truy cập thì quy tắc không giúp được gì: tác nhân không thể tự làm. Vì vậy kết nối trước, quy tắc sau.</gen>
-  <do k="Việc cần làm">Kết nối nguồn mà tác nhân hay đẩy bạn tới nhất và ghi quy tắc vào cuốn kinh thánh của dự án.</do>
+  <do k="Việc cần làm">Kết nối nguồn mà tác nhân hay đẩy bạn tới nhất và ghi quy tắc vào bible của dự án.</do>
 </b-finding>
 </b-chapter>
 <b-chapter id="human" icon="shield-check" title="Phần ở lại với bạn">

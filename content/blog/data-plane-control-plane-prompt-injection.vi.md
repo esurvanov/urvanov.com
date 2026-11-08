@@ -43,7 +43,7 @@ Mặt phẳng điều khiển là các lệnh bạn đưa cho tác nhân AI (AI 
   <b-why>Mô hình không phân biệt chắc chắn được lệnh với dữ liệu, nên phòng thủ được dựng xung quanh nó: giới hạn những gì tác nhân làm được ngay cả khi bị lừa.</b-why>
   <iso-art name="data-plane-control-plane-prompt-injection/defense"></iso-art>
   <b-rules sw="1.8">
-    <rule icon="key" t="Quyền tối thiểu">Tác nhân đọc văn bản lạ chỉ có quyền chỉ đọc.</rule>
+    <rule icon="key" t="Quyền tối thiểu">Tác nhân đọc văn bản lạ chỉ được cấp quyền đọc.</rule>
     <rule icon="users" t="Duyệt">Thao tác ghi, gửi và xóa phải cho người xem trước khi chạy.</rule>
     <rule icon="git-branch" t="Tách biệt">Một tác nhân đọc văn bản lạ, một tác nhân khác ghi và không bao giờ thấy văn bản đó.</rule>
     <rule icon="shield-check" t="Nguồn tin cậy">Chỉ kết nối các máy chủ đã kiểm tra và chỉ mở cho tác nhân những trang web cần thiết.</rule>

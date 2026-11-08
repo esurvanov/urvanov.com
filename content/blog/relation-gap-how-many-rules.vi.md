@@ -8,7 +8,7 @@ category: research
 layout: wide
 math: true
 mentions: relation gap, group presentation, relation module, Cayley graph, Newman's theorem, one-relator group, Wall's D2 problem, D2 complex, homology, GAP, greatest common divisor, Gruenberg
-toc: video=Video | question=Câu hỏi | paper=Bài báo và tác giả | rules=Hai luật | why=Vì sao chọn trò chơi này | player=Người chơi | accountant=Kế toán | answer=Đáp án | friends=Các bạn | coins=Đồng xu | main=Kết luận | formal=Chính thức | practice=Ứng dụng ở đâu | when=Ai và khi nào | faq=Câu hỏi | next=Đọc tiếp
+toc: video=Video | question=Câu hỏi | paper=Bài báo và tác giả | rules=Hai luật | why=Vì sao chọn trò chơi này | player=Người chơi | accountant=Kế toán | answer=Đáp án | friends=Các bạn | coins=Đồng xu | main=Kết luận | formal=Hình thức hóa | practice=Ứng dụng ở đâu | when=Ai và khi nào | faq=Câu hỏi | next=Đọc tiếp
 ---
 
 Một trò chơi có hai nước đi, bước và nâng, cần hai luật nếu đếm trung thực như người chơi, và chỉ cần một dòng ghi nếu đếm nhanh như kế toán, người ghi luật thành các vòng kín và quên thứ tự các nước đi. Bốn nhà toán học đã giải quyết như vậy câu hỏi về <a href="/materials/glossary/relation-gap/">khoảng trống quan hệ (relation gap)</a> vào tháng 10 năm 2026, sau khi nó bỏ ngỏ từ 1976.
@@ -110,7 +110,7 @@ Một trò chơi có hai nước đi, bước và nâng, cần hai luật nếu 
 
   **Sáu bước là quân cờ về nhà.** Người chơi cần chi tiết này. Trò chơi có một nước đi mà lặp lại vài lần thì về điểm xuất phát. Trong toán học điều này gọi là xoắn (torsion). Với định lý Newman (xem chương về các bạn) đây là điều kiện then chốt.
 
-  **Nửa vòng và cái móc đổi chỗ được cho nhau.** Người chơi cũng cần chi tiết này. Các nước đi đổi chỗ được cho nhau gọi là **bạn**. Nửa vòng có hai bạn: hai bước dọc theo cùng vòng tròn và cái móc. Giữa hai bạn này với nhau thì không phải là bạn, và từ đó suy ra một luật không thể mô tả trò chơi.
+  **Nửa vòng và cái móc đổi chỗ được cho nhau.** Người chơi cũng cần chi tiết này. Các nước đi đổi chỗ được cho nhau gọi là **bạn**. Nửa vòng có hai bạn: hai bước dọc theo cùng vòng tròn và cái móc. Hai bạn này không phải là bạn của nhau, và từ đó suy ra một luật không thể mô tả trò chơi.
 
   **Các số ba và hai.** Kế toán cần chi tiết này. Nửa vòng có ba bước, cái móc có hai bước ở tầng trên, và 3 với 2 không có ước chung. Nhờ vậy hai dòng ghi có thể gộp thành một.
 
@@ -156,7 +156,7 @@ Một trò chơi có hai nước đi, bước và nâng, cần hai luật nếu 
 <b-chapter id="friends" icon="shield-check" title="Vì sao một luật không đủ cho người chơi: các bạn không giao hoán">
   <b-why>Một nước đi gọi là bạn của nước đi đã cho nếu hai nước đi đổi chỗ được cho nhau. Nửa vòng có hai bạn.</b-why>
 
-  Đó là hai bước dọc theo cùng vòng tròn và cái móc. Giữa hai bạn này không phải là bạn: không thể đổi thứ tự của hai nước đi này. Năm 1973 Newman chứng minh một định lý: nếu một trò chơi có **một** luật và có một nước đi quay về điểm xuất phát, như bước sau sáu lần lặp, thì các bạn của một nước đi bất kỳ là bạn của nhau. Bài báo phát biểu chặt hơn: mọi phần tử khác đơn vị của một nhóm một quan hệ có xoắn đều có <a href="/materials/glossary/centralizer/">tâm hóa tử</a> xyclic (tập mọi nước đi đổi chỗ được với nó), tức là gồm các lũy thừa của một nước đi. Trong trò chơi này các bạn của nửa vòng không phải bạn của nhau, nên một luật không thể mô tả nó.
+  Đó là hai bước dọc theo cùng vòng tròn và cái móc. Hai nước đi này không phải là bạn của nhau: không thể đổi thứ tự của chúng. Năm 1973 Newman chứng minh một định lý: nếu một trò chơi có **một** luật và có một nước đi quay về điểm xuất phát, như bước sau sáu lần lặp, thì các bạn của một nước đi bất kỳ là bạn của nhau. Bài báo phát biểu chặt hơn: mọi phần tử khác đơn vị của một nhóm một quan hệ có xoắn đều có <a href="/materials/glossary/centralizer/">tâm hóa tử</a> xyclic (tập mọi nước đi đổi chỗ được với nó), tức là gồm các lũy thừa của một nước đi. Trong trò chơi này các bạn của nửa vòng không phải bạn của nhau, nên một luật không thể mô tả nó.
 
   <b-art names="relation-gap-how-many-rules/friends"/>
   <b-cap>Các bạn của nửa vòng giao hoán với nó, nhưng không giao hoán với nhau. <a href="https://youtu.be/yPvbfDa_GCk?t=175" target="_blank" rel="noopener">▶ 2:55</a></b-cap>
@@ -170,7 +170,7 @@ Một trò chơi có hai nước đi, bước và nâng, cần hai luật nếu 
 <b-chapter id="coins" icon="shield-check" title="Vì sao một dòng ghi là đủ cho kế toán: ba và hai">
   <b-why>Ước chung lớn nhất của ba và hai là một, và điều đó cho phép gộp hai dòng ghi thành một.</b-why>
 
-  Từ ba và hai có thể ra một: ba trừ hai. Như đồng xu 3 và 2 đồng: đưa 3, nhận lại 2 tiền thối, còn lại 1 đồng. <a href="/materials/glossary/gcd/">Ước chung lớn nhất</a> của 3 và 2 là một, nên
+  Từ ba và hai có thể ra một: ba trừ hai. Như đồng xu 3 rúp và 2 rúp: đưa 3, nhận lại 2 tiền thối, còn lại 1 rúp. <a href="/materials/glossary/gcd/">Ước chung lớn nhất</a> của 3 và 2 là một, nên
 
   $$\gcd(3,2)=1=3-2$$
 
@@ -241,7 +241,7 @@ Một trò chơi có hai nước đi, bước và nâng, cần hai luật nếu 
   <b-callout icon="shield-check">**Lưu ý.** Định lý A được chứng minh trọn vẹn và độc lập với OpenAI. Hệ quả B, một phản ví dụ cho bài toán D2 của Wall, dựa vào bản thảo của OpenAI ngày 6 tháng 10 năm 2026, và chính các tác giả gọi nó là có điều kiện. Bài báo chưa được kiểm chứng độc lập.</b-callout>
 </b-chapter>
 
-<b-chapter id="formal" icon="boxes-route" title="Chính thức: cùng con đường bằng ngôn ngữ của bài báo">
+<b-chapter id="formal" icon="boxes-route" title="Hình thức hóa: cùng con đường bằng ngôn ngữ của bài báo">
   <b-why>Phần hai của phim: cùng các bước nhưng có công thức và từ vựng của các nhà toán học. Trước hết là bản đồ tương ứng, sau đó là bảng công thức, rồi phác thảo chứng minh.</b-why>
 
   <b-art names="relation-gap-how-many-rules/dict"/>

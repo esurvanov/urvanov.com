@@ -116,7 +116,7 @@ MCP nối tác nhân AI (AI agent) vào các hệ thống đang làm việc, đ�
 <b-why align="left">Làm tay là ba lệnh: thêm server, đăng nhập qua trình duyệt bằng /mcp và kiểm tra trạng thái. Trạng thái có ba loại: đã kết nối, cần đăng nhập hoặc lỗi. Sơ đồ ở trên cho thấy từng bước, còn các phạm vi bên dưới nói thiết lập được lưu ở đâu.</b-why>
 <b-finding>
   <ex>Tác nhân tự chạy các lệnh và kiểm tra kết nối, và nhiệm vụ PAY-142 được đọc đầy đủ cùng các bình luận. Đó là khoảnh khắc “wow”.</ex>
-  <gen>Kết nối mất vài phút. Phạm vi "Project" đặt thiết lập vào repo để cả nhóm có cùng các server. Cả ba phạm vi được nói trong <a href="/blog/mcp-scopes/">phạm vi MCP trong Claude Code</a>.</gen>
+  <gen>Kết nối mất vài phút. Phạm vi “Project” đặt thiết lập vào repo để cả nhóm có cùng các server. Cả ba phạm vi được nói trong <a href="/blog/mcp-scopes/">phạm vi MCP trong Claude Code</a>.</gen>
   <do k="Việc cần làm">Giao việc thiết lập cho tác nhân và so câu trả lời của nó với những gì bạn tự thấy trong Jira.</do>
 </b-finding>
 </b-chapter>
@@ -200,9 +200,9 @@ MCP nối tác nhân AI (AI agent) vào các hệ thống đang làm việc, đ�
 <b-why>Một cách tiếp cận dùng được cho nhiều nhiệm vụ: tác nhân đọc các nguồn và con người kiểm tra kết quả.</b-why>
 <b-scene names="mcp-agent-access/three-cases"/>
 <b-table>
-<table><thead><tr><th>Tình huống</th><th>Nguồn</th><th>Tác nhân làm gì</th><th>Con người kiểm tra gì</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, môi trường thử, trình duyệt</td><td>tái hiện lỗi, thu hẹp đường đi, viết báo cáo</td><td>các bước bằng tay trên môi trường thử</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Báo cáo và phân tích</a></td><td>cơ sở dữ liệu, bảng tính, tài liệu</td><td>tính bằng truy vấn, lập bản tổng hợp</td><td>một con số bằng cách khác</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Sự cố</a></td><td>Sentry, Grafana</td><td>đối chiếu lỗi, chỉ số và thời điểm phát hành</td><td>giả thuyết với biểu đồ và sự kiện</td></tr></tbody></table>
+<table><thead><tr><th>Tình huống</th><th>Nguồn</th><th>Tác nhân làm gì</th><th>Con người kiểm tra gì</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, môi trường kiểm thử, trình duyệt</td><td>tái hiện lỗi, thu hẹp đường đi, viết báo cáo</td><td>các bước bằng tay trên môi trường kiểm thử</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Báo cáo và phân tích</a></td><td>cơ sở dữ liệu, bảng tính, tài liệu</td><td>tính bằng truy vấn, lập bản tổng hợp</td><td>một con số bằng cách khác</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Sự cố</a></td><td>Sentry, Grafana</td><td>đối chiếu lỗi, chỉ số và thời điểm phát hành</td><td>giả thuyết với biểu đồ và sự kiện</td></tr></tbody></table>
 </b-table>
-<b-why align="left">Cách đọc bảng. Mỗi hàng theo một trình tự: tác nhân đọc các nguồn, làm phần việc chính và đưa ra kết quả, còn con người kiểm tra bằng một thao tác ngắn. Trong QA, các bước của báo cáo được lặp lại bằng tay trên môi trường thử. Trong phân tích, một con số được tính lại bằng cách khác. Trong sự cố, giả thuyết được so với biểu đồ và sự kiện. Chi tiết có trong các bài sau các liên kết.</b-why>
+<b-why align="left">Cách đọc bảng. Mỗi hàng theo một trình tự: tác nhân đọc các nguồn, làm phần việc chính và đưa ra kết quả, còn con người kiểm tra bằng một thao tác ngắn. Trong QA, các bước của báo cáo được lặp lại bằng tay trên môi trường kiểm thử. Trong phân tích, một con số được tính lại bằng cách khác. Trong sự cố, giả thuyết được so với biểu đồ và sự kiện. Chi tiết có trong các bài sau các liên kết.</b-why>
 </b-chapter>
 <b-chapter id="faq" icon="chat" title="Câu hỏi thường gặp">
   <b-faq-cards>

@@ -28,7 +28,7 @@ Nói chuyện với ai trước khi mua
 
 
 
-Việc bộ công cụ hiện tại chưa tối ưu ở đâu đó là một giả định: báo cáo và các cuộc phỏng vấn dùng để kiểm chứng nó. "Chưa tối ưu" được tách thành các dấu hiệu có thể kiểm tra. Kết luận "không cần công cụ mới" cũng là một kết quả.
+Việc bộ công cụ hiện tại chưa tối ưu ở đâu đó là một giả định: báo cáo và các cuộc phỏng vấn dùng để kiểm chứng nó. “Chưa tối ưu” được tách thành các dấu hiệu có thể kiểm tra. Kết luận “không cần công cụ mới” cũng là một kết quả.
 
 | Dấu hiệu | Biểu hiện | Nhóm trong phỏng vấn | Báo cáo cho thấy ở đâu |
 |---|---|---|---|
@@ -73,7 +73,7 @@ Các lựa chọn triển vọng, thử trên tác vụ thật cùng nhân viên
 
 Quyết định
 
-Người nắm ngân sách quyết định theo sáu dấu hiệu ở trên: chất lượng, thời gian và sửa tay, khả năng lặp lại, quy mô, truy cập dữ liệu, chi phí; "không cần công cụ mới" là một kết quả hợp lệ
+Người nắm ngân sách quyết định theo sáu dấu hiệu ở trên: chất lượng, thời gian và sửa tay, khả năng lặp lại, quy mô, truy cập dữ liệu, chi phí; “không cần công cụ mới” là một kết quả hợp lệ
 
 Đầu vào
 
@@ -95,7 +95,7 @@ Năm bước từ xuất dữ liệu đến danh sách người hoàn chỉnh.
 
 Xuất dữ liệu
 
-Năm mục của bảng quản trị, chi tiết ở phần "Lấy dữ liệu ở đâu"
+Năm mục của bảng quản trị, chi tiết ở phần “Lấy dữ liệu ở đâu”
 
 2
 
@@ -137,7 +137,7 @@ chatgpt.com/admin/usage/users
 
 Tin nhắn, ngày hoạt động và công cụ tích hợp của từng người
 
-iChứa gì Xuất CSV cho kỳ tối đa 12 tháng. Các trường: messages, tool_messages, gpt_messages, project_messages, department, groups, seat_type, last_day_active. Bảng quản trị tự gắn huy hiệu cho "power user".
+iChứa gì Xuất CSV cho kỳ tối đa 12 tháng. Các trường: messages, tool_messages, gpt_messages, project_messages, department, groups, seat_type, last_day_active. Bảng quản trị tự gắn huy hiệu cho “power user”.
 
 Bảng xếp hạng
 
@@ -145,7 +145,7 @@ admin.openai.com → Analytics → Leaderboard
 
 Chi tiêu, token và số dòng code của từng người, tách riêng cho các sản phẩm Chat, Work và Codex
 
-iChứa gì Nút xuất cạnh tiêu đề → "User ranking", CSV hoặc JSON. Các trường: Name, Email, Credits, Estimated costs, Tokens, Lines of code. Bộ lọc "Product" thay đổi nội dung bản xuất. Lịch sử khoảng 120 ngày.
+iChứa gì Nút xuất cạnh tiêu đề → “User ranking”, CSV hoặc JSON. Các trường: Name, Email, Credits, Estimated costs, Tokens, Lines of code. Bộ lọc “Product” thay đổi nội dung bản xuất. Lịch sử khoảng 120 ngày.
 
 Dự án
 
@@ -161,7 +161,7 @@ chatgpt.com/admin/usage
 
 Trợ lý được nối với những ứng dụng nào và mọi người dùng những skill nào
 
-iChứa gì Hai khối "App interactions" và "Skills": số lần gọi từng trình kết nối và từng skill trong kỳ đã chọn.
+iChứa gì Hai khối “App interactions” và “Skills”: số lần gọi từng trình kết nối và từng skill trong kỳ đã chọn.
 
 Phân tích: tác vụ
 
@@ -195,13 +195,13 @@ Nguồn: Người dùng · Bảng xếp hạng cho những người chỉ làm v
 
 **Kết luận:**
 
-**Trong ví dụ này:** 82% số người đã thử công cụ, 47% dùng nó trong công việc và với 21% nó đã thành thói quen hằng tuần. Chỗ còn có thể làm sâu thêm là 97 người ở nhóm "thỉnh thoảng".
+**Trong ví dụ này:** 82% số người đã thử công cụ, 47% dùng nó trong công việc và với 21% nó đã thành thói quen hằng tuần. Chỗ còn có thể làm sâu thêm là 97 người ở nhóm “thỉnh thoảng”.
 
-**Nói chung:** Khoảng cách giữa "đã thử" và "dùng hằng tuần" cho thấy có bao nhiêu người dừng lại sau vài lần thử đầu. Mốc tham chiếu cho việc áp dụng đại trà là 50–70% nhân viên dùng trong công việc hằng ngày. Khi chưa đạt mốc đó, mua thêm giấy phép sẽ không tạo ra tăng trưởng: có thứ gì khác ngoài quyền truy cập đang cản mọi người.
+**Nói chung:** Khoảng cách giữa “đã thử” và “dùng hằng tuần” cho thấy có bao nhiêu người dừng lại sau vài lần thử đầu. Mốc tham chiếu cho việc áp dụng đại trà là 50–70% nhân viên dùng trong công việc hằng ngày. Khi chưa đạt mốc đó, mua thêm giấy phép sẽ không tạo ra tăng trưởng: có thứ gì khác ngoài quyền truy cập đang cản mọi người.
 
-**Bước tiếp theo:** Dồn đào tạo vào nhóm lớn nhất nằm giữa "đã thử" và "hằng tuần": nhóm này cho mức tăng nhanh nhất ở việc dùng thường xuyên. Sau đào tạo, tính lại phân bổ để xem mọi người đã chuyển đi đâu.
+**Bước tiếp theo:** Dồn đào tạo vào nhóm lớn nhất nằm giữa “đã thử” và “hằng tuần”: nhóm này cho mức tăng nhanh nhất ở việc dùng thường xuyên. Sau đào tạo, tính lại phân bổ để xem mọi người đã chuyển đi đâu.
 
-**Quan trọng.** Chọn 5–10 người từ nhóm "thỉnh thoảng", hỏi qua phỏng vấn xem hiện giờ họ hoàn thành việc bằng cách nào, rồi cùng họ xem lại các ca công việc thật. Sau buổi xem lại, tính lại tỷ lệ dùng hằng tuần. Cách hỏi mà không gợi ý sẵn đáp án có trong bài "Cách phỏng vấn mọi người về việc dùng AI".
+**Quan trọng.** Chọn 5–10 người từ nhóm “thỉnh thoảng”, hỏi qua phỏng vấn xem hiện giờ họ hoàn thành việc bằng cách nào, rồi cùng họ xem lại các ca công việc thật. Sau buổi xem lại, tính lại tỷ lệ dùng hằng tuần. Cách hỏi mà không gợi ý sẵn đáp án có trong bài “Cách phỏng vấn mọi người về việc dùng AI”.
 
 ### Độ đồng đều
 
@@ -243,7 +243,7 @@ Trong ba công cụ, công cụ nào chiếm hơn một nửa chi tiêu của m�
 
 340 người, cửa sổ 3 tháng
 
-Nguồn: Bảng xếp hạng · ba bản xuất: bộ lọc "Product" = Chat, Work, Codex
+Nguồn: Bảng xếp hạng · ba bản xuất: bộ lọc “Product” = Chat, Work, Codex
 
 **Kết luận:**
 
@@ -286,7 +286,7 @@ Các nhóm chia theo cường độ hành vi, dựng từ nhiều bản xuất: 
 | Nhóm hành vi | Số người | Chi tiết |
 |---|---|---|
 | Viết code ở bất kỳ sản phẩm nào | 44 | 19 người trong số đó không thuộc nhóm kỹ thuật |
-| Nghiên cứu chuyên sâu trong chat | 58 | trung bình hơn 1,900 tin nhắn |
+| Nghiên cứu chuyên sâu trong chat | 58 | trung bình hơn 1.900 tin nhắn |
 | Tác vụ giao cho tác nhân | 33 | kịch bản nhiều bước, trình kết nối |
 | Tạo ảnh | 21 | hai phần ba đến từ một nhóm |
 | Hoàn toàn không hoạt động | 61 | 0 tin nhắn, $0 trong cả kỳ |
@@ -317,13 +317,13 @@ GitHub 210
 
 Lịch 150
 
-Nguồn: Tổng quan · khối "App interactions"
+Nguồn: Tổng quan · khối “App interactions”
 
 **Kết luận:**
 
 **Trong ví dụ này:** Slack và Notion chiếm 70% tổng số kết nối. Mô hình không thấy các hệ thống ngoài danh sách này: hỏi về chúng thì nó trả lời bằng cách đoán.
 
-**Nói chung:** Lượng ảo giác giảm ở nơi mô hình có đủ ngữ cảnh cần thiết. Thiếu nó, tác nhân cố tự lấp chỗ trống. Những nhóm có số kết nối bằng không là làm việc với mô hình khi nó mù, và hầu như câu trả lời nào về quy trình của họ cũng là đoán. Dấu hiệu trong phỏng vấn khách hàng: "Tôi phải kiểm tra lại mọi thứ".
+**Nói chung:** Lượng ảo giác giảm ở nơi mô hình có đủ ngữ cảnh cần thiết. Thiếu nó, tác nhân cố tự lấp chỗ trống. Những nhóm có số kết nối bằng không là làm việc với mô hình khi nó mù, và hầu như câu trả lời nào về quy trình của họ cũng là đoán. Dấu hiệu trong phỏng vấn khách hàng: “Tôi phải kiểm tra lại mọi thứ”.
 
 **Bước tiếp theo:** Tìm các nhóm có số kết nối bằng không và hỏi trong phỏng vấn dữ liệu công việc của họ nằm ở đâu. Kết nối một nguồn như vậy rồi so trước và sau trên 10 câu hỏi giống hệt nhau: bao nhiêu câu trả lời sai và bao nhiêu câu dựa trên dữ liệu công việc.
 
@@ -337,7 +337,7 @@ pdf 57
 
 skill-creator 29
 
-Nguồn: Tổng quan · khối "Skills"
+Nguồn: Tổng quan · khối “Skills”
 
 **Kết luận:**
 
@@ -353,9 +353,9 @@ Bản tổng hợp nhóm các dự án theo ý nghĩa và cho thấy những tá
 
 | Chủ đề | Dự án | Tác vụ | Câu hỏi cho tác giả |
 |---|---|---|---|
-| Bán hàng (Pitch library · Elif Demir) | 11 | bài chào hàng, xử lý từ chối, đề xuất thương mại | "Mô hình làm tốt phần nào của bài chào hàng, và bạn viết lại phần nào?" |
-| Hội nhập nhân viên mới (New hire guide · Rafael Costa) | 8 | hướng dẫn cho người mới, trả lời các câu hỏi thường gặp | "Những câu hỏi nào của người mới mà mô hình đã tự xử lý được khi không có bạn?" |
-| Nghiên cứu thị trường (Competitor notes · Jonas Keller) | 5 | tóm tắt đối thủ, so sánh giá | "Bạn lấy dữ liệu từ đâu và nó cũ đi nhanh đến mức nào?" |
+| Bán hàng (Pitch library · Elif Demir) | 11 | bài chào hàng, xử lý từ chối, đề xuất thương mại | “Mô hình làm tốt phần nào của bài chào hàng, và bạn viết lại phần nào?” |
+| Hội nhập nhân viên mới (New hire guide · Rafael Costa) | 8 | hướng dẫn cho người mới, trả lời các câu hỏi thường gặp | “Những câu hỏi nào của người mới mà mô hình đã tự xử lý được khi không có bạn?” |
+| Nghiên cứu thị trường (Competitor notes · Jonas Keller) | 5 | tóm tắt đối thủ, so sánh giá | “Bạn lấy dữ liệu từ đâu và nó cũ đi nhanh đến mức nào?” |
 
 Nguồn: Dự án · tên được nhóm theo ý nghĩa
 
@@ -385,7 +385,7 @@ Nguồn: Dự án
 
 **Kết luận:**
 
-**Trong ví dụ này:** Dự án "Personal draft" có không tin nhắn nào.
+**Trong ví dụ này:** Dự án “Personal draft” có không tin nhắn nào.
 
 **Nói chung:** Dự án trống là một lần thử bị bỏ dở: người đó đã bắt đầu nhưng công cụ chưa bao giờ trở thành một phần công việc của họ. Nếu giữ những dự án như vậy, bản tổng hợp theo chủ đề sẽ phóng đại mức sử dụng.
 
@@ -401,7 +401,7 @@ Bản xuất thanh toán theo từng người và từng sản phẩm. Công c�
 | Mira Castellano | mira@example.com | 2,425 | 97.00 |
 | Jonas Keller | jonas@example.com | 470 | 18.80 |
 
-Nguồn: Bảng xếp hạng · ba bản xuất với các bộ lọc "Product" khác nhau
+Nguồn: Bảng xếp hạng · ba bản xuất với các bộ lọc “Product” khác nhau
 
 **Kết luận:**
 
@@ -417,13 +417,13 @@ Nguồn: Bảng xếp hạng · ba bản xuất với các bộ lọc "Product" 
 
 ### Ứng viên phỏng vấn
 
-Danh sách ngắn những người cho mỗi hướng đã tìm ra. Ở ví dụ, danh sách cuối cùng là 16 người trong 340; bảng hiện ba người đầu. Công ty của bạn sẽ có con số riêng. Báo cáo ChatGPT chỉ là một trong các nguồn để chọn mẫu: người dùng công cụ khác và những người đã bỏ được thêm theo quy tắc trong bài "Phỏng vấn ai", còn việc kiểm tra trên toàn bộ nhân viên làm bằng bảng khảo sát.
+Danh sách ngắn những người cho mỗi hướng đã tìm ra. Ở ví dụ, danh sách cuối cùng là 16 người trong 340; bảng hiện ba người đầu. Công ty của bạn sẽ có con số riêng. Báo cáo ChatGPT chỉ là một trong các nguồn để chọn mẫu: người dùng công cụ khác và những người đã bỏ được thêm theo quy tắc trong bài “Phỏng vấn ai”, còn việc kiểm tra trên toàn bộ nhân viên làm bằng bảng khảo sát.
 
 | Người | Hướng | Tín hiệu |
 |---|---|---|
 | Hana Sato | code | $438 / 3 tháng |
 | Mira Castellano | tác vụ giao cho tác nhân | $97 / 3 tháng |
-| Jonas Keller | nghiên cứu | 3,200+ tin nhắn |
+| Jonas Keller | nghiên cứu | 3.200+ tin nhắn |
 
 Nguồn: các bản xuất người dùng, bảng xếp hạng và dự án, ghép theo email
 
@@ -450,7 +450,7 @@ Nguồn: các bản xuất người dùng, bảng xếp hạng và dự án, gh�
 
 **Kết luận:**
 
-**Trong ví dụ này:** Bộ lọc "Nhóm B" và "Công cụ: Work" còn lại hai người: Mira Castellano và Tomás Reid.
+**Trong ví dụ này:** Bộ lọc “Nhóm B” và “Công cụ: Work” còn lại hai người: Mira Castellano và Tomás Reid.
 
 **Nói chung:** Bảng tất cả mọi người với bộ lọc theo nhóm, mức hoạt động và công cụ chính là nền cho mọi lần chọn mẫu tiếp theo: danh sách cho một câu hỏi mới không cần xuất lại dữ liệu.
 
@@ -466,7 +466,7 @@ Tính công cụ chính và top theo số tiền Danh sách đầu tiên về nh
 
 **Tính mức độ áp dụng:** Ít nhất một lần / thường xuyên / hằng tuần, người chỉ làm việc qua Codex được đếm riêng
 
-Lập danh sách người và đặt lịch phỏng vấn Cách chọn những người này có trong bài "Phỏng vấn ai"
+Lập danh sách người và đặt lịch phỏng vấn Cách chọn những người này có trong bài “Phỏng vấn ai”
 
 ## Đọc tiếp
 

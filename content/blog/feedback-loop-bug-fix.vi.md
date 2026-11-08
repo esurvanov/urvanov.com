@@ -105,7 +105,7 @@ Vòng phản hồi lỗi ngắn hoạt động như sau: nhân viên gửi lỗi
 | Wix | tác nhân thu thập ngữ cảnh, viết và kiểm tra bản sửa, con người duyệt | vài tuần → vài giờ |
 | Salesforce | một mô hình phân tích lỗi của khách hàng | ~300 ngày công → dưới một tuần |
 | Metaview | tác nhân phân tích sự cố, con người kiểm tra | 30–45 phút → ~5 phút |
-| LaunchDarkly | tác nhân tìm lỗi và mở bản sửa | ~40% lỗi duy nhất đã có bản sửa |
+| LaunchDarkly | tác nhân tìm lỗi và mở bản sửa | ~40% lỗi không trùng lặp đã có bản sửa |
 | Ramp + Jam | báo cáo kèm ảnh chụp và tự động thu thập ngữ cảnh | 15–20 phút → vài giây mỗi báo cáo |
   </b-table>
   <b-metric-line value="23 / 25">báo cáo đã đóng trong tracker tích hợp sẵn của một ứng dụng đang chạy</b-metric-line>

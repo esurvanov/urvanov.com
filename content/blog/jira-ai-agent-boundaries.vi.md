@@ -62,7 +62,7 @@ Tác nhân AI (AI agent) kết nối với Jira qua MCP. Nó làm tốt việc l
     <rule icon="file-x" t="Issue một dòng">Nhân viên không chuyên kỹ thuật không ghi các bước, log hay trạng thái màn hình</rule>
     <rule icon="shield-alert" t="Bị đánh lừa qua văn bản">Một issue từ người dùng bên ngoài khiến tác nhân làm lộ dữ liệu nội bộ</rule>
     <rule icon="key" t="Token quá rộng">Token kiểu cũ cho toàn quyền truy cập tài khoản; Jira có khoảng 380 phạm vi quyền</rule>
-    <rule icon="clock" t="Giới hạn">Lỗi "Too many requests" sau khoảng 20 lệnh gọi song song</rule>
+    <rule icon="clock" t="Giới hạn">Lỗi “Too many requests” sau khoảng 20 lệnh gọi song song</rule>
   </b-rules>
   <b-finding>
     <ex>Tác nhân thừa hưởng mọi khiếm khuyết của ticket: nếu issue thiếu một dữ kiện thì tác nhân không thể tự biết được.</ex>
