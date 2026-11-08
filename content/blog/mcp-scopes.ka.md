@@ -1,8 +1,8 @@
 ---
-title: MCP scope-ები Claude Code-ში: local, project და user — სად ცხოვრობს სერვერი და ვის ხედავს
+title: MCP scope-ები Claude Code-ში: local, project და user — სად ცხოვრობს სერვერი და ვინ ხედავს მას
 date: 2026-10-05
 updated: 2026-11-08
-description: MCP სერვერის სამი scope Claude Code-ში: local, project და user. სად ინახება კონფიგურაცია, ვის ხედავს, რომელი იმარჯვებს სახელების დამთხვევისას, როგორ გავუზიაროთ სერვერები გუნდს და როგორ არ მოხვდეს საიდუმლოები commit-ებში.
+description: MCP სერვერის სამი scope Claude Code-ში: local, project და user. სად ინახება კონფიგურაცია, ვინ ხედავს მას, რომელი იმარჯვებს სახელების დამთხვევისას, როგორ გავუზიაროთ სერვერები გუნდს და როგორ არ მოხვდეს საიდუმლოები commit-ებში.
 tags: AI, აგენტები, MCP, Claude Code, გუნდი, harness
 category: harness
 layout: wide

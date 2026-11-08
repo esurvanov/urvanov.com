@@ -14,7 +14,7 @@ toc: growth=რატომ გროვდება სპეციფიკა
 სპეციფიკაციები აგრეგატების მიხედვით ნიშნავს ერთ ჩანაწერს თითო საგნობრივ ცნებაზე, მაგალითად ჯავშანზე ან შეკვეთაზე, და არა ცალკე სპეციფიკაციას თითო ფიჩაზე. ფიჩა მოთხოვნებს მხოლოდ სწორ ჩანაწერს უმატებს, ამიტომ ფაილები ყოველ ამოცანასთან ერთად არ მრავლდება და ცნება სხვადასხვა სპეციფიკაციაში არ იცვლება. მოთხოვნები RFC დონეებს იყენებს: MUST ტესტით მოწმდება, SHOULD — რევიუზე. ქვემოთ აგრეგატის ბარათი და კონტექსტების საზღვრებია.
 
 <b-post series="agg">
-<b-hchain label="Chain: bounded context, aggregate, MUST-level invariant, check">
+<b-hchain label="ჯაჭვი: bounded context, აგრეგატი, MUST დონის ინვარიანტი, შემოწმება">
   <step icon="workflow" sw="1.8" t="კონტექსტი">booking</step>
   <step icon="cube" t="აგრეგატი">Reservation</step>
   <step icon="list-check" sw="1.8" t="ინვარიანტი">MUST</step>
@@ -56,7 +56,7 @@ toc: growth=რატომ გროვდება სპეციფიკა
   </b-finding>
 </b-chapter>
 <b-chapter id="card" title="აგრეგატის ბარათი" icon="card-lines">
-  <b-aggregate-card label="Example entry for the Reservation aggregate in the booking context: address, invariants, commands, access, links and the feature spec">
+  <b-aggregate-card label="ჩანაწერის მაგალითი Reservation აგრეგატისთვის booking კონტექსტში: მისამართი, ინვარიანტები, ბრძანებები, წვდომა, ბმები და ფიჩის სპეციფიკაცია">
     <field icon="id-card" t="მისამართი: კონტექსტი::სახელი">## [booking::Reservation]&#10;Class: aggregate&#10;Description: ინტერვალზე დაჯავშნილი სათათბირო ოთახი.</field>
     <field icon="list-check" sw="1.8" t="მოთხოვნები → შემოწმებები">Invariants:&#10;  - MUST: ოთახის აქტიური ჯავშნები არასდროს იკვეთება&#10;  - MUST: held → confirmed → closed, მხოლოდ წინ&#10;  - MUST: held დაუდასტურებელი 15 წთ → closed&#10;  - SHOULD: დადასტურება იმავე არხით, საიდანაც შეიქმნა</field>
     <field icon="play" t="შეცვლის ერთადერთი გზა">Commands: HoldRoom, ConfirmReservation,&#10;          CancelReservation</field>
