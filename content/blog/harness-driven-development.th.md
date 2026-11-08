@@ -36,24 +36,24 @@ toc: loop=วงจร HDD | canons=ผัง 3 × 3 | double=วงจรสอ
     <column icon="sun" t="Skill">ลงมืออย่างไร</column>
     <column icon="database" t="Memory">พึ่งอะไร</column>
     <row icon="target" t="Expectation">สิ่งที่ควรเป็น</row>
-    <cell>genres, schemas | requirement levels | number passport</cell>
-    <cell>prediction before acting</cell>
-    <cell>actuator roles | live · MCP</cell>
+    <cell>ประเภทของ spec, schema | ระดับข้อกำหนด | พาสปอร์ตตัวเลข</cell>
+    <cell>คาดการณ์ก่อนลงมือ</cell>
+    <cell>บทบาทของ actuator | live · MCP</cell>
     <row icon="eye" t="Observation">สิ่งที่วัดได้</row>
-    <cell>evidence rank | finding format | scale</cell>
-    <cell>sensor records the fact</cell>
-    <cell>live only</cell>
+    <cell>ลำดับชั้นหลักฐาน | รูปแบบข้อค้นพบ | สเกล</cell>
+    <cell>sensor บันทึกข้อเท็จจริง</cell>
+    <cell>live เท่านั้น</cell>
     <row icon="refresh-cw" t="Loop">เทียบและตัดสินใจ</row>
-    <cell>rule completeness criteria | findings registry</cell>
-    <cell>compare | count repeats | patch or revise</cell>
+    <cell>เกณฑ์ความครบของกฎ | ทะเบียนข้อค้นพบ</cell>
+    <cell>เทียบ | นับครั้งที่ซ้ำ | patch หรือทบทวน</cell>
     <cell empty>ว่างไว้ก่อน</cell>
   </b-hdd-matrix>
-  <b-hdd-fanin label="Expectation + Observation → Loop → patch / revise rules">
+  <b-hdd-fanin label="Expectation + Observation → Loop → patch / ทบทวนกฎ">
     <in icon="target">Expectation</in>
     <in icon="eye">Observation</in>
     <mid icon="refresh-cw" note="✕ ไม่มีลิงก์ย้อนกลับ">Loop</mid>
     <out>patch</out>
-    <out alt>revise rules</out>
+    <out alt>ทบทวนกฎ</out>
     <note from="sun" to="book">skill → spec ของโดเมนตัวเอง · สคริปต์ commit hook ตรวจทิศทาง</note>
   </b-hdd-fanin>
   <b-hdd-modes>
@@ -95,11 +95,11 @@ toc: loop=วงจร HDD | canons=ผัง 3 × 3 | double=วงจรสอ
     <column icon="arrow-right" t="Guide">ก่อนลงมือ</column>
     <column icon="eye" t="Sensor">หลังลงมือ</column>
     <row icon="cpu" t="แบบคำนวณได้" speed="3">เร็ว · เชื่อถือได้</row>
-    <cell>types | code templates | generators</cell>
-    <cell>tests | linter | type checking</cell>
+    <cell>ชนิดข้อมูล | แม่แบบโค้ด | ตัวสร้างโค้ด</cell>
+    <cell>เทสต์ | linter | การตรวจชนิดข้อมูล</cell>
     <row icon="sparkle-4" t="แบบ AI" speed="1">ยืดหยุ่น · แพงกว่า</row>
-    <cell>AGENTS.md · CLAUDE.md | skills | specs</cell>
-    <cell>AI review | LLM judge</cell>
+    <cell>AGENTS.md · CLAUDE.md | skill | spec</cell>
+    <cell>การรีวิวด้วย AI | LLM ผู้ตัดสิน</cell>
   </b-hdd-matrix>
   <b-cap>การแบ่งตามที่อธิบายใน <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler: Harness engineering</a></b-cap>
   <b-finding>

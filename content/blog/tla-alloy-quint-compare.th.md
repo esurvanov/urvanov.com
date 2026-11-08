@@ -2,8 +2,8 @@
 title: TLA+ vs Quint vs Alloy: เลือกภาษาตรวจสอบเชิงรูปนัยตัวไหน
 date: 2026-10-25
 updated: 2026-11-08
-description: TLA+ vs Alloy vs Quint: แต่ละภาษาอธิบายอะไร เขียนอย่างไร ใครตรวจ และเหมาะกับใคร ตั้งแต่ลำดับเหตุการณ์ไปจนถึงความสัมพันธ์ของข้อมูล
-tags: AI, specs, TLA+, Alloy, Quint, การตรวจสอบเชิงรูปนัย, model checking, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
+description: TLA+ vs Alloy vs Quint: แต่ละภาษาอธิบายอะไร เขียนอย่างไร ตรวจด้วยโปรแกรมอะไร และเหมาะกับใคร ตั้งแต่ลำดับเหตุการณ์ไปจนถึงความสัมพันธ์ของข้อมูล
+tags: AI, spec, TLA+, Alloy, Quint, การตรวจสอบเชิงรูปนัย, model checking, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide
 mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, model checking, formal specification, formal methods, TLA+ vs Alloy vs Quint, Leslie Lamport

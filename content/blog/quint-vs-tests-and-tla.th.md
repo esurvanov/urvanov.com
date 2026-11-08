@@ -3,7 +3,7 @@ title: การตรวจสอบแบบจำลองต่างจา�
 date: 2026-10-25
 updated: 2026-11-08
 description: การทดสอบตรวจสถานการณ์ที่คิดไว้ การตรวจสอบแบบจำลองลองทุกลำดับของการกระทำ QUnit, Jest, Vitest จับอะไรได้ และ Quint, TLA+, Alloy จับอะไรได้
-tags: AI, specs, Quint, TLA+, Alloy, QUnit, Jest, Vitest, การทดสอบ, การตรวจสอบเชิงรูปนัย
+tags: AI, spec, Quint, TLA+, Alloy, QUnit, Jest, Vitest, การทดสอบ, การตรวจสอบเชิงรูปนัย
 category: specs
 layout: wide
 mentions: Quint, QUnit, Jest, Vitest, TLA+, Alloy, Apalache, model checking, formal verification, Quint vs QUnit, test framework

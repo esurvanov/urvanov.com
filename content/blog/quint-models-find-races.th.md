@@ -3,7 +3,7 @@ title: วิธีหา race condition ในโค้ด: โมเดล Qui
 date: 2026-10-25
 updated: 2026-11-08
 description: วิธีหา race condition ในโค้ด โมเดล Quint ลองทุกลำดับของการกระทำและแสดงสายขั้นตอนที่กฎถูกฝ่าฝืน พร้อมตัวอย่างและข้อจำกัด
-tags: AI, ข้อกำหนด, Quint, formal verification, การทดสอบ, harness, race condition, model checking, data race
+tags: AI, ข้อกำหนด, Quint, การตรวจสอบเชิงรูปนัย, การทดสอบ, harness, race condition, model checking, data race
 category: specs
 layout: wide
 mentions: Quint, Apalache, TLA+, model checking, formal verification, race condition, lost data, Claude Code, hooks, spec-driven development
@@ -185,12 +185,12 @@ race condition หาได้โดยตรวจทุกลำดับท�
   <b-art names="quint-models-find-races/agent" wide/>
   <b-why align="left">**1. ติดตั้ง Quint** เอเจนต์ติดตั้งเองผ่าน npm<b-proof href="https://github.com/informalsystems/quint" quote="The quickest way to install Quint is using npm."/></b-why>
   <b-prompt>
-    Install Quint for yourself and make sure it runs.
+    ติดตั้ง Quint ให้ตัวเอง แล้วตรวจว่ารันได้
   </b-prompt>
   <b-why align="left">**2. ข้อกำหนดก่อน ไม่ใช่โค้ด** วิธีนี้ทำให้ [เอเจนต์](/materials/glossary/ai-agent/) อธิบายโลกก่อนแล้วจึงแก้โค้ด</b-why>
   <b-prompt>
-    Do not change the code. Make requirements in Quint for [area].
-    For each rule show two versions: as it is now and as it should be.
+    อย่าเปลี่ยนโค้ด เขียนข้อกำหนดใน Quint สำหรับ [ส่วนงาน]
+    สำหรับแต่ละกฎ ให้แสดงสองเวอร์ชัน: ตามที่เป็นอยู่ตอนนี้ และตามที่ควรเป็น
   </b-prompt>
   <b-why align="left">**3. ตรวจผลลัพธ์**</b-why>
   <b-rules cols="2">
@@ -201,9 +201,9 @@ race condition หาได้โดยตรวจทุกลำดับท�
   </b-rules>
   <b-why align="left">**4. ตรรกะกับหน้าจอแยกกัน** โดยปริยายเอเจนต์ปะปนสองอย่างนี้ มันเขียนกฎของหน้าจอเป็นตรรกะ และข้ามกรณีในตรรกะ</b-why>
   <b-prompt>
-    Make two lists of requirements.
-    1. Logic: only "always" and "never", checked by a Quint model.
-    2. Screen: clarity and convenience, which I will check myself on a mockup.
+    ทำรายการข้อกำหนดสองรายการ
+    1. ตรรกะ: เฉพาะ "เสมอ" และ "ไม่มีวัน" ตรวจด้วยโมเดล Quint
+    2. หน้าจอ: ความชัดเจนและความสะดวก ซึ่งฉันจะตรวจเองบน mockup
   </b-prompt>
 </b-chapter>
 
