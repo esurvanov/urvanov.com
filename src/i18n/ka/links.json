@@ -1,51 +1,201 @@
 {
-  "https://jaiora.me/": { "comment": "ოფლაინ LinkedIn · ჩატები · მითაპები" },
-  "https://www.linkedin.com/in/eurvanov/": { "comment": "მაგისტრატურა · 2012–2018", "label": "MAI · მათემატიკა და ინფორმატიკა" },
-  "https://ru.stackoverflow.com/users/188116/eurvanov": { "comment": "10 256 რეპუტაცია · 10+ წელი" },
-  "https://ru.wikipedia.org/wiki/Служебная:Вклад/Eurvanov": { "label": "Wikipedia", "comment": "წვლილი რუსულ Wikipedia-ში" },
-  "https://ru.wiktionary.org/wiki/Участник:Eurvanov": { "label": "Wiktionary", "comment": "მომხმარებლის გვერდი რუსულ Wiktionary-ში" },
-  "https://github.com/esurvanov/": { "comment": "100+ ვარსკვლავი" },
-  "https://getmentor.dev/mentor/egor-urvanov-1077": { "comment": "№1 მენტორი · 1 500+ საათი" },
-  "https://www.linkedin.com/in/eurvanov/details/certifications/": { "label": "სერტიფიკატები" },
-  "https://www.linkedin.com/in/eurvanov/details/projects/": { "label": "პროექტები", "comment": "2020 — დღემდე" },
-  "https://www.linkedin.com/in/eurvanov/details/recommendations/?detailScreenTabIndex=0": { "label": "რეკომენდაციები" },
-  "https://www.linkedin.com/in/eurvanov/details/honors/": { "label": "ჯილდოები", "comment": "2017 · Sputnik.ru" },
-  "https://arxiv.org/abs/2502.13266v1": { "label": "ArXiv · ML მიდგომა რუბიკის კუბისთვის", "comment": "SOTA-ს გადაჭარბება 3×3×3-ზე, პირველი ამოხსნა 4×4×4-სა და 5×5×5-ზე" },
-  "https://www.hackerrank.com/contests/projecteuler/leaderboard": { "comment": "მე-6 ადგილი ≈256 000-დან · სრული ქულა ყველა 254 ამოცანაზე" },
-  "https://github.com/esurvanov/project-euler": { "label": "GitHub · Project Euler+ ამოხსნები", "comment": "ამოხსნების კოდი C++-ზე" },
-  "https://www.urvanov.com/methods-lab/": { "label": "მეთოდების ვორკშოპი", "comment": "60 მეთოდი ამ ამოცანებიდან 3D-ში" },
-  "https://t.me/parsing_conf/": { "comment": "ორგანიზატორი · 1 000 ადამიანი" },
-  "https://slideslive.com/39049529/a-machine-learning-approach-that-beats-rubiks-cubes": { "comment": "მოხსენების ჩანაწერი · 12 ავტორი" },
-  "https://design-practice.mave.digital/": { "label": "პოდკასტი · Design Practice (რუსულად)", "comment": "ასევე Telegram-ზე, Yandex Music-ში, Apple Podcasts-სა და VK Podcasts-ში" },
-  "https://ysnit.mave.digital/ep-40": { "label": "პოდკასტი · Znai i Umei IT (რუსულად)", "comment": "კოდის შიში, event storming და მომავალი AI-თან ერთად" },
-  "https://music.amazon.com/podcasts/bc07673d-927f-47ba-ae59-a93b4f05744b/episodes/9c45f4a3-2229-4d87-925b-9b07a897658d": { "label": "პოდკასტი · Yashchik s usami (რუსულად)", "comment": "Amazon Music" },
-  "https://www.youtube.com/watch?v=3o0BITmCjFE": { "label": "მითაპის ორგანიზატორი · Cloud bureaucracy: როგორ გახდნენ DevOps ინჟინრები ღრუბლოვანი იურისტები (რუსულად, ინგლისური სუბტიტრებით)", "comment": "YouTube · ვიქტორ როზენკოს მოხსენება · 2026" },
-  "https://www.youtube.com/watch?v=_pnfi7g-f44": { "label": "YouTube · Case roulette: ინციდენტების პრევენცია (რუსულად)", "comment": "Podlodka Crew" },
-  "https://www.youtube.com/watch?v=iGBzXh2Fj0c": { "label": "YouTube · როგორ მუშაობს AI აგენტი: არქიტექტურა, უსაფრთხოება, ეკონომიკა (რუსულად)", "comment": "Podlodka Crew" },
-  "https://www.youtube.com/watch?v=ycjmtkwQf8E": { "label": "YouTube · SDD ფრეიმვორკები დეტერმინირებული AI დეველოპმენტისთვის (რუსულად)", "comment": "Podlodka Crew" },
-  "https://www.youtube.com/watch?v=O8VbhnRUyJQ": { "label": "YouTube · Born to copy-paste: LLM-ის მიდგომები და პატერნები (რუსულად)" },
-  "https://www.youtube.com/watch?v=NqMS-UOU0os": { "label": "YouTube · Event Storming-ის ადაპტაცია გუნდებისთვის (რუსულად)", "comment": "Arch Days" },
-  "https://www.youtube.com/watch?v=F5dOtAwmpMQ": { "label": "YouTube · ინტეგრაციული ტესტები Go-ზე (რუსულად)", "comment": "Golang Meetup 2022" },
-  "https://www.youtube.com/watch?v=bHewQCWJE2g": { "comment": "ML რუბიკის კუბისთვის" },
-  "https://www.youtube.com/watch?v=Ql14avVBsz4": { "label": "YouTube · მანქანური სწავლების მეთოდები გზის ძიებისთვის კეილის გრაფებზე (რუსულად)", "comment": "ODS AI Ru · 2025 · სერგეი ლიტკინის მოხსენება ერთობლივ ნაშრომზე" },
-  "https://www.youtube.com/watch?v=V_bRcl6EjFk": { "label": "YouTube · Golang by Rebrain. ვებ-მონაცემების შეგროვება (რუსულად)", "comment": "Rebrain" },
-  "https://www.youtube.com/watch?v=1LobFwBLel8": { "label": "YouTube · Crazy hands of drones (რუსულად)", "comment": "Data scientist-ების ბრძოლა" },
-  "https://www.linkedin.com/feed/update/urn:li:activity:7198977579297456128/": { "label": "LinkedIn · პოსტი" },
-  "https://t.me/tales_from_it": { "comment": "@tales_from_it" },
-  "https://t.me/man_and_business": { "label": "ადამიანები და ბიზნესი", "comment": "@man_and_business" },
-  "https://t.me/want_to_it": { "comment": "@want_to_it" },
-  "https://t.me/batumi_it_digital": { "label": "ბათუმი" },
-  "https://t.me/it_danang": { "label": "დანანგი" },
-  "https://t.me/bangkok_it": { "label": "ბანგკოკი" },
-  "https://t.me/bali_digital_it": { "label": "ბალი" },
-  "https://t.me/phuket_digital_it": { "label": "ფუკეტი" },
-  "https://t.me/almati_it": { "label": "ალმათი" },
-  "https://t.me/spb_digital_it": { "label": "სანქტ-პეტერბურგი" },
-  "https://t.me/antalia_it": { "label": "ანტალია" },
-  "https://t.me/moscow_digital_it": { "label": "მოსკოვი" },
-  "https://t.me/belgrade_jaiora": { "label": "ბელგრადი" },
-  "https://t.me/erevan_jaiora": { "label": "ერევანი" },
-  "https://t.me/agent_coding": { "label": "აგენტებით კოდირება" },
-  "https://t.me/ptd_vnzh_georgia": { "label": "ბინადრობა საქართველოში" },
-  "https://t.me/danang_it_channel": { "label": "დანანგის ანონსები" }
+  "https://jaiora.me/": {
+    "comment": "ოფლაინ LinkedIn · ჩატები · მითაპები"
+  },
+  "https://ru.stackoverflow.com/users/188116/eurvanov": {
+    "comment": "10 256 რეპუტაცია · 10+ წელი"
+  },
+  "https://ru.wikipedia.org/wiki/Служебная:Вклад/Eurvanov": {
+    "label": "Wikipedia",
+    "comment": "წვლილი რუსულ Wikipedia-ში"
+  },
+  "https://ru.wiktionary.org/wiki/Участник:Eurvanov": {
+    "label": "Wiktionary",
+    "comment": "მომხმარებლის გვერდი რუსულ Wiktionary-ში"
+  },
+  "https://github.com/esurvanov/": {
+    "comment": "100+ ვარსკვლავი"
+  },
+  "https://getmentor.dev/mentor/egor-urvanov-1077": {
+    "comment": "№1 მენტორი · 1 500+ საათი"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/certifications/": {
+    "label": "სერტიფიკატები"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/recommendations/?detailScreenTabIndex=0": {
+    "label": "რეკომენდაციები"
+  },
+  "https://arxiv.org/abs/2502.13266v1": {
+    "label": "ArXiv · ML მიდგომა რუბიკის კუბისთვის",
+    "comment": "SOTA-ს გადაჭარბება 3×3×3-ზე, პირველი ამოხსნა 4×4×4-სა და 5×5×5-ზე"
+  },
+  "https://www.hackerrank.com/contests/projecteuler/leaderboard": {
+    "comment": "მე-6 ადგილი ≈256 000-დან · სრული ქულა ყველა 254 ამოცანაზე"
+  },
+  "https://github.com/esurvanov/project-euler": {
+    "label": "GitHub · Project Euler+ ამოხსნები",
+    "comment": "ამოხსნების კოდი C++-ზე"
+  },
+  "https://www.urvanov.com/methods-lab/": {
+    "label": "მეთოდების ვორკშოპი",
+    "comment": "60 მეთოდი ამ ამოცანებიდან 3D-ში"
+  },
+  "https://t.me/parsing_conf/": {
+    "comment": "ორგანიზატორი · 1 000 ადამიანი"
+  },
+  "https://slideslive.com/39049529/a-machine-learning-approach-that-beats-rubiks-cubes": {
+    "comment": "მოხსენების ჩანაწერი · 12 ავტორი"
+  },
+  "https://design-practice.mave.digital/": {
+    "label": "პოდკასტი · Design Practice (რუსულად)",
+    "comment": "ასევე Telegram-ზე, Yandex Music-ში, Apple Podcasts-სა და VK Podcasts-ში"
+  },
+  "https://ysnit.mave.digital/ep-40": {
+    "label": "პოდკასტი · Znai i Umei IT (რუსულად)",
+    "comment": "კოდის შიში, event storming და მომავალი AI-თან ერთად"
+  },
+  "https://music.amazon.com/podcasts/bc07673d-927f-47ba-ae59-a93b4f05744b/episodes/9c45f4a3-2229-4d87-925b-9b07a897658d": {
+    "label": "პოდკასტი · Yashchik s usami (რუსულად)",
+    "comment": "Amazon Music"
+  },
+  "https://www.youtube.com/watch?v=3o0BITmCjFE": {
+    "label": "მითაპის ორგანიზატორი · Cloud bureaucracy: როგორ გახდნენ DevOps ინჟინრები ღრუბლოვანი იურისტები (რუსულად, ინგლისური სუბტიტრებით)",
+    "comment": "YouTube · ვიქტორ როზენკოს მოხსენება · 2026"
+  },
+  "https://www.youtube.com/watch?v=_pnfi7g-f44": {
+    "label": "YouTube · Case roulette: ინციდენტების პრევენცია (რუსულად)",
+    "comment": "Podlodka Crew"
+  },
+  "https://www.youtube.com/watch?v=iGBzXh2Fj0c": {
+    "label": "YouTube · როგორ მუშაობს AI აგენტი: არქიტექტურა, უსაფრთხოება, ეკონომიკა (რუსულად)",
+    "comment": "Podlodka Crew"
+  },
+  "https://www.youtube.com/watch?v=ycjmtkwQf8E": {
+    "label": "YouTube · SDD ფრეიმვორკები დეტერმინირებული AI დეველოპმენტისთვის (რუსულად)",
+    "comment": "Podlodka Crew"
+  },
+  "https://www.youtube.com/watch?v=O8VbhnRUyJQ": {
+    "label": "YouTube · Born to copy-paste: LLM-ის მიდგომები და პატერნები (რუსულად)"
+  },
+  "https://www.youtube.com/watch?v=NqMS-UOU0os": {
+    "label": "YouTube · Event Storming-ის ადაპტაცია გუნდებისთვის (რუსულად)",
+    "comment": "Arch Days"
+  },
+  "https://www.youtube.com/watch?v=F5dOtAwmpMQ": {
+    "label": "YouTube · ინტეგრაციული ტესტები Go-ზე (რუსულად)",
+    "comment": "Golang Meetup 2022"
+  },
+  "https://www.youtube.com/watch?v=bHewQCWJE2g": {
+    "comment": "ML რუბიკის კუბისთვის"
+  },
+  "https://www.youtube.com/watch?v=Ql14avVBsz4": {
+    "label": "YouTube · მანქანური სწავლების მეთოდები გზის ძიებისთვის კეილის გრაფებზე (რუსულად)",
+    "comment": "ODS AI Ru · 2025 · სერგეი ლიტკინის მოხსენება ერთობლივ ნაშრომზე"
+  },
+  "https://www.youtube.com/watch?v=V_bRcl6EjFk": {
+    "label": "YouTube · Golang by Rebrain. ვებ-მონაცემების შეგროვება (რუსულად)",
+    "comment": "Rebrain"
+  },
+  "https://www.youtube.com/watch?v=1LobFwBLel8": {
+    "label": "YouTube · Crazy hands of drones (რუსულად)",
+    "comment": "Data scientist-ების ბრძოლა"
+  },
+  "https://www.linkedin.com/feed/update/urn:li:activity:7198977579297456128/": {
+    "label": "LinkedIn · პოსტი"
+  },
+  "https://t.me/tales_from_it": {
+    "comment": "@tales_from_it"
+  },
+  "https://t.me/man_and_business": {
+    "label": "ადამიანები და ბიზნესი",
+    "comment": "@man_and_business"
+  },
+  "https://t.me/want_to_it": {
+    "comment": "@want_to_it"
+  },
+  "https://t.me/batumi_it_digital": {
+    "label": "ბათუმი"
+  },
+  "https://t.me/it_danang": {
+    "label": "დანანგი"
+  },
+  "https://t.me/bangkok_it": {
+    "label": "ბანგკოკი"
+  },
+  "https://t.me/bali_digital_it": {
+    "label": "ბალი"
+  },
+  "https://t.me/phuket_digital_it": {
+    "label": "ფუკეტი"
+  },
+  "https://t.me/almati_it": {
+    "label": "ალმათი"
+  },
+  "https://t.me/spb_digital_it": {
+    "label": "სანქტ-პეტერბურგი"
+  },
+  "https://t.me/antalia_it": {
+    "label": "ანტალია"
+  },
+  "https://t.me/moscow_digital_it": {
+    "label": "მოსკოვი"
+  },
+  "https://t.me/belgrade_jaiora": {
+    "label": "ბელგრადი"
+  },
+  "https://t.me/erevan_jaiora": {
+    "label": "ერევანი"
+  },
+  "https://t.me/agent_coding": {
+    "label": "აგენტებით კოდირება"
+  },
+  "https://t.me/ptd_vnzh_georgia": {
+    "label": "ბინადრობა საქართველოში"
+  },
+  "https://t.me/danang_it_channel": {
+    "label": "დანანგის ანონსები"
+  },
+  "https://www.linkedin.com/in/eurvanov/#LinkedIn": {
+    "comment": "CTO · AI"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/projects/#Projects": {
+    "label": "პროექტები"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Honors": {
+    "label": "მიღწევები"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Best Onboarding Manager · Sbermarket": {
+    "comment": "2021–2022"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Winner · Self-driving cars competition": {
+    "comment": "2021 · Fless"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Data Mining section · ODS.ai": {
+    "comment": "ორგანიზატორი · 30 000 ადამიანი"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Winner · Rosbank credit card forecast": {
+    "comment": "2018 · მოსკოვის სახელმწიფო უნივერსიტეტი"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Winner · Uralsib bank churn prediction": {
+    "comment": "2017 · Sputnik.ru"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/projects/#Fabrika.cloud · CAD model evaluation system": {
+    "comment": "2020 – დღემდე"
+  },
+  "https://www.linkedin.com/in/eurvanov/#Volunteer · Kashira correctional school": {
+    "label": "მოხალისე · კაშირის სპეციალური სკოლა",
+    "comment": "2014–2016 · პროგრამირება და მათემატიკა ბავშვებისთვის"
+  },
+  "https://www.linkedin.com/in/eurvanov/#MSU · Machine Learning": {
+    "label": "მოსკოვის სახელმწიფო უნივერსიტეტი · მანქანური სწავლება",
+    "comment": "2018–2019 · გამოთვლითი მათემატიკისა და კიბერნეტიკის ფაკულტეტი"
+  },
+  "https://www.linkedin.com/in/eurvanov/#Independent University of Moscow · Mathematics": {
+    "label": "მოსკოვის დამოუკიდებელი უნივერსიტეტი · მათემატიკა",
+    "comment": "2014"
+  },
+  "https://www.linkedin.com/in/eurvanov/#MAI · Mathematics and Computer Science": {
+    "label": "MAI · მათემატიკა და ინფორმატიკა",
+    "comment": "მაგისტრი · 2012–2018"
+  }
 }

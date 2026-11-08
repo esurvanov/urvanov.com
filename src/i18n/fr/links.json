@@ -1,51 +1,201 @@
 {
-  "https://jaiora.me/": { "comment": "LinkedIn hors ligne · chats · meetups" },
-  "https://www.linkedin.com/in/eurvanov/": { "label": "MAI · Mathématiques et informatique", "comment": "Master · 2012–2018" },
-  "https://ru.stackoverflow.com/users/188116/eurvanov": { "comment": "10 256 de réputation · plus de 10 ans" },
-  "https://ru.wikipedia.org/wiki/Служебная:Вклад/Eurvanov": { "label": "Wikipédia", "comment": "Contributions à la Wikipédia en russe" },
-  "https://ru.wiktionary.org/wiki/Участник:Eurvanov": { "label": "Wiktionnaire", "comment": "Page utilisateur sur le Wiktionnaire russe" },
-  "https://github.com/esurvanov/": { "comment": "plus de 100 étoiles" },
-  "https://getmentor.dev/mentor/egor-urvanov-1077": { "comment": "Mentor n° 1 · plus de 1 500 heures" },
-  "https://www.linkedin.com/in/eurvanov/details/certifications/": { "label": "Certifications" },
-  "https://www.linkedin.com/in/eurvanov/details/projects/": { "label": "Fabrika.cloud · système d’évaluation de modèles CAO", "comment": "2020 – aujourd’hui" },
-  "https://www.linkedin.com/in/eurvanov/details/recommendations/?detailScreenTabIndex=0": { "label": "Recommandations" },
-  "https://www.linkedin.com/in/eurvanov/details/honors/": { "label": "Vainqueur · prédiction de l’attrition clients de la banque Uralsib", "comment": "2017 · Sputnik.ru" },
-  "https://arxiv.org/abs/2502.13266v1": { "label": "ArXiv · approche ML du Rubik’s Cube", "comment": "Dépasse l’état de l’art sur le 3×3×3, premier à résoudre le 4×4×4 et le 5×5×5" },
-  "https://www.hackerrank.com/contests/projecteuler/leaderboard": { "comment": "6e sur ≈256 000 · score maximal sur les 254 problèmes" },
-  "https://github.com/esurvanov/project-euler": { "label": "GitHub · solutions de Project Euler+", "comment": "Code des solutions en C++" },
-  "https://www.urvanov.com/methods-lab/": { "label": "Atelier de méthodes", "comment": "60 méthodes tirées de ces problèmes, en 3D" },
-  "https://t.me/parsing_conf/": { "comment": "Organisateur · 1 000 personnes" },
-  "https://slideslive.com/39049529/a-machine-learning-approach-that-beats-rubiks-cubes": { "comment": "Enregistrement de la conférence · 12 auteurs" },
-  "https://design-practice.mave.digital/": { "label": "Podcast · Design Practice (en russe)", "comment": "Aussi sur Telegram, Yandex Music, Apple Podcasts, VK Podcasts" },
-  "https://ysnit.mave.digital/ep-40": { "label": "Podcast · Znai i Umei IT (en russe)", "comment": "La peur du code, l’event storming et l’avenir avec l’IA" },
-  "https://music.amazon.com/podcasts/bc07673d-927f-47ba-ae59-a93b4f05744b/episodes/9c45f4a3-2229-4d87-925b-9b07a897658d": { "label": "Podcast · Yashchik s usami (en russe)", "comment": "Amazon Music" },
-  "https://www.youtube.com/watch?v=3o0BITmCjFE": { "label": "Organisateur du meetup · Bureaucratie du cloud : comment les ingénieurs DevOps sont devenus des juristes du cloud (en russe, sous-titres anglais)", "comment": "YouTube · conférence de Viktor Rozenko · 2026" },
-  "https://www.youtube.com/watch?v=_pnfi7g-f44": { "label": "YouTube · Roulette des cas : prévenir les incidents (en russe)", "comment": "Podlodka Crew" },
-  "https://www.youtube.com/watch?v=iGBzXh2Fj0c": { "label": "YouTube · Comment fonctionne un agent IA : architecture, sécurité, économie (en russe)", "comment": "Podlodka Crew" },
-  "https://www.youtube.com/watch?v=ycjmtkwQf8E": { "label": "YouTube · Frameworks SDD pour un développement IA déterministe (en russe)", "comment": "Podlodka Crew" },
-  "https://www.youtube.com/watch?v=O8VbhnRUyJQ": { "label": "YouTube · Né pour copier-coller : approches et patterns des LLM (en russe)" },
-  "https://www.youtube.com/watch?v=NqMS-UOU0os": { "label": "YouTube · Adapter l’Event Storming aux équipes (en russe)", "comment": "Arch Days" },
-  "https://www.youtube.com/watch?v=F5dOtAwmpMQ": { "label": "YouTube · Tests d’intégration en Go (en russe)", "comment": "Golang Meetup 2022" },
-  "https://www.youtube.com/watch?v=bHewQCWJE2g": { "comment": "ML pour le Rubik’s Cube" },
-  "https://www.youtube.com/watch?v=Ql14avVBsz4": { "label": "YouTube · Méthodes d’apprentissage automatique pour la recherche de chemins sur les graphes de Cayley (en russe)", "comment": "ODS AI Ru · 2025 · conférence de Sergueï Lytkine sur l’article commun" },
-  "https://www.youtube.com/watch?v=V_bRcl6EjFk": { "label": "YouTube · Golang par Rebrain. Collecte de données web (en russe)", "comment": "Rebrain" },
-  "https://www.youtube.com/watch?v=1LobFwBLel8": { "label": "YouTube · Les mains folles des drones (en russe)", "comment": "Bataille des data scientists" },
-  "https://www.linkedin.com/feed/update/urn:li:activity:7198977579297456128/": { "label": "LinkedIn · Publication" },
-  "https://t.me/tales_from_it": { "comment": "@tales_from_it" },
-  "https://t.me/man_and_business": { "label": "Les gens et le business", "comment": "@man_and_business" },
-  "https://t.me/want_to_it": { "comment": "@want_to_it" },
-  "https://t.me/batumi_it_digital": { "label": "Batoumi" },
-  "https://t.me/it_danang": { "label": "Da Nang" },
-  "https://t.me/bangkok_it": { "label": "Bangkok" },
-  "https://t.me/bali_digital_it": { "label": "Bali" },
-  "https://t.me/phuket_digital_it": { "label": "Phuket" },
-  "https://t.me/almati_it": { "label": "Almaty" },
-  "https://t.me/spb_digital_it": { "label": "Saint-Pétersbourg" },
-  "https://t.me/antalia_it": { "label": "Antalya" },
-  "https://t.me/moscow_digital_it": { "label": "Moscou" },
-  "https://t.me/belgrade_jaiora": { "label": "Belgrade" },
-  "https://t.me/erevan_jaiora": { "label": "Erevan" },
-  "https://t.me/agent_coding": { "label": "Codage avec des agents" },
-  "https://t.me/ptd_vnzh_georgia": { "label": "Résidence en Géorgie" },
-  "https://t.me/danang_it_channel": { "label": "Annonces de Da Nang" }
+  "https://jaiora.me/": {
+    "comment": "LinkedIn hors ligne · chats · meetups"
+  },
+  "https://ru.stackoverflow.com/users/188116/eurvanov": {
+    "comment": "10 256 de réputation · plus de 10 ans"
+  },
+  "https://ru.wikipedia.org/wiki/Служебная:Вклад/Eurvanov": {
+    "label": "Wikipédia",
+    "comment": "Contributions à la Wikipédia en russe"
+  },
+  "https://ru.wiktionary.org/wiki/Участник:Eurvanov": {
+    "label": "Wiktionnaire",
+    "comment": "Page utilisateur sur le Wiktionnaire russe"
+  },
+  "https://github.com/esurvanov/": {
+    "comment": "plus de 100 étoiles"
+  },
+  "https://getmentor.dev/mentor/egor-urvanov-1077": {
+    "comment": "Mentor n° 1 · plus de 1 500 heures"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/certifications/": {
+    "label": "Certifications"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/recommendations/?detailScreenTabIndex=0": {
+    "label": "Recommandations"
+  },
+  "https://arxiv.org/abs/2502.13266v1": {
+    "label": "ArXiv · approche ML du Rubik’s Cube",
+    "comment": "Dépasse l’état de l’art sur le 3×3×3, premier à résoudre le 4×4×4 et le 5×5×5"
+  },
+  "https://www.hackerrank.com/contests/projecteuler/leaderboard": {
+    "comment": "6e sur ≈256 000 · score maximal sur les 254 problèmes"
+  },
+  "https://github.com/esurvanov/project-euler": {
+    "label": "GitHub · solutions de Project Euler+",
+    "comment": "Code des solutions en C++"
+  },
+  "https://www.urvanov.com/methods-lab/": {
+    "label": "Atelier de méthodes",
+    "comment": "60 méthodes tirées de ces problèmes, en 3D"
+  },
+  "https://t.me/parsing_conf/": {
+    "comment": "Organisateur · 1 000 personnes"
+  },
+  "https://slideslive.com/39049529/a-machine-learning-approach-that-beats-rubiks-cubes": {
+    "comment": "Enregistrement de la conférence · 12 auteurs"
+  },
+  "https://design-practice.mave.digital/": {
+    "label": "Podcast · Design Practice (en russe)",
+    "comment": "Aussi sur Telegram, Yandex Music, Apple Podcasts, VK Podcasts"
+  },
+  "https://ysnit.mave.digital/ep-40": {
+    "label": "Podcast · Znai i Umei IT (en russe)",
+    "comment": "La peur du code, l’event storming et l’avenir avec l’IA"
+  },
+  "https://music.amazon.com/podcasts/bc07673d-927f-47ba-ae59-a93b4f05744b/episodes/9c45f4a3-2229-4d87-925b-9b07a897658d": {
+    "label": "Podcast · Yashchik s usami (en russe)",
+    "comment": "Amazon Music"
+  },
+  "https://www.youtube.com/watch?v=3o0BITmCjFE": {
+    "label": "Organisateur du meetup · Bureaucratie du cloud : comment les ingénieurs DevOps sont devenus des juristes du cloud (en russe, sous-titres anglais)",
+    "comment": "YouTube · conférence de Viktor Rozenko · 2026"
+  },
+  "https://www.youtube.com/watch?v=_pnfi7g-f44": {
+    "label": "YouTube · Roulette des cas : prévenir les incidents (en russe)",
+    "comment": "Podlodka Crew"
+  },
+  "https://www.youtube.com/watch?v=iGBzXh2Fj0c": {
+    "label": "YouTube · Comment fonctionne un agent IA : architecture, sécurité, économie (en russe)",
+    "comment": "Podlodka Crew"
+  },
+  "https://www.youtube.com/watch?v=ycjmtkwQf8E": {
+    "label": "YouTube · Frameworks SDD pour un développement IA déterministe (en russe)",
+    "comment": "Podlodka Crew"
+  },
+  "https://www.youtube.com/watch?v=O8VbhnRUyJQ": {
+    "label": "YouTube · Né pour copier-coller : approches et patterns des LLM (en russe)"
+  },
+  "https://www.youtube.com/watch?v=NqMS-UOU0os": {
+    "label": "YouTube · Adapter l’Event Storming aux équipes (en russe)",
+    "comment": "Arch Days"
+  },
+  "https://www.youtube.com/watch?v=F5dOtAwmpMQ": {
+    "label": "YouTube · Tests d’intégration en Go (en russe)",
+    "comment": "Golang Meetup 2022"
+  },
+  "https://www.youtube.com/watch?v=bHewQCWJE2g": {
+    "comment": "ML pour le Rubik’s Cube"
+  },
+  "https://www.youtube.com/watch?v=Ql14avVBsz4": {
+    "label": "YouTube · Méthodes d’apprentissage automatique pour la recherche de chemins sur les graphes de Cayley (en russe)",
+    "comment": "ODS AI Ru · 2025 · conférence de Sergueï Lytkine sur l’article commun"
+  },
+  "https://www.youtube.com/watch?v=V_bRcl6EjFk": {
+    "label": "YouTube · Golang par Rebrain. Collecte de données web (en russe)",
+    "comment": "Rebrain"
+  },
+  "https://www.youtube.com/watch?v=1LobFwBLel8": {
+    "label": "YouTube · Les mains folles des drones (en russe)",
+    "comment": "Bataille des data scientists"
+  },
+  "https://www.linkedin.com/feed/update/urn:li:activity:7198977579297456128/": {
+    "label": "LinkedIn · Publication"
+  },
+  "https://t.me/tales_from_it": {
+    "comment": "@tales_from_it"
+  },
+  "https://t.me/man_and_business": {
+    "label": "Les gens et le business",
+    "comment": "@man_and_business"
+  },
+  "https://t.me/want_to_it": {
+    "comment": "@want_to_it"
+  },
+  "https://t.me/batumi_it_digital": {
+    "label": "Batoumi"
+  },
+  "https://t.me/it_danang": {
+    "label": "Da Nang"
+  },
+  "https://t.me/bangkok_it": {
+    "label": "Bangkok"
+  },
+  "https://t.me/bali_digital_it": {
+    "label": "Bali"
+  },
+  "https://t.me/phuket_digital_it": {
+    "label": "Phuket"
+  },
+  "https://t.me/almati_it": {
+    "label": "Almaty"
+  },
+  "https://t.me/spb_digital_it": {
+    "label": "Saint-Pétersbourg"
+  },
+  "https://t.me/antalia_it": {
+    "label": "Antalya"
+  },
+  "https://t.me/moscow_digital_it": {
+    "label": "Moscou"
+  },
+  "https://t.me/belgrade_jaiora": {
+    "label": "Belgrade"
+  },
+  "https://t.me/erevan_jaiora": {
+    "label": "Erevan"
+  },
+  "https://t.me/agent_coding": {
+    "label": "Codage avec des agents"
+  },
+  "https://t.me/ptd_vnzh_georgia": {
+    "label": "Résidence en Géorgie"
+  },
+  "https://t.me/danang_it_channel": {
+    "label": "Annonces de Da Nang"
+  },
+  "https://www.linkedin.com/in/eurvanov/#LinkedIn": {
+    "comment": "CTO · IA"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/projects/#Projects": {
+    "label": "Projets"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Honors": {
+    "label": "Distinctions"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Best Onboarding Manager · Sbermarket": {
+    "comment": "2021–2022"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Winner · Self-driving cars competition": {
+    "comment": "2021 · Fless"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Data Mining section · ODS.ai": {
+    "comment": "Organisateur · 30 000 personnes"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Winner · Rosbank credit card forecast": {
+    "comment": "2018 · Université d’État de Moscou"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Winner · Uralsib bank churn prediction": {
+    "comment": "2017 · Sputnik.ru"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/projects/#Fabrika.cloud · CAD model evaluation system": {
+    "comment": "2020 – aujourd’hui"
+  },
+  "https://www.linkedin.com/in/eurvanov/#Volunteer · Kashira correctional school": {
+    "label": "Bénévole · école spécialisée de Kachira",
+    "comment": "2014–2016 · programmation et mathématiques pour enfants"
+  },
+  "https://www.linkedin.com/in/eurvanov/#MSU · Machine Learning": {
+    "label": "Université d’État de Moscou · Machine Learning",
+    "comment": "2018–2019 · Faculté de mathématiques computationnelles et de cybernétique"
+  },
+  "https://www.linkedin.com/in/eurvanov/#Independent University of Moscow · Mathematics": {
+    "label": "Université indépendante de Moscou · Mathématiques",
+    "comment": "2014"
+  },
+  "https://www.linkedin.com/in/eurvanov/#MAI · Mathematics and Computer Science": {
+    "label": "MAI · Mathématiques et informatique",
+    "comment": "Master · 2012–2018"
+  }
 }

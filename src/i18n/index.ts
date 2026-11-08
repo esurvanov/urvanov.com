@@ -17,7 +17,7 @@ import { BLOG_CATEGORIES, addPosts } from '@/data/blog'
 import { ABOUT_LEAD, MILESTONES } from '@/data/about'
 import { BIO, CITIES, CURRENT_ROLE, TOPICS } from '@/data/profile'
 import { PLACES } from '@/data/places'
-import { CITY_CHATS, LINK_GROUPS, LINK_TR, THEME_CHATS, type LinkItem } from '@/data/links'
+import { CITY_CHATS, LINK_GROUPS, LINK_TR, THEME_CHATS, linkKey, type LinkItem } from '@/data/links'
 import { NEW_LANGS, UI, isNewLang, markLangLoaded, withoutPageIndex, type NewLang } from '@/lib/i18n'
 
 type Obj = Record<string, unknown>
@@ -159,9 +159,10 @@ function missingLinks(lang: NewLang): string[] {
   const tr = LINK_TR[lang] ?? {}
   const out = new Set<string>()
   for (const item of linkItems()) {
-    if (item.en?.label && !tr[item.url]?.label) out.add(`${item.url}.label`)
+    const k = linkKey(item)
+    if (item.en?.label && !tr[k]?.label) out.add(`${k}.label`)
     const comment = item.en && 'comment' in item.en ? item.en.comment : item.comment
-    if (comment && !tr[item.url]?.comment) out.add(`${item.url}.comment`)
+    if (comment && !tr[k]?.comment) out.add(`${k}.comment`)
   }
   return [...out]
 }

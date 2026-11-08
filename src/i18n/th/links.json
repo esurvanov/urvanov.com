@@ -2,10 +2,6 @@
   "https://jaiora.me/": {
     "comment": "LinkedIn แบบออฟไลน์ · แชต · งานพบปะ"
   },
-  "https://www.linkedin.com/in/eurvanov/": {
-    "comment": "ปริญญาโท · 2012–2018",
-    "label": "MAI · คณิตศาสตร์และวิทยาการคอมพิวเตอร์"
-  },
   "https://ru.stackoverflow.com/users/188116/eurvanov": {
     "comment": "คะแนนชื่อเสียง 10,256 · มากกว่า 10 ปี"
   },
@@ -26,16 +22,8 @@
   "https://www.linkedin.com/in/eurvanov/details/certifications/": {
     "label": "ใบรับรอง"
   },
-  "https://www.linkedin.com/in/eurvanov/details/projects/": {
-    "label": "โปรเจกต์",
-    "comment": "2020 – ปัจจุบัน"
-  },
   "https://www.linkedin.com/in/eurvanov/details/recommendations/?detailScreenTabIndex=0": {
     "label": "คำแนะนำ"
-  },
-  "https://www.linkedin.com/in/eurvanov/details/honors/": {
-    "label": "รางวัลและเกียรติยศ",
-    "comment": "2017 · Sputnik.ru"
   },
   "https://arxiv.org/abs/2502.13266v1": {
     "label": "ArXiv · แนวทางแมชชีนเลิร์นนิงสำหรับลูกบาศก์รูบิก",
@@ -166,5 +154,48 @@
   },
   "https://t.me/danang_it_channel": {
     "label": "ประกาศจากดานัง"
+  },
+  "https://www.linkedin.com/in/eurvanov/#LinkedIn": {
+    "comment": "CTO · AI"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/projects/#Projects": {
+    "label": "โปรเจกต์"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Honors": {
+    "label": "รางวัลและความสำเร็จ"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Best Onboarding Manager · Sbermarket": {
+    "comment": "2021–2022"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Winner · Self-driving cars competition": {
+    "comment": "2021 · Fless"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Data Mining section · ODS.ai": {
+    "comment": "ผู้จัด · 30,000 คน"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Winner · Rosbank credit card forecast": {
+    "comment": "2018 · มหาวิทยาลัยแห่งรัฐมอสโก"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/honors/#Winner · Uralsib bank churn prediction": {
+    "comment": "2017 · Sputnik.ru"
+  },
+  "https://www.linkedin.com/in/eurvanov/details/projects/#Fabrika.cloud · CAD model evaluation system": {
+    "comment": "2020 – ปัจจุบัน"
+  },
+  "https://www.linkedin.com/in/eurvanov/#Volunteer · Kashira correctional school": {
+    "label": "อาสาสมัคร · โรงเรียนการศึกษาพิเศษคาชีรา",
+    "comment": "2014–2016 · สอนเขียนโปรแกรมและคณิตศาสตร์ให้เด็ก"
+  },
+  "https://www.linkedin.com/in/eurvanov/#MSU · Machine Learning": {
+    "label": "มหาวิทยาลัยแห่งรัฐมอสโก · Machine Learning",
+    "comment": "2018–2019 · คณะคณิตศาสตร์เชิงคำนวณและไซเบอร์เนติกส์"
+  },
+  "https://www.linkedin.com/in/eurvanov/#Independent University of Moscow · Mathematics": {
+    "label": "มหาวิทยาลัยอิสระแห่งมอสโก · คณิตศาสตร์",
+    "comment": "2014"
+  },
+  "https://www.linkedin.com/in/eurvanov/#MAI · Mathematics and Computer Science": {
+    "label": "MAI · คณิตศาสตร์และวิทยาการคอมพิวเตอร์",
+    "comment": "ปริญญาโท · 2012–2018"
   }
 }

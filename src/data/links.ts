@@ -32,6 +32,17 @@ export interface LinkGroup {
 // Переводы записей на новые языки: src/i18n/<язык>/links.json, ключ — url записи (заполняет src/i18n/index.ts)
 export const LINK_TR: Partial<Record<NewLang, Record<string, { label?: string; comment?: string }>>> = {}
 
+// Ключ перевода записи: адрес; если адрес общий у нескольких записей (профиль LinkedIn, награды, проекты) —
+// адрес и английская подпись через «#», иначе все такие записи получили бы один перевод
+let urlCount: Map<string, number> | null = null
+export const linkKey = (item: LinkItem): string => {
+  if (!urlCount) {
+    urlCount = new Map()
+    for (const it of [...LINK_GROUPS.flatMap((g) => g.blocks.flatMap((b) => b.items)), ...CITY_CHATS, ...THEME_CHATS]) urlCount.set(it.url, (urlCount.get(it.url) ?? 0) + 1)
+  }
+  return (urlCount.get(item.url) ?? 0) > 1 ? `${item.url}#${item.en?.label ?? item.label}` : item.url
+}
+
 export const itemText = (item: LinkItem, lang: Lang) => {
   const en = {
     label: (lang !== 'ru' && item.en?.label) || item.label,
@@ -39,7 +50,7 @@ export const itemText = (item: LinkItem, lang: Lang) => {
   }
   if (!isNewLang(lang)) return en
   // Новый язык: перевод записи, иначе английский текст
-  const x = LINK_TR[lang]?.[item.url]
+  const x = LINK_TR[lang]?.[linkKey(item)]
   return { label: x?.label ?? en.label, comment: en.comment === undefined ? undefined : x?.comment ?? en.comment }
 }
 
