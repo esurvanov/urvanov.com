@@ -1,8 +1,8 @@
 ---
-title: რა არის AGENTS.md და CLAUDE.md: ფაილის მაგალითი და სად ვაგროვოთ სპეციფიკაციები, წესები და skill-ები
+title: რა არის AGENTS.md და CLAUDE.md: ფაილის მაგალითი და სად შევინახოთ სპეციფიკაციები, წესები და skill-ები
 date: 2026-09-28
 updated: 2026-11-08
-description: მუდმივი კონტექსტის ოთხი სახეობა AI-სთვის (AGENTS.md, CLAUDE.md, skill-ები): ამოცანის სპეციფიკაცია, პროექტის ბიბლია, წესები და skill-ები. რა შედის თითოეულში, როდის ხვდება კონტექსტში და რას გვთავაზობენ ChatGPT და Claude. ეფუძნება Anthropic-ის, OpenAI-ის, GitHub-ის, Cursor-ისა და Cline-ის დოკუმენტაციას.
+description: მუდმივი კონტექსტის ოთხი სახეობა AI-სთვის (AGENTS.md, CLAUDE.md, skill-ები): ამოცანის სპეციფიკაცია, პროექტის ბიბლია, წესები და skill-ები. რა შედის თითოეულში, როდის ხვდება კონტექსტში და რას სთავაზობენ ChatGPT და Claude. ეფუძნება Anthropic-ის, OpenAI-ის, GitHub-ის, Cursor-ისა და Cline-ის დოკუმენტაციას.
 tags: AI, Claude Code, CLAUDE.md, harness, სპეციფიკაციები, skill-ები
 category: specs
 layout: wide
@@ -10,7 +10,7 @@ mentions: AGENTS.md, CLAUDE.md, Agent Skills, Spec Kit, Memory Bank
 toc: map=ოთხი შრე | spec=სპეციფიკაცია | bible=ბიბლია | rules=წესები | skills=Skill-ები | chat=ჩატში | pick=რა სად ვწეროთ | faq=კითხვები | next=დამატებით წასაკითხი
 ---
 
-AGENTS.md და CLAUDE.md პროექტის ძირში მდებარე ფაილებია, რომლებშიც AI აგენტისთვის მუდმივი ინსტრუქციებია ჩაწერილი: აწყობისა და ტესტირების ბრძანებები, კოდის სტილი, აკრძალვები. AGENTS.md ღია ფორმატია, რომელსაც Codex, Cursor, Gemini CLI, Copilot და სხვა აგენტები კითხულობენ; CLAUDE.md-ს Claude Code კითხულობს. harness ასეთ ფაილს ყოველი სესიის დასაწყისში ათავსებს. ქვემოთ: ფაილის მაგალითი და სად ვაგროვოთ სპეციფიკაციები, პროექტის ბიბლია და skill-ები.
+AGENTS.md და CLAUDE.md პროექტის ძირში მდებარე ფაილებია, რომლებშიც AI აგენტისთვის მუდმივი ინსტრუქციებია ჩაწერილი: აწყობისა და ტესტირების ბრძანებები, კოდის სტილი, აკრძალვები. AGENTS.md ღია ფორმატია, რომელსაც Codex, Cursor, Gemini CLI, Copilot და სხვა აგენტები კითხულობენ; CLAUDE.md-ს Claude Code კითხულობს. harness ასეთ ფაილს ყოველი სესიის დასაწყისში ათავსებს. ქვემოთ: ფაილის მაგალითი და სად შევინახოთ სპეციფიკაციები, პროექტის ბიბლია და skill-ები.
 
 <b-post series="prompts">
 <b-ctx-layers>
@@ -36,7 +36,7 @@ AGENTS.md და CLAUDE.md პროექტის ძირში მდებ
   </b-ctx-table>
   <b-finding>
     <ex>შრეები განსხვავდება სიცოცხლის ხანგრძლივობით და იმით, როდის ხვდება კონტექსტში.</ex>
-    <gen>წესები ყოველ სესიაში იტვირთება, ამიტომ მოკლე უნდა იყოს: Anthropic ერთ ფაილზე 200 ხაზზე ნაკლებს გვირჩევს<b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: «Size: target under 200 lines per CLAUDE.md file. Longer files consume more context and reduce adherence» — code.claude.com/docs/en/memory"/>. გრძელი და იშვიათად საჭირო შინაარსი skill-ებში გადადის, რომელთა ტექსტი მხოლოდ გამოძახებისას იტვირთება<b-proof href="https://code.claude.com/docs/en/skills" quote="Anthropic: «skill descriptions are loaded into context so Claude knows what&#x27;s available, but full skill content only loads when invoked» — code.claude.com/docs/en/skills"/>.</gen>
+    <gen>წესები ყოველ სესიაში იტვირთება, ამიტომ მოკლე უნდა იყოს: Anthropic ერთ ფაილზე 200 ხაზზე ნაკლებს ურჩევს<b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: «Size: target under 200 lines per CLAUDE.md file. Longer files consume more context and reduce adherence» — code.claude.com/docs/en/memory"/>. გრძელი და იშვიათად საჭირო შინაარსი skill-ებში გადადის, რომელთა ტექსტი მხოლოდ გამოძახებისას იტვირთება<b-proof href="https://code.claude.com/docs/en/skills" quote="Anthropic: «skill descriptions are loaded into context so Claude knows what&#x27;s available, but full skill content only loads when invoked» — code.claude.com/docs/en/skills"/>.</gen>
     <do>გადახედეთ თქვენს ინსტრუქციების ფაილს: ფაქტები დატოვეთ წესებში, პროცედურები გადაიტანეთ skill-ებში, პროდუქტის აღწერა კი ბიბლიაში.</do>
   </b-finding>
 </b-chapter>
@@ -119,7 +119,7 @@ AGENTS.md და CLAUDE.md პროექტის ძირში მდებ
   </b-skill-pick>
   <b-finding>
     <ex>ყველა skill-ის აღწერა ყოველთვის კონტექსტშია; ტექსტი იტვირთება მას შემდეგ, რაც ერთ-ერთი შეირჩევა.</ex>
-    <gen>ამიტომ skill-ში გრძელი ცნობარი გამოყენებამდე თითქმის არაფერი ღირს. skill-ის შექმნას აზრი აქვს, როცა ერთსა და იმავე ინსტრუქციას ან ჩეკლისტს ჩატში განმეორებით ათავსებთ, ან როცა წესების რომელიმე განყოფილება პროცედურად გაიზარდა<b-proof href="https://code.claude.com/docs/en/skills" quote="Anthropic: «Create a skill when you keep pasting the same instructions, checklist, or multi-step procedure into chat, or when a section of CLAUDE.md has grown into a procedure rather than a fact. Unlike CLAUDE.md content, a skill&#x27;s body loads only when it&#x27;s used» — code.claude.com/docs/en/skills"/>.</gen>
+    <gen>ამიტომ skill-ში გრძელი ცნობარი გამოყენებამდე თითქმის არაფერს ხარჯავს. skill-ის შექმნას აზრი აქვს, როცა ერთსა და იმავე ინსტრუქციას ან ჩეკლისტს ჩატში განმეორებით ათავსებთ, ან როცა წესების რომელიმე განყოფილება პროცედურად გაიზარდა<b-proof href="https://code.claude.com/docs/en/skills" quote="Anthropic: «Create a skill when you keep pasting the same instructions, checklist, or multi-step procedure into chat, or when a section of CLAUDE.md has grown into a procedure rather than a fact. Unlike CLAUDE.md content, a skill&#x27;s body loads only when it&#x27;s used» — code.claude.com/docs/en/skills"/>.</gen>
     <do>იპოვეთ წესების განყოფილება, რომელიც პროცედურას აღწერს, და გადაიტანეთ skill-ში, სადაც ზუსტად იქნება მითითებული, როდის გამოვიყენოთ.</do>
   </b-finding>
 </b-chapter>
@@ -160,7 +160,7 @@ AGENTS.md და CLAUDE.md პროექტის ძირში მდებ
   <b-faq-cards>
     <q t="რა არის AGENTS.md და CLAUDE.md?">პროექტის ძირში მდებარე ფაილები AI აგენტისთვის მუდმივი ინსტრუქციებით: აწყობისა და ტესტირების ბრძანებები, კოდის სტილი, აკრძალვები.</q>
     <q t="რომელი აგენტები კითხულობენ AGENTS.md-ს?">Codex, Cursor, Gemini CLI, Copilot და სხვები. Claude Code CLAUDE.md-ს კითხულობს.</q>
-    <q t="რა სიგრძის უნდა იყოს CLAUDE.md?">Anthropic ერთ ფაილზე 200 ხაზზე ნაკლებს გვირჩევს: წესები ყოველ სესიაში იტვირთება. გრძელი და იშვიათად საჭირო შინაარსი skill-ებში გადადის.</q>
+    <q t="რა სიგრძის უნდა იყოს CLAUDE.md?">Anthropic ერთ ფაილზე 200 ხაზზე ნაკლებს ურჩევს: წესები ყოველ სესიაში იტვირთება. გრძელი და იშვიათად საჭირო შინაარსი skill-ებში გადადის.</q>
     <q t="რით განსხვავდება წესები skill-ებისგან?">წესებს აგენტი ყოველ სესიაში ხედავს. skill პროცედურაა, რომელსაც აგენტი სრულად მხოლოდ მაშინ ტვირთავს, როცა ამოცანა ემთხვევა.</q>
   </b-faq-cards>
 </b-chapter>

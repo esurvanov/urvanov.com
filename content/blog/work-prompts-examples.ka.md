@@ -6,7 +6,7 @@ description: პრომპტები AI ჩატთან სამუშ�
 tags: AI, პრომპტები, ChatGPT, Claude
 category: prompts
 layout: wide
-toc: model=Human-in-the-loop | parts=ხუთი ნაწილი | examples=ექვსი მაგალითი | learn=რა ვისწავლოთ | faq=კითხვები | next=დამატებითი საკითხავი
+toc: model=ადამიანი ციკლში | parts=ხუთი ნაწილი | examples=ექვსი მაგალითი | learn=რა ვისწავლოთ | faq=კითხვები | next=დამატებითი საკითხავი
 ---
 
 სამუშაო პრომპტი ChatGPT-სა და Claude-ისთვის ხუთი ნაწილისგან შედგება: როლი, ვისთვისაა პასუხი და რისთვის, სრული მონაცემები, მაგალითი და ფორმატი, კითხვა კი ბოლოშია. მოდელმა მხოლოდ ის იცის, რაც თხოვნაში წერია. შემოწმება მარტივია: აჩვენეთ პრომპტი კონტექსტის არმცოდნე კოლეგას და თუ ის დაიბნა, მოდელიც დაიბნევა. ქვემოთ სუსტი და ძლიერი თხოვნაა და ექვსი შაბლონი გავრცელებული ამოცანებისთვის.
@@ -25,7 +25,7 @@ toc: model=Human-in-the-loop | parts=ხუთი ნაწილი | examples=
   </b-lane>
 </b-flow>
 <b-cap>ორივე შემთხვევაში მოდელი ერთია. შედეგი იმაზეა დამოკიდებული, რას ამბობს პრომპტი: ექვსი ნაწილი, რომლებიც მეორდება Anthropic-ის, OpenAI-სა და Google-ის სახელმძღვანელოებში.</b-cap>
-<b-chapter id="model" title="Human-in-the-loop: ერთი თხოვნის გზა" icon="share">
+<b-chapter id="model" title="ადამიანი ციკლში (human-in-the-loop): ერთი თხოვნის გზა" icon="share">
   <b-art names="work-prompts-examples/prompt-map" wide/>
   <b-finding>
     <ex>ადამიანს უჭირავს ყველა საკვანძო წერტილი: სვამს ამოცანას, აგებს პრომპტს, ამოწმებს პასუხს, აბრუნებს დასაზუსტებლად და იღებს გადაწყვეტილებას. მოდელი მხოლოდ იმას პასუხობს, რაც თხოვნაში მოხვდა.</ex>
@@ -46,7 +46,7 @@ toc: model=Human-in-the-loop | parts=ხუთი ნაწილი | examples=
   </b-prompt-anatomy>
   <b-finding>
     <ex>ხუთი ნაწილი და ტეგები, თითოეული ოფიციალური სახელმძღვანელოთი დადასტურებული.</ex>
-    <gen>მოდელმა მხოლოდ ის იცის, რასაც პრომპტი ამბობს. Anthropic ტესტს გვთავაზობს: აჩვენეთ პრომპტი კონტექსტის არმცოდნე კოლეგას; თუ ის დაიბნა, მოდელიც დაიბნევა<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they&#39;d be confused, Claude will be too” — platform.claude.com, Prompting best practices"/>.</gen>
+    <gen>მოდელმა მხოლოდ ის იცის, რასაც პრომპტი ამბობს. Anthropic ტესტს სთავაზობს: აჩვენეთ პრომპტი კონტექსტის არმცოდნე კოლეგას; თუ ის დაიბნა, მოდელიც დაიბნევა<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they&#39;d be confused, Claude will be too” — platform.claude.com, Prompting best practices"/>.</gen>
     <do>გახსენით თქვენი ბოლო პრომპტი და მონიშნეთ, ხუთიდან რომელი ნაწილი აკლია. დაამატეთ როლი და ფორმატი: ორი წინადადება.</do>
   </b-finding>
 </b-chapter>
@@ -173,7 +173,7 @@ toc: model=Human-in-the-loop | parts=ხუთი ნაწილი | examples=
       </b-prompt>
       <b-finding>
         <ex>სამი მაგალითი ტეგებში და ერთი ხაზი იმაზე, ვისთვისაა და რისთვის.</ex>
-        <gen>Anthropic 3–5 მაგალითს გვირჩევს<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Include 3–5 examples for best results” — platform.claude.com, Prompting best practices"/>; Google-ის სახელმძღვანელოშიც მაგალითები პირველ პრაქტიკად არის დასახელებული<b-proof href="https://www.kaggle.com/whitepaper-prompt-engineering" quote="Google, Prompt Engineering: its best practices include providing examples, being specific about the output and using instructions over constraints. Paraphrased — kaggle.com/whitepaper-prompt-engineering"/>. მაგალითებით ნაჩვენები სტილი უფრო ზუსტად კოპირდება, ვიდრე სიტყვებით აღწერილი.</gen>
+        <gen>Anthropic 3–5 მაგალითს ურჩევს<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Include 3–5 examples for best results” — platform.claude.com, Prompting best practices"/>; Google-ის სახელმძღვანელოშიც მაგალითები პირველ პრაქტიკად არის დასახელებული<b-proof href="https://www.kaggle.com/whitepaper-prompt-engineering" quote="Google, Prompt Engineering: its best practices include providing examples, being specific about the output and using instructions over constraints. Paraphrased — kaggle.com/whitepaper-prompt-engineering"/>. მაგალითებით ნაჩვენები სტილი უფრო ზუსტად კოპირდება, ვიდრე სიტყვებით აღწერილი.</gen>
         <do>კარგი ტექსტები პროექტში ჩადეთ და მაგალითებად გამოიყენეთ, რომ ყოველ ჯერზე არ ჩაწებოთ.</do>
       </b-finding>
     </b-prompt-tab>
@@ -196,7 +196,7 @@ toc: model=Human-in-the-loop | parts=ხუთი ნაწილი | examples=
       <b-cap>ორივე ჩატს აქვს ღრმა კვლევის რეჟიმი: deep research ChatGPT-ში და Research Claude-ში<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/>.</b-cap>
       <b-finding>
         <ex>მიზანი, სიახლის ლიმიტი და გამოტანის ფორმატი ბმულებით.</ex>
-        <gen>კვლევის რეჟიმში მოდელი ძიებების სერიას ატარებს და ბმულებიანი ანგარიშს აბრუნებს. ბმულები ყოველი ფაქტის შემოწმების საშუალებას გაძლევთ, „თუ მონაცემები არ არის“ კი ხვრელების ვარაუდებით შევსებას უშლის.</gen>
+        <gen>კვლევის რეჟიმში მოდელი ძიებების სერიას ატარებს და ბმულებიან ანგარიშს აბრუნებს. ბმულები ყოველი ფაქტის შემოწმების საშუალებას გაძლევთ, „თუ მონაცემები არ არის“ კი ხვრელების ვარაუდებით შევსებას უშლის.</gen>
         <do>გახსენით ანგარიშიდან ორი-სამი ბმული და დასკვნის გადაცემამდე შეამოწმეთ ფაქტი წყაროსთან.</do>
       </b-finding>
     </b-prompt-tab>
@@ -226,9 +226,9 @@ toc: model=Human-in-the-loop | parts=ხუთი ნაწილი | examples=
 </b-chapter>
 <b-chapter id="faq" icon="chat" title="ხშირად დასმული კითხვები">
   <b-faq-cards>
-    <q t="რას წარმოადგენს კარგი პრომპტი?">ხუთ ნაწილს: როლი, ვისთვისაა პასუხი და რისთვის, სრული მონაცემები, მაგალითი და ფორმატი. კითხვა ბოლოში მიდის.</q>
+    <q t="რისგან შედგება კარგი პრომპტი?">ხუთი ნაწილისგან: როლი, ვისთვისაა პასუხი და რისთვის, სრული მონაცემები, მაგალითი და ფორმატი. კითხვა ბოლოში მიდის.</q>
     <q t="როგორ შევამოწმოთ პრომპტი?">აჩვენეთ კონტექსტის არმცოდნე კოლეგას: თუ ის დაიბნა, მოდელიც დაიბნევა.</q>
-    <q t="რატომ ვდებთ პრომპტში მაგალითს?">ძველი პასუხის მაგალითი ტონს ნებისმიერ ზედსართავზე უფრო ზუსტად ადგენს.</q>
+    <q t="რისთვის სჭირდება პრომპტს მაგალითი?">ძველი პასუხის მაგალითი ტონს ნებისმიერ ზედსართავზე უფრო ზუსტად ადგენს.</q>
     <q t="რა ვუყოთ კარგ პრომპტს?">შეინახეთ შაბლონად: იმავე სახის შემდეგი ამოცანა მისგან დაიწყება.</q>
   </b-faq-cards>
 </b-chapter>
