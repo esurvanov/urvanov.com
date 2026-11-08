@@ -1,0 +1,23 @@
+{
+  "methods-lab": {
+    "name": "Atelier de méthodes",
+    "tagline": "60 méthodes de résolution de problèmes en 3D, pas à pas",
+    "description": "Atelier de méthodes : 60 méthodes de résolution de problèmes issues des mathématiques et des algorithmes, en 3D pas à pas. En russe et en anglais, directement dans le navigateur.",
+    "intro": [
+      "Soixante méthodes de résolution de problèmes issues des mathématiques et des algorithmes, chacune montrée en 3D et décomposée pas à pas.",
+      "Les méthodes viennent de la résolution de Project Euler+ sur HackerRank, où l’auteur a terminé 6e sur environ 256 000 participants."
+    ],
+    "features": [
+      "Pour chaque méthode : l’énoncé, la voie directe, ce que l’on remarque et comment résoudre plus vite",
+      "Visualisation 3D pas à pas",
+      "Interface en russe et en anglais",
+      "Fonctionne dans le navigateur, sans installation"
+    ],
+    "facts": [
+      ["Méthodes", "60"],
+      ["Format", "3D dans le navigateur, sans installation"],
+      ["Langues", "Russe et anglais"],
+      ["Origine des problèmes", "Project Euler+ sur HackerRank"]
+    ]
+  }
+}

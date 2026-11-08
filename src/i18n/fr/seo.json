@@ -1,0 +1,42 @@
+{
+  "/": {
+    "title": "Egor Urvanov : CTO, IA et networking",
+    "description": "Egor Urvanov : CTO, développement avec l’IA, mentorat et Jaiora, le LinkedIn hors ligne. Blog, conférences, catalogue de patterns IA et jeux dans le navigateur."
+  },
+  "/about": {
+    "title": "À propos d’Egor Urvanov : CTO et mentor",
+    "description": "Egor Urvanov : CTO, apprentissage automatique, développement avec l’IA. D’ingénieur à CTO, vainqueur de compétitions, auteur sur arXiv, mentor n° 1 sur GetMentor, fondateur de Jaiora."
+  },
+  "/blog": {
+    "title": "Blog : opinions et expérience de l’auteur — Egor Urvanov",
+    "description": "Blog personnel : opinions et expérience de l’auteur sur le développement avec l’IA, le Spec-Driven Development, le management d’ingénierie et les communautés."
+  },
+  "/links": {
+    "title": "Liens — Egor Urvanov",
+    "description": "Profils, projets, conférences et chaînes Telegram d’Egor Urvanov au même endroit."
+  },
+  "/materials": {
+    "title": "Ressources — Egor Urvanov",
+    "description": "Présentations, catalogue de patterns IA, atelier de méthodes en 3D et jeux dans le navigateur."
+  },
+  "/materials/presentations": {
+    "title": "Présentations — Egor Urvanov",
+    "description": "Conférence « Le Spec-Driven Development en pratique » (en russe) et catalogue de patterns de développement avec des agents IA."
+  },
+  "/materials/games": {
+    "title": "Jeux dans le navigateur — Egor Urvanov",
+    "description": "Huit jeux gratuits dans le navigateur, sans installation : le RTS Chronicles of Kingdoms, la survie Sibiria, les mondes 3D Echo of the Rift et Berezovka, l’arcade Northern Rift, le casse-tête Uptime, Zhitiyo et Skhodka."
+  },
+  "/materials/interactive": {
+    "title": "Pages interactives — Egor Urvanov",
+    "description": "Pages interactives : méthodes de résolution de problèmes en 3D, pas à pas, directement dans le navigateur."
+  },
+  "/materials/glossary": {
+    "title": "Glossaire du développement avec l’IA — Egor Urvanov",
+    "description": "Termes du développement avec l’IA par ensemble : agents, harness, MCP, spécifications, prompts. Chaque terme a une définition et les articles qui le traitent."
+  },
+  "/ai": {
+    "title": "L’IA au travail : formation et adoption — Egor Urvanov",
+    "description": "Formation à l’IA et adoption pour les entreprises, les équipes par rôle et les particuliers."
+  }
+}

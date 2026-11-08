@@ -1,0 +1,27 @@
+{
+  "lead": {
+    "lead": "CTO, apprentissage automatique et développement avec l’IA. J’accompagne des ingénieurs en mentorat, je donne des conférences et je réunis des gens dans Jaiora."
+  },
+  "milestones": {
+    "0.years": "2026 — aujourd’hui",
+    "0.org": "Entreprise d’iGaming, plateforme SaaS de support client",
+    "1.org": "Entreprise d’iGaming, plateforme SaaS de support client",
+    "1.facts.0": "Temps de rétablissement après incident : 5 heures → 2",
+    "1.facts.1": "Délai de mise sur le marché : 3 mois → 1,5",
+    "1.facts.2": "Équipe passée à Scrum + LeSS",
+    "1.facts.3": "Réorganisation en équipes produit pluridisciplinaires",
+    "1.facts.4": "Architecture reconstruite",
+    "2.facts.0": "Direction du département de développement",
+    "3.org": "SberMarket",
+    "3.facts.0": "Un système pour 40 000 employés, 170 millions de roubles économisés par an",
+    "3.facts.1": "Routage des préparateurs pour 10 000 magasins, 12 millions de roubles par an",
+    "3.facts.2": "Onboarding et OKR dans un département de 200 personnes",
+    "4.facts.0": "De 0 à 6 000 utilisateurs, 25 millions de roubles de chiffre d’affaires annuel",
+    "4.facts.1": "99,9 % de disponibilité, 8 projets livrés",
+    "5.org": "Leroy Merlin",
+    "5.facts.0": "Suivi des prix des concurrents pour 1 000 000 de produits",
+    "6.facts.0": "Migration du calcul des tarifs de livraison de C# vers Go, débit +250 % à 3 600 requêtes par seconde",
+    "7.org": "Sputnik",
+    "7.facts.0": "Portail de recherche, reconnaissance vocale"
+  }
+}

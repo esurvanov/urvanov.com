@@ -1,0 +1,726 @@
+{
+  "chronicles-of-kingdoms": {
+    "name": "Chronicles of Kingdoms",
+    "title": "Chronicles of Kingdoms : RTS dans le navigateur, comme Age of Empires II",
+    "tagline": "Un jeu de stratégie en temps réel dans l’esprit d’Age of Empires II, directement dans votre navigateur",
+    "genre": "Stratégie en temps réel (RTS)",
+    "description": "Chronicles of Kingdoms : un RTS gratuit dans le navigateur, dans l’esprit d’Age of Empires II. 14 civilisations, 4 âges, plus de 130 technologies, jusqu’à 7 adversaires IA. Sans installation.",
+    "intro": [
+      "Construisez un village à l’âge sombre, entourez-le de murs, élevez un château, progressez jusqu’à l’âge impérial et écrasez l’ennemi sous les trébuchets, contre jusqu’à sept joueurs IA sur six cartes aléatoires.",
+      "Le jeu est original, open source et écrit de zéro : les règles et les chiffres suivent l’Age of Empires II classique (la vérification par rapport à la Definitive Edition est documentée), sans aucun graphisme, musique ni nom d’origine. Il fonctionne comme un site web ordinaire, sans installation ni inscription."
+    ],
+    "features": [
+      "14 civilisations, avec unités uniques, technologies uniques et bonus d’équipe",
+      "4 âges (sombre → féodal → château → impérial) et un arbre de plus de 130 technologies (F5 en jeu)",
+      "Plus de 75 types d’unités : infanterie, archers, cavalerie, siège, moines, navires",
+      "Économie : commerce sur le marché, charrettes de commerce, reliques, fermes ; murs, portes, tours, garnisons",
+      "Guerre navale : quais, pêche, transports, galères, brûlots",
+      "6 cartes aléatoires (Arabie, Arène, Forêt-Noire, Nomade, Îles, Méditerranée), 6 niveaux d’IA, jusqu’à 8 joueurs, diplomatie",
+      "Sauvegarde et chargement, statistiques de fin de partie, 7 langues d’interface"
+    ],
+    "controls": [
+      [
+        "Bouton gauche de la souris",
+        "sélectionner une unité ou un bâtiment ; tracer un cadre pour en sélectionner plusieurs"
+      ],
+      [
+        "Double-clic",
+        "sélectionner toutes les unités du même type à l’écran"
+      ],
+      [
+        "Bouton droit de la souris",
+        "donner un ordre à cet endroit : déplacer, récolter, construire, attaquer, garnir"
+      ],
+      [
+        "Q · W · E · R · T",
+        "commandes de l’unité sélectionnée, comme les boutons du panneau du bas (les touches suivent une grille 5×3)"
+      ],
+      [
+        "Ctrl + 1…9",
+        "enregistrer les unités sélectionnées comme groupe"
+      ],
+      [
+        "1…9",
+        "sélectionner le groupe enregistré ; appuyer de nouveau pour y amener la caméra"
+      ],
+      [
+        "H",
+        "caméra sur le centre-ville"
+      ],
+      [
+        ". · ,",
+        "trouver un villageois inactif · trouver un soldat inactif"
+      ],
+      [
+        "Espace",
+        "caméra sur les unités sélectionnées"
+      ],
+      [
+        "Molette · flèches",
+        "zoom · défilement de la carte"
+      ],
+      [
+        "F5",
+        "arbre technologique"
+      ],
+      [
+        "F7 · F8",
+        "sauvegarde rapide · chargement rapide"
+      ]
+    ],
+    "facts": [
+      [
+        "Plateforme",
+        "navigateur de bureau, sans installation"
+      ],
+      [
+        "Premier chargement",
+        "≈ 60 Mo, puis diffusion au fil du jeu"
+      ],
+      [
+        "Adversaires",
+        "jusqu’à 7 joueurs IA, 6 niveaux de difficulté"
+      ],
+      [
+        "Langues de l’interface",
+        "anglais, russe, allemand, français, espagnol, portugais brésilien, italien"
+      ],
+      [
+        "Code",
+        "open source, MIT (avec aussi une version Python)"
+      ],
+      [
+        "Graphismes et sons",
+        "0 A.D. et Millennium A.D., CC BY-SA 3.0"
+      ]
+    ],
+    "faq": [
+      [
+        "Est-ce une copie d’Age of Empires II ?",
+        "Non. C’est un jeu open source indépendant : les mécaniques et les chiffres ont été vérifiés par rapport à Age of Empires II, mais les graphismes, la musique et les noms lui sont propres (musique et voix viennent du projet open source 0 A.D.)."
+      ],
+      [
+        "Faut-il installer quelque chose ?",
+        "Non. Le jeu fonctionne comme une simple page web. Le premier lancement télécharge environ 60 Mo de ressources."
+      ],
+      [
+        "Comment sauvegarder ?",
+        "F7 sauvegarde rapidement et F8 charge ; il y a aussi des emplacements dans le menu du jeu. Les sauvegardes restent dans votre navigateur."
+      ],
+      [
+        "Puis-je obtenir le code ?",
+        "Oui, tout est ouvert sous licence MIT : github.com/esurvanov/awesome-games."
+      ]
+    ],
+    "shots.0.alt": "Chronicles of Kingdoms : une bataille en terrain découvert avec des engins de siège",
+    "shots.1.alt": "Chronicles of Kingdoms : une ville byzantine",
+    "shots.2.alt": "Chronicles of Kingdoms : une flotte et un quai sur la carte des Îles",
+    "shots.3.alt": "Chronicles of Kingdoms : collines et falaises",
+    "shots.4.alt": "Chronicles of Kingdoms : l’arbre technologique",
+    "shots.5.alt": "Chronicles of Kingdoms : le salon d’escarmouche",
+    "keywords": [
+      "RTS dans le navigateur",
+      "jeu comme Age of Empires",
+      "jeu de stratégie en ligne gratuit",
+      "RTS open source"
+    ]
+  },
+  "berezovka": {
+    "name": "Berezovka",
+    "tagline": "Un village russe sous la neige où l’on peut entrer : un jeu 3D en monde ouvert dans votre navigateur",
+    "genre": "Aventure 3D en monde ouvert",
+    "description": "Berezovka : un jeu 3D dans le navigateur, dans un village russe enneigé. Monde ouvert d’environ 1 km², histoire en 12 étapes, une Jigouli à conduire, pêche sous la glace et blizzards. Sans installation.",
+    "intro": [
+      "Vous descendez du vieux bus à Berezovka après cinq ans d’absence. Grand-mère a besoin de bois, la Jigouli de 1979 de grand-père ne démarre pas, la cloche de l’église a perdu sa corde et le chat de la boutiquière s’est égaré dans les bois, au-delà de l’ours. Le soir venu, tout le village dépend de vous.",
+      "Le monde fait environ un kilomètre carré : le village, une cité soviétique, une église sur une colline, une rivière gelée et une forêt profonde. Le jeu tourne directement dans le navigateur, sans installation."
+    ],
+    "features": [
+      "Un monde ouvert d’environ 1 km² : village, cité, église, rivière, forêt ; 14 cours habitées",
+      "Une histoire en 12 étapes : cinq personnages, dialogues à choix, une fin",
+      "Conduite de la Jigouli : suspension, roulis de la caisse, autoradio avec accordéon",
+      "Faune : un ours qui charge, un husky, un chat en fuite, un troupeau de cerfs",
+      "Pêche sous la glace : perche, brochet, gardon, grémille, lotte",
+      "Jour et nuit, aurores boréales, blizzards et brouillard ; sons enregistrés (pas dans la neige, vraie cloche d’église)",
+      "12 matriochkas cachées sur la carte"
+    ],
+    "controls": [
+      [
+        "W A S D + souris",
+        "marcher, regarder (cliquer pour capturer la souris)"
+      ],
+      [
+        "Maj · C",
+        "courir · basculer marche/course"
+      ],
+      [
+        "Espace",
+        "sauter · frein à main dans la voiture"
+      ],
+      [
+        "E",
+        "parler, ramasser, pêcher, sonner la cloche"
+      ],
+      [
+        "F",
+        "monter dans la voiture / en descendre"
+      ],
+      [
+        "R · M · H",
+        "radio (dans la voiture) · grande carte · commandes"
+      ]
+    ],
+    "facts": [
+      [
+        "Plateforme",
+        "navigateur de bureau avec WebGL 2 (Chrome, Edge, Firefox, Safari 16+)"
+      ],
+      [
+        "Premier chargement",
+        "environ 33 Mo"
+      ],
+      [
+        "Commandes",
+        "clavier et souris ; joystick sur les écrans tactiles"
+      ],
+      [
+        "Sauvegarde",
+        "dans le navigateur, sans serveur"
+      ],
+      [
+        "Code",
+        "open source, MIT (three.js)"
+      ]
+    ],
+    "faq": [
+      [
+        "Faut-il l’installer ?",
+        "Non, il fonctionne dans le navigateur. Il faut un ordinateur avec WebGL 2."
+      ],
+      [
+        "Combien faut-il télécharger ?",
+        "Environ 33 Mo au premier lancement."
+      ],
+      [
+        "Est-ce que ça marche sur téléphone ?",
+        "Les écrans tactiles ont un joystick et des boutons à l’écran, mais le jeu est conçu surtout pour ordinateur."
+      ],
+      [
+        "Où est stockée ma progression ?",
+        "Dans votre navigateur. Effacer les données du site supprime la sauvegarde."
+      ],
+      [
+        "Pourquoi l’image peut-elle paraître plus plate sur un ordinateur peu puissant ?",
+        "Quand le nombre d’images par seconde baisse, le jeu désactive de lui-même une partie de l’ombrage des coins pour rester fluide."
+      ]
+    ],
+    "shots.0.alt": "Berezovka : la rue du village par une journée d’hiver",
+    "shots.1.alt": "Berezovka : l’église sur la colline",
+    "shots.2.alt": "Berezovka : la forêt enneigée",
+    "keywords": [
+      "jeu 3D dans le navigateur",
+      "jeu de neige en monde ouvert",
+      "jeu village russe",
+      "jouer dans le navigateur"
+    ]
+  },
+  "sibiria": {
+    "name": "Sibiria",
+    "title": "Sibiria : jeu de survie dans la taïga, à jouer gratuitement dans le navigateur",
+    "tagline": "Survivre quatre nuits dans la taïga évenke, en 1993, puis bâtir un village autour de votre cabane",
+    "genre": "Survie et village en vue de dessus",
+    "description": "Sibiria : un jeu de survie en vue de dessus dans la taïga évenke, en 1993. Froid, loups, ours rôdeur, votre cabane et un village. Sept chapitres, cinq fins. À jouer dans le navigateur.",
+    "intro": [
+      "Janvier 1993. L’hélicoptère Mi-8 numéro 24713 s’est abattu sur un coude de rivière en Évenkie. Vous êtes Lyocha, le radio. La radio est détruite, l’équipage a disparu et les premiers habitants sont à des jours de marche. Trouvez la vieille cabane des chasseurs, allumez son poêle, rencontrez le vieil Évenke Ourkatchan et tenez quatre nuits.",
+      "Ensuite, le jeu devient une histoire de village : embaucher des bras, construire et traverser les âges, commercer contre des roubles, le tout dans une taïga qui ne pardonne pas les erreurs. Il tourne dans le navigateur, sans installation ni compilation, et fonctionne sur téléphone."
+    ],
+    "features": [
+      "Sept chapitres : L’Épave, Ourkatchan, La Meute, Le Signal, puis Piégeage, Hivernage ou Expédition ; notes à trouver et dialogues à l’humour sec",
+      "Un vrai froid : chaleur, faim, engelures, blizzards ; le feu est le seul endroit sûr",
+      "Une meute de loups chasseurs et un ours rôdeur qui défonce le fumoir et vole la nourriture",
+      "Votre propre cabane et votre village : jusqu’à 8 types de bâtiments, 4 âges, embauche de bras, commerce contre des roubles",
+      "Contrôle de type RTS : sélection par cadre, ordres au clic droit, groupes, cloche d’alarme",
+      "Environ 11 × 11 km de taïga en huit zones : glaciation de rivière, forêt brûlée, champ de blocs, sommet chauve et plus encore",
+      "Cinq fins, trois emplacements de sauvegarde plus la sauvegarde automatique ; disposition adaptée au téléphone"
+    ],
+    "controls": [
+      [
+        "W A S D",
+        "se déplacer"
+      ],
+      [
+        "E",
+        "agir : couper, pêcher, lire, parler"
+      ],
+      [
+        "F · Q · R",
+        "feu · manger · piège"
+      ],
+      [
+        "C · B",
+        "atelier · construire"
+      ],
+      [
+        "Tracer un cadre · clic droit",
+        "sélectionner des personnes · donner un ordre"
+      ],
+      [
+        "H · Échap",
+        "alarme / fin d’alerte · pause"
+      ],
+      [
+        "Molette · 0",
+        "zoom · retour au héros"
+      ]
+    ],
+    "facts": [
+      [
+        "Plateforme",
+        "navigateur sur ordinateur et téléphone"
+      ],
+      [
+        "Installation",
+        "aucune"
+      ],
+      [
+        "Durée de la partie",
+        "sept chapitres, cinq fins"
+      ],
+      [
+        "Code",
+        "open source, MIT ; sans compilation et sans bibliothèques (seulement Google Fonts)"
+      ]
+    ],
+    "faq": [
+      [
+        "Est-ce une histoire vraie ?",
+        "Non, c’est une fiction située dans le contexte de l’Évenkie de 1993 : les personnages et les événements sont inventés."
+      ],
+      [
+        "Peut-on jouer sur téléphone ?",
+        "Oui : il y a un joystick, un mode d’ordres et le zoom à deux doigts."
+      ],
+      [
+        "Comment sauvegarder ?",
+        "Dormez dans la cabane pour enregistrer la progression ; il y a trois emplacements plus la sauvegarde automatique."
+      ],
+      [
+        "Combien de temps dure le jeu ?",
+        "L’histoire prend quelques soirées ; le village et les différentes fins donnent des raisons de revenir."
+      ]
+    ],
+    "shots.0.alt": "Sibiria : vue de jour de la cabane et du village",
+    "shots.1.alt": "Sibiria : l’intérieur de la cabane",
+    "shots.2.alt": "Sibiria : des habitants au travail",
+    "keywords": [
+      "jeu de survie dans le navigateur",
+      "jeu de survie dans la taïga",
+      "jeu de construction de village",
+      "jeu Sibérie 1993"
+    ]
+  },
+  "echo-of-the-rift": {
+    "name": "Echo of the Rift",
+    "tagline": "Un pilote écrasé, une île polaire et une faille lumineuse dans la glace : un jeu d’histoire 3D dans votre navigateur",
+    "genre": "Jeu d’histoire 3D en monde ouvert",
+    "description": "Echo of the Rift : un jeu d’histoire 3D en monde ouvert. Un pilote s’écrase sur une île polaire sous les aurores boréales. Un ermite, des cristaux, une faille qui chante, deux fins. Dans le navigateur.",
+    "intro": [
+      "Votre avion, le « Kestrel », s’abat sur une île polaire sans nom, sous les aurores boréales. L’IA de la station, IRIS, vous réveille dans l’épave. Un vieil ermite, Orm, vit ici seul depuis onze ans, près d’une faille dans la glace qui chante.",
+      "L’île mesure 900 × 900 m : le site du crash, une station polaire, un lac gelé, des ruines, une forêt, la banquise et la Faille. La neige garde la trace de chaque pas, la nuit ressemble à une vraie nuit, et tout démarre directement dans le navigateur, sans installation."
+    ],
+    "features": [
+      "Une île ouverte de 900 × 900 m : site du crash, station, lac, ruines, forêt, banquise, la Faille",
+      "5 chapitres et 2 fins : dialogues à choix, 8 enregistrements d’écho, 24 éclats de cristal",
+      "Un véhicule de neige, le skimmer : appelez-le avec T",
+      "Une neige qui se souvient : chaque botte, sabot et patte laisse sa propre empreinte",
+      "Le pilote s’appuie sur les rochers et les murs, s’arc-boute dans les pentes et franchit les obstacles bas",
+      "Faune : cerfs et autres animaux ; une nuit avec aurore, ombres de lune, brouillard et neige qui tombe",
+      "Un peu de combat : éclats de cristal vivants et un golem dans la Faille"
+    ],
+    "controls": [
+      [
+        "W A S D · Maj · Espace · C",
+        "se déplacer · courir · sauter · rouler"
+      ],
+      [
+        "E · clic gauche · Q · G",
+        "interagir · découpeur · scanner · faire signe"
+      ],
+      [
+        "T",
+        "appeler le skimmer"
+      ],
+      [
+        "M · J · Échap",
+        "carte · journal · pause"
+      ],
+      [
+        "Y",
+        "parler à Orm"
+      ]
+    ],
+    "facts": [
+      [
+        "Plateforme",
+        "navigateur de bureau avec WebGL 2"
+      ],
+      [
+        "Qualité",
+        "s’adapte à la machine ; sur les écrans Retina, l’image est rendue en 1× puis agrandie"
+      ],
+      [
+        "Moteur",
+        "ni moteur ni compilation : three.js, physique Rapier"
+      ],
+      [
+        "Code",
+        "open source, MIT"
+      ]
+    ],
+    "faq": [
+      [
+        "Faut-il l’installer ?",
+        "Non. Un navigateur de bureau avec WebGL 2 suffit."
+      ],
+      [
+        "Et si le jeu est lent ?",
+        "Le jeu choisit un niveau de qualité adapté à votre machine ; les ordinateurs moins puissants reçoivent un mode plus léger."
+      ],
+      [
+        "Est-il lié à Northern Rift ?",
+        "Oui : Northern Rift est un jeu d’arcade dans le même monde, la même île vue du ciel."
+      ]
+    ],
+    "shots.0.alt": "Echo of the Rift : le pilote sur le site du crash du Kestrel, dans la neige",
+    "shots.1.alt": "Echo of the Rift : l’île vue d’en haut, avec la forêt, la Faille et l’aurore",
+    "shots.2.alt": "Echo of the Rift : le campement la nuit",
+    "keywords": [
+      "jeu d’histoire 3D dans le navigateur",
+      "jeu sur une île polaire",
+      "jeu aurore boréale",
+      "jeu three.js en monde ouvert"
+    ]
+  },
+  "northern-rift": {
+    "name": "Northern Rift",
+    "tagline": "Volez dans un canyon de glace sans fin sous les aurores boréales : une arcade 3D tenant dans un seul fichier",
+    "genre": "Arcade 3D",
+    "description": "Northern Rift : une arcade 3D dans le navigateur. Un petit vaisseau vole dans un canyon de glace sans fin, ramasse des éclats et perce la glace. Combos jusqu’à ×8, trois touches. À jouer gratuitement.",
+    "intro": [
+      "Le canyon n’a pas de fin. Ramassez des éclats de cristal, transformez-les en énergie, puis percez les murs de glace. Contournez les obstacles, passez au-dessus et en dessous, gardez le combo en vie et voyez jusqu’où vous allez avant que trois touches ne vous abattent.",
+      "C’est le premier jeu créé dans le monde d’Echo of the Rift : la même île, vue du ciel. Tout le monde est dessiné en code, sans fichiers d’image : le jeu tient dans un seul fichier."
+    ],
+    "features": [
+      "Un canyon sans fin, généré pendant le vol et jamais deux fois le même",
+      "Éclats → énergie → briser la glace : une accélération qui traverse les murs",
+      "Combo ×2 … ×8 pour les slaloms, passages au-dessus et en dessous",
+      "3 touches, puis la partie est terminée",
+      "Aurore, étoiles, cristaux lumineux : tout est dessiné en code",
+      "Commandes tactiles : un bouton d’accélération apparaît sur téléphone"
+    ],
+    "controls": [
+      [
+        "W A S D / flèches",
+        "diriger"
+      ],
+      [
+        "Espace / Maj",
+        "accélérer à travers la glace"
+      ],
+      [
+        "Entrée",
+        "démarrer"
+      ]
+    ],
+    "facts": [
+      [
+        "Plateforme",
+        "navigateur sur ordinateur et téléphone"
+      ],
+      [
+        "Taille",
+        "un seul fichier (three.js et les polices sont chargés depuis le réseau)"
+      ],
+      [
+        "Mode",
+        "course au score sans fin"
+      ],
+      [
+        "Code",
+        "open source, MIT"
+      ]
+    ],
+    "faq": [
+      [
+        "Combien de temps dure une partie ?",
+        "Jusqu’à ce que vous soyez touché trois fois : elle est sans fin, l’habileté décide."
+      ],
+      [
+        "Est-ce que ça marche sur téléphone ?",
+        "Oui, un bouton d’accélération apparaît sur les écrans tactiles."
+      ],
+      [
+        "D’où vient ce jeu ?",
+        "C’est le premier jeu issu du monde d’Echo of the Rift."
+      ]
+    ],
+    "shots.0.alt": "Northern Rift : le vaisseau dans le canyon de glace",
+    "shots.1.alt": "Northern Rift : l’écran de démarrage",
+    "keywords": [
+      "arcade 3D dans le navigateur",
+      "jeu de vol sans fin",
+      "jeu en un fichier three.js"
+    ]
+  },
+  "skhodka": {
+    "name": "Skhodka",
+    "tagline": "Un samedi soir d’une communauté IT dans un bar de Batoumi : un jeu 3D sur la rencontre",
+    "genre": "Simulation sociale",
+    "description": "Skhodka : un jeu 3D dans le navigateur. Un samedi soir de la communauté IT au bar SushiGO de Batoumi, de 19 h à 1 h. Rencontrez des gens, trouvez des sujets communs et présentez-les les uns aux autres.",
+    "intro": [
+      "Un samedi soir au bar SushiGO de Batoumi, de 19 h à 1 h, environ 18 minutes de jeu. Vous êtes membre du chat IT local : rencontrez des gens, trouvez un terrain d’entente et présentez ceux qui ont besoin l’un de l’autre.",
+      "Chaque personne du bar est un personnage composite au nom inventé. Le jeu fonctionne dans le navigateur, sans serveur ni installation (three.js est inclus) ; ajouter ?seed=42 à l’adresse rejoue la même soirée."
+    ],
+    "features": [
+      "Une soirée au bar de 19 h à 1 h : saxophone, karaoké, pluie et photo de groupe à la fin",
+      "Allez vers les invités, répondez avec des cartes (touches 1 à 4), trouvez des sujets communs",
+      "Présentez deux personnes l’une à l’autre avec le bouton « Познакомить » (Présenter)",
+      "Commandez des boissons, prenez la photo de groupe, utilisez le téléphone avec le chat",
+      "Caméra : glisser, tourner, zoomer ; commandes souris et tactiles",
+      "Soirées rejouables grâce à un nombre dans l’adresse (?seed=…)"
+    ],
+    "controls": [
+      [
+        "Cliquer sur une personne ou son badge",
+        "s’approcher et parler"
+      ],
+      [
+        "Cliquer sur le sol · un siège",
+        "marcher · s’asseoir"
+      ],
+      [
+        "Carte · 1–4",
+        "répondre"
+      ],
+      [
+        "« Познакомить » (Présenter)",
+        "présenter deux personnes"
+      ],
+      [
+        "Échap",
+        "pause, qualité, son"
+      ]
+    ],
+    "facts": [
+      [
+        "Durée",
+        "environ 18 minutes"
+      ],
+      [
+        "Langue du jeu",
+        "russe"
+      ],
+      [
+        "Plateforme",
+        "navigateur, souris et tactile"
+      ],
+      [
+        "Code",
+        "open source, MIT ; sans serveur et sans compilation"
+      ]
+    ],
+    "faq": [
+      [
+        "Ce sont de vraies personnes ?",
+        "Non, tous les invités sont des personnages composites aux noms inventés."
+      ],
+      [
+        "Faut-il installer quelque chose ?",
+        "Aucune installation ; le jeu tourne dans le navigateur."
+      ],
+      [
+        "Peut-on rejouer la même soirée ?",
+        "Oui : l’adresse avec ?seed=42 rejoue la même."
+      ]
+    ],
+    "shots.0.alt": "Skhodka : le profil d’un invité",
+    "shots.1.alt": "Skhodka : la salle du bar au sommet de la soirée",
+    "shots.2.alt": "Skhodka : une conversation avec un invité",
+    "keywords": [
+      "jeu de simulation sociale dans le navigateur",
+      "jeu de networking",
+      "communauté IT de Batoumi"
+    ]
+  },
+  "zhitie": {
+    "name": "Zhitiyo",
+    "tagline": "Une simulation de vie dans l’esprit des Sims 1 : un quartier isométrique low-poly de dix foyers",
+    "genre": "Simulation de vie",
+    "description": "Zhitiyo : un simulateur de vie dans le navigateur, dans l’esprit des Sims 1. 3D isométrique low-poly, dix foyers, besoins, carrières, relations, modes Acheter et Construire. Sans installation.",
+    "intro": [
+      "Emménagez à Berёzovaya Roshcha (le Bosquet de bouleaux), un petit quartier de dix foyers, avec un parc, un café, une boutique, une salle de sport et une bibliothèque. Prenez en main une famille, gardez chacun nourri, reposé et heureux, tenez un emploi, nouez des amitiés et des romances, meublez et agrandissez la maison.",
+      "C’est un clone de mécaniques original, construit de zéro : aucun nom, graphisme, musique ni interface des Sims ou d’EA, avec son propre langage visuel et son propre charabia parlé. Il fonctionne dans le navigateur, sans installation ni compilation."
+    ],
+    "features": [
+      "Un quartier vivant : 10 foyers entre lesquels basculer, plus des lieux communs",
+      "Besoins et humeur : faim, énergie, hygiène, vessie, plaisir, vie sociale, confort",
+      "Relations : amitiés, romances, liaisons secrètes, querelles de famille ; 86 interactions sociales",
+      "Modes Acheter et Construire : 38 meubles, murs, sols, fenêtres, plusieurs étages et toits",
+      "Cycle jour et nuit, caméra isométrique classique (4 rotations, 3 niveaux de zoom)",
+      "3D low-poly, chaque modèle et chaque animation sous CC0"
+    ],
+    "controls": [
+      [
+        "Cliquer sur un sim ou un objet",
+        "menu radial d’actions"
+      ],
+      [
+        "Cliquer sur une case",
+        "s’y rendre"
+      ],
+      [
+        "F1 · F2 · F3",
+        "Vivre · Acheter · Construire"
+      ],
+      [
+        "P · 0–3",
+        "pause · vitesse du jeu"
+      ],
+      [
+        "Espace",
+        "membre suivant du foyer"
+      ],
+      [
+        "Glisser · molette",
+        "tourner · zoomer"
+      ]
+    ],
+    "facts": [
+      [
+        "Plateforme",
+        "un navigateur de bureau récent"
+      ],
+      [
+        "Moteur",
+        "three.js, modules ES"
+      ],
+      [
+        "Installation",
+        "aucune"
+      ],
+      [
+        "Code",
+        "open source, MIT ; ressources CC0"
+      ]
+    ],
+    "faq": [
+      [
+        "Est-ce Les Sims ?",
+        "Non. C’est un jeu indépendant qui suit les mécaniques du genre, sans les noms, graphismes ni musiques de personne d’autre."
+      ],
+      [
+        "Faut-il l’installer ?",
+        "Non, il fonctionne dans le navigateur."
+      ],
+      [
+        "Peut-on reconstruire la maison ?",
+        "Oui, dans les modes Acheter et Construire : meubles, murs, sols, fenêtres, étages et toits."
+      ]
+    ],
+    "shots.0.alt": "Zhitiyo : la carte du quartier du Bosquet de bouleaux",
+    "shots.1.alt": "Zhitiyo : l’intérieur d’une maison",
+    "keywords": [
+      "simulateur de vie dans le navigateur",
+      "jeu comme Les Sims",
+      "jeu isométrique low-poly"
+    ]
+  },
+  "uptime": {
+    "name": "Uptime",
+    "tagline": "Vous construisez un service. Il tombe en panne. Vous le réparez. Un jeu sur le métier d’ingénieur",
+    "genre": "Casse-tête, simulateur de conception de systèmes",
+    "description": "Uptime est un jeu dans le navigateur sur la conception de systèmes de serveurs : construisez un service avec des blocs, faites passer un flux d’utilisateurs, survivez aux incidents. 43 niveaux, d’un seul serveur à la découpe d’un monolithe.",
+    "intro": [
+      "Un flux d’utilisateurs traverse des tuyaux : l’épaisseur indique le volume, la couleur dit si un bloc tient le coup. Vous placez des serveurs, des caches, des files et des bases de données, pariez sur ce qui cassera en premier et appuyez sur démarrer.",
+      "Après la partie vient le bilan : la décision avec ses avantages et inconvénients, le chemin d’une requête et l’endroit où il était mince. Un jeu pour tous ceux qui veulent voir ce que fait un ingénieur, sans savoir programmer."
+    ],
+    "features": [
+      "43 niveaux en cinq paliers : bases, charge, observabilité, plateforme, architecture",
+      "Caches, brokers, Kubernetes, sockets, certificats, VPN, multirégion et multicloud",
+      "Monolithe, monolithe modulaire, découpage, monolithe distribué, enfer des microservices, DDD et sagas",
+      "27 types d’incidents : pic de charge, panne de zone, mauvais déploiement, certificat expiré, fuite",
+      "Un tutoriel de 3 minutes, une prédiction avant le départ, un bilan après",
+      "Défi du jour, survie, bac à sable ; russe et anglais"
+    ],
+    "controls": [
+      [
+        "Bloc à gauche",
+        "le placer sur le plateau"
+      ],
+      [
+        "Point d’un bloc → un autre bloc",
+        "tracer un tuyau"
+      ],
+      [
+        "Cliquer sur un bloc ou un tuyau",
+        "réglages"
+      ],
+      [
+        "Espace",
+        "pause"
+      ],
+      [
+        "Suppr",
+        "supprimer la sélection (pas pendant l’exécution)"
+      ],
+      [
+        "Molette, pincement",
+        "zoom"
+      ]
+    ],
+    "facts": [
+      [
+        "Durée",
+        "2 à 4 minutes par niveau"
+      ],
+      [
+        "Langues",
+        "russe, anglais"
+      ],
+      [
+        "Plateforme",
+        "navigateur, souris et tactile"
+      ],
+      [
+        "Code",
+        "ouvert, MIT ; sans serveur, sans compilation"
+      ]
+    ],
+    "faq": [
+      [
+        "Faut-il savoir programmer ?",
+        "Non : chaque bloc est expliqué par une analogie du quotidien, et vous voyez ce qui se passe."
+      ],
+      [
+        "Est-ce proche de la réalité ?",
+        "Les chiffres sont simplifiés, mais les causes et les effets sont réels : files d’attente, délais d’expiration, nouvelles tentatives, pannes de zone."
+      ],
+      [
+        "Faut-il installer quelque chose ?",
+        "Non, le jeu s’ouvre dans le navigateur et fonctionne hors ligne."
+      ]
+    ],
+    "shots.0.alt": "Uptime : flux à travers les services, les commandes et les événements",
+    "shots.1.alt": "Uptime : écran d’accueil",
+    "shots.2.alt": "Uptime : tutoriel",
+    "shots.3.alt": "Uptime : prédiction avant le départ",
+    "shots.4.alt": "Uptime : résultat et bilan de la décision",
+    "shots.5.alt": "Uptime : repérer le service en panne grâce aux journaux",
+    "shots.6.alt": "Uptime : test de charge",
+    "shots.7.alt": "Uptime : niveaux par palier, en anglais",
+    "keywords": [
+      "jeu de conception de systèmes",
+      "simulateur d’infrastructure dans le navigateur",
+      "jeu d’architecture logicielle"
+    ]
+  }
+}

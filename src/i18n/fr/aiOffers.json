@@ -1,0 +1,213 @@
+{
+  "company": {
+    "short": "Déploiement en entreprise",
+    "job": "Déployer l’IA pour un vrai effet, pas pour des licences inutilisées",
+    "name": "Adoption de l’IA dans votre entreprise",
+    "hook": "Du « chacun essaie de son côté » à un processus commun",
+    "pains": [
+      "Des licences achetées, aucun gain visible",
+      "Chacun utilise l’IA à sa façon",
+      "Aucune règle sur les données, la qualité, la sécurité"
+    ],
+    "outcomes": [
+      "Une carte des tâches où l’IA est rentable",
+      "Des règles et des outils communs",
+      "Des équipes formées",
+      "Des métriques d’impact"
+    ],
+    "program": [
+      "Audit des processus et des tâches",
+      "Pilote avec une équipe",
+      "Règles et outillage",
+      "Déploiement auprès des autres"
+    ],
+    "format": ["Audit", "Pilote", "Accompagnement"]
+  },
+  "executives": {
+    "short": "Dirigeant",
+    "job": "Savoir où investir dans l’IA et où ne pas le faire",
+    "name": "L’IA pour les dirigeants",
+    "hook": "Des décisions sur l’IA sans effet de mode : où investir, où non",
+    "pains": [
+      "On ne sait pas ce qui est réel et ce qui relève du marketing",
+      "Risque de mal répartir le budget et les personnes",
+      "Les concurrents ont déjà lancé quelque chose"
+    ],
+    "outcomes": [
+      "Une stratégie IA en langage clair",
+      "Priorités et budget",
+      "Les risques et comment les couvrir",
+      "Votre propre point de vue, pas le discours des éditeurs"
+    ],
+    "program": [
+      "Ce que l’IA sait faire aujourd’hui",
+      "Où elle est rentable dans votre activité",
+      "Équipe, processus, risques",
+      "Un plan pour le trimestre"
+    ],
+    "format": ["Séance en tête à tête", "Séance de stratégie", "Briefing du comité de direction"]
+  },
+  "engineers": {
+    "short": "Ingénieur",
+    "job": "Livrer du code avec des agents, plus vite et sans déchets",
+    "name": "Développement avec l’IA pour ingénieurs",
+    "hook": "Les agents écrivent le code, l’ingénieur répond du résultat",
+    "pains": [
+      "Le code de l’IA est fragile et casse le code voisin",
+      "L’agent oublie le contexte du projet",
+      "On ne sait pas comment le relire"
+    ],
+    "outcomes": [
+      "Un flux de travail avec agents qui marche sur du vrai code",
+      "Des spécifications et un harness pour votre projet",
+      "Des vérifications qui attrapent les erreurs des agents",
+      "De la vitesse sans perdre en qualité"
+    ],
+    "program": [
+      "Spec-Driven Development",
+      "Harness : contexte, règles, vérifications",
+      "MCP et outillage des agents",
+      "Relecture et tests du code écrit par l’IA"
+    ],
+    "format": ["Atelier", "Pratique dans votre dépôt", "Accompagnement"]
+  },
+  "managers": {
+    "short": "Manager",
+    "job": "Réduire la routine de management : statuts, plans, exigences",
+    "name": "L’IA pour les managers",
+    "hook": "Moins de routine, plus de management",
+    "pains": [
+      "Le temps part dans les statuts et les rapports",
+      "Les tâches et les exigences sont floues",
+      "On ne voit pas comment l’IA aide l’équipe"
+    ],
+    "outcomes": [
+      "Des routines prêtes pour chaque jour",
+      "Des exigences et des plans plus clairs, plus vite",
+      "Une vision pour faire évoluer le processus de l’équipe"
+    ],
+    "program": [
+      "Cadrage des tâches et exigences",
+      "Planification, statuts, rapports",
+      "Réunions : préparation et suites",
+      "Diriger une équipe avec l’IA"
+    ],
+    "format": ["Atelier", "Vos propres tâches", "Modèles à conserver"]
+  },
+  "recruiters": {
+    "short": "Recruteur",
+    "job": "Pourvoir les postes plus vite",
+    "name": "L’IA pour les recruteurs",
+    "hook": "Plus vite de l’offre d’emploi à la proposition",
+    "pains": [
+      "Le sourcing prend des jours",
+      "Des centaines de candidatures semblables",
+      "Offres et messages rédigés à la main"
+    ],
+    "outcomes": [
+      "Sourcing et présélection bien plus rapides",
+      "Des offres et des messages plus solides",
+      "Des évaluations de candidats structurées"
+    ],
+    "program": [
+      "Profil du poste et sourcing",
+      "Présélection des CV",
+      "Messages et rédaction des offres",
+      "Entretiens : questions et synthèses"
+    ],
+    "format": ["Atelier", "Vos propres postes", "Modèles à conserver"]
+  },
+  "marketers": {
+    "short": "Marketeur",
+    "job": "Produire plus de contenu et de tests avec la même équipe",
+    "name": "L’IA pour les marketeurs",
+    "hook": "Plus d’hypothèses et de contenu avec la même équipe",
+    "pains": [
+      "Le contenu dévore le budget temps",
+      "Les rapports sont analysés à la main",
+      "Les textes sonnent génériques et « faits par l’IA »"
+    ],
+    "outcomes": [
+      "Un flux de contenu avec l’IA, dans votre ton",
+      "Analyses et hypothèses plus rapides",
+      "La routine automatisée"
+    ],
+    "program": [
+      "Recherche et segments",
+      "Contenu et ton de la marque",
+      "Analyses et rapports",
+      "Automatisation de chaînes"
+    ],
+    "format": ["Atelier", "Vos propres campagnes", "Modèles à conserver"]
+  },
+  "operations": {
+    "short": "Opérations",
+    "job": "Automatiser les processus répétitifs",
+    "name": "L’IA pour les responsables des opérations",
+    "hook": "Automatiser le répétitif, laisser l’essentiel aux personnes",
+    "pains": [
+      "Processus manuels, copie entre systèmes",
+      "Des heures pour assembler les rapports",
+      "Des erreurs aux passages de relais entre équipes"
+    ],
+    "outcomes": [
+      "Une liste de processus prêts à être automatisés",
+      "Des automatisations opérationnelles",
+      "Moins d’erreurs et moins d’attente"
+    ],
+    "program": [
+      "Carte des processus",
+      "Quoi automatiser en premier",
+      "Construire des automatisations et des agents",
+      "Contrôle de la qualité et risques"
+    ],
+    "format": ["Atelier", "Vos propres processus", "Accompagnement au lancement"]
+  },
+  "appsec": {
+    "short": "Sécurité et AppSec",
+    "job": "Relire la sécurité du code plus vite avec l’IA et couvrir les risques des agents IA eux-mêmes",
+    "name": "L’IA pour la cybersécurité et l’AppSec",
+    "hook": "L’IA aide à trouver des vulnérabilités et apporte ses propres risques : les deux côtés sont couverts",
+    "pains": [
+      "Le code écrit par l’IA arrive plus vite qu’on ne peut le relire",
+      "Les agents obtiennent l’accès au code, aux secrets et aux systèmes sans règles",
+      "Injection de prompt et fuites de données via les services d’IA"
+    ],
+    "outcomes": [
+      "Des vérifications de sécurité assistées par l’IA dans votre flux : revue de code, recherche de vulnérabilités, tri",
+      "Des règles pour les agents : permissions, bac à sable (sandbox), secrets",
+      "Un modèle de menaces pour les agents IA de votre équipe",
+      "Moins de tri manuel des faux positifs"
+    ],
+    "program": [
+      "Où l’IA aide l’AppSec : revue, résultats des scanners, modélisation des menaces",
+      "Risques des agents : injection de prompt, permissions, fuites",
+      "Vérifications en CI et dans les flux de travail des agents",
+      "Pratique sur votre propre code"
+    ],
+    "format": ["Atelier", "Revue de votre flux de développement", "Règles et modèles à conserver"]
+  },
+  "personal": {
+    "short": "Coaching personnel",
+    "job": "Apprendre l’IA sur vos propres tâches, pas dans des cours",
+    "name": "Coaching personnel sur l’IA",
+    "hook": "Un programme individuel pour votre métier",
+    "pains": [
+      "Beaucoup de cours, peu de pratique",
+      "On ne sait pas par où commencer",
+      "Il faut des résultats sur vos propres tâches"
+    ],
+    "outcomes": [
+      "Une boîte à outils personnelle pour votre rôle",
+      "Une aisance avec les outils d’IA",
+      "De vraies tâches résolues ensemble"
+    ],
+    "program": [
+      "Revue de votre travail",
+      "Plan d’apprentissage",
+      "Pratique sur vos tâches",
+      "Suivi et retours"
+    ],
+    "format": ["Séances en tête à tête", "Exercices entre les séances", "Chat de soutien"]
+  }
+}
