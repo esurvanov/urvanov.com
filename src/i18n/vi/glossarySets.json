@@ -1,0 +1,16 @@
+{
+  "agents": { "name": "Tác nhân và công cụ", "hint": "Ai làm việc và làm ở đâu" },
+  "coding-agents": { "name": "Tác nhân lập trình", "hint": "Tác nhân có sẵn: chạy ở đâu và trên mô hình nào" },
+  "companies": { "name": "Công ty", "hint": "Ai tạo ra các mô hình và tác nhân" },
+  "harness": { "name": "Harness", "hint": "Môi trường xung quanh tác nhân và các quy tắc của nó" },
+  "mcp": { "name": "MCP và an toàn", "hint": "Cách tác nhân được cấp quyền vào các dịch vụ" },
+  "systems": { "name": "Hệ thống và dịch vụ", "hint": "Tác nhân được kết nối với những gì" },
+  "specs": { "name": "Đặc tả và kiến trúc", "hint": "Cách mô tả những gì mã phải làm" },
+  "languages": { "name": "Ngôn ngữ và nền tảng", "hint": "JavaScript, các phần mở rộng, môi trường chạy và framework web" },
+  "testing": { "name": "Kiểm thử", "hint": "Kiểm thử tự động, framework và việc kiểm tra chính các bài kiểm thử" },
+  "environments": { "name": "Môi trường", "hint": "Hệ thống nằm ở đâu trên đường từ thay đổi đến người dùng" },
+  "delivery": { "name": "Chỉ số phân phối", "hint": "Thay đổi đến tay người dùng nhanh và đáng tin cậy đến mức nào" },
+  "formal": { "name": "Kiểm chứng hình thức", "hint": "Ngôn ngữ mô hình hóa, kiểm tra chương trình và các lỗi chúng tìm ra" },
+  "models": { "name": "Mô hình và prompt", "hint": "Cách mô hình đọc yêu cầu và mắc lỗi" },
+  "group-theory": { "name": "Nhóm, nước đi và quy tắc", "hint": "Ngôn ngữ của các câu đố và phép đối xứng" }
+}

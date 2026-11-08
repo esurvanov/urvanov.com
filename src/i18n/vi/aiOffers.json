@@ -1,0 +1,213 @@
+{
+  "company": {
+    "short": "Triển khai cho công ty",
+    "job": "Triển khai AI để có hiệu quả thật, không để giấy phép nằm không",
+    "name": "Ứng dụng AI cho công ty của bạn",
+    "hook": "Từ “ai cũng tự thử một mình” đến một quy trình chung",
+    "pains": [
+      "Đã mua giấy phép nhưng không thấy lợi ích",
+      "Mỗi người dùng AI một kiểu",
+      "Không có quy tắc về dữ liệu, chất lượng, bảo mật"
+    ],
+    "outcomes": [
+      "Bản đồ các tác vụ mà AI đáng dùng",
+      "Quy tắc và công cụ chung",
+      "Các đội đã được đào tạo",
+      "Chỉ số hiệu quả"
+    ],
+    "program": [
+      "Kiểm tra quy trình và tác vụ",
+      "Thí điểm với một đội",
+      "Quy tắc và công cụ",
+      "Mở rộng cho các đội còn lại"
+    ],
+    "format": ["Kiểm tra", "Thí điểm", "Hỗ trợ"]
+  },
+  "executives": {
+    "short": "Lãnh đạo",
+    "job": "Biết nên đầu tư AI vào đâu và không nên vào đâu",
+    "name": "AI cho lãnh đạo",
+    "hook": "Quyết định về AI không phô trương: đầu tư vào đâu, tránh đâu",
+    "pains": [
+      "Không rõ đâu là thật, đâu là quảng cáo",
+      "Rủi ro phân bổ sai ngân sách và nhân sự",
+      "Đối thủ đã ra mắt một thứ gì đó"
+    ],
+    "outcomes": [
+      "Chiến lược AI bằng ngôn ngữ dễ hiểu",
+      "Thứ tự ưu tiên và ngân sách",
+      "Rủi ro và cách xử lý",
+      "Góc nhìn của riêng bạn, không phải lời nhà cung cấp"
+    ],
+    "program": [
+      "AI làm được gì ngày hôm nay",
+      "Nơi AI sinh lời trong doanh nghiệp của bạn",
+      "Đội ngũ, quy trình, rủi ro",
+      "Kế hoạch cho một quý"
+    ],
+    "format": ["Buổi làm việc 1:1", "Buổi xây dựng chiến lược", "Buổi trình bày cho ban lãnh đạo"]
+  },
+  "engineers": {
+    "short": "Kỹ sư",
+    "job": "Giao mã cùng tác nhân nhanh hơn và không có rác",
+    "name": "Phát triển với AI cho kỹ sư",
+    "hook": "Tác nhân viết mã, kỹ sư chịu trách nhiệm về kết quả",
+    "pains": [
+      "Mã do AI viết không vững và làm hỏng phần lân cận",
+      "Tác nhân quên ngữ cảnh dự án",
+      "Không rõ review thế nào"
+    ],
+    "outcomes": [
+      "Quy trình làm việc với tác nhân chạy được trên mã thật",
+      "Đặc tả và harness cho dự án của bạn",
+      "Các bước kiểm tra bắt được lỗi của tác nhân",
+      "Tốc độ mà không mất chất lượng"
+    ],
+    "program": [
+      "Phát triển dựa trên đặc tả (Spec-Driven Development)",
+      "Harness: ngữ cảnh, quy tắc, kiểm tra",
+      "MCP và công cụ cho tác nhân",
+      "Review và kiểm thử mã do AI viết"
+    ],
+    "format": ["Workshop", "Thực hành trên repo của bạn", "Hỗ trợ"]
+  },
+  "managers": {
+    "short": "Quản lý",
+    "job": "Giảm việc vặt quản lý: báo cáo tiến độ, kế hoạch, yêu cầu",
+    "name": "AI cho quản lý",
+    "hook": "Bớt việc vặt, thêm thời gian quản lý",
+    "pains": [
+      "Thời gian đổ vào báo cáo tiến độ và báo cáo",
+      "Tác vụ và yêu cầu mơ hồ",
+      "Không rõ AI giúp đội ngũ thế nào"
+    ],
+    "outcomes": [
+      "Thói quen làm việc sẵn dùng cho mỗi ngày",
+      "Yêu cầu và kế hoạch rõ ràng hơn, nhanh hơn",
+      "Hình dung về việc đổi quy trình của đội"
+    ],
+    "program": [
+      "Giao việc và viết yêu cầu",
+      "Lập kế hoạch, báo cáo tiến độ, báo cáo",
+      "Cuộc họp: chuẩn bị và theo dõi sau họp",
+      "Dẫn dắt đội ngũ cùng AI"
+    ],
+    "format": ["Workshop", "Tác vụ của chính bạn", "Mẫu để giữ lại"]
+  },
+  "recruiters": {
+    "short": "Tuyển dụng",
+    "job": "Lấp đầy vị trí nhanh hơn",
+    "name": "AI cho nhà tuyển dụng",
+    "hook": "Từ tin tuyển dụng đến thư mời nhanh hơn",
+    "pains": [
+      "Tìm nguồn ứng viên ngốn nhiều ngày",
+      "Hàng trăm hồ sơ giống nhau",
+      "Tin tuyển dụng và tin nhắn viết bằng tay"
+    ],
+    "outcomes": [
+      "Tìm nguồn và sàng lọc nhanh hơn nhiều",
+      "Tin tuyển dụng và tin nhắn tốt hơn",
+      "Đánh giá ứng viên có cấu trúc"
+    ],
+    "program": [
+      "Chân dung vị trí và tìm nguồn",
+      "Sàng lọc hồ sơ",
+      "Tin nhắn và nội dung tin tuyển dụng",
+      "Phỏng vấn: câu hỏi và tóm tắt"
+    ],
+    "format": ["Workshop", "Các vị trí của chính bạn", "Mẫu để giữ lại"]
+  },
+  "marketers": {
+    "short": "Marketing",
+    "job": "Làm ra nhiều nội dung và thử nghiệm hơn với cùng một đội",
+    "name": "AI cho marketer",
+    "hook": "Nhiều giả thuyết và nội dung hơn với cùng một đội",
+    "pains": [
+      "Nội dung ngốn quỹ thời gian",
+      "Báo cáo phân tích bằng tay",
+      "Văn bản nghe chung chung và “kiểu AI”"
+    ],
+    "outcomes": [
+      "Dòng nội dung có AI giữ đúng giọng của bạn",
+      "Phân tích và giả thuyết nhanh hơn",
+      "Việc lặp lại được tự động hóa"
+    ],
+    "program": [
+      "Nghiên cứu và phân khúc",
+      "Nội dung và giọng thương hiệu",
+      "Phân tích và báo cáo",
+      "Tự động hóa chuỗi công việc"
+    ],
+    "format": ["Workshop", "Chiến dịch của chính bạn", "Mẫu để giữ lại"]
+  },
+  "operations": {
+    "short": "Vận hành",
+    "job": "Tự động hóa các quy trình lặp lại",
+    "name": "AI cho quản lý vận hành",
+    "hook": "Tự động hóa phần lặp lại, dành phần cốt lõi cho con người",
+    "pains": [
+      "Quy trình thủ công, sao chép giữa các hệ thống",
+      "Dựng báo cáo mất hàng giờ",
+      "Sai sót khi bàn giao giữa các đội"
+    ],
+    "outcomes": [
+      "Danh sách quy trình sẵn sàng tự động hóa",
+      "Các tự động hóa chạy được",
+      "Ít sai sót và ít phải chờ hơn"
+    ],
+    "program": [
+      "Bản đồ quy trình",
+      "Tự động hóa gì trước",
+      "Xây tự động hóa và tác nhân",
+      "Kiểm soát chất lượng và rủi ro"
+    ],
+    "format": ["Workshop", "Quy trình của chính bạn", "Hỗ trợ khi chạy thật"]
+  },
+  "appsec": {
+    "short": "Bảo mật và AppSec",
+    "job": "Review bảo mật mã nhanh hơn bằng AI và bao quát rủi ro của chính các tác nhân AI",
+    "name": "AI cho an ninh mạng và AppSec",
+    "hook": "AI giúp tìm lỗ hổng nhưng cũng mang thêm rủi ro riêng: chương trình bao quát cả hai mặt",
+    "pains": [
+      "Mã do AI viết ra đời nhanh hơn khả năng review",
+      "Tác nhân được cấp quyền vào mã, bí mật và hệ thống mà không có quy tắc",
+      "Prompt injection và rò rỉ dữ liệu qua các dịch vụ AI"
+    ],
+    "outcomes": [
+      "Kiểm tra bảo mật có AI hỗ trợ trong quy trình của bạn: review mã, tìm lỗ hổng, phân loại",
+      "Quy tắc cho tác nhân: quyền hạn, sandbox, bí mật",
+      "Mô hình mối đe dọa cho các tác nhân AI của đội bạn",
+      "Bớt phân loại thủ công các cảnh báo sai"
+    ],
+    "program": [
+      "AI giúp AppSec ở đâu: review, kết quả của scanner, mô hình hóa mối đe dọa",
+      "Rủi ro của tác nhân: prompt injection, quyền hạn, rò rỉ",
+      "Kiểm tra trong CI và trong quy trình của tác nhân",
+      "Thực hành trên mã của chính bạn"
+    ],
+    "format": ["Workshop", "Rà soát quy trình phát triển của bạn", "Quy tắc và mẫu để giữ lại"]
+  },
+  "personal": {
+    "short": "Kèm cá nhân",
+    "job": "Học AI trên chính công việc của bạn, không qua khóa học",
+    "name": "Kèm AI cá nhân",
+    "hook": "Chương trình riêng cho công việc của bạn",
+    "pains": [
+      "Nhiều khóa học, ít thực hành",
+      "Không rõ bắt đầu từ đâu",
+      "Bạn cần kết quả trên chính tác vụ của mình"
+    ],
+    "outcomes": [
+      "Bộ công cụ cá nhân cho vai trò của bạn",
+      "Làm việc tự tin với công cụ AI",
+      "Các tác vụ thật được giải cùng nhau"
+    ],
+    "program": [
+      "Rà soát công việc của bạn",
+      "Kế hoạch học",
+      "Thực hành trên tác vụ của bạn",
+      "Theo dõi và phản hồi"
+    ],
+    "format": ["Buổi 1:1", "Bài tập giữa các buổi", "Chat hỗ trợ"]
+  }
+}

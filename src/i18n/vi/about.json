@@ -1,0 +1,27 @@
+{
+  "lead": {
+    "lead": "CTO, học máy và phát triển với AI. Cố vấn cho kỹ sư, nói chuyện tại các sự kiện và kết nối mọi người trong Jaiora."
+  },
+  "milestones": {
+    "0.years": "2026 — nay",
+    "0.org": "Công ty iGaming, nền tảng SaaS hỗ trợ khách hàng",
+    "1.org": "Công ty iGaming, nền tảng SaaS hỗ trợ khách hàng",
+    "1.facts.0": "Thời gian khôi phục sau sự cố: 5 giờ → 2",
+    "1.facts.1": "Thời gian ra thị trường: 3 tháng → 1,5",
+    "1.facts.2": "Chuyển đội ngũ sang Scrum + LeSS",
+    "1.facts.3": "Tái cấu trúc thành các đội sản phẩm đa chức năng",
+    "1.facts.4": "Xây lại kiến trúc",
+    "2.facts.0": "Lãnh đạo bộ phận phát triển",
+    "3.org": "SberMarket",
+    "3.facts.0": "Hệ thống cho 40.000 nhân viên, tiết kiệm 170 triệu RUB mỗi năm",
+    "3.facts.1": "Định tuyến người nhặt hàng cho 10.000 cửa hàng, 12 triệu RUB mỗi năm",
+    "3.facts.2": "Onboarding và OKR trong bộ phận 200 người",
+    "4.facts.0": "Từ 0 đến 6.000 người dùng, doanh thu năm 25 triệu RUB",
+    "4.facts.1": "Uptime 99,9%, bàn giao 8 dự án",
+    "5.org": "Leroy Merlin",
+    "5.facts.0": "Theo dõi giá đối thủ cho 1.000.000 sản phẩm",
+    "6.facts.0": "Chuyển tính giá giao hàng từ C# sang Go, thông lượng tăng 250% ở mức 3.600 yêu cầu mỗi giây",
+    "7.org": "Sputnik",
+    "7.facts.0": "Cổng tìm kiếm, nhận dạng giọng nói"
+  }
+}

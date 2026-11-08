@@ -1,0 +1,6 @@
+{
+  "harness": { "name": "Harness", "description": "Harness cho tác nhân AI: Claude Code, Codex, Cursor và cách biến lỗi của tác nhân thành quy tắc của môi trường." },
+  "specs": { "name": "Đặc tả và ngữ cảnh", "description": "Đặc tả, quy tắc và skill cho tác nhân AI: tác nhân cần biết gì về dự án, đặc tả theo aggregate và vòng lặp đối chiếu." },
+  "prompts": { "name": "Prompt và review", "description": "Prompt cho công việc và cách review kết quả của mô hình: dựng yêu cầu thế nào và làm gì khi câu trả lời trượt." },
+  "research": { "name": "Nghiên cứu", "description": "Phỏng vấn và nghiên cứu việc dùng AI trong công ty: phỏng vấn ai, tránh câu hỏi dẫn dắt ra sao, báo cáo sử dụng cho thấy gì." }
+}

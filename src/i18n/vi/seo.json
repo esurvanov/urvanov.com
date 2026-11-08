@@ -1,0 +1,42 @@
+{
+  "/": {
+    "title": "Egor Urvanov: CTO, AI và networking",
+    "description": "Egor Urvanov: CTO, phát triển với AI, cố vấn (mentoring) và Jaiora (LinkedIn ngoài đời thực). Blog, bài nói, danh mục mẫu AI và game trên trình duyệt."
+  },
+  "/about": {
+    "title": "Giới thiệu: Egor Urvanov",
+    "description": "Egor Urvanov: CTO, học máy và phát triển với AI. Từ kỹ sư đến CTO, người thắng các cuộc thi, tác giả trên arXiv, cố vấn số 1 trên GetMentor và người sáng lập Jaiora."
+  },
+  "/blog": {
+    "title": "Blog: góc nhìn và kinh nghiệm của tác giả — Egor Urvanov",
+    "description": "Blog cá nhân: góc nhìn và kinh nghiệm của tác giả về phát triển với AI, Spec-Driven Development, quản lý kỹ thuật và cộng đồng."
+  },
+  "/links": {
+    "title": "Liên kết — Egor Urvanov",
+    "description": "Hồ sơ, dự án, bài nói và kênh Telegram của Egor Urvanov ở cùng một nơi."
+  },
+  "/materials": {
+    "title": "Tài liệu — Egor Urvanov",
+    "description": "Bài thuyết trình, danh mục mẫu AI, workshop phương pháp 3D và game trên trình duyệt."
+  },
+  "/materials/presentations": {
+    "title": "Bài thuyết trình — Egor Urvanov",
+    "description": "Bài nói về tác nhân AI: “Spec-Driven Development trong thực tế” (tiếng Nga) và danh mục mẫu phát triển với tác nhân AI."
+  },
+  "/materials/games": {
+    "title": "Game trên trình duyệt — Egor Urvanov",
+    "description": "Game miễn phí chơi trên trình duyệt, không cần cài đặt: chiến thuật, sinh tồn, thế giới 3D, arcade, mô phỏng cuộc sống và mô phỏng hệ thống."
+  },
+  "/materials/interactive": {
+    "title": "Trang tương tác — Egor Urvanov",
+    "description": "Trang tương tác: các phương pháp giải bài toán bằng 3D, từng bước, ngay trong trình duyệt."
+  },
+  "/materials/glossary": {
+    "title": "Thuật ngữ phát triển với AI — Egor Urvanov",
+    "description": "Thuật ngữ phát triển với AI theo nhóm: tác nhân, harness, MCP, đặc tả, prompt. Mỗi thuật ngữ có định nghĩa và các bài viết giải thích."
+  },
+  "/ai": {
+    "title": "AI trong công việc: đào tạo và triển khai — Egor Urvanov",
+    "description": "Đào tạo và triển khai AI cho công ty, đội ngũ theo vai trò và cá nhân."
+  }
+}

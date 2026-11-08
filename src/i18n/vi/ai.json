@@ -1,0 +1,9 @@
+{
+  "group:personal": { "name": "Một người", "hint": "Kèm một-một, cho công việc của bạn" },
+  "group:roles": { "name": "Nhóm theo vai trò", "hint": "Đào tạo cho từng vai trò" },
+  "group:company": { "name": "Toàn công ty", "hint": "Triển khai và chiến lược" },
+  "proof:CTO": { "label": "Nền tảng SaaS hỗ trợ khách hàng, iGaming" },
+  "proof:1500+": { "label": "giờ cố vấn (mentoring), top 1 trên GetMentor" },
+  "proof:10 000": { "label": "người trong cộng đồng Jaiora" },
+  "proof:Podlodka": { "label": "bài nói về Spec-Driven Development" }
+}
