@@ -250,11 +250,13 @@ toc: essence=Ý chính | predicate=Lối thoát 1: văn bản mã | small-model=
 
   Lấy chương trình $P$ bất kỳ với đầu vào $w$ và dựng từ nó một chương trình mới $Q$:
 
-  $$Q(x) \;=\; \text{chạy } P(w)\text{; khi nó kết thúc, chạy } B(x)$$
+  Q(x) là: chạy $P(w)$; khi nó kết thúc, chạy $B(x)$.
 
-  Ở đây $x$ là dữ liệu $Q$ được chạy với. Bước $B(x)$ phá quy tắc, còn chương trình chạy mãi thì không. Vậy $Q$ chỉ đến được chỗ vi phạm nếu $P(w)$ có kết thúc:
+  $$Q(x) \;=\; P(w);\, B(x)$$
 
-  $$Q \text{ phá quy tắc} \iff P(w) \text{ dừng}$$
+  Ở đây $x$ là dữ liệu $Q$ được chạy với. Bước $B(x)$ phá quy tắc, còn chương trình chạy mãi thì không. Vậy $Q$ chỉ đến được chỗ vi phạm nếu $P(w)$ có kết thúc.
+
+  Tức là: $Q$ phá quy tắc ⇔ $P(w)$ dừng.
 
   Nếu tồn tại phép kiểm tra quy tắc cho mọi chương trình, thì với $Q$ nó cũng trả lời được $P(w)$ có dừng hay không. Nhưng Alan Turing, trong một bài báo năm 1936 (đăng năm 1937), đã chứng minh rằng không chương trình nào trả lời được câu hỏi đó, tức bài toán dừng<b-proof href="https://en.wikipedia.org/wiki/Halting_problem" quote="Wikipedia: “Alan Turing proved in 1937 that the halting problem is undecidable.”"/>. Vậy cũng không có phép kiểm tra quy tắc phổ quát. Quy tắc có thể là gì cũng được: mọi tính chất hành vi có câu trả lời khác nhau đều thay được cho “tiền khi không có đơn hàng”.
 
