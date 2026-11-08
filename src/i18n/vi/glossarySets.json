@@ -9,7 +9,7 @@
   "languages": { "name": "Ngôn ngữ và nền tảng", "hint": "JavaScript, các phần mở rộng, môi trường chạy và framework web" },
   "testing": { "name": "Kiểm thử", "hint": "Kiểm thử tự động, framework và việc kiểm tra chính các bài kiểm thử" },
   "environments": { "name": "Môi trường", "hint": "Hệ thống nằm ở đâu trên đường từ thay đổi đến người dùng" },
-  "delivery": { "name": "Chỉ số phân phối", "hint": "Thay đổi đến tay người dùng nhanh và đáng tin cậy đến mức nào" },
+  "delivery": { "name": "Chỉ số chuyển giao", "hint": "Thay đổi đến tay người dùng nhanh và đáng tin cậy đến mức nào" },
   "formal": { "name": "Kiểm chứng hình thức", "hint": "Ngôn ngữ mô hình hóa, kiểm tra chương trình và các lỗi chúng tìm ra" },
   "models": { "name": "Mô hình và prompt", "hint": "Cách mô hình đọc yêu cầu và mắc lỗi" },
   "group-theory": { "name": "Nhóm, nước đi và quy tắc", "hint": "Ngôn ngữ của các câu đố và phép đối xứng" }

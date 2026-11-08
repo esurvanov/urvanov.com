@@ -14,7 +14,7 @@
       "4 thời đại (Đen tối → Phong kiến → Lâu đài → Đế chế) và cây công nghệ hơn 130 mục (F5 trong game)",
       "Hơn 75 loại đơn vị: bộ binh, cung thủ, kỵ binh, máy công thành, tu sĩ, tàu thuyền",
       "Kinh tế: giao thương ở chợ, xe thương mại, thánh tích, nông trại; tường, cổng, tháp, đồn trú",
-      "Hải chiến: bến tàu, đánh cá, tàu vận tải, thuyền chiến, tàu lửa",
+      "Hải chiến: bến tàu, đánh cá, tàu vận tải, thuyền chiến, thuyền lửa",
       "6 bản đồ ngẫu nhiên (Arabia, Arena, Black Forest, Nomad, Islands, Mediterranean), 6 cấp độ AI, tối đa 8 người chơi, ngoại giao",
       "Lưu / tải game, thống kê sau trận, 7 ngôn ngữ giao diện"
     ],
@@ -88,7 +88,7 @@
     "facts": [
       ["Nền tảng", "trình duyệt máy tính có WebGL 2 (Chrome, Edge, Firefox, Safari 16+)"],
       ["Lần tải đầu", "khoảng 33 MB"],
-      ["Điều khiển", "bàn phím và chuột; cần joystick trên màn hình cảm ứng"],
+      ["Điều khiển", "bàn phím và chuột; joystick ảo trên màn hình cảm ứng"],
       ["Lưu game", "trong trình duyệt, không cần máy chủ"],
       ["Mã nguồn", "mã nguồn mở, MIT (three.js)"]
     ],
@@ -296,7 +296,7 @@
     "genre": "Mô phỏng cuộc sống",
     "description": "Zhitiyo: game mô phỏng cuộc sống trên trình duyệt theo tinh thần The Sims 1. 3D low-poly isometric, mười hộ gia đình, nhu cầu, sự nghiệp, các mối quan hệ, chế độ Mua và Xây. Không cần cài đặt.",
     "intro": [
-      "Chuyển vào Berёzovaya Roshcha (Rặng Bạch Dương), một khu phố nhỏ có mười hộ gia đình, công viên, quán cà phê, cửa hàng, phòng tập và thư viện. Điều khiển một gia đình, giữ cho mọi người no đủ, nghỉ ngơi và vui vẻ, đi làm, kết bạn và yêu đương, sắm đồ và mở rộng ngôi nhà.",
+      "Chuyển vào Berёzovaya Roshcha (Rừng Bạch Dương), một khu phố nhỏ có mười hộ gia đình, công viên, quán cà phê, cửa hàng, phòng tập và thư viện. Điều khiển một gia đình, giữ cho mọi người no đủ, nghỉ ngơi và vui vẻ, đi làm, kết bạn và yêu đương, sắm đồ và mở rộng ngôi nhà.",
       "Đây là bản nhái cơ chế nguyên bản, làm từ đầu: không có tên, hình ảnh, nhạc hay giao diện của Sims hay EA, mà có ngôn ngữ hình ảnh riêng và thứ tiếng lảm nhảm riêng. Game chạy trên trình duyệt, không cần cài đặt hay biên dịch."
     ],
     "features": [
@@ -326,7 +326,7 @@
       ["Tôi có cần cài đặt không?", "Không, game chạy trong trình duyệt."],
       ["Tôi xây lại nhà được không?", "Được, trong chế độ Mua và Xây: nội thất, tường, sàn, cửa sổ, tầng và mái."]
     ],
-    "shots.0.alt": "Zhitiyo: bản đồ khu phố Birch Grove",
+    "shots.0.alt": "Zhitiyo: bản đồ khu phố Rừng Bạch Dương",
     "shots.1.alt": "Zhitiyo: nội thất một ngôi nhà",
     "keywords": [
       "game mô phỏng cuộc sống trên trình duyệt",

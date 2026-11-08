@@ -49,7 +49,7 @@
   },
   "engineers": {
     "short": "Kỹ sư",
-    "job": "Giao mã cùng tác nhân nhanh hơn và không có rác",
+    "job": "Phát hành mã cùng tác nhân nhanh hơn và không có rác",
     "name": "Phát triển với AI cho kỹ sư",
     "hook": "Tác nhân viết mã, kỹ sư chịu trách nhiệm về kết quả",
     "pains": [
@@ -73,11 +73,11 @@
   },
   "managers": {
     "short": "Quản lý",
-    "job": "Giảm việc vặt quản lý: báo cáo tiến độ, kế hoạch, yêu cầu",
+    "job": "Giảm việc vặt quản lý: cập nhật trạng thái, kế hoạch, yêu cầu",
     "name": "AI cho quản lý",
     "hook": "Bớt việc vặt, thêm thời gian quản lý",
     "pains": [
-      "Thời gian đổ vào báo cáo tiến độ và báo cáo",
+      "Thời gian đổ vào cập nhật trạng thái và báo cáo",
       "Tác vụ và yêu cầu mơ hồ",
       "Không rõ AI giúp đội ngũ thế nào"
     ],
@@ -88,7 +88,7 @@
     ],
     "program": [
       "Giao việc và viết yêu cầu",
-      "Lập kế hoạch, báo cáo tiến độ, báo cáo",
+      "Lập kế hoạch, cập nhật trạng thái, báo cáo",
       "Cuộc họp: chuẩn bị và theo dõi sau họp",
       "Dẫn dắt đội ngũ cùng AI"
     ],
@@ -171,7 +171,7 @@
     "pains": [
       "Mã do AI viết ra đời nhanh hơn khả năng review",
       "Tác nhân được cấp quyền vào mã, bí mật và hệ thống mà không có quy tắc",
-      "Prompt injection và rò rỉ dữ liệu qua các dịch vụ AI"
+      "Tấn công chèn prompt (prompt injection) và rò rỉ dữ liệu qua các dịch vụ AI"
     ],
     "outcomes": [
       "Kiểm tra bảo mật có AI hỗ trợ trong quy trình của bạn: review mã, tìm lỗ hổng, phân loại",

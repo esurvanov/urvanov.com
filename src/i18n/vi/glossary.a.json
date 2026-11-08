@@ -41,14 +41,14 @@
  },
  "time-to-market": {
   "aka": "TTM, time2market",
-  "def": "Time to market (TTM) là khoảng thời gian từ ý tưởng đến khi sản phẩm hoặc một thay đổi đến tay người dùng. Trong phần mềm, đó là độ dài chu kỳ giao hàng: càng nhiều môi trường và bước kiểm tra trên đường (feature stand, dev, test, pre-prod, demo) thì càng lâu, nhưng càng ít lỗi lọt vào production. Vì vậy nhóm phải quyết định bao nhiêu bước kiểm tra là đáng: quá ít thì chất lượng giảm, quá nhiều thì sản phẩm ra trễ.",
+  "def": "Time to market (TTM) là khoảng thời gian từ ý tưởng đến khi sản phẩm hoặc một thay đổi đến tay người dùng. Trong phần mềm, đó là độ dài chu kỳ chuyển giao: càng nhiều môi trường và bước kiểm tra trên đường (feature stand, dev, test, pre-prod, demo) thì càng lâu, nhưng càng ít lỗi lọt vào production. Vì vậy nhóm phải quyết định bao nhiêu bước kiểm tra là đáng: quá ít thì chất lượng giảm, quá nhiều thì sản phẩm ra trễ.",
   "faq.0.q": "Time to market là gì?",
   "faq.0.a": "Khoảng thời gian từ ý tưởng đến khi sản phẩm hoặc thay đổi đến tay người dùng.",
   "faq.1.q": "Time to market liên quan thế nào đến chất lượng?",
   "faq.1.a": "Càng nhiều môi trường và bước kiểm tra trên đường thì chu kỳ càng dài, nhưng càng ít lỗi lọt vào production.",
   "source.label": "Wikipedia: Time to market",
-  "seo.title": "Time to market (TTM) là gì: chu kỳ giao hàng và chất lượng",
-  "seo.description": "Time to market (TTM) là thời gian từ ý tưởng đến người dùng. Chu kỳ giao hàng, môi trường và bước kiểm tra ảnh hưởng thế nào đến tốc độ và chất lượng."
+  "seo.title": "Time to market (TTM) là gì: chu kỳ chuyển giao, kiểm tra và chất lượng",
+  "seo.description": "Time to market (TTM) là thời gian từ ý tưởng đến người dùng. Chu kỳ chuyển giao, môi trường và bước kiểm tra ảnh hưởng thế nào đến tốc độ và chất lượng."
  },
  "change-lead-time": {
   "name": "Change lead time",
@@ -98,11 +98,11 @@
  },
  "deployment-rework-rate": {
   "name": "Deployment rework rate",
-  "def": "Deployment rework rate là tỷ lệ bản phát hành không nằm trong kế hoạch mà phát sinh do sự cố trên production. Cùng với change fail rate, nó cho thấy mức bất ổn của quá trình giao hàng.",
+  "def": "Deployment rework rate là tỷ lệ bản phát hành không nằm trong kế hoạch mà phát sinh do sự cố trên production. Cùng với change fail rate, nó cho thấy mức bất ổn của quá trình chuyển giao.",
   "faq.0.q": "Deployment rework rate là gì?",
   "faq.0.a": "Tỷ lệ bản phát hành không nằm trong kế hoạch mà phát sinh từ sự cố trên production.",
   "faq.1.q": "Chỉ số này cho thấy điều gì?",
-  "faq.1.a": "Cùng với change fail rate, nó cho thấy mức bất ổn của quá trình giao hàng.",
+  "faq.1.a": "Cùng với change fail rate, nó cho thấy mức bất ổn của quá trình chuyển giao.",
   "source.label": "DORA: các chỉ số giao phần mềm",
   "seo.title": "Deployment rework rate là gì",
   "seo.description": "Deployment rework rate là tỷ lệ bản phát hành phát sinh do sự cố trên production. Chỉ số DORA đi cùng change fail rate."
@@ -117,9 +117,9 @@
  },
  "typescript": {
   "aka": "JavaScript có kiểu",
-  "def": "TypeScript là phần mở rộng của JavaScript trong đó giá trị được gán kiểu: số, chuỗi và v.v. Nhờ vậy, lỗi kiểu “truyền chuỗi thay vì số” được phát hiện trước khi chương trình chạy, chứ không phải ở phía người dùng. Chương trình hoàn chỉnh được chuyển thành JavaScript thông thường.",
+  "def": "TypeScript là phần mở rộng của JavaScript trong đó giá trị được gán kiểu: số, chuỗi, v.v. Nhờ vậy, lỗi kiểu “truyền chuỗi thay vì số” được phát hiện trước khi chương trình chạy, chứ không phải ở phía người dùng. Chương trình hoàn chỉnh được chuyển thành JavaScript thông thường.",
   "faq.0.q": "TypeScript là gì?",
-  "faq.0.a": "Lớp phủ trên JavaScript trong đó giá trị có kiểu khai báo: số, chuỗi và v.v.",
+  "faq.0.a": "Lớp phủ trên JavaScript trong đó giá trị có kiểu khai báo: số, chuỗi, v.v.",
   "faq.1.q": "Vì sao dùng TypeScript?",
   "faq.1.a": "Những lỗi như truyền chuỗi thay vì số bị bắt trước khi chương trình chạy, trước khi người dùng nhìn thấy.",
   "source.label": "typescriptlang.org, trang chủ TypeScript"
@@ -552,8 +552,8 @@
   ],
   "compare.rows.3": [
    "Ví dụ",
-   "\"chạy test bằng `npm test`\"",
-   "\"thanh toán là một hệ thống riêng mà ta không sửa\""
+   "“chạy test bằng `npm test`”",
+   "“thanh toán là một hệ thống riêng mà ta không sửa”"
   ],
   "compare.rows.4": [
    "Nguồn gốc",
@@ -592,8 +592,8 @@
   ],
   "compare.rows.3": [
    "Ví dụ",
-   "\"chạy test bằng `npm test`\"",
-   "\"thanh toán là một hệ thống riêng mà ta không sửa\""
+   "“chạy test bằng `npm test`”",
+   "“thanh toán là một hệ thống riêng mà ta không sửa”"
   ],
   "compare.rows.4": [
    "Nguồn gốc",
@@ -1093,7 +1093,7 @@
   "faq.2.q": "Codex dùng những mô hình nào?",
   "faq.2.a": "Các mô hình GPT của OpenAI.",
   "faq.3.q": "Codex là mô hình hay tác nhân?",
-  "faq.3.a": "Ngày nay là tác nhân. Năm 2021, Codex là tên một mô hình của OpenAI hoàn thành mã và chạy phía sau GitHub Copilot; cái tên được giữ lại, và giờ chỉ một tác nhân trên các mô hình GPT.",
+  "faq.3.a": "Ngày nay là tác nhân. Năm 2021, Codex là tên một mô hình của OpenAI hoàn thành mã và chạy phía sau GitHub Copilot; cái tên được giữ lại, và giờ dùng để chỉ một tác nhân trên các mô hình GPT.",
   "faq.4.q": "Codex giá bao nhiêu?",
   "faq.4.a": "Không có phí riêng: Codex đi kèm các gói ChatGPT Free, Go, Plus, Pro, Business, Edu và Enterprise. Giới hạn dùng chung với ChatGPT Work và tùy theo gói.",
   "faq.5.q": "Codex có dùng được ở Nga không?",

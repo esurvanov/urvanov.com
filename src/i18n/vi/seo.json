@@ -21,11 +21,11 @@
   },
   "/materials/presentations": {
     "title": "Bài thuyết trình — Egor Urvanov",
-    "description": "Bài nói về tác nhân AI: “Spec-Driven Development trong thực tế” (tiếng Nga) và danh mục mẫu phát triển với tác nhân AI."
+    "description": "Podlodka Crew: “Spec-Driven Development trong thực tế” (tiếng Nga) và danh mục mẫu phát triển với tác nhân AI."
   },
   "/materials/games": {
     "title": "Game trên trình duyệt — Egor Urvanov",
-    "description": "Game miễn phí chơi trên trình duyệt, không cần cài đặt: chiến thuật, sinh tồn, thế giới 3D, arcade, mô phỏng cuộc sống và mô phỏng hệ thống."
+    "description": "Tám game miễn phí trên trình duyệt, không cần cài đặt: game chiến thuật thời gian thực Chronicles of Kingdoms, game sinh tồn Sibiria, thế giới 3D Echo of the Rift và Berezovka, arcade 3D Northern Rift, giải đố Uptime, mô phỏng cuộc sống Zhitiyo và mô phỏng xã hội Skhodka."
   },
   "/materials/interactive": {
     "title": "Trang tương tác — Egor Urvanov",
