@@ -1,0 +1,387 @@
+{
+  "chronicles-of-kingdoms": {
+    "name": "Chronicles of Kingdoms",
+    "title": "Chronicles of Kingdoms — game chiến thuật thời gian thực trên trình duyệt như Age of Empires II",
+    "tagline": "Game chiến thuật thời gian thực theo tinh thần Age of Empires II, chạy ngay trong trình duyệt",
+    "genre": "Chiến thuật thời gian thực (RTS)",
+    "description": "Chronicles of Kingdoms: game RTS miễn phí trên trình duyệt theo tinh thần Age of Empires II. 14 nền văn minh, 4 thời đại, hơn 130 công nghệ, tối đa 7 đối thủ AI. Không cần cài đặt.",
+    "intro": [
+      "Dựng một ngôi làng ở Thời kỳ Đen tối, xây tường bao quanh, dựng lâu đài, nghiên cứu lên Thời kỳ Đế chế rồi đánh tan kẻ địch bằng máy bắn đá, đối đầu tối đa bảy người chơi AI trên sáu bản đồ ngẫu nhiên.",
+      "Đây là game mã nguồn mở nguyên bản, viết từ đầu: luật chơi và các con số theo Age of Empires II kinh điển (việc đối chiếu với bản Definitive Edition đã được ghi lại), không dùng hình ảnh, nhạc hay tên gọi của bản gốc. Game chạy như một trang web bình thường, không cần cài đặt hay đăng ký."
+    ],
+    "features": [
+      "14 nền văn minh, mỗi nền có đơn vị riêng, công nghệ riêng và thưởng đồng đội",
+      "4 thời đại (Đen tối → Phong kiến → Lâu đài → Đế chế) và cây công nghệ hơn 130 mục (F5 trong game)",
+      "Hơn 75 loại đơn vị: bộ binh, cung thủ, kỵ binh, máy công thành, tu sĩ, tàu thuyền",
+      "Kinh tế: giao thương ở chợ, xe thương mại, thánh tích, nông trại; tường, cổng, tháp, đồn trú",
+      "Hải chiến: bến tàu, đánh cá, tàu vận tải, thuyền chiến, tàu lửa",
+      "6 bản đồ ngẫu nhiên (Arabia, Arena, Black Forest, Nomad, Islands, Mediterranean), 6 cấp độ AI, tối đa 8 người chơi, ngoại giao",
+      "Lưu / tải game, thống kê sau trận, 7 ngôn ngữ giao diện"
+    ],
+    "controls": [
+      ["Chuột trái", "chọn một đơn vị hoặc công trình; kéo khung để chọn nhiều"],
+      ["Nhấp đúp", "chọn mọi đơn vị cùng loại trên màn hình"],
+      ["Chuột phải", "ra lệnh tại điểm đó: di chuyển, thu thập, xây, tấn công, đồn trú"],
+      ["Q · W · E · R · T", "lệnh của đơn vị đang chọn, giống các nút ở bảng dưới (phím theo lưới 5×3)"],
+      ["Ctrl + 1…9", "lưu các đơn vị đang chọn thành một nhóm"],
+      ["1…9", "chọn nhóm đã lưu; nhấn lần nữa để đưa camera tới nhóm"],
+      ["H", "đưa camera về trung tâm thị trấn"],
+      [". · ,", "tìm dân làng đang rảnh · tìm lính đang rảnh"],
+      ["Space", "đưa camera tới các đơn vị đang chọn"],
+      ["Con lăn chuột · phím mũi tên", "thu phóng · cuộn bản đồ"],
+      ["F5", "cây công nghệ"],
+      ["F7 · F8", "lưu nhanh · tải nhanh"]
+    ],
+    "facts": [
+      ["Nền tảng", "trình duyệt trên máy tính, không cần cài đặt"],
+      ["Lần tải đầu", "≈ 60 MB, sau đó tải dần khi chơi"],
+      ["Đối thủ", "tối đa 7 người chơi AI, 6 mức độ khó"],
+      ["Ngôn ngữ giao diện", "tiếng Anh, Nga, Đức, Pháp, Tây Ban Nha, Bồ Đào Nha (Brazil), Ý"],
+      ["Mã nguồn", "mã nguồn mở, MIT (có cả bản Python)"],
+      ["Hình ảnh và âm thanh", "0 A.D. và Millennium A.D., CC BY-SA 3.0"]
+    ],
+    "faq": [
+      ["Đây có phải bản sao của Age of Empires II không?", "Không. Đây là game mã nguồn mở độc lập: cơ chế và các con số được đối chiếu với Age of Empires II, còn hình ảnh, nhạc và tên gọi là của riêng game (nhạc và giọng nói lấy từ 0 A.D. mã nguồn mở)."],
+      ["Tôi có phải cài đặt gì không?", "Không. Game chạy như một trang web thông thường. Lần khởi động đầu tải khoảng 60 MB tài nguyên."],
+      ["Lưu game thế nào?", "F7 để lưu nhanh và F8 để tải; menu game cũng có các ô lưu. Bản lưu nằm trong trình duyệt của bạn."],
+      ["Tôi có lấy được mã nguồn không?", "Có, toàn bộ mã được mở theo giấy phép MIT: github.com/esurvanov/awesome-games."]
+    ],
+    "shots.0.alt": "Chronicles of Kingdoms: trận đánh giữa đồng trống với máy công thành",
+    "shots.1.alt": "Chronicles of Kingdoms: một thị trấn Byzantine",
+    "shots.2.alt": "Chronicles of Kingdoms: hạm đội và bến tàu trên bản đồ Islands",
+    "shots.3.alt": "Chronicles of Kingdoms: đồi và vách đá",
+    "shots.4.alt": "Chronicles of Kingdoms: cây công nghệ",
+    "shots.5.alt": "Chronicles of Kingdoms: sảnh giao tranh",
+    "keywords": [
+      "RTS trên trình duyệt",
+      "game giống Age of Empires",
+      "game chiến thuật online miễn phí",
+      "RTS mã nguồn mở"
+    ]
+  },
+  "berezovka": {
+    "name": "Berezovka",
+    "tagline": "Ngôi làng Nga phủ tuyết để bạn bước vào: game 3D thế giới mở trong trình duyệt",
+    "genre": "Phiêu lưu 3D thế giới mở",
+    "description": "Berezovka: game 3D trên trình duyệt trong một ngôi làng Nga phủ tuyết. Thế giới mở khoảng 1 km², cốt truyện 12 bước, xe Zhiguli để lái, câu cá trên băng và bão tuyết. Không cần cài đặt.",
+    "intro": [
+      "Bạn bước xuống từ chiếc xe buýt cũ để vào Berezovka sau năm năm xa cách. Bà cần củi, chiếc Zhiguli đời 1979 của ông không nổ máy, quả chuông nhà thờ mất dây và con mèo của bà chủ tiệm lạc trong rừng, qua chỗ con gấu. Đến tối, cả làng trông cậy vào bạn.",
+      "Thế giới rộng khoảng một ki-lô-mét vuông: ngôi làng, một khu định cư thời Xô viết, nhà thờ trên đồi, dòng sông đóng băng và khu rừng sâu. Game chạy ngay trong trình duyệt, không cần cài đặt."
+    ],
+    "features": [
+      "Thế giới mở khoảng 1 km²: làng, khu định cư, nhà thờ, sông, rừng; 14 sân nhà có người ở",
+      "Cốt truyện 12 bước: năm nhân vật, hội thoại có lựa chọn, một đoạn kết",
+      "Lái xe Zhiguli: hệ thống treo, thân xe nghiêng, radio trên xe với tiếng accordion",
+      "Động vật hoang dã: gấu lao tới, chó husky, mèo bỏ chạy, đàn hươu",
+      "Câu cá trên băng: cá rô, cá chó, cá tráp, cá rô ruffe, cá tuyết burbot",
+      "Ngày và đêm, cực quang, bão tuyết và sương mù; âm thanh thu thật (bước chân trên tuyết, chuông nhà thờ thật)",
+      "12 búp bê matryoshka ẩn khắp bản đồ"
+    ],
+    "controls": [
+      ["W A S D + chuột", "đi, nhìn quanh (nhấp để bắt chuột)"],
+      ["Shift · C", "chạy · chuyển đổi đi bộ/chạy"],
+      ["Space", "nhảy · phanh tay trong xe"],
+      ["E", "nói chuyện, nhặt đồ, câu cá, kéo chuông"],
+      ["F", "lên / xuống xe"],
+      ["R · M · H", "radio (trong xe) · bản đồ lớn · hướng dẫn điều khiển"]
+    ],
+    "facts": [
+      ["Nền tảng", "trình duyệt máy tính có WebGL 2 (Chrome, Edge, Firefox, Safari 16+)"],
+      ["Lần tải đầu", "khoảng 33 MB"],
+      ["Điều khiển", "bàn phím và chuột; cần joystick trên màn hình cảm ứng"],
+      ["Lưu game", "trong trình duyệt, không cần máy chủ"],
+      ["Mã nguồn", "mã nguồn mở, MIT (three.js)"]
+    ],
+    "faq": [
+      ["Tôi có cần cài đặt không?", "Không, game chạy trong trình duyệt. Bạn cần một máy tính có WebGL 2."],
+      ["Game tải bao nhiêu dữ liệu?", "Khoảng 33 MB ở lần khởi động đầu."],
+      ["Chơi được trên điện thoại không?", "Màn hình cảm ứng có joystick và nút trên màn hình, nhưng game chủ yếu được làm cho máy tính."],
+      ["Tiến trình của tôi được lưu ở đâu?", "Trong trình duyệt của bạn. Xóa dữ liệu trang web sẽ xóa bản lưu."],
+      ["Vì sao hình ảnh có thể phẳng hơn trên máy yếu?", "Khi tốc độ khung hình chậm, game tự tắt một phần hiệu ứng bóng ở các góc để giữ độ mượt."]
+    ],
+    "shots.0.alt": "Berezovka: con đường làng trong một ngày mùa đông",
+    "shots.1.alt": "Berezovka: nhà thờ trên đồi",
+    "shots.2.alt": "Berezovka: khu rừng phủ tuyết",
+    "keywords": [
+      "game 3D trên trình duyệt",
+      "game tuyết thế giới mở",
+      "game làng Nga",
+      "chơi trên trình duyệt"
+    ]
+  },
+  "sibiria": {
+    "name": "Sibiria",
+    "title": "Sibiria — game sinh tồn rừng taiga, chơi miễn phí trên trình duyệt",
+    "tagline": "Sống sót bốn đêm trong rừng taiga Evenki năm 1993, rồi dựng một khu định cư quanh túp lều của bạn",
+    "genre": "Sinh tồn và xây dựng khu định cư nhìn từ trên xuống",
+    "description": "Sibiria: game sinh tồn nhìn từ trên xuống trong rừng taiga Evenki năm 1993: giá lạnh, bầy sói, con gấu dữ, túp lều và khu định cư. Bảy chương, năm kết thúc. Chơi trên trình duyệt.",
+    "intro": [
+      "Tháng 1 năm 1993. Trực thăng Mi-8 số hiệu 24713 rơi xuống một khúc quanh sông ở Evenkia. Bạn là Lyosha, nhân viên vô tuyến. Radio đã nát, phi hành đoàn biến mất và người gần nhất cách vài ngày đường. Hãy tìm túp lều cũ của thợ săn, nhóm lò, gặp ông lão Evenk Urkachan và vượt qua bốn đêm.",
+      "Sau đó game chuyển sang câu chuyện về khu định cư: thuê người, xây dựng và lên các thời đại, buôn bán lấy rúp, tất cả trong một khu taiga không tha thứ sai lầm. Game chạy trên trình duyệt, không cần cài đặt hay biên dịch, và chơi được trên điện thoại."
+    ],
+    "features": [
+      "Bảy chương: Mảnh vỡ, Urkachan, Bầy sói, Tín hiệu, rồi Đặt bẫy, Qua đông hoặc Thám hiểm; ghi chép nhặt được và hội thoại hóm hỉnh khô khan",
+      "Giá lạnh thật: hơi ấm, cơn đói, tê cóng, bão tuyết; đống lửa là nơi an toàn duy nhất",
+      "Bầy sói săn mồi và con gấu dữ phá nhà hun khói, cướp thức ăn",
+      "Túp lều và khu định cư của riêng bạn: tối đa 8 loại công trình, 4 thời đại, thuê người, buôn bán lấy rúp",
+      "Điều khiển kiểu RTS: kéo khung chọn, chuột phải ra lệnh, nhóm, chuông báo động",
+      "Khoảng 11 × 11 km rừng taiga chia thành tám vùng: băng tầng, rừng cháy, bãi đá tảng, đỉnh trọc và hơn thế nữa",
+      "Năm kết thúc, ba ô lưu cộng với tự động lưu; bố cục thân thiện với điện thoại"
+    ],
+    "controls": [
+      ["W A S D", "di chuyển"],
+      ["E", "hành động: chặt, câu cá, đọc, nói chuyện"],
+      ["F · Q · R", "lửa · ăn · đặt bẫy"],
+      ["C · B", "xưởng · xây dựng"],
+      ["Kéo khung · chuột phải", "chọn người · ra lệnh"],
+      ["H · Esc", "báo động / hết báo động · tạm dừng"],
+      ["Con lăn · 0", "thu phóng · quay về nhân vật chính"]
+    ],
+    "facts": [
+      ["Nền tảng", "trình duyệt trên máy tính và điện thoại"],
+      ["Cài đặt", "không cần"],
+      ["Thời lượng", "bảy chương, năm kết thúc"],
+      ["Mã nguồn", "mã nguồn mở, MIT; không có bước biên dịch và không dùng thư viện (chỉ có Google Fonts)"]
+    ],
+    "faq": [
+      ["Đây có phải chuyện có thật không?", "Không, đây là hư cấu đặt trong bối cảnh Evenkia năm 1993: nhân vật và sự kiện đều là bịa."],
+      ["Chơi được trên điện thoại không?", "Được: có joystick, chế độ ra lệnh và thu phóng bằng hai ngón."],
+      ["Lưu game thế nào?", "Ngủ trong túp lều để lưu tiến trình; có ba ô lưu cộng với tự động lưu."],
+      ["Game dài bao lâu?", "Cốt truyện mất vài buổi tối; khu định cư và các kết thúc khác nhau là lý do để quay lại."]
+    ],
+    "shots.0.alt": "Sibiria: cảnh ban ngày của túp lều và khu định cư",
+    "shots.1.alt": "Sibiria: bên trong túp lều",
+    "shots.2.alt": "Sibiria: những người định cư đang làm việc",
+    "keywords": [
+      "game sinh tồn trên trình duyệt",
+      "game sinh tồn rừng taiga",
+      "game xây dựng khu định cư",
+      "game Siberia 1993"
+    ]
+  },
+  "echo-of-the-rift": {
+    "name": "Echo of the Rift",
+    "tagline": "Một phi công rơi máy bay, một hòn đảo vùng cực và khe nứt phát sáng trong băng: game kể chuyện 3D trong trình duyệt",
+    "genre": "Game kể chuyện 3D thế giới mở",
+    "description": "Echo of the Rift: game kể chuyện 3D thế giới mở, một phi công rơi xuống hòn đảo vùng cực dưới ánh cực quang. Ẩn sĩ, tinh thể, khe nứt biết hát, hai kết thúc. Chơi trên trình duyệt.",
+    "intro": [
+      "Máy bay “Kestrel” của bạn rơi xuống một hòn đảo vùng cực không tên dưới ánh cực quang. AI của trạm, IRIS, đánh thức bạn giữa đống đổ nát. Một ẩn sĩ già, Orm, đã sống một mình ở đây mười một năm, cạnh một khe nứt trong băng biết hát.",
+      "Hòn đảo rộng 900 × 900 m: nơi rơi máy bay, trạm vùng cực, hồ đóng băng, tàn tích, rừng, băng biển và Khe nứt. Tuyết nhớ từng bước chân, đêm trông ra đêm, và tất cả bắt đầu ngay trong trình duyệt, không cần cài đặt."
+    ],
+    "features": [
+      "Hòn đảo mở 900 × 900 m: nơi rơi máy bay, trạm, hồ, tàn tích, rừng, băng biển, Khe nứt",
+      "5 chương và 2 kết thúc: hội thoại có lựa chọn, 8 bản ghi âm vọng, 24 mảnh tinh thể",
+      "Phương tiện trượt tuyết: gọi bằng phím T",
+      "Tuyết biết nhớ: mỗi bước giày, móng guốc và chân thú đều để lại dấu riêng",
+      "Phi công tựa vào đá và tường, chống người trên dốc và vượt qua chướng ngại thấp",
+      "Động vật hoang dã: hươu đực và các thú khác; đêm có cực quang, bóng trăng, sương mù và tuyết rơi",
+      "Chút chiến đấu: các tinh thể con và một golem trong Khe nứt"
+    ],
+    "controls": [
+      ["W A S D · Shift · Space · C", "di chuyển · chạy · nhảy · lăn"],
+      ["E · LMB · Q · G", "tương tác · máy cắt · quét · vẫy tay"],
+      ["T", "gọi xe trượt tuyết"],
+      ["M · J · Esc", "bản đồ · nhật ký · tạm dừng"],
+      ["Y", "nói chuyện với Orm"]
+    ],
+    "facts": [
+      ["Nền tảng", "trình duyệt máy tính có WebGL 2"],
+      ["Chất lượng", "tự thích ứng với máy; trên màn hình Retina, hình được dựng ở 1× rồi phóng lên"],
+      ["Engine", "không có engine và không biên dịch: three.js, vật lý Rapier"],
+      ["Mã nguồn", "mã nguồn mở, MIT"]
+    ],
+    "faq": [
+      ["Tôi có cần cài đặt không?", "Không. Chỉ cần trình duyệt máy tính có WebGL 2."],
+      ["Nếu chạy chậm thì sao?", "Game chọn mức chất lượng phù hợp với máy; máy yếu hơn sẽ dùng chế độ nhẹ hơn."],
+      ["Game có liên quan đến Northern Rift không?", "Có: Northern Rift là game arcade trong cùng thế giới, cùng hòn đảo nhưng nhìn từ trên không."]
+    ],
+    "shots.0.alt": "Echo of the Rift: phi công tại nơi Kestrel rơi trong tuyết",
+    "shots.1.alt": "Echo of the Rift: hòn đảo nhìn từ trên cao, rừng, Khe nứt và cực quang",
+    "shots.2.alt": "Echo of the Rift: trại vào ban đêm",
+    "keywords": [
+      "game kể chuyện 3D trên trình duyệt",
+      "game đảo vùng cực",
+      "game cực quang",
+      "game thế giới mở three.js"
+    ]
+  },
+  "northern-rift": {
+    "name": "Northern Rift",
+    "tagline": "Bay dọc hẻm băng bất tận dưới ánh cực quang: game arcade 3D trong một tệp",
+    "genre": "Arcade 3D",
+    "description": "Northern Rift: game arcade 3D trên trình duyệt, một con tàu nhỏ bay dọc hẻm băng bất tận, thu mảnh tinh thể và xuyên qua băng. Combo tối đa ×8, ba lần trúng đòn. Chơi miễn phí.",
+    "intro": [
+      "Hẻm núi không bao giờ hết. Thu các mảnh tinh thể, biến chúng thành năng lượng rồi xuyên qua các bức tường băng. Bay vòng quanh, bay qua và bay dưới chướng ngại, giữ combo và xem bạn đi được bao xa trước khi ba lần trúng đòn hạ gục bạn.",
+      "Đây là game đầu tiên được làm trong thế giới của Echo of the Rift: cùng một hòn đảo, nhìn từ trên không. Toàn bộ thế giới được vẽ bằng mã, không có tệp ảnh, nên game nằm gọn trong một tệp."
+    ],
+    "features": [
+      "Hẻm núi bất tận, được sinh ra khi bạn bay và không bao giờ giống nhau",
+      "Mảnh tinh thể → năng lượng → phá băng: tăng tốc xuyên thẳng qua tường",
+      "Combo ×2 … ×8 khi lách quanh, bay qua và bay dưới",
+      "3 lần trúng đòn là kết thúc lượt chơi",
+      "Cực quang, sao, tinh thể phát sáng, tất cả được vẽ bằng mã",
+      "Điều khiển cảm ứng: nút tăng tốc xuất hiện trên điện thoại"
+    ],
+    "controls": [
+      ["W A S D / phím mũi tên", "lái"],
+      ["Space / Shift", "tăng tốc xuyên băng"],
+      ["Enter", "bắt đầu"]
+    ],
+    "facts": [
+      ["Nền tảng", "trình duyệt trên máy tính và điện thoại"],
+      ["Dung lượng", "một tệp (three.js và phông chữ được tải từ mạng)"],
+      ["Chế độ", "chạy tính điểm bất tận"],
+      ["Mã nguồn", "mã nguồn mở, MIT"]
+    ],
+    "faq": [
+      ["Một lượt chơi dài bao lâu?", "Đến khi bạn trúng đòn ba lần: không có giới hạn, kỹ năng quyết định."],
+      ["Chơi được trên điện thoại không?", "Được, nút tăng tốc xuất hiện trên màn hình cảm ứng."],
+      ["Game này thuộc về đâu?", "Đây là game đầu tiên từ thế giới của Echo of the Rift."]
+    ],
+    "shots.0.alt": "Northern Rift: con tàu trong hẻm băng",
+    "shots.1.alt": "Northern Rift: màn hình bắt đầu",
+    "keywords": [
+      "game arcade 3D trên trình duyệt",
+      "game bay bất tận",
+      "game một tệp three.js"
+    ]
+  },
+  "skhodka": {
+    "name": "Skhodka",
+    "tagline": "Một buổi tối thứ Bảy của cộng đồng IT tại một quán bar ở Batumi: game 3D về làm quen với mọi người",
+    "genre": "Mô phỏng xã hội",
+    "description": "Skhodka: game 3D trên trình duyệt, một buổi tối thứ Bảy của cộng đồng IT tại quán bar SushiGO ở Batumi, 19:00–01:00. Làm quen với mọi người, tìm chủ đề chung và giới thiệu họ với nhau.",
+    "intro": [
+      "Một buổi tối thứ Bảy tại quán bar SushiGO ở Batumi, từ 19:00 đến 01:00, chơi khoảng 18 phút. Bạn là thành viên của nhóm chat IT địa phương: làm quen với mọi người, tìm điểm chung và giới thiệu những người cần nhau.",
+      "Mọi người trong quán đều là nhân vật tổng hợp với tên bịa. Game chạy trên trình duyệt, không cần máy chủ hay cài đặt (three.js được đóng gói sẵn); thêm ?seed=42 vào địa chỉ để chơi lại đúng buổi tối đó."
+    ],
+    "features": [
+      "Một buổi tối trong quán bar từ 19:00 đến 01:00: sax, karaoke, mưa và ảnh tập thể ở cuối",
+      "Đến gần khách, đáp lại bằng thẻ (phím 1–4), tìm chủ đề chung",
+      "Giới thiệu hai người với nhau bằng nút “Познакомить” (Giới thiệu)",
+      "Gọi đồ uống, chụp ảnh tập thể, dùng điện thoại với nhóm chat",
+      "Camera: kéo, xoay, thu phóng; điều khiển bằng chuột và cảm ứng",
+      "Có thể lặp lại buổi tối nhờ một con số trong địa chỉ (?seed=…)"
+    ],
+    "controls": [
+      ["Nhấp vào một người hoặc bảng tên", "đi tới và nói chuyện"],
+      ["Nhấp vào sàn · chỗ ngồi", "đi · ngồi"],
+      ["Thẻ · 1–4", "trả lời"],
+      ["“Познакомить” (Giới thiệu)", "giới thiệu hai người"],
+      ["Esc", "tạm dừng, chất lượng, âm thanh"]
+    ],
+    "facts": [
+      ["Thời lượng", "khoảng 18 phút"],
+      ["Ngôn ngữ game", "tiếng Nga"],
+      ["Nền tảng", "trình duyệt, chuột và cảm ứng"],
+      ["Mã nguồn", "mã nguồn mở, MIT; không cần máy chủ và không biên dịch"]
+    ],
+    "faq": [
+      ["Họ có phải người thật không?", "Không, tất cả khách đều là nhân vật tổng hợp với tên bịa."],
+      ["Tôi có cần cài đặt gì không?", "Không cần cài đặt; game chạy trong trình duyệt."],
+      ["Chơi lại đúng buổi tối đó được không?", "Được: địa chỉ có ?seed=42 sẽ chơi lại đúng buổi đó."]
+    ],
+    "shots.0.alt": "Skhodka: hồ sơ của một vị khách",
+    "shots.1.alt": "Skhodka: sảnh quán bar lúc cao điểm của buổi tối",
+    "shots.2.alt": "Skhodka: trò chuyện với một vị khách",
+    "keywords": [
+      "game mô phỏng xã hội trên trình duyệt",
+      "game networking",
+      "cộng đồng IT Batumi"
+    ]
+  },
+  "zhitie": {
+    "name": "Zhitiyo",
+    "tagline": "Game mô phỏng cuộc sống theo tinh thần The Sims 1: khu phố low-poly isometric với mười hộ gia đình",
+    "genre": "Mô phỏng cuộc sống",
+    "description": "Zhitiyo: game mô phỏng cuộc sống trên trình duyệt theo tinh thần The Sims 1. 3D low-poly isometric, mười hộ gia đình, nhu cầu, sự nghiệp, các mối quan hệ, chế độ Mua và Xây. Không cần cài đặt.",
+    "intro": [
+      "Chuyển vào Berёzovaya Roshcha (Rặng Bạch Dương), một khu phố nhỏ có mười hộ gia đình, công viên, quán cà phê, cửa hàng, phòng tập và thư viện. Điều khiển một gia đình, giữ cho mọi người no đủ, nghỉ ngơi và vui vẻ, đi làm, kết bạn và yêu đương, sắm đồ và mở rộng ngôi nhà.",
+      "Đây là bản nhái cơ chế nguyên bản, làm từ đầu: không có tên, hình ảnh, nhạc hay giao diện của Sims hay EA, mà có ngôn ngữ hình ảnh riêng và thứ tiếng lảm nhảm riêng. Game chạy trên trình duyệt, không cần cài đặt hay biên dịch."
+    ],
+    "features": [
+      "Khu phố sống động: 10 hộ gia đình có thể chuyển đổi qua lại, cộng với các khu đất chung",
+      "Nhu cầu và tâm trạng: đói, năng lượng, vệ sinh, bàng quang, vui vẻ, xã hội, thoải mái",
+      "Các mối quan hệ: tình bạn, tình yêu, chuyện ngoại tình bí mật, mối thù gia đình; 86 tương tác xã hội",
+      "Chế độ Mua và Xây: 38 món nội thất, tường, sàn, cửa sổ, nhiều tầng và mái",
+      "Chu kỳ ngày đêm, camera isometric cổ điển (4 hướng xoay, 3 mức thu phóng)",
+      "3D low-poly, mọi mô hình và hoạt ảnh đều theo CC0"
+    ],
+    "controls": [
+      ["Nhấp vào một sim hoặc đồ vật", "menu hành động dạng vòng"],
+      ["Nhấp vào một ô", "đi tới đó"],
+      ["F1 · F2 · F3", "Sống · Mua · Xây"],
+      ["P · 0–3", "tạm dừng · tốc độ game"],
+      ["Space", "thành viên tiếp theo trong hộ"],
+      ["Kéo · con lăn", "xoay · thu phóng"]
+    ],
+    "facts": [
+      ["Nền tảng", "trình duyệt máy tính hiện đại"],
+      ["Engine", "three.js, ES modules"],
+      ["Cài đặt", "không cần"],
+      ["Mã nguồn", "mã nguồn mở, MIT; tài nguyên CC0"]
+    ],
+    "faq": [
+      ["Đây có phải The Sims không?", "Không. Đây là game độc lập theo cơ chế của thể loại, không dùng tên, hình ảnh hay nhạc của ai khác."],
+      ["Tôi có cần cài đặt không?", "Không, game chạy trong trình duyệt."],
+      ["Tôi xây lại nhà được không?", "Được, trong chế độ Mua và Xây: nội thất, tường, sàn, cửa sổ, tầng và mái."]
+    ],
+    "shots.0.alt": "Zhitiyo: bản đồ khu phố Birch Grove",
+    "shots.1.alt": "Zhitiyo: nội thất một ngôi nhà",
+    "keywords": [
+      "game mô phỏng cuộc sống trên trình duyệt",
+      "game giống The Sims",
+      "game low-poly isometric"
+    ]
+  },
+  "uptime": {
+    "name": "Uptime",
+    "tagline": "Bạn dựng một dịch vụ. Nó hỏng. Bạn sửa. Game về công việc của kỹ sư",
+    "genre": "Giải đố, mô phỏng thiết kế hệ thống",
+    "description": "Uptime là game trên trình duyệt về thiết kế hệ thống máy chủ: dựng dịch vụ từ các khối, cho dòng người dùng chạy qua và vượt qua sự cố. 43 màn từ một máy chủ đơn lẻ đến tách monolith.",
+    "intro": [
+      "Dòng người dùng chảy qua các đường ống: độ dày là lưu lượng, màu cho biết khối có chịu nổi không. Bạn đặt máy chủ, cache, hàng đợi và cơ sở dữ liệu, đoán xem cái gì hỏng trước rồi nhấn bắt đầu.",
+      "Sau lượt chạy là phần tổng kết: quyết định kèm ưu và nhược điểm, đường đi của yêu cầu và chỗ nào còn mỏng. Game dành cho bất kỳ ai muốn xem kỹ sư làm gì, không cần biết lập trình."
+    ],
+    "features": [
+      "43 màn trong năm tầng: cơ bản, tải, khả năng quan sát, nền tảng, kiến trúc",
+      "Cache, broker, Kubernetes, socket, chứng chỉ, VPN, đa vùng và đa đám mây",
+      "Monolith, monolith mô-đun, tách nhỏ, monolith phân tán, địa ngục microservice, DDD và saga",
+      "27 loại sự cố: tăng đột biến, sập cả vùng, triển khai lỗi, chứng chỉ hết hạn, rò rỉ",
+      "Hướng dẫn 3 phút, dự đoán trước khi bắt đầu, tổng kết sau đó",
+      "Nhiệm vụ hằng ngày, sinh tồn, sandbox; tiếng Nga và tiếng Anh"
+    ],
+    "controls": [
+      ["Khối ở bên trái", "đặt lên bảng"],
+      ["Chấm ở một khối → khối khác", "vẽ đường ống"],
+      ["Nhấp vào khối hoặc đường ống", "cài đặt"],
+      ["Space", "tạm dừng"],
+      ["Delete", "xóa phần đang chọn (không khi đang chạy)"],
+      ["Con lăn, chụm hai ngón", "thu phóng"]
+    ],
+    "facts": [
+      ["Thời lượng", "2–4 phút mỗi màn"],
+      ["Ngôn ngữ", "tiếng Nga, tiếng Anh"],
+      ["Nền tảng", "trình duyệt, chuột và cảm ứng"],
+      ["Mã nguồn", "mở, MIT; không cần máy chủ, không biên dịch"]
+    ],
+    "faq": [
+      ["Tôi có cần biết lập trình không?", "Không: mỗi khối đều được giải thích bằng một phép so sánh đời thường và bạn thấy điều gì xảy ra."],
+      ["Game gần với thực tế đến đâu?", "Các con số được đơn giản hóa, nhưng nguyên nhân và hệ quả là thật: hàng đợi, timeout, thử lại, sập cả vùng."],
+      ["Tôi có cần cài đặt gì không?", "Không, game mở trong trình duyệt và chạy được khi ngoại tuyến."]
+    ],
+    "shots.0.alt": "Uptime: luồng chảy qua các dịch vụ, lệnh và sự kiện",
+    "shots.1.alt": "Uptime: màn hình chính",
+    "shots.2.alt": "Uptime: hướng dẫn",
+    "shots.3.alt": "Uptime: dự đoán trước khi bắt đầu",
+    "shots.4.alt": "Uptime: kết quả và tổng kết quyết định",
+    "shots.5.alt": "Uptime: tìm dịch vụ hỏng qua log",
+    "shots.6.alt": "Uptime: kiểm thử tải",
+    "shots.7.alt": "Uptime: các màn theo tầng, tiếng Anh",
+    "keywords": [
+      "game thiết kế hệ thống",
+      "mô phỏng hạ tầng trên trình duyệt",
+      "game kiến trúc phần mềm"
+    ]
+  }
+}

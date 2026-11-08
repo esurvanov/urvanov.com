@@ -1,0 +1,23 @@
+{
+  "methods-lab": {
+    "name": "Workshop phương pháp",
+    "tagline": "60 phương pháp giải bài toán bằng 3D, từng bước một",
+    "description": "Workshop phương pháp: 60 phương pháp giải bài toán từ toán học và thuật toán, minh họa 3D từng bước. Có tiếng Nga và tiếng Anh, chạy ngay trong trình duyệt.",
+    "intro": [
+      "Sáu mươi phương pháp giải bài toán từ toán học và thuật toán, mỗi phương pháp được minh họa bằng 3D và đi qua từng bước.",
+      "Các phương pháp được rút ra từ việc giải Project Euler+ trên HackerRank, nơi tác giả đứng thứ 6 trong khoảng 256.000 người tham gia."
+    ],
+    "features": [
+      "Với mỗi phương pháp: đề bài, cách giải trực diện, điều cần để ý và cách giải nhanh hơn",
+      "Minh họa 3D từng bước",
+      "Giao diện tiếng Nga và tiếng Anh",
+      "Chạy trong trình duyệt, không cần cài đặt"
+    ],
+    "facts": [
+      ["Phương pháp", "60"],
+      ["Định dạng", "3D trong trình duyệt, không cần cài đặt"],
+      ["Ngôn ngữ", "Tiếng Nga và tiếng Anh"],
+      ["Nguồn đề bài", "Project Euler+ trên HackerRank"]
+    ]
+  }
+}
