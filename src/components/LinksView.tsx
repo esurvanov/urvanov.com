@@ -1,5 +1,5 @@
 import { LINK_GROUPS, itemText, type LinkItem } from '@/data/links'
-import { useT, withLang, withSlash, type Lang } from '@/lib/i18n'
+import { localHref, useT, withSlash, type Lang } from '@/lib/i18n'
 import Page from '@/components/site/Page'
 import Crumbs from '@/components/site/Crumbs'
 
@@ -11,7 +11,7 @@ const TINTS = ['s-tint-coral', 's-tint-amber', 's-tint-violet', 's-tint-mint']
 // Внутренние ссылки открываем в той же вкладке и на том же языке, внешние — в новой
 const linkProps = (url: string) =>
   url.startsWith('/') ? {} : { target: '_blank', rel: 'noopener noreferrer' }
-const hrefFor = (url: string, lang: Lang) => (url.startsWith('/') ? withSlash(withLang(url, lang)) : url)
+const hrefFor = (url: string, lang: Lang) => (url.startsWith('/') ? withSlash(localHref(url, lang)) : url)
 
 function Cards({ items, lang }: { items: LinkItem[]; lang: Lang }) {
   return (
@@ -81,10 +81,10 @@ export default function LinksView() {
 
       {LINK_GROUPS.map((group) => (
         <section key={group.title} className="s-group" data-track-section={slug(group.titleEn)}>
-          <h2 className="s-label">{lang === 'en' ? group.titleEn : group.title}</h2>
+          <h2 className="s-label">{t({ ru: group.title, en: group.titleEn })}</h2>
           {group.blocks.map((block, i) => (
             <div key={block.title ?? i} className="s-block">
-              {block.title && <h3 className="s-step-name">{lang === 'en' ? block.titleEn : block.title}</h3>}
+              {block.title && <h3 className="s-step-name">{t({ ru: block.title, en: block.titleEn ?? block.title })}</h3>}
               {block.variant === 'cards' && <Cards items={block.items} lang={lang} />}
               {block.variant === 'list' && <List items={block.items} lang={lang} />}
               {block.variant === 'pills' && <Pills items={block.items} lang={lang} />}

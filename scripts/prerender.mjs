@@ -10,9 +10,16 @@ const DIST = 'dist'
 const {
   render, allPages, POSTS, ALL_TERMS, TERM_SETS, GAMES, GAME_PAGES, ARCHITECTURES, LABS, config,
   MILESTONES, ABOUT_LEAD, PLACES, LINK_GROUPS, itemText, CITY_CHATS, THEME_CHATS, BIO,
+  ui, LANG_FONTS, I18N_PROBLEMS,
 } = await import(pathToFileURL(join(process.cwd(), 'dist-ssr/entry-server.js')).href)
 
 const template = readFileSync(join(DIST, 'index.html'), 'utf8')
+// Файлы переводов (src/i18n/<язык>/*.json) с ошибками: сборку не роняют, но видны в логе (подробно — npm run i18n:status)
+if (I18N_PROBLEMS.length) console.warn(`prerender: в файлах переводов ${I18N_PROBLEMS.length} ошибок:\n  ${I18N_PROBLEMS.slice(0, 20).join('\n  ')}`)
+// Файл поста на языке: slug.md — русский, slug.en.md — английский, slug.<язык>.md — новые языки
+const postFile = (p) => `content/blog/${p.slug}${p.lang === 'ru' ? '' : `.${p.lang}`}.md`
+// Префикс языка в адресе: английский — в корне, остальные — /<язык>
+const prefixOf = (lang) => (lang === 'en' ? '' : `/${lang}`)
 const buildDate = new Date().toISOString().slice(0, 10)
 const analytics = analyticsHead()
 
@@ -38,7 +45,7 @@ const gitDateCache = new Map()
   if (sh('git rev-parse --is-inside-work-tree') === 'true') {
     const stale = []
     for (const p of POSTS) {
-      const file = `content/blog/${p.slug}${p.lang === 'en' ? '.en' : ''}.md`
+      const file = postFile(p)
       if (!existsSync(file)) continue
       const changed = contentDate(file)
       const updated = p.updated ?? p.date
@@ -70,19 +77,26 @@ const CRUMBS = {
   en: { home: 'Home', about: 'About', blog: 'Blog', links: 'Links', materials: 'Materials', presentations: 'Presentations', glossary: 'Glossary', games: 'Games', patterns: 'Patterns', jaiora: 'Jaiora', talk: 'Talk' },
 }
 
+// Новые языки: названия разделов — из ui.json по английскому названию (нет перевода — английское)
+const crumbsOf = (lang) => CRUMBS[lang] ?? Object.fromEntries(Object.entries(CRUMBS.en).map(([k, v]) => [k, ui(lang, v)]))
+
 function breadcrumbs(page, all) {
   const parts = page.path.split('/').filter(Boolean)
-  if (page.lang === 'ru') parts.shift()
+  const pre = prefixOf(page.lang)
+  if (pre) parts.shift()
   if (parts.length === 0) return null
-  const home = page.lang === 'ru' ? '/ru' : '/'
-  const items = [{ name: CRUMBS[page.lang].home, url: urlOf(home) }]
-  let acc = page.lang === 'ru' ? '/ru' : ''
+  const names = crumbsOf(page.lang)
+  // Главной на новом языке может ещё не быть — тогда крошка ведёт на английскую
+  const items = [{ name: names.home, url: urlOf(pre && all.some((x) => x.path === pre) ? pre : '/') }]
+  let acc = pre
   for (const part of parts) {
     acc += '/' + part
     const p = all.find((x) => x.path === acc)
     // Служебные сегменты без своей страницы (/blog/category/, /blog/page/) в крошки не попадают
-    if (!p && !CRUMBS[page.lang][part]) continue
-    items.push({ name: CRUMBS[page.lang][part] ?? p?.crumb ?? p?.title.split(' — ')[0] ?? part, url: urlOf(acc) })
+    if (!p && !CRUMBS.en[part]) continue
+    // На новом языке раздел может быть ещё не переведён: крошка ведёт на английскую страницу
+    const url = p || page.lang === 'ru' || page.lang === 'en' ? urlOf(acc) : urlOf(acc.slice(pre.length) || '/')
+    items.push({ name: names[part] ?? p?.crumb ?? p?.title.split(' — ')[0] ?? part, url })
   }
   return { '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })) }
 }
@@ -90,7 +104,7 @@ function breadcrumbs(page, all) {
 function build(page, all, { body, noindex, skipStructured } = {}) {
   // Свой @id (например, у Organization/PresentationDigitalDocument) важнее заглушки #main
   const graph = skipStructured ? [] : [breadcrumbs(page, all), page.jsonLd && { '@id': urlOf(page.path) + '#main', ...page.jsonLd }, ...(page.jsonLdExtra ?? [])].filter(Boolean)
-  const head = headTags({ ...page, noindex: noindex ?? page.noindex, jsonLd: graph.length ? graph : undefined, canonical: !skipStructured })
+  const head = headTags({ ...page, noindex: noindex ?? page.noindex, jsonLd: graph.length ? graph : undefined, canonical: !skipStructured, font: LANG_FONTS[page.lang] })
   return template
     .replace('<html lang="en">', `<html lang="${page.lang}">`)
     // Замена функцией: в строке-замене JS «$$» и «$&» — спецсимволы, и «$$$» в тексте поста превращался бы в «$$»
@@ -169,9 +183,11 @@ const indexable = pages.filter((p) => !p.noindex && p.path !== '/slide/1')
 const loc = (p) => (p === '/' ? SITE_URL + '/' : urlOf(p))
 const urls = [
   ...indexable.map((p) => {
+    // hreflang: все языковые версии страницы; x-default — английская (если она есть)
+    const en = p.alternates.find((a) => a.lang === 'en')
     const alt = p.alternates.length > 1
       ? p.alternates.map((a) => `<xhtml:link rel="alternate" hreflang="${a.lang}" href="${loc(a.path)}"/>`).join('')
-        + `<xhtml:link rel="alternate" hreflang="x-default" href="${loc(p.alternates.find((a) => a.lang === 'en').path)}"/>`
+        + (en ? `<xhtml:link rel="alternate" hreflang="x-default" href="${loc(en.path)}"/>` : '')
       : ''
     const lastmod = p.modified ?? p.date ?? gitDate(p.sources)
     return `  <url><loc>${loc(p.path)}</loc><lastmod>${lastmod}</lastmod><priority>${p.path === '/' || p.path === '/ru' ? '1.0' : p.type === 'article' || /\/materials\/(games|interactive)\/[^/]+$/.test(p.path) ? '0.8' : '0.6'}</priority>${alt}</url>`
@@ -185,7 +201,7 @@ write('robots.txt', ['User-agent: *', 'Allow: /', 'Disallow: /presenter', '', ..
 
 // RSS по языкам
 const rfc = (d) => new Date(d).toUTCString()
-const postUrl = (p) => urlOf(p.lang === 'ru' ? `/ru/blog/${p.slug}` : `/blog/${p.slug}`)
+const postUrl = (p) => urlOf(`${prefixOf(p.lang)}/blog/${p.slug}`)
 for (const lang of ['ru', 'en']) {
   const posts = POSTS.filter((p) => p.lang === lang)
   const prefix = lang === 'ru' ? '/ru' : ''
@@ -198,9 +214,9 @@ for (const lang of ['ru', 'en']) {
 write('en/rss.xml', readFileSync(join(DIST, 'rss.xml'), 'utf8'))
 
 // Markdown-копии постов
-const mdPath = (p) => (p.lang === 'ru' ? `ru/blog/${p.slug}.md` : `blog/${p.slug}.md`)
+const mdPath = (p) => `${prefixOf(p.lang).slice(1)}${p.lang === 'en' ? '' : '/'}blog/${p.slug}.md`
 // у широких постов с инфографикой — чистый текст (content/blog-text), а не вёрстка
-const postMd = (p) => `# ${p.title}\n\n${p.date} · ${p.lang === 'en' ? 'Egor Urvanov' : 'Егор Урванов'} · ${postUrl(p)}\n\n> ${p.description}\n\n${p.text ?? p.markdown}\n`
+const postMd = (p) => `# ${p.title}\n\n${p.date} · ${p.lang === 'ru' ? 'Егор Урванов' : 'Egor Urvanov'} · ${postUrl(p)}\n\n> ${p.description}\n\n${p.text ?? p.markdown}\n`
 for (const p of POSTS) write(mdPath(p), postMd(p))
 
 // Архитектура игр: markdown-копии рядом со страницами (схемы-картинки заменены подписями)
@@ -289,7 +305,8 @@ write('llms-full.txt', [
   '',
   aboutSection('ru'),
   aboutSection('en'),
-  ...(POSTS.length ? ['## Блог / Blog', '', ...POSTS.map((p) => postMd(p).replace(/^# /, '### '))] : []),
+  // llms-full — только русский и английский (переводы на новые языки сюда не входят)
+  ...(POSTS.length ? ['## Блог / Blog', '', ...POSTS.filter((p) => p.lang === 'ru' || p.lang === 'en').map((p) => postMd(p).replace(/^# /, '### '))] : []),
   ...(ARCHITECTURES.length ? ['## Архитектура игр / Game architecture', '', ...ARCHITECTURES.map((a) => archMd(a).replace(/^# /, '### '))] : []),
   '## Глоссарий (RU)', '', ...ALL_TERMS.map((x) => termMd(x, 'ru')),
   '## Glossary (EN)', '', ...ALL_TERMS.map((x) => termMd(x, 'en')),

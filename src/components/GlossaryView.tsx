@@ -5,10 +5,10 @@ import NotFoundView from '@/components/NotFoundView'
 import { Link } from 'react-router-dom'
 import { ActionLink } from '@/components/site/Links'
 import { ICONS } from '@/components/site/icons'
-import { noCode, ALL_TERMS, TERM_SETS, findTerm, glossaryPath, postsWithTerm, setOfTerm, splitTerms, termForTag, termShort } from '@/data/glossary'
+import { noCode, TERM_SETS, findTerm, glossaryPath, postsWithTerm, setOfTerm, splitTerms, termForTag, termShort } from '@/data/glossary'
 import { findCategory, type Post } from '@/data/blog'
 import { TERM_DATES } from '@/data/termDates'
-import { useT } from '@/lib/i18n'
+import { baseOf, hasPage, isNewLang, useT, withLang, type Lang } from '@/lib/i18n'
 import { plural } from '@/lib/plural'
 import { termArt } from '@/lib/termArt'
 import AgentMap from '@/components/AgentMap'
@@ -53,20 +53,23 @@ function ScreenText({ text, self }: { text: string; self: string }) {
   return <div className="s-gscreen">{text.split('\n\n').map((p, i) => <p key={i}><TermText text={p} self={self} /></p>)}</div>
 }
 
-const termWord = (n: number, lang: 'ru' | 'en') => plural(n, lang, ['термин', 'термина', 'терминов'], ['term', 'terms'])
+const termWord = (n: number, lang: Lang) => plural(n, lang, ['термин', 'термина', 'терминов'], ['term', 'terms'])
 
 // /materials/glossary/ — наборы терминов; у каждого термина своя страница со статьями, где он встречается
 export function GlossaryView() {
   const { lang, t, to } = useT()
+  // На новом языке — только переведённые термины и наборы, где они есть
+  const sets = TERM_SETS.map((s) => ({ ...s, terms: isNewLang(lang) ? s.terms.filter((x) => hasPage(withLang(glossaryPath(x.slug), lang))) : s.terms })).filter((s) => s.terms.length > 0)
+  const total = sets.reduce((n, s) => n + s.terms.length, 0)
   return (
     <Page>
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { label: t({ ru: 'Глоссарий', en: 'Glossary' }) }]} />
       <h1 className="s-page-title">{t({ ru: 'Глоссарий', en: 'Glossary' })}</h1>
-      <p className="s-lead">{termWord(ALL_TERMS.length, lang)} · {TERM_SETS.length} {t({ ru: 'наборов', en: 'sets' })}</p>
+      <p className="s-lead">{termWord(total, lang)} · {sets.length} {t({ ru: 'наборов', en: 'sets' })}</p>
       <ul className="s-chips g-glos-nav" aria-label={t({ ru: 'Наборы терминов', en: 'Term sets' })}>
-        {TERM_SETS.map((s) => <li key={s.slug}><a className="s-chip" href={`#${s.slug}`}>{ICONS[s.icon]}{t(s.name)}</a></li>)}
+        {sets.map((s) => <li key={s.slug}><a className="s-chip" href={`#${s.slug}`}>{ICONS[s.icon]}{t(s.name)}</a></li>)}
       </ul>
-      {TERM_SETS.map((s) => (
+      {sets.map((s) => (
         <section className="s-section" id={s.slug} key={s.slug} aria-labelledby={`h-${s.slug}`}>
           <h2 className="s-label" id={`h-${s.slug}`}>{ICONS[s.icon]} {t(s.name)} · {s.terms.length}</h2>
           <dl className="g-glos">
@@ -93,9 +96,10 @@ export function TermView() {
   if (!term) return <NotFoundView />
   const set = setOfTerm(term.slug)
   const posts = postsWithTerm(term.slug, lang)
-  const art = termArt(term.slug, lang)
+  // Схемы терминов нарисованы на двух языках: на новых языках — английская схема
+  const art = termArt(term.slug, baseOf(lang))
   // Дополнительные экраны термина: схемы `slug/2`, `slug/3`… идут под основной
-  const more = [2, 3, 4].map((n) => termArt(`${term.slug}/${n}`, lang)).filter((a) => a !== null)
+  const more = [2, 3, 4].map((n) => termArt(`${term.slug}/${n}`, baseOf(lang))).filter((a) => a !== null)
   return (
     <Page className="s-gterm">
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { to: to('/materials/glossary'), label: t({ ru: 'Глоссарий', en: 'Glossary' }) }, { label: t(term.name) }]} />

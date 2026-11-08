@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { metaFor, SITE_URL } from '@/data/seo'
 import { startPage } from '@/lib/analytics'
+import { ensureLangFont } from '@/lib/langFonts'
 
 function setTag(selector: string, create: () => HTMLElement, attr: string, value: string) {
   let el = document.head.querySelector<HTMLElement>(selector)
@@ -20,6 +21,7 @@ export function usePageMeta() {
     if (m) {
       document.title = m.title
       document.documentElement.lang = m.lang
+      ensureLangFont(m.lang)
       setTag('meta[name="description"]', () => Object.assign(document.createElement('meta'), { name: 'description' }), 'content', m.description)
       setTag('link[rel="canonical"]', () => Object.assign(document.createElement('link'), { rel: 'canonical' }), 'href', SITE_URL + (m.path.endsWith('/') ? m.path : m.path + '/'))
       // rel=prev/next ленты блога: у других страниц их нет — убираем оставшиеся от прошлой

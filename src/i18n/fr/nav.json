@@ -1,0 +1,27 @@
+{
+  "/about": {
+    "label": "À propos",
+    "hint": "CTO · IA · mentor n° 1"
+  },
+  "/blog": {
+    "label": "Blog",
+    "hint": "IA · ingénierie"
+  },
+  "/ai": {
+    "hint": "formation · adoption"
+  },
+  "/materials": {
+    "label": "Ressources",
+    "hint": "conférences · jeux"
+  },
+  "/links": {
+    "label": "Liens",
+    "hint": "profils · conférences"
+  },
+  "https://jaiora.me/": {
+    "hint": "LinkedIn hors ligne"
+  },
+  "https://clauding.me/": {
+    "hint": "un monde de résultats"
+  }
+}

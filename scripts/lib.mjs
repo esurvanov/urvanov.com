@@ -11,7 +11,7 @@ export const PERSON_ID = `${SITE_URL}/#person`
 export const JAIORA_ORG_ID = 'https://jaiora.me/#org'
 
 function person(lang) {
-  const ru = lang !== 'en'
+  const ru = lang === 'ru'
   return {
     '@type': 'Person',
     '@id': PERSON_ID,
@@ -76,7 +76,10 @@ export function analyticsHead() {
   return out.join('\n    ')
 }
 
-export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date, modified, lang = 'ru', alternates = [], canonical = true, image, ogTitle, prev, next }) {
+// og:locale по языку страницы
+const OG_LOCALE = { ru: 'ru_RU', en: 'en_US', th: 'th_TH', ka: 'ka_GE', vi: 'vi_VN', es: 'es_ES', fr: 'fr_FR' }
+
+export function headTags({ title, description, path, type = 'website', noindex = false, jsonLd, date, modified, lang = 'ru', alternates = [], canonical = true, image, ogTitle, prev, next, font }) {
   const url = urlOf(path)
   // Своя картинка превью (1200×630) — большая карточка в соцсетях; иначе фото автора
   const img = image ? SITE_URL + image : `${SITE_URL}/egor.jpg`
@@ -86,7 +89,7 @@ export function headTags({ title, description, path, type = 'website', noindex =
     `<meta name="description" content="${esc(description)}" />`,
     `<meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'}" />`,
     `<meta property="og:site_name" content="Егор Урванов" />`,
-    `<meta property="og:locale" content="${lang === 'en' ? 'en_US' : 'ru_RU'}" />`,
+    `<meta property="og:locale" content="${OG_LOCALE[lang] ?? 'en_US'}" />`,
     `<meta property="og:type" content="${type}" />`,
     `<meta property="og:title" content="${esc(social)}" />`,
     `<meta property="og:description" content="${esc(description)}" />`,
@@ -96,8 +99,11 @@ export function headTags({ title, description, path, type = 'website', noindex =
     `<meta name="twitter:title" content="${esc(social)}" />`,
     ...(image ? [`<meta name="twitter:image" content="${img}" />`] : []),
     `<meta name="twitter:description" content="${esc(description)}" />`,
-    `<link rel="alternate" type="application/rss+xml" title="${lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'}" href="${lang === 'ru' ? '/ru/rss.xml' : '/rss.xml'}" />`,
   ]
+  // RSS — только русская и английская ленты
+  if (lang === 'ru' || lang === 'en') tags.push(`<link rel="alternate" type="application/rss+xml" title="${lang === 'en' ? 'Blog — Egor Urvanov' : 'Блог — Егор Урванов'}" href="${lang === 'ru' ? '/ru/rss.xml' : '/rss.xml'}" />`)
+  // Шрифт с буквами языка (тайский, грузинский), если в шрифтах сайта их нет
+  if (font) tags.push(`<link rel="stylesheet" href="${esc(font)}" />`)
   // canonical/og:url — не для страниц без реального адреса (404: canonical на /404/ был бы мусорным сигналом)
   if (canonical) {
     tags.splice(2, 0, `<link rel="canonical" href="${url}" />`)

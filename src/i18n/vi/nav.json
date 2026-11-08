@@ -1,0 +1,27 @@
+{
+  "/about": {
+    "label": "Giới thiệu",
+    "hint": "CTO · AI · mentor số 1"
+  },
+  "/blog": {
+    "label": "Blog",
+    "hint": "AI · kỹ thuật"
+  },
+  "/ai": {
+    "hint": "đào tạo · triển khai"
+  },
+  "/materials": {
+    "label": "Tài liệu",
+    "hint": "bài nói · trò chơi"
+  },
+  "/links": {
+    "label": "Liên kết",
+    "hint": "hồ sơ · bài nói"
+  },
+  "https://jaiora.me/": {
+    "hint": "LinkedIn ngoài đời thực"
+  },
+  "https://clauding.me/": {
+    "hint": "thế giới của kết quả"
+  }
+}

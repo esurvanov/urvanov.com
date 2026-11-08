@@ -6,7 +6,7 @@ import Crumbs from '@/components/site/Crumbs'
 import Toc from '@/components/site/Toc'
 import Dates from '@/components/site/Dates'
 import { ICONS } from '@/components/site/icons'
-import { otherLang, useT, withLang, withSlash } from '@/lib/i18n'
+import { isNewLang, localizeLinks, otherLang, useT, withLang, withSlash } from '@/lib/i18n'
 import { initHddGame } from '@/lib/hddGame'
 import { findTerm, glossaryPath, linkTerms, postsSharingTerms, termForTag } from '@/data/glossary'
 
@@ -31,7 +31,8 @@ export default function BlogPostView() {
   const { lang, t, to } = useT()
   const post = findPost(slug, lang)
   // Первое упоминание каждого термина в тексте — ссылка на глоссарий
-  const linked = useMemo(() => (post ? linkTerms(post.html, lang, [], true) : null), [post, lang])
+  // На новом языке ссылки в тексте досчитываются здесь: при разборе постов реестр страниц ещё не готов (см. localHref)
+  const linked = useMemo(() => (post ? linkTerms(isNewLang(lang) ? localizeLinks(post.html, lang) : post.html, lang, [], true) : null), [post, lang])
   // Интерактив в статье: HTML вставляется как есть, поэтому контейнер игры оживляем после отрисовки
   useEffect(() => {
     const el = document.querySelector<HTMLElement>('[data-hdd-game]')

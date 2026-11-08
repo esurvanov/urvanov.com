@@ -4,7 +4,7 @@ import Crumbs from '@/components/site/Crumbs'
 import { GAMES, LABS } from '@/data/seo'
 import { PATTERN_CATEGORIES } from '@/data/patterns'
 import { config } from '@/data/config'
-import { useT, withLang, withSlash } from '@/lib/i18n'
+import { localHref, tr, useT, withSlash, type Lang } from '@/lib/i18n'
 import { gamePageByPlay } from '@/data/games'
 import { LAB_PAGES } from '@/data/labs'
 import { TextLink } from '@/components/site/Links'
@@ -43,27 +43,27 @@ function Rows({ items }: { items: Row[] }) {
 }
 
 // Слайды и каталог паттернов только на русском: ссылки ведут на русские адреса
-const presentationRows = (lang: 'ru' | 'en'): Row[] => [
-  { meta: lang === 'en' ? 'Talk · interactive slides' : 'Доклад · интерактивные слайды', href: '/decks/ai-agent-architecture/', title: lang === 'en' ? 'AI agent in production: architecture, protection, economics' : 'Работа AI-агента: архитектура, защита, экономика', hint: lang === 'en' ? 'Podlodka AI Crew · prompt injection, Data plane and Control plane, the stack · 3D slides in the browser (in Russian)' : 'Podlodka AI Crew · prompt injection, Data plane и Control plane, стек · 3D-слайды в браузере' },
-  { meta: lang === 'en' ? 'Talk' : 'Доклад', to: '/talk/spec-driven-development/', title: lang === 'en' ? config.talkTitleEn : config.talkTitle, hint: lang === 'en' ? `${config.conferenceName} · full talk text (in Russian)` : `${config.conferenceName} · текст доклада целиком` },
-  { meta: lang === 'en' ? 'Catalog' : 'Каталог', to: '/patterns/', title: lang === 'en' ? 'AI patterns catalog' : 'Каталог AI-паттернов', hint: lang === 'en' ? `${patternsTotal} patterns · ${PATTERN_CATEGORIES.length} categories (in Russian)` : `${patternsTotal} паттернов · ${PATTERN_CATEGORIES.length} категорий` },
+const presentationRows = (lang: Lang): Row[] => [
+  { meta: tr({ ru: 'Доклад · интерактивные слайды', en: 'Talk · interactive slides' }, lang), href: '/decks/ai-agent-architecture/', title: tr({ ru: 'Работа AI-агента: архитектура, защита, экономика', en: 'AI agent in production: architecture, protection, economics' }, lang), hint: tr({ ru: 'Podlodka AI Crew · prompt injection, Data plane и Control plane, стек · 3D-слайды в браузере', en: 'Podlodka AI Crew · prompt injection, Data plane and Control plane, the stack · 3D slides in the browser (in Russian)' }, lang) },
+  { meta: tr({ ru: 'Доклад', en: 'Talk' }, lang), to: '/talk/spec-driven-development/', title: tr({ ru: config.talkTitle, en: config.talkTitleEn }, lang), hint: tr({ ru: `${config.conferenceName} · текст доклада целиком`, en: `${config.conferenceName} · full talk text (in Russian)` }, lang) },
+  { meta: tr({ ru: 'Каталог', en: 'Catalog' }, lang), to: '/patterns/', title: tr({ ru: 'Каталог AI-паттернов', en: 'AI patterns catalog' }, lang), hint: tr({ ru: `${patternsTotal} паттернов · ${PATTERN_CATEGORIES.length} категорий`, en: `${patternsTotal} patterns · ${PATTERN_CATEGORIES.length} categories (in Russian)` }, lang) },
 ]
 
-const gameRows = (lang: 'ru' | 'en'): Row[] => GAMES.map((g) => {
+const gameRows = (lang: Lang): Row[] => GAMES.map((g) => {
   const lp = gamePageByPlay(g.path)
-  const title = lang === 'en' ? g.titleEn : g.title, hint = lang === 'en' ? g.longEn : g.long
+  const title = tr({ ru: g.title, en: g.titleEn }, lang), hint = tr({ ru: g.long, en: g.longEn }, lang)
   // страница игры (описание, скриншоты, управление, ссылка на игру) — единственная ссылка; индексируется она, а не холст игры
   return lp
-    ? { to: withSlash(withLang(`/materials/games/${lp.slug}`, lang)), title, hint, meta: lp.genre[lang] }
+    ? { to: withSlash(localHref(`/materials/games/${lp.slug}`, lang)), title, hint, meta: tr(lp.genre, lang) }
     : { href: g.path, title, hint }
 })
-const labRows = (lang: 'ru' | 'en'): Row[] => LABS.map((l) => {
+const labRows = (lang: Lang): Row[] => LABS.map((l) => {
   const lp = LAB_PAGES.find((x) => x.play === l.path)
-  const title = lang === 'en' ? l.titleEn : l.title, hint = lang === 'en' ? l.longEn : l.long
-  const note = { text: l.source[lang], links: l.source.links.map((x) => ({ href: x.href, label: x[lang] })) }
+  const title = tr({ ru: l.title, en: l.titleEn }, lang), hint = tr({ ru: l.long, en: l.longEn }, lang)
+  const note = { text: tr(l.source, lang), links: l.source.links.map((x) => ({ href: x.href, label: tr(x, lang) })) }
   // страница интерактива (описание для поиска) — основная ссылка; сам интерактив открывается оттуда
-  const meta = lang === 'en' ? 'Interactive' : 'Интерактив'
-  return lp ? { to: withSlash(withLang(`/materials/interactive/${lp.slug}`, lang)), title, hint, note, meta } : { href: l.path, title, hint, note, meta }
+  const meta = tr({ ru: 'Интерактив', en: 'Interactive' }, lang)
+  return lp ? { to: withSlash(localHref(`/materials/interactive/${lp.slug}`, lang)), title, hint, note, meta } : { href: l.path, title, hint, note, meta }
 })
 
 // /materials/ — только группы: раздел и что в нём. Описания и ссылки на сами материалы — на странице раздела.
@@ -117,8 +117,8 @@ export function GamesView() {
       <ul className="g-tiles">
         {GAMES.map((g) => {
           const lp = gamePageByPlay(g.path)
-          const title = lang === 'en' ? g.titleEn : g.title
-          const href = lp ? withSlash(withLang(`/materials/games/${lp.slug}`, lang)) : g.path
+          const title = tr({ ru: g.title, en: g.titleEn }, lang)
+          const href = lp ? withSlash(localHref(`/materials/games/${lp.slug}`, lang)) : g.path
           const shot = lp?.shots[0]
           return (
             <li key={g.path}>
@@ -127,7 +127,7 @@ export function GamesView() {
                 <span className="g-tile-body">
                   {lp && <small>{t(lp.genre)}</small>}
                   <b>{lp ? t(lp.name) : title}</b>
-                  <span>{lp ? t(lp.tagline) : (lang === 'en' ? g.longEn : g.long)}</span>
+                  <span>{lp ? t(lp.tagline) : (tr({ ru: g.long, en: g.longEn }, lang))}</span>
                 </span>
               </Link>
             </li>

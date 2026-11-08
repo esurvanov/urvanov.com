@@ -125,6 +125,18 @@
 .s-nav-lang, .s-home-lang { box-sizing: border-box; display: inline-grid; place-items: center; min-width: 36px; height: 28px; padding: 0 8px; line-height: 1; font-family: var(--mono); font-size: var(--t-label); color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius); }
 .s-nav-lang:hover { color: var(--ink); border-color: var(--accent); }
 .s-home-lang { position: absolute; top: var(--sp-3); right: 0; }
+/* Переключатель на несколько языков: та же кнопка с кодом языка, по нажатию — короткий список */
+.s-lang { position: relative; display: inline-block; }
+.s-lang > summary { list-style: none; cursor: pointer; user-select: none; }
+.s-lang > summary::-webkit-details-marker { display: none; }
+.s-lang > summary::after { content: '▾'; margin-left: 4px; font-size: 0.7em; }
+.s-lang[open] > summary { color: var(--ink); border-color: var(--accent); }
+.s-lang:has(> .s-home-lang) { position: absolute; top: var(--sp-3); right: 0; }
+.s-lang > .s-home-lang { position: static; }
+.s-lang-list { position: absolute; right: 0; top: calc(100% + 4px); z-index: 20; min-width: 160px; margin: 0; padding: 4px; list-style: none; background: var(--bg); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 6px 18px rgb(0 0 0 / 0.12); }
+.s-lang-list a { display: flex; gap: 8px; align-items: baseline; padding: 6px 8px; border-radius: var(--radius); color: var(--ink-2); text-decoration: none; font-size: var(--t-small); white-space: nowrap; }
+.s-lang-list a:hover { color: var(--ink); background: var(--bg-2, rgb(0 0 0 / 0.04)); }
+.s-lang-list b { font-family: var(--mono); font-size: var(--t-label); font-weight: 500; min-width: 22px; }
 /* Кнопка темы: солнце или луна, рядом с переключателем языка */
 .s-theme { width: 36px; padding: 0; background: none; cursor: pointer; }
 .s-theme svg { width: 14px; height: 14px; }
@@ -834,3 +846,8 @@ a.s-term:hover, a.s-term:focus-visible { text-decoration-style: solid; }
 /* код в текстах глоссария: файлы, команды, флаги */
 .g-code { font-family: var(--mono); font-size: 0.86em; background: color-mix(in srgb, var(--ink) 8%, var(--surface)); padding: 1px 6px; border-radius: var(--radius); white-space: nowrap; }
 .g-code .s-term { font-family: inherit; }
+
+/* Тайский и грузинский: в Manrope и Inter нет этих букв — следом идут Noto Sans Thai / Georgian
+   (Google Fonts, подключаются только на страницах этих языков: scripts/prerender.mjs и usePageMeta) */
+html:lang(th) .site { --font: 'Manrope', 'Inter', 'Noto Sans Thai', system-ui, sans-serif; }
+html:lang(ka) .site { --font: 'Manrope', 'Inter', 'Noto Sans Georgian', system-ui, sans-serif; }

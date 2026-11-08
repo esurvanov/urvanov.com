@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { postsFor } from '@/data/blog'
 import { NAV_ITEMS, type NavItem } from '@/data/nav'
 import { BIO } from '@/data/profile'
 import Page from '@/components/site/Page'
-import { otherLang, stripLang, useT, withLang, withSlash, type Lang } from '@/lib/i18n'
+import { useT, type Lang } from '@/lib/i18n'
+import LangSwitch from '@/components/site/LangSwitch'
 import ThemeToggle from '@/components/site/ThemeToggle'
 
 const CONTACTS = [
@@ -25,8 +26,6 @@ function Wrap({ item, to, lang, children }: { item: NavItem; to: string; lang: L
 
 export default function HomeView() {
   const { lang, t, to } = useT()
-  const { pathname } = useLocation()
-  const other = otherLang(lang)
   const posts = postsFor(lang).length
 
   useEffect(() => {
@@ -41,9 +40,7 @@ export default function HomeView() {
 
   return (
     <Page nav={false}>
-      <Link className="s-nav-lang s-home-lang" to={withSlash(withLang(stripLang(pathname), other))} data-track="cta" data-track-id="lang_switch" data-track-label={other} hrefLang={other} lang={other}>
-        {other.toUpperCase()}
-      </Link>
+      <LangSwitch className="s-nav-lang s-home-lang" />
       <ThemeToggle className="s-home-theme" />
       <header className="s-home-hero">
         <p className="s-eyebrow">CTO · AI · {t({ ru: 'нетворк', en: 'networking' })}</p>

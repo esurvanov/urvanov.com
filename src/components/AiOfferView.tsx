@@ -1,21 +1,20 @@
-import { Link, useLocation, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Page from '@/components/site/Page'
 import ThemeToggle from '@/components/site/ThemeToggle'
 import NotFoundView from '@/components/NotFoundView'
 import { AI_CONTACT, AI_GROUPS, AI_OFFERS, AI_PROOF, aiOfferPath } from '@/data/aiOffers'
-import { otherLang, stripLang, useT, withLang, withSlash } from '@/lib/i18n'
+import { hasPage, isNewLang, useT, withLang } from '@/lib/i18n'
+import LangSwitch from '@/components/site/LangSwitch'
 
 // Страница, не сайт: без меню, свой верх с возвратом, языком и темой
 function Top({ back }: { back?: boolean }) {
-  const { lang, t, to } = useT()
-  const { pathname } = useLocation()
-  const other = otherLang(lang)
+  const { t, to } = useT()
   return (
     <div className="ai-top">
       {back ? <Link to={to('/ai')}>← {t({ ru: 'Все офферы', en: 'All offers' })}</Link> : <span className="s-eyebrow">{t({ ru: 'Егор Урванов', en: 'Egor Urvanov' })}</span>}
       <span style={{ display: 'flex', gap: 8 }}>
         <ThemeToggle />
-        <Link className="s-nav-lang" to={withSlash(withLang(stripLang(pathname), other))} data-track="cta" data-track-id="lang_switch" data-track-label={other} hrefLang={other} lang={other}>{other.toUpperCase()}</Link>
+        <LangSwitch />
       </span>
     </div>
   )
@@ -62,7 +61,9 @@ const two = (s: string) => {
 }
 
 export function AiHubView() {
-  const { t, to } = useT()
+  const { lang, t, to } = useT()
+  // На новом языке — только переведённые офферы
+  const offers = isNewLang(lang) ? AI_OFFERS.filter((o) => hasPage(withLang(aiOfferPath(o.slug), lang))) : AI_OFFERS
   return (
     <Page nav={false}>
       <Top />
@@ -75,7 +76,7 @@ export function AiHubView() {
       <Proof />
 
       <ol className="s-index ai-jobs" data-track-section="ai_jobs">
-        {AI_OFFERS.map((o, i) => (
+        {offers.map((o, i) => (
           <li key={o.slug}>
             <Link to={to(aiOfferPath(o.slug))}>
               <span className="n">{String(i + 1).padStart(2, '0')}</span>
