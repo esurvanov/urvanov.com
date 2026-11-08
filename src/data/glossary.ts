@@ -1251,7 +1251,7 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['(?:data|control) plane'], en: ['(?:data|control) plane'] },
         related: ['prompt-injection', 'mcp', 'kubernetes', 'k8s-node'],
         faq: [
-          { q: { ru: 'Data plane — это что?', en: 'What is the data plane?' }, a: { ru: 'Всё, что агент читает: страницы, тикеты, документы и ответы серверов.', en: 'Everything the agent reads: pages, tickets, documents and server replies.' } },
+          { q: { ru: 'Data plane — это что?', en: 'What is the data plane?' }, a: { ru: 'Плоскость данных — часть системы, которая работает с самими данными: в сети пересылает пакеты, в Kubernetes это узлы с подами. У ИИ-агента это всё, что он читает: страницы, тикеты, документы и ответы серверов.', en: 'The data plane is the part of a system that handles the data itself: in a network it forwards packets, in Kubernetes it is the nodes with pods. For an AI agent it is everything it reads: pages, tickets, documents and server replies.' } },
           { q: { ru: 'Чем control plane отличается от data plane?', en: 'How is the control plane different from the data plane?' }, a: { ru: 'Control plane — команды, то есть ваши сообщения и правила. Data plane — данные. Защита от prompt injection не даёт чужому тексту из данных стать командой.', en: 'The control plane is commands, meaning your messages and rules. The data plane is data. Prompt injection protection keeps outside text in the data from becoming a command.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Control_plane', label: { ru: 'Википедия: control plane', en: 'Wikipedia: Control plane' } },
