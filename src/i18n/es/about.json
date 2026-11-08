@@ -1,0 +1,27 @@
+{
+  "lead": {
+    "lead": "CTO, aprendizaje automático y desarrollo con IA. Hago mentoría a ingenieros, doy charlas en eventos y reúno a la gente en Jaiora."
+  },
+  "milestones": {
+    "0.years": "2026 — actualidad",
+    "0.org": "Empresa de iGaming, una plataforma SaaS de atención al cliente",
+    "1.org": "Empresa de iGaming, una plataforma SaaS de atención al cliente",
+    "1.facts.0": "Tiempo de recuperación tras incidentes: de 5 horas a 2",
+    "1.facts.1": "Time to market: de 3 meses a 1,5",
+    "1.facts.2": "Paso del equipo a Scrum + LeSS",
+    "1.facts.3": "Reorganización en equipos de producto multifuncionales",
+    "1.facts.4": "Arquitectura reconstruida",
+    "2.facts.0": "Dirigí el departamento de desarrollo",
+    "3.org": "SberMarket",
+    "3.facts.0": "Un sistema para 40 000 empleados que ahorra 170 millones de RUB al año",
+    "3.facts.1": "Enrutamiento de recolectores para 10 000 tiendas, 12 millones de RUB al año",
+    "3.facts.2": "Onboarding y OKR en un departamento de 200 personas",
+    "4.facts.0": "De 0 a 6000 usuarios, 25 millones de RUB de facturación anual",
+    "4.facts.1": "99,9 % de disponibilidad, 8 proyectos entregados",
+    "5.org": "Leroy Merlin",
+    "5.facts.0": "Monitorización de precios de la competencia para 1 000 000 de productos",
+    "6.facts.0": "Migración del cálculo de precios de entrega de C# a Go: rendimiento +250 % con 3600 solicitudes por segundo",
+    "7.org": "Sputnik",
+    "7.facts.0": "Portal de búsqueda, reconocimiento de voz"
+  }
+}

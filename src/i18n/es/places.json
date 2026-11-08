@@ -1,0 +1,31 @@
+{
+  "places": {
+    "0.name": "Moscú",
+    "1.name": "San Petersburgo",
+    "2.name": "Sochi",
+    "3.name": "Mineralnye Vody",
+    "4.name": "Ufá",
+    "5.name": "Cheliábinsk",
+    "6.name": "Novosibirsk",
+    "7.name": "Riga",
+    "8.name": "Tallin",
+    "9.name": "Batumi",
+    "10.name": "Tbilisi",
+    "11.name": "Almatý",
+    "12.name": "Osh",
+    "13.name": "Estambul",
+    "14.name": "Antalya",
+    "15.name": "El Cairo",
+    "16.name": "Sharm el-Sheij",
+    "17.name": "Hurghada",
+    "18.name": "Bangkok",
+    "19.name": "Pattaya",
+    "20.name": "Chiang Mai",
+    "21.name": "Da Nang",
+    "22.name": "Saigón",
+    "23.name": "Bali",
+    "24.name": "Sri Lanka",
+    "25.name": "Varadero",
+    "26.name": "Seychelles"
+  }
+}

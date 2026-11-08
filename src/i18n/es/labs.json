@@ -1,0 +1,23 @@
+{
+  "methods-lab": {
+    "name": "Taller de métodos",
+    "tagline": "60 métodos para resolver problemas en 3D, paso a paso",
+    "description": "Taller de métodos: 60 métodos para resolver problemas de matemáticas y algoritmos en 3D, paso a paso. En ruso e inglés, directamente en el navegador.",
+    "intro": [
+      "Sesenta métodos para resolver problemas de matemáticas y algoritmos, cada uno mostrado en 3D y explicado paso a paso.",
+      "Los métodos salen de resolver Project Euler+ en HackerRank, donde el autor quedó en el 6.º puesto de unos 256 000 participantes."
+    ],
+    "features": [
+      "Para cada método: el enunciado, la solución directa, en qué nos fijamos y cómo resolverlo más rápido",
+      "Visualización 3D paso a paso",
+      "Interfaz en ruso e inglés",
+      "Funciona en el navegador, sin instalar nada"
+    ],
+    "facts": [
+      ["Métodos", "60"],
+      ["Formato", "3D en el navegador, sin instalar nada"],
+      ["Idiomas", "Ruso e inglés"],
+      ["De dónde salen los problemas", "Project Euler+ en HackerRank"]
+    ]
+  }
+}

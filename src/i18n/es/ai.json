@@ -1,0 +1,9 @@
+{
+  "group:personal": { "name": "Una persona", "hint": "Individual, para tu trabajo" },
+  "group:roles": { "name": "Equipo por rol", "hint": "Formación para cada rol" },
+  "group:company": { "name": "Toda la empresa", "hint": "Adopción y estrategia" },
+  "proof:CTO": { "label": "plataforma SaaS de soporte, iGaming" },
+  "proof:1500+": { "label": "horas de mentoría, n.º 1 en GetMentor" },
+  "proof:10 000": { "label": "personas en la comunidad Jaiora" },
+  "proof:Podlodka": { "label": "charla sobre Spec-Driven Development" }
+}
