@@ -16,9 +16,9 @@ toc: video=วิดีโอ | question=คำถาม | paper=บทควา
 <b-post series="kto">
 
 <b-chapter id="video" icon="video" title="วิดีโอ: เรื่องเดียวกันใน 7.5 นาที">
-  <b-why>บทความตามภาพยนตร์ทีละฉากและลงรายละเอียดมากกว่า ใต้แผนภาพแต่ละภาพมีลิงก์ไปยังช่วงนั้นของวิดีโอ</b-why>
+  <b-why>บทความตามวิดีโอทีละฉากและลงรายละเอียดมากกว่า ใต้แผนภาพแต่ละภาพมีลิงก์ไปยังช่วงนั้นของวิดีโอ</b-why>
   <b-embed-frame src="https://www.youtube.com/embed/yPvbfDa_GCk" title="เกมหนึ่งต้องมีกฎกี่ข้อ — บทความ arXiv 2610.23637 ด้วยภาษาง่าย ๆ" ratio="16/9"/>
-  <b-cap>บทความ: <a href="https://arxiv.org/abs/2610.23637" target="_blank" rel="noopener">Two-generator presentations with a relation gap</a>, arXiv 2610.23637, 16 ตุลาคม 2026 เกม ก้าว ยก ผู้เล่น และนักบัญชีเป็นภาพเปรียบเพื่อการอธิบาย ในบทความต้นฉบับคือกลุ่ม ตัวกำเนิด จำนวนความสัมพันธ์ที่น้อยที่สุด และจำนวนตัวกำเนิดที่น้อยที่สุดของ relation module ไม่จำเป็นต้องดูภาพยนตร์: ทุกอย่างในนั้นเล่าซ้ำไว้ด้านล่าง</b-cap>
+  <b-cap>บทความ: <a href="https://arxiv.org/abs/2610.23637" target="_blank" rel="noopener">Two-generator presentations with a relation gap</a>, arXiv 2610.23637, 16 ตุลาคม 2026 เกม ก้าว ยก ผู้เล่น และนักบัญชีเป็นภาพเปรียบเพื่อการอธิบาย ในบทความต้นฉบับคือกลุ่ม ตัวกำเนิด จำนวนความสัมพันธ์ที่น้อยที่สุด และจำนวนตัวกำเนิดที่น้อยที่สุดของ relation module ไม่จำเป็นต้องดูวิดีโอ: ทุกอย่างในนั้นเล่าซ้ำไว้ด้านล่าง</b-cap>
 </b-chapter>
 
 <b-chapter id="question" icon="grid" title="คำถาม: เกมมีกฎกี่ข้อ และนับได้สองวิธีหรือไม่">
@@ -114,7 +114,7 @@ toc: video=วิดีโอ | question=คำถาม | paper=บทควา
 
   **ตัวเลขสามและสอง** นักบัญชีต้องการ ครึ่งวงกลมมีสามก้าว ตะขอมีสองก้าวบนชั้นบน และ 3 กับ 2 ไม่มีตัวหารร่วม ด้วยเหตุนี้จึงรวมสองรายการเป็นหนึ่งได้
 
-  ในบทความ จำนวนก้าวในครึ่งวงกลมและในตะขอเป็นคู่จำนวนเฉพาะสัมพัทธ์ $p$ และ $q$ ใด ๆ ที่ทั้งคู่ไม่น้อยกว่าสอง ภาพยนตร์ใช้คู่ที่เล็กที่สุด: $p=3$, $q=2$ กฎข้อแรกจึงเป็น $x^{pq}=x^{6}=1$ และข้อที่สองบอกว่า $x^{p}=x^{3}$ กับตะขอ $t\,x^{q}\,t^{-1}=t\,x^{2}\,t^{-1}$ สลับที่กันได้
+  ในบทความ จำนวนก้าวในครึ่งวงกลมและในตะขอเป็นคู่จำนวนเฉพาะสัมพัทธ์ $p$ และ $q$ ใด ๆ ที่ทั้งคู่ไม่น้อยกว่าสอง วิดีโอใช้คู่ที่เล็กที่สุด: $p=3$, $q=2$ กฎข้อแรกจึงเป็น $x^{pq}=x^{6}=1$ และข้อที่สองบอกว่า $x^{p}=x^{3}$ กับตะขอ $t\,x^{q}\,t^{-1}=t\,x^{2}\,t^{-1}$ สลับที่กันได้
 </b-chapter>
 
 <b-chapter id="player" icon="bulb" title="การนับของผู้เล่น: สองกฎ และน้อยกว่านี้ไม่ได้">
@@ -229,7 +229,7 @@ toc: video=วิดีโอ | question=คำถาม | paper=บทควา
   <b-art names="relation-gap-how-many-rules/f5"/>
   <b-cap>ผลลัพธ์: ทั้งสองรายการออกมาจาก v จึงพอด้วยหนึ่งรายการ</b-cap>
 
-  รายการของกฎข้อที่สอง $u$ ก็แสดงผ่าน $v$ ได้จาก $v=N_x+(b+b^2)u$ relation module ทั้งหมดจึงสร้างได้จากสมาชิกตัวเดียว $v$ ความเท่ากันเหล่านี้ตรวจด้วยมือระหว่างเตรียมภาพยนตร์
+  รายการของกฎข้อที่สอง $u$ ก็แสดงผ่าน $v$ ได้จาก $v=N_x+(b+b^2)u$ relation module ทั้งหมดจึงสร้างได้จากสมาชิกตัวเดียว $v$ ความเท่ากันเหล่านี้ตรวจด้วยมือระหว่างเตรียมวิดีโอ
 </b-chapter>
 
 <b-chapter id="main" icon="flag" title="สรุป">
@@ -242,14 +242,14 @@ toc: video=วิดีโอ | question=คำถาม | paper=บทควา
 </b-chapter>
 
 <b-chapter id="formal" icon="boxes-route" title="เชิงรูปนัย: เส้นทางเดียวกันในภาษาของบทความ">
-  <b-why>ภาคสองของภาพยนตร์: ขั้นตอนเดียวกันพร้อมสูตรและคำศัพท์ของนักคณิตศาสตร์ เริ่มจากแผนที่ความสอดคล้อง แล้วตารางสูตร แล้วโครงร่างของข้อพิสูจน์</b-why>
+  <b-why>ภาคสองของวิดีโอ: ขั้นตอนเดียวกันพร้อมสูตรและคำศัพท์ของนักคณิตศาสตร์ เริ่มจากแผนที่ความสอดคล้อง แล้วตารางสูตร แล้วโครงร่างของข้อพิสูจน์</b-why>
 
   <b-art names="relation-gap-how-many-rules/dict"/>
-  <b-cap>ทางซ้ายคือคำในภาพยนตร์ ทางขวาคือสัญลักษณ์ในบทความ <a href="https://youtu.be/yPvbfDa_GCk?t=252" target="_blank" rel="noopener">▶ 4:12</a></b-cap>
+  <b-cap>ทางซ้ายคือคำในวิดีโอ ทางขวาคือสัญลักษณ์ในบทความ <a href="https://youtu.be/yPvbfDa_GCk?t=252" target="_blank" rel="noopener">▶ 4:12</a></b-cap>
 
   <b-table>
     <table><thead>
-    <tr><th>ในภาพยนตร์</th><th>ในบทความ</th><th>ทำงานอย่างไร</th></tr>
+    <tr><th>ในวิดีโอ</th><th>ในบทความ</th><th>ทำงานอย่างไร</th></tr>
     </thead><tbody>
     <tr><td>เกม</td><td>กลุ่ม $G=F/R$</td><td>$F$ คือกลุ่มอิสระ: คำทั้งหมดในตัวอักษร $x$, $t$ โดยไม่มีกฎ; $R$ คือทุกสิ่งที่ตามมาจากกฎ (normal closure)</td></tr>
     <tr><td>ก้าว ยก</td><td>ตัวกำเนิด $x$, $t$</td><td>การยกลงคือ $t^{-1}$; สายของการเดินเขียนเป็นคำ</td></tr>
@@ -329,12 +329,12 @@ toc: video=วิดีโอ | question=คำถาม | paper=บทควา
 <b-chapter id="next" title="อ่านเพิ่มเติม">
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2610.23637" k="บทความ" t="arXiv 2610.23637" ext>Two-generator presentations with a relation gap</item>
-    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="ต้นทางภาพยนตร์" t="papers/2610.23637-relation-gap" ext>ข้อมูลประจำเรื่อง บทบรรยาย ฉาก และสคริปต์ของภาพยนตร์บน GitHub</item>
-    <item href="https://github.com/esurvanov/awesome-papers" k="รีโพซิทอรี" t="awesome-papers" ext>ภาพยนตร์เรื่องบทความวิทยาศาสตร์ด้วยภาษาง่าย ๆ: โค้ด กฎ การตรวจ</item>
+    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="ต้นทางวิดีโอ" t="papers/2610.23637-relation-gap" ext>ข้อมูลประจำเรื่อง บทบรรยาย ฉาก และสคริปต์ของวิดีโอบน GitHub</item>
+    <item href="https://github.com/esurvanov/awesome-papers" k="รีโพซิทอรี" t="awesome-papers" ext>วิดีโอเรื่องบทความวิทยาศาสตร์ด้วยภาษาง่าย ๆ: โค้ด กฎ การตรวจ</item>
     <item href="https://youtu.be/yPvbfDa_GCk" k="วิดีโอ" t="เล่าเรื่องบน YouTube" ext>เรื่องเดียวกันใน 7.5 นาที พร้อมแผนที่เกมและสูตร</item>
     <item href="/blog/longest-ring-arrangement/" k="กราฟเคย์ลีย์เดียวกัน" t="วงแหวนลูกบอล">แผนที่ของการเดินและการจัดเรียงที่พันกันที่สุด</item>
     <item href="/blog/rubik-cube-neural-network/" k="กราฟเคย์ลีย์เดียวกัน" t="ลูกบาศก์รูบิก">การเดินและกฎในที่ที่ใช้กำลังดุไม่ได้</item>
   </b-links>
 </b-chapter>
-<b-footer>ข้อเท็จจริงมาจากบทความของ L. Bartholdi, M. R. Bridson, R. Mikhailov, J. Nicholson, arXiv 2610.23637 (Theorem A, Corollary B, สูตร (1)–(4), หัวข้อ “Declaration of AI usage”) การคำนวณสำหรับ p = 3, q = 2 คำนวณซ้ำด้วยมือระหว่างเตรียมภาพยนตร์ บทความยังไม่ได้รับการตรวจสอบอย่างอิสระ</b-footer>
+<b-footer>ข้อเท็จจริงมาจากบทความของ L. Bartholdi, M. R. Bridson, R. Mikhailov, J. Nicholson, arXiv 2610.23637 (Theorem A, Corollary B, สูตร (1)–(4), หัวข้อ “Declaration of AI usage”) การคำนวณสำหรับ p = 3, q = 2 คำนวณซ้ำด้วยมือระหว่างเตรียมวิดีโอ บทความยังไม่ได้รับการตรวจสอบอย่างอิสระ</b-footer>
 </b-post>

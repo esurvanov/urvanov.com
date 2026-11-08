@@ -82,7 +82,7 @@ toc: what=จะแย่งงานไหม | phrases=ประโยคท�
 </b-finding>
 </b-chapter>
 <b-chapter id="fix" icon="arrow-right" title="เลิกนิสัยนี้อย่างไร">
-<b-why align="left">หลักยึดคือคัมภีร์โปรเจกต์: คำอธิบายถาวรของผลิตภัณฑ์และกฎต่าง ๆ ที่เอเจนต์อ่านทุกเซสชัน มีสามระดับ: สิทธิ์เข้าถึง บันทึกในคัมภีร์ และการเตือน <a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">อ่านเพิ่ม</a></b-why>
+<b-why align="left">หลักยึดคือคัมภีร์ของโปรเจกต์ (project bible): คำอธิบายถาวรของผลิตภัณฑ์และกฎต่าง ๆ ที่เอเจนต์อ่านทุกเซสชัน มีสามระดับ: สิทธิ์เข้าถึง บันทึกในคัมภีร์ และการเตือน <a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">อ่านเพิ่ม</a></b-why>
 <b-lane-art names="agent-hands-work-back-to-you/project-bible" top="10"/>
 <b-step-chain>
   <node t="1">ให้สิทธิ์เข้าถึง</node>
@@ -98,10 +98,10 @@ toc: what=จะแย่งงานไหม | phrases=ประโยคท�
 </b-arrow-rows>
 <b-section-h3 top="14">กฎในคัมภีร์โปรเจกต์</b-section-h3>
 <b-code-text wrap>
-  Try first, estimate after the try.
-  If the try failed 2–3 times: split the task into steps, name where the problem may be and explain why it does not work.
-  Study a foreign system with probes from outside and write the findings here.
-  If you can do it yourself, do it. Ask the person only for what needs them: logging in, passwords, confirming a write, payments.
+  ลองทำก่อน แล้วค่อยประเมินหลังจากลอง
+  ถ้าลอง 2–3 ครั้งแล้วไม่สำเร็จ: แบ่งงานเป็นขั้น บอกว่าปัญหาน่าจะอยู่ตรงไหน และอธิบายว่าทำไมถึงไม่ได้ผล
+  ศึกษาระบบของคนอื่นด้วยการหยั่งจากภายนอก แล้วจดสิ่งที่พบไว้ที่นี่
+  ถ้าทำเองได้ ให้ทำเอง ขอให้คนทำเฉพาะสิ่งที่ต้องใช้คน: การล็อกอิน รหัสผ่าน การยืนยันการเขียน และการชำระเงิน
 </b-code-text>
 <b-why align="left">คัมภีร์อยู่ในไฟล์ <a href="/materials/glossary/claude-md/">CLAUDE.md</a> และ <a href="/materials/glossary/agents-md/">AGENTS.md</a> เอเจนต์อ่านไฟล์เหล่านี้ทุกเซสชัน แต่ถือเป็นบริบท ไม่ใช่ข้อห้ามเด็ดขาด กฎยิ่งเฉพาะเจาะจงและสั้น ยิ่งทำงานได้เชื่อถือได้ ขั้นตอนที่ทำซ้ำจะบรรจุเป็น<a href="/materials/glossary/agent-skills/">skill</a> อ่านเรื่องคัมภีร์ กฎ ข้อกำหนด (spec) และ skill เพิ่มได้ที่ <a href="/blog/specs-rules-skills/">ข้อกำหนด คัมภีร์ กฎ และ skill</a></b-why>
 <b-finding>
