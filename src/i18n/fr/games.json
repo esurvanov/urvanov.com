@@ -726,20 +726,21 @@
   "little-bombers": {
     "name": "Little Bombers",
     "title": "Little Bombers : jouer en ligne à un Bomberman dans le navigateur",
-    "tagline": "Pose des bombes, fais sauter caisses et ennemis, trouve la sortie : 15 niveaux et un éditeur dans un seul fichier",
+    "tagline": "Pose des bombes, fais sauter caisses et ennemis, trouve la sortie : 50 niveaux, 18 succès et un éditeur dans un seul fichier",
     "genre": "Arcade",
-    "description": "Little Bombers : un jeu gratuit façon Bomberman dans le navigateur. 15 niveaux dans trois mondes, trois types d’ennemis, bonus et éditeur de niveaux. La progression est sauvegardée. Sans installation.",
+    "description": "Little Bombers : un jeu gratuit façon Bomberman dans le navigateur. 50 niveaux dans dix mondes, trois types d’ennemis, bonus et éditeur de niveaux. La progression est sauvegardée. Sans installation.",
     "intro": [
       "Little Bombers est un jeu d’arcade dans l’esprit du Bomberman classique : tu poses des bombes, fais sauter les caisses, élimines tous les ennemis et franchis la sortie cachée sous l’une des caisses. Le jeu se lance directement dans le navigateur, sur ordinateur comme sur téléphone.",
-      "La campagne compte 15 niveaux dans trois mondes : prairie, dunes et glace. Plus tu termines un niveau vite, plus tu gagnes d’étoiles. Tes propres niveaux se dessinent dans l’éditeur, se sauvegardent dans le navigateur et se partagent avec un court code. Tout le jeu tient dans un seul fichier, sans bibliothèque."
+      "La campagne compte 50 niveaux dans dix mondes : prairie, dunes, glace, lave, marais, espace, jungle, ruines, néon et crépuscule. Plus tu termines un niveau vite, plus tu gagnes d’étoiles. Tes propres niveaux se dessinent dans l’éditeur, se sauvegardent dans le navigateur et se partagent avec un court code. Tout le jeu tient dans un seul fichier, sans bibliothèque."
     ],
     "features": [
-      "15 niveaux dans trois mondes : prairie, dunes et glace",
+      "50 niveaux dans dix mondes : prairie, dunes, glace, lave, marais, espace, jungle, ruines, néon et crépuscule",
       "Jusqu’à trois étoiles par niveau, selon la rapidité",
       "Trois ennemis : la limace erre, la chauve-souris fonce en ligne droite, le fantôme traverse les caisses",
       "Bonus sous les caisses : une bombe en plus, des flammes plus longues, des pas plus rapides",
       "Éditeur de niveaux : dessine, teste, sauvegarde et partage par code",
-      "La progression, les meilleurs temps et tes niveaux sont sauvegardés dans le navigateur",
+      "18 succès : pour les étoiles, les ennemis, les caisses, la vitesse et tes propres niveaux",
+      "La progression, les succès, les meilleurs temps et tes niveaux sont sauvegardés dans le navigateur et se transfèrent avec un code",
       "Commandes tactiles : joystick et bouton de bombe sur téléphone",
       "Interface en russe et en anglais"
     ],
@@ -752,7 +753,7 @@
     ],
     "facts": [
       ["Plateforme", "navigateur sur ordinateur et téléphone"],
-      ["Niveaux", "15 en campagne et autant de niveaux perso que tu veux"],
+      ["Niveaux", "50 en campagne et autant de niveaux perso que tu veux"],
       ["Taille", "un seul fichier, les polices sont chargées depuis le réseau"],
       ["Sauvegarde", "dans le navigateur (localStorage)"],
       ["Code", "ouvert, MIT"]
@@ -761,7 +762,8 @@
       ["Où est sauvegardée la progression ?", "Dans le navigateur de ton appareil : niveaux terminés, étoiles, meilleurs temps et tes niveaux. Si tu effaces les données du site, ils disparaissent."],
       ["Comment obtenir trois étoiles ?", "Termine le niveau plus vite que le temps cible affiché sur l’écran de victoire."],
       ["Comment partager mon niveau ?", "Dans l’éditeur, appuie sur le bouton de code et envoie le texte obtenu à un ami. Il le colle dans la section « Mes niveaux »."],
-      ["Peut-on jouer sur téléphone ?", "Oui, un joystick et un bouton de bombe apparaissent sur les écrans tactiles."]
+      ["Peut-on jouer sur téléphone ?", "Oui, un joystick et un bouton de bombe apparaissent sur les écrans tactiles."],
+      ["Comment transférer la progression sur un autre appareil ?", "Dans le menu, appuie sur « Progression », copie le code et colle-le au même endroit sur l’autre appareil : il se fusionne avec l’existant."]
     ],
     "shots.0.alt": "Little Bombers : une explosion sur un niveau de dunes",
     "shots.1.alt": "Little Bombers : le menu principal",

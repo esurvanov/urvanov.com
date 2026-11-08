@@ -141,9 +141,9 @@ export const GAMES = [
     path: '/malenkie-bombery/',
     title: 'Маленькие бомберы',
     titleEn: 'Little Bombers',
-    text: 'Аркада в духе бомбермена · 15 уровней и редактор',
-    long: 'Бесплатный бомбермен в браузере: ставь бомбы, взрывай ящики и врагов, ищи выход. 15 уровней в трёх мирах, три вида врагов, бонусы и редактор своих уровней. Прогресс сохраняется в браузере. Без установки.',
-    longEn: 'A free Bomberman-style game in your browser: drop bombs, blow up crates and enemies, find the exit. 15 levels in three worlds, three enemy types, power-ups and a level editor. Progress is saved in the browser. No installation.',
+    text: 'Аркада в духе бомбермена · 50 уровней, награды и редактор',
+    long: 'Бесплатный бомбермен в браузере: ставь бомбы, взрывай ящики и врагов, ищи выход. 50 уровней в десяти мирах, три вида врагов, бонусы, 18 наград и редактор своих уровней. Прогресс сохраняется в браузере. Без установки.',
+    longEn: 'A free Bomberman-style game in your browser: drop bombs, blow up crates and enemies, find the exit. 50 levels in ten worlds, three enemy types, power-ups, 18 achievements and a level editor. Progress is saved in the browser. No installation.',
   },
 ]
 

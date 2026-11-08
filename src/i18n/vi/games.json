@@ -387,20 +387,21 @@
   "little-bombers": {
     "name": "Little Bombers",
     "title": "Little Bombers: chơi game kiểu Bomberman online ngay trên trình duyệt",
-    "tagline": "Đặt bom, phá thùng và quái vật, tìm lối ra: 15 màn chơi và trình chỉnh sửa màn trong một tệp",
+    "tagline": "Đặt bom, phá thùng và quái vật, tìm lối ra: 50 màn chơi, 18 thành tựu và trình chỉnh sửa màn trong một tệp",
     "genre": "Arcade",
-    "description": "Little Bombers: game miễn phí kiểu Bomberman trên trình duyệt. 15 màn chơi ở ba thế giới, ba loại kẻ địch, vật phẩm tăng sức mạnh và trình chỉnh sửa màn. Tiến trình được lưu lại. Không cần cài đặt.",
+    "description": "Little Bombers: game miễn phí kiểu Bomberman trên trình duyệt. 50 màn chơi ở mười thế giới, ba loại kẻ địch, vật phẩm tăng sức mạnh và trình chỉnh sửa màn. Tiến trình được lưu lại. Không cần cài đặt.",
     "intro": [
       "Little Bombers là game arcade theo tinh thần Bomberman kinh điển: bạn đặt bom, phá thùng, tiêu diệt mọi kẻ địch rồi đi vào lối ra giấu dưới một chiếc thùng. Game chạy ngay trên trình duyệt, cả trên máy tính lẫn điện thoại.",
-      "Chiến dịch có 15 màn ở ba thế giới: đồng cỏ, cồn cát và băng. Qua màn càng nhanh, bạn càng được nhiều sao. Bạn có thể tự vẽ màn chơi trong trình chỉnh sửa, màn được lưu trong trình duyệt và chia sẻ bằng một mã ngắn. Toàn bộ game chỉ là một tệp, không dùng thư viện."
+      "Chiến dịch có 50 màn ở mười thế giới: đồng cỏ, cồn cát, băng, dung nham, đầm lầy, vũ trụ, rừng rậm, tàn tích, neon và hoàng hôn. Qua màn càng nhanh, bạn càng được nhiều sao. Bạn có thể tự vẽ màn chơi trong trình chỉnh sửa, màn được lưu trong trình duyệt và chia sẻ bằng một mã ngắn. Toàn bộ game chỉ là một tệp, không dùng thư viện."
     ],
     "features": [
-      "15 màn chơi ở ba thế giới: đồng cỏ, cồn cát và băng",
+      "50 màn chơi ở mười thế giới: đồng cỏ, cồn cát, băng, dung nham, đầm lầy, vũ trụ, rừng rậm, tàn tích, neon và hoàng hôn",
       "Tối đa ba sao mỗi màn, tính theo tốc độ hoàn thành",
       "Ba loại kẻ địch: chất nhầy đi lang thang, dơi lao thẳng tới, bóng ma xuyên qua thùng",
       "Vật phẩm dưới thùng: thêm một quả bom, lửa dài hơn, bước chân nhanh hơn",
       "Trình chỉnh sửa màn: vẽ, chơi thử, lưu và chia sẻ bằng mã",
-      "Tiến trình, thành tích tốt nhất và màn tự tạo được lưu trong trình duyệt",
+      "18 thành tựu: cho sao, kẻ địch, thùng, tốc độ và màn tự tạo",
+      "Tiến trình, thành tựu, thành tích tốt nhất và màn tự tạo được lưu trong trình duyệt và chuyển sang máy khác bằng một mã",
       "Điều khiển cảm ứng: cần điều khiển và nút đặt bom trên điện thoại",
       "Giao diện tiếng Nga và tiếng Anh"
     ],
@@ -413,7 +414,7 @@
     ],
     "facts": [
       ["Nền tảng", "trình duyệt trên máy tính và điện thoại"],
-      ["Số màn", "15 màn chiến dịch và không giới hạn màn tự tạo"],
+      ["Số màn", "50 màn chiến dịch và không giới hạn màn tự tạo"],
       ["Dung lượng", "một tệp, phông chữ tải từ mạng"],
       ["Lưu trữ", "trong trình duyệt (localStorage)"],
       ["Mã nguồn", "mở, MIT"]
@@ -422,7 +423,8 @@
       ["Tiến trình được lưu ở đâu?", "Ngay trong trình duyệt trên thiết bị của bạn: các màn đã qua, số sao, thành tích tốt nhất và màn tự tạo. Nếu xóa dữ liệu trang web thì chúng sẽ mất."],
       ["Làm sao để được ba sao?", "Hoàn thành màn nhanh hơn thời gian mục tiêu hiển thị trên màn hình chiến thắng."],
       ["Làm sao chia sẻ màn của tôi?", "Trong trình chỉnh sửa, nhấn nút mã rồi gửi đoạn văn bản nhận được cho bạn bè. Bạn ấy dán vào mục «Màn của tôi»."],
-      ["Có chơi được trên điện thoại không?", "Có, trên màn hình cảm ứng sẽ hiện cần điều khiển và nút đặt bom."]
+      ["Có chơi được trên điện thoại không?", "Có, trên màn hình cảm ứng sẽ hiện cần điều khiển và nút đặt bom."],
+      ["Làm sao chuyển tiến trình sang thiết bị khác?", "Trong menu bấm “Tiến trình”, sao chép mã rồi dán vào đúng chỗ đó trên thiết bị kia: mã sẽ được gộp với dữ liệu hiện có."]
     ],
     "shots.0.alt": "Little Bombers: vụ nổ ở màn cồn cát",
     "shots.1.alt": "Little Bombers: menu chính",
