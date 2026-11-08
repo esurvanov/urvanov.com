@@ -11,7 +11,7 @@ mentions: Airtable, tl;dv, ChatGPT, Claude Code, Model Context Protocol
 toc: format=ფორმატის არჩევა | prep=შეხვედრისთვის მომზადება | script=30-წუთიანი სცენარი | focus=თემაზე დარჩენა | base=აღრიცხვა Airtable-ში | agent=Claude Code-ით | wording=ტექსტი: ფორმულირება | form=კითხვარი | after=ინტერვიუების ანალიზი | faq=კითხვები | next=დამატებით წასაკითხი
 ---
 
-ინტერვიუ AI-თან მუშაობაზე 30 წუთი გრძელდება და ბოლო რეალურ ამოცანაზეა აგებული: რა გაკეთდა, რა შედეგი მივიღეთ და რა დაჯდა, შემდეგ წარმატებული შემთხვევა და შემთხვევა, როცა ადამიანმა AI მიატოვა ან სხვაზე გადავიდა. ფორმატს ადამიანი ირჩევს: ზარი ან ტექსტი. პასუხები ანალიზდება პრომპტით ChatGPT-ში ან აგენტში, იტვირთება Airtable-ის ცხრილში და ედარება გამოყენების მონაცემებს. ქვემოთ: სცენარი, გამოკითხვა და ანალიზის პრომპტი.
+ინტერვიუ AI-თან მუშაობაზე 30 წუთი გრძელდება და ბოლო რეალურ ამოცანაზეა აგებული: რა გაკეთდა, რა შედეგი მიიღო და რა დაჯდა, შემდეგ წარმატებული შემთხვევა და შემთხვევა, როცა ადამიანმა AI მიატოვა ან სხვაზე გადავიდა. ფორმატს ადამიანი ირჩევს: ზარი ან ტექსტი. პასუხები ანალიზდება პრომპტით ChatGPT-ში ან აგენტში, იტვირთება Airtable-ის ცხრილში და ედარება გამოყენების მონაცემებს. ქვემოთ: სცენარი, გამოკითხვა და ანალიზის პრომპტი.
 
 <b-post series="intervyu">
 <b-credit para>ინტერვიუების დიზაინი <a href="https://t.me/Kseniya_Vasil" target="_blank" rel="noopener">@Kseniya_Vasil</a>-ის რეკომენდაციებს ეფუძნება. ინტერვიუებისთვის ადამიანები, ჯგუფები და რიცხვები <a href="/blog/chatgpt-enterprise-usage-report/">ChatGPT Enterprise-ის გამოყენების ანგარიშიდან</a> მოდის. იქვეა <a href="/blog/chatgpt-enterprise-usage-report/#why">ბიზნეს-ამოცანაც</a>: რას წყვეტს კომპანია, ვინ წყვეტს და რა ნიშნებით.</b-credit>
@@ -35,9 +35,9 @@ toc: format=ფორმატის არჩევა | prep=შეხვე�
     <col w="1fr" mw="1fr" kind="ours">სიხშირე, საკუთარი თქმით</col>
     <col w="1fr" mw="1fr">ანგარიშით</col>
     <col w=".9fr" kind="wide">სტატუსი</col>
-    <row>Hana Sato | Host [00:00]: Think back to the last… | <b-select-pill tone="cyan">ხმა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-select-pill tone="green">მზადაა</b-select-pill></row>
-    <row>Pavel Novak | [27.09 10:15] Host: Describe the last… | <b-select-pill tone="purple">ტექსტი</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-select-pill tone="red">არ იყენებს</b-select-pill><b-match-mark kind="diff">≠</b-match-mark> | <b-select-pill tone="green">მზადაა</b-select-pill></row>
-    <row>Nadia Rahimi | Host [00:00] | <b-select-pill tone="cyan">ხმა</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-select-pill tone="green">მზადაა</b-select-pill></row>
+    <row>Hana Sato | წამყვანი [00:00]: გაიხსენეთ ბოლო… | <b-select-pill tone="cyan">ხმა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-select-pill tone="green">მზადაა</b-select-pill></row>
+    <row>Pavel Novak | [27.09 10:15] წამყვანი: აღწერეთ ბოლო… | <b-select-pill tone="purple">ტექსტი</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-select-pill tone="red">არ იყენებს</b-select-pill><b-match-mark kind="diff">≠</b-match-mark> | <b-select-pill tone="green">მზადაა</b-select-pill></row>
+    <row>Nadia Rahimi | წამყვანი [00:00] | <b-select-pill tone="cyan">ხმა</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-select-pill tone="green">მზადაა</b-select-pill></row>
   </b-airtable-preview>
 </b-flow>
 <b-chapter id="format" icon="split" title="ფორმატის არჩევა">
@@ -60,7 +60,7 @@ toc: format=ფორმატის არჩევა | prep=შეხვე�
   </b-choice-flow>
   <b-finding>
     <ex>ხმა სიღრმით 5-ს იღებს 5-დან, ტექსტი ხელმისაწვდომობით 5-ს 5-დან. ფორმატს თითოეული ადამიანი თავად ირჩევს.</ex>
-    <gen>როცა ადამიანები ფორმატს თავად ირჩევენ, უარს ნაკლები ამბობს. ფორმატები სიღრმით განსხვავდება: ზარი დეტალურ ამბავს გვაძლევს დაზუსტებებით, ჩატი მოკლე პასუხებს. ამიტომ ჩატის პასუხები შემთხვევებისა და თემების მოსაძებნად გამოდგება, მაგრამ ზარებთან გათანაბრებული არ არის. ხმა ძირითადი ფორმატია; ჩატი მათთვისაა, ვისაც ზარზე საუბარი არ შეუძლია. მთელი კომპანიის კითხვარი ცალკე ინსტრუმენტია და ინტერვიუების შემდეგ იწერება.</gen>
+    <gen>როცა ადამიანები ფორმატს თავად ირჩევენ, უარს ნაკლები ამბობს. ფორმატები სიღრმით განსხვავდება: ზარი დეტალურ ამბავს იძლევა დაზუსტებებით, ჩატი მოკლე პასუხებს. ამიტომ ჩატის პასუხები შემთხვევებისა და თემების მოსაძებნად გამოდგება, მაგრამ ზარებთან გათანაბრებული არ არის. ხმა ძირითადი ფორმატია; ჩატი მათთვისაა, ვისაც ზარზე საუბარი არ შეუძლია. მთელი კომპანიის კითხვარი ცალკე ინსტრუმენტია და ინტერვიუების შემდეგ იწერება.</gen>
     <do>მოწვევაში ორივე ფორმატი ერთი წინადადებით შესთავაზეთ: „ვისაუბროთ 30-წუთიან ზარზე, თუ გირჩევნიათ კითხვებს ჩატში უპასუხოთ?“</do>
   </b-finding>
 </b-chapter>
@@ -155,15 +155,15 @@ toc: format=ფორმატის არჩევა | prep=შეხვე�
     <field type="#" kind="num">ტოკენები · 3 თვე</field>
     <field type="#" kind="num">$ / 3 თვე</field>
     <field type="▦" kind="num">აქტივობა</field>
-    <row>Hana Sato | Host [00:00]: Think back to the last time you… | <b-select-pill tone="cyan">ხმა</b-select-pill> | code | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 21.9M | 438 | 25.09</row>
-    <row>Luis Moreno | Host [00:00]: Thanks for making the time… | <b-select-pill tone="cyan">ხმა</b-select-pill> | code | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 12.7M | 396 | 24.09</row>
-    <row>Mira Castellano | [26.09 18:40] Host: What result were you expecting… | <b-select-pill tone="purple">ტექსტი</b-select-pill> | agent | <b-select-pill tone="yellow">ნაწილობრივ</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 3.9M | 97 | 26.09</row>
-    <row>Jonas Keller | Host [00:00]: What do you spend most of your… | <b-select-pill tone="cyan">ხმა</b-select-pill> | research | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 1.1M | 19 | 26.09</row>
-    <row>Ben Ortiz |  |  | Codex only | <b-select-pill tone="cyan">პასუხს ველოდებით</b-select-pill> |  | <b-select-pill tone="purple">Codex only</b-select-pill> |  | 3.2M | 64 | 22.09</row>
-    <row>Pavel Novak | [27.09 10:15] Host: Describe the last task… | <b-select-pill tone="purple">ტექსტი</b-select-pill> | inactive | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-select-pill tone="red">არ იყენებს</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
-    <row>Sara Quinn |  |  | inactive | <b-select-pill tone="red">უარი თქვა</b-select-pill> |  | <b-select-pill tone="red">არ იყენებს</b-select-pill> |  | 0 | 0 | —</row>
-    <row>Nadia Rahimi | Host [00:00]: What did you do in ChatGPT yesterday… | <b-select-pill tone="cyan">ხმა</b-select-pill> | other tools | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
-    <row>Elif Demir |  |  | projects | <b-select-pill tone="gray">მიმდინარეობს</b-select-pill> |  | <b-select-pill tone="green">ყოველკვირა</b-select-pill> |  | 1.8M | 41 | 27.09</row>
+    <row>Hana Sato | წამყვანი [00:00]: გაიხსენეთ ბოლო შემთხვევა, როცა… | <b-select-pill tone="cyan">ხმა</b-select-pill> | კოდი | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 21.9M | 438 | 25.09</row>
+    <row>Luis Moreno | წამყვანი [00:00]: გმადლობთ, რომ დრო გამოყავით… | <b-select-pill tone="cyan">ხმა</b-select-pill> | კოდი | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 12.7M | 396 | 24.09</row>
+    <row>Mira Castellano | [26.09 18:40] წამყვანი: რა შედეგს ელოდით… | <b-select-pill tone="purple">ტექსტი</b-select-pill> | აგენტი | <b-select-pill tone="yellow">ნაწილობრივ</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 3.9M | 97 | 26.09</row>
+    <row>Jonas Keller | წამყვანი [00:00]: რაზე ხარჯავთ ყველაზე მეტ… | <b-select-pill tone="cyan">ხმა</b-select-pill> | კვლევა | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-select-pill tone="green">ყოველკვირა</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 1.1M | 19 | 26.09</row>
+    <row>Ben Ortiz |  |  | მხოლოდ Codex | <b-select-pill tone="cyan">პასუხს ველოდებით</b-select-pill> |  | <b-select-pill tone="purple">მხოლოდ Codex</b-select-pill> |  | 3.2M | 64 | 22.09</row>
+    <row>Pavel Novak | [27.09 10:15] წამყვანი: აღწერეთ ბოლო ამოცანა… | <b-select-pill tone="purple">ტექსტი</b-select-pill> | არააქტიური | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-select-pill tone="red">არ იყენებს</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
+    <row>Sara Quinn |  |  | არააქტიური | <b-select-pill tone="red">უარი თქვა</b-select-pill> |  | <b-select-pill tone="red">არ იყენებს</b-select-pill> |  | 0 | 0 | —</row>
+    <row>Nadia Rahimi | წამყვანი [00:00]: რა გააკეთეთ გუშინ ChatGPT-ში… | <b-select-pill tone="cyan">ხმა</b-select-pill> | სხვა ინსტრუმენტები | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
+    <row>Elif Demir |  |  | პროექტები | <b-select-pill tone="gray">მიმდინარეობს</b-select-pill> |  | <b-select-pill tone="green">ყოველკვირა</b-select-pill> |  | 1.8M | 41 | 27.09</row>
   </b-airtable-grid>
   <b-cap>ChatGPT ავსებს ნარინჯისფერ ველს Notes-ის საუბრიდან. „ანგარიშით“, „ტოკენები“, „$“ და „აქტივობა“ <a href="/blog/chatgpt-enterprise-usage-report/">ChatGPT Enterprise-ის გამოყენების ანგარიშიდან</a> მოდის. ველი „≠“ ფორმულაა, რომელიც ორ სიხშირეს ადარებს.</b-cap>
   <b-sublabel top="22">ცხრილის წაკითხვა: რას გვაძლევს თითოეული სვეტი</b-sublabel>
@@ -192,7 +192,7 @@ toc: format=ფორმატის არჩევა | prep=შეხვე�
     <tr><td>Luis Moreno</td><td><b-match-mark kind="diff">≠</b-match-mark> ამბობს „რეგულარულად“, სინამდვილეში ყოველკვირა</td><td>დააზუსტეთ: რომელ ამოცანებს თვლის AI-ით მუშაობად</td></tr>
     <tr><td>Pavel Novak</td><td><b-match-mark kind="diff">≠</b-match-mark> „რეგულარულად“ ნულოვანი ტოკენებით</td><td>დააზუსტეთ: რომელ ინსტრუმენტებს იყენებს და რომელი ამოცანებისთვის</td></tr>
     <tr><td>Mira Castellano</td><td><b-select-pill tone="yellow">ნაწილობრივ</b-select-pill></td><td>გაუგზავნეთ ერთი დამაზუსტებელი შეტყობინება: ამოცანის რომელ ადგილას მოუწია ხელით დასრულება</td></tr>
-    <tr><td>Ben Ortiz</td><td><b-select-pill tone="cyan">პასუხს ველოდებით</b-select-pill> · Codex only · $64</td><td>გაუგზავნეთ შეხსენება: მის გარეშე ჯგუფი „Codex only“ ცარიელი დარჩება</td></tr>
+    <tr><td>Ben Ortiz</td><td><b-select-pill tone="cyan">პასუხს ველოდებით</b-select-pill> · მხოლოდ Codex · $64</td><td>გაუგზავნეთ შეხსენება: მის გარეშე ჯგუფი „მხოლოდ Codex“ ცარიელი დარჩება</td></tr>
     <tr><td>Sara Quinn</td><td><b-select-pill tone="red">უარი თქვა</b-select-pill></td><td>ჩაანაცვლეთ <a href="/blog/who-to-interview-before-buying-ai-tools/#teams">ჩანაცვლების წესით</a>: ჯგუფ „Inactive“-ის შემდეგი კანდიდატით</td></tr>
     <tr><td>Elif Demir</td><td><b-select-pill tone="gray">მიმდინარეობს</b-select-pill> · 7 აქტიური პროექტი</td><td>დანიშნეთ ზარი; საკუთარი თქმით სიხშირე საუბრის შემდეგ შეავსეთ</td></tr>
     </tbody></table>
@@ -304,20 +304,20 @@ toc: format=ფორმატის არჩევა | prep=შეხვე�
   </b-steps>
   <b-subhead>პრომპტი ინტერვიუს ანალიზისთვის</b-subhead>
   <b-prompt>
-    Below is a conversation with an employee about their work tasks.
-    Return strictly by field, only what the person said themselves:
-    1. Task: the last specific work task
-    2. Context: for whom and why, what means they had
-    3. Chosen tool or way, and why
-    4. Result
-    5. Effort: time and manual rework
-    6. Constraints: data, access, security
-    7. Difficulties: categories from the list {categories from the report's sign table} or "no difficulties"; if none fits, a new category in your own words
-    8. Self-reported frequency: weekly / regularly / occasionally / doesn't use / unknown
-    9. 1–2 verbatim quotes
-    If something is not in the conversation, write "no data" and don't make it up.
+    ქვემოთ მოცემულია საუბარი თანამშრომელთან მის სამუშაო ამოცანებზე.
+    დააბრუნე მკაცრად ველების მიხედვით, მხოლოდ ის, რაც ადამიანმა თავად თქვა:
+    1. ამოცანა: ბოლო კონკრეტული სამუშაო ამოცანა
+    2. კონტექსტი: ვისთვის და რისთვის, რა საშუალებები ჰქონდა
+    3. არჩეული ინსტრუმენტი ან გზა და რატომ
+    4. შედეგი
+    5. დანახარჯი: დრო და ხელით გადაკეთება
+    6. შეზღუდვები: მონაცემები, წვდომა, უსაფრთხოება
+    7. სირთულეები: კატეგორიები სიიდან {კატეგორიები ანგარიშის ნიშნების ცხრილიდან} ან „სირთულეები არ არის“; თუ არცერთი არ ერგება, ახალი კატეგორია საკუთარი სიტყვებით
+    8. სიხშირე საკუთარი თქმით: ყოველკვირა / რეგულარულად / ხანდახან / არ იყენებს / უცნობია
+    9. 1–2 ზუსტი ციტატა
+    თუ რამე საუბარში არ არის, დაწერე „მონაცემები არ არის“ და ნუ მოიგონებ.
 
-    {text from Notes}
+    {ტექსტი Notes-იდან}
   </b-prompt>
   <b-gauge label="რა ვუყოთ განმეორებას">
     <row k="1 ადამიანი" w="15%" color="c-none">შემთხვევა</row>
@@ -339,8 +339,8 @@ toc: format=ფორმატის არჩევა | prep=შეხვე�
 </b-chapter>
 <b-chapter id="faq" icon="chat" title="ხშირად დასმული კითხვები">
   <b-faq-cards>
-    <q t="როგორ ჩავატაროთ 30-წუთიანი ინტერვიუ AI-თან მუშაობაზე?">საუბარი ააგეთ ბოლო რეალურ ამოცანაზე: რა გაკეთდა, რა შედეგი მივიღეთ და რა დაჯდა, შემდეგ წარმატება და შემთხვევა, როცა ადამიანმა AI მიატოვა.</q>
-    <q t="ზარი თუ ტექსტი?">ფორმატს ადამიანი ირჩევს. ზარი დეტალურ ამბავს გვაძლევს დაზუსტებებით, ტექსტი მოკლე პასუხებს, ამიტომ ტექსტური პასუხები ზარებთან გათანაბრებული არ არის.</q>
+    <q t="როგორ ჩავატაროთ 30-წუთიანი ინტერვიუ AI-თან მუშაობაზე?">საუბარი ააგეთ ბოლო რეალურ ამოცანაზე: რა გაკეთდა, რა შედეგი მიიღო და რა დაჯდა, შემდეგ წარმატება და შემთხვევა, როცა ადამიანმა AI მიატოვა.</q>
+    <q t="ზარი თუ ტექსტი?">ფორმატს ადამიანი ირჩევს. ზარი დეტალურ ამბავს იძლევა დაზუსტებებით, ტექსტი მოკლე პასუხებს, ამიტომ ტექსტური პასუხები ზარებთან გათანაბრებული არ არის.</q>
     <q t="როგორ გავაანალიზოთ ინტერვიუები ChatGPT-ით?">საუბრის ტექსტი ChatGPT-ს ყოველ ინტერვიუზე ერთი და იმავე პრომპტით გადაეცით და პასუხი ადამიანის სტრიქონში Airtable-ში დააკოპირეთ.</q>
     <q t="როგორ შევამოწმოთ ადამიანების სიტყვები მონაცემებთან?">ცხრილში გვერდიგვერდ ორი ველია: სიხშირე საკუთარი თქმით და სიხშირე ანგარიშიდან. სხვაობები ადამიანთან განიხილება.</q>
   </b-faq-cards>

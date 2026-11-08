@@ -31,14 +31,14 @@ toc: iterate=თუ პასუხი ვერ მოხვდა | review=პ
   <b-sublabel top="22">გზა 3: სამი კითხვა და ახალი მოთხოვნა</b-sublabel>
   <b-sublabel top="16">ნაბიჯი 1</b-sublabel>
   <b-prompt>
-    [task description]
-    Before doing the task, ask me 3 questions whose answers would improve the result the most. Do not start the work until I answer.
+    [ამოცანის აღწერა]
+    ამოცანის შესრულებამდე დამისვი 3 კითხვა, რომელთა პასუხებიც შედეგს ყველაზე მეტად გააუმჯობესებს. მუშაობას ნუ დაიწყებ, სანამ არ გიპასუხებ.
   </b-prompt>
   <b-sublabel top="12">ნაბიჯი 2</b-sublabel>
   <b-why>უპასუხეთ მოდელის კითხვებს საკუთარი სიტყვებით, იმავე ჩატში.</b-why>
   <b-sublabel top="12">ნაბიჯი 3</b-sublabel>
   <b-prompt>
-    Build a final prompt from the task and my answers: role, who and why, data, example, format, question at the end. Output only the prompt text.
+    ამოცანიდან და ჩემი პასუხებიდან ააწყვე საბოლოო პრომპტი: როლი, ვისთვის და რისთვის, მონაცემები, მაგალითი, ფორმატი, კითხვა ბოლოს. გამოიტანე მხოლოდ პრომპტის ტექსტი.
   </b-prompt>
   <b-finding>
     <ex>სამი სიტუაცია და თითოეულისთვის ერთი მოქმედება: დაზუსტება იმავე ჩატში, პრომპტის თავიდან დაწერა ან ჯერ მოდელისგან კითხვების მიღება.</ex>
