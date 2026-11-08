@@ -9,7 +9,7 @@ const LANDING = { 'age-of-empires': 'chronicles-of-kingdoms', berezovka: 'berezo
 const GAMES = [
   { dir: 'age-of-empires', title: 'Хроники Королевств — стратегия в браузере в духе Age of Empires II', description: 'Браузерная стратегия в реальном времени в духе Age of Empires II: 14 цивилизаций, строительство, добыча ресурсов и сражения. Без установки.', genre: 'Стратегия в реальном времени', entry: 'web/index.html' },
   { dir: 'berezovka', title: 'Березовка — 3D-игра в браузере: заснеженная деревня', description: '3D-игра в браузере: заснеженная русская деревня Березовка. Запускается без установки.', genre: 'Приключение' },
-  { dir: 'sibiria', title: 'Сибирь — 2D-выживание в тайге, 1993', description: '2D-игра на выживание в сибирской тайге, 1993 год. Играть можно в браузере без установки.', genre: 'Выживание' },
+  { dir: 'sibiria', title: 'Сибирь — выживалка в тайге: играть онлайн бесплатно на русском', description: 'Не квест Syberia: «Сибирь» — выживалка в тайге 1993 года. Изба, мороз, волки, медведь-шатун, своё поселение. Играть онлайн бесплатно, без скачивания.', genre: 'Выживание' },
   { dir: 'ekho-razloma', title: 'Эхо Разлома — 3D-игра с открытым миром и сюжетом: полярный остров', description: '3D-игра с открытым миром и сюжетом: пилот разбился на полярном острове под северным сиянием. Станция, отшельник, три кристальных шпиля, поющий разлом во льду и два финала. Играть в браузере без установки.', genre: 'Приключение' },
   { dir: 'severny-razlom', title: 'Северный Разлом — 3D-аркада: полёт по бесконечному ледяному каньону', description: '3D-аркада в браузере: маленький корабль летит по бесконечному ледяному каньону под северным сиянием. Собирай осколки, пробивай лёд, держи множитель до ×8. Один файл, без установки.', genre: 'Аркада' },
   { dir: 'skhodka', title: 'Сходка — 3D-игра: субботняя IT-встреча в баре SushiGO, Батуми', description: '3D-игра в браузере: субботний вечер IT-сообщества в баре SushiGO в Батуми. Знакомься с гостями, находи общие темы, обменивайся контактами и своди тех, кто нужен друг другу. Без установки.', genre: 'Симулятор' },
@@ -75,9 +75,12 @@ for (const g of GAMES) {
   const landingFile = g.entry ? `dist/${g.dir}/${g.entry}` : redirectFile
   if (g.entry && !existsSync(landingFile)) { console.warn(`нет ${landingFile}`); continue }
 
-  // Индексируется посадочная страница (/materials/games/<игра>/), а не холст игры: canonical и og:url ведут на неё,
-  // разметка VideoGame/FAQ лежит там же. У игры без посадочной всё остаётся на её адресе.
-  const landing = LANDING[g.dir] ? `/materials/games/${LANDING[g.dir]}/` : null
+  // Индексируется посадочная страница, а не холст игры: canonical и og:url ведут на неё, разметка VideoGame/FAQ лежит там же.
+  // Игры — на русском (inLanguage: 'ru'), поэтому и canonical — на русскую посадочную (/ru/materials/games/<игра>/).
+  // С 06.11.2026 корень сайта — английский: canonical на /materials/games/… склеивал в Google русскую посадочную
+  // с английской («Google выбрал другой канонический»), и на русские запросы выдавалась английская страница.
+  // У игры без посадочной всё остаётся на её адресе.
+  const landing = LANDING[g.dir] ? `/ru/materials/games/${LANDING[g.dir]}/` : null
   // Картинка превью 1200×630 (public/og/games/<dir>.jpg) — только если она есть у этой игры
   const ogImage = [`public/og/games/${g.dir}.jpg`, `dist/og/games/${g.dir}.jpg`].some((f) => existsSync(f)) ? `/og/games/${g.dir}.jpg` : undefined
   const head = headTags({
@@ -90,7 +93,7 @@ for (const g of GAMES) {
         { '@type': 'ListItem', position: 3, name: g.title.split(' — ')[0], item: SITE_URL + path } ] },
     ],
   })
-  const fallback = `<noscript><h1>${esc(g.title)}</h1><p>${esc(g.description)}</p><p>${LANDING[g.dir] ? `<a href="/materials/games/${LANDING[g.dir]}/">Об игре: описание, скриншоты, управление</a> · ` : ''}<a href="/materials/games/">Все игры</a> · <a href="/">Егор Урванов</a></p></noscript>`
+  const fallback = `<noscript><h1>${esc(g.title)}</h1><p>${esc(g.description)}</p><p>${LANDING[g.dir] ? `<a href="/ru/materials/games/${LANDING[g.dir]}/">Об игре: описание, скриншоты, управление</a> · ` : ''}<a href="/ru/materials/games/">Все игры</a> · <a href="/">Егор Урванов</a></p></noscript>`
 
   // Посадочная страница (сама игра, либо index.html, если редиректа нет): полная разметка + трекер + fallback
   let landingHtml = readFileSync(landingFile, 'utf8')

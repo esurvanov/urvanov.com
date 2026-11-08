@@ -117,7 +117,7 @@
     "description": "Sibiria: juego de supervivencia en vista cenital en la taiga evenki, 1993. Frío, lobos, un oso rabioso, tu cabaña y un asentamiento. Siete capítulos, cinco finales. Juega en el navegador.",
     "intro": [
       "Enero de 1993. El Mi-8 con matrícula 24713 se estrella en un meandro del río en Evenkia. Eres Lyosha, el radiotelegrafista. La radio está destrozada, la tripulación ha desaparecido y la gente más cercana está a días de distancia. Encuentra la vieja cabaña de los cazadores, enciende su estufa, conoce al viejo evenki Urkachan y sobrevive cuatro noches.",
-      "Después el juego se convierte en la historia de un asentamiento: contrata ayudantes, construye y avanza por las edades, comercia a cambio de rublos, todo en una taiga que no perdona errores. Funciona en el navegador sin instalar ni compilar nada, y también en el móvil."
+      "Después el juego se convierte en la historia de un asentamiento: contrata ayudantes, construye y avanza por las edades, comercia a cambio de rublos, todo en una taiga que no perdona errores. Funciona en el navegador sin instalar ni compilar nada, y también en el móvil. Es un juego de supervivencia invernal en el bosque: el calor, la comida y la leña lo deciden todo."
     ],
     "features": [
       "Siete capítulos: Restos del naufragio, Urkachan, La manada, La señal y después Caza con trampas, Invernada o Expedición; notas que se encuentran y diálogos de humor seco",
@@ -144,6 +144,8 @@
       ["Código", "código abierto, MIT; sin paso de compilación y sin librerías (solo Google Fonts)"]
     ],
     "faq": [
+      ["¿Es la aventura Syberia?", "No. Syberia es un juego de aventuras de 2002 sobre Kate Walker. Sibiria es otro juego: supervivencia en la taiga de 1993, gratis en el navegador."],
+      ["¿Hay que descargarlo o registrarse?", "No: pulsa el botón de jugar y funciona en el navegador del ordenador o del móvil, sin descargas ni cuenta. El progreso se guarda en el navegador."],
       ["¿Es una historia real?", "No, es ficción ambientada en la realidad de Evenkia en 1993: los personajes y los hechos son inventados."],
       ["¿Puedo jugar en el móvil?", "Sí: hay un joystick, un modo de órdenes y zoom con los dedos."],
       ["¿Cómo guardo la partida?", "Duerme en la cabaña para guardar el progreso; hay tres ranuras más guardado automático."],
@@ -156,7 +158,9 @@
       "juego de supervivencia en el navegador",
       "juego de supervivencia en la taiga",
       "constructor de asentamientos",
-      "juego de Siberia 1993"
+      "juego de Siberia 1993",
+      "juego de supervivencia gratis online",
+      "juego de supervivencia sin descargar"
     ]
   },
   "echo-of-the-rift": {

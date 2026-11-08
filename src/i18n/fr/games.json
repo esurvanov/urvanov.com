@@ -231,7 +231,7 @@
     "description": "Sibiria : un jeu de survie en vue de dessus dans la taïga évenke, en 1993. Froid, loups, ours rôdeur, votre cabane et un village. Sept chapitres, cinq fins. À jouer dans le navigateur.",
     "intro": [
       "Janvier 1993. L’hélicoptère Mi-8 numéro 24713 s’est abattu sur un coude de rivière en Évenkie. Vous êtes Lyocha, le radio. La radio est détruite, l’équipage a disparu et les premiers habitants sont à des jours de marche. Trouvez la vieille cabane des chasseurs, allumez son poêle, rencontrez le vieil Évenke Ourkatchan et tenez quatre nuits.",
-      "Ensuite, le jeu devient une histoire de village : embaucher des bras, construire et traverser les âges, commercer contre des roubles, le tout dans une taïga qui ne pardonne pas les erreurs. Il tourne dans le navigateur, sans installation ni compilation, et fonctionne sur téléphone."
+      "Ensuite, le jeu devient une histoire de village : embaucher des bras, construire et traverser les âges, commercer contre des roubles, le tout dans une taïga qui ne pardonne pas les erreurs. Il tourne dans le navigateur, sans installation ni compilation, et fonctionne sur téléphone. C’est un jeu de survie hivernale en forêt : la chaleur, la nourriture et le bois de chauffage décident de tout."
     ],
     "features": [
       "Sept chapitres : L’Épave, Ourkatchan, La Meute, Le Signal, puis Piégeage, Hivernage ou Expédition ; notes à trouver et dialogues à l’humour sec",
@@ -292,6 +292,14 @@
     ],
     "faq": [
       [
+        "Est-ce le jeu d’aventure Syberia ?",
+        "Non. Syberia est un jeu d’aventure de 2002 avec Kate Walker. Sibiria est un autre jeu : la survie dans la taïga en 1993, gratuite dans le navigateur."
+      ],
+      [
+        "Faut-il le télécharger ou créer un compte ?",
+        "Non : appuyez sur le bouton Jouer, le jeu tourne dans le navigateur sur ordinateur ou téléphone, sans téléchargement ni compte. La progression est enregistrée dans le navigateur."
+      ],
+      [
         "Est-ce une histoire vraie ?",
         "Non, c’est une fiction située dans le contexte de l’Évenkie de 1993 : les personnages et les événements sont inventés."
       ],
@@ -315,7 +323,9 @@
       "jeu de survie dans le navigateur",
       "jeu de survie dans la taïga",
       "jeu de construction de village",
-      "jeu Sibérie 1993"
+      "jeu Sibérie 1993",
+      "jeu de survie gratuit en ligne",
+      "jeu de survie sans téléchargement"
     ]
   },
   "echo-of-the-rift": {

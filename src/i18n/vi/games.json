@@ -117,7 +117,7 @@
     "description": "Sibiria: game sinh tồn nhìn từ trên xuống trong rừng taiga Evenki năm 1993: giá lạnh, bầy sói, con gấu dữ, túp lều và khu định cư. Bảy chương, năm kết thúc. Chơi trên trình duyệt.",
     "intro": [
       "Tháng 1 năm 1993. Trực thăng Mi-8 số hiệu 24713 rơi xuống một khúc quanh sông ở Evenkia. Bạn là Lyosha, nhân viên vô tuyến. Radio đã nát, phi hành đoàn biến mất và người gần nhất cách vài ngày đường. Hãy tìm túp lều cũ của thợ săn, nhóm lò, gặp ông lão Evenk Urkachan và vượt qua bốn đêm.",
-      "Sau đó game chuyển sang câu chuyện về khu định cư: thuê người, xây dựng và lên các thời đại, buôn bán lấy rúp, tất cả trong một khu taiga không tha thứ sai lầm. Game chạy trên trình duyệt, không cần cài đặt hay biên dịch, và chơi được trên điện thoại."
+      "Sau đó game chuyển sang câu chuyện về khu định cư: thuê người, xây dựng và lên các thời đại, buôn bán lấy rúp, tất cả trong một khu taiga không tha thứ sai lầm. Game chạy trên trình duyệt, không cần cài đặt hay biên dịch, và chơi được trên điện thoại. Đây là game sinh tồn mùa đông trong rừng: hơi ấm, thức ăn và củi quyết định tất cả."
     ],
     "features": [
       "Bảy chương: Mảnh vỡ, Urkachan, Bầy sói, Tín hiệu, rồi Đặt bẫy, Qua đông hoặc Thám hiểm; ghi chép nhặt được và hội thoại hóm hỉnh khô khan",
@@ -144,6 +144,8 @@
       ["Mã nguồn", "mã nguồn mở, MIT; không có bước biên dịch và không dùng thư viện (chỉ có Google Fonts)"]
     ],
     "faq": [
+      ["Đây có phải game phiêu lưu Syberia không?", "Không. Syberia là game phiêu lưu năm 2002 về Kate Walker. Sibiria là một game khác: sinh tồn trong rừng taiga năm 1993, chơi miễn phí trên trình duyệt."],
+      ["Có cần tải về hay đăng ký không?", "Không: bấm nút Chơi là game chạy trên trình duyệt của máy tính hoặc điện thoại, không cần tải về và không cần tài khoản. Tiến trình được lưu trong trình duyệt."],
       ["Đây có phải chuyện có thật không?", "Không, đây là hư cấu đặt trong bối cảnh Evenkia năm 1993: nhân vật và sự kiện đều là bịa."],
       ["Chơi được trên điện thoại không?", "Được: có joystick, chế độ ra lệnh và thu phóng bằng hai ngón."],
       ["Lưu game thế nào?", "Ngủ trong túp lều để lưu tiến trình; có ba ô lưu cộng với tự động lưu."],
@@ -156,7 +158,9 @@
       "game sinh tồn trên trình duyệt",
       "game sinh tồn rừng taiga",
       "game xây dựng khu định cư",
-      "game Siberia 1993"
+      "game Siberia 1993",
+      "game sinh tồn miễn phí online",
+      "game sinh tồn không cần tải về"
     ]
   },
   "echo-of-the-rift": {
