@@ -10,7 +10,7 @@ mentions: requirements, meeting notes, hallucinations, sources, assumptions, use
 toc: what=Cần đòi gì | sources=Nguồn qua MCP | format=Cách yêu cầu | levels=Lớn và nhỏ | cases=Use case | first=Bắt đầu từ đâu | faq=Câu hỏi | next=Tiếp theo
 ---
 
-Tác nhân AI viết yêu cầu rất tự tin, và những phỏng đoán của nó trông như dữ kiện. Hãy đòi bằng chứng cho từng mục, gồm liên kết nguồn, các giả định của mô hình và trạng thái “là dữ kiện hay không”, rồi kết nối các nguồn qua MCP, tốt nhất là từ Git. Tác nhân tự sửa những chỗ nhỏ, còn chỗ lớn do con người quyết định. Cơ sở: [MCP cho tác nhân AI (AI agent)](/blog/mcp-agent-access/#facts).
+Tác nhân AI (AI agent) viết yêu cầu rất tự tin, và những phỏng đoán của nó trông như dữ kiện. Hãy đòi bằng chứng cho từng mục, gồm liên kết nguồn, các giả định của mô hình và trạng thái “là dữ kiện hay không”, rồi kết nối các nguồn qua MCP, tốt nhất là từ Git. Tác nhân tự sửa những chỗ nhỏ, còn chỗ lớn do con người quyết định. Cơ sở: [MCP cho tác nhân AI](/blog/mcp-agent-access/#facts).
 
 <b-post series="harness">
 
@@ -69,25 +69,25 @@ Tác nhân AI viết yêu cầu rất tự tin, và những phỏng đoán của
   <b-say-agent title="Nói với tác nhân" plain>Phân tích bản ghi cuộc họp và viết danh sách yêu cầu. Với mỗi mục, nêu nguồn (liên kết từ sổ đăng ký và trích dẫn kèm thời điểm), các giả định của bạn trên một dòng riêng và trạng thái: dữ kiện, không phải dữ kiện hoặc câu hỏi. Nếu không có nguồn, đánh dấu “không phải dữ kiện”.</b-say-agent>
   <b-why align="left">Prompt này yêu cầu tác nhân tách bản ghi thành các mục, mỗi mục có ba dấu ghi. Câu cuối của nó quan trọng: nó cấm coi một mục là dữ kiện khi không có nguồn. Prompt như vậy hợp với bản ghi cuộc họp, email, một chuỗi chat và mọi tài liệu.</b-why>
   <b-codebox title="Mẫu cho một mục">
-    Requirement: Card payment
-    Source: git.example.com/shop/requirements/payments.md, line 12; meeting of 12 Oct, 14:32, “the customer pays by card at checkout”
-    Assumption: payment in one currency only
-    Status: fact | not a fact | question
-    Confirmed by: —
+    Yêu cầu: Thanh toán bằng thẻ
+    Nguồn: git.example.com/shop/requirements/payments.md, dòng 12; cuộc họp ngày 12/10, 14:32, “khách hàng trả bằng thẻ ở bước thanh toán”
+    Giả định: chỉ thanh toán bằng một loại tiền tệ
+    Trạng thái: dữ kiện | không phải dữ kiện | câu hỏi
+    Người xác nhận: —
   </b-codebox>
-  <b-why align="left">Cách đọc mẫu. “Requirement” là tên ngắn của mục. “Source” là liên kết từ sổ đăng ký và trích dẫn kèm thời điểm: người duyệt tìm ra chỗ đó trong vài giây. “Assumption” là điều nguồn không nói nhưng tác nhân tự quyết (tiền tệ, thời hạn, vai trò). “Status” là “fact” nếu nguồn nói thẳng, “not a fact” cho phỏng đoán và “question” nếu con người phải quyết định. “Confirmed by” do con người điền: tên và ngày kiểm tra. Khi ở đó còn là dấu gạch ngang thì mục chưa được coi là đã chấp nhận.</b-why>
+  <b-why align="left">Cách đọc mẫu. “Yêu cầu” là tên ngắn của mục. “Nguồn” là liên kết từ sổ đăng ký và trích dẫn kèm thời điểm: người duyệt tìm ra chỗ đó trong vài giây. “Giả định” là điều nguồn không nói nhưng tác nhân tự quyết (tiền tệ, thời hạn, vai trò). “Trạng thái” là “dữ kiện” nếu nguồn nói thẳng, “không phải dữ kiện” cho phỏng đoán và “câu hỏi” nếu con người phải quyết định. “Người xác nhận” do con người điền: tên và ngày kiểm tra. Khi ở đó còn là dấu gạch ngang thì mục chưa được coi là đã chấp nhận.</b-why>
   <b-codebox title="Ví dụ câu trả lời của tác nhân">
-    Requirement: Card payment
-    Source: meeting of 12 Oct, 14:32, “the customer pays by card at checkout”
-    Assumption: payment in rubles only
-    Status: not a fact
-    Confirmed by: —
+    Yêu cầu: Thanh toán bằng thẻ
+    Nguồn: cuộc họp ngày 12/10, 14:32, “khách hàng trả bằng thẻ ở bước thanh toán”
+    Giả định: chỉ thanh toán bằng rúp
+    Trạng thái: không phải dữ kiện
+    Người xác nhận: —
 
-    Requirement: Receipt by email
-    Source: meeting of 12 Oct, 15:05, “we send the receipt to the customer’s email”
-    Assumption: none
-    Status: fact
-    Confirmed by: —
+    Yêu cầu: Biên lai qua email
+    Nguồn: cuộc họp ngày 12/10, 15:05, “gửi biên lai đến email của khách hàng”
+    Giả định: không có
+    Trạng thái: dữ kiện
+    Người xác nhận: —
   </b-codebox>
   <b-why align="left">Mục thứ nhất nhận trạng thái “not a fact”: tiền tệ không được nêu ở cuộc họp, nên đó là giả định của tác nhân. Mục thứ hai được nói thẳng ở cuộc họp, nên là “fact”. Cả hai mục chờ con người xác nhận, và danh sách các mục “not a fact” trở thành chương trình nghị sự của cuộc họp sau.</b-why>
   <b-finding>
@@ -111,7 +111,7 @@ Tác nhân AI viết yêu cầu rất tự tin, và những phỏng đoán của
 
 | Loại chỉnh sửa | Điều đã xảy ra | Bằng chứng | Tác nhân làm gì | Con người làm gì |
 |---|---|---|---|---|
-| Nhỏ | Phỏng đoán “chỉ thanh toán bằng rúp” được bản ghi cuộc họp xác nhận: trạng thái đổi từ “không phải dữ kiện” sang “dữ kiện” | có: tldv.io/meeting/12-10, 14:32, “we only pay in rubles” | tự làm: đổi trạng thái, thêm liên kết và trích dẫn, ghi vào lịch sử, phiên bản v1.1 | không làm gì: có thể lướt qua lịch sử |
+| Nhỏ | Phỏng đoán “chỉ thanh toán bằng rúp” được bản ghi cuộc họp xác nhận: trạng thái đổi từ “không phải dữ kiện” sang “dữ kiện” | có: tldv.io/meeting/12-10, 14:32, “chỉ thanh toán bằng rúp” | tự làm: đổi trạng thái, thêm liên kết và trích dẫn, ghi vào lịch sử, phiên bản v1.1 | không làm gì: có thể lướt qua lịch sử |
 | Nhỏ | Cách diễn đạt được làm rõ: “Thanh toán bằng thẻ” thành “Thanh toán bằng thẻ ngân hàng” | có: so sánh phiên bản trong Git, git.example.com/shop/requirements/commit/a1b2c3, đổi từ ngữ, ý nghĩa như cũ | tự làm và ghi vào lịch sử | không làm gì |
 | Lớn | Có người đề xuất chấp nhận cả euro: bản ghi cuộc họp lẫn tài liệu đều không nói gì về điều này | không có: các nguồn không chứa quyết định như vậy, không có nơi lấy bằng chứng | chuẩn bị: viết ra sẽ thay đổi gì, liệt kê các use case và test bị ảnh hưởng, soạn nháp v2.0 | quyết định: chủ sở hữu yêu cầu duyệt hoặc từ chối, quyết định được ghi vào Git |
 | Lớn | Có người đề xuất xác nhận thanh toán bằng mã từ ngân hàng: trong yêu cầu chưa có điều này | không có: không nguồn nào chứa quyết định | chuẩn bị như trên | quyết định: chủ sở hữu yêu cầu duyệt hoặc từ chối |

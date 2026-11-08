@@ -2,7 +2,7 @@
 title: Công việc của QA sau bộ phận hỗ trợ cùng tác nhân AI: điều tra, mô tả và lập tài liệu qua MCP và skill
 date: 2026-10-04
 updated: 2026-11-08
-description: Tối ưu một mắt xích: QA sau bộ phận hỗ trợ. Tác nhân tái hiện lỗi từ Jira trên môi trường thử qua MCP, thu hẹp đường đi, mô tả và lập tài liệu, skill biến các bước thành quy trình lặp lại được, QA kiểm tra bằng tay. Hỗ trợ và phát triển không đổi.
+description: Tối ưu một mắt xích: QA sau bộ phận hỗ trợ. Tác nhân tái hiện lỗi từ Jira trên môi trường kiểm thử qua MCP, thu hẹp đường đi, mô tả và lập tài liệu, skill biến các bước thành quy trình lặp lại được, QA kiểm tra bằng tay. Hỗ trợ và phát triển không đổi.
 tags: AI, tác nhân, QA, Jira, MCP, skill, lỗi, harness
 category: harness
 layout: wide
@@ -10,7 +10,7 @@ mentions: Jira, AI agent, QA, Model Context Protocol, skills, bug reproduction, 
 toc: route=Bước của QA | stages=Ba phần | mcp=MCP | skill=Skill | parallel=Song song | example=Ví dụ | human=QA giữ lại gì | first=Bắt đầu thế nào | faq=Câu hỏi | next=Đọc tiếp
 ---
 
-Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đây việc điều tra, mô tả và lập tài liệu được làm bằng tay, nên đây là bước được tối ưu. Một tác nhân AI (AI agent) kết nối với Jira và môi trường thử qua MCP, cùng một skill ghi sẵn các bước, đảm nhận phần việc lặp đi lặp lại. QA kiểm tra kết quả bằng tay. Hỗ trợ và phát triển làm việc như trước.
+Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đây việc điều tra, mô tả và lập tài liệu được làm bằng tay, nên đây là bước được tối ưu. Một tác nhân AI (AI agent) kết nối với Jira và môi trường kiểm thử qua MCP, cùng một skill ghi sẵn các bước, đảm nhận phần việc lặp đi lặp lại. QA kiểm tra kết quả bằng tay. Hỗ trợ và phát triển làm việc như trước.
 
 <b-post series="harness">
 <b-view-toggle/>
@@ -66,14 +66,14 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
       </b-qa-row>
       <b-qa-row label="Sau" now>
         <node icon="bot">Tác nhân</node>
-        <node icon="play">đường đi trên môi trường thử</node>
+        <node icon="play">đường đi trên môi trường kiểm thử</node>
         <node icon="scissors">thu hẹp</node>
         <node icon="eye">QA xem lại</node>
       </b-qa-row>
     </b-icon-lane>
     </b-lane-stack>
   </b-view>
-  <b-why align="left">Điều tra là tìm đường ngắn nhất tới lỗi. Lời phàn nàn của khách hàng thường liệt kê mọi thứ họ đã làm: đăng nhập, danh mục, địa chỉ, giỏ hàng, mã khuyến mãi, thanh toán. QA lặp lại các hành động này và bỏ dần từng thứ thừa cho đến khi lỗi không còn tái hiện. Tác nhân làm điều tương tự trên môi trường thử: nó bỏ một hành động, kiểm tra lỗi còn không, và cứ thế đi xuống mức tối thiểu. Trong ví dụ, ba trong sáu hành động hóa ra là cần thiết. QA xem đường đi đã thu hẹp và kiểm tra rằng những gì bị bỏ thật sự là thừa: tác nhân có thể đã gạch một bước mà thiếu nó lỗi thực sự không tái hiện.</b-why>
+  <b-why align="left">Điều tra là tìm đường ngắn nhất tới lỗi. Lời phàn nàn của khách hàng thường liệt kê mọi thứ họ đã làm: đăng nhập, danh mục, địa chỉ, giỏ hàng, mã khuyến mãi, thanh toán. QA lặp lại các hành động này và bỏ dần từng thứ thừa cho đến khi lỗi không còn tái hiện. Tác nhân làm điều tương tự trên môi trường kiểm thử: nó bỏ một hành động, kiểm tra lỗi còn không, và cứ thế đi xuống mức tối thiểu. Trong ví dụ, ba trong sáu hành động hóa ra là cần thiết. QA xem đường đi đã thu hẹp và kiểm tra rằng những gì bị bỏ thật sự là thừa: tác nhân có thể đã gạch một bước mà thiếu nó lỗi thực sự không tái hiện.</b-why>
   <b-view kind="pic">
     <b-lane-stack>
     <b-icon-lane icon="lines" title="Mô tả">
@@ -137,7 +137,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
 
 <b-chapter id="mcp" icon="plug" title="MCP: tác nhân làm việc ở nơi QA làm việc">
   <b-why>MCP (Model Context Protocol) là cách nối tác nhân với các hệ thống làm việc để nó tự đọc và ghi trong đó thay vì nhận một lời kể lại.</b-why>
-  <b-why align="left">Tác nhân cần năm thứ. Jira: nó đọc phiếu và ghi kết quả vào đó. Môi trường thử: bản sao thử nghiệm của sản phẩm, nơi nó đi theo đường đi như một người dùng. Tài liệu: sơ đồ và mô tả nằm cạnh phiếu. Dữ liệu: dữ liệu thử có thể đặt lại. Quyền: chỉ môi trường thử được phép hỏng, các hệ thống production nằm ngoài tầm với.</b-why>
+  <b-why align="left">Tác nhân cần năm thứ. Jira: nó đọc phiếu và ghi kết quả vào đó. Môi trường thử: bản sao thử nghiệm của sản phẩm, nơi nó đi theo đường đi như một người dùng. Tài liệu: sơ đồ và mô tả nằm cạnh phiếu. Dữ liệu: dữ liệu thử có thể đặt lại. Quyền: chỉ môi trường kiểm thử được phép hỏng, các hệ thống production nằm ngoài tầm với.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/access-sandbox"/>
   </b-view>
@@ -147,19 +147,19 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
       <node icon="play" t="Môi trường thử">đi theo đường đi như người dùng</node>
       <node icon="file-text" sw="1.8" t="Tài liệu">sơ đồ và ghi chú cạnh phiếu</node>
       <node icon="cylinder" t="Dữ liệu">dữ liệu thử, đặt lại được</node>
-      <node icon="shield-check" t="Quyền">chỉ môi trường thử được phép hỏng</node>
+      <node icon="shield-check" t="Quyền">chỉ môi trường kiểm thử được phép hỏng</node>
     </b-node-grid>
   </b-view>
   <b-finding>
-    <ex>Qua MCP, tác nhân đọc PAY-142 trong Jira, đi tới môi trường thử và ghi kết quả ngược lại. QA không phải chép gì giữa các cửa sổ.</ex>
+    <ex>Qua MCP, tác nhân đọc PAY-142 trong Jira, đi tới môi trường kiểm thử và ghi kết quả ngược lại. QA không phải chép gì giữa các cửa sổ.</ex>
     <gen>Không có kết nối với các hệ thống thì phải đưa cho tác nhân một lời kể lại, và lời kể lại làm mất chi tiết. Môi trường thử là nơi tác nhân có thể thử và làm hỏng mà không chạm vào production.</gen>
-    <do k="Việc cần làm">Bắt đầu với hai kết nối: Jira và môi trường thử. Thêm phần còn lại khi cần.</do>
+    <do k="Việc cần làm">Bắt đầu với hai kết nối: Jira và môi trường kiểm thử. Thêm phần còn lại khi cần.</do>
   </b-finding>
 </b-chapter>
 
 <b-chapter id="skill" icon="doc-square" title="Skill: quy trình được ghi ra thay cho việc lặp lại bằng tay">
   <b-why>Skill là cách làm việc được ghi ra cho tác nhân: các bước, mẫu báo cáo, quy tắc. Một người khác và một tác nhân khác có thể lặp lại nó.</b-why>
-  <b-why align="left">Skill dẫn tác nhân qua sáu bước. Nó đọc phiếu, đi theo đường then chốt trên môi trường thử, thu hẹp xuống mức tối thiểu, mô tả lỗi theo mẫu, vẽ sơ đồ khi được yêu cầu và ghi kết quả vào Jira. Ba bước đầu là điều tra, các bước còn lại là mô tả và lập tài liệu từ chương trước. Một sai sót của tác nhân quay lại skill như một quy tắc mới, nên lần sau nó không lặp lại.</b-why>
+  <b-why align="left">Skill dẫn tác nhân qua sáu bước. Nó đọc phiếu, đi theo đường then chốt trên môi trường kiểm thử, thu hẹp xuống mức tối thiểu, mô tả lỗi theo mẫu, vẽ sơ đồ khi được yêu cầu và ghi kết quả vào Jira. Ba bước đầu là điều tra, các bước còn lại là mô tả và lập tài liệu từ chương trước. Một sai sót của tác nhân quay lại skill như một quy tắc mới, nên lần sau nó không lặp lại.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/skill-pipeline"/>
   </b-view>
@@ -167,7 +167,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
     <b-lane title="Skill “tái hiện lỗi”" color="accent">
       <b-num-chain top="6">
         <step>đọc phiếu</step>
-        <step>đi theo đường then chốt trên môi trường thử</step>
+        <step>đi theo đường then chốt trên môi trường kiểm thử</step>
         <step>thu hẹp xuống mức tối thiểu</step>
       </b-num-chain>
       <b-num-chain start="4" top="10">
@@ -209,7 +209,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
   <b-finding>
     <ex>QA khởi chạy các tác nhân cho PAY-142, PAY-143 và PAY-144 cùng lúc. Trong khi chúng làm việc, QA không ngồi trên một lỗi mà kiểm tra lần lượt các kết quả đã xong.</ex>
     <gen>Trước đây, thời gian của QA cộng dồn qua mọi lỗi nối tiếp nhau. Giờ mỗi lỗi có tác nhân riêng: qua trình duyệt, qua code hoặc qua API, và QA chỉ giữ lại một bước kiểm tra ngắn. Càng nhiều tác nhân chạy, càng nhiều thời gian của QA dành cho việc quản lý chúng và xem lại, thay vì việc lặp đi lặp lại.</gen>
-    <do k="Việc cần làm">Tăng số tác nhân dần dần: nó bị giới hạn bởi số môi trường thử, số bộ dữ liệu thử và các hạn mức. Dùng thời gian QA không còn phải tiêu cho việc lặp lại để quản lý tác nhân, kiểm tra và cải tiến skill.</do>
+    <do k="Việc cần làm">Tăng số tác nhân dần dần: nó bị giới hạn bởi số môi trường kiểm thử, số bộ dữ liệu thử và các hạn mức. Dùng thời gian QA không còn phải tiêu cho việc lặp lại để quản lý tác nhân, kiểm tra và cải tiến skill.</do>
   </b-finding>
 </b-chapter>
 
@@ -218,7 +218,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/complaint-to-report"/>
   </b-view>
-  <b-why align="left">Bước 1: QA chỉ có lời phàn nàn của khách hàng, không có các bước, kèm một ảnh chụp màn hình lỗi. Bước 2: tác nhân đi qua cả sáu hành động của khách trên môi trường thử và bỏ dần từng thứ thừa. Đăng nhập, danh mục và địa chỉ bị gạch, giỏ hàng, mã khuyến mãi và thanh toán còn lại, và lỗi tái hiện trên chúng: dịch vụ khuyến mãi trả lời bằng lỗi 500. Bước 3: tác nhân ghi báo cáo và sơ đồ vào Jira, còn QA mở phiếu và kiểm tra kết quả.</b-why>
+  <b-why align="left">Bước 1: QA chỉ có lời phàn nàn của khách hàng, không có các bước, kèm một ảnh chụp màn hình lỗi. Bước 2: tác nhân đi qua cả sáu hành động của khách trên môi trường kiểm thử và bỏ dần từng thứ thừa. Đăng nhập, danh mục và địa chỉ bị gạch, giỏ hàng, mã khuyến mãi và thanh toán còn lại, và lỗi tái hiện trên chúng: dịch vụ khuyến mãi trả lời bằng lỗi 500. Bước 3: tác nhân ghi báo cáo và sơ đồ vào Jira, còn QA mở phiếu và kiểm tra kết quả.</b-why>
   <b-why align="left">Đây là bước 1 trong Jira: tiêu đề của khách hàng, không có các bước tái hiện, kèm ảnh chụp màn hình lỗi. Tác nhân bắt đầu từ đây.</b-why>
   <b-lane title="Phiếu Jira · yêu cầu của khách hàng được hỗ trợ chuyển cho QA" color="accent">
     <b-ticket key="PAY-142">Thanh toán thẻ bị lỗi khi nhập mã khuyến mãi</b-ticket>
@@ -251,7 +251,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
       <row k="Các bước">giỏ hàng → mã khuyến mãi → thanh toán thẻ</row>
       <row k="Mong đợi">thanh toán thành công kèm giảm giá</row>
       <row k="Thực tế">“thanh toán thất bại”, dịch vụ khuyến mãi trả về lỗi 500</row>
-      <row k="Môi trường">môi trường thử, thẻ thử</row>
+      <row k="Môi trường">môi trường kiểm thử, thẻ thử</row>
       <row k="Nơi cần tìm">lời gọi tới dịch vụ khuyến mãi từ thanh toán (xem sơ đồ)</row>
     </b-kv-rows>
   </b-lane>
@@ -274,7 +274,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
   </b-view>
   <b-view kind="struct">
     <b-node-grid>
-      <node icon="check" t="Đúng đường đi">đi theo các bước bằng tay trên môi trường thử</node>
+      <node icon="check" t="Đúng đường đi">đi theo các bước bằng tay trên môi trường kiểm thử</node>
       <node icon="check" t="Đúng lỗi">khớp với ảnh chụp màn hình của khách</node>
       <node icon="check" t="Thu hẹp đúng">các bước bị gạch thật sự là thừa</node>
       <node icon="check" t="Mức quan trọng">con người quyết định mức nghiêm trọng và ưu tiên</node>
@@ -283,20 +283,20 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
     <b-agents-lane title="Một QA — nhiều tác nhân cùng lúc" agents="tác nhân · PAY-142|tác nhân · PAY-143|tác nhân · PAY-144" note="Thời gian của QA chuyển sang quản lý và nghiệm thu" top="10">Thời gian QA không còn phải tiêu vào việc lặp lại cho mỗi lỗi được dành cho việc quản lý tác nhân, kiểm tra, ưu tiên và cải tiến skill.</b-agents-lane>
   </b-view>
   <b-finding>
-    <ex>QA mở môi trường thử, lặp lại các bước trong báo cáo bằng tay và xác nhận đó là lỗi khách hàng đã mô tả. Rồi phiếu đi tới lập trình viên như trước; nếu không được, báo cáo quay lại tác nhân.</ex>
+    <ex>QA mở môi trường kiểm thử, lặp lại các bước trong báo cáo bằng tay và xác nhận đó là lỗi khách hàng đã mô tả. Rồi phiếu đi tới lập trình viên như trước; nếu không được, báo cáo quay lại tác nhân.</ex>
     <gen>Mô hình dễ dàng xác nhận chính nó, và các chi tiết bịa ra trông như phát hiện. Vì vậy lời cuối cùng thuộc về con người nhìn bằng chính mắt mình. Công việc của QA chuyển từ thực hiện việc lặp đi lặp lại sang kiểm tra và cải tiến quy trình.</gen>
     <do k="Việc cần làm">Thống nhất rằng báo cáo mà QA không lặp lại được bằng tay thì không đến tay lập trình viên.</do>
   </b-finding>
 </b-chapter>
 
 <b-chapter id="first" icon="shield-check" title="Bắt đầu thế nào">
-  <b-why align="left">Tốt nhất là bắt đầu trên các lỗi đã đóng mà đáp án đã biết. Bước 1: kết nối Jira và môi trường thử với tác nhân qua MCP. Bước 2: ghi các bước của bạn cho một loại lỗi thành skill. Bước 3: chạy skill trên năm lỗi đã đóng của tháng trước và so báo cáo của tác nhân với những gì bạn biết về các lỗi đó. Chỗ nào tác nhân sai thì thêm một quy tắc vào skill. Một QA kiểm tra kết quả bằng tay.</b-why>
+  <b-why align="left">Tốt nhất là bắt đầu trên các lỗi đã đóng mà đáp án đã biết. Bước 1: kết nối Jira và môi trường kiểm thử với tác nhân qua MCP. Bước 2: ghi các bước của bạn cho một loại lỗi thành skill. Bước 3: chạy skill trên năm lỗi đã đóng của tháng trước và so báo cáo của tác nhân với những gì bạn biết về các lỗi đó. Chỗ nào tác nhân sai thì thêm một quy tắc vào skill. Một QA kiểm tra kết quả bằng tay.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/start-steps"/>
   </b-view>
   <b-view kind="struct">
     <b-num-chain>
-      <step>kết nối Jira và môi trường thử qua MCP</step>
+      <step>kết nối Jira và môi trường kiểm thử qua MCP</step>
       <step>ghi các bước của QA thành skill</step>
       <step>chạy trên 5 lỗi đã đóng và thêm quy tắc</step>
     </b-num-chain>
@@ -311,7 +311,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
 <b-chapter id="faq" icon="chat" title="Câu hỏi thường gặp">
   <b-faq-cards>
     <q t="Phần công việc nào của QA có thể giao cho tác nhân AI?">Điều tra, mô tả và lập tài liệu cho một lỗi: đây là các hành động lặp lại được với kết quả rõ ràng. Quyết định đó có phải lỗi không và quan trọng đến đâu vẫn thuộc về con người.</q>
-    <q t="Vì sao tác nhân cần MCP cho công việc QA?">Qua MCP, tác nhân làm việc trong cùng các hệ thống với QA, Jira và môi trường thử, và đọc dữ kiện từ nguồn thay vì từ lời kể lại.</q>
+    <q t="Vì sao tác nhân cần MCP cho công việc QA?">Qua MCP, tác nhân làm việc trong cùng các hệ thống với QA, Jira và môi trường kiểm thử, và đọc dữ kiện từ nguồn thay vì từ lời kể lại.</q>
     <q t="Skill mang lại gì?">Một quy trình được ghi ra, không phụ thuộc vào việc ai đang trực. Sai sót của tác nhân đi vào skill như một quy tắc mới và không lặp lại.</q>
     <q t="QA còn lại gì?">Kiểm tra kết quả của tác nhân bằng tay và nghiệm thu nó: QA quản lý nhiều tác nhân và quyết định nhận gì.</q>
   </b-faq-cards>
