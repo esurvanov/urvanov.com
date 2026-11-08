@@ -1,6 +1,8 @@
+import { useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { metaFor } from '@/data/seo'
 import { unloadedLangsOf } from '@/i18n/pageLangs'
+import LangFlag from '@/components/site/LangFlag'
 import { LANGS, LANG_NAMES, isNewLang, otherLang, stripLang, useT, withLang, withSlash, type Lang } from '@/lib/i18n'
 
 // Переключатель языка: только языки, на которых эта страница есть (те же, что в hreflang).
@@ -9,6 +11,21 @@ import { LANGS, LANG_NAMES, isNewLang, otherLang, stripLang, useT, withLang, wit
 export default function LangSwitch({ alt, className = 's-nav-lang' }: { alt?: string; className?: string }) {
   const { lang } = useT()
   const { pathname } = useLocation()
+  const box = useRef<HTMLDetailsElement>(null)
+  // Список закрывается кликом мимо него и клавишей Esc (у <details> этого нет по умолчанию)
+  useEffect(() => {
+    const close = (e: Event) => {
+      const d = box.current
+      if (!d?.open) return
+      if (e instanceof KeyboardEvent ? e.key === 'Escape' : !d.contains(e.target as Node)) {
+        d.open = false
+        if (e instanceof KeyboardEvent) d.querySelector('summary')?.focus()
+      }
+    }
+    document.addEventListener('pointerdown', close)
+    document.addEventListener('keydown', close)
+    return () => { document.removeEventListener('pointerdown', close); document.removeEventListener('keydown', close) }
+  }, [])
   const meta = metaFor(pathname.replace(/(.)\/$/, '$1'))
   const has = new Map<Lang, string>((meta?.alternates ?? []).map((a) => [a.lang, withSlash(a.path)]))
   // Языки, чьи переводы ещё не загружены: берём из списка адресов, собранного при сборке
@@ -22,14 +39,14 @@ export default function LangSwitch({ alt, className = 's-nav-lang' }: { alt?: st
   const track = (l: Lang) => ({ 'data-track': 'cta', 'data-track-id': 'lang_switch', 'data-track-label': l, hrefLang: l, lang: l })
   if (items.length === 1) {
     const [x] = items
-    return <Link className={className} to={x.to} {...track(x.lang)} title={LANG_NAMES[x.lang]}>{x.lang.toUpperCase()}</Link>
+    return <Link className={className} to={x.to} {...track(x.lang)} title={LANG_NAMES[x.lang]}><LangFlag lang={x.lang} />{x.lang.toUpperCase()}</Link>
   }
   return (
-    <details className="s-lang" key={pathname}>
-      <summary className={className} title={LANG_NAMES[lang]} aria-label={`${LANG_NAMES[lang]} · ${items.map((x) => LANG_NAMES[x.lang]).join(', ')}`}>{lang.toUpperCase()}</summary>
+    <details className="s-lang" key={pathname} ref={box}>
+      <summary className={className} title={LANG_NAMES[lang]} aria-label={`${LANG_NAMES[lang]} · ${items.map((x) => LANG_NAMES[x.lang]).join(', ')}`}><LangFlag lang={lang} />{lang.toUpperCase()}</summary>
       <ul className="s-lang-list">
         {items.map((x) => (
-          <li key={x.lang}><Link to={x.to} {...track(x.lang)}><b>{x.lang.toUpperCase()}</b> {LANG_NAMES[x.lang]}</Link></li>
+          <li key={x.lang}><Link to={x.to} {...track(x.lang)}><LangFlag lang={x.lang} /><b>{x.lang.toUpperCase()}</b><span>{LANG_NAMES[x.lang]}</span></Link></li>
         ))}
       </ul>
     </details>

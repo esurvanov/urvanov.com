@@ -12,7 +12,7 @@ function Top({ back }: { back?: boolean }) {
   return (
     <div className="ai-top">
       {back ? <Link to={to('/ai')}>← {t({ ru: 'Все офферы', en: 'All offers' })}</Link> : <span className="s-eyebrow">{t({ ru: 'Егор Урванов', en: 'Egor Urvanov' })}</span>}
-      <span style={{ display: 'flex', gap: 8 }}>
+      <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <ThemeToggle />
         <LangSwitch />
       </span>

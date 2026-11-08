@@ -122,26 +122,27 @@
 .s-nav-link:hover, .s-nav-link.is-active { color: var(--ink); }
 .s-nav-link.is-active { box-shadow: 0 2px 0 var(--accent); }
 /* язык и тема — одна кнопка одного размера, что бы ни было внутри: текст «EN» или иконка */
-.s-nav-lang, .s-home-lang { box-sizing: border-box; display: inline-grid; place-items: center; min-width: 36px; height: 28px; padding: 0 8px; line-height: 1; font-family: var(--mono); font-size: var(--t-label); color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius); }
+.s-nav-lang, .s-home-lang { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-width: 36px; height: 28px; padding: 0 8px; white-space: nowrap; line-height: 1; font-family: var(--mono); font-size: var(--t-label); color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius); }
 .s-nav-lang:hover { color: var(--ink); border-color: var(--accent); }
 .s-home-lang { position: absolute; top: var(--sp-3); right: 0; }
 /* Переключатель на несколько языков: та же кнопка с кодом языка, по нажатию — короткий список */
 .s-lang { position: relative; display: inline-block; }
 .s-lang > summary { list-style: none; cursor: pointer; user-select: none; }
 .s-lang > summary::-webkit-details-marker { display: none; }
-.s-lang > summary::after { content: '▾'; margin-left: 4px; font-size: 0.7em; }
+.s-lang > summary::after { content: '▾'; font-size: 0.75em; line-height: 1; opacity: .7; }
 .s-lang[open] > summary { color: var(--ink); border-color: var(--accent); }
 .s-lang:has(> .s-home-lang) { position: absolute; top: var(--sp-3); right: 0; }
 .s-lang > .s-home-lang { position: static; }
 .s-lang-list { position: absolute; right: 0; top: calc(100% + 4px); z-index: 20; min-width: 160px; margin: 0; padding: 4px; list-style: none; background: var(--bg); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 6px 18px rgb(0 0 0 / 0.12); }
-.s-lang-list a { display: flex; gap: 8px; align-items: baseline; padding: 6px 8px; border-radius: var(--radius); color: var(--ink-2); text-decoration: none; font-size: var(--t-small); white-space: nowrap; }
+.s-lang-list a { display: grid; grid-template-columns: 18px 24px auto; column-gap: 10px; align-items: center; padding: 7px 10px; line-height: 1.2; border-radius: var(--radius); color: var(--ink-2); text-decoration: none; font-size: var(--t-small); white-space: nowrap; }
 .s-lang-list a:hover { color: var(--ink); background: var(--bg-2, rgb(0 0 0 / 0.04)); }
-.s-lang-list b { font-family: var(--mono); font-size: var(--t-label); font-weight: 500; min-width: 22px; }
+.s-lang-list b { font-family: var(--mono); font-size: var(--t-label); font-weight: 500; color: var(--ink-3); }
+.s-flag { display: block; flex: none; width: 18px; height: 12px; border-radius: 2px; box-shadow: 0 0 0 1px rgb(127 127 127 / 0.35); }
 /* Кнопка темы: солнце или луна, рядом с переключателем языка */
 .s-theme { width: 36px; padding: 0; background: none; cursor: pointer; }
 .s-theme svg { width: 14px; height: 14px; }
 .s-theme:hover { color: var(--ink); border-color: var(--accent); }
-.s-home-theme { position: absolute; top: var(--sp-3); right: 44px; }
+.s-home-tools { position: absolute; top: var(--sp-3); right: 0; z-index: 20; display: flex; align-items: center; gap: 8px; }
 
 .s-crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; color: var(--ink-3); font-size: var(--t-small); }
 .s-crumbs li + li::before { content: '/'; margin-right: 6px; }

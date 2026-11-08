@@ -41,8 +41,10 @@ export default function HomeView() {
 
   return (
     <Page nav={false}>
-      <LangSwitch className="s-nav-lang s-home-lang" />
-      <ThemeToggle className="s-home-theme" />
+      <div className="s-home-tools">
+        <ThemeToggle />
+        <LangSwitch />
+      </div>
       <header className="s-home-hero">
         <p className="s-eyebrow">CTO · AI · {t({ ru: 'нетворк', en: 'networking' })}</p>
         <h1 className="s-home-name">
