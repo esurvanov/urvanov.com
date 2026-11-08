@@ -51,7 +51,7 @@ prompt งานสำหรับ ChatGPT และ Claude ประกอบ�
   </b-finding>
 </b-chapter>
 <b-chapter id="examples" title="หกตัวอย่าง" icon="browser-tab">
-  <b-prompt-tabs name="ex-th">
+  <b-prompt-tabs name="ex-en">
     <b-prompt-tab id="client" icon="chat" label="ตอบลูกค้า" title="ตอบเธรดของลูกค้า">
       <b-why>ลูกค้าเขียนมาเป็นครั้งที่สาม น้ำเสียงต้องสงบ และสัญญาได้เฉพาะสิ่งที่เธรดกล่าวไว้แล้ว</b-why>
       <b-prompt-parts>
@@ -133,7 +133,7 @@ prompt งานสำหรับ ChatGPT และ Claude ประกอบ�
       </b-finding>
     </b-prompt-tab>
     <b-prompt-tab id="table" icon="table" label="วิเคราะห์ตาราง" title="วิเคราะห์ตาราง">
-      <b-why>ตั๋วหนึ่งเดือนที่ส่งออกเป็น CSV หาว่าอะไรเปลี่ยนไป</b-why>
+      <b-why>ทิกเก็ตหนึ่งเดือนที่ส่งออกเป็น CSV หาว่าอะไรเปลี่ยนไป</b-why>
       <b-prompt-parts>
         <part icon="user-alt" off>บทบาท</part>
         <part icon="help-circle" off>ใครและทำไม</part>
@@ -142,8 +142,8 @@ prompt งานสำหรับ ChatGPT และ Claude ประกอบ�
         <part icon="lines-alt">รูปแบบ</part>
       </b-prompt-parts>
       <b-prompt>
-        แนบไฟล์ส่งออกของ [ตั๋ว] ช่วง [ระยะเวลา] เป็น CSV
-        นับ [ตั๋ว] ตาม [หัวข้อ] และแสดงการเปลี่ยนแปลงที่ใหญ่ที่สุด 5 รายการเทียบกับเดือนก่อน
+        แนบไฟล์ส่งออกของ [ทิกเก็ต] ช่วง [ระยะเวลา] เป็น CSV
+        นับ [ทิกเก็ต] ตาม [หัวข้อ] และแสดงการเปลี่ยนแปลงที่ใหญ่ที่สุด 5 รายการเทียบกับเดือนก่อน
         สำหรับแต่ละรายการ ให้ตัวเลขและหนึ่งบรรทัดว่าอะไรอาจอธิบายได้
         แสดงโค้ดที่ใช้ เพื่อให้ฉันตรวจได้
       </b-prompt>

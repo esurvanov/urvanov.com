@@ -27,9 +27,9 @@ toc: flow=รายงานเกิดขึ้นอย่างไร | acce
   <b-why>ระบบ ข้อมูล และเอกสารที่อยู่นอกบทสนทนา สิทธิ์กำหนดแยกกันสำหรับแต่ละแหล่ง</b-why>
   <iso-art name="analytics-reports-agent/source-rights"></iso-art>
   <b-finding>
-    <ex>Jira เอกสาร และฐานข้อมูลเปิดให้อ่าน ชีตเปิดให้เขียนโดยต้องยืนยันก่อน และมีเพียงสภาพแวดล้อมทดลองเท่านั้นที่พังได้</ex>
+    <ex>Jira เอกสาร และฐานข้อมูลเปิดให้อ่าน ชีตเปิดให้เขียนโดยต้องยืนยันก่อน และมีเพียงสภาพแวดล้อมทดสอบเท่านั้นที่พังได้</ex>
     <gen>เอเจนต์เห็นเท่าที่ต่อไว้ และทำได้เท่าที่อนุญาต</gen>
-    <do k="ควรทำอะไร">เขียนหนึ่งคำต่อแหล่งข้อมูล: อ่าน เขียน หรือเฉพาะสภาพแวดล้อมทดลอง</do>
+    <do k="ควรทำอะไร">เขียนหนึ่งคำต่อแหล่งข้อมูล: อ่าน เขียน หรือเฉพาะสภาพแวดล้อมทดสอบ</do>
   </b-finding>
 </b-chapter>
 
@@ -43,7 +43,7 @@ toc: flow=รายงานเกิดขึ้นอย่างไร | acce
         --dsn "postgresql://readonly:pass@prod.db.com:5432/analytics"
     </b-codebox>
 
-สร้างผู้ใช้ฐานข้อมูลแบบอ่านอย่างเดียว เพื่อให้คิวรีของเอเจนต์แก้ไขอะไรไม่ได้ ตัวอย่างพรอมต์จากเอกสาร: “What’s our total revenue this month?”, “Show me the schema for the orders table”
+สร้างผู้ใช้ฐานข้อมูลแบบอ่านอย่างเดียว เพื่อให้คิวรีของเอเจนต์แก้ไขอะไรไม่ได้ ตัวอย่าง prompt จากเอกสาร: “What’s our total revenue this month?”, “Show me the schema for the orders table”
 
   </b-spoiler>
   <b-finding>
@@ -84,7 +84,7 @@ toc: flow=รายงานเกิดขึ้นอย่างไร | acce
   <b-links>
     <item href="/blog/mcp-agent-access/" k="พื้นฐาน" t="MCP สำหรับเอเจนต์ AI: แก้ปัญหาอะไร และมอบให้เอเจนต์ต่อให้อย่างไร">MCP คืออะไรและต่ออย่างไร</item>
     <item href="/blog/incident-investigation-agent/" k="อีกกรณี" t="สืบสวนเหตุขัดข้องด้วยเอเจนต์ AI">Sentry และ Grafana ผ่าน MCP</item>
-    <item href="/blog/work-prompts-examples/" k="ปฏิบัติ" t="พรอมต์สำหรับงานประจำ: ห้าส่วนและหกตัวอย่างสำหรับ ChatGPT และ Claude">ตัวอย่าง “วิเคราะห์ตาราง”</item>
+    <item href="/blog/work-prompts-examples/" k="ปฏิบัติ" t="Prompt สำหรับงานประจำ: ห้าส่วนและหกตัวอย่างสำหรับ ChatGPT และ Claude">ตัวอย่าง “วิเคราะห์ตาราง”</item>
   </b-links>
 </b-chapter>
 <b-footer>ตัวอย่างนี้สมมติขึ้น คำสั่งต่อฐานข้อมูลและคำแนะนำเรื่องผู้ใช้แบบอ่านอย่างเดียวอ้างอิงเอกสาร Claude Code: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a></b-footer>
