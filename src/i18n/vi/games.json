@@ -404,7 +404,7 @@
       "50 màn chơi ở mười thế giới: đồng cỏ, cồn cát, băng, dung nham, đầm lầy, vũ trụ, rừng rậm, tàn tích, neon và hoàng hôn",
       "Tối đa ba sao mỗi màn, tính theo tốc độ hoàn thành",
       "Ba loại kẻ địch: chất nhầy đi lang thang, dơi lao thẳng tới, bóng ma xuyên qua thùng",
-      "Vật phẩm dưới thùng: thêm một quả bom, lửa dài hơn, bước chân nhanh hơn",
+      "Vật phẩm dưới thùng: thêm một quả bom, lửa dài hơn, bước chân nhanh hơn; những gì nhặt được sẽ chuyển sang màn kế tiếp",
       "Trình chỉnh sửa màn: vẽ, chơi thử, lưu và chia sẻ bằng mã",
       "18 thành tựu: cho sao, kẻ địch, thùng, tốc độ và màn tự tạo",
       "Tiến trình, thành tựu, thành tích tốt nhất và màn tự tạo được lưu trong trình duyệt và chuyển sang máy khác bằng một mã",
@@ -433,10 +433,11 @@
       ["Game có những ngôn ngữ nào?", "Tiếng Nga, tiếng Anh, tiếng Thái, tiếng Gruzia, tiếng Việt, tiếng Tây Ban Nha và tiếng Pháp. Game khởi động bằng ngôn ngữ của trang web nơi bạn bấm «Chơi», và bạn có thể đổi bằng nút ngôn ngữ trong menu."],
       ["Có chế độ hai người chơi không?", "Chưa có: game này chỉ một người chơi, với chiến dịch 50 màn và các màn do bạn tự tạo trong trình chỉnh sửa. Game của Alawar hỗ trợ tối đa bốn người chơi."],
       ["Tiến trình được lưu ở đâu?", "Ngay trong trình duyệt trên thiết bị của bạn: các màn đã qua, số sao, thành tích tốt nhất và màn tự tạo. Nếu xóa dữ liệu trang web thì chúng sẽ mất."],
+      ["Làm sao chuyển tiến trình sang thiết bị khác?", "Trong menu bấm “Tiến trình”, sao chép mã rồi dán vào đúng chỗ đó trên thiết bị kia: mã sẽ được gộp với dữ liệu hiện có."],
+      ["Vật phẩm có chuyển sang màn tiếp theo không?", "Có. Bom thêm, lửa dài hơn và bước chân nhanh hơn mà bạn nhặt được trong một màn sẽ theo bạn sang màn tiếp theo. Nếu thua, màn chơi bắt đầu lại với bộ vật phẩm bạn mang vào, nên một lần thất bại không làm bạn mất gì. Bộ vật phẩm nằm trong mã tiến trình."],
       ["Làm sao để được ba sao?", "Hoàn thành màn nhanh hơn thời gian mục tiêu hiển thị trên màn hình chiến thắng."],
       ["Làm sao chia sẻ màn của tôi?", "Trong trình chỉnh sửa, nhấn nút mã rồi gửi đoạn văn bản nhận được cho bạn bè. Bạn ấy dán vào mục «Màn của tôi»."],
-      ["Có chơi được trên điện thoại không?", "Có, trên màn hình cảm ứng sẽ hiện cần điều khiển và nút đặt bom."],
-      ["Làm sao chuyển tiến trình sang thiết bị khác?", "Trong menu bấm “Tiến trình”, sao chép mã rồi dán vào đúng chỗ đó trên thiết bị kia: mã sẽ được gộp với dữ liệu hiện có."]
+      ["Có chơi được trên điện thoại không?", "Có, trên màn hình cảm ứng sẽ hiện cần điều khiển và nút đặt bom."]
     ],
     "shots.0.alt": "Little Bombers: vụ nổ ở màn cồn cát",
     "shots.1.alt": "Little Bombers: menu chính",

@@ -749,7 +749,7 @@
       "50 niveaux dans dix mondes : prairie, dunes, glace, lave, marais, espace, jungle, ruines, néon et crépuscule",
       "Jusqu’à trois étoiles par niveau, selon la rapidité",
       "Trois ennemis : la limace erre, la chauve-souris fonce en ligne droite, le fantôme traverse les caisses",
-      "Bonus sous les caisses : une bombe en plus, des flammes plus longues, des pas plus rapides",
+      "Bonus sous les caisses : une bombe en plus, des flammes plus longues, des pas plus rapides ; ce que tu ramasses passe au niveau suivant",
       "Éditeur de niveaux : dessine, teste, sauvegarde et partage par code",
       "18 succès : pour les étoiles, les ennemis, les caisses, la vitesse et tes propres niveaux",
       "La progression, les succès, les meilleurs temps et tes niveaux sont sauvegardés dans le navigateur et se transfèrent avec un code",
@@ -778,10 +778,11 @@
       ["Dans quelles langues est le jeu ?", "En russe, anglais, thaï, géorgien, vietnamien, espagnol et français. Le jeu démarre dans la langue de la page du site depuis laquelle vous avez appuyé sur « Jouer », et vous pouvez en changer avec le bouton de langue du menu."],
       ["Y a-t-il un mode à deux joueurs ?", "Pas encore : ce jeu est solo, avec une campagne de 50 niveaux et vos propres niveaux créés dans l’éditeur. Le jeu d’Alawar accepte jusqu’à quatre joueurs."],
       ["Où est sauvegardée la progression ?", "Dans le navigateur de ton appareil : niveaux terminés, étoiles, meilleurs temps et tes niveaux. Si tu effaces les données du site, ils disparaissent."],
+      ["Comment transférer la progression sur un autre appareil ?", "Dans le menu, appuie sur « Progression », copie le code et colle-le au même endroit sur l’autre appareil : il se fusionne avec l’existant."],
+      ["Les bonus passent-ils au niveau suivant ?", "Oui. Les bombes en plus, les flammes plus longues et les pas plus rapides que tu ramasses dans un niveau restent avec toi dans le suivant. Si tu perds, le niveau recommence avec l’ensemble avec lequel tu y es entré : une tentative ratée ne te coûte rien. Cet ensemble fait partie du code de progression."],
       ["Comment obtenir trois étoiles ?", "Termine le niveau plus vite que le temps cible affiché sur l’écran de victoire."],
       ["Comment partager mon niveau ?", "Dans l’éditeur, appuie sur le bouton de code et envoie le texte obtenu à un ami. Il le colle dans la section « Mes niveaux »."],
-      ["Peut-on jouer sur téléphone ?", "Oui, un joystick et un bouton de bombe apparaissent sur les écrans tactiles."],
-      ["Comment transférer la progression sur un autre appareil ?", "Dans le menu, appuie sur « Progression », copie le code et colle-le au même endroit sur l’autre appareil : il se fusionne avec l’existant."]
+      ["Peut-on jouer sur téléphone ?", "Oui, un joystick et un bouton de bombe apparaissent sur les écrans tactiles."]
     ],
     "shots.0.alt": "Little Bombers : une explosion sur un niveau de dunes",
     "shots.1.alt": "Little Bombers : le menu principal",

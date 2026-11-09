@@ -404,7 +404,7 @@
       "50 niveles en diez mundos: prado, dunas, hielo, lava, pantano, espacio, selva, ruinas, neón y atardecer",
       "Hasta tres estrellas por nivel, según la rapidez",
       "Tres enemigos: la babosa deambula, el murciélago embiste en línea recta, el fantasma atraviesa las cajas",
-      "Mejoras bajo las cajas: una bomba extra, llamas más largas, pasos más rápidos",
+      "Mejoras bajo las cajas: una bomba extra, llamas más largas, pasos más rápidos; lo que recoges pasa al siguiente nivel",
       "Editor de niveles: dibuja, prueba, guarda y comparte con un código",
       "18 logros: por estrellas, enemigos, cajas, rapidez y tus propios niveles",
       "El progreso, los logros, los mejores tiempos y tus niveles se guardan en el navegador y se pueden transferir con un código",
@@ -433,10 +433,11 @@
       ["¿En qué idiomas está el juego?", "En ruso, inglés, tailandés, georgiano, vietnamita, español y francés. El juego arranca en el idioma de la página del sitio desde la que pulsaste «Jugar», y puedes cambiarlo con el botón de idioma del menú."],
       ["¿Hay modo para dos jugadores?", "Todavía no: este juego es de un solo jugador, con una campaña de 50 niveles y tus propios niveles del editor. El juego de Alawar admite hasta cuatro jugadores."],
       ["¿Dónde se guarda el progreso?", "En el propio navegador de tu dispositivo: niveles superados, estrellas, mejores tiempos y tus niveles. Si borras los datos del sitio, desaparecen: antes copia el código de progreso con el botón «Progreso» del menú."],
+      ["¿Cómo paso el progreso a otro dispositivo?", "En el menú pulsa «Progreso», copia el código y pégalo en el mismo lugar del otro dispositivo: se une a lo que ya hay."],
+      ["¿Pasan las mejoras al siguiente nivel?", "Sí. Las bombas extra, las llamas más largas y los pasos más rápidos que recoges en un nivel te acompañan al siguiente. Si pierdes, el nivel empieza de nuevo con el conjunto con el que entraste, así que un intento fallido no te quita nada. El conjunto forma parte del código de progreso."],
       ["¿Cómo consigo tres estrellas?", "Termina el nivel en menos del tiempo objetivo que aparece en la pantalla de victoria."],
       ["¿Cómo comparto mi nivel?", "En el editor pulsa el botón de código y envía el texto resultante a un amigo. Él lo pega en la sección «Mis niveles»."],
-      ["¿Se puede jugar en el móvil?", "Sí, en las pantallas táctiles aparecen un joystick y un botón de bomba."],
-      ["¿Cómo paso el progreso a otro dispositivo?", "En el menú pulsa «Progreso», copia el código y pégalo en el mismo lugar del otro dispositivo: se une a lo que ya hay."]
+      ["¿Se puede jugar en el móvil?", "Sí, en las pantallas táctiles aparecen un joystick y un botón de bomba."]
     ],
     "shots.0.alt": "Little Bombers: una explosión en un nivel de dunas",
     "shots.1.alt": "Little Bombers: el menú principal",
