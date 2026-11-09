@@ -30,9 +30,13 @@ jobs:
       # Игры живут в своём репозитории и подтягиваются при каждой выкладке: статьи из их docs (pull-game-posts.mjs) попадают
       # в блог при сборке сайта, сами игры копируются в dist ниже
       # fetch-depth: 0 — тоже полная история: patch-games.mjs берёт из неё дату игр для sitemap.xml
+      # Версия игр зафиксирована в games.lock; её обновляет games-sync.yml, когда в awesome-games приходит новый коммит
+      - id: games
+        run: echo "sha=$(tr -d '[:space:]' < games.lock)" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@v4
         with:
           repository: esurvanov/awesome-games
+          ref: ${{ steps.games.outputs.sha }}
           path: games
           fetch-depth: 0
       - run: npm run build

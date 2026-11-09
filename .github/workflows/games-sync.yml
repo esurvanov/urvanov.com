@@ -1,0 +1,41 @@
+name: Games sync
+
+# Игры живут в репозитории esurvanov/awesome-games. Здесь их версия зафиксирована в games.lock.
+# Раз в 15 минут сверяем её с main игр: если там новый коммит — обновляем games.lock обычным коммитом и запускаем выкладку.
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: games-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: head
+        run: |
+          sha=$(git ls-remote https://github.com/esurvanov/awesome-games.git refs/heads/main | cut -f1)
+          [ -n "$sha" ] || { echo "нет main в awesome-games"; exit 1; }
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+      - id: change
+        run: |
+          if [ "$(tr -d '[:space:]' < games.lock)" = "${{ steps.head.outputs.sha }}" ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.change.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "${{ steps.head.outputs.sha }}" > games.lock
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Выкладка: игры обновлены до ${{ steps.head.outputs.sha }}"
+          git push
+          # пуш от имени workflow сам выкладку не запускает — запускаем явно
+          gh workflow run pages.yml --ref main
