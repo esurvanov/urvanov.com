@@ -1,7 +1,7 @@
 ---
-title: TLA+ vs Quint vs Alloy: which formal verification language to choose
+title: TLA+ vs Quint vs Alloy, which formal verification language to choose: side-by-side comparisons and a table
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-11
 description: TLA+ vs Alloy vs Quint: what each language describes, how it is written, what checks it, and who it suits, from event order to data relationships.
 tags: AI, specs, TLA+, Alloy, Quint, formal verification, model checking, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
 category: specs
@@ -10,7 +10,7 @@ mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, model checking, for
 toc: idea=One task | table=Summary | tla-alloy=TLA+ and Alloy | tla-quint=TLA+ and Quint | alloy-quint=Alloy and Quint | choose=What to choose | faq=FAQ | next=Further reading
 ---
 
-Among formal verification languages, TLA+ and Quint both describe the behavior of a system step by step and differ in notation: Quint reads like ordinary code, TLA+ like formulas. Alloy describes objects and the links between them. Use Quint for product rules over time, TLA+ for strict proofs, Alloy for the structure of data and access rights.
+TLA+ vs Quint vs Alloy comes down to what you model. TLA+ and Quint describe system behavior step by step and differ in notation: Quint reads like ordinary code, TLA+ like formulas. Alloy describes objects and the links between them. Use Quint for product rules over time, TLA+ for strict proofs, Alloy for data structure and access rights.
 
 <b-post series="harness">
 <b-art names="tla-alloy-quint-compare/trio" wide/>

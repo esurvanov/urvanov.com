@@ -1,7 +1,7 @@
 ---
-title: OpenSpec setup and commands: a change example from plan to merge
+title: What is OpenSpec, setup and commands: a change example from plan to merge
 date: 2026-11-07
-updated: 2026-11-08
+updated: 2026-11-11
 description: How OpenSpec by Fission AI works: a change folder with a plan, requirements and tasks, three agent commands and a merge into the shared specs. Setup in two commands, a real change from the urvanov.com site repository, a comparison with Spec Kit and ready prompts to start.
 tags: AI, OpenSpec, specs, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs

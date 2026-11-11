@@ -1,7 +1,7 @@
 ---
-title: How model checking differs from testing: a test checks one scenario, a model checks every order of actions (Quint, QUnit and TLA+)
+title: Model checking vs testing: a test checks one scenario, a model checks every order of actions (Quint, QUnit and TLA+)
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-11
 description: A test checks a scenario you thought of, model checking tries every order of actions. What QUnit, Jest, Vitest catch, and what Quint, TLA+, Alloy catch.
 tags: AI, specs, Quint, TLA+, Alloy, QUnit, Jest, Vitest, testing, formal verification
 category: specs
@@ -10,7 +10,7 @@ mentions: Quint, QUnit, Jest, Vitest, TLA+, Alloy, Apalache, model checking, for
 toc: names=Two names | tests=Test engines | tla=TLA+ and Alloy | choose=What to choose | together=Together | faq=FAQ | next=Further reading
 ---
 
-A test checks a scenario you thought of, while model checking tries every order of actions and finds a rule violation nobody imagined. Test frameworks such as QUnit, Jest and Vitest check finished code on examples. Quint and TLA+ check the rules of a system even before any code exists, including code from an AI agent.
+Model checking vs testing: a test checks a scenario you thought of, while model checking tries every order of actions and finds a rule violation nobody imagined. Test frameworks such as QUnit, Jest and Vitest check finished code on examples. Quint and TLA+ check the rules of a system even before any code exists, including code from an AI agent.
 
 <b-post series="harness">
 <b-art names="quint-vs-tests-and-tla/names" wide/>

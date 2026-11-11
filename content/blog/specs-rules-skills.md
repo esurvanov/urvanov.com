@@ -1,8 +1,8 @@
 ---
-title: Что такое AGENTS.md и CLAUDE.md: пример файла и где хранить спеки, правила и скиллы
+title: Что такое AGENTS.md и CLAUDE.md и чем они отличаются от spec.md: пример файла и где хранить спеки, правила и скиллы
 date: 2026-09-28
-updated: 2026-11-08
-description: Четыре вида постоянного контекста для ИИ: спека задачи, библия проекта (CLAUDE.md, AGENTS.md), правила и скиллы Claude Code. Что в каждом, когда он попадает в контекст и что из этого есть в ChatGPT и Claude. По документации Anthropic, OpenAI, GitHub, Cursor и Cline.
+updated: 2026-11-11
+description: AGENTS.md и CLAUDE.md задают агенту правила на весь проект, spec.md описывает одну задачу. Пример файла и что куда класть: спеки, библию проекта, правила и скиллы. По документации Anthropic, OpenAI, GitHub, Cursor и Cline.
 tags: AI, Claude Code, CLAUDE.md, харнесс, спеки, скиллы
 category: specs
 layout: wide
@@ -10,7 +10,7 @@ mentions: AGENTS.md, CLAUDE.md, Agent Skills, Spec Kit, Memory Bank
 toc: map=Четыре слоя | spec=Спека | bible=Библия | rules=Правила | skills=Скиллы | chat=В чате | pick=Что куда | faq=Вопросы | next=Дальше по теме
 ---
 
-AGENTS.md и CLAUDE.md — файлы в корне проекта с постоянными инструкциями для ИИ-агента: команды сборки и тестов, стиль кода, запреты. AGENTS.md — открытый формат, его читают Codex, Cursor, Gemini CLI, Copilot и другие агенты; CLAUDE.md читает Claude Code. От спеки (spec.md) AGENTS.md отличается охватом: он задаёт правила на весь проект, а спека описывает одну задачу. Ниже — пример файла и где хранить спеки, библию проекта и скиллы.
+AGENTS.md и CLAUDE.md — файлы в корне проекта с постоянными инструкциями для ИИ-агента: команды сборки и тестов, стиль кода, запреты. AGENTS.md читают Codex, Cursor, Gemini CLI, Copilot и другие агенты, CLAUDE.md — Claude Code. От spec.md они отличаются охватом: правила действуют на весь проект, спека описывает одну задачу. Ниже — пример файла и что куда класть.
 
 <b-post series="prompts">
 <b-ctx-layers>

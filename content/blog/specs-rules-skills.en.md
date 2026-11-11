@@ -1,8 +1,8 @@
 ---
-title: What are AGENTS.md and CLAUDE.md: an example file and where to keep specs, rules and skills
+title: What are AGENTS.md and CLAUDE.md and how they differ from spec.md: an example file and where to keep specs, rules and skills
 date: 2026-09-28
-updated: 2026-11-07
-description: Four kinds of persistent context for AI (AGENTS.md, CLAUDE.md, skills): the task spec, the project bible, rules and skills. What goes into each, when it enters the context, and what ChatGPT and Claude offer. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.
+updated: 2026-11-11
+description: AGENTS.md and CLAUDE.md give an agent rules for the whole project, while spec.md describes one task. An example file and what goes where: specs, the project bible, rules and skills. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.
 tags: AI, Claude Code, CLAUDE.md, harness, specs, skills
 category: specs
 layout: wide
@@ -10,7 +10,7 @@ mentions: AGENTS.md, CLAUDE.md, Agent Skills, Spec Kit, Memory Bank
 toc: map=Four layers | spec=Spec | bible=Bible | rules=Rules | skills=Skills | chat=In a chat | pick=What goes where | faq=Questions | next=Further reading
 ---
 
-AGENTS.md and CLAUDE.md are files in the project root with standing instructions for an AI agent: build and test commands, code style, prohibitions. AGENTS.md is an open format read by Codex, Cursor, Gemini CLI, Copilot and other agents; CLAUDE.md is read by Claude Code. The harness puts such a file at the start of every session. Below are an example file and where to keep specs, the project bible and skills.
+AGENTS.md and CLAUDE.md are files in the project root with standing instructions for an AI agent: build and test commands, code style, prohibitions. AGENTS.md is read by Codex, Cursor, Gemini CLI, Copilot and other agents, CLAUDE.md by Claude Code. They differ from spec.md in scope: rules cover the whole project, a spec covers one task.
 
 <b-post series="prompts">
 <b-ctx-layers>
