@@ -207,7 +207,8 @@
   "notes.items.2.text": "una extensión de OpenAI, incluida en los planes de ChatGPT.",
   "notes.items.3.text": "una extensión gratuita de código abierto: conectas tu propia clave para cualquier modelo y pagas solo por el modelo.",
   "notes.items.4.text": "el agente de Sber con una extensión para VS Code.",
-  "notes.items.5.text": "un editor aparte construido sobre VS Code con un agente integrado; se instala en lugar de VS Code y las extensiones de VS Code funcionan en él."
+  "notes.items.5.text": "un editor aparte construido sobre VS Code con un agente integrado; se instala en lugar de VS Code y las extensiones de VS Code funcionan en él.",
+  "notes.items.6.text": "un IDE de Microsoft distinto, que no debe confundirse con VS Code; incluye el mismo GitHub Copilot con modo agente, con un límite mensual en el plan gratuito."
  },
  "terminal": {
   "name": "Terminal",
@@ -218,7 +219,7 @@
   "faq.1.q": "¿Qué agentes CLI existen?",
   "faq.1.a": "Claude Code y Codex CLI, y uno gratuito y de código abierto es OpenCode. Trabajan directamente en la terminal y ejecutan ellos mismos pruebas, compilaciones y git.",
   "source.label": "Wikipedia: Command-line interface",
-  "seo.title": "Agentes CLI de IA: qué es la terminal (CLI) y qué agentes de código funcionan en ella",
+  "seo.title": "CLI de agentes de IA: qué es la terminal y qué agentes de código funcionan en ella (Claude Code, Codex CLI, OpenCode)",
   "seo.description": "La terminal (CLI) es donde los comandos se escriben como texto. Qué es un agente CLI de IA: ejecuta pruebas, compilaciones y git en la terminal. Claude Code, Codex CLI, OpenCode y Hermes Agent gratuitos, qué pasó con Gemini CLI y en qué se diferencia de un agente en un IDE.",
   "notes.title": "Agentes CLI de IA",
   "notes.items.0.text": "el agente de Anthropic: se inicia con el comando claude en la carpeta del proyecto; con un plan de Claude o con la API de pago por uso.",
@@ -302,13 +303,13 @@
  },
  "claude-code": {
   "aka": "Claude Code CLI, agente de código de Anthropic",
-  "def": "Claude Code es un agente de código de Anthropic: lee el proyecto, edita archivos, ejecuta comandos y pruebas, y trabaja con git. A diferencia de Claude en un chat, tiene acceso al proyecto: el chat responde con texto, mientras que Claude Code cambia archivos y ejecuta comandos por sí mismo. Funciona en la terminal (CLI), en VS Code y JetBrains, en la app de escritorio y en el navegador, y es el mismo agente en todas partes. No tiene un modelo propio: funciona con los modelos de Claude (Opus, Sonnet, Haiku); cambias de modelo con `/model`. Lee las reglas del proyecto de `CLAUDE.md`, guarda procesos repetibles en skills y conecta sistemas externos mediante MCP. Sus alternativas más cercanas son Codex y Cursor.",
+  "def": "Claude Code es un agente de programación de Anthropic: lee el proyecto, edita archivos, ejecuta comandos y pruebas y trabaja con git. A diferencia de Claude en un chat, tiene acceso al proyecto: el chat responde con texto, mientras que Claude Code cambia archivos y ejecuta comandos por sí mismo. Funciona en la terminal (CLI), en VS Code y JetBrains, en la app de escritorio y en el navegador, y es el mismo agente en todas partes. No tiene un modelo propio: funciona con modelos Claude (Fable, Opus, Sonnet, Haiku); el modelo se cambia con `/model`. Lee las reglas del proyecto de `CLAUDE.md`, guarda procesos repetibles en skills y conecta sistemas externos mediante MCP. Sus alternativas más cercanas son Codex y Cursor.",
   "faq.0.q": "¿En qué se diferencia Claude de Claude Code?",
   "faq.0.a": "Claude en un chat responde con texto. Claude Code es un agente de código: lee el proyecto, edita archivos y ejecuta comandos y pruebas por sí mismo.",
   "faq.1.q": "¿Dónde funciona Claude Code?",
   "faq.1.a": "En la terminal, en VS Code y JetBrains, en la app de escritorio y en el navegador. Es el mismo agente en todas partes.",
   "faq.2.q": "¿Qué modelos usa Claude Code?",
-  "faq.2.a": "Los modelos de Claude: Opus, Sonnet y Haiku. Cambias de modelo con el comando /model.",
+  "faq.2.a": "Con modelos Claude: Fable, Opus, Sonnet y Haiku. El modelo se cambia con el comando /model.",
   "source.label": "Documentación de Claude Code",
   "seo.title": "Qué es Claude Code: diferencias con el chat de Claude, modelos y uso",
   "seo.description": "Para qué sirve Claude Code: lee tu proyecto, edita archivos y ejecuta pruebas. Claude Code vs chat de Claude, qué modelos usa, CLAUDE.md, skills y MCP.",
@@ -351,7 +352,7 @@
   "compare.rows.6": [
    "Precio",
    "un plan de Claude",
-   "el mismo plan de Claude (Pro, Max) o la API de pago por uso"
+   "el mismo plan de Claude (Pro, Max, Ultra, Team, Enterprise) o la API de pago por uso"
   ],
   "matrix.title": "Qué tienen en común y en qué se diferencian",
   "matrix.legend": "✓ tiene · ✗ no tiene",
@@ -524,15 +525,17 @@
    "no",
    "no",
    "yes"
-  ]
+  ],
+  "faq.6.q": "¿En qué se diferencia Codex de GPT?",
+  "faq.6.a": "GPT es la familia de modelos de OpenAI; Codex es el agente que funciona con ellos: el mismo modelo, pero con acceso a su proyecto, a los comandos y a las pruebas."
  },
  "cursor": {
   "aka": "Cursor AI, Cursor IDE",
-  "def": "Cursor es una app de editor de código de Anysphere, construida sobre VS Code, con un agente de IA integrado: trabajas en el editor, el agente está a tu lado y eliges un modelo de distintos proveedores o usas su propio modelo Composer. El agente hace lo que hacen Claude Code y Codex: lee el proyecto, edita archivos, ejecuta comandos; también hay una versión de terminal y agentes en la nube. Lee las reglas del proyecto de `AGENTS.md` y sus propias reglas en `.cursor/rules`, y conecta sistemas externos mediante MCP.",
+  "def": "Cursor es un editor de código de Anysphere, basado en VS Code, con un agente de IA integrado: usted trabaja en el editor, el agente está al lado y elige entre sus propios modelos (Grok, Composer) o los de otras empresas; desde 2026 Cursor pertenece a SpaceX. El agente hace lo mismo que Claude Code y Codex: lee el proyecto, edita archivos, ejecuta comandos; también hay versión de terminal y agentes en la nube. Lee las reglas del proyecto de `AGENTS.md` y las suyas propias de `.cursor/rules`, y conecta sistemas externos mediante MCP.",
   "faq.0.q": "¿Qué es Cursor AI?",
   "faq.0.a": "Un editor de código de Anysphere construido sobre VS Code con un agente de IA integrado: trabajas en el editor y el agente a tu lado lee el proyecto, edita archivos y ejecuta comandos.",
   "faq.1.q": "¿Qué modelos tiene Cursor?",
-  "faq.1.a": "Modelos de distintos proveedores para elegir, más el modelo propio de Cursor, Composer.",
+  "faq.1.a": "Sus propios modelos Grok y Composer, más los de otras empresas: Claude, Gemini, GPT, DeepSeek y más; la lista depende del plan.",
   "faq.2.q": "¿Reglas de Cursor o AGENTS.md?",
   "faq.2.a": "Cursor lee ambos: AGENTS.md es un archivo común para distintos agentes, y las reglas de .cursor/rules son propias de Cursor y pueden limitarse a archivos concretos.",
   "source.label": "Sitio oficial de Cursor",
@@ -542,13 +545,13 @@
   "also.0.label": "Cursor para 1C mediante MCP",
   "notes.title": "Cursor: modelos, el agente y reglas",
   "notes.items.0.name": "Modelos",
-  "notes.items.0.text": "su propio Composer, Grok, Claude y Gemini; modelos de OpenAI hasta la fecha de corte anunciada para el 12 de noviembre de 2026. La oferta depende del plan: el gratuito recibe menos. Si un proveedor bloquea tu región, puedes añadir tu propia clave de API.",
+  "notes.items.0.text": "sus propios modelos Grok (creado con SpaceXAI) y Composer, además de Claude, Gemini, DeepSeek, Kimi y otros. Los modelos de OpenAI siguen en la lista en noviembre de 2026, pero OpenAI va a dejar de suministrarlos tras la compra de Cursor por SpaceX: no habrá modelos nuevos y la fecha de corte (propuesta para el 12 de noviembre de 2026) aún no está confirmada. Free y Plus solo tienen Grok; los modelos de otras empresas empiezan en Premium y se cobran a tarifa de API.",
   "notes.items.1.name": "El agente",
   "notes.items.1.text": "modos: Agent edita archivos y ejecuta comandos por sí mismo, Ask solo responde, Plan escribe primero un plan. Funciona en el editor, en la terminal y como agente en la nube.",
   "notes.items.2.name": "Reglas del proyecto",
-  "notes.items.2.text": "la carpeta `.cursor/rules` (el antiguo archivo `.cursorrules` aún funciona) y `AGENTS.md` en la raíz del repositorio.",
+  "notes.items.2.text": "la carpeta `.cursor/rules` (archivos `.mdc`) y `AGENTS.md`, en la raíz del repositorio y en subcarpetas.",
   "notes.items.3.name": "Planes",
-  "notes.items.3.text": "Hobby gratuito con límites, Pro a 20 $, Pro+ a 60 $ y Ultra a 200 $ al mes, Teams a 40 $ por usuario.",
+  "notes.items.3.text": "Free con límites, Plus a 8 $ (solo Grok), Premium a 30 $, Super a 100 $ y Ultra a 200 $ al mes; los modelos de otras empresas se cobran aparte a tarifa de API. Teams desde 30 $ por usuario.",
   "notes.items.4.name": "Sobre qué está construido",
   "notes.items.4.text": "construido sobre VS Code: las extensiones de VS Code funcionan en él.",
   "matrix.title": "Qué tienen en común y en qué se diferencian",
@@ -601,7 +604,9 @@
    "no",
    "no",
    "yes"
-  ]
+  ],
+  "faq.3.q": "¿Siguen funcionando los modelos GPT en Cursor después del 12 de noviembre de 2026?",
+  "faq.3.a": "A 13 de noviembre de 2026, los modelos de OpenAI siguen en la lista de modelos de Cursor. OpenAI decidió dejar de suministrar modelos a Cursor y propuso el 12 de noviembre; la fecha definitiva se anunciará aparte. Alternativas: su propia clave de OpenAI en el chat y el agente de Cursor, o la extensión de Codex dentro de Cursor."
  },
  "hermes-agent": {
   "aka": "agente de IA Hermes",
@@ -668,9 +673,9 @@
  },
  "opencode": {
   "aka": "Open Code",
-  "def": "OpenCode es un agente de código gratuito y de código abierto que funciona en la terminal; también hay una app de escritorio y extensiones para IDE. Tú eliges el modelo: Claude, GPT, Gemini y decenas más mediante una API, o uno local; pagas solo al proveedor del modelo. Modos: Build edita código, Plan solo planifica y no cambia archivos. Lee las reglas del proyecto de `AGENTS.md`, y el comando `/init` crea ese archivo a partir del repositorio.",
+  "def": "OpenCode es un agente de programación gratuito y de código abierto que funciona en la terminal; también hay una app de escritorio y una app web. Usted elige el modelo: Claude, GPT, Gemini y decenas más mediante API, o uno local; solo paga al proveedor del modelo. Modos: Build edita código, Plan solo planifica y no cambia archivos. Lee las reglas del proyecto de `AGENTS.md`, y el comando `/init` crea ese archivo a partir del repositorio.",
   "faq.0.q": "¿Qué es OpenCode?",
-  "faq.0.a": "Un agente de código gratuito y de código abierto en la terminal, con app de escritorio y extensiones para IDE. Tú eliges el modelo y pagas solo a su proveedor.",
+  "faq.0.a": "Un agente de programación gratuito y de código abierto en la terminal, también con app de escritorio y app web. Usted elige el modelo y paga solo a su proveedor.",
   "faq.1.q": "¿Qué modelos funcionan en OpenCode?",
   "faq.1.a": "Claude, GPT, Gemini y decenas más mediante una API, así como un modelo local en tu ordenador.",
   "faq.2.q": "¿Cómo se instala OpenCode?",
@@ -681,7 +686,8 @@
   "faq.4.a": "Están construidos igual: ambos leen el proyecto, editan archivos y ejecutan comandos. OpenCode es de código abierto y funciona con cualquier modelo; Claude Code solo con modelos de Claude.",
   "source.label": "Documentación de OpenCode",
   "seo.title": "Qué es OpenCode: agente de código de IA gratuito y abierto en la terminal",
-  "seo.description": "OpenCode es un agente de código de IA gratuito y de código abierto para la terminal: cualquier modelo o uno local, modos Build y Plan, reglas en AGENTS.md."
+  "seo.description": "OpenCode es un agente de código de IA gratuito y de código abierto para la terminal: cualquier modelo o uno local, modos Build y Plan, reglas en AGENTS.md.",
+  "more.label": "Claude Code, Codex, Cursor y Hermes Agent: cuál elegir"
  },
  "gemini-cli": {
   "aka": "Google Gemini CLI",
@@ -706,17 +712,17 @@
  },
  "claude-in-chrome": {
   "aka": "Claude para Chrome, extensión de Claude para Chrome",
-  "def": "Claude in Chrome es una extensión de Claude para el navegador Chrome que permite a un agente trabajar en tu navegador: abrir páginas, hacer clic, rellenar formularios y leer la consola. Funciona con tu sesión iniciada, así que ve lo que ves tú. Hay dos modos: un panel lateral donde Claude hace la tarea en la página abierta, y el control del navegador desde Claude Code. El panel lateral oficialmente solo funciona en Chrome de escritorio; el modo de Claude Code también funciona en Edge y otros navegadores Chromium.",
-  "faq.0.q": "¿Qué hace la extensión de Claude para Chrome?",
-  "faq.0.a": "Permite que el agente trabaje en tu navegador: abrir páginas, hacer clic, rellenar formularios y leer la consola con tu sesión iniciada.",
-  "faq.1.q": "¿Cómo se usa Claude in Chrome?",
-  "faq.1.a": "Hay dos modos: un panel lateral donde Claude hace la tarea en la página abierta, y el control del navegador desde Claude Code.",
-  "faq.2.q": "¿Claude in Chrome funciona en otros navegadores?",
-  "faq.2.a": "El panel lateral oficialmente solo funciona en Chrome de escritorio. El modo de Claude Code también funciona en Edge y otros navegadores Chromium.",
+  "def": "Claude in Chrome (Claude for Chrome) es la extensión oficial de Claude de Anthropic para el navegador Chrome, con la que un agente trabaja en su navegador: abre páginas, hace clic, rellena formularios y lee la consola. Funciona con su sesión iniciada, así que ve lo mismo que usted. Se instala desde Chrome Web Store y solo funciona en los planes de pago de Claude: Pro, Max, Ultra, Team y Enterprise. Hay dos modos: un panel lateral, donde Claude hace la tarea en la página abierta, y el control del navegador desde Claude Code. El panel lateral solo funciona oficialmente en Chrome de escritorio; el modo de Claude Code también funciona en Edge y otros navegadores Chromium.",
+  "faq.3.q": "¿Qué hace la extensión de Claude para Chrome?",
+  "faq.3.a": "Permite que el agente trabaje en tu navegador: abrir páginas, hacer clic, rellenar formularios y leer la consola con tu sesión iniciada.",
+  "faq.4.q": "¿Cómo se usa Claude in Chrome?",
+  "faq.4.a": "Hay dos modos: un panel lateral donde Claude hace la tarea en la página abierta, y el control del navegador desde Claude Code.",
+  "faq.5.q": "¿Claude in Chrome funciona en otros navegadores?",
+  "faq.5.a": "El panel lateral solo funciona oficialmente en Chrome de escritorio y no en el móvil. El modo de Claude Code también funciona en Edge y otros navegadores Chromium.",
   "source.label": "Ayuda: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome: qué hace la extensión de Claude para Chrome",
-  "seo.description": "Claude in Chrome es la extensión de Claude para Chrome: un agente abre páginas, hace clic y rellena formularios con tu sesión iniciada. Dos modos, panel lateral y Claude Code, y en qué navegadores funciona.",
-  "more.label": "Claude in Chrome: cómo trabaja un agente en tu navegador",
+  "seo.title": "Claude in Chrome: la extensión de Claude para Chrome — instalación, planes y navegadores",
+  "seo.description": "Qué hace la extensión de Claude para Chrome, cómo instalarla desde Chrome Web Store, qué planes de pago de Claude la incluyen y dónde funciona: el panel lateral en Chrome de escritorio o Claude Code en navegadores Chromium.",
+  "more.label": "Cómo Claude Code prueba un sitio en su navegador: Claude in Chrome — depuración y formularios con su sesión",
   "compare.title": "Dos modos: el panel lateral y Claude Code",
   "compare.head": [
    "Panel lateral",
@@ -741,7 +747,13 @@
    "Navegadores",
    "solo Chrome de escritorio",
    "Chrome, Edge y otros navegadores Chromium"
-  ]
+  ],
+  "faq.0.q": "¿Cómo instalo la extensión de Claude para Chrome?",
+  "faq.0.a": "Abra la página de Claude en Chrome Web Store, pulse «Añadir a Chrome», inicie sesión con su cuenta de Claude, fije la extensión y conceda los permisos que pida.",
+  "faq.1.q": "¿Claude in Chrome es gratuito?",
+  "faq.1.a": "No. Solo funciona en los planes de pago de Claude: Pro, Max, Ultra, Team y Enterprise. En Team y Enterprise, el administrador decide si está activado.",
+  "faq.2.q": "¿Cómo uso Claude in Chrome desde Claude Code?",
+  "faq.2.a": "Ejecute claude --chrome o active Enabled by default en /chrome; en VS Code, escriba @browser. Hace falta un plan directo de Anthropic y haber iniciado sesión con /login: no funciona a través de Bedrock, Google Cloud ni Microsoft Foundry, ni con una clave de API."
  },
  "anthropic": {
   "def": "Anthropic es una empresa de EE. UU. que desarrolla la familia de modelos de lenguaje Claude: Opus, Sonnet, Haiku y Fable. Para personas: las apps de Claude, el agente Cowork que trabaja en una carpeta de tu ordenador y la extensión Claude in Chrome. Para código: el agente Claude Code. Para desarrolladores: la API, Managed Agents (agentes en la nube de Anthropic), el Agent SDK y el protocolo abierto MCP que los agentes usan para conectarse a sistemas externos.",
@@ -790,7 +802,9 @@
   "faq.0.a": "Los modelos Alice AI, el asistente Alice para personas, el agente corporativo Alice AI Pro y Yandex AI Studio para empresas, y SourceCraft con el agente Code Assistant para código.",
   "faq.1.q": "¿Qué hubo antes de Alice AI?",
   "faq.1.a": "La línea de modelos YandexGPT.",
-  "source.label": "Página de la empresa Yandex"
+  "source.label": "Página de la empresa Yandex",
+  "seo.title": "Yandex AI: modelos Alice AI, AI Studio y SourceCraft Code Assistant",
+  "seo.description": "Qué es Yandex AI: los modelos Alice AI (antes YandexGPT), el asistente Alice, Alice AI Pro para empresas, Yandex AI Studio para crear agentes y SourceCraft Code Assistant para código."
  },
  "jetbrains": {
   "def": "JetBrains es una empresa fundada en Praga en 2000 que crea IntelliJ IDEA, PyCharm, WebStorm y otros IDE, además del lenguaje Kotlin. Su propio agente de código Junie funciona en el IDE y en la terminal; Claude Agent y Codex están integrados en el IDE a su lado, y otros agentes se conectan mediante el protocolo abierto ACP. El autocompletado de código funciona con su propio modelo Mellum. Air es un espacio de trabajo donde varios agentes funcionan en paralelo (versión preliminar).",
@@ -817,11 +831,11 @@
   "source.label": "Wikipedia: Microsoft Bing"
  },
  "atlassian": {
-  "def": "Atlassian es una empresa australiana que crea Jira, Confluence y Bitbucket, los sistemas de trabajo de muchos equipos de desarrollo. Su IA se llama Rovo: los agentes de Rovo asumen tareas en Jira, y el Rovo MCP Server permite que agentes externos como Claude Code y Cursor lean y cambien datos de Jira y Confluence.",
+  "def": "Atlassian es una empresa australiana que crea Jira, Confluence y Bitbucket, los sistemas de trabajo de muchos equipos de desarrollo. Su IA se llama Rovo: los agentes de Rovo toman tareas en Jira, y el servidor MCP de Atlassian (antes Rovo MCP Server) permite que agentes externos como Claude Code y Cursor lean y cambien datos de Jira y Confluence.",
   "faq.0.q": "¿Qué es Atlassian?",
   "faq.0.a": "Una empresa australiana que crea Jira, Confluence y Bitbucket.",
   "faq.1.q": "¿Cómo se llama la IA de Atlassian?",
-  "faq.1.a": "Rovo: los agentes de Rovo asumen tareas en Jira, y el Rovo MCP Server da a agentes externos acceso a los datos de Atlassian.",
+  "faq.1.a": "Rovo: los agentes de Rovo toman tareas en Jira, y el servidor MCP de Atlassian (antes Rovo MCP Server) da a los agentes externos acceso a los datos de Atlassian.",
   "source.label": "Sitio oficial de Atlassian"
  },
  "time-to-market": {
@@ -943,7 +957,9 @@
   "faq.0.a": "Todo lo que el modelo ve en el momento: la conversación, los archivos del proyecto y los datos de los sistemas conectados.",
   "faq.1.q": "¿Por qué el agente no conoce mi proyecto?",
   "faq.1.a": "Lo que no está en el contexto, el agente no lo sabe. El conocimiento permanente del proyecto va en archivos de instrucciones como AGENTS.md o CLAUDE.md.",
-  "source.label": "Anthropic: Context windows"
+  "source.label": "Anthropic: Context windows",
+  "seo.title": "Contexto en IA: qué es, la ventana de contexto y por qué el agente olvida",
+  "seo.description": "El contexto es todo lo que un modelo ve en este momento: la conversación, los archivos del proyecto, los datos de los sistemas conectados. Qué es la ventana de contexto, por qué un agente olvida su proyecto y dónde guardar el conocimiento permanente: AGENTS.md, CLAUDE.md, memoria."
  },
  "token": {
   "name": "Token",
@@ -1144,7 +1160,14 @@
   "faq.0.a": "Un archivo común de instrucciones para distintos agentes: comandos, estilo, prohibiciones.",
   "faq.1.q": "¿Qué agentes leen AGENTS.md?",
   "faq.1.a": "Codex, Cursor y otros agentes, así que el archivo sirve como alternativa neutral a CLAUDE.md.",
-  "source.label": "Sitio oficial de AGENTS.md"
+  "source.label": "Sitio oficial de AGENTS.md",
+  "faq.2.q": "¿AGENTS.md o reglas de Cursor?",
+  "faq.2.a": "Cursor lee ambos. AGENTS.md es un archivo común para distintos agentes, en la raíz y en subcarpetas; las reglas de .cursor/rules son solo de Cursor, pero pueden aplicarse siempre, por descripción, por patrón de archivos o manualmente.",
+  "faq.3.q": "¿En qué se diferencia AGENTS.md de spec.md?",
+  "faq.3.a": "AGENTS.md fija reglas para todo el proyecto y entra en cada sesión del agente. spec.md describe una tarea —requisitos y criterios de terminado— y vive hasta que la tarea se cierra.",
+  "seo.title": "AGENTS.md frente a reglas de Cursor y CLAUDE.md: qué hace cada archivo",
+  "seo.description": "AGENTS.md es un archivo de instrucciones común para Codex, Cursor y otros agentes. En qué se diferencia de las reglas de Cursor en .cursor/rules y de CLAUDE.md, dónde está cada uno y cuándo lo lee el agente.",
+  "more.label": "AGENTS.md, CLAUDE.md y spec.md: qué va dónde"
  },
  "agent-skills": {
   "name": "Skill",
@@ -1233,7 +1256,8 @@
   "faq.0.a": "Un protocolo abierto que conecta a un agente con servicios externos como Jira o bases de datos a través de una sola interfaz.",
   "faq.1.q": "¿Quién controla los permisos en MCP?",
   "faq.1.a": "Tú: el servidor MCP ofrece al agente un conjunto de herramientas y los derechos de acceso se fijan en el lado del servidor.",
-  "source.label": "Sitio de Model Context Protocol"
+  "source.label": "Sitio de Model Context Protocol",
+  "more.label": "MCP para un agente de IA: qué problema resuelve y cómo delegar la conexión en el agente"
  },
  "mcp-client": {
   "name": "Cliente MCP",
@@ -1264,7 +1288,7 @@
  },
  "mcp-scope": {
   "name": "Ámbitos de servidores MCP",
-  "def": "Los ámbitos de servidores MCP responden a dos preguntas: en qué proyectos funciona un servidor MCP y quién lo ve. Claude Code tiene tres, que se eligen al añadir un servidor: `local`, el predeterminado, solo tú y el `project` actual; `project`, todo el equipo mediante un archivo `.mcp.json` en el repositorio, y cada persona aprueba el servidor antes del primer uso; `user`, solo tú y todos tus proyectos. Si los nombres chocan, gana por completo la capa superior: `local` anula a `project`, y `project` anula a `user`.",
+  "def": "Los niveles de servidores MCP responden a dos preguntas: en qué proyectos funciona un servidor MCP y quién lo ve. Claude Code tiene tres, que se eligen al añadir un servidor: `local`, el predeterminado, solo usted y el `project` actual; `project`, todo el equipo mediante un archivo `.mcp.json` en el repositorio, cada persona aprueba el servidor antes del primer uso en una sesión interactiva (en `claude -p`, el Agent SDK y las sesiones en la nube se carga sin preguntar); `user`, solo usted y todos sus proyectos. Si los nombres coinciden, gana por completo la capa superior: `local` anula `project`, y `project` anula `user`.",
   "faq.0.q": "¿Qué ámbitos MCP tiene Claude Code?",
   "faq.0.a": "Tres: local para ti en el proyecto actual, project para todo el equipo mediante un archivo en el repositorio, y user para ti en todos los proyectos.",
   "faq.1.q": "¿Cuándo se elige el ámbito de un servidor MCP?",
@@ -1298,7 +1322,7 @@
   "table.rows.4": [
    "Antes del primer uso",
    "nada",
-   "todos aprueban el servidor",
+   "todos aprueban el servidor en una sesión interactiva",
    "nada"
   ],
   "table.rows.5": [
@@ -1369,12 +1393,13 @@
   "notes.items.3.text": "solo lectura; modo de espacio de trabajo, con ediciones y comandos dentro de la carpeta del proyecto sin preguntar y todo lo demás con aprobación; acceso total, sin sandbox y sin aprobaciones."
  },
  "jira": {
-  "def": "Jira es un gestor de tareas y errores de Atlassian. Mediante MCP, un agente lee las tareas con sus comentarios e historial de cambios, y solo puede escribir en él con tu permiso.",
+  "def": "Jira es un sistema de tareas y errores de Atlassian. Mediante MCP un agente lee las tareas con sus comentarios y su historial de cambios, y puede escribir dentro de los permisos de su sesión; Claude Code pide permiso antes de escribir, salvo que usted lo haya concedido de antemano.",
   "faq.0.q": "¿Cómo trabaja un agente de IA con Jira?",
   "faq.0.a": "Mediante MCP lee los tickets junto con los comentarios y el historial de cambios.",
   "faq.1.q": "¿Puede el agente cambiar los tickets de Jira?",
-  "faq.1.a": "Solo con tu permiso.",
-  "source.label": "Página oficial de Jira"
+  "faq.1.a": "Sí, dentro de los permisos de la sesión o del token con el que trabaja. Claude Code pide permiso antes de actuar, salvo que usted lo haya concedido de antemano.",
+  "source.label": "Página oficial de Jira",
+  "more.label": "Jira y un agente de IA: ventajas, inconvenientes y dónde trazar el límite"
  },
  "sentry": {
   "def": "Sentry es un servicio de monitorización de errores que recoge las excepciones de la app con su contexto. Cada error se etiqueta con la versión de la app en la que ocurrió, así que mediante MCP el agente ve con qué despliegue empezó y busca la causa en los cambios de esa versión.",

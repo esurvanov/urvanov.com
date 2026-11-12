@@ -259,6 +259,7 @@ export const TERM_SETS: TermSet[] = [
             { name: { ru: 'Cline', en: 'Cline' }, text: { ru: 'открытое бесплатное расширение: подключаете свой ключ любой модели, платите только за неё.', en: 'a free open-source extension: you plug in your own key for any model and pay only for the model.' } },
             { name: { ru: 'GigaCode', en: 'GigaCode' }, text: { ru: 'агент от Сбера с расширением для VS Code.', en: 'Sber’s agent with a VS Code extension.' } },
             { name: { ru: 'Cursor', en: 'Cursor' }, text: { ru: 'отдельный редактор на основе VS Code со встроенным агентом; ставится вместо VS Code, расширения VS Code в нём работают.', en: 'a separate editor built on VS Code with a built-in agent; you install it instead of VS Code, and VS Code extensions work in it.' } },
+            { name: { ru: 'Visual Studio', en: 'Visual Studio' }, text: { ru: 'отдельная среда разработки Microsoft, не путать с VS Code; в ней тот же GitHub Copilot с режимом агента, на бесплатном тарифе — с месячным лимитом.', en: 'a separate Microsoft IDE, not VS Code; it has the same GitHub Copilot with agent mode, with a monthly limit on the free plan.' } },
           ],
         },
       },
@@ -278,7 +279,7 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Command-line_interface', label: { ru: 'Википедия: командная строка', en: 'Wikipedia: Command-line interface' } },
         seo: {
-          title: { ru: 'Терминал и CLI: что это и какие бывают CLI-агенты, в том числе бесплатные — Claude Code, Codex CLI, OpenCode', en: 'AI CLI agents: what the terminal (CLI) is and which coding agents run in it, free ones included' },
+          title: { ru: 'Терминал и CLI: что это и какие бывают CLI-агенты, в том числе бесплатные — Claude Code, Codex CLI, OpenCode', en: 'AI agent CLI: what the terminal is and which coding agents run in it (Claude Code, Codex CLI, OpenCode)' },
           description: {
             ru: 'Терминал (CLI, командная строка) — окно, где команды вводят текстом. Что такое CLI-агент: ИИ в терминале, который сам запускает тесты, сборку и git. Claude Code, Codex CLI, бесплатные OpenCode и Hermes Agent, что стало с Gemini CLI и чем CLI-агент отличается от агента в IDE.',
             en: 'The terminal (CLI) is where commands are typed as text. What an AI CLI agent is: it runs tests, builds and git in the terminal itself. Claude Code, Codex CLI, the free OpenCode and Hermes Agent, what happened to Gemini CLI, and how a CLI agent differs from one in an IDE.',
@@ -414,15 +415,15 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Claude Code', en: 'Claude Code' },
         aka: { ru: 'Клод Код, Claude Code CLI', en: 'Claude Code CLI, Anthropic coding agent' },
         def: {
-          ru: 'Claude Code — агент для программирования от Anthropic: читает проект, правит файлы, запускает команды и тесты, работает с git. От Claude в чате отличается доступом к проекту: чат отвечает текстом, а Claude Code сам меняет файлы и запускает команды. Работает в терминале (CLI), в VS Code и JetBrains, в приложении для компьютера и в браузере — везде это один и тот же агент. Своей нейросети у него нет: работает на моделях Claude (Opus, Sonnet, Haiku), модель меняют командой `/model`. Правила проекта читает из `CLAUDE.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP. Ближайшие аналоги — Codex и Cursor.',
-          en: 'Claude Code is a coding agent from Anthropic: it reads the project, edits files, runs commands and tests, and works with git. Unlike Claude in a chat it has access to the project: the chat answers with text, while Claude Code changes files and runs commands itself. It runs in the terminal (CLI), in VS Code and JetBrains, in the desktop app and in the browser, and it is the same agent everywhere. It has no model of its own: it runs on Claude models (Opus, Sonnet, Haiku); you switch the model with `/model`. It reads project rules from `CLAUDE.md`, keeps repeatable processes in skills and connects outside systems through MCP. Its closest alternatives are Codex and Cursor.',
+          ru: 'Claude Code — агент для программирования от Anthropic: читает проект, правит файлы, запускает команды и тесты, работает с git. От Claude в чате отличается доступом к проекту: чат отвечает текстом, а Claude Code сам меняет файлы и запускает команды. Работает в терминале (CLI), в VS Code и JetBrains, в приложении для компьютера и в браузере — везде это один и тот же агент. Своей нейросети у него нет: работает на моделях Claude (Fable, Opus, Sonnet, Haiku), модель меняют командой `/model`. Правила проекта читает из `CLAUDE.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP. Ближайшие аналоги — Codex и Cursor.',
+          en: 'Claude Code is a coding agent from Anthropic: it reads the project, edits files, runs commands and tests, and works with git. Unlike Claude in a chat it has access to the project: the chat answers with text, while Claude Code changes files and runs commands itself. It runs in the terminal (CLI), in VS Code and JetBrains, in the desktop app and in the browser, and it is the same agent everywhere. It has no model of its own: it runs on Claude models (Fable, Opus, Sonnet, Haiku); you switch the model with `/model`. It reads project rules from `CLAUDE.md`, keeps repeatable processes in skills and connects outside systems through MCP. Its closest alternatives are Codex and Cursor.',
         },
         match: { ru: ['Claude Code', 'Клод Код\\p{L}*'], en: ['Claude Code'] },
         related: ['ai-agent', 'claude-md', 'mcp', 'agent-skills', 'session'],
         faq: [
           { q: { ru: 'Чем Claude отличается от Claude Code?', en: 'How is Claude different from Claude Code?' }, a: { ru: 'Claude в чате отвечает текстом. Claude Code — агент для кода: сам читает проект, правит файлы, запускает команды и тесты.', en: 'Claude in a chat answers with text. Claude Code is a coding agent: it reads the project, edits files and runs commands and tests itself.' } },
           { q: { ru: 'Где работает Claude Code?', en: 'Where does Claude Code run?' }, a: { ru: 'В терминале, в VS Code и JetBrains, в приложении для компьютера и в браузере. Везде это один и тот же агент.', en: 'In the terminal, in VS Code and JetBrains, in the desktop app and in the browser. It is the same agent everywhere.' } },
-          { q: { ru: 'На каких моделях работает Claude Code?', en: 'Which models does Claude Code use?' }, a: { ru: 'На моделях Claude: Opus, Sonnet и Haiku. Модель меняют командой /model.', en: 'On Claude models: Opus, Sonnet and Haiku. You switch the model with the /model command.' } },
+          { q: { ru: 'На каких моделях работает Claude Code?', en: 'Which models does Claude Code use?' }, a: { ru: 'На моделях Claude: Fable, Opus, Sonnet и Haiku. Модель меняют командой /model.', en: 'On Claude models: Fable, Opus, Sonnet and Haiku. You switch the model with the /model command.' } },
         ],
         source: { url: 'https://code.claude.com/docs/en/overview', label: { ru: 'Документация Claude Code', en: 'Claude Code docs' } },
         seo: {
@@ -443,7 +444,7 @@ export const TERM_SETS: TermSet[] = [
             { ru: ['Модель', 'модели Claude', 'те же модели Claude, смена через /model'], en: ['Model', 'Claude models', 'the same Claude models, switched with /model'] },
             { ru: ['Правила проекта', 'проекты и инструкции', 'файл CLAUDE.md в репозитории'], en: ['Project rules', 'projects and instructions', 'a CLAUDE.md file in the repo'] },
             { ru: ['Внешние системы', 'коннекторы', 'MCP-серверы'], en: ['Outside systems', 'connectors', 'MCP servers'] },
-            { ru: ['Оплата', 'подписка Claude', 'та же подписка Claude (Pro, Max) или оплата по API'], en: ['Pricing', 'a Claude plan', 'the same Claude plan (Pro, Max) or pay-as-you-go API'] },
+            { ru: ['Оплата', 'подписка Claude', 'та же подписка Claude (Pro, Max, Ultra, Team, Enterprise) или оплата по API'], en: ['Pricing', 'a Claude plan', 'the same Claude plan (Pro, Max, Ultra, Team, Enterprise) or pay-as-you-go API'] },
           ],
         },
         matrix: CODING_MATRIX,
@@ -474,9 +475,9 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'codex',
         name: { ru: 'Codex', en: 'Codex' },
-        aka: { ru: 'OpenAI Codex, Codex AI, Codex в ChatGPT', en: 'OpenAI Codex, Codex AI, ChatGPT Codex' },
+        aka: { ru: 'OpenAI Codex, Codex AI, Codex в ChatGPT, Кодекс', en: 'OpenAI Codex, Codex AI, ChatGPT Codex' },
         def: {
-          ru: 'Codex — программа-агент от OpenAI для программирования на моделях GPT; с ChatGPT это разные вещи: чат отвечает текстом, а Codex сам работает в проекте — читает код, правит файлы, запускает команды и тесты, готовит пулл-реквесты. Работает в ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице; везде это один агент, и он входит в тарифы ChatGPT, лимиты зависят от тарифа. Устроен как Claude Code и Cursor. Инструкции проекта читает из `AGENTS.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP.',
+          ru: 'Codex — агент OpenAI для программирования на моделях GPT; от ChatGPT отличается тем, что сам работает в проекте: читает код, правит файлы, запускает команды и тесты, готовит пулл-реквесты, а ChatGPT отвечает текстом. Работает в ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице; везде это один агент, и он входит в тарифы ChatGPT, лимиты зависят от тарифа. Устроен как Claude Code и Cursor. Инструкции проекта читает из `AGENTS.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP.',
           en: 'Codex is a coding agent app from OpenAI on GPT models, and it is a different thing from ChatGPT: the chat answers with text, while Codex works in the project itself — it reads the code, edits files, runs commands and tests, and prepares pull requests. It runs in ChatGPT, in the desktop app, in the terminal, in the IDE and in the cloud, where tasks run in a separate sandbox; it is one agent everywhere and comes with ChatGPT plans, with limits that depend on the plan. It is built like Claude Code and Cursor. It reads project instructions from `AGENTS.md`, keeps repeatable processes in skills and connects outside systems through MCP.',
         },
         match: { ru: ['(?:OpenAI )?Codex(?: AI| CLI)?'], en: ['(?:OpenAI )?Codex(?: AI| CLI)?'] },
@@ -488,12 +489,13 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Codex — это модель или агент?', en: 'Is Codex a model or an agent?' }, a: { ru: 'Сейчас агент. В 2021 году Codex называлась модель OpenAI, которая дописывала код и работала внутри GitHub Copilot; имя осталось, а под ним теперь агент на моделях GPT.', en: 'An agent today. In 2021 Codex was the name of an OpenAI model that completed code and powered GitHub Copilot; the name stayed, and it now means an agent on GPT models.' } },
           { q: { ru: 'Сколько стоит Codex?', en: 'How much does Codex cost?' }, a: { ru: 'Отдельной оплаты нет: Codex входит в тарифы ChatGPT Free, Go, Plus, Pro, Business, Edu и Enterprise. Лимиты общие с ChatGPT Work и зависят от тарифа.', en: 'There is no separate fee: Codex comes with the ChatGPT Free, Go, Plus, Pro, Business, Edu and Enterprise plans. Limits are shared with ChatGPT Work and depend on the plan.' } },
           { q: { ru: 'Работает ли Codex в России?', en: 'Does Codex work in Russia?' }, a: { ru: 'Официально нет: России нет в списке стран, где OpenAI предоставляет свои сервисы.', en: 'Not officially: Russia is not on the list of countries where OpenAI offers its services.' } },
+          { q: { ru: 'Чем Codex (Кодекс) отличается от GPT?', en: 'How is Codex different from GPT?' }, a: { ru: 'GPT — семейство моделей OpenAI, Codex — агент, который на них работает: та же модель, но с доступом к проекту, командам и тестам.', en: 'GPT is OpenAI’s model family; Codex is the agent that runs on it: the same model with access to your project, commands and tests.' } },
         ],
         source: { url: 'https://github.com/openai/codex', label: { ru: 'Репозиторий Codex на GitHub', en: 'Codex GitHub repo' } },
         seo: {
-          title: { ru: 'Codex от OpenAI: что это и чем отличается от ChatGPT', en: 'What is OpenAI Codex: Codex vs ChatGPT Chat and Work' },
+          title: { ru: 'Чем Codex отличается от ChatGPT: что такое Codex от OpenAI', en: 'What is OpenAI Codex: Codex vs ChatGPT Chat and Work' },
           description: {
-            ru: 'Codex — что это за программа: агент OpenAI для кода, который сам читает проект, правит файлы и запускает тесты. Чем отличается от ChatGPT Chat и Work, где работает, какие тарифы.',
+            ru: 'Codex и ChatGPT — разные продукты: ChatGPT отвечает текстом, Codex сам правит код, запускает тесты и готовит пулл-реквест. Таблица Chat, Work и Codex, где работает и в какие тарифы входит.',
             en: 'OpenAI Codex is a coding agent that reads your repo, edits files and runs tests. How it differs from ChatGPT Chat and Work, where it runs and which plans include it.',
           },
         },
@@ -517,15 +519,16 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Cursor', en: 'Cursor' },
         aka: { ru: 'Cursor AI, Cursor IDE, курсор ИИ', en: 'Cursor AI, Cursor IDE' },
         def: {
-          ru: 'Cursor — программа-редактор кода от Anysphere на основе VS Code со встроенным ИИ-агентом: вы работаете в редакторе, агент рядом, а модель выбираете из разных вендоров или берёте свою модель Composer. Агент умеет то же, что Claude Code и Codex: читает проект, правит файлы, запускает команды; есть и версия для терминала, и облачные агенты. Правила проекта читает из `AGENTS.md` и своих правил в `.cursor/rules`, внешние системы подключает через MCP.',
-          en: 'Cursor is a code editor app from Anysphere, built on VS Code, with a built-in AI agent: you work in the editor, the agent sits next to you, and you pick a model from different vendors or use its own Composer model. The agent does what Claude Code and Codex do: reads the project, edits files, runs commands; there is also a terminal version and cloud agents. It reads project rules from `AGENTS.md` and its own rules in `.cursor/rules`, and connects outside systems through MCP.',
+          ru: 'Cursor — программа-редактор кода от Anysphere на основе VS Code со встроенным ИИ-агентом: вы работаете в редакторе, агент рядом, а модель выбираете из своих (Grok, Composer) или моделей других компаний; с 2026 года Cursor принадлежит SpaceX. Агент умеет то же, что Claude Code и Codex: читает проект, правит файлы, запускает команды; есть и версия для терминала, и облачные агенты. Правила проекта читает из `AGENTS.md` и своих правил в `.cursor/rules`, внешние системы подключает через MCP.',
+          en: 'Cursor is a code editor app from Anysphere, built on VS Code, with a built-in AI agent: you work in the editor, the agent sits next to you, and you pick its own models (Grok, Composer) or other vendors’ models; since 2026 Cursor has been owned by SpaceX. The agent does what Claude Code and Codex do: reads the project, edits files, runs commands; there is also a terminal version and cloud agents. It reads project rules from `AGENTS.md` and its own rules in `.cursor/rules`, and connects outside systems through MCP.',
         },
         match: { ru: ['Cursor(?: AI| IDE)?', '[Кк]урсор\\p{L}* ИИ'], en: ['Cursor(?: AI| IDE)?'] },
         related: ['anysphere', 'vs-code', 'agents-md', 'claude-code', 'codex'],
         faq: [
           { q: { ru: 'Cursor AI — что это?', en: 'What is Cursor AI?' }, a: { ru: 'Редактор кода от Anysphere на основе VS Code со встроенным ИИ-агентом: вы работаете в редакторе, агент рядом читает проект, правит файлы и запускает команды.', en: 'A code editor by Anysphere built on VS Code with a built-in AI agent: you work in the editor, and the agent next to you reads the project, edits files and runs commands.' } },
-          { q: { ru: 'Какие модели есть в Cursor?', en: 'Which models does Cursor have?' }, a: { ru: 'Модели разных вендоров на выбор и собственная модель Cursor — Composer.', en: 'Models from different vendors to choose from, plus Cursor’s own model, Composer.' } },
+          { q: { ru: 'Какие модели есть в Cursor?', en: 'Which models does Cursor have?' }, a: { ru: 'Свои модели Grok и Composer и модели других компаний: Claude, Gemini, GPT, DeepSeek и другие; набор зависит от тарифа.', en: 'Its own Grok and Composer models plus other vendors’: Claude, Gemini, GPT, DeepSeek and more; the lineup depends on the plan.' } },
           { q: { ru: 'Cursor rules или AGENTS.md?', en: 'Cursor rules or AGENTS.md?' }, a: { ru: 'Cursor читает оба: AGENTS.md — общий файл для разных агентов, правила в .cursor/rules — свои у Cursor, их можно подключать к отдельным файлам.', en: 'Cursor reads both: AGENTS.md is a shared file for different agents, and the rules in .cursor/rules are Cursor’s own and can be scoped to specific files.' } },
+          { q: { ru: 'Работают ли модели GPT в Cursor после 12 ноября 2026?', en: 'Do GPT models still work in Cursor after Nov 12, 2026?' }, a: { ru: 'На 13 ноября 2026 модели OpenAI ещё есть в списке моделей Cursor. OpenAI решила прекратить поставку моделей Cursor и предложила дату 12 ноября; окончательную дату компании обещали сообщить отдельно. Запасные пути — свой ключ OpenAI в чате и агенте Cursor или расширение Codex в Cursor.', en: 'As of Nov 13, 2026 OpenAI models are still in Cursor’s model list. OpenAI decided to stop supplying models to Cursor and proposed Nov 12; the final date is to be announced. Fallbacks: your own OpenAI key in Cursor’s chat and agent, or the Codex extension inside Cursor.' } },
         ],
         source: { url: 'https://cursor.com/', label: { ru: 'Официальный сайт Cursor', en: 'Cursor official site' } },
         seo: {
@@ -540,10 +543,10 @@ export const TERM_SETS: TermSet[] = [
         notes: {
           title: { ru: 'Cursor: модели, агент и правила', en: 'Cursor: models, the agent and rules' },
           items: [
-            { name: { ru: 'Модели', en: 'Models' }, text: { ru: 'своя Composer, Grok, Claude и Gemini; модели OpenAI — до отключения, объявленного на 12 ноября 2026. Набор зависит от тарифа: на бесплатном меньше. Если провайдер недоступен в вашем регионе, можно подключить свой ключ API.', en: 'its own Composer, Grok, Claude and Gemini; OpenAI models until the cutoff announced for Nov 12, 2026. The lineup depends on the plan: the free one gets fewer. If a provider blocks your region, you can add your own API key.' } },
+            { name: { ru: 'Модели', en: 'Models' }, text: { ru: 'свои модели Grok (вместе со SpaceXAI) и Composer, а также Claude, Gemini, DeepSeek, Kimi и другие. Модели OpenAI в ноябре 2026 ещё в списке, но OpenAI решила прекратить поставку после покупки Cursor компанией SpaceX: новых моделей не будет, а дату отключения (предложено 12 ноября 2026) компании пока не подтвердили. На тарифах Free и Plus доступен только Grok, модели других компаний — с Premium, по цене API.', en: 'its own Grok (built with SpaceXAI) and Composer models, plus Claude, Gemini, DeepSeek, Kimi and others. OpenAI models are still listed in November 2026, but OpenAI is ending supply after SpaceX acquired Cursor: no new models, and the cutoff date (proposed for Nov 12, 2026) has not been confirmed. Free and Plus get Grok only; other vendors’ models start at Premium, billed at API rates.' } },
             { name: { ru: 'Агент', en: 'The agent' }, text: { ru: 'режимы Agent — сам правит файлы и запускает команды, Ask — только отвечает, Plan — сначала составляет план. Работает в редакторе, в терминале и как облачный агент.', en: 'modes: Agent edits files and runs commands itself, Ask only answers, Plan writes a plan first. It works in the editor, in the terminal and as a cloud agent.' } },
-            { name: { ru: 'Правила проекта', en: 'Project rules' }, text: { ru: 'папка `.cursor/rules` (старый файл `.cursorrules` тоже читается) и `AGENTS.md` в корне репозитория.', en: 'the `.cursor/rules` folder (the old `.cursorrules` file still works) and `AGENTS.md` at the repo root.' } },
-            { name: { ru: 'Тарифы', en: 'Plans' }, text: { ru: 'бесплатный Hobby с лимитами, Pro за $20, Pro+ за $60 и Ultra за $200 в месяц, Teams — $40 за человека.', en: 'free Hobby with limits, Pro at $20, Pro+ at $60 and Ultra at $200 a month, Teams at $40 per user.' } },
+            { name: { ru: 'Правила проекта', en: 'Project rules' }, text: { ru: 'папка `.cursor/rules` (файлы `.mdc`) и `AGENTS.md` — в корне репозитория и во вложенных папках.', en: 'the `.cursor/rules` folder (`.mdc` files) and `AGENTS.md`, at the repo root and in subfolders.' } },
+            { name: { ru: 'Тарифы', en: 'Plans' }, text: { ru: 'Free — бесплатно с лимитами, Plus — $8 (только Grok), Premium — $30, Super — $100, Ultra — $200 в месяц; модели других компаний сверх тарифа оплачиваются по цене API. Teams — от $30 за человека.', en: 'Free with limits, Plus at $8 (Grok only), Premium at $30, Super at $100 and Ultra at $200 a month; other vendors’ models are billed at API rates on top. Teams from $30 per user.' } },
             { name: { ru: 'На чём сделан', en: 'What it is built on' }, text: { ru: 'на основе VS Code: расширения VS Code в нём работают.', en: 'built on VS Code: VS Code extensions work in it.' } },
           ],
         },
@@ -577,21 +580,21 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'opencode',
         name: { ru: 'OpenCode', en: 'OpenCode' },
-        aka: { ru: 'Open Code, опенкод', en: 'Open Code' },
+        aka: { ru: 'Open Code, опенкод, опен код, openkode', en: 'Open Code' },
         def: {
-          ru: 'OpenCode — бесплатный открытый агент для программирования, который работает в терминале; есть также приложение для компьютера и расширения для IDE. Модель выбираете сами: Claude, GPT, Gemini и десятки других через API или локальную; платите только провайдеру модели. Режимы: Build правит код, Plan только планирует и файлы не меняет. Правила проекта читает из `AGENTS.md`, команда `/init` создаёт этот файл по коду репозитория.',
-          en: 'OpenCode is a free, open-source coding agent that runs in the terminal; there is also a desktop app and IDE extensions. You pick the model: Claude, GPT, Gemini and dozens of others through an API, or a local one; you pay only the model provider. Modes: Build edits code, Plan only plans and does not change files. It reads project rules from `AGENTS.md`, and the `/init` command creates that file from the repo.',
+          ru: 'OpenCode — бесплатный открытый агент для программирования, который работает в терминале; есть также приложение для компьютера и веб-версия. Модель выбираете сами: Claude, GPT, Gemini и десятки других через API или локальную; платите только провайдеру модели. Режимы: Build правит код, Plan только планирует и файлы не меняет. Правила проекта читает из `AGENTS.md`, команда `/init` создаёт этот файл по коду репозитория.',
+          en: 'OpenCode is a free, open-source coding agent that runs in the terminal; there is also a desktop app and a web app. You pick the model: Claude, GPT, Gemini and dozens of others through an API, or a local one; you pay only the model provider. Modes: Build edits code, Plan only plans and does not change files. It reads project rules from `AGENTS.md`, and the `/init` command creates that file from the repo.',
         },
         match: { ru: ['OpenCode', 'Open Code'], en: ['OpenCode', 'Open Code'] },
         related: ['terminal', 'claude-code', 'codex', 'hermes-agent', 'agents-md'],
         faq: [
-          { q: { ru: 'Что такое OpenCode?', en: 'What is OpenCode?' }, a: { ru: 'Бесплатный открытый агент для программирования в терминале; есть также приложение для компьютера и расширения для IDE. Модель выбираете сами, платите только её провайдеру.', en: 'A free open-source coding agent in the terminal, with a desktop app and IDE extensions too. You pick the model and pay only its provider.' } },
+          { q: { ru: 'Что такое OpenCode?', en: 'What is OpenCode?' }, a: { ru: 'Бесплатный открытый агент для программирования в терминале; есть также приложение для компьютера и веб-версия. Модель выбираете сами, платите только её провайдеру.', en: 'A free open-source coding agent in the terminal, with a desktop app and a web app too. You pick the model and pay only its provider.' } },
           { q: { ru: 'Какие модели работают в OpenCode?', en: 'Which models work in OpenCode?' }, a: { ru: 'Claude, GPT, Gemini и десятки других через API, а также локальная модель на вашем компьютере.', en: 'Claude, GPT, Gemini and dozens of others through an API, as well as a local model on your computer.' } },
           { q: { ru: 'Как установить OpenCode?', en: 'How do you install OpenCode?' }, a: { ru: 'На macOS и Linux — `curl -fsSL https://opencode.ai/v2/install | bash`, через Homebrew — `brew install anomalyco/tap/opencode-v2`, через npm — `npm install -g @opencode/cli`. Для Windows менеджеры пакетов не поддерживаются: файл программы скачивают с сайта OpenCode.', en: 'On macOS and Linux: `curl -fsSL https://opencode.ai/v2/install | bash`; with Homebrew: `brew install anomalyco/tap/opencode-v2`; with npm: `npm install -g @opencode/cli`. On Windows package managers are not supported: download the binary from the OpenCode site.' } },
           { q: { ru: 'Сколько стоит OpenCode и можно ли бесплатно?', en: 'How much does OpenCode cost, and is there a free way?' }, a: { ru: 'Сам агент бесплатный, платите только за модель. Есть подписка OpenCode Go за $10 в месяц и OpenCode Console с оплатой за токены; в Console есть бесплатные модели, часть — на ограниченное время. Бесплатно работает и локальная модель на вашем компьютере.', en: 'The agent itself is free; you pay only for the model. There is the OpenCode Go subscription at $10 a month and OpenCode Console with pay-per-token pricing; Console has free models, some for a limited time. A local model on your computer also works for free.' } },
           { q: { ru: 'Чем OpenCode отличается от Claude Code?', en: 'How is OpenCode different from Claude Code?' }, a: { ru: 'Устроены одинаково: оба читают проект, правят файлы и запускают команды. OpenCode открытый и работает с любой моделью, Claude Code — только с моделями Claude.', en: 'They are built the same way: both read the project, edit files and run commands. OpenCode is open source and works with any model, Claude Code only with Claude models.' } },
         ],
-        source: { url: 'https://opencode.ai/docs/rules/', label: { ru: 'Документация OpenCode', en: 'OpenCode docs' } },
+        source: { url: 'https://opencode.ai/docs/', label: { ru: 'Документация OpenCode', en: 'OpenCode docs' } },
         seo: {
           title: { ru: 'OpenCode (опенкод): что это — бесплатный открытый ИИ-агент в терминале с любой моделью', en: 'What is OpenCode: a free open-source AI coding agent in the terminal' },
           description: {
@@ -599,6 +602,7 @@ export const TERM_SETS: TermSet[] = [
             en: 'OpenCode is a free open-source AI coding agent for the terminal: any model or a local one, Build and Plan modes, rules in AGENTS.md.',
           },
         },
+        more: { post: 'ai-in-code-harness-and-tools', label: { ru: 'Claude Code, Codex, Cursor и Hermes Agent: что выбрать', en: 'Claude Code, Codex, Cursor and Hermes Agent: which to pick' } },
       },
       {
         slug: 'gemini-cli',
@@ -651,25 +655,28 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Claude in Chrome', en: 'Claude in Chrome' },
         aka: { ru: 'расширение Claude для Chrome, Claude для браузера', en: 'Claude for Chrome, Claude Chrome extension' },
         def: {
-          ru: 'Claude in Chrome — расширение Claude для браузера Chrome, через которое агент работает в вашем браузере: открывает страницы, кликает, заполняет формы и читает консоль. Работает под вашим входом, поэтому видит то же, что и вы. Режимов два: боковая панель, где Claude сам выполняет задачу на открытой странице, и управление браузером из Claude Code. Боковая панель официально работает только в Chrome на компьютере; режим для Claude Code — ещё в Edge и других браузерах на Chromium.',
-          en: 'Claude in Chrome is a Claude extension for the Chrome browser that lets an agent work in your browser: open pages, click, fill forms and read the console. It works under your login, so it sees what you see. There are two modes: a side panel where Claude does the task on the open page itself, and browser control from Claude Code. The side panel officially runs only in desktop Chrome; the Claude Code mode also works in Edge and other Chromium browsers.',
+          ru: 'Claude in Chrome (Claude for Chrome) — официальное расширение Claude от Anthropic для браузера Chrome, через которое агент работает в вашем браузере: открывает страницы, кликает, заполняет формы и читает консоль. Работает под вашим входом, поэтому видит то же, что и вы. Ставится из Chrome Web Store и работает только на платных тарифах Claude: Pro, Max, Ultra, Team и Enterprise. Режимов два: боковая панель, где Claude сам выполняет задачу на открытой странице, и управление браузером из Claude Code. Боковая панель официально работает только в Chrome на компьютере; режим для Claude Code — ещё в Edge и других браузерах на Chromium.',
+          en: 'Claude in Chrome (Claude for Chrome) is Anthropic’s official Claude extension for the Chrome browser that lets an agent work in your browser: open pages, click, fill forms and read the console. It works under your login, so it sees what you see. It is installed from the Chrome Web Store and works only on paid Claude plans: Pro, Max, Ultra, Team and Enterprise. There are two modes: a side panel where Claude does the task on the open page itself, and browser control from Claude Code. The side panel officially runs only in desktop Chrome; the Claude Code mode also works in Edge and other Chromium browsers.',
         },
         match: { ru: ['Claude in Chrome', 'Claude for Chrome'], en: ['Claude in Chrome', 'Claude for Chrome'] },
-        related: ['claude-code', 'mcp', 'human-in-the-loop'],
+        related: ['claude-code', 'mcp', 'human-in-the-loop', 'permissions', 'prompt-injection', 'test-stand'],
         faq: [
+          { q: { ru: 'Как установить расширение Claude для Chrome?', en: 'How do I install the Claude Chrome extension?' }, a: { ru: 'Откройте страницу Claude в Chrome Web Store, нажмите «Установить», войдите в аккаунт Claude, закрепите расширение и дайте запрошенные разрешения.', en: 'Open the Claude page in the Chrome Web Store, click Add to Chrome, sign in with your Claude account, pin the extension and grant the permissions it asks for.' } },
+          { q: { ru: 'Claude in Chrome бесплатный?', en: 'Is Claude in Chrome free?' }, a: { ru: 'Нет. Расширение работает только на платных тарифах Claude: Pro, Max, Ultra, Team и Enterprise. В Team и Enterprise его включает администратор.', en: 'No. It works only on paid Claude plans: Pro, Max, Ultra, Team and Enterprise. On Team and Enterprise the admin decides whether it is turned on.' } },
+          { q: { ru: 'Как подключить Claude in Chrome к Claude Code?', en: 'How do I use Claude in Chrome from Claude Code?' }, a: { ru: 'Запустите claude --chrome или включите Enabled by default в /chrome; в VS Code наберите @browser. Нужен тариф Anthropic напрямую и вход через /login: через Bedrock, Google Cloud, Microsoft Foundry и по API-ключу не работает.', en: 'Start claude --chrome or turn on Enabled by default in /chrome; in VS Code, type @browser. You need a direct Anthropic plan and sign-in with /login: it does not work through Bedrock, Google Cloud or Microsoft Foundry, or with an API key.' } },
           { q: { ru: 'Что делает расширение Claude для Chrome?', en: 'What does the Claude Chrome extension do?' }, a: { ru: 'Даёт агенту работать в вашем браузере: открывать страницы, кликать, заполнять формы и читать консоль под вашим входом.', en: 'It lets the agent work in your browser: open pages, click, fill in forms and read the console under your sign-in.' } },
           { q: { ru: 'Как пользоваться Claude in Chrome?', en: 'How do I use Claude in Chrome?' }, a: { ru: 'Есть два режима: боковая панель, где Claude сам выполняет задачу на открытой странице, и управление браузером из Claude Code.', en: 'There are two modes: a side panel where Claude does the task on the open page, and browser control from Claude Code.' } },
-          { q: { ru: 'Работает ли Claude in Chrome в других браузерах?', en: 'Does Claude in Chrome work in other browsers?' }, a: { ru: 'Боковая панель официально работает только в Chrome на компьютере. Режим для Claude Code работает ещё в Edge и других браузерах на Chromium.', en: 'The side panel officially works only in desktop Chrome. The Claude Code mode also works in Edge and other Chromium browsers.' } },
+          { q: { ru: 'Работает ли Claude in Chrome в других браузерах?', en: 'Does Claude in Chrome work in other browsers?' }, a: { ru: 'Боковая панель официально работает только в Chrome на компьютере и не работает на телефоне. Режим для Claude Code работает ещё в Edge и других браузерах на Chromium.', en: 'The side panel officially works only in desktop Chrome and not on mobile. The Claude Code mode also works in Edge and other Chromium browsers.' } },
         ],
         source: { url: 'https://support.claude.com/en/articles/12012173-get-started-with-claude-in-chrome', label: { ru: 'Справка: как начать с Claude in Chrome', en: 'Help: Get started with Claude in Chrome' } },
         seo: {
-          title: { ru: 'Claude in Chrome: что это за расширение Claude для браузера', en: 'Claude in Chrome: what the Claude Chrome extension does' },
+          title: { ru: 'Claude in Chrome: расширение Claude для Chrome — установка, тарифы и браузеры', en: 'Claude in Chrome: the Claude Chrome extension — install, plans and browsers' },
           description: {
-            ru: 'Claude in Chrome — расширение Claude для браузера: агент открывает страницы, кликает и заполняет формы под вашим входом. Два режима — боковая панель и Claude Code, в каких браузерах работает.',
-            en: 'Claude in Chrome is the Claude Chrome extension: an agent opens pages, clicks and fills forms under your login. Two modes, the side panel and Claude Code, and which browsers it works in.',
+            ru: 'Что делает расширение Claude для Chrome, как поставить его из Chrome Web Store, на каких платных тарифах Claude оно работает и где: боковая панель в Chrome на компьютере или Claude Code в браузерах на Chromium.',
+            en: 'What the Claude for Chrome extension does, how to install it from the Chrome Web Store, which paid Claude plans include it, and where it runs: the side panel in desktop Chrome or Claude Code in Chromium browsers.',
           },
         },
-        more: { post: 'claude-in-chrome', label: { ru: 'Claude in Chrome: как агент работает в вашем браузере', en: 'Claude in Chrome: how an agent works in your browser' } },
+        more: { post: 'claude-in-chrome', label: { ru: 'Как Claude Code тестирует сайт в браузере: Claude in Chrome — отладка и формы под вашим входом', en: 'How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login' } },
         compare: {
           title: { ru: 'Два режима: боковая панель и Claude Code', en: 'Two modes: the side panel and Claude Code' },
           head: { ru: ['Боковая панель', 'Из Claude Code'], en: ['Side panel', 'From Claude Code'] },
@@ -784,6 +791,13 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Что было до Alice AI?', en: 'What came before Alice AI?' }, a: { ru: 'Линейка моделей YandexGPT.', en: 'The YandexGPT model line.' } },
         ],
         source: { url: 'https://yandex.com/company', label: { ru: 'Яндекс: о компании', en: 'Yandex company page' } },
+        seo: {
+          title: { ru: 'Yandex AI (ИИ Яндекса): Alice AI, AI Studio и SourceCraft — что есть у Яндекса для ИИ-агентов', en: 'Yandex AI: Alice AI models, AI Studio and SourceCraft Code Assistant' },
+          description: {
+            ru: 'Что такое ИИ Яндекса: модели Alice AI (раньше YandexGPT), ассистент Алиса, корпоративный агент Алиса AI Про, конструктор агентов Yandex AI Studio и SourceCraft с агентом Code Assistant для кода.',
+            en: 'What Yandex AI is: the Alice AI models (formerly YandexGPT), the Alice assistant, Alice AI Pro for business, Yandex AI Studio for building agents and SourceCraft Code Assistant for code.',
+          },
+        },
       },
       {
         // Junie вышел из беты 17.06.2026 (blog.jetbrains.com/junie/2026/06/junie-coding-agent-out-of-beta); Mellum — открытая модель автодополнения
@@ -834,17 +848,18 @@ export const TERM_SETS: TermSet[] = [
       },
       {
         // Rovo MCP Server — GA 04.02.2026 (developer.atlassian.com/cloud/rovo-mcp); агенты Rovo в Jira — февраль 2026
+        // 11.2026: в справке называется «Atlassian MCP server», раздел Atlassian AI Gateway (support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/)
         slug: 'atlassian',
         name: { ru: 'Atlassian', en: 'Atlassian' },
         def: {
-          ru: 'Atlassian — австралийская компания, которая делает Jira, Confluence и Bitbucket — рабочие системы многих команд разработки. Свой ИИ называется Rovo: агенты Rovo берут задачи в Jira, а Rovo MCP Server даёт внешним агентам вроде Claude Code и Cursor читать и менять данные Jira и Confluence.',
-          en: 'Atlassian is an Australian company that makes Jira, Confluence and Bitbucket, the work systems of many development teams. Its AI is called Rovo: Rovo agents take tasks in Jira, and the Rovo MCP Server lets outside agents such as Claude Code and Cursor read and change Jira and Confluence data.',
+          ru: 'Atlassian — австралийская компания, которая делает Jira, Confluence и Bitbucket — рабочие системы многих команд разработки. Свой ИИ называется Rovo: агенты Rovo берут задачи в Jira, а MCP-сервер Atlassian (раньше Rovo MCP Server) даёт внешним агентам вроде Claude Code и Cursor читать и менять данные Jira и Confluence.',
+          en: 'Atlassian is an Australian company that makes Jira, Confluence and Bitbucket, the work systems of many development teams. Its AI is called Rovo: Rovo agents take tasks in Jira, and the Atlassian MCP server (formerly Rovo MCP Server) lets outside agents such as Claude Code and Cursor read and change Jira and Confluence data.',
         },
         match: { ru: ['Atlassian'], en: ['Atlassian'] },
         related: ['jira', 'confluence', 'mcp-server'],
         faq: [
           { q: { ru: 'Atlassian — что это за компания?', en: 'What is Atlassian?' }, a: { ru: 'Австралийская компания, которая делает Jira, Confluence и Bitbucket.', en: 'An Australian company that makes Jira, Confluence and Bitbucket.' } },
-          { q: { ru: 'Как зовут ИИ Atlassian?', en: 'What is Atlassian’s AI called?' }, a: { ru: 'Rovo: агенты Rovo берут задачи в Jira, а Rovo MCP Server даёт внешним агентам доступ к данным Atlassian.', en: 'Rovo: Rovo agents take on tasks in Jira, and the Rovo MCP Server gives outside agents access to Atlassian data.' } },
+          { q: { ru: 'Как зовут ИИ Atlassian?', en: 'What is Atlassian’s AI called?' }, a: { ru: 'Rovo: агенты Rovo берут задачи в Jira, а MCP-сервер Atlassian (раньше Rovo MCP Server) даёт внешним агентам доступ к данным Atlassian.', en: 'Rovo: Rovo agents take on tasks in Jira, and the Atlassian MCP server (formerly Rovo MCP Server) gives outside agents access to Atlassian data.' } },
         ],
         source: { url: 'https://www.atlassian.com/', label: { ru: 'Официальный сайт Atlassian', en: 'Atlassian official site' } },
       },
@@ -1099,7 +1114,7 @@ export const TERM_SETS: TermSet[] = [
         slug: 'agents-md',
         name: { ru: 'AGENTS.md', en: 'AGENTS.md' },
         def: {
-          ru: 'AGENTS.md — общий для разных агентов файл с инструкциями по проекту. Его читают Codex, Cursor и другие инструменты, поэтому он служит нейтральной альтернативой `CLAUDE.md`.',
+          ru: 'AGENTS.md — общий для разных агентов файл с инструкциями по проекту. Его читают Codex, Cursor и другие агенты, поэтому он служит нейтральной альтернативой `CLAUDE.md`.',
           en: 'AGENTS.md is a shared instructions file for a project that many agents read. Codex, Cursor and others use it, so it is a vendor-neutral counterpart of `CLAUDE.md`.',
         },
         match: { ru: ['AGENTS\\.md'], en: ['AGENTS\\.md'] },
@@ -1107,8 +1122,18 @@ export const TERM_SETS: TermSet[] = [
         faq: [
           { q: { ru: 'AGENTS.md — что это?', en: 'What is AGENTS.md?' }, a: { ru: 'Общий для разных агентов файл с инструкциями по проекту: команды, стиль, запреты.', en: 'A shared instruction file for different agents: commands, style, prohibitions.' } },
           { q: { ru: 'Какие агенты читают AGENTS.md?', en: 'Which agents read AGENTS.md?' }, a: { ru: 'Codex, Cursor и другие агенты, поэтому файл служит нейтральной альтернативой CLAUDE.md.', en: 'Codex, Cursor and other agents, so the file serves as a neutral alternative to CLAUDE.md.' } },
+          { q: { ru: 'AGENTS.md или Cursor rules?', en: 'AGENTS.md or Cursor rules?' }, a: { ru: 'Cursor читает оба. AGENTS.md — общий файл для разных агентов, в корне и во вложенных папках; правила в .cursor/rules — только для Cursor, зато их можно подключать всегда, по описанию, по шаблону файлов или вручную.', en: 'Cursor reads both. AGENTS.md is a shared file for different agents, at the root and in subfolders; rules in .cursor/rules are Cursor-only but can apply always, by description, by file pattern or manually.' } },
+          { q: { ru: 'Чем AGENTS.md отличается от spec.md?', en: 'How is AGENTS.md different from spec.md?' }, a: { ru: 'AGENTS.md задаёт правила на весь проект и попадает в каждую сессию агента. spec.md описывает одну задачу — требования и признаки готовности — и нужен, пока задача не закрыта.', en: 'AGENTS.md sets rules for the whole project and enters every agent session. spec.md describes one task — requirements and done criteria — and lives until the task is closed.' } },
         ],
         source: { url: 'https://agents.md/', label: { ru: 'Официальный сайт AGENTS.md', en: 'AGENTS.md official site' } },
+        seo: {
+          title: { ru: 'AGENTS.md: что это и чем отличается от правил Cursor (.cursor/rules) и CLAUDE.md', en: 'AGENTS.md vs Cursor rules vs CLAUDE.md: what each file does' },
+          description: {
+            ru: 'AGENTS.md — общий файл инструкций для Codex, Cursor и других агентов. Чем он отличается от правил Cursor в .cursor/rules и от CLAUDE.md, где лежат и когда агент их читает.',
+            en: 'AGENTS.md is a shared instructions file for Codex, Cursor and other agents. How it differs from Cursor rules in .cursor/rules and from CLAUDE.md, where each lives and when the agent reads it.',
+          },
+        },
+        more: { post: 'specs-rules-skills', label: { ru: 'AGENTS.md, CLAUDE.md и spec.md: что куда класть', en: 'AGENTS.md, CLAUDE.md and spec.md: what goes where' } },
       },
       {
         slug: 'agent-skills',
@@ -1149,6 +1174,7 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Кто управляет правами при подключении через MCP?', en: 'Who controls permissions over MCP?' }, a: { ru: 'Вы: MCP-сервер предлагает агенту набор инструментов, а права доступа задаются на стороне сервера.', en: 'You do: the MCP server offers the agent a set of tools, and access rights are set on the server side.' } },
         ],
         source: { url: 'https://modelcontextprotocol.io/', label: { ru: 'Официальный сайт MCP', en: 'Model Context Protocol site' } },
+        more: { post: 'mcp-agent-access', label: { ru: 'MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту', en: 'MCP for an AI agent: what problem it solves and how to delegate setup to the agent' } },
       },
       {
         slug: 'mcp-client',
@@ -1201,8 +1227,8 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Уровни MCP-серверов', en: 'MCP server scopes' },
         aka: { ru: 'scope: local · project · user', en: 'scope: local · project · user' },
         def: {
-          ru: 'Уровни MCP-серверов отвечают на два вопроса: в каких проектах работает MCP-сервер и кто его видит. В Claude Code их три, уровень выбирают при добавлении сервера: `local` — по умолчанию, только вы и текущий проект; `project` — вся команда через файл `.mcp.json` в репозитории, каждый подтверждает сервер перед первым запуском; `user` — только вы и все ваши проекты. При совпадении имён берётся запись верхнего слоя целиком: `local` перекрывает `project`, `project` — `user`.',
-          en: 'MCP server scopes answer two questions: which projects an MCP server works in and who sees it. Claude Code has three, chosen when you add a server: `local`, the default, only you and the current `project`; `project`, the whole team through a `.mcp.json` file in the repo, each person approves the server before first use; `user`, only you and all your projects. On a name clash the upper layer wins entirely: `local` overrides `project`, `project` overrides `user`.',
+          ru: 'Уровни MCP-серверов отвечают на два вопроса: в каких проектах работает MCP-сервер и кто его видит. В Claude Code их три, уровень выбирают при добавлении сервера: `local` — по умолчанию, только вы и текущий проект; `project` — вся команда через файл `.mcp.json` в репозитории, в интерактивной сессии каждый подтверждает сервер перед первым запуском (в `claude -p`, Agent SDK и облачных сессиях сервер загружается без вопроса); `user` — только вы и все ваши проекты. При совпадении имён берётся запись верхнего слоя целиком: `local` перекрывает `project`, `project` — `user`.',
+          en: 'MCP server scopes answer two questions: which projects an MCP server works in and who sees it. Claude Code has three, chosen when you add a server: `local`, the default, only you and the current `project`; `project`, the whole team through a `.mcp.json` file in the repo, each person approves the server before first use in an interactive session (in `claude -p`, the Agent SDK and cloud sessions it loads without a prompt); `user`, only you and all your projects. On a name clash the upper layer wins entirely: `local` overrides `project`, `project` overrides `user`.',
         },
         match: { ru: ['уровн\\p{L}* MCP-сервер\\p{L}*', 'област\\p{L}* MCP', 'MCP scope'], en: ['MCP server scopes?', 'MCP scopes?'] },
         related: ['mcp', 'claude-code'],
@@ -1219,7 +1245,7 @@ export const TERM_SETS: TermSet[] = [
             { ru: ['В каких проектах', 'в текущем', 'в этом репозитории', 'во всех ваших'], en: ['In which projects', 'the current one', 'this repository', 'all of yours'] },
             { ru: ['Где хранится', '`~/.claude.json`, под путём проекта', '`.mcp.json` в корне репозитория', '`~/.claude.json`, общий раздел'], en: ['Where it is stored', '`~/.claude.json`, under the project path', '`.mcp.json` at the repo root', '`~/.claude.json`, shared section'] },
             { ru: ['Как добавить', '`claude mcp add` по умолчанию', '`claude mcp add --scope project`', '`claude mcp add --scope user`'], en: ['How to add', '`claude mcp add` by default', '`claude mcp add --scope project`', '`claude mcp add --scope user`'] },
-            { ru: ['Перед запуском', 'ничего', 'каждый подтверждает сервер', 'ничего'], en: ['Before first use', 'nothing', 'everyone approves the server', 'nothing'] },
+            { ru: ['Перед запуском', 'ничего', 'каждый подтверждает сервер в интерактивной сессии', 'ничего'], en: ['Before first use', 'nothing', 'everyone approves the server in an interactive session', 'nothing'] },
             { ru: ['При совпадении имён', 'перекрывает `project` и `user`', 'перекрывает `user`', 'уступает остальным'], en: ['On a name clash', 'overrides `project` and `user`', 'overrides `user`', 'yields to the others'] },
           ],
         },
@@ -1314,16 +1340,17 @@ export const TERM_SETS: TermSet[] = [
         slug: 'jira',
         name: { ru: 'Jira', en: 'Jira' },
         def: {
-          ru: 'Jira — система учёта задач и ошибок от Atlassian. Агент через MCP читает задачи вместе с комментариями и историей изменений, а писать в неё может только с вашего разрешения.',
-          en: 'Jira is a task and bug tracker from Atlassian. Through MCP an agent reads tasks with their comments and change history, and may write to it only with your permission.',
+          ru: 'Jira — система учёта задач и ошибок от Atlassian. Агент через MCP читает задачи вместе с комментариями и историей изменений, а писать может в пределах прав вашего входа; Claude Code перед записью спрашивает разрешение, пока вы его не дали заранее.',
+          en: 'Jira is a task and bug tracker from Atlassian. Through MCP an agent reads tasks with their comments and change history, and may write within the rights of your sign-in; Claude Code asks before writing unless you allowed it in advance.',
         },
         match: { ru: ['Jira'], en: ['Jira'] },
         related: ['atlassian', 'mcp', 'mcp-server', 'ai-agent'],
         faq: [
           { q: { ru: 'Как ИИ-агент работает с Jira?', en: 'How does an AI agent work with Jira?' }, a: { ru: 'Через MCP читает задачи вместе с комментариями и историей изменений.', en: 'Over MCP it reads tickets together with comments and change history.' } },
-          { q: { ru: 'Может ли агент менять задачи в Jira?', en: 'Can the agent change Jira tickets?' }, a: { ru: 'Только с вашего разрешения.', en: 'Only with your permission.' } },
+          { q: { ru: 'Может ли агент менять задачи в Jira?', en: 'Can the agent change Jira tickets?' }, a: { ru: 'Да, в пределах прав входа или токена, под которым он работает. Claude Code спрашивает разрешение перед каждым действием, пока его не разрешили заранее.', en: 'Yes, within the rights of the sign-in or token it uses. Claude Code asks before acting unless you allowed it in advance.' } },
         ],
         source: { url: 'https://www.atlassian.com/software/jira', label: { ru: 'Официальная страница Jira', en: 'Jira official page' } },
+        more: { post: 'jira-ai-agent-boundaries', label: { ru: 'Jira и ИИ-агент: плюсы, минусы и где провести границу', en: 'Jira and an AI agent: pros, cons and where to draw the line' } },
       },
       {
         slug: 'sentry',
@@ -1407,7 +1434,7 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Harness engineering — что это?', en: 'What is harness engineering?' }, a: { ru: 'Дисциплина настройки харнесса: что агент знает о проекте, какими инструментами владеет, что ему разрешено и как проверяется результат.', en: 'The discipline of setting up a harness: what the agent knows about the project, which tools it has, what it may do and how its result is checked.' } },
           { q: { ru: 'Чем harness engineering отличается от HDD?', en: 'How is harness engineering different from HDD?' }, a: { ru: 'Harness engineering охватывает всё окружение без заданного порядка. HDD — один метод внутри неё: каждая ошибка агента становится правилом среды.', en: 'Harness engineering covers the whole environment with no set order. HDD is one method inside it: every agent mistake becomes a rule of the environment.' } },
         ],
-        source: { url: 'https://martinfowler.com/articles/harness-engineering.html', label: { ru: 'Мартин Фаулер: harness engineering', en: 'martinfowler.com: Harness engineering' } },
+        source: { url: 'https://martinfowler.com/articles/harness-engineering.html', label: { ru: 'Бригитта Бёклер, martinfowler.com: harness engineering', en: 'Birgitta Böckeler, martinfowler.com: Harness engineering' } },
       },
       {
         slug: 'hdd',
@@ -1430,15 +1457,30 @@ export const TERM_SETS: TermSet[] = [
         aka: { ru: 'SDD', en: 'SDD' },
         def: {
           ru: 'Spec-Driven Development (разработка по спецификациям) — подход, где сначала пишется спецификация — что система должна делать, — а код пишет и сверяет с ней агент. Спека становится главным документом, а код — её следствием.',
-          en: 'An approach where a specification — what the system must do — is written first, and an agent writes the code and checks it against the spec. The spec becomes the main document and the code its consequence.',
+          en: 'Spec-Driven Development (SDD) is an approach where a specification — what the system must do — is written first, and an agent writes the code and checks it against the spec. The spec becomes the main document and the code its consequence.',
         },
         match: { ru: ['Spec-Driven Development', 'spec-driven development', 'SDD'], en: ['Spec-Driven Development', 'spec-driven development', 'SDD'] },
         related: ['openspec', 'spec-kit', 'reconcile-loop'],
         faq: [
           { q: { ru: 'Spec-Driven Development — что это?', en: 'What is spec-driven development?' }, a: { ru: 'Подход, где сначала пишется спецификация — что система должна делать, — а код по ней пишет и сверяет агент.', en: 'An approach where the specification of what the system must do comes first, and an agent writes and checks the code against it.' } },
           { q: { ru: 'Какие программы есть для Spec-Driven Development?', en: 'Which frameworks support spec-driven development?' }, a: { ru: 'Например, OpenSpec от Fission AI и Spec Kit от GitHub.', en: 'For example, OpenSpec by Fission AI and Spec Kit by GitHub.' } },
+          { q: { ru: 'Чем Spec-Driven Development отличается от TDD?', en: 'How is spec-driven development different from TDD?' }, a: { ru: 'В TDD сначала пишут падающий тест на одну функцию, затем код под него. В SDD сначала пишут спеку на всё изменение — требования и сценарии «когда — тогда», а тесты и код агент выводит из неё.', en: 'In TDD you first write a failing test for one function, then the code for it. In SDD you first write a spec for the whole change — requirements and when–then scenarios — and the agent derives the tests and code from it.' } },
+          { q: { ru: 'Чем спека отличается от AGENTS.md?', en: 'How is a spec different from AGENTS.md?' }, a: { ru: 'Спека описывает одно изменение и нужна, пока оно не закрыто. AGENTS.md держит правила на весь проект и попадает в каждую сессию агента.', en: 'A spec describes one change and lives until it is closed. AGENTS.md holds rules for the whole project and enters every agent session.' } },
         ],
         source: { url: 'https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/', label: { ru: 'Блог GitHub: разработка от спецификаций', en: 'GitHub Blog: Spec-driven development' } },
+        seo: {
+          title: { ru: 'Spec-Driven Development (SDD): что это, как работает и какие программы есть', en: 'What is spec-driven development (SDD): how it works and which frameworks to use' },
+          description: {
+            ru: 'Spec-driven development: сначала спека с требованиями, потом код от ИИ-агента. Шаги подхода, OpenSpec, Spec Kit и Kiro, сверка спеки и кода.',
+            en: 'Spec-driven development: a spec with requirements comes first, then an AI agent writes code against it. The steps, OpenSpec, Spec Kit and Kiro, and keeping spec and code in sync.',
+          },
+        },
+        more: { post: 'openspec', label: { ru: 'OpenSpec: разработка по спецификациям на практике', en: 'OpenSpec: spec-driven development in practice' } },
+        also: [
+          { post: 'specs-by-aggregates', label: { ru: 'Спеки по агрегатам: как не плодить спеки', en: 'Specs by aggregate: keeping specs from multiplying' } },
+          { post: 'spec-reconcile-loop', label: { ru: 'Петля сверки: спека и код в согласии', en: 'A reconcile loop: keeping spec and code in sync' } },
+          { post: 'specs-rules-skills', label: { ru: 'Чем спека отличается от AGENTS.md', en: 'How a spec differs from AGENTS.md' } },
+        ],
         compare: {
           title: { ru: 'Reconcile loop: Kubernetes и агент', en: 'Reconcile loop: Kubernetes and the agent' },
           head: { ru: ['Kubernetes', 'Spec-Driven Development'], en: ['Kubernetes', 'Spec-Driven Development'] },
@@ -1455,15 +1497,15 @@ export const TERM_SETS: TermSet[] = [
         slug: 'openspec',
         name: { ru: 'OpenSpec', en: 'OpenSpec' },
         def: {
-          ru: 'OpenSpec — бесплатная открытая программа от Fission AI для разработки по спецификациям (Spec-Driven Development): агент сначала пишет план изменения в файлы, вы его проверяете, потом агент пишет код. Действующие спеки лежат в `openspec/specs`, а каждое изменение — отдельная папка в `openspec/changes`: `proposal.md` (зачем и что), дельта к спекам, `design.md` и `tasks.md`. Агент идёт по командам `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; при архивации дельта вливается в спеки. Легче Spec Kit: без жёстких фаз, работает с 30+ агентами.',
-          en: 'OpenSpec is a free, open-source framework by Fission AI for Spec-Driven Development: the agent first writes a change plan into files, you review it, then the agent writes code. Live specs sit in `openspec/specs`, and every change is its own folder in `openspec/changes`: `proposal.md` (why and what), a spec delta, `design.md` and `tasks.md`. The agent follows `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; archiving merges the delta into the specs. Lighter than Spec Kit, with no rigid phases, and works with 30+ agents.',
+          ru: 'OpenSpec — бесплатная открытая программа от Fission AI для разработки по спецификациям (Spec-Driven Development): агент сначала пишет план изменения в файлы, вы его проверяете, потом агент пишет код. Действующие спеки лежат в `openspec/specs`, а каждое изменение — отдельная папка в `openspec/changes`: `proposal.md` (зачем и что), дельта к спекам, `design.md` и `tasks.md`. Агент идёт по скиллам `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (до версии 2.0 — команды `/opsx:propose`, `/opsx:apply`, `/opsx:archive`); при архивации дельта вливается в спеки. Легче Spec Kit: без жёстких фаз, работает с 30+ агентами.',
+          en: 'OpenSpec is a free, open-source framework by Fission AI for Spec-Driven Development: the agent first writes a change plan into files, you review it, then the agent writes code. Live specs sit in `openspec/specs`, and every change is its own folder in `openspec/changes`: `proposal.md` (why and what), a spec delta, `design.md` and `tasks.md`. The agent follows the skills `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (before 2.0: `/opsx:propose`, `/opsx:apply`, `/opsx:archive`); archiving merges the delta into the specs. Lighter than Spec Kit, with no rigid phases, and works with 30+ agents.',
         },
         match: { ru: ['OpenSpec'], en: ['OpenSpec'] },
         related: ['spec-driven-development', 'spec-kit'],
         faq: [
           { q: { ru: 'OpenSpec — это что?', en: 'What is OpenSpec?' }, a: { ru: 'Бесплатная открытая программа от Fission AI для разработки по спецификациям: агент сначала пишет план изменения в файлы, вы его проверяете, потом агент пишет код.', en: 'A free open-source framework by Fission AI for spec-driven development: the agent first writes a change plan into files, you review it, then the agent writes code.' } },
-          { q: { ru: 'Какие команды у OpenSpec?', en: 'What are the OpenSpec commands?' }, a: { ru: 'Основные три: /opsx:propose создаёт план изменения, /opsx:apply пишет код по задачам, /opsx:archive вливает требования в общие спеки. Перед ними можно подумать вслух командой /opsx:explore.', en: 'The main three: /opsx:propose creates a change plan, /opsx:apply writes code by the tasks, /opsx:archive merges the requirements into the shared specs. Before them you can think out loud with /opsx:explore.' } },
-          { q: { ru: 'Как установить OpenSpec?', en: 'How do you install OpenSpec?' }, a: { ru: 'Командой `npm install -g @fission-ai/openspec@latest` (нужен Node.js 22.12 или новее) или `brew install openspec`. Затем в папке проекта — `openspec init`. Программа бесплатная, лицензия MIT.', en: 'With `npm install -g @fission-ai/openspec@latest` (needs Node.js 22.12 or newer) or `brew install openspec`. Then run `openspec init` in the project folder. It is free, under the MIT license.' } },
+          { q: { ru: 'Какие команды у OpenSpec?', en: 'What are the OpenSpec commands?' }, a: { ru: 'Основные три: /openspec-propose создаёт план изменения, /openspec-apply-change пишет код по задачам, /openspec-archive-change вливает требования в общие спеки. Подумать вслух перед ними — /openspec-explore. В Codex те же скиллы вызывают через $, например $openspec-propose; в версиях 1.x они назывались /opsx:propose, /opsx:apply и /opsx:archive.', en: 'The main three: /openspec-propose creates a change plan, /openspec-apply-change writes code by the tasks, /openspec-archive-change merges the requirements into the shared specs. Think out loud first with /openspec-explore. Codex calls the same skills with $, e.g. $openspec-propose; in 1.x they were /opsx:propose, /opsx:apply and /opsx:archive.' } },
+          { q: { ru: 'Как установить OpenSpec?', en: 'How do you install OpenSpec?' }, a: { ru: 'Скриптом `curl -fsSL https://openspec.dev/cli/install.sh | sh` на macOS и Linux, `irm https://openspec.dev/cli/install.ps1 | iex` в PowerShell на Windows, либо `npm install -g @fission-ai/openspec@latest` (нужен Node.js 22.12 или новее) или `brew install openspec`. Затем в папке проекта — `openspec init`. Программа бесплатная, лицензия MIT.', en: 'With the script `curl -fsSL https://openspec.dev/cli/install.sh | sh` on macOS and Linux, `irm https://openspec.dev/cli/install.ps1 | iex` in PowerShell on Windows, or with `npm install -g @fission-ai/openspec@latest` (needs Node.js 22.12 or newer) or `brew install openspec`. Then run `openspec init` in the project folder. It is free, under the MIT license.' } },
           { q: { ru: 'Чем OpenSpec отличается от Spec Kit?', en: 'How is OpenSpec different from Spec Kit?' }, a: { ru: 'OpenSpec легче: шаги можно повторять в любом порядке, и он рассчитан на уже работающий код. Spec Kit от GitHub ведёт по жёстким фазам.', en: 'OpenSpec is lighter: steps can repeat in any order, and it is built for code that already runs. GitHub’s Spec Kit walks through fixed phases.' } },
         ],
         source: { url: 'https://github.com/Fission-AI/OpenSpec', label: { ru: 'Репозиторий OpenSpec на GitHub', en: 'OpenSpec GitHub repo' } },
@@ -1484,7 +1526,7 @@ export const TERM_SETS: TermSet[] = [
             { ru: ['Цена', 'бесплатно, лицензия MIT', 'бесплатно, лицензия MIT', 'бесплатный план с лимитами, остальные платные'], en: ['Price', 'free, MIT license', 'free, MIT license', 'a free plan with limits, paid plans above it'] },
             { ru: ['Файлы изменения', 'proposal.md, дельта к спекам, design.md, tasks.md', 'конституция, спецификация, план, задачи', 'requirements.md (или bugfix.md), design.md, tasks.md'], en: ['Change files', 'proposal.md, a spec delta, design.md, tasks.md', 'constitution, spec, plan, tasks', 'requirements.md (or bugfix.md), design.md, tasks.md'] },
             { ru: ['Порядок шагов', 'шаги можно повторять в любом порядке', 'по фазам: конституция → спецификация → план → задачи → код', 'требования → дизайн → задачи'], en: ['Step order', 'steps can repeat in any order', 'by phases: constitution → spec → plan → tasks → code', 'requirements → design → tasks'] },
-            { ru: ['С какими агентами', '30+ агентов через команды', 'разные агенты: Copilot, Claude Code и другие', 'свой агент Kiro'], en: ['Which agents', '30+ agents through slash commands', 'different agents: Copilot, Claude Code and others', 'Kiro’s own agent'] },
+            { ru: ['С какими агентами', '30+ агентов через скиллы', 'разные агенты: Copilot, Claude Code и другие', 'свой агент Kiro'], en: ['Which agents', '30+ agents through skills', 'different agents: Copilot, Claude Code and others', 'Kiro’s own agent'] },
           ],
         },
       },
@@ -2253,17 +2295,25 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'QA', en: 'QA' },
         aka: { ru: 'quality assurance, тестировщик, инженер по качеству', en: 'quality assurance, tester' },
         def: {
-          ru: 'QA (quality assurance, «обеспечение качества») — роль человека, который проверяет, что продукт делает обещанное, и находит баги раньше пользователей. QA воспроизводит ошибку, описывает её так, чтобы разработчик мог повторить, и принимает исправление. Когда рутину по багам берёт агент, QA проверяет его результат руками и решает, насколько баг важен.',
-          en: 'QA (quality assurance) is the role of the person who checks that a product does what it promises and finds bugs before users do. QA reproduces an error, describes it so a developer can repeat it, and accepts the fix. When an agent takes over the routine around bugs, QA checks its result by hand and decides how important the bug is.',
+          ru: 'QA (quality assurance, «обеспечение качества») — работа по обеспечению качества продукта и роль человека, который её ведёт: он проверяет, что продукт делает обещанное, и находит баги раньше пользователей. QA воспроизводит ошибку, описывает её так, чтобы разработчик мог повторить, и принимает исправление. Когда рутину по багам берёт агент, QA проверяет его результат руками и решает, насколько баг важен.',
+          en: 'QA (quality assurance) is the work of ensuring a product’s quality and the role of the person who does it: they check that the product does what it promises and find bugs before users do. QA reproduces an error, describes it so a developer can repeat it, and accepts the fix. When an agent takes over the routine around bugs, QA checks its result by hand and decides how important the bug is.',
         },
         match: { ru: ['QA', 'тестировщик\\p{L}*', 'инженер\\p{L}* по качеству'], en: ['QA', 'testers?', 'quality assurance'] },
-        related: ['bug', 'automated-test', 'test-stand', 'ai-agent', 'jira'],
+        related: ['bug', 'automated-test', 'test-stand', 'test-env', 'ai-agent', 'jira'],
         more: { post: 'bug-report-to-reproduction-agent', label: { ru: 'Как QA отдаёт рутину по багу агенту', en: 'How QA hands bug routine to an agent' } },
         faq: [
           { q: { ru: 'QA — что это?', en: 'What is QA?' }, a: { ru: 'Quality assurance, «обеспечение качества»: роль человека, который проверяет, что продукт делает обещанное, и находит баги раньше пользователей.', en: 'Quality assurance: the role of a person who checks that the product does what it promises and finds bugs before users do.' } },
           { q: { ru: 'Что делает QA, когда баги разбирает агент?', en: 'What does QA do when an agent handles bugs?' }, a: { ru: 'Проверяет результат агента руками и решает, насколько баг важен.', en: 'Checks the agent’s result by hand and decides how important the bug is.' } },
+          { q: { ru: 'Чем QA отличается от QC и тестирования?', en: 'How is QA different from QC and testing?' }, a: { ru: 'QA предотвращает дефекты: следит за процессом и улучшает его, чтобы ошибок было меньше. QC (quality control, контроль качества) обнаруживает дефекты в готовом результате. Тестирование — один из способов такой проверки.', en: 'QA prevents defects: it watches and improves the process so fewer errors appear. QC (quality control) detects defects in the finished output. Testing is one of the ways to do that check.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Quality_assurance', label: { ru: 'Википедия: Quality assurance', en: 'Wikipedia: Quality assurance' } },
+        seo: {
+          title: { ru: 'QA: что это в IT и чем QA отличается от QC и тестирования', en: 'QA (quality assurance): what it is, QA vs QC vs testing' },
+          description: {
+            ru: 'QA (quality assurance) — обеспечение качества: процесс и роль, которые не дают багам дойти до пользователей. Чем QA отличается от QC и тестирования и что делает QA рядом с ИИ-агентом.',
+            en: 'QA (quality assurance) is the process and the role that keep bugs from reaching users. How QA differs from QC and testing, and what QA does next to an AI agent.',
+          },
+        },
       },
       {
         slug: 'bug',
@@ -2288,7 +2338,7 @@ export const TERM_SETS: TermSet[] = [
         aka: { ru: 'sequence-диаграмма', en: 'sequence chart' },
         def: {
           ru: 'Диаграмма последовательности показывает, как участники системы обмениваются сообщениями по порядку времени: участники стоят сверху, стрелки идут вниз. По ней видно, кто кого вызвал и на каком шаге всё сломалось. Агент рисует такую диаграмму по запросу, чтобы разработчик сразу увидел место ошибки.',
-          en: 'A sequence diagram is a sequence diagram shows how the parts of a system exchange messages in time order: participants stand at the top and arrows run downward. It shows who called whom and at which step things broke. An agent draws such a diagram on request so the developer sees the place of the error at once.',
+          en: 'A sequence diagram shows how the parts of a system exchange messages in time order: participants stand at the top and arrows run downward. It shows who called whom and at which step things broke. An agent draws such a diagram on request so the developer sees the place of the error at once.',
         },
         match: { ru: ['диаграмм\\p{L}* последовательности', 'sequence(?:-диаграмм\\p{L}*)?'], en: ['sequence diagrams?'] },
         related: ['c4-model', 'bug', 'api'],
@@ -2460,7 +2510,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'The local environment is a copy of the system on the developer’s own computer. Code is written and tried here right away; breaking things is fine because nobody else sees it. The data is test data or an anonymized copy of production. It is not counted as a test stand: a stand is the team’s shared server, which starts at the next step.',
         },
         match: { ru: ['локальн\\p{L}* сред\\p{L}*', 'локалк\\p{L}*'], en: ['local environments?'] },
-        related: ['feature-stand', 'dev-env', 'test-stand'],
+        related: ['environment', 'feature-stand', 'dev-env', 'test-stand'],
         faq: [
           { q: { ru: 'Локальная среда — что это?', en: 'What is a local environment?' }, a: { ru: 'Копия системы на компьютере разработчика, её ещё зовут «локалкой». Здесь пишут код и сразу пробуют.', en: 'A copy of the system on the developer’s computer. Code is written and tried here right away.' } },
           { q: { ru: 'Локальная среда — это тестовый стенд?', en: 'Is the local environment a test stand?' }, a: { ru: 'Нет: стенд — общий сервер команды, а локальная среда есть только у одного разработчика.', en: 'No: a stand is the team’s shared server, while the local environment belongs to one developer.' } },
@@ -2483,7 +2533,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'A feature stand is a temporary copy of the system for one new feature, that is one code branch. It is created for the check and removed after the merge. It runs in parallel with dev: a feature is checked on its own, without waiting for the shared dev and without occupying the test environment. Such stands are also called preview or review environments.',
         },
         match: { ru: ['feature[- ]?стенд\\p{L}*', 'фич\\p{L}*[- ]?стенд\\p{L}*', 'review app\\p{L}*', 'preview environments?'], en: ['feature (?:stands?|environments?)', 'preview environments?', 'review apps?'] },
-        related: ['local-env', 'dev-env', 'test-stand'],
+        related: ['environment', 'local-env', 'dev-env', 'test-stand'],
         faq: [
           { q: { ru: 'Фича-стенд — что это?', en: 'What is a feature stand?' }, a: { ru: 'Временная копия системы под одну ветку кода: её поднимают для проверки и убирают после слияния.', en: 'A temporary copy of the system for one code branch: it is created for the check and removed after the merge.' } },
           { q: { ru: 'Зачем фича-стенд, если есть дев?', en: 'Why a feature stand if there is dev?' }, a: { ru: 'Он работает параллельно с девом: функцию проверяют отдельно, не дожидаясь общего дева и не занимая тест.', en: 'It runs in parallel with dev: a feature is checked on its own without waiting for the shared dev or occupying test.' } },
@@ -2506,7 +2556,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Dev (the development environment) is the environment shared by the team where code lands after a merge: it checks that the code of different developers builds and works together. The data is test data. Dev can break, but it is fixed quickly because the whole team works on it. It is the first shared test stand after the local environment. Feature stands usually run in parallel with dev.',
         },
         match: { ru: ['дев[- ]?сред\\p{L}*', 'дев[- ]?стенд\\p{L}*'], en: ['dev environments?', 'development environments?'] },
-        related: ['feature-stand', 'test-stand', 'local-env'],
+        related: ['environment', 'feature-stand', 'test-stand', 'local-env'],
         faq: [
           { q: { ru: 'Дев-среда — что это?', en: 'What is a dev environment?' }, a: { ru: 'Общая для команды среда, куда попадает код после слияния: здесь проверяют, что код разных разработчиков работает вместе.', en: 'The team’s shared environment where code lands after a merge: it checks that different developers’ code works together.' } },
           { q: { ru: 'Чем дев отличается от теста?', en: 'How is dev different from test?' }, a: { ru: 'На дев попадает код одной команды, на тест сводят изменения всех команд и сервисов.', en: 'Dev gets one team’s code, while test brings together the changes of all teams and services.' } },
@@ -2529,7 +2579,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Test is a shared environment where the changes of all teams and services are brought together often, daily or after every merge, to check that they work together. QA and automated tests work here; the data is a copy of production or mocks. It differs from dev in scope: dev gets one team’s code, while everyone integrates on test. Test is one of the test stands, and it is almost always there, even where there is no dev.',
         },
         match: { ru: ['интеграционн\\p{L}* сред\\p{L}*', 'интеграционн\\p{L}* стенд\\p{L}*', 'тестов\\p{L}* сред\\p{L}*'], en: ['integration environments?', 'test environments?'] },
-        related: ['dev-env', 'preprod', 'test-stand', 'feature-stand', 'qa'],
+        related: ['environment', 'dev-env', 'preprod', 'test-stand', 'feature-stand', 'qa'],
         faq: [
           { q: { ru: 'Тестовая среда — что это?', en: 'What is a test environment?' }, a: { ru: 'Общая среда, куда часто сводят изменения всех команд и сервисов, чтобы проверить, что они работают вместе.', en: 'A shared environment where everyone’s changes are often brought together to check that they work together.' } },
           { q: { ru: 'Чем тест отличается от препрода?', en: 'How is test different from pre-prod?' }, a: { ru: 'Тест проверяет, что изменения всех работают вместе. Препрод проверяет изменение в условиях, как на проде.', en: 'Test checks that everyone’s changes work together. Pre-prod checks a change under production-like conditions.' } },
@@ -2552,7 +2602,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'A test stand is a general class of environments: any separate copy of a system on the team’s server where you can try and break things without touching the live one (production). Test stands include the feature stand, dev, test (the integration environment), pre-prod and demo; each has its own job, and a change moves through them in order. The developer’s local environment and production are not stands. An agent reproduces bugs and checks changes on staging. The system’s dependencies, data and external services, are plugged in as copies of the real ones or as mocks: copies are closer to reality, mocks are cheaper and so used more often. Staging differs from a sandbox in purpose: a sandbox fences in the agent’s actions, while staging is a copy of the whole system.',
         },
         match: { ru: ['тестов\\p{L}* стенд\\p{L}*', 'стенд\\p{L}*', 'тестов\\p{L}* контур\\p{L}*'], en: ['test stands?', 'staging(?: environments?)?'] },
-        related: ['local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env', 'prod', 'sandbox', 'ai-agent', 'claude-in-chrome', 'human-in-the-loop'],
+        related: ['environment', 'local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env', 'prod', 'sandbox', 'ai-agent', 'claude-in-chrome', 'human-in-the-loop'],
         faq: [
           { q: { ru: 'Что такое тестовый стенд?', en: 'What is a test stand?' }, a: { ru: 'Отдельная копия системы на сервере команды, где можно пробовать и ломать, не задевая прод. К стендам относятся фича-стенд, дев, тест, препрод и демо.', en: 'A separate copy of the system on the team’s server where you can try and break things without touching production. Stands include the feature stand, dev, test, pre-prod and demo.' } },
           { q: { ru: 'Чем staging отличается от test environment?', en: 'How is staging different from a test environment?' }, a: { ru: 'Тестовая среда проверяет, что изменения всех работают вместе. Стейджинг, или препрод, проверяет изменение в условиях, как на проде.', en: 'A test environment checks that everyone’s changes work together. Staging, or pre-prod, checks a change under production-like conditions.' } },
@@ -2593,10 +2643,10 @@ export const TERM_SETS: TermSet[] = [
           en: 'Pre-prod (both “preprod” and “pre-prod” are correct; in Russian «препрод» and «предпрод») is an environment set up like production where a change gets its last check before release: the same settings and a fresh copy of production data. The word comes from pre-production. Some teams call it staging, others keep it as a separate step after the test environment.',
         },
         match: { ru: ['препрод\\p{L}*', 'предпрод\\p{L}*'], en: ['pre-?prod(?:uction)?'] },
-        related: ['test-stand', 'dev-env', 'demo-env', 'prod', 'time-to-market', 'sandbox'],
+        related: ['environment', 'test-stand', 'dev-env', 'demo-env', 'prod', 'time-to-market', 'sandbox'],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
-          title: { ru: 'Препрод или предпрод: как правильно писать и что это за среда в IT', en: 'What is pre-prod (preprod): pre-production vs staging vs production' },
+          title: { ru: 'Препрод (pre-prod) или предпрод: что это в IT и как правильно писать', en: 'What is pre-prod (preprod): pre-production vs staging vs production' },
           description: {
             ru: 'Препрод и предпрод — одно слово, верны оба написания. Что такое препрод в IT, чем он отличается от тестового стенда и прода и зачем нужен перед выкладкой.',
             en: 'Pre-prod is an environment set up like production for the last check before release. How it differs from a test environment and production, and when teams use it.',
@@ -2605,6 +2655,7 @@ export const TERM_SETS: TermSet[] = [
         faq: [
           { q: { ru: 'Как правильно: препрод или предпрод?', en: 'How is it spelled: preprod or pre-prod?' }, a: { ru: 'Верны оба написания: слово пришло из английского pre-production, словарной нормы нет. Выберите одно и пишите так во всём документе.', en: 'Both spellings are fine: the word comes from pre-production and has no dictionary norm. Pick one and use it throughout a document.' } },
           { q: { ru: 'Препрод — это что?', en: 'What is pre-prod?' }, a: { ru: 'Предпоследняя ступень перед продом: копия рабочей среды, где проверяют, как изменение поведёт себя в боевых условиях.', en: 'The step right before production: a copy of the live environment where a change is checked under real conditions.' } },
+          { q: { ru: 'Что проверяют на препроде?', en: 'What is checked on pre-prod?' }, a: { ru: 'Сам релиз в условиях, как на проде: короткий прогон главных сценариев, сквозные сценарии, обновление базы на копии рабочих данных и ручную проверку QA перед выкладкой.', en: 'The release itself under production-like settings: a quick run of the key paths, end-to-end scenarios, database migrations on a copy of production data and a manual QA check before release.' } },
           { q: { ru: 'Препрод и стейджинг — одно и то же?', en: 'Are pre-prod and staging the same?' }, a: { ru: 'В одних командах да, в других препрод стоит после тестового стенда. Смотрите, как названо у вас, и договоритесь об одном слове.', en: 'In some teams yes, in others pre-prod comes after the test environment. Check how your team uses the words and agree on one.' } },
           { q: { ru: 'Нужен ли препрод?', en: 'Do you need pre-prod?' }, a: { ru: 'Обычно небольшим командам хватает тестового стенда и прода. Препрод удлиняет цикл поставки: качество растёт, но растёт и time to market, потому что изменение дольше идёт до пользователей. Он нужен там, где ошибка на проде стоит дорого.', en: 'Small teams usually get by with a test environment and production. Pre-prod lengthens the delivery cycle: quality goes up, but so does time to market, because a change takes longer to reach users. It is for places where a mistake in production is expensive.' } },
           { q: { ru: 'Откуда в препроде данные?', en: 'Where does pre-prod data come from?' }, a: { ru: 'Из дампа: копии данных рабочей базы в одном файле. Личные данные из него убирают.', en: 'From a dump: a copy of the live database data in one file. Personal data is removed from it.' } },
@@ -2628,10 +2679,10 @@ export const TERM_SETS: TermSet[] = [
         aka: { ru: 'демо, демо-среда, demo', en: 'demo, demo stand' },
         def: {
           ru: 'Демо-стенд — среда для показа продукта заказчику или коллегам. От препрода отличается задачей: препрод проверяет изменение в условиях прода, а демо показывает готовую версию людям. Часто демо и есть сам прод: показывают на рабочей системе, например с отдельной демо-учётной записью. Но бывает и отдельный стенд со стабильной версией и подготовленными примерами данных, чтобы показ прошёл гладко. Правки на такой стенд попадают через выкладку, как и на прод.',
-          en: 'A demo environment is a demo environment is where a product is shown to a client or colleagues. It differs from pre-prod in purpose: pre-prod checks a change under production conditions, and demo shows a finished version to people. Often the demo is production itself: the product is shown on the live system, for example with a separate demo account. But there can also be a separate stand with a stable version and prepared sample data so the showing goes smoothly. Changes reach such a stand through a release, as they do production.',
+          en: 'A demo environment is where a product is shown to a client or colleagues. It differs from pre-prod in purpose: pre-prod checks a change under production conditions, and demo shows a finished version to people. Often the demo is production itself: the product is shown on the live system, for example with a separate demo account. But there can also be a separate stand with a stable version and prepared sample data so the showing goes smoothly. Changes reach such a stand through a release, as they do production.',
         },
         match: { ru: ['демо[- ]?стенд\\p{L}*', 'демо[- ]?сред\\p{L}*'], en: ['demo environments?', 'demo stands?'] },
-        related: ['preprod', 'prod', 'test-stand'],
+        related: ['environment', 'preprod', 'prod', 'test-stand'],
         faq: [
           { q: { ru: 'Демо-стенд — что это?', en: 'What is a demo environment?' }, a: { ru: 'Среда для показа продукта заказчику или коллегам.', en: 'An environment for showing the product to a client or colleagues.' } },
           { q: { ru: 'Демо — это прод?', en: 'Is demo the same as production?' }, a: { ru: 'Часто да: показывают на рабочей системе с отдельной демо-учётной записью. Бывает и отдельный стенд с подготовленными данными.', en: 'Often yes: the showing happens on the live system with a separate demo account. There can also be a separate stand with prepared data.' } },
@@ -2654,17 +2705,20 @@ export const TERM_SETS: TermSet[] = [
           en: 'Prod (production, the live environment) is the environment real users work with, and its data is real. A mistake here costs the most: users lose time or money. So changes reach production through checks on the stands, and an AI agent does not write to production: a release moves the changes, usually with a person’s confirmation.',
         },
         match: { ru: ['прод(?:а|е|у|ом)?', 'продакшен\\p{L}*', 'боев\\p{L}* сред\\p{L}*'], en: ['prod', 'production environments?'] },
-        related: ['preprod', 'demo-env', 'time-to-market'],
+        related: ['environment', 'test-stand', 'preprod', 'demo-env', 'time-to-market'],
         faq: [
           { q: { ru: 'Прод — что это в IT?', en: 'What is production in IT?' }, a: { ru: 'Среда, с которой работают настоящие пользователи, и данные в ней настоящие.', en: 'The environment real users work with, with real data.' } },
           { q: { ru: 'Почему на прод не пишут напрямую?', en: 'Why not write to production directly?' }, a: { ru: 'Ошибка там стоит дороже всего, поэтому изменения идут через проверки на стендах, а выкладку обычно подтверждает человек.', en: 'A mistake there costs the most, so changes go through checks on the stands, and a person usually confirms the release.' } },
+          { q: { ru: 'Что такое прод в программировании?', en: 'What does prod mean in programming?' }, a: { ru: 'Рабочая версия системы на серверах, с которой работают клиенты. «Выкатить на прод» значит выложить изменение пользователям, «упал прод» — рабочая система перестала работать.', en: 'The live version of the system on the servers that customers use. “Deploy to prod” means releasing a change to users; “prod is down” means the live system stopped working.' } },
+          { q: { ru: 'Прод и продакшен — одно и то же?', en: 'Are prod and production the same thing?' }, a: { ru: 'Да: «прод» — сокращение от английского production, по-русски ещё говорят «боевая среда».', en: 'Yes: prod is short for production, also called the live environment.' } },
+          { q: { ru: 'Чем прод отличается от препрода?', en: 'How is production different from pre-prod?' }, a: { ru: 'Препрод — копия прода для последней проверки перед выкладкой, клиентов на нём нет. На проде работают клиенты, и ошибка там стоит дороже всего.', en: 'Pre-prod is a copy of production for the last check before release, with no customers on it. Customers work on production, and a mistake there costs the most.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Прод (production): что это в IT и почему туда не пишут напрямую', en: 'Production (prod): what it is and why nobody writes there directly' },
           description: {
-            ru: 'Прод — среда, с которой работают настоящие пользователи. Почему изменения идут туда через стенды и препрод, а не напрямую.',
-            en: 'Production is the environment real users work with. Why changes reach it through stands and pre-prod, not directly.',
+            ru: 'Прод (продакшен, production) в IT и программировании — рабочая среда, где работают настоящие пользователи с настоящими данными. Чем прод отличается от препрода и теста и почему туда не пишут напрямую.',
+            en: 'Production (prod) is the live environment where real users work with real data. How production differs from pre-prod and test, and why nobody writes there directly.',
           },
         },
       },
@@ -2833,7 +2887,7 @@ export const TERM_SETS: TermSet[] = [
         match: { ru: ['Quint'], en: ['Quint'] },
         related: ['model-checking', 'apalache', 'tla-plus', 'invariant', 'qunit'],
         more: { post: 'quint-models-find-races', label: { ru: 'Как найти гонки и потерянные данные моделями на Quint', en: 'Finding races and lost data with Quint models' } },
-        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }, { post: 'tla-alloy-quint-compare', label: { ru: 'TLA+ vs Quint vs Alloy: что выбрать', en: 'TLA+ vs Quint vs Alloy: which to choose' } }],
         faq: [
           { q: { ru: 'Quint — что это за язык?', en: 'What is the Quint language?' }, a: { ru: 'Язык, на котором описывают правила системы так, чтобы их можно было запускать и проверять до написания кода. Запись похожа на обычный код.', en: 'A language for describing a system’s rules so they can be run and checked before code is written. It reads like ordinary code.' } },
           { q: { ru: 'Чем Quint отличается от TLA+?', en: 'How is Quint different from TLA+?' }, a: { ru: 'Quint читается как обычный код, TLA+ похож на математические формулы, поэтому порог входа у Quint ниже. Проверяют их одними программами: TLC и Apalache.', en: 'Quint reads like ordinary code, TLA+ looks like math formulas, so Quint is easier to start with. Both are checked by the same programs: TLC and Apalache.' } },
@@ -2856,6 +2910,14 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Что находит TLA+?', en: 'What does TLA+ find?' }, a: { ru: 'Цепочки шагов, где правило нарушается. Например, что при сбое между списанием и зачислением деньги пропадают.', en: 'Step sequences that break a rule. For example, that money disappears if a failure happens between the debit and the credit.' } },
         ],
         source: { url: 'https://lamport.azurewebsites.net/tla/tla.html', label: { ru: 'Страница TLA+ Лесли Лэмпорта', en: 'Leslie Lamport’s TLA+ page' } },
+        seo: {
+          title: { ru: 'TLA+: что это — глоссарий AI-разработки', en: 'TLA+: what it is — AI development glossary' },
+          description: {
+            ru: 'TLA+ — язык Лесли Лэмпорта, чтобы описать поведение системы шаг за шагом и проверить его программами TLC и Apalache до кода. Пример и сравнение с Quint и Alloy.',
+            en: 'TLA+ is Leslie Lamport’s language for describing a system’s behaviour step by step and checking it with TLC and Apalache before code. An example and how it compares with Quint and Alloy.',
+          },
+        },
+        more: { post: 'tla-alloy-quint-compare', label: { ru: 'TLA+ vs Quint vs Alloy: что выбрать', en: 'TLA+ vs Quint vs Alloy: which to choose' } },
       },
       {
         slug: 'alloy',
@@ -2867,6 +2929,7 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Alloy'], en: ['Alloy'] },
         related: ['tla-plus', 'quint', 'model-checking'],
+        more: { post: 'tla-alloy-quint-compare', label: { ru: 'TLA+ vs Quint vs Alloy: что выбрать', en: 'TLA+ vs Quint vs Alloy: which to choose' } },
         faq: [
           { q: { ru: 'Alloy — что это?', en: 'What is Alloy?' }, a: { ru: 'Способ описать объекты и связи между ними и попросить программу найти небольшой пример, где правило нарушено.', en: 'A way to describe objects and their relations and ask a program to find a small example where a rule breaks.' } },
           { q: { ru: 'Чем Alloy отличается от TLA+?', en: 'How is Alloy different from TLA+?' }, a: { ru: 'Alloy проверяет структуру — объекты и связи. TLA+ проверяет поведение системы шаг за шагом.', en: 'Alloy checks structure: objects and relations. TLA+ checks a system’s behaviour step by step.' } },
@@ -2878,8 +2941,8 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'TLC', en: 'TLC' },
         aka: { ru: 'первая программа проверки TLA+', en: 'the first TLA+ checker' },
         def: {
-          ru: 'TLC — первая программа, которая проверяет модели на TLA+. Она перебирает все состояния модели по одному и для каждого проверяет правила, помня, где уже была. Поэтому её работа предсказуема, но мир модели должен быть небольшим: иначе состояний слишком много. Модели на Quint тоже можно проверять в TLC, но сначала их нужно перевести в запись для этой программы.',
-          en: 'TLC is the first program that checks TLA+ models. It goes through all states of a model one by one and checks the rules in each, remembering where it has been. So its work is predictable, but the world of the model must be small: otherwise there are too many states. Quint models can be checked in TLC too, but they first have to be translated into a form this program accepts.',
+          ru: 'TLC — первая программа, которая проверяет модели на TLA+. Она перебирает все состояния модели по одному и для каждого проверяет правила, помня, где уже была. Поэтому её работа предсказуема, но мир модели должен быть небольшим: иначе состояний слишком много. Модели на Quint тоже проверяют в TLC: `quint verify` запускают с флагом `--backend=tlc`.',
+          en: 'TLC is the first program that checks TLA+ models. It goes through all states of a model one by one and checks the rules in each, remembering where it has been. So its work is predictable, but the world of the model must be small: otherwise there are too many states. Quint models are checked in TLC too: run `quint verify` with the `--backend=tlc` flag.',
         },
         match: { ru: ['TLC'], en: ['TLC'] },
         related: ['tla-plus', 'quint', 'apalache', 'model-checking'],
@@ -2946,13 +3009,30 @@ export const TERM_SETS: TermSet[] = [
           en: 'Model checking is a method in which a program automatically walks the states of a described system and checks that the rules hold in each of them. If a rule breaks, the method outputs the exact chain of steps that leads there. For example, a shop model finds the move “payment, connection lost” after which the money is charged but there is no order: the buyer paid and got nothing. Unlike a test, the method is not limited to scenarios a person thought of, but it is limited by the size of the chosen world.',
         },
         match: { ru: ['проверк\\p{L}* моделей', 'model checking', 'формальн\\p{L}* модел\\p{L}*'], en: ['model checking', 'formal models?'] },
-        related: ['quint', 'invariant', 'apalache', 'mutation-testing'],
+        related: ['quint', 'invariant', 'apalache', 'tlc', 'alloy', 'automated-test', 'mutation-testing'],
         more: { post: 'quint-models-find-races', label: { ru: 'Как найти гонки и потерянные данные моделями на Quint', en: 'Finding races and lost data with Quint models' } },
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем model checking отличается от тестов', en: 'Model checking vs testing' } }],
+        notes: {
+          title: { ru: 'Программы проверки', en: 'Model checking tools' },
+          items: [
+            { name: { ru: 'TLC', en: 'TLC' }, text: { ru: 'первая программа проверки моделей на TLA+: перебирает все состояния по одному, поэтому мир модели должен быть небольшим.', en: 'the first checker for TLA+ models: it walks every state one by one, so the model’s world must be small.' } },
+            { name: { ru: 'Apalache', en: 'Apalache' }, text: { ru: 'проверяет модели на TLA+ и Quint: переводит их в условия для SMT-решателя (например, Z3) и рассуждает обо всех исполнениях до заданной длины.', en: 'checks TLA+ and Quint models: it turns them into conditions for an SMT solver such as Z3 and reasons about all executions up to a given length.' } },
+            { name: { ru: 'Quint', en: 'Quint' }, text: { ru: 'язык моделей со своим быстрым случайным прогоном; для полной проверки использует TLC и Apalache.', en: 'a modeling language with its own fast random simulation; for full checking it uses TLC and Apalache.' } },
+            { name: { ru: 'Alloy', en: 'Alloy' }, text: { ru: 'ищет небольшой пример, где правило о данных или правах нарушено.', en: 'looks for a small example where a rule about data or access rights breaks.' } },
+          ],
+        },
         faq: [
           { q: { ru: 'Model checking — что это?', en: 'What is model checking?' }, a: { ru: 'Метод, при котором программа обходит все состояния описанной системы и проверяет, что в каждом правила соблюдены.', en: 'A method where a program walks through every state of a described system and checks that the rules hold in each.' } },
           { q: { ru: 'Чем model checking отличается от тестов?', en: 'How is model checking different from tests?' }, a: { ru: 'Тест проверяет сценарий, который вы придумали. Model checking перебирает все порядки действий и при нарушении выдаёт точную цепочку шагов.', en: 'A test checks a scenario you thought of. Model checking tries every order of actions and gives the exact step sequence when a rule breaks.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Model_checking', label: { ru: 'Википедия: проверка моделей', en: 'Wikipedia: Model checking' } },
+        seo: {
+          title: { ru: 'Проверка моделей (model checking): что это, программы проверки и отличие от тестов', en: 'Model checking: what it is, model checking tools and how it differs from testing' },
+          description: {
+            ru: 'Проверка моделей обходит состояния описанной системы и выдаёт точные шаги, на которых правило нарушается. Программы: TLC, Apalache, Alloy. Чем метод отличается от тестов.',
+            en: 'Model checking walks the states of a described system and returns the exact steps where a rule breaks. Tools: TLC, Apalache, Alloy. How it differs from tests.',
+          },
+        },
       },
       {
         slug: 'invariant',
@@ -3192,6 +3272,13 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Почему агент не знает про мой проект?', en: 'Why doesn’t the agent know about my project?' }, a: { ru: 'Чего нет в контексте, того агент не знает. Постоянные знания о проекте кладут в файлы инструкций вроде AGENTS.md или CLAUDE.md.', en: 'What is not in the context, the agent does not know. Standing project knowledge goes into instruction files like AGENTS.md or CLAUDE.md.' } },
         ],
         source: { url: 'https://platform.claude.com/docs/en/build-with-claude/context-windows', label: { ru: 'Anthropic: контекстное окно', en: 'Anthropic: Context windows' } },
+        seo: {
+          title: { ru: 'Контекст в ИИ: что это, контекстное окно и почему агент не знает про ваш проект', en: 'AI context: what it is, the context window and why the agent forgets' },
+          description: {
+            ru: 'Контекст — всё, что модель видит в данный момент: диалог, файлы проекта, данные подключённых систем. Что такое контекстное окно, почему агент забывает проект и куда класть постоянные знания: AGENTS.md, CLAUDE.md, память.',
+            en: 'Context is everything a model sees right now: the conversation, project files, data from connected systems. What the context window is, why an agent forgets your project, and where standing knowledge goes: AGENTS.md, CLAUDE.md, memory.',
+          },
+        },
       },
       {
         slug: 'token',
@@ -3408,6 +3495,13 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Кто поставил этот вопрос?', en: 'Who posed this question?' }, a: { ru: 'Карл Грюнберг в 1976 году; в 1979 году вопрос вошёл в список задач Уолла.', en: 'Karl Gruenberg in 1976; in 1979 it entered Wall’s problem list.' } },
         ],
         source: { url: 'https://arxiv.org/abs/2610.23637', label: { ru: 'arXiv 2610.23637: Two-generator presentations with a relation gap', en: 'arXiv 2610.23637: Two-generator presentations with a relation gap' } },
+        seo: {
+          title: { ru: 'Разрыв соотношений (relation gap): что это и как задачу закрыли в 2026 году', en: 'Relation gap: what it is and how the 1976 question was settled in 2026' },
+          description: {
+            ru: 'Разрыв соотношений: группе нужно больше правил, чем образующих у её модуля соотношений. Вопрос Грюнберга 1976 года закрыла статья arXiv 2610.23637.',
+            en: 'Relation gap: a group needs more relations than its relation module needs generators. Gruenberg’s 1976 question was settled by arXiv 2610.23637.',
+          },
+        },
       },
       {
         slug: 'group-homology',

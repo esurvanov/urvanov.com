@@ -1,12 +1,12 @@
 {
   "openspec": {
-    "def": "OpenSpec es un marco gratuito y de código abierto de Fission AI para el desarrollo guiado por especificaciones (Spec-Driven Development): primero el agente escribe un plan del cambio en archivos, tú lo revisas y después el agente escribe el código. Las especificaciones vigentes están en `openspec/specs`, y cada cambio es su propia carpeta en `openspec/changes`: `proposal.md` (por qué y qué), un delta de las especificaciones, `design.md` y `tasks.md`. El agente sigue `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; al archivar, el delta se fusiona con las especificaciones. Más ligero que Spec Kit: sin fases rígidas y compatible con más de 30 agentes.",
+    "def": "OpenSpec es un framework gratuito y de código abierto de Fission AI para el Spec-Driven Development: el agente escribe primero un plan del cambio en archivos, usted lo revisa y después el agente escribe el código. Las especificaciones vivas están en `openspec/specs` y cada cambio es su propia carpeta en `openspec/changes`: `proposal.md` (por qué y qué), un delta de especificación, `design.md` y `tasks.md`. El agente sigue los skills `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (antes de la 2.0: `/opsx:propose`, `/opsx:apply`, `/opsx:archive`); al archivar, el delta se integra en las especificaciones. Es más ligero que Spec Kit, sin fases rígidas, y funciona con más de 30 agentes.",
     "faq.0.q": "¿Qué es OpenSpec?",
     "faq.0.a": "Un marco gratuito y de código abierto de Fission AI para el desarrollo guiado por especificaciones: primero el agente escribe un plan del cambio en archivos, tú lo revisas y después el agente escribe el código.",
     "faq.1.q": "¿Cuáles son los comandos de OpenSpec?",
-    "faq.1.a": "Los tres principales: /opsx:propose crea un plan del cambio, /opsx:apply escribe el código según las tareas y /opsx:archive fusiona los requisitos con las especificaciones comunes. Antes se puede pensar en voz alta con /opsx:explore.",
+    "faq.1.a": "Los tres principales: /openspec-propose crea un plan del cambio, /openspec-apply-change escribe el código según las tareas, /openspec-archive-change integra los requisitos en las especificaciones compartidas. Para pensar en voz alta antes, /openspec-explore. Codex llama a los mismos skills con $, por ejemplo $openspec-propose; en las versiones 1.x se llamaban /opsx:propose, /opsx:apply y /opsx:archive.",
     "faq.2.q": "¿Cómo se instala OpenSpec?",
-    "faq.2.a": "Con `npm install -g @fission-ai/openspec@latest` (hace falta Node.js 22.12 o superior) o con `brew install openspec`. Después, ejecuta `openspec init` en la carpeta del proyecto. Es gratuito, con licencia MIT.",
+    "faq.2.a": "Con el script `curl -fsSL https://openspec.dev/cli/install.sh | sh` en macOS y Linux, `irm https://openspec.dev/cli/install.ps1 | iex` en PowerShell en Windows, o con `npm install -g @fission-ai/openspec@latest` (requiere Node.js 22.12 o superior) o `brew install openspec`. Después, ejecute `openspec init` en la carpeta del proyecto. Es gratuito, con licencia MIT.",
     "source.label": "Repositorio de OpenSpec en GitHub",
     "seo.title": "Qué es OpenSpec: marco de código abierto para el desarrollo guiado por especificaciones",
     "seo.description": "OpenSpec de Fission AI: un plan del cambio en Markdown antes del código, tres comandos para el agente (propose, apply, archive) y requisitos fusionados con las especificaciones del proyecto.",
@@ -40,7 +40,7 @@
     ],
     "compare.rows.4": [
       "Con qué agentes",
-      "más de 30 agentes mediante comandos con barra",
+      "más de 30 agentes mediante skills",
       "distintos agentes: Copilot, Claude Code y otros",
       "el propio agente de Kiro"
     ]

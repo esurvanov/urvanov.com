@@ -6,7 +6,7 @@
     "faq.0.a": "Bộ môn thiết lập harness: tác nhân biết gì về dự án, có những công cụ nào, được phép làm gì và kết quả của nó được kiểm tra ra sao.",
     "faq.1.q": "Harness engineering khác HDD ở đâu?",
     "faq.1.a": "Harness engineering bao trùm toàn bộ môi trường và không có thứ tự cố định. HDD là một phương pháp nằm trong đó: mỗi lỗi của tác nhân trở thành một quy tắc của môi trường.",
-    "source.label": "martinfowler.com: Harness engineering"
+    "source.label": "Birgitta Böckeler, martinfowler.com: Harness engineering"
   },
   "hdd": {
     "def": "HDD là một phương pháp cụ thể trong harness engineering: mỗi lỗi của tác nhân AI trở thành một quy tắc của môi trường, có thể là chỉ dẫn, phép kiểm tra hoặc giới hạn. Môi trường lớn dần từ các lỗi thật và lỗi đó không quay lại ở những lần chạy sau.",
@@ -16,7 +16,7 @@
     "faq.1.a": "Môi trường lớn dần từ các lỗi thật, và một lỗi không lặp lại ở những lần chạy sau."
   },
   "spec-driven-development": {
-    "def": "Phát triển dựa trên đặc tả (Spec-Driven Development) là cách làm viết trước đặc tả, tức hệ thống phải làm gì, rồi để tác nhân AI viết mã và đối chiếu mã với đặc tả. Đặc tả trở thành tài liệu chính, còn mã là hệ quả của nó.",
+    "def": "Spec-Driven Development (SDD) là cách tiếp cận trong đó đặc tả — hệ thống phải làm gì — được viết trước, rồi tác nhân viết mã và kiểm tra mã theo đặc tả. Đặc tả trở thành tài liệu chính còn mã là hệ quả của nó.",
     "faq.0.q": "Phát triển dựa trên đặc tả (spec-driven development) là gì?",
     "faq.0.a": "Cách làm đặt đặc tả về việc hệ thống phải làm lên trước, còn tác nhân viết mã và kiểm tra mã theo đặc tả đó.",
     "faq.1.q": "Những framework nào hỗ trợ spec-driven development?",
@@ -47,16 +47,26 @@
       "Cách thay đổi hệ thống",
       "sửa manifest, không sửa cụm",
       "sửa đặc tả, không sửa mã"
-    ]
+    ],
+    "faq.2.q": "Spec-driven development khác TDD thế nào?",
+    "faq.2.a": "Với TDD, trước hết viết một kiểm thử thất bại cho một hàm, rồi viết mã cho nó. Với SDD, trước hết viết đặc tả cho cả thay đổi — yêu cầu và các kịch bản «khi — thì» — còn tác nhân suy ra kiểm thử và mã từ đó.",
+    "faq.3.q": "Đặc tả khác AGENTS.md thế nào?",
+    "faq.3.a": "Đặc tả mô tả một thay đổi và tồn tại đến khi thay đổi đóng. AGENTS.md giữ quy tắc cho cả dự án và đi vào mỗi phiên của tác nhân.",
+    "seo.title": "Spec-driven development (SDD) là gì: hoạt động thế nào và dùng framework nào",
+    "seo.description": "Spec-driven development: trước hết là đặc tả với các yêu cầu, rồi tác nhân AI viết mã theo đó. Các bước, OpenSpec, Spec Kit và Kiro, và cách giữ đặc tả và mã đồng bộ.",
+    "more.label": "OpenSpec: spec-driven development trong thực tế",
+    "also.0.label": "Đặc tả theo aggregate: cách để chúng không sinh sôi",
+    "also.1.label": "Vòng đối soát: đặc tả và mã luôn khớp nhau",
+    "also.2.label": "Đặc tả khác AGENTS.md thế nào"
   },
   "openspec": {
-    "def": "OpenSpec là framework mã nguồn mở miễn phí của Fission AI cho phát triển dựa trên đặc tả (Spec-Driven Development): tác nhân AI trước hết viết kế hoạch thay đổi vào các tệp, bạn duyệt, rồi tác nhân mới viết mã. Các spec đang hiệu lực nằm trong `openspec/specs`, mỗi thay đổi là một thư mục riêng trong `openspec/changes`: `proposal.md` (vì sao và làm gì), delta của spec, `design.md` và `tasks.md`. Tác nhân đi theo `/opsx:propose` → `/opsx:apply` → `/opsx:archive`; khi lưu trữ, delta được gộp vào spec. Nhẹ hơn Spec Kit, không có các giai đoạn cứng nhắc và chạy được với hơn 30 tác nhân.",
+    "def": "OpenSpec là framework miễn phí, mã nguồn mở của Fission AI cho Spec-Driven Development: tác nhân trước hết viết kế hoạch thay đổi vào các tệp, bạn xem xét, rồi tác nhân viết mã. Các đặc tả đang dùng nằm ở `openspec/specs`, và mỗi thay đổi là một thư mục riêng trong `openspec/changes`: `proposal.md` (vì sao và cái gì), delta đặc tả, `design.md` và `tasks.md`. Tác nhân đi theo các skill `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (trước bản 2.0: `/opsx:propose`, `/opsx:apply`, `/opsx:archive`); khi lưu trữ, delta được gộp vào các đặc tả. Nhẹ hơn Spec Kit, không có các pha cứng nhắc, và chạy với hơn 30 tác nhân.",
     "faq.0.q": "OpenSpec là gì?",
     "faq.0.a": "Framework mã nguồn mở miễn phí của Fission AI cho phát triển dựa trên đặc tả: tác nhân trước hết viết kế hoạch thay đổi vào các tệp, bạn duyệt, rồi tác nhân mới viết mã.",
     "faq.1.q": "OpenSpec có những lệnh nào?",
-    "faq.1.a": "Ba lệnh chính: /opsx:propose tạo kế hoạch thay đổi, /opsx:apply viết mã theo các nhiệm vụ, /opsx:archive gộp yêu cầu vào các spec chung. Trước đó có thể suy nghĩ thành lời bằng /opsx:explore.",
+    "faq.1.a": "Ba lệnh chính: /openspec-propose tạo kế hoạch thay đổi, /openspec-apply-change viết mã theo các nhiệm vụ, /openspec-archive-change gộp các yêu cầu vào đặc tả chung. Muốn nghĩ thành lời trước đó thì dùng /openspec-explore. Codex gọi cùng các skill đó bằng $, ví dụ $openspec-propose; ở các bản 1.x chúng tên là /opsx:propose, /opsx:apply và /opsx:archive.",
     "faq.2.q": "Cài OpenSpec như thế nào?",
-    "faq.2.a": "Bằng `npm install -g @fission-ai/openspec@latest` (cần Node.js 22.12 trở lên) hoặc `brew install openspec`. Sau đó chạy `openspec init` trong thư mục dự án. Công cụ miễn phí, theo giấy phép MIT.",
+    "faq.2.a": "Bằng script `curl -fsSL https://openspec.dev/cli/install.sh | sh` trên macOS và Linux, `irm https://openspec.dev/cli/install.ps1 | iex` trong PowerShell trên Windows, hoặc bằng `npm install -g @fission-ai/openspec@latest` (cần Node.js 22.12 trở lên) hay `brew install openspec`. Sau đó chạy `openspec init` trong thư mục dự án. Miễn phí, giấy phép MIT.",
     "faq.3.q": "OpenSpec khác Spec Kit ở đâu?",
     "faq.3.a": "OpenSpec nhẹ hơn: các bước có thể lặp lại theo thứ tự bất kỳ và được làm cho mã đang chạy sẵn. Spec Kit của GitHub đi qua các giai đoạn cố định.",
     "source.label": "Repo GitHub của OpenSpec",
@@ -90,7 +100,7 @@
     ],
     "compare.rows.4": [
       "Tác nhân nào",
-      "hơn 30 tác nhân qua các lệnh slash",
+      "hơn 30 tác nhân qua skills",
       "nhiều tác nhân: Copilot, Claude Code và các tác nhân khác",
       "tác nhân riêng của Kiro"
     ]
@@ -467,13 +477,17 @@
   },
   "qa": {
     "aka": "đảm bảo chất lượng, tester",
-    "def": "QA (quality assurance, đảm bảo chất lượng) là vai trò của người kiểm tra sản phẩm có làm đúng điều nó hứa hay không và tìm lỗi trước người dùng. QA tái hiện lỗi, mô tả sao cho lập trình viên lặp lại được và nghiệm thu bản sửa. Khi một tác nhân AI đảm nhận phần việc lặp đi lặp lại quanh lỗi, QA kiểm tra kết quả của nó bằng tay và quyết định lỗi quan trọng đến đâu.",
+    "def": "QA (quality assurance) là công việc bảo đảm chất lượng sản phẩm và vai trò của người làm việc đó: kiểm tra sản phẩm làm đúng điều đã hứa và tìm lỗi trước người dùng. QA tái hiện lỗi, mô tả để lập trình viên lặp lại được và nghiệm thu bản sửa. Khi tác nhân đảm nhận phần việc thường nhật quanh lỗi, QA kiểm tra kết quả của nó bằng tay và quyết định lỗi quan trọng đến đâu.",
     "more.label": "QA giao phần việc lặp lại quanh lỗi cho tác nhân như thế nào",
     "faq.0.q": "QA là gì?",
     "faq.0.a": "Quality assurance (đảm bảo chất lượng): vai trò của người kiểm tra sản phẩm có làm đúng điều nó hứa hay không và tìm lỗi trước người dùng.",
     "faq.1.q": "QA làm gì khi tác nhân xử lý lỗi?",
     "faq.1.a": "Kiểm tra kết quả của tác nhân bằng tay và quyết định lỗi quan trọng đến đâu.",
-    "source.label": "Wikipedia: Quality assurance"
+    "source.label": "Wikipedia: Quality assurance",
+    "faq.2.q": "QA khác QC và kiểm thử thế nào?",
+    "faq.2.a": "QA ngăn ngừa khuyết tật: theo dõi và cải tiến quy trình để có ít lỗi hơn. QC (quality control, kiểm soát chất lượng) phát hiện khuyết tật trong sản phẩm đã hoàn thành. Kiểm thử là một trong những cách để thực hiện việc kiểm tra đó.",
+    "seo.title": "QA (quality assurance): là gì và QA khác QC và kiểm thử thế nào",
+    "seo.description": "QA (quality assurance) là quy trình và vai trò không để lỗi đến tay người dùng. QA khác QC và kiểm thử thế nào, và QA làm gì bên cạnh tác nhân AI."
   },
   "bug": {
     "name": "Bug",
@@ -780,14 +794,14 @@
     "faq.0.a": "Cả hai cách viết đều được: từ này đến từ pre-production và không có chuẩn từ điển. Chọn một cách và dùng thống nhất trong cả tài liệu.",
     "faq.1.q": "Pre-prod là gì?",
     "faq.1.a": "Bước ngay trước môi trường sản xuất: bản sao của môi trường đang chạy thật, nơi một thay đổi được kiểm tra trong điều kiện thực.",
-    "faq.2.q": "Pre-prod và staging có giống nhau không?",
-    "faq.2.a": "Ở một số nhóm thì giống, ở nhóm khác pre-prod đứng sau môi trường test. Hãy xem nhóm của bạn dùng các từ này ra sao và thống nhất một cách.",
-    "faq.3.q": "Có cần pre-prod không?",
-    "faq.3.a": "Nhóm nhỏ thường chỉ cần môi trường test và môi trường sản xuất. Pre-prod kéo dài chu kỳ chuyển giao: chất lượng tăng nhưng thời gian đưa ra thị trường cũng tăng, vì một thay đổi mất nhiều thời gian hơn để đến người dùng. Nó dành cho nơi một sai lầm ở môi trường sản xuất rất đắt.",
-    "faq.4.q": "Dữ liệu của pre-prod đến từ đâu?",
-    "faq.4.a": "Từ một bản dump: bản sao dữ liệu của cơ sở dữ liệu đang chạy thật trong một tệp. Dữ liệu cá nhân được loại bỏ khỏi đó.",
-    "faq.5.q": "Tác nhân AI làm gì trên pre-prod?",
-    "faq.5.a": "Chạy các phép kiểm tra. Thay đổi đến đây qua một đợt phát hành; tác nhân không sửa trực tiếp.",
+    "faq.3.q": "Pre-prod và staging có giống nhau không?",
+    "faq.3.a": "Ở một số nhóm thì giống, ở nhóm khác pre-prod đứng sau môi trường test. Hãy xem nhóm của bạn dùng các từ này ra sao và thống nhất một cách.",
+    "faq.4.q": "Có cần pre-prod không?",
+    "faq.4.a": "Nhóm nhỏ thường chỉ cần môi trường test và môi trường sản xuất. Pre-prod kéo dài chu kỳ chuyển giao: chất lượng tăng nhưng thời gian đưa ra thị trường cũng tăng, vì một thay đổi mất nhiều thời gian hơn để đến người dùng. Nó dành cho nơi một sai lầm ở môi trường sản xuất rất đắt.",
+    "faq.5.q": "Dữ liệu của pre-prod đến từ đâu?",
+    "faq.5.a": "Từ một bản dump: bản sao dữ liệu của cơ sở dữ liệu đang chạy thật trong một tệp. Dữ liệu cá nhân được loại bỏ khỏi đó.",
+    "faq.6.q": "Tác nhân AI làm gì trên pre-prod?",
+    "faq.6.a": "Chạy các phép kiểm tra. Thay đổi đến đây qua một đợt phát hành; tác nhân không sửa trực tiếp.",
     "compare.title": "Pre-prod khác môi trường test ở đâu",
     "compare.head": [
       "Test",
@@ -812,7 +826,9 @@
       "Luôn có",
       "gần như luôn có",
       "không phải lúc nào cũng có"
-    ]
+    ],
+    "faq.2.q": "Trên pre-prod kiểm tra những gì?",
+    "faq.2.a": "Chính bản phát hành trong điều kiện như production: chạy nhanh các luồng chính, các kịch bản đầu cuối, migration cơ sở dữ liệu trên bản sao của dữ liệu thật và kiểm tra thủ công của QA trước khi phát hành."
   },
   "demo-env": {
     "name": "Môi trường demo",
@@ -836,7 +852,13 @@
     "faq.1.a": "Sai lầm ở đó tốn kém nhất, nên thay đổi đi qua các phép kiểm tra trên các stand, và thường có một người xác nhận đợt phát hành.",
     "source.label": "Wikipedia: Deployment environment",
     "seo.title": "Production (prod) là gì và vì sao không ai ghi thẳng vào đó",
-    "seo.description": "Production là môi trường mà người dùng thật làm việc cùng. Vì sao thay đổi đến đó qua các stand và pre-prod, không ghi trực tiếp."
+    "seo.description": "Production (prod) là môi trường đang chạy thật, nơi người dùng thật làm việc với dữ liệu thật. Production khác pre-prod và test thế nào, và vì sao không ai ghi thẳng vào đó.",
+    "faq.2.q": "Prod nghĩa là gì trong lập trình?",
+    "faq.2.a": "Phiên bản đang chạy thật của hệ thống trên các máy chủ mà khách hàng dùng. «Deploy lên prod» nghĩa là đưa thay đổi đến người dùng; «prod sập» nghĩa là hệ thống đang chạy thật ngừng hoạt động.",
+    "faq.3.q": "Prod và production có phải là một không?",
+    "faq.3.a": "Có: prod là cách viết tắt của production, còn gọi là môi trường đang chạy thật.",
+    "faq.4.q": "Production khác pre-prod thế nào?",
+    "faq.4.a": "Pre-prod là bản sao của production để kiểm tra lần cuối trước khi phát hành, không có khách hàng. Khách hàng làm việc trên production, và một lỗi ở đó tốn kém nhất."
   },
   "quint": {
     "aka": "ngôn ngữ cho mô hình hình thức",
@@ -847,7 +869,8 @@
     "faq.0.a": "Ngôn ngữ để mô tả quy tắc của hệ thống sao cho có thể chạy và kiểm tra chúng trước khi viết mã. Đọc giống mã thông thường.",
     "faq.1.q": "Quint khác TLA+ ở đâu?",
     "faq.1.a": "Quint đọc giống mã thông thường, TLA+ trông như công thức toán, nên Quint dễ bắt đầu hơn. Cả hai được kiểm tra bằng cùng các chương trình: TLC và Apalache.",
-    "source.label": "quint-lang.org, trang và tài liệu của Quint"
+    "source.label": "quint-lang.org, trang và tài liệu của Quint",
+    "also.1.label": "TLA+ vs Quint vs Alloy: chọn cái nào"
   },
   "tla-plus": {
     "aka": "của Leslie Lamport",
@@ -857,7 +880,10 @@
     "faq.0.a": "Cách mô tả hệ thống cư xử ra sao từng bước chính xác đến mức chương trình có thể kiểm tra bản mô tả trước khi viết mã. Tác giả là Leslie Lamport.",
     "faq.1.q": "TLA+ tìm ra điều gì?",
     "faq.1.a": "Những chuỗi bước phá một quy tắc. Ví dụ, tiền biến mất nếu có lỗi xảy ra giữa lúc ghi nợ và ghi có.",
-    "source.label": "Trang TLA+ của Leslie Lamport"
+    "source.label": "Trang TLA+ của Leslie Lamport",
+    "seo.title": "TLA+: là gì — bảng thuật ngữ phát triển với AI",
+    "seo.description": "TLA+ là ngôn ngữ của Leslie Lamport để mô tả hành vi của hệ thống từng bước và kiểm tra nó bằng TLC và Apalache trước khi viết mã. Một ví dụ và so sánh với Quint và Alloy.",
+    "more.label": "TLA+ vs Quint vs Alloy: chọn cái nào"
   },
   "alloy": {
     "aka": "ngôn ngữ mô hình hóa và bộ phân tích",
@@ -866,11 +892,12 @@
     "faq.0.a": "Cách mô tả các đối tượng và quan hệ của chúng, rồi nhờ chương trình tìm một ví dụ nhỏ trong đó một quy tắc bị phá.",
     "faq.1.q": "Alloy khác TLA+ ở đâu?",
     "faq.1.a": "Alloy kiểm tra cấu trúc: đối tượng và quan hệ. TLA+ kiểm tra hành vi của hệ thống từng bước.",
-    "source.label": "alloytools.org, trang của Alloy"
+    "source.label": "alloytools.org, trang của Alloy",
+    "more.label": "TLA+ vs Quint vs Alloy: chọn cái nào"
   },
   "tlc": {
     "aka": "bộ kiểm tra TLA+ đầu tiên",
-    "def": "TLC là chương trình đầu tiên kiểm tra các mô hình TLA+. Nó đi qua lần lượt mọi trạng thái của mô hình và kiểm tra các quy tắc ở từng trạng thái, ghi nhớ những nơi đã đi qua. Vì vậy công việc của nó dễ đoán, nhưng thế giới của mô hình phải nhỏ: nếu không sẽ có quá nhiều trạng thái. Mô hình Quint cũng kiểm tra được bằng TLC, nhưng trước tiên phải dịch sang dạng mà chương trình này nhận.",
+    "def": "TLC là chương trình đầu tiên kiểm tra các mô hình TLA+. Nó đi qua mọi trạng thái của mô hình lần lượt và kiểm tra các quy tắc ở từng trạng thái, nhớ những nơi đã đi qua. Vì vậy công việc của nó dễ đoán, nhưng thế giới của mô hình phải nhỏ: nếu không sẽ có quá nhiều trạng thái. Các mô hình Quint cũng được kiểm tra trong TLC: chạy `quint verify` với cờ `--backend=tlc`.",
     "faq.0.q": "TLC là gì?",
     "faq.0.a": "Chương trình đầu tiên kiểm tra các mô hình TLA+: nó đi qua mọi trạng thái của mô hình và kiểm tra các quy tắc ở từng trạng thái.",
     "faq.1.q": "Khi nào TLC phù hợp?",
@@ -913,7 +940,15 @@
     "faq.0.a": "Phương pháp trong đó chương trình đi qua mọi trạng thái của một hệ thống đã mô tả và kiểm tra các quy tắc đúng ở từng trạng thái.",
     "faq.1.q": "Kiểm chứng mô hình khác kiểm thử ở đâu?",
     "faq.1.a": "Kiểm thử kiểm tra một kịch bản bạn đã nghĩ ra. Kiểm chứng mô hình thử mọi thứ tự hành động và đưa ra chính xác chuỗi bước khi một quy tắc bị phá.",
-    "source.label": "Wikipedia: Model checking"
+    "source.label": "Wikipedia: Model checking",
+    "also.0.label": "Model checking so với kiểm thử",
+    "notes.title": "Các chương trình kiểm tra",
+    "notes.items.0.text": "bộ kiểm tra mô hình đầu tiên cho TLA+: đi qua từng trạng thái một, nên thế giới của mô hình phải nhỏ.",
+    "notes.items.1.text": "kiểm tra mô hình TLA+ và Quint: chuyển chúng thành điều kiện cho bộ giải SMT như Z3 và suy luận về mọi lần thực thi đến một độ dài cho trước.",
+    "notes.items.2.text": "ngôn ngữ mô hình hóa có mô phỏng ngẫu nhiên nhanh của riêng nó; để kiểm tra đầy đủ nó dùng TLC và Apalache.",
+    "notes.items.3.text": "tìm một ví dụ nhỏ trong đó một quy tắc về dữ liệu hoặc quyền truy cập bị phá vỡ.",
+    "seo.title": "Model checking: là gì, các chương trình kiểm tra và khác kiểm thử thế nào",
+    "seo.description": "Model checking đi qua các trạng thái của hệ thống đã mô tả và trả về đúng các bước làm vỡ quy tắc. Chương trình: TLC, Apalache, Alloy. Khác kiểm thử thế nào."
   },
   "invariant": {
     "name": "Bất biến (invariant)",
@@ -1112,7 +1147,9 @@
     "faq.0.q": "Khe quan hệ là gì?",
     "faq.0.a": "Khi số quan hệ ít nhất của một nhóm vượt quá số phần tử sinh ít nhất của mô-đun quan hệ của nó.",
     "faq.1.q": "Ai nêu câu hỏi này?",
-    "faq.1.a": "Karl Gruenberg năm 1976; năm 1979 nó vào danh sách bài toán của Wall."
+    "faq.1.a": "Karl Gruenberg năm 1976; năm 1979 nó vào danh sách bài toán của Wall.",
+    "seo.title": "Khoảng cách quan hệ (relation gap): là gì và câu hỏi năm 1976 được giải quyết năm 2026 thế nào",
+    "seo.description": "Khoảng cách quan hệ: một nhóm cần nhiều quan hệ hơn số phần tử sinh của mô-đun quan hệ của nó. Câu hỏi của Gruenberg năm 1976 được giải quyết bởi arXiv 2610.23637."
   },
   "group-homology": {
     "name": "Đồng điều (homology)",

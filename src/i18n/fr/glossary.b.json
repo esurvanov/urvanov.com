@@ -6,7 +6,7 @@
     "faq.0.a": "La discipline qui consiste à mettre en place le harness d’un agent : ce que l’agent sait du projet, de quels outils il dispose, ce qu’il peut faire et comment son résultat est vérifié.",
     "faq.1.q": "En quoi l’ingénierie du harness diffère-t-elle du HDD ?",
     "faq.1.a": "L’ingénierie du harness couvre tout l’environnement, sans ordre fixe. Le HDD est une méthode à l’intérieur de cette discipline : chaque erreur de l’agent devient une règle de l’environnement.",
-    "source.label": "martinfowler.com : Harness engineering"
+    "source.label": "Birgitta Böckeler, martinfowler.com : Harness engineering"
   },
   "hdd": {
     "def": "Le HDD (Harness-Driven Development) est une méthode précise de l’ingénierie du harness : chaque erreur de l’agent devient une règle de son environnement, sous forme d’instruction, de vérification ou de limite. L’environnement grandit à partir d’erreurs réelles, et une erreur corrigée ne revient pas lors des exécutions suivantes.",
@@ -16,7 +16,7 @@
     "faq.1.a": "L’environnement se construit à partir d’erreurs réelles, et une erreur ne se répète pas lors des exécutions suivantes."
   },
   "spec-driven-development": {
-    "def": "Le développement piloté par les spécifications (Spec-Driven Development) est une approche où l’on écrit d’abord la spécification, c’est-à-dire ce que le système doit faire, puis un agent écrit le code et le vérifie par rapport à la spec. La spec devient le document principal, et le code en est la conséquence.",
+    "def": "Le Spec-Driven Development (SDD) est une approche où l’on écrit d’abord une spécification — ce que le système doit faire — puis un agent écrit le code et le vérifie par rapport à la spécification. La spécification devient le document principal et le code en est la conséquence.",
     "faq.0.q": "Qu’est-ce que le développement piloté par les spécifications ?",
     "faq.0.a": "Une approche où la spécification de ce que le système doit faire vient en premier, et où un agent écrit le code et le vérifie par rapport à elle.",
     "faq.1.q": "Quels frameworks prennent en charge le développement piloté par les spécifications ?",
@@ -47,16 +47,26 @@
       "Comment changer le système",
       "modifier le manifeste, pas le cluster",
       "modifier la spec, pas le code"
-    ]
+    ],
+    "faq.2.q": "En quoi le spec-driven development diffère-t-il du TDD ?",
+    "faq.2.a": "En TDD, on écrit d’abord un test qui échoue pour une fonction, puis le code correspondant. En SDD, on écrit d’abord une spécification pour tout le changement — exigences et scénarios « quand — alors » — et l’agent en déduit les tests et le code.",
+    "faq.3.q": "En quoi une spécification diffère-t-elle d’AGENTS.md ?",
+    "faq.3.a": "Une spécification décrit un changement et vit jusqu’à sa clôture. AGENTS.md contient les règles de tout le projet et entre dans chaque session de l’agent.",
+    "seo.title": "Qu’est-ce que le spec-driven development (SDD) : comment il fonctionne et quels frameworks utiliser",
+    "seo.description": "Spec-driven development : une spécification avec des exigences d’abord, puis un agent IA écrit le code d’après elle. Les étapes, OpenSpec, Spec Kit et Kiro, et comment garder spécification et code synchronisés.",
+    "more.label": "OpenSpec : le spec-driven development en pratique",
+    "also.0.label": "Spécifications par agrégat : éviter qu’elles se multiplient",
+    "also.1.label": "Une boucle de réconciliation : spécification et code en accord",
+    "also.2.label": "En quoi une spécification diffère d’AGENTS.md"
   },
   "openspec": {
-    "def": "OpenSpec est un framework gratuit et open source de Fission AI pour le développement piloté par les spécifications (Spec-Driven Development) : l’agent écrit d’abord un plan de changement dans des fichiers, vous le relisez, puis l’agent écrit le code. Les specs en vigueur se trouvent dans `openspec/specs`, et chaque changement a son propre dossier dans `openspec/changes` : `proposal.md` (pourquoi et quoi), un delta de specs, `design.md` et `tasks.md`. L’agent suit `/opsx:propose` → `/opsx:apply` → `/opsx:archive` ; l’archivage fusionne le delta dans les specs. Plus léger que Spec Kit, sans phases rigides, et compatible avec plus de 30 agents.",
+    "def": "OpenSpec est un framework gratuit et open source de Fission AI pour le Spec-Driven Development : l’agent écrit d’abord un plan du changement dans des fichiers, vous le relisez, puis l’agent écrit le code. Les spécifications vivantes sont dans `openspec/specs`, et chaque changement a son propre dossier dans `openspec/changes` : `proposal.md` (pourquoi et quoi), un delta de spécification, `design.md` et `tasks.md`. L’agent suit les skills `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (avant la 2.0 : `/opsx:propose`, `/opsx:apply`, `/opsx:archive`) ; à l’archivage, le delta est fusionné dans les spécifications. Plus léger que Spec Kit, sans phases rigides, et compatible avec plus de 30 agents.",
     "faq.0.q": "Qu’est-ce qu’OpenSpec ?",
     "faq.0.a": "Un framework gratuit et open source de Fission AI pour le développement piloté par les spécifications : l’agent écrit d’abord un plan de changement dans des fichiers, vous le relisez, puis l’agent écrit le code.",
     "faq.1.q": "Quelles sont les commandes d’OpenSpec ?",
-    "faq.1.a": "Trois commandes principales : /opsx:propose crée un plan de changement, /opsx:apply écrit le code selon les tâches, /opsx:archive fusionne les exigences dans les specs communes. Avant elles, /opsx:explore permet de réfléchir à voix haute.",
+    "faq.1.a": "Les trois principaux : /openspec-propose crée un plan du changement, /openspec-apply-change écrit le code selon les tâches, /openspec-archive-change fusionne les exigences dans les spécifications communes. Pour réfléchir à voix haute d’abord, /openspec-explore. Codex appelle les mêmes skills avec $, par exemple $openspec-propose ; dans les versions 1.x, ils s’appelaient /opsx:propose, /opsx:apply et /opsx:archive.",
     "faq.2.q": "Comment installer OpenSpec ?",
-    "faq.2.a": "Avec `npm install -g @fission-ai/openspec@latest` (Node.js 22.12 ou plus récent requis) ou `brew install openspec`. Lancez ensuite `openspec init` dans le dossier du projet. L’outil est gratuit, sous licence MIT.",
+    "faq.2.a": "Avec le script `curl -fsSL https://openspec.dev/cli/install.sh | sh` sous macOS et Linux, `irm https://openspec.dev/cli/install.ps1 | iex` dans PowerShell sous Windows, ou avec `npm install -g @fission-ai/openspec@latest` (Node.js 22.12 ou plus récent requis) ou `brew install openspec`. Lancez ensuite `openspec init` dans le dossier du projet. Il est gratuit, sous licence MIT.",
     "faq.3.q": "En quoi OpenSpec diffère-t-il de Spec Kit ?",
     "faq.3.a": "OpenSpec est plus léger : les étapes peuvent se répéter dans n’importe quel ordre, et il convient au code déjà en production. Spec Kit de GitHub suit des phases fixes.",
     "source.label": "Dépôt GitHub d’OpenSpec",
@@ -90,7 +100,7 @@
     ],
     "compare.rows.4": [
       "Quels agents",
-      "plus de 30 agents via des commandes slash",
+      "plus de 30 agents via des skills",
       "agents variés : Copilot, Claude Code et d’autres",
       "l’agent propre à Kiro"
     ]
@@ -467,13 +477,17 @@
   },
   "qa": {
     "aka": "assurance qualité, testeur",
-    "def": "La QA (quality assurance, assurance qualité) est le rôle de la personne qui vérifie qu’un produit fait ce qu’il promet et trouve les bugs avant les utilisateurs. La QA reproduit une erreur, la décrit pour qu’un développeur puisse la répéter, et valide la correction. Quand un agent prend en charge la routine autour des bugs, la QA vérifie son résultat à la main et décide de l’importance du bug.",
+    "def": "QA (quality assurance) est le travail qui assure la qualité d’un produit et le rôle de la personne qui le fait : elle vérifie que le produit fait ce qu’il promet et trouve les bugs avant les utilisateurs. QA reproduit une erreur, la décrit pour qu’un développeur puisse la répéter et valide la correction. Quand un agent prend en charge la routine autour des bugs, QA vérifie son résultat à la main et décide de l’importance du bug.",
     "more.label": "Comment la QA confie la routine des bugs à un agent",
     "faq.0.q": "Qu’est-ce que la QA ?",
     "faq.0.a": "Quality assurance : le rôle de la personne qui vérifie que le produit fait ce qu’il promet et trouve les bugs avant les utilisateurs.",
     "faq.1.q": "Que fait la QA quand un agent s’occupe des bugs ?",
     "faq.1.a": "Elle vérifie à la main le résultat de l’agent et décide de l’importance du bug.",
-    "source.label": "Wikipédia : Assurance qualité"
+    "source.label": "Wikipédia : Assurance qualité",
+    "faq.2.q": "En quoi QA diffère-t-il de QC et des tests ?",
+    "faq.2.a": "QA prévient les défauts : il surveille et améliore le processus pour que les erreurs soient moins nombreuses. QC (quality control, contrôle qualité) détecte les défauts dans le résultat fini. Les tests sont l’un des moyens de faire cette vérification.",
+    "seo.title": "QA (quality assurance) : ce que c’est et en quoi QA diffère de QC et des tests",
+    "seo.description": "QA (quality assurance) est le processus et le rôle qui empêchent les bugs d’arriver aux utilisateurs. En quoi QA diffère de QC et des tests, et ce que fait QA à côté d’un agent IA."
   },
   "bug": {
     "name": "Bug",
@@ -780,14 +794,14 @@
     "faq.0.a": "Les deux écritures conviennent : le mot vient de pre-production et n’a pas de norme de dictionnaire. Choisissez-en une et gardez-la dans tout le document.",
     "faq.1.q": "Qu’est-ce que la préprod ?",
     "faq.1.a": "L’étape juste avant la production : une copie de l’environnement réel où un changement est vérifié dans des conditions réelles.",
-    "faq.2.q": "Préprod et staging, est-ce la même chose ?",
-    "faq.2.a": "Dans certaines équipes oui, dans d’autres la préprod vient après l’environnement de test. Vérifiez comment votre équipe emploie ces mots et mettez-vous d’accord sur un seul.",
-    "faq.3.q": "Faut-il une préprod ?",
-    "faq.3.a": "Les petites équipes se contentent généralement d’un environnement de test et de la production. La préprod allonge le cycle de livraison : la qualité monte, mais le délai de mise sur le marché aussi, parce qu’un changement met plus de temps à atteindre les utilisateurs. Elle sert là où une erreur en production coûte cher.",
-    "faq.4.q": "D’où viennent les données de la préprod ?",
-    "faq.4.a": "D’un dump : une copie des données de la base réelle dans un seul fichier. Les données personnelles en sont retirées.",
-    "faq.5.q": "Que fait un agent IA en préprod ?",
-    "faq.5.a": "Il lance des vérifications. Les changements y arrivent par une mise en production ; l’agent ne la modifie pas directement.",
+    "faq.3.q": "Préprod et staging, est-ce la même chose ?",
+    "faq.3.a": "Dans certaines équipes oui, dans d’autres la préprod vient après l’environnement de test. Vérifiez comment votre équipe emploie ces mots et mettez-vous d’accord sur un seul.",
+    "faq.4.q": "Faut-il une préprod ?",
+    "faq.4.a": "Les petites équipes se contentent généralement d’un environnement de test et de la production. La préprod allonge le cycle de livraison : la qualité monte, mais le délai de mise sur le marché aussi, parce qu’un changement met plus de temps à atteindre les utilisateurs. Elle sert là où une erreur en production coûte cher.",
+    "faq.5.q": "D’où viennent les données de la préprod ?",
+    "faq.5.a": "D’un dump : une copie des données de la base réelle dans un seul fichier. Les données personnelles en sont retirées.",
+    "faq.6.q": "Que fait un agent IA en préprod ?",
+    "faq.6.a": "Il lance des vérifications. Les changements y arrivent par une mise en production ; l’agent ne la modifie pas directement.",
     "compare.title": "En quoi la préprod diffère de l’environnement de test",
     "compare.head": [
       "Test",
@@ -812,7 +826,9 @@
       "Toujours présent",
       "presque toujours",
       "pas toujours"
-    ]
+    ],
+    "faq.2.q": "Que vérifie-t-on en pré-prod ?",
+    "faq.2.a": "La version elle-même dans des conditions proches de la production : un passage rapide des parcours clés, des scénarios de bout en bout, des migrations de base de données sur une copie des données réelles et une vérification manuelle par QA avant la mise en production."
   },
   "demo-env": {
     "name": "Environnement de démo",
@@ -836,7 +852,13 @@
     "faq.1.a": "Une erreur y coûte le plus cher : les changements passent donc par des vérifications sur les stands, et une personne confirme en général la mise en production.",
     "source.label": "Wikipédia : Deployment environment",
     "seo.title": "Production (prod) : définition et pourquoi personne n’y écrit directement",
-    "seo.description": "La production est l’environnement avec lequel travaillent les vrais utilisateurs. Pourquoi les changements y arrivent par des stands et la préprod, pas directement."
+    "seo.description": "La production (prod) est l’environnement réel où de vrais utilisateurs travaillent avec de vraies données. En quoi la production diffère de la pré-prod et du test, et pourquoi personne n’y écrit directement.",
+    "faq.2.q": "Que signifie prod en programmation ?",
+    "faq.2.a": "La version réelle du système sur les serveurs que les clients utilisent. « Déployer en prod » signifie livrer un changement aux utilisateurs ; « la prod est tombée » signifie que le système réel a cessé de fonctionner.",
+    "faq.3.q": "Prod et production, est-ce la même chose ?",
+    "faq.3.a": "Oui : prod est l’abréviation de production, aussi appelée environnement réel.",
+    "faq.4.q": "En quoi la production diffère-t-elle de la pré-prod ?",
+    "faq.4.a": "La pré-prod est une copie de la production pour la dernière vérification avant la mise en production, sans clients. Les clients travaillent sur la production, et une erreur y coûte le plus cher."
   },
   "quint": {
     "aka": "un langage de modèles formels",
@@ -847,7 +869,8 @@
     "faq.0.a": "Un langage pour décrire les règles d’un système afin de les exécuter et de les vérifier avant d’écrire le code. Il se lit comme du code ordinaire.",
     "faq.1.q": "En quoi Quint diffère-t-il de TLA+ ?",
     "faq.1.a": "Quint se lit comme du code ordinaire, TLA+ ressemble à des formules mathématiques : Quint est donc plus facile pour débuter. Les deux sont vérifiés par les mêmes programmes : TLC et Apalache.",
-    "source.label": "quint-lang.org, le site et la documentation de Quint"
+    "source.label": "quint-lang.org, le site et la documentation de Quint",
+    "also.1.label": "TLA+ vs Quint vs Alloy : lequel choisir"
   },
   "tla-plus": {
     "aka": "de Leslie Lamport",
@@ -857,7 +880,10 @@
     "faq.0.a": "Une façon de décrire le comportement d’un système pas à pas, avec assez de précision pour qu’un programme puisse vérifier la description avant d’écrire le code. Son auteur est Leslie Lamport.",
     "faq.1.q": "Que trouve TLA+ ?",
     "faq.1.a": "Des suites d’étapes qui violent une règle. Par exemple, que l’argent disparaît si une panne survient entre le débit et le crédit.",
-    "source.label": "Page de Leslie Lamport sur TLA+"
+    "source.label": "Page de Leslie Lamport sur TLA+",
+    "seo.title": "TLA+ : ce que c’est — glossaire du développement avec l’IA",
+    "seo.description": "TLA+ est le langage de Leslie Lamport pour décrire le comportement d’un système pas à pas et le vérifier avec TLC et Apalache avant d’écrire le code. Un exemple et la comparaison avec Quint et Alloy.",
+    "more.label": "TLA+ vs Quint vs Alloy : lequel choisir"
   },
   "alloy": {
     "aka": "un langage de modélisation et un analyseur",
@@ -866,11 +892,12 @@
     "faq.0.a": "Une façon de décrire des objets et leurs relations, puis de demander à un programme de trouver un petit exemple où une règle est violée.",
     "faq.1.q": "En quoi Alloy diffère-t-il de TLA+ ?",
     "faq.1.a": "Alloy vérifie la structure : objets et relations. TLA+ vérifie le comportement d’un système pas à pas.",
-    "source.label": "alloytools.org, le site d’Alloy"
+    "source.label": "alloytools.org, le site d’Alloy",
+    "more.label": "TLA+ vs Quint vs Alloy : lequel choisir"
   },
   "tlc": {
     "aka": "le premier vérificateur de TLA+",
-    "def": "TLC est le premier programme qui vérifie des modèles TLA+. Il parcourt un à un tous les états d’un modèle et vérifie les règles dans chacun, en mémorisant où il est déjà passé. Son travail est donc prévisible, mais le monde du modèle doit rester petit : sinon, il y a trop d’états. Les modèles Quint peuvent aussi être vérifiés dans TLC, mais ils doivent d’abord être traduits sous une forme que ce programme accepte.",
+    "def": "TLC est le premier programme qui vérifie des modèles TLA+. Il parcourt tous les états d’un modèle un par un et vérifie les règles dans chacun, en se souvenant d’où il est passé. Son travail est donc prévisible, mais le monde du modèle doit rester petit : sinon il y a trop d’états. Les modèles Quint se vérifient aussi dans TLC : lancez `quint verify` avec l’option `--backend=tlc`.",
     "faq.0.q": "Qu’est-ce que TLC ?",
     "faq.0.a": "Le premier programme qui vérifie des modèles TLA+ : il parcourt chaque état du modèle et vérifie les règles dans chacun.",
     "faq.1.q": "Quand TLC convient-il ?",
@@ -913,7 +940,15 @@
     "faq.0.a": "Une méthode où un programme parcourt chaque état d’un système décrit et vérifie que les règles tiennent dans chacun.",
     "faq.1.q": "En quoi la vérification de modèles diffère-t-elle des tests ?",
     "faq.1.a": "Un test vérifie un scénario auquel on a pensé. La vérification de modèles essaie tous les ordres d’actions et donne la suite exacte d’étapes quand une règle est violée.",
-    "source.label": "Wikipédia : Model checking"
+    "source.label": "Wikipédia : Model checking",
+    "also.0.label": "Model checking contre tests",
+    "notes.title": "Programmes de vérification",
+    "notes.items.0.text": "le premier vérificateur de modèles TLA+ : il parcourt chaque état un par un, donc le monde du modèle doit rester petit.",
+    "notes.items.1.text": "vérifie des modèles TLA+ et Quint : il les traduit en conditions pour un solveur SMT comme Z3 et raisonne sur toutes les exécutions jusqu’à une longueur donnée.",
+    "notes.items.2.text": "un langage de modélisation avec sa propre simulation aléatoire rapide ; pour la vérification complète, il utilise TLC et Apalache.",
+    "notes.items.3.text": "cherche un petit exemple où une règle sur les données ou les droits d’accès est violée.",
+    "seo.title": "Model checking : ce que c’est, programmes de vérification et différence avec les tests",
+    "seo.description": "Le model checking parcourt les états d’un système décrit et renvoie les étapes exactes où une règle est violée. Programmes : TLC, Apalache, Alloy. En quoi il diffère des tests."
   },
   "invariant": {
     "name": "Invariant",
@@ -1112,7 +1147,9 @@
     "faq.0.q": "Qu’est-ce qu’un écart de relations ?",
     "faq.0.a": "Quand le plus petit nombre de relations d’un groupe dépasse le plus petit nombre de générateurs de son module des relations.",
     "faq.1.q": "Qui a posé cette question ?",
-    "faq.1.a": "Karl Gruenberg en 1976 ; en 1979, elle est entrée dans la liste de problèmes de Wall."
+    "faq.1.a": "Karl Gruenberg en 1976 ; en 1979, elle est entrée dans la liste de problèmes de Wall.",
+    "seo.title": "Écart de relations (relation gap) : ce que c’est et comment la question de 1976 a été résolue en 2026",
+    "seo.description": "Écart de relations : un groupe a besoin de plus de relations que son module de relations n’a de générateurs. La question de Gruenberg de 1976 a été résolue par arXiv 2610.23637."
   },
   "group-homology": {
     "name": "Homologie",

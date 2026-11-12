@@ -1,11 +1,12 @@
 {
  "jira": {
-  "def": "Jira là hệ thống theo dõi công việc và lỗi của Atlassian. Qua MCP, tác nhân AI đọc được task kèm bình luận và lịch sử thay đổi, và chỉ được ghi vào đó khi bạn cho phép.",
+  "def": "Jira là hệ thống theo dõi nhiệm vụ và lỗi của Atlassian. Qua MCP, tác nhân đọc nhiệm vụ cùng bình luận và lịch sử thay đổi, và có thể ghi trong phạm vi quyền của phiên đăng nhập của bạn; Claude Code hỏi trước khi ghi, trừ khi bạn đã cho phép từ trước.",
   "faq.0.q": "Tác nhân AI làm việc với Jira như thế nào?",
   "faq.0.a": "Qua MCP, tác nhân đọc ticket cùng bình luận và lịch sử thay đổi.",
   "faq.1.q": "Tác nhân có sửa được ticket trong Jira không?",
-  "faq.1.a": "Chỉ khi bạn cho phép.",
-  "source.label": "Trang chính thức của Jira"
+  "faq.1.a": "Có, trong phạm vi quyền của phiên đăng nhập hoặc token mà nó dùng. Claude Code hỏi trước khi thực hiện, trừ khi bạn đã cho phép từ trước.",
+  "source.label": "Trang chính thức của Jira",
+  "more.label": "Jira và tác nhân AI: ưu điểm, nhược điểm và nơi vạch ranh giới"
  },
  "sentry": {
   "def": "Sentry là dịch vụ giám sát lỗi, thu thập exception từ ứng dụng cùng ngữ cảnh. Mỗi lỗi được gắn phiên bản ứng dụng nơi nó xảy ra, nên qua MCP tác nhân thấy lỗi bắt đầu từ lần triển khai nào và tìm nguyên nhân trong các thay đổi của phiên bản đó.",
@@ -229,7 +230,9 @@
   "faq.0.a": "Mọi thứ mô hình nhìn thấy tại thời điểm đó: cuộc trò chuyện, tệp của dự án và dữ liệu từ các hệ thống được kết nối.",
   "faq.1.q": "Vì sao tác nhân không biết về dự án của tôi?",
   "faq.1.a": "Cái gì không có trong ngữ cảnh thì tác nhân không biết. Kiến thức lâu dài về dự án được đưa vào các tệp chỉ dẫn như AGENTS.md hoặc CLAUDE.md.",
-  "source.label": "Anthropic: Context windows"
+  "source.label": "Anthropic: Context windows",
+  "seo.title": "Ngữ cảnh trong AI: là gì, cửa sổ ngữ cảnh và vì sao tác nhân quên",
+  "seo.description": "Ngữ cảnh là mọi thứ mô hình nhìn thấy lúc này: cuộc hội thoại, các tệp dự án, dữ liệu từ các hệ thống đã kết nối. Cửa sổ ngữ cảnh là gì, vì sao tác nhân quên dự án của bạn và nơi để kiến thức lâu dài: AGENTS.md, CLAUDE.md, bộ nhớ."
  },
  "token": {
   "name": "Token",
@@ -287,7 +290,9 @@
   "faq.0.a": "Các mô hình Alice AI, trợ lý Alice cho người dùng, tác nhân doanh nghiệp Alice AI Pro và Yandex AI Studio cho doanh nghiệp, và SourceCraft với tác nhân Code Assistant cho lập trình.",
   "faq.1.q": "Trước Alice AI là gì?",
   "faq.1.a": "Dòng mô hình YandexGPT.",
-  "source.label": "Trang giới thiệu công ty Yandex"
+  "source.label": "Trang giới thiệu công ty Yandex",
+  "seo.title": "Yandex AI: các mô hình Alice AI, AI Studio và SourceCraft Code Assistant",
+  "seo.description": "Yandex AI là gì: các mô hình Alice AI (trước đây là YandexGPT), trợ lý Alice, Alice AI Pro cho doanh nghiệp, Yandex AI Studio để xây tác nhân và SourceCraft Code Assistant cho mã."
  },
  "jetbrains": {
   "def": "JetBrains là công ty thành lập ở Praha năm 2000, làm các IDE IntelliJ IDEA, PyCharm, WebStorm và nhiều IDE khác, cùng ngôn ngữ Kotlin. Tác nhân lập trình riêng Junie chạy trong IDE và terminal; Claude Agent và Codex được tích hợp ngay cạnh trong IDE, còn các tác nhân khác kết nối qua giao thức mở ACP. Gợi ý hoàn thành mã chạy trên mô hình Mellum riêng. Air là không gian làm việc để chạy song song nhiều tác nhân (bản xem trước).",
@@ -314,11 +319,11 @@
   "source.label": "Wikipedia: Microsoft Bing"
  },
  "atlassian": {
-  "def": "Atlassian là công ty Úc làm Jira, Confluence và Bitbucket, những hệ thống làm việc của nhiều nhóm phát triển. AI của hãng tên là Rovo: tác nhân Rovo nhận task trong Jira, còn Rovo MCP Server cho phép các tác nhân bên ngoài như Claude Code và Cursor đọc và sửa dữ liệu Jira và Confluence.",
+  "def": "Atlassian là công ty Úc làm ra Jira, Confluence và Bitbucket, các hệ thống làm việc của nhiều nhóm phát triển. AI của họ tên là Rovo: các tác nhân Rovo nhận nhiệm vụ trong Jira, còn máy chủ MCP của Atlassian (trước đây là Rovo MCP Server) cho phép các tác nhân bên ngoài như Claude Code và Cursor đọc và thay đổi dữ liệu Jira và Confluence.",
   "faq.0.q": "Atlassian là gì?",
   "faq.0.a": "Công ty Úc làm Jira, Confluence và Bitbucket.",
   "faq.1.q": "AI của Atlassian tên là gì?",
-  "faq.1.a": "Rovo: tác nhân Rovo nhận task trong Jira, còn Rovo MCP Server cho các tác nhân bên ngoài truy cập dữ liệu Atlassian.",
+  "faq.1.a": "Rovo: các tác nhân Rovo nhận nhiệm vụ trong Jira, còn máy chủ MCP của Atlassian (trước đây là Rovo MCP Server) cho các tác nhân bên ngoài quyền truy cập dữ liệu Atlassian.",
   "source.label": "Trang chính thức của Atlassian"
  },
  "mcp": {
@@ -327,7 +332,8 @@
   "faq.0.a": "Giao thức mở nối tác nhân với các dịch vụ bên ngoài như Jira hay cơ sở dữ liệu qua một giao diện chung.",
   "faq.1.q": "Ai kiểm soát quyền hạn qua MCP?",
   "faq.1.a": "Bạn: MCP server đưa cho tác nhân một bộ công cụ, còn quyền truy cập được đặt ở phía server.",
-  "source.label": "Trang Model Context Protocol"
+  "source.label": "Trang Model Context Protocol",
+  "more.label": "MCP cho tác nhân AI: giải quyết vấn đề gì và cách giao việc kết nối cho tác nhân"
  },
  "mcp-client": {
   "name": "MCP client",
@@ -358,7 +364,7 @@
  },
  "mcp-scope": {
   "name": "Phạm vi (scope) của MCP server",
-  "def": "Phạm vi của MCP server trả lời hai câu hỏi: MCP server làm việc trong những dự án nào và ai nhìn thấy nó. Claude Code có ba phạm vi, chọn khi thêm server: `local`, mặc định, chỉ bạn và `project` hiện tại; `project`, cả nhóm qua tệp `.mcp.json` trong repo, mỗi người duyệt server trước lần dùng đầu tiên; `user`, chỉ bạn và mọi dự án của bạn. Khi trùng tên, lớp trên thắng hoàn toàn: `local` đè `project`, `project` đè `user`.",
+  "def": "Các cấp độ của MCP server trả lời hai câu hỏi: MCP server hoạt động trong những dự án nào và ai nhìn thấy nó. Claude Code có ba cấp, chọn khi thêm server: `local`, mặc định, chỉ bạn và `project` hiện tại; `project`, cả nhóm qua tệp `.mcp.json` trong kho mã, mỗi người duyệt server trước lần dùng đầu tiên trong phiên tương tác (trong `claude -p`, Agent SDK và các phiên đám mây thì server được nạp mà không hỏi); `user`, chỉ bạn và mọi dự án của bạn. Khi trùng tên, lớp trên thắng hoàn toàn: `local` đè `project`, `project` đè `user`.",
   "faq.0.q": "Claude Code có những phạm vi MCP nào?",
   "faq.0.a": "Ba: local cho riêng bạn trong dự án hiện tại, project cho cả nhóm qua tệp trong repo, và user cho riêng bạn trong mọi dự án.",
   "faq.1.q": "Chọn phạm vi cho MCP server vào lúc nào?",
@@ -392,7 +398,7 @@
   "table.rows.4": [
    "Trước lần dùng đầu tiên",
    "không cần gì",
-   "mọi người duyệt server",
+   "mọi người duyệt server trong phiên tương tác",
    "không cần gì"
   ],
   "table.rows.5": [
@@ -652,7 +658,14 @@
   "faq.0.a": "Tệp chỉ dẫn chung cho nhiều tác nhân khác nhau: lệnh, phong cách, điều cấm.",
   "faq.1.q": "Những tác nhân nào đọc AGENTS.md?",
   "faq.1.a": "Codex, Cursor và các tác nhân khác, nên tệp này là lựa chọn trung lập thay cho CLAUDE.md.",
-  "source.label": "Trang chính thức của AGENTS.md"
+  "source.label": "Trang chính thức của AGENTS.md",
+  "faq.2.q": "AGENTS.md hay quy tắc Cursor?",
+  "faq.2.a": "Cursor đọc cả hai. AGENTS.md là tệp chung cho nhiều tác nhân, ở gốc và trong các thư mục con; quy tắc trong .cursor/rules chỉ dành cho Cursor, nhưng có thể áp dụng luôn, theo mô tả, theo mẫu tệp hoặc thủ công.",
+  "faq.3.q": "AGENTS.md khác spec.md thế nào?",
+  "faq.3.a": "AGENTS.md đặt quy tắc cho cả dự án và đi vào mỗi phiên của tác nhân. spec.md mô tả một nhiệm vụ — yêu cầu và tiêu chí hoàn thành — và tồn tại đến khi nhiệm vụ đóng.",
+  "seo.title": "AGENTS.md, quy tắc Cursor và CLAUDE.md: mỗi tệp làm gì",
+  "seo.description": "AGENTS.md là tệp hướng dẫn chung cho Codex, Cursor và các tác nhân khác. Nó khác quy tắc Cursor trong .cursor/rules và CLAUDE.md thế nào, mỗi tệp nằm ở đâu và khi nào tác nhân đọc.",
+  "more.label": "AGENTS.md, CLAUDE.md và spec.md: cái gì để ở đâu"
  },
  "agent-skills": {
   "name": "Skill",
@@ -872,7 +885,8 @@
   "notes.items.2.text": "tiện ích mở rộng của OpenAI, đã gồm trong các gói ChatGPT.",
   "notes.items.3.text": "tiện ích mở rộng mã nguồn mở miễn phí: bạn gắn khóa của riêng mình cho bất kỳ mô hình nào và chỉ trả tiền cho mô hình.",
   "notes.items.4.text": "tác nhân của Sber có tiện ích mở rộng cho VS Code.",
-  "notes.items.5.text": "trình soạn thảo riêng xây dựng trên VS Code với tác nhân tích hợp; bạn cài nó thay cho VS Code, và các tiện ích mở rộng của VS Code chạy được trong đó."
+  "notes.items.5.text": "trình soạn thảo riêng xây dựng trên VS Code với tác nhân tích hợp; bạn cài nó thay cho VS Code, và các tiện ích mở rộng của VS Code chạy được trong đó.",
+  "notes.items.6.text": "một IDE riêng của Microsoft, đừng nhầm với VS Code; có cùng GitHub Copilot với chế độ tác nhân, với giới hạn hằng tháng ở gói miễn phí."
  },
  "terminal": {
   "name": "Terminal",
@@ -883,7 +897,7 @@
   "faq.1.q": "Có những tác nhân CLI nào?",
   "faq.1.a": "Claude Code và Codex CLI, còn OpenCode là tác nhân mã nguồn mở miễn phí. Chúng làm việc ngay trong terminal và tự chạy test, build và git.",
   "source.label": "Wikipedia: Command-line interface",
-  "seo.title": "Tác nhân CLI của AI: terminal (CLI) là gì và tác nhân lập trình nào chạy trong đó, gồm cả loại miễn phí",
+  "seo.title": "CLI tác nhân AI: terminal là gì và những tác nhân lập trình nào chạy trong đó (Claude Code, Codex CLI, OpenCode)",
   "seo.description": "Terminal (CLI) là nơi gõ lệnh dưới dạng văn bản. Tác nhân CLI của AI tự chạy test, build và git trong terminal. Claude Code, Codex CLI, OpenCode và Hermes Agent miễn phí, chuyện gì xảy ra với Gemini CLI, và tác nhân CLI khác tác nhân trong IDE thế nào.",
   "notes.title": "Tác nhân CLI của AI",
   "notes.items.0.text": "tác nhân của Anthropic: khởi chạy bằng lệnh claude trong thư mục dự án; dùng gói Claude hoặc API trả theo mức dùng.",
@@ -967,13 +981,13 @@
  },
  "claude-code": {
   "aka": "Claude Code CLI, tác nhân lập trình của Anthropic",
-  "def": "Claude Code là tác nhân lập trình của Anthropic: đọc dự án, sửa tệp, chạy lệnh và test, làm việc với git. Khác với Claude trong chat, nó có quyền truy cập vào dự án: chat trả lời bằng văn bản, còn Claude Code tự thay đổi tệp và chạy lệnh. Nó chạy trong terminal (CLI), trong VS Code và JetBrains, trong ứng dụng desktop và trong trình duyệt, và ở đâu cũng là cùng một tác nhân. Nó không có mô hình riêng: chạy trên các mô hình Claude (Opus, Sonnet, Haiku); đổi mô hình bằng `/model`. Nó đọc quy tắc dự án từ `CLAUDE.md`, giữ các quy trình lặp lại trong skill và kết nối hệ thống bên ngoài qua MCP. Các lựa chọn gần nhất là Codex và Cursor.",
+  "def": "Claude Code là tác nhân lập trình của Anthropic: đọc dự án, sửa tệp, chạy lệnh và kiểm thử, làm việc với git. Khác với Claude trong khung chat, nó có quyền truy cập dự án: chat trả lời bằng văn bản, còn Claude Code tự sửa tệp và chạy lệnh. Nó chạy trong terminal (CLI), trong VS Code và JetBrains, trong ứng dụng máy tính và trong trình duyệt, và ở đâu cũng là cùng một tác nhân. Nó không có mô hình riêng: chạy trên các mô hình Claude (Fable, Opus, Sonnet, Haiku); đổi mô hình bằng `/model`. Nó đọc quy tắc dự án từ `CLAUDE.md`, giữ các quy trình lặp lại trong skills và kết nối hệ thống bên ngoài qua MCP. Lựa chọn thay thế gần nhất là Codex và Cursor.",
   "faq.0.q": "Claude khác Claude Code thế nào?",
   "faq.0.a": "Claude trong chat trả lời bằng văn bản. Claude Code là tác nhân lập trình: tự đọc dự án, sửa tệp, chạy lệnh và test.",
   "faq.1.q": "Claude Code chạy ở đâu?",
   "faq.1.a": "Trong terminal, trong VS Code và JetBrains, trong ứng dụng desktop và trong trình duyệt. Ở đâu cũng là cùng một tác nhân.",
   "faq.2.q": "Claude Code dùng những mô hình nào?",
-  "faq.2.a": "Các mô hình Claude: Opus, Sonnet và Haiku. Đổi mô hình bằng lệnh /model.",
+  "faq.2.a": "Trên các mô hình Claude: Fable, Opus, Sonnet và Haiku. Đổi mô hình bằng lệnh /model.",
   "source.label": "Tài liệu Claude Code",
   "seo.title": "Claude Code là gì? Claude Code và chat Claude, mô hình, cách cài đặt",
   "seo.description": "Claude Code dùng để làm gì: đọc dự án, sửa tệp và chạy test. Claude Code và chat Claude, mô hình nó dùng, CLAUDE.md, skill và MCP.",
@@ -1016,7 +1030,7 @@
   "compare.rows.6": [
    "Giá",
    "một gói Claude",
-   "cùng gói Claude (Pro, Max) hoặc API trả theo mức dùng"
+   "cùng gói Claude (Pro, Max, Ultra, Team, Enterprise) hoặc API trả theo mức dùng"
   ],
   "matrix.title": "Điểm chung và điểm khác",
   "matrix.legend": "✓ có · ✗ không",
@@ -1189,15 +1203,17 @@
    "no",
    "no",
    "yes"
-  ]
+  ],
+  "faq.6.q": "Codex khác GPT thế nào?",
+  "faq.6.a": "GPT là họ mô hình của OpenAI; Codex là tác nhân chạy trên đó: cùng một mô hình nhưng có quyền truy cập dự án, lệnh và kiểm thử của bạn."
  },
  "cursor": {
   "aka": "Cursor AI, Cursor IDE",
-  "def": "Cursor là ứng dụng trình soạn thảo mã của Anysphere, xây dựng trên VS Code, có tác nhân AI tích hợp: bạn làm việc trong trình soạn thảo, tác nhân ngồi ngay bên cạnh, và bạn chọn mô hình từ nhiều hãng hoặc dùng mô hình Composer của chính nó. Tác nhân làm những gì Claude Code và Codex làm: đọc dự án, sửa tệp, chạy lệnh; còn có bản terminal và tác nhân đám mây. Nó đọc quy tắc dự án từ `AGENTS.md` và quy tắc riêng trong `.cursor/rules`, và kết nối hệ thống bên ngoài qua MCP.",
+  "def": "Cursor là trình soạn thảo mã của Anysphere, xây trên VS Code, có tác nhân AI tích hợp: bạn làm việc trong trình soạn thảo, tác nhân ở ngay bên cạnh, và bạn chọn mô hình riêng của nó (Grok, Composer) hoặc mô hình của hãng khác; từ năm 2026 Cursor thuộc về SpaceX. Tác nhân làm những gì Claude Code và Codex làm: đọc dự án, sửa tệp, chạy lệnh; cũng có bản terminal và tác nhân trên đám mây. Nó đọc quy tắc dự án từ `AGENTS.md` và quy tắc riêng trong `.cursor/rules`, và kết nối hệ thống bên ngoài qua MCP.",
   "faq.0.q": "Cursor AI là gì?",
   "faq.0.a": "Trình soạn thảo mã của Anysphere xây dựng trên VS Code với tác nhân AI tích hợp: bạn làm việc trong trình soạn thảo, còn tác nhân bên cạnh đọc dự án, sửa tệp và chạy lệnh.",
   "faq.1.q": "Cursor có những mô hình nào?",
-  "faq.1.a": "Mô hình của nhiều hãng để chọn, cùng mô hình riêng của Cursor là Composer.",
+  "faq.1.a": "Các mô hình Grok và Composer riêng, cùng mô hình của hãng khác: Claude, Gemini, GPT, DeepSeek và nhiều hơn; danh sách tùy gói.",
   "faq.2.q": "Cursor rules hay AGENTS.md?",
   "faq.2.a": "Cursor đọc cả hai: AGENTS.md là tệp chung cho nhiều tác nhân, còn các quy tắc trong .cursor/rules là của riêng Cursor và có thể giới hạn cho những tệp cụ thể.",
   "source.label": "Trang chính thức của Cursor",
@@ -1207,13 +1223,13 @@
   "also.0.label": "Cursor cho 1C qua MCP",
   "notes.title": "Cursor: mô hình, tác nhân và quy tắc",
   "notes.items.0.name": "Mô hình",
-  "notes.items.0.text": "Composer của riêng nó, Grok, Claude và Gemini; mô hình OpenAI đến thời điểm cắt đã thông báo là 12/11/2026. Danh sách mô hình tùy theo gói: gói miễn phí có ít hơn. Nếu nhà cung cấp chặn khu vực của bạn, có thể thêm khóa API riêng.",
+  "notes.items.0.text": "các mô hình Grok (phát triển cùng SpaceXAI) và Composer riêng, cùng Claude, Gemini, DeepSeek, Kimi và nhiều mô hình khác. Các mô hình OpenAI vẫn còn trong danh sách vào tháng 11 năm 2026, nhưng OpenAI sẽ ngừng cung cấp sau khi SpaceX mua Cursor: sẽ không có mô hình mới, còn ngày ngừng (đề xuất là 12 tháng 11 năm 2026) chưa được xác nhận. Free và Plus chỉ có Grok; mô hình của hãng khác bắt đầu từ Premium, tính theo giá API.",
   "notes.items.1.name": "Tác nhân",
   "notes.items.1.text": "các chế độ: Agent tự sửa tệp và chạy lệnh, Ask chỉ trả lời, Plan viết kế hoạch trước. Hoạt động trong trình soạn thảo, trong terminal và dưới dạng tác nhân đám mây.",
   "notes.items.2.name": "Quy tắc dự án",
-  "notes.items.2.text": "thư mục `.cursor/rules` (tệp `.cursorrules` cũ vẫn dùng được) và `AGENTS.md` ở gốc repo.",
+  "notes.items.2.text": "thư mục `.cursor/rules` (các tệp `.mdc`) và `AGENTS.md`, ở gốc kho mã và trong các thư mục con.",
   "notes.items.3.name": "Gói",
-  "notes.items.3.text": "Hobby miễn phí có giới hạn, Pro 20 USD, Pro+ 60 USD và Ultra 200 USD mỗi tháng, Teams 40 USD mỗi người dùng.",
+  "notes.items.3.text": "Free có giới hạn, Plus 8 $ (chỉ Grok), Premium 30 $, Super 100 $ và Ultra 200 $ mỗi tháng; mô hình của hãng khác tính thêm theo giá API. Teams từ 30 $ mỗi người dùng.",
   "notes.items.4.name": "Xây dựng trên gì",
   "notes.items.4.text": "xây dựng trên VS Code: các tiện ích mở rộng của VS Code chạy được trong đó.",
   "matrix.title": "Điểm chung và điểm khác",
@@ -1266,7 +1282,9 @@
    "no",
    "no",
    "yes"
-  ]
+  ],
+  "faq.3.q": "Các mô hình GPT còn chạy trong Cursor sau ngày 12 tháng 11 năm 2026 không?",
+  "faq.3.a": "Tính đến ngày 13 tháng 11 năm 2026, các mô hình OpenAI vẫn còn trong danh sách mô hình của Cursor. OpenAI quyết định ngừng cung cấp mô hình cho Cursor và đề xuất ngày 12 tháng 11; ngày chính thức sẽ được công bố riêng. Phương án dự phòng: khóa OpenAI của riêng bạn trong chat và tác nhân của Cursor, hoặc tiện ích mở rộng Codex bên trong Cursor."
  },
  "hermes-agent": {
   "aka": "Hermes AI agent",
@@ -1333,9 +1351,9 @@
  },
  "opencode": {
   "aka": "Open Code",
-  "def": "OpenCode là tác nhân lập trình mã nguồn mở, miễn phí, chạy trong terminal; còn có ứng dụng desktop và tiện ích mở rộng cho IDE. Bạn chọn mô hình: Claude, GPT, Gemini và hàng chục mô hình khác qua API, hoặc mô hình cục bộ; chỉ trả tiền cho nhà cung cấp mô hình. Các chế độ: Build sửa mã, Plan chỉ lập kế hoạch và không đổi tệp. Nó đọc quy tắc dự án từ `AGENTS.md`, và lệnh `/init` tạo tệp đó từ repo.",
+  "def": "OpenCode là tác nhân lập trình miễn phí, mã nguồn mở, chạy trong terminal; cũng có ứng dụng máy tính và ứng dụng web. Bạn chọn mô hình: Claude, GPT, Gemini và hàng chục mô hình khác qua API, hoặc mô hình chạy cục bộ; bạn chỉ trả tiền cho nhà cung cấp mô hình. Các chế độ: Build sửa mã, Plan chỉ lập kế hoạch và không đổi tệp. Nó đọc quy tắc dự án từ `AGENTS.md`, còn lệnh `/init` tạo tệp đó từ kho mã.",
   "faq.0.q": "OpenCode là gì?",
-  "faq.0.a": "Tác nhân lập trình mã nguồn mở miễn phí trong terminal, còn có ứng dụng desktop và tiện ích mở rộng cho IDE. Bạn chọn mô hình và chỉ trả tiền cho nhà cung cấp của nó.",
+  "faq.0.a": "Tác nhân lập trình miễn phí, mã nguồn mở trong terminal, còn có ứng dụng máy tính và ứng dụng web. Bạn chọn mô hình và chỉ trả tiền cho nhà cung cấp của nó.",
   "faq.1.q": "Những mô hình nào chạy được trong OpenCode?",
   "faq.1.a": "Claude, GPT, Gemini và hàng chục mô hình khác qua API, cũng như mô hình cục bộ trên máy tính của bạn.",
   "faq.2.q": "Cài OpenCode như thế nào?",
@@ -1346,7 +1364,8 @@
   "faq.4.a": "Cấu tạo giống nhau: cả hai đều đọc dự án, sửa tệp và chạy lệnh. OpenCode là mã nguồn mở và làm việc với bất kỳ mô hình nào, còn Claude Code chỉ với các mô hình Claude.",
   "source.label": "Tài liệu OpenCode",
   "seo.title": "OpenCode là gì: tác nhân lập trình AI mã nguồn mở, miễn phí trong terminal",
-  "seo.description": "OpenCode là tác nhân lập trình AI mã nguồn mở, miễn phí cho terminal: dùng bất kỳ mô hình nào hoặc mô hình cục bộ, chế độ Build và Plan, quy tắc trong AGENTS.md."
+  "seo.description": "OpenCode là tác nhân lập trình AI mã nguồn mở, miễn phí cho terminal: dùng bất kỳ mô hình nào hoặc mô hình cục bộ, chế độ Build và Plan, quy tắc trong AGENTS.md.",
+  "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào"
  },
  "gemini-cli": {
   "aka": "Google Gemini CLI",
@@ -1371,17 +1390,17 @@
  },
  "claude-in-chrome": {
   "aka": "Claude for Chrome, tiện ích Claude cho Chrome",
-  "def": "Claude in Chrome là tiện ích mở rộng Claude cho trình duyệt Chrome, cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console. Nó làm việc dưới tài khoản đăng nhập của bạn, nên thấy những gì bạn thấy. Có hai chế độ: bảng bên cạnh, nơi Claude tự làm nhiệm vụ trên trang đang mở, và điều khiển trình duyệt từ Claude Code. Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính; chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
-  "faq.0.q": "Tiện ích Claude cho Chrome làm gì?",
-  "faq.0.a": "Cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console dưới tài khoản đăng nhập của bạn.",
-  "faq.1.q": "Dùng Claude in Chrome như thế nào?",
-  "faq.1.a": "Có hai chế độ: bảng bên cạnh, nơi Claude làm nhiệm vụ trên trang đang mở, và điều khiển trình duyệt từ Claude Code.",
-  "faq.2.q": "Claude in Chrome có chạy trong các trình duyệt khác không?",
-  "faq.2.a": "Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính. Chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
+  "def": "Claude in Chrome (Claude for Chrome) là tiện ích mở rộng chính thức của Claude do Anthropic phát hành cho trình duyệt Chrome, cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console. Nó làm việc bằng phiên đăng nhập của bạn nên thấy giống bạn. Cài từ Chrome Web Store và chỉ chạy trên các gói Claude trả phí: Pro, Max, Ultra, Team và Enterprise. Có hai chế độ: bảng bên cạnh, nơi Claude tự làm việc trên trang đang mở, và điều khiển trình duyệt từ Claude Code. Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính; chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
+  "faq.3.q": "Tiện ích Claude cho Chrome làm gì?",
+  "faq.3.a": "Cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console dưới tài khoản đăng nhập của bạn.",
+  "faq.4.q": "Dùng Claude in Chrome như thế nào?",
+  "faq.4.a": "Có hai chế độ: bảng bên cạnh, nơi Claude làm nhiệm vụ trên trang đang mở, và điều khiển trình duyệt từ Claude Code.",
+  "faq.5.q": "Claude in Chrome có chạy trong các trình duyệt khác không?",
+  "faq.5.a": "Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính và không chạy trên điện thoại. Chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
   "source.label": "Trợ giúp: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome: tiện ích Claude cho Chrome làm gì",
-  "seo.description": "Claude in Chrome là tiện ích Claude cho Chrome: tác nhân mở trang, bấm nút và điền biểu mẫu dưới tài khoản đăng nhập của bạn. Hai chế độ, bảng bên cạnh và Claude Code, và các trình duyệt hỗ trợ.",
-  "more.label": "Claude in Chrome: tác nhân làm việc trong trình duyệt của bạn thế nào",
+  "seo.title": "Claude in Chrome: tiện ích Claude cho Chrome — cài đặt, gói và trình duyệt",
+  "seo.description": "Tiện ích Claude cho Chrome làm gì, cách cài từ Chrome Web Store, những gói Claude trả phí nào có nó và nó chạy ở đâu: bảng bên cạnh trong Chrome trên máy tính hoặc Claude Code trong các trình duyệt Chromium.",
+  "more.label": "Claude Code kiểm thử trang web trong trình duyệt của bạn thế nào: Claude in Chrome — gỡ lỗi và biểu mẫu bằng phiên đăng nhập của bạn",
   "compare.title": "Hai chế độ: bảng bên cạnh và Claude Code",
   "compare.head": [
    "Bảng bên cạnh",
@@ -1406,6 +1425,12 @@
    "Trình duyệt",
    "chỉ Chrome trên máy tính",
    "Chrome, Edge và các trình duyệt Chromium khác"
-  ]
+  ],
+  "faq.0.q": "Cài tiện ích Claude cho Chrome thế nào?",
+  "faq.0.a": "Mở trang Claude trong Chrome Web Store, bấm «Thêm vào Chrome», đăng nhập bằng tài khoản Claude, ghim tiện ích và cấp các quyền nó yêu cầu.",
+  "faq.1.q": "Claude in Chrome có miễn phí không?",
+  "faq.1.a": "Không. Nó chỉ chạy trên các gói Claude trả phí: Pro, Max, Ultra, Team và Enterprise. Ở Team và Enterprise, quản trị viên quyết định có bật nó hay không.",
+  "faq.2.q": "Dùng Claude in Chrome từ Claude Code thế nào?",
+  "faq.2.a": "Chạy claude --chrome hoặc bật Enabled by default trong /chrome; trong VS Code, gõ @browser. Cần gói Anthropic trực tiếp và đăng nhập bằng /login: không chạy qua Bedrock, Google Cloud hay Microsoft Foundry, cũng không chạy với khóa API."
  }
 }
