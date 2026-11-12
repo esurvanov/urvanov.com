@@ -1,12 +1,12 @@
 ---
 title: Jira và tác nhân AI: ưu điểm, nhược điểm và nên vạch ranh giới ở đâu
 date: 2026-10-20
-updated: 2026-11-08
+updated: 2026-11-13
 description: Tác nhân AI kết nối với Jira qua MCP ra sao, cái gì chạy tốt, cái gì hỏng, và vì sao việc tiếp nhận lỗi nên nằm ở một dịch vụ riêng. Có cả các lựa chọn thay Jira.
 tags: AI, tác nhân, Jira, MCP, Claude Code, bug tracker, harness
 category: harness
 layout: wide
-mentions: Jira, Atlassian Rovo MCP, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
+mentions: Jira, Atlassian MCP server, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
 toc: ways=Cách kết nối | plus=Ưu điểm | minus=Nhược điểm | russia=Jira ở Nga | trackers=Tracker khác | border=Ranh giới | first=Bắt đầu từ đâu | faq=Câu hỏi | next=Đọc tiếp
 ---
 
@@ -15,18 +15,18 @@ Tác nhân AI (AI agent) kết nối với Jira qua MCP. Nó làm tốt việc l
 <b-post series="harness">
 
 <b-chapter id="ways" icon="plug" title="Cách kết nối tác nhân với Jira">
-  <b-why align="left">Có vài cách kết nối tác nhân với Jira. Máy chủ chính thức của Atlassian (Rovo MCP) tìm kiếm, đọc và tạo issue được, nhưng chỉ chạy với Jira đám mây. Máy chủ mã nguồn mở mcp-atlassian dùng được cho cả Jira đám mây lẫn Jira tự lưu trữ. Một lựa chọn khác là giao issue cho tác nhân ngay trong Jira (Claude, Cursor, Codex, Copilot). Bảng so sánh các cách theo tính năng và giới hạn.</b-why>
+  <b-why align="left">Có vài cách kết nối tác nhân với Jira. Máy chủ chính thức của Atlassian (Atlassian MCP server, trước đây là Rovo MCP) tìm kiếm, đọc và tạo issue được, nhưng chỉ chạy với Jira đám mây. Máy chủ mã nguồn mở mcp-atlassian dùng được cho cả Jira đám mây lẫn Jira tự lưu trữ. Một lựa chọn khác là giao issue cho tác nhân ngay trong Jira (Claude, Cursor, Codex, Copilot). Bảng so sánh các cách theo tính năng và giới hạn.</b-why>
   <b-table>
 | Cách | Làm được gì | Giới hạn |
 |---|---|---|
-| Atlassian Rovo MCP (chính thức) | tìm kiếm, đọc, tạo issue và trang; có tệp đính kèm từ tháng 8/2026 | chỉ đám mây; giới hạn theo giờ; tốn tín dụng Rovo |
+| Atlassian MCP server, trước đây là Rovo MCP (chính thức) | tìm kiếm, đọc, tạo issue và trang; có tệp đính kèm từ tháng 8/2026 | chỉ đám mây; giới hạn theo giờ; một phần lệnh gọi tốn tín dụng Rovo |
 | mcp-atlassian (mã nguồn mở) | đám mây và tự lưu trữ, khoảng 100 công cụ | tự cài đặt, token nằm trong cài đặt |
 | Tác nhân trong Jira | giao issue cho Claude, Cursor, Codex, Copilot | chỉ đám mây, gói trả phí |
 | Copilot / Cursor từ Jira | giao issue, tác nhân mở bản nháp thay đổi | đám mây, ứng dụng riêng |
   </b-table>
   <b-finding>
     <ex>Các cách chính thức chạy với Jira đám mây; Jira tự lưu trữ chỉ kết nối được qua MCP mã nguồn mở.</ex>
-    <gen>Tác nhân có cùng quyền với người dùng mà nó dùng tài khoản hoặc token<b-proof href="https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: Getting started with the Atlassian Rovo MCP Server"/>.</gen>
+    <gen>Tác nhân có cùng quyền với người dùng mà nó dùng tài khoản hoặc token<b-proof href="https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: «…which ensures all actions respect users' existing access controls and permissions»"/>.</gen>
     <do>Kiểm tra bạn đang dùng Jira nào, đám mây hay tự lưu trữ: cách kết nối phụ thuộc vào đó.</do>
   </b-finding>
 </b-chapter>
@@ -83,7 +83,7 @@ Tác nhân AI (AI agent) kết nối với Jira qua MCP. Nó làm tốt việc l
   <b-metric-line value="~70%">lãnh đạo IT chạy các phiên bản không còn được hỗ trợ (khảo sát của K2Tech, 73 công ty)</b-metric-line>
   <b-finding>
     <ex>MCP đám mây chính thức và tác nhân trong Jira trên thực tế không dùng được với các nhóm ở Nga.</ex>
-    <gen>Với Jira tự lưu trữ vẫn còn mcp-atlassian mã nguồn mở, cộng với quyết định chuyển sang đâu trước năm 2029<b-proof href="https://habr.com/ru/articles/1011252" quote="K2Tech trên Habr: Atlassian rút lui và khảo sát lãnh đạo IT"/>.</gen>
+    <gen>Với Jira tự lưu trữ vẫn còn mcp-atlassian mã nguồn mở, cộng với quyết định chuyển sang đâu trước năm 2029<b-proof href="https://habr.com/ru/companies/k2tech/articles/1011252/" quote="K2Tech trên Habr, dịch từ tiếng Nga: “Kết luận chính: khoảng 70% người trả lời vẫn dùng các phiên bản sản phẩm không còn được hỗ trợ của nhà cung cấp”; “73 đại diện công ty đã tham gia khảo sát”"/>.</gen>
     <do>Nếu sắp phải chuyển, hãy chọn tracker đã có sẵn kết nối với tác nhân.</do>
   </b-finding>
 </b-chapter>
@@ -150,5 +150,5 @@ Tác nhân AI (AI agent) kết nối với Jira qua MCP. Nó làm tốt việc l
     <item href="/blog/mcp-agent-access/" k="Kiến thức nền" t="MCP cho tác nhân AI">MCP là gì và cách kết nối</item>
   </b-links>
 </b-chapter>
-<b-footer>Nguồn dữ kiện: tài liệu của Atlassian, GitHub và Cursor; phân tích của automatica.com.au, Cato CTRL, Simon Willison; khảo sát của K2Tech; Wordstat, tháng 10/2026. Tính năng và gói của Rovo MCP thay đổi nhanh: hãy kiểm tra lại trước khi quyết định.</b-footer>
+<b-footer>Nguồn dữ kiện: tài liệu của Atlassian, GitHub và Cursor; phân tích của automatica.com.au, Cato CTRL, Simon Willison; khảo sát của K2Tech; Wordstat, tháng 10/2026. Tính năng và gói của Atlassian MCP server thay đổi nhanh: hãy kiểm tra lại trước khi quyết định.</b-footer>
 </b-post>

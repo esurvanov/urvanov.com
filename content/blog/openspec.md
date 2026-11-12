@@ -1,7 +1,7 @@
 ---
 title: Что такое OpenSpec, установка и команды: пример изменения от плана до слияния
 date: 2026-11-07
-updated: 2026-11-11
+updated: 2026-11-13
 description: Как устроен OpenSpec от Fission AI: папка изменения с планом, требованиями и задачами, три команды агенту и слияние в общие спеки. Установка за две команды, реальный пример изменения из репозитория сайта urvanov.com, сравнение со Spec Kit и готовые запросы, чтобы начать.
 tags: AI, OpenSpec, спеки, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
@@ -36,7 +36,7 @@ OpenSpec — бесплатная открытая программа для р�
 </b-chapter>
 
 <b-chapter id="install" icon="terminal" title="Установка">
-  <b-why align="left">OpenSpec состоит из двух частей. Первая — программа командной строки <code>openspec</code>: её ставят один раз на компьютер. Вторая — настройка конкретного проекта: команда <code>openspec init</code> создаёт в нём папку <code>openspec/</code> и добавляет агентам команды вроде <code>/opsx:propose</code>.</b-why>
+  <b-why align="left">OpenSpec состоит из двух частей. Первая — программа командной строки <code>openspec</code>: её ставят один раз на компьютер. Вторая — настройка конкретного проекта: команда <code>openspec init</code> создаёт в нём папку <code>openspec/</code> и добавляет агентам команды вроде <code>/openspec-propose</code>.</b-why>
   <iso-art name="openspec/install"></iso-art>
   <b-why align="left">Порядок на схеме: сначала программа появляется на компьютере, затем в проекте появляется папка <code>openspec/</code> с двумя подпапками — <code>specs</code> для действующих требований и <code>changes</code> для изменений в работе, — и в конце ваши агенты получают новые команды. Код проекта при этом не меняется: добавляются только папка с планами и файлы с командами для агентов. Команда для macOS и Linux:</b-why>
   <b-codebox title="Установка на macOS и Linux">
@@ -48,7 +48,7 @@ OpenSpec — бесплатная открытая программа для р�
     cd your-project
     openspec init
   </b-codebox>
-  <b-why align="left"><code>openspec init</code> спрашивает, с какими агентами вы работаете, и ставит команды именно им. Имя команды у агентов разное: в Claude Code это <code>/opsx:propose</code>, в Cursor и GitHub Copilot — <code>/opsx-propose</code>, в Codex — <code>$openspec-propose</code><b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «/opsx:propose is the canonical name; your tool may spell it /opsx-propose (Cursor, GitHub Copilot), @opsx-propose (Amazon Q) or $openspec-propose (Codex)» — github.com/Fission-AI/OpenSpec"/>. Дальше в статье — написание Claude Code.</b-why>
+  <b-why align="left"><code>openspec init</code> спрашивает, с какими агентами вы работаете, и ставит им скиллы OpenSpec в общую папку <code>.agents/skills/</code>. В Claude Code и большинстве агентов их вызывают как <code>/openspec-propose</code>, в Codex — <code>$openspec-propose</code>, можно и просто попросить словами<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «These are skills. Most tools invoke them as /openspec-propose and Codex as $openspec-propose, or you can ask for the work in plain words. … Coming from 1.x and its /opsx:* commands? See Upgrade to 2.0» — github.com/Fission-AI/OpenSpec"/>. В версиях 1.x те же шаги назывались <code>/opsx:propose</code>, <code>/opsx:apply</code>, <code>/opsx:archive</code>; чтобы перейти на 2.0, запустите <code>openspec update</code> в каждом проекте. Дальше в статье — написание Claude Code.</b-why>
   <b-why align="left">Если в проекте несколько агентов, например часть команды работает в Cursor, а часть в Claude Code, отметьте их все: план изменения один и тот же, а команды для каждого агента ставятся свои. Программа бесплатная и работает локально, учётная запись не нужна.</b-why>
   <b-finding>
     <ex>Две команды: одна ставит программу, вторая готовит проект и подключает агентов.</ex>
@@ -58,30 +58,30 @@ OpenSpec — бесплатная открытая программа для р�
 </b-chapter>
 
 <b-chapter id="flow" icon="list-arrow" title="Три команды: план, код, слияние">
-  <b-why align="left">Работа идёт по кругу из трёх команд. Перед ними можно подумать вслух командой <code>/opsx:explore</code>: агент читает код, предлагает варианты и ничего не меняет. Когда понятно, что делать, начинается основной путь.</b-why>
+  <b-why align="left">Работа идёт по кругу из трёх команд. Перед ними можно подумать вслух командой <code>/openspec-explore</code>: агент читает код, предлагает варианты и ничего не меняет. Когда понятно, что делать, начинается основной путь.</b-why>
   <iso-art name="openspec/loop"></iso-art>
-  <b-why align="left">Круг на схеме читается по часовой стрелке. Первая команда <code>/opsx:propose</code> просит агента написать план: он создаёт папку изменения и четыре файла. Затем ход за вами: вы читаете план и правите его словами в чате или прямо в файлах. Это главная точка контроля, потому что исправить абзац текста дешевле, чем переписывать готовый код. Вторая команда <code>/opsx:apply</code> запускает работу по задачам: агент берёт задачи из <code>tasks.md</code> по одной и отмечает каждую галочкой. Третья команда <code>/opsx:archive</code> закрывает изменение: требования переезжают в общие спеки, а сама папка уходит в архив вместе со всей историей решений. Следующее изменение начинается уже от обновлённых спек.</b-why>
-  <b-why align="left">Так выглядит короткая сессия в терминале. Пример сессии по мотивам демонстрации из описания OpenSpec<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /opsx:propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /opsx:archive / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
-  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec · /opsx" path="~/projects/shop">
-    <line kind="ask">/opsx:propose add-dark-mode</line>
+  <b-why align="left">Круг на схеме читается по часовой стрелке. Первая команда <code>/openspec-propose</code> просит агента написать план: он создаёт папку изменения и четыре файла. Затем ход за вами: вы читаете план и правите его словами в чате или прямо в файлах. Это главная точка контроля, потому что исправить абзац текста дешевле, чем переписывать готовый код. Вторая команда <code>/openspec-apply-change</code> запускает работу по задачам: агент берёт задачи из <code>tasks.md</code> по одной и отмечает каждую галочкой. Третья команда <code>/openspec-archive-change</code> закрывает изменение: требования переезжают в общие спеки, а сама папка уходит в архив вместе со всей историей решений. Следующее изменение начинается уже от обновлённых спек.</b-why>
+  <b-why align="left">Так выглядит короткая сессия в терминале. Пример сессии по мотивам демонстрации из описания OpenSpec<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /openspec-propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /openspec-archive-change / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
+  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec 2.0 · skills" path="~/projects/shop">
+    <line kind="ask">/openspec-propose add-dark-mode</line>
     <line kind="act">Создал openspec/changes/add-dark-mode/</line>
     <line kind="out">proposal.md · specs/ · design.md · tasks.md</line>
     <line kind="you" note="вы читаете план">Добавь сценарий: тема сохраняется после перезагрузки</line>
-    <line kind="ask">/opsx:apply</line>
+    <line kind="ask">/openspec-apply-change</line>
     <line kind="act">1.1 контекст темы ✓ · 1.2 переключатель ✓ · 2.1 цвета ✓</line>
     <line kind="out">все задачи выполнены</line>
-    <line kind="ask">/opsx:archive</line>
+    <line kind="ask">/openspec-archive-change</line>
     <line kind="act">Перенёс требования в openspec/specs, папку изменения — в архив</line>
   </b-agent-term>
   <b-table>
   | Команда | Что делает агент | Что появляется в проекте | Что делаете вы |
   |---|---|---|---|
-  | <code>/opsx:explore</code> | читает код, предлагает варианты | ничего | выбираете вариант |
-  | <code>/opsx:propose</code> | пишет план изменения | папка <code>openspec/changes/имя/</code> с четырьмя файлами | читаете и правите план |
-  | <code>/opsx:apply</code> | пишет код по задачам, отмечает галочки | код и тесты | проверяете результат |
-  | <code>/opsx:archive</code> | вливает требования в общие спеки | обновлённые <code>openspec/specs</code>, папка в архиве | ничего, это завершение |
+  | <code>/openspec-explore</code> | читает код, предлагает варианты | ничего | выбираете вариант |
+  | <code>/openspec-propose</code> | пишет план изменения | папка <code>openspec/changes/имя/</code> с четырьмя файлами | читаете и правите план |
+  | <code>/openspec-apply-change</code> | пишет код по задачам, отмечает галочки | код и тесты | проверяете результат |
+  | <code>/openspec-archive-change</code> | вливает требования в общие спеки | обновлённые <code>openspec/specs</code>, папка в архиве | ничего, это завершение |
   </b-table>
-  <b-why align="left">Для больших задач есть расширенный набор: создать изменение по шагам, продолжить начатое, проверить код по спеке. Его включают командой <code>openspec config profile</code>.</b-why>
+  <b-why align="left">Для больших задач есть расширенный набор: создать изменение по шагам, продолжить начатое, проверить код по спеке. Его включают командой <code>openspec config profile</code>, а применяют в проекте командой <code>openspec update</code>.</b-why>
   <b-finding>
     <ex>После архивации в <code>openspec/specs</code> лежит актуальное описание системы, а история решений — в архиве изменений.</ex>
     <gen>Спеки обновляются тем же шагом, что и код, поэтому не устаревают, как отдельная вики.</gen>
@@ -110,7 +110,7 @@ OpenSpec — бесплатная открытая программа для р�
     - THEN карточка показывает только эти секции, без пустых блоков
   </b-codebox>
   <b-why align="left">Решение «цитаты только из источника» записано в design.md до кода. Поэтому агент не сочинял цитаты там, где их не было, а сценарий «частичный контент» заранее задал, как выглядит карточка без цитаты и схемы.</b-why>
-  <b-why align="left">Работа заняла 10 задач, по одной на каждую тему каталога. Все 10 задач отмечены галочками, но команду архивации так и не запустили: папка изменения до сих пор лежит в <code>openspec/changes</code>, а общих спек у сайта нет. Это частая ошибка. Требование «у всех приёмов есть подробное описание» сейчас записано только в черновике изменения, и следующий агент, читающий общие спеки, о нём не узнает. Одна команда <code>/opsx:archive</code> перенесла бы его в общие спеки.</b-why>
+  <b-why align="left">Работа заняла 10 задач, по одной на каждую тему каталога. Все 10 задач отмечены галочками, но команду архивации так и не запустили: папка изменения до сих пор лежит в <code>openspec/changes</code>, а общих спек у сайта нет. Это частая ошибка. Требование «у всех приёмов есть подробное описание» сейчас записано только в черновике изменения, и следующий агент, читающий общие спеки, о нём не узнает. Одна команда <code>/openspec-archive-change</code> перенесла бы его в общие спеки.</b-why>
   <b-finding>
     <ex>Сценарий «частичный контент» появился в плане до кода и сразу задал, как вести себя карточке без цитаты и схемы.</ex>
     <gen>Требования со сценариями «когда — тогда» читаются как тесты: агенту понятно, что считать готовым.</gen>
@@ -140,10 +140,10 @@ OpenSpec — бесплатная открытая программа для р�
   <b-why align="left">Начните с одной небольшой правки, которую вы и так собирались сделать. Пять запросов агенту, по одному на шаг: скопируйте их в Claude Code, Codex или Cursor и подставьте свою задачу.</b-why>
   <b-hdd-steps>
     <step t="Установка">«Установи OpenSpec и запусти openspec init в этом проекте. Покажи, какие команды появились»</step>
-    <step t="Разведка">«/opsx:explore Хочу добавить … Посмотри код и предложи два варианта, ничего не меняя»</step>
-    <step t="План">«/opsx:propose … Сначала только план. В требованиях дай сценарии для пустых и частичных данных»</step>
-    <step t="Код">«/opsx:apply Сделай задачи по одной, после каждой запускай тесты»</step>
-    <step t="Слияние">«/opsx:archive Перенеси требования в спеки и покажи, что изменилось в openspec/specs»</step>
+    <step t="Разведка">«/openspec-explore Хочу добавить … Посмотри код и предложи два варианта, ничего не меняя»</step>
+    <step t="План">«/openspec-propose … Сначала только план. В требованиях дай сценарии для пустых и частичных данных»</step>
+    <step t="Код">«/openspec-apply-change Сделай задачи по одной, после каждой запускай тесты»</step>
+    <step t="Слияние">«/openspec-archive-change Перенеси требования в спеки и покажи, что изменилось в openspec/specs»</step>
   </b-hdd-steps>
 </b-chapter>
 
@@ -152,7 +152,7 @@ OpenSpec — бесплатная открытая программа для р�
     <q t="Что такое OpenSpec?">Бесплатная открытая программа от Fission AI для разработки по спецификациям. Агент пишет план изменения в файлы Markdown, вы его проверяете, агент пишет код, а требования вливаются в общие спеки проекта.</q>
     <q t="Как установить OpenSpec?">Командой curl -fsSL https://openspec.dev/cli/install.sh | sh на macOS и Linux или через npm install -g @fission-ai/openspec@latest. Затем в папке проекта запустите openspec init.</q>
     <q t="Чем OpenSpec отличается от Spec Kit?">OpenSpec гибче и рассчитан на уже работающий код, шаги можно повторять в любом порядке. Spec Kit от GitHub ведёт по жёстким фазам: принципы, спека, план, задачи, код.</q>
-    <q t="С какими агентами работает OpenSpec?">С Claude Code, Codex, Cursor, GitHub Copilot, Amazon Q и другими. Команда openspec init ставит команды под те агенты, которые вы выбрали.</q>
+    <q t="С какими агентами работает OpenSpec?">С Claude Code, Codex, Cursor, GitHub Copilot и другими, всего с 30 с лишним агентами. Команда openspec init ставит скиллы под те агенты, которые вы выбрали.</q>
   </b-faq-cards>
 </b-chapter>
 

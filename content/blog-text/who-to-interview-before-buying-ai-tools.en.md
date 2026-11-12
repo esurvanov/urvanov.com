@@ -10,7 +10,7 @@ All numbers and names are examples
 
 ## What decision it supports
 
-The business task comes from the report: for which work tasks the current set of AI tools falls short and what to test before buying. The report also says who makes the decision and by which signs. The sample decides whose tasks we will see in the interviews.First, define which ways of getting tasks done you need to see: through the corporate AI tool, through other AI tools, by hand or through colleagues, and among people who tried the tool and quit. The ChatGPT Enterprise usage report is one of the sources: it finds the first group and those who quit. Users of other tools are found through a company-wide questionnaire and license and purchase lists.
+The business task comes from the report: for which work tasks the current set of AI tools falls short and what to test before buying. The report also says who makes the decision and by which signs. The sample decides whose tasks reach the interviews.First, define which ways of getting tasks done you need to see: through the corporate AI tool, through other AI tools, by hand or through colleagues, and among people who tried the tool and quit. The ChatGPT Enterprise usage report is one of the sources: it finds the first group and those who quit. Users of other tools are found through a company-wide questionnaire and license and purchase lists.
 
 Input
 

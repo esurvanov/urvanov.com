@@ -1,7 +1,7 @@
 ---
 title: Harness engineering trong thực tế: biến lỗi của tác nhân AI thành quy tắc của môi trường (HDD)
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Vòng lặp từ lỗi thành quy tắc, guide và sensor, ba lớp kiểm tra, cách kết hợp với đặc tả và năm bước đầu tiên trong dự án của bạn.
 tags: AI, Claude Code, harness engineering, harness, HDD, tác nhân
 category: harness
@@ -11,11 +11,11 @@ mentions: Harness engineering, Claude Code, AGENTS.md, CLAUDE.md, Spec-Driven De
 toc: loop=Vòng lặp HDD | canons=Bố cục 3 × 3 | double=Vòng lặp kép | controls=Guide và sensor | layers=Ba lớp kiểm tra | shift=Càng sớm càng rẻ | human=Con người quan trọng ở đâu | spec=HDD và đặc tả | start=Bắt đầu từ đâu | faq=Câu hỏi | next=Đọc thêm
 ---
 
-**Harness engineering** là công việc định hình môi trường xung quanh tác nhân AI (AI agent): hướng dẫn, công cụ, quyền và các phép kiểm tra. **Harness-Driven Development (HDD)** là phương pháp làm việc xây trên nền đó: mỗi lỗi của tác nhân trở thành một quy tắc của môi trường ấy.
+**Harness engineering** là công việc định hình môi trường xung quanh tác nhân AI (AI agent): hướng dẫn, hệ thống được kết nối, quyền và các phép kiểm tra. **Harness-Driven Development (HDD)** là phương pháp làm việc xây trên nền đó: mỗi lỗi của tác nhân trở thành một quy tắc của môi trường ấy. Bắt đầu bằng một tệp hướng dẫn AGENTS.md hoặc CLAUDE.md và một nhật ký lỗi của tác nhân: mỗi tuần một lần, chuyển các mục trong nhật ký thành quy tắc, bài kiểm thử hoặc hook.
 
 <b-post series="hdd">
 <b-chapter id="loop" icon="refresh-cw" title="Vòng lặp HDD">
-  <b-why align="left">Vòng lặp hoạt động như sau. Tác nhân nhận một tác vụ và tạo ra kết quả. Các sensor (kiểm thử, linter, review) kiểm tra kết quả. Nếu mọi thứ đều qua, tác vụ được đóng. Nếu một sensor phát hiện lỗi, con người không chỉ sửa kết quả mà thay đổi môi trường của tác nhân, tức harness: thêm một dòng vào hướng dẫn, một kiểm thử hoặc một hook. Tác vụ tiếp theo chạy với quy tắc đó, và lỗi không lặp lại.</b-why>
+  <b-why align="left">Vòng lặp hoạt động như sau. Tác nhân nhận một tác vụ và tạo ra kết quả. Các sensor (kiểm thử, linter, review) kiểm tra kết quả. Nếu mọi thứ đều qua, tác vụ được đóng. Nếu một sensor phát hiện lỗi, con người thay đổi môi trường của tác nhân, tức harness: thêm một dòng vào hướng dẫn, một kiểm thử hoặc một hook. Tác vụ tiếp theo chạy với quy tắc đó, và lỗi không lặp lại.</b-why>
   <b-hdd-scene name="harness-driven-development/loop" frame="loop"/>
   <b-cap>Nguyên tắc của Mitchell Hashimoto: khi tác nhân mắc lỗi, hãy thay đổi harness để lỗi đó không thể xảy ra nữa <a href="https://www.faros.ai/blog/harness-engineering" target="_blank" rel="noopener">Faros</a></b-cap>
   <b-why>Prompt sửa một yêu cầu, ngữ cảnh sửa những gì mô hình biết, harness sửa mọi lần chạy sau đó. Ví dụ: tác nhân sửa mã mà không chạy kiểm thử.</b-why>
@@ -81,7 +81,7 @@ toc: loop=Vòng lặp HDD | canons=Bố cục 3 × 3 | double=Vòng lặp kép |
     <principle icon="shield-check" t="Không có kiểm tra bên ngoài">bỏ đi, kèm ghi chép</principle>
   </b-hdd-principles>
   <b-cap>Vòng lặp áp dụng cho chính nó: mỗi lần chạy kết thúc bằng rủi ro còn lại, không bao giờ bằng trạng thái “xong”.</b-cap>
-  <b-why align="left">Đổi quy tắc sau mỗi lời phàn nàn là rủi ro: harness bắt đầu phình ra từ những lần sửa ngẫu nhiên. Vì vậy Vòng lặp áp dụng bốn phép kiểm tra. Nếu các bản sửa chỉ vá lỗ hổng và không dự đoán điều gì mới, chúng được thay bằng một quy tắc. Nếu có nhiều phàn nàn, trước hết kiểm tra xem chúng có chung nguyên nhân không. Quy tắc mới chỉ được chấp nhận nếu các trường hợp cũ vẫn được giải thích với nó. Quy tắc không có kiểm tra từ bên ngoài sẽ bị bỏ, nhưng ghi chép nói rõ cái gì bị bỏ và vì sao. Chú thích dưới các thẻ có nghĩa là Vòng lặp cũng áp dụng cho chính nó: một lần chạy không đặt “xong” mà kết thúc bằng rủi ro còn lại.</b-why>
+  <b-why align="left">Đổi quy tắc sau mỗi lời phàn nàn là rủi ro: harness bắt đầu phình ra từ những lần sửa ngẫu nhiên. Vì vậy Vòng lặp áp dụng bốn phép kiểm tra. Nếu các bản sửa chỉ vá lỗ hổng và không dự đoán điều gì mới, chúng được thay bằng một quy tắc. Nếu có nhiều phàn nàn, trước hết kiểm tra xem chúng có chung nguyên nhân không. Quy tắc mới chỉ được chấp nhận nếu các trường hợp cũ vẫn được giải thích với nó. Quy tắc không có kiểm tra từ bên ngoài sẽ bị bỏ, nhưng ghi chép nói rõ cái gì bị bỏ và vì sao. Chú thích dưới các thẻ có nghĩa là Vòng lặp cũng áp dụng cho chính nó: một lần chạy kết thúc bằng rủi ro còn lại.</b-why>
   <b-finding>
     <ex>Chuỗi bản vá, phàn nàn, quy tắc mới và kiểm tra bên ngoài là bốn nguyên tắc kiểm chứng được mà Vòng lặp dùng để quyết định nên sửa hành động hay đổi quy tắc.</ex>
     <gen>Vòng đơn sửa kết quả trong các quy tắc cũ. Vòng kép đổi chính các quy tắc, và làm theo các nguyên tắc kiểm chứng được, nên harness học được mà không trôi dạt vì những lần sửa ngẫu nhiên.</gen>
@@ -101,10 +101,10 @@ toc: loop=Vòng lặp HDD | canons=Bố cục 3 × 3 | double=Vòng lặp kép |
     <cell>AGENTS.md · CLAUDE.md | skill | đặc tả</cell>
     <cell>review bằng AI | LLM làm giám khảo</cell>
   </b-hdd-matrix>
-  <b-cap>Cách chia theo mô tả trong <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler: Harness engineering</a></b-cap>
+  <b-cap>Cách chia theo mô tả trong <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>Bốn ô: guide định hướng trước khi tác nhân làm việc, sensor bắt sai lệch sau đó, và mỗi loại có thể là tính toán hoặc dựa trên AI.</ex>
-    <gen>Kiểm tra tính toán chạy trong vài giây và không mắc lỗi, nên hãy dùng chúng ở mọi nơi có thể viết quy tắc một cách hình thức. Để kiểm tra dựa trên AI cho phần ý nghĩa: phong cách, độ rõ ràng, độ khớp với ý định.</gen>
+    <gen>Kiểm tra tính toán chạy trong vài giây và không mắc lỗi trong phạm vi quy tắc của mình, nên hãy dùng chúng ở mọi nơi có thể viết quy tắc một cách hình thức. Để kiểm tra dựa trên AI cho phần ý nghĩa: phong cách, độ rõ ràng, độ khớp với ý định.</gen>
     <do>Với mỗi quy tắc trong hướng dẫn của tác nhân, hãy hỏi liệu một kiểm thử hay linter có kiểm tra được không. Nếu được, chuyển nó sang đó.</do>
   </b-finding>
 </b-chapter>
@@ -116,7 +116,7 @@ toc: loop=Vòng lặp HDD | canons=Bố cục 3 × 3 | double=Vòng lặp kép |
     <layer icon="modules" t="Kiến trúc" value="55">đang phát triển</layer>
     <layer icon="user-round" t="Hành vi" value="25" sw="1.8">khó nhất</layer>
   </b-hdd-layers>
-  <b-cap>Mức trưởng thành của các lớp theo đánh giá của <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>Mức trưởng thành của các lớp theo đánh giá của <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>Chất lượng mã là dễ kiểm tra nhất hiện nay, còn hành vi sản phẩm là khó nhất.</ex>
     <gen>Linter và công cụ định dạng phủ lớp đầu gần như ngay lập tức. Kiến trúc được kiểm tra bằng quy tắc phụ thuộc và yêu cầu hiệu năng. Hành vi vẫn cần kiểm thử kịch bản tốt và con mắt của con người.</gen>
@@ -146,7 +146,7 @@ toc: loop=Vòng lặp HDD | canons=Bố cục 3 × 3 | double=Vòng lặp kép |
     <side icon="sun" t="Harness" n="36">phong cách · kiểu dữ liệu · kiểm thử · ranh giới</side>
     <side icon="user-round" t="Con người" n="6" sw="1.8">kiến trúc · sản phẩm · quy tắc mới</side>
   </b-hdd-split>
-  <b-cap>“Một harness tốt giữ con người trong vòng lặp và hướng sự chú ý của họ vào nơi quan trọng nhất” — diễn giải từ <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>“Một harness tốt giữ con người trong vòng lặp và hướng sự chú ý của họ vào nơi quan trọng nhất” — diễn giải từ <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>Harness đảm nhận phần lớn các phép kiểm tra; con người giữ các quyết định và công việc cải thiện harness.</ex>
     <gen>Một lập trình viên giàu kinh nghiệm mang trong đầu một harness ngầm: hiểu biết về kiến trúc, thói quen của nhóm, cảm giác về rủi ro. HDD chuyển hiểu biết đó thành các quy tắc tường minh, để mỗi lần tác nhân chạy đều nhận được nó.</gen>
@@ -199,7 +199,7 @@ toc: loop=Vòng lặp HDD | canons=Bố cục 3 × 3 | double=Vòng lặp kép |
     <item href="/blog/work-prompts-examples/" k="Giai đoạn 1–2" t="Prompt cho công việc">cách viết một yêu cầu đơn lẻ và cung cấp dữ liệu</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Giai đoạn 3" t="So sánh các harness">Claude Code, Codex, Cursor, Hermes và chat</item>
   </b-links>
-  <b-cap>Đọc thêm: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
+  <b-cap>Đọc thêm: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
 </b-chapter>
 <b-footer>Thuật ngữ và cách chia lớp dựa theo các nguồn được dẫn ở chú thích dưới các sơ đồ.</b-footer>
 </b-post>

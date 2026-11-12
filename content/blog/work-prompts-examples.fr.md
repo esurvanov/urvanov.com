@@ -1,7 +1,7 @@
 ---
 title: Prompts pour les tâches de travail : cinq parties et six exemples pour ChatGPT et Claude
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Des prompts pour travailler avec un chat IA : les parties d'un bon prompt de travail, à quoi ressemblent une demande faible et une demande solide, six modèles prêts pour des tâches courantes et comment les garder dans un projet, d'après les guides d'Anthropic, d'OpenAI et de Google.
 tags: IA, prompts, ChatGPT, Claude
 category: prompts
@@ -18,13 +18,13 @@ Un prompt de travail pour ChatGPT et Claude se construit en cinq parties : un r�
     <node icon="ai-box" t="Modèle">devine le contexte</node>
     <node icon="file-x" t="Réponse générique">à réécrire à la main</node>
   </b-lane>
-  <b-lane title="Six parties" color="accent">
+  <b-lane title="Cinq parties" color="accent">
     <node icon="prompt-stripes" t="Prompt">rôle, données, exemple, format</node>
     <node icon="ai-box" t="Modèle">voit tout ce dont il a besoin</node>
     <node icon="file-check" t="Brouillon">retouches mineures</node>
   </b-lane>
 </b-flow>
-<b-cap>Le modèle est le même dans les deux cas. Le résultat dépend de ce que dit le prompt : six parties qui reviennent dans les guides d'Anthropic, d'OpenAI et de Google.</b-cap>
+<b-cap>Le modèle est le même dans les deux cas. Le résultat dépend de ce que dit le prompt : cinq parties qui reviennent dans les guides d'Anthropic, d'OpenAI et de Google.</b-cap>
 <b-chapter id="model" title="Human-in-the-loop : le chemin d'une demande" icon="share">
   <b-art names="work-prompts-examples/prompt-map" wide/>
   <b-finding>
@@ -102,7 +102,7 @@ Un prompt de travail pour ChatGPT et Claude se construit en cinq parties : un r�
       <b-cap>OpenAI Academy propose un modèle d'ordre du jour avec des estimations de durée<b-proof href="https://academy.openai.com/public/resources/chatgpt-for-any-role" quote="OpenAI Academy, ChatGPT for any role: “Create a structured agenda for a meeting about [topic]. Break the agenda into sections with time estimates and goals for each section” — academy.openai.com"/>.</b-cap>
       <b-finding>
         <ex>L'objectif de la réunion, les documents dans des balises et une liste numérotée de ce qu'il faut rendre.</ex>
-        <gen>L'objectif de la réunion filtre les documents. Les étapes numérotées aident quand l'ordre et l'exhaustivité comptent<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they&#39;d be confused, Claude will be too” — platform.claude.com, Prompting best practices"/>.</gen>
+        <gen>L'objectif de la réunion filtre les documents. Les étapes numérotées aident quand l'ordre et l'exhaustivité comptent<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Provide instructions as sequential steps using numbered lists or bullet points when the order or completeness of steps matters” — platform.claude.com, Prompting best practices"/>.</gen>
         <do>Avant toute réunion de 30 minutes ou plus, passez les documents dans ce prompt et ouvrez la réunion avec son tableau.</do>
       </b-finding>
     </b-prompt-tab>
@@ -193,7 +193,7 @@ Un prompt de travail pour ChatGPT et Claude se construit en cinq parties : un r�
         Sortie : un tableau [colonnes] et une conclusion en 5 points.
         Un lien vers la source pour chaque fait. S'il n'y a pas de données, dis-le.
       </b-prompt>
-      <b-cap>Les deux chats ont un mode de recherche approfondie : deep research dans ChatGPT et Research dans Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/>.</b-cap>
+      <b-cap>Les deux chats ont un mode de recherche approfondie : deep research dans ChatGPT et Research dans Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Ultra, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/>.</b-cap>
       <b-finding>
         <ex>Un objectif, une limite de fraîcheur et un format de sortie avec des liens.</ex>
         <gen>En mode recherche, le modèle enchaîne une série de recherches et renvoie un rapport avec des liens. Les liens permettent de vérifier chaque fait, et « s'il n'y a pas de données » empêche de combler les trous par des suppositions.</gen>
@@ -213,7 +213,7 @@ Un prompt de travail pour ChatGPT et Claude se construit en cinq parties : un r�
   <b-sublabel top="22">Prompting</b-sublabel>
   <b-links cols="2">
     <item href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" k="Anthropic · documentation" t="Prompting best practices" ext>La référence principale : clarté, exemples, rôle, balises XML, longs documents</item>
-    <item href="https://claude.com/blog/best-practices-for-prompt-engineering" k="Anthropic · blog" t="Best practices for prompt engineering" ext>L'art général du prompting, au-delà d'un modèle précis</item>
+    <item href="https://claude.com/resources/articles/best-practices-for-prompt-engineering" k="Anthropic · blog" t="Best practices for prompt engineering" ext>L'art général du prompting, au-delà d'un modèle précis</item>
     <item href="https://github.com/anthropics/prompt-eng-interactive-tutorial" k="Anthropic · tutoriel" t="Interactive tutorial" ext>9 chapitres avec exercices, de la structure du prompt aux balises XML et aux exemples</item>
     <item href="https://www.kaggle.com/whitepaper-prompt-engineering" k="Google · livre blanc" t="Prompt Engineering" ext>Techniques et bonnes pratiques : exemples, format de sortie, instructions plutôt que contraintes</item>
     <item href="https://academy.openai.com/public/clubs/work-users-ynjqu/resources/prompting" k="OpenAI Academy" t="Prompting" ext>Quoi, pour qui et pourquoi, contexte, format de sortie, itération</item>
@@ -237,7 +237,7 @@ Un prompt de travail pour ChatGPT et Claude se construit en cinq parties : un r�
   <b-links cols="2">
     <item href="/blog/harness-work-approaches/" k="Approches" t="Si la réponse rate la cible">Boucle de réponse et relecture qui corrige la demande</item>
     <item href="/blog/specs-rules-skills/" k="Contexte" t="Spécifications, bible, règles et skills">Où vit un prompt au-delà d'un seul chat</item>
-    <item href="/blog/ai-in-code-harness-and-tools/" k="Ingénierie" t="L'IA dans le code">Le harness et trois groupes d'outils</item>
+    <item href="/blog/ai-in-code-harness-and-tools/" k="Ingénierie" t="L'IA dans le code">Le harness et quatre groupes d'outils</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="Rapport" t="Rapport d'usage de ChatGPT Enterprise">Qui utilise quoi dans l'entreprise</item>
   </b-links>
 </b-chapter>

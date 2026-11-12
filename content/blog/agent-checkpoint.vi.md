@@ -1,7 +1,7 @@
 ---
 title: Kiểm tra công việc của tác nhân AI ở đâu: ở ranh giới aggregate, vì không ai kiểm tra được mọi chương trình (định lý Rice)
 date: 2026-11-06
-updated: 2026-11-08
+updated: 2026-11-13
 description: Vì sao không có phép kiểm tra nào xác minh được mã của tác nhân bất kỳ theo quy tắc bất kỳ, ba cách làm cho phép kiểm tra hữu hạn, ranh giới aggregate từ event storming trở thành điểm kiểm tra thế nào, khả năng kiểm tra quyết định kích thước bounded context ra sao, và vì sao khung đầu tiên phải rẻ để dời đi.
 tags: AI, tác nhân, DDD, aggregate, bounded context, event storming, định lý Rice, Quint, kiểm chứng mô hình
 category: specs
@@ -105,7 +105,7 @@ Hãy đặt phép kiểm tra công việc của tác nhân AI (AI agent) ở ran
       a == b or a.room != b.room or a.end <= b.start or b.end <= a.start))
   </b-codebox>
   <b-why align="left">Sau đó chương trình thử mọi chuỗi hành động cho một thế giới nhỏ: 3 phòng, tối đa 5 lượt đặt. Nếu quy tắc vỡ ở đâu đó, nó in ra chuỗi bước. Ví dụ: hai khách đặt phòng 2 cho khung 10:00–11:00 cùng lúc, cả hai phép kiểm tra “còn trống không” đều qua trước khi bên nào ghi, và cơ sở dữ liệu có hai lượt đặt cho cùng một khung. Chuỗi đó chính là phát hiện: lỗi thiết kế lộ ra trước khi tác nhân viết bất kỳ dòng mã nào. Thế giới nhỏ là đủ vì những lỗi như vậy xuất hiện chỉ với hai hoặc ba lượt đặt.</b-why>
-  <b-why align="left"><b-icon name="list-check"/> **Thu hẹp ngôn ngữ: quy tắc trong cơ sở dữ liệu và một bên ghi duy nhất.** Quy tắc chuyển đến nơi chính cơ sở dữ liệu giữ nó, không phải mã của tác nhân. Trong PostgreSQL đây là một ràng buộc trên bảng bookings: cơ sở dữ liệu từ chối lưu một lượt đặt có thời gian chồng lên lượt đặt khác của cùng phòng.</b-why>
+  <b-why align="left"><b-icon name="list-check"/> **Thu hẹp ngôn ngữ: quy tắc trong cơ sở dữ liệu và một bên ghi duy nhất.** Quy tắc chuyển đến nơi chính cơ sở dữ liệu giữ nó. Trong PostgreSQL đây là một ràng buộc trên bảng bookings: cơ sở dữ liệu từ chối lưu một lượt đặt có thời gian chồng lên lượt đặt khác của cùng phòng.</b-why>
   <b-codebox title="Ràng buộc PostgreSQL">
     CREATE EXTENSION IF NOT EXISTS btree_gist;
     ALTER TABLE bookings ADD CONSTRAINT no_overlap
@@ -116,12 +116,12 @@ Hãy đặt phép kiểm tra công việc của tác nhân AI (AI agent) ở ran
     grep -rl "INSERT INTO bookings" src | grep -v src/booking/repository.ts
   </b-codebox>
   <b-why align="left">Câu hỏi “mã của tác nhân có thể tạo các lượt đặt chồng nhau không” đã trở thành hai câu hỏi về văn bản: ràng buộc có trong lược đồ cơ sở dữ liệu không, và có không có lệnh ghi nào đi vòng qua nó. Cả hai đều có câu trả lời chính xác.</b-why>
-  <b-why align="left"><b-icon name="help-circle"/> **Cho phép “không biết”: ba kết luận về một lần sửa của tác nhân.** Phép kiểm tra với một lần sửa của tác nhân được xây từ hai cách trước và trả về một trong ba câu trả lời. “Đã chứng minh”: mô hình Quint qua, ràng buộc cơ sở dữ liệu có mặt, tìm kiếm không thấy lệnh ghi đi vòng. “Vỡ”: tìm kiếm thấy tác nhân thêm lệnh ghi vào bảng bookings từ module báo cáo. “Không chắc”: tác nhân ghép truy vấn cơ sở dữ liệu từ chuỗi ngay lúc chạy, và tìm kiếm văn bản không biết nó ghi vào bảng nào. Khi đó lần sửa được gắn nhãn “cần con người” và một lập trình viên xem xét. Con người chỉ mất thời gian ở trường hợp thứ ba.</b-why>
+  <b-why align="left"><b-icon name="help-circle"/> **Cho phép “không biết”: ba kết luận về một lần sửa của tác nhân.** Phép kiểm tra với một lần sửa của tác nhân được xây từ hai cách trước và trả về một trong ba câu trả lời. “Đúng”: mô hình Quint qua, ràng buộc cơ sở dữ liệu có mặt, tìm kiếm không thấy lệnh ghi đi vòng. “Vỡ”: tìm kiếm thấy tác nhân thêm lệnh ghi vào bảng bookings từ module báo cáo. “Không xác định được”: tác nhân ghép truy vấn cơ sở dữ liệu từ chuỗi ngay lúc chạy, và tìm kiếm văn bản không biết nó ghi vào bảng nào. Khi đó lần sửa được gắn nhãn “cần con người” và một lập trình viên xem xét. Con người chỉ mất thời gian ở trường hợp thứ ba.</b-why>
   <b-why align="left">Mỗi câu trong ba câu trả lời chỉ chính xác trong phạm vi của nó. Tìm kiếm chứng minh quy tắc đúng trong mô hình với 3 phòng và 5 lượt đặt, không phải trong cơ sở dữ liệu thật với hàng nghìn lượt đặt. Tìm trong mã chứng minh không có lệnh ghi đi vòng qua quy tắc, không chứng minh bản thân ràng buộc cơ sở dữ liệu được viết đúng. Câu trả lời “đúng” là chính xác, nhưng một số lần sửa vẫn chuyển cho con người. Vì vậy các cách được dùng cùng nhau: mô hình kiểm tra thiết kế trước khi có mã, ràng buộc và tìm kiếm kiểm tra chính mã, và con người xem những gì còn lại có nhãn.</b-why>
   <b-why align="left">Còn một lựa chọn thứ tư, phổ biến nhất trong thực tế: luôn trả lời, nhưng đôi khi sai. Kiểm thử bằng ví dụ và review mã bằng một mô hình khác hoạt động theo cách này. Đó cũng là lựa chọn chấp nhận được, nhưng phải có chủ ý: ổn ở nơi lỗi rẻ, không ổn với tiền và quyền truy cập. Một ngã rẽ tương tự được biết đến từ định lý CAP về hệ thống phân tán: khi mạng bị chia cắt, máy chủ hoặc chờ hoặc trả lời từ một bản sao cũ. Chúng có một điểm chung — khi một sự kiện chưa xảy ra, không thể biết nó sẽ xảy ra sau này hay không bao giờ, dù chờ bao lâu — nhưng lý do khác nhau; chi tiết trong [“Định lý Rice bằng lời thường”](/blog/rice-theorem-explained/#cap).</b-why>
   <b-finding>
     <ex>Quy tắc “các lượt đặt không bao giờ chồng nhau”: mô hình Quint đã thử mọi thứ tự lệnh cho 3 phòng, ràng buộc cơ sở dữ liệu cấm chồng lấn, và linter, chương trình kiểm tra văn bản mã theo các quy tắc đặt sẵn, đảm bảo chỉ một module ghi vào bảng bookings.</ex>
-    <gen>“Không chắc” là một kết quả kiểm tra trung thực. Nó cho thấy khung kết thúc ở đâu và trách nhiệm quay về với con người, nên nó xác định rủi ro nào được chấp nhận.</gen>
+    <gen>“Không xác định được” là một kết quả kiểm tra trung thực. Nó cho thấy khung kết thúc ở đâu và trách nhiệm quay về với con người, nên nó xác định rủi ro nào được chấp nhận.</gen>
     <do>Với mỗi quy tắc, đánh dấu cách nào trong ba cách giữ nó. Quy tắc không có dấu chỉ được kiểm tra bằng các kiểm thử ví dụ.</do>
   </b-finding>
 </b-chapter>
@@ -175,7 +175,7 @@ Hãy đặt phép kiểm tra công việc của tác nhân AI (AI agent) ở ran
   </b-codebox>
   <b-why align="left">**Cách tách nếu tìm kiếm không kết thúc.** Với mỗi quy tắc, ghi ra nó đụng đến dữ liệu nào. Các quy tắc không có dữ liệu chung được đưa vào các phần khác nhau: “các lượt đặt không bao giờ chồng nhau” chỉ đụng đến lượt đặt, “một hóa đơn không bao giờ được thanh toán hai lần” chỉ đụng đến hóa đơn. Giữa các phần, để lại các sự kiện như “BookingCreated”. Rồi kiểm tra từng phần bằng cùng năm bước.</b-why>
   <b-art names="agent-checkpoint/size" wide/>
-  <b-cap>Nếu mô hình của một context trả lời “không chắc”, context bị tách, và giữa các phần chỉ còn các sự kiện.</b-cap>
+  <b-cap>Nếu mô hình của một context trả lời “không xác định được”, context bị tách, và giữa các phần chỉ còn các sự kiện.</b-cap>
   <b-why align="left">Cách dùng dấu hiệu này: viết các quy tắc của context thành mô hình Quint, đặt số nhỏ và chạy tìm kiếm. Kết quả rơi vào một trong các hàng của bảng, và cột cuối cho biết làm gì tiếp.</b-why>
   <b-table>
 

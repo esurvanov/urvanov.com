@@ -1,7 +1,7 @@
 ---
 title: How many AI agents you need: the number of agents grows with the number of bounded contexts
 date: 2026-10-10
-updated: 2026-11-07
+updated: 2026-11-13
 description: One agent per bounded context: why there are as many agents as meaning boundaries, how it scales, what sits between agents and where to start.
 tags: AI, agents, bounded context, DDD, architecture, scaling, harness
 category: harness
@@ -55,7 +55,7 @@ How many AI agents do you need? As many as there are bounded contexts: each mean
   </b-lane>
   <b-finding>
     <ex>Start with two neighbouring contexts and one contract between them.</ex>
-    <gen>One context, one agent, one contract: that tests the scheme before you stretch it across the whole project.</gen>
+    <gen>Two neighbouring contexts, one agent for each and one contract between them: that tests the scheme before you stretch it across the whole project.</gen>
     <do k="What to do">Pick two contexts where words get mixed up most often and start one agent for each.</do>
   </b-finding>
 </b-chapter>
@@ -65,7 +65,7 @@ How many AI agents do you need? As many as there are bounded contexts: each mean
     <q t="How many AI agents do you need?">As many as there are bounded contexts: each meaning boundary gets its own agent.</q>
     <q t="How does this scale?">The number of agents grows linearly with the number of contexts, while the load on each stays even.</q>
     <q t="What connects the agents?">A contract at the boundary: agents need not know another context’s internals, and a mistake does not spread.</q>
-    <q t="Where do you start?">With one context, one agent and one contract: this tests the setup before stretching it across the whole project.</q>
+    <q t="Where do you start?">With two neighbouring contexts: one agent for each and one contract between them: this tests the setup before stretching it across the whole project.</q>
   </b-faq-cards>
 </b-chapter>
 

@@ -1,7 +1,7 @@
 ---
 title: Prompt สำหรับงานจริง: ห้าส่วนและหกตัวอย่างสำหรับ ChatGPT และ Claude
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Prompt สำหรับทำงานกับแชต AI: ส่วนประกอบของ prompt งานที่ดี คำขอที่อ่อนและที่แข็งแรงต่างกันอย่างไร เทมเพลตพร้อมใช้หกแบบสำหรับงานที่พบบ่อย และวิธีเก็บไว้ใน project อ้างอิงคู่มือของ Anthropic, OpenAI และ Google
 tags: AI, prompt, ChatGPT, Claude
 category: prompts
@@ -18,13 +18,13 @@ prompt งานสำหรับ ChatGPT และ Claude ประกอบ�
     <node icon="ai-box" t="โมเดล">เดาบริบท</node>
     <node icon="file-x" t="คำตอบทั่วไป">ต้องเขียนใหม่ด้วยมือ</node>
   </b-lane>
-  <b-lane title="หกส่วน" color="accent">
+  <b-lane title="ห้าส่วน" color="accent">
     <node icon="prompt-stripes" t="Prompt">บทบาท ข้อมูล ตัวอย่าง รูปแบบ</node>
     <node icon="ai-box" t="โมเดล">เห็นทุกอย่างที่ต้องใช้</node>
     <node icon="file-check" t="ร่าง">แก้เล็กน้อย</node>
   </b-lane>
 </b-flow>
-<b-cap>โมเดลเป็นตัวเดียวกันทั้งสองกรณี ผลลัพธ์ขึ้นอยู่กับสิ่งที่ prompt บอก: หกส่วนที่ปรากฏซ้ำในคู่มือของ Anthropic, OpenAI และ Google</b-cap>
+<b-cap>โมเดลเป็นตัวเดียวกันทั้งสองกรณี ผลลัพธ์ขึ้นอยู่กับสิ่งที่ prompt บอก: ห้าส่วนที่ปรากฏซ้ำในคู่มือของ Anthropic, OpenAI และ Google</b-cap>
 <b-chapter id="model" title="Human-in-the-loop: เส้นทางของคำขอหนึ่งครั้ง" icon="share">
   <b-art names="work-prompts-examples/prompt-map" wide/>
   <b-finding>
@@ -102,7 +102,7 @@ prompt งานสำหรับ ChatGPT และ Claude ประกอบ�
       <b-cap>OpenAI Academy มีเทมเพลตวาระการประชุมพร้อมเวลาประมาณการ<b-proof href="https://academy.openai.com/public/resources/chatgpt-for-any-role" quote="OpenAI Academy, ChatGPT for any role: “Create a structured agenda for a meeting about [topic]. Break the agenda into sections with time estimates and goals for each section” — academy.openai.com"/></b-cap>
       <b-finding>
         <ex>เป้าหมายของการประชุม เอกสารในแท็ก และรายการลำดับเลขของสิ่งที่ต้องส่งกลับ</ex>
-        <gen>เป้าหมายของการประชุมกรองเอกสาร ขั้นตอนที่มีเลขลำดับช่วยเมื่อลำดับและความครบถ้วนสำคัญ<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they&#39;d be confused, Claude will be too” — platform.claude.com, Prompting best practices"/></gen>
+        <gen>เป้าหมายของการประชุมกรองเอกสาร ขั้นตอนที่มีเลขลำดับช่วยเมื่อลำดับและความครบถ้วนสำคัญ<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Provide instructions as sequential steps using numbered lists or bullet points when the order or completeness of steps matters” — platform.claude.com, Prompting best practices"/></gen>
         <do>ก่อนการประชุมที่ยาว 30 นาทีขึ้นไป ให้ส่งเอกสารผ่าน prompt นี้ และเปิดประชุมด้วยตารางที่ได้</do>
       </b-finding>
     </b-prompt-tab>
@@ -193,7 +193,7 @@ prompt งานสำหรับ ChatGPT และ Claude ประกอบ�
         ผลลัพธ์: ตาราง [คอลัมน์] และข้อสรุป 5 ข้อ
         ลิงก์แหล่งที่มาสำหรับทุกข้อเท็จจริง หากไม่มีข้อมูล ให้บอกตรง ๆ
       </b-prompt>
-      <b-cap>แชตทั้งสองมีโหมดค้นคว้าเชิงลึก: deep research ใน ChatGPT และ Research ใน Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/></b-cap>
+      <b-cap>แชตทั้งสองมีโหมดค้นคว้าเชิงลึก: deep research ใน ChatGPT และ Research ใน Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Ultra, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/></b-cap>
       <b-finding>
         <ex>เป้าหมาย ขีดจำกัดความใหม่ของข้อมูล และรูปแบบผลลัพธ์พร้อมลิงก์</ex>
         <gen>ในโหมดค้นคว้า โมเดลค้นหาต่อเนื่องหลายรอบและส่งรายงานพร้อมลิงก์กลับมา ลิงก์ช่วยให้ตรวจทุกข้อเท็จจริงได้ และ “หากไม่มีข้อมูล” ป้องกันไม่ให้ช่องว่างถูกเติมด้วยการเดา</gen>
@@ -213,7 +213,7 @@ prompt งานสำหรับ ChatGPT และ Claude ประกอบ�
   <b-sublabel top="22">การเขียน prompt</b-sublabel>
   <b-links cols="2">
     <item href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" k="Anthropic · เอกสาร" t="Prompting best practices" ext>เอกสารอ้างอิงหลัก: ความชัดเจน ตัวอย่าง บทบาท แท็ก XML เอกสารยาว</item>
-    <item href="https://claude.com/blog/best-practices-for-prompt-engineering" k="Anthropic · บล็อก" t="Best practices for prompt engineering" ext>งานฝีมือการเขียน prompt โดยทั่วไป ไม่ผูกกับโมเดลใดโดยเฉพาะ</item>
+    <item href="https://claude.com/resources/articles/best-practices-for-prompt-engineering" k="Anthropic · บล็อก" t="Best practices for prompt engineering" ext>งานฝีมือการเขียน prompt โดยทั่วไป ไม่ผูกกับโมเดลใดโดยเฉพาะ</item>
     <item href="https://github.com/anthropics/prompt-eng-interactive-tutorial" k="Anthropic · บทเรียน" t="Interactive tutorial" ext>9 บทพร้อมแบบฝึกหัด ตั้งแต่โครงสร้าง prompt ถึงแท็ก XML และตัวอย่าง</item>
     <item href="https://www.kaggle.com/whitepaper-prompt-engineering" k="Google · whitepaper" t="Prompt Engineering" ext>เทคนิคและแนวปฏิบัติ: ตัวอย่าง รูปแบบผลลัพธ์ คำสั่งดีกว่าข้อจำกัด</item>
     <item href="https://academy.openai.com/public/clubs/work-users-ynjqu/resources/prompting" k="OpenAI Academy" t="Prompting" ext>อะไร สำหรับใคร และทำไม บริบท รูปแบบผลลัพธ์ การปรับซ้ำ</item>
@@ -237,7 +237,7 @@ prompt งานสำหรับ ChatGPT และ Claude ประกอบ�
   <b-links cols="2">
     <item href="/blog/harness-work-approaches/" k="แนวทาง" t="ถ้าคำตอบไม่ตรง">วงจรคำตอบและการรีวิวที่แก้คำขอ</item>
     <item href="/blog/specs-rules-skills/" k="บริบท" t="Spec, bible, rule และ skill">prompt อยู่ที่ไหนนอกเหนือจากแชตเดียว</item>
-    <item href="/blog/ai-in-code-harness-and-tools/" k="วิศวกรรม" t="AI ในงานโค้ด">harness และเครื่องมือสามกลุ่ม</item>
+    <item href="/blog/ai-in-code-harness-and-tools/" k="วิศวกรรม" t="AI ในงานโค้ด">harness และเครื่องมือสี่กลุ่ม</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="รายงาน" t="รายงานการใช้งาน ChatGPT Enterprise">ใครในบริษัทใช้อะไร</item>
   </b-links>
 </b-chapter>

@@ -1,7 +1,7 @@
 ---
 title: Cómo escribir requisitos y actas de reunión con IA: fuente, suposición, hecho y qué sigue
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Requisitos con IA: fuente, suposición, estado. Los hechos llegan por MCP desde Git; el agente hace las ediciones menores y una persona decide las mayores.
 tags: IA, agentes, requisitos, alucinaciones, actas de reunión, harness
 category: harness
@@ -71,7 +71,7 @@ Un agente de IA escribe requisitos con aplomo, y sus conjeturas parecen hechos. 
   <b-codebox title="Plantilla de un punto">
     Requisito: Pago con tarjeta
     Fuente: git.example.com/shop/requirements/payments.md, línea 12; reunión del 12 de oct., 14:32, «el cliente paga con tarjeta al finalizar la compra»
-    Suposición: pago en una sola moneda
+    Suposición: pago solo en rublos
     Estado: hecho | no hecho | pregunta
     Confirmado por: —
   </b-codebox>
@@ -170,6 +170,7 @@ Un agente de IA escribe requisitos con aplomo, y sus conjeturas parecen hechos. 
     <item href="/blog/mcp-agent-access/" k="Fuente" t="Qué es MCP para un agente de IA: qué problema resuelve y cómo delegar la configuración en el agente">Cómo toma el agente los hechos de los sistemas</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Ejemplo" t="Cómo hacer QA con un agente de IA tras el soporte: investigar, describir y documentar mediante MCP y skills">El agente reproduce un bug de Jira</item>
     <item href="/blog/analytics-reports-agent/" k="Informes" t="Informes analíticos con un agente de IA: datos de la base, hojas y documentos mediante MCP">El mismo enfoque para la analítica</item>
+    <item href="/blog/specs-by-aggregates/" k="Specs" t="Specs por agregados">dónde guardar los requisitos: una entrada por concepto</item>
   </b-links>
 </b-chapter>
 <b-footer>El ticket, la reunión y los enlaces son inventados para el ejemplo. La plantilla, el registro y las reglas de cambios mayores y menores son práctica de equipo y se pueden modificar.</b-footer>

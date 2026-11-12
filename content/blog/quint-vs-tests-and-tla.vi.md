@@ -1,7 +1,7 @@
 ---
 title: Kiểm chứng mô hình khác kiểm thử thế nào: test kiểm tra một kịch bản, mô hình kiểm tra mọi thứ tự hành động (Quint, QUnit và TLA+)
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-13
 description: Test kiểm tra kịch bản bạn đã nghĩ tới, còn kiểm chứng mô hình thử mọi thứ tự hành động. QUnit, Jest, Vitest bắt được lỗi nào, và Quint, TLA+, Alloy bắt được lỗi nào.
 tags: AI, đặc tả, Quint, TLA+, Alloy, QUnit, Jest, Vitest, kiểm thử, kiểm chứng hình thức
 category: specs
@@ -77,7 +77,7 @@ Test kiểm tra một kịch bản bạn đã nghĩ tới, còn kiểm chứng m
   <b-art names="quint-vs-tests-and-tla/notation" wide/>
     <b-why align="left">TLA+ và Alloy là các ngôn ngữ hình thức cùng loại: trong đó bạn cũng mô tả quy tắc và tìm các vi phạm của chúng. Chúng lâu đời hơn Quint và có nhiều sách hơn. Nhưng ký pháp của TLA+ mang tính toán học, và người mới cần thời gian để đọc. Quint được thiết kế như một ký pháp dễ tiếp cận hơn cho cùng bài toán: nó trông như code thông thường, và kỹ sư không có nền tảng toán cũng đọc được. So sánh chi tiết cả ba ngôn ngữ nằm trong bài [TLA+ vs Alloy vs Quint](/blog/tla-alloy-quint-compare/).</b-why>
   <b-art names="quint-vs-tests-and-tla/engine" wide/>
-  <b-why align="left">“Cùng các chương trình” nghĩa là gì. Quint có thể được kiểm tra bằng hai chương trình: TLC và Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/>. TLC là chương trình kiểm tra đầu tiên của TLA+: nó duyệt từng trạng thái một<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, nên với Quint nó cần mô hình được dịch sang TLA+<b-proof href="https://quint-lang.org/docs/model-checkers" quote="can be used for Quint by transpiling Quint specs into TLA+"/>. Cách tìm kiếm này dễ đoán, nhưng thế giới phải nhỏ.</b-why>
+  <b-why align="left">“Cùng các chương trình” nghĩa là gì. Quint có thể được kiểm tra bằng hai chương trình: TLC và Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/>. TLC là chương trình kiểm tra đầu tiên của TLA+: nó duyệt từng trạng thái một<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, còn với Quint thì chạy nó bằng <code>quint verify --backend=tlc</code><b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC (no acronym defined!) is the first model checker for TLA+, and is provided as an alternative backend for quint verify by passing the --backend=tlc flag"/>. Cách tìm kiếm này dễ đoán, nhưng thế giới phải nhỏ.</b-why>
   <b-why align="left">[Apalache](/materials/glossary/apalache/) được tích hợp sẵn trong Quint<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache is a symbolic model checker that is integrated with Quint tooling"/>: nó dịch mô hình thành các điều kiện và hỏi bộ giải [Z3](/materials/glossary/z3/). Nó chỉ kiểm tra được các chuỗi đến một độ dài cho trước<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache cannot check an arbitrary number of steps"/>, nên “ok” của nó nghĩa là “không có vi phạm trong độ dài đó”. TLA+ được kiểm tra bằng chính hai chương trình này, còn Alloy có bộ phân tích riêng. Ngoài kiểm tra, Quint còn có mô phỏng ngẫu nhiên nhanh: nó tìm vi phạm bằng cách lấy mẫu và không chứng minh rằng không có vi phạm.</b-why>
     <b-vs-grid>
     <h></h>
@@ -111,7 +111,7 @@ Test kiểm tra một kịch bản bạn đã nghĩ tới, còn kiểm chứng m
     <rule icon="workflow" t="Thứ tự hành động">Tìm tổ hợp bước làm vỡ một quy tắc sản phẩm, kể cả khi code chưa tồn tại: Quint</rule>
     <rule icon="scales" t="Chứng minh nặng">Bảo đảm chặt cho hệ thống phân tán lớn: TLA+, với nhiều kinh nghiệm và ví dụ hơn</rule>
   </b-rules>
-  <b-why align="left">Lựa chọn do câu hỏi quyết định, không phải do chương trình yêu thích. Nếu câu hỏi là “hàm này có chạy đúng không”, hãy dùng test. Nếu câu hỏi là “quy tắc có thể vỡ trong một chuỗi sự kiện nào đó không”, hãy dùng mô hình. Nếu cần bảo đảm ở mức giao thức phân tán, hãy dùng TLA+ và dành thời gian để học nó.</b-why>
+  <b-why align="left">Lựa chọn do câu hỏi quyết định. Nếu câu hỏi là “hàm này có chạy đúng không”, hãy dùng test. Nếu câu hỏi là “quy tắc có thể vỡ trong một chuỗi sự kiện nào đó không”, hãy dùng mô hình. Nếu cần bảo đảm ở mức giao thức phân tán, hãy dùng TLA+ và dành thời gian để học nó.</b-why>
   <b-finding>
     <ex>Ba lựa chọn trả lời ba câu hỏi khác nhau, và cái này không thay thế cái kia.</ex>
     <gen>Với logic sản phẩm có tác nhân và nhiều bên tham gia, thường cần cả test lẫn Quint.</gen>

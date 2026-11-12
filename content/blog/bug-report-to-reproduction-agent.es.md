@@ -1,7 +1,7 @@
 ---
 title: Cómo hacer QA con un agente de IA tras el soporte: investigar, describir y documentar mediante MCP y skills
 date: 2026-10-04
-updated: 2026-11-08
+updated: 2026-11-13
 description: Se optimiza un solo paso de la cadena: QA tras el soporte. Un agente reproduce un bug de Jira en un entorno de pruebas mediante MCP, acota el camino, lo describe y lo documenta, una skill convierte los pasos en un proceso repetible, y QA comprueba a mano. El soporte y el desarrollo no cambian.
 tags: IA, agentes, QA, Jira, MCP, skills, bugs, harness
 category: harness
@@ -137,7 +137,7 @@ Un bug de un cliente pasa por el soporte y llega a QA. Aquí la investigación, 
 
 <b-chapter id="mcp" icon="plug" title="MCP: el agente trabaja donde trabaja QA">
   <b-why>MCP (Model Context Protocol) es una forma de conectar un agente con los sistemas de trabajo para que lea y escriba en ellos por sí mismo en lugar de recibir un relato.</b-why>
-  <b-why align="left">El agente necesita cinco cosas. Jira: lee el ticket y escribe el resultado en él. Un entorno de pruebas: una copia de prueba del producto donde recorre el camino como un usuario. Documentos: los diagramas y las descripciones están junto al ticket. Datos: datos de prueba que se pueden reiniciar. Permisos: solo se puede romper el entorno de pruebas, los sistemas de producción quedan fuera de alcance.</b-why>
+  <b-why align="left">El agente necesita cinco cosas. Jira: lee el ticket y escribe el resultado en él. Un entorno de pruebas: una copia de prueba del producto donde recorre el camino como un usuario, en el navegador con [Claude in Chrome](/blog/claude-in-chrome/). Documentos: los diagramas y las descripciones están junto al ticket. Datos: datos de prueba que se pueden reiniciar. Permisos: solo se puede romper el entorno de pruebas, los sistemas de producción quedan fuera de alcance.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/access-sandbox"/>
   </b-view>
@@ -319,6 +319,7 @@ Un bug de un cliente pasa por el soporte y llega a QA. Aquí la investigación, 
 
 <b-chapter id="next" icon="arrow-right" title="Siguiente lectura">
   <b-links>
+    <item href="/blog/claude-in-chrome/" k="Navegador" t="Cómo prueba Claude Code un sitio en tu navegador: Claude in Chrome, depuración y formularios con tu sesión iniciada">el agente recorre el camino en el entorno de pruebas</item>
     <item href="/blog/specs-rules-skills/" k="Skills" t="Specs, reglas y skills">qué debe saber un agente de un proyecto</item>
     <item href="/blog/harness-driven-development/" k="Ciclo de errores" t="Harness-Driven Development">cómo los errores del agente se convierten en reglas</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Entorno" t="Comparación de harnesses">dónde trabaja el agente y qué ve</item>

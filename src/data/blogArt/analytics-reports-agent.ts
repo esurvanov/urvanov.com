@@ -28,7 +28,7 @@ const scenes: Record<string, Scene> = {
   // Агент через MCP к пяти источникам, у каждого свои права
   'source-rights': {
     ru: 'Агент подключён через MCP к пяти источникам: Jira, документ, таблица, стенд, база. У каждого свои права: чтение, запись с подтверждением, только тестовая среда',
-    en: 'The agent is connected through MCP to five sources: Jira, a document, a sheet, a stand, a database. Each has its own rights: read, write with confirmation, test environment only',
+    en: 'The agent is connected through MCP to five sources: Jira, a document, a sheet, a staging environment, a database. Each has its own rights: read, write with confirmation, test environment only',
     viewBox: [0, 0, 700, 252],
     draw: (c, l) => {
       c.caps(350, 16, l('ПРАВА ПО КАЖДОМУ ИСТОЧНИКУ', 'PERMISSIONS PER SOURCE'), 'currentColor')
@@ -46,7 +46,7 @@ const scenes: Record<string, Scene> = {
       c.text(140, 223, l('Запись · ОК', 'Write · OK'), M, {anchor: 'end'})
       c.curve(310, 128, 236, 210, A, { dash: '4 4' })
       const i4 = c.iso(510, 80, 18); i4.tile(-1.2, -1.2, 2.4, 2.4); i4.panel(-0.8, -0.7, 1.6, 1.3, M, undefined, 1)
-      c.text(560, 77, l('Стенд', 'Stand'), M, {size: 13, w: 700, anchor: 'start'})
+      c.text(560, 77, l('Стенд', 'Staging'), M, {size: 13, w: 700, anchor: 'start'})
       c.text(560, 93, l('Только тестовый', 'Test only'), W, {anchor: 'start'})
       c.curve(390, 128, 464, 80, W, { dash: '4 4' })
       const i5 = c.iso(510, 185, 18); i5.tile(-1.2, -1.2, 2.4, 2.4); i5.cyl(0, 0, 0, 0.6, 0.9, M)

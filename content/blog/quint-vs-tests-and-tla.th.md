@@ -1,7 +1,7 @@
 ---
 title: การตรวจสอบแบบจำลองต่างจากการทดสอบอย่างไร: การทดสอบตรวจหนึ่งสถานการณ์ แบบจำลองตรวจทุกลำดับของการกระทำ (Quint, QUnit และ TLA+)
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-13
 description: การทดสอบตรวจสถานการณ์ที่คิดไว้ การตรวจสอบแบบจำลองลองทุกลำดับของการกระทำ QUnit, Jest, Vitest จับอะไรได้ และ Quint, TLA+, Alloy จับอะไรได้
 tags: AI, spec, Quint, TLA+, Alloy, QUnit, Jest, Vitest, การทดสอบ, การตรวจสอบเชิงรูปนัย
 category: specs
@@ -77,7 +77,7 @@ toc: names=สองชื่อ | tests=เอนจินทดสอบ | tla
   <b-art names="quint-vs-tests-and-tla/notation" wide/>
     <b-why align="left">TLA+ และ Alloy เป็นภาษารูปนัยประเภทเดียวกัน คืออธิบายกฎและหาการฝ่าฝืนเช่นกัน เก่ากว่า Quint และมีหนังสืออธิบายมากกว่า แต่สัญกรณ์ใน TLA+ เป็นแบบคณิตศาสตร์ และมือใหม่ต้องใช้เวลาอ่าน Quint ออกแบบมาเป็นสัญกรณ์ที่เข้าถึงง่ายกว่าสำหรับงานเดียวกัน หน้าตาเหมือนโค้ดทั่วไป และวิศวกรที่ไม่มีพื้นฐานคณิตศาสตร์อ่านได้ การเปรียบเทียบสามภาษาโดยละเอียดอยู่ในบทความ [TLA+ vs Alloy vs Quint](/blog/tla-alloy-quint-compare/)</b-why>
   <b-art names="quint-vs-tests-and-tla/engine" wide/>
-  <b-why align="left">“โปรแกรมเดียวกัน” หมายถึงอะไร Quint ตรวจได้ด้วยสองโปรแกรม คือ TLC และ Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/> TLC เป็นโปรแกรมตรวจแรกสุดของ TLA+ ที่ไล่ทีละสถานะ<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/> สำหรับ Quint จึงต้องแปลงแบบจำลองเป็น TLA+ ก่อน<b-proof href="https://quint-lang.org/docs/model-checkers" quote="can be used for Quint by transpiling Quint specs into TLA+"/> การค้นหาแบบนี้คาดเดาได้ แต่โลกต้องเล็ก</b-why>
+  <b-why align="left">“โปรแกรมเดียวกัน” หมายถึงอะไร Quint ตรวจได้ด้วยสองโปรแกรม คือ TLC และ Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/> TLC เป็นโปรแกรมตรวจแรกสุดของ TLA+ ที่ไล่ทีละสถานะ<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/> สำหรับ Quint เรียกใช้ด้วย <code>quint verify --backend=tlc</code><b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC (no acronym defined!) is the first model checker for TLA+, and is provided as an alternative backend for quint verify by passing the --backend=tlc flag"/> การค้นหาแบบนี้คาดเดาได้ แต่โลกต้องเล็ก</b-why>
   <b-why align="left">[Apalache](/materials/glossary/apalache/) ฝังอยู่ใน Quint<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache is a symbolic model checker that is integrated with Quint tooling"/> มันแปลงแบบจำลองเป็นเงื่อนไขแล้วถามตัวแก้ [Z3](/materials/glossary/z3/) ตรวจลำดับได้เพียงถึงความยาวที่กำหนด<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache cannot check an arbitrary number of steps"/> ดังนั้น “ok” ของมันหมายถึง “ไม่พบการฝ่าฝืนภายในความยาวนั้น” TLA+ ตรวจด้วยสองโปรแกรมเดียวกัน ส่วน Alloy มีตัววิเคราะห์ของตัวเอง นอกจากการตรวจแล้ว Quint มีการจำลองสุ่มที่เร็ว ซึ่งหาการฝ่าฝืนด้วยการสุ่มตัวอย่าง และไม่ได้พิสูจน์ว่าไม่มีการฝ่าฝืน</b-why>
     <b-vs-grid>
     <h></h>
@@ -111,7 +111,7 @@ toc: names=สองชื่อ | tests=เอนจินทดสอบ | tla
     <rule icon="workflow" t="ลำดับของการกระทำ">หาการผสมของขั้นตอนที่กฎของผลิตภัณฑ์พัง แม้ยังไม่มีโค้ด: Quint</rule>
     <rule icon="scales" t="การพิสูจน์หนัก">การรับประกันเข้มงวดสำหรับระบบแบบกระจายขนาดใหญ่: TLA+ ที่มีประสบการณ์และตัวอย่างมากกว่า</rule>
   </b-rules>
-  <b-why align="left">คำถามเป็นตัวกำหนดทางเลือก ไม่ใช่โปรแกรมที่ชอบ ถ้าคำถามคือ “ฟังก์ชันนี้ทำงานถูกต้องไหม” ใช้การทดสอบ ถ้าคำถามคือ “กฎพังได้ในลำดับเหตุการณ์ใดหรือไม่” ใช้แบบจำลอง ถ้าต้องการการรับประกันระดับโปรโตคอลแบบกระจาย ใช้ TLA+ และกันเวลาไว้เรียนรู้</b-why>
+  <b-why align="left">คำถามเป็นตัวกำหนดทางเลือก ถ้าคำถามคือ “ฟังก์ชันนี้ทำงานถูกต้องไหม” ใช้การทดสอบ ถ้าคำถามคือ “กฎพังได้ในลำดับเหตุการณ์ใดหรือไม่” ใช้แบบจำลอง ถ้าต้องการการรับประกันระดับโปรโตคอลแบบกระจาย ใช้ TLA+ และกันเวลาไว้เรียนรู้</b-why>
   <b-finding>
     <ex>สามตัวเลือกตอบสามคำถามต่างกัน และอันหนึ่งไม่ได้แทนอีกอัน</ex>
     <gen>สำหรับตรรกะของผลิตภัณฑ์ที่มีเอเจนต์และผู้เข้าร่วมหลายฝ่าย มักต้องการทั้งการทดสอบและ Quint</gen>

@@ -1,7 +1,7 @@
 ---
 title: Vitest или Jest: что выбрать для JavaScript-проекта и когда хватит QUnit
 date: 2026-10-25
-updated: 2026-10-25
+updated: 2026-11-13
 description: Vitest или Jest: настройка, место запуска, стиль проверок. Когда брать Vitest на Vite, оставить Jest или хватит QUnit в браузере. Таблица и вопросы.
 tags: AI, тестирование, JavaScript, Jest, Vitest, QUnit, Vite, Jest vs Vitest, автотесты
 category: specs
@@ -42,7 +42,7 @@ Vitest или Jest: на проекте со сборщиком Vite берит�
 <b-chapter id="qunit" icon="workflow" title="QUnit: когда нужны тесты прямо в браузере">
   <b-art names="jest-vs-vitest-vs-qunit/qunit-env" wide/>
     <b-why align="left">[QUnit](/materials/glossary/qunit/) описывает себя как мощный и простой в использовании движок тестов. Для Node.js ему не нужна настройка, а для браузера достаточно минимальной<b-proof href="https://qunitjs.com/" quote="Zero configuration and setup for any Node.js project"/>. Запускается он везде, где есть JavaScript: в браузерах, в Node.js, в движке SpiderMonkey и в фоновом потоке страницы<b-proof href="https://qunitjs.com/" quote="QUnit can run anywhere; web browsers, Node, SpiderMonkey, even in a Web Worker!"/>. Jest и Vitest, в отличие от него, чаще всего запускают в Node.js.</b-why>
-  <b-why align="left">Стиль у него свой. Связанные тесты собирают в группу командой `QUnit.module`, отдельный тест описывают через `QUnit.test`, а ответ сверяют через `assert`. Для тестов, которые трогают страницу, есть заготовка-«стенд», которая возвращает страницу в исходный вид после каждого теста, и отдельная проверка порядка вызовов для событий и ответов с задержкой. Расширять QUnit можно под себя: свои проверки, свои запуски и свои отчёты. Старые браузеры он тоже поддерживает: версия 2 работает с Internet Explorer 9 и выше<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/>.</b-why>
+  <b-why align="left">Стиль у него свой. Связанные тесты собирают в группу командой `QUnit.module`, отдельный тест описывают через `QUnit.test`, а ответ сверяют через `assert`. Для тестов, которые трогают страницу, есть заготовка-«стенд», которая возвращает страницу в исходный вид после каждого теста, и отдельная проверка порядка вызовов для событий и ответов с задержкой. Расширять QUnit можно под себя: свои проверки, свои запуски и свои отчёты. Нынешняя версия 3 работает в современных браузерах и в Node.js 18 и новее, а Internet Explorer 9–11 поддерживала только версия 2<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/>.</b-why>
   <b-finding>
     <ex>QUnit хорош там, где тесты должны идти прямо в браузере и без сборки.</ex>
     <gen>Для современных проектов со сборкой, где нужны подмены, снимки и покрытие из коробки, чаще берут Jest или Vitest.</gen>
@@ -69,7 +69,7 @@ Vitest или Jest: на проекте со сборщиком Vite берит�
   <b-art names="jest-vs-vitest-vs-qunit/choose" wide/>
   <b-why align="left">Выбор определяется проектом. Проект собирается Vite: берите Vitest, настройки уже есть. В проекте уже стоит Jest и всё работает: оставьте его. Нужны проверки прямо в браузере без сборки: берите QUnit. Перенос между Jest и Vitest обычно дешёвый, поэтому ошибка выбора не станет необратимой. Если нужно проверять не функции, а правила и порядок событий, смотрите статьи [Quint против QUnit и TLA+](/blog/quint-vs-tests-and-tla/) и [про модели на Quint](/blog/quint-models-find-races/).</b-why>
   <b-finding>
-    <ex>Три движка закрывают одну задачу, а решает среда: сборщик, браузер или уже готовый набор тестов.</ex>
+    <ex>Три движка решают одну задачу, а решает среда: сборщик, браузер или уже готовый набор тестов.</ex>
     <gen>Независимо от выбора тесты проверяют заданные сценарии, а правила, которые ломаются в особом порядке событий, ловит модель.</gen>
     <do>Выберите движок по среде проекта и добавьте к нему проверку самих тестов: [мутационное тестирование](/materials/glossary/mutation-testing/) покажет, что тесты вообще замечают порчу.</do>
   </b-finding>

@@ -152,4 +152,10 @@ Entorno
 
 dónde trabaja el agente y qué ve
 
+Specs
+
+Cómo instalar y usar OpenSpec
+
+specs y cambios en archivos junto al código
+
 El ejemplo de la reserva es inventado. Los términos y enfoques siguen las fuentes enlazadas bajo los diagramas.

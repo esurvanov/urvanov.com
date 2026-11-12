@@ -1,7 +1,7 @@
 ---
 title: Cómo conectar un agente de IA a 1C con un servidor MCP: dejar entrar a Claude Code, Codex o Cursor en la base de datos sin romperla
 date: 2026-10-12
-updated: 2026-11-08
+updated: 2026-11-13
 description: Un servidor MCP para 1C:Enterprise da a un agente de IA (Claude Code, Codex o Cursor) acceso al código de la configuración y a los datos de la base. Cómo conectarlo en 3 pasos, qué se rompe en la práctica, cómo separar lectura y escritura y cómo comprobar los resultados.
 tags: IA, agentes, MCP, 1C, permisos, seguridad, Claude Code, Codex, Cursor
 category: harness
@@ -266,12 +266,12 @@ Para dejar entrar a Claude Code, Codex o Cursor en una base de datos de 1C sin r
   <tab t="Codex">
     <b-pick-cell k="Dónde configurarlo"><code>~/.codex/config.toml</code> o <code>.codex/config.toml</code> en el proyecto</b-pick-cell>
     <b-pick-cell k="Para un equipo" tone="accent"><code>.codex/config.toml</code> en un proyecto de confianza</b-pick-cell>
-    <b-pick-cell k="Documentación"><a href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">MCP en Codex</a></b-pick-cell>
+    <b-pick-cell k="Documentación"><a href="https://learn.chatgpt.com/docs/extend/mcp?surface=cli" target="_blank" rel="noopener">MCP en Codex</a></b-pick-cell>
   </tab>
   <tab t="Cursor">
     <b-pick-cell k="Dónde configurarlo">el archivo <code>mcp.json</code></b-pick-cell>
     <b-pick-cell k="Para un equipo" tone="accent">un marketplace de servidores del equipo</b-pick-cell>
-    <b-pick-cell k="Documentación"><a href="https://cursor.com/docs/context/mcp" target="_blank" rel="noopener">MCP en Cursor</a></b-pick-cell>
+    <b-pick-cell k="Documentación"><a href="https://cursor.com/docs/mcp" target="_blank" rel="noopener">MCP en Cursor</a></b-pick-cell>
   </tab>
 </b-pick-tabs>
 </b-lane>

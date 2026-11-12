@@ -1,7 +1,7 @@
 ---
 title: Vitest vs Jest: เลือกตัวไหนสำหรับโปรเจกต์ JavaScript และเมื่อไรที่ QUnit ก็พอ
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-13
 description: Vitest vs Jest: การตั้งค่า ที่ที่การทดสอบรัน และวิธีเขียนการตรวจ เมื่อไรควรเลือก Vitest บน Vite เก็บ Jest ไว้ หรือใช้ QUnit ในเบราว์เซอร์ พร้อมตารางและคำถามที่พบบ่อย
 tags: AI, การทดสอบ, JavaScript, Jest, Vitest, QUnit, Vite, Jest vs Vitest, ระบบทดสอบอัตโนมัติ
 category: specs
@@ -42,7 +42,7 @@ Vitest vs Jest: โปรเจกต์ที่สร้างด้วย Vit
 <b-chapter id="qunit" icon="workflow" title="QUnit: เมื่อต้องการการทดสอบในเบราว์เซอร์โดยตรง">
   <b-art names="jest-vs-vitest-vs-qunit/qunit-env" wide/>
     <b-why align="left">[QUnit](/materials/glossary/qunit/) อธิบายตัวเองว่าเป็นเฟรมเวิร์กทดสอบที่ทรงพลังและใช้ง่าย ไม่ต้องตั้งค่าสำหรับ Node.js และการตั้งค่าขั้นต่ำก็พอสำหรับเบราว์เซอร์<b-proof href="https://qunitjs.com/" quote="Zero configuration and setup for any Node.js project"/> รันได้ทุกที่ที่มี JavaScript คือในเบราว์เซอร์ ใน Node.js ในเอนจิน SpiderMonkey และใน thread เบื้องหลังของหน้า<b-proof href="https://qunitjs.com/" quote="QUnit can run anywhere; web browsers, Node, SpiderMonkey, even in a Web Worker!"/> Jest และ Vitest ต่างจากมัน ส่วนใหญ่รันใน Node.js</b-why>
-  <b-why align="left">รูปแบบของมันเป็นของตัวเอง การทดสอบที่เกี่ยวข้องกันจัดกลุ่มด้วย `QUnit.module` การทดสอบหนึ่งรายการอธิบายด้วย `QUnit.test` และเทียบคำตอบผ่าน `assert` สำหรับการทดสอบที่แตะหน้าเว็บ มี fixture ที่คืนหน้ากลับสู่สภาพเดิมหลังทุกการทดสอบ และมีการตรวจลำดับการเรียกแยกต่างหากสำหรับเหตุการณ์และคำตอบที่ล่าช้า ขยาย QUnit ตามต้องการได้ ทั้ง assertion ตัวรัน และรายงานของตัวเอง ยังรองรับเบราว์เซอร์เก่า เวอร์ชัน 2 ทำงานกับ Internet Explorer 9 ขึ้นไป<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/></b-why>
+  <b-why align="left">รูปแบบของมันเป็นของตัวเอง การทดสอบที่เกี่ยวข้องกันจัดกลุ่มด้วย `QUnit.module` การทดสอบหนึ่งรายการอธิบายด้วย `QUnit.test` และเทียบคำตอบผ่าน `assert` สำหรับการทดสอบที่แตะหน้าเว็บ มี fixture ที่คืนหน้ากลับสู่สภาพเดิมหลังทุกการทดสอบ และมีการตรวจลำดับการเรียกแยกต่างหากสำหรับเหตุการณ์และคำตอบที่ล่าช้า ขยาย QUnit ตามต้องการได้ ทั้ง assertion ตัวรัน และรายงานของตัวเอง เวอร์ชันปัจจุบันคือ 3 ทำงานในเบราว์เซอร์สมัยใหม่และใน Node.js 18 ขึ้นไป ส่วน Internet Explorer 9–11 รองรับเฉพาะในเวอร์ชัน 2<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/></b-why>
   <b-finding>
     <ex>QUnit เหมาะที่การทดสอบต้องรันในเบราว์เซอร์โดยตรงและไม่มีขั้นตอน build</ex>
     <gen>สำหรับโปรเจกต์สมัยใหม่ที่มี build และต้องการ mock, snapshot และ coverage พร้อมใช้ มักเลือก Jest หรือ Vitest</gen>
@@ -69,7 +69,7 @@ Vitest vs Jest: โปรเจกต์ที่สร้างด้วย Vit
   <b-art names="jest-vs-vitest-vs-qunit/choose" wide/>
   <b-why align="left">โปรเจกต์เป็นตัวกำหนดทางเลือก โปรเจกต์สร้างด้วย Vite: เลือก Vitest เพราะการตั้งค่ามีอยู่แล้ว มี Jest ในโปรเจกต์แล้วและทุกอย่างใช้ได้: เก็บไว้ ต้องการการตรวจในเบราว์เซอร์โดยไม่มี build: เลือก QUnit การย้ายระหว่าง Jest กับ Vitest มักไม่แพง การเลือกผิดจึงไม่ใช่เรื่องย้อนกลับไม่ได้ ถ้าต้องตรวจกฎและลำดับของเหตุการณ์แทนฟังก์ชัน ดูบทความ [Quint vs QUnit และ TLA+](/blog/quint-vs-tests-and-tla/) และ[เรื่องแบบจำลอง Quint](/blog/quint-models-find-races/)</b-why>
   <b-finding>
-    <ex>สามเฟรมเวิร์กปิดงานเดียวกัน และสภาพแวดล้อมเป็นผู้ตัดสิน ตัวรวมโค้ด เบราว์เซอร์ หรือชุดการทดสอบที่มีอยู่</ex>
+    <ex>ทั้งสามเฟรมเวิร์กทำงานเดียวกัน และสภาพแวดล้อมเป็นผู้ตัดสิน ตัวรวมโค้ด เบราว์เซอร์ หรือชุดการทดสอบที่มีอยู่</ex>
     <gen>ไม่ว่าจะเลือกอะไร การทดสอบตรวจสถานการณ์ที่กำหนด ส่วนกฎที่พังในลำดับเหตุการณ์พิเศษ แบบจำลองจะจับได้</gen>
     <do>เลือกเฟรมเวิร์กตามสภาพแวดล้อมของโปรเจกต์ และเพิ่มการตรวจตัวการทดสอบเอง: [mutation testing](/materials/glossary/mutation-testing/) แสดงว่าการทดสอบสังเกตเห็นข้อบกพร่องหรือไม่</do>
   </b-finding>

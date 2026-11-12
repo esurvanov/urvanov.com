@@ -1,7 +1,7 @@
 ---
 title: Yêu cầu và biên bản họp với AI: nguồn, giả định, dữ kiện — và bước tiếp theo
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Yêu cầu viết cùng AI: nguồn, giả định, trạng thái. Dữ kiện đến qua MCP từ Git; tác nhân tự sửa những chỗ nhỏ, còn chỗ lớn do con người quyết định.
 tags: AI, tác nhân, yêu cầu, ảo giác, biên bản họp, harness
 category: harness
@@ -71,7 +71,7 @@ Tác nhân AI (AI agent) viết yêu cầu rất tự tin, và những phỏng �
   <b-codebox title="Mẫu cho một mục">
     Yêu cầu: Thanh toán bằng thẻ
     Nguồn: git.example.com/shop/requirements/payments.md, dòng 12; cuộc họp ngày 12/10, 14:32, “khách hàng trả bằng thẻ ở bước thanh toán”
-    Giả định: chỉ thanh toán bằng một loại tiền tệ
+    Giả định: chỉ thanh toán bằng rúp
     Trạng thái: dữ kiện | không phải dữ kiện | câu hỏi
     Người xác nhận: —
   </b-codebox>
@@ -170,6 +170,7 @@ Tác nhân AI (AI agent) viết yêu cầu rất tự tin, và những phỏng �
     <item href="/blog/mcp-agent-access/" k="Nguồn" t="MCP cho tác nhân AI: giải quyết vấn đề gì và cách giao việc kết nối cho tác nhân">Tác nhân lấy dữ kiện từ các hệ thống ra sao</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Ví dụ" t="Công việc của QA sau bộ phận hỗ trợ cùng tác nhân AI: nghiên cứu, mô tả và lập tài liệu qua MCP và skill">Tác nhân tái hiện một lỗi trong Jira</item>
     <item href="/blog/analytics-reports-agent/" k="Báo cáo" t="Báo cáo phân tích cùng tác nhân AI: dữ liệu từ cơ sở dữ liệu, bảng tính và tài liệu qua MCP">Cùng cách làm cho phân tích</item>
+    <item href="/blog/specs-by-aggregates/" k="Đặc tả" t="Đặc tả theo aggregate">lưu yêu cầu ở đâu: một mục cho mỗi khái niệm</item>
   </b-links>
 </b-chapter>
 <b-footer>Phiếu, cuộc họp và các liên kết được bịa ra làm ví dụ. Mẫu, sổ đăng ký và quy tắc lớn/nhỏ là thực hành của nhóm và có thể thay đổi.</b-footer>

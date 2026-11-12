@@ -1,7 +1,7 @@
 ---
 title: The agent’s data plane and control plane: keeping data from becoming commands (prompt injection)
 date: 2026-10-05
-updated: 2026-11-07
+updated: 2026-11-13
 description: How an agent’s commands (control plane) differ from the data it reads (data plane), how prompt injection works and how to defend: least rights, approval of writes, separating read from write, trusted sources.
 tags: AI, agents, security, prompt injection, MCP, harness
 category: harness
@@ -82,9 +82,9 @@ The agent takes commands from you and reads data from outside: pages, tickets, s
 
 <b-chapter id="next" title="Next">
   <b-links>
-    <item href="/blog/mcp-agent-access/" k="Connecting" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">How the agent gets access to systems</item>
-    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Claude in Chrome: как агент работает в вашем браузере — тест, отладка и формы под вашим входом">Site permissions and browser risks</item>
-    <item href="/blog/incident-investigation-agent/" k="Example" t="Расследование инцидента с ИИ-агентом: Sentry и Grafana через MCP">The agent reads logs and tickets read-only</item>
+    <item href="/blog/mcp-agent-access/" k="Connecting" t="MCP for an AI agent: what problem it solves and how to delegate setup to the agent">How the agent gets access to systems</item>
+    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login">Site permissions and browser risks</item>
+    <item href="/blog/incident-investigation-agent/" k="Example" t="Incident investigation with an AI agent: Sentry errors and Grafana metrics in one picture through MCP">The agent reads logs and tickets read-only</item>
   </b-links>
 </b-chapter>
 <b-footer>The examples are made up. The warning about servers that read untrusted content is in the Claude Code docs: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>. The defence rules above are team practice.</b-footer>

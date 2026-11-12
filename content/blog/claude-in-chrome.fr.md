@@ -1,7 +1,7 @@
 ---
 title: Comment Claude Code teste un site dans votre navigateur : Claude in Chrome — débogage et formulaires sous votre identifiant
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Claude in Chrome relie Claude Code au navigateur : l'agent ouvre des onglets, lit la console, exécute des scénarios et remplit des formulaires sous votre identifiant. Comment le connecter, ce qu'il fait et quelles permissions donner.
 tags: IA, agents, Claude Code, Claude in Chrome, navigateur, QA, harness
 category: harness
@@ -31,7 +31,7 @@ Claude in Chrome relie l'agent à votre navigateur : il ouvre des onglets, lit l
   <b-finding>
     <ex>L'agent dans le terminal pilote les onglets de Chrome via l'extension et utilise vos identifiants.</ex>
     <gen>Les actions sont visibles dans la fenêtre en temps réel. Sur une page de connexion ou un CAPTCHA, l'agent s'arrête et vous attend. Dans Claude Code, l'extension apparaît comme le serveur MCP claude-in-chrome : /mcp liste ses outils.</gen>
-    <do k="À faire">Vérifiez les prérequis : extension en version 1.0.36 ou plus récente<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, un forfait Pro, Max, Team ou Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Team, or Enterprise)"/>, et connexion avec /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
+    <do k="À faire">Vérifiez les prérequis : extension en version 1.0.36 ou plus récente<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, un forfait Pro, Max, Ultra, Team ou Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Ultra, Team, or Enterprise)"/>, et connexion avec /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
   </b-finding>
 </b-chapter>
 
@@ -46,7 +46,7 @@ Claude in Chrome relie l'agent à votre navigateur : il ouvre des onglets, lit l
       /chrome   # status, permissions, reconnect
     </b-codebox>
 
-<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Extension dans le Chrome Web Store</a>. Pour se passer de l'option, ouvrez /chrome et activez « Enabled by default ». Les outils du navigateur sont alors toujours dans le contexte, et la consommation de tokens augmente<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>.
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Extension dans le Chrome Web Store</a>. Pour se passer de l'option, ouvrez /chrome et activez « Enabled by default ». Les outils du navigateur sont alors toujours dans le contexte, et la consommation de tokens augmente<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>. Dans VS Code, le navigateur se connecte en tapant @browser dans la zone de saisie, et « Enabled by default » est commun au terminal et à VS Code<b-proof href="https://code.claude.com/docs/en/chrome" quote="The two share one setting, so turning it on in either place turns it on for both the CLI and VS Code."/>.
 
     <b-spoiler summary="Si la connexion échoue">
       <b-node-grid min="170">

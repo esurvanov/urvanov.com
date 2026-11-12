@@ -1,7 +1,7 @@
 ---
 title: Phạm vi MCP trong Claude Code: local, project và user — server nằm ở đâu và ai thấy nó
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Ba phạm vi của server MCP trong Claude Code: local, project và user. Thiết lập nằm ở đâu, ai thấy nó, cái nào thắng khi trùng tên, cách chia sẻ server với nhóm và giữ bí mật ngoài các commit.
 tags: AI, tác nhân, MCP, Claude Code, nhóm, harness
 category: harness
@@ -58,7 +58,7 @@ Danh sách server: `claude mcp list`; chi tiết: `claude mcp get <name>`; xóa:
   <b-why>Nếu một server cùng tên tồn tại ở nhiều nơi, mục ở tầng trên cùng được dùng nguyên vẹn.</b-why>
   <iso-art name="mcp-scopes/priority-layers"></iso-art>
   <b-finding>
-    <ex>Local ghi đè project và user, project ghi đè user, còn plugin, connector của claude.ai và MCP được quản lý nằm bên dưới.</ex>
+    <ex>Máy chủ do tổ chức cung cấp (managed MCP) đứng trên tất cả. Tiếp theo, local ghi đè project và user, project ghi đè user. Plugin và connector của claude.ai nằm bên dưới và bị tính là trùng nếu trỏ tới cùng một địa chỉ.</ex>
     <gen>Mục cá nhân ghi đè nguyên cả mục dùng chung cùng tên: các trường của hai mục không được gộp.</gen>
     <do k="Việc cần làm">Đặt tên khác cho các server cá nhân để chúng không ghi đè các server dùng chung.</do>
   </b-finding>

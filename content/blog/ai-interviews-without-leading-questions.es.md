@@ -1,7 +1,7 @@
 ---
 title: Cómo hacer y analizar entrevistas sobre el uso de IA: guion de 30 minutos, prompt de análisis y tabla en Airtable
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Guion de llamada de 30 minutos, reglas para no salirse del tema, cuestionario breve para toda la empresa, análisis de entrevistas con ChatGPT o un agente con un prompt listo, y comprobación de lo que dicen las personas frente a lo medido en los datos del informe.
 tags: IA, custdev, entrevistas
 category: research
@@ -88,7 +88,7 @@ Una entrevista sobre el trabajo con IA dura 30 minutos y gira en torno a la últ
   </b-share-bar>
   <b-cap>Minutos por bloque</b-cap>
   <b-call-script>
-    <step color="c-none" ink="ink" t="Introducción" q="&quot;Estoy investigando cómo resuelve la gente de la empresa sus tareas de trabajo. No es una evaluación tuya. Los casos que salieron bien y los que no me sirven por igual. Me acompaña un asistente que toma notas: solo nosotros vemos la transcripción y las respuestas van al informe sin nombres. ¿Puedo activarlo?&quot;"></step>
+    <step color="c-none" ink="ink" t="Introducción" q="&quot;Estoy investigando cómo resuelve la gente de la empresa sus tareas de trabajo. No es una evaluación tuya. Los casos que salieron bien y los que no me sirven por igual. Me acompaña un asistente que toma notas: solo el equipo de investigación ve la transcripción y las respuestas van al informe sin nombres. ¿Puedo activarlo?&quot;"></step>
     <step color="c-light" t="Rol y contexto" q='"¿En qué empleas la mayor parte de tu semana?"'>Qué tareas se repiten · dónde buscas información y preparas borradores</step>
     <step color="c-chat" t="La última tarea de trabajo" q='"Piensa en la última tarea de trabajo que te llevó un tiempo apreciable. ¿Qué necesitabas conseguir?"'>Con qué medios contabas · qué elegiste y por qué · cómo llegaste al resultado</step>
     <step color="c-proj" t="Resultado y esfuerzo" q='"¿Con qué te quedaste y cuánto esfuerzo costó?"'>Qué usaste tal cual · qué terminaste tú · qué restricciones había: datos, accesos, seguridad</step>
@@ -162,7 +162,7 @@ Una entrevista sobre el trabajo con IA dura 30 minutos y gira en torno a la últ
     <row>Ben Ortiz |  |  | Solo Codex | <b-select-pill tone="cyan">Esperando respuesta</b-select-pill> |  | <b-select-pill tone="purple">Solo Codex</b-select-pill> |  | 3.2M | 64 | 22.09</row>
     <row>Pavel Novak | [27.09 10:15] Anfitrión: Describe la última tarea… | <b-select-pill tone="purple">texto</b-select-pill> | inactivo | <b-select-pill tone="green">Hecho</b-select-pill> | <b-select-pill tone="cyan">con regularidad</b-select-pill> | <b-select-pill tone="red">no lo usa</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
     <row>Sara Quinn |  |  | inactivo | <b-select-pill tone="red">Rechazó</b-select-pill> |  | <b-select-pill tone="red">no lo usa</b-select-pill> |  | 0 | 0 | —</row>
-    <row>Nadia Rahimi | Anfitrión [00:00]: ¿Qué hiciste ayer en ChatGPT… | <b-select-pill tone="cyan">voz</b-select-pill> | otras herramientas | <b-select-pill tone="green">Hecho</b-select-pill> | <b-select-pill tone="yellow">de vez en cuando</b-select-pill> | <b-select-pill tone="yellow">de vez en cuando</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
+    <row>Nadia Rahimi | Anfitrión [00:00]: Recuerda la última tarea que te llevó… | <b-select-pill tone="cyan">voz</b-select-pill> | otras herramientas | <b-select-pill tone="green">Hecho</b-select-pill> | <b-select-pill tone="yellow">de vez en cuando</b-select-pill> | <b-select-pill tone="yellow">de vez en cuando</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
     <row>Elif Demir |  |  | proyectos | <b-select-pill tone="gray">En curso</b-select-pill> |  | <b-select-pill tone="green">semanal</b-select-pill> |  | 1.8M | 41 | 27.09</row>
   </b-airtable-grid>
   <b-cap>ChatGPT rellena el campo naranja a partir de la conversación en Notas. «Según el informe», «Tokens», «$» y «Actividad» salen del <a href="/blog/chatgpt-enterprise-usage-report/">informe de uso de ChatGPT Enterprise</a>. El campo «≠» es una fórmula que compara las dos frecuencias.</b-cap>

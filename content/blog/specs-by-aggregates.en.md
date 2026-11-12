@@ -1,7 +1,7 @@
 ---
 title: Specs by aggregate: RFC requirements and bounded contexts instead of a spec per feature
 date: 2026-09-28
-updated: 2026-11-07
+updated: 2026-11-13
 description: Spec-driven development without spec sprawl: how to keep specs in one aggregate dictionary so they do not multiply with every feature: requirement levels, the aggregate card and context boundaries.
 tags: AI, spec-driven development, specs, DDD, agents
 category: specs
@@ -108,12 +108,13 @@ Specs by aggregates mean one entry per domain concept, such as a booking or an o
 </b-chapter>
 
 <b-chapter id="next" title="Read next">
-  <b-cta href="/en/blog/spec-reconcile-loop/" k="Continued" t="A reconcile loop for specs" icon="hub" sw="1.6">like Kubernetes: desired state, checks and the agent’s environment</b-cta>
+  <b-cta href="/blog/spec-reconcile-loop/" k="Continued" t="A reconcile loop for specs" icon="hub" sw="1.6">like Kubernetes: desired state, checks and the agent’s environment</b-cta>
   <b-links cols="3">
-    <item href="/en/blog/harness-driven-development/" k="Mistake loop" t="Harness-Driven Development">how agent mistakes become rules</item>
-    <item href="/en/blog/specs-rules-skills/" k="Context" t="Specs, bible, rules and skills">what the agent knows about the project and where it lives</item>
-    <item href="/en/blog/ai-in-code-harness-and-tools/" k="Environment" t="Harness comparison">where the agent works and what it sees</item>
+    <item href="/blog/harness-driven-development/" k="Mistake loop" t="Harness-Driven Development">how agent mistakes become rules</item>
+    <item href="/blog/specs-rules-skills/" k="Context" t="Specs, bible, rules and skills">what the agent knows about the project and where it lives</item>
+    <item href="/blog/ai-in-code-harness-and-tools/" k="Environment" t="Harness comparison">where the agent works and what it sees</item>
     <item href="/blog/agent-checkpoint/" k="Checks" t="Where to check an AI agent's work">the aggregate as a checkpoint</item>
+    <item href="/blog/openspec/" k="Specs" t="What is OpenSpec, setup and commands">specs and changes in files next to the code</item>
   </b-links>
 </b-chapter>
 <b-footer compact>The booking example is made up. Terms and approaches follow the sources linked under the diagrams.</b-footer>

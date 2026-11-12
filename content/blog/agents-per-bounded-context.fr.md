@@ -1,7 +1,7 @@
 ---
 title: Combien d'agents IA faut-il : le nombre d'agents croît avec le nombre de contextes délimités
 date: 2026-10-10
-updated: 2026-11-08
+updated: 2026-11-13
 description: Un agent par contexte délimité : pourquoi il y a autant d'agents que de frontières de sens, comment cela passe à l'échelle, ce qui se trouve entre les agents et par où commencer.
 tags: IA, agents, contexte délimité, DDD, architecture, passage à l'échelle, harness
 category: harness
@@ -55,7 +55,7 @@ Combien d'agents IA faut-il ? Autant qu'il y a de contextes délimités : chaque
   </b-lane>
   <b-finding>
     <ex>Commencez par deux contextes voisins et un contrat entre eux.</ex>
-    <gen>Un contexte, un agent, un contrat : cela met le schéma à l'épreuve avant de l'étendre à tout le projet.</gen>
+    <gen>Deux contextes voisins, un agent pour chacun et un contrat entre eux : cela met le schéma à l'épreuve avant de l'étendre à tout le projet.</gen>
     <do k="Que faire">Choisissez deux contextes où les mots se mélangent le plus souvent et lancez un agent pour chacun.</do>
   </b-finding>
 </b-chapter>
@@ -65,7 +65,7 @@ Combien d'agents IA faut-il ? Autant qu'il y a de contextes délimités : chaque
     <q t="Combien d'agents IA faut-il ?">Autant qu'il y a de contextes délimités : chaque frontière de sens reçoit son propre agent.</q>
     <q t="Comment cela passe-t-il à l'échelle ?">Le nombre d'agents croît linéairement avec le nombre de contextes, tandis que la charge de chacun reste uniforme.</q>
     <q t="Qu'est-ce qui relie les agents ?">Un contrat à la frontière : les agents n'ont pas à connaître l'intérieur d'un autre contexte, et une erreur ne se propage pas.</q>
-    <q t="Par où commencer ?">Par un contexte, un agent et un contrat : cela met le dispositif à l'épreuve avant de l'étendre à tout le projet.</q>
+    <q t="Par où commencer ?">Par deux contextes voisins : un agent pour chacun et un contrat entre eux : cela met le dispositif à l'épreuve avant de l'étendre à tout le projet.</q>
   </b-faq-cards>
 </b-chapter>
 

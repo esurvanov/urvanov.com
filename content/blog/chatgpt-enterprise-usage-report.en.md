@@ -1,7 +1,7 @@
 ---
 title: ChatGPT Enterprise usage report from admin console exports: who uses it, for what, and which AI tools to buy next
 date: 2026-09-28
-updated: 2026-11-11
+updated: 2026-11-13
 description: How to find out how employees use ChatGPT Enterprise: five admin console exports turn into adoption depth, uniformity across teams, main tools, a task map, data checks and an interview shortlist.
 tags: AI, research, analytics
 category: research
@@ -354,13 +354,6 @@ ChatGPT Enterprise is a version of ChatGPT for organizations with an admin conso
     <item t="Calculate adoption depth">At least once / regularly / every week, with those who work only through Codex counted separately</item>
     <item t="Build a list of people and schedule interviews">How to pick these people is covered in "Who to interview"</item>
   </b-checklist>
-  <b-sublabel top="22">Common questions</b-sublabel>
-  <b-qa>
-    <q t="What the ChatGPT Enterprise admin console shows">Five sections: users, leaderboard, projects, overview and tasks. They give adoption depth, uniformity across teams, the main tool, the nature of tasks and a check against raw data.</q>
-    <q t="How to export data from the console">The console has APIs, but they cover only part of the data: Codex analytics, credit costs and conversation logs for compliance. The users, projects and skills exports and the per-product leaderboard are easier to collect in the interface, and the export can be handed to Claude in Chrome.</q>
-    <q t="How to tell whether new licenses are needed">Adoption depth shows how many people use the tool at least once, regularly and every week. It decides which group to train and whether to buy new licenses now.</q>
-    <q t="How to choose people to interview">People are picked for each direction found: in the example the final list is 16 people out of 340. Users of other tools and those who stopped are added by the rules in <a href="/en/blog/who-to-interview-before-buying-ai-tools/">“Who to interview”</a>.</q>
-  </b-qa>
 </b-chapter>
 <b-chapter id="faq" icon="chat" title="Frequently asked questions">
   <b-faq-cards>

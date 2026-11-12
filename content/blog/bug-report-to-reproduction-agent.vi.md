@@ -1,7 +1,7 @@
 ---
 title: Công việc của QA sau bộ phận hỗ trợ cùng tác nhân AI: điều tra, mô tả và lập tài liệu qua MCP và skill
 date: 2026-10-04
-updated: 2026-11-08
+updated: 2026-11-13
 description: Tối ưu một mắt xích: QA sau bộ phận hỗ trợ. Tác nhân tái hiện lỗi từ Jira trên môi trường kiểm thử qua MCP, thu hẹp đường đi, mô tả và lập tài liệu, skill biến các bước thành quy trình lặp lại được, QA kiểm tra bằng tay. Hỗ trợ và phát triển không đổi.
 tags: AI, tác nhân, QA, Jira, MCP, skill, lỗi, harness
 category: harness
@@ -137,7 +137,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
 
 <b-chapter id="mcp" icon="plug" title="MCP: tác nhân làm việc ở nơi QA làm việc">
   <b-why>MCP (Model Context Protocol) là cách nối tác nhân với các hệ thống làm việc để nó tự đọc và ghi trong đó thay vì nhận một lời kể lại.</b-why>
-  <b-why align="left">Tác nhân cần năm thứ. Jira: nó đọc phiếu và ghi kết quả vào đó. Môi trường thử: bản sao thử nghiệm của sản phẩm, nơi nó đi theo đường đi như một người dùng. Tài liệu: sơ đồ và mô tả nằm cạnh phiếu. Dữ liệu: dữ liệu thử có thể đặt lại. Quyền: chỉ môi trường kiểm thử được phép hỏng, các hệ thống production nằm ngoài tầm với.</b-why>
+  <b-why align="left">Tác nhân cần năm thứ. Jira: nó đọc phiếu và ghi kết quả vào đó. Môi trường thử: bản sao thử nghiệm của sản phẩm, nơi nó đi theo đường đi như một người dùng, trong trình duyệt qua [Claude in Chrome](/blog/claude-in-chrome/). Tài liệu: sơ đồ và mô tả nằm cạnh phiếu. Dữ liệu: dữ liệu thử có thể đặt lại. Quyền: chỉ môi trường kiểm thử được phép hỏng, các hệ thống production nằm ngoài tầm với.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/access-sandbox"/>
   </b-view>
@@ -319,6 +319,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
 
 <b-chapter id="next" icon="arrow-right" title="Đọc tiếp">
   <b-links>
+    <item href="/blog/claude-in-chrome/" k="Trình duyệt" t="Claude Code kiểm thử trang web trong trình duyệt của bạn như thế nào: Claude in Chrome — gỡ lỗi và điền form dưới phiên đăng nhập của bạn">tác nhân đi theo đường đi trên môi trường kiểm thử</item>
     <item href="/blog/specs-rules-skills/" k="Skill" t="Đặc tả, quy tắc và skill">tác nhân cần biết gì về dự án</item>
     <item href="/blog/harness-driven-development/" k="Vòng lặp lỗi" t="Harness-Driven Development">sai sót của tác nhân trở thành quy tắc thế nào</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Môi trường" t="So sánh các harness">tác nhân làm việc ở đâu và thấy gì</item>

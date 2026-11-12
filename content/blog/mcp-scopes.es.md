@@ -1,7 +1,7 @@
 ---
 title: Qué son los ámbitos de MCP en Claude Code: local, proyecto y usuario; dónde vive un servidor y quién lo ve
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Los tres ámbitos de los servidores MCP en Claude Code: local, proyecto y usuario. Dónde vive la configuración, quién la ve, qué gana cuando los nombres coinciden, cómo compartir servidores con un equipo y mantener los secretos fuera de los commits.
 tags: IA, agentes, MCP, Claude Code, equipo, harness
 category: harness
@@ -58,7 +58,7 @@ Lista de servidores: `claude mcp list`; detalles: `claude mcp get <name>`; elimi
   <b-why>Si un servidor con el mismo nombre existe en varios lugares, se usa entera la entrada de la capa más alta.</b-why>
   <iso-art name="mcp-scopes/priority-layers"></iso-art>
   <b-finding>
-    <ex>Local anula a proyecto y a usuario, proyecto anula a usuario, y por debajo quedan los plugins, los conectores de claude.ai y el MCP gestionado.</ex>
+    <ex>Por encima de todo están los servidores que define la organización (MCP gestionado). Después, local anula a proyecto y a usuario, y proyecto anula a usuario. Los plugins y los conectores de claude.ai quedan por debajo y cuentan como duplicado si apuntan a la misma dirección.</ex>
     <gen>Una entrada personal anula en bloque a una compartida con el mismo nombre: los campos de las dos entradas no se combinan.</gen>
     <do k="Qué hacer">Da nombres distintos a los servidores personales para que no anulen a los compartidos.</do>
   </b-finding>

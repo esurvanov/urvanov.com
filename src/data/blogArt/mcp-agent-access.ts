@@ -45,13 +45,13 @@ const scenes: Record<string, Scene> = {
       c.text(530, 236, l('Агент работает в самой Jira', 'Agent works inside Jira'), A, { size: 12 })
     },
   },
-  // Наш контекст (диалог и файлы) против других контекстов (GitLab, Jira, tldv, Confluence) за MCP-клиентом и сервером
+  // Контекст агента (диалог и файлы) против других контекстов (GitLab, Jira, tldv, Confluence) за MCP-клиентом и сервером
   'contexts': {
-    ru: 'Слева наш контекст: диалог с агентом и файлы проекта, которые агент видит сразу. Справа другие контексты: GitLab, Jira, tldv с записями встреч, Confluence с базой знаний и другие. Агент их не видит, пока нет MCP: клиента у агента и сервера у системы',
-    en: 'On the left is our context: the conversation with the agent and project files the agent sees at once. On the right are other contexts: GitLab, Jira, tldv meeting recordings, Confluence knowledge base and more. The agent cannot see them until MCP is set up: a client on the agent side and a server on the system side',
+    ru: 'Слева контекст агента: диалог с агентом и файлы проекта, которые агент видит сразу. Справа другие контексты: GitLab, Jira, tldv с записями встреч, Confluence с базой знаний и другие. Агент их не видит, пока нет MCP: клиента у агента и сервера у системы',
+    en: 'On the left is the agent’s context: the conversation with the agent and project files the agent sees at once. On the right are other contexts: GitLab, Jira, tldv meeting recordings, Confluence knowledge base and more. The agent cannot see them until MCP is set up: a client on the agent side and a server on the system side',
     viewBox: [0, 0, 700, 336],
     draw: (c, l) => {
-      c.caps(150, 16, l('НАШ КОНТЕКСТ', 'OUR CONTEXT'), A); c.caps(560, 16, l('ДРУГИЕ КОНТЕКСТЫ', 'OTHER CONTEXTS'), 'currentColor')
+      c.caps(150, 16, l('КОНТЕКСТ АГЕНТА', 'AGENT CONTEXT'), A); c.caps(560, 16, l('ДРУГИЕ КОНТЕКСТЫ', 'OTHER CONTEXTS'), 'currentColor')
       const ru = c.lang === 'ru'
       const i1 = c.iso(150, 150, 28)
       i1.tile(-2.1, -2.1, 4.2, 4.2, { dash: '6 5', edge: 'var(--accent)' })

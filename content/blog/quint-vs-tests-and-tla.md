@@ -1,7 +1,7 @@
 ---
 title: Чем model checking отличается от тестов: тест проверяет один сценарий, модель — все порядки действий (Quint, QUnit и TLA+)
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-13
 description: Тест проверяет придуманный сценарий, model checking перебирает все порядки действий. Что ловят QUnit, Jest, Vitest и что Quint, TLA+, Alloy. Как выбрать.
 tags: AI, спеки, Quint, TLA+, Alloy, QUnit, Jest, Vitest, тестирование, формальная верификация
 category: specs
@@ -77,7 +77,7 @@ toc: names=Два названия | tests=Тестовые движки | tla=T
   <b-art names="quint-vs-tests-and-tla/notation" wide/>
     <b-why align="left">TLA+ и Alloy — формальные языки того же рода: в них тоже описывают правила и ищут их нарушения. Они старше Quint и лучше описаны в книгах. Но в TLA+ запись математическая, и новичку нужно время, чтобы её читать. Quint придуман как более доступная запись для той же задачи: она похожа на обычный код, и её читают инженеры без математической подготовки. Подробное сравнение всех трёх языков есть в статье [TLA+, Alloy или Quint](/blog/tla-alloy-quint-compare/).</b-why>
   <b-art names="quint-vs-tests-and-tla/engine" wide/>
-  <b-why align="left">Что значит «одни и те же программы». Quint можно проверять двумя программами: TLC и Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/>. TLC — самая первая проверяющая программа для TLA+: она перебирает состояния по одному<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, поэтому для Quint ей нужен перевод модели в TLA+<b-proof href="https://quint-lang.org/docs/model-checkers" quote="can be used for Quint by transpiling Quint specs into TLA+"/>. Перебор предсказуем, но мир должен быть небольшим.</b-why>
+  <b-why align="left">Что значит «одни и те же программы». Quint можно проверять двумя программами: TLC и Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/>. TLC — самая первая проверяющая программа для TLA+: она перебирает состояния по одному<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, а для Quint её запускают флагом <code>quint verify --backend=tlc</code><b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC (no acronym defined!) is the first model checker for TLA+, and is provided as an alternative backend for quint verify by passing the --backend=tlc flag"/>. Перебор предсказуем, но мир должен быть небольшим.</b-why>
   <b-why align="left">[Apalache](/materials/glossary/apalache/) встроен в Quint<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache is a symbolic model checker that is integrated with Quint tooling"/>: он переводит модель в условия и спрашивает решатель [Z3](/materials/glossary/z3/). Проверять он умеет цепочки только до заданной длины<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache cannot check an arbitrary number of steps"/>, поэтому его «ок» значит «нарушений нет в пределах этой длины». TLA+ проверяют теми же двумя программами, а у Alloy свой анализатор. Кроме проверки, у Quint есть быстрый случайный прогон: он ищет нарушения выборочно и не доказывает, что их нет.</b-why>
     <b-vs-grid>
     <h></h>
@@ -111,7 +111,7 @@ toc: names=Два названия | tests=Тестовые движки | tla=T
     <rule icon="workflow" t="Порядок действий">Найти сочетание шагов, где ломается правило продукта, даже если кода ещё нет: Quint</rule>
     <rule icon="scales" t="Тяжёлые доказательства">Строгие гарантии для большой распределённой системы: TLA+, у него больше опыта и примеров</rule>
   </b-rules>
-  <b-why align="left">Выбор определяется вопросом, а не любимой программой. Если вопрос «верно ли работает эта функция», берите тест. Если вопрос «может ли в какой-то последовательности событий нарушиться правило», берите модель. Если вам нужны гарантии на уровне распределённого протокола, берите TLA+ и закладывайте время на обучение.</b-why>
+  <b-why align="left">Выбор определяется вопросом. Если вопрос «верно ли работает эта функция», берите тест. Если вопрос «может ли в какой-то последовательности событий нарушиться правило», берите модель. Если вам нужны гарантии на уровне распределённого протокола, берите TLA+ и закладывайте время на обучение.</b-why>
   <b-finding>
     <ex>Три средства закрывают три разных вопроса, и один не заменяет другой.</ex>
     <gen>Для продуктовой логики с агентами и несколькими участниками чаще всего нужны и тесты, и Quint.</gen>

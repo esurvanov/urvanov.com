@@ -1,7 +1,7 @@
 ---
 title: Một trò chơi cần bao nhiêu luật: trò chơi bước-và-nâng cần hai luật, còn kế toán chỉ cần một dòng ghi — khoảng trống quan hệ
 date: 2026-11-02
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cách đếm số luật của một trò chơi vừa trung thực vừa nhanh, và liệu hai kết quả có thể khác nhau. Diễn giải bài báo của Bartholdi, Bridson, Mikhailov và Nicholson về khoảng trống quan hệ (arXiv 2610.23637): trò chơi có hai nước đi mà người chơi cần hai luật còn kế toán cần một dòng ghi, kèm sơ đồ, công thức và phép tính.
 tags: nghiên cứu, toán học, lý thuyết nhóm, tô pô, AI trong toán học
 category: research
@@ -329,8 +329,6 @@ Một trò chơi có hai nước đi, bước và nâng, cần hai luật nếu 
 <b-chapter id="next" title="Đọc tiếp">
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2610.23637" k="Bài báo" t="arXiv 2610.23637" ext>Two-generator presentations with a relation gap</item>
-    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="Nguồn của phim" t="papers/2610.23637-relation-gap" ext>Hồ sơ, lời dẫn, các cảnh và kịch bản của phim trên GitHub</item>
-    <item href="https://github.com/esurvanov/awesome-papers" k="Kho mã" t="awesome-papers" ext>Phim về các bài báo khoa học bằng lời giản dị: mã, quy tắc, kiểm tra</item>
     <item href="https://youtu.be/yPvbfDa_GCk" k="Video" t="Bản diễn giải trên YouTube" ext>Cùng câu chuyện trong 7,5 phút, với bản đồ trò chơi và công thức</item>
     <item href="/blog/longest-ring-arrangement/" k="Cùng một đồ thị Cayley" t="Vòng bi">Bản đồ các nước đi và cách sắp xếp rối nhất</item>
     <item href="/blog/rubik-cube-neural-network/" k="Cùng một đồ thị Cayley" t="Khối Rubik">Nước đi và luật ở nơi không thể vét cạn</item>

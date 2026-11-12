@@ -1,7 +1,7 @@
 ---
 title: Incident investigation with an AI agent: Sentry errors and Grafana metrics in one picture through MCP
 date: 2026-10-05
-updated: 2026-11-07
+updated: 2026-11-13
 description: How to investigate an incident with an AI agent: connect Sentry and Grafana through MCP, have it match errors, metrics and release time, limit permissions and verify the hypothesis.
 tags: AI, agents, MCP, Sentry, Grafana, incidents, harness
 category: harness
@@ -60,7 +60,7 @@ This is the official server <a href="https://github.com/grafana/mcp-grafana" tar
 <b-chapter id="timeline" icon="lines" title="What the agent matches">
   <iso-art name="incident-investigation-agent/event-timeline"></iso-art>
   <b-finding>
-    <ex>The release, error spike and alert go on one timeline, and you can see what happened first.</ex>
+    <ex>The release to [production](/materials/glossary/prod/), error spike and alert go on one timeline, and you can see what happened first.</ex>
     <gen>A time match gives a hypothesis and does not prove the cause: checking stays with a person.</gen>
     <do k="What to do">Ask for a link to a chart or event with every conclusion.</do>
   </b-finding>
@@ -83,7 +83,7 @@ This is the official server <a href="https://github.com/grafana/mcp-grafana" tar
 <b-chapter id="first" icon="flag" title="Where to start">
   <iso-art name="incident-investigation-agent/start-steps"></iso-art>
   <b-finding>
-    <ex>Three steps: Sentry, Grafana, a test on a past incident.</ex>
+    <ex>Three steps: Sentry, Grafana, a trial on a past incident.</ex>
     <gen>You know the past incident, so you can see where the agent found the cause and where it erred.</gen>
     <do k="What to do">Take a closed incident and ask the agent to find the cause through Sentry and Grafana.</do>
   </b-finding>
@@ -100,9 +100,9 @@ This is the official server <a href="https://github.com/grafana/mcp-grafana" tar
 
 <b-chapter id="next" title="Next">
   <b-links>
-    <item href="/blog/mcp-agent-access/" k="Basics" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">What MCP is and how to connect it</item>
+    <item href="/blog/mcp-agent-access/" k="Basics" t="MCP for an AI agent: what problem it solves and how to delegate setup to the agent">What MCP is and how to connect it</item>
     <item href="/blog/analytics-reports-agent/" k="Another case" t="Analytical reports with an AI agent">Database, sheets and documents through MCP</item>
-    <item href="/blog/mcp-scopes/" k="Setup" t="Области MCP в Claude Code: local, project и user — где хранится сервер и кто его видит">Where a server lives and who sees it</item>
+    <item href="/blog/mcp-scopes/" k="Setup" t="MCP scopes in Claude Code: local, project and user — where a server lives and who sees it">Where a server lives and who sees it</item>
   </b-links>
 </b-chapter>
 <b-footer>The incident is made up. Connecting Sentry follows the Claude Code docs: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">MCP</a>, Grafana follows the repository <a href="https://github.com/grafana/mcp-grafana" target="_blank" rel="noopener">grafana/mcp-grafana</a>.</b-footer>

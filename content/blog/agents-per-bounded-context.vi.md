@@ -1,7 +1,7 @@
 ---
 title: Cần bao nhiêu tác nhân AI: số tác nhân tăng theo số bounded context
 date: 2026-10-10
-updated: 2026-11-08
+updated: 2026-11-13
 description: Một tác nhân cho mỗi bounded context: vì sao số tác nhân bằng số ranh giới ý nghĩa, nó mở rộng thế nào, giữa các tác nhân có gì và nên bắt đầu từ đâu.
 tags: AI, tác nhân, bounded context, DDD, kiến trúc, mở rộng, harness
 category: harness
@@ -55,7 +55,7 @@ Cần bao nhiêu tác nhân AI (AI agent)? Bằng số bounded context: mỗi ra
   </b-lane>
   <b-finding>
     <ex>Bắt đầu với hai ngữ cảnh liền kề và một hợp đồng giữa chúng.</ex>
-    <gen>Một ngữ cảnh, một tác nhân, một hợp đồng: cách đó thử mô hình này trước khi kéo nó ra toàn dự án.</gen>
+    <gen>Hai ngữ cảnh liền kề, mỗi ngữ cảnh một tác nhân và một hợp đồng giữa chúng: cách đó thử mô hình này trước khi kéo nó ra toàn dự án.</gen>
     <do k="Việc cần làm">Chọn hai ngữ cảnh nơi các từ hay bị trộn lẫn nhất và khởi chạy một tác nhân cho mỗi ngữ cảnh.</do>
   </b-finding>
 </b-chapter>
@@ -65,7 +65,7 @@ Cần bao nhiêu tác nhân AI (AI agent)? Bằng số bounded context: mỗi ra
     <q t="Cần bao nhiêu tác nhân AI?">Bằng số bounded context: mỗi ranh giới ý nghĩa có một tác nhân riêng.</q>
     <q t="Việc này mở rộng thế nào?">Số tác nhân tăng tuyến tính theo số ngữ cảnh, trong khi tải trên mỗi tác nhân giữ đều.</q>
     <q t="Cái gì nối các tác nhân với nhau?">Một hợp đồng ở ranh giới: các tác nhân không cần biết bên trong ngữ cảnh khác, và một sai sót không lan ra.</q>
-    <q t="Bắt đầu từ đâu?">Từ một ngữ cảnh, một tác nhân và một hợp đồng: cách đó thử cách thiết lập trước khi kéo nó ra toàn dự án.</q>
+    <q t="Bắt đầu từ đâu?">Từ hai ngữ cảnh liền kề: mỗi ngữ cảnh một tác nhân và một hợp đồng giữa chúng: cách đó thử cách thiết lập trước khi kéo nó ra toàn dự án.</q>
   </b-faq-cards>
 </b-chapter>
 

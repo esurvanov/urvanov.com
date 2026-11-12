@@ -1,12 +1,12 @@
 ---
 title: Jira กับเอเจนต์ AI: ข้อดี ข้อเสีย และจะขีดเส้นไว้ตรงไหน
 date: 2026-10-20
-updated: 2026-11-08
+updated: 2026-11-13
 description: เอเจนต์ AI (AI agent) ต่อกับ Jira ผ่าน MCP อย่างไร อะไรใช้ได้ดี อะไรพัง และทำไมการรับรายงานบั๊กควรแยกเป็นอีกบริการหนึ่ง พร้อมทางเลือกอื่นแทน Jira
 tags: AI, เอเจนต์, Jira, MCP, Claude Code, ระบบติดตามบั๊ก, harness
 category: harness
 layout: wide
-mentions: Jira, Atlassian Rovo MCP, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
+mentions: Jira, Atlassian MCP server, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
 toc: ways=วิธีเชื่อมต่อ | plus=ข้อดี | minus=ข้อเสีย | russia=Jira ในรัสเซีย | trackers=ระบบติดตามอื่น | border=เส้นแบ่ง | first=เริ่มจากตรงไหน | faq=คำถาม | next=อ่านต่อ
 ---
 
@@ -15,18 +15,18 @@ toc: ways=วิธีเชื่อมต่อ | plus=ข้อดี | minus
 <b-post series="harness">
 
 <b-chapter id="ways" icon="plug" title="เชื่อมเอเจนต์กับ Jira อย่างไร">
-  <b-why align="left">เชื่อมเอเจนต์กับ Jira ได้หลายทาง เซิร์ฟเวอร์ทางการของ Atlassian (Rovo MCP) ค้นหา อ่าน และสร้างงานได้ แต่ใช้ได้เฉพาะ Jira บนคลาวด์ ส่วนเซิร์ฟเวอร์โอเพนซอร์ส mcp-atlassian ใช้ได้ทั้งคลาวด์และ Jira ที่ติดตั้งเอง อีกทางคือมอบงานให้เอเจนต์ใน Jira โดยตรง (Claude, Cursor, Codex, Copilot) ตารางเทียบแต่ละทางด้านความสามารถและข้อจำกัด</b-why>
+  <b-why align="left">เชื่อมเอเจนต์กับ Jira ได้หลายทาง เซิร์ฟเวอร์ทางการของ Atlassian (Atlassian MCP server เดิมชื่อ Rovo MCP) ค้นหา อ่าน และสร้างงานได้ แต่ใช้ได้เฉพาะ Jira บนคลาวด์ ส่วนเซิร์ฟเวอร์โอเพนซอร์ส mcp-atlassian ใช้ได้ทั้งคลาวด์และ Jira ที่ติดตั้งเอง อีกทางคือมอบงานให้เอเจนต์ใน Jira โดยตรง (Claude, Cursor, Codex, Copilot) ตารางเทียบแต่ละทางด้านความสามารถและข้อจำกัด</b-why>
   <b-table>
 | วิธี | ทำอะไรได้ | ข้อจำกัด |
 |---|---|---|
-| Atlassian Rovo MCP (ทางการ) | ค้นหา อ่าน สร้างงานและหน้า; รองรับไฟล์แนบตั้งแต่สิงหาคม 2026 | เฉพาะคลาวด์; มีขีดจำกัดรายชั่วโมง; ใช้เครดิต Rovo |
+| Atlassian MCP server เดิมชื่อ Rovo MCP (ทางการ) | ค้นหา อ่าน สร้างงานและหน้า; รองรับไฟล์แนบตั้งแต่สิงหาคม 2026 | เฉพาะคลาวด์; มีขีดจำกัดรายชั่วโมง; การเรียกบางส่วนใช้เครดิต Rovo |
 | mcp-atlassian (โอเพนซอร์ส) | ทั้งคลาวด์และติดตั้งเอง เครื่องมือราว 100 อย่าง | ติดตั้งเอง และโทเคนอยู่ในไฟล์ตั้งค่า |
 | เอเจนต์ใน Jira | มอบงานให้ Claude, Cursor, Codex, Copilot | เฉพาะคลาวด์ แผนแบบเสียเงิน |
 | Copilot / Cursor จาก Jira | มอบงาน แล้วเอเจนต์เปิดร่างการเปลี่ยนแปลง | คลาวด์ แยกเป็นแอปต่างหาก |
   </b-table>
   <b-finding>
     <ex>ทางการใช้ได้กับ Jira บนคลาวด์ ส่วน Jira ที่ติดตั้งเองต่อได้ผ่าน MCP โอเพนซอร์สเท่านั้น</ex>
-    <gen>เอเจนต์มีสิทธิ์เท่ากับผู้ใช้ที่ล็อกอินหรือโทเคนที่เอเจนต์ใช้<b-proof href="https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: Getting started with the Atlassian Rovo MCP Server"/></gen>
+    <gen>เอเจนต์มีสิทธิ์เท่ากับผู้ใช้ที่ล็อกอินหรือโทเคนที่เอเจนต์ใช้<b-proof href="https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: «…which ensures all actions respect users' existing access controls and permissions»"/></gen>
     <do>ตรวจว่า Jira ที่ใช้เป็นแบบคลาวด์หรือติดตั้งเอง เพราะวิธีเชื่อมขึ้นอยู่กับข้อนี้</do>
   </b-finding>
 </b-chapter>
@@ -83,7 +83,7 @@ toc: ways=วิธีเชื่อมต่อ | plus=ข้อดี | minus
   <b-metric-line value="~70%">ของผู้นำด้านไอทีใช้เวอร์ชันที่ไม่ได้รับการรองรับ (แบบสำรวจของ K2Tech, 73 บริษัท)</b-metric-line>
   <b-finding>
     <ex>MCP บนคลาวด์ทางการและเอเจนต์ใน Jira ในทางปฏิบัติใช้ไม่ได้สำหรับทีมรัสเซีย</ex>
-    <gen>สำหรับ Jira ที่ติดตั้งเอง ยังเหลือ mcp-atlassian แบบโอเพนซอร์ส และการตัดสินใจว่าจะย้ายไปที่ไหนก่อนปี 2029<b-proof href="https://habr.com/ru/articles/1011252" quote="K2Tech on Habr: Atlassian's exit and a survey of IT leaders"/></gen>
+    <gen>สำหรับ Jira ที่ติดตั้งเอง ยังเหลือ mcp-atlassian แบบโอเพนซอร์ส และการตัดสินใจว่าจะย้ายไปที่ไหนก่อนปี 2029<b-proof href="https://habr.com/ru/companies/k2tech/articles/1011252/" quote="K2Tech on Habr, translated from Russian: “Key finding: about 70% of respondents still use unsupported versions of the vendor’s products”; “73 company representatives took part in the survey”"/></gen>
     <do>ถ้ามีการย้ายรออยู่ ให้เลือกระบบติดตามที่มีการเชื่อมต่อกับเอเจนต์อยู่แล้ว</do>
   </b-finding>
 </b-chapter>
@@ -150,5 +150,5 @@ toc: ways=วิธีเชื่อมต่อ | plus=ข้อดี | minus
     <item href="/blog/mcp-agent-access/" k="พื้นฐาน" t="MCP สำหรับเอเจนต์ AI">MCP คืออะไรและเชื่อมอย่างไร</item>
   </b-links>
 </b-chapter>
-<b-footer>ข้อเท็จจริง: เอกสารของ Atlassian, GitHub และ Cursor; บทวิเคราะห์ของ automatica.com.au, Cato CTRL, Simon Willison; แบบสำรวจของ K2Tech; Wordstat ตุลาคม 2026 ฟีเจอร์และแผนของ Rovo MCP เปลี่ยนเร็ว ควรตรวจสอบก่อนตัดสินใจ</b-footer>
+<b-footer>ข้อเท็จจริง: เอกสารของ Atlassian, GitHub และ Cursor; บทวิเคราะห์ของ automatica.com.au, Cato CTRL, Simon Willison; แบบสำรวจของ K2Tech; Wordstat ตุลาคม 2026 ฟีเจอร์และแผนของ Atlassian MCP server เปลี่ยนเร็ว ควรตรวจสอบก่อนตัดสินใจ</b-footer>
 </b-post>

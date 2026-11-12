@@ -1,7 +1,7 @@
 ---
 title: რამდენი წესი სჭირდება თამაშს: თამაშს „ნაბიჯი და ასვლა“ ორი წესი სჭირდება, ბუღალტერს კი ერთი ჩანაწერი — თანაფარდობათა დანაკლისი (relation gap)
 date: 2026-11-02
-updated: 2026-11-08
+updated: 2026-11-13
 description: როგორ დავთვალოთ თამაშის წესები პატიოსნად და სწრაფად და შეიძლება თუ არა ორი პასუხი განსხვავდებოდეს. ბართოლდის, ბრიჯსონის, მიხაილოვისა და ნიკოლსონის ნაშრომის (arXiv 2610.23637) განხილვა relation gap-ის შესახებ: თამაში ორი სვლით, სადაც მოთამაშეს ორი წესი სჭირდება, ბუღალტერს კი ერთი ჩანაწერი — სქემებით, ფორმულებითა და გამოთვლებით.
 tags: კვლევა, მათემატიკა, ჯგუფთა თეორია, ტოპოლოგია, AI მათემატიკაში
 category: research
@@ -329,8 +329,6 @@ toc: video=ვიდეო | question=კითხვა | paper=ნაშრო
 <b-chapter id="next" title="დამატებით წასაკითხი">
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2610.23637" k="ნაშრომი" t="arXiv 2610.23637" ext>Two-generator presentations with a relation gap</item>
-    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="ფილმის წყარო" t="papers/2610.23637-relation-gap" ext>ფილმის პასპორტი, ტექსტი, სცენები და სცენარი GitHub-ზე</item>
-    <item href="https://github.com/esurvanov/awesome-papers" k="რეპოზიტორია" t="awesome-papers" ext>ფილმები სამეცნიერო ნაშრომებზე მარტივი სიტყვებით: კოდი, წესები, შემოწმებები</item>
     <item href="https://youtu.be/yPvbfDa_GCk" k="ვიდეო" t="განხილვა YouTube-ზე" ext>იგივე ამბავი 7,5 წუთში, თამაშის რუკითა და ფორმულებით</item>
     <item href="/blog/longest-ring-arrangement/" k="იგივე კეილის გრაფი" t="ბურთულების რგოლი">სვლების რუკა და ყველაზე ჩახლართული განლაგება</item>
     <item href="/blog/rubik-cube-neural-network/" k="იგივე კეილის გრაფი" t="რუბიკის კუბი">სვლები და წესები იქ, სადაც სრული გადარჩევა შეუძლებელია</item>

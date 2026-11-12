@@ -1,7 +1,7 @@
 ---
 title: Portées MCP dans Claude Code : locale, projet et utilisateur — où vit un serveur et qui le voit
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Les trois portées des serveurs MCP dans Claude Code : locale, projet et utilisateur. Où vit la configuration, qui la voit, ce qui l'emporte quand les noms entrent en collision, comment partager des serveurs avec une équipe et garder les secrets hors des commits.
 tags: IA, agents, MCP, Claude Code, équipe, harness
 category: harness
@@ -58,7 +58,7 @@ Liste des serveurs : `claude mcp list` ; détails : `claude mcp get <name>` ; su
   <b-why>Si un serveur du même nom existe à plusieurs endroits, l'entrée de la couche la plus haute est utilisée en entier.</b-why>
   <iso-art name="mcp-scopes/priority-layers"></iso-art>
   <b-finding>
-    <ex>La portée locale l'emporte sur projet et utilisateur, projet l'emporte sur utilisateur, et les plugins, les connecteurs claude.ai et le MCP géré se situent en dessous.</ex>
+    <ex>Les serveurs fournis par l’organisation (MCP géré) passent avant tout. Ensuite, la portée locale l’emporte sur projet et utilisateur, et projet l’emporte sur utilisateur. Les plugins et les connecteurs claude.ai se situent en dessous et comptent comme doublon s’ils pointent vers la même adresse.</ex>
     <gen>Une entrée personnelle remplace en bloc une entrée partagée du même nom : les champs des deux entrées ne sont pas fusionnés.</gen>
     <do k="Que faire">Donnez des noms différents aux serveurs personnels pour qu'ils ne remplacent pas les serveurs partagés.</do>
   </b-finding>

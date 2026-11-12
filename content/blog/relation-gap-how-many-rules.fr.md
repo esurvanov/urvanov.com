@@ -1,7 +1,7 @@
 ---
 title: Combien de règles faut-il à un jeu : le jeu « pas et montée » en demande deux, le comptable n'a besoin que d'une entrée — l'écart de relations
 date: 2026-11-02
-updated: 2026-11-08
+updated: 2026-11-13
 description: Comment compter honnêtement et vite les règles d'un jeu, et si les deux réponses peuvent différer. Lecture pas à pas de l'article de Bartholdi, Bridson, Mikhailov et Nicholson sur l'écart de relations (arXiv 2610.23637) : un jeu à deux mouvements où le joueur a besoin de deux règles et le comptable d'une seule entrée, avec schémas, formules et calculs.
 tags: recherche, mathématiques, théorie des groupes, topologie, IA en mathématiques
 category: research
@@ -329,8 +329,6 @@ Un jeu à deux mouvements, un pas et une montée, demande deux règles si on les
 <b-chapter id="next" title="Pour aller plus loin">
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2610.23637" k="Article" t="arXiv 2610.23637" ext>Two-generator presentations with a relation gap</item>
-    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="Source du film" t="papers/2610.23637-relation-gap" ext>Fiche, narration, scènes et scénario du film sur GitHub</item>
-    <item href="https://github.com/esurvanov/awesome-papers" k="Dépôt" t="awesome-papers" ext>Des films sur des articles scientifiques en termes simples : code, règles, vérifications</item>
     <item href="https://youtu.be/yPvbfDa_GCk" k="Vidéo" t="Présentation sur YouTube" ext>La même histoire en 7,5 minutes, avec la carte du jeu et les formules</item>
     <item href="/blog/longest-ring-arrangement/" k="Le même graphe de Cayley" t="Anneau de boules">Une carte des mouvements et l'arrangement le plus emmêlé</item>
     <item href="/blog/rubik-cube-neural-network/" k="Le même graphe de Cayley" t="Rubik's cube">Des mouvements et des règles là où la force brute est impossible</item>

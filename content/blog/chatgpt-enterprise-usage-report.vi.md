@@ -1,7 +1,7 @@
 ---
 title: Báo cáo sử dụng ChatGPT Enterprise trong công ty: ai dùng, dùng để làm gì và nên mua công cụ AI nào tiếp theo
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cách biết nhân viên dùng ChatGPT Enterprise ra sao: năm bản xuất từ bảng quản trị cho ra mức độ áp dụng, độ đồng đều giữa các nhóm, công cụ chính, bản đồ tác vụ, kiểm tra dữ liệu và danh sách người cần phỏng vấn.
 tags: AI, nghiên cứu, phân tích
 category: research
@@ -354,13 +354,6 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
     <item t="Tính mức độ áp dụng">Ít nhất một lần / thường xuyên / hằng tuần, người chỉ làm việc qua Codex được đếm riêng</item>
     <item t="Lập danh sách người và đặt lịch phỏng vấn">Cách chọn những người này có trong bài “Phỏng vấn ai”</item>
   </b-checklist>
-  <b-sublabel top="22">Câu hỏi thường gặp</b-sublabel>
-  <b-qa>
-    <q t="Bảng quản trị ChatGPT Enterprise cho thấy gì">Năm mục: người dùng, bảng xếp hạng, dự án, tổng quan và tác vụ. Từ đó có mức độ áp dụng, độ đồng đều giữa các nhóm, công cụ chính, bản chất tác vụ và việc đối chiếu với dữ liệu gốc.</q>
-    <q t="Cách xuất dữ liệu từ bảng quản trị">Bảng quản trị có API, nhưng chúng chỉ phủ một phần dữ liệu: phân tích Codex, chi phí theo credit và nhật ký hội thoại phục vụ tuân thủ. Các bản xuất về người dùng, dự án, skill và bảng xếp hạng theo từng sản phẩm dễ lấy hơn qua giao diện, và việc xuất có thể giao cho Claude in Chrome.</q>
-    <q t="Cách biết có cần giấy phép mới hay không">Mức độ áp dụng cho biết bao nhiêu người dùng công cụ ít nhất một lần, thường xuyên và hằng tuần. Nó quyết định nên đào tạo nhóm nào và có nên mua thêm giấy phép ngay không.</q>
-    <q t="Cách chọn người để phỏng vấn">Người được chọn cho từng hướng đã tìm ra: ở ví dụ, danh sách cuối cùng là 16 người trong 340. Người dùng công cụ khác và những người đã bỏ được thêm theo quy tắc trong bài <a href="/blog/who-to-interview-before-buying-ai-tools/">“Phỏng vấn ai”</a>.</q>
-  </b-qa>
 </b-chapter>
 <b-chapter id="faq" icon="chat" title="Câu hỏi thường gặp">
   <b-faq-cards>

@@ -1,7 +1,7 @@
 ---
 title: What are AGENTS.md and CLAUDE.md and how they differ from spec.md: an example file and where to keep specs, rules and skills
 date: 2026-09-28
-updated: 2026-11-11
+updated: 2026-11-13
 description: AGENTS.md and CLAUDE.md give an agent rules for the whole project, while spec.md describes one task. An example file and what goes where: specs, the project bible, rules and skills. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.
 tags: AI, Claude Code, CLAUDE.md, harness, specs, skills
 category: specs
@@ -49,7 +49,7 @@ AGENTS.md and CLAUDE.md are files in the project root with standing instructions
     <step t="Tasks">steps</step>
     <step t="Implement">code step by step</step>
   </b-seq-row>
-  <b-cap>Main steps of GitHub Spec Kit<b-proof href="https://github.com/github/spec-kit" quote="GitHub Spec Kit: constitution создаётся один раз на проект — «Create principles focused on code quality, testing, and maintainability». Пересказ — github.com/github/spec-kit"/>. How to split a large spec into parts: <a href="/en/blog/specs-by-aggregates/">Specs by aggregates</a></b-cap>
+  <b-cap>Main steps of GitHub Spec Kit<b-proof href="https://github.com/github/spec-kit" quote="GitHub Spec Kit: the constitution is created once per project — «Create principles focused on code quality, testing, and maintainability». Paraphrase — github.com/github/spec-kit"/>. How to split a large spec into parts: <a href="/en/blog/specs-by-aggregates/">Specs by aggregates</a></b-cap>
   <b-finding>
     <ex>Spec Kit takes a task from project principles through the spec and plan to steps and code.</ex>
     <gen>Requirements are written before the code, and the review checks the result against that text. How a spec fits into the harness is covered in <a href="/en/blog/harness-driven-development/#spec">HDD and specs</a>.</gen>
@@ -68,7 +68,7 @@ AGENTS.md and CLAUDE.md are files in the project root with standing instructions
   </b-file-grid>
   <b-finding>
     <ex>Six Memory Bank files: from the product goal to current progress.</ex>
-    <gen>The bible answers the questions otherwise asked in every new chat: what the product is, which decisions were made, what is in progress. The current-context file changes most often<b-proof href="https://docs.cline.bot/prompting/cline-memory-bank" quote="Cline: activeContext.md — текущий фокус, последние изменения и следующие шаги, обновляется чаще остальных. Пересказ — docs.cline.bot/prompting/cline-memory-bank"/>.</gen>
+    <gen>The bible answers the questions otherwise asked in every new chat: what the product is, which decisions were made, what is in progress. The current-context file changes most often<b-proof href="https://docs.cline.bot/prompting/cline-memory-bank" quote="Cline: activeContext.md holds the current focus, recent changes and next steps, and is updated more often than the other files. Paraphrase — docs.cline.bot/prompting/cline-memory-bank"/>.</gen>
     <do>Start with one file: product goal, users, key terms and recent decisions with dates.</do>
   </b-finding>
 </b-chapter>
@@ -77,7 +77,7 @@ AGENTS.md and CLAUDE.md are files in the project root with standing instructions
   <b-io justify>
     <item k="CLAUDE.md" mono>Claude Code, path-scoped rules in <code>.claude/rules/</code><b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: «Rules can also be scoped to specific file paths, so they only load into context when Claude works with matching files» — code.claude.com/docs/en/memory"/></item>
     <item k="AGENTS.md" mono>“A README for agents”: Codex, Cursor, Gemini CLI, Copilot and others<b-proof href="https://agents.md/" quote="agents.md: «Think of AGENTS.md as a README for agents: a dedicated, predictable place to provide the context and instructions to help AI coding agents work on your project» — agents.md"/></item>
-    <item k=".cursor/rules" mono>Cursor, four ways to apply<b-proof href="https://cursor.com/docs/context/rules" quote="Cursor: четыре режима — Always Apply, Apply Intelligently, Apply to Specific Files, Apply Manually — cursor.com/docs/context/rules"/></item>
+    <item k=".cursor/rules" mono>Cursor, four ways to apply<b-proof href="https://cursor.com/docs/context/rules" quote="Cursor: four modes — Always Apply, Apply Intelligently, Apply to Specific Files, Apply Manually — cursor.com/docs/context/rules"/></item>
   </b-io>
   <b-why align="left">An AGENTS.md example for a web project. The file holds only what the agent cannot learn from the code: commands, style and prohibitions. CLAUDE.md for Claude Code works the same way.</b-why>
   <b-codebox title="AGENTS.md example">

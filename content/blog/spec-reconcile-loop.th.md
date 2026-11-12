@@ -1,7 +1,7 @@
 ---
 title: วงจร reconcile สำหรับ spec: เหมือน Kubernetes โดยให้ spec เป็นสถานะที่ต้องการและโค้ดเป็นสถานะจริง
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: การพัฒนาโดยยึดข้อกำหนดด้วยวงจร reconcile: ใครเปลี่ยนสถานะที่ต้องการ ใครทำให้โค้ดตรงตามนั้น ทำไมเทสต์ที่ผ่านทั้งหมดยังไม่ได้แปลว่า "ถูกต้อง" และเอเจนต์ต้องการความสามารถหกอย่างใดบ้างจากสภาพแวดล้อมเพื่อปิดวงจร
 tags: AI, การพัฒนาโดยยึดข้อกำหนด, spec, Kubernetes, harness
 category: specs
@@ -112,6 +112,7 @@ toc: k8s=เหมือน Kubernetes | sensors=ขีดจำกัดขอ�
     <item href="/blog/specs-by-aggregates/" k="สถานะที่ต้องการ" t="ข้อกำหนดแบ่งตาม aggregate">พจนานุกรม ข้อกำหนดแบบ RFC และ context</item>
     <item href="/blog/harness-driven-development/" k="วงจรความผิดพลาด" t="Harness-Driven Development">ความผิดพลาดของเอเจนต์กลายเป็นกฎได้อย่างไร</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="สภาพแวดล้อม" t="เปรียบเทียบ harness">เอเจนต์ทำงานที่ไหนและเห็นอะไร</item>
+    <item href="/blog/openspec/" k="Spec" t="วิธีติดตั้งและใช้คำสั่ง OpenSpec">spec และการเปลี่ยนแปลงในไฟล์ข้างโค้ด</item>
   </b-links>
 </b-chapter>
 <b-footer compact>ตัวอย่างการจองสมมติขึ้น ศัพท์และแนวทางอ้างอิงแหล่งที่มาที่ลิงก์ไว้ใต้แผนภาพ</b-footer>

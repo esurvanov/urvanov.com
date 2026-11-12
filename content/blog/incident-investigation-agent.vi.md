@@ -1,7 +1,7 @@
 ---
 title: Điều tra sự cố cùng tác nhân AI: lỗi Sentry và chỉ số Grafana trong một bức tranh qua MCP
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cách điều tra sự cố cùng tác nhân AI: kết nối Sentry và Grafana qua MCP, để nó đối chiếu lỗi, chỉ số và thời điểm phát hành, giới hạn quyền và kiểm chứng giả thuyết.
 tags: AI, tác nhân, MCP, Sentry, Grafana, sự cố, harness
 category: harness
@@ -60,7 +60,7 @@ Khi có sự cố, con người nhảy qua lại giữa Sentry, Grafana và chat
 <b-chapter id="timeline" icon="lines" title="Tác nhân đối chiếu gì">
   <iso-art name="incident-investigation-agent/event-timeline"></iso-art>
   <b-finding>
-    <ex>Bản phát hành, đỉnh lỗi và cảnh báo nằm trên cùng một dòng thời gian, và thấy được cái gì xảy ra trước.</ex>
+    <ex>Bản phát hành lên [production](/materials/glossary/prod/), đỉnh lỗi và cảnh báo nằm trên cùng một dòng thời gian, và thấy được cái gì xảy ra trước.</ex>
     <gen>Trùng khớp về thời gian cho ra một giả thuyết và không chứng minh nguyên nhân: việc kiểm tra vẫn thuộc về con người.</gen>
     <do k="Việc cần làm">Yêu cầu kèm liên kết tới biểu đồ hoặc sự kiện với mỗi kết luận.</do>
   </b-finding>

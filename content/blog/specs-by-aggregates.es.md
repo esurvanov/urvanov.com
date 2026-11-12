@@ -1,7 +1,7 @@
 ---
 title: Cómo organizar las specs por agregados: requisitos RFC y bounded contexts en lugar de una spec por funcionalidad
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Desarrollo guiado por especificaciones sin proliferación de specs: cómo mantener las specs en un único diccionario de agregados para que no se multipliquen con cada funcionalidad: niveles de requisitos, la ficha del agregado y los límites de los contextos.
 tags: IA, desarrollo guiado por especificaciones, specs, DDD, agentes
 category: specs
@@ -114,6 +114,7 @@ Las specs por agregados son una entrada por cada concepto del dominio, como una 
     <item href="/blog/specs-rules-skills/" k="Contexto" t="Specs, biblia, reglas y skills">qué sabe el agente del proyecto y dónde vive</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Entorno" t="Comparación de harnesses">dónde trabaja el agente y qué ve</item>
     <item href="/blog/agent-checkpoint/" k="Comprobaciones" t="Dónde comprobar el trabajo de un agente de IA">el agregado como punto de control</item>
+    <item href="/blog/openspec/" k="Specs" t="Cómo instalar y usar OpenSpec">specs y cambios en archivos junto al código</item>
   </b-links>
 </b-chapter>
 <b-footer compact>El ejemplo de la reserva es inventado. Los términos y enfoques siguen las fuentes enlazadas bajo los diagramas.</b-footer>

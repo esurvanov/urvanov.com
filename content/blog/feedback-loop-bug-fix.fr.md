@@ -1,7 +1,7 @@
 ---
 title: Boucle de retour courte pour les bugs : d’un bouton « Signaler un bug » au correctif avec un agent IA
 date: 2026-10-20
-updated: 2026-11-08
+updated: 2026-11-13
 description: Corriger les bugs plus vite sans téléphone arabe : les employés signalent depuis l’application, le contexte est collecté pour eux, un agent IA trouve la cause, une personne valide.
 tags: IA, agents, bugs, retour utilisateur, MTTR, MCP, Claude Code, harness
 category: harness
@@ -63,7 +63,7 @@ Une boucle de retour courte fonctionne ainsi : un employé envoie un bug avec un
 </b-chapter>
 
 <b-chapter id="agent" icon="bot" title="Agent et humain">
-  <b-why align="left">L’agent fait l’analyse, l’humain prend les décisions. L’agent prend chaque rapport séparément, l’examine et rapporte une synthèse : ce qui est visible, la cause probable avec l’endroit dans le code, un plan et les risques. Il ne modifie ni code ni statuts. L’humain valide le plan. Ensuite l’agent fait le correctif dans une branche à part, et l’humain fusionne la modification et la met en production. La phrase encadrée est une demande toute prête pour l’agent.</b-why>
+  <b-why align="left">L’agent fait l’analyse, l’humain prend les décisions. L’agent prend chaque rapport séparément, l’examine et rapporte une synthèse : ce qui est visible, la cause probable avec l’endroit dans le code, un plan et les risques. Il ne modifie ni code ni statuts. L’humain valide le plan. Ensuite l’agent fait le correctif dans une branche à part, et l’humain fusionne la modification et la met en [production](/materials/glossary/prod/). La phrase encadrée est une demande toute prête pour l’agent.</b-why>
   <b-steps>
     <step t="L’agent prend un rapport">chaque rapport va à son propre agent, sans hypothèses partagées</step>
     <step t="Examine et rapporte" hl>ce qui est visible, la cause probable avec l’endroit dans le code, un plan, les risques, les questions ; ne touche ni au code ni aux statuts</step>
@@ -111,7 +111,7 @@ Une boucle de retour courte fonctionne ainsi : un employé envoie un bug avec un
   <b-metric-line value="23 sur 25">rapports clos dans le tracker intégré d’une application en production</b-metric-line>
   <b-finding>
     <ex>Tous les cas partagent un même geste : le contexte est collecté avant qu’un humain s’assoie devant le bug.</ex>
-    <gen>Un temps de correction plus court (MTTR dans les métriques DORA) vient de la collecte du contexte et d’une chaîne courte de personnes<b-proof href="https://www.wix.engineering/post/from-weeks-to-hours-inside-wix-s-autonomous-bug-fixing-system" quote="Wix Engineering: From weeks to hours — inside Wix’s autonomous bug-fixing system"/>.</gen>
+    <gen>Un délai plus court entre le rapport et le correctif vient de la collecte du contexte et d’une chaîne courte de personnes<b-proof href="https://www.wix.engineering/post/from-weeks-to-hours-inside-wix-s-autonomous-bug-fixing-system" quote="Wix Engineering: From weeks to hours — inside Wix’s autonomous bug-fixing system"/>.</gen>
     <do>Mesurez dès maintenant le temps entre le rapport et la mise en production, pour avoir de quoi comparer.</do>
   </b-finding>
 </b-chapter>

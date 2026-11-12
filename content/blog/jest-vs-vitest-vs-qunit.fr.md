@@ -1,7 +1,7 @@
 ---
 title: Vitest ou Jest : lequel choisir pour un projet JavaScript, et quand QUnit suffit
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-13
 description: Vitest ou Jest : configuration, lieu d'exécution des tests, écriture des vérifications. Quand choisir Vitest avec Vite, garder Jest ou prendre QUnit dans le navigateur. Tableau et FAQ.
 tags: IA, tests, JavaScript, Jest, Vitest, QUnit, Vite, Jest vs Vitest, automatisation des tests
 category: specs
@@ -42,7 +42,7 @@ Cet article est né d'un autre, consacré aux [modèles formels en Quint](/blog/
 <b-chapter id="qunit" icon="workflow" title="QUnit : quand il faut des tests directement dans le navigateur">
   <b-art names="jest-vs-vitest-vs-qunit/qunit-env" wide/>
     <b-why align="left">[QUnit](/materials/glossary/qunit/) se décrit comme un framework de test puissant et simple à utiliser. Il n'exige aucune configuration pour Node.js, et une configuration minimale suffit pour le navigateur<b-proof href="https://qunitjs.com/" quote="Zero configuration and setup for any Node.js project"/>. Il fonctionne partout où il y a du JavaScript : dans les navigateurs, dans Node.js, dans le moteur SpiderMonkey et dans un thread d'arrière-plan d'une page<b-proof href="https://qunitjs.com/" quote="QUnit can run anywhere; web browsers, Node, SpiderMonkey, even in a Web Worker!"/>. Jest et Vitest, eux, s'exécutent le plus souvent dans Node.js.</b-why>
-  <b-why align="left">Son style est propre. Les tests apparentés se regroupent avec `QUnit.module`, un test se décrit avec `QUnit.test`, et la réponse se compare via `assert`. Pour les tests qui touchent une page, il existe une fixture qui remet la page dans son état initial après chaque test, ainsi qu'une vérification distincte de l'ordre des appels pour les événements et les réponses différées. QUnit peut être étendu selon les besoins : assertions, exécuteurs et rapports personnalisés. Il prend aussi en charge les anciens navigateurs : la version 2 fonctionne avec Internet Explorer 9 et suivants<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/>.</b-why>
+  <b-why align="left">Son style est propre. Les tests apparentés se regroupent avec `QUnit.module`, un test se décrit avec `QUnit.test`, et la réponse se compare via `assert`. Pour les tests qui touchent une page, il existe une fixture qui remet la page dans son état initial après chaque test, ainsi qu'une vérification distincte de l'ordre des appels pour les événements et les réponses différées. QUnit peut être étendu selon les besoins : assertions, exécuteurs et rapports personnalisés. La version actuelle, la 3, fonctionne dans les navigateurs modernes et dans Node.js 18 et suivants ; Internet Explorer 9–11 n'était pris en charge que par la version 2<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/>.</b-why>
   <b-finding>
     <ex>QUnit convient là où les tests doivent tourner directement dans le navigateur et sans build.</ex>
     <gen>Pour les projets modernes avec build, où mocks, snapshots et couverture sont nécessaires d'emblée, on prend plus souvent Jest ou Vitest.</gen>
@@ -69,7 +69,7 @@ Cet article est né d'un autre, consacré aux [modèles formels en Quint](/blog/
   <b-art names="jest-vs-vitest-vs-qunit/choose" wide/>
   <b-why align="left">Le choix dépend du projet. Le projet est construit avec Vite : prenez Vitest, la configuration est déjà là. Jest est déjà dans le projet et tout fonctionne : gardez-le. Il vous faut des vérifications directement dans le navigateur sans build : prenez QUnit. Passer de Jest à Vitest coûte en général peu, un mauvais choix ne sera donc pas irréversible. Pour vérifier des règles et l'ordre d'événements plutôt que des fonctions, voir les articles [Quint, QUnit et TLA+](/blog/quint-vs-tests-and-tla/) et [les modèles Quint](/blog/quint-models-find-races/).</b-why>
   <b-finding>
-    <ex>Trois frameworks règlent une même tâche, et c'est l'environnement qui tranche : un bundler, un navigateur ou un jeu de tests existant.</ex>
+    <ex>Les trois frameworks font le même travail, et c'est l'environnement qui tranche : un bundler, un navigateur ou un jeu de tests existant.</ex>
     <gen>Quel que soit le choix, les tests vérifient les scénarios donnés, tandis que les règles qui se brisent dans un ordre d'événements particulier sont attrapées par un modèle.</gen>
     <do>Choisissez un framework selon l'environnement du projet et ajoutez une vérification des tests eux-mêmes : le [test de mutation](/materials/glossary/mutation-testing/) montre si les tests remarquent seulement un défaut.</do>
   </b-finding>

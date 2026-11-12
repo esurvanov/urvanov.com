@@ -1,7 +1,7 @@
 ---
 title: Where to check an AI agent’s work: at the aggregate boundary, because no one can check every program (Rice’s theorem)
 date: 2026-11-06
-updated: 2026-11-07
+updated: 2026-11-13
 description: Why no check can verify any agent code against any rule, which three ways make a check finite, how an aggregate boundary from event storming becomes a checkpoint, how checkability sets the size of a bounded context, and why the first frame must be cheap to move.
 tags: AI, agents, DDD, aggregate, bounded context, event storming, Rice's theorem, Quint, model checking
 category: specs
@@ -105,7 +105,7 @@ Put the check on an AI agent's work at the aggregate boundary: where commands co
       a == b or a.room != b.room or a.end <= b.start or b.end <= a.start))
   </b-codebox>
   <b-why align="left">The program then tries every sequence of actions for a small world: 3 rooms, up to 5 bookings. If the rule breaks anywhere, it prints the chain of steps. For example: two clients book room 2 for 10:00–11:00 at the same time, both “is it free” checks pass before either write, and the database ends up with two bookings for the same slot. That chain is the finding: the design error shows up before the agent writes any code. A small world is enough because such errors appear with just two or three bookings.</b-why>
-  <b-why align="left"><b-icon name="list-check"/> **Narrow the language: the rule in the database and a single writer.** The rule moves to where the database itself holds it, not the agent's code. In PostgreSQL this is one constraint on the bookings table: the database refuses to save a booking whose time overlaps another booking of the same room.</b-why>
+  <b-why align="left"><b-icon name="list-check"/> **Narrow the language: the rule in the database and a single writer.** The rule moves to where the database itself holds it. In PostgreSQL this is one constraint on the bookings table: the database refuses to save a booking whose time overlaps another booking of the same room.</b-why>
   <b-codebox title="A PostgreSQL constraint">
     CREATE EXTENSION IF NOT EXISTS btree_gist;
     ALTER TABLE bookings ADD CONSTRAINT no_overlap
@@ -116,12 +116,12 @@ Put the check on an AI agent's work at the aggregate boundary: where commands co
     grep -rl "INSERT INTO bookings" src | grep -v src/booking/repository.ts
   </b-codebox>
   <b-why align="left">The question “can the agent's code create overlapping bookings” has turned into two questions about text: is the constraint in the database schema, and is there no write around it. Both get an exact answer.</b-why>
-  <b-why align="left"><b-icon name="help-circle"/> **Allow “don't know”: three verdicts on an agent's edit.** The check on an agent's edit is built from the previous two and returns one of three answers. “Proved”: the Quint model passed, the database constraint is in place, the search found no bypass writes. “Broken”: the search found that the agent added a write to the bookings table from the reports module. “Not sure”: the agent builds the database query from strings on the fly, and a text search can't tell which table it writes to. Then the edit gets a “needs a person” label and a developer reviews it. The person spends time only on the third case.</b-why>
+  <b-why align="left"><b-icon name="help-circle"/> **Allow “don't know”: three verdicts on an agent's edit.** The check on an agent's edit is built from the previous two and returns one of three answers. “Holds”: the Quint model passed, the database constraint is in place, the search found no bypass writes. “Broken”: the search found that the agent added a write to the bookings table from the reports module. “Can't tell”: the agent builds the database query from strings on the fly, and a text search can't tell which table it writes to. Then the edit gets a “needs a person” label and a developer reviews it. The person spends time only on the third case.</b-why>
   <b-why align="left">Each of the three answers is exact only within its limits. The search proves the rule holds in a model with 3 rooms and 5 bookings, not in the production database with thousands of bookings. The code search proves there is no write around the rule, not that the database constraint itself is written correctly. A “holds” answer is exact, but some edits still go to a person. So the ways are used together: the model checks the design before code, the constraint and the search check the code itself, and a person looks at whatever is left with a label.</b-why>
   <b-why align="left">There is also a fourth option, the one most common in practice: always answer, but sometimes be wrong. Example tests and code review by another model work this way. It is an acceptable choice too, but a deliberate one: fine where an error is cheap, not for money and access. A similar fork is known from the CAP theorem about distributed systems: during a partition a server either waits or answers from a stale copy. They share one thing — while an event hasn't happened yet, you can't tell whether it will happen later or never, however long you wait — but the reasons differ; details in [“Rice's theorem in plain words”](/blog/rice-theorem-explained/#cap).</b-why>
   <b-finding>
     <ex>The rule “bookings never overlap”: a Quint model tried every order of commands for 3 rooms, a database constraint forbids overlap, and a linter, a program that checks code text against set rules, makes sure only one module writes to the bookings table.</ex>
-    <gen>“Not sure” is an honest check result. It shows where the frame ends and responsibility is back with a person, and so it sets which risk is accepted.</gen>
+    <gen>“Can't tell” is an honest check result. It shows where the frame ends and responsibility is back with a person, and so it sets which risk is accepted.</gen>
     <do>For each rule, mark which of the three ways holds it. A rule with no mark is only checked by example tests.</do>
   </b-finding>
 </b-chapter>
@@ -175,7 +175,7 @@ Put the check on an AI agent's work at the aggregate boundary: where commands co
   </b-codebox>
   <b-why align="left">**How to split if the search didn't finish.** For each rule, write down which data it touches. Rules with no data in common go into different parts: “bookings never overlap” touches only bookings, “an invoice is never paid twice” touches only invoices. Between the parts, leave events such as “BookingCreated”. Then check each part with the same five steps.</b-why>
   <b-art names="agent-checkpoint/size" wide/>
-  <b-cap>If a context's model answers “not sure”, the context is split, and only events remain between the parts.</b-cap>
+  <b-cap>If a context's model answers “can't tell”, the context is split, and only events remain between the parts.</b-cap>
   <b-why align="left">How to use this sign: write the context's rules as a Quint model, set small numbers and run the search. The result falls into one of the table rows, and the last column says what to do next.</b-why>
   <b-table>
 

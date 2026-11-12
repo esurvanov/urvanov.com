@@ -1,7 +1,7 @@
 ---
 title: How to run and analyze interviews about AI use: a 30-minute script, an analysis prompt and an Airtable table
 date: 2026-09-28
-updated: 2026-11-07
+updated: 2026-11-13
 description: A 30-minute call script, rules for staying on topic, a short company-wide questionnaire, interview analysis with ChatGPT or an agent using a ready prompt, and a said-versus-measured check against the report data.
 tags: AI, custdev, interviews
 category: research
@@ -88,7 +88,7 @@ An interview about working with AI takes 30 minutes and centres on the last real
   </b-share-bar>
   <b-cap>Minutes per block</b-cap>
   <b-call-script>
-    <step color="c-none" ink="ink" t="Intro" q="&quot;I'm looking at how people in the company actually get their work tasks done. This isn't an evaluation of you. Both successful and unsuccessful cases are equally useful to me. A note-taking assistant is with me: only we see the transcript, and answers go into the report without names. May I turn it on?&quot;"></step>
+    <step color="c-none" ink="ink" t="Intro" q="&quot;I'm looking at how people in the company actually get their work tasks done. This isn't an evaluation of you. Both successful and unsuccessful cases are equally useful to me. A note-taking assistant is with me: only the research team sees the transcript, and answers go into the report without names. May I turn it on?&quot;"></step>
     <step color="c-light" t="Role and context" q='"What do you spend most of your week on?"'>Which tasks repeat · where you look for information and draft things</step>
     <step color="c-chat" t="The last work task" q='"Think of the last work task that took you noticeable time. What did you need to get?"'>What means you had · what you chose and why · how you got to the result</step>
     <step color="c-proj" t="Result and effort" q='"What did you end up with, and how much effort did it take?"'>What you used as is · what you finished yourself · what constraints there were: data, access, security</step>
@@ -162,7 +162,7 @@ An interview about working with AI takes 30 minutes and centres on the last real
     <row>Ben Ortiz |  |  | Codex only | <b-select-pill tone="cyan">Awaiting reply</b-select-pill> |  | <b-select-pill tone="purple">Codex only</b-select-pill> |  | 3.2M | 64 | 22.09</row>
     <row>Pavel Novak | [27.09 10:15] Host: Describe the last task… | <b-select-pill tone="purple">text</b-select-pill> | inactive | <b-select-pill tone="green">Done</b-select-pill> | <b-select-pill tone="cyan">regularly</b-select-pill> | <b-select-pill tone="red">doesn't use</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
     <row>Sara Quinn |  |  | inactive | <b-select-pill tone="red">Declined</b-select-pill> |  | <b-select-pill tone="red">doesn't use</b-select-pill> |  | 0 | 0 | —</row>
-    <row>Nadia Rahimi | Host [00:00]: What did you do in ChatGPT yesterday… | <b-select-pill tone="cyan">voice</b-select-pill> | other tools | <b-select-pill tone="green">Done</b-select-pill> | <b-select-pill tone="yellow">occasionally</b-select-pill> | <b-select-pill tone="yellow">occasionally</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
+    <row>Nadia Rahimi | Host [00:00]: Think back to the last task that took… | <b-select-pill tone="cyan">voice</b-select-pill> | other tools | <b-select-pill tone="green">Done</b-select-pill> | <b-select-pill tone="yellow">occasionally</b-select-pill> | <b-select-pill tone="yellow">occasionally</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
     <row>Elif Demir |  |  | projects | <b-select-pill tone="gray">In progress</b-select-pill> |  | <b-select-pill tone="green">weekly</b-select-pill> |  | 1.8M | 41 | 27.09</row>
   </b-airtable-grid>
   <b-cap>ChatGPT fills in the orange field from the conversation in Notes. "Per report", "Tokens", "$" and "Activity" come from the <a href="/en/blog/chatgpt-enterprise-usage-report/">ChatGPT Enterprise usage report</a>. The "≠" field is a formula that compares the two frequencies.</b-cap>

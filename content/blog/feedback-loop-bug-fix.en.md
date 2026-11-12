@@ -1,7 +1,7 @@
 ---
 title: Short bug feedback loop: from a “Report a bug” button to a fix with an AI agent
 date: 2026-10-20
-updated: 2026-11-07
+updated: 2026-11-13
 description: How to fix bugs faster with no game of telephone: staff report from the app, context is collected for them, an AI agent finds the cause, a human approves.
 tags: AI, agents, bugs, feedback, MTTR, MCP, Claude Code, harness
 category: harness
@@ -63,7 +63,7 @@ A short feedback loop works like this: an employee sends a bug with a button ins
 </b-chapter>
 
 <b-chapter id="agent" icon="bot" title="Agent and human">
-  <b-why align="left">The agent does the analysis, the human makes the decisions. The agent takes each report separately, investigates it and brings back a write-up: what is visible, the likely cause with the place in the code, a plan and risks. It changes no code and no statuses. The human approves the plan. Then the agent makes the fix in a separate branch, and the human merges the change and releases it. The boxed phrase is a ready-made request to the agent.</b-why>
+  <b-why align="left">The agent does the analysis, the human makes the decisions. The agent takes each report separately, investigates it and brings back a write-up: what is visible, the likely cause with the place in the code, a plan and risks. It changes no code and no statuses. The human approves the plan. Then the agent makes the fix in a separate branch, and the human merges the change and releases it to [production](/materials/glossary/prod/). The boxed phrase is a ready-made request to the agent.</b-why>
   <b-steps>
     <step t="Agent takes a report">each report goes to its own agent, with no shared guesses</step>
     <step t="Investigates and reports" hl>what is visible, the likely cause with the place in the code, a plan, risks, questions; touches no code and no statuses</step>
@@ -79,10 +79,10 @@ A short feedback loop works like this: an employee sends a bug with a button ins
   </b-finding>
 </b-chapter>
 
-<b-chapter id="modes" icon="scales" title="Two modes: on a button or automatic">
-  <b-why align="left">There are two modes. On a button, the developer starts the agent with one command, the agent finds the cause and a plan, and the human approves. In automatic mode, the system starts an agent on every report, and it writes the fix right away. The table compares the modes by speed and cost.</b-why>
+<b-chapter id="modes" icon="scales" title="Two modes: on demand or automatic">
+  <b-why align="left">There are two modes. On demand, the developer starts the agent with one command, the agent finds the cause and a plan, and the human approves. In automatic mode, the system starts an agent on every report, and it writes the fix right away. The table compares the modes by speed and cost.</b-why>
   <b-table>
-| | On a button | Automatic |
+| | On demand | Automatic |
 |---|---|---|
 | Who starts it | the developer, with one command | the system, as soon as a report arrives |
 | What the agent does | finds the cause and a plan | writes the fix right away |
@@ -92,7 +92,7 @@ A short feedback loop works like this: an employee sends a bug with a button ins
   </b-table>
   <b-finding>
     <ex>Abnormal AI makes both modes labels on a task: the first asks the agent to find the cause, the second to write the fix<b-proof href="https://abnormal.ai/blog/ai-agents-are-absorbing-the-first-pass-on-every-bug" quote="Abnormal AI: AI agents are absorbing the first pass on every bug"/>.</ex>
-    <gen>It is cheaper to start with the on-a-button mode: the developer filters out noise before the agent starts writing code.</gen>
+    <gen>It is cheaper to start with the on-demand mode: the developer filters out noise before the agent starts writing code.</gen>
     <do>Turn on automatic mode when the flow of reports is clean and duplicates are rare.</do>
   </b-finding>
 </b-chapter>
@@ -111,7 +111,7 @@ A short feedback loop works like this: an employee sends a bug with a button ins
   <b-metric-line value="23 of 25">reports closed in the built-in tracker of a working app</b-metric-line>
   <b-finding>
     <ex>All the cases share one move: context is collected before a human sits down with the bug.</ex>
-    <gen>Shorter time to fix (MTTR in DORA metrics) comes from collecting context and a short chain of people<b-proof href="https://www.wix.engineering/post/from-weeks-to-hours-inside-wix-s-autonomous-bug-fixing-system" quote="Wix Engineering: From weeks to hours — inside Wix’s autonomous bug-fixing system"/>.</gen>
+    <gen>Shorter time from report to fix comes from collecting context and a short chain of people<b-proof href="https://www.wix.engineering/post/from-weeks-to-hours-inside-wix-s-autonomous-bug-fixing-system" quote="Wix Engineering: From weeks to hours — inside Wix’s autonomous bug-fixing system"/>.</gen>
     <do>Measure the time from report to release now, so you have something to compare with.</do>
   </b-finding>
 </b-chapter>

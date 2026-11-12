@@ -1,7 +1,7 @@
 ---
 title: Cuántos agentes de IA se necesitan: el número de agentes crece con el número de bounded contexts
 date: 2026-10-10
-updated: 2026-11-08
+updated: 2026-11-13
 description: Un agente por bounded context: por qué hay tantos agentes como fronteras de significado, cómo escala, qué hay entre los agentes y por dónde empezar.
 tags: IA, agentes, bounded context, DDD, arquitectura, escalado, harness
 category: harness
@@ -55,7 +55,7 @@ toc: idea=Un agente por contexto | scale=Escalado | borders=Entre agentes | firs
   </b-lane>
   <b-finding>
     <ex>Empieza con dos contextos vecinos y un contrato entre ellos.</ex>
-    <gen>Un contexto, un agente, un contrato: así se prueba el esquema antes de extenderlo a todo el proyecto.</gen>
+    <gen>Dos contextos vecinos, un agente para cada uno y un contrato entre ellos: así se prueba el esquema antes de extenderlo a todo el proyecto.</gen>
     <do k="Qué hacer">Elige dos contextos donde las palabras se mezclan con más frecuencia y pon en marcha un agente para cada uno.</do>
   </b-finding>
 </b-chapter>
@@ -65,7 +65,7 @@ toc: idea=Un agente por contexto | scale=Escalado | borders=Entre agentes | firs
     <q t="¿Cuántos agentes de IA se necesitan?">Tantos como bounded contexts: cada frontera de significado tiene su propio agente.</q>
     <q t="¿Cómo escala esto?">El número de agentes crece linealmente con el número de contextos, mientras que la carga de cada uno se mantiene pareja.</q>
     <q t="¿Qué conecta a los agentes?">Un contrato en la frontera: los agentes no necesitan conocer el interior de otro contexto, y un error no se propaga.</q>
-    <q t="¿Por dónde se empieza?">Con un contexto, un agente y un contrato: así se prueba la configuración antes de extenderla a todo el proyecto.</q>
+    <q t="¿Por dónde se empieza?">Con dos contextos vecinos: un agente para cada uno y un contrato entre ellos: así se prueba la configuración antes de extenderla a todo el proyecto.</q>
   </b-faq-cards>
 </b-chapter>
 

@@ -1,7 +1,7 @@
 ---
 title: Qué es MCP para un agente de IA: qué problema resuelve y cómo delegar la configuración en el agente
 date: 2026-10-04
-updated: 2026-11-08
+updated: 2026-11-13
 unrelated: mcp-1c
 description: MCP conecta un agente con GitLab, Jira, Confluence y grabaciones de reuniones. Qué problema resuelve, cómo configurarlo en minutos y delegarlo en el propio agente, cómo ahorra tiempo y tokens y por qué el agente inventa menos.
 tags: IA, agentes, MCP, Jira, contexto, alucinaciones, tokens, harness
@@ -200,7 +200,7 @@ MCP conecta un agente de IA con los sistemas de trabajo, para que lea los hechos
 <b-why>Un mismo enfoque sirve para distintas tareas: el agente lee las fuentes y una persona comprueba el resultado.</b-why>
 <b-scene names="mcp-agent-access/three-cases"/>
 <b-table>
-<table><thead><tr><th>Caso</th><th>Fuentes</th><th>Qué hace el agente</th><th>Qué comprueba una persona</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, entorno, navegador</td><td>reproduce un bug, acota el camino, escribe un informe</td><td>los pasos a mano en el entorno</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Informes y analítica</a></td><td>base de datos, hojas, documentos</td><td>calcula con consultas, arma un resumen</td><td>una cifra por otro camino</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Incidentes</a></td><td>Sentry, Grafana</td><td>cruza errores, métricas y hora del release</td><td>la hipótesis contra gráficos y eventos</td></tr></tbody></table>
+<table><thead><tr><th>Caso</th><th>Fuentes</th><th>Qué hace el agente</th><th>Qué comprueba una persona</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, entorno, <a href="/blog/claude-in-chrome/">navegador</a></td><td>reproduce un bug, acota el camino, escribe un informe</td><td>los pasos a mano en el entorno</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Informes y analítica</a></td><td>base de datos, hojas, documentos</td><td>calcula con consultas, arma un resumen</td><td>una cifra por otro camino</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Incidentes</a></td><td>Sentry, Grafana</td><td>cruza errores, métricas y hora del release</td><td>la hipótesis contra gráficos y eventos</td></tr></tbody></table>
 </b-table>
 <b-why align="left">Cómo leer la tabla. Cada fila sigue el mismo orden: el agente lee las fuentes, hace el trabajo principal y trae un resultado, y una persona lo comprueba con una acción corta. En QA los pasos del informe se repiten a mano en el entorno. En analítica se recalcula una cifra por otro camino. En incidentes la hipótesis se compara con gráficos y eventos. Los detalles están en los artículos de los enlaces.</b-why>
 </b-chapter>

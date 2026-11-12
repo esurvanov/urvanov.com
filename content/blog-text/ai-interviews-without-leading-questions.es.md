@@ -66,7 +66,7 @@ Minutos por bloque
 
 Introducción
 
-«Estoy investigando cómo resuelve la gente de la empresa sus tareas de trabajo. No es una evaluación tuya. Los casos que salieron bien y los que no me sirven por igual. Me acompaña un asistente que toma notas: solo nosotros vemos la transcripción y las respuestas van al informe sin nombres. ¿Puedo activarlo?»
+«Estoy investigando cómo resuelve la gente de la empresa sus tareas de trabajo. No es una evaluación tuya. Los casos que salieron bien y los que no me sirven por igual. Me acompaña un asistente que toma notas: solo el equipo de investigación ve la transcripción y las respuestas van al informe sin nombres. ¿Puedo activarlo?»
 
 2
 
@@ -179,7 +179,7 @@ Una tabla: una fila por persona
 | 5 | Ben Ortiz |  |  | Solo Codex | Esperando respuesta |  | Solo Codex |  | 3.2M | 64 | 22.09 |
 | 6 | Pavel Novak | [27.09 10:15] Anfitrión: Describe la última tarea… | texto | inactivo | Hecho | con regularidad | no lo usa | ≠ | 0 | 0 | — |
 | 7 | Sara Quinn |  |  | inactivo | Rechazó |  | no lo usa |  | 0 | 0 | — |
-| 8 | Nadia Rahimi | Anfitrión [00:00]: ¿Qué hiciste ayer en ChatGPT… | voz | otras herramientas | Hecho | de vez en cuando | de vez en cuando | = | 0.3M | 6 | 20.09 |
+| 8 | Nadia Rahimi | Anfitrión [00:00]: Recuerda la última tarea que te llevó… | voz | otras herramientas | Hecho | de vez en cuando | de vez en cuando | = | 0.3M | 6 | 20.09 |
 | 9 | Elif Demir |  |  | proyectos | En curso |  | semanal |  | 1.8M | 41 | 27.09 |
 | 16 registros · 9 mostrados |  |  |  |  |  |  |  |  |  |  |  |
 

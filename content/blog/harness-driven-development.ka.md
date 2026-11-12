@@ -1,7 +1,7 @@
 ---
 title: Harness engineering პრაქტიკაში: როგორ ვაქციოთ AI აგენტის შეცდომები მისი გარემოს წესებად (HDD)
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: ციკლი „შეცდომა → წესი“, guides და სენსორები, შემოწმების სამი შრე, როგორ ერწყმის ეს სპეციფიკაციებს და ხუთი პირველი ნაბიჯი თქვენს პროექტში.
 tags: AI, Claude Code, harness engineering, harness, HDD, აგენტები
 category: harness
@@ -11,11 +11,11 @@ mentions: Harness engineering, Claude Code, AGENTS.md, CLAUDE.md, Spec-Driven De
 toc: loop=HDD-ის ციკლი | canons=განლაგება 3 × 3 | double=ორმაგი ციკლი | controls=Guides და სენსორები | layers=შემოწმების სამი შრე | shift=რაც ადრე, მით იაფი | human=სად არის ადამიანი მნიშვნელოვანი | spec=HDD და სპეციფიკაციები | start=საიდან დავიწყოთ | faq=კითხვები | next=დამატებით წასაკითხი
 ---
 
-**Harness engineering** არის AI აგენტის გარშემო გარემოს ჩამოყალიბება: ინსტრუქციები, ინსტრუმენტები, უფლებები და შემოწმებები. **Harness-Driven Development (HDD)** მასზე აგებული სამუშაო მეთოდია: აგენტის ყოველი შეცდომა ამ გარემოს წესად იქცევა.
+**Harness engineering** არის AI აგენტის გარშემო გარემოს ჩამოყალიბება: ინსტრუქციები, დაკავშირებული სისტემები, უფლებები და შემოწმებები. **Harness-Driven Development (HDD)** მასზე აგებული სამუშაო მეთოდია: აგენტის ყოველი შეცდომა ამ გარემოს წესად იქცევა. იწყებენ AGENTS.md ან CLAUDE.md ინსტრუქციების ფაილით და აგენტის შეცდომების ჟურნალით: კვირაში ერთხელ ჟურნალის ჩანაწერები წესებში, ტესტებში ან hook-ებში გადააქვთ.
 
 <b-post series="hdd">
 <b-chapter id="loop" icon="refresh-cw" title="HDD-ის ციკლი">
-  <b-why align="left">ციკლი ასე მუშაობს. აგენტი იღებს ამოცანას და გამოაქვს შედეგი. სენსორები (ტესტი, ლინტერი, რევიუ) შედეგს ამოწმებს. თუ ყველაფერი გადის, ამოცანა იხურება. თუ სენსორი შეცდომას პოულობს, ადამიანი შედეგს მხოლოდ არ ასწორებს, არამედ ცვლის აგენტის გარემოს, harness-ს: ამატებს სტრიქონს ინსტრუქციებში, ტესტს ან hook-ს. შემდეგი ამოცანა ამ წესით სრულდება და შეცდომა აღარ მეორდება.</b-why>
+  <b-why align="left">ციკლი ასე მუშაობს. აგენტი იღებს ამოცანას და გამოაქვს შედეგი. სენსორები (ტესტი, ლინტერი, რევიუ) შედეგს ამოწმებს. თუ ყველაფერი გადის, ამოცანა იხურება. თუ სენსორი შეცდომას პოულობს, ადამიანი ცვლის აგენტის გარემოს, harness-ს: ამატებს სტრიქონს ინსტრუქციებში, ტესტს ან hook-ს. შემდეგი ამოცანა ამ წესით სრულდება და შეცდომა აღარ მეორდება.</b-why>
   <b-hdd-scene name="harness-driven-development/loop" frame="loop"/>
   <b-cap>მიჩელ ჰაშიმოტოს პრინციპი: როცა აგენტი შეცდომას უშვებს, შეცვალეთ harness ისე, რომ ეს შეცდომა აღარ განმეორდეს <a href="https://www.faros.ai/blog/harness-engineering" target="_blank" rel="noopener">Faros</a></b-cap>
   <b-why>პრომპტი ერთ მოთხოვნას ასწორებს, კონტექსტი — იმას, რასაც მოდელი იცის, harness კი ყველა მომდევნო გაშვებას. მაგალითი: აგენტი კოდს ცვლის და ტესტებს არ უშვებს.</b-why>
@@ -81,7 +81,7 @@ toc: loop=HDD-ის ციკლი | canons=განლაგება 3 × 3
     <principle icon="shield-check" t="გარე შემოწმების გარეშე">გადააგდეთ, ჩანაწერით</principle>
   </b-hdd-principles>
   <b-cap>ციკლი საკუთარ თავზეც ვრცელდება: ყოველი გაშვება ნარჩენი რისკით მთავრდება და არასოდეს სტატუსით „მზადაა“.</b-cap>
-  <b-why align="left">წესების შეცვლა ყოველი საჩივრის შემდეგ სარისკოა: harness შემთხვევითი ცვლილებებით იზრდება. ამიტომ ციკლი ოთხ შემოწმებას იყენებს. თუ შესწორებები მხოლოდ ხვრელებს ხურავს და ახალს არაფერს წინასწარმეტყველებს, ისინი ერთი წესით იცვლება. თუ რამდენიმე საჩივარია, ჯერ შემოწმდება, აქვთ თუ არა საერთო მიზეზი. ახალი წესი მიიღება მხოლოდ თუ მასთან ერთად ძველი შემთხვევები კვლავ აიხსნება. წესი გარე შემოწმების გარეშე ტოვდება, მაგრამ ჩანაწერში წერია, რა და რატომ მოიხსნა. ბარათების ქვეშ წარწერა ნიშნავს, რომ ციკლი საკუთარ თავზეც ვრცელდება: გაშვება „მზადაა“-ს არ სვამს, არამედ ნარჩენი რისკით მთავრდება.</b-why>
+  <b-why align="left">წესების შეცვლა ყოველი საჩივრის შემდეგ სარისკოა: harness შემთხვევითი ცვლილებებით იზრდება. ამიტომ ციკლი ოთხ შემოწმებას იყენებს. თუ შესწორებები მხოლოდ ხვრელებს ხურავს და ახალს არაფერს წინასწარმეტყველებს, ისინი ერთი წესით იცვლება. თუ რამდენიმე საჩივარია, ჯერ შემოწმდება, აქვთ თუ არა საერთო მიზეზი. ახალი წესი მიიღება მხოლოდ თუ მასთან ერთად ძველი შემთხვევები კვლავ აიხსნება. წესი გარე შემოწმების გარეშე ტოვდება, მაგრამ ჩანაწერში წერია, რა და რატომ მოიხსნა. ბარათების ქვეშ წარწერა ნიშნავს, რომ ციკლი საკუთარ თავზეც ვრცელდება: გაშვება ნარჩენი რისკით მთავრდება.</b-why>
   <b-finding>
     <ex>Patch-ების სერია, საჩივრები, ახალი წესი და გარე შემოწმება ოთხი შემოწმებადი პრინციპია, რომლითაც ციკლი წყვეტს, მოქმედება გაასწოროს თუ წესები შეცვალოს.</ex>
     <gen>ერთმაგი ციკლი შედეგს ძველი წესების ფარგლებში ასწორებს. ორმაგი ციკლი თვით წესებს ცვლის და ამას შემოწმებადი პრინციპებით აკეთებს, ამიტომ harness სწავლობს შემთხვევითი ცვლილებებით დრიფტის გარეშე.</gen>
@@ -101,10 +101,10 @@ toc: loop=HDD-ის ციკლი | canons=განლაგება 3 × 3
     <cell>AGENTS.md · CLAUDE.md | skills | spec-ები</cell>
     <cell>AI რევიუ | LLM judge</cell>
   </b-hdd-matrix>
-  <b-cap>დაყოფა, როგორც აღწერილია <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler: Harness engineering</a>-ში</b-cap>
+  <b-cap>დაყოფა, როგორც აღწერილია <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a>-ში</b-cap>
   <b-finding>
     <ex>ოთხი უჯრა: guides გეზს აგენტის მუშაობამდე ადგენს, სენსორები გადახრებს შემდეგ იჭერს, თითოეული კი შეიძლება გამოთვლადი იყოს ან AI-ზე დაფუძნებული.</ex>
-    <gen>გამოთვლადი შემოწმებები წამებში მუშაობს და არ ცდება, ამიტომ გამოიყენეთ ისინი ყველგან, სადაც წესის ფორმალურად ჩაწერა შეიძლება. AI-ზე დაფუძნებული შემოწმებები მნიშვნელობისთვის შეინახეთ: სტილი, სიცხადე, განზრახვასთან შესაბამისობა.</gen>
+    <gen>გამოთვლადი შემოწმებები წამებში მუშაობს და საკუთარი წესის ფარგლებში არ ცდება, ამიტომ გამოიყენეთ ისინი ყველგან, სადაც წესის ფორმალურად ჩაწერა შეიძლება. AI-ზე დაფუძნებული შემოწმებები მნიშვნელობისთვის შეინახეთ: სტილი, სიცხადე, განზრახვასთან შესაბამისობა.</gen>
     <do>აგენტის ინსტრუქციების ყოველი წესისთვის იკითხეთ, შეუძლია თუ არა ტესტს ან ლინტერს მისი შემოწმება. თუ შეუძლია, იქ გადაიტანეთ.</do>
   </b-finding>
 </b-chapter>
@@ -116,7 +116,7 @@ toc: loop=HDD-ის ციკლი | canons=განლაგება 3 × 3
     <layer icon="modules" t="არქიტექტურა" value="55">იზრდება</layer>
     <layer icon="user-round" t="ქცევა" value="25" sw="1.8">ყველაზე რთული</layer>
   </b-hdd-layers>
-  <b-cap>შრეების სიმწიფე <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a>-ის შეფასებით</b-cap>
+  <b-cap>შრეების სიმწიფე <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a>-ის შეფასებით</b-cap>
   <b-finding>
     <ex>კოდის ხარისხი დღეს შესამოწმებლად ყველაზე ადვილია, პროდუქტის ქცევა კი ყველაზე რთული.</ex>
     <gen>ლინტერები და ფორმატერები პირველ შრეს თითქმის მაშინვე ფარავს. არქიტექტურა მოწმდება დამოკიდებულებების წესებით და სწრაფქმედების მოთხოვნებით. ქცევას ჯერ კიდევ კარგი სცენარული ტესტები და ადამიანის თვალი სჭირდება.</gen>
@@ -146,7 +146,7 @@ toc: loop=HDD-ის ციკლი | canons=განლაგება 3 × 3
     <side icon="sun" t="Harness" n="36">სტილი · ტიპები · ტესტები · საზღვრები</side>
     <side icon="user-round" t="ადამიანი" n="6" sw="1.8">არქიტექტურა · პროდუქტი · ახალი წესები</side>
   </b-hdd-split>
-  <b-cap>„კარგი harness ადამიანს ციკლში ტოვებს და მის ყურადღებას იქ მიმართავს, სადაც ყველაზე მნიშვნელოვანია“ — Martin Fowler-ის პერიფრაზი <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>„კარგი harness ადამიანს ციკლში ტოვებს და მის ყურადღებას იქ მიმართავს, სადაც ყველაზე მნიშვნელოვანია“ — Birgitta Böckeler-ის პერიფრაზი <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">martinfowler.com</a></b-cap>
   <b-finding>
     <ex>Harness შემოწმებების უმეტესობას იღებს; ადამიანს რჩება გადაწყვეტილებები და harness-ის გაუმჯობესების მუშაობა.</ex>
     <gen>გამოცდილი დეველოპერი თავში უთქმელ harness-ს ატარებს: არქიტექტურის ცოდნა, გუნდის ჩვევები, რისკის შეგრძნება. HDD ამ ცოდნას აშკარა წესებში გადააქვს, ამიტომ აგენტის ყოველი გაშვება მას იღებს.</gen>
@@ -199,7 +199,7 @@ toc: loop=HDD-ის ციკლი | canons=განლაგება 3 × 3
     <item href="/blog/work-prompts-examples/" k="ეტაპი 1–2" t="პრომპტები სამუშაო ამოცანებისთვის">როგორ დავწეროთ ერთი მოთხოვნა და მივაწოდოთ მონაცემები</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="ეტაპი 3" t="Harness-ების შედარება">Claude Code, Codex, Cursor, Hermes და ჩატი</item>
   </b-links>
-  <b-cap>კიდევ წასაკითხი: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
+  <b-cap>კიდევ წასაკითხი: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
 </b-chapter>
 <b-footer>ტერმინები და შრეების დაყოფა სქემების ქვეშ წარწერებში მითითებულ წყაროებს მიჰყვება.</b-footer>
 </b-post>

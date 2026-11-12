@@ -178,4 +178,16 @@ Harness comparison
 
 where the agent works and what it sees
 
+Checks
+
+Where to check an AI agent's work
+
+the aggregate as a checkpoint
+
+Specs
+
+What is OpenSpec, setup and commands
+
+specs and changes in files next to the code
+
 The booking example is made up. Terms and approaches follow the sources linked under the diagrams.

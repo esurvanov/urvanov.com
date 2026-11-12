@@ -1,7 +1,7 @@
 ---
 title: Петля сверки для спек: как в Kubernetes, только желаемое — спека, а фактическое — код
 date: 2026-09-28
-updated: 2026-11-07
+updated: 2026-11-13
 description: Spec-driven development с петлёй сверки: кто меняет желаемое, а кто приводит к нему код, почему зелёные тесты ещё не значат «верно» и какие шесть возможностей среды нужны агенту, чтобы петля замкнулась.
 tags: AI, spec-driven development, спеки, Kubernetes, харнесс
 category: specs
@@ -112,6 +112,7 @@ toc: k8s=Как в Kubernetes | sensors=Предел замеров | env=Сре
     <item href="/blog/specs-by-aggregates/" k="Желаемое" t="Спеки по агрегатам">словарь, RFC-требования и контексты</item>
     <item href="/blog/harness-driven-development/" k="Петля ошибок" t="Harness-Driven Development">как ошибки агента становятся правилами</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Среда" t="Сравнение харнессов">где работает агент и что он видит</item>
+    <item href="/blog/openspec/" k="Спеки" t="Что такое OpenSpec, установка и команды">спеки и изменения в файлах рядом с кодом</item>
   </b-links>
 </b-chapter>
 <b-footer compact>Пример с бронированием выдуман. Термины и подходы — по источникам в подписях под схемами.</b-footer>

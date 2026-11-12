@@ -148,13 +148,13 @@ AGENTS.md · CLAUDE.md skills spécifications
 
 relecture par IA LLM juge
 
-Répartition telle que décrite dans Martin Fowler : Harness engineering
+Répartition telle que décrite dans Birgitta Böckeler (martinfowler.com)
 
 **Bilan :**
 
 **Dans cet exemple :** Quatre cellules : les guides fixent le cap avant que l’agent ne travaille, les capteurs attrapent ensuite les écarts, et chacun peut être calculable ou par IA.
 
-**En général :** Les vérifications calculables s’exécutent en quelques secondes et ne se trompent pas : utilisez-les partout où une règle peut s’écrire formellement. Gardez les vérifications par IA pour le sens : style, clarté, adéquation à l’intention.
+**En général :** Les vérifications calculables s’exécutent en quelques secondes et ne se trompent pas dans le cadre de leur règle : utilisez-les partout où une règle peut s’écrire formellement. Gardez les vérifications par IA pour le sens : style, clarté, adéquation à l’intention.
 
 **Étape suivante :** Pour chaque règle des instructions de l’agent, demandez-vous si un test ou un linter pourrait la vérifier. Si oui, déplacez-la là.
 
@@ -172,7 +172,7 @@ en croissance
 
 la plus difficile
 
-Maturité des couches selon l’évaluation de Martin Fowler
+Maturité des couches selon l’évaluation de Birgitta Böckeler (martinfowler.com)
 
 **Bilan :**
 
@@ -210,7 +210,7 @@ Personne
 
 architecture · produit · nouvelles règles
 
-« Un bon harness garde l’humain dans la boucle et dirige son attention là où elle compte le plus » — d’après Martin Fowler
+« Un bon harness garde l’humain dans la boucle et dirige son attention là où elle compte le plus » — d’après Birgitta Böckeler (martinfowler.com)
 
 **Bilan :**
 
@@ -292,6 +292,6 @@ Comparaison des harness
 
 Claude Code, Codex, Cursor, Hermes et chat
 
-À lire aussi : Martin Fowler · Anthropic: Harness design · Becoming a Harness-Driven Developer · awesome-harness-engineering
+À lire aussi : Birgitta Böckeler (martinfowler.com) · Anthropic: Harness design · Becoming a Harness-Driven Developer · awesome-harness-engineering
 
 Les termes et la répartition en couches suivent les sources liées dans les légendes sous les schémas.

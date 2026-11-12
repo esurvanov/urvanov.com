@@ -1,7 +1,7 @@
 ---
 title: Qué es harness engineering en la práctica: convertir los errores de un agente de IA en reglas de su entorno (HDD)
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: El ciclo error-regla, guías y sensores, tres capas de comprobaciones, cómo encaja con las especificaciones y cinco primeros pasos en tu propio proyecto.
 tags: IA, Claude Code, harness engineering, harness, HDD, agentes
 category: harness
@@ -11,11 +11,11 @@ mentions: Harness engineering, Claude Code, AGENTS.md, CLAUDE.md, Spec-Driven De
 toc: loop=El ciclo HDD | canons=El esquema 3 × 3 | double=Doble ciclo | controls=Guías y sensores | layers=Tres capas de comprobación | shift=Antes es más barato | human=Dónde importan las personas | spec=HDD y specs | start=Por dónde empezar | faq=Preguntas | next=Seguir leyendo
 ---
 
-El **harness engineering** es el trabajo de dar forma al harness (arnés del agente), el entorno que rodea a un agente de IA: instrucciones, herramientas, permisos y comprobaciones. El **desarrollo guiado por el harness (Harness-Driven Development, HDD)** es un método de trabajo basado en él: cada error del agente se convierte en una regla de ese entorno.
+El **harness engineering** es el trabajo de dar forma al harness (arnés del agente), el entorno que rodea a un agente de IA: instrucciones, sistemas conectados, permisos y comprobaciones. El **desarrollo guiado por el harness (Harness-Driven Development, HDD)** es un método de trabajo basado en él: cada error del agente se convierte en una regla de ese entorno. Se empieza con un archivo de instrucciones AGENTS.md o CLAUDE.md y un registro de errores del agente: una vez por semana, las entradas del registro pasan a reglas, pruebas o hooks.
 
 <b-post series="hdd">
 <b-chapter id="loop" icon="refresh-cw" title="El ciclo HDD">
-  <b-why align="left">El ciclo funciona así. El agente recibe una tarea y produce un resultado. Los sensores (una prueba, un linter, una revisión) comprueban el resultado. Si todo pasa, la tarea se cierra. Si un sensor encuentra un error, una persona no se limita a corregir el resultado, sino que cambia el entorno del agente, el harness: añade una línea a las instrucciones, una prueba o un hook. La siguiente tarea se ejecuta con esa regla y el error no se repite.</b-why>
+  <b-why align="left">El ciclo funciona así. El agente recibe una tarea y produce un resultado. Los sensores (una prueba, un linter, una revisión) comprueban el resultado. Si todo pasa, la tarea se cierra. Si un sensor encuentra un error, una persona cambia el entorno del agente, el harness: añade una línea a las instrucciones, una prueba o un hook. La siguiente tarea se ejecuta con esa regla y el error no se repite.</b-why>
   <b-hdd-scene name="harness-driven-development/loop" frame="loop"/>
   <b-cap>El principio de Mitchell Hashimoto: cuando el agente comete un error, cambia el harness para que ese error no pueda volver a ocurrir <a href="https://www.faros.ai/blog/harness-engineering" target="_blank" rel="noopener">Faros</a></b-cap>
   <b-why>Un prompt corrige una petición, el contexto corrige lo que sabe el modelo, el harness corrige todas las ejecuciones siguientes. Ejemplo: el agente edita código y no ejecuta las pruebas.</b-why>
@@ -81,7 +81,7 @@ El **harness engineering** es el trabajo de dar forma al harness (arnés del age
     <principle icon="shield-check" t="Sin comprobación externa">descartarla, dejando constancia</principle>
   </b-hdd-principles>
   <b-cap>El ciclo se aplica a sí mismo: cada ejecución termina con el riesgo residual, nunca con un estado «hecho».</b-cap>
-  <b-why align="left">Cambiar las reglas tras cada queja es arriesgado: el harness empieza a crecer sin orden por ediciones casuales. Por eso el Ciclo aplica cuatro comprobaciones. Si las correcciones solo tapan agujeros y no predicen nada nuevo, se sustituyen por una sola regla. Si hay varias quejas, primero se comprueba si comparten una causa. Una regla nueva se acepta solo si con ella siguen explicándose los casos antiguos. Una regla sin comprobación externa se descarta, pero el registro dice qué se descartó y por qué. El pie bajo las tarjetas significa que el Ciclo se aplica también a sí mismo: una ejecución no pone «hecho», sino que termina con el riesgo residual.</b-why>
+  <b-why align="left">Cambiar las reglas tras cada queja es arriesgado: el harness empieza a crecer sin orden por ediciones casuales. Por eso el Ciclo aplica cuatro comprobaciones. Si las correcciones solo tapan agujeros y no predicen nada nuevo, se sustituyen por una sola regla. Si hay varias quejas, primero se comprueba si comparten una causa. Una regla nueva se acepta solo si con ella siguen explicándose los casos antiguos. Una regla sin comprobación externa se descarta, pero el registro dice qué se descartó y por qué. El pie bajo las tarjetas significa que el Ciclo se aplica también a sí mismo: una ejecución termina con el riesgo residual.</b-why>
   <b-finding>
     <ex>Una serie de parches, quejas, una regla nueva y una comprobación externa son cuatro principios comprobables con los que el Ciclo decide si corregir la acción o cambiar las reglas.</ex>
     <gen>Un ciclo simple corrige el resultado dentro de las reglas antiguas. Un doble ciclo cambia las propias reglas, y lo hace con principios comprobables, de modo que el harness aprende sin desviarse por ediciones al azar.</gen>
@@ -101,10 +101,10 @@ El **harness engineering** es el trabajo de dar forma al harness (arnés del age
     <cell>AGENTS.md · CLAUDE.md | skills | specs</cell>
     <cell>revisión con IA | LLM juez</cell>
   </b-hdd-matrix>
-  <b-cap>División según se describe en <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler: Harness engineering</a></b-cap>
+  <b-cap>División según se describe en <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>Cuatro celdas: las guías marcan el rumbo antes de que trabaje el agente, los sensores detectan desviaciones después, y cada una puede ser computacional o basada en IA.</ex>
-    <gen>Las comprobaciones computacionales se ejecutan en segundos y no cometen errores, así que úsalas siempre que una regla se pueda escribir de forma formal. Reserva las comprobaciones basadas en IA para el sentido: estilo, claridad, ajuste con la intención.</gen>
+    <gen>Las comprobaciones computacionales se ejecutan en segundos y no cometen errores dentro de su regla, así que úsalas siempre que una regla se pueda escribir de forma formal. Reserva las comprobaciones basadas en IA para el sentido: estilo, claridad, ajuste con la intención.</gen>
     <do>Para cada regla de las instrucciones del agente, pregunta si una prueba o un linter podría comprobarla. Si es así, muévela allí.</do>
   </b-finding>
 </b-chapter>
@@ -116,7 +116,7 @@ El **harness engineering** es el trabajo de dar forma al harness (arnés del age
     <layer icon="modules" t="Arquitectura" value="55">en crecimiento</layer>
     <layer icon="user-round" t="Comportamiento" value="25" sw="1.8">la más difícil</layer>
   </b-hdd-layers>
-  <b-cap>Madurez de las capas según la evaluación de <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>Madurez de las capas según la evaluación de <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>La calidad del código es hoy lo más fácil de comprobar, y el comportamiento del producto lo más difícil.</ex>
     <gen>Los linters y los formateadores cubren la primera capa casi de inmediato. La arquitectura se comprueba con reglas de dependencias y requisitos de rendimiento. El comportamiento sigue necesitando buenas pruebas de escenarios y un ojo humano.</gen>
@@ -146,7 +146,7 @@ El **harness engineering** es el trabajo de dar forma al harness (arnés del age
     <side icon="sun" t="Harness" n="36">estilo · tipos · pruebas · límites</side>
     <side icon="user-round" t="Persona" n="6" sw="1.8">arquitectura · producto · reglas nuevas</side>
   </b-hdd-split>
-  <b-cap>«Un buen harness mantiene a la persona en el ciclo y dirige su atención adonde más importa», parafraseando a <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>«Un buen harness mantiene a la persona en el ciclo y dirige su atención adonde más importa», parafraseando a <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>El harness asume la mayoría de las comprobaciones; la persona se queda con las decisiones y con el trabajo de mejorar el harness.</ex>
     <gen>Un desarrollador con experiencia lleva en la cabeza un harness implícito: conocimiento de la arquitectura, hábitos del equipo, olfato para el riesgo. HDD traslada ese conocimiento a reglas explícitas, de modo que cada ejecución del agente lo recibe.</gen>
@@ -199,7 +199,7 @@ El **harness engineering** es el trabajo de dar forma al harness (arnés del age
     <item href="/blog/work-prompts-examples/" k="Etapa 1–2" t="Prompts para tareas de trabajo">cómo escribir una petición suelta y aportar datos</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Etapa 3" t="Comparación de harnesses">Claude Code, Codex, Cursor, Hermes y chat</item>
   </b-links>
-  <b-cap>Para leer más: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
+  <b-cap>Para leer más: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
 </b-chapter>
 <b-footer>Los términos y la división en capas siguen las fuentes enlazadas en los pies de los diagramas.</b-footer>
 </b-post>

@@ -1,7 +1,7 @@
 ---
 title: วิธีสัมภาษณ์และวิเคราะห์การใช้ AI ในการทำงาน: สคริปต์ 30 นาที, prompt วิเคราะห์ และตาราง Airtable
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: สคริปต์สัมภาษณ์ 30 นาที กฎการคุมหัวข้อ แบบสอบถามสั้นสำหรับทั้งบริษัท การวิเคราะห์บทสัมภาษณ์ด้วย ChatGPT หรือเอเจนต์ด้วย prompt สำเร็จรูป และการเทียบสิ่งที่คนพูดกับตัวเลขในรายงาน
 tags: AI, custdev, การสัมภาษณ์
 category: research
@@ -88,7 +88,7 @@ toc: format=เลือกรูปแบบ | prep=เตรียมตัว
   </b-share-bar>
   <b-cap>นาทีต่อช่วง</b-cap>
   <b-call-script>
-    <step color="c-none" ink="ink" t="เริ่มต้น" q="&quot;ผมกำลังดูว่าคนในบริษัททำงานของตัวเองให้เสร็จจริงๆ อย่างไร นี่ไม่ใช่การประเมินตัวคุณ กรณีที่สำเร็จและไม่สำเร็จมีประโยชน์กับผมเท่ากัน มีผู้ช่วยจดบันทึกอยู่กับผมด้วย ข้อความถอดความเห็นได้เฉพาะเรา และคำตอบจะเข้ารายงานโดยไม่มีชื่อ ขอเปิดได้ไหม&quot;"></step>
+    <step color="c-none" ink="ink" t="เริ่มต้น" q="&quot;ผมกำลังดูว่าคนในบริษัททำงานของตัวเองให้เสร็จจริงๆ อย่างไร นี่ไม่ใช่การประเมินตัวคุณ กรณีที่สำเร็จและไม่สำเร็จมีประโยชน์กับผมเท่ากัน มีผู้ช่วยจดบันทึกอยู่กับผมด้วย ข้อความถอดความเห็นได้เฉพาะทีมวิจัย และคำตอบจะเข้ารายงานโดยไม่มีชื่อ ขอเปิดได้ไหม&quot;"></step>
     <step color="c-light" t="บทบาทและบริบท" q='"ปกติสัปดาห์หนึ่งคุณใช้เวลากับอะไรมากที่สุด"'>งานอะไรที่ทำซ้ำ · หาข้อมูลและร่างงานจากที่ไหน</step>
     <step color="c-chat" t="งานล่าสุด" q='"ลองนึกถึงงานล่าสุดที่ใช้เวลาไปพอสมควร คุณต้องการได้อะไร"'>มีวิธีหรือเครื่องมืออะไรให้เลือก · เลือกอะไรและเพราะอะไร · ไปถึงผลลัพธ์ได้อย่างไร</step>
     <step color="c-proj" t="ผลลัพธ์และแรงที่ใช้" q='"สุดท้ายได้อะไร และต้องใช้แรงมากแค่ไหน"'>อะไรใช้ได้เลย · อะไรต้องแก้เอง · มีข้อจำกัดอะไรบ้าง: ข้อมูล สิทธิ์เข้าถึง ความปลอดภัย</step>
@@ -162,7 +162,7 @@ toc: format=เลือกรูปแบบ | prep=เตรียมตัว
     <row>Ben Ortiz |  |  | ใช้ Codex อย่างเดียว | <b-select-pill tone="cyan">รอคำตอบ</b-select-pill> |  | <b-select-pill tone="purple">ใช้ Codex อย่างเดียว</b-select-pill> |  | 3.2M | 64 | 22.09</row>
     <row>Pavel Novak | [27.09 10:15] Host: เล่างานชิ้นล่าสุด… | <b-select-pill tone="purple">ข้อความ</b-select-pill> | ไม่ได้ใช้งาน | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="cyan">เป็นประจำ</b-select-pill> | <b-select-pill tone="red">ไม่ใช้</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
     <row>Sara Quinn |  |  | ไม่ได้ใช้งาน | <b-select-pill tone="red">ปฏิเสธ</b-select-pill> |  | <b-select-pill tone="red">ไม่ใช้</b-select-pill> |  | 0 | 0 | —</row>
-    <row>Nadia Rahimi | Host [00:00]: เมื่อวานคุณทำอะไรใน ChatGPT… | <b-select-pill tone="cyan">เสียง</b-select-pill> | เครื่องมืออื่น | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
+    <row>Nadia Rahimi | Host [00:00]: นึกถึงงานล่าสุดที่ใช้เวลา… | <b-select-pill tone="cyan">เสียง</b-select-pill> | เครื่องมืออื่น | <b-select-pill tone="green">เสร็จแล้ว</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-select-pill tone="yellow">นานๆ ครั้ง</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
     <row>Elif Demir |  |  | โปรเจกต์ | <b-select-pill tone="gray">กำลังดำเนินการ</b-select-pill> |  | <b-select-pill tone="green">ทุกสัปดาห์</b-select-pill> |  | 1.8M | 41 | 27.09</row>
   </b-airtable-grid>
   <b-cap>ChatGPT กรอกช่องสีส้มจากบทสนทนาในช่องบันทึก ส่วน "ตามรายงาน" "โทเคน" "$" และ "กิจกรรม" มาจาก<a href="/blog/chatgpt-enterprise-usage-report/">รายงานการใช้งาน ChatGPT Enterprise</a> ช่อง "≠" เป็นสูตรที่เทียบความถี่สองค่า</b-cap>

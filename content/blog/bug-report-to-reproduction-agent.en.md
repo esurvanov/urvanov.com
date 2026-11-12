@@ -1,8 +1,8 @@
 ---
 title: QA work after support with an AI agent: investigation, description and documentation via MCP and skills
 date: 2026-10-04
-updated: 2026-11-07
-description: We optimise one step of the chain: QA after support. An agent reproduces a Jira bug on a test stand via MCP, narrows the path, describes and documents it, a skill makes the steps a repeatable process, QA checks by hand. Support and development do not change.
+updated: 2026-11-13
+description: How QA works with an AI agent after support: through MCP and the browser the agent reproduces a Jira bug on a test stand, narrows the path, describes and documents it, a skill makes the steps a repeatable process, QA checks by hand. Support and development do not change.
 tags: AI, agents, QA, Jira, MCP, skills, bugs, harness
 category: harness
 layout: wide
@@ -10,12 +10,12 @@ mentions: Jira, AI agent, QA, Model Context Protocol, skills, bug reproduction, 
 toc: route=QA step | stages=Three parts | mcp=MCP | skill=Skill | parallel=In parallel | example=Example | human=What QA keeps | first=How to start | faq=Questions | next=Read next
 ---
 
-A customer bug passes support and reaches QA. This is where investigation, description and documentation are done by hand, so this is the step we optimise. An agent connected to Jira and a test stand via MCP, plus a skill with the steps written down, take the routine over. QA checks the result by hand. Support and development work as before.
+After support, QA works with an AI agent this way: the agent investigates a Jira bug on a test stand, narrows the path, describes it by template and documents the result in the ticket. MCP and the [browser](/blog/claude-in-chrome/) give it access, and a skill makes the steps repeatable. QA checks the result by hand; support and development work as before.
 
 <b-post series="harness">
 <b-view-toggle/>
 
-<b-chapter id="route" icon="stairs" title="We optimise one step: QA after support">
+<b-chapter id="route" icon="stairs" title="One step changes: QA after support">
   <b-why align="left">A bug travels from the client to a fix in four steps: the client writes, support takes it, QA investigates, a developer fixes. Before, QA did its step entirely by hand, and the whole working day went into bugs. Now agents work on this step while QA accepts the result and manages them. The other three steps stay as they were.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/qa-step"/>
@@ -137,7 +137,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 
 <b-chapter id="mcp" icon="plug" title="MCP: the agent works where QA works">
   <b-why>MCP (Model Context Protocol) is a way to connect an agent to work systems so it reads and writes in them itself instead of getting a retelling.</b-why>
-  <b-why align="left">The agent needs five things. Jira: it reads the ticket and writes the result into it. A stand: a test copy of the product where it walks the path as a user. Documents: diagrams and descriptions sit next to the ticket. Data: test data that can be reset. Permissions: only the stand may be broken, production systems are out of reach.</b-why>
+  <b-why align="left">The agent needs five things. Jira: it reads the ticket and writes the result into it. A stand: a test copy of the product where it walks the path as a user, in the browser through [Claude in Chrome](/blog/claude-in-chrome/). Documents: diagrams and descriptions sit next to the ticket. Data: test data that can be reset. Permissions: only the stand may be broken, production systems are out of reach.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/access-sandbox"/>
   </b-view>
@@ -319,6 +319,7 @@ A customer bug passes support and reaches QA. This is where investigation, descr
 
 <b-chapter id="next" icon="arrow-right" title="Read next">
   <b-links>
+    <item href="/blog/claude-in-chrome/" k="Browser" t="How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login">the agent walks the path on the stand</item>
     <item href="/blog/specs-rules-skills/" k="Skills" t="Specs, rules and skills">what an agent should know about a project</item>
     <item href="/blog/harness-driven-development/" k="Error loop" t="Harness-Driven Development">how agent mistakes become rules</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Environment" t="Comparing harnesses">where the agent works and what it sees</item>

@@ -1,7 +1,7 @@
 ---
 title: Installation et commandes d’OpenSpec : un exemple de changement, du plan à la fusion
 date: 2026-11-07
-updated: 2026-11-08
+updated: 2026-11-13
 description: Comment fonctionne OpenSpec de Fission AI : un dossier de changement avec un plan, des exigences et des tâches, trois commandes pour l’agent et une fusion dans les spécifications communes. Installation en deux commandes, un vrai changement du dépôt du site urvanov.com, comparaison avec Spec Kit et prompts prêts pour démarrer.
 tags: IA, OpenSpec, spécifications, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
@@ -36,7 +36,7 @@ OpenSpec est un framework open source gratuit pour le développement piloté par
 </b-chapter>
 
 <b-chapter id="install" icon="terminal" title="Installation">
-  <b-why align="left">OpenSpec a deux parties. La première est le programme en ligne de commande <code>openspec</code> : il s’installe une fois par ordinateur. La seconde est la configuration d’un projet précis : <code>openspec init</code> y crée un dossier <code>openspec/</code> et ajoute à vos agents des commandes comme <code>/opsx:propose</code>.</b-why>
+  <b-why align="left">OpenSpec a deux parties. La première est le programme en ligne de commande <code>openspec</code> : il s’installe une fois par ordinateur. La seconde est la configuration d’un projet précis : <code>openspec init</code> y crée un dossier <code>openspec/</code> et ajoute à vos agents des commandes comme <code>/openspec-propose</code>.</b-why>
   <iso-art name="openspec/install"></iso-art>
   <b-why align="left">L’ordre sur le schéma : d’abord le programme apparaît sur l’ordinateur, puis un dossier <code>openspec/</code> apparaît dans le projet avec deux sous-dossiers — <code>specs</code> pour les exigences vivantes et <code>changes</code> pour les changements en cours — et enfin vos agents reçoivent de nouvelles commandes. Le code du projet lui-même ne change pas : seuls le dossier des plans et les fichiers de commandes pour les agents sont ajoutés. La commande pour macOS et Linux :</b-why>
   <b-codebox title="Installation sur macOS et Linux">
@@ -48,7 +48,7 @@ OpenSpec est un framework open source gratuit pour le développement piloté par
     cd your-project
     openspec init
   </b-codebox>
-  <b-why align="left"><code>openspec init</code> demande quels agents vous utilisez et installe des commandes pour ceux-là précisément. Le nom de la commande diffère selon l’agent : <code>/opsx:propose</code> dans Claude Code, <code>/opsx-propose</code> dans Cursor et GitHub Copilot, <code>$openspec-propose</code> dans Codex<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «/opsx:propose is the canonical name; your tool may spell it /opsx-propose (Cursor, GitHub Copilot), @opsx-propose (Amazon Q) or $openspec-propose (Codex)» — github.com/Fission-AI/OpenSpec"/>. Le reste de l’article utilise l’écriture de Claude Code.</b-why>
+  <b-why align="left"><code>openspec init</code> demande quels agents vous utilisez et leur installe les skills OpenSpec dans un dossier commun <code>.agents/skills/</code>. Dans Claude Code et la plupart des agents, on les appelle <code>/openspec-propose</code>, dans Codex <code>$openspec-propose</code>, ou on peut simplement le demander en mots<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «These are skills. Most tools invoke them as /openspec-propose and Codex as $openspec-propose, or you can ask for the work in plain words. … Coming from 1.x and its /opsx:* commands? See Upgrade to 2.0» — github.com/Fission-AI/OpenSpec"/>. En version 1.x, les mêmes étapes s’appelaient <code>/opsx:propose</code>, <code>/opsx:apply</code>, <code>/opsx:archive</code> ; pour passer à la 2.0, lancez <code>openspec update</code> dans chaque projet. Le reste de l’article utilise l’écriture de Claude Code.</b-why>
   <b-why align="left">Si le projet utilise plusieurs agents, par exemple une partie de l’équipe travaille dans Cursor et une autre dans Claude Code, cochez-les tous : le plan de changement est commun, et chaque agent reçoit ses propres commandes. Le programme est gratuit, tourne en local et n’exige aucun compte.</b-why>
   <b-finding>
     <ex>Deux commandes : l’une installe le programme, l’autre prépare le projet et connecte les agents.</ex>
@@ -58,30 +58,30 @@ OpenSpec est un framework open source gratuit pour le développement piloté par
 </b-chapter>
 
 <b-chapter id="flow" icon="list-arrow" title="Trois commandes : plan, code, fusion">
-  <b-why align="left">Le travail suit une boucle de trois commandes. Avant elles, on peut réfléchir à voix haute avec <code>/opsx:explore</code> : l’agent lit le code, propose des options et ne change rien. Une fois clair ce qu’il faut faire, le chemin principal commence.</b-why>
+  <b-why align="left">Le travail suit une boucle de trois commandes. Avant elles, on peut réfléchir à voix haute avec <code>/openspec-explore</code> : l’agent lit le code, propose des options et ne change rien. Une fois clair ce qu’il faut faire, le chemin principal commence.</b-why>
   <iso-art name="openspec/loop"></iso-art>
-  <b-why align="left">Lisez la boucle dans le sens des aiguilles d’une montre. La première commande, <code>/opsx:propose</code>, demande à l’agent d’écrire un plan : il crée un dossier de changement et quatre fichiers. C’est ensuite à vous : vous lisez le plan et le corrigez dans le chat ou directement dans les fichiers. C’est le principal point de contrôle, car corriger un paragraphe de texte coûte moins cher que réécrire du code terminé. La deuxième commande, <code>/opsx:apply</code>, lance le travail d’après les tâches : l’agent prend les tâches de <code>tasks.md</code> une à une et coche chacune. La troisième commande, <code>/opsx:archive</code>, clôt le changement : les exigences passent dans les spécifications communes, et le dossier part aux archives avec tout son historique de décisions. Le changement suivant part des spécifications mises à jour.</b-why>
-  <b-why align="left">Voici à quoi ressemble une courte session dans le terminal. Une session type d’après la démo de la description d’OpenSpec<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /opsx:propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /opsx:archive / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/> :</b-why>
-  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec · /opsx" path="~/projects/shop">
-    <line kind="ask">/opsx:propose add-dark-mode</line>
+  <b-why align="left">Lisez la boucle dans le sens des aiguilles d’une montre. La première commande, <code>/openspec-propose</code>, demande à l’agent d’écrire un plan : il crée un dossier de changement et quatre fichiers. C’est ensuite à vous : vous lisez le plan et le corrigez dans le chat ou directement dans les fichiers. C’est le principal point de contrôle, car corriger un paragraphe de texte coûte moins cher que réécrire du code terminé. La deuxième commande, <code>/openspec-apply-change</code>, lance le travail d’après les tâches : l’agent prend les tâches de <code>tasks.md</code> une à une et coche chacune. La troisième commande, <code>/openspec-archive-change</code>, clôt le changement : les exigences passent dans les spécifications communes, et le dossier part aux archives avec tout son historique de décisions. Le changement suivant part des spécifications mises à jour.</b-why>
+  <b-why align="left">Voici à quoi ressemble une courte session dans le terminal. Une session type d’après la démo de la description d’OpenSpec<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /openspec-propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /openspec-archive-change / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/> :</b-why>
+  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec 2.0 · skills" path="~/projects/shop">
+    <line kind="ask">/openspec-propose add-dark-mode</line>
     <line kind="act">Created openspec/changes/add-dark-mode/</line>
     <line kind="out">proposal.md · specs/ · design.md · tasks.md</line>
     <line kind="you" note="vous relisez le plan">Ajoute un scénario : le thème survit à un rechargement</line>
-    <line kind="ask">/opsx:apply</line>
+    <line kind="ask">/openspec-apply-change</line>
     <line kind="act">1.1 theme context ✓ · 1.2 toggle ✓ · 2.1 colours ✓</line>
     <line kind="out">all tasks complete</line>
-    <line kind="ask">/opsx:archive</line>
+    <line kind="ask">/openspec-archive-change</line>
     <line kind="act">Exigences déplacées dans openspec/specs, dossier du changement envoyé aux archives</line>
   </b-agent-term>
   <b-table>
   | Commande | Ce que fait l’agent | Ce qui apparaît dans le projet | Ce que vous faites |
   |---|---|---|---|
-  | <code>/opsx:explore</code> | lit le code, propose des options | rien | choisir une option |
-  | <code>/opsx:propose</code> | écrit le plan du changement | un dossier <code>openspec/changes/name/</code> avec quatre fichiers | lire et corriger le plan |
-  | <code>/opsx:apply</code> | écrit le code d’après les tâches, les coche | code et tests | vérifier le résultat |
-  | <code>/opsx:archive</code> | fusionne les exigences dans les spécifications communes | <code>openspec/specs</code> mis à jour, dossier archivé | rien, c’est la fin |
+  | <code>/openspec-explore</code> | lit le code, propose des options | rien | choisir une option |
+  | <code>/openspec-propose</code> | écrit le plan du changement | un dossier <code>openspec/changes/name/</code> avec quatre fichiers | lire et corriger le plan |
+  | <code>/openspec-apply-change</code> | écrit le code d’après les tâches, les coche | code et tests | vérifier le résultat |
+  | <code>/openspec-archive-change</code> | fusionne les exigences dans les spécifications communes | <code>openspec/specs</code> mis à jour, dossier archivé | rien, c’est la fin |
   </b-table>
-  <b-why align="left">Pour les grosses tâches, il existe un jeu étendu : créer un changement pas à pas, en continuer un en cours, vérifier le code par rapport à la spécification. Activez-le avec <code>openspec config profile</code>.</b-why>
+  <b-why align="left">Pour les grosses tâches, il existe un jeu étendu : créer un changement pas à pas, en continuer un en cours, vérifier le code par rapport à la spécification. Activez-le avec <code>openspec config profile</code> et appliquez-le au projet avec <code>openspec update</code>.</b-why>
   <b-finding>
     <ex>Après l’archivage, <code>openspec/specs</code> contient la description actuelle du système, et l’historique des décisions se trouve dans les archives des changements.</ex>
     <gen>Les spécifications sont mises à jour dans la même étape que le code : elles ne vieillissent donc pas comme un wiki à part.</gen>
@@ -110,7 +110,7 @@ OpenSpec est un framework open source gratuit pour le développement piloté par
     - THEN the card shows only those sections, with no empty blocks
   </b-codebox>
   <b-why align="left">La décision « des citations uniquement tirées de la source » a été écrite dans design.md avant le code. L’agent n’a donc pas inventé de citations là où il n’y en avait pas, et le scénario « contenu partiel » fixait à l’avance l’aspect d’une carte sans citation ni schéma.</b-why>
-  <b-why align="left">Le travail a compté 10 tâches, une par thème du catalogue. Les 10 tâches sont cochées, mais la commande d’archivage n’a jamais été lancée : le dossier du changement est toujours dans <code>openspec/changes</code>, et le site n’a pas de spécifications communes. C’est une erreur fréquente. L’exigence « chaque technique a une description détaillée » ne vit que dans le brouillon du changement, et l’agent suivant qui lira les spécifications communes ne la connaîtra pas. Une seule commande <code>/opsx:archive</code> la déplacerait dans les spécifications communes.</b-why>
+  <b-why align="left">Le travail a compté 10 tâches, une par thème du catalogue. Les 10 tâches sont cochées, mais la commande d’archivage n’a jamais été lancée : le dossier du changement est toujours dans <code>openspec/changes</code>, et le site n’a pas de spécifications communes. C’est une erreur fréquente. L’exigence « chaque technique a une description détaillée » ne vit que dans le brouillon du changement, et l’agent suivant qui lira les spécifications communes ne la connaîtra pas. Une seule commande <code>/openspec-archive-change</code> la déplacerait dans les spécifications communes.</b-why>
   <b-finding>
     <ex>Le scénario « contenu partiel » est apparu dans le plan avant le code et a fixé le comportement d’une carte sans citation ni schéma.</ex>
     <gen>Des exigences avec des scénarios « quand — alors » se lisent comme des tests : l’agent sait ce qui compte comme terminé.</gen>
@@ -140,10 +140,10 @@ OpenSpec est un framework open source gratuit pour le développement piloté par
   <b-why align="left">Commencez par un petit changement que vous comptiez faire de toute façon. Cinq prompts pour l’agent, un par étape : collez-les dans Claude Code, Codex ou Cursor et remplissez votre tâche.</b-why>
   <b-hdd-steps>
     <step t="Installation">« Installe OpenSpec et lance openspec init dans ce projet. Montre quelles commandes sont apparues »</step>
-    <step t="Exploration">« /opsx:explore Je veux ajouter … Regarde le code et propose deux options sans rien changer »</step>
-    <step t="Plan">« /opsx:propose … Seulement le plan d’abord. Donne dans les exigences des scénarios pour des données vides et partielles »</step>
-    <step t="Code">« /opsx:apply Fais les tâches une par une et lance les tests après chacune »</step>
-    <step t="Fusion">« /opsx:archive Déplace les exigences dans les spécifications et montre ce qui a changé dans openspec/specs »</step>
+    <step t="Exploration">« /openspec-explore Je veux ajouter … Regarde le code et propose deux options sans rien changer »</step>
+    <step t="Plan">« /openspec-propose … Seulement le plan d’abord. Donne dans les exigences des scénarios pour des données vides et partielles »</step>
+    <step t="Code">« /openspec-apply-change Fais les tâches une par une et lance les tests après chacune »</step>
+    <step t="Fusion">« /openspec-archive-change Déplace les exigences dans les spécifications et montre ce qui a changé dans openspec/specs »</step>
   </b-hdd-steps>
 </b-chapter>
 
@@ -152,7 +152,7 @@ OpenSpec est un framework open source gratuit pour le développement piloté par
     <q t="Qu’est-ce qu’OpenSpec ?">Un framework open source gratuit de Fission AI pour le développement piloté par les spécifications. L’agent écrit un plan de changement dans des fichiers Markdown, vous le relisez, l’agent écrit le code, et les exigences fusionnent dans les spécifications communes du projet.</q>
     <q t="Comment installer OpenSpec ?">Avec curl -fsSL https://openspec.dev/cli/install.sh | sh sur macOS et Linux, ou avec npm install -g @fission-ai/openspec@latest. Lancez ensuite openspec init dans le dossier du projet.</q>
     <q t="En quoi OpenSpec diffère-t-il de Spec Kit ?">OpenSpec est plus souple et conçu pour du code qui tourne déjà ; les étapes peuvent se répéter dans n’importe quel ordre. Spec Kit de GitHub suit des phases fixes : principes, spécification, plan, tâches, code.</q>
-    <q t="Avec quels agents OpenSpec fonctionne-t-il ?">Claude Code, Codex, Cursor, GitHub Copilot, Amazon Q et d’autres. openspec init installe des commandes pour les agents choisis.</q>
+    <q t="Avec quels agents OpenSpec fonctionne-t-il ?">Claude Code, Codex, Cursor, GitHub Copilot et d’autres, plus de 30 au total. openspec init installe des commandes pour les agents choisis.</q>
   </b-faq-cards>
 </b-chapter>
 

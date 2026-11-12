@@ -1,7 +1,7 @@
 ---
 title: Vitest vs Jest: which to pick for a JavaScript project, and when QUnit is enough
 date: 2026-10-25
-updated: 2026-10-25
+updated: 2026-11-13
 description: Vitest vs Jest: setup, where tests run, how checks are written. When to pick Vitest on Vite, keep Jest, or use QUnit in the browser. Table and FAQ.
 tags: AI, testing, JavaScript, Jest, Vitest, QUnit, Vite, Jest vs Vitest, test automation
 category: specs
@@ -42,7 +42,7 @@ This article was born from another one: about [formal models in Quint](/blog/qui
 <b-chapter id="qunit" icon="workflow" title="QUnit: when you need tests right in the browser">
   <b-art names="jest-vs-vitest-vs-qunit/qunit-env" wide/>
     <b-why align="left">[QUnit](/materials/glossary/qunit/) describes itself as a powerful, easy-to-use test framework. It needs no configuration for Node.js, and minimal setup is enough for the browser<b-proof href="https://qunitjs.com/" quote="Zero configuration and setup for any Node.js project"/>. It runs wherever there is JavaScript: in browsers, in Node.js, in the SpiderMonkey engine and in a background thread of a page<b-proof href="https://qunitjs.com/" quote="QUnit can run anywhere; web browsers, Node, SpiderMonkey, even in a Web Worker!"/>. Jest and Vitest, unlike it, are most often run in Node.js.</b-why>
-  <b-why align="left">Its style is its own. Related tests are grouped with `QUnit.module`, a single test is described with `QUnit.test`, and the answer is compared through `assert`. For tests that touch a page there is a fixture that returns the page to its original state after every test, and a separate check of the order of calls for events and delayed answers. You can extend QUnit to your needs: your own assertions, runners and reports. It also supports old browsers: version 2 works with Internet Explorer 9 and up<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/>.</b-why>
+  <b-why align="left">Its style is its own. Related tests are grouped with `QUnit.module`, a single test is described with `QUnit.test`, and the answer is compared through `assert`. For tests that touch a page there is a fixture that returns the page to its original state after every test, and a separate check of the order of calls for events and delayed answers. You can extend QUnit to your needs: your own assertions, runners and reports. The current version 3 runs in modern browsers and in Node.js 18 and later, while Internet Explorer 9–11 was supported only by version 2<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/>.</b-why>
   <b-finding>
     <ex>QUnit is good where tests must run right in the browser and without a build.</ex>
     <gen>For modern projects with a build, where mocks, snapshots and coverage are needed out of the box, Jest or Vitest are more often taken.</gen>
@@ -69,7 +69,7 @@ This article was born from another one: about [formal models in Quint](/blog/qui
   <b-art names="jest-vs-vitest-vs-qunit/choose" wide/>
   <b-why align="left">The choice is set by the project. The project is built with Vite: take Vitest, the settings are already there. Jest is already in the project and everything works: keep it. You need checks right in the browser without a build: take QUnit. Moving between Jest and Vitest is usually cheap, so a wrong choice will not be irreversible. If you need to check rules and the order of events rather than functions, see the articles [Quint vs QUnit and TLA+](/blog/quint-vs-tests-and-tla/) and [on Quint models](/blog/quint-models-find-races/).</b-why>
   <b-finding>
-    <ex>Three frameworks close one task, and the environment decides: a bundler, a browser or an existing set of tests.</ex>
+    <ex>All three frameworks do the same job, and the environment decides: a bundler, a browser or an existing set of tests.</ex>
     <gen>Whatever you choose, tests check the given scenarios, while rules that break in a special order of events are caught by a model.</gen>
     <do>Choose a framework by the project environment and add a check of the tests themselves: [mutation testing](/materials/glossary/mutation-testing/) shows whether the tests notice a defect at all.</do>
   </b-finding>

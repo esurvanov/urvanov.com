@@ -1,7 +1,7 @@
 ---
 title: MCP server và tác nhân AI cho 1C: cho Claude Code, Codex hay Cursor vào cơ sở dữ liệu mà không làm hỏng nó
 date: 2026-10-12
-updated: 2026-11-08
+updated: 2026-11-13
 description: MCP server cho 1C:Enterprise cho phép tác nhân AI (Claude Code, Codex hay Cursor) truy cập mã cấu hình và dữ liệu trong cơ sở dữ liệu. Cách kết nối trong 3 bước, điều gì hỏng trong thực tế, cách tách đọc khỏi ghi và kiểm tra kết quả.
 tags: AI, tác nhân, MCP, 1C, quyền truy cập, bảo mật, Claude Code, Codex, Cursor
 category: harness
@@ -266,12 +266,12 @@ toc: what=Là gì | specifics=Đặc thù 1C | breaks=Hỏng ở đâu | servers
   <tab t="Codex">
     <b-pick-cell k="Thiết lập ở đâu"><code>~/.codex/config.toml</code> hoặc <code>.codex/config.toml</code> trong dự án</b-pick-cell>
     <b-pick-cell k="Cho nhóm" tone="accent"><code>.codex/config.toml</code> trong dự án đã được tin cậy</b-pick-cell>
-    <b-pick-cell k="Tài liệu"><a href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">MCP trong Codex</a></b-pick-cell>
+    <b-pick-cell k="Tài liệu"><a href="https://learn.chatgpt.com/docs/extend/mcp?surface=cli" target="_blank" rel="noopener">MCP trong Codex</a></b-pick-cell>
   </tab>
   <tab t="Cursor">
     <b-pick-cell k="Thiết lập ở đâu">tệp <code>mcp.json</code></b-pick-cell>
     <b-pick-cell k="Cho nhóm" tone="accent">kho server của nhóm</b-pick-cell>
-    <b-pick-cell k="Tài liệu"><a href="https://cursor.com/docs/context/mcp" target="_blank" rel="noopener">MCP trong Cursor</a></b-pick-cell>
+    <b-pick-cell k="Tài liệu"><a href="https://cursor.com/docs/mcp" target="_blank" rel="noopener">MCP trong Cursor</a></b-pick-cell>
   </tab>
 </b-pick-tabs>
 </b-lane>

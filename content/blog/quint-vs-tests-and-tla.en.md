@@ -1,7 +1,7 @@
 ---
 title: Model checking vs testing: a test checks one scenario, a model checks every order of actions (Quint, QUnit and TLA+)
 date: 2026-10-25
-updated: 2026-11-11
+updated: 2026-11-13
 description: A test checks a scenario you thought of, model checking tries every order of actions. What QUnit, Jest, Vitest catch, and what Quint, TLA+, Alloy catch.
 tags: AI, specs, Quint, TLA+, Alloy, QUnit, Jest, Vitest, testing, formal verification
 category: specs
@@ -77,7 +77,7 @@ Model checking vs testing: a test checks a scenario you thought of, while model 
   <b-art names="quint-vs-tests-and-tla/notation" wide/>
     <b-why align="left">TLA+ and Alloy are formal languages of the same kind: in them you also describe rules and look for their violations. They are older than Quint and better covered in books. But the notation in TLA+ is mathematical, and a newcomer needs time to read it. Quint was designed as a more accessible notation for the same task: it looks like ordinary code, and engineers without a math background read it. A detailed comparison of all three languages is in the article [TLA+ vs Alloy vs Quint](/blog/tla-alloy-quint-compare/).</b-why>
   <b-art names="quint-vs-tests-and-tla/engine" wide/>
-  <b-why align="left">What “the same programs” means. Quint can be checked by two programs: TLC and Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/>. TLC is the very first checking program for TLA+: it goes through states one by one<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, so for Quint it needs the model translated into TLA+<b-proof href="https://quint-lang.org/docs/model-checkers" quote="can be used for Quint by transpiling Quint specs into TLA+"/>. Such a search is predictable, but the world must be small.</b-why>
+  <b-why align="left">What “the same programs” means. Quint can be checked by two programs: TLC and Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/>. TLC is the very first checking program for TLA+: it goes through states one by one<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, and for Quint it is run with <code>quint verify --backend=tlc</code><b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC (no acronym defined!) is the first model checker for TLA+, and is provided as an alternative backend for quint verify by passing the --backend=tlc flag"/>. Such a search is predictable, but the world must be small.</b-why>
   <b-why align="left">[Apalache](/materials/glossary/apalache/) is built into Quint<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache is a symbolic model checker that is integrated with Quint tooling"/>: it translates the model into conditions and asks the [Z3](/materials/glossary/z3/) solver. It can check chains only up to a given length<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache cannot check an arbitrary number of steps"/>, so its “ok” means “no violations within that length”. TLA+ is checked by the same two programs, while Alloy has its own analyzer. Besides checking, Quint has a quick random simulation: it looks for violations by sampling and does not prove that there are none.</b-why>
     <b-vs-grid>
     <h></h>
@@ -111,7 +111,7 @@ Model checking vs testing: a test checks a scenario you thought of, while model 
     <rule icon="workflow" t="Order of actions">Find a combination of steps where a product rule breaks, even if the code does not exist yet: Quint</rule>
     <rule icon="scales" t="Heavy proofs">Strict guarantees for a large distributed system: TLA+, with more experience and examples</rule>
   </b-rules>
-  <b-why align="left">The choice is set by the question, not by a favorite program. If the question is "does this function work correctly", take a test. If the question is "can a rule break in some sequence of events", take a model. If you need guarantees at the level of a distributed protocol, take TLA+ and set aside time to learn it.</b-why>
+  <b-why align="left">The question sets the choice. If the question is "does this function work correctly", take a test. If the question is "can a rule break in some sequence of events", take a model. If you need guarantees at the level of a distributed protocol, take TLA+ and set aside time to learn it.</b-why>
   <b-finding>
     <ex>Three options answer three different questions, and one does not replace another.</ex>
     <gen>For product logic with agents and several participants you most often need both tests and Quint.</gen>

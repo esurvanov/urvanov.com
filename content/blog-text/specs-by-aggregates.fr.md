@@ -178,4 +178,16 @@ Comparaison des harness
 
 où l'agent travaille et ce qu'il voit
 
+Vérifications
+
+Où vérifier le travail d'un agent IA
+
+l'agrégat comme point de contrôle
+
+Spécifications
+
+Installation et commandes d’OpenSpec
+
+spécifications et changements dans des fichiers à côté du code
+
 L'exemple de réservation est inventé. Les termes et les approches suivent les sources liées sous les schémas.

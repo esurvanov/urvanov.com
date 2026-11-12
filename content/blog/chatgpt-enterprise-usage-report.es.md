@@ -1,7 +1,7 @@
 ---
 title: Cómo analizar el uso de ChatGPT Enterprise en una empresa: quién lo usa, para qué y qué herramientas de IA comprar después
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cómo saber cómo usan ChatGPT Enterprise los empleados: cinco exportaciones de la consola de administración dan la profundidad de adopción, la uniformidad entre equipos, la herramienta principal, un mapa de tareas, comprobaciones de datos y una lista corta de personas a entrevistar.
 tags: IA, investigación, analítica
 category: research
@@ -354,13 +354,6 @@ Un informe de uso de ChatGPT Enterprise se construye con cinco exportaciones de 
     <item t="Calcula la profundidad de adopción">Al menos una vez / con regularidad / cada semana, contando aparte a quienes trabajan solo con Codex</item>
     <item t="Haz una lista de personas y programa las entrevistas">Cómo elegir a estas personas se explica en «A quién entrevistar»</item>
   </b-checklist>
-  <b-sublabel top="22">Preguntas frecuentes</b-sublabel>
-  <b-qa>
-    <q t="Qué muestra la consola de administración de ChatGPT Enterprise">Cinco secciones: usuarios, ranking, proyectos, resumen y tareas. Dan la profundidad de adopción, la uniformidad entre equipos, la herramienta principal, la naturaleza de las tareas y una comprobación con los datos en bruto.</q>
-    <q t="Cómo exportar datos de la consola">La consola tiene API, pero cubren solo una parte de los datos: analítica de Codex, costes en créditos y registros de conversaciones para cumplimiento normativo. Las exportaciones de usuarios, proyectos y skills y el ranking por producto son más fáciles de recoger en la interfaz, y la exportación se puede encargar a Claude in Chrome.</q>
-    <q t="Cómo saber si hacen falta licencias nuevas">La profundidad de adopción muestra cuántas personas usan la herramienta al menos una vez, con regularidad y cada semana. Decide a qué grupo formar y si conviene comprar licencias nuevas ahora.</q>
-    <q t="Cómo elegir a las personas a entrevistar">Se eligen personas para cada dirección encontrada: en el ejemplo la lista final es de 16 personas de 340. Los usuarios de otras herramientas y quienes la dejaron se añaden según las reglas de <a href="/blog/who-to-interview-before-buying-ai-tools/">«A quién entrevistar»</a>.</q>
-  </b-qa>
 </b-chapter>
 <b-chapter id="faq" icon="chat" title="Preguntas frecuentes">
   <b-faq-cards>

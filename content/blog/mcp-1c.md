@@ -1,7 +1,7 @@
 ---
 title: MCP-сервер и ИИ-агент для 1С: как пустить Claude Code, Codex или Cursor к базе и не сломать её
 date: 2026-10-12
-updated: 2026-11-07
+updated: 2026-11-13
 description: MCP-сервер для 1С даёт ИИ-агенту (Claude Code, Codex или Cursor) доступ к коду конфигурации и к данным базы. Как подключить за 3 шага, что ломается на практике, как разделить чтение и запись и проверять результат.
 tags: AI, агенты, MCP, 1С, права доступа, безопасность, Claude Code, Codex, Cursor
 category: harness
@@ -266,12 +266,12 @@ toc: what=Что это | specifics=Особенности 1С | breaks=Где �
   <tab t="Codex">
     <b-pick-cell k="Где настроить"><code>~/.codex/config.toml</code> или <code>.codex/config.toml</code> в проекте</b-pick-cell>
     <b-pick-cell k="Для команды" tone="accent"><code>.codex/config.toml</code> в доверенном проекте</b-pick-cell>
-    <b-pick-cell k="Документация"><a href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">MCP в Codex</a></b-pick-cell>
+    <b-pick-cell k="Документация"><a href="https://learn.chatgpt.com/docs/extend/mcp?surface=cli" target="_blank" rel="noopener">MCP в Codex</a></b-pick-cell>
   </tab>
   <tab t="Cursor">
     <b-pick-cell k="Где настроить">файл <code>mcp.json</code></b-pick-cell>
     <b-pick-cell k="Для команды" tone="accent">командный каталог серверов</b-pick-cell>
-    <b-pick-cell k="Документация"><a href="https://cursor.com/docs/context/mcp" target="_blank" rel="noopener">MCP в Cursor</a></b-pick-cell>
+    <b-pick-cell k="Документация"><a href="https://cursor.com/docs/mcp" target="_blank" rel="noopener">MCP в Cursor</a></b-pick-cell>
   </tab>
 </b-pick-tabs>
 </b-lane>

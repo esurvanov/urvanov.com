@@ -66,7 +66,7 @@ Số phút cho mỗi khối
 
 Mở đầu
 
-“Tôi đang tìm hiểu mọi người trong công ty thực sự hoàn thành các tác vụ công việc như thế nào. Đây không phải đánh giá bạn. Cả trường hợp thành công lẫn không thành công đều hữu ích như nhau với tôi. Có một trợ lý ghi chú đi cùng tôi: chỉ chúng ta thấy bản ghi lời, và câu trả lời vào báo cáo không kèm tên. Tôi bật nó được không?”
+“Tôi đang tìm hiểu mọi người trong công ty thực sự hoàn thành các tác vụ công việc như thế nào. Đây không phải đánh giá bạn. Cả trường hợp thành công lẫn không thành công đều hữu ích như nhau với tôi. Có một trợ lý ghi chú đi cùng tôi: chỉ nhóm nghiên cứu thấy bản ghi lời, và câu trả lời vào báo cáo không kèm tên. Tôi bật nó được không?”
 
 2
 
@@ -179,7 +179,7 @@ Một bảng: một hàng cho mỗi người
 | 5 | Ben Ortiz |  |  | chỉ Codex | Chờ phản hồi |  | chỉ Codex |  | 3.2M | 64 | 22.09 |
 | 6 | Pavel Novak | [27.09 10:15] Người hỏi: Hãy mô tả tác vụ gần nhất… | văn bản | không hoạt động | Xong | thường xuyên | không dùng | ≠ | 0 | 0 | — |
 | 7 | Sara Quinn |  |  | không hoạt động | Từ chối |  | không dùng |  | 0 | 0 | — |
-| 8 | Nadia Rahimi | Người hỏi [00:00]: Hôm qua bạn đã làm gì trong ChatGPT… | giọng nói | công cụ khác | Xong | thỉnh thoảng | thỉnh thoảng | = | 0.3M | 6 | 20.09 |
+| 8 | Nadia Rahimi | Người hỏi [00:00]: Hãy nhớ lại tác vụ gần nhất đã tốn… | giọng nói | công cụ khác | Xong | thỉnh thoảng | thỉnh thoảng | = | 0.3M | 6 | 20.09 |
 | 9 | Elif Demir |  |  | dự án | Đang làm |  | hằng tuần |  | 1.8M | 41 | 27.09 |
 | 16 bản ghi · hiển thị 9 |  |  |  |  |  |  |  |  |  |  |  |
 

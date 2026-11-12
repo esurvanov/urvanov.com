@@ -1,7 +1,7 @@
 ---
 title: Cài đặt và lệnh OpenSpec: ví dụ một thay đổi từ kế hoạch đến merge
 date: 2026-11-07
-updated: 2026-11-08
+updated: 2026-11-13
 description: OpenSpec của Fission AI hoạt động ra sao: thư mục thay đổi gồm kế hoạch, yêu cầu và tác vụ, ba lệnh cho tác nhân và việc merge vào đặc tả chung. Cài đặt bằng hai lệnh, một thay đổi thật từ repository của trang urvanov.com, so sánh với Spec Kit và các prompt có sẵn để bắt đầu.
 tags: AI, OpenSpec, đặc tả, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
@@ -36,7 +36,7 @@ OpenSpec là framework mã nguồn mở miễn phí cho phát triển dựa trê
 </b-chapter>
 
 <b-chapter id="install" icon="terminal" title="Cài đặt">
-  <b-why align="left">OpenSpec có hai phần. Phần thứ nhất là chương trình dòng lệnh <code>openspec</code>: cài một lần cho mỗi máy tính. Phần thứ hai là thiết lập cho một dự án cụ thể: <code>openspec init</code> tạo thư mục <code>openspec/</code> trong dự án và thêm các lệnh như <code>/opsx:propose</code> cho các tác nhân của bạn.</b-why>
+  <b-why align="left">OpenSpec có hai phần. Phần thứ nhất là chương trình dòng lệnh <code>openspec</code>: cài một lần cho mỗi máy tính. Phần thứ hai là thiết lập cho một dự án cụ thể: <code>openspec init</code> tạo thư mục <code>openspec/</code> trong dự án và thêm các lệnh như <code>/openspec-propose</code> cho các tác nhân của bạn.</b-why>
   <iso-art name="openspec/install"></iso-art>
   <b-why align="left">Thứ tự trên sơ đồ: trước hết chương trình xuất hiện trên máy, sau đó thư mục <code>openspec/</code> xuất hiện trong dự án với hai thư mục con — <code>specs</code> cho các yêu cầu đang có hiệu lực và <code>changes</code> cho các thay đổi đang tiến hành — và cuối cùng các tác nhân của bạn có thêm lệnh mới. Bản thân mã dự án không đổi: chỉ thêm thư mục kế hoạch và các tệp lệnh cho tác nhân. Lệnh cho macOS và Linux:</b-why>
   <b-codebox title="Cài đặt trên macOS và Linux">
@@ -48,7 +48,7 @@ OpenSpec là framework mã nguồn mở miễn phí cho phát triển dựa trê
     cd your-project
     openspec init
   </b-codebox>
-  <b-why align="left"><code>openspec init</code> hỏi bạn dùng những tác nhân nào và cài lệnh đúng cho chúng. Tên lệnh khác nhau theo tác nhân: <code>/opsx:propose</code> trong Claude Code, <code>/opsx-propose</code> trong Cursor và GitHub Copilot, <code>$openspec-propose</code> trong Codex<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «/opsx:propose is the canonical name; your tool may spell it /opsx-propose (Cursor, GitHub Copilot), @opsx-propose (Amazon Q) or $openspec-propose (Codex)» — github.com/Fission-AI/OpenSpec"/>. Phần còn lại của bài dùng cách viết của Claude Code.</b-why>
+  <b-why align="left"><code>openspec init</code> hỏi bạn dùng những tác nhân nào và cài các skill của OpenSpec cho chúng vào một thư mục chung <code>.agents/skills/</code>. Trong Claude Code và hầu hết tác nhân, gọi chúng bằng <code>/openspec-propose</code>, trong Codex bằng <code>$openspec-propose</code>, hoặc chỉ cần yêu cầu bằng lời<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «These are skills. Most tools invoke them as /openspec-propose and Codex as $openspec-propose, or you can ask for the work in plain words. … Coming from 1.x and its /opsx:* commands? See Upgrade to 2.0» — github.com/Fission-AI/OpenSpec"/>. Ở bản 1.x, các bước này có tên <code>/opsx:propose</code>, <code>/opsx:apply</code>, <code>/opsx:archive</code>; để chuyển sang 2.0, hãy chạy <code>openspec update</code> trong từng dự án. Phần còn lại của bài dùng cách viết của Claude Code.</b-why>
   <b-why align="left">Nếu dự án dùng nhiều tác nhân, ví dụ một phần nhóm làm trong Cursor và một phần trong Claude Code, hãy chọn tất cả: kế hoạch thay đổi là chung, và mỗi tác nhân có lệnh riêng. Chương trình miễn phí, chạy cục bộ và không cần tài khoản.</b-why>
   <b-finding>
     <ex>Hai lệnh: một lệnh cài chương trình, lệnh kia chuẩn bị dự án và kết nối các tác nhân.</ex>
@@ -58,30 +58,30 @@ OpenSpec là framework mã nguồn mở miễn phí cho phát triển dựa trê
 </b-chapter>
 
 <b-chapter id="flow" icon="list-arrow" title="Ba lệnh: kế hoạch, mã, merge">
-  <b-why align="left">Công việc đi theo một vòng ba lệnh. Trước chúng, bạn có thể suy nghĩ thành tiếng với <code>/opsx:explore</code>: tác nhân đọc mã, gợi ý các phương án và không thay đổi gì. Khi đã rõ cần làm gì, đường chính bắt đầu.</b-why>
+  <b-why align="left">Công việc đi theo một vòng ba lệnh. Trước chúng, bạn có thể suy nghĩ thành tiếng với <code>/openspec-explore</code>: tác nhân đọc mã, gợi ý các phương án và không thay đổi gì. Khi đã rõ cần làm gì, đường chính bắt đầu.</b-why>
   <iso-art name="openspec/loop"></iso-art>
-  <b-why align="left">Hãy đọc vòng theo chiều kim đồng hồ. Lệnh thứ nhất, <code>/opsx:propose</code>, nhờ tác nhân viết kế hoạch: nó tạo thư mục thay đổi và bốn tệp. Sau đó đến lượt bạn: đọc kế hoạch và sửa trong chat hoặc ngay trong các tệp. Đây là điểm kiểm soát chính, vì sửa một đoạn văn rẻ hơn viết lại mã đã hoàn thành. Lệnh thứ hai, <code>/opsx:apply</code>, bắt đầu làm theo các tác vụ: tác nhân lấy từng tác vụ trong <code>tasks.md</code> và đánh dấu xong từng cái. Lệnh thứ ba, <code>/opsx:archive</code>, đóng thay đổi: các yêu cầu chuyển vào đặc tả chung, còn thư mục được đưa vào kho lưu trữ cùng toàn bộ lịch sử quyết định. Thay đổi tiếp theo bắt đầu từ đặc tả đã cập nhật.</b-why>
-  <b-why align="left">Một phiên làm việc ngắn trong terminal trông như thế này. Phiên mẫu dựa trên bản demo trong phần mô tả OpenSpec<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /opsx:propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /opsx:archive / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
-  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec · /opsx" path="~/projects/shop">
-    <line kind="ask">/opsx:propose add-dark-mode</line>
+  <b-why align="left">Hãy đọc vòng theo chiều kim đồng hồ. Lệnh thứ nhất, <code>/openspec-propose</code>, nhờ tác nhân viết kế hoạch: nó tạo thư mục thay đổi và bốn tệp. Sau đó đến lượt bạn: đọc kế hoạch và sửa trong chat hoặc ngay trong các tệp. Đây là điểm kiểm soát chính, vì sửa một đoạn văn rẻ hơn viết lại mã đã hoàn thành. Lệnh thứ hai, <code>/openspec-apply-change</code>, bắt đầu làm theo các tác vụ: tác nhân lấy từng tác vụ trong <code>tasks.md</code> và đánh dấu xong từng cái. Lệnh thứ ba, <code>/openspec-archive-change</code>, đóng thay đổi: các yêu cầu chuyển vào đặc tả chung, còn thư mục được đưa vào kho lưu trữ cùng toàn bộ lịch sử quyết định. Thay đổi tiếp theo bắt đầu từ đặc tả đã cập nhật.</b-why>
+  <b-why align="left">Một phiên làm việc ngắn trong terminal trông như thế này. Phiên mẫu dựa trên bản demo trong phần mô tả OpenSpec<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /openspec-propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /openspec-archive-change / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
+  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec 2.0 · skills" path="~/projects/shop">
+    <line kind="ask">/openspec-propose add-dark-mode</line>
     <line kind="act">Created openspec/changes/add-dark-mode/</line>
     <line kind="out">proposal.md · specs/ · design.md · tasks.md</line>
     <line kind="you" note="bạn xem xét kế hoạch">Thêm một kịch bản: giao diện tối được giữ nguyên sau khi tải lại trang</line>
-    <line kind="ask">/opsx:apply</line>
+    <line kind="ask">/openspec-apply-change</line>
     <line kind="act">1.1 theme context ✓ · 1.2 toggle ✓ · 2.1 colours ✓</line>
     <line kind="out">all tasks complete</line>
-    <line kind="ask">/opsx:archive</line>
+    <line kind="ask">/openspec-archive-change</line>
     <line kind="act">Đã chuyển các yêu cầu vào openspec/specs và thư mục thay đổi vào kho lưu trữ</line>
   </b-agent-term>
   <b-table>
   | Lệnh | Tác nhân làm gì | Dự án có thêm gì | Bạn làm gì |
   |---|---|---|---|
-  | <code>/opsx:explore</code> | đọc mã, gợi ý các phương án | không có gì | chọn một phương án |
-  | <code>/opsx:propose</code> | viết kế hoạch thay đổi | thư mục <code>openspec/changes/name/</code> với bốn tệp | đọc và sửa kế hoạch |
-  | <code>/opsx:apply</code> | viết mã theo các tác vụ, đánh dấu xong | mã và kiểm thử | kiểm tra kết quả |
-  | <code>/opsx:archive</code> | merge các yêu cầu vào đặc tả chung | <code>openspec/specs</code> được cập nhật, thư mục được lưu trữ | không làm gì, đây là kết thúc |
+  | <code>/openspec-explore</code> | đọc mã, gợi ý các phương án | không có gì | chọn một phương án |
+  | <code>/openspec-propose</code> | viết kế hoạch thay đổi | thư mục <code>openspec/changes/name/</code> với bốn tệp | đọc và sửa kế hoạch |
+  | <code>/openspec-apply-change</code> | viết mã theo các tác vụ, đánh dấu xong | mã và kiểm thử | kiểm tra kết quả |
+  | <code>/openspec-archive-change</code> | merge các yêu cầu vào đặc tả chung | <code>openspec/specs</code> được cập nhật, thư mục được lưu trữ | không làm gì, đây là kết thúc |
   </b-table>
-  <b-why align="left">Với các tác vụ lớn có bộ lệnh mở rộng: tạo thay đổi từng bước, tiếp tục một thay đổi đang làm, kiểm tra mã đối chiếu với đặc tả. Bật nó bằng <code>openspec config profile</code>.</b-why>
+  <b-why align="left">Với các tác vụ lớn có bộ lệnh mở rộng: tạo thay đổi từng bước, tiếp tục một thay đổi đang làm, kiểm tra mã đối chiếu với đặc tả. Bật nó bằng <code>openspec config profile</code> rồi áp dụng cho dự án bằng <code>openspec update</code>.</b-why>
   <b-finding>
     <ex>Sau khi lưu trữ, <code>openspec/specs</code> chứa mô tả hiện tại của hệ thống, còn lịch sử quyết định nằm trong kho lưu trữ thay đổi.</ex>
     <gen>Đặc tả được cập nhật cùng bước với mã, nên không bị lỗi thời như một wiki riêng.</gen>
@@ -110,7 +110,7 @@ OpenSpec là framework mã nguồn mở miễn phí cho phát triển dựa trê
     - THEN the card shows only those sections, with no empty blocks
   </b-codebox>
   <b-why align="left">Quyết định “chỉ trích dẫn từ nguồn” đã được ghi trong design.md trước khi viết mã. Nhờ vậy tác nhân không bịa lời trích ở nơi không có, và kịch bản “nội dung một phần” đặt trước thẻ trông thế nào khi thiếu lời trích hoặc sơ đồ.</b-why>
-  <b-why align="left">Công việc gồm 10 tác vụ, mỗi tác vụ một chủ đề của danh mục. Cả 10 tác vụ đã được đánh dấu xong, nhưng lệnh lưu trữ chưa bao giờ được chạy: thư mục thay đổi vẫn nằm trong <code>openspec/changes</code>, và trang chưa có đặc tả chung. Đây là lỗi hay gặp. Yêu cầu “mỗi kỹ thuật có mô tả chi tiết” chỉ nằm trong bản nháp thay đổi, và tác nhân kế tiếp đọc đặc tả chung sẽ không biết đến nó. Một lệnh <code>/opsx:archive</code> sẽ chuyển nó vào đặc tả chung.</b-why>
+  <b-why align="left">Công việc gồm 10 tác vụ, mỗi tác vụ một chủ đề của danh mục. Cả 10 tác vụ đã được đánh dấu xong, nhưng lệnh lưu trữ chưa bao giờ được chạy: thư mục thay đổi vẫn nằm trong <code>openspec/changes</code>, và trang chưa có đặc tả chung. Đây là lỗi hay gặp. Yêu cầu “mỗi kỹ thuật có mô tả chi tiết” chỉ nằm trong bản nháp thay đổi, và tác nhân kế tiếp đọc đặc tả chung sẽ không biết đến nó. Một lệnh <code>/openspec-archive-change</code> sẽ chuyển nó vào đặc tả chung.</b-why>
   <b-finding>
     <ex>Kịch bản “nội dung một phần” xuất hiện trong kế hoạch trước khi viết mã và đặt ra cách thẻ hoạt động khi thiếu lời trích hoặc sơ đồ.</ex>
     <gen>Yêu cầu có kịch bản “khi — thì” đọc giống như kiểm thử: tác nhân biết thế nào là xong.</gen>
@@ -140,10 +140,10 @@ OpenSpec là framework mã nguồn mở miễn phí cho phát triển dựa trê
   <b-why align="left">Bắt đầu với một thay đổi nhỏ mà bạn vốn định làm. Năm prompt cho tác nhân, mỗi bước một cái: dán chúng vào Claude Code, Codex hoặc Cursor và điền tác vụ của bạn.</b-why>
   <b-hdd-steps>
     <step t="Cài đặt">“Cài OpenSpec và chạy openspec init trong dự án này. Cho xem những lệnh nào đã xuất hiện”</step>
-    <step t="Khám phá">“/opsx:explore Tôi muốn thêm … Hãy xem mã và đề xuất hai phương án, không thay đổi gì”</step>
-    <step t="Kế hoạch">“/opsx:propose … Trước hết chỉ làm kế hoạch. Trong phần yêu cầu, đưa vào các kịch bản cho dữ liệu rỗng và dữ liệu một phần”</step>
-    <step t="Mã">“/opsx:apply Làm lần lượt từng tác vụ và chạy kiểm thử sau mỗi tác vụ”</step>
-    <step t="Merge">“/opsx:archive Chuyển các yêu cầu vào đặc tả và cho xem cái gì đã đổi trong openspec/specs”</step>
+    <step t="Khám phá">“/openspec-explore Tôi muốn thêm … Hãy xem mã và đề xuất hai phương án, không thay đổi gì”</step>
+    <step t="Kế hoạch">“/openspec-propose … Trước hết chỉ làm kế hoạch. Trong phần yêu cầu, đưa vào các kịch bản cho dữ liệu rỗng và dữ liệu một phần”</step>
+    <step t="Mã">“/openspec-apply-change Làm lần lượt từng tác vụ và chạy kiểm thử sau mỗi tác vụ”</step>
+    <step t="Merge">“/openspec-archive-change Chuyển các yêu cầu vào đặc tả và cho xem cái gì đã đổi trong openspec/specs”</step>
   </b-hdd-steps>
 </b-chapter>
 
@@ -152,7 +152,7 @@ OpenSpec là framework mã nguồn mở miễn phí cho phát triển dựa trê
     <q t="OpenSpec là gì?">Framework mã nguồn mở miễn phí của Fission AI cho phát triển dựa trên đặc tả. Tác nhân ghi kế hoạch thay đổi vào các tệp Markdown, bạn xem xét, tác nhân viết mã, và các yêu cầu được merge vào đặc tả chung của dự án.</q>
     <q t="Cài đặt OpenSpec như thế nào?">Bằng curl -fsSL https://openspec.dev/cli/install.sh | sh trên macOS và Linux, hoặc bằng npm install -g @fission-ai/openspec@latest. Sau đó chạy openspec init trong thư mục dự án.</q>
     <q t="OpenSpec khác Spec Kit ở điểm nào?">OpenSpec linh hoạt hơn và được xây cho mã đang chạy; các bước có thể lặp lại theo thứ tự bất kỳ. Spec Kit của GitHub đi qua các giai đoạn cố định: nguyên tắc, đặc tả, kế hoạch, tác vụ, mã.</q>
-    <q t="OpenSpec chạy với những tác nhân nào?">Claude Code, Codex, Cursor, GitHub Copilot, Amazon Q và những tác nhân khác. openspec init cài lệnh cho các tác nhân bạn chọn.</q>
+    <q t="OpenSpec chạy với những tác nhân nào?">Claude Code, Codex, Cursor, GitHub Copilot và những tác nhân khác, tổng cộng hơn 30. openspec init cài lệnh cho các tác nhân bạn chọn.</q>
   </b-faq-cards>
 </b-chapter>
 

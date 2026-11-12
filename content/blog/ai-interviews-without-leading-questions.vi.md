@@ -1,7 +1,7 @@
 ---
 title: Cách phỏng vấn và phân tích phỏng vấn về việc dùng AI: kịch bản 30 phút, prompt phân tích và bảng Airtable
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Kịch bản cuộc gọi 30 phút, quy tắc giữ đúng chủ đề, bảng khảo sát ngắn cho toàn công ty, phân tích phỏng vấn bằng ChatGPT hoặc tác nhân với prompt có sẵn, và đối chiếu lời nói với số đo trong báo cáo.
 tags: AI, custdev, phỏng vấn
 category: research
@@ -88,7 +88,7 @@ Một cuộc phỏng vấn về việc làm việc với AI kéo dài 30 phút v
   </b-share-bar>
   <b-cap>Số phút cho mỗi khối</b-cap>
   <b-call-script>
-    <step color="c-none" ink="ink" t="Mở đầu" q="&quot;Tôi đang tìm hiểu mọi người trong công ty thực sự hoàn thành các tác vụ công việc như thế nào. Đây không phải đánh giá bạn. Cả trường hợp thành công lẫn không thành công đều hữu ích như nhau với tôi. Có một trợ lý ghi chú đi cùng tôi: chỉ chúng ta thấy bản ghi lời, và câu trả lời vào báo cáo không kèm tên. Tôi bật nó được không?&quot;"></step>
+    <step color="c-none" ink="ink" t="Mở đầu" q="&quot;Tôi đang tìm hiểu mọi người trong công ty thực sự hoàn thành các tác vụ công việc như thế nào. Đây không phải đánh giá bạn. Cả trường hợp thành công lẫn không thành công đều hữu ích như nhau với tôi. Có một trợ lý ghi chú đi cùng tôi: chỉ nhóm nghiên cứu thấy bản ghi lời, và câu trả lời vào báo cáo không kèm tên. Tôi bật nó được không?&quot;"></step>
     <step color="c-light" t="Vai trò và bối cảnh" q='"Bạn dành phần lớn tuần cho việc gì?"'>Những tác vụ nào lặp lại · bạn tìm thông tin và soạn thảo ở đâu</step>
     <step color="c-chat" t="Tác vụ công việc gần nhất" q='"Hãy nghĩ đến tác vụ công việc gần nhất đã tốn của bạn một lượng thời gian đáng kể. Bạn cần có được gì?"'>Bạn có những phương tiện nào · bạn chọn gì và vì sao · bạn đi đến kết quả bằng cách nào</step>
     <step color="c-proj" t="Kết quả và công sức" q='"Cuối cùng bạn có được gì, và tốn bao nhiêu công sức?"'>Phần nào dùng nguyên trạng · phần nào tự hoàn thiện · có những ràng buộc nào: dữ liệu, quyền truy cập, bảo mật</step>
@@ -162,7 +162,7 @@ Một cuộc phỏng vấn về việc làm việc với AI kéo dài 30 phút v
     <row>Ben Ortiz |  |  | chỉ Codex | <b-select-pill tone="cyan">Chờ phản hồi</b-select-pill> |  | <b-select-pill tone="purple">chỉ Codex</b-select-pill> |  | 3.2M | 64 | 22.09</row>
     <row>Pavel Novak | [27.09 10:15] Người hỏi: Hãy mô tả tác vụ gần nhất… | <b-select-pill tone="purple">văn bản</b-select-pill> | không hoạt động | <b-select-pill tone="green">Xong</b-select-pill> | <b-select-pill tone="cyan">thường xuyên</b-select-pill> | <b-select-pill tone="red">không dùng</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
     <row>Sara Quinn |  |  | không hoạt động | <b-select-pill tone="red">Từ chối</b-select-pill> |  | <b-select-pill tone="red">không dùng</b-select-pill> |  | 0 | 0 | —</row>
-    <row>Nadia Rahimi | Người hỏi [00:00]: Hôm qua bạn đã làm gì trong ChatGPT… | <b-select-pill tone="cyan">giọng nói</b-select-pill> | công cụ khác | <b-select-pill tone="green">Xong</b-select-pill> | <b-select-pill tone="yellow">thỉnh thoảng</b-select-pill> | <b-select-pill tone="yellow">thỉnh thoảng</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
+    <row>Nadia Rahimi | Người hỏi [00:00]: Hãy nhớ lại tác vụ gần nhất đã tốn… | <b-select-pill tone="cyan">giọng nói</b-select-pill> | công cụ khác | <b-select-pill tone="green">Xong</b-select-pill> | <b-select-pill tone="yellow">thỉnh thoảng</b-select-pill> | <b-select-pill tone="yellow">thỉnh thoảng</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
     <row>Elif Demir |  |  | dự án | <b-select-pill tone="gray">Đang làm</b-select-pill> |  | <b-select-pill tone="green">hằng tuần</b-select-pill> |  | 1.8M | 41 | 27.09</row>
   </b-airtable-grid>
   <b-cap>ChatGPT điền vào trường màu cam từ cuộc trò chuyện trong Ghi chú. “Theo báo cáo”, “Token”, “$” và “Hoạt động” lấy từ <a href="/blog/chatgpt-enterprise-usage-report/">báo cáo sử dụng ChatGPT Enterprise</a>. Trường “≠” là công thức so sánh hai tần suất.</b-cap>

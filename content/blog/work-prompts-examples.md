@@ -1,7 +1,7 @@
 ---
 title: Промпты для рабочих задач: пять частей и шесть примеров для ChatGPT и Claude
 date: 2026-09-28
-updated: 2026-11-07
+updated: 2026-11-13
 description: Промпты для работы с нейросетью: из каких частей собран хороший рабочий промпт, как выглядят слабый и сильный запрос, шесть готовых шаблонов под частые задачи и как сохранить их в проекте — по руководствам Anthropic, OpenAI и Google.
 tags: AI, промпты, ChatGPT, Claude
 category: prompts
@@ -18,13 +18,13 @@ toc: model=Human-in-the-loop | parts=Пять частей | examples=Шесть
     <node icon="ai-box" t="Модель">угадывает контекст</node>
     <node icon="file-x" t="Общий ответ">переписывать вручную</node>
   </b-lane>
-  <b-lane title="Шесть частей" color="accent">
+  <b-lane title="Пять частей" color="accent">
     <node icon="prompt-stripes" t="Промпт">роль, данные, пример, формат</node>
     <node icon="ai-box" t="Модель">видит всё нужное</node>
     <node icon="file-check" t="Черновик">правки по мелочи</node>
   </b-lane>
 </b-flow>
-<b-cap>Модель в обоих случаях одна и та же. Результат определяет то, что написано в запросе: шесть частей, которые повторяются в руководствах Anthropic, OpenAI и Google.</b-cap>
+<b-cap>Модель в обоих случаях одна и та же. Результат определяет то, что написано в запросе: пять частей, которые повторяются в руководствах Anthropic, OpenAI и Google.</b-cap>
 <b-chapter id="model" title="Human-in-the-loop: путь одного запроса" icon="share">
   <b-art names="work-prompts-examples/prompt-map" wide/>
   <b-finding>
@@ -102,7 +102,7 @@ toc: model=Human-in-the-loop | parts=Пять частей | examples=Шесть
       <b-cap>Шаблон повестки с разбивкой по времени есть в OpenAI Academy<b-proof href="https://academy.openai.com/public/resources/chatgpt-for-any-role" quote="OpenAI Academy, ChatGPT for any role: «Create a structured agenda for a meeting about [topic]. Break the agenda into sections with time estimates and goals for each section» — academy.openai.com"/>.</b-cap>
       <b-finding>
         <ex>Цель встречи, материалы в тегах и нумерованный список того, что вернуть.</ex>
-        <gen>Цель встречи отсекает лишнее из материалов. Нумерованные шаги нужны, когда важны порядок и полнота ответа<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: «Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they&#39;d be confused, Claude will be too» — platform.claude.com, Prompting best practices"/>.</gen>
+        <gen>Цель встречи отсекает лишнее из материалов. Нумерованные шаги нужны, когда важны порядок и полнота ответа<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: «Provide instructions as sequential steps using numbered lists or bullet points when the order or completeness of steps matters» — platform.claude.com, Prompting best practices"/>.</gen>
         <do>Перед каждой встречей на 30 минут и больше отдавайте материалы этим промптом и открывайте встречу с его таблицей.</do>
       </b-finding>
     </b-prompt-tab>
@@ -164,15 +164,15 @@ toc: model=Human-in-the-loop | parts=Пять частей | examples=Шесть
         <part icon="lines-alt">Формат</part>
       </b-prompt-parts>
       <b-prompt>
-        Вот три наших поста, которые хорошо зашли:
+        Вот три поста компании, которые хорошо зашли:
         &lt;пример&gt;[пост 1]&lt;/пример&gt;
         &lt;пример&gt;[пост 2]&lt;/пример&gt;
         &lt;пример&gt;[пост 3]&lt;/пример&gt;
         Напиши пост о [теме] в том же стиле: длина, тон и структура как в примерах.
-        Для кого: [аудитория]. Зачем: [чего хотим от читателя].
+        Для кого: [аудитория]. Зачем: [что читатель должен сделать].
       </b-prompt>
       <b-finding>
-        <ex>Три примера в тегах и одна фраза о том, кому и зачем пишем.</ex>
+        <ex>Три примера в тегах и одна фраза о том, кому и зачем этот текст.</ex>
         <gen>Anthropic рекомендует 3–5 примеров<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: «Include 3–5 examples for best results» — platform.claude.com, Prompting best practices"/>; руководство Google тоже ставит примеры первой практикой<b-proof href="https://www.kaggle.com/whitepaper-prompt-engineering" quote="Google, Prompt Engineering: среди лучших практик — давать примеры, быть конкретным про формат ответа и формулировать инструкции вместо запретов. Пересказ — kaggle.com/whitepaper-prompt-engineering"/>. Стиль, показанный на примерах, модель копирует точнее, чем описанный словами.</gen>
         <do>Сложите удачные тексты в проект и возьмите их примерами — тогда их не нужно вставлять каждый раз.</do>
       </b-finding>
@@ -193,7 +193,7 @@ toc: model=Human-in-the-loop | parts=Пять частей | examples=Шесть
         Итог: таблица [колонки] и вывод в 5 пунктах.
         К каждому факту — ссылка на источник. Если данных нет, так и напиши.
       </b-prompt>
-      <b-cap>Режим глубокого исследования есть в обоих чатах: deep research в ChatGPT и Research в Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research собирает и сводит информацию из интернета в отчёт, работает от 5 до 30 минут, в ответе — ссылки на источники. Пересказ справки OpenAI — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research — «conducting multiple searches that build on each other», ответ «complete with easy-to-check citations»; «available for users with paid Claude plans (Pro, Max, Team, or Enterprise)» — support.claude.com/en/articles/11088861"/>.</b-cap>
+      <b-cap>Режим глубокого исследования есть в обоих чатах: deep research в ChatGPT и Research в Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research собирает и сводит информацию из интернета в отчёт, работает от 5 до 30 минут, в ответе — ссылки на источники. Пересказ справки OpenAI — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research — «conducting multiple searches that build on each other», ответ «complete with easy-to-check citations»; «available for users with paid Claude plans (Pro, Max, Ultra, Team, or Enterprise)» — support.claude.com/en/articles/11088861"/>.</b-cap>
       <b-finding>
         <ex>Цель, ограничение по свежести данных и формат итога со ссылками.</ex>
         <gen>В режиме исследования модель делает серию поисков и возвращает отчёт со ссылками. Ссылки позволяют проверить каждый факт, а фраза «если данных нет» не даёт заполнить пробел выдумкой.</gen>
@@ -213,7 +213,7 @@ toc: model=Human-in-the-loop | parts=Пять частей | examples=Шесть
   <b-sublabel top="22">Промптинг</b-sublabel>
   <b-links cols="2">
     <item href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" k="Anthropic · документация" t="Prompting best practices" ext>Основной справочник: ясность, примеры, роль, XML-теги, длинные документы</item>
-    <item href="https://claude.com/blog/best-practices-for-prompt-engineering" k="Anthropic · блог" t="Best practices for prompt engineering" ext>Общие приёмы промптинга вне конкретной модели</item>
+    <item href="https://claude.com/resources/articles/best-practices-for-prompt-engineering" k="Anthropic · блог" t="Best practices for prompt engineering" ext>Общие приёмы промптинга вне конкретной модели</item>
     <item href="https://github.com/anthropics/prompt-eng-interactive-tutorial" k="Anthropic · туториал" t="Интерактивный туториал" ext>9 глав с упражнениями — от структуры промпта до XML-тегов и примеров</item>
     <item href="https://www.kaggle.com/whitepaper-prompt-engineering" k="Google · whitepaper" t="Prompt Engineering" ext>Техники и лучшие практики: примеры, формат ответа, инструкции вместо запретов</item>
     <item href="https://academy.openai.com/public/clubs/work-users-ynjqu/resources/prompting" k="OpenAI Academy" t="Prompting" ext>Что, для кого и зачем, контекст, формат ответа, итерации</item>
@@ -237,7 +237,7 @@ toc: model=Human-in-the-loop | parts=Пять частей | examples=Шесть
   <b-links cols="2">
     <item href="/blog/harness-work-approaches/" k="Подходы" t="Если ответ не подошёл">Цикл ответа и ревью с правкой запроса</item>
     <item href="/blog/specs-rules-skills/" k="Контекст" t="Спеки, библия, правила и скиллы">Где хранить промпт дольше одного чата</item>
-    <item href="/blog/ai-in-code-harness-and-tools/" k="Разработка" t="ИИ в коде">Харнесс и три группы инструментов</item>
+    <item href="/blog/ai-in-code-harness-and-tools/" k="Разработка" t="ИИ в коде">Харнесс и четыре группы программ</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="Отчёт" t="Отчёт по ChatGPT Enterprise">Кто в компании чем пользуется</item>
   </b-links>
 </b-chapter>

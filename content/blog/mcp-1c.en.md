@@ -1,7 +1,7 @@
 ---
 title: MCP server and AI agent for 1C: how to let Claude Code, Codex or Cursor into the database without breaking it
 date: 2026-10-12
-updated: 2026-11-07
+updated: 2026-11-13
 description: An MCP server for 1C:Enterprise gives an AI agent (Claude Code, Codex or Cursor) access to the configuration code and the database data. How to connect it in 3 steps, what breaks in practice, how to separate reading from writing and check results.
 tags: AI, agents, MCP, 1C, permissions, security, Claude Code, Codex, Cursor
 category: harness
@@ -100,7 +100,7 @@ To let Claude Code, Codex or Cursor into a 1C database without breaking it, conn
 </b-finding>
 </b-chapter>
 <b-chapter id="cases" icon="alert-alt" title="What breaks in practice">
-<b-why align="left">Open chats of 1C developers describe similar cases. Retold in our own words, without names. These are examples from practice: each case cannot be verified. Pick a case: the diagram shows where it happened, the card shows why and how to protect.</b-why>
+<b-why align="left">Open chats of 1C developers describe similar cases. Retold without names. These are examples from practice: each case cannot be verified. Pick a case: the diagram shows where it happened, the card shows why and how to protect.</b-why>
 <b-lane title="Cases from practice" color="warn">
 <b-scene names="mcp-1c/cases"/>
 <b-pick-tabs id="cs" tone="warn">
@@ -266,12 +266,12 @@ To let Claude Code, Codex or Cursor into a 1C database without breaking it, conn
   <tab t="Codex">
     <b-pick-cell k="Where to set up"><code>~/.codex/config.toml</code> or <code>.codex/config.toml</code> in the project</b-pick-cell>
     <b-pick-cell k="For a team" tone="accent"><code>.codex/config.toml</code> in a trusted project</b-pick-cell>
-    <b-pick-cell k="Docs"><a href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">MCP in Codex</a></b-pick-cell>
+    <b-pick-cell k="Docs"><a href="https://learn.chatgpt.com/docs/extend/mcp?surface=cli" target="_blank" rel="noopener">MCP in Codex</a></b-pick-cell>
   </tab>
   <tab t="Cursor">
     <b-pick-cell k="Where to set up">the <code>mcp.json</code> file</b-pick-cell>
     <b-pick-cell k="For a team" tone="accent">a team server marketplace</b-pick-cell>
-    <b-pick-cell k="Docs"><a href="https://cursor.com/docs/context/mcp" target="_blank" rel="noopener">MCP in Cursor</a></b-pick-cell>
+    <b-pick-cell k="Docs"><a href="https://cursor.com/docs/mcp" target="_blank" rel="noopener">MCP in Cursor</a></b-pick-cell>
   </tab>
 </b-pick-tabs>
 </b-lane>

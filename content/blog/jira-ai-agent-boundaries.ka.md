@@ -1,12 +1,12 @@
 ---
 title: Jira და AI აგენტი: დადებითი და უარყოფითი მხარეები და სად გავავლოთ ზღვარი
 date: 2026-10-20
-updated: 2026-11-08
+updated: 2026-11-13
 description: როგორ უკავშირდება AI აგენტი Jira-ს MCP-ით, რა მუშაობს, რა ირღვევა და რატომ უნდა იყოს ბაგების მიღება ცალკე სერვისში. Jira-ს ალტერნატივებიც შედის.
 tags: AI, აგენტები, Jira, MCP, Claude Code, ბაგ-ტრეკერი, harness
 category: harness
 layout: wide
-mentions: Jira, Atlassian Rovo MCP, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
+mentions: Jira, Atlassian MCP server, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
 toc: ways=როგორ დავაკავშიროთ | plus=დადებითი მხარეები | minus=უარყოფითი მხარეები | russia=Jira რუსეთში | trackers=სხვა ტრეკერები | border=ზღვარი | first=საიდან დავიწყოთ | faq=კითხვები | next=წაიკითხეთ შემდეგ
 ---
 
@@ -15,18 +15,18 @@ AI აგენტი Jira-სთან MCP-ით უკავშირდე�
 <b-post series="harness">
 
 <b-chapter id="ways" icon="plug" title="როგორ დავაკავშიროთ აგენტი Jira-სთან">
-  <b-why align="left">აგენტის Jira-სთან დაკავშირების რამდენიმე გზა არსებობს. ოფიციალური Atlassian-ის სერვერი (Rovo MCP) ამოცანების ძებნას, წაკითხვას და შექმნას ახერხებს, მაგრამ მხოლოდ ღრუბლოვან Jira-სთან მუშაობს. ღია კოდის სერვერი mcp-atlassian ერგება როგორც ღრუბელს, ისე საკუთარ სერვერზე დაყენებულ Jira-ს. კიდევ ერთი ვარიანტია ამოცანის აგენტზე მინიჭება პირდაპირ Jira-ში (Claude, Cursor, Codex, Copilot). ცხრილი გზებს შესაძლებლობებითა და შეზღუდვებით ადარებს.</b-why>
+  <b-why align="left">აგენტის Jira-სთან დაკავშირების რამდენიმე გზა არსებობს. ოფიციალური Atlassian-ის სერვერი (Atlassian MCP server, ადრე Rovo MCP) ამოცანების ძებნას, წაკითხვას და შექმნას ახერხებს, მაგრამ მხოლოდ ღრუბლოვან Jira-სთან მუშაობს. ღია კოდის სერვერი mcp-atlassian ერგება როგორც ღრუბელს, ისე საკუთარ სერვერზე დაყენებულ Jira-ს. კიდევ ერთი ვარიანტია ამოცანის აგენტზე მინიჭება პირდაპირ Jira-ში (Claude, Cursor, Codex, Copilot). ცხრილი გზებს შესაძლებლობებითა და შეზღუდვებით ადარებს.</b-why>
   <b-table>
 | გზა | რა შეუძლია | შეზღუდვები |
 |---|---|---|
-| Atlassian Rovo MCP (ოფიციალური) | ამოცანებისა და გვერდების ძებნა, წაკითხვა, შექმნა; დანართები 2026 წლის აგვისტოდან | მხოლოდ ღრუბელი; საათობრივი ლიმიტები; ხარჯავს Rovo კრედიტებს |
+| Atlassian MCP server, ადრე Rovo MCP (ოფიციალური) | ამოცანებისა და გვერდების ძებნა, წაკითხვა, შექმნა; დანართები 2026 წლის აგვისტოდან | მხოლოდ ღრუბელი; საათობრივი ლიმიტები; ზოგიერთი გამოძახება ხარჯავს Rovo კრედიტებს |
 | mcp-atlassian (ღია კოდი) | ღრუბელი და საკუთარ სერვერზე დაყენებული, დაახლოებით 100 ინსტრუმენტი | თავად აყენებთ, ტოკენი პარამეტრებშია |
 | აგენტები Jira-ში | ამოცანის მინიჭება Claude-ზე, Cursor-ზე, Codex-ზე, Copilot-ზე | მხოლოდ ღრუბელი, ფასიანი გეგმები |
 | Copilot / Cursor Jira-დან | ამოცანის მინიჭება, აგენტი ცვლილების დრაფტს ხსნის | ღრუბელი, ცალკე აპლიკაციები |
   </b-table>
   <b-finding>
     <ex>ოფიციალური გზები ღრუბლოვან Jira-სთან მუშაობს; საკუთარ სერვერზე დაყენებული Jira მხოლოდ ღია კოდის MCP-ით უკავშირდება.</ex>
-    <gen>აგენტს იგივე უფლებები აქვს, რაც იმ მომხმარებელს, რომლის ლოგინსაც ან ტოკენსაც იყენებს<b-proof href="https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: Getting started with the Atlassian Rovo MCP Server"/>.</gen>
+    <gen>აგენტს იგივე უფლებები აქვს, რაც იმ მომხმარებელს, რომლის ლოგინსაც ან ტოკენსაც იყენებს<b-proof href="https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: «…which ensures all actions respect users' existing access controls and permissions»"/>.</gen>
     <do>შეამოწმეთ, რომელი Jira გაქვთ, ღრუბლოვანი თუ საკუთარ სერვერზე დაყენებული: გზა ამაზეა დამოკიდებული.</do>
   </b-finding>
 </b-chapter>
@@ -83,7 +83,7 @@ AI აგენტი Jira-სთან MCP-ით უკავშირდე�
   <b-metric-line value="~70%">IT-ხელმძღვანელებისა იყენებს მხარდაუჭერელ ვერსიებს (K2Tech-ის გამოკითხვა, 73 კომპანია)</b-metric-line>
   <b-finding>
     <ex>ოფიციალური ღრუბლოვანი MCP და აგენტები Jira-ში რუსული გუნდებისთვის ფაქტობრივად მიუწვდომელია.</ex>
-    <gen>საკუთარ სერვერზე დაყენებული Jira-სთვის რჩება ღია კოდის mcp-atlassian, ასევე გადაწყვეტილება, სად გადავიდეთ 2029 წლამდე<b-proof href="https://habr.com/ru/articles/1011252" quote="K2Tech on Habr: Atlassian's exit and a survey of IT leaders"/>.</gen>
+    <gen>საკუთარ სერვერზე დაყენებული Jira-სთვის რჩება ღია კოდის mcp-atlassian, ასევე გადაწყვეტილება, სად გადავიდეთ 2029 წლამდე<b-proof href="https://habr.com/ru/companies/k2tech/articles/1011252/" quote="K2Tech on Habr, translated from Russian: “Key finding: about 70% of respondents still use unsupported versions of the vendor’s products”; “73 company representatives took part in the survey”"/>.</gen>
     <do>თუ გადასვლა წინაა, აირჩიეთ ტრეკერი, რომელსაც აგენტთან კავშირი უკვე აქვს.</do>
   </b-finding>
 </b-chapter>
@@ -150,5 +150,5 @@ AI აგენტი Jira-სთან MCP-ით უკავშირდე�
     <item href="/blog/mcp-agent-access/" k="საფუძვლები" t="MCP AI აგენტისთვის">რა არის MCP და როგორ დავაკავშიროთ</item>
   </b-links>
 </b-chapter>
-<b-footer>ფაქტები: Atlassian-ის, GitHub-ისა და Cursor-ის დოკუმენტაცია; automatica.com.au-ს, Cato CTRL-ისა და Simon Willison-ის ანალიზები; K2Tech-ის გამოკითხვა; Wordstat, 2026 წლის ოქტომბერი. Rovo MCP-ის შესაძლებლობები და გეგმები სწრაფად იცვლება: გადაწყვეტილებამდე შეამოწმეთ.</b-footer>
+<b-footer>ფაქტები: Atlassian-ის, GitHub-ისა და Cursor-ის დოკუმენტაცია; automatica.com.au-ს, Cato CTRL-ისა და Simon Willison-ის ანალიზები; K2Tech-ის გამოკითხვა; Wordstat, 2026 წლის ოქტომბერი. Atlassian MCP server-ის შესაძლებლობები და გეგმები სწრაფად იცვლება: გადაწყვეტილებამდე შეამოწმეთ.</b-footer>
 </b-post>

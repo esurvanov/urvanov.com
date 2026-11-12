@@ -1,7 +1,7 @@
 ---
 title: MCP pour un agent IA : quel problème il résout et comment confier la configuration à l'agent lui-même
 date: 2026-10-04
-updated: 2026-11-08
+updated: 2026-11-13
 unrelated: mcp-1c
 description: MCP branche un agent sur GitLab, Jira, Confluence et les enregistrements de réunions. Quel problème il résout, comment le configurer en quelques minutes en déléguant la tâche à l'agent, ce qu'il fait gagner en temps et en tokens, et pourquoi l'agent invente moins.
 tags: IA, agents, MCP, Jira, contexte, hallucinations, tokens, harness
@@ -200,7 +200,7 @@ MCP branche un agent sur les systèmes de travail, pour qu'il lise les faits à 
 <b-why>Une même approche vaut pour toutes les tâches : l'agent lit les sources et une personne vérifie le résultat.</b-why>
 <b-scene names="mcp-agent-access/three-cases"/>
 <b-table>
-<table><thead><tr><th>Cas</th><th>Sources</th><th>Ce que fait l'agent</th><th>Ce que vérifie un humain</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, banc de test, navigateur</td><td>reproduit un bug, réduit le chemin, rédige un rapport</td><td>les étapes à la main sur le banc de test</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Rapports et analytique</a></td><td>base de données, feuilles, documents</td><td>calcule par requêtes, assemble une synthèse</td><td>un chiffre recalculé autrement</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Incidents</a></td><td>Sentry, Grafana</td><td>rapproche erreurs, métriques et heure de la version</td><td>l'hypothèse face aux graphiques et aux événements</td></tr></tbody></table>
+<table><thead><tr><th>Cas</th><th>Sources</th><th>Ce que fait l'agent</th><th>Ce que vérifie un humain</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, banc de test, <a href="/blog/claude-in-chrome/">navigateur</a></td><td>reproduit un bug, réduit le chemin, rédige un rapport</td><td>les étapes à la main sur le banc de test</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Rapports et analytique</a></td><td>base de données, feuilles, documents</td><td>calcule par requêtes, assemble une synthèse</td><td>un chiffre recalculé autrement</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Incidents</a></td><td>Sentry, Grafana</td><td>rapproche erreurs, métriques et heure de la version</td><td>l'hypothèse face aux graphiques et aux événements</td></tr></tbody></table>
 </b-table>
 <b-why align="left">Comment lire le tableau. Chaque ligne suit le même ordre : l'agent lit les sources, fait le travail principal et apporte un résultat, et une personne le vérifie par une courte action. En QA, les étapes du rapport sont rejouées à la main sur le banc de test. En analytique, un chiffre est recalculé autrement. Pour les incidents, l'hypothèse est comparée aux graphiques et aux événements. Les détails se trouvent dans les articles derrière les liens.</b-why>
 </b-chapter>

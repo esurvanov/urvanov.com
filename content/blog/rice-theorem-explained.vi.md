@@ -1,7 +1,7 @@
 ---
 title: Định lý Rice là gì: vì sao không có phép kiểm tra nào đúng cho mọi chương trình và cách xử lý
 date: 2026-11-06
-updated: 2026-11-08
+updated: 2026-11-13
 description: Định lý Rice nói gì và vì sao việc kiểm tra hành vi của chương trình đụng phải bài toán dừng. Vị từ về văn bản và về hành vi, chứng minh qua ví dụ thanh toán, mối liên hệ với nghịch lý người thợ cạo và ba khung giúp phép kiểm tra trở nên chính xác.
 tags: định lý Rice, bài toán dừng, nghịch lý người thợ cạo, vị từ, kiểm chứng hình thức, Quint, DDD, tác nhân AI
 category: specs
@@ -125,7 +125,7 @@ toc: essence=Ý chính | predicate=Lối thoát 1: văn bản mã | small-model=
 </b-chapter>
 
 <b-chapter id="small-model" icon="package" title="Lối thoát 2. Mô hình nhỏ: thử tất cả, nhưng với số nhỏ">
-  <b-why align="left">Ở đây bỏ tính chất 2, “mọi thay đổi”. Thứ được kiểm tra là một mô tả ngắn của các quy tắc thanh toán chứ không phải mã, và chỉ với số nhỏ: 3 đơn hàng và 2 khách hàng. Các biến thể trở nên hữu hạn, và một chương trình thử hết đến cùng.</b-why>
+  <b-why align="left">Ở đây bỏ tính chất 2, “mọi thay đổi”. Thứ được kiểm tra là một mô tả ngắn của các quy tắc thanh toán, còn mã kiểm tra riêng, và chỉ với số nhỏ: 3 đơn hàng và 2 khách hàng. Các biến thể trở nên hữu hạn, và một chương trình thử hết đến cùng.</b-why>
   <b-art names="rice-theorem-explained/small-model" wide/>
 
   1. **Trạng thái:** những đơn hàng nào tồn tại, mỗi đơn đã bị trừ tiền bao nhiêu lần, mỗi khách hàng đã kiểm tra đơn nào.

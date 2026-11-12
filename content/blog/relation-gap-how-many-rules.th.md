@@ -1,7 +1,7 @@
 ---
 title: เกมหนึ่งต้องมีกฎกี่ข้อ: เกม "ก้าวและยก" ต้องมีกฎสองข้อ แต่นักบัญชีใช้รายการเดียว — ช่องว่างของความสัมพันธ์ (relation gap)
 date: 2026-11-02
-updated: 2026-11-08
+updated: 2026-11-13
 description: นับกฎของเกมอย่างซื่อตรงและอย่างรวดเร็วได้อย่างไร และสองคำตอบนี้ต่างกันได้หรือไม่ อธิบายบทความของ Bartholdi, Bridson, Mikhailov และ Nicholson เรื่อง relation gap (arXiv 2610.23637): เกมที่มีสองการเดิน ผู้เล่นต้องใช้กฎสองข้อ ส่วนนักบัญชีใช้รายการเดียว พร้อมแผนภาพ สูตร และการคำนวณ
 tags: งานวิจัย, คณิตศาสตร์, ทฤษฎีกลุ่ม, ทอพอโลยี, AI ในคณิตศาสตร์
 category: research
@@ -329,8 +329,6 @@ toc: video=วิดีโอ | question=คำถาม | paper=บทควา
 <b-chapter id="next" title="อ่านเพิ่มเติม">
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2610.23637" k="บทความ" t="arXiv 2610.23637" ext>Two-generator presentations with a relation gap</item>
-    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="ต้นทางวิดีโอ" t="papers/2610.23637-relation-gap" ext>ข้อมูลประจำเรื่อง บทบรรยาย ฉาก และสคริปต์ของวิดีโอบน GitHub</item>
-    <item href="https://github.com/esurvanov/awesome-papers" k="รีโพซิทอรี" t="awesome-papers" ext>วิดีโอเรื่องบทความวิทยาศาสตร์ด้วยภาษาง่าย ๆ: โค้ด กฎ การตรวจ</item>
     <item href="https://youtu.be/yPvbfDa_GCk" k="วิดีโอ" t="เล่าเรื่องบน YouTube" ext>เรื่องเดียวกันใน 7.5 นาที พร้อมแผนที่เกมและสูตร</item>
     <item href="/blog/longest-ring-arrangement/" k="กราฟเคย์ลีย์เดียวกัน" t="วงแหวนลูกบอล">แผนที่ของการเดินและการจัดเรียงที่พันกันที่สุด</item>
     <item href="/blog/rubik-cube-neural-network/" k="กราฟเคย์ลีย์เดียวกัน" t="ลูกบาศก์รูบิก">การเดินและกฎในที่ที่ใช้กำลังดุไม่ได้</item>

@@ -1,7 +1,7 @@
 ---
 title: Cómo hacer informes analíticos con un agente de IA: datos de una base de datos, hojas y documentos mediante MCP
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cómo construir un informe analítico con un agente de IA: conectar una base de datos de solo lectura mediante MCP, delegar las consultas y el resumen, comprobar una cifra a mano y fijar permisos por fuente.
 tags: IA, agentes, MCP, analítica, informes, base de datos, harness
 category: harness
@@ -27,7 +27,7 @@ Un informe hecho a mano es una exportación de una base de datos, una tabla, un 
   <b-why>Sistemas, datos y documentos fuera de la conversación. Los permisos se fijan por separado para cada fuente.</b-why>
   <iso-art name="analytics-reports-agent/source-rights"></iso-art>
   <b-finding>
-    <ex>Jira, los documentos y la base de datos están abiertos para lectura, la hoja para escritura con confirmación, y solo el entorno de pruebas se puede romper.</ex>
+    <ex>Jira, los documentos y la base de datos están abiertos para lectura, la hoja para escritura con confirmación, y solo el [entorno de pruebas](/materials/glossary/test-stand/) se puede romper.</ex>
     <gen>El agente ve exactamente lo que está conectado y hace exactamente lo que está permitido.</gen>
     <do k="Qué hacer">Para cada fuente escribe una palabra: leer, escribir o solo entorno de pruebas.</do>
   </b-finding>

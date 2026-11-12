@@ -51,8 +51,8 @@ const scenes: Record<string, Scene> = {
     draw: (c, l) => {
       c.box(20, 8, 920, 40, { cls: 'herr', rx: 20 })
       c.label(480, 34, l('ОДНА ОШИБКА · агент правит код и не запускает тесты', 'ONE MISTAKE · the agent edits code and does not run the tests'), { cls: 'hb herrt', anchor: 'middle' })
-      c.label(40, 86, l('ЧТО МЕНЯЕМ', 'WHAT WE CHANGE'), { cls: 'hc0' })
-      c.label(190, 86, l('КАК ЧИНИМ', 'HOW WE FIX IT'), { cls: 'hc0' })
+      c.label(40, 86, l('ЧТО МЕНЯЕТСЯ', 'WHAT CHANGES'), { cls: 'hc0' })
+      c.label(190, 86, l('КАК ИСПРАВИТЬ', 'HOW TO FIX IT'), { cls: 'hc0' })
       c.label(500, 86, l('ГДЕ ЖИВЁТ ИСПРАВЛЕНИЕ', 'WHERE THE FIX LIVES'), { cls: 'hc0' })
       c.label(772, 86, l('ЗАПУСК АГЕНТА', 'AGENT RUN'), { cls: 'hc0' })
       for (let i = 0; i < 4; i++) c.label(772 + 48 * i, 104, String(i + 1), { cls: 'hc0 hn1', anchor: 'middle' })

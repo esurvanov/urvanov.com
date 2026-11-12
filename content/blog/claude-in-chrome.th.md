@@ -1,7 +1,7 @@
 ---
 title: Claude Code ทดสอบเว็บไซต์ในเบราว์เซอร์ของคุณได้อย่างไร: Claude in Chrome ดีบักและกรอกฟอร์มภายใต้การล็อกอินของคุณ
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Claude in Chrome เชื่อม Claude Code กับเบราว์เซอร์ เอเจนต์เปิดแท็บ อ่านคอนโซล รันสถานการณ์ทดสอบ และกรอกฟอร์มภายใต้การล็อกอินของคุณ เชื่อมต่ออย่างไร ทำอะไรได้บ้าง และควรให้สิทธิ์อะไร
 tags: AI, เอเจนต์, Claude Code, Claude in Chrome, เบราว์เซอร์, QA, harness
 category: harness
@@ -31,7 +31,7 @@ Claude in Chrome เชื่อมเอเจนต์กับเบราว
   <b-finding>
     <ex>เอเจนต์ในเทอร์มินัลควบคุมแท็บของ Chrome ผ่านส่วนขยายและใช้การล็อกอินของคุณ</ex>
     <gen>การกระทำมองเห็นได้ในหน้าต่างแบบเรียลไทม์ เมื่อเจอหน้าล็อกอินหรือ CAPTCHA เอเจนต์หยุดและรอคุณ ใน Claude Code ส่วนขยายปรากฏเป็น MCP server ชื่อ claude-in-chrome และ /mcp แสดงรายการเครื่องมือของมัน</gen>
-    <do k="ทำอย่างไร">ตรวจข้อกำหนด คือส่วนขยายเวอร์ชัน 1.0.36 ขึ้นไป<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/> Claude Code แผน Pro, Max, Team หรือ Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Team, or Enterprise)"/> และลงชื่อเข้าใช้ด้วย /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/></do>
+    <do k="ทำอย่างไร">ตรวจข้อกำหนด คือส่วนขยายเวอร์ชัน 1.0.36 ขึ้นไป<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/> Claude Code แผน Pro, Max, Ultra, Team หรือ Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Ultra, Team, or Enterprise)"/> และลงชื่อเข้าใช้ด้วย /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/></do>
   </b-finding>
 </b-chapter>
 
@@ -46,7 +46,7 @@ Claude in Chrome เชื่อมเอเจนต์กับเบราว
       /chrome   # status, permissions, reconnect
     </b-codebox>
 
-<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">ส่วนขยายใน Chrome Web Store</a> หากไม่ต้องการใช้แฟลก ให้เปิด /chrome แล้วเปิด “Enabled by default” จากนั้นเครื่องมือของเบราว์เซอร์จะอยู่ในบริบทเสมอ และการใช้โทเค็นเพิ่มขึ้น<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">ส่วนขยายใน Chrome Web Store</a> หากไม่ต้องการใช้แฟลก ให้เปิด /chrome แล้วเปิด “Enabled by default” จากนั้นเครื่องมือของเบราว์เซอร์จะอยู่ในบริบทเสมอ และการใช้โทเค็นเพิ่มขึ้น<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/> ใน VS Code ให้พิมพ์ @browser ในช่องพิมพ์เพื่อเชื่อมต่อเบราว์เซอร์ และ “Enabled by default” ใช้ร่วมกันทั้งในเทอร์มินัลและ VS Code<b-proof href="https://code.claude.com/docs/en/chrome" quote="The two share one setting, so turning it on in either place turns it on for both the CLI and VS Code."/>
 
     <b-spoiler summary="ถ้าเชื่อมต่อไม่ได้">
       <b-node-grid min="170">

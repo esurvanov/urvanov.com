@@ -1,7 +1,7 @@
 ---
 title: Как Claude Code тестирует сайт в браузере: Claude in Chrome — отладка и формы под вашим входом
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Claude in Chrome соединяет Claude Code с браузером: агент открывает вкладки, читает консоль, проходит сценарии и заполняет формы под вашим входом. Как подключить, что умеет и какие права выдавать.
 tags: AI, агенты, Claude Code, Claude in Chrome, браузер, QA, харнесс
 category: harness
@@ -31,7 +31,7 @@ Claude in Chrome подключает агента к вашему браузе�
   <b-finding>
     <ex>Агент в терминале управляет вкладками Chrome через расширение и пользуется вашими входами.</ex>
     <gen>Действия видны в окне в реальном времени. На странице входа или капче агент останавливается и ждёт вас. В Claude Code расширение видно как MCP-сервер claude-in-chrome: его инструменты показывает /mcp<b-proof href="https://code.claude.com/docs/en/chrome" quote="to see the full list of available browser tools"/>.</gen>
-    <do>Проверьте требования: расширение версии 1.0.36 и новее<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, тариф Pro, Max, Team или Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Team, or Enterprise)"/>, вход через /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
+    <do>Проверьте требования: расширение версии 1.0.36 и новее<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, тариф Pro, Max, Ultra, Team или Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Ultra, Team, or Enterprise)"/>, вход через /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
   </b-finding>
 </b-chapter>
 
@@ -46,7 +46,7 @@ Claude in Chrome подключает агента к вашему браузе�
       /chrome   # статус, права, переподключение
     </b-codebox>
 
-<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Расширение в Chrome Web Store</a>. Чтобы не писать флаг каждый раз, откройте /chrome и включите «Enabled by default». Инструменты браузера тогда всегда лежат в контексте, и расход токенов растёт<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>.
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Расширение в Chrome Web Store</a>. Чтобы не писать флаг каждый раз, откройте /chrome и включите «Enabled by default». Инструменты браузера тогда всегда лежат в контексте, и расход токенов растёт<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>. В VS Code браузер подключают словом @browser в поле ввода, а «Enabled by default» общий для терминала и VS Code<b-proof href="https://code.claude.com/docs/en/chrome" quote="The two share one setting, so turning it on in either place turns it on for both the CLI and VS Code."/>.
 
     <b-spoiler summary="Если не подключается">
       <b-node-grid min="170">
@@ -172,7 +172,7 @@ Claude in Chrome подключает агента к вашему браузе�
   <b-links>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Пример" t="Работа QA после поддержки с ИИ-агентом: исследование, описание и документирование через MCP и скиллы">Агент воспроизводит баг из Jira</item>
     <item href="/blog/mcp-agent-access/" k="Подключение" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">Как агент получает доступ к системам</item>
-    <item href="/blog/agent-hands-work-back-to-you/" k="Передача" t="Агент любит запрягать вас: как заставить его делать самому">Когда агент просит помощи человека</item>
+    <item href="/blog/agent-hands-work-back-to-you/" k="Передача" t="Заберут ли ИИ-агенты вашу работу: всё решает, кто кого загружает работой — вы агентов или агенты вас">Когда агент просит помощи человека</item>
   </b-links>
 </b-chapter>
 <b-footer>Заявка PAY-142 выдумана для примера. Факты о подключении и правах — по документации Claude Code: <a href="https://code.claude.com/docs/en/chrome" target="_blank" rel="noopener">Use Claude Code with Chrome</a>.</b-footer>

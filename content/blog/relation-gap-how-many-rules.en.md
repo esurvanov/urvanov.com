@@ -1,7 +1,7 @@
 ---
-title: How many rules does a game need: the step-and-lift game needs two rules, while a bookkeeper needs one entry — the relation gap
+title: How many rules does a game need: the step-and-lift game needs two rules, while an accountant needs one entry — the relation gap
 date: 2026-11-02
-updated: 2026-11-07
+updated: 2026-11-13
 description: How to count the rules of a game honestly and quickly, and whether the two answers can differ. A walkthrough of the paper by Bartholdi, Bridson, Mikhailov and Nicholson on the relation gap (arXiv 2610.23637): a game with two moves where the player needs two rules and the accountant needs one entry, with diagrams, formulas and calculations.
 tags: research, mathematics, group theory, topology, AI in mathematics
 category: research
@@ -329,8 +329,6 @@ A game with two moves, a step and a lift, needs two rules if counted honestly, l
 <b-chapter id="next" title="Further reading">
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2610.23637" k="Paper" t="arXiv 2610.23637" ext>Two-generator presentations with a relation gap</item>
-    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="Film source" t="papers/2610.23637-relation-gap" ext>Passport, narration, scenes and scenario of the film on GitHub</item>
-    <item href="https://github.com/esurvanov/awesome-papers" k="Repository" t="awesome-papers" ext>Films on scientific papers in plain words: code, rules, checks</item>
     <item href="https://youtu.be/yPvbfDa_GCk" k="Video" t="Walkthrough on YouTube" ext>The same story in 7.5 minutes, with the game map and formulas</item>
     <item href="/blog/longest-ring-arrangement/" k="The same Cayley graph" t="Ring of balls">A map of moves and the most tangled arrangement</item>
     <item href="/blog/rubik-cube-neural-network/" k="The same Cayley graph" t="Rubik's cube">Moves and rules where brute force is impossible</item>

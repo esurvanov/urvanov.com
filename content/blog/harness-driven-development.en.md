@@ -1,7 +1,7 @@
 ---
 title: Harness engineering in practice: turning AI agent mistakes into rules of its environment (HDD)
 date: 2026-09-28
-updated: 2026-11-07
+updated: 2026-11-13
 description: The mistake-to-rule loop, guides and sensors, three layers of checks, how it fits with specs, and five first steps in your own project.
 tags: AI, Claude Code, harness engineering, harness, HDD, agents
 category: harness
@@ -11,11 +11,11 @@ mentions: Harness engineering, Claude Code, AGENTS.md, CLAUDE.md, Spec-Driven De
 toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | controls=Guides and sensors | layers=Three check layers | shift=Earlier is cheaper | human=Where people matter | spec=HDD and specs | start=Where to start | faq=Questions | next=Further reading
 ---
 
-**Harness engineering** is the work of shaping the environment around an AI agent: instructions, tools, permissions and checks. **Harness-Driven Development (HDD)** is a working method built on it: every agent mistake becomes a rule of that environment.
+**Harness engineering** is the work of shaping the environment around an AI agent: instructions, connected systems, permissions and checks. **Harness-Driven Development (HDD)** is a working method built on it: every agent mistake becomes a rule of that environment. You start with an AGENTS.md or CLAUDE.md instructions file and a log of agent mistakes: once a week, log entries move into rules, tests or hooks.
 
 <b-post series="hdd">
 <b-chapter id="loop" icon="refresh-cw" title="The HDD loop">
-  <b-why align="left">The loop works like this. The agent gets a task and produces a result. Sensors (a test, a linter, a review) check the result. If everything passes, the task is closed. If a sensor finds a mistake, a person does not just fix the result but changes the agent’s environment, the harness: adds a line to the instructions, a test or a hook. The next task runs with that rule, and the mistake does not repeat.</b-why>
+  <b-why align="left">The loop works like this. The agent gets a task and produces a result. Sensors (a test, a linter, a review) check the result. If everything passes, the task is closed. If a sensor finds a mistake, a person changes the agent’s environment, the harness: adds a line to the instructions, a test or a hook. The next task runs with that rule, and the mistake does not repeat.</b-why>
   <b-hdd-scene name="harness-driven-development/loop" frame="loop"/>
   <b-cap>Mitchell Hashimoto's principle: when the agent makes a mistake, change the harness so that mistake can't happen again <a href="https://www.faros.ai/blog/harness-engineering" target="_blank" rel="noopener">Faros</a></b-cap>
   <b-why>A prompt fixes one request, context fixes what the model knows, the harness fixes every following run. Example: the agent edits code and does not run the tests.</b-why>
@@ -81,7 +81,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
     <principle icon="shield-check" t="No external check">discard it, with a record</principle>
   </b-hdd-principles>
   <b-cap>The loop applies to itself: every run ends with the residual risk, never with a “done” status.</b-cap>
-  <b-why align="left">Changing the rules after every complaint is risky: the harness starts to sprawl from chance edits. So the Loop applies four checks. If the fixes only plug holes and predict nothing new, they are replaced by one rule. If there are several complaints, first test whether they share a cause. A new rule is accepted only if the old cases are still explained with it. A rule without an outside check is dropped, but the record says what was dropped and why. The caption under the cards means the Loop applies to itself too: a run does not set “done” but ends with the residual risk.</b-why>
+  <b-why align="left">Changing the rules after every complaint is risky: the harness starts to sprawl from chance edits. So the Loop applies four checks. If the fixes only plug holes and predict nothing new, they are replaced by one rule. If there are several complaints, first test whether they share a cause. A new rule is accepted only if the old cases are still explained with it. A rule without an outside check is dropped, but the record says what was dropped and why. The caption under the cards means the Loop applies to itself too: a run ends with a statement of the residual risk.</b-why>
   <b-finding>
     <ex>A series of patches, complaints, a new rule and an external check are four checkable principles the Loop uses to decide whether to fix the action or change the rules.</ex>
     <gen>A single loop fixes the result within the old rules. A double loop changes the rules themselves, and does it by checkable principles, so the harness learns without drifting from random edits.</gen>
@@ -101,10 +101,10 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
     <cell>AGENTS.md · CLAUDE.md | skills | specs</cell>
     <cell>AI review | LLM judge</cell>
   </b-hdd-matrix>
-  <b-cap>Split as described in <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler: Harness engineering</a></b-cap>
+  <b-cap>Split as described in <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler, martinfowler.com</a></b-cap>
   <b-finding>
     <ex>Four cells: guides set the course before the agent works, sensors catch deviations afterwards, and each can be computational or AI-based.</ex>
-    <gen>Computational checks run in seconds and don't make mistakes, so use them wherever a rule can be written down formally. Keep AI-based checks for meaning: style, clarity, fit with the intent.</gen>
+    <gen>Computational checks run in seconds and don't make mistakes within their rule, so use them wherever a rule can be written down formally. Keep AI-based checks for meaning: style, clarity, fit with the intent.</gen>
     <do>For each rule in the agent's instructions, ask whether a test or linter could check it. If so, move it there.</do>
   </b-finding>
 </b-chapter>
@@ -116,7 +116,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
     <layer icon="modules" t="Architecture" value="55">growing</layer>
     <layer icon="user-round" t="Behavior" value="25" sw="1.8">hardest</layer>
   </b-hdd-layers>
-  <b-cap>Layer maturity as assessed by <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>Layer maturity as assessed by <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler, martinfowler.com</a></b-cap>
   <b-finding>
     <ex>Code quality is the easiest to check today, and product behavior the hardest.</ex>
     <gen>Linters and formatters cover the first layer almost immediately. Architecture is checked with dependency rules and performance requirements. Behavior still needs good scenario tests and a human eye.</gen>
@@ -146,7 +146,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
     <side icon="sun" t="Harness" n="36">style · types · tests · boundaries</side>
     <side icon="user-round" t="Person" n="6" sw="1.8">architecture · product · new rules</side>
   </b-hdd-split>
-  <b-cap>"A good harness keeps the human in the loop and directs their attention to where it matters most" — paraphrasing <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>"A good harness keeps the human in the loop and directs their attention to where it matters most" — paraphrasing <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler, martinfowler.com</a></b-cap>
   <b-finding>
     <ex>The harness takes most of the checks; the person keeps the decisions and the work of improving the harness.</ex>
     <gen>An experienced developer carries an implicit harness in their head: knowledge of the architecture, team habits, a feel for risk. HDD moves that knowledge into explicit rules, so every agent run gets it.</gen>
@@ -199,7 +199,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
     <item href="/en/blog/work-prompts-examples/" k="Stage 1–2" t="Prompts for work tasks">how to write a single request and supply data</item>
     <item href="/en/blog/ai-in-code-harness-and-tools/" k="Stage 3" t="Comparing harnesses">Claude Code, Codex, Cursor, Hermes and chat</item>
   </b-links>
-  <b-cap>More to read: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
+  <b-cap>More to read: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler, martinfowler.com</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
 </b-chapter>
 <b-footer>Terms and the layer split follow the sources linked in the captions under the diagrams.</b-footer>
 </b-post>

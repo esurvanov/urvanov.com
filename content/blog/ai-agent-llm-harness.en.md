@@ -1,7 +1,7 @@
 ---
 title: AI agent = LLM + harness: LLM vs harness vs agent and what the harness includes
 date: 2026-10-12
-updated: 2026-10-25
+updated: 2026-11-13
 description: AI agent = LLM + harness. LLM vs harness vs agent in one table, the five groups a harness includes, and why the same model behaves differently in chat and in Claude Code.
 tags: AI, agents, AI agent, LLM, harness, agent harness, harness engineering
 category: harness
@@ -43,7 +43,7 @@ An AI agent is an LLM plus a harness: the LLM only reasons and writes text, and 
 </b-arrow-rows>
 <b-finding>
   <ex>Claude Code: the loop in the CLI, tools via MCP, rules in CLAUDE.md, control through permissions and hooks, verification through your tests.</ex>
-  <gen>In our experience, most agent failures trace back to one of the five groups: a missing tool, missing context or a missing check.</gen>
+  <gen>Most agent failures seen in practice trace back to one of the five groups: a missing tool, missing context or a missing check.</gen>
   <do>When the agent fails, ask which group was missing, and fix it there instead of rewriting the prompt.</do>
 </b-finding>
 </b-chapter>

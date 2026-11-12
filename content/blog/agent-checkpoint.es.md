@@ -1,7 +1,7 @@
 ---
 title: Dónde comprobar el trabajo de un agente de IA: en el límite del agregado, porque nadie puede comprobar todos los programas (teorema de Rice)
 date: 2026-11-06
-updated: 2026-11-08
+updated: 2026-11-13
 description: Por qué ninguna comprobación puede verificar cualquier código de un agente contra cualquier regla, qué tres vías vuelven finita una comprobación, cómo el límite de un agregado del event storming se convierte en punto de control, cómo la comprobabilidad fija el tamaño de un bounded context y por qué el primer marco debe ser barato de mover.
 tags: IA, agentes, DDD, agregado, bounded context, event storming, teorema de Rice, Quint, verificación de modelos
 category: specs
@@ -105,7 +105,7 @@ El trabajo de un agente de IA se comprueba en el límite del agregado: por donde
       a == b or a.room != b.room or a.end <= b.start or b.end <= a.start))
   </b-codebox>
   <b-why align="left">Después el programa prueba todas las secuencias de acciones en un mundo pequeño: 3 salas, hasta 5 reservas. Si la regla se rompe en algún punto, imprime la cadena de pasos. Por ejemplo: dos clientes reservan la sala 2 de 10:00 a 11:00 a la vez, las dos comprobaciones «¿está libre?» pasan antes de que se haga cualquiera de las escrituras, y la base de datos acaba con dos reservas para el mismo hueco. Esa cadena es el hallazgo: el error de diseño aparece antes de que el agente escriba código. Un mundo pequeño basta porque esos errores aparecen con solo dos o tres reservas.</b-why>
-  <b-why align="left"><b-icon name="list-check"/> **Estrechar el lenguaje: la regla en la base de datos y un único escritor.** La regla se traslada a donde la mantiene la propia base de datos, no el código del agente. En PostgreSQL es una restricción en la tabla de reservas: la base de datos se niega a guardar una reserva cuyo horario se solape con otra reserva de la misma sala.</b-why>
+  <b-why align="left"><b-icon name="list-check"/> **Estrechar el lenguaje: la regla en la base de datos y un único escritor.** La regla se traslada a donde la mantiene la propia base de datos. En PostgreSQL es una restricción en la tabla de reservas: la base de datos se niega a guardar una reserva cuyo horario se solape con otra reserva de la misma sala.</b-why>
   <b-codebox title="Una restricción de PostgreSQL">
     CREATE EXTENSION IF NOT EXISTS btree_gist;
     ALTER TABLE bookings ADD CONSTRAINT no_overlap
@@ -116,12 +116,12 @@ El trabajo de un agente de IA se comprueba en el límite del agregado: por donde
     grep -rl "INSERT INTO bookings" src | grep -v src/booking/repository.ts
   </b-codebox>
   <b-why align="left">La pregunta «¿puede el código del agente crear reservas solapadas?» se ha convertido en dos preguntas sobre texto: ¿está la restricción en el esquema de la base de datos? y ¿no hay ninguna escritura que la rodee? Ambas tienen una respuesta exacta.</b-why>
-  <b-why align="left"><b-icon name="help-circle"/> **Permitir el «no lo sé»: tres veredictos sobre un cambio del agente.** La comprobación de un cambio del agente se construye con las dos anteriores y devuelve una de tres respuestas. «Demostrado»: el modelo de Quint pasó, la restricción de la base de datos está puesta y la búsqueda no encontró escrituras que la rodeen. «Roto»: la búsqueda encontró que el agente añadió una escritura en la tabla de reservas desde el módulo de informes. «No estoy seguro»: el agente construye la consulta a la base de datos con cadenas al vuelo, y una búsqueda de texto no puede saber en qué tabla escribe. Entonces el cambio recibe la etiqueta «necesita una persona» y lo revisa un desarrollador. La persona gasta tiempo solo en el tercer caso.</b-why>
+  <b-why align="left"><b-icon name="help-circle"/> **Permitir el «no lo sé»: tres veredictos sobre un cambio del agente.** La comprobación de un cambio del agente se construye con las dos anteriores y devuelve una de tres respuestas. «Se cumple»: el modelo de Quint pasó, la restricción de la base de datos está puesta y la búsqueda no encontró escrituras que la rodeen. «Rota»: la búsqueda encontró que el agente añadió una escritura en la tabla de reservas desde el módulo de informes. «No se puede saber»: el agente construye la consulta a la base de datos con cadenas al vuelo, y una búsqueda de texto no puede saber en qué tabla escribe. Entonces el cambio recibe la etiqueta «necesita una persona» y lo revisa un desarrollador. La persona gasta tiempo solo en el tercer caso.</b-why>
   <b-why align="left">Cada una de las tres respuestas es exacta solo dentro de sus límites. La búsqueda demuestra que la regla se cumple en un modelo con 3 salas y 5 reservas, no en la base de datos de producción con miles de reservas. La búsqueda en el código demuestra que no hay escritura que rodee la regla, no que la propia restricción de la base de datos esté bien escrita. Una respuesta «se cumple» es exacta, pero algunos cambios siguen yendo a una persona. Por eso las formas se usan juntas: el modelo comprueba el diseño antes del código, la restricción y la búsqueda comprueban el propio código, y una persona mira lo que queda con etiqueta.</b-why>
   <b-why align="left">Hay también una cuarta opción, la más común en la práctica: responder siempre, pero a veces equivocarse. Las pruebas con ejemplos y la revisión de código por otro modelo funcionan así. Es una elección aceptable también, pero deliberada: sirve donde un error es barato, no para dinero ni accesos. Una bifurcación parecida se conoce del teorema CAP sobre sistemas distribuidos: durante una partición, un servidor o espera o responde con una copia obsoleta. Comparten algo: mientras un evento no ha ocurrido, no se puede saber si ocurrirá más tarde o nunca, por mucho que se espere; pero las razones difieren; detalles en [«El teorema de Rice en palabras sencillas»](/blog/rice-theorem-explained/#cap).</b-why>
   <b-finding>
     <ex>La regla «las reservas nunca se solapan»: un modelo de Quint probó todos los órdenes de comandos para 3 salas, una restricción de la base de datos prohíbe el solapamiento, y un linter, un programa que comprueba el texto del código contra reglas fijadas, se asegura de que solo un módulo escribe en la tabla de reservas.</ex>
-    <gen>«No estoy seguro» es un resultado honesto de la comprobación. Muestra dónde acaba el marco y la responsabilidad vuelve a una persona, y así fija qué riesgo se acepta.</gen>
+    <gen>«No se puede saber» es un resultado honesto de la comprobación. Muestra dónde acaba el marco y la responsabilidad vuelve a una persona, y así fija qué riesgo se acepta.</gen>
     <do>Para cada regla, marca cuál de las tres formas la sostiene. Una regla sin marca solo se comprueba con pruebas de ejemplo.</do>
   </b-finding>
 </b-chapter>
@@ -175,7 +175,7 @@ El trabajo de un agente de IA se comprueba en el límite del agregado: por donde
   </b-codebox>
   <b-why align="left">**Cómo dividir si la búsqueda no terminó.** Para cada regla, anota qué datos toca. Las reglas sin datos en común van a partes distintas: «las reservas nunca se solapan» toca solo reservas, «una factura nunca se paga dos veces» toca solo facturas. Entre las partes, deja eventos como «BookingCreated». Después comprueba cada parte con los mismos cinco pasos.</b-why>
   <b-art names="agent-checkpoint/size" wide/>
-  <b-cap>Si el modelo de un contexto responde «no estoy seguro», el contexto se divide y entre las partes solo quedan eventos.</b-cap>
+  <b-cap>Si el modelo de un contexto responde «no se puede saber», el contexto se divide y entre las partes solo quedan eventos.</b-cap>
   <b-why align="left">Cómo usar esta señal: escribe las reglas del contexto como un modelo de Quint, fija números pequeños y ejecuta la búsqueda. El resultado cae en una de las filas de la tabla, y la última columna dice qué hacer a continuación.</b-why>
   <b-table>
 

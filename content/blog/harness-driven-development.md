@@ -1,7 +1,7 @@
 ---
 title: Harness engineering на практике: как превращать ошибки ИИ-агента в правила окружения (HDD)
 date: 2026-09-28
-updated: 2026-11-07
+updated: 2026-11-13
 description: Как превращать ошибки ИИ-агента (Claude Code, Codex) в правила его окружения: петля «ошибка → правило», направляющие и датчики, три слоя проверок, связь со спеками и пять первых шагов в своём проекте.
 tags: AI, Claude Code, harness engineering, харнесс, HDD, агенты
 category: harness
@@ -11,11 +11,11 @@ mentions: Harness engineering, Claude Code, AGENTS.md, CLAUDE.md, Spec-Driven De
 toc: loop=Петля HDD | canons=Устройство 3 × 3 | double=Двойная петля | controls=Направляющие и датчики | layers=Три слоя проверок | shift=Раньше — дешевле | human=Где нужен человек | spec=HDD и спеки | start=С чего начать | faq=Вопросы | next=Дальше по теме
 ---
 
-**Harness engineering** (харнесс-инжиниринг) — настройка среды вокруг ИИ-агента: инструкций, инструментов, прав и проверок. **Harness-Driven Development (HDD)** — рабочий метод на его основе: каждая ошибка агента становится правилом этой среды.
+**Harness engineering** (харнесс-инжиниринг) — настройка среды вокруг ИИ-агента: инструкций, подключённых систем, прав и проверок. **Harness-Driven Development (HDD)** — рабочий метод на его основе: каждая ошибка агента становится правилом этой среды. Начинают с файла инструкций AGENTS.md или CLAUDE.md и журнала ошибок агента: раз в неделю записи журнала переносят в правила, тесты или хуки.
 
 <b-post series="hdd">
 <b-chapter id="loop" icon="refresh-cw" title="Петля HDD">
-  <b-why align="left">Петля работает так. Агент получает задачу и делает результат. Датчики (тест, линтер, ревью) проверяют результат. Если всё прошло, задача закрыта. Если датчик нашёл ошибку, человек не просто исправляет результат, а меняет окружение агента, то есть харнесс: дописывает строку в инструкцию, добавляет тест или хук. Следующая задача идёт уже с этим правилом, и такая ошибка не повторяется.</b-why>
+  <b-why align="left">Петля работает так. Агент получает задачу и делает результат. Датчики (тест, линтер, ревью) проверяют результат. Если всё прошло, задача закрыта. Если датчик нашёл ошибку, человек меняет окружение агента — харнесс: дописывает строку в инструкцию, добавляет тест или хук. Следующая задача идёт уже с этим правилом, и такая ошибка не повторяется.</b-why>
   <b-hdd-scene name="harness-driven-development/loop" frame="loop"/>
   <b-cap>Принцип Митчелла Хашимото: если агент ошибся, харнесс меняют так, чтобы эта ошибка не повторилась <a href="https://www.faros.ai/blog/harness-engineering" target="_blank" rel="noopener">Faros</a></b-cap>
   <b-why>Промпт исправляет один запрос, контекст — знания модели, харнесс — каждый следующий запуск агента. Пример: агент правит код и не запускает тесты.</b-why>
@@ -81,7 +81,7 @@ toc: loop=Петля HDD | canons=Устройство 3 × 3 | double=Двой�
     <principle icon="shield-check" t="Без внешней проверки">отбросить с записью</principle>
   </b-hdd-principles>
   <b-cap>Луп применяется и к себе: каждый прогон заканчивается остаточным риском, статус «готово» он не ставит.</b-cap>
-  <b-why align="left">Менять правила после каждой жалобы опасно: харнесс начнёт расползаться от случайных правок. Поэтому Луп применяет четыре проверки. Если поправки лишь затыкают дыры и ничего нового не предсказывают, их заменяют одним правилом. Если жалоб несколько, сначала проверяют тестом, есть ли у них общая причина. Новое правило принимают, только если с ним старые случаи по-прежнему объясняются. Правило без внешней проверки отбрасывают, но записывают, что и почему отброшено. Подпись под карточками значит, что Луп применяется и к самому себе: прогон не ставит «готово», а заканчивается указанием остаточного риска.</b-why>
+  <b-why align="left">Менять правила после каждой жалобы опасно: харнесс начнёт расползаться от случайных правок. Поэтому Луп применяет четыре проверки. Если поправки лишь затыкают дыры и ничего нового не предсказывают, их заменяют одним правилом. Если жалоб несколько, сначала проверяют тестом, есть ли у них общая причина. Новое правило принимают, только если с ним старые случаи по-прежнему объясняются. Правило без внешней проверки отбрасывают, но записывают, что и почему отброшено. Подпись под карточками значит, что Луп применяется и к самому себе: прогон заканчивается указанием остаточного риска.</b-why>
   <b-finding>
     <ex>Серия подгонок, жалобы, новое правило и внешняя проверка — четыре проверяемых принципа, по которым Луп решает, чинить действие или менять правила.</ex>
     <gen>Одинарная петля исправляет результат в рамках старых правил. Двойная меняет сами правила, и делает это по проверяемым принципам: так харнесс учится, но не расползается от случайных правок.</gen>
@@ -101,10 +101,10 @@ toc: loop=Петля HDD | canons=Устройство 3 × 3 | double=Двой�
     <cell>AGENTS.md · CLAUDE.md | скиллы | спеки</cell>
     <cell>ИИ-ревью | модель-судья</cell>
   </b-hdd-matrix>
-  <b-cap>Деление по <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler: Harness engineering</a></b-cap>
+  <b-cap>Деление по <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Бригитте Бёклер (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>Четыре клетки: направляющие задают курс до работы агента, датчики ловят отклонения после, и каждая бывает вычислимой или через ИИ.</ex>
-    <gen>Вычислимые проверки срабатывают за секунды и не ошибаются, поэтому их ставят везде, где правило можно записать формально. Проверки через ИИ оставляют для смысла: стиль, понятность, соответствие замыслу.</gen>
+    <gen>Вычислимые проверки срабатывают за секунды и не ошибаются в рамках своего правила, поэтому их ставят везде, где правило можно записать формально. Проверки через ИИ оставляют для смысла: стиль, понятность, соответствие замыслу.</gen>
     <do>Для каждого правила из инструкции агента спросите, можно ли проверить его тестом или линтером. Если можно — перенесите.</do>
   </b-finding>
 </b-chapter>
@@ -116,7 +116,7 @@ toc: loop=Петля HDD | canons=Устройство 3 × 3 | double=Двой�
     <layer icon="modules" t="Архитектура" value="55">растёт</layer>
     <layer icon="user-round" t="Поведение" value="25" sw="1.8">сложнее всего</layer>
   </b-hdd-layers>
-  <b-cap>Зрелость слоёв по <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>Зрелость слоёв по <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Бригитте Бёклер (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>Качество кода проверять научились лучше всего, поведение продукта — хуже всего.</ex>
     <gen>Линтеры и форматтеры закрывают первый слой почти сразу. Архитектуру проверяют правилами зависимостей и требованиями к скорости. Поведение по-прежнему требует хороших тестов на сценарии и взгляда человека.</gen>
@@ -146,7 +146,7 @@ toc: loop=Петля HDD | canons=Устройство 3 × 3 | double=Двой�
     <side icon="sun" t="Харнесс" n="36">стиль · типы · тесты · границы</side>
     <side icon="user-round" t="Человек" n="6" sw="1.8">архитектура · продукт · новые правила</side>
   </b-hdd-split>
-  <b-cap>«Хороший харнесс оставляет человека в контуре и направляет его внимание туда, где оно важнее всего» — пересказ <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>«Хороший харнесс оставляет человека в контуре и направляет его внимание туда, где оно важнее всего» — пересказ <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Бригитты Бёклер, martinfowler.com</a></b-cap>
   <b-finding>
     <ex>Большую часть проверок берёт харнесс, человеку остаются решения и улучшение самого харнесса.</ex>
     <gen>Опытный разработчик держит в голове неявный харнесс: знание архитектуры, привычки команды, чутьё на риск. HDD переносит это знание в явные правила, и его получает каждый запуск агента.</gen>
@@ -199,7 +199,7 @@ toc: loop=Петля HDD | canons=Устройство 3 × 3 | double=Двой�
     <item href="/blog/work-prompts-examples/" k="Этап 1–2" t="Промпты для рабочих задач">как составить один запрос и подать данные</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Этап 3" t="Сравнение харнессов">Claude Code, Codex, Cursor, Hermes и чат</item>
   </b-links>
-  <b-cap>Ещё почитать: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
+  <b-cap>Ещё почитать: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Бригитта Бёклер, martinfowler.com</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
 </b-chapter>
 <b-footer>Термины и деление на слои — по источникам, ссылки на них стоят в подписях под схемами.</b-footer>
 </b-post>

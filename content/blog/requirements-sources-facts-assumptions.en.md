@@ -1,7 +1,7 @@
 ---
 title: Requirements and meeting notes with AI: source, assumption, fact — and what follows
 date: 2026-10-05
-updated: 2026-11-07
+updated: 2026-11-13
 description: Requirements with AI: source, assumption, status. Facts come through MCP from Git; the agent makes minor edits, a person decides major ones.
 tags: AI, agents, requirements, hallucinations, meeting notes, harness
 category: harness
@@ -71,7 +71,7 @@ An agent writes requirements with confidence, and its guesses look like facts. D
   <b-codebox title="Template of one item">
     Requirement: Card payment
     Source: git.example.com/shop/requirements/payments.md, line 12; meeting of 12 Oct, 14:32, “the customer pays by card at checkout”
-    Assumption: payment in one currency only
+    Assumption: payment in rubles only
     Status: fact | not a fact | question
     Confirmed by: —
   </b-codebox>
@@ -167,9 +167,10 @@ An agent writes requirements with confidence, and its guesses look like facts. D
 
 <b-chapter id="next" title="Next">
   <b-links>
-    <item href="/blog/mcp-agent-access/" k="Source" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">How the agent takes facts from systems</item>
-    <item href="/blog/bug-report-to-reproduction-agent/" k="Example" t="Работа QA после поддержки с ИИ-агентом: исследование, описание и документирование через MCP и скиллы">The agent reproduces a Jira bug</item>
-    <item href="/blog/analytics-reports-agent/" k="Reports" t="Аналитические отчёты с ИИ-агентом: данные из базы, таблицы и документы через MCP">The same approach for analytics</item>
+    <item href="/blog/mcp-agent-access/" k="Source" t="MCP for an AI agent: what problem it solves and how to delegate setup to the agent">How the agent takes facts from systems</item>
+    <item href="/blog/bug-report-to-reproduction-agent/" k="Example" t="QA work after support with an AI agent: investigation, description and documentation via MCP and skills">The agent reproduces a Jira bug</item>
+    <item href="/blog/analytics-reports-agent/" k="Reports" t="Analytical reports with an AI agent: data from a database, sheets and documents through MCP">The same approach for analytics</item>
+    <item href="/blog/specs-by-aggregates/" k="Specs" t="Specs by aggregate">where to keep requirements: one entry per concept</item>
   </b-links>
 </b-chapter>
 <b-footer>The ticket, meeting and links are made up for the example. The template, register and major/minor rules are team practice and can be changed.</b-footer>

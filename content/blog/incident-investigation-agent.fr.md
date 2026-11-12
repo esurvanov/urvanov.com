@@ -1,7 +1,7 @@
 ---
 title: Enquête sur un incident avec un agent IA : erreurs Sentry et métriques Grafana en une seule image via MCP
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Comment enquêter sur un incident avec un agent IA : connecter Sentry et Grafana via MCP, lui faire rapprocher erreurs, métriques et heure de la version, limiter les permissions et vérifier l'hypothèse.
 tags: IA, agents, MCP, Sentry, Grafana, incidents, harness
 category: harness
@@ -60,7 +60,7 @@ C'est le serveur officiel <a href="https://github.com/grafana/mcp-grafana" targe
 <b-chapter id="timeline" icon="lines" title="Ce que rapproche l'agent">
   <iso-art name="incident-investigation-agent/event-timeline"></iso-art>
   <b-finding>
-    <ex>La version, le pic d'erreurs et l'alerte sont placés sur une seule ligne du temps, et l'on voit ce qui s'est passé en premier.</ex>
+    <ex>La mise en [production](/materials/glossary/prod/), le pic d'erreurs et l'alerte sont placés sur une seule ligne du temps, et l'on voit ce qui s'est passé en premier.</ex>
     <gen>Une coïncidence dans le temps donne une hypothèse et ne prouve pas la cause : la vérification reste à une personne.</gen>
     <do k="Que faire">Demandez un lien vers un graphique ou un événement pour chaque conclusion.</do>
   </b-finding>
@@ -83,7 +83,7 @@ C'est le serveur officiel <a href="https://github.com/grafana/mcp-grafana" targe
 <b-chapter id="first" icon="flag" title="Par où commencer">
   <iso-art name="incident-investigation-agent/start-steps"></iso-art>
   <b-finding>
-    <ex>Trois étapes : Sentry, Grafana, un test sur un incident passé.</ex>
+    <ex>Trois étapes : Sentry, Grafana, un essai sur un incident passé.</ex>
     <gen>L'incident passé est connu, on voit donc où l'agent a trouvé la cause et où il s'est trompé.</gen>
     <do k="Que faire">Prenez un incident clos et demandez à l'agent de trouver la cause via Sentry et Grafana.</do>
   </b-finding>

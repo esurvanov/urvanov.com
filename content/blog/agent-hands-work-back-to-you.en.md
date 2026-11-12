@@ -1,7 +1,7 @@
 ---
 title: Will AI agents take your job: it depends on who loads work onto whom — you onto agents or agents onto you
 date: 2026-10-05
-updated: 2026-11-07
+updated: 2026-11-13
 description: Will an AI agent take your job? In practice it often asks the person to run a command, find a task or copy a file. What the agent does itself, what stays with you and how to stop being a courier between windows.
 tags: AI, agents, jobs, career, future of work, delegation, MCP, harness
 category: harness
@@ -20,7 +20,7 @@ Will AI agents take your job? They take the routine and hand part of the work ba
 </b-lane>
 <b-finding>
   <ex>The agent writes: “Run the command and send me the output”. It can run it and read the output itself.</ex>
-  <gen>The routine goes to the agent, while decisions and responsibility stay with people. In our experience an agent also picks the path where the person does the work, and every such request puts you back into the courier role between windows.</gen>
+  <gen>The routine goes to the agent, while decisions and responsibility stay with people. In the author’s experience an agent also picks the path where the person does the work, and every such request puts you back into the courier role between windows.</gen>
   <do k="What to do">Give the agent the routine and keep the decisions. Notice a “do it yourself” request? Reply: “Do it yourself”.</do>
 </b-finding>
 </b-chapter>
@@ -47,7 +47,7 @@ Will AI agents take your job? They take the routine and hand part of the work ba
 </b-finding>
 </b-chapter>
 <b-chapter id="lazy" icon="clock" title="Why the agent drags its feet">
-<b-why align="left">The agent estimates the effort in advance. In our experience it often decides "this is long and hard", especially about integrations. Sometimes it is right, sometimes not.</b-why>
+<b-why align="left">The agent estimates the effort in advance. In the author’s experience it often decides "this is long and hard", especially about integrations. Sometimes it is right, sometimes not.</b-why>
 <b-embed-frame src="/embed/estimate-check.html?v=27&lang=en" title="Three plays: how the agent thinks, how you think and how it really is. The 3D scene and the graph run in sync" ratio="4/4"/>
 <b-finding>
   <ex>Agent: "The Jira integration will take long". You: "Read one task". A minute later the task is read.</ex>
@@ -56,27 +56,27 @@ Will AI agents take your job? They take the routine and hand part of the work ba
 </b-finding>
 </b-chapter>
 <b-chapter id="hard" icon="cube" title="Where the complexity is real">
-<b-why align="left">We rely on the <a href="/materials/glossary/osi/">OSI model</a>: a request passes seven layers, and the layers may live on different physical systems. Complexity is real where there are more layers and systems, and where several <a href="/materials/glossary/bounded-context/">bounded contexts</a> are involved, especially if one of them is not under our control. In our experience.</b-why>
-<b-why align="left" top="14">Complexity comes from the volume of research. Our service is open: code and tests are at hand, reading is enough. A foreign system is a black box: how it works can only be learned by probing from outside.</b-why>
+<b-why align="left">The basis is the <a href="/materials/glossary/osi/">OSI model</a>: a request passes seven layers, and the layers may live on different physical systems. Complexity is real where there are more layers and systems, and where several <a href="/materials/glossary/bounded-context/">bounded contexts</a> are involved, especially if one of them is not under your team’s control. This is the author’s observation.</b-why>
+<b-why align="left" top="14">Complexity comes from the volume of research. Your own service is open: code and tests are at hand, reading is enough. A foreign system is a black box: how it works can only be learned by probing from outside.</b-why>
 <b-lane title="The key: how much research the black boxes need" color="warn" top="12">
 <b-scene names="agent-hands-work-back-to-you/research-volume"/>
 </b-lane>
-<b-why align="left" top="14">Let us look at an example: two tasks in one project.</b-why>
+<b-why align="left" top="14">An example: two tasks in one project.</b-why>
 <b-view-switch id="vt-hard">
-  <view label="Simple"><b-lane title="Do we need changes" color="accent">
+  <view label="Simple"><b-lane title="Are changes needed" color="accent">
 <b-scene names="agent-hands-work-back-to-you/whose-changes"/>
 </b-lane>
-<b-why align="left" top="10">One question: are foreign changes needed. For example, changing discounts between two of our services: all in our zone, no changes needed, the agent does it. But once we pull stock from another team’s warehouse system, that team has to make changes, and that is no longer the agent’s job.</b-why></view>
-  <view label="Detailed"><b-lane title="A · discount: two of our services" color="accent">
+<b-why align="left" top="10">One question: are foreign changes needed. For example, changing discounts between two of your team’s services: all in your zone, no changes needed, the agent does it. But once stock is pulled from another team’s warehouse system, that team has to make changes, and that is no longer the agent’s job.</b-why></view>
+  <view label="Detailed"><b-lane title="A · discount: two of your own services" color="accent">
 <b-scene names="agent-hands-work-back-to-you/layers-discount"/>
 </b-lane>
-<b-why align="left" top="16">The discount passes one layer and stays with us. Stock from the warehouse passes the foreign side’s layers, and each needs a blind probe.</b-why>
+<b-why align="left" top="16">The discount passes one layer and stays in your zone. Stock from the warehouse passes the foreign side’s layers, and each needs a blind probe.</b-why>
 <b-lane title="B · stock from the warehouse: path through three layers" color="warn" top="16">
 <b-scene names="agent-hands-work-back-to-you/layers-warehouse"/>
 </b-lane></view>
 </b-view-switch>
 <b-finding>
-  <ex>A discount between our services: all ours, the agent does it. Stock from the warehouse: the warehouse team must change things (access, port), so the agent is right that it takes long.</ex>
+  <ex>A discount between your own services: all in your zone, the agent does it. Stock from the warehouse: the warehouse team must change things (access, port), so the agent is right that it takes long.</ex>
   <gen>The key is how much unknown has to be researched. A black box cannot be opened, it is checked by probes from outside, and every layer and every foreign system adds such probes.</gen>
   <do k="What to do">Estimate how many blind probes lie ahead. Many: split the task along system borders and ask the agent to check one at a time.</do>
 </b-finding>
@@ -125,7 +125,7 @@ Will AI agents take your job? They take the routine and hand part of the work ba
   <q t="Will an AI agent replace a specialist?">The agent takes routine steps over. Decisions, responsibility and checking the result stay with the person.</q>
   <q t="Which work does the agent do itself?">It reads, searches, copies, runs commands and writes drafts, provided it has access to the systems.</q>
   <q t="What will the agent not do without you?">Log in, enter a password, confirm a write, pay. That stays with the person.</q>
-  <q t="Why does the agent ask me to do what it can do itself?">In our experience it picks the path where the person does the work. Access to systems and a rule in the project instructions help.</q>
+  <q t="Why does the agent ask me to do what it can do itself?">In the author’s experience it picks the path where the person does the work. Access to systems and a rule in the project instructions help.</q>
   <q t="How to work with an agent without losing professionally?">Hand over the routine, keep task setting and review. Those steps stay with the person.</q>
 </b-faq-cards>
 </b-chapter>

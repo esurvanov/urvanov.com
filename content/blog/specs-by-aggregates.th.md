@@ -1,7 +1,7 @@
 ---
 title: ข้อกำหนดแบ่งตาม aggregate: ระดับข้อกำหนดแบบ RFC และ bounded context แทนการเขียน spec แยกตามฟีเจอร์
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: การพัฒนาโดยยึดข้อกำหนดโดยไม่ให้ spec ล้นเกิน: เก็บ spec ไว้ในพจนานุกรม aggregate เดียว จะได้ไม่เพิ่มตามทุกฟีเจอร์ ครอบคลุมระดับข้อกำหนด การ์ด aggregate และขอบเขตของ context
 tags: AI, การพัฒนาโดยยึดข้อกำหนด, spec, DDD, เอเจนต์
 category: specs
@@ -114,6 +114,7 @@ toc: growth=ทำไม spec จึงพอกพูน | rfc=ระดับ�
     <item href="/blog/specs-rules-skills/" k="บริบท" t="Spec, bible, rule และ skill">เอเจนต์รู้อะไรเกี่ยวกับโปรเจกต์และความรู้นั้นอยู่ที่ไหน</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="สภาพแวดล้อม" t="เปรียบเทียบ harness">เอเจนต์ทำงานที่ไหนและเห็นอะไร</item>
     <item href="/blog/agent-checkpoint/" k="ตรวจสอบ" t="ตรวจงานของเอเจนต์ AI ตรงไหน">aggregate เป็นจุดตรวจ</item>
+    <item href="/blog/openspec/" k="Spec" t="วิธีติดตั้งและใช้คำสั่ง OpenSpec">spec และการเปลี่ยนแปลงในไฟล์ข้างโค้ด</item>
   </b-links>
 </b-chapter>
 <b-footer compact>ตัวอย่างการจองสมมติขึ้น ศัพท์และแนวทางอ้างอิงแหล่งที่มาที่ลิงก์ไว้ใต้แผนภาพ</b-footer>

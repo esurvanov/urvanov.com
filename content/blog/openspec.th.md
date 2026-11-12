@@ -1,7 +1,7 @@
 ---
 title: วิธีติดตั้งและใช้คำสั่ง OpenSpec: ตัวอย่างการเปลี่ยนแปลงตั้งแต่แผนจนถึง merge
 date: 2026-11-07
-updated: 2026-11-08
+updated: 2026-11-13
 description: OpenSpec ของ Fission AI ทำงานอย่างไร โฟลเดอร์การเปลี่ยนแปลงที่มีแผน ข้อกำหนด และงาน คำสั่งสามตัวสำหรับเอเจนต์ และการรวมเข้ากับ spec กลาง ติดตั้งด้วยสองคำสั่ง ตัวอย่างการเปลี่ยนแปลงจริงจากรีโพของเว็บไซต์ urvanov.com เปรียบเทียบกับ Spec Kit และพรอมต์สำเร็จรูปสำหรับเริ่มใช้
 tags: AI, OpenSpec, spec, การพัฒนาโดยยึดข้อกำหนด, Claude Code, Codex, Cursor
 category: specs
@@ -36,7 +36,7 @@ OpenSpec คือเฟรมเวิร์กโอเพนซอร์ส�
 </b-chapter>
 
 <b-chapter id="install" icon="terminal" title="การติดตั้ง">
-  <b-why align="left">OpenSpec มีสองส่วน ส่วนแรกคือโปรแกรมบรรทัดคำสั่ง <code>openspec</code> ซึ่งติดตั้งครั้งเดียวต่อเครื่อง ส่วนที่สองคือการตั้งค่าโปรเจกต์หนึ่ง ๆ: <code>openspec init</code> สร้างโฟลเดอร์ <code>openspec/</code> ในโปรเจกต์ และเพิ่มคำสั่งอย่าง <code>/opsx:propose</code> ให้เอเจนต์ของคุณ</b-why>
+  <b-why align="left">OpenSpec มีสองส่วน ส่วนแรกคือโปรแกรมบรรทัดคำสั่ง <code>openspec</code> ซึ่งติดตั้งครั้งเดียวต่อเครื่อง ส่วนที่สองคือการตั้งค่าโปรเจกต์หนึ่ง ๆ: <code>openspec init</code> สร้างโฟลเดอร์ <code>openspec/</code> ในโปรเจกต์ และเพิ่มคำสั่งอย่าง <code>/openspec-propose</code> ให้เอเจนต์ของคุณ</b-why>
   <iso-art name="openspec/install"></iso-art>
   <b-why align="left">ลำดับในแผนภาพ: โปรแกรมปรากฏบนเครื่องก่อน จากนั้นโฟลเดอร์ <code>openspec/</code> ปรากฏในโปรเจกต์พร้อมสองโฟลเดอร์ย่อย คือ <code>specs</code> สำหรับข้อกำหนดที่ใช้งานอยู่ และ <code>changes</code> สำหรับการเปลี่ยนแปลงที่กำลังทำ และสุดท้ายเอเจนต์ของคุณได้คำสั่งใหม่ โค้ดของโปรเจกต์เองไม่เปลี่ยน มีแค่โฟลเดอร์แผนและไฟล์คำสั่งสำหรับเอเจนต์ที่ถูกเพิ่มเข้ามา คำสั่งสำหรับ macOS และ Linux:</b-why>
   <b-codebox title="ติดตั้งบน macOS และ Linux">
@@ -48,7 +48,7 @@ OpenSpec คือเฟรมเวิร์กโอเพนซอร์ส�
     cd your-project
     openspec init
   </b-codebox>
-  <b-why align="left"><code>openspec init</code> ถามว่าใช้เอเจนต์ตัวไหนและติดตั้งคำสั่งให้ตัวนั้นพอดี ชื่อคำสั่งต่างกันตามเอเจนต์: <code>/opsx:propose</code> ใน Claude Code, <code>/opsx-propose</code> ใน Cursor และ GitHub Copilot, <code>$openspec-propose</code> ใน Codex<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «/opsx:propose is the canonical name; your tool may spell it /opsx-propose (Cursor, GitHub Copilot), @opsx-propose (Amazon Q) or $openspec-propose (Codex)» — github.com/Fission-AI/OpenSpec"/> ส่วนที่เหลือของบทความใช้รูปแบบของ Claude Code</b-why>
+  <b-why align="left"><code>openspec init</code> ถามว่าใช้เอเจนต์ตัวไหน แล้วติดตั้งสกิลของ OpenSpec ให้ในโฟลเดอร์กลาง <code>.agents/skills/</code> ใน Claude Code และเอเจนต์ส่วนใหญ่เรียกใช้ด้วย <code>/openspec-propose</code> ใน Codex ใช้ <code>$openspec-propose</code> หรือจะสั่งเป็นคำพูดธรรมดาก็ได้<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «These are skills. Most tools invoke them as /openspec-propose and Codex as $openspec-propose, or you can ask for the work in plain words. … Coming from 1.x and its /opsx:* commands? See Upgrade to 2.0» — github.com/Fission-AI/OpenSpec"/> ในเวอร์ชัน 1.x ขั้นตอนเดียวกันนี้ชื่อ <code>/opsx:propose</code>, <code>/opsx:apply</code>, <code>/opsx:archive</code> หากจะย้ายไป 2.0 ให้รัน <code>openspec update</code> ในแต่ละโปรเจกต์ ส่วนที่เหลือของบทความใช้รูปแบบของ Claude Code</b-why>
   <b-why align="left">ถ้าโปรเจกต์ใช้เอเจนต์หลายตัว เช่น ทีมส่วนหนึ่งทำงานใน Cursor และอีกส่วนใน Claude Code ให้เลือกทั้งหมด: แผนการเปลี่ยนแปลงใช้ร่วมกัน และเอเจนต์แต่ละตัวได้คำสั่งของตัวเอง โปรแกรมฟรี รันในเครื่อง และไม่ต้องมีบัญชี</b-why>
   <b-finding>
     <ex>สองคำสั่ง: อันหนึ่งติดตั้งโปรแกรม อีกอันเตรียมโปรเจกต์และเชื่อมเอเจนต์</ex>
@@ -58,30 +58,30 @@ OpenSpec คือเฟรมเวิร์กโอเพนซอร์ส�
 </b-chapter>
 
 <b-chapter id="flow" icon="list-arrow" title="คำสั่งสามตัว: วางแผน เขียนโค้ด รวม">
-  <b-why align="left">งานวนไปตามวงจรของคำสั่งสามตัว ก่อนหน้านั้นคิดออกเสียงได้ด้วย <code>/opsx:explore</code>: เอเจนต์อ่านโค้ด เสนอทางเลือก และไม่เปลี่ยนอะไร เมื่อชัดแล้วว่าจะทำอะไร เส้นทางหลักจึงเริ่ม</b-why>
+  <b-why align="left">งานวนไปตามวงจรของคำสั่งสามตัว ก่อนหน้านั้นคิดออกเสียงได้ด้วย <code>/openspec-explore</code>: เอเจนต์อ่านโค้ด เสนอทางเลือก และไม่เปลี่ยนอะไร เมื่อชัดแล้วว่าจะทำอะไร เส้นทางหลักจึงเริ่ม</b-why>
   <iso-art name="openspec/loop"></iso-art>
-  <b-why align="left">อ่านวงจรตามเข็มนาฬิกา คำสั่งแรก <code>/opsx:propose</code> ขอให้เอเจนต์เขียนแผน: สร้างโฟลเดอร์การเปลี่ยนแปลงและสี่ไฟล์ จากนั้นถึงตาคุณ: อ่านแผนและแก้ในแชตหรือในไฟล์โดยตรง นี่คือจุดควบคุมหลัก เพราะแก้ข้อความหนึ่งย่อหน้าถูกกว่าเขียนโค้ดที่เสร็จแล้วใหม่ คำสั่งที่สอง <code>/opsx:apply</code> เริ่มทำงานตามงาน: เอเจนต์หยิบงานจาก <code>tasks.md</code> ทีละข้อและติ๊กออก คำสั่งที่สาม <code>/opsx:archive</code> ปิดการเปลี่ยนแปลง: ข้อกำหนดย้ายเข้า spec กลาง และโฟลเดอร์ไปอยู่ในคลังพร้อมประวัติการตัดสินใจทั้งหมด การเปลี่ยนแปลงถัดไปเริ่มจาก spec ที่อัปเดตแล้ว</b-why>
-  <b-why align="left">หน้าตาของเซสชันเทอร์มินัลสั้น ๆ เป็นแบบนี้ ตัวอย่างเซสชันอิงจากเดโมในคำอธิบายของ OpenSpec<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /opsx:propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /opsx:archive / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
-  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec · /opsx" path="~/projects/shop">
-    <line kind="ask">/opsx:propose add-dark-mode</line>
+  <b-why align="left">อ่านวงจรตามเข็มนาฬิกา คำสั่งแรก <code>/openspec-propose</code> ขอให้เอเจนต์เขียนแผน: สร้างโฟลเดอร์การเปลี่ยนแปลงและสี่ไฟล์ จากนั้นถึงตาคุณ: อ่านแผนและแก้ในแชตหรือในไฟล์โดยตรง นี่คือจุดควบคุมหลัก เพราะแก้ข้อความหนึ่งย่อหน้าถูกกว่าเขียนโค้ดที่เสร็จแล้วใหม่ คำสั่งที่สอง <code>/openspec-apply-change</code> เริ่มทำงานตามงาน: เอเจนต์หยิบงานจาก <code>tasks.md</code> ทีละข้อและติ๊กออก คำสั่งที่สาม <code>/openspec-archive-change</code> ปิดการเปลี่ยนแปลง: ข้อกำหนดย้ายเข้า spec กลาง และโฟลเดอร์ไปอยู่ในคลังพร้อมประวัติการตัดสินใจทั้งหมด การเปลี่ยนแปลงถัดไปเริ่มจาก spec ที่อัปเดตแล้ว</b-why>
+  <b-why align="left">หน้าตาของเซสชันเทอร์มินัลสั้น ๆ เป็นแบบนี้ ตัวอย่างเซสชันอิงจากเดโมในคำอธิบายของ OpenSpec<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /openspec-propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /openspec-archive-change / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
+  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec 2.0 · skills" path="~/projects/shop">
+    <line kind="ask">/openspec-propose add-dark-mode</line>
     <line kind="act">Created openspec/changes/add-dark-mode/</line>
     <line kind="out">proposal.md · specs/ · design.md · tasks.md</line>
     <line kind="you" note="คุณรีวิวแผน">เพิ่มสถานการณ์: ธีมยังอยู่หลังรีโหลด</line>
-    <line kind="ask">/opsx:apply</line>
+    <line kind="ask">/openspec-apply-change</line>
     <line kind="act">1.1 theme context ✓ · 1.2 toggle ✓ · 2.1 colours ✓</line>
     <line kind="out">all tasks complete</line>
-    <line kind="ask">/opsx:archive</line>
+    <line kind="ask">/openspec-archive-change</line>
     <line kind="act">ย้ายข้อกำหนดเข้า openspec/specs และย้ายโฟลเดอร์การเปลี่ยนแปลงเข้าคลัง</line>
   </b-agent-term>
   <b-table>
   | คำสั่ง | เอเจนต์ทำอะไร | อะไรปรากฏในโปรเจกต์ | คุณทำอะไร |
   |---|---|---|---|
-  | <code>/opsx:explore</code> | อ่านโค้ด เสนอทางเลือก | ไม่มีอะไร | เลือกทางเลือก |
-  | <code>/opsx:propose</code> | เขียนแผนการเปลี่ยนแปลง | โฟลเดอร์ <code>openspec/changes/name/</code> พร้อมสี่ไฟล์ | อ่านและแก้แผน |
-  | <code>/opsx:apply</code> | เขียนโค้ดตามงาน ติ๊กงานออก | โค้ดและเทสต์ | ตรวจผลลัพธ์ |
-  | <code>/opsx:archive</code> | รวมข้อกำหนดเข้า spec กลาง | <code>openspec/specs</code> ที่อัปเดตแล้ว โฟลเดอร์ถูกเก็บเข้าคลัง | ไม่ต้องทำอะไร จบแล้ว |
+  | <code>/openspec-explore</code> | อ่านโค้ด เสนอทางเลือก | ไม่มีอะไร | เลือกทางเลือก |
+  | <code>/openspec-propose</code> | เขียนแผนการเปลี่ยนแปลง | โฟลเดอร์ <code>openspec/changes/name/</code> พร้อมสี่ไฟล์ | อ่านและแก้แผน |
+  | <code>/openspec-apply-change</code> | เขียนโค้ดตามงาน ติ๊กงานออก | โค้ดและเทสต์ | ตรวจผลลัพธ์ |
+  | <code>/openspec-archive-change</code> | รวมข้อกำหนดเข้า spec กลาง | <code>openspec/specs</code> ที่อัปเดตแล้ว โฟลเดอร์ถูกเก็บเข้าคลัง | ไม่ต้องทำอะไร จบแล้ว |
   </b-table>
-  <b-why align="left">สำหรับงานใหญ่มีชุดขยาย: สร้างการเปลี่ยนแปลงทีละขั้น ทำต่อรายการที่ค้างอยู่ ตรวจโค้ดเทียบกับ spec เปิดใช้ด้วย <code>openspec config profile</code></b-why>
+  <b-why align="left">สำหรับงานใหญ่มีชุดขยาย: สร้างการเปลี่ยนแปลงทีละขั้น ทำต่อรายการที่ค้างอยู่ ตรวจโค้ดเทียบกับ spec เปิดใช้ด้วย <code>openspec config profile</code> แล้วใช้กับโปรเจกต์ด้วย <code>openspec update</code></b-why>
   <b-finding>
     <ex>หลังเก็บเข้าคลัง <code>openspec/specs</code> เก็บคำอธิบายปัจจุบันของระบบ และประวัติการตัดสินใจอยู่ในคลังการเปลี่ยนแปลง</ex>
     <gen>spec อัปเดตในขั้นเดียวกับโค้ด จึงไม่ล้าสมัยเหมือนวิกิแยกต่างหาก</gen>
@@ -110,7 +110,7 @@ OpenSpec คือเฟรมเวิร์กโอเพนซอร์ส�
     - THEN the card shows only those sections, with no empty blocks
   </b-codebox>
   <b-why align="left">การตัดสินใจเรื่อง “คำพูดจากต้นทางเท่านั้น” ถูกเขียนใน design.md ก่อนเขียนโค้ด เอเจนต์จึงไม่แต่งคำพูดขึ้นเองในที่ที่ไม่มี และสถานการณ์ “เนื้อหาไม่ครบ” กำหนดไว้ล่วงหน้าว่าการ์ดที่ไม่มีคำพูดหรือแผนภาพหน้าตาเป็นอย่างไร</b-why>
-  <b-why align="left">งานนี้ใช้ 10 งาน หนึ่งงานต่อหนึ่งหัวข้อของแคตตาล็อก ทั้ง 10 งานติ๊กแล้ว แต่ไม่เคยรันคำสั่ง archive: โฟลเดอร์การเปลี่ยนแปลงยังอยู่ใน <code>openspec/changes</code> และเว็บไซต์ยังไม่มี spec กลาง นี่เป็นข้อผิดพลาดที่พบบ่อย ข้อกำหนด “ทุกเทคนิคมีคำอธิบายละเอียด” อยู่แค่ในฉบับร่างของการเปลี่ยนแปลง และเอเจนต์ตัวต่อไปที่อ่าน spec กลางจะไม่รู้เรื่องนี้ คำสั่ง <code>/opsx:archive</code> คำสั่งเดียวจะย้ายมันเข้า spec กลาง</b-why>
+  <b-why align="left">งานนี้ใช้ 10 งาน หนึ่งงานต่อหนึ่งหัวข้อของแคตตาล็อก ทั้ง 10 งานติ๊กแล้ว แต่ไม่เคยรันคำสั่ง archive: โฟลเดอร์การเปลี่ยนแปลงยังอยู่ใน <code>openspec/changes</code> และเว็บไซต์ยังไม่มี spec กลาง นี่เป็นข้อผิดพลาดที่พบบ่อย ข้อกำหนด “ทุกเทคนิคมีคำอธิบายละเอียด” อยู่แค่ในฉบับร่างของการเปลี่ยนแปลง และเอเจนต์ตัวต่อไปที่อ่าน spec กลางจะไม่รู้เรื่องนี้ คำสั่ง <code>/openspec-archive-change</code> คำสั่งเดียวจะย้ายมันเข้า spec กลาง</b-why>
   <b-finding>
     <ex>สถานการณ์ “เนื้อหาไม่ครบ” ปรากฏในแผนก่อนโค้ด และกำหนดว่าการ์ดทำงานอย่างไรเมื่อไม่มีคำพูดหรือแผนภาพ</ex>
     <gen>ข้อกำหนดที่มีสถานการณ์แบบ “เมื่อ — แล้ว” อ่านเหมือนเทสต์: เอเจนต์รู้ว่าอะไรนับว่าเสร็จ</gen>
@@ -140,10 +140,10 @@ OpenSpec คือเฟรมเวิร์กโอเพนซอร์ส�
   <b-why align="left">เริ่มจากการเปลี่ยนแปลงเล็ก ๆ หนึ่งอย่างที่ตั้งใจจะทำอยู่แล้ว มีห้าพรอมต์สำหรับเอเจนต์ หนึ่งพรอมต์ต่อหนึ่งขั้น: วางลงใน Claude Code, Codex หรือ Cursor แล้วใส่งานของคุณ</b-why>
   <b-hdd-steps>
     <step t="ติดตั้ง">“ติดตั้ง OpenSpec และรัน openspec init ในโปรเจกต์นี้ แสดงว่ามีคำสั่งอะไรเพิ่มขึ้นมา”</step>
-    <step t="สำรวจ">“/opsx:explore ฉันอยากเพิ่ม … ดูโค้ดและเสนอสองทางเลือกโดยไม่เปลี่ยนอะไร”</step>
-    <step t="วางแผน">“/opsx:propose … เอาแต่แผนก่อน ในข้อกำหนดให้มีสถานการณ์สำหรับข้อมูลว่างและข้อมูลไม่ครบ”</step>
-    <step t="เขียนโค้ด">“/opsx:apply ทำงานทีละข้อ และรันเทสต์หลังแต่ละข้อ”</step>
-    <step t="รวม">“/opsx:archive ย้ายข้อกำหนดเข้า spec และแสดงว่า openspec/specs เปลี่ยนอะไร”</step>
+    <step t="สำรวจ">“/openspec-explore ฉันอยากเพิ่ม … ดูโค้ดและเสนอสองทางเลือกโดยไม่เปลี่ยนอะไร”</step>
+    <step t="วางแผน">“/openspec-propose … เอาแต่แผนก่อน ในข้อกำหนดให้มีสถานการณ์สำหรับข้อมูลว่างและข้อมูลไม่ครบ”</step>
+    <step t="เขียนโค้ด">“/openspec-apply-change ทำงานทีละข้อ และรันเทสต์หลังแต่ละข้อ”</step>
+    <step t="รวม">“/openspec-archive-change ย้ายข้อกำหนดเข้า spec และแสดงว่า openspec/specs เปลี่ยนอะไร”</step>
   </b-hdd-steps>
 </b-chapter>
 
@@ -152,7 +152,7 @@ OpenSpec คือเฟรมเวิร์กโอเพนซอร์ส�
     <q t="OpenSpec คืออะไร?">เฟรมเวิร์กโอเพนซอร์สฟรีของ Fission AI สำหรับการพัฒนาโดยยึดข้อกำหนด เอเจนต์เขียนแผนการเปลี่ยนแปลงลงไฟล์ Markdown คุณรีวิว เอเจนต์เขียนโค้ด และข้อกำหนดถูกรวมเข้ากับ spec กลางของโปรเจกต์</q>
     <q t="ติดตั้ง OpenSpec อย่างไร?">ด้วย curl -fsSL https://openspec.dev/cli/install.sh | sh บน macOS และ Linux หรือด้วย npm install -g @fission-ai/openspec@latest จากนั้นรัน openspec init ในโฟลเดอร์โปรเจกต์</q>
     <q t="OpenSpec ต่างจาก Spec Kit อย่างไร?">OpenSpec ยืดหยุ่นกว่าและสร้างมาสำหรับโค้ดที่ทำงานอยู่แล้ว ขั้นตอนทำซ้ำตามลำดับใดก็ได้ ส่วน Spec Kit ของ GitHub เดินผ่านเฟสตายตัว: หลักการ, spec, แผน, งาน, โค้ด</q>
-    <q t="OpenSpec ใช้กับเอเจนต์ตัวไหนได้?">Claude Code, Codex, Cursor, GitHub Copilot, Amazon Q และอื่น ๆ openspec init ติดตั้งคำสั่งให้เอเจนต์ที่เลือก</q>
+    <q t="OpenSpec ใช้กับเอเจนต์ตัวไหนได้?">Claude Code, Codex, Cursor, GitHub Copilot และอื่น ๆ รวมกว่า 30 ตัว openspec init ติดตั้งคำสั่งให้เอเจนต์ที่เลือก</q>
   </b-faq-cards>
 </b-chapter>
 

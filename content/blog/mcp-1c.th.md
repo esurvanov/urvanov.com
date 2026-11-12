@@ -1,7 +1,7 @@
 ---
 title: MCP server และเอเจนต์ AI สำหรับ 1C: ให้ Claude Code, Codex หรือ Cursor เข้าถึงฐานข้อมูลอย่างไรโดยไม่ทำให้พัง
 date: 2026-10-12
-updated: 2026-11-08
+updated: 2026-11-13
 description: MCP server สำหรับ 1C:Enterprise ให้เอเจนต์ AI (Claude Code, Codex หรือ Cursor) เข้าถึงโค้ดของ configuration และข้อมูลในฐานข้อมูล เชื่อมต่อใน 3 ขั้น อะไรพังในทางปฏิบัติ แยกการอ่านออกจากการเขียนและตรวจผลอย่างไร
 tags: AI, เอเจนต์, MCP, 1C, สิทธิ์, ความปลอดภัย, Claude Code, Codex, Cursor
 category: harness
@@ -266,12 +266,12 @@ toc: what=คืออะไร | specifics=ข้อเฉพาะของ 1C
   <tab t="Codex">
     <b-pick-cell k="ตั้งค่าที่ไหน"><code>~/.codex/config.toml</code> หรือ <code>.codex/config.toml</code> ในโปรเจกต์</b-pick-cell>
     <b-pick-cell k="สำหรับทีม" tone="accent"><code>.codex/config.toml</code> ในโปรเจกต์ที่ไว้วางใจ</b-pick-cell>
-    <b-pick-cell k="เอกสาร"><a href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">MCP ใน Codex</a></b-pick-cell>
+    <b-pick-cell k="เอกสาร"><a href="https://learn.chatgpt.com/docs/extend/mcp?surface=cli" target="_blank" rel="noopener">MCP ใน Codex</a></b-pick-cell>
   </tab>
   <tab t="Cursor">
     <b-pick-cell k="ตั้งค่าที่ไหน">ไฟล์ <code>mcp.json</code></b-pick-cell>
     <b-pick-cell k="สำหรับทีม" tone="accent">มาร์เก็ตเพลสเซิร์ฟเวอร์ของทีม</b-pick-cell>
-    <b-pick-cell k="เอกสาร"><a href="https://cursor.com/docs/context/mcp" target="_blank" rel="noopener">MCP ใน Cursor</a></b-pick-cell>
+    <b-pick-cell k="เอกสาร"><a href="https://cursor.com/docs/mcp" target="_blank" rel="noopener">MCP ใน Cursor</a></b-pick-cell>
   </tab>
 </b-pick-tabs>
 </b-lane>

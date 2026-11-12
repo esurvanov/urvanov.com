@@ -1,7 +1,7 @@
 ---
 title: MCP სერვერი და AI აგენტი 1C-სთვის: როგორ შევუშვათ Claude Code, Codex ან Cursor ბაზაში მისი გაფუჭების გარეშე
 date: 2026-10-12
-updated: 2026-11-08
+updated: 2026-11-13
 description: MCP სერვერი 1C:Enterprise-ისთვის AI აგენტს (Claude Code, Codex ან Cursor) აძლევს წვდომას კონფიგურაციის კოდსა და ბაზის მონაცემებზე. როგორ დავაკავშიროთ 3 ნაბიჯში, რა ტყდება პრაქტიკაში, როგორ გავმიჯნოთ კითხვა ჩაწერისგან და შევამოწმოთ შედეგები.
 tags: AI, აგენტები, MCP, 1C, ნებართვები, უსაფრთხოება, Claude Code, Codex, Cursor
 category: harness
@@ -266,12 +266,12 @@ toc: what=რა არის | specifics=1C-ის თავისებურ�
   <tab t="Codex">
     <b-pick-cell k="სად გავამართოთ"><code>~/.codex/config.toml</code> ან <code>.codex/config.toml</code> პროექტში</b-pick-cell>
     <b-pick-cell k="გუნდისთვის" tone="accent"><code>.codex/config.toml</code> სანდო პროექტში</b-pick-cell>
-    <b-pick-cell k="დოკუმენტაცია"><a href="https://developers.openai.com/codex/mcp" target="_blank" rel="noopener">MCP Codex-ში</a></b-pick-cell>
+    <b-pick-cell k="დოკუმენტაცია"><a href="https://learn.chatgpt.com/docs/extend/mcp?surface=cli" target="_blank" rel="noopener">MCP Codex-ში</a></b-pick-cell>
   </tab>
   <tab t="Cursor">
     <b-pick-cell k="სად გავამართოთ">ფაილი <code>mcp.json</code></b-pick-cell>
     <b-pick-cell k="გუნდისთვის" tone="accent">გუნდის სერვერების მარკეტპლეისი</b-pick-cell>
-    <b-pick-cell k="დოკუმენტაცია"><a href="https://cursor.com/docs/context/mcp" target="_blank" rel="noopener">MCP Cursor-ში</a></b-pick-cell>
+    <b-pick-cell k="დოკუმენტაცია"><a href="https://cursor.com/docs/mcp" target="_blank" rel="noopener">MCP Cursor-ში</a></b-pick-cell>
   </tab>
 </b-pick-tabs>
 </b-lane>

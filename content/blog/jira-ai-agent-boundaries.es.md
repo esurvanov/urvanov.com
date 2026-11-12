@@ -1,12 +1,12 @@
 ---
 title: Cómo conectar un agente de IA a Jira: pros, contras y dónde trazar la línea
 date: 2026-10-20
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cómo se conecta un agente de IA a Jira mediante MCP, qué funciona, qué falla y por qué la recogida de errores debe estar en un servicio aparte. Incluye alternativas a Jira.
 tags: IA, agentes, Jira, MCP, Claude Code, rastreador de errores, harness
 category: harness
 layout: wide
-mentions: Jira, Atlassian Rovo MCP, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
+mentions: Jira, Atlassian MCP server, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
 toc: ways=Cómo conectar | plus=Pros | minus=Contras | russia=Jira en Rusia | trackers=Otros rastreadores | border=La línea | first=Por dónde empezar | faq=Preguntas | next=Seguir leyendo
 ---
 
@@ -15,18 +15,18 @@ Un agente de IA se conecta a Jira mediante MCP. Funciona bien para la planificac
 <b-post series="harness">
 
 <b-chapter id="ways" icon="plug" title="Cómo conectar un agente a Jira">
-  <b-why align="left">Hay varias formas de conectar un agente a Jira. El servidor oficial de Atlassian (Rovo MCP) puede buscar, leer y crear incidencias, pero funciona solo con Jira en la nube. El servidor de código abierto mcp-atlassian sirve tanto para la nube como para Jira autoalojado. Otra opción es asignar una incidencia a un agente en la propia Jira (Claude, Cursor, Codex, Copilot). La tabla compara las formas por funciones y límites.</b-why>
+  <b-why align="left">Hay varias formas de conectar un agente a Jira. El servidor oficial de Atlassian (Atlassian MCP server, antes Rovo MCP) puede buscar, leer y crear incidencias, pero funciona solo con Jira en la nube. El servidor de código abierto mcp-atlassian sirve tanto para la nube como para Jira autoalojado. Otra opción es asignar una incidencia a un agente en la propia Jira (Claude, Cursor, Codex, Copilot). La tabla compara las formas por funciones y límites.</b-why>
   <b-table>
 | Forma | Qué puede hacer | Límites |
 |---|---|---|
-| Atlassian Rovo MCP (oficial) | buscar, leer y crear incidencias y páginas; adjuntos desde agosto de 2026 | solo nube; límites por hora; gasta créditos de Rovo |
+| Atlassian MCP server, antes Rovo MCP (oficial) | buscar, leer y crear incidencias y páginas; adjuntos desde agosto de 2026 | solo nube; límites por hora; parte de las llamadas gasta créditos de Rovo |
 | mcp-atlassian (código abierto) | nube y autoalojado, unas 100 herramientas | lo instalas tú mismo, el token queda en la configuración |
 | Agentes en Jira | asignar una incidencia a Claude, Cursor, Codex, Copilot | solo nube, planes de pago |
 | Copilot / Cursor desde Jira | asignar una incidencia, el agente abre un cambio en borrador | nube, aplicaciones aparte |
   </b-table>
   <b-finding>
     <ex>Las formas oficiales funcionan con Jira en la nube; Jira autoalojado se conecta solo mediante el MCP de código abierto.</ex>
-    <gen>El agente tiene los mismos derechos que el usuario cuyo inicio de sesión o token usa<b-proof href="https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: Getting started with the Atlassian Rovo MCP Server"/>.</gen>
+    <gen>El agente tiene los mismos derechos que el usuario cuyo inicio de sesión o token usa<b-proof href="https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: «…which ensures all actions respect users' existing access controls and permissions»"/>.</gen>
     <do>Comprueba qué Jira tienes, nube o autoalojado: de eso depende la forma.</do>
   </b-finding>
 </b-chapter>
@@ -83,7 +83,7 @@ Un agente de IA se conecta a Jira mediante MCP. Funciona bien para la planificac
   <b-metric-line value="~70%">de los responsables de TI usan versiones sin soporte (encuesta de K2Tech, 73 empresas)</b-metric-line>
   <b-finding>
     <ex>El MCP oficial en la nube y los agentes en Jira no están, en la práctica, disponibles para los equipos rusos.</ex>
-    <gen>Para Jira autoalojado queda el mcp-atlassian de código abierto, más la decisión de adónde mudarse antes de 2029<b-proof href="https://habr.com/ru/articles/1011252" quote="K2Tech on Habr: Atlassian's exit and a survey of IT leaders"/>.</gen>
+    <gen>Para Jira autoalojado queda el mcp-atlassian de código abierto, más la decisión de adónde mudarse antes de 2029<b-proof href="https://habr.com/ru/companies/k2tech/articles/1011252/" quote="K2Tech on Habr, translated from Russian: “Key finding: about 70% of respondents still use unsupported versions of the vendor’s products”; “73 company representatives took part in the survey”"/>.</gen>
     <do>Si hay una mudanza por delante, elige un rastreador que ya tenga conexión con agentes.</do>
   </b-finding>
 </b-chapter>
@@ -150,5 +150,5 @@ Un agente de IA se conecta a Jira mediante MCP. Funciona bien para la planificac
     <item href="/blog/mcp-agent-access/" k="Base" t="MCP para un agente de IA">Qué es MCP y cómo conectarlo</item>
   </b-links>
 </b-chapter>
-<b-footer>Datos: documentación de Atlassian, GitHub y Cursor; análisis de automatica.com.au, Cato CTRL, Simon Willison; encuesta de K2Tech; Wordstat, octubre de 2026. Las funciones y los planes de Rovo MCP cambian rápido: compruébalos antes de decidir.</b-footer>
+<b-footer>Datos: documentación de Atlassian, GitHub y Cursor; análisis de automatica.com.au, Cato CTRL, Simon Willison; encuesta de K2Tech; Wordstat, octubre de 2026. Las funciones y los planes del Atlassian MCP server cambian rápido: compruébalos antes de decidir.</b-footer>
 </b-post>

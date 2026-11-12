@@ -1,7 +1,7 @@
 ---
 title: Cómo corregir errores más rápido con un agente de IA: del botón «Informar de un error» a la corrección
 date: 2026-10-20
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cómo corregir errores más rápido sin teléfono estropeado: el personal informa desde la propia aplicación, se recoge el contexto por ellos, un agente de IA encuentra la causa y una persona aprueba.
 tags: IA, agentes, errores, feedback, MTTR, MCP, Claude Code, harness
 category: harness
@@ -63,7 +63,7 @@ Un ciclo corto de retroalimentación funciona así: un empleado envía un error 
 </b-chapter>
 
 <b-chapter id="agent" icon="bot" title="Agente y persona">
-  <b-why align="left">El agente hace el análisis, la persona toma las decisiones. El agente toma cada informe por separado, lo investiga y devuelve un resumen: qué se ve, la causa probable con el lugar en el código, un plan y riesgos. No cambia ni código ni estados. La persona aprueba el plan. Después el agente hace la corrección en una rama aparte, y la persona fusiona el cambio y lo publica. La frase enmarcada es una petición lista para el agente.</b-why>
+  <b-why align="left">El agente hace el análisis, la persona toma las decisiones. El agente toma cada informe por separado, lo investiga y devuelve un resumen: qué se ve, la causa probable con el lugar en el código, un plan y riesgos. No cambia ni código ni estados. La persona aprueba el plan. Después el agente hace la corrección en una rama aparte, y la persona fusiona el cambio y lo publica en [producción](/materials/glossary/prod/). La frase enmarcada es una petición lista para el agente.</b-why>
   <b-steps>
     <step t="El agente toma un informe">cada informe va a su propio agente, sin suposiciones compartidas</step>
     <step t="Investiga e informa" hl>qué se ve, la causa probable con el lugar en el código, un plan, riesgos, preguntas; no toca ni código ni estados</step>
@@ -111,7 +111,7 @@ Un ciclo corto de retroalimentación funciona así: un empleado envía un error 
   <b-metric-line value="23 de 25">informes cerrados en el rastreador integrado de una aplicación en funcionamiento</b-metric-line>
   <b-finding>
     <ex>Todos los casos comparten un movimiento: el contexto se recoge antes de que una persona se siente con el error.</ex>
-    <gen>El menor tiempo de corrección (MTTR en las métricas DORA) viene de recoger el contexto y de una cadena corta de personas<b-proof href="https://www.wix.engineering/post/from-weeks-to-hours-inside-wix-s-autonomous-bug-fixing-system" quote="Wix Engineering: From weeks to hours — inside Wix’s autonomous bug-fixing system"/>.</gen>
+    <gen>El menor tiempo desde el informe hasta la corrección viene de recoger el contexto y de una cadena corta de personas<b-proof href="https://www.wix.engineering/post/from-weeks-to-hours-inside-wix-s-autonomous-bug-fixing-system" quote="Wix Engineering: From weeks to hours — inside Wix’s autonomous bug-fixing system"/>.</gen>
     <do>Mide ahora el tiempo desde el informe hasta la publicación, para tener algo con qué comparar.</do>
   </b-finding>
 </b-chapter>

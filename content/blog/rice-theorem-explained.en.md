@@ -1,7 +1,7 @@
 ---
 title: Rice's theorem in plain words: why no check works on every program and what to do about it
 date: 2026-11-06
-updated: 2026-11-08
+updated: 2026-11-13
 description: What Rice's theorem says and why checking a program's behaviour runs into the halting problem. Predicates about text and about behaviour, a proof on a payment example, the link to the barber paradox and three frames that make a check exact.
 tags: Rice's theorem, halting problem, barber paradox, predicate, formal verification, Quint, DDD, agents
 category: specs
@@ -125,7 +125,7 @@ Rice's theorem says no program can always correctly tell, for any other program,
 </b-chapter>
 
 <b-chapter id="small-model" icon="package" title="Way out 2. A small model: try everything, but on small numbers">
-  <b-why align="left">Here property 2, “any edit”, is given up. What gets checked is a short description of the payment rules, not the code, and only on small numbers: 3 orders and 2 customers. The variants become finite, and a program tries them all to the end.</b-why>
+  <b-why align="left">Here property 2, “any edit”, is given up. What gets checked is a short description of the payment rules, with the code checked separately, and only on small numbers: 3 orders and 2 customers. The variants become finite, and a program tries them all to the end.</b-why>
   <b-art names="rice-theorem-explained/small-model" wide/>
 
   1. **State:** which orders exist, how many times each was charged, which order each customer has checked.

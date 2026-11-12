@@ -66,7 +66,7 @@ Minutes per block
 
 Intro
 
-"I'm looking at how people in the company actually get their work tasks done. This isn't an evaluation of you. Both successful and unsuccessful cases are equally useful to me. A note-taking assistant is with me: only we see the transcript, and answers go into the report without names. May I turn it on?"
+"I'm looking at how people in the company actually get their work tasks done. This isn't an evaluation of you. Both successful and unsuccessful cases are equally useful to me. A note-taking assistant is with me: only the research team sees the transcript, and answers go into the report without names. May I turn it on?"
 
 2
 
@@ -179,7 +179,7 @@ One table: one row per person
 | 5 | Ben Ortiz |  |  | Codex only | Awaiting reply |  | Codex only |  | 3.2M | 64 | 22.09 |
 | 6 | Pavel Novak | [27.09 10:15] Host: Describe the last task… | text | inactive | Done | regularly | doesn't use | ≠ | 0 | 0 | — |
 | 7 | Sara Quinn |  |  | inactive | Declined |  | doesn't use |  | 0 | 0 | — |
-| 8 | Nadia Rahimi | Host [00:00]: What did you do in ChatGPT yesterday… | voice | other tools | Done | occasionally | occasionally | = | 0.3M | 6 | 20.09 |
+| 8 | Nadia Rahimi | Host [00:00]: Think back to the last task that took… | voice | other tools | Done | occasionally | occasionally | = | 0.3M | 6 | 20.09 |
 | 9 | Elif Demir |  |  | projects | In progress |  | weekly |  | 1.8M | 41 | 27.09 |
 | 16 records · 9 shown |  |  |  |  |  |  |  |  |  |  |  |
 

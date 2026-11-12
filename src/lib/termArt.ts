@@ -1158,7 +1158,7 @@ export const ART: Record<string, Art> = {
     at(4.0, 0, (x, y) => I.tile(x - 3.0, y - 3.0, 6.0, 6.0, { col: S2, h: 0.04, grid: false, edge: A, dash: '6 5' })); t(4.0, -6.2, 'openspec/changes/add-dark-mode', A, { size: 12, w: 800, dy: -4 })
     const f: [number, number, string][] = [[2.6, -1.4, 'proposal.md'], [5.4, -1.4, l('дельта спеки', 'spec delta')], [2.6, 1.4, 'design.md'], [5.4, 1.4, 'tasks.md']]
     f.forEach(([X, Y, n]) => { doc(X, Y, A, 2, 0.8); t(X, Y + 0.7, n, A, { dy: 10, size: 10, w: 700 }) })
-    agent(4.0, -12.0, ''); t(4.0, -10.7, '/opsx:propose → /opsx:apply → /opsx:archive', A, { dy: 12, size: 11, w: 800 })
+    agent(4.0, -12.0, ''); t(4.0, -10.7, 'openspec-propose → apply-change → archive-change', A, { dy: 12, size: 11, w: 800 })
     arr(A, [4.0, -9.4], [4.0, -7.2])
     arr(A, [1.0, 4.4], [-8.0, 4.4], [-8.0, 2.6]); t(-3.5, 4.4, l('archive: дельта вливается в спеки', 'archive: the delta merges into specs'), A, { dy: 18, size: 11, w: 800 })
     t(0, 8.4, l('+ ADDED · ~ MODIFIED · − REMOVED требования', '+ ADDED · ~ MODIFIED · − REMOVED requirements'), M, { size: 11, w: 600 })

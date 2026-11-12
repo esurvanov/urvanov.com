@@ -1,7 +1,7 @@
 ---
 title: Чем ИИ-агент отличается от ассистента, чата, чат-бота и нейросети
 date: 2026-10-12
-updated: 2026-10-25
+updated: 2026-11-13
 description: ИИ-агент = нейросеть + харнесс. Чем агент отличается от ИИ-ассистента, чат-бота, чата и LLM: таблица, пример на одной задаче, как работает агент и когда что выбрать.
 tags: AI, агенты, ИИ-агент, ИИ-ассистент, чат-бот, нейросеть, LLM, харнесс
 category: harness
@@ -28,7 +28,7 @@ toc: formula=Агент = нейросеть + харнесс | table=Табли
 <table><thead><tr><th></th><th>Нейросеть (LLM)</th><th>Чат</th><th>Чат-бот</th><th>Ассистент</th><th>ИИ-агент</th></tr></thead><tbody><tr><td>Для чего</td><td>движок внутри продуктов</td><td>любые вопросы и тексты</td><td>типовые вопросы одной компании</td><td>ваши дела в приложениях</td><td>задача до результата</td></tr><tr><td>Кто ведёт задачу</td><td>—</td><td>вы</td><td>сценарий</td><td>вы, командами</td><td><b>сам агент</b></td></tr><tr><td>Понимает свободную речь</td><td><b-tag-inline kind="ok">да</b-tag-inline></td><td><b-tag-inline kind="ok">да</b-tag-inline></td><td><b-tag-inline kind="muted">частично</b-tag-inline></td><td><b-tag-inline kind="ok">да</b-tag-inline></td><td><b-tag-inline kind="ok">да</b-tag-inline></td></tr><tr><td>Действует в приложениях</td><td><b-tag-inline kind="no">нет</b-tag-inline></td><td><b-tag-inline kind="muted">частично</b-tag-inline></td><td><b-tag-inline kind="muted">частично</b-tag-inline></td><td><b-tag-inline kind="ok">да</b-tag-inline></td><td><b-tag-inline kind="ok">да</b-tag-inline></td></tr><tr><td>Сам выбирает шаги и проверяет</td><td><b-tag-inline kind="no">нет</b-tag-inline></td><td><b-tag-inline kind="no">нет</b-tag-inline></td><td><b-tag-inline kind="no">нет</b-tag-inline></td><td><b-tag-inline kind="no">нет</b-tag-inline></td><td><b-tag-inline kind="ok">да</b-tag-inline></td></tr><tr><td>Кто делает</td><td>провайдеры моделей</td><td>провайдеры, часто вместе с моделью, и агрегаторы</td><td>продукты-конструкторы для бизнеса</td><td>платформы: ОС, офис, поиск</td><td>промышленные агенты для работы</td></tr><tr><td>Пример</td><td><a href="/materials/glossary/openai/">GPT</a>, <a href="/materials/glossary/anthropic/">Claude</a>, <a href="/materials/glossary/deepseek/">DeepSeek</a></td><td><a href="/materials/glossary/openai/">ChatGPT</a>, <a href="/materials/glossary/anthropic/">Claude</a>; агрегаторы: <a href="https://poe.com/" target="_blank" rel="noopener">Poe</a>, <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter</a></td><td><a href="https://vivochat.ai/" target="_blank" rel="noopener">vivochat.ai</a>, бот поддержки банка</td><td><a href="/materials/glossary/yandex/">Алиса</a>, <a href="/materials/glossary/microsoft/">Copilot</a></td><td><a href="/materials/glossary/claude-code/">Claude Code</a>, <a href="/materials/glossary/codex/">Codex</a>, <a href="/materials/glossary/cursor/">Cursor</a></td></tr></tbody></table>
 </b-table>
 <b-why align="left" top="10"><b>Чат-бот и ассистент.</b> Чат-бот отвечает за одну компанию по сценарию: кнопки, ключевые слова, перевод на оператора. Бывают боты на нейросети, но рамки те же. Ассистент понимает любую просьбу и выполняет её в ваших приложениях: письмо, напоминание, поиск. Каждый следующий шаг — ваша новая команда.</b-why>
-<b-why align="left" top="6"><b>Агенты сегодня промышленные:</b> для кода, данных, поддержки. Массовых облачных агентов «для всех» пока нет. По нашему опыту.</b-why>
+<b-why align="left" top="6"><b>Агенты сегодня промышленные:</b> для кода, данных, поддержки. Массовых облачных агентов «для всех» пока нет. Наблюдение по проектам автора.</b-why>
 <b-finding>
   <ex>Бот банка отвечает про тарифы. Алиса ставит напоминание по команде. Агент получает цель «подготовь релиз» и сам решает, что читать, что запускать и когда остановиться.</ex>
   <gen>Чат-бот ведёт по сценарию компании, ассистент — по вашим командам, агент — сам. Модель внутри может быть одна и та же.</gen>
@@ -36,7 +36,7 @@ toc: formula=Агент = нейросеть + харнесс | table=Табли
 </b-finding>
 </b-chapter>
 <b-chapter id="example" icon="arrow-right" title="Пример: что каждый видит из проекта">
-<b-why align="left">Одна задача — «почини падающий тест» — и пять инструментов. Полоса под частями проекта показывает, что инструмент видит. Чего не видит, то додумывает или отдаёт вам.</b-why>
+<b-why align="left">Одна задача — «почини падающий тест» — и пять программ. Полоса под частями проекта показывает, что видит каждая. Чего не видит, то додумывает или отдаёт вам.</b-why>
 <b-lane-art names="ai-agent-llm-harness/example"/>
 <b-sublabel top="18">Почему нейросеть ошибается вслепую</b-sublabel>
 <b-arrow-rows>

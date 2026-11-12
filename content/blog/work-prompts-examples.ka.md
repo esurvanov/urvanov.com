@@ -1,7 +1,7 @@
 ---
 title: პრომპტები სამუშაო ამოცანებისთვის: ხუთი ნაწილი და ექვსი მაგალითი ChatGPT-სა და Claude-ისთვის
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: პრომპტები AI ჩატთან სამუშაოდ: კარგი სამუშაო პრომპტის ნაწილები, როგორ გამოიყურება სუსტი და ძლიერი თხოვნა, ექვსი მზა შაბლონი გავრცელებული ამოცანებისთვის და როგორ შევინახოთ ისინი პროექტში, Anthropic-ის, OpenAI-სა და Google-ის სახელმძღვანელოების მიხედვით.
 tags: AI, პრომპტები, ChatGPT, Claude
 category: prompts
@@ -18,13 +18,13 @@ toc: model=ადამიანი ციკლში | parts=ხუთი ნ�
     <node icon="ai-box" t="მოდელი">კონტექსტს ხვდება</node>
     <node icon="file-x" t="ზოგადი პასუხი">ხელით გადასაწერია</node>
   </b-lane>
-  <b-lane title="ექვსი ნაწილი" color="accent">
+  <b-lane title="ხუთი ნაწილი" color="accent">
     <node icon="prompt-stripes" t="პრომპტი">როლი, მონაცემები, მაგალითი, ფორმატი</node>
     <node icon="ai-box" t="მოდელი">ხედავს ყველაფერს, რაც სჭირდება</node>
     <node icon="file-check" t="მონახაზი">მცირე შესწორებები</node>
   </b-lane>
 </b-flow>
-<b-cap>ორივე შემთხვევაში მოდელი ერთია. შედეგი იმაზეა დამოკიდებული, რას ამბობს პრომპტი: ექვსი ნაწილი, რომლებიც მეორდება Anthropic-ის, OpenAI-სა და Google-ის სახელმძღვანელოებში.</b-cap>
+<b-cap>ორივე შემთხვევაში მოდელი ერთია. შედეგი იმაზეა დამოკიდებული, რას ამბობს პრომპტი: ხუთი ნაწილი, რომლებიც მეორდება Anthropic-ის, OpenAI-სა და Google-ის სახელმძღვანელოებში.</b-cap>
 <b-chapter id="model" title="ადამიანი ციკლში (human-in-the-loop): ერთი თხოვნის გზა" icon="share">
   <b-art names="work-prompts-examples/prompt-map" wide/>
   <b-finding>
@@ -102,7 +102,7 @@ toc: model=ადამიანი ციკლში | parts=ხუთი ნ�
       <b-cap>OpenAI Academy-ს აქვს დღის წესრიგის შაბლონი დროის შეფასებებით<b-proof href="https://academy.openai.com/public/resources/chatgpt-for-any-role" quote="OpenAI Academy, ChatGPT for any role: “Create a structured agenda for a meeting about [topic]. Break the agenda into sections with time estimates and goals for each section” — academy.openai.com"/>.</b-cap>
       <b-finding>
         <ex>შეხვედრის მიზანი, მასალები ტეგებში და დასაბრუნებლის დანომრილი სია.</ex>
-        <gen>შეხვედრის მიზანი მასალებს ფილტრავს. დანომრილი ნაბიჯები ეხმარება, როცა თანმიმდევრობა და სისრულე მნიშვნელოვანია<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they&#39;d be confused, Claude will be too” — platform.claude.com, Prompting best practices"/>.</gen>
+        <gen>შეხვედრის მიზანი მასალებს ფილტრავს. დანომრილი ნაბიჯები ეხმარება, როცა თანმიმდევრობა და სისრულე მნიშვნელოვანია<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Provide instructions as sequential steps using numbered lists or bullet points when the order or completeness of steps matters” — platform.claude.com, Prompting best practices"/>.</gen>
         <do>30 წუთიან ან უფრო გრძელ ყოველ შეხვედრამდე გაატარეთ მასალები ამ პრომპტში და დაიწყეთ მისი ცხრილით.</do>
       </b-finding>
     </b-prompt-tab>
@@ -193,7 +193,7 @@ toc: model=ადამიანი ციკლში | parts=ხუთი ნ�
         შედეგი: ცხრილი [სვეტები] და დასკვნა 5 პუნქტად.
         ყოველ ფაქტზე წყაროს ბმული. თუ მონაცემები არ არის, თქვი ეს.
       </b-prompt>
-      <b-cap>ორივე ჩატს აქვს ღრმა კვლევის რეჟიმი: deep research ChatGPT-ში და Research Claude-ში<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/>.</b-cap>
+      <b-cap>ორივე ჩატს აქვს ღრმა კვლევის რეჟიმი: deep research ChatGPT-ში და Research Claude-ში<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Ultra, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/>.</b-cap>
       <b-finding>
         <ex>მიზანი, სიახლის ლიმიტი და გამოტანის ფორმატი ბმულებით.</ex>
         <gen>კვლევის რეჟიმში მოდელი ძიებების სერიას ატარებს და ბმულებიან ანგარიშს აბრუნებს. ბმულები ყოველი ფაქტის შემოწმების საშუალებას გაძლევთ, „თუ მონაცემები არ არის“ კი ხვრელების ვარაუდებით შევსებას უშლის.</gen>
@@ -213,7 +213,7 @@ toc: model=ადამიანი ციკლში | parts=ხუთი ნ�
   <b-sublabel top="22">პრომპტინგი</b-sublabel>
   <b-links cols="2">
     <item href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" k="Anthropic · დოკუმენტაცია" t="Prompting best practices" ext>მთავარი წყარო: სიცხადე, მაგალითები, როლი, XML ტეგები, გრძელი დოკუმენტები</item>
-    <item href="https://claude.com/blog/best-practices-for-prompt-engineering" k="Anthropic · ბლოგი" t="Best practices for prompt engineering" ext>პრომპტინგის ზოგადი ხელობა კონკრეტული მოდელის მიღმა</item>
+    <item href="https://claude.com/resources/articles/best-practices-for-prompt-engineering" k="Anthropic · ბლოგი" t="Best practices for prompt engineering" ext>პრომპტინგის ზოგადი ხელობა კონკრეტული მოდელის მიღმა</item>
     <item href="https://github.com/anthropics/prompt-eng-interactive-tutorial" k="Anthropic · ტუტორიალი" t="ინტერაქტიული ტუტორიალი" ext>9 თავი სავარჯიშოებით, პრომპტის სტრუქტურიდან XML ტეგებამდე და მაგალითებამდე</item>
     <item href="https://www.kaggle.com/whitepaper-prompt-engineering" k="Google · whitepaper" t="Prompt Engineering" ext>ხერხები და საუკეთესო პრაქტიკა: მაგალითები, გამოტანის ფორმატი, ინსტრუქციები შეზღუდვების ნაცვლად</item>
     <item href="https://academy.openai.com/public/clubs/work-users-ynjqu/resources/prompting" k="OpenAI Academy" t="Prompting" ext>რა, ვისთვის და რისთვის, კონტექსტი, გამოტანის ფორმატი, იტერაცია</item>
@@ -237,7 +237,7 @@ toc: model=ადამიანი ციკლში | parts=ხუთი ნ�
   <b-links cols="2">
     <item href="/blog/harness-work-approaches/" k="მიდგომები" t="თუ პასუხი გაცდა სამიზნეს">პასუხის ციკლი და რევიუ, რომელიც თხოვნას ასწორებს</item>
     <item href="/blog/specs-rules-skills/" k="კონტექსტი" t="სპეციფიკაციები, bible, წესები და skill-ები">სად ცხოვრობს პრომპტი ერთი ჩატის მიღმა</item>
-    <item href="/blog/ai-in-code-harness-and-tools/" k="ინჟინერია" t="AI კოდში">harness და ინსტრუმენტების სამი ჯგუფი</item>
+    <item href="/blog/ai-in-code-harness-and-tools/" k="ინჟინერია" t="AI კოდში">harness და ინსტრუმენტების ოთხი ჯგუფი</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="ანგარიში" t="ChatGPT Enterprise-ის გამოყენების ანგარიში">კომპანიაში ვინ რას იყენებს</item>
   </b-links>
 </b-chapter>

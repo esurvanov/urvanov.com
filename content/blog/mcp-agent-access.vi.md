@@ -1,7 +1,7 @@
 ---
 title: MCP cho tác nhân AI (AI agent): giải quyết vấn đề gì và cách giao việc thiết lập cho chính tác nhân
 date: 2026-10-04
-updated: 2026-11-08
+updated: 2026-11-13
 unrelated: mcp-1c
 description: MCP nối tác nhân vào GitLab, Jira, Confluence và bản ghi cuộc họp. Nó giải quyết vấn đề gì, thiết lập trong vài phút và giao việc đó cho chính tác nhân ra sao, tiết kiệm thời gian và token thế nào và vì sao tác nhân bịa ít hơn.
 tags: AI, tác nhân, MCP, Jira, ngữ cảnh, ảo giác, token, harness
@@ -200,7 +200,7 @@ MCP nối tác nhân AI (AI agent) vào các hệ thống đang làm việc, đ�
 <b-why>Một cách tiếp cận dùng được cho nhiều nhiệm vụ: tác nhân đọc các nguồn và con người kiểm tra kết quả.</b-why>
 <b-scene names="mcp-agent-access/three-cases"/>
 <b-table>
-<table><thead><tr><th>Tình huống</th><th>Nguồn</th><th>Tác nhân làm gì</th><th>Con người kiểm tra gì</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, môi trường kiểm thử, trình duyệt</td><td>tái hiện lỗi, thu hẹp đường đi, viết báo cáo</td><td>các bước bằng tay trên môi trường kiểm thử</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Báo cáo và phân tích</a></td><td>cơ sở dữ liệu, bảng tính, tài liệu</td><td>tính bằng truy vấn, lập bản tổng hợp</td><td>một con số bằng cách khác</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Sự cố</a></td><td>Sentry, Grafana</td><td>đối chiếu lỗi, chỉ số và thời điểm phát hành</td><td>giả thuyết với biểu đồ và sự kiện</td></tr></tbody></table>
+<table><thead><tr><th>Tình huống</th><th>Nguồn</th><th>Tác nhân làm gì</th><th>Con người kiểm tra gì</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, môi trường kiểm thử, <a href="/blog/claude-in-chrome/">trình duyệt</a></td><td>tái hiện lỗi, thu hẹp đường đi, viết báo cáo</td><td>các bước bằng tay trên môi trường kiểm thử</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Báo cáo và phân tích</a></td><td>cơ sở dữ liệu, bảng tính, tài liệu</td><td>tính bằng truy vấn, lập bản tổng hợp</td><td>một con số bằng cách khác</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Sự cố</a></td><td>Sentry, Grafana</td><td>đối chiếu lỗi, chỉ số và thời điểm phát hành</td><td>giả thuyết với biểu đồ và sự kiện</td></tr></tbody></table>
 </b-table>
 <b-why align="left">Cách đọc bảng. Mỗi hàng theo một trình tự: tác nhân đọc các nguồn, làm phần việc chính và đưa ra kết quả, còn con người kiểm tra bằng một thao tác ngắn. Trong QA, các bước của báo cáo được lặp lại bằng tay trên môi trường kiểm thử. Trong phân tích, một con số được tính lại bằng cách khác. Trong sự cố, giả thuyết được so với biểu đồ và sự kiện. Chi tiết có trong các bài sau các liên kết.</b-why>
 </b-chapter>

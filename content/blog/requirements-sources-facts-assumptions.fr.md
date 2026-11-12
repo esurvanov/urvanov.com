@@ -1,7 +1,7 @@
 ---
 title: Exigences et comptes rendus de réunion avec l'IA : source, hypothèse, fait — et la suite
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Les exigences avec l'IA : source, hypothèse, statut. Les faits viennent de Git via MCP ; l'agent fait les petites corrections, une personne tranche les grandes.
 tags: IA, agents, exigences, hallucinations, comptes rendus, harness
 category: harness
@@ -71,7 +71,7 @@ Un agent rédige des exigences avec assurance, et ses suppositions ressemblent �
   <b-codebox title="Modèle d'un point">
     Exigence : Paiement par carte
     Source : git.example.com/shop/requirements/payments.md, ligne 12 ; réunion du 12 oct., 14:32, « le client paie par carte à la caisse »
-    Hypothèse : paiement dans une seule devise
+    Hypothèse : paiement en roubles uniquement
     Statut : fait | pas un fait | question
     Confirmé par : —
   </b-codebox>
@@ -170,6 +170,7 @@ Un agent rédige des exigences avec assurance, et ses suppositions ressemblent �
     <item href="/blog/mcp-agent-access/" k="Source" t="MCP pour un agent IA : quel problème il résout et comment confier la connexion à l'agent">Comment l'agent prend les faits dans les systèmes</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Exemple" t="Travail de QA après le support avec un agent IA : enquête, description et documentation via MCP et skills">L'agent reproduit un bug Jira</item>
     <item href="/blog/analytics-reports-agent/" k="Rapports" t="Rapports analytiques avec un agent IA : données de la base, tableaux et documents via MCP">La même approche pour l'analytique</item>
+    <item href="/blog/specs-by-aggregates/" k="Spécifications" t="Spécifications par agrégats">où ranger les exigences : une entrée par concept</item>
   </b-links>
 </b-chapter>
 <b-footer>Le ticket, la réunion et les liens sont inventés pour l'exemple. Le modèle, le registre et les règles grandes/petites modifications sont des pratiques d'équipe et peuvent être modifiés.</b-footer>

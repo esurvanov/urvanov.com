@@ -148,13 +148,13 @@ AGENTS.md · CLAUDE.md skills specs
 
 AI review LLM judge
 
-Split as described in Martin Fowler: Harness engineering
+Split as described in Birgitta Böckeler, martinfowler.com
 
 **Takeaway:**
 
 **In this example:** Four cells: guides set the course before the agent works, sensors catch deviations afterwards, and each can be computational or AI-based.
 
-**In general:** Computational checks run in seconds and don't make mistakes, so use them wherever a rule can be written down formally. Keep AI-based checks for meaning: style, clarity, fit with the intent.
+**In general:** Computational checks run in seconds and don't make mistakes within their rule, so use them wherever a rule can be written down formally. Keep AI-based checks for meaning: style, clarity, fit with the intent.
 
 **Next step:** For each rule in the agent's instructions, ask whether a test or linter could check it. If so, move it there.
 
@@ -172,7 +172,7 @@ growing
 
 hardest
 
-Layer maturity as assessed by Martin Fowler
+Layer maturity as assessed by Birgitta Böckeler, martinfowler.com
 
 **Takeaway:**
 
@@ -210,7 +210,7 @@ Person
 
 architecture · product · new rules
 
-"A good harness keeps the human in the loop and directs their attention to where it matters most" — paraphrasing Martin Fowler
+"A good harness keeps the human in the loop and directs their attention to where it matters most" — paraphrasing Birgitta Böckeler, martinfowler.com
 
 **Takeaway:**
 
@@ -292,6 +292,6 @@ Comparing harnesses
 
 Claude Code, Codex, Cursor, Hermes and chat
 
-More to read: Martin Fowler · Anthropic: Harness design · Becoming a Harness-Driven Developer · awesome-harness-engineering
+More to read: Birgitta Böckeler, martinfowler.com · Anthropic: Harness design · Becoming a Harness-Driven Developer · awesome-harness-engineering
 
 Terms and the layer split follow the sources linked in the captions under the diagrams.

@@ -1,7 +1,7 @@
 ---
 title: Spécifications par agrégats : exigences RFC et contextes délimités au lieu d'une spec par fonctionnalité
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Le développement piloté par les spécifications sans prolifération de specs : comment garder les spécifications dans un seul dictionnaire d'agrégats pour qu'elles ne se multiplient pas à chaque fonctionnalité : niveaux d'exigence, fiche d'agrégat et frontières de contextes.
 tags: IA, développement piloté par les spécifications, spécifications, DDD, agents
 category: specs
@@ -114,6 +114,7 @@ Les spécifications par agrégats consistent à tenir une entrée par concept du
     <item href="/blog/specs-rules-skills/" k="Contexte" t="Spécifications, bible, règles et skills">ce que l'agent sait du projet et où cela vit</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Environnement" t="Comparaison des harness">où l'agent travaille et ce qu'il voit</item>
     <item href="/blog/agent-checkpoint/" k="Vérifications" t="Où vérifier le travail d'un agent IA">l'agrégat comme point de contrôle</item>
+    <item href="/blog/openspec/" k="Spécifications" t="Installation et commandes d’OpenSpec">spécifications et changements dans des fichiers à côté du code</item>
   </b-links>
 </b-chapter>
 <b-footer compact>L'exemple de réservation est inventé. Les termes et les approches suivent les sources liées sous les schémas.</b-footer>

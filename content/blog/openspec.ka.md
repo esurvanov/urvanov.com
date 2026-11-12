@@ -1,7 +1,7 @@
 ---
 title: OpenSpec-ის დაყენება და ბრძანებები: ცვლილების მაგალითი გეგმიდან merge-მდე
 date: 2026-11-07
-updated: 2026-11-08
+updated: 2026-11-13
 description: როგორ მუშაობს Fission AI-ის OpenSpec: ცვლილების საქაღალდე გეგმით, მოთხოვნებითა და ამოცანებით, აგენტის სამი ბრძანება და merge საერთო სპეციფიკაციებში. დაყენება ორი ბრძანებით, რეალური ცვლილება urvanov.com-ის საიტის რეპოზიტორიიდან, შედარება Spec Kit-თან და მზა პრომპტები დასაწყებად.
 tags: AI, OpenSpec, სპეციფიკაციები, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
@@ -36,7 +36,7 @@ OpenSpec უფასო ღია კოდის ფრეიმვორკ�
 </b-chapter>
 
 <b-chapter id="install" icon="terminal" title="დაყენება">
-  <b-why align="left">OpenSpec-ს ორი ნაწილი აქვს. პირველი არის <code>openspec</code> ბრძანების ხაზის პროგრამა: მას ერთხელ აყენებთ კომპიუტერზე. მეორე კონკრეტული პროექტის მოწყობაა: <code>openspec init</code> მასში ქმნის <code>openspec/</code> საქაღალდეს და თქვენს აგენტებს ბრძანებებს ამატებს, როგორიცაა <code>/opsx:propose</code>.</b-why>
+  <b-why align="left">OpenSpec-ს ორი ნაწილი აქვს. პირველი არის <code>openspec</code> ბრძანების ხაზის პროგრამა: მას ერთხელ აყენებთ კომპიუტერზე. მეორე კონკრეტული პროექტის მოწყობაა: <code>openspec init</code> მასში ქმნის <code>openspec/</code> საქაღალდეს და თქვენს აგენტებს ბრძანებებს ამატებს, როგორიცაა <code>/openspec-propose</code>.</b-why>
   <iso-art name="openspec/install"></iso-art>
   <b-why align="left">თანმიმდევრობა სქემაზე: ჯერ პროგრამა ჩნდება კომპიუტერზე, შემდეგ პროექტში ჩნდება <code>openspec/</code> საქაღალდე ორი ქვესაქაღალდით — <code>specs</code> ცოცხალი მოთხოვნებისთვის და <code>changes</code> მიმდინარე ცვლილებებისთვის — და ბოლოს თქვენი აგენტები ახალ ბრძანებებს იღებს. თვით პროექტის კოდი არ იცვლება: ემატება მხოლოდ გეგმების საქაღალდე და ბრძანებების ფაილები აგენტებისთვის. ბრძანება macOS-სა და Linux-ისთვის:</b-why>
   <b-codebox title="დაყენება macOS-სა და Linux-ზე">
@@ -48,7 +48,7 @@ OpenSpec უფასო ღია კოდის ფრეიმვორკ�
     cd your-project
     openspec init
   </b-codebox>
-  <b-why align="left"><code>openspec init</code> გეკითხებათ, რომელ აგენტებს იყენებთ, და ზუსტად მათთვის აყენებს ბრძანებებს. ბრძანების სახელი აგენტის მიხედვით განსხვავდება: <code>/opsx:propose</code> Claude Code-ში, <code>/opsx-propose</code> Cursor-სა და GitHub Copilot-ში, <code>$openspec-propose</code> Codex-ში<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «/opsx:propose is the canonical name; your tool may spell it /opsx-propose (Cursor, GitHub Copilot), @opsx-propose (Amazon Q) or $openspec-propose (Codex)» — github.com/Fission-AI/OpenSpec"/>. სტატიის დანარჩენ ნაწილში გამოყენებულია Claude Code-ის მართლწერა.</b-why>
+  <b-why align="left"><code>openspec init</code> გეკითხებათ, რომელ აგენტებს იყენებთ, და მათთვის OpenSpec-ის სკილებს საერთო საქაღალდეში <code>.agents/skills/</code> აყენებს. Claude Code-სა და აგენტების უმეტესობაში მათ <code>/openspec-propose</code>-ით იძახებენ, Codex-ში — <code>$openspec-propose</code>-ით, ან შეგიძლიათ უბრალოდ სიტყვებით სთხოვოთ<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «These are skills. Most tools invoke them as /openspec-propose and Codex as $openspec-propose, or you can ask for the work in plain words. … Coming from 1.x and its /opsx:* commands? See Upgrade to 2.0» — github.com/Fission-AI/OpenSpec"/>. 1.x ვერსიაში იგივე ნაბიჯები ერქვა <code>/opsx:propose</code>, <code>/opsx:apply</code>, <code>/opsx:archive</code>; 2.0-ზე გადასასვლელად ყველა პროექტში გაუშვით <code>openspec update</code>. სტატიის დანარჩენ ნაწილში გამოყენებულია Claude Code-ის მართლწერა.</b-why>
   <b-why align="left">თუ პროექტში რამდენიმე აგენტი გამოიყენება, მაგალითად გუნდის ნაწილი Cursor-ში მუშაობს, ნაწილი Claude Code-ში, აირჩიეთ ყველა: ცვლილების გეგმა საერთოა, თითოეული აგენტი კი საკუთარ ბრძანებებს იღებს. პროგრამა უფასოა, ლოკალურად მუშაობს და ანგარიშს არ მოითხოვს.</b-why>
   <b-finding>
     <ex>ორი ბრძანება: ერთი პროგრამას აყენებს, მეორე პროექტს ამზადებს და აგენტებს აერთებს.</ex>
@@ -58,30 +58,30 @@ OpenSpec უფასო ღია კოდის ფრეიმვორკ�
 </b-chapter>
 
 <b-chapter id="flow" icon="list-arrow" title="სამი ბრძანება: გეგმა, კოდი, merge">
-  <b-why align="left">მუშაობა სამი ბრძანების წრეზე მიდის. მათ წინ შეგიძლიათ ხმამაღლა იფიქროთ ბრძანებით <code>/opsx:explore</code>: აგენტი კოდს კითხულობს, ვარიანტებს გვთავაზობს და არაფერს ცვლის. როცა ცხადი ხდება, რა უნდა გაკეთდეს, მთავარი გზა იწყება.</b-why>
+  <b-why align="left">მუშაობა სამი ბრძანების წრეზე მიდის. მათ წინ შეგიძლიათ ხმამაღლა იფიქროთ ბრძანებით <code>/openspec-explore</code>: აგენტი კოდს კითხულობს, ვარიანტებს გვთავაზობს და არაფერს ცვლის. როცა ცხადი ხდება, რა უნდა გაკეთდეს, მთავარი გზა იწყება.</b-why>
   <iso-art name="openspec/loop"></iso-art>
-  <b-why align="left">წრე საათის ისრის მიმართულებით წაიკითხეთ. პირველი ბრძანება, <code>/opsx:propose</code>, აგენტს ეუბნება გეგმა დაწეროს: ის ქმნის ცვლილების საქაღალდეს და ოთხ ფაილს. შემდეგ თქვენი ჯერია: გეგმას კითხულობთ და ასწორებთ ჩატში ან უშუალოდ ფაილებში. ეს მთავარი საკონტროლო წერტილია, რადგან ტექსტის აბზაცის გასწორება უფრო იაფია, ვიდრე მზა კოდის გადაწერა. მეორე ბრძანება, <code>/opsx:apply</code>, ამოცანებით მუშაობას იწყებს: აგენტი <code>tasks.md</code>-დან ამოცანებს სათითაოდ იღებს და თითოეულს ნიშნავს. მესამე ბრძანება, <code>/opsx:archive</code>, ცვლილებას ხურავს: მოთხოვნები საერთო სპეციფიკაციებში გადადის, საქაღალდე კი არქივში მიდის გადაწყვეტილებების მთელი ისტორიით. შემდეგი ცვლილება განახლებული სპეციფიკაციებიდან იწყება.</b-why>
-  <b-why align="left">აი, როგორ გამოიყურება მოკლე სესია ტერმინალში. სესიის ნიმუში აგებულია OpenSpec-ის აღწერაში არსებულ დემოზე<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /opsx:propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /opsx:archive / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
-  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec · /opsx" path="~/projects/shop">
-    <line kind="ask">/opsx:propose add-dark-mode</line>
+  <b-why align="left">წრე საათის ისრის მიმართულებით წაიკითხეთ. პირველი ბრძანება, <code>/openspec-propose</code>, აგენტს ეუბნება გეგმა დაწეროს: ის ქმნის ცვლილების საქაღალდეს და ოთხ ფაილს. შემდეგ თქვენი ჯერია: გეგმას კითხულობთ და ასწორებთ ჩატში ან უშუალოდ ფაილებში. ეს მთავარი საკონტროლო წერტილია, რადგან ტექსტის აბზაცის გასწორება უფრო იაფია, ვიდრე მზა კოდის გადაწერა. მეორე ბრძანება, <code>/openspec-apply-change</code>, ამოცანებით მუშაობას იწყებს: აგენტი <code>tasks.md</code>-დან ამოცანებს სათითაოდ იღებს და თითოეულს ნიშნავს. მესამე ბრძანება, <code>/openspec-archive-change</code>, ცვლილებას ხურავს: მოთხოვნები საერთო სპეციფიკაციებში გადადის, საქაღალდე კი არქივში მიდის გადაწყვეტილებების მთელი ისტორიით. შემდეგი ცვლილება განახლებული სპეციფიკაციებიდან იწყება.</b-why>
+  <b-why align="left">აი, როგორ გამოიყურება მოკლე სესია ტერმინალში. სესიის ნიმუში აგებულია OpenSpec-ის აღწერაში არსებულ დემოზე<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «You: /openspec-propose add-dark-mode / AI: Created openspec/changes/add-dark-mode/ ✓ proposal.md ✓ specs/ ✓ design.md ✓ tasks.md … You: /openspec-archive-change / AI: Archived to openspec/changes/archive/… Specs updated.» — github.com/Fission-AI/OpenSpec"/>:</b-why>
+  <b-agent-term app="Claude&#8203; Code" ver="v2" model="OpenSpec 2.0 · skills" path="~/projects/shop">
+    <line kind="ask">/openspec-propose add-dark-mode</line>
     <line kind="act">Created openspec/changes/add-dark-mode/</line>
     <line kind="out">proposal.md · specs/ · design.md · tasks.md</line>
     <line kind="you" note="თქვენ გეგმას განიხილავთ">დაამატე სცენარი: თემა გვერდის გადატვირთვის შემდეგ ინახება</line>
-    <line kind="ask">/opsx:apply</line>
+    <line kind="ask">/openspec-apply-change</line>
     <line kind="act">1.1 theme context ✓ · 1.2 toggle ✓ · 2.1 colours ✓</line>
     <line kind="out">all tasks complete</line>
-    <line kind="ask">/opsx:archive</line>
+    <line kind="ask">/openspec-archive-change</line>
     <line kind="act">მოთხოვნები გადავიდა openspec/specs-ში, ცვლილების საქაღალდე კი არქივში</line>
   </b-agent-term>
   <b-table>
   | ბრძანება | რას აკეთებს აგენტი | რა ჩნდება პროექტში | რას აკეთებთ თქვენ |
   |---|---|---|---|
-  | <code>/opsx:explore</code> | კოდს კითხულობს, ვარიანტებს გვთავაზობს | არაფერი | ირჩევთ ვარიანტს |
-  | <code>/opsx:propose</code> | წერს ცვლილების გეგმას | საქაღალდე <code>openspec/changes/name/</code> ოთხი ფაილით | გეგმას კითხულობთ და ასწორებთ |
-  | <code>/opsx:apply</code> | კოდს წერს ამოცანებით, ნიშნავს მათ | კოდი და ტესტები | შედეგს ამოწმებთ |
-  | <code>/opsx:archive</code> | მოთხოვნებს საერთო სპეციფიკაციებში აერთიანებს | განახლებული <code>openspec/specs</code>, დაარქივებული საქაღალდე | არაფერს, ეს დასასრულია |
+  | <code>/openspec-explore</code> | კოდს კითხულობს, ვარიანტებს გვთავაზობს | არაფერი | ირჩევთ ვარიანტს |
+  | <code>/openspec-propose</code> | წერს ცვლილების გეგმას | საქაღალდე <code>openspec/changes/name/</code> ოთხი ფაილით | გეგმას კითხულობთ და ასწორებთ |
+  | <code>/openspec-apply-change</code> | კოდს წერს ამოცანებით, ნიშნავს მათ | კოდი და ტესტები | შედეგს ამოწმებთ |
+  | <code>/openspec-archive-change</code> | მოთხოვნებს საერთო სპეციფიკაციებში აერთიანებს | განახლებული <code>openspec/specs</code>, დაარქივებული საქაღალდე | არაფერს, ეს დასასრულია |
   </b-table>
-  <b-why align="left">დიდი ამოცანებისთვის არსებობს გაფართოებული ნაკრები: ცვლილების ნაბიჯ-ნაბიჯ შექმნა, მიმდინარის გაგრძელება, კოდის შემოწმება სპეციფიკაციასთან. ჩართეთ ის ბრძანებით <code>openspec config profile</code>.</b-why>
+  <b-why align="left">დიდი ამოცანებისთვის არსებობს გაფართოებული ნაკრები: ცვლილების ნაბიჯ-ნაბიჯ შექმნა, მიმდინარის გაგრძელება, კოდის შემოწმება სპეციფიკაციასთან. ჩართეთ ის ბრძანებით <code>openspec config profile</code>, პროექტში კი გამოიყენეთ <code>openspec update</code>-ით.</b-why>
   <b-finding>
     <ex>დაარქივების შემდეგ <code>openspec/specs</code> სისტემის მიმდინარე აღწერას შეიცავს, გადაწყვეტილებების ისტორია კი ცვლილებების არქივშია.</ex>
     <gen>სპეციფიკაციები იმავე ნაბიჯში ახლდება, რომელშიც კოდი, ამიტომ ისინი ცალკე ვიკის მსგავსად არ ძველდება.</gen>
@@ -110,7 +110,7 @@ OpenSpec უფასო ღია კოდის ფრეიმვორკ�
     - THEN the card shows only those sections, with no empty blocks
   </b-codebox>
   <b-why align="left">გადაწყვეტილება „ციტატები მხოლოდ წყაროდან“ design.md-ში კოდამდე ჩაიწერა. ამიტომ აგენტმა ციტატები არ გამოიგონა იქ, სადაც ისინი არ იყო, ხოლო სცენარმა „ნაწილობრივი შიგთავსი“ წინასწარ განსაზღვრა, როგორ გამოიყურება ბარათი ციტატისა ან დიაგრამის გარეშე.</b-why>
-  <b-why align="left">სამუშაო 10 ამოცანას მოიცავდა, თითო კატალოგის თემაზე. ყველა 10 ამოცანა მონიშნულია, მაგრამ დაარქივების ბრძანება არასოდეს გაშვებულა: ცვლილების საქაღალდე ისევ <code>openspec/changes</code>-შია, საიტს კი საერთო სპეციფიკაციები არ აქვს. ეს გავრცელებული შეცდომაა. მოთხოვნა „ყოველ ხერხს დეტალური აღწერა აქვს“ მხოლოდ ცვლილების ჩანაწერში ცხოვრობს, და მომდევნო აგენტი, რომელიც საერთო სპეციფიკაციებს კითხულობს, მის შესახებ ვერ გაიგებს. ერთი ბრძანება <code>/opsx:archive</code> მას საერთო სპეციფიკაციებში გადაიტანდა.</b-why>
+  <b-why align="left">სამუშაო 10 ამოცანას მოიცავდა, თითო კატალოგის თემაზე. ყველა 10 ამოცანა მონიშნულია, მაგრამ დაარქივების ბრძანება არასოდეს გაშვებულა: ცვლილების საქაღალდე ისევ <code>openspec/changes</code>-შია, საიტს კი საერთო სპეციფიკაციები არ აქვს. ეს გავრცელებული შეცდომაა. მოთხოვნა „ყოველ ხერხს დეტალური აღწერა აქვს“ მხოლოდ ცვლილების ჩანაწერში ცხოვრობს, და მომდევნო აგენტი, რომელიც საერთო სპეციფიკაციებს კითხულობს, მის შესახებ ვერ გაიგებს. ერთი ბრძანება <code>/openspec-archive-change</code> მას საერთო სპეციფიკაციებში გადაიტანდა.</b-why>
   <b-finding>
     <ex>სცენარი „ნაწილობრივი შიგთავსი“ გეგმაში კოდამდე გაჩნდა და განსაზღვრა, როგორ იქცევა ბარათი ციტატის ან დიაგრამის გარეშე.</ex>
     <gen>მოთხოვნები სცენარებით „როცა — მაშინ“ ტესტებივით იკითხება: აგენტმა იცის, რა ითვლება მზადად.</gen>
@@ -140,10 +140,10 @@ OpenSpec უფასო ღია კოდის ფრეიმვორკ�
   <b-why align="left">დაიწყეთ ერთი პატარა ცვლილებით, რომელსაც ისედაც აპირებდით. ხუთი პრომპტი აგენტისთვის, თითო ნაბიჯზე: ჩასვით ისინი Claude Code-ში, Codex-ში ან Cursor-ში და შეავსეთ თქვენი ამოცანა.</b-why>
   <b-hdd-steps>
     <step t="დაყენება">„დააყენე OpenSpec და გაუშვი openspec init ამ პროექტში. აჩვენე, რომელი ბრძანებები გაჩნდა“</step>
-    <step t="კვლევა">„/opsx:explore მინდა დავამატო … შეხედე კოდს და შემომთავაზე ორი ვარიანტი არაფრის შეცვლის გარეშე“</step>
-    <step t="გეგმა">„/opsx:propose … ჯერ მხოლოდ გეგმა. მოთხოვნებში მომეცი სცენარები ცარიელი და ნაწილობრივი მონაცემებისთვის“</step>
-    <step t="კოდი">„/opsx:apply შეასრულე ამოცანები სათითაოდ და თითოეულის შემდეგ გაუშვი ტესტები“</step>
-    <step t="Merge">„/opsx:archive გადაიტანე მოთხოვნები სპეციფიკაციებში და აჩვენე, რა შეიცვალა openspec/specs-ში“</step>
+    <step t="კვლევა">„/openspec-explore მინდა დავამატო … შეხედე კოდს და შემომთავაზე ორი ვარიანტი არაფრის შეცვლის გარეშე“</step>
+    <step t="გეგმა">„/openspec-propose … ჯერ მხოლოდ გეგმა. მოთხოვნებში მომეცი სცენარები ცარიელი და ნაწილობრივი მონაცემებისთვის“</step>
+    <step t="კოდი">„/openspec-apply-change შეასრულე ამოცანები სათითაოდ და თითოეულის შემდეგ გაუშვი ტესტები“</step>
+    <step t="Merge">„/openspec-archive-change გადაიტანე მოთხოვნები სპეციფიკაციებში და აჩვენე, რა შეიცვალა openspec/specs-ში“</step>
   </b-hdd-steps>
 </b-chapter>
 
@@ -152,7 +152,7 @@ OpenSpec უფასო ღია კოდის ფრეიმვორკ�
     <q t="რა არის OpenSpec?">Fission AI-ის უფასო ღია კოდის ფრეიმვორკი სპეციფიკაციებზე დაფუძნებული დეველოპმენტისთვის. აგენტი ცვლილების გეგმას Markdown ფაილებში წერს, თქვენ მას განიხილავთ, აგენტი კოდს წერს, მოთხოვნები კი პროექტის საერთო სპეციფიკაციებში ერწყმის.</q>
     <q t="როგორ დავაყენო OpenSpec?">macOS-სა და Linux-ზე curl -fsSL https://openspec.dev/cli/install.sh | sh ბრძანებით, ან npm install -g @fission-ai/openspec@latest-ით. შემდეგ პროექტის საქაღალდეში გაუშვით openspec init.</q>
     <q t="რით განსხვავდება OpenSpec Spec Kit-ისგან?">OpenSpec უფრო მოქნილია და შექმნილია კოდისთვის, რომელიც უკვე მუშაობს; ნაბიჯები ნებისმიერი თანმიმდევრობით შეიძლება განმეორდეს. GitHub-ის Spec Kit ფიქსირებულ ფაზებს გადის: პრინციპები, spec, გეგმა, ამოცანები, კოდი.</q>
-    <q t="რომელ აგენტებთან მუშაობს OpenSpec?">Claude Code, Codex, Cursor, GitHub Copilot, Amazon Q და სხვები. openspec init ბრძანებებს თქვენ მიერ არჩეული აგენტებისთვის აყენებს.</q>
+    <q t="რომელ აგენტებთან მუშაობს OpenSpec?">Claude Code, Codex, Cursor, GitHub Copilot და სხვები, სულ 30-ზე მეტი. openspec init ბრძანებებს თქვენ მიერ არჩეული აგენტებისთვის აყენებს.</q>
   </b-faq-cards>
 </b-chapter>
 

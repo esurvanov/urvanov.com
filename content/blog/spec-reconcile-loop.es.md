@@ -1,7 +1,7 @@
 ---
 title: Qué es un bucle de reconciliación para specs: como en Kubernetes, con la spec como estado deseado y el código como estado real
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Desarrollo guiado por especificaciones con un bucle de reconciliación: quién cambia el estado deseado y quién acerca el código a él, por qué las pruebas en verde aún no significan «correcto» y qué seis capacidades del entorno necesita el agente para cerrar el bucle.
 tags: IA, desarrollo guiado por especificaciones, specs, Kubernetes, harness
 category: specs
@@ -112,6 +112,7 @@ Un bucle de reconciliación para specs funciona como un controlador en Kubernete
     <item href="/blog/specs-by-aggregates/" k="Estado deseado" t="Specs por agregado">diccionario, requisitos RFC y contextos</item>
     <item href="/blog/harness-driven-development/" k="Ciclo de errores" t="Harness-Driven Development">cómo los errores del agente se convierten en reglas</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Entorno" t="Comparación de harnesses">dónde trabaja el agente y qué ve</item>
+    <item href="/blog/openspec/" k="Specs" t="Cómo instalar y usar OpenSpec">specs y cambios en archivos junto al código</item>
   </b-links>
 </b-chapter>
 <b-footer compact>El ejemplo de la reserva es inventado. Los términos y enfoques siguen las fuentes enlazadas bajo los diagramas.</b-footer>

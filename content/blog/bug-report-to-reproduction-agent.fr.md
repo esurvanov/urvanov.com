@@ -1,7 +1,7 @@
 ---
 title: Travail de QA après le support avec un agent IA : enquête, description et documentation via MCP et skills
 date: 2026-10-04
-updated: 2026-11-08
+updated: 2026-11-13
 description: Une seule étape de la chaîne est optimisée : la QA après le support. Un agent reproduit un bug Jira sur un banc de test via MCP, réduit le chemin, le décrit et le documente, un skill fait des étapes un processus répétable, la QA vérifie à la main. Le support et le développement ne changent pas.
 tags: IA, agents, QA, Jira, MCP, skills, bugs, harness
 category: harness
@@ -137,7 +137,7 @@ Un bug signalé par un client passe par le support et arrive à la QA. C'est là
 
 <b-chapter id="mcp" icon="plug" title="MCP : l'agent travaille là où travaille la QA">
   <b-why>MCP (Model Context Protocol) est un moyen de connecter un agent aux systèmes de travail pour qu'il y lise et y écrive lui-même, au lieu de recevoir un récit de seconde main.</b-why>
-  <b-why align="left">L'agent a besoin de cinq choses. Jira : il lit le ticket et y écrit le résultat. Un banc de test : une copie de test du produit où il parcourt le chemin comme un utilisateur. Des documents : schémas et descriptions placés à côté du ticket. Des données : des données de test que l'on peut réinitialiser. Des permissions : seul le banc de test peut être cassé, les systèmes de production sont hors de portée.</b-why>
+  <b-why align="left">L'agent a besoin de cinq choses. Jira : il lit le ticket et y écrit le résultat. Un banc de test : une copie de test du produit où il parcourt le chemin comme un utilisateur, dans le navigateur avec [Claude in Chrome](/blog/claude-in-chrome/). Des documents : schémas et descriptions placés à côté du ticket. Des données : des données de test que l'on peut réinitialiser. Des permissions : seul le banc de test peut être cassé, les systèmes de production sont hors de portée.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/access-sandbox"/>
   </b-view>
@@ -319,6 +319,7 @@ Un bug signalé par un client passe par le support et arrive à la QA. C'est là
 
 <b-chapter id="next" icon="arrow-right" title="À lire ensuite">
   <b-links>
+    <item href="/blog/claude-in-chrome/" k="Navigateur" t="Comment Claude Code teste un site dans votre navigateur : Claude in Chrome — débogage et formulaires sous votre identifiant">l’agent parcourt le chemin sur le banc de test</item>
     <item href="/blog/specs-rules-skills/" k="Skills" t="Spécifications, règles et skills">ce qu'un agent doit savoir d'un projet</item>
     <item href="/blog/harness-driven-development/" k="Boucle d'erreurs" t="Harness-Driven Development">comment les erreurs de l'agent deviennent des règles</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Environnement" t="Comparaison des harness">où l'agent travaille et ce qu'il voit</item>

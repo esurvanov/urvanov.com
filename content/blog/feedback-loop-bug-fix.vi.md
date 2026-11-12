@@ -1,7 +1,7 @@
 ---
 title: Vòng phản hồi lỗi ngắn: từ nút “Báo lỗi” đến bản sửa với tác nhân AI
 date: 2026-10-20
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cách sửa lỗi nhanh hơn mà không bị “truyền tin qua nhiều tay”: nhân viên báo lỗi ngay trong ứng dụng, ngữ cảnh được thu thập sẵn, tác nhân AI tìm nguyên nhân, con người duyệt.
 tags: AI, tác nhân, lỗi, phản hồi, MTTR, MCP, Claude Code, harness
 category: harness
@@ -63,7 +63,7 @@ Vòng phản hồi lỗi ngắn hoạt động như sau: nhân viên gửi lỗi
 </b-chapter>
 
 <b-chapter id="agent" icon="bot" title="Tác nhân và con người">
-  <b-why align="left">Tác nhân phân tích, con người ra quyết định. Tác nhân nhận từng báo cáo riêng, điều tra và mang về một bản tổng kết: cái gì nhìn thấy được, nguyên nhân có thể kèm vị trí trong mã, kế hoạch và rủi ro. Nó không đổi mã và không đổi trạng thái. Con người duyệt kế hoạch. Sau đó tác nhân sửa trong một nhánh riêng, còn con người merge thay đổi và phát hành. Câu trong khung là yêu cầu mẫu gửi tác nhân.</b-why>
+  <b-why align="left">Tác nhân phân tích, con người ra quyết định. Tác nhân nhận từng báo cáo riêng, điều tra và mang về một bản tổng kết: cái gì nhìn thấy được, nguyên nhân có thể kèm vị trí trong mã, kế hoạch và rủi ro. Nó không đổi mã và không đổi trạng thái. Con người duyệt kế hoạch. Sau đó tác nhân sửa trong một nhánh riêng, còn con người merge thay đổi và phát hành lên [production](/materials/glossary/prod/). Câu trong khung là yêu cầu mẫu gửi tác nhân.</b-why>
   <b-steps>
     <step t="Tác nhân nhận một báo cáo">mỗi báo cáo giao cho một tác nhân riêng, không chung phỏng đoán</step>
     <step t="Điều tra và báo cáo" hl>cái gì nhìn thấy được, nguyên nhân có thể kèm vị trí trong mã, kế hoạch, rủi ro, câu hỏi; không đụng đến mã và trạng thái</step>
@@ -111,7 +111,7 @@ Vòng phản hồi lỗi ngắn hoạt động như sau: nhân viên gửi lỗi
   <b-metric-line value="23 / 25">báo cáo đã đóng trong tracker tích hợp sẵn của một ứng dụng đang chạy</b-metric-line>
   <b-finding>
     <ex>Mọi ví dụ có chung một bước: ngữ cảnh được thu thập trước khi con người ngồi xuống với lỗi.</ex>
-    <gen>Thời gian sửa ngắn hơn (MTTR trong các chỉ số DORA) đến từ việc thu thập ngữ cảnh và chuỗi người ngắn<b-proof href="https://www.wix.engineering/post/from-weeks-to-hours-inside-wix-s-autonomous-bug-fixing-system" quote="Wix Engineering: From weeks to hours — inside Wix’s autonomous bug-fixing system"/>.</gen>
+    <gen>Thời gian từ báo cáo đến khi sửa ngắn hơn đến từ việc thu thập ngữ cảnh và chuỗi người ngắn<b-proof href="https://www.wix.engineering/post/from-weeks-to-hours-inside-wix-s-autonomous-bug-fixing-system" quote="Wix Engineering: From weeks to hours — inside Wix’s autonomous bug-fixing system"/>.</gen>
     <do>Hãy đo ngay thời gian từ báo cáo đến phát hành, để có cái mà so sánh.</do>
   </b-finding>
 </b-chapter>

@@ -1,7 +1,7 @@
 ---
 title: Who to interview before buying AI tools: 16 people from eight polar groups
 date: 2026-09-28
-updated: 2026-11-07
+updated: 2026-11-13
 description: How to pick 16 people from the report, a questionnaire and license lists, check team coverage and replacements, and decide what to ask them.
 tags: AI, custdev, research
 category: research
@@ -24,7 +24,7 @@ Before buying AI tools, invite 16 people to interviews: two from each of eight p
 
 <b-chapter id="why" icon="target" title="What decision it supports">
 
-The **business task** comes from the [report](/en/blog/chatgpt-enterprise-usage-report/#why): for which work tasks the current set of AI tools falls short and what to test before buying. The report also says who makes the decision and by which signs. The sample decides whose tasks we will see in the interviews.
+The **business task** comes from the [report](/en/blog/chatgpt-enterprise-usage-report/#why): for which work tasks the current set of AI tools falls short and what to test before buying. The report also says who makes the decision and by which signs. The sample decides whose tasks reach the interviews.
 
 First, define which ways of getting tasks done you need to see: through the corporate AI tool, through other AI tools, by hand or through colleagues, and among people who tried the tool and quit. The [ChatGPT Enterprise usage report](/en/blog/chatgpt-enterprise-usage-report/) is one of the sources: it finds the first group and those who quit. Users of other tools are found through a company-wide [questionnaire](/en/blog/ai-interviews-without-leading-questions/#form) and license and purchase lists.
 

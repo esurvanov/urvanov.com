@@ -1,7 +1,7 @@
 ---
 title: Cuántas reglas necesita un juego: dos para el jugador y una anotación para el contable, la brecha de relaciones
 date: 2026-11-02
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cómo contar con honestidad y con rapidez las reglas de un juego, y si las dos respuestas pueden diferir. Recorrido por el artículo de Bartholdi, Bridson, Mikhailov y Nicholson sobre la brecha de relaciones (arXiv 2610.23637): un juego con dos movimientos donde el jugador necesita dos reglas y el contable una anotación, con diagramas, fórmulas y cálculos.
 tags: investigación, matemáticas, teoría de grupos, topología, IA en matemáticas
 category: research
@@ -329,8 +329,6 @@ Un juego con dos movimientos, un paso y una subida, necesita dos reglas si se cu
 <b-chapter id="next" title="Para seguir leyendo">
   <b-links cols="2">
     <item href="https://arxiv.org/abs/2610.23637" k="Artículo" t="arXiv 2610.23637" ext>Two-generator presentations with a relation gap</item>
-    <item href="https://github.com/esurvanov/awesome-papers/tree/main/papers/2610.23637-relation-gap" k="Fuente de la película" t="papers/2610.23637-relation-gap" ext>Ficha, narración, escenas y guion de la película en GitHub</item>
-    <item href="https://github.com/esurvanov/awesome-papers" k="Repositorio" t="awesome-papers" ext>Películas sobre artículos científicos en palabras sencillas: código, reglas, comprobaciones</item>
     <item href="https://youtu.be/yPvbfDa_GCk" k="Vídeo" t="Recorrido en YouTube" ext>La misma historia en 7,5 minutos, con el mapa del juego y las fórmulas</item>
     <item href="/blog/longest-ring-arrangement/" k="El mismo grafo de Cayley" t="Anillo de bolas">Un mapa de movimientos y la disposición más enredada</item>
     <item href="/blog/rubik-cube-neural-network/" k="El mismo grafo de Cayley" t="Cubo de Rubik">Movimientos y reglas donde la fuerza bruta es imposible</item>

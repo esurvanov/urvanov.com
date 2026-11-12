@@ -1,7 +1,7 @@
 ---
 title: Comment analyser l'usage de ChatGPT Enterprise dans une entreprise : qui l'utilise, pour quoi et quels outils d'IA acheter ensuite
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Comment savoir ce que les employés font de ChatGPT Enterprise : cinq exports de la console d'administration donnent la profondeur d'adoption, l'homogénéité entre équipes, l'outil principal, une carte des tâches, des contrôles de données et une courte liste de personnes à interviewer.
 tags: IA, recherche, analytique
 category: research
@@ -354,13 +354,6 @@ ChatGPT Enterprise est la version de ChatGPT destinée aux organisations, avec u
     <item t="Calculer la profondeur d'adoption">Au moins une fois / régulièrement / chaque semaine, en comptant à part ceux qui ne travaillent que via Codex</item>
     <item t="Dresser une liste de personnes et planifier les entretiens">La manière de choisir ces personnes est décrite dans « Qui interviewer »</item>
   </b-checklist>
-  <b-sublabel top="22">Questions fréquentes</b-sublabel>
-  <b-qa>
-    <q t="Ce que montre la console d'administration de ChatGPT Enterprise">Cinq sections : utilisateurs, classement, projets, vue d'ensemble et tâches. Elles donnent la profondeur d'adoption, l'homogénéité entre équipes, l'outil principal, la nature des tâches et une vérification sur les données brutes.</q>
-    <q t="Comment exporter les données de la console">La console a des API, mais elles ne couvrent qu'une partie des données : l'analytique de Codex, le coût des crédits et les journaux de conversations pour la conformité. Les exports des utilisateurs, des projets et des skills, ainsi que le classement par produit, se récupèrent plus facilement dans l'interface, et l'export peut être confié à Claude in Chrome.</q>
-    <q t="Comment savoir si de nouvelles licences sont nécessaires">La profondeur d'adoption montre combien de personnes utilisent l'outil au moins une fois, régulièrement et chaque semaine. Elle détermine quel groupe former et s'il faut acheter de nouvelles licences maintenant.</q>
-    <q t="Comment choisir les personnes à interviewer">Les personnes sont choisies pour chaque orientation repérée : dans l'exemple, la liste finale compte 16 personnes sur 340. Les utilisateurs d'autres outils et ceux qui ont arrêté s'ajoutent selon les règles de <a href="/blog/who-to-interview-before-buying-ai-tools/">« Qui interviewer »</a>.</q>
-  </b-qa>
 </b-chapter>
 <b-chapter id="faq" icon="chat" title="Questions fréquentes">
   <b-faq-cards>

@@ -148,13 +148,13 @@ AGENTS.md · CLAUDE.md skills specs
 
 revisión con IA LLM juez
 
-División según se describe en Martin Fowler: Harness engineering
+División según se describe en Birgitta Böckeler (martinfowler.com)
 
 **Conclusión:**
 
 **En este ejemplo:** Cuatro celdas: las guías marcan el rumbo antes de que trabaje el agente, los sensores detectan desviaciones después, y cada una puede ser computacional o basada en IA.
 
-**En general:** Las comprobaciones computacionales se ejecutan en segundos y no cometen errores, así que úsalas siempre que una regla se pueda escribir de forma formal. Reserva las comprobaciones basadas en IA para el sentido: estilo, claridad, ajuste con la intención.
+**En general:** Las comprobaciones computacionales se ejecutan en segundos y no cometen errores dentro de su regla, así que úsalas siempre que una regla se pueda escribir de forma formal. Reserva las comprobaciones basadas en IA para el sentido: estilo, claridad, ajuste con la intención.
 
 **Siguiente paso:** Para cada regla de las instrucciones del agente, pregunta si una prueba o un linter podría comprobarla. Si es así, muévela allí.
 
@@ -172,7 +172,7 @@ en crecimiento
 
 la más difícil
 
-Madurez de las capas según la evaluación de Martin Fowler
+Madurez de las capas según la evaluación de Birgitta Böckeler (martinfowler.com)
 
 **Conclusión:**
 
@@ -210,7 +210,7 @@ Persona
 
 arquitectura · producto · reglas nuevas
 
-«Un buen harness mantiene a la persona en el ciclo y dirige su atención adonde más importa», parafraseando a Martin Fowler
+«Un buen harness mantiene a la persona en el ciclo y dirige su atención adonde más importa», parafraseando a Birgitta Böckeler (martinfowler.com)
 
 **Conclusión:**
 
@@ -292,6 +292,6 @@ Comparación de harnesses
 
 Claude Code, Codex, Cursor, Hermes y chat
 
-Para leer más: Martin Fowler · Anthropic: Harness design · Becoming a Harness-Driven Developer · awesome-harness-engineering
+Para leer más: Birgitta Böckeler (martinfowler.com) · Anthropic: Harness design · Becoming a Harness-Driven Developer · awesome-harness-engineering
 
 Los términos y la división en capas siguen las fuentes enlazadas en los pies de los diagramas.

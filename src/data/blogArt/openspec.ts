@@ -40,8 +40,8 @@ const scenes: Record<string, Scene> = {
   },
   // Установка: программа на компьютере → папка openspec/ в проекте → команды у агентов
   install: {
-    ru: 'Программа openspec ставится один раз на компьютер. Команда openspec init создаёт в проекте папку openspec с действующими спеками и изменениями и добавляет агентам команды',
-    en: 'The openspec program is installed once per computer. The openspec init command creates an openspec folder with live specs and changes in the project and adds commands to the agents',
+    ru: 'Программа openspec ставится один раз на компьютер. Команда openspec init создаёт в проекте папку openspec с действующими спеками и изменениями и добавляет агентам скиллы OpenSpec',
+    en: 'The openspec program is installed once per computer. The openspec init command creates an openspec folder with live specs and changes in the project and adds OpenSpec skills to the agents',
     viewBox: [0, 0, 700, 250],
     draw: (c, l) => {
       c.caps(110, 22, l('1. КОМПЬЮТЕР', '1. COMPUTER'), A)
@@ -69,9 +69,9 @@ const scenes: Record<string, Scene> = {
       g.tile(-1.9, -1.9, 3.8, 3.8)
       g.agent(-0.9, -0.5, A, 0.8, '')
       g.agent(0.6, 0.7, A, 0.8, '')
-      c.pill(548, 62, 86, 20, A, { fillOp: 0.12 })
-      c.text(591, 76, '/opsx:propose', A, { size: 10, w: 700 })
-      c.text(590, 212, l('команды у агентов', 'commands in the agents'), A, { size: 11, w: 700 })
+      c.pill(536, 62, 110, 20, A, { fillOp: 0.12 })
+      c.text(591, 76, '/openspec-propose', A, { size: 10, w: 700 })
+      c.text(590, 212, l('скиллы у агентов', 'skills in the agents'), A, { size: 11, w: 700 })
       c.text(590, 227, 'Claude Code · Codex · Cursor', M, { size: 10.5, w: 600 })
       c.arrow(186, 135, 262, 135, A, { w: 1.6, dash: '4 4' })
       c.arrow(438, 135, 516, 135, A, { w: 1.6, dash: '4 4' })
@@ -88,10 +88,10 @@ const scenes: Record<string, Scene> = {
         c.stepTag(x - 70, y - 68, n, t, A)
         c.text(x, y + 60, sub, M, { size: 10.5, w: 600 })
       }
-      st(175, 95, 1, '/opsx:propose', l('агент пишет план', 'the agent writes a plan'), (I) => { for (let k = 0; k < 3; k++) I.doc(-0.7, -0.5, k * 0.22, 1.4, 1.0, M, 3) })
+      st(175, 95, 1, '/openspec-propose', l('агент пишет план', 'the agent writes a plan'), (I) => { for (let k = 0; k < 3; k++) I.doc(-0.7, -0.5, k * 0.22, 1.4, 1.0, M, 3) })
       st(525, 95, 2, l('проверка', 'review'), l('вы читаете и правите план', 'you read and edit the plan'), (I) => { I.person(-0.5, 0.3, M, ''); I.doc(0.3, -0.9, 0, 1.1, 0.8, M, 2) })
-      st(525, 280, 3, '/opsx:apply', l('агент пишет код по задачам', 'the agent writes code by the tasks'), (I) => { I.agent(-0.9, -0.6, A, 0.8, ''); I.doc(0.2, 0.2, 0, 1.2, 0.9, A, 3); I.doc(0.2, 0.2, 0.22, 1.2, 0.9, A, 3) }, A)
-      st(175, 280, 4, '/opsx:archive', l('требования вливаются в спеки', 'requirements merge into the specs'), (I) => { I.cyl(0, 0, 0, 0.7, 0.9, M) })
+      st(525, 280, 3, '/openspec-apply-change', l('агент пишет код по задачам', 'the agent writes code by the tasks'), (I) => { I.agent(-0.9, -0.6, A, 0.8, ''); I.doc(0.2, 0.2, 0, 1.2, 0.9, A, 3); I.doc(0.2, 0.2, 0.22, 1.2, 0.9, A, 3) }, A)
+      st(175, 280, 4, '/openspec-archive-change', l('требования вливаются в спеки', 'requirements merge into the specs'), (I) => { I.cyl(0, 0, 0, 0.7, 0.9, M) })
       c.arrow(262, 88, 438, 88, A, { w: 1.6, dash: '4 4' })
       c.arrow(600, 166, 600, 200, A, { w: 1.6, dash: '4 4' })
       c.arrow(438, 277, 262, 277, A, { w: 1.6, dash: '4 4' })

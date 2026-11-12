@@ -1,12 +1,12 @@
 ---
 title: Jira et un agent IA : avantages, limites et où tracer la frontière
 date: 2026-10-20
-updated: 2026-11-08
+updated: 2026-11-13
 description: Comment un agent IA se connecte à Jira via MCP, ce qui marche, ce qui casse, et pourquoi la collecte des bugs relève d’un service séparé. Alternatives à Jira incluses.
 tags: IA, agents, Jira, MCP, Claude Code, bug tracker, harness
 category: harness
 layout: wide
-mentions: Jira, Atlassian Rovo MCP, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
+mentions: Jira, Atlassian MCP server, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Yandex Tracker, Bitrix24, GitLab
 toc: ways=Comment connecter | plus=Avantages | minus=Limites | russia=Jira en Russie | trackers=Autres trackers | border=La frontière | first=Par où commencer | faq=Questions | next=À lire ensuite
 ---
 
@@ -15,18 +15,18 @@ Un agent IA se connecte à Jira via MCP. Il s’en sort bien pour la planificati
 <b-post series="harness">
 
 <b-chapter id="ways" icon="plug" title="Comment connecter un agent à Jira">
-  <b-why align="left">Plusieurs moyens existent pour connecter un agent à Jira. Le serveur officiel d’Atlassian (Rovo MCP) sait chercher, lire et créer des tickets, mais ne fonctionne qu’avec Jira cloud. Le serveur open source mcp-atlassian convient au cloud comme à Jira auto-hébergé. Autre option : confier un ticket à un agent directement dans Jira (Claude, Cursor, Codex, Copilot). Le tableau compare ces moyens par fonctions et limites.</b-why>
+  <b-why align="left">Plusieurs moyens existent pour connecter un agent à Jira. Le serveur officiel d’Atlassian (Atlassian MCP server, anciennement Rovo MCP) sait chercher, lire et créer des tickets, mais ne fonctionne qu’avec Jira cloud. Le serveur open source mcp-atlassian convient au cloud comme à Jira auto-hébergé. Autre option : confier un ticket à un agent directement dans Jira (Claude, Cursor, Codex, Copilot). Le tableau compare ces moyens par fonctions et limites.</b-why>
   <b-table>
 | Moyen | Ce qu’il sait faire | Limites |
 |---|---|---|
-| Atlassian Rovo MCP (officiel) | chercher, lire, créer des tickets et des pages ; pièces jointes depuis août 2026 | cloud uniquement ; limites horaires ; consomme des crédits Rovo |
+| Atlassian MCP server, anciennement Rovo MCP (officiel) | chercher, lire, créer des tickets et des pages ; pièces jointes depuis août 2026 | cloud uniquement ; limites horaires ; une partie des appels consomme des crédits Rovo |
 | mcp-atlassian (open source) | cloud et auto-hébergé, environ 100 outils | à installer soi-même, le token reste dans les réglages |
 | Agents dans Jira | confier un ticket à Claude, Cursor, Codex, Copilot | cloud uniquement, offres payantes |
 | Copilot / Cursor depuis Jira | confier un ticket, l’agent ouvre un brouillon de modification | cloud, applications séparées |
   </b-table>
   <b-finding>
     <ex>Les moyens officiels fonctionnent avec Jira cloud ; Jira auto-hébergé ne se connecte que via le MCP open source.</ex>
-    <gen>L’agent a les mêmes droits que l’utilisateur dont il emploie la connexion ou le token<b-proof href="https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: Getting started with the Atlassian Rovo MCP Server"/>.</gen>
+    <gen>L’agent a les mêmes droits que l’utilisateur dont il emploie la connexion ou le token<b-proof href="https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: «…which ensures all actions respect users' existing access controls and permissions»"/>.</gen>
     <do>Vérifiez quel Jira vous avez, cloud ou auto-hébergé : le moyen en dépend.</do>
   </b-finding>
 </b-chapter>
@@ -83,7 +83,7 @@ Un agent IA se connecte à Jira via MCP. Il s’en sort bien pour la planificati
   <b-metric-line value="~70%">des responsables IT utilisent des versions non prises en charge (enquête K2Tech, 73 entreprises)</b-metric-line>
   <b-finding>
     <ex>Le MCP cloud officiel et les agents dans Jira sont de fait inaccessibles aux équipes russes.</ex>
-    <gen>Pour Jira auto-hébergé, il reste le mcp-atlassian open source, et la décision de vers où migrer avant 2029<b-proof href="https://habr.com/ru/articles/1011252" quote="K2Tech on Habr: Atlassian's exit and a survey of IT leaders"/>.</gen>
+    <gen>Pour Jira auto-hébergé, il reste le mcp-atlassian open source, et la décision de vers où migrer avant 2029<b-proof href="https://habr.com/ru/companies/k2tech/articles/1011252/" quote="K2Tech on Habr, translated from Russian: “Key finding: about 70% of respondents still use unsupported versions of the vendor’s products”; “73 company representatives took part in the survey”"/>.</gen>
     <do>Si une migration est à prévoir, choisissez un tracker qui a déjà une connexion pour agents.</do>
   </b-finding>
 </b-chapter>
@@ -150,5 +150,5 @@ Un agent IA se connecte à Jira via MCP. Il s’en sort bien pour la planificati
     <item href="/blog/mcp-agent-access/" k="Bases" t="MCP pour un agent IA">Ce qu’est MCP et comment le connecter</item>
   </b-links>
 </b-chapter>
-<b-footer>Faits : documentation d’Atlassian, de GitHub et de Cursor ; analyses de automatica.com.au, Cato CTRL, Simon Willison ; enquête K2Tech ; Wordstat, octobre 2026. Les fonctions et offres de Rovo MCP changent vite : à vérifier avant de décider.</b-footer>
+<b-footer>Faits : documentation d’Atlassian, de GitHub et de Cursor ; analyses de automatica.com.au, Cato CTRL, Simon Willison ; enquête K2Tech ; Wordstat, octobre 2026. Les fonctions et offres de l’Atlassian MCP server changent vite : à vérifier avant de décider.</b-footer>
 </b-post>

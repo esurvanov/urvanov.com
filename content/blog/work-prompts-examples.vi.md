@@ -1,7 +1,7 @@
 ---
 title: Prompt cho công việc: năm phần và sáu ví dụ cho ChatGPT và Claude
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Prompt cho công việc với chatbot AI: các phần của một prompt công việc tốt, yêu cầu yếu và mạnh trông ra sao, sáu mẫu dựng sẵn cho các tác vụ phổ biến và cách giữ chúng trong một dự án, dựa trên hướng dẫn của Anthropic, OpenAI và Google.
 tags: AI, prompt, ChatGPT, Claude
 category: prompts
@@ -18,13 +18,13 @@ Một prompt công việc cho ChatGPT và Claude được dựng từ năm phầ
     <node icon="ai-box" t="Mô hình">đoán ngữ cảnh</node>
     <node icon="file-x" t="Câu trả lời chung chung">viết lại bằng tay</node>
   </b-lane>
-  <b-lane title="Sáu phần" color="accent">
+  <b-lane title="Năm phần" color="accent">
     <node icon="prompt-stripes" t="Prompt">vai trò, dữ liệu, ví dụ, định dạng</node>
     <node icon="ai-box" t="Mô hình">thấy mọi thứ cần thiết</node>
     <node icon="file-check" t="Bản nháp">sửa nhỏ</node>
   </b-lane>
 </b-flow>
-<b-cap>Mô hình giống nhau trong cả hai trường hợp. Kết quả phụ thuộc vào những gì prompt nói: sáu phần lặp lại trong hướng dẫn của Anthropic, OpenAI và Google.</b-cap>
+<b-cap>Mô hình giống nhau trong cả hai trường hợp. Kết quả phụ thuộc vào những gì prompt nói: năm phần lặp lại trong hướng dẫn của Anthropic, OpenAI và Google.</b-cap>
 <b-chapter id="model" title="Human-in-the-loop: hành trình của một yêu cầu" icon="share">
   <b-art names="work-prompts-examples/prompt-map" wide/>
   <b-finding>
@@ -102,7 +102,7 @@ Một prompt công việc cho ChatGPT và Claude được dựng từ năm phầ
       <b-cap>OpenAI Academy có mẫu chương trình họp kèm ước tính thời gian<b-proof href="https://academy.openai.com/public/resources/chatgpt-for-any-role" quote="OpenAI Academy, ChatGPT for any role: “Create a structured agenda for a meeting about [topic]. Break the agenda into sections with time estimates and goals for each section” — academy.openai.com"/>.</b-cap>
       <b-finding>
         <ex>Mục tiêu cuộc họp, tài liệu trong thẻ và danh sách đánh số những thứ cần trả về.</ex>
-        <gen>Mục tiêu cuộc họp lọc tài liệu. Các bước đánh số giúp ích khi thứ tự và độ đầy đủ quan trọng<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they&#39;d be confused, Claude will be too” — platform.claude.com, Prompting best practices"/>.</gen>
+        <gen>Mục tiêu cuộc họp lọc tài liệu. Các bước đánh số giúp ích khi thứ tự và độ đầy đủ quan trọng<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Provide instructions as sequential steps using numbered lists or bullet points when the order or completeness of steps matters” — platform.claude.com, Prompting best practices"/>.</gen>
         <do>Trước mỗi cuộc họp từ 30 phút trở lên, cho tài liệu chạy qua prompt này và mở đầu bằng bảng của nó.</do>
       </b-finding>
     </b-prompt-tab>
@@ -193,7 +193,7 @@ Một prompt công việc cho ChatGPT và Claude được dựng từ năm phầ
         Đầu ra: một bảng [các cột] và kết luận 5 ý.
         Mỗi dữ kiện kèm một liên kết nguồn. Nếu không có dữ liệu, hãy nói rõ.
       </b-prompt>
-      <b-cap>Cả hai chatbot đều có chế độ nghiên cứu sâu: deep research trong ChatGPT và Research trong Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/>.</b-cap>
+      <b-cap>Cả hai chatbot đều có chế độ nghiên cứu sâu: deep research trong ChatGPT và Research trong Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Ultra, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/>.</b-cap>
       <b-finding>
         <ex>Một mục tiêu, giới hạn độ mới và định dạng đầu ra kèm liên kết.</ex>
         <gen>Ở chế độ nghiên cứu, mô hình chạy một loạt tìm kiếm và trả về báo cáo kèm liên kết. Liên kết cho phép kiểm tra từng dữ kiện, và “nếu không có dữ liệu” ngăn việc lấp chỗ trống bằng phỏng đoán.</gen>
@@ -213,7 +213,7 @@ Một prompt công việc cho ChatGPT và Claude được dựng từ năm phầ
   <b-sublabel top="22">Viết prompt</b-sublabel>
   <b-links cols="2">
     <item href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" k="Anthropic · tài liệu" t="Prompting best practices" ext>Tài liệu tham khảo chính: sự rõ ràng, ví dụ, vai trò, thẻ XML, tài liệu dài</item>
-    <item href="https://claude.com/blog/best-practices-for-prompt-engineering" k="Anthropic · blog" t="Best practices for prompt engineering" ext>Nghề viết prompt nói chung, vượt ra ngoài một mô hình cụ thể</item>
+    <item href="https://claude.com/resources/articles/best-practices-for-prompt-engineering" k="Anthropic · blog" t="Best practices for prompt engineering" ext>Nghề viết prompt nói chung, vượt ra ngoài một mô hình cụ thể</item>
     <item href="https://github.com/anthropics/prompt-eng-interactive-tutorial" k="Anthropic · hướng dẫn" t="Interactive tutorial" ext>9 chương kèm bài tập, từ cấu trúc prompt đến thẻ XML và ví dụ</item>
     <item href="https://www.kaggle.com/whitepaper-prompt-engineering" k="Google · sách trắng" t="Prompt Engineering" ext>Kỹ thuật và thực hành tốt: ví dụ, định dạng đầu ra, chỉ dẫn hơn ràng buộc</item>
     <item href="https://academy.openai.com/public/clubs/work-users-ynjqu/resources/prompting" k="OpenAI Academy" t="Prompting" ext>Cái gì, cho ai và vì sao, ngữ cảnh, định dạng đầu ra, lặp lại</item>
@@ -237,7 +237,7 @@ Một prompt công việc cho ChatGPT và Claude được dựng từ năm phầ
   <b-links cols="2">
     <item href="/blog/harness-work-approaches/" k="Cách tiếp cận" t="Khi câu trả lời trượt mục tiêu">Vòng lặp câu trả lời và bước xem lại sửa yêu cầu</item>
     <item href="/blog/specs-rules-skills/" k="Ngữ cảnh" t="Đặc tả, bible, quy tắc và skill">Prompt sống ở đâu ngoài một cuộc chat</item>
-    <item href="/blog/ai-in-code-harness-and-tools/" k="Kỹ thuật" t="AI trong code">Harness và ba nhóm công cụ</item>
+    <item href="/blog/ai-in-code-harness-and-tools/" k="Kỹ thuật" t="AI trong code">Harness và bốn nhóm công cụ</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="Báo cáo" t="Báo cáo sử dụng ChatGPT Enterprise">Ai trong công ty dùng gì</item>
   </b-links>
 </b-chapter>

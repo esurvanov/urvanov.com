@@ -1,7 +1,7 @@
 ---
 title: Comment faire des rapports analytiques avec un agent IA : données d’une base, de feuilles et de documents via MCP
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Construire un rapport analytique avec un agent IA : connecter une base en lecture seule via MCP, déléguer les requêtes et la synthèse, vérifier un chiffre à la main et fixer les droits source par source.
 tags: IA, agents, MCP, analytique, rapports, base de données, harness
 category: harness
@@ -27,7 +27,7 @@ Un rapport fait à la main, c’est un export de base de données, un tableau, u
   <b-why>Systèmes, données et documents hors de la conversation. Les droits se fixent séparément pour chaque source.</b-why>
   <iso-art name="analytics-reports-agent/source-rights"></iso-art>
   <b-finding>
-    <ex>Jira, les documents et la base sont ouverts en lecture, la feuille en écriture avec confirmation, et seul l’environnement de test peut être cassé.</ex>
+    <ex>Jira, les documents et la base sont ouverts en lecture, la feuille en écriture avec confirmation, et seul l’[environnement de test](/materials/glossary/test-stand/) peut être cassé.</ex>
     <gen>L’agent voit exactement ce qui est connecté et fait exactement ce qui est autorisé.</gen>
     <do k="Que faire">Pour chaque source, écrivez un mot : lecture, écriture ou environnement de test seulement.</do>
   </b-finding>

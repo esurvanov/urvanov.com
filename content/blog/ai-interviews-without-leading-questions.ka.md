@@ -1,7 +1,7 @@
 ---
 title: როგორ ჩავატაროთ და გავაანალიზოთ ინტერვიუები AI-ის გამოყენებაზე: 30-წუთიანი სცენარი, ანალიზის პრომპტი და Airtable-ის ცხრილი
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: 30-წუთიანი ზარის სცენარი, თემიდან გადახვევის თავიდან აცილების წესები, მოკლე კითხვარი მთელი კომპანიისთვის, ინტერვიუების ანალიზი ChatGPT-ით ან აგენტით მზა პრომპტით და „ნათქვამი და გაზომილი“ შედარება ანგარიშის მონაცემებთან.
 tags: AI, custdev, ინტერვიუები
 category: research
@@ -88,7 +88,7 @@ toc: format=ფორმატის არჩევა | prep=შეხვე�
   </b-share-bar>
   <b-cap>წუთები ბლოკების მიხედვით</b-cap>
   <b-call-script>
-    <step color="c-none" ink="ink" t="შესავალი" q="&quot;ვაკვირდები, როგორ ასრულებენ ადამიანები კომპანიაში სამუშაო ამოცანებს. ეს თქვენი შეფასება არ არის. წარმატებული და წარუმატებელი შემთხვევები ჩემთვის თანაბრად სასარგებლოა. ჩემთან ერთად ჩანაწერების ასისტენტია: ტრანსკრიპტს მხოლოდ ჩვენ ვხედავთ, პასუხები კი ანგარიშში სახელების გარეშე მოხვდება. ჩავრთო?&quot;"></step>
+    <step color="c-none" ink="ink" t="შესავალი" q="&quot;ვაკვირდები, როგორ ასრულებენ ადამიანები კომპანიაში სამუშაო ამოცანებს. ეს თქვენი შეფასება არ არის. წარმატებული და წარუმატებელი შემთხვევები ჩემთვის თანაბრად სასარგებლოა. ჩემთან ერთად ჩანაწერების ასისტენტია: ტრანსკრიპტს მხოლოდ კვლევის გუნდი ხედავს, პასუხები კი ანგარიშში სახელების გარეშე მოხვდება. ჩავრთო?&quot;"></step>
     <step color="c-light" t="როლი და კონტექსტი" q='"კვირის უმეტეს ნაწილს რას უთმობთ?"'>რომელი ამოცანები მეორდება · სად ეძებთ ინფორმაციას და სად ამზადებთ პირველ ვარიანტებს</step>
     <step color="c-chat" t="ბოლო სამუშაო ამოცანა" q='"გაიხსენეთ ბოლო სამუშაო ამოცანა, რომელმაც შესამჩნევი დრო წაგართვათ. რა გჭირდებოდათ მისაღებად?"'>რა საშუალებები გქონდათ · რა აირჩიეთ და რატომ · როგორ მიხვედით შედეგამდე</step>
     <step color="c-proj" t="შედეგი და ძალისხმევა" q='"რა მიიღეთ საბოლოოდ და რამდენი ძალისხმევა დაგჭირდათ?"'>რა გამოიყენეთ როგორც არის · რა დაასრულეთ თავად · რა შეზღუდვები იყო: მონაცემები, წვდომა, უსაფრთხოება</step>
@@ -162,7 +162,7 @@ toc: format=ფორმატის არჩევა | prep=შეხვე�
     <row>Ben Ortiz |  |  | მხოლოდ Codex | <b-select-pill tone="cyan">პასუხს ველოდებით</b-select-pill> |  | <b-select-pill tone="purple">მხოლოდ Codex</b-select-pill> |  | 3.2M | 64 | 22.09</row>
     <row>Pavel Novak | [27.09 10:15] წამყვანი: აღწერეთ ბოლო ამოცანა… | <b-select-pill tone="purple">ტექსტი</b-select-pill> | არააქტიური | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="cyan">რეგულარულად</b-select-pill> | <b-select-pill tone="red">არ იყენებს</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
     <row>Sara Quinn |  |  | არააქტიური | <b-select-pill tone="red">უარი თქვა</b-select-pill> |  | <b-select-pill tone="red">არ იყენებს</b-select-pill> |  | 0 | 0 | —</row>
-    <row>Nadia Rahimi | წამყვანი [00:00]: რა გააკეთეთ გუშინ ChatGPT-ში… | <b-select-pill tone="cyan">ხმა</b-select-pill> | სხვა ინსტრუმენტები | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
+    <row>Nadia Rahimi | წამყვანი [00:00]: გაიხსენეთ ბოლო ამოცანა, რომელმაც… | <b-select-pill tone="cyan">ხმა</b-select-pill> | სხვა ინსტრუმენტები | <b-select-pill tone="green">მზადაა</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-select-pill tone="yellow">ხანდახან</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
     <row>Elif Demir |  |  | პროექტები | <b-select-pill tone="gray">მიმდინარეობს</b-select-pill> |  | <b-select-pill tone="green">ყოველკვირა</b-select-pill> |  | 1.8M | 41 | 27.09</row>
   </b-airtable-grid>
   <b-cap>ChatGPT ავსებს ნარინჯისფერ ველს Notes-ის საუბრიდან. „ანგარიშით“, „ტოკენები“, „$“ და „აქტივობა“ <a href="/blog/chatgpt-enterprise-usage-report/">ChatGPT Enterprise-ის გამოყენების ანგარიშიდან</a> მოდის. ველი „≠“ ფორმულაა, რომელიც ორ სიხშირეს ადარებს.</b-cap>

@@ -1,7 +1,7 @@
 ---
 title: Báo cáo phân tích với tác nhân AI: dữ liệu từ cơ sở dữ liệu, bảng tính và tài liệu qua MCP
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cách làm báo cáo phân tích bằng tác nhân AI: kết nối cơ sở dữ liệu chỉ đọc qua MCP, giao truy vấn và phần tóm tắt cho tác nhân, tự kiểm tra một con số và đặt quyền riêng cho từng nguồn.
 tags: AI, tác nhân, MCP, phân tích, báo cáo, cơ sở dữ liệu, harness
 category: harness
@@ -27,7 +27,7 @@ Làm báo cáo thủ công là xuất dữ liệu từ cơ sở dữ liệu, d�
   <b-why>Hệ thống, dữ liệu và tài liệu nằm ngoài cuộc trò chuyện. Quyền được đặt riêng cho từng nguồn.</b-why>
   <iso-art name="analytics-reports-agent/source-rights"></iso-art>
   <b-finding>
-    <ex>Jira, tài liệu và cơ sở dữ liệu mở để đọc, bảng tính mở để ghi nhưng phải xác nhận, và chỉ môi trường kiểm thử mới được phép làm hỏng.</ex>
+    <ex>Jira, tài liệu và cơ sở dữ liệu mở để đọc, bảng tính mở để ghi nhưng phải xác nhận, và chỉ [môi trường kiểm thử](/materials/glossary/test-stand/) mới được phép làm hỏng.</ex>
     <gen>Tác nhân thấy đúng những gì đã được kết nối và chỉ làm đúng những gì được cho phép.</gen>
     <do k="Việc cần làm">Với mỗi nguồn, viết một từ: đọc, ghi hoặc chỉ môi trường kiểm thử.</do>
   </b-finding>

@@ -1,7 +1,7 @@
 ---
 title: Đặc tả theo aggregate: yêu cầu RFC và bounded context thay cho một đặc tả mỗi tính năng
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Phát triển dựa trên đặc tả mà không để đặc tả sinh sôi: cách giữ đặc tả trong một từ điển aggregate để chúng không nhân lên theo từng tính năng: các mức yêu cầu, thẻ aggregate và ranh giới ngữ cảnh.
 tags: AI, phát triển dựa trên đặc tả, đặc tả, DDD, tác nhân
 category: specs
@@ -114,6 +114,7 @@ toc: growth=Vì sao đặc tả chất đống | rfc=Các mức RFC | card=Thẻ
     <item href="/blog/specs-rules-skills/" k="Ngữ cảnh" t="Đặc tả, bible, quy tắc và skill">tác nhân biết gì về dự án và nó nằm ở đâu</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Môi trường" t="So sánh các harness">tác nhân làm việc ở đâu và thấy gì</item>
     <item href="/blog/agent-checkpoint/" k="Kiểm tra" t="Kiểm tra công việc của tác nhân AI ở đâu">aggregate như một điểm kiểm tra</item>
+    <item href="/blog/openspec/" k="Đặc tả" t="Cài đặt và lệnh OpenSpec">đặc tả và thay đổi trong tệp cạnh mã</item>
   </b-links>
 </b-chapter>
 <b-footer compact>Ví dụ đặt chỗ được bịa ra. Thuật ngữ và cách tiếp cận theo các nguồn dẫn dưới các sơ đồ.</b-footer>

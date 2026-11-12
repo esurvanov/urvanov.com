@@ -148,13 +148,13 @@ AGENTS.md · CLAUDE.md skill đặc tả
 
 review bằng AI LLM làm giám khảo
 
-Cách chia theo mô tả trong Martin Fowler: Harness engineering
+Cách chia theo mô tả trong Birgitta Böckeler (martinfowler.com)
 
 **Kết luận:**
 
 **Trong ví dụ này:** Bốn ô: guide định hướng trước khi tác nhân làm việc, sensor bắt sai lệch sau đó, và mỗi loại có thể là tính toán hoặc dựa trên AI.
 
-**Nói chung:** Kiểm tra tính toán chạy trong vài giây và không mắc lỗi, nên hãy dùng chúng ở mọi nơi có thể viết quy tắc một cách hình thức. Để kiểm tra dựa trên AI cho phần ý nghĩa: phong cách, độ rõ ràng, độ khớp với ý định.
+**Nói chung:** Kiểm tra tính toán chạy trong vài giây và không mắc lỗi trong phạm vi quy tắc của mình, nên hãy dùng chúng ở mọi nơi có thể viết quy tắc một cách hình thức. Để kiểm tra dựa trên AI cho phần ý nghĩa: phong cách, độ rõ ràng, độ khớp với ý định.
 
 **Bước tiếp theo:** Với mỗi quy tắc trong hướng dẫn của tác nhân, hãy hỏi liệu một kiểm thử hay linter có kiểm tra được không. Nếu được, chuyển nó sang đó.
 
@@ -172,7 +172,7 @@ trưởng thành
 
 khó nhất
 
-Mức trưởng thành của các lớp theo đánh giá của Martin Fowler
+Mức trưởng thành của các lớp theo đánh giá của Birgitta Böckeler (martinfowler.com)
 
 **Kết luận:**
 
@@ -210,7 +210,7 @@ Con người
 
 kiến trúc · sản phẩm · quy tắc mới
 
-“Một harness tốt giữ con người trong vòng lặp và hướng sự chú ý của họ vào nơi quan trọng nhất” — diễn giải từ Martin Fowler
+“Một harness tốt giữ con người trong vòng lặp và hướng sự chú ý của họ vào nơi quan trọng nhất” — diễn giải từ Birgitta Böckeler (martinfowler.com)
 
 **Kết luận:**
 
@@ -292,6 +292,6 @@ So sánh các harness
 
 Claude Code, Codex, Cursor, Hermes và chat
 
-Đọc thêm: Martin Fowler · Anthropic: Harness design · Becoming a Harness-Driven Developer · awesome-harness-engineering
+Đọc thêm: Birgitta Böckeler (martinfowler.com) · Anthropic: Harness design · Becoming a Harness-Driven Developer · awesome-harness-engineering
 
 Thuật ngữ và cách chia lớp dựa theo các nguồn được dẫn ở chú thích dưới các sơ đồ.

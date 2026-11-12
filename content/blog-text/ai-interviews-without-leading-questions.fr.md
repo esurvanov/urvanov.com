@@ -179,7 +179,7 @@ Une table : une ligne par personne
 | 5 | Ben Ortiz |  |  | Codex seul | En attente de réponse |  | Codex seul |  | 3.2M | 64 | 22.09 |
 | 6 | Pavel Novak | [27.09 10:15] Animateur : Décrivez la dernière tâche… | texte | inactif | Terminé | régulièrement | n’utilise pas | ≠ | 0 | 0 | — |
 | 7 | Sara Quinn |  |  | inactif | Refusé |  | n’utilise pas |  | 0 | 0 | — |
-| 8 | Nadia Rahimi | Animateur [00:00] : Qu’avez-vous fait hier dans ChatGPT… | voix | autres outils | Terminé | occasionnellement | occasionnellement | = | 0.3M | 6 | 20.09 |
+| 8 | Nadia Rahimi | Animateur [00:00] : Pensez à la dernière tâche qui vous a pris… | voix | autres outils | Terminé | occasionnellement | occasionnellement | = | 0.3M | 6 | 20.09 |
 | 9 | Elif Demir |  |  | projets | En cours |  | chaque semaine |  | 1.8M | 41 | 27.09 |
 | 16 enregistrements · 9 affichés |  |  |  |  |  |  |  |  |  |  |  |
 

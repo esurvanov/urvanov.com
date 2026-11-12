@@ -1,7 +1,7 @@
 ---
 title: Claude Code kiểm thử trang web trong trình duyệt của bạn như thế nào: Claude in Chrome — gỡ lỗi và điền form dưới phiên đăng nhập của bạn
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Claude in Chrome nối Claude Code với trình duyệt: tác nhân mở tab, đọc console, chạy kịch bản và điền form dưới phiên đăng nhập của bạn. Cách kết nối, nó làm được gì và nên cấp quyền nào.
 tags: AI, tác nhân, Claude Code, Claude in Chrome, trình duyệt, QA, harness
 category: harness
@@ -31,7 +31,7 @@ Claude in Chrome nối tác nhân AI (AI agent) với trình duyệt của bạn
   <b-finding>
     <ex>Tác nhân trong terminal điều khiển các tab Chrome qua tiện ích và dùng các phiên đăng nhập của bạn.</ex>
     <gen>Các hành động hiện ra trong cửa sổ theo thời gian thực. Gặp trang đăng nhập hoặc CAPTCHA, tác nhân dừng và chờ bạn. Trong Claude Code, tiện ích hiện ra là MCP server claude-in-chrome: /mcp liệt kê các công cụ của nó.</gen>
-    <do k="Làm gì">Kiểm tra yêu cầu: tiện ích phiên bản 1.0.36 trở lên<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, gói Pro, Max, Team hoặc Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Team, or Enterprise)"/>, và đăng nhập bằng /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
+    <do k="Làm gì">Kiểm tra yêu cầu: tiện ích phiên bản 1.0.36 trở lên<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, gói Pro, Max, Ultra, Team hoặc Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Ultra, Team, or Enterprise)"/>, và đăng nhập bằng /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
   </b-finding>
 </b-chapter>
 
@@ -46,7 +46,7 @@ Claude in Chrome nối tác nhân AI (AI agent) với trình duyệt của bạn
       /chrome   # trạng thái, quyền, kết nối lại
     </b-codebox>
 
-<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Tiện ích trong Chrome Web Store</a>. Để khỏi dùng cờ, hãy mở /chrome và bật “Enabled by default”. Khi đó các công cụ của trình duyệt luôn nằm trong ngữ cảnh, và lượng token tiêu thụ tăng<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>.
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Tiện ích trong Chrome Web Store</a>. Để khỏi dùng cờ, hãy mở /chrome và bật “Enabled by default”. Khi đó các công cụ của trình duyệt luôn nằm trong ngữ cảnh, và lượng token tiêu thụ tăng<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>. Trong VS Code, gõ @browser vào ô nhập để kết nối trình duyệt; «Enabled by default» dùng chung cho terminal và VS Code<b-proof href="https://code.claude.com/docs/en/chrome" quote="The two share one setting, so turning it on in either place turns it on for both the CLI and VS Code."/>.
 
     <b-spoiler summary="Nếu không kết nối được">
       <b-node-grid min="170">

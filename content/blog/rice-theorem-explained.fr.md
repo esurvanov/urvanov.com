@@ -1,7 +1,7 @@
 ---
 title: Le théorème de Rice en mots simples : pourquoi aucune vérification ne marche sur tous les programmes et que faire
 date: 2026-11-06
-updated: 2026-11-08
+updated: 2026-11-13
 description: Ce que dit le théorème de Rice et pourquoi vérifier le comportement d'un programme se heurte au problème de l'arrêt. Prédicats sur le texte et sur le comportement, une preuve sur un exemple de paiement, le lien avec le paradoxe du barbier et trois cadres qui rendent une vérification exacte.
 tags: théorème de Rice, problème de l'arrêt, paradoxe du barbier, prédicat, vérification formelle, Quint, DDD, agents
 category: specs
@@ -125,7 +125,7 @@ Le théorème de Rice dit qu'aucun programme ne peut toujours dire correctement,
 </b-chapter>
 
 <b-chapter id="small-model" icon="package" title="Issue 2. Un petit modèle : tout essayer, mais sur de petits nombres">
-  <b-why align="left">Ici on renonce à la propriété 2, « toute modification ». Ce qui est vérifié est une courte description des règles de paiement, pas le code, et seulement sur de petits nombres : 3 commandes et 2 clients. Les variantes deviennent finies, et un programme les essaie toutes jusqu'au bout.</b-why>
+  <b-why align="left">Ici on renonce à la propriété 2, « toute modification ». Ce qui est vérifié est une courte description des règles de paiement, le code à part, et seulement sur de petits nombres : 3 commandes et 2 clients. Les variantes deviennent finies, et un programme les essaie toutes jusqu'au bout.</b-why>
   <b-art names="rice-theorem-explained/small-model" wide/>
 
   1. **État :** quelles commandes existent, combien de fois chacune a été débitée, quelle commande chaque client a vérifiée.

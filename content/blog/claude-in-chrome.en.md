@@ -1,7 +1,7 @@
 ---
 title: How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Claude in Chrome connects Claude Code to the browser: the agent opens tabs, reads the console, runs scenarios and fills forms under your login. How to connect it, what it does and which permissions to give.
 tags: AI, agents, Claude Code, Claude in Chrome, browser, QA, harness
 category: harness
@@ -31,7 +31,7 @@ Claude in Chrome connects the agent to your browser: it opens tabs, reads pages 
   <b-finding>
     <ex>The agent in the terminal drives Chrome tabs through the extension and uses your logins.</ex>
     <gen>Actions are visible in the window in real time. On a login page or CAPTCHA the agent stops and waits for you. In Claude Code the extension appears as the claude-in-chrome MCP server: /mcp lists its tools.</gen>
-    <do k="What to do">Check the requirements: extension version 1.0.36 or later<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, a Pro, Max, Team or Enterprise plan<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Team, or Enterprise)"/>, and sign-in with /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
+    <do k="What to do">Check the requirements: extension version 1.0.36 or later<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, a Pro, Max, Ultra, Team or Enterprise plan<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Ultra, Team, or Enterprise)"/>, and sign-in with /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
   </b-finding>
 </b-chapter>
 
@@ -46,7 +46,7 @@ Claude in Chrome connects the agent to your browser: it opens tabs, reads pages 
       /chrome   # status, permissions, reconnect
     </b-codebox>
 
-<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Extension in the Chrome Web Store</a>. To skip the flag, open /chrome and turn on “Enabled by default”. The browser tools are then always in context, and token use grows<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>.
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Extension in the Chrome Web Store</a>. To skip the flag, open /chrome and turn on “Enabled by default”. The browser tools are then always in context, and token use grows<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>. In VS Code, type @browser in the prompt box to connect the browser; “Enabled by default” is shared by the terminal and VS Code<b-proof href="https://code.claude.com/docs/en/chrome" quote="The two share one setting, so turning it on in either place turns it on for both the CLI and VS Code."/>.
 
     <b-spoiler summary="If it does not connect">
       <b-node-grid min="170">
@@ -170,9 +170,9 @@ Claude in Chrome connects the agent to your browser: it opens tabs, reads pages 
 
 <b-chapter id="next" title="Next">
   <b-links>
-    <item href="/blog/bug-report-to-reproduction-agent/" k="Example" t="Работа QA после поддержки с ИИ-агентом: исследование, описание и документирование через MCP и скиллы">The agent reproduces a Jira bug</item>
-    <item href="/blog/mcp-agent-access/" k="Connecting" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">How the agent gets access to systems</item>
-    <item href="/blog/agent-hands-work-back-to-you/" k="Hand-off" t="Агент любит запрягать вас: как заставить его делать самому">When the agent asks a human for help</item>
+    <item href="/blog/bug-report-to-reproduction-agent/" k="Example" t="QA work after support with an AI agent: investigation, description and documentation via MCP and skills">The agent reproduces a Jira bug</item>
+    <item href="/blog/mcp-agent-access/" k="Connecting" t="MCP for an AI agent: what problem it solves and how to delegate setup to the agent">How the agent gets access to systems</item>
+    <item href="/blog/agent-hands-work-back-to-you/" k="Hand-off" t="Will AI agents take your job: it depends on who loads work onto whom — you onto agents or agents onto you">When the agent asks a human for help</item>
   </b-links>
 </b-chapter>
 <b-footer>Ticket PAY-142 is made up for the example. Facts about connecting and permissions follow the Claude Code docs: <a href="https://code.claude.com/docs/en/chrome" target="_blank" rel="noopener">Use Claude Code with Chrome</a>.</b-footer>

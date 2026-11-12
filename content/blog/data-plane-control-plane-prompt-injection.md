@@ -1,7 +1,7 @@
 ---
 title: Data plane и control plane агента: как не дать данным стать командами (prompt injection)
 date: 2026-10-05
-updated: 2026-11-07
+updated: 2026-11-13
 description: Чем отличаются команды агента (control plane) и данные, которые он читает (data plane), как работает prompt injection и как защититься: минимум прав, подтверждение записи, разделение чтения и записи, доверенные источники.
 tags: AI, агенты, безопасность, prompt injection, MCP, харнесс
 category: harness
@@ -83,7 +83,7 @@ toc: what=Две плоскости | attack=Prompt injection | defense=Защи
 <b-chapter id="next" title="Дальше по теме">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="Подключение" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">Как агент получает доступ к системам</item>
-    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Claude in Chrome: как агент работает в вашем браузере — тест, отладка и формы под вашим входом">Права сайтов и риски браузера</item>
+    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Как Claude Code тестирует сайт в браузере: Claude in Chrome — отладка и формы под вашим входом">Права сайтов и риски браузера</item>
     <item href="/blog/incident-investigation-agent/" k="Пример" t="Расследование инцидента с ИИ-агентом: Sentry и Grafana через MCP">Агент читает логи и тикеты только на чтение</item>
   </b-links>
 </b-chapter>

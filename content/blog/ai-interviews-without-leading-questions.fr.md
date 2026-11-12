@@ -1,7 +1,7 @@
 ---
 title: Comment mener et analyser des entretiens sur l’usage de l’IA : un script de 30 minutes, un prompt d’analyse et une table Airtable
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Un script d’appel de 30 minutes, des règles pour rester dans le sujet, un court questionnaire pour toute l’entreprise, l’analyse des entretiens avec ChatGPT ou un agent à l’aide d’un prompt prêt, et la comparaison entre le dit et le mesuré d’après les données du rapport.
 tags: IA, custdev, entretiens
 category: research
@@ -162,7 +162,7 @@ Un entretien sur le travail avec l’IA dure 30 minutes et s’organise autour d
     <row>Ben Ortiz |  |  | Codex seul | <b-select-pill tone="cyan">En attente de réponse</b-select-pill> |  | <b-select-pill tone="purple">Codex seul</b-select-pill> |  | 3.2M | 64 | 22.09</row>
     <row>Pavel Novak | [27.09 10:15] Animateur : Décrivez la dernière tâche… | <b-select-pill tone="purple">texte</b-select-pill> | inactif | <b-select-pill tone="green">Terminé</b-select-pill> | <b-select-pill tone="cyan">régulièrement</b-select-pill> | <b-select-pill tone="red">n’utilise pas</b-select-pill> | <b-match-mark kind="diff">≠</b-match-mark> | 0 | 0 | —</row>
     <row>Sara Quinn |  |  | inactif | <b-select-pill tone="red">Refusé</b-select-pill> |  | <b-select-pill tone="red">n’utilise pas</b-select-pill> |  | 0 | 0 | —</row>
-    <row>Nadia Rahimi | Animateur [00:00] : Qu’avez-vous fait hier dans ChatGPT… | <b-select-pill tone="cyan">voix</b-select-pill> | autres outils | <b-select-pill tone="green">Terminé</b-select-pill> | <b-select-pill tone="yellow">occasionnellement</b-select-pill> | <b-select-pill tone="yellow">occasionnellement</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
+    <row>Nadia Rahimi | Animateur [00:00] : Pensez à la dernière tâche qui vous a pris… | <b-select-pill tone="cyan">voix</b-select-pill> | autres outils | <b-select-pill tone="green">Terminé</b-select-pill> | <b-select-pill tone="yellow">occasionnellement</b-select-pill> | <b-select-pill tone="yellow">occasionnellement</b-select-pill> | <b-match-mark kind="same">=</b-match-mark> | 0.3M | 6 | 20.09</row>
     <row>Elif Demir |  |  | projets | <b-select-pill tone="gray">En cours</b-select-pill> |  | <b-select-pill tone="green">chaque semaine</b-select-pill> |  | 1.8M | 41 | 27.09</row>
   </b-airtable-grid>
   <b-cap>ChatGPT remplit le champ orange d’après la conversation dans Notes. « Selon le rapport », « Tokens », « $ » et « Activité » viennent du <a href="/blog/chatgpt-enterprise-usage-report/">rapport d’usage de ChatGPT Enterprise</a>. Le champ « ≠ » est une formule qui compare les deux fréquences.</b-cap>

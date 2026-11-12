@@ -1,7 +1,7 @@
 ---
 title: Qué dice el teorema de Rice: por qué ninguna comprobación sirve para todos los programas y qué hacer al respecto
 date: 2026-11-06
-updated: 2026-11-08
+updated: 2026-11-13
 description: Qué afirma el teorema de Rice y por qué comprobar el comportamiento de un programa choca con el problema de la parada. Predicados sobre el texto y sobre el comportamiento, una demostración con un ejemplo de pagos, el vínculo con la paradoja del barbero y tres marcos que hacen exacta una comprobación.
 tags: teorema de Rice, problema de la parada, paradoja del barbero, predicado, verificación formal, Quint, DDD, agentes
 category: specs
@@ -125,7 +125,7 @@ El teorema de Rice dice que ningún programa puede decir siempre correctamente, 
 </b-chapter>
 
 <b-chapter id="small-model" icon="package" title="Salida 2. Un modelo pequeño: probar todo, pero con números pequeños">
-  <b-why align="left">Aquí se abandona la propiedad 2, «cualquier cambio». Lo que se comprueba es una descripción breve de las reglas de pago, no el código, y solo con números pequeños: 3 pedidos y 2 clientes. Las variantes pasan a ser finitas y un programa las prueba todas hasta el final.</b-why>
+  <b-why align="left">Aquí se abandona la propiedad 2, «cualquier cambio». Lo que se comprueba es una descripción breve de las reglas de pago, el código aparte, y solo con números pequeños: 3 pedidos y 2 clientes. Las variantes pasan a ser finitas y un programa las prueba todas hasta el final.</b-why>
   <b-art names="rice-theorem-explained/small-model" wide/>
 
   1. **Estado:** qué pedidos existen, cuántas veces se cobró cada uno, qué pedido tiene comprobado cada cliente.

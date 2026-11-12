@@ -142,4 +142,10 @@ So sánh các harness
 
 tác nhân làm việc ở đâu và thấy gì
 
+Đặc tả
+
+Cài đặt và lệnh OpenSpec
+
+đặc tả và thay đổi trong tệp cạnh mã
+
 Ví dụ đặt chỗ được bịa ra. Thuật ngữ và cách tiếp cận theo các nguồn dẫn dưới các sơ đồ.

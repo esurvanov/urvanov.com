@@ -1,7 +1,7 @@
 ---
 title: Vòng đối chiếu (reconcile loop) cho đặc tả: như Kubernetes, đặc tả là trạng thái mong muốn còn code là trạng thái thực tế
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Phát triển dựa trên đặc tả với vòng đối chiếu: ai thay đổi trạng thái mong muốn và ai đưa code về đó, vì sao test xanh chưa có nghĩa là “đúng”, và tác nhân cần sáu khả năng nào của môi trường để khép vòng.
 tags: AI, phát triển dựa trên đặc tả, đặc tả, Kubernetes, harness
 category: specs
@@ -112,6 +112,7 @@ Vòng đối chiếu (reconcile loop) cho đặc tả hoạt động như một 
     <item href="/blog/specs-by-aggregates/" k="Trạng thái mong muốn" t="Đặc tả theo aggregate">từ điển, yêu cầu RFC và các ngữ cảnh</item>
     <item href="/blog/harness-driven-development/" k="Vòng lặp lỗi" t="Harness-Driven Development">sai sót của tác nhân trở thành quy tắc thế nào</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Môi trường" t="So sánh các harness">tác nhân làm việc ở đâu và thấy gì</item>
+    <item href="/blog/openspec/" k="Đặc tả" t="Cài đặt và lệnh OpenSpec">đặc tả và thay đổi trong tệp cạnh mã</item>
   </b-links>
 </b-chapter>
 <b-footer compact>Ví dụ đặt chỗ được bịa ra. Thuật ngữ và cách tiếp cận theo các nguồn dẫn dưới các sơ đồ.</b-footer>

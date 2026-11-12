@@ -1,7 +1,7 @@
 ---
 title: როგორ ამოწმებს Claude Code საიტს თქვენს ბრაუზერში: Claude in Chrome — გამართვა და ფორმები თქვენი ავტორიზაციით
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Claude in Chrome აკავშირებს Claude Code-ს ბრაუზერთან: აგენტი ხსნის ჩანართებს, კითხულობს კონსოლს, უშვებს სცენარებს და ავსებს ფორმებს თქვენი ავტორიზაციით. როგორ დავაკავშიროთ, რას აკეთებს და რა ნებართვები მივცეთ.
 tags: AI, აგენტები, Claude Code, Claude in Chrome, ბრაუზერი, QA, harness
 category: harness
@@ -31,7 +31,7 @@ Claude in Chrome აგენტს თქვენს ბრაუზერთ�
   <b-finding>
     <ex>ტერმინალში მყოფი აგენტი გაფართოების მეშვეობით მართავს Chrome-ის ჩანართებს და თქვენს ავტორიზაციებს იყენებს.</ex>
     <gen>მოქმედებები ფანჯარაში რეალურ დროში ჩანს. ავტორიზაციის გვერდზე ან CAPTCHA-ზე აგენტი ჩერდება და თქვენ გელოდებათ. Claude Code-ში გაფართოება ჩანს, როგორც claude-in-chrome MCP სერვერი: /mcp ჩამოთვლის მის ინსტრუმენტებს.</gen>
-    <do k="რა ვქნათ">შეამოწმეთ მოთხოვნები: გაფართოების ვერსია 1.0.36 ან უფრო ახალი<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, Pro, Max, Team ან Enterprise ტარიფი<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Team, or Enterprise)"/> და შესვლა /login-ით<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
+    <do k="რა ვქნათ">შეამოწმეთ მოთხოვნები: გაფართოების ვერსია 1.0.36 ან უფრო ახალი<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, Pro, Max, Ultra, Team ან Enterprise ტარიფი<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Ultra, Team, or Enterprise)"/> და შესვლა /login-ით<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
   </b-finding>
 </b-chapter>
 
@@ -46,7 +46,7 @@ Claude in Chrome აგენტს თქვენს ბრაუზერთ�
       /chrome   # status, permissions, reconnect
     </b-codebox>
 
-<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">გაფართოება Chrome Web Store-ში</a>. რომ ფლაგი აღარ აკრიფოთ, გახსენით /chrome და ჩართეთ „Enabled by default“. მაშინ ბრაუზერის ინსტრუმენტები ყოველთვის კონტექსტში იქნება და ტოკენების ხარჯი გაიზრდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>.
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">გაფართოება Chrome Web Store-ში</a>. რომ ფლაგი აღარ აკრიფოთ, გახსენით /chrome და ჩართეთ „Enabled by default“. მაშინ ბრაუზერის ინსტრუმენტები ყოველთვის კონტექსტში იქნება და ტოკენების ხარჯი გაიზრდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>. VS Code-ში ბრაუზერი უერთდება, როცა შეყვანის ველში აკრეფთ @browser-ს, ხოლო «Enabled by default» საერთოა ტერმინალისა და VS Code-ისთვის<b-proof href="https://code.claude.com/docs/en/chrome" quote="The two share one setting, so turning it on in either place turns it on for both the CLI and VS Code."/>.
 
     <b-spoiler summary="თუ არ უკავშირდება">
       <b-node-grid min="170">

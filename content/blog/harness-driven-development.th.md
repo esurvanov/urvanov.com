@@ -1,7 +1,7 @@
 ---
 title: Harness engineering ในทางปฏิบัติ: เปลี่ยนความผิดพลาดของเอเจนต์ AI ให้เป็นกฎของสภาพแวดล้อม (HDD)
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: วงจรจากความผิดพลาดสู่กฎ guide และ sensor การตรวจสามชั้น ความสัมพันธ์กับข้อกำหนด (spec) และห้าก้าวแรกในโปรเจกต์ของคุณเอง
 tags: AI, Claude Code, harness engineering, harness, HDD, เอเจนต์
 category: harness
@@ -11,11 +11,11 @@ mentions: Harness engineering, Claude Code, AGENTS.md, CLAUDE.md, Spec-Driven De
 toc: loop=วงจร HDD | canons=ผัง 3 × 3 | double=วงจรสองชั้น | controls=Guide และ sensor | layers=การตรวจสามชั้น | shift=ยิ่งเร็วยิ่งถูก | human=คนสำคัญตรงไหน | spec=HDD กับ spec | start=เริ่มจากตรงไหน | faq=คำถาม | next=อ่านเพิ่ม
 ---
 
-**Harness engineering** คือการออกแบบสภาพแวดล้อมรอบเอเจนต์ AI (AI agent) ได้แก่ คำสั่ง เครื่องมือ สิทธิ์ และการตรวจสอบ **Harness-Driven Development (HDD)** คือวิธีทำงานที่สร้างบนแนวคิดนี้: ความผิดพลาดของเอเจนต์ทุกครั้งกลายเป็นกฎของสภาพแวดล้อมนั้น
+**Harness engineering** คือการออกแบบสภาพแวดล้อมรอบเอเจนต์ AI (AI agent) ได้แก่ คำสั่ง ระบบที่เชื่อมต่อ สิทธิ์ และการตรวจสอบ **Harness-Driven Development (HDD)** คือวิธีทำงานที่สร้างบนแนวคิดนี้: ความผิดพลาดของเอเจนต์ทุกครั้งกลายเป็นกฎของสภาพแวดล้อมนั้น เริ่มจากไฟล์คำสั่ง AGENTS.md หรือ CLAUDE.md และบันทึกข้อผิดพลาดของเอเจนต์: สัปดาห์ละครั้ง ย้ายรายการในบันทึกไปเป็นกฎ เทสต์ หรือ hook
 
 <b-post series="hdd">
 <b-chapter id="loop" icon="refresh-cw" title="วงจร HDD">
-  <b-why align="left">วงจรทำงานแบบนี้ เอเจนต์รับงานและสร้างผลลัพธ์ sensor (เทสต์ linter หรือการรีวิว) ตรวจผลลัพธ์ ถ้าผ่านทุกอย่าง งานก็ปิด ถ้า sensor พบข้อผิดพลาด คนไม่ได้แค่แก้ผลลัพธ์ แต่เปลี่ยนสภาพแวดล้อมของเอเจนต์ คือ harness: เพิ่มบรรทัดในคำสั่ง เพิ่มเทสต์ หรือเพิ่ม hook งานถัดไปรันพร้อมกฎนั้น และข้อผิดพลาดไม่เกิดซ้ำ</b-why>
+  <b-why align="left">วงจรทำงานแบบนี้ เอเจนต์รับงานและสร้างผลลัพธ์ sensor (เทสต์ linter หรือการรีวิว) ตรวจผลลัพธ์ ถ้าผ่านทุกอย่าง งานก็ปิด ถ้า sensor พบข้อผิดพลาด คนเปลี่ยนสภาพแวดล้อมของเอเจนต์ คือ harness: เพิ่มบรรทัดในคำสั่ง เพิ่มเทสต์ หรือเพิ่ม hook งานถัดไปรันพร้อมกฎนั้น และข้อผิดพลาดไม่เกิดซ้ำ</b-why>
   <b-hdd-scene name="harness-driven-development/loop" frame="loop"/>
   <b-cap>หลักการของ Mitchell Hashimoto: เมื่อเอเจนต์ทำพลาด ให้เปลี่ยน harness เพื่อไม่ให้ความผิดพลาดนั้นเกิดซ้ำได้ <a href="https://www.faros.ai/blog/harness-engineering" target="_blank" rel="noopener">Faros</a></b-cap>
   <b-why>พรอมต์แก้คำขอเดียว บริบทแก้สิ่งที่โมเดลรู้ ส่วน harness แก้ทุกการรันถัดไป ตัวอย่าง: เอเจนต์แก้โค้ดแล้วไม่รันเทสต์</b-why>
@@ -81,7 +81,7 @@ toc: loop=วงจร HDD | canons=ผัง 3 × 3 | double=วงจรสอ
     <principle icon="shield-check" t="ไม่มีการตรวจจากภายนอก">ทิ้งไป พร้อมบันทึกไว้</principle>
   </b-hdd-principles>
   <b-cap>วงจรใช้กับตัวเองด้วย: ทุกการรันจบด้วยความเสี่ยงที่เหลือ ไม่เคยจบด้วยสถานะ “เสร็จแล้ว”</b-cap>
-  <b-why align="left">การเปลี่ยนกฎหลังคำบ่นทุกครั้งมีความเสี่ยง: harness จะบวมจากการแก้แบบสุ่ม Loop จึงใช้สี่การตรวจ ถ้าการแก้เพียงอุดรูและไม่ทำนายอะไรใหม่ ให้แทนด้วยกฎข้อเดียว ถ้ามีคำบ่นหลายเรื่อง ให้ทดสอบก่อนว่ามีสาเหตุร่วมหรือไม่ กฎใหม่ยอมรับเมื่อกรณีเก่ายังอธิบายได้ด้วยกฎนั้น กฎที่ไม่มีการตรวจจากภายนอกถูกทิ้ง แต่บันทึกจะบอกว่าทิ้งอะไรและทำไม คำบรรยายใต้การ์ดหมายความว่า Loop ใช้กับตัวเองด้วย: การรันไม่ตั้งสถานะ “เสร็จแล้ว” แต่จบด้วยความเสี่ยงที่เหลือ</b-why>
+  <b-why align="left">การเปลี่ยนกฎหลังคำบ่นทุกครั้งมีความเสี่ยง: harness จะบวมจากการแก้แบบสุ่ม Loop จึงใช้สี่การตรวจ ถ้าการแก้เพียงอุดรูและไม่ทำนายอะไรใหม่ ให้แทนด้วยกฎข้อเดียว ถ้ามีคำบ่นหลายเรื่อง ให้ทดสอบก่อนว่ามีสาเหตุร่วมหรือไม่ กฎใหม่ยอมรับเมื่อกรณีเก่ายังอธิบายได้ด้วยกฎนั้น กฎที่ไม่มีการตรวจจากภายนอกถูกทิ้ง แต่บันทึกจะบอกว่าทิ้งอะไรและทำไม คำบรรยายใต้การ์ดหมายความว่า Loop ใช้กับตัวเองด้วย: การรันจบด้วยความเสี่ยงที่เหลือ</b-why>
   <b-finding>
     <ex>ชุดของ patch คำบ่น กฎใหม่ และการตรวจจากภายนอก เป็นสี่หลักการที่ตรวจได้ ซึ่ง Loop ใช้ตัดสินว่าจะแก้การกระทำหรือเปลี่ยนกฎ</ex>
     <gen>วงจรชั้นเดียวแก้ผลลัพธ์ภายใต้กฎเดิม วงจรสองชั้นเปลี่ยนตัวกฎ และทำตามหลักการที่ตรวจได้ harness จึงเรียนรู้โดยไม่ลอยไปตามการแก้แบบสุ่ม</gen>
@@ -101,10 +101,10 @@ toc: loop=วงจร HDD | canons=ผัง 3 × 3 | double=วงจรสอ
     <cell>AGENTS.md · CLAUDE.md | skill | spec</cell>
     <cell>การรีวิวด้วย AI | LLM ผู้ตัดสิน</cell>
   </b-hdd-matrix>
-  <b-cap>การแบ่งตามที่อธิบายใน <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler: Harness engineering</a></b-cap>
+  <b-cap>การแบ่งตามที่อธิบายใน <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>สี่ช่อง: guide กำหนดทิศทางก่อนเอเจนต์ทำงาน sensor จับความเบี่ยงเบนทีหลัง และแต่ละอย่างเป็นแบบคำนวณได้หรือแบบ AI ก็ได้</ex>
-    <gen>การตรวจแบบคำนวณได้ทำงานในไม่กี่วินาทีและไม่พลาด จึงใช้ทุกที่ที่เขียนกฎเป็นทางการได้ เก็บการตรวจแบบ AI ไว้กับเรื่องความหมาย: สไตล์ ความชัดเจน ความตรงกับเจตนา</gen>
+    <gen>การตรวจแบบคำนวณได้ทำงานในไม่กี่วินาทีและไม่พลาดภายในขอบเขตกฎของตัวเอง จึงใช้ทุกที่ที่เขียนกฎเป็นทางการได้ เก็บการตรวจแบบ AI ไว้กับเรื่องความหมาย: สไตล์ ความชัดเจน ความตรงกับเจตนา</gen>
     <do>สำหรับกฎแต่ละข้อในคำสั่งของเอเจนต์ ให้ถามว่าเทสต์หรือ linter ตรวจได้ไหม ถ้าได้ ย้ายไปไว้ที่นั่น</do>
   </b-finding>
 </b-chapter>
@@ -116,7 +116,7 @@ toc: loop=วงจร HDD | canons=ผัง 3 × 3 | double=วงจรสอ
     <layer icon="modules" t="สถาปัตยกรรม" value="55">กำลังพัฒนา</layer>
     <layer icon="user-round" t="พฤติกรรม" value="25" sw="1.8">ยากที่สุด</layer>
   </b-hdd-layers>
-  <b-cap>ความสุกงอมของแต่ละชั้นตามการประเมินของ <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>ความสุกงอมของแต่ละชั้นตามการประเมินของ <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>คุณภาพโค้ดตรวจง่ายที่สุดในวันนี้ และพฤติกรรมของผลิตภัณฑ์ตรวจยากที่สุด</ex>
     <gen>linter และตัวจัดรูปแบบครอบคลุมชั้นแรกได้เกือบทันที สถาปัตยกรรมตรวจด้วยกฎความสัมพันธ์และข้อกำหนดด้านประสิทธิภาพ พฤติกรรมยังต้องใช้เทสต์ตามสถานการณ์ที่ดีและสายตาของคน</gen>
@@ -146,7 +146,7 @@ toc: loop=วงจร HDD | canons=ผัง 3 × 3 | double=วงจรสอ
     <side icon="sun" t="Harness" n="36">สไตล์ · ชนิดข้อมูล · เทสต์ · ขอบเขต</side>
     <side icon="user-round" t="คน" n="6" sw="1.8">สถาปัตยกรรม · ผลิตภัณฑ์ · กฎใหม่</side>
   </b-hdd-split>
-  <b-cap>"harness ที่ดีเก็บคนไว้ในวงจรและชี้ความสนใจของคนไปยังจุดที่สำคัญที่สุด" — ถอดความจาก <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a></b-cap>
+  <b-cap>"harness ที่ดีเก็บคนไว้ในวงจรและชี้ความสนใจของคนไปยังจุดที่สำคัญที่สุด" — ถอดความจาก <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a></b-cap>
   <b-finding>
     <ex>harness รับการตรวจส่วนใหญ่ไป คนเก็บการตัดสินใจและงานปรับปรุง harness ไว้</ex>
     <gen>นักพัฒนาที่มีประสบการณ์พก harness โดยนัยไว้ในหัว คือความรู้เรื่องสถาปัตยกรรม นิสัยของทีม และความรู้สึกต่อความเสี่ยง HDD ย้ายความรู้นั้นมาเป็นกฎที่ชัดเจน เอเจนต์ทุกการรันจึงได้รับความรู้นั้น</gen>
@@ -199,7 +199,7 @@ toc: loop=วงจร HDD | canons=ผัง 3 × 3 | double=วงจรสอ
     <item href="/blog/work-prompts-examples/" k="ขั้น 1–2" t="พรอมต์สำหรับงานประจำ">เขียนคำขอเดียวและป้อนข้อมูลอย่างไร</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="ขั้น 3" t="เปรียบเทียบ harness">Claude Code, Codex, Cursor, Hermes และแชต</item>
   </b-links>
-  <b-cap>อ่านเพิ่ม: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Martin Fowler</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
+  <b-cap>อ่านเพิ่ม: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Birgitta Böckeler (martinfowler.com)</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
 </b-chapter>
 <b-footer>ศัพท์และการแบ่งชั้นอ้างอิงตามแหล่งที่ลิงก์ไว้ในคำบรรยายใต้แผนภาพ</b-footer>
 </b-post>

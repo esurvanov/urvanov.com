@@ -1,7 +1,7 @@
 ---
 title: Prompts for work tasks: five parts and six examples for ChatGPT and Claude
 date: 2026-09-28
-updated: 2026-11-07
+updated: 2026-11-13
 description: Prompts for work with an AI chat: the parts of a good work prompt, what a weak and a strong ask look like, six ready templates for common tasks and how to keep them in a project, based on the Anthropic, OpenAI and Google guides.
 tags: AI, prompts, ChatGPT, Claude
 category: prompts
@@ -18,13 +18,13 @@ A work prompt for ChatGPT and Claude is built from five parts: a role, who the a
     <node icon="ai-box" t="Model">guesses the context</node>
     <node icon="file-x" t="Generic answer">rewrite by hand</node>
   </b-lane>
-  <b-lane title="Six parts" color="accent">
+  <b-lane title="Five parts" color="accent">
     <node icon="prompt-stripes" t="Prompt">role, data, example, format</node>
     <node icon="ai-box" t="Model">sees everything it needs</node>
     <node icon="file-check" t="Draft">minor edits</node>
   </b-lane>
 </b-flow>
-<b-cap>The model is the same in both cases. The result depends on what the prompt says: six parts that recur in the Anthropic, OpenAI and Google guides.</b-cap>
+<b-cap>The model is the same in both cases. The result depends on what the prompt says: five parts that recur in the Anthropic, OpenAI and Google guides.</b-cap>
 <b-chapter id="model" title="Human-in-the-loop: the path of one request" icon="share">
   <b-art names="work-prompts-examples/prompt-map" wide/>
   <b-finding>
@@ -102,7 +102,7 @@ A work prompt for ChatGPT and Claude is built from five parts: a role, who the a
       <b-cap>OpenAI Academy has an agenda template with time estimates<b-proof href="https://academy.openai.com/public/resources/chatgpt-for-any-role" quote="OpenAI Academy, ChatGPT for any role: “Create a structured agenda for a meeting about [topic]. Break the agenda into sections with time estimates and goals for each section” — academy.openai.com"/>.</b-cap>
       <b-finding>
         <ex>The meeting goal, materials in tags and a numbered list of what to return.</ex>
-        <gen>The meeting goal filters the materials. Numbered steps help when order and completeness matter<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Show your prompt to a colleague with minimal context on the task and ask them to follow it. If they&#39;d be confused, Claude will be too” — platform.claude.com, Prompting best practices"/>.</gen>
+        <gen>The meeting goal filters the materials. Numbered steps help when order and completeness matter<b-proof href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" quote="Anthropic: “Provide instructions as sequential steps using numbered lists or bullet points when the order or completeness of steps matters” — platform.claude.com, Prompting best practices"/>.</gen>
         <do>Before any meeting of 30 minutes or more, run the materials through this prompt and open with its table.</do>
       </b-finding>
     </b-prompt-tab>
@@ -164,12 +164,12 @@ A work prompt for ChatGPT and Claude is built from five parts: a role, who the a
         <part icon="lines-alt">Format</part>
       </b-prompt-parts>
       <b-prompt>
-        Here are three of our posts that landed well:
+        Here are three of the company’s posts that landed well:
         &lt;example&gt;[post 1]&lt;/example&gt;
         &lt;example&gt;[post 2]&lt;/example&gt;
         &lt;example&gt;[post 3]&lt;/example&gt;
         Write a post about [topic] in the same style: length, tone and structure as in the examples.
-        For whom: [audience]. Why: [what we want the reader to do].
+        For whom: [audience]. Why: [what the reader should do].
       </b-prompt>
       <b-finding>
         <ex>Three examples in tags and one line on who it is for and why.</ex>
@@ -193,7 +193,7 @@ A work prompt for ChatGPT and Claude is built from five parts: a role, who the a
         Output: a table [columns] and a 5-point conclusion.
         A source link for every fact. If there is no data, say so.
       </b-prompt>
-      <b-cap>Both chats have a deep research mode: deep research in ChatGPT and Research in Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/>.</b-cap>
+      <b-cap>Both chats have a deep research mode: deep research in ChatGPT and Research in Claude<b-proof href="https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt" quote="ChatGPT: deep research gathers and synthesises information from the web into a report, takes 5 to 30 minutes and includes source links. Paraphrased from the OpenAI Help Center — help.openai.com/en/articles/10500283"/><b-proof href="https://support.claude.com/en/articles/11088861-use-research-on-claude" quote="Claude: Research is “conducting multiple searches that build on each other”, answers come “complete with easy-to-check citations”; “available for users with paid Claude plans (Pro, Max, Ultra, Team, or Enterprise)” — support.claude.com/en/articles/11088861"/>.</b-cap>
       <b-finding>
         <ex>A goal, a freshness limit and an output format with links.</ex>
         <gen>In research mode the model runs a series of searches and returns a report with links. Links let you check every fact, and “if there is no data” stops gaps being filled with guesses.</gen>
@@ -213,7 +213,7 @@ A work prompt for ChatGPT and Claude is built from five parts: a role, who the a
   <b-sublabel top="22">Prompting</b-sublabel>
   <b-links cols="2">
     <item href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" k="Anthropic · docs" t="Prompting best practices" ext>The main reference: clarity, examples, role, XML tags, long documents</item>
-    <item href="https://claude.com/blog/best-practices-for-prompt-engineering" k="Anthropic · blog" t="Best practices for prompt engineering" ext>General prompting craft beyond a specific model</item>
+    <item href="https://claude.com/resources/articles/best-practices-for-prompt-engineering" k="Anthropic · blog" t="Best practices for prompt engineering" ext>General prompting craft beyond a specific model</item>
     <item href="https://github.com/anthropics/prompt-eng-interactive-tutorial" k="Anthropic · tutorial" t="Interactive tutorial" ext>9 chapters with exercises, from prompt structure to XML tags and examples</item>
     <item href="https://www.kaggle.com/whitepaper-prompt-engineering" k="Google · whitepaper" t="Prompt Engineering" ext>Techniques and best practices: examples, output format, instructions over constraints</item>
     <item href="https://academy.openai.com/public/clubs/work-users-ynjqu/resources/prompting" k="OpenAI Academy" t="Prompting" ext>What, for whom and why, context, output format, iteration</item>
@@ -237,7 +237,7 @@ A work prompt for ChatGPT and Claude is built from five parts: a role, who the a
   <b-links cols="2">
     <item href="/en/blog/harness-work-approaches/" k="Approaches" t="If the answer misses">Answer loop and review that fixes the request</item>
     <item href="/en/blog/specs-rules-skills/" k="Context" t="Specs, bible, rules and skills">Where a prompt lives beyond one chat</item>
-    <item href="/en/blog/ai-in-code-harness-and-tools/" k="Engineering" t="AI in code">The harness and three groups of tools</item>
+    <item href="/en/blog/ai-in-code-harness-and-tools/" k="Engineering" t="AI in code">The harness and four groups of tools</item>
     <item href="/en/blog/chatgpt-enterprise-usage-report/" k="Report" t="ChatGPT Enterprise usage report">Who in the company uses what</item>
   </b-links>
 </b-chapter>

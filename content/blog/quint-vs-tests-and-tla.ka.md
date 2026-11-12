@@ -1,7 +1,7 @@
 ---
 title: რით განსხვავდება მოდელების ვერიფიკაცია ტესტირებისგან: ტესტი ერთ სცენარს ამოწმებს, მოდელი მოქმედებების ყველა თანმიმდევრობას (Quint, QUnit და TLA+)
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-13
 description: ტესტი ამოწმებს თქვენ მიერ მოფიქრებულ სცენარს, მოდელების ვერიფიკაცია კი მოქმედებების ყველა თანმიმდევრობას სცდის. რას იჭერენ QUnit, Jest, Vitest და რას Quint, TLA+, Alloy.
 tags: AI, სპეციფიკაციები, Quint, TLA+, Alloy, QUnit, Jest, Vitest, ტესტირება, ფორმალური ვერიფიკაცია
 category: specs
@@ -77,7 +77,7 @@ toc: names=ორი სახელი | tests=სატესტო ძრა�
   <b-art names="quint-vs-tests-and-tla/notation" wide/>
     <b-why align="left">TLA+ და Alloy ერთი სახის ფორმალური ენებია: მათშიც წესებს აღწერთ და მათ დარღვევებს ეძებთ. ისინი Quint-ზე ძველია და წიგნებში უკეთ არის აღწერილი. მაგრამ TLA+-ში ჩანაწერი მათემატიკურია და დამწყებს მის წასაკითხად დრო სჭირდება. Quint დაპროექტდა, როგორც იმავე ამოცანის უფრო ხელმისაწვდომი ჩანაწერი: ის ჩვეულებრივ კოდს ჰგავს და მას მათემატიკური განათლების გარეშე ინჟინრებიც კითხულობენ. სამივე ენის დეტალური შედარება არის სტატიაში [TLA+, Alloy და Quint](/blog/tla-alloy-quint-compare/).</b-why>
   <b-art names="quint-vs-tests-and-tla/engine" wide/>
-  <b-why align="left">რას ნიშნავს „ერთი და იგივე პროგრამები“. Quint-ს ორი პროგრამა ამოწმებს: TLC და Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/>. TLC არის TLA+-ის პირველი გამშვები პროგრამა: ის მდგომარეობებს სათითაოდ გადის<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, ამიტომ Quint-ისთვის მოდელის TLA+-ში გადათარგმნა სჭირდება<b-proof href="https://quint-lang.org/docs/model-checkers" quote="can be used for Quint by transpiling Quint specs into TLA+"/>. ასეთი ძებნა პროგნოზირებადია, მაგრამ სამყარო პატარა უნდა იყოს.</b-why>
+  <b-why align="left">რას ნიშნავს „ერთი და იგივე პროგრამები“. Quint-ს ორი პროგრამა ამოწმებს: TLC და Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/>. TLC არის TLA+-ის პირველი გამშვები პროგრამა: ის მდგომარეობებს სათითაოდ გადის<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, Quint-ისთვის კი მას <code>quint verify --backend=tlc</code>-ით უშვებენ<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC (no acronym defined!) is the first model checker for TLA+, and is provided as an alternative backend for quint verify by passing the --backend=tlc flag"/>. ასეთი ძებნა პროგნოზირებადია, მაგრამ სამყარო პატარა უნდა იყოს.</b-why>
   <b-why align="left">[Apalache](/materials/glossary/apalache/) Quint-შია ჩაშენებული<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache is a symbolic model checker that is integrated with Quint tooling"/>: ის მოდელს პირობებად თარგმნის და [Z3](/materials/glossary/z3/) ამომხსნელს ეკითხება. ჯაჭვების შემოწმება მხოლოდ მოცემულ სიგრძემდე შეუძლია<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache cannot check an arbitrary number of steps"/>, ამიტომ მისი „ok“ ნიშნავს „ამ სიგრძის ფარგლებში დარღვევები არ არის“. TLA+-ს იგივე ორი პროგრამა ამოწმებს, Alloy-ს კი საკუთარი ანალიზატორი აქვს. შემოწმების გარდა, Quint-ს აქვს სწრაფი შემთხვევითი სიმულაცია: ის დარღვევებს შერჩევით ეძებს და არ ადასტურებს, რომ ისინი არ არსებობს.</b-why>
     <b-vs-grid>
     <h></h>
@@ -111,7 +111,7 @@ toc: names=ორი სახელი | tests=სატესტო ძრა�
     <rule icon="workflow" t="მოქმედებების თანმიმდევრობა">იპოვეთ ნაბიჯების კომბინაცია, სადაც პროდუქტის წესი ირღვევა, კოდი ჯერ რომ არ არსებობდეს, მაშინაც: Quint</rule>
     <rule icon="scales" t="მძიმე მტკიცებები">მკაცრი გარანტიები დიდი განაწილებული სისტემისთვის: TLA+, მეტი გამოცდილებითა და მაგალითებით</rule>
   </b-rules>
-  <b-why align="left">არჩევანს კითხვა განსაზღვრავს და არა საყვარელი პროგრამა. თუ კითხვაა „სწორად მუშაობს თუ არა ეს ფუნქცია“, აირჩიეთ ტესტი. თუ კითხვაა „შეიძლება თუ არა წესი დაირღვეს მოვლენების რომელიმე თანმიმდევრობისას“, აირჩიეთ მოდელი. თუ განაწილებული პროტოკოლის დონის გარანტიები გჭირდებათ, აირჩიეთ TLA+ და ისწავლაზე დრო გამოყავით.</b-why>
+  <b-why align="left">არჩევანს კითხვა განსაზღვრავს. თუ კითხვაა „სწორად მუშაობს თუ არა ეს ფუნქცია“, აირჩიეთ ტესტი. თუ კითხვაა „შეიძლება თუ არა წესი დაირღვეს მოვლენების რომელიმე თანმიმდევრობისას“, აირჩიეთ მოდელი. თუ განაწილებული პროტოკოლის დონის გარანტიები გჭირდებათ, აირჩიეთ TLA+ და ისწავლაზე დრო გამოყავით.</b-why>
   <b-finding>
     <ex>სამი ვარიანტი სამ სხვადასხვა კითხვას პასუხობს და ერთი მეორეს არ ცვლის.</ex>
     <gen>აგენტებისა და რამდენიმე მონაწილის მქონე პროდუქტის ლოგიკისთვის ყველაზე ხშირად ტესტებიც გჭირდებათ და Quint-იც.</gen>

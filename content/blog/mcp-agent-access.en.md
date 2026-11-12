@@ -1,7 +1,7 @@
 ---
 title: MCP for an AI agent: what problem it solves and how to delegate setup to the agent
 date: 2026-10-04
-updated: 2026-11-07
+updated: 2026-11-13
 unrelated: mcp-1c
 description: MCP plugs an agent into GitLab, Jira, Confluence and meeting recordings. What problem it solves, how to set it up in minutes and delegate that to the agent itself, how it saves time and tokens and why the agent invents less.
 tags: AI, agents, MCP, Jira, context, hallucinations, tokens, harness
@@ -26,8 +26,8 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
   <do k="What to do">Start with the task tracker: the easiest and quickest start. How to connect Jira: <a href="#connect">see below</a>. Also count how many times a day you copy text into the conversation: that is your list of connection candidates.</do>
 </b-finding>
 </b-chapter>
-<b-chapter id="ours" icon="target-ring" title="Our context and others">
-<b-why align="left">Our context is everything the agent sees at once (the conversation with the agent, project files). Other contexts are everything else (GitLab, Jira, meeting recordings, a knowledge base). The bridge between them is MCP: the agent has an MCP client and the system has an MCP server.</b-why>
+<b-chapter id="ours" icon="target-ring" title="The agent’s context and other systems">
+<b-why align="left">The agent’s context is everything the agent sees at once (the conversation with the agent, project files). Other contexts are everything else (GitLab, Jira, meeting recordings, a knowledge base). The bridge between them is MCP: the agent has an MCP client and the system has an MCP server.</b-why>
 <b-lane-art names="mcp-agent-access/contexts"/>
 <b-why align="left">On the left of the picture is the agent’s context: the conversation with it and the project files it sees at once. On the right are other systems: GitLab, Jira, tldv with meeting recordings, Confluence with a knowledge base. Until MCP is connected, the agent does not see them. The bridge between them has two parts: an MCP client on the agent’s side and an MCP server on the system’s side.</b-why>
 <b-section-h3 top="18">What context is</b-section-h3>
@@ -37,11 +37,11 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
 </b-lane>
 <b-why align="left">Context can be pictured as a desk holding everything the model sees right now: conversation messages, open files, call results. What is not on the desk does not exist for the model until it is put there. So the main question when working with an agent is what is on its desk.</b-why>
 <b-table-plain>
-<table><thead><tr><th>Where the fact lives</th><th>The agent sees it</th><th>What happens</th></tr></thead><tbody><tr><td><b>Our context</b>: the conversation, project files</td><td><b-tag-inline kind="ok">at once</b-tag-inline></td><td>an answer from data</td></tr><tr><td><b>Other context</b>: GitLab, Jira, meeting recordings</td><td><b-tag-inline kind="ok">through MCP</b-tag-inline></td><td>the agent fetches what it needs</td></tr><tr><td><b>Nowhere</b>: in heads, in a closed system</td><td><b-tag-inline kind="no">no</b-tag-inline></td><td>a guess instead of a fact</td></tr></tbody></table>
+<table><thead><tr><th>Where the fact lives</th><th>The agent sees it</th><th>What happens</th></tr></thead><tbody><tr><td><b>The agent’s context</b>: the conversation, project files</td><td><b-tag-inline kind="ok">at once</b-tag-inline></td><td>an answer from data</td></tr><tr><td><b>Other context</b>: GitLab, Jira, meeting recordings</td><td><b-tag-inline kind="ok">through MCP</b-tag-inline></td><td>the agent fetches what it needs</td></tr><tr><td><b>Nowhere</b>: in heads, in a closed system</td><td><b-tag-inline kind="no">no</b-tag-inline></td><td>a guess instead of a fact</td></tr></tbody></table>
 </b-table-plain>
 <b-why align="left">The table shows what happens to a fact depending on where it lies. A fact in the agent’s context (the conversation, project files): the agent answers from data. A fact in another system (GitLab, Jira, meeting recordings): the agent fetches it itself, but only through MCP. A fact written nowhere (in people’s heads, in a closed system): the agent will not see it and will replace it with a guess. Hence the practical rule: write decisions down where the agent can take them from.</b-why>
 <b-section-h3 top="18">How the agent fetches other context: ReAct</b-section-h3>
-<b-why align="left">The agent works in a <a href="/materials/glossary/react/">ReAct</a> loop: it reasons, acts, reads the result and reasons again. MCP is the “act” step: the call result lands in our context.</b-why>
+<b-why align="left">The agent works in a <a href="/materials/glossary/react/">ReAct</a> loop: it reasons, acts, reads the result and reasons again. MCP is the “act” step: the call result lands in the agent’s context.</b-why>
 <b-lane title="ReAct" color="accent" top="12">
 <b-scene names="term:react"/>
 </b-lane>
@@ -82,7 +82,7 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
 <b-why align="left">These systems were chosen because they hold four kinds of facts: code, tasks, rules and decisions from meetings. Each row says what is lost without the connection. Confluence comes with a caveat: connect it only if the pages are polished (an owner and a check date), and let the agent check the actual picture against the code in GitLab. It is even more reliable to keep requirements and specs in Git: there an edit has an author, a date and a reason.</b-why>
 <b-finding>
   <ex>You ask about a bug and the conversation has no steps. The agent searches project files, Jira is closed to it, so it writes the steps itself: confident, smooth, made up. You follow a path that does not exist.</ex>
-  <gen>An agent rarely answers “I don’t know”. If the answer is not in our context and the others are closed, it fills the gap from general patterns and presents it as fact. Every connected source removes room for invention.</gen>
+  <gen>An agent rarely answers “I don’t know”. If the answer is not in the agent’s context and the others are closed, it fills the gap from general patterns and presents it as fact. Every connected source removes room for invention.</gen>
   <do k="What to do">Every time the agent hallucinates, find the context that holds the answer and give the agent access to it. Start with the last question it answered with an invention.</do>
 </b-finding>
 </b-chapter>
@@ -200,7 +200,7 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
 <b-why>One approach works across tasks: the agent reads the sources and a person checks the result.</b-why>
 <b-scene names="mcp-agent-access/three-cases"/>
 <b-table>
-<table><thead><tr><th>Case</th><th>Sources</th><th>What the agent does</th><th>What a human checks</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, stand, browser</td><td>reproduces a bug, narrows the path, writes a report</td><td>the steps by hand on the stand</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Reports and analytics</a></td><td>database, sheets, documents</td><td>calculates with queries, assembles a summary</td><td>one number another way</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Incidents</a></td><td>Sentry, Grafana</td><td>matches errors, metrics and release time</td><td>the hypothesis against charts and events</td></tr></tbody></table>
+<table><thead><tr><th>Case</th><th>Sources</th><th>What the agent does</th><th>What a human checks</th></tr></thead><tbody><tr><td><a href="/blog/bug-report-to-reproduction-agent/">QA</a></td><td>Jira, stand, <a href="/blog/claude-in-chrome/">browser</a></td><td>reproduces a bug, narrows the path, writes a report</td><td>the steps by hand on the stand</td></tr><tr><td><a href="/blog/analytics-reports-agent/">Reports and analytics</a></td><td>database, sheets, documents</td><td>calculates with queries, assembles a summary</td><td>one number another way</td></tr><tr><td><a href="/blog/incident-investigation-agent/">Incidents</a></td><td>Sentry, Grafana</td><td>matches errors, metrics and release time</td><td>the hypothesis against charts and events</td></tr></tbody></table>
 </b-table>
 <b-why align="left">How to read the table. Every row follows one order: the agent reads the sources, does the main work and brings a result, and a person checks it with one short action. In QA the steps of the report are repeated by hand on the stand. In analytics one number is recalculated another way. In incidents the hypothesis is compared with graphs and events. Details are in the articles behind the links.</b-why>
 </b-chapter>

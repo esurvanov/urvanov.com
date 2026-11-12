@@ -1,7 +1,7 @@
 ---
 title: MCP scopes in Claude Code: local, project and user — where a server lives and who sees it
 date: 2026-10-05
-updated: 2026-11-07
+updated: 2026-11-13
 description: The three MCP server scopes in Claude Code: local, project and user. Where the setup lives, who sees it, what wins when names collide, how to share servers with a team and keep secrets out of commits.
 tags: AI, agents, MCP, Claude Code, team, harness
 category: harness
@@ -58,7 +58,7 @@ Server list: `claude mcp list`; details: `claude mcp get <name>`; remove: `claud
   <b-why>If a server with the same name exists in several places, the entry from the topmost layer is used whole.</b-why>
   <iso-art name="mcp-scopes/priority-layers"></iso-art>
   <b-finding>
-    <ex>Local overrides project and user, project overrides user, and plugins, claude.ai connectors and managed MCP sit below.</ex>
+    <ex>Servers your organization provides (managed MCP) rank above all. Then local overrides project and user, and project overrides user. Plugins and claude.ai connectors sit below and count as duplicates when they point at the same endpoint.</ex>
     <gen>A personal entry overrides a shared one with the same name as a whole: fields of the two entries are not merged.</gen>
     <do k="What to do">Give personal servers different names so they do not override shared ones.</do>
   </b-finding>
@@ -123,9 +123,9 @@ If a variable is unset and has no default, the config loads as is, and claude mc
 
 <b-chapter id="next" title="Next">
   <b-links>
-    <item href="/blog/mcp-agent-access/" k="Basics" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">What MCP is and how to connect it</item>
-    <item href="/blog/claude-in-chrome/" k="Browser" t="Claude in Chrome: как агент работает в вашем браузере — тест, отладка и формы под вашим входом">The agent in your browser</item>
-    <item href="/blog/bug-report-to-reproduction-agent/" k="Example" t="Работа QA после поддержки с ИИ-агентом: исследование, описание и документирование через MCP и скиллы">The agent reproduces a Jira bug</item>
+    <item href="/blog/mcp-agent-access/" k="Basics" t="MCP for an AI agent: what problem it solves and how to delegate setup to the agent">What MCP is and how to connect it</item>
+    <item href="/blog/claude-in-chrome/" k="Browser" t="How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login">The agent in your browser</item>
+    <item href="/blog/bug-report-to-reproduction-agent/" k="Example" t="QA work after support with an AI agent: investigation, description and documentation via MCP and skills">The agent reproduces a Jira bug</item>
   </b-links>
 </b-chapter>
 <b-footer>Facts about scopes and precedence follow the Claude Code docs: <a href="https://code.claude.com/docs/en/mcp#mcp-installation-scopes" target="_blank" rel="noopener">MCP installation scopes</a>.</b-footer>

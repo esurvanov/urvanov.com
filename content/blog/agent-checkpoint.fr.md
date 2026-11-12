@@ -1,7 +1,7 @@
 ---
 title: Où vérifier le travail d’un agent IA : à la frontière de l’agrégat, car personne ne peut vérifier tous les programmes (théorème de Rice)
 date: 2026-11-06
-updated: 2026-11-08
+updated: 2026-11-13
 description: Pourquoi aucune vérification ne peut contrôler n’importe quel code d’agent par rapport à n’importe quelle règle, quelles trois voies rendent une vérification finie, comment la frontière d’un agrégat issue de l’event storming devient un point de contrôle, comment la vérifiabilité fixe la taille d’un contexte délimité, et pourquoi le premier cadre doit être peu coûteux à déplacer.
 tags: IA, agents, DDD, agrégat, contexte délimité, event storming, théorème de Rice, Quint, vérification de modèles
 category: specs
@@ -105,7 +105,7 @@ Placez la vérification du travail d’un agent IA à la frontière de l’agré
       a == b or a.room != b.room or a.end <= b.start or b.end <= a.start))
   </b-codebox>
   <b-why align="left">Le programme essaie ensuite chaque suite d’actions pour un petit monde : 3 salles, jusqu’à 5 réservations. Si la règle se brise quelque part, il affiche la chaîne d’étapes. Par exemple : deux clients réservent la salle 2 de 10:00 à 11:00 en même temps, les deux vérifications « est-elle libre » passent avant l’une ou l’autre écriture, et la base se retrouve avec deux réservations pour le même créneau. Cette chaîne est la trouvaille : l’erreur de conception apparaît avant que l’agent n’écrive le moindre code. Un petit monde suffit, car de telles erreurs apparaissent avec seulement deux ou trois réservations.</b-why>
-  <b-why align="left"><b-icon name="list-check"/> **Restreindre le langage : la règle dans la base et un seul rédacteur.** La règle passe là où la base elle-même la tient, et non dans le code de l’agent. Dans PostgreSQL, c’est une contrainte sur la table des réservations : la base refuse d’enregistrer une réservation dont l’horaire en chevauche une autre de la même salle.</b-why>
+  <b-why align="left"><b-icon name="list-check"/> **Restreindre le langage : la règle dans la base et un seul rédacteur.** La règle passe là où la base elle-même la tient. Dans PostgreSQL, c’est une contrainte sur la table des réservations : la base refuse d’enregistrer une réservation dont l’horaire en chevauche une autre de la même salle.</b-why>
   <b-codebox title="Une contrainte PostgreSQL">
     CREATE EXTENSION IF NOT EXISTS btree_gist;
     ALTER TABLE bookings ADD CONSTRAINT no_overlap
@@ -116,12 +116,12 @@ Placez la vérification du travail d’un agent IA à la frontière de l’agré
     grep -rl "INSERT INTO bookings" src | grep -v src/booking/repository.ts
   </b-codebox>
   <b-why align="left">La question « le code de l’agent peut-il créer des réservations qui se chevauchent » est devenue deux questions sur du texte : la contrainte est-elle dans le schéma de la base, et n’y a-t-il aucune écriture qui la contourne. Les deux reçoivent une réponse exacte.</b-why>
-  <b-why align="left"><b-icon name="help-circle"/> **Admettre « je ne sais pas » : trois verdicts sur une modification de l’agent.** La vérification d’une modification de l’agent est construite à partir des deux précédentes et renvoie l’une de trois réponses. « Prouvé » : le modèle Quint est passé, la contrainte de base est en place, la recherche n’a trouvé aucune écriture de contournement. « Brisé » : la recherche a trouvé que l’agent a ajouté une écriture dans la table des réservations depuis le module de rapports. « Pas sûr » : l’agent construit la requête de base à la volée à partir de chaînes, et une recherche textuelle ne peut pas dire dans quelle table elle écrit. La modification reçoit alors l’étiquette « demande une personne » et un développeur la relit. La personne ne passe du temps que sur le troisième cas.</b-why>
+  <b-why align="left"><b-icon name="help-circle"/> **Admettre « je ne sais pas » : trois verdicts sur une modification de l’agent.** La vérification d’une modification de l’agent est construite à partir des deux précédentes et renvoie l’une de trois réponses. « Tient » : le modèle Quint est passé, la contrainte de base est en place, la recherche n’a trouvé aucune écriture de contournement. « Brisée » : la recherche a trouvé que l’agent a ajouté une écriture dans la table des réservations depuis le module de rapports. « Impossible de dire » : l’agent construit la requête de base à la volée à partir de chaînes, et une recherche textuelle ne peut pas dire dans quelle table elle écrit. La modification reçoit alors l’étiquette « demande une personne » et un développeur la relit. La personne ne passe du temps que sur le troisième cas.</b-why>
   <b-why align="left">Chacune des trois réponses n’est exacte que dans ses limites. La recherche prouve que la règle tient dans un modèle à 3 salles et 5 réservations, non dans la base de production avec des milliers de réservations. La recherche dans le code prouve qu’aucune écriture ne contourne la règle, non que la contrainte de base elle-même est correctement écrite. Une réponse « tient » est exacte, mais certaines modifications partent quand même vers une personne. Les façons s’emploient donc ensemble : le modèle vérifie la conception avant le code, la contrainte et la recherche vérifient le code lui-même, et une personne regarde ce qui reste avec une étiquette.</b-why>
   <b-why align="left">Il existe aussi une quatrième option, la plus courante en pratique : toujours répondre, mais se tromper parfois. Les tests par exemples et la relecture de code par un autre modèle fonctionnent ainsi. C’est un choix acceptable lui aussi, mais délibéré : bon là où une erreur coûte peu, pas pour l’argent et les accès. Une bifurcation semblable est connue dans le théorème CAP sur les systèmes distribués : pendant une partition, un serveur soit attend, soit répond d’après une copie périmée. Elles ont un point commun — tant qu’un événement n’a pas eu lieu, on ne peut pas dire s’il aura lieu plus tard ou jamais, aussi longtemps qu’on attende — mais les raisons diffèrent ; détails dans [« Le théorème de Rice en mots simples »](/blog/rice-theorem-explained/#cap).</b-why>
   <b-finding>
     <ex>La règle « les réservations ne se chevauchent jamais » : un modèle Quint a essayé tous les ordres de commandes pour 3 salles, une contrainte de base interdit le chevauchement, et un linter, programme qui vérifie le texte du code selon des règles fixées, s’assure qu’un seul module écrit dans la table des réservations.</ex>
-    <gen>« Pas sûr » est un résultat honnête de la vérification. Il montre où finit le cadre et où la responsabilité revient à une personne, et fixe ainsi quel risque est accepté.</gen>
+    <gen>« Impossible de dire » est un résultat honnête de la vérification. Il montre où finit le cadre et où la responsabilité revient à une personne, et fixe ainsi quel risque est accepté.</gen>
     <do>Pour chaque règle, marquez laquelle des trois façons la tient. Une règle sans marque n’est vérifiée que par des tests d’exemples.</do>
   </b-finding>
 </b-chapter>
@@ -175,7 +175,7 @@ Placez la vérification du travail d’un agent IA à la frontière de l’agré
   </b-codebox>
   <b-why align="left">**Comment scinder si la recherche ne s’est pas terminée.** Pour chaque règle, notez quelles données elle touche. Les règles sans données communes vont dans des parties différentes : « les réservations ne se chevauchent jamais » ne touche que les réservations, « une facture n’est jamais payée deux fois » ne touche que les factures. Entre les parties, laissez des événements comme « BookingCreated ». Vérifiez ensuite chaque partie avec les mêmes cinq étapes.</b-why>
   <b-art names="agent-checkpoint/size" wide/>
-  <b-cap>Si le modèle d’un contexte répond « pas sûr », le contexte est scindé, et il ne reste que des événements entre les parties.</b-cap>
+  <b-cap>Si le modèle d’un contexte répond « impossible de dire », le contexte est scindé, et il ne reste que des événements entre les parties.</b-cap>
   <b-why align="left">Comment utiliser ce signe : écrire les règles du contexte sous forme de modèle Quint, fixer de petits nombres et lancer la recherche. Le résultat tombe dans l’une des lignes du tableau, et la dernière colonne dit quoi faire ensuite.</b-why>
   <b-table>
 

@@ -1,12 +1,12 @@
 ---
 title: Jira и ИИ-агент: плюсы, минусы и где провести границу
 date: 2026-10-20
-updated: 2026-11-07
+updated: 2026-11-13
 description: Как подключают ИИ-агента к Jira через MCP, что это даёт и где ломается: токены, задачи в одну строку, безопасность, Россия. Какие трекеры взять вместо Jira.
 tags: AI, агенты, Jira, MCP, Claude Code, баг-трекер, харнесс
 category: harness
 layout: wide
-mentions: Jira, Atlassian Rovo MCP, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Яндекс Трекер, Битрикс24, GitLab
+mentions: Jira, Atlassian MCP server, mcp-atlassian, Model Context Protocol, Claude Code, Cursor, GitHub Copilot, YouTrack, Яндекс Трекер, Битрикс24, GitLab
 toc: ways=Как подключают | plus=Плюсы | minus=Минусы | russia=Jira в России | trackers=Другие трекеры | border=Граница | first=С чего начать | faq=Вопросы | next=Дальше по теме
 ---
 
@@ -15,18 +15,18 @@ toc: ways=Как подключают | plus=Плюсы | minus=Минусы | r
 <b-post series="harness">
 
 <b-chapter id="ways" icon="plug" title="Как подключают агента к Jira">
-  <b-why align="left">Агента подключают к Jira несколькими способами. Официальный сервер Atlassian (Rovo MCP) умеет искать, читать и создавать задачи, но работает только с облачной Jira. Открытый сервер mcp-atlassian подходит и для облака, и для Jira на своих серверах. Ещё одна возможность: назначить задачу агенту прямо в Jira (Claude, Cursor, Codex, Copilot). Таблица сравнивает способы по возможностям и ограничениям.</b-why>
+  <b-why align="left">Агента подключают к Jira несколькими способами. Официальный сервер Atlassian (Atlassian MCP server, раньше Rovo MCP) умеет искать, читать и создавать задачи, но работает только с облачной Jira. Открытый сервер mcp-atlassian подходит и для облака, и для Jira на своих серверах. Ещё одна возможность: назначить задачу агенту прямо в Jira (Claude, Cursor, Codex, Copilot). Таблица сравнивает способы по возможностям и ограничениям.</b-why>
   <b-table>
 | Способ | Что умеет | Ограничения |
 |---|---|---|
-| Atlassian Rovo MCP (официальный) | поиск, чтение, создание задач и страниц; с августа 2026 — вложения | только облако; лимиты в час; тратит кредиты Rovo |
+| Atlassian MCP server, раньше Rovo MCP (официальный) | поиск, чтение, создание задач и страниц; с августа 2026 — вложения | только облако; лимиты в час; часть вызовов тратит кредиты Rovo |
 | mcp-atlassian (открытый) | облако и свои серверы, около 100 инструментов | ставите сами, токен лежит в настройках |
 | Агенты в Jira | задачу назначают Claude, Cursor, Codex, Copilot | только облако, платные тарифы |
 | Copilot / Cursor из Jira | назначили задачу — агент открыл черновик правки | облако, отдельные приложения |
   </b-table>
   <b-finding>
     <ex>Официальные способы работают с облачной Jira, своя Jira на серверах подключается только открытым MCP.</ex>
-    <gen>Права агента равны правам пользователя, чей вход или токен он использует<b-proof href="https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: Getting started with the Atlassian Rovo MCP Server"/>.</gen>
+    <gen>Права агента равны правам пользователя, чей вход или токен он использует<b-proof href="https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/" quote="Atlassian: «…which ensures all actions respect users' existing access controls and permissions»"/>.</gen>
     <do>Проверьте, какая у вас Jira: облако или свои серверы — от этого зависит способ.</do>
   </b-finding>
 </b-chapter>
@@ -83,7 +83,7 @@ toc: ways=Как подключают | plus=Плюсы | minus=Минусы | r
   <b-metric-line value="~70%">ИТ-руководителей работают на версиях без поддержки (опрос К2Тех, 73 компании)</b-metric-line>
   <b-finding>
     <ex>Официальный облачный MCP и агенты в Jira российским командам фактически недоступны.</ex>
-    <gen>Для своей Jira на серверах остаётся открытый mcp-atlassian и решение, куда переезжать до 2029 года<b-proof href="https://habr.com/ru/articles/1011252" quote="К2Тех на Хабре: уход Atlassian и опрос ИТ-руководителей"/>.</gen>
+    <gen>Для своей Jira на серверах остаётся открытый mcp-atlassian и решение, куда переезжать до 2029 года<b-proof href="https://habr.com/ru/companies/k2tech/articles/1011252/" quote="К2Тех на Хабре: «Ключевой вывод: около 70% респондентов до сих пор продолжают использовать неподдерживаемые версии продуктов вендора»; «В опросе приняли участие 73 представителя компаний»"/>.</gen>
     <do>Если переезд впереди, выбирайте трекер сразу с подключением для агентов.</do>
   </b-finding>
 </b-chapter>
@@ -150,5 +150,5 @@ toc: ways=Как подключают | plus=Плюсы | minus=Минусы | r
     <item href="/blog/mcp-agent-access/" k="Основа" t="MCP для ИИ-агента">Что такое MCP и как подключить</item>
   </b-links>
 </b-chapter>
-<b-footer>Факты — документация Atlassian, GitHub, Cursor; разборы automatica.com.au, Cato CTRL, Simon Willison; опрос К2Тех; Вордстат, октябрь 2026. Возможности Rovo MCP и тарифы меняются быстро — сверяйте перед решением.</b-footer>
+<b-footer>Факты — документация Atlassian, GitHub, Cursor; разборы automatica.com.au, Cato CTRL, Simon Willison; опрос К2Тех; Вордстат, октябрь 2026. Возможности MCP-сервера Atlassian и тарифы меняются быстро — сверяйте перед решением.</b-footer>
 </b-post>

@@ -1,7 +1,7 @@
 ---
 title: Analytical reports with an AI agent: data from a database, sheets and documents through MCP
 date: 2026-10-05
-updated: 2026-11-07
+updated: 2026-11-13
 description: How to build an analytical report with an AI agent: connect a read-only database through MCP, delegate queries and the summary, check one number by hand and set permissions per source.
 tags: AI, agents, MCP, analytics, reports, database, harness
 category: harness
@@ -27,9 +27,9 @@ A report by hand is an export from a database, a table, a chart and text, and ev
   <b-why>Systems, data and documents outside the conversation. Permissions are set separately for each source.</b-why>
   <iso-art name="analytics-reports-agent/source-rights"></iso-art>
   <b-finding>
-    <ex>Jira, documents and the database are open for reading, the sheet for writing with confirmation, and only the stand can be broken.</ex>
+    <ex>Jira, documents and the database are open for reading, the sheet for writing with confirmation, and only the [staging environment](/materials/glossary/test-stand/) can be broken.</ex>
     <gen>The agent sees exactly what is connected and does exactly what is allowed.</gen>
-    <do k="What to do">For each source write one word: read, write or stand only.</do>
+    <do k="What to do">For each source write one word: read, write or staging only.</do>
   </b-finding>
 </b-chapter>
 
@@ -82,9 +82,9 @@ Create the user as read-only so the agent’s queries cannot change anything. Ex
 
 <b-chapter id="next" title="Next">
   <b-links>
-    <item href="/blog/mcp-agent-access/" k="Basics" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">What MCP is and how to connect it</item>
+    <item href="/blog/mcp-agent-access/" k="Basics" t="MCP for an AI agent: what problem it solves and how to delegate setup to the agent">What MCP is and how to connect it</item>
     <item href="/blog/incident-investigation-agent/" k="Another case" t="Incident investigation with an AI agent">Sentry and Grafana through MCP</item>
-    <item href="/blog/work-prompts-examples/" k="Practice" t="Промпты для рабочих задач: пять частей и шесть примеров для ChatGPT и Claude">The “table analysis” example</item>
+    <item href="/blog/work-prompts-examples/" k="Practice" t="Prompts for work tasks: five parts and six examples for ChatGPT and Claude">The “table analysis” example</item>
   </b-links>
 </b-chapter>
 <b-footer>The example is made up. The database connection command and the read-only user advice follow the Claude Code docs: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>.</b-footer>

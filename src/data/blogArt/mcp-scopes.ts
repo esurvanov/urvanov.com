@@ -107,14 +107,14 @@ const scenes: Record<string, Scene> = {
       c.step(570, 192, 3, l('ключи в переменные', 'keys into variables'))
     },
   },
-  // Слои приоритета MCP стопкой: сверху local (главный), ниже project, user, плагины, коннекторы claude.ai, managed
+  // Слои приоритета MCP стопкой: сверху managed (сервер организации), ниже local, project, user, плагины, коннекторы claude.ai
   'priority-layers': {
-    ru: 'Слои приоритета сверху вниз: local, project, user, плагины, коннекторы claude.ai, managed MCP', en: 'Priority layers top to bottom: local, project, user, plugins, claude.ai connectors, managed MCP',
+    ru: 'Слои приоритета сверху вниз: managed MCP, local, project, user, плагины, коннекторы claude.ai', en: 'Priority layers top to bottom: managed MCP, local, project, user, plugins, claude.ai connectors',
     viewBox: [0, 0, 700, 260],
     draw: (c, l) => {
       const i = c.iso(230, 156, 26)
       i.tile(-1.8, -1.8, 3.6, 3.6)
-      const names = ['Managed MCP (v2.1.259+)', l('коннекторы claude.ai', 'claude.ai connectors'), l('плагины', 'plugins'), 'User', 'Project', 'Local']
+      const names = [l('коннекторы claude.ai', 'claude.ai connectors'), l('плагины', 'plugins'), 'User', 'Project', 'Local', 'Managed MCP (v2.1.259+)']
       ;[0.35, 0.45, 0.55, 0.7, 0.85, 1].forEach((op, k) => i.box(-1.3, -1.3, 0.05 + 0.62 * k, 2.6, 2.6, 0.5, A, op))
       names.forEach((t, k) => {
         const y = 165.1 - 16.12 * k, top = k === names.length - 1

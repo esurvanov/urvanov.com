@@ -1,7 +1,7 @@
 ---
 title: Cómo prueba Claude Code un sitio en tu navegador: Claude in Chrome, depuración y formularios con tu sesión iniciada
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Claude in Chrome conecta Claude Code con el navegador: el agente abre pestañas, lee la consola, ejecuta escenarios y rellena formularios con tu sesión iniciada. Cómo conectarlo, qué hace y qué permisos dar.
 tags: IA, agentes, Claude Code, Claude in Chrome, navegador, QA, harness
 category: harness
@@ -31,7 +31,7 @@ Claude in Chrome conecta el agente con tu navegador: abre pestañas, lee las pá
   <b-finding>
     <ex>El agente en la terminal maneja las pestañas de Chrome mediante la extensión y usa tus sesiones iniciadas.</ex>
     <gen>Las acciones se ven en la ventana en tiempo real. Ante una página de inicio de sesión o un CAPTCHA el agente se detiene y te espera. En Claude Code la extensión aparece como el servidor MCP claude-in-chrome: /mcp muestra sus herramientas.</gen>
-    <do k="Qué hacer">Comprueba los requisitos: extensión en la versión 1.0.36 o posterior<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, un plan Pro, Max, Team o Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Team, or Enterprise)"/>, e inicio de sesión con /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
+    <do k="Qué hacer">Comprueba los requisitos: extensión en la versión 1.0.36 o posterior<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, un plan Pro, Max, Ultra, Team o Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Ultra, Team, or Enterprise)"/>, e inicio de sesión con /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
   </b-finding>
 </b-chapter>
 
@@ -46,7 +46,7 @@ Claude in Chrome conecta el agente con tu navegador: abre pestañas, lee las pá
       /chrome   # status, permissions, reconnect
     </b-codebox>
 
-<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Extensión en Chrome Web Store</a>. Para no usar la opción, abre /chrome y activa «Enabled by default». Entonces las herramientas del navegador están siempre en el contexto y el consumo de tokens crece<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>.
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Extensión en Chrome Web Store</a>. Para no usar la opción, abre /chrome y activa «Enabled by default». Entonces las herramientas del navegador están siempre en el contexto y el consumo de tokens crece<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>. En VS Code, el navegador se conecta escribiendo @browser en el cuadro de mensaje, y «Enabled by default» es común a la terminal y a VS Code<b-proof href="https://code.claude.com/docs/en/chrome" quote="The two share one setting, so turning it on in either place turns it on for both the CLI and VS Code."/>.
 
     <b-spoiler summary="Si no se conecta">
       <b-node-grid min="170">
@@ -170,9 +170,9 @@ Claude in Chrome conecta el agente con tu navegador: abre pestañas, lee las pá
 
 <b-chapter id="next" title="Siguiente">
   <b-links>
-    <item href="/blog/bug-report-to-reproduction-agent/" k="Ejemplo" t="Работа QA после поддержки с ИИ-агентом: исследование, описание и документирование через MCP и скиллы">El agente reproduce un error de Jira</item>
-    <item href="/blog/mcp-agent-access/" k="Conexión" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">Cómo obtiene el agente acceso a los sistemas</item>
-    <item href="/blog/agent-hands-work-back-to-you/" k="Traspaso" t="Агент любит запрягать вас: как заставить его делать самому">Cuando el agente pide ayuda a una persona</item>
+    <item href="/blog/bug-report-to-reproduction-agent/" k="Ejemplo" t="Cómo hacer QA con un agente de IA tras el soporte: investigar, describir y documentar mediante MCP y skills">El agente reproduce un error de Jira</item>
+    <item href="/blog/mcp-agent-access/" k="Conexión" t="Qué es MCP para un agente de IA: qué problema resuelve y cómo delegar la configuración en el agente">Cómo obtiene el agente acceso a los sistemas</item>
+    <item href="/blog/agent-hands-work-back-to-you/" k="Traspaso" t="¿Te quitará el trabajo un agente de IA?: depende de quién carga trabajo sobre quién, tú sobre los agentes o los agentes sobre ti">Cuando el agente pide ayuda a una persona</item>
   </b-links>
 </b-chapter>
 <b-footer>El ticket PAY-142 es inventado para el ejemplo. Los datos sobre la conexión y los permisos siguen la documentación de Claude Code: <a href="https://code.claude.com/docs/en/chrome" target="_blank" rel="noopener">Use Claude Code with Chrome</a>.</b-footer>

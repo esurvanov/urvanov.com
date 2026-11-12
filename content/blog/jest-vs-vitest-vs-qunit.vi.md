@@ -1,7 +1,7 @@
 ---
 title: Vitest vs Jest: chọn cái nào cho dự án JavaScript, và khi nào QUnit là đủ
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-13
 description: Vitest vs Jest: cách thiết lập, nơi test chạy, cách viết phép kiểm tra. Khi nào chọn Vitest trên Vite, giữ Jest hay dùng QUnit trong trình duyệt. Có bảng và FAQ.
 tags: AI, kiểm thử, JavaScript, Jest, Vitest, QUnit, Vite, Jest vs Vitest, kiểm thử tự động
 category: specs
@@ -42,7 +42,7 @@ Bài này sinh ra từ một bài khác: về [mô hình hình thức trong Quin
 <b-chapter id="qunit" icon="workflow" title="QUnit: khi cần test ngay trong trình duyệt">
   <b-art names="jest-vs-vitest-vs-qunit/qunit-env" wide/>
     <b-why align="left">[QUnit](/materials/glossary/qunit/) tự mô tả là framework test mạnh và dễ dùng. Nó không cần cấu hình cho Node.js, và thiết lập tối thiểu là đủ cho trình duyệt<b-proof href="https://qunitjs.com/" quote="Zero configuration and setup for any Node.js project"/>. Nó chạy ở bất cứ nơi nào có JavaScript: trong trình duyệt, trong Node.js, trong engine SpiderMonkey và trong luồng nền của một trang<b-proof href="https://qunitjs.com/" quote="QUnit can run anywhere; web browsers, Node, SpiderMonkey, even in a Web Worker!"/>. Còn Jest và Vitest thì thường chạy trong Node.js.</b-why>
-  <b-why align="left">Phong cách của nó là riêng. Các test liên quan được gom bằng `QUnit.module`, một test được mô tả bằng `QUnit.test`, và đáp án được so sánh qua `assert`. Với test chạm vào trang có fixture đưa trang về trạng thái ban đầu sau mỗi test, và một phép kiểm tra riêng cho thứ tự các lời gọi đối với sự kiện và phản hồi trễ. Có thể mở rộng QUnit theo nhu cầu: assertion, trình chạy và báo cáo riêng. Nó cũng hỗ trợ trình duyệt cũ: phiên bản 2 chạy với Internet Explorer 9 trở lên<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/>.</b-why>
+  <b-why align="left">Phong cách của nó là riêng. Các test liên quan được gom bằng `QUnit.module`, một test được mô tả bằng `QUnit.test`, và đáp án được so sánh qua `assert`. Với test chạm vào trang có fixture đưa trang về trạng thái ban đầu sau mỗi test, và một phép kiểm tra riêng cho thứ tự các lời gọi đối với sự kiện và phản hồi trễ. Có thể mở rộng QUnit theo nhu cầu: assertion, trình chạy và báo cáo riêng. Phiên bản hiện tại là 3, chạy trên trình duyệt hiện đại và Node.js 18 trở lên; Internet Explorer 9–11 chỉ được phiên bản 2 hỗ trợ<b-proof href="https://qunitjs.com/intro/" quote="QUnit supports the following runtime environments"/>.</b-why>
   <b-finding>
     <ex>QUnit phù hợp ở nơi test cần chạy ngay trong trình duyệt và không cần bước build.</ex>
     <gen>Với các dự án hiện đại có build, cần mock, snapshot và coverage có sẵn, thường chọn Jest hoặc Vitest hơn.</gen>
@@ -69,7 +69,7 @@ Bài này sinh ra từ một bài khác: về [mô hình hình thức trong Quin
   <b-art names="jest-vs-vitest-vs-qunit/choose" wide/>
   <b-why align="left">Lựa chọn do dự án quyết định. Dự án xây bằng Vite: chọn Vitest, cấu hình đã có sẵn. Jest đã có trong dự án và mọi thứ chạy tốt: giữ nó. Cần kiểm tra ngay trong trình duyệt mà không build: chọn QUnit. Chuyển giữa Jest và Vitest thường rẻ, nên chọn sai cũng không phải không thể đảo ngược. Nếu cần kiểm tra quy tắc và thứ tự sự kiện thay vì các hàm, hãy xem các bài [Quint vs QUnit và TLA+](/blog/quint-vs-tests-and-tla/) và [về mô hình Quint](/blog/quint-models-find-races/).</b-why>
   <b-finding>
-    <ex>Ba framework giải cùng một việc, và môi trường quyết định: bộ đóng gói, trình duyệt hay bộ test đã có.</ex>
+    <ex>Cả ba framework làm cùng một việc, và môi trường quyết định: bộ đóng gói, trình duyệt hay bộ test đã có.</ex>
     <gen>Dù chọn gì, test kiểm tra các kịch bản đã cho, còn các quy tắc vỡ ở một thứ tự sự kiện đặc biệt thì do mô hình bắt.</gen>
     <do>Chọn framework theo môi trường dự án và thêm một phép kiểm tra chính các test: [kiểm thử đột biến (mutation testing)](/materials/glossary/mutation-testing/) cho thấy test có phát hiện được lỗi hay không.</do>
   </b-finding>

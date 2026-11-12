@@ -77,12 +77,12 @@ const scenes: Record<string, Scene> = {
       c.text(530, 222, l('вход, секреты, подтверждение, оплата', 'login, secrets, confirmation, payment'), W, { size: 12 })
     },
   },
-  // Объём рисёрча: в наших сервисах одна проба, в чужой системе склада много проб вслепую
+  // Объём рисёрча: в своих сервисах одна проба, в чужой системе склада много проб вслепую
   'research-volume': {
-    ru: 'Объём рисёрча: в наших сервисах код виден, проба одна; в чужой системе склада чёрный ящик, нужно много проб вслепую', en: 'Research volume: our services show their code, one probe is enough; the warehouse is a black box that needs many blind probes',
+    ru: 'Объём рисёрча: в своих сервисах код виден, проба одна; в чужой системе склада чёрный ящик, нужно много проб вслепую', en: 'Research volume: your own services show their code, one probe is enough; the warehouse is a black box that needs many blind probes',
     viewBox: [0, 0, 700, 176],
     draw: (c, l) => {
-      c.text(20, 48, l('A · наши сервисы: код и тесты у нас', 'A · our services: we have code and tests'), M, { size: 12.5, w: 800, anchor: 'start' })
+      c.text(20, 48, l('A · свои сервисы: код и тесты под рукой', 'A · own services: code and tests at hand'), M, { size: 12.5, w: 800, anchor: 'start' })
       c.card(330, 28, 38, 38, A, { rx: 8, fillOp: 0.12, lines: [{ t: '✓', dy: 25, size: 16, w: 800 }] })
       c.text(384, 52, l('мало', 'little'), M, { size: 12, anchor: 'start' })
       c.text(20, 108, l('B · склад: чёрный ящик, щупаем вслепую', 'B · warehouse: a black box, probed blind'), M, { size: 12.5, w: 800, anchor: 'start' })
@@ -93,30 +93,30 @@ const scenes: Record<string, Scene> = {
       c.text(610, 112, l('много', 'a lot'), M, { size: 12, anchor: 'start' })
     },
   },
-  // Нужны ли чужие правки: два наших сервиса (всё у нас) против системы склада другой команды (закрыто)
+  // Нужны ли чужие правки: два своих сервиса (всё в своей зоне) против системы склада другой команды (закрыто)
   'whose-changes': {
-    ru: 'Нужны ли чужие правки. Скидка в сервисе заказов: оба сервиса наши, чужих правок не нужно. Остатки со склада: нужна система другой команды, правки у её владельца', en: 'Are foreign changes needed. One system: our service and our database, no foreign changes. Two systems: our service and another team’s system, its owner must change things',
+    ru: 'Нужны ли чужие правки. Скидка в сервисе заказов: оба сервиса свои, чужих правок не нужно. Остатки со склада: нужна система другой команды, правки у её владельца', en: 'Are foreign changes needed. One system: your own service and database, no foreign changes. Two systems: your service and another team’s system, its owner must change things',
     viewBox: [0, 0, 700, 270],
     draw: (c, l) => {
       const order = l('сервис заказов', 'order service'), t = { size: 13, w: 800 }
-      c.text(20, 22, l('A · скидка: два наших сервиса', 'A · discount: two of our services'), M, { ...t, anchor: 'start' })
+      c.text(20, 22, l('A · скидка: два своих сервиса', 'A · discount: two own services'), M, { ...t, anchor: 'start' })
       c.card(20, 32, 170, 50, M, { lines: [{ t: order, dy: 30, ...t }] })
       c.line([[190, 57], [510, 57]], M, { w: 3, cap: true, dash: '1 7' })
       c.seal(350, 57, A)
       c.card(510, 32, 170, 50, M, { lines: [{ t: l('сервис скидок', 'discount service'), dy: 30, ...t }] })
-      c.text(20, 108, l('всё у нас: агент правит и проверяет сам', 'all ours: the agent changes and checks it'), A, { ...t, anchor: 'start' })
+      c.text(20, 108, l('всё своё: агент правит и проверяет сам', 'all your own: the agent changes and checks it'), A, { ...t, anchor: 'start' })
       c.text(20, 146, l('B · остатки со склада другой команды', 'B · stock levels from another team’s warehouse'), M, { ...t, anchor: 'start' })
       c.card(20, 156, 170, 56, M, { lines: [{ t: order, dy: 33, ...t }] })
       c.line([[190, 184], [510, 184]], W, { w: 3, cap: true, dash: '1 7' })
       c.seal(350, 184, W, 'lock')
       c.card(510, 156, 170, 56, M, { stroke: W, dash: '5 4', lines: [{ t: l('система склада', 'warehouse system'), dy: 33, ...t }] })
-      c.text(680, 234, l('команда склада, не под нашим контролем', 'warehouse team, not under our control'), M, { size: 12, w: 700, anchor: 'end' })
+      c.text(680, 234, l('команда склада, вне вашего контроля', 'warehouse team, outside your control'), M, { size: 12, w: 700, anchor: 'end' })
       c.text(20, 262, l('нужны правки у команды склада: доступ к их API, открыть порт', 'the warehouse team must change things: API access, open a port'), W, { ...t, anchor: 'start' })
     },
   },
-  // Уровни OSI, вариант A: скидка — оба сервиса наши, запрос проходит один прикладной уровень
+  // Уровни OSI, вариант A: скидка — оба сервиса свои, запрос проходит один прикладной уровень
   'layers-discount': {
-    ru: 'Скидка: оба сервиса наши, запрос проходит один уровень', en: 'Discount: both services are ours, the request passes one layer',
+    ru: 'Скидка: оба сервиса свои, запрос проходит один уровень', en: 'Discount: both services are your own, the request passes one layer',
     viewBox: [0, 0, 700, 132],
     draw: (c, l) => {
       const h = { size: 12.5, w: 800 }
@@ -127,7 +127,7 @@ const scenes: Record<string, Scene> = {
       c.line([[278, 62], [652, 62]], M, { w: 1, op: 0.4, dash: '3 4' })
       c.line([[350, 62], [470, 62]], M, { w: 3, cap: true, dash: '1 7' })
       c.seal(410, 62, M, 'check', { r: 13, ck: [5, 4, 6], w: 2.4 })
-      c.text(20, 116, l('один уровень, оба наши: правок нет', 'one layer, both ours: no changes'), M, { size: 12, w: 800, anchor: 'start' })
+      c.text(20, 116, l('один уровень, оба свои: правок нет', 'one layer, both your own: no changes'), M, { size: 12, w: 800, anchor: 'start' })
     },
   },
   // Уровни OSI, вариант B: остатки со склада — путь вниз через транспортный и сетевой уровни чужой сети, шаги 1–6
@@ -140,7 +140,7 @@ const scenes: Record<string, Scene> = {
       c.text(470, 22, l('сеть склада', 'warehouse network'), 'currentColor', h)
       c.text(590, 22, l('система склада', 'warehouse system'), 'currentColor', h)
       for (const x of [298, 418, 538]) c.card(x, 36, 104, 324, M, { fillOp: 0.08, strokeOp: 0.5, sw: 1.5, dash: '4 4' })
-      c.text(470, 334, l('не под нашим', 'not under our'), M, { size: 10.5 })
+      c.text(470, 334, l('вне вашего', 'outside your'), M, { size: 10.5 })
       c.text(470, 348, l('контролем', 'control'), M, { size: 10.5 })
       const rows: [string, string, [number, string, number, string] | string][] = [
         [l('Прикладной', 'Application'), '', [1, l('запрос остатков', 'stock request'), 6, l('ответ получен', 'stock received')]],

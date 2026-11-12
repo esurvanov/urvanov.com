@@ -142,4 +142,10 @@ Comparaison des harness
 
 où l'agent travaille et ce qu'il voit
 
+Spécifications
+
+Installation et commandes d’OpenSpec
+
+spécifications et changements dans des fichiers à côté du code
+
 L'exemple de réservation est inventé. Les termes et les approches suivent les sources liées sous les schémas.

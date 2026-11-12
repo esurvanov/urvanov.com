@@ -1,7 +1,7 @@
 ---
 title: A reconcile loop for specs: like Kubernetes, with the spec as desired state and code as actual
 date: 2026-09-28
-updated: 2026-11-07
+updated: 2026-11-13
 description: Spec-driven development with a reconcile loop: who changes the desired state and who brings the code to it, why green tests do not yet mean “correct”, and which six environment capabilities the agent needs to close the loop.
 tags: AI, spec-driven development, specs, Kubernetes, harness
 category: specs
@@ -22,7 +22,7 @@ A reconcile loop for specs works like a controller in Kubernetes: a person chang
 </b-hchain>
 <b-chapter id="k8s" title="The same loop as in Kubernetes" icon="hub" sw="1.6">
   <b-why align="left">Kubernetes is a system that runs services and keeps them working on many servers. Its main idea is simple: a person describes how things should be (“keep three copies of the service”), and a supervisor program, the controller, keeps comparing the description with what really exists and fixes the differences. That is the reconcile loop. For specs the same scheme works: a person sets the desired state, and an agent can bring the code to it.</b-why>
-  <b-why>The desired state here is the <a href="/en/blog/specs-by-aggregates/">aggregate dictionary</a>: one entry per concept, requirements marked MUST and SHOULD.</b-why>
+  <b-why>The desired state here is the <a href="/blog/specs-by-aggregates/">aggregate dictionary</a>: one entry per concept, requirements marked MUST and SHOULD.</b-why>
   <b-k8s-loop label="Kubernetes: chart, controller, nodes, probes. Specs: dictionary, agent, code, tests. A human changes only the desired state, and the actor keeps reconciling the measurement with it." cols="desired | actor | actual | measure" human="a human changes the desired state" back="measure → actor, round and round">
     <b-k8s-row icon="hub" sw="1.6" t="Kubernetes">
       <cell on>chart · manifest</cell>
@@ -53,7 +53,7 @@ A reconcile loop for specs works like a controller in Kubernetes: a person chang
 </b-chapter>
 <b-chapter id="sensors" title="A check sees only what was put into it" icon="gauge">
   <b-why align="left">A check shows only what was put into it. In Kubernetes a probe is a short automatic request to a service: “are you responding?”. If the service answers “200” (the success code), the probe is green even though the service may not be doing the main thing: say, the order queue is stuck. In specs it is the same with tests. If a requirement has no test, all the tests stay green and nobody notices the requirement is not met.</b-why>
-  <b-why>The example is the meeting room booking from <a href="/en/blog/specs-by-aggregates/">Specs by aggregate</a>: three MUST requirements and one SHOULD.</b-why>
+  <b-why>The example is the meeting room booking from <a href="/blog/specs-by-aggregates/">Specs by aggregate</a>: three MUST requirements and one SHOULD.</b-why>
   <b-probe-check>
     <b-probe-panel icon="hub" sw="1.6" t="Kubernetes" verdict="the probe is green, the service does not work">
       <probe kind="ok" note="probe">the service answered “200: working”</probe>
@@ -90,7 +90,7 @@ A reconcile loop for specs works like a controller in Kubernetes: a person chang
     <cap icon="plug" t="Services via MCP">integrations are checked blind</cap>
     <cap icon="shield-check" t="Sandbox and permissions">too risky to let the agent act</cap>
   </b-env-caps>
-  <b-cta href="/en/blog/ai-in-code-harness-and-tools/" k="Separate article" t="Choosing the environment: a harness comparison" icon="terminal-screen" sw="1.8">Claude Code, Codex, Cursor, Hermes and chat on one map</b-cta>
+  <b-cta href="/blog/ai-in-code-harness-and-tools/" k="Separate article" t="Choosing the environment: a harness comparison" icon="terminal-screen" sw="1.8">Claude Code, Codex, Cursor, Hermes and chat on one map</b-cta>
   <b-why align="left">The six capabilities in the picture are what an agent needs to close the loop, and what happens without each. Without code execution the agent guesses how the program works. Without tests a MUST cannot be checked. Without logs it is not visible what exactly broke. Without test data the check runs on an empty database and shows nothing. Without services through MCP, integrations are checked blind. Without a sandbox (an isolated place where it is safe to try and break things) it is scary to let the agent act. If some capability is missing, the loop is open at that point.</b-why>
   <b-finding>
     <ex>The Kubernetes controller works because the cluster gives it an API, nodes and probes. For the same loop the agent needs to run code, tests, logs, data, services and a sandbox.</ex>
@@ -109,9 +109,10 @@ A reconcile loop for specs works like a controller in Kubernetes: a person chang
 
 <b-chapter id="next" title="Read next">
   <b-links cols="3">
-    <item href="/en/blog/specs-by-aggregates/" k="Desired state" t="Specs by aggregate">dictionary, RFC requirements and contexts</item>
-    <item href="/en/blog/harness-driven-development/" k="Mistake loop" t="Harness-Driven Development">how agent mistakes become rules</item>
-    <item href="/en/blog/ai-in-code-harness-and-tools/" k="Environment" t="Harness comparison">where the agent works and what it sees</item>
+    <item href="/blog/specs-by-aggregates/" k="Desired state" t="Specs by aggregate">dictionary, RFC requirements and contexts</item>
+    <item href="/blog/harness-driven-development/" k="Mistake loop" t="Harness-Driven Development">how agent mistakes become rules</item>
+    <item href="/blog/ai-in-code-harness-and-tools/" k="Environment" t="Harness comparison">where the agent works and what it sees</item>
+    <item href="/blog/openspec/" k="Specs" t="What is OpenSpec, setup and commands">specs and changes in files next to the code</item>
   </b-links>
 </b-chapter>
 <b-footer compact>The booking example is made up. Terms and approaches follow the sources linked under the diagrams.</b-footer>

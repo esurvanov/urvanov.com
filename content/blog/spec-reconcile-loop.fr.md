@@ -1,7 +1,7 @@
 ---
 title: Une boucle de réconciliation pour les spécifications : comme Kubernetes, avec la spec comme état désiré et le code comme état réel
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-13
 description: Le développement piloté par les spécifications avec une boucle de réconciliation : qui change l'état désiré et qui y ramène le code, pourquoi des tests au vert ne signifient pas encore « correct », et de quelles six capacités de l'environnement l'agent a besoin pour fermer la boucle.
 tags: IA, développement piloté par les spécifications, spécifications, Kubernetes, harness
 category: specs
@@ -112,6 +112,7 @@ Une boucle de réconciliation pour les spécifications fonctionne comme un contr
     <item href="/blog/specs-by-aggregates/" k="État désiré" t="Spécifications par agrégats">dictionnaire, exigences RFC et contextes</item>
     <item href="/blog/harness-driven-development/" k="Boucle d'erreurs" t="Harness-Driven Development">comment les erreurs de l'agent deviennent des règles</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Environnement" t="Comparaison des harness">où l'agent travaille et ce qu'il voit</item>
+    <item href="/blog/openspec/" k="Spécifications" t="Installation et commandes d’OpenSpec">spécifications et changements dans des fichiers à côté du code</item>
   </b-links>
 </b-chapter>
 <b-footer compact>L'exemple de réservation est inventé. Les termes et les approches suivent les sources liées sous les schémas.</b-footer>

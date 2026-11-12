@@ -1,7 +1,7 @@
 ---
 title: Cómo investigar un incidente con un agente de IA: errores de Sentry y métricas de Grafana en una sola imagen mediante MCP
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: Cómo investigar un incidente con un agente de IA: conecta Sentry y Grafana mediante MCP, haz que cruce errores, métricas y hora del release, limita los permisos y verifica la hipótesis.
 tags: IA, agentes, MCP, Sentry, Grafana, incidentes, harness
 category: harness
@@ -60,7 +60,7 @@ Este es el servidor oficial <a href="https://github.com/grafana/mcp-grafana" tar
 <b-chapter id="timeline" icon="lines" title="Qué cruza el agente">
   <iso-art name="incident-investigation-agent/event-timeline"></iso-art>
   <b-finding>
-    <ex>El release, el pico de errores y la alerta van en una misma línea temporal, y se ve qué pasó primero.</ex>
+    <ex>El release a [producción](/materials/glossary/prod/), el pico de errores y la alerta van en una misma línea temporal, y se ve qué pasó primero.</ex>
     <gen>Una coincidencia en el tiempo da una hipótesis y no prueba la causa: la comprobación se queda con una persona.</gen>
     <do k="Qué hacer">Pide un enlace a un gráfico o evento con cada conclusión.</do>
   </b-finding>
