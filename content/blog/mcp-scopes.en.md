@@ -124,7 +124,7 @@ If a variable is unset and has no default, the config loads as is, and claude mc
 <b-chapter id="next" title="Next">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="Basics" t="MCP for an AI agent: what problem it solves and how to delegate setup to the agent">What MCP is and how to connect it</item>
-    <item href="/blog/claude-in-chrome/" k="Browser" t="How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login">The agent in your browser</item>
+    <item href="/blog/claude-in-chrome/" k="Browser" t="Claude Code in Chrome: how the agent tests your site in the browser — debugging and forms under your login">The agent in your browser</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Example" t="QA work after support with an AI agent: investigation, description and documentation via MCP and skills">The agent reproduces a Jira bug</item>
   </b-links>
 </b-chapter>

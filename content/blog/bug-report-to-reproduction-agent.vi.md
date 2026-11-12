@@ -319,7 +319,7 @@ Lỗi của khách hàng đi qua bộ phận hỗ trợ rồi đến QA. Ở đ�
 
 <b-chapter id="next" icon="arrow-right" title="Đọc tiếp">
   <b-links>
-    <item href="/blog/claude-in-chrome/" k="Trình duyệt" t="Claude Code kiểm thử trang web trong trình duyệt của bạn như thế nào: Claude in Chrome — gỡ lỗi và điền form dưới phiên đăng nhập của bạn">tác nhân đi theo đường đi trên môi trường kiểm thử</item>
+    <item href="/blog/claude-in-chrome/" k="Trình duyệt" t="Claude Code trong Chrome: tác nhân kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn">tác nhân đi theo đường đi trên môi trường kiểm thử</item>
     <item href="/blog/specs-rules-skills/" k="Skill" t="Đặc tả, quy tắc và skill">tác nhân cần biết gì về dự án</item>
     <item href="/blog/harness-driven-development/" k="Vòng lặp lỗi" t="Harness-Driven Development">sai sót của tác nhân trở thành quy tắc thế nào</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Môi trường" t="So sánh các harness">tác nhân làm việc ở đâu và thấy gì</item>

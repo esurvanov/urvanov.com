@@ -124,7 +124,7 @@ toc: what=Три области | pick=Какую выбрать | order=Что 
 <b-chapter id="next" title="Дальше по теме">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="Основа" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">Что такое MCP и как подключить</item>
-    <item href="/blog/claude-in-chrome/" k="Браузер" t="Как Claude Code тестирует сайт в браузере: Claude in Chrome — отладка и формы под вашим входом">Агент в вашем браузере</item>
+    <item href="/blog/claude-in-chrome/" k="Браузер" t="Claude Code в Chrome: как агент тестирует сайт в браузере — отладка и формы под вашим входом">Агент в вашем браузере</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Пример" t="Работа QA после поддержки с ИИ-агентом: исследование, описание и документирование через MCP и скиллы">Агент воспроизводит баг из Jira</item>
   </b-links>
 </b-chapter>

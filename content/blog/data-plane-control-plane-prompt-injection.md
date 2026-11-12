@@ -83,7 +83,7 @@ toc: what=Две плоскости | attack=Prompt injection | defense=Защи
 <b-chapter id="next" title="Дальше по теме">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="Подключение" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">Как агент получает доступ к системам</item>
-    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Как Claude Code тестирует сайт в браузере: Claude in Chrome — отладка и формы под вашим входом">Права сайтов и риски браузера</item>
+    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Claude Code в Chrome: как агент тестирует сайт в браузере — отладка и формы под вашим входом">Права сайтов и риски браузера</item>
     <item href="/blog/incident-investigation-agent/" k="Пример" t="Расследование инцидента с ИИ-агентом: Sentry и Grafana через MCP">Агент читает логи и тикеты только на чтение</item>
   </b-links>
 </b-chapter>

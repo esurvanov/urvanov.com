@@ -1,5 +1,5 @@
 ---
-title: Comment Claude Code teste un site dans votre navigateur : Claude in Chrome — débogage et formulaires sous votre identifiant
+title: Claude Code dans Chrome : comment l'agent teste un site dans le navigateur — débogage et formulaires sous votre identifiant
 date: 2026-10-05
 updated: 2026-11-13
 description: Claude in Chrome relie Claude Code au navigateur : l'agent ouvre des onglets, lit la console, exécute des scénarios et remplit des formulaires sous votre identifiant. Comment le connecter, ce qu'il fait et quelles permissions donner.
@@ -10,7 +10,7 @@ mentions: Claude in Chrome, Claude Code, Chrome extension, browser automation, M
 toc: what=Ce que c'est | connect=Connexion | gives=Ce qu'il fait | qa=Exemple | risks=Permissions et risques | tradeoff=Prix de la souplesse | custom=Script maison | first=Par où commencer | faq=Questions | next=Suite
 ---
 
-Claude in Chrome relie l'agent à votre navigateur : il ouvre des onglets, lit les pages et la console, clique et saisit du texte sous votre identifiant. Ci-dessous : comment il fonctionne, comment le connecter en quelques minutes, ce que l'agent sait faire et quelles permissions donner. L'agent de l'article sur la [QA avec un agent](/blog/bug-report-to-reproduction-agent/) utilise ce canal, et la connexion fonctionne comme [MCP](/blog/mcp-agent-access/).
+Claude Code teste un site dans le navigateur grâce à l'extension Claude in Chrome : lancé avec `claude --chrome`, l'agent ouvre votre site dans un onglet, déroule un scénario, remplit des formulaires et lit la console sous votre identifiant, puis corrige le code en erreur. Un forfait Claude payant est nécessaire. L'extension elle-même est décrite dans le [glossaire](/materials/glossary/claude-in-chrome/). Ci-dessous : connexion, ce que l'agent sait faire et quelles permissions donner.
 
 <b-post series="harness">
 

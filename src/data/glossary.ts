@@ -676,7 +676,7 @@ export const TERM_SETS: TermSet[] = [
             en: 'What the Claude for Chrome extension does, how to install it from the Chrome Web Store, which paid Claude plans include it, and where it runs: the side panel in desktop Chrome or Claude Code in Chromium browsers.',
           },
         },
-        more: { post: 'claude-in-chrome', label: { ru: 'Как Claude Code тестирует сайт в браузере: Claude in Chrome — отладка и формы под вашим входом', en: 'How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login' } },
+        more: { post: 'claude-in-chrome', label: { ru: 'Claude Code в Chrome: как агент тестирует сайт в браузере — отладка и формы под вашим входом', en: 'Claude Code in Chrome: how the agent tests your site in the browser — debugging and forms under your login' } },
         compare: {
           title: { ru: 'Два режима: боковая панель и Claude Code', en: 'Two modes: the side panel and Claude Code' },
           head: { ru: ['Боковая панель', 'Из Claude Code'], en: ['Side panel', 'From Claude Code'] },

@@ -124,7 +124,7 @@ Si une variable n'est pas définie et n'a pas de valeur par défaut, la configur
 <b-chapter id="next" title="Suite">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="Bases" t="MCP pour un agent IA : quel problème il résout et comment confier la connexion à l'agent">Ce qu'est MCP et comment le connecter</item>
-    <item href="/blog/claude-in-chrome/" k="Navigateur" t="Claude in Chrome : comment l'agent travaille dans votre navigateur — tests, débogage et formulaires sous votre session">L'agent dans votre navigateur</item>
+    <item href="/blog/claude-in-chrome/" k="Navigateur" t="Claude Code dans Chrome : comment l'agent teste un site dans le navigateur — débogage et formulaires sous votre identifiant">L'agent dans votre navigateur</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Exemple" t="Travail de QA après le support avec un agent IA : enquête, description et documentation via MCP et skills">L'agent reproduit un bug Jira</item>
   </b-links>
 </b-chapter>

@@ -124,7 +124,7 @@ MCP სერვერის scope ორ კითხვას პასუხ�
 <b-chapter id="next" title="შემდეგ">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="საფუძვლები" t="MCP AI აგენტისთვის: რა პრობლემას წყვეტს და როგორ დავავალოთ აგენტს მიერთება">რა არის MCP და როგორ მივაერთოთ</item>
-    <item href="/blog/claude-in-chrome/" k="ბრაუზერი" t="Claude in Chrome: როგორ მუშაობს აგენტი თქვენს ბრაუზერში — ტესტი, გამართვა და ფორმები თქვენი ანგარიშით">აგენტი თქვენს ბრაუზერში</item>
+    <item href="/blog/claude-in-chrome/" k="ბრაუზერი" t="Claude Code Chrome-ში: როგორ ამოწმებს აგენტი საიტს ბრაუზერში — გამართვა და ფორმები თქვენი ავტორიზაციით">აგენტი თქვენს ბრაუზერში</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="მაგალითი" t="QA-ს მუშაობა მხარდაჭერის შემდეგ AI აგენტთან ერთად: კვლევა, აღწერა და დოკუმენტირება MCP-ითა და skill-ებით">აგენტი Jira-ს ბაგს იმეორებს</item>
   </b-links>
 </b-chapter>

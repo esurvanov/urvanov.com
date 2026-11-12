@@ -319,7 +319,7 @@ toc: route=Шаг QA | stages=Три части | mcp=MCP | skill=Скилл | p
 
 <b-chapter id="next" icon="arrow-right" title="Дальше по теме">
   <b-links>
-    <item href="/blog/claude-in-chrome/" k="Браузер" t="Как Claude Code тестирует сайт в браузере: Claude in Chrome — отладка и формы под вашим входом">агент проходит путь на стенде</item>
+    <item href="/blog/claude-in-chrome/" k="Браузер" t="Claude Code в Chrome: как агент тестирует сайт в браузере — отладка и формы под вашим входом">агент проходит путь на стенде</item>
     <item href="/blog/specs-rules-skills/" k="Скиллы" t="Спеки, правила и скиллы">что агент должен знать о проекте</item>
     <item href="/blog/harness-driven-development/" k="Петля ошибок" t="Harness-Driven Development">как ошибки агента становятся правилами</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Среда" t="Сравнение харнессов">где работает агент и что он видит</item>

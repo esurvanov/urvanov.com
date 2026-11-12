@@ -319,7 +319,7 @@ toc: route=QA-ის ეტაპი | stages=სამი ნაწილი | 
 
 <b-chapter id="next" icon="arrow-right" title="წაიკითხეთ შემდეგ">
   <b-links>
-    <item href="/blog/claude-in-chrome/" k="ბრაუზერი" t="როგორ ამოწმებს Claude Code საიტს თქვენს ბრაუზერში: Claude in Chrome — გამართვა და ფორმები თქვენი ავტორიზაციით">აგენტი სტენდზე გზას გადის</item>
+    <item href="/blog/claude-in-chrome/" k="ბრაუზერი" t="Claude Code Chrome-ში: როგორ ამოწმებს აგენტი საიტს ბრაუზერში — გამართვა და ფორმები თქვენი ავტორიზაციით">აგენტი სტენდზე გზას გადის</item>
     <item href="/blog/specs-rules-skills/" k="Skills" t="სპეციფიკაციები, წესები და skill-ები">რა უნდა იცოდეს აგენტმა პროექტის შესახებ</item>
     <item href="/blog/harness-driven-development/" k="შეცდომების ციკლი" t="Harness-Driven Development">როგორ იქცევა აგენტის შეცდომები წესებად</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="გარემო" t="Harness-ების შედარება">სად მუშაობს აგენტი და რას ხედავს</item>

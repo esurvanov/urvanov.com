@@ -83,7 +83,7 @@ The agent takes commands from you and reads data from outside: pages, tickets, s
 <b-chapter id="next" title="Next">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="Connecting" t="MCP for an AI agent: what problem it solves and how to delegate setup to the agent">How the agent gets access to systems</item>
-    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login">Site permissions and browser risks</item>
+    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Claude Code in Chrome: how the agent tests your site in the browser — debugging and forms under your login">Site permissions and browser risks</item>
     <item href="/blog/incident-investigation-agent/" k="Example" t="Incident investigation with an AI agent: Sentry errors and Grafana metrics in one picture through MCP">The agent reads logs and tickets read-only</item>
   </b-links>
 </b-chapter>

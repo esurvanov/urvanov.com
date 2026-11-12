@@ -1,5 +1,5 @@
 ---
-title: Claude Code kiểm thử trang web trong trình duyệt của bạn như thế nào: Claude in Chrome — gỡ lỗi và điền form dưới phiên đăng nhập của bạn
+title: Claude Code trong Chrome: tác nhân kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn
 date: 2026-10-05
 updated: 2026-11-13
 description: Claude in Chrome nối Claude Code với trình duyệt: tác nhân mở tab, đọc console, chạy kịch bản và điền form dưới phiên đăng nhập của bạn. Cách kết nối, nó làm được gì và nên cấp quyền nào.
@@ -10,7 +10,7 @@ mentions: Claude in Chrome, Claude Code, Chrome extension, browser automation, M
 toc: what=Là gì | connect=Kết nối | gives=Làm được gì | qa=Ví dụ | risks=Quyền và rủi ro | tradeoff=Cái giá của sự linh hoạt | custom=Script riêng | first=Bắt đầu từ đâu | faq=Câu hỏi | next=Tiếp theo
 ---
 
-Claude in Chrome nối tác nhân AI (AI agent) với trình duyệt của bạn: nó mở tab, đọc trang và console, bấm và gõ dưới phiên đăng nhập của bạn. Bên dưới: cách hoạt động, cách kết nối trong vài phút, tác nhân làm được gì và nên cấp quyền nào. Tác nhân trong bài [QA cùng tác nhân](/blog/bug-report-to-reproduction-agent/) dùng chính kênh này, và việc kết nối hoạt động giống [MCP](/blog/mcp-agent-access/).
+Claude Code kiểm thử trang web trong trình duyệt qua tiện ích Claude in Chrome: khởi chạy bằng `claude --chrome`, tác nhân mở trang web của bạn trong một tab, chạy kịch bản, điền form và đọc console dưới phiên đăng nhập của bạn, rồi sửa đoạn mã gây lỗi. Cần gói Claude trả phí. Bản thân tiện ích được mô tả trong [bảng thuật ngữ](/materials/glossary/claude-in-chrome/). Bên dưới: cách kết nối, tác nhân làm được gì và nên cấp quyền nào.
 
 <b-post series="harness">
 

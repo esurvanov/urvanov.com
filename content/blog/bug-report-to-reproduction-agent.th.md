@@ -319,7 +319,7 @@ toc: route=ขั้นตอนของ QA | stages=สามส่วน | mc
 
 <b-chapter id="next" icon="arrow-right" title="อ่านต่อ">
   <b-links>
-    <item href="/blog/claude-in-chrome/" k="เบราว์เซอร์" t="Claude Code ทดสอบเว็บไซต์ในเบราว์เซอร์ของคุณได้อย่างไร: Claude in Chrome ดีบักและกรอกฟอร์มภายใต้การล็อกอินของคุณ">เอเจนต์เดินตามเส้นทางบน stand</item>
+    <item href="/blog/claude-in-chrome/" k="เบราว์เซอร์" t="Claude Code ใน Chrome: เอเจนต์ทดสอบเว็บไซต์ในเบราว์เซอร์อย่างไร ดีบักและกรอกฟอร์มภายใต้การล็อกอินของคุณ">เอเจนต์เดินตามเส้นทางบน stand</item>
     <item href="/blog/specs-rules-skills/" k="Skill" t="Spec, rule และ skill">เอเจนต์ควรรู้อะไรเกี่ยวกับโปรเจกต์</item>
     <item href="/blog/harness-driven-development/" k="วงจรข้อผิดพลาด" t="Harness-Driven Development">ข้อผิดพลาดของเอเจนต์กลายเป็นกฎได้อย่างไร</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="สภาพแวดล้อม" t="เปรียบเทียบ harness">เอเจนต์ทำงานที่ไหนและเห็นอะไร</item>

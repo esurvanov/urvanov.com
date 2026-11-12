@@ -1,7 +1,7 @@
 ---
 title: data plane กับ control plane ของเอเจนต์: กันไม่ให้ข้อมูลกลายเป็นคำสั่ง (prompt injection)
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: คำสั่งของเอเจนต์ (control plane) ต่างจากข้อมูลที่เอเจนต์อ่าน (data plane) อย่างไร การโจมตีแบบ prompt injection ทำงานอย่างไร และป้องกันได้ด้วยสิทธิ์น้อยที่สุด การอนุมัติก่อนเขียน การแยกอ่านออกจากเขียน และแหล่งที่เชื่อถือได้
 tags: AI, เอเจนต์, ความปลอดภัย, prompt injection, MCP, harness
 category: harness
@@ -83,7 +83,7 @@ toc: what=สองระนาบ | attack=Prompt injection | defense=การ
 <b-chapter id="next" title="ต่อไป">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="การเชื่อมต่อ" t="MCP สำหรับเอเจนต์ AI: แก้ปัญหาอะไร และมอบให้เอเจนต์ต่อให้อย่างไร">เอเจนต์เข้าถึงระบบได้อย่างไร</item>
-    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Claude in Chrome: เอเจนต์ทำงานในเบราว์เซอร์ของคุณอย่างไร — ทดสอบ ดีบัก และกรอกฟอร์มภายใต้การล็อกอินของคุณ">สิทธิ์รายเว็บไซต์และความเสี่ยงของเบราว์เซอร์</item>
+    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Claude Code ใน Chrome: เอเจนต์ทดสอบเว็บไซต์ในเบราว์เซอร์อย่างไร ดีบักและกรอกฟอร์มภายใต้การล็อกอินของคุณ">สิทธิ์รายเว็บไซต์และความเสี่ยงของเบราว์เซอร์</item>
     <item href="/blog/incident-investigation-agent/" k="ตัวอย่าง" t="สืบสวนเหตุขัดข้องด้วยเอเจนต์ AI: Sentry และ Grafana ผ่าน MCP">เอเจนต์อ่านล็อกและทิกเก็ตแบบอ่านอย่างเดียว</item>
   </b-links>
 </b-chapter>

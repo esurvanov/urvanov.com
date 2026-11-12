@@ -1,5 +1,5 @@
 ---
-title: How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login
+title: Claude Code in Chrome: how the agent tests your site in the browser — debugging and forms under your login
 date: 2026-10-05
 updated: 2026-11-13
 description: Claude in Chrome connects Claude Code to the browser: the agent opens tabs, reads the console, runs scenarios and fills forms under your login. How to connect it, what it does and which permissions to give.
@@ -10,7 +10,7 @@ mentions: Claude in Chrome, Claude Code, Chrome extension, browser automation, M
 toc: what=What it is | connect=Connecting | gives=What it does | qa=Example | risks=Permissions and risks | tradeoff=Price of flexibility | custom=Own script | first=Where to start | faq=Questions | next=Next
 ---
 
-Claude in Chrome connects the agent to your browser: it opens tabs, reads pages and the console, clicks and types under your login. Below: how it works, how to connect it in a few minutes, what the agent can do and which permissions to give. The agent from the [QA with an agent](/blog/bug-report-to-reproduction-agent/) article uses this channel, and connecting works like [MCP](/blog/mcp-agent-access/).
+Claude Code tests a site in the browser through the Claude in Chrome extension: started with `claude --chrome`, the agent opens your site in a tab, walks a scenario, fills forms and reads the console under your login, then fixes the broken code. It needs a paid Claude plan. The extension itself is covered in the [glossary](/materials/glossary/claude-in-chrome/). Below: connecting, what the agent can do and which permissions to give.
 
 <b-post series="harness">
 

@@ -319,7 +319,7 @@ Un bug signalé par un client passe par le support et arrive à la QA. C'est là
 
 <b-chapter id="next" icon="arrow-right" title="À lire ensuite">
   <b-links>
-    <item href="/blog/claude-in-chrome/" k="Navigateur" t="Comment Claude Code teste un site dans votre navigateur : Claude in Chrome — débogage et formulaires sous votre identifiant">l’agent parcourt le chemin sur le banc de test</item>
+    <item href="/blog/claude-in-chrome/" k="Navigateur" t="Claude Code dans Chrome : comment l'agent teste un site dans le navigateur — débogage et formulaires sous votre identifiant">l’agent parcourt le chemin sur le banc de test</item>
     <item href="/blog/specs-rules-skills/" k="Skills" t="Spécifications, règles et skills">ce qu'un agent doit savoir d'un projet</item>
     <item href="/blog/harness-driven-development/" k="Boucle d'erreurs" t="Harness-Driven Development">comment les erreurs de l'agent deviennent des règles</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Environnement" t="Comparaison des harness">où l'agent travaille et ce qu'il voit</item>

@@ -1,5 +1,5 @@
 ---
-title: Cómo prueba Claude Code un sitio en tu navegador: Claude in Chrome, depuración y formularios con tu sesión iniciada
+title: Claude Code en Chrome: cómo prueba el agente un sitio en el navegador, depuración y formularios con tu sesión iniciada
 date: 2026-10-05
 updated: 2026-11-13
 description: Claude in Chrome conecta Claude Code con el navegador: el agente abre pestañas, lee la consola, ejecuta escenarios y rellena formularios con tu sesión iniciada. Cómo conectarlo, qué hace y qué permisos dar.
@@ -10,7 +10,7 @@ mentions: Claude in Chrome, Claude Code, Chrome extension, browser automation, M
 toc: what=Qué es | connect=Conexión | gives=Qué hace | qa=Ejemplo | risks=Permisos y riesgos | tradeoff=Precio de la flexibilidad | custom=Script propio | first=Por dónde empezar | faq=Preguntas | next=Siguiente
 ---
 
-Claude in Chrome conecta el agente con tu navegador: abre pestañas, lee las páginas y la consola, hace clic y escribe con tu sesión iniciada. Abajo: cómo funciona, cómo conectarlo en unos minutos, qué puede hacer el agente y qué permisos darle. El agente del artículo [QA con un agente](/blog/bug-report-to-reproduction-agent/) usa este canal, y la conexión funciona como [MCP](/blog/mcp-agent-access/).
+Claude Code prueba un sitio en el navegador mediante la extensión Claude in Chrome: iniciado con `claude --chrome`, el agente abre tu sitio en una pestaña, recorre un escenario, rellena formularios y lee la consola con tu sesión iniciada, y luego corrige el código que falló. Hace falta un plan de pago de Claude. La extensión en sí está descrita en el [glosario](/materials/glossary/claude-in-chrome/). Abajo: conexión, qué puede hacer el agente y qué permisos darle.
 
 <b-post series="harness">
 

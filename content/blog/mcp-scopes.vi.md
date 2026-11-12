@@ -124,7 +124,7 @@ Nếu một biến chưa được đặt và không có giá trị mặc định
 <b-chapter id="next" title="Tiếp theo">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="Cơ bản" t="MCP cho tác nhân AI: giải quyết vấn đề gì và cách giao việc kết nối cho tác nhân">MCP là gì và cách kết nối</item>
-    <item href="/blog/claude-in-chrome/" k="Trình duyệt" t="Claude in Chrome: cách tác nhân làm việc trong trình duyệt của bạn — kiểm thử, gỡ lỗi và biểu mẫu dưới phiên đăng nhập của bạn">Tác nhân trong trình duyệt của bạn</item>
+    <item href="/blog/claude-in-chrome/" k="Trình duyệt" t="Claude Code trong Chrome: tác nhân kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn">Tác nhân trong trình duyệt của bạn</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Ví dụ" t="Công việc của QA sau bộ phận hỗ trợ cùng tác nhân AI: nghiên cứu, mô tả và lập tài liệu qua MCP và skill">Tác nhân tái hiện một lỗi trong Jira</item>
   </b-links>
 </b-chapter>

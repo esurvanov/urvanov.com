@@ -319,7 +319,7 @@ After support, QA works with an AI agent this way: the agent investigates a Jira
 
 <b-chapter id="next" icon="arrow-right" title="Read next">
   <b-links>
-    <item href="/blog/claude-in-chrome/" k="Browser" t="How Claude Code tests a site in your browser: Claude in Chrome — debugging and forms under your login">the agent walks the path on the stand</item>
+    <item href="/blog/claude-in-chrome/" k="Browser" t="Claude Code in Chrome: how the agent tests your site in the browser — debugging and forms under your login">the agent walks the path on the stand</item>
     <item href="/blog/specs-rules-skills/" k="Skills" t="Specs, rules and skills">what an agent should know about a project</item>
     <item href="/blog/harness-driven-development/" k="Error loop" t="Harness-Driven Development">how agent mistakes become rules</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Environment" t="Comparing harnesses">where the agent works and what it sees</item>

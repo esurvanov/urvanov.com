@@ -1,7 +1,7 @@
 ---
 title: Plano de datos y plano de control de un agente de IA: cómo evitar que los datos se conviertan en órdenes (inyección de prompts)
 date: 2026-10-05
-updated: 2026-11-08
+updated: 2026-11-13
 description: En qué se diferencian las órdenes de un agente (plano de control) de los datos que lee (plano de datos), cómo funciona la inyección de prompts y cómo defenderse: mínimos derechos, aprobación de escrituras, separar lectura y escritura, fuentes de confianza.
 tags: IA, agentes, seguridad, inyección de prompts, MCP, harness
 category: harness
@@ -83,7 +83,7 @@ En un agente de IA, el plano de control son las órdenes que recibe de ti y el p
 <b-chapter id="next" title="Siguiente">
   <b-links>
     <item href="/blog/mcp-agent-access/" k="Conexión" t="MCP para un agente de IA: qué problema resuelve y cómo encargar la conexión al agente">Cómo obtiene el agente acceso a los sistemas</item>
-    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Claude in Chrome: cómo trabaja el agente en tu navegador — pruebas, depuración y formularios con tu sesión">Permisos de sitios y riesgos del navegador</item>
+    <item href="/blog/claude-in-chrome/" k="Claude in Chrome" t="Claude Code en Chrome: cómo prueba el agente un sitio en el navegador, depuración y formularios con tu sesión iniciada">Permisos de sitios y riesgos del navegador</item>
     <item href="/blog/incident-investigation-agent/" k="Ejemplo" t="Investigación de un incidente con un agente de IA: Sentry y Grafana mediante MCP">El agente lee registros y tickets en solo lectura</item>
   </b-links>
 </b-chapter>
