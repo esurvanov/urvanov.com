@@ -61,6 +61,29 @@ const gitDateCache = new Map()
     }
   }
 }
+// Ошибки, которые видит посетитель и которые раньше находили только вручную: сборка падает, пока они есть.
+// 1) На английской и новых языковых страницах нет кириллицы в подписи ссылки (<item t="…">) и в цитате-доказательстве (<b-proof quote="…">).
+// 2) Английское определение термина не повторяет своё начало («A demo environment is a demo environment is where…»).
+{
+  const cyr = /[А-Яа-яЁё]/
+  const problems = []
+  for (const p of POSTS) {
+    if (p.lang === 'ru') continue
+    const file = postFile(p)
+    if (!existsSync(file)) continue
+    const text = readFileSync(file, 'utf8')
+    for (const m of text.matchAll(/<item [^>]*?\bt="([^"]*)"/g)) if (cyr.test(m[1])) problems.push(`${file}: русский текст в подписи ссылки «${m[1].slice(0, 70)}»`)
+    for (const m of text.matchAll(/<b-proof [^>]*?\bquote="([^"]*)"/g)) if (cyr.test(m[1])) problems.push(`${file}: русский текст в цитате-доказательстве «${m[1].slice(0, 70)}»`)
+  }
+  for (const x of ALL_TERMS) {
+    const en = String(x.def?.en ?? '').replace(/`/g, '')
+    if (/^\s*(?:an?\s+)?(.{3,60}?)\s+(?:is|are)\s+(?:an?\s+)?\1\b/i.test(en)) problems.push(`глоссарий ${x.slug}: английское определение повторяет начало «${en.slice(0, 70)}»`)
+  }
+  if (problems.length) {
+    console.error(`prerender: ошибки на страницах, видимые посетителю:\n  ${problems.join('\n  ')}`)
+    process.exit(1)
+  }
+}
 function gitDate(sources) {
   if (!sources || !sources.length) return buildDate
   const key = sources.join('|')
@@ -157,7 +180,8 @@ write('en/jaiora/index.html', jaioraMoved('https://jaiora.me/en/'))
 
 // Английский переехал из /en/… в корень: старые адреса переправляют на новые
 const moved = (to, title, lang) => jaioraMoved(to).replace('Jaiora → jaiora.me', title).replace('lang="ru"', `lang="${lang}"`)
-for (const p of pages.filter((x) => x.lang === 'en' && !x.noindex)) write(join('en', p.path, 'index.html'), moved(urlOf(p.path), p.title, 'en'))
+// Закрытый от индекса английский адрес доклада тоже переправляется: он был в поиске по старому адресу /en/talk/…
+for (const p of pages.filter((x) => x.lang === 'en' && (!x.noindex || x.path === '/talk/spec-driven-development'))) write(join('en', p.path, 'index.html'), moved(urlOf(p.path), p.title, 'en'))
 
 // Убранные термины глоссария: старые адреса переправляют на тот, что их заменил
 for (const [from, to, ru, en] of [['ai', 'ai-agent', 'ИИ-агент', 'AI agent'], ['language-model', 'llm', 'LLM', 'LLM']]) {
