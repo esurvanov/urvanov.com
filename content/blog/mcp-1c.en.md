@@ -172,7 +172,7 @@ To let Claude Code, Codex or Cursor into a 1C database without breaking it, conn
 <b-finding>
   <ex k="Scheme">The agent's mistake stays in the test database and never reaches the books.</ex>
   <gen k="Cost">You need a test database next to production. That is cheaper than one restore from backup.</gen>
-  <do k="What to do">Set up a <a href="/materials/glossary/test-stand/">test stand</a> with a database copy before connecting the data server.</do>
+  <do k="What to do">Set up a <a href="/materials/glossary/test-stand/">staging environment</a> with a database copy before connecting the data server.</do>
 </b-finding>
 </b-chapter>
 <b-chapter id="rights" icon="key" title="Rights: an access ladder">

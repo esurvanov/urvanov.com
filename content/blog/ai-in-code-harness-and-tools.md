@@ -62,7 +62,7 @@ Codex или Claude Code: по доступу к проекту и действ�
 </b-chapter>
 
 <b-chapter id="harness" icon="layers" title="Что такое харнесс">
-  <b-why>Модель отвечает текстом. Харнесс — всё вокруг неё: скиллы, инструменты, среда, человек в контуре. Он есть у любого ИИ-продукта, от агента в терминале до чата в браузере<b-proof href="https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code" quote="Anthropic называет Claude Code харнессом: пост «A harness for every task» — claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code"/>. Различается состав. Колонка «По API» показана на примере Hermes Agent; опенсорс-харнессов много, например OpenCode, Aider, Cline и Goose, и устроены они аналогично.</b-why>
+  <b-why>Модель отвечает текстом. Харнесс — всё вокруг неё: скиллы, средства, среда, человек в контуре. Он есть у любого ИИ-продукта, от агента в терминале до чата в браузере<b-proof href="https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code" quote="Anthropic называет Claude Code харнессом: пост «A harness for every task» — claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code"/>. Различается состав. Колонка «По API» показана на примере Hermes Agent; опенсорс-харнессов много, например OpenCode, Aider, Cline и Goose, и устроены они аналогично.</b-why>
   <b-drift>срез · сентябрь 2026</b-drift>
   <b-harness-matrix label="Состав харнесса по колонкам" diff="отличие от энтерпрайза" legend="отличие от энтерпрайза|есть|частично">
     <col icon="code-wide" t="По API">Hermes Agent · публичный API</col>
@@ -71,7 +71,7 @@ Codex или Claude Code: по доступу к проекту и действ�
     <col icon="chat-box" t="Чат">ChatGPT · Claude</col>
     <row t="Человек"/>
     <row t="Среда"/>
-    <row t="Инструменты"/>
+    <row t="Средства"/>
     <row t="Скиллы"/>
     <row t="Модель"/>
     <cell icon="user-alt" t="рядом / в конце"><b-proof href="https://hermes-agent.nousresearch.com/docs/user-guide/security" quote="Hermes Agent: для опасных команд «the user must explicitly approve it», для сессий без человека есть unattended_mode — hermes-agent.nousresearch.com/docs/user-guide/security"/></cell>

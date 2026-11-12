@@ -30,7 +30,7 @@ Claude Code тестирует сайт в браузере через расш�
   </b-pills>
   <b-finding>
     <ex>Агент в терминале управляет вкладками Chrome через расширение и пользуется вашими входами.</ex>
-    <gen>Действия видны в окне в реальном времени. На странице входа или капче агент останавливается и ждёт вас. В Claude Code расширение видно как MCP-сервер claude-in-chrome: его инструменты показывает /mcp<b-proof href="https://code.claude.com/docs/en/chrome" quote="to see the full list of available browser tools"/>.</gen>
+    <gen>Действия видны в окне в реальном времени. На странице входа или капче агент останавливается и ждёт вас. В Claude Code расширение видно как MCP-сервер claude-in-chrome: его функции показывает /mcp<b-proof href="https://code.claude.com/docs/en/chrome" quote="to see the full list of available browser tools"/>.</gen>
     <do>Проверьте требования: расширение версии 1.0.36 и новее<b-proof href="https://code.claude.com/docs/en/chrome" quote="version 1.0.36 or later"/>, Claude Code, тариф Pro, Max, Ultra, Team или Enterprise<b-proof href="https://code.claude.com/docs/en/chrome" quote="A direct Anthropic plan (Pro, Max, Ultra, Team, or Enterprise)"/>, вход через /login<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration also requires signing in with"/>.</do>
   </b-finding>
 </b-chapter>
@@ -46,7 +46,7 @@ Claude Code тестирует сайт в браузере через расш�
       /chrome   # статус, права, переподключение
     </b-codebox>
 
-<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Расширение в Chrome Web Store</a>. Чтобы не писать флаг каждый раз, откройте /chrome и включите «Enabled by default». Инструменты браузера тогда всегда лежат в контексте, и расход токенов растёт<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>. В VS Code браузер подключают словом @browser в поле ввода, а «Enabled by default» общий для терминала и VS Code<b-proof href="https://code.claude.com/docs/en/chrome" quote="The two share one setting, so turning it on in either place turns it on for both the CLI and VS Code."/>.
+<a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener">Расширение в Chrome Web Store</a>. Чтобы не писать флаг каждый раз, откройте /chrome и включите «Enabled by default». Функции браузера тогда всегда лежат в контексте, и расход токенов растёт<b-proof href="https://code.claude.com/docs/en/chrome" quote="Enabling Chrome by default increases context usage since the browser tools and their instructions are always loaded."/>. В VS Code браузер подключают словом @browser в поле ввода, а «Enabled by default» общий для терминала и VS Code<b-proof href="https://code.claude.com/docs/en/chrome" quote="The two share one setting, so turning it on in either place turns it on for both the CLI and VS Code."/>.
 
     <b-spoiler summary="Если не подключается">
       <b-node-grid min="170">
@@ -138,7 +138,7 @@ Claude Code тестирует сайт в браузере через расш�
     <rule icon="page-lines" t="Страница целиком">Claude Code берёт всю страницу целиком: текст, элементы, снимки. Для разовой задачи это удобно.</rule>
     <rule icon="coin" t="Токены и скорость">Чем больше страница, тем больше токенов уходит на каждый шаг: выходит дороже и медленнее.</rule>
     <rule icon="boxes-route" t="Свой скрипт">Кастомное решение берёт только нужную часть сайта или страницы: таблицу, форму, один блок. Агент получает короткий результат.</rule>
-    <rule icon="scales" t="Что выбрать">Разовая задача и разведка: Claude in Chrome. Регулярная и массовая работа с бюджетом токенов: свой скрипт, который агент вызывает как инструмент.</rule>
+    <rule icon="scales" t="Что выбрать">Разовая задача и разведка: Claude in Chrome. Регулярная и массовая работа с бюджетом токенов: свой скрипт, который агент вызывает как функцию.</rule>
   </b-rules>
   <b-cap>Скрипт можно подключить к агенту через [MCP](/blog/mcp-agent-access/) или скилл: агент просит нужный кусок страницы, а не открывает её целиком.</b-cap>
   <b-finding>

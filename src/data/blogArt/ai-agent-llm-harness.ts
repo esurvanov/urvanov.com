@@ -4,7 +4,7 @@ import { type Scene, A, M, W } from '@/lib/infographic'
 const scenes: Record<string, Scene> = {
   // Формула: модель (серый куб) + харнесс (инструменты, контекст, проверки, правила вокруг пустого места) = агент
   formula: {
-    ru: 'Формула агента. Слева нейросеть: серый куб, она только пишет текст. В середине харнесс: ящик с инструментами, лоток с контекстом, планшет с проверками и табличка с правилами вокруг пустого места для модели. Справа агент: тот же харнесс, а в центре синий агент',
+    ru: 'Формула агента. Слева нейросеть: серый куб, она только пишет текст. В середине харнесс: ящик со средствами, лоток с контекстом, планшет с проверками и табличка с правилами вокруг пустого места для модели. Справа агент: тот же харнесс, а в центре синий агент',
     en: 'The agent formula. Left: the LLM, a grey cube that only writes text. Middle: the harness, a toolbox, a context tray, a checks clipboard and a rules sign around an empty spot for the model. Right: the agent, the same harness with a blue agent in the centre',
     viewBox: [0, 0, 700, 248],
     draw: (c, l) => {
@@ -54,7 +54,7 @@ const scenes: Record<string, Scene> = {
   },
   // Агентный цикл: цель → шаг → действие → проверка; при ошибке снова к шагу, при успехе результат
   loop: {
-    ru: 'Агентный цикл на одной площадке. Цель (задача) идёт к агенту, агент выбирает шаг, инструмент выполняет действие, проверка смотрит результат. Если проверка не прошла, оранжевая стрелка ведёт обратно к агенту. Если прошла, получается результат',
+    ru: 'Агентный цикл на одной площадке. Цель (задача) идёт к агенту, агент выбирает шаг, средство выполняет действие, проверка смотрит результат. Если проверка не прошла, оранжевая стрелка ведёт обратно к агенту. Если прошла, получается результат',
     en: 'The agent loop on one platform. The goal (task) goes to the agent, the agent picks a step, a tool performs the action, a check looks at the result. If the check fails, an orange arrow leads back to the agent. If it passes, you get the result',
     viewBox: [0, 24, 700, 238],
     draw: (c, l) => {
@@ -132,7 +132,7 @@ const scenes: Record<string, Scene> = {
   },
   // Пять задач — пять инструментов: чат, чат-бот, ассистент, агент, агент с подтверждением человека
   choose: {
-    ru: 'Пять задач и что взять. Вопрос или черновик: чат. Типовой вопрос клиента: чат-бот по сценарию. Одно действие: ассистент. Задача в несколько шагов: ИИ-агент с инструментами. Шаги с деньгами и доступами: агент и человек за оранжевым шлагбаумом подтверждения',
+    ru: 'Пять задач и что взять. Вопрос или черновик: чат. Типовой вопрос клиента: чат-бот по сценарию. Одно действие: ассистент. Задача в несколько шагов: ИИ-агент со средствами. Шаги с деньгами и доступами: агент и человек за оранжевым шлагбаумом подтверждения',
     en: 'Five tasks and what to use. A question or a draft: chat. A typical customer question: a scripted chatbot. One action: an assistant. A multi-step task: an AI agent with tools. Steps with money and access: an agent and a person behind an orange approval barrier',
     viewBox: [0, 0, 700, 232],
     draw: (c, l) => {

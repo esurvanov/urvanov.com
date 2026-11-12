@@ -2,7 +2,7 @@
 title: QA work after support with an AI agent: investigation, description and documentation via MCP and skills
 date: 2026-10-04
 updated: 2026-11-13
-description: How QA works with an AI agent after support: through MCP and the browser the agent reproduces a Jira bug on a test stand, narrows the path, describes and documents it, a skill makes the steps a repeatable process, QA checks by hand. Support and development do not change.
+description: How QA works with an AI agent after support: through MCP and the browser the agent reproduces a Jira bug on a staging environment, narrows the path, describes and documents it, a skill makes the steps a repeatable process, QA checks by hand. Support and development do not change.
 tags: AI, agents, QA, Jira, MCP, skills, bugs, harness
 category: harness
 layout: wide
@@ -10,7 +10,7 @@ mentions: Jira, AI agent, QA, Model Context Protocol, skills, bug reproduction, 
 toc: route=QA step | stages=Three parts | mcp=MCP | skill=Skill | parallel=In parallel | example=Example | human=What QA keeps | first=How to start | faq=Questions | next=Read next
 ---
 
-After support, QA works with an AI agent this way: the agent investigates a Jira bug on a test stand, narrows the path, describes it by template and documents the result in the ticket. MCP and the [browser](/blog/claude-in-chrome/) give it access, and a skill makes the steps repeatable. QA checks the result by hand; support and development work as before.
+After support, QA works with an AI agent this way: the agent investigates a Jira bug on a staging environment, narrows the path, describes it by template and documents the result in the ticket. MCP and the [browser](/blog/claude-in-chrome/) give it access, and a skill makes the steps repeatable. QA checks the result by hand; support and development work as before.
 
 <b-post series="harness">
 <b-view-toggle/>
@@ -73,7 +73,7 @@ After support, QA works with an AI agent this way: the agent investigates a Jira
     </b-icon-lane>
     </b-lane-stack>
   </b-view>
-  <b-why align="left">Investigation is the search for the shortest path to the bug. A client’s complaint usually lists everything they did: login, catalog, address, cart, promo code, payment. QA repeated these actions and removed extras one by one until the bug stopped reproducing. The agent does the same on a test stand: it removes an action, checks whether the bug is still there, and goes on down to the minimum. In the example, three of six actions turn out to be needed. QA looks at the narrowed path and checks that what was removed really was extra: the agent may have struck out a step without which the bug actually does not reproduce.</b-why>
+  <b-why align="left">Investigation is the search for the shortest path to the bug. A client’s complaint usually lists everything they did: login, catalog, address, cart, promo code, payment. QA repeated these actions and removed extras one by one until the bug stopped reproducing. The agent does the same on a staging environment: it removes an action, checks whether the bug is still there, and goes on down to the minimum. In the example, three of six actions turn out to be needed. QA looks at the narrowed path and checks that what was removed really was extra: the agent may have struck out a step without which the bug actually does not reproduce.</b-why>
   <b-view kind="pic">
     <b-lane-stack>
     <b-icon-lane icon="lines" title="Description">
@@ -144,16 +144,16 @@ After support, QA works with an AI agent this way: the agent investigates a Jira
   <b-view kind="struct">
     <b-node-grid>
       <node icon="lines" sw="1.8" t="Jira">reads the ticket, writes the report</node>
-      <node icon="play" t="Test stand">walks the path like a user</node>
+      <node icon="play" t="Staging environment">walks the path like a user</node>
       <node icon="file-text" sw="1.8" t="Docs">diagrams and notes next to the ticket</node>
       <node icon="cylinder" t="Data">test data, can be reset</node>
       <node icon="shield-check" t="Permissions">only the stand can be broken</node>
     </b-node-grid>
   </b-view>
   <b-finding>
-    <ex>Via MCP the agent reads PAY-142 in Jira, goes to the test stand and writes the result back. QA copies nothing between windows.</ex>
-    <gen>Without connections to the systems the agent has to be given a retelling, and a retelling loses details. The test stand is the place where the agent can try and break things without touching production.</gen>
-    <do k="What to do">Start with two connections: Jira and the test stand. Add the rest as needed.</do>
+    <ex>Via MCP the agent reads PAY-142 in Jira, goes to the staging environment and writes the result back. QA copies nothing between windows.</ex>
+    <gen>Without connections to the systems the agent has to be given a retelling, and a retelling loses details. The staging environment is the place where the agent can try and break things without touching production.</gen>
+    <do k="What to do">Start with two connections: Jira and the staging environment. Add the rest as needed.</do>
   </b-finding>
 </b-chapter>
 
@@ -218,7 +218,7 @@ After support, QA works with an AI agent this way: the agent investigates a Jira
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/complaint-to-report"/>
   </b-view>
-  <b-why align="left">Step 1: QA has only the client’s complaint with no steps and a screenshot of the error. Step 2: the agent walks all six client actions on the test stand and removes the extras one by one. Login, catalog and address are struck out, cart, promo code and payment remain, and the bug reproduces on them: the promo service answers with error 500. Step 3: the agent writes the report and a diagram into Jira, and QA opens the ticket and checks the result.</b-why>
+  <b-why align="left">Step 1: QA has only the client’s complaint with no steps and a screenshot of the error. Step 2: the agent walks all six client actions on the staging environment and removes the extras one by one. Login, catalog and address are struck out, cart, promo code and payment remain, and the bug reproduces on them: the promo service answers with error 500. Step 3: the agent writes the report and a diagram into Jira, and QA opens the ticket and checks the result.</b-why>
   <b-why align="left">This is step 1 in Jira: the client’s headline, no reproduction steps, a screenshot of the error attached. The agent starts from here.</b-why>
   <b-lane title="Jira ticket · a customer request passed from support to QA" color="accent">
     <b-ticket key="PAY-142">Card payment fails when a promo code is entered</b-ticket>
@@ -251,7 +251,7 @@ After support, QA works with an AI agent this way: the agent investigates a Jira
       <row k="Steps">cart → promo code → card payment</row>
       <row k="Expected">the payment goes through with the discount</row>
       <row k="Actual">“payment failed”, the promo service returns error 500</row>
-      <row k="Environment">test stand, test card</row>
+      <row k="Environment">staging environment, test card</row>
       <row k="Where to look">the call to the promo service from payments (see the diagram)</row>
     </b-kv-rows>
   </b-lane>
@@ -290,7 +290,7 @@ After support, QA works with an AI agent this way: the agent investigates a Jira
 </b-chapter>
 
 <b-chapter id="first" icon="shield-check" title="How to start">
-  <b-why align="left">It is best to start on closed bugs where the answer is already known. Step 1: connect Jira and a test stand to the agent through MCP. Step 2: write your steps for one type of bug down as a skill. Step 3: run the skill on five closed bugs from last month and compare the agent’s reports with what you know about those bugs. Where the agent was wrong, add a rule to the skill. One QA checks the result by hand.</b-why>
+  <b-why align="left">It is best to start on closed bugs where the answer is already known. Step 1: connect Jira and a staging environment to the agent through MCP. Step 2: write your steps for one type of bug down as a skill. Step 3: run the skill on five closed bugs from last month and compare the agent’s reports with what you know about those bugs. Where the agent was wrong, add a rule to the skill. One QA checks the result by hand.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/start-steps"/>
   </b-view>
@@ -311,7 +311,7 @@ After support, QA works with an AI agent this way: the agent investigates a Jira
 <b-chapter id="faq" icon="chat" title="Frequently asked questions">
   <b-faq-cards>
     <q t="Which QA work can go to an AI agent?">Investigating, describing and documenting a bug: these are repeatable actions with a clear result. Deciding whether it is a bug and how important it is stays with a person.</q>
-    <q t="Why does the agent need MCP for QA work?">Through MCP the agent works in the same systems as QA, Jira and the test stand, and reads facts from the source instead of a retelling.</q>
+    <q t="Why does the agent need MCP for QA work?">Through MCP the agent works in the same systems as QA, Jira and the staging environment, and reads facts from the source instead of a retelling.</q>
     <q t="What does a skill give you?">A written-down process that does not depend on who is on shift. An agent mistake goes into the skill as a new rule and does not repeat.</q>
     <q t="What is left for QA?">Checking the agent’s result by hand and accepting it: QA manages several agents and decides what to accept.</q>
   </b-faq-cards>

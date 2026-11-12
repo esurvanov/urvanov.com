@@ -75,9 +75,9 @@ Claude Code tests a site in the browser through the Claude in Chrome extension: 
   </b-finding>
 </b-chapter>
 
-<b-chapter id="qa" icon="bug" title="Example: a bug on the test stand">
+<b-chapter id="qa" icon="bug" title="Example: a bug on the staging environment">
   <b-why>Ticket PAY-142 from the article [on QA with an agent](/blog/bug-report-to-reproduction-agent/): the agent walks the path itself and brings evidence.</b-why>
-  <b-say-agent title="Tell the agent">Open the test stand, add an item to the cart, apply the promo code and pay with a test card. If the payment fails, look at the console and record a GIF of the path.</b-say-agent>
+  <b-say-agent title="Tell the agent">Open the staging environment, add an item to the cart, apply the promo code and pay with a test card. If the payment fails, look at the console and record a GIF of the path.</b-say-agent>
   <b-why align="left">Next is the example from the QA article: ticket PAY-142 and the agent’s path to a finished result.</b-why>
   <iso-art name="claude-in-chrome/ticket-to-report"></iso-art>
   <b-why align="left">The picture shows the path from ticket to result. The ticket reaches the agent, the agent walks through cart, promo code and payment in the browser, finds the error in the console and records a GIF. QA receives not a retelling but a verifiable trace: console text and a recording of movement across the page. If the recording and console do not match the report, it shows at once.</b-why>
@@ -151,7 +151,7 @@ Claude Code tests a site in the browser through the Claude in Chrome extension: 
 <b-chapter id="first" icon="flag" title="Where to start">
   <b-why align="left">The three steps repeat the start of the article: extension, launch, check.</b-why>
   <iso-art name="claude-in-chrome/start-steps"></iso-art>
-  <b-why align="left">For the first launch take a local or test stand: if the agent errs, nothing is harmed. First ask it only to read (open a page and retell it), then allow actions. That way you notice the agent’s mistakes on a safe task.</b-why>
+  <b-why align="left">For the first launch take a local or staging environment: if the agent errs, nothing is harmed. First ask it only to read (open a page and retell it), then allow actions. That way you notice the agent’s mistakes on a safe task.</b-why>
   <b-finding>
     <ex>Three steps: extension, launch, check.</ex>
     <gen>Start with a local stand: a mistake there breaks nothing.</gen>

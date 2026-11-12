@@ -34,7 +34,7 @@ const scenes: Record<string, Scene> = {
   },
   // Что класть в какую область: те же три островка с подписями
   'what-where': {
-    ru: 'Local: личные и пробные серверы, серверы с личными ключами; Project: общие инструменты команды; User: личные утилиты для всех проектов', en: 'Local: personal and trial servers, servers with private keys; Project: shared team tools; User: personal utilities for all projects',
+    ru: 'Local: личные и пробные серверы, серверы с личными ключами; Project: общие программы команды; User: личные утилиты для всех проектов', en: 'Local: personal and trial servers, servers with private keys; Project: shared team tools; User: personal utilities for all projects',
     viewBox: [0, 0, 700, 240],
     draw: (c, l) => {
       const i1 = c.iso(130, 128, 26)
@@ -57,7 +57,7 @@ const scenes: Record<string, Scene> = {
       c.text(130, 204, 'Local', A, { size: 12, w: 700 })
       c.text(130, 219, l('личные и пробные серверы, серверы с личными ключами', 'personal and trial servers, servers with private keys'), M)
       c.text(350, 204, 'Project', A, { size: 12, w: 700 })
-      c.text(350, 219, l('общие инструменты команды', 'shared team tools'), M)
+      c.text(350, 219, l('общие программы команды', 'shared team tools'), M)
       c.text(570, 204, 'User', A, { size: 12, w: 700 })
       c.text(570, 219, l('личные утилиты для всех проектов', 'personal utilities for all projects'), M)
     },
