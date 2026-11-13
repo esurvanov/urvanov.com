@@ -205,7 +205,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'IDE is the program where code is written: editor, hints, debugger and project launcher in one window. VS Code and JetBrains are typical examples. Agents plug into an IDE through extensions and show edits right in the files. An AI IDE (AI-native IDE) is one where the agent is built in from the start, as in Cursor, a VS Code fork. The alternative is a CLI agent in the terminal, like Claude Code and Codex.',
         },
         match: { ru: ['IDE'], en: ['IDEs?'] },
-        related: ['vs-code', 'jetbrains', 'terminal', 'cursor', 'claude-code'],
+        related: ['vs-code', 'jetbrains', 'terminal', 'cursor', 'claude-code', 'visual-studio'],
         faq: [
           { q: { ru: 'IDE — что это в программировании?', en: 'What is an IDE in programming?' }, a: { ru: 'Программа, в которой пишут код: редактор, подсказки, отладчик и запуск проекта в одном окне. Примеры — VS Code и JetBrains.', en: 'The program where code is written: editor, hints, debugger and project launcher in one window. Examples are VS Code and JetBrains.' } },
           { q: { ru: 'Что такое AI IDE?', en: 'What is an AI IDE?' }, a: { ru: 'Среда, где ИИ-агент встроен с самого начала, как в Cursor.', en: 'An environment with an AI agent built in from the start, like Cursor.' } },
@@ -237,7 +237,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'VS Code (Visual Studio Code) is a free, open-source code editor from Microsoft. Features are added with extensions, including AI agents: GitHub Copilot, Claude Code, Codex, Cline. Cursor is built on top of it.',
         },
         match: { ru: ['VS Code', 'Visual Studio Code'], en: ['VS Code', 'Visual Studio Code'] },
-        related: ['ide', 'microsoft', 'cursor', 'jetbrains'],
+        related: ['ide', 'microsoft', 'cursor', 'jetbrains', 'visual-studio'],
         faq: [
           { q: { ru: 'Какие ИИ-агенты работают в VS Code?', en: 'Which AI agents work in VS Code?' }, a: { ru: 'GitHub Copilot, Claude Code, Codex, Cline и другие: они ставятся как расширения.', en: 'GitHub Copilot, Claude Code, Codex, Cline and others: they install as extensions.' } },
           { q: { ru: 'Чем VS Code отличается от Cursor?', en: 'How is VS Code different from Cursor?' }, a: { ru: 'Cursor сделан на основе VS Code и в нём агент встроен с самого начала. В VS Code агента добавляют расширением.', en: 'Cursor is built on VS Code with the agent built in from the start. In VS Code an agent is added as an extension.' } },
@@ -260,6 +260,44 @@ export const TERM_SETS: TermSet[] = [
             { name: { ru: 'GigaCode', en: 'GigaCode' }, text: { ru: 'агент от Сбера с расширением для VS Code.', en: 'Sber’s agent with a VS Code extension.' } },
             { name: { ru: 'Cursor', en: 'Cursor' }, text: { ru: 'отдельный редактор на основе VS Code со встроенным агентом; ставится вместо VS Code, расширения VS Code в нём работают.', en: 'a separate editor built on VS Code with a built-in agent; you install it instead of VS Code, and VS Code extensions work in it.' } },
             { name: { ru: 'Visual Studio', en: 'Visual Studio' }, text: { ru: 'отдельная среда разработки Microsoft, не путать с VS Code; в ней тот же GitHub Copilot с режимом агента, на бесплатном тарифе — с месячным лимитом.', en: 'a separate Microsoft IDE, not VS Code; it has the same GitHub Copilot with agent mode, with a monthly limit on the free plan.' } },
+          ],
+        },
+      },
+      {
+        slug: 'visual-studio',
+        name: { ru: 'Visual Studio', en: 'Visual Studio' },
+        aka: { ru: 'Visual Studio 2026, Visual Studio 2022, студия, VS (не VS Code)', en: 'Visual Studio 2026, Visual Studio 2022, VS IDE (not VS Code)' },
+        exact: 'Visual Studio',
+        def: {
+          ru: 'Visual Studio — полноценная среда разработки Microsoft для Windows, где приложение пишут, собирают, отлаживают, тестируют и выкладывают в одной программе; не путать с VS Code, это отдельный лёгкий редактор. Подходит для больших решений на C#, C++ и .NET, например для программы под Windows или сайта на ASP.NET. В ней работает GitHub Copilot, включая режим агента: он правит файлы, запускает команды и смотрит на результаты сборки и тестов. Есть бесплатная версия Community.',
+          en: 'Visual Studio is Microsoft’s full integrated development environment for Windows, where an app is written, built, debugged, tested and deployed in one program; not to be confused with VS Code, which is a separate lightweight editor. It suits large C#, C++ and .NET solutions, for example a Windows program or an ASP.NET site. GitHub Copilot works in it, including agent mode: it edits files, runs commands and reads build and test results. A free Community edition exists.',
+        },
+        match: { ru: ['Visual Studio(?! Code)'], en: ['Visual Studio(?! Code)'] },
+        related: ['vs-code', 'ide', 'microsoft', 'github-copilot', 'jetbrains', 'mcp'],
+        faq: [
+          { q: { ru: 'Visual Studio и VS Code — это одно и то же?', en: 'Are Visual Studio and VS Code the same thing?' }, a: { ru: 'Нет. Visual Studio — большая среда разработки для Windows, VS Code — лёгкий кросс-платформенный редактор кода; названия похожи, программы разные.', en: 'No. Visual Studio is a large IDE for Windows, VS Code is a lightweight cross-platform code editor; the names are similar, the programs are different.' } },
+          { q: { ru: 'Visual Studio бесплатная?', en: 'Is Visual Studio free?' }, a: { ru: 'Версия Community бесплатна для отдельных разработчиков, студентов, авторов открытого кода и учебных классов; небольшим организациям — до пяти пользователей. Крупным компаниям (больше 250 компьютеров или 1 млн долларов выручки в год) вне открытого кода и учёбы нужны Professional или Enterprise.', en: 'The Community edition is free for individual developers, students, open-source contributors and classrooms, and for small organizations up to five users. Large companies (more than 250 PCs or $1 million in yearly revenue) need Professional or Enterprise outside open-source and academic use.' } },
+          { q: { ru: 'Есть ли в Visual Studio ИИ-агент?', en: 'Does Visual Studio have an AI agent?' }, a: { ru: 'Да: GitHub Copilot с режимом агента, начиная с Visual Studio 2022 версии 17.14. Для входа нужен аккаунт GitHub; на бесплатном тарифе Copilot действует месячный лимит.', en: 'Yes: GitHub Copilot with agent mode, starting from Visual Studio 2022 version 17.14. You sign in with a GitHub account; the free Copilot plan has a monthly limit.' } },
+          { q: { ru: 'На каких системах работает Visual Studio?', en: 'Which systems does Visual Studio run on?' }, a: { ru: 'По документации Microsoft, Visual Studio доступна для Windows. Для других систем Microsoft предлагает VS Code.', en: 'Per Microsoft docs, Visual Studio is available for Windows. For other systems Microsoft points to VS Code.' } },
+        ],
+        source: { url: 'https://learn.microsoft.com/en-us/visualstudio/get-started/visual-studio-ide', label: { ru: 'Microsoft Learn: что такое Visual Studio', en: 'Microsoft Learn: What is Visual Studio' } },
+        seo: {
+          title: { ru: 'Visual Studio: что это, чем отличается от VS Code, Community и Copilot', en: 'Visual Studio vs VS Code: what it is, Community edition and Copilot agent' },
+          description: {
+            ru: 'Visual Studio — среда разработки Microsoft для Windows, не VS Code. Чем они отличаются, кому бесплатна версия Community и как в ней работает агент GitHub Copilot.',
+            en: 'Visual Studio is Microsoft’s Windows IDE, not VS Code. How they differ, who gets Community free and how the GitHub Copilot agent works in it.',
+          },
+        },
+        compare: {
+          title: { ru: 'Visual Studio и VS Code: не путать', en: 'Visual Studio vs VS Code: do not mix them up' },
+          head: { ru: ['Visual Studio', 'VS Code'], en: ['Visual Studio', 'VS Code'] },
+          headSlugs: ['visual-studio', 'vs-code'],
+          rows: [
+            { ru: ['Что это', 'полная среда разработки', 'лёгкий редактор кода с расширениями'], en: ['What it is', 'a full IDE', 'a lightweight code editor with extensions'] },
+            { ru: ['Системы', 'Windows', 'разные системы'], en: ['Systems', 'Windows', 'several systems'] },
+            { ru: ['Цена', 'Community бесплатна на условиях, остальные платные', 'бесплатный'], en: ['Price', 'Community free under conditions, others paid', 'free'] },
+            { ru: ['Для чего', 'большие решения на .NET и C++, сборка, отладка, тесты', 'правка кода на любых языках'], en: ['Best for', 'large .NET and C++ solutions, build, debug, tests', 'editing code in any language'] },
+            { ru: ['ИИ-агент', 'GitHub Copilot, режим агента', 'GitHub Copilot и другие расширения'], en: ['AI agent', 'GitHub Copilot, agent mode', 'GitHub Copilot and other extensions'] },
           ],
         },
       },
@@ -523,7 +561,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Cursor is a code editor app from Anysphere, built on VS Code, with a built-in AI agent: you work in the editor, the agent sits next to you, and you pick its own models (Grok, Composer) or other vendors’ models; since 2026 Cursor has been owned by SpaceX. The agent does what Claude Code and Codex do: reads the project, edits files, runs commands; there is also a terminal version and cloud agents. It reads project rules from `AGENTS.md` and its own rules in `.cursor/rules`, and connects outside systems through MCP.',
         },
         match: { ru: ['Cursor(?: AI| IDE)?', '[Кк]урсор\\p{L}* ИИ'], en: ['Cursor(?: AI| IDE)?'] },
-        related: ['anysphere', 'vs-code', 'agents-md', 'claude-code', 'codex'],
+        related: ['anysphere', 'vs-code', 'agents-md', 'claude-code', 'codex', 'kiro', 'github-copilot'],
         faq: [
           { q: { ru: 'Cursor AI — что это?', en: 'What is Cursor AI?' }, a: { ru: 'Редактор кода от Anysphere на основе VS Code со встроенным ИИ-агентом: вы работаете в редакторе, агент рядом читает проект, правит файлы и запускает команды.', en: 'A code editor by Anysphere built on VS Code with a built-in AI agent: you work in the editor, and the agent next to you reads the project, edits files and runs commands.' } },
           { q: { ru: 'Какие модели есть в Cursor?', en: 'Which models does Cursor have?' }, a: { ru: 'Свои модели Grok и Composer и модели других компаний: Claude, Gemini, GPT, DeepSeek и другие; набор зависит от тарифа.', en: 'Its own Grok and Composer models plus other vendors’: Claude, Gemini, GPT, DeepSeek and more; the lineup depends on the plan.' } },
@@ -551,6 +589,86 @@ export const TERM_SETS: TermSet[] = [
           ],
         },
         matrix: CODING_MATRIX,
+      },
+      {
+        slug: 'kiro',
+        name: { ru: 'Kiro', en: 'Kiro' },
+        aka: { ru: 'Kiro AWS, Kiro IDE, киро', en: 'Kiro AWS, Kiro IDE, AWS Kiro' },
+        def: {
+          ru: 'Kiro — среда разработки с ИИ-агентом от AWS, где работа идёт по спецификациям: перед кодом агент пишет три файла — `requirements.md` (что должно получиться), `design.md` (как устроено) и `tasks.md` (список шагов), вы их проверяете, и только потом он пишет код. Пример: вы просите «добавить корзину», Kiro сначала расписывает требования и задачи, а код правит после вашего «да». Есть среда для компьютера, версия для терминала, веб-версия и мобильное приложение; модели — Claude, GPT, открытые или автовыбор.',
+          en: 'Kiro is an AI development environment from AWS that works from specifications: before any code the agent writes three files, `requirements.md` (what must result), `design.md` (how it is built) and `tasks.md` (a list of steps), you review them, and only then it writes code. Example: you ask to “add a shopping cart”, Kiro first spells out requirements and tasks, and edits code after your “yes”. It comes as a desktop IDE, a terminal version, a web app and a mobile app; models are Claude, GPT, open-weight ones or automatic choice.',
+        },
+        match: { ru: ['Kiro(?: IDE)?'], en: ['Kiro(?: IDE)?'] },
+        related: ['spec-driven-development', 'openspec', 'spec-kit', 'cursor', 'claude-code', 'agents-md', 'mcp', 'ide'],
+        faq: [
+          { q: { ru: 'Kiro — что это?', en: 'What is Kiro?' }, a: { ru: 'Среда разработки с ИИ-агентом от AWS: агент сначала пишет требования, дизайн и список задач в файлы, вы их проверяете, потом он пишет код.', en: 'An AI development environment from AWS: the agent first writes requirements, design and a task list into files, you review them, then it writes code.' } },
+          { q: { ru: 'Сколько стоит Kiro и есть ли бесплатный план?', en: 'How much does Kiro cost and is there a free plan?' }, a: { ru: 'На 13 ноября 2026: Free — 0 долларов и 50 кредитов в месяц, Pro — 20 долларов и 1000 кредитов, Pro+ — 40 и 2000, Pro Max — 100 и 5000, Power — 200 и 10 000. Кредит — единица работы агента: простой запрос тратит меньше одного, сложная задача по спецификации — больше.', en: 'As of Nov 13, 2026: Free is $0 with 50 credits a month, Pro is $20 with 1,000 credits, Pro+ is $40 with 2,000, Pro Max is $100 with 5,000 and Power is $200 with 10,000. A credit is a unit of agent work: a simple prompt uses less than one, a complex spec task more.' } },
+          { q: { ru: 'Чем Kiro отличается от Cursor?', en: 'How is Kiro different from Cursor?' }, a: { ru: 'Kiro строит работу вокруг спецификаций: требования, дизайн и задачи записываются в файлы до кода. Cursor — редактор с агентом, где можно сразу просить правки, а план — один из режимов.', en: 'Kiro builds work around specifications: requirements, design and tasks are written to files before code. Cursor is an editor with an agent where you can ask for edits right away, and a plan is one of its modes.' } },
+          { q: { ru: 'Чем Kiro отличается от OpenSpec и Spec Kit?', en: 'How is Kiro different from OpenSpec and Spec Kit?' }, a: { ru: 'OpenSpec и Spec Kit — открытые наборы, которые подключаются к вашему агенту. Kiro — готовая среда со своим агентом, где спецификации встроены.', en: 'OpenSpec and Spec Kit are open toolkits that plug into your own agent. Kiro is a ready environment with its own agent where specifications are built in.' } },
+          { q: { ru: 'Где скачать Kiro?', en: 'Where do I download Kiro?' }, a: { ru: 'Среду — на странице kiro.dev/downloads (указаны macOS, Windows и Linux), версию для терминала ставят командой с cli.kiro.dev, веб-версия открывается на app.kiro.dev.', en: 'The IDE is on kiro.dev/downloads (macOS, Windows and Linux are listed), the terminal version installs with a command from cli.kiro.dev, and the web app opens at app.kiro.dev.' } },
+        ],
+        source: { url: 'https://kiro.dev/', label: { ru: 'Официальный сайт Kiro', en: 'Kiro official site' } },
+        seo: {
+          title: { ru: 'Kiro от AWS: что это, спецификации, цена и бесплатный план', en: 'Kiro by AWS: what it is, specs, pricing and the free plan' },
+          description: {
+            ru: 'Kiro — среда с ИИ-агентом от AWS, которая сначала пишет требования, дизайн и задачи, а потом код. Тарифы и кредиты, отличие от Cursor, OpenSpec и Spec Kit.',
+            en: 'Kiro is an AWS environment with an AI agent that writes requirements, design and tasks before code. Plans and credits, and how it differs from Cursor, OpenSpec and Spec Kit.',
+          },
+        },
+        notes: {
+          title: { ru: 'Kiro: спецификации, кредиты и модели', en: 'Kiro: specs, credits and models' },
+          items: [
+            { name: { ru: 'Три файла спецификации', en: 'The three spec files' }, text: { ru: '`requirements.md` (для исправления ошибки — `bugfix.md`) с историями пользователя и критериями приёмки, `design.md` с архитектурой и схемами, `tasks.md` со списком шагов, чей статус виден по ходу работы. Есть быстрая спека: три файла за один проход без остановок на проверку.', en: '`requirements.md` (`bugfix.md` for a bug fix) with user stories and acceptance criteria, `design.md` with architecture and diagrams, `tasks.md` with steps whose status updates as work goes. A quick spec makes all three files in one pass with no review stops.' } },
+            { name: { ru: 'Кредиты', en: 'Credits' }, text: { ru: 'единица работы агента; разные модели тратят их с разной скоростью. Месячные кредиты личных тарифов не переносятся, докупленные по 0,04 доллара живут 12 месяцев.', en: 'a unit of agent work; different models burn them at different rates. Monthly credits on personal plans do not roll over, add-on credits at $0.04 last 12 months.' } },
+            { name: { ru: 'Открытые стандарты', en: 'Open standards' }, text: { ru: 'поддерживает MCP, `AGENTS.md`, скиллы и расширения Open VSX.', en: 'supports MCP, `AGENTS.md`, skills and Open VSX extensions.' } },
+          ],
+        },
+        compare: {
+          title: { ru: 'Kiro и Cursor', en: 'Kiro and Cursor' },
+          head: { ru: ['Kiro', 'Cursor'], en: ['Kiro', 'Cursor'] },
+          headSlugs: ['kiro', 'cursor'],
+          rows: [
+            { ru: ['Компания', 'AWS', 'Anysphere'], en: ['Company', 'AWS', 'Anysphere'] },
+            { ru: ['Главная идея', 'спецификации перед кодом', 'редактор со встроенным агентом'], en: ['Main idea', 'specs before code', 'an editor with a built-in agent'] },
+            { ru: ['Бесплатный план', 'есть: 50 кредитов в месяц', 'есть, с лимитами'], en: ['Free plan', 'yes: 50 credits a month', 'yes, with limits'] },
+            { ru: ['Где работает', 'среда, терминал, веб, мобильное приложение', 'редактор, терминал, облачные агенты'], en: ['Where it runs', 'IDE, terminal, web, mobile app', 'editor, terminal, cloud agents'] },
+          ],
+        },
+      },
+      {
+        slug: 'github-copilot',
+        name: { ru: 'GitHub Copilot', en: 'GitHub Copilot' },
+        aka: { ru: 'Копилот, Github Copilot, Copilot от GitHub', en: 'Copilot, Copilot agent mode, Copilot coding agent' },
+        def: {
+          ru: 'GitHub Copilot — ИИ-помощник программиста от GitHub (компания Microsoft): подсказывает код по мере набора, отвечает на вопросы о проекте и в режиме агента сам правит несколько файлов и запускает команды. Пример: вы пишете «добавь проверку почты в форму регистрации», агент находит нужные файлы, вносит правки, а вы принимаете или отменяете каждую. Работает в VS Code, Visual Studio, средах JetBrains, на GitHub.com, в терминале (Copilot CLI) и в мобильном GitHub.',
+          en: 'GitHub Copilot is an AI programming assistant from GitHub (a Microsoft company): it suggests code as you type, answers questions about a project and, in agent mode, edits several files and runs commands itself. Example: you write “add email validation to the sign-up form”, the agent finds the files and makes the edits, and you accept or undo each one. It works in VS Code, Visual Studio, JetBrains IDEs, on GitHub.com, in the terminal (Copilot CLI) and in GitHub Mobile.',
+        },
+        match: { ru: ['GitHub Copilot', 'Copilot CLI'], en: ['GitHub Copilot', 'Copilot CLI'] },
+        related: ['microsoft', 'vs-code', 'visual-studio', 'jetbrains', 'spec-kit', 'mcp', 'agents-md', 'claude-code'],
+        faq: [
+          { q: { ru: 'GitHub Copilot — что это?', en: 'What is GitHub Copilot?' }, a: { ru: 'ИИ-помощник программиста от GitHub: подсказывает код, отвечает на вопросы о проекте, а в режиме агента сам правит файлы и запускает команды.', en: 'An AI programming assistant from GitHub: it suggests code, answers questions about a project and, in agent mode, edits files and runs commands itself.' } },
+          { q: { ru: 'Где работает GitHub Copilot?', en: 'Where does GitHub Copilot work?' }, a: { ru: 'По документации GitHub: в VS Code, Visual Studio, средах JetBrains, Eclipse и Xcode, на GitHub.com, в терминале через Copilot CLI, в GitHub Mobile и GitHub Desktop, а также в приложении GitHub Copilot для параллельных задач.', en: 'Per GitHub docs: in VS Code, Visual Studio, JetBrains IDEs, Eclipse and Xcode, on GitHub.com, in the terminal via Copilot CLI, in GitHub Mobile and GitHub Desktop, and in the GitHub Copilot app for parallel tasks.' } },
+          { q: { ru: 'Сколько стоит GitHub Copilot и есть ли бесплатный тариф?', en: 'How much is GitHub Copilot and is there a free plan?' }, a: { ru: 'На 13 ноября 2026: Free — бесплатно (2000 подсказок в месяц и ограниченный чат и агент), Pro — 10 долларов, Pro+ — 39, Max — 100 за пользователя в месяц; для компаний есть Business и Enterprise.', en: 'As of Nov 13, 2026: Free costs nothing (2,000 completions a month and limited chat and agent), Pro is $10, Pro+ is $39, Max is $100 per user per month; Business and Enterprise are for companies.' } },
+          { q: { ru: 'Что такое режим агента в Copilot?', en: 'What is agent mode in Copilot?' }, a: { ru: 'Режим, где вы ставите задачу обычными словами, а Copilot сам выбирает шаги: правит файлы, запускает команды, смотрит на ошибки сборки и тестов и повторяет, пока не выйдет. Каждую правку можно принять или отменить.', en: 'A mode where you state a task in plain words and Copilot chooses the steps: edits files, runs commands, reads build and test errors and repeats until it works. Each edit can be accepted or undone.' } },
+        ],
+        source: { url: 'https://docs.github.com/en/copilot/get-started/where-to-use-github-copilot', label: { ru: 'Документация GitHub: где использовать Copilot', en: 'GitHub docs: where to use Copilot' } },
+        seo: {
+          title: { ru: 'GitHub Copilot: что это, где работает, режим агента и тарифы', en: 'GitHub Copilot: what it is, where it works, agent mode and plans' },
+          description: {
+            ru: 'GitHub Copilot — ИИ-помощник для кода: подсказки, чат и агент, который правит файлы. Где он работает (VS Code, Visual Studio, JetBrains, терминал) и сколько стоят тарифы.',
+            en: 'GitHub Copilot is an AI coding assistant: suggestions, chat and an agent that edits files. Where it runs (VS Code, Visual Studio, JetBrains, terminal) and what the plans cost.',
+          },
+        },
+        table: {
+          title: { ru: 'Тарифы GitHub Copilot', en: 'GitHub Copilot plans' },
+          head: { ru: ['Free', 'Pro', 'Pro+', 'Max'], en: ['Free', 'Pro', 'Pro+', 'Max'] },
+          rows: [
+            { ru: ['Цена в месяц', '0', '10 $', '39 $', '100 $'], en: ['Price per month', '0', '$10', '$39', '$100'] },
+            { ru: ['Подсказки кода', '2000 в месяц', 'без лимита', 'без лимита', 'без лимита'], en: ['Code completions', '2,000 a month', 'unlimited', 'unlimited', 'unlimited'] },
+            { ru: ['Режим агента', 'есть, с лимитом', 'есть', 'есть', 'есть'], en: ['Agent mode', 'yes, limited', 'yes', 'yes', 'yes'] },
+            { ru: ['Кредиты в месяц', '—', '15 $', '70 $', '200 $'], en: ['Credits per month', '—', '$15', '$70', '$200'] },
+          ],
+        },
       },
       {
         slug: 'hermes-agent',
@@ -808,7 +926,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'JetBrains is a company founded in Prague in 2000 that makes the IntelliJ IDEA, PyCharm, WebStorm and other IDEs, plus the Kotlin language. Its own coding agent Junie works in the IDE and the terminal; Claude Agent and Codex are built into the IDE next to it, and other agents connect through the open ACP protocol. Code completion runs on its own Mellum model. Air is a workspace where several agents run in parallel (preview).',
         },
         match: { ru: ['JetBrains'], en: ['JetBrains'] },
-        related: ['ide', 'vs-code', 'claude-code'],
+        related: ['ide', 'vs-code', 'claude-code', 'github-copilot'],
         faq: [
           { q: { ru: 'JetBrains — что это за компания?', en: 'What is JetBrains?' }, a: { ru: 'Компания, основанная в Праге в 2000 году: делает IDE IntelliJ IDEA, PyCharm, WebStorm и другие, а также язык Kotlin.', en: 'A company founded in Prague in 2000: it makes the IntelliJ IDEA, PyCharm, WebStorm and other IDEs, and the Kotlin language.' } },
           { q: { ru: 'Какие ИИ-агенты работают в IDE JetBrains?', en: 'Which AI agents work in JetBrains IDEs?' }, a: { ru: 'Свой агент Junie, встроенные Claude Agent и Codex, а другие агенты подключаются через открытый протокол ACP.', en: 'JetBrains’ own Junie agent, built-in Claude Agent and Codex, and other agents connect through the open ACP protocol.' } },
@@ -824,7 +942,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Microsoft is a US company that makes the Copilot assistant, built into Windows, Word, Excel, Outlook and Teams. For developers: the VS Code editor, GitHub Copilot with a coding agent and the GitHub Copilot app for running several agents. For companies: Copilot Studio and Foundry to build their own agents. It runs on its own MAI models and on partner models, including OpenAI and Anthropic.',
         },
         match: { ru: ['Microsoft', 'Copilot'], en: ['Microsoft', 'Copilot'] },
-        related: ['vs-code', 'openai', 'anthropic', 'llm'],
+        related: ['vs-code', 'openai', 'anthropic', 'llm', 'visual-studio', 'github-copilot'],
         faq: [
           { q: { ru: 'Что Microsoft делает в ИИ?', en: 'What does Microsoft do in AI?' }, a: { ru: 'Ассистента Copilot, встроенного в Windows, Word, Excel, Outlook и Teams.', en: 'The Copilot assistant built into Windows, Word, Excel, Outlook and Teams.' } },
           { q: { ru: 'Что Microsoft даёт разработчикам?', en: 'What does Microsoft offer developers?' }, a: { ru: 'Редактор VS Code, GitHub Copilot с агентом для кода и приложение GitHub Copilot.', en: 'The VS Code editor, GitHub Copilot with a coding agent and the GitHub Copilot app.' } },
@@ -1460,7 +1578,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Spec-Driven Development (SDD) is an approach where a specification — what the system must do — is written first, and an agent writes the code and checks it against the spec. The spec becomes the main document and the code its consequence.',
         },
         match: { ru: ['Spec-Driven Development', 'spec-driven development', 'SDD'], en: ['Spec-Driven Development', 'spec-driven development', 'SDD'] },
-        related: ['openspec', 'spec-kit', 'reconcile-loop'],
+        related: ['openspec', 'spec-kit', 'reconcile-loop', 'kiro'],
         faq: [
           { q: { ru: 'Spec-Driven Development — что это?', en: 'What is spec-driven development?' }, a: { ru: 'Подход, где сначала пишется спецификация — что система должна делать, — а код по ней пишет и сверяет агент.', en: 'An approach where the specification of what the system must do comes first, and an agent writes and checks the code against it.' } },
           { q: { ru: 'Какие программы есть для Spec-Driven Development?', en: 'Which frameworks support spec-driven development?' }, a: { ru: 'Например, OpenSpec от Fission AI и Spec Kit от GitHub.', en: 'For example, OpenSpec by Fission AI and Spec Kit by GitHub.' } },
@@ -1501,7 +1619,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'OpenSpec is a free, open-source framework by Fission AI for Spec-Driven Development: the agent first writes a change plan into files, you review it, then the agent writes code. Live specs sit in `openspec/specs`, and every change is its own folder in `openspec/changes`: `proposal.md` (why and what), a spec delta, `design.md` and `tasks.md`. The agent follows the skills `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (before 2.0: `/opsx:propose`, `/opsx:apply`, `/opsx:archive`); archiving merges the delta into the specs. Lighter than Spec Kit, with no rigid phases, and works with 30+ agents.',
         },
         match: { ru: ['OpenSpec'], en: ['OpenSpec'] },
-        related: ['spec-driven-development', 'spec-kit'],
+        related: ['spec-driven-development', 'spec-kit', 'kiro'],
         faq: [
           { q: { ru: 'OpenSpec — это что?', en: 'What is OpenSpec?' }, a: { ru: 'Бесплатная открытая программа от Fission AI для разработки по спецификациям: агент сначала пишет план изменения в файлы, вы его проверяете, потом агент пишет код.', en: 'A free open-source framework by Fission AI for spec-driven development: the agent first writes a change plan into files, you review it, then the agent writes code.' } },
           { q: { ru: 'Какие команды у OpenSpec?', en: 'What are the OpenSpec commands?' }, a: { ru: 'Основные три: /openspec-propose создаёт план изменения, /openspec-apply-change пишет код по задачам, /openspec-archive-change вливает требования в общие спеки. Подумать вслух перед ними — /openspec-explore. В Codex те же скиллы вызывают через $, например $openspec-propose; в версиях 1.x они назывались /opsx:propose, /opsx:apply и /opsx:archive.', en: 'The main three: /openspec-propose creates a change plan, /openspec-apply-change writes code by the tasks, /openspec-archive-change merges the requirements into the shared specs. Think out loud first with /openspec-explore. Codex calls the same skills with $, e.g. $openspec-propose; in 1.x they were /opsx:propose, /opsx:apply and /opsx:archive.' } },
@@ -1538,7 +1656,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Spec Kit is a GitHub toolkit for Spec-Driven Development: the `specify` CLI installs agent commands that lead step by step: project principles (`/speckit-constitution`), spec (`/speckit-specify`), technical plan (`/speckit-plan`), tasks (`/speckit-tasks`), code (`/speckit-implement`) and a check against the artifacts (`/speckit-converge`), repeated until code and spec agree. Works with Copilot, Claude Code and other agents.',
         },
         match: { ru: ['Spec Kit'], en: ['Spec Kit'] },
-        related: ['spec-driven-development', 'openspec'],
+        related: ['spec-driven-development', 'openspec', 'kiro', 'github-copilot'],
         faq: [
           { q: { ru: 'Spec Kit — что это?', en: 'What is Spec Kit?' }, a: { ru: 'Набор GitHub для разработки по спецификациям: утилита specify ставит в проект команды для агента, и они ведут по шагам от принципов проекта до кода.', en: 'GitHub’s toolkit for spec-driven development: the specify utility installs agent commands in the project, which guide you step by step from project principles to code.' } },
           { q: { ru: 'Какие шаги в Spec Kit?', en: 'What are the Spec Kit steps?' }, a: { ru: 'Принципы проекта, спека, технический план, задачи, код и сверка кода со спекой, которую повторяют, пока они не сойдутся.', en: 'Project principles, spec, technical plan, tasks, code and a check of the code against the spec, repeated until they match.' } },
@@ -2282,7 +2400,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'An automated test is a short program that runs code with a given input and compares the result with the expected one. It is written once and run after every edit, and if an edit broke something that worked, the test fails. Engines such as Jest, Vitest and QUnit run such tests for JavaScript code. A test catches only what you thought of checking in advance, so it is complemented by models of rules and by checking the tests themselves.',
         },
         match: { ru: ['автоматическ\\p{L}* тест\\p{L}*', 'автотест\\p{L}*', 'тестов\\p{L}* движк\\p{L}*'], en: ['automated tests?', 'autotests?', 'test engines?', 'test frameworks?'] },
-        related: ['qunit', 'jest', 'vitest', 'mutation-testing', 'checks', 'quint'],
+        related: ['qunit', 'jest', 'vitest', 'mutation-testing', 'checks', 'quint', 'test-case', 'regression-testing', 'smoke-testing', 'e2e-test', 'flaky-test', 'mock'],
         also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
         faq: [
           { q: { ru: 'Что такое автотест?', en: 'What is an automated test?' }, a: { ru: 'Короткая программа, которая запускает код с заданным входом и сверяет результат с ожидаемым после каждой правки.', en: 'A short program that runs code with a given input and compares the result with the expected one after every change.' } },
@@ -2299,7 +2417,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'QA (quality assurance) is the work of ensuring a product’s quality and the role of the person who does it: they check that the product does what it promises and find bugs before users do. QA reproduces an error, describes it so a developer can repeat it, and accepts the fix. When an agent takes over the routine around bugs, QA checks its result by hand and decides how important the bug is.',
         },
         match: { ru: ['QA', 'тестировщик\\p{L}*', 'инженер\\p{L}* по качеству'], en: ['QA', 'testers?', 'quality assurance'] },
-        related: ['bug', 'automated-test', 'test-stand', 'test-env', 'ai-agent', 'jira'],
+        related: ['bug', 'automated-test', 'test-stand', 'test-env', 'ai-agent', 'jira', 'qc', 'test-case'],
         more: { post: 'bug-report-to-reproduction-agent', label: { ru: 'Как QA отдаёт рутину по багу агенту', en: 'How QA hands bug routine to an agent' } },
         faq: [
           { q: { ru: 'QA — что это?', en: 'What is QA?' }, a: { ru: 'Quality assurance, «обеспечение качества»: роль человека, который проверяет, что продукт делает обещанное, и находит баги раньше пользователей.', en: 'Quality assurance: the role of a person who checks that the product does what it promises and finds bugs before users do.' } },
@@ -2316,6 +2434,32 @@ export const TERM_SETS: TermSet[] = [
         },
       },
       {
+        slug: 'qc',
+        name: { ru: 'QC', en: 'QC' },
+        aka: { ru: 'quality control, контроль качества, контроль качества ПО', en: 'quality control, software quality control' },
+        def: {
+          ru: 'QC (quality control, «контроль качества») — проверка готового результата на соответствие требованиям: найти дефекты до того, как продукт получит пользователь, и решить, выпускать его или вернуть на доработку. Как на фабрике контролёр смотрит готовые чайники и откладывает бракованные, так в программе QC проверяет собранную версию: запускает тесты и сверяет итог с требованиями. QC отвечает на вопрос «что получилось?», а QA (обеспечение качества) занимается процессом, чтобы дефектов появлялось меньше.',
+          en: 'QC (quality control) is checking a finished result against the requirements: finding defects before the product reaches a user and deciding whether to release it or send it back for rework. As an inspector in a factory looks over finished kettles and sets the faulty ones aside, in software QC checks the built version: runs tests and compares the outcome with the requirements. QC answers “what did we get?”, while QA (quality assurance) works on the process so that fewer defects appear.',
+        },
+        match: { ru: ['QC', 'контрол\\p{L}* качества'], en: ['QC', 'quality control'] },
+        exact: 'QC',
+        related: ['qa', 'bug', 'automated-test', 'test-case', 'regression-testing', 'smoke-testing'],
+        faq: [
+          { q: { ru: 'QC — что это?', en: 'What is QC?' }, a: { ru: 'Quality control, «контроль качества»: проверка готового результата на соответствие требованиям, чтобы найти дефекты до выпуска.', en: 'Quality control: checking a finished result against the requirements to find defects before release.' } },
+          { q: { ru: 'Чем QC отличается от QA?', en: 'How is QC different from QA?' }, a: { ru: 'QC обнаруживает дефекты в готовом результате, а QA предотвращает их: следит за процессом и улучшает его, чтобы ошибок было меньше.', en: 'QC detects defects in the finished output, while QA prevents them: it watches and improves the process so fewer errors appear.' } },
+          { q: { ru: 'QC и тестирование — одно и то же?', en: 'Are QC and testing the same?' }, a: { ru: 'Тестирование — главный способ контроля качества, но не единственный: к QC относятся и осмотр готового результата, и решение выпускать его или нет.', en: 'Testing is the main way of quality control but not the only one: QC also includes inspecting the finished result and deciding whether to release it.' } },
+          { q: { ru: 'Кто занимается QC в команде?', en: 'Who does QC in a team?' }, a: { ru: 'Обычно тестировщики и QA-инженеры, часть проверок берут на себя автотесты.', en: 'Usually testers and QA engineers, with automated tests taking over part of the checks.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Quality_control', label: { ru: 'Википедия: Quality control', en: 'Wikipedia: Quality control' } },
+        seo: {
+          title: { ru: 'QC: что это в IT, контроль качества и отличие от QA и тестирования', en: 'QC (quality control): what it is and how it differs from QA and testing' },
+          description: {
+            ru: 'QC, контроль качества: проверка готового результата, которая ловит дефекты до выпуска. Чем QC отличается от QA и от тестирования, с примером из разработки.',
+            en: 'QC, quality control, inspects a finished result and catches defects before release. How QC differs from QA and from testing, with a software example.',
+          },
+        },
+      },
+      {
         slug: 'bug',
         name: { ru: 'Баг', en: 'Bug' },
         aka: { ru: 'ошибка в программе, дефект', en: 'software bug, defect' },
@@ -2324,13 +2468,110 @@ export const TERM_SETS: TermSet[] = [
           en: 'A bug is an error in a program: it does something other than intended, or crashes. A bug usually arrives from a client as a one-line complaint, and QA turns it into exact steps anyone can use to repeat the error. The shorter the path to the bug, the faster it gets fixed.',
         },
         match: { ru: ['баг(?:а|у|ом|е|и|ов|ам|ами|ах)?', 'дефект\\p{L}*'], en: ['bugs?'] },
-        related: ['qa', 'test-stand', 'sequence-diagram', 'poc'],
+        related: ['qa', 'test-stand', 'sequence-diagram', 'poc', 'test-case', 'regression-testing'],
         more: { post: 'bug-report-to-reproduction-agent', label: { ru: 'Как QA отдаёт рутину по багу агенту', en: 'How QA hands bug routine to an agent' } },
         faq: [
           { q: { ru: 'Что такое баг?', en: 'What is a bug?' }, a: { ru: 'Ошибка в программе: она делает не то, что задумано, или падает.', en: 'An error in a program: it does something other than intended, or crashes.' } },
           { q: { ru: 'Как быстрее исправить баг?', en: 'How do you fix a bug faster?' }, a: { ru: 'Превратить жалобу в точные шаги, по которым ошибку повторит любой. Чем короче путь до бага, тем быстрее его чинят.', en: 'Turn the complaint into exact steps anyone can follow to reproduce it. The shorter the path to the bug, the faster it gets fixed.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Software_bug', label: { ru: 'Википедия: Software bug', en: 'Wikipedia: Software bug' } },
+      },
+      {
+        slug: 'test-case',
+        name: { ru: 'Тест-кейс', en: 'Test case' },
+        aka: { ru: 'тест кейс, тестовый случай, тестовый сценарий, test case', en: 'test case, test scenario' },
+        def: {
+          ru: 'Тест-кейс — описание одной проверки: что сделать, с какими данными и что должно получиться. В нём есть предусловия, шаги, входные данные и ожидаемый результат, а при прогоне добавляется фактический результат и отметка «прошёл или упал». Пример для брони комнат: войти как гость, выбрать комнату на 1–3 июня и нажать «Забронировать»; ожидается, что бронь появится в списке, а в эти даты комнату нельзя выбрать второй раз. Тест-кейс пишет и человек для ручной проверки, и разработчик в виде автотеста.',
+          en: 'A test case is the description of a single check: what to do, with what data, and what should result. It holds preconditions, steps, input data and the expected result, and a run adds the actual result and a pass or fail mark. Example for room booking: sign in as a guest, pick a room for June 1–3 and press “Book”; expected, the booking appears in the list and the room can no longer be picked for those dates. A test case may be written by a person for a manual check or by a developer as an automated test.',
+        },
+        match: { ru: ['тест-кейс\\p{L}*', 'тест кейс\\p{L}*', 'тестов\\p{L}* случа\\p{L}*'], en: ['test cases?'] },
+        related: ['automated-test', 'qa', 'qc', 'bug', 'regression-testing', 'smoke-testing', 'e2e-test'],
+        faq: [
+          { q: { ru: 'Что такое тест-кейс?', en: 'What is a test case?' }, a: { ru: 'Описание одной проверки: предусловия, шаги, входные данные и ожидаемый результат.', en: 'The description of a single check: preconditions, steps, input data and the expected result.' } },
+          { q: { ru: 'Чем тест-кейс отличается от автотеста?', en: 'How is a test case different from an automated test?' }, a: { ru: 'Тест-кейс описывает проверку словами, а автотест — та же проверка, записанная программой, которая выполняет её сама. Тест-кейс можно пройти и вручную.', en: 'A test case describes a check in words, while an automated test is the same check written as a program that runs itself. A test case can also be run by hand.' } },
+          { q: { ru: 'Чем тест-кейс отличается от сценария?', en: 'How is a test case different from a scenario?' }, a: { ru: 'Тест-кейс — одна точная проверка с ожидаемым результатом. Сценарий — история пользователя из нескольких шагов, из которой выводят несколько тест-кейсов.', en: 'A test case is one exact check with an expected result. A scenario is a user story of several steps from which several test cases are derived.' } },
+          { q: { ru: 'Как написать тест-кейс?', en: 'How do you write a test case?' }, a: { ru: 'Назвать цель одной фразой, записать предусловия и шаги, указать входные данные и точно описать ожидаемый результат, чтобы по нему любой отличил «прошёл» от «упал».', en: 'State the goal in one phrase, write the preconditions and steps, give the input data and describe the expected result precisely so anyone can tell pass from fail.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Test_case_(software)', label: { ru: 'Википедия: Test case', en: 'Wikipedia: Test case' } },
+        seo: {
+          title: { ru: 'Тест-кейс: что это, из чего состоит и пример на бронировании', en: 'Test case: what it is, its parts and an example' },
+          description: {
+            ru: 'Тест-кейс описывает одну проверку программы: шаги, данные и ожидаемый результат. Пример с бронью комнаты и разница между тест-кейсом, автотестом и сценарием.',
+            en: 'A test case describes one check of a program: steps, data and the expected result. A room-booking example and how it differs from an automated test and a scenario.',
+          },
+        },
+      },
+      {
+        slug: 'regression-testing',
+        name: { ru: 'Регрессионное тестирование', en: 'Regression testing' },
+        aka: { ru: 'регрессия, регрессионный тест, регресс', en: 'regression test, regression suite' },
+        def: {
+          ru: 'Регрессионное тестирование — повторная проверка того, что уже работало, после правки: убедиться, что новое изменение не сломало старое. Пример: в магазине добавили скидки, а регрессия снова проходит оформление заказа и оплату, ведь их могли задеть. Набор таких проверок растёт с каждым найденным багом, поэтому его автоматизируют: автотесты гоняют после каждой правки или ночью. Падение теста, который раньше проходил, называют регрессией.',
+          en: 'Regression testing is rechecking what already worked after a change, to make sure the new change did not break the old. Example: a shop adds discounts, and the regression run goes through checkout and payment again, since they might have been touched. The set of such checks grows with every bug found, so it is automated: automated tests run after every change or overnight. A test that passed before and now fails signals a regression.',
+        },
+        match: { ru: ['регрессионн\\p{L}* тест\\p{L}*', 'регрессионн\\p{L}* прогон\\p{L}*'], en: ['regression tests?', 'regression testing', 'regression suites?'] },
+        related: ['automated-test', 'smoke-testing', 'e2e-test', 'flaky-test', 'ci-cd', 'test-case', 'qc'],
+        faq: [
+          { q: { ru: 'Что такое регрессионное тестирование?', en: 'What is regression testing?' }, a: { ru: 'Повторная проверка уже работавшего после правки, чтобы убедиться, что новое изменение ничего не сломало.', en: 'Rechecking what already worked after a change to make sure the new change broke nothing.' } },
+          { q: { ru: 'Когда запускать регрессию?', en: 'When should regression run?' }, a: { ru: 'После каждой правки, если набор быстрый, и ночью или перед выкладкой, если он большой. Чем чаще, тем раньше видно поломку.', en: 'After every change if the set is fast, and overnight or before release if it is large. The more often, the sooner a break shows.' } },
+          { q: { ru: 'Чем регрессия отличается от смоук-теста?', en: 'How is regression different from smoke testing?' }, a: { ru: 'Смоук быстро проверяет только главное, чтобы понять, стоит ли идти дальше. Регрессия проходит по всему, что работало раньше, и занимает дольше.', en: 'Smoke testing quickly checks only the main things to decide whether to go on. Regression covers everything that worked before and takes longer.' } },
+          { q: { ru: 'Регрессию можно автоматизировать?', en: 'Can regression be automated?' }, a: { ru: 'Да, это главное место для автотестов: набор повторяется много раз. Нестабильные тесты, которые падают без причины, портят доверие к такому набору.', en: 'Yes, it is the main place for automated tests: the set repeats many times. Flaky tests that fail for no reason erode trust in such a set.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Regression_testing', label: { ru: 'Википедия: Regression testing', en: 'Wikipedia: Regression testing' } },
+        seo: {
+          title: { ru: 'Регрессионное тестирование: что это и чем отличается от смоук-теста', en: 'What is regression testing: how it differs from smoke and end-to-end tests' },
+          description: {
+            ru: 'Регрессионное тестирование проверяет, что новая правка не сломала работавшее. Когда его запускать и чем оно отличается от смоук-теста и сквозного теста.',
+            en: 'Regression testing checks that a new change did not break what worked. When to run it and how it differs from smoke and end-to-end tests.',
+          },
+        },
+        compare: {
+          title: { ru: 'Смоук, регрессия и сквозной тест', en: 'Smoke, regression and end-to-end tests' },
+          head: { ru: ['Смоук', 'Регрессия', 'Сквозной тест (e2e)'], en: ['Smoke', 'Regression', 'End-to-end (e2e)'] },
+          headSlugs: ['smoke-testing', 'regression-testing', 'e2e-test'],
+          rows: [
+            { ru: ['Цель', 'понять, стоит ли проверять дальше', 'убедиться, что старое не сломалось', 'пройти путь пользователя целиком'], en: ['Goal', 'decide whether to test further', 'make sure old things did not break', 'walk a whole user path'] },
+            { ru: ['Когда', 'сразу после сборки или выкладки', 'после правок, ночью, перед релизом', 'перед релизом и после него'], en: ['When', 'right after a build or release', 'after changes, overnight, before release', 'before and after release'] },
+            { ru: ['Объём', 'малый: только главное', 'большой: всё, что работало', 'малый или средний: ключевые пути насквозь'], en: ['Scope', 'small: only the main things', 'large: everything that worked', 'small to medium: key paths end to end'] },
+            { ru: ['Кто', 'автотест или тестировщик, минуты', 'в основном автотесты', 'автотесты или QA'], en: ['Who', 'automated test or tester, minutes', 'mostly automated tests', 'automated tests or QA'] },
+          ],
+        },
+      },
+      {
+        slug: 'smoke-testing',
+        name: { ru: 'Смоук-тест', en: 'Smoke testing' },
+        aka: { ru: 'смоук тестирование, дымовое тестирование, smoke test, sanity-тест, build verification test', en: 'smoke test, sanity test, build verification test, BVT' },
+        def: {
+          ru: 'Смоук-тест (дымовое тестирование) — быстрая проверка самого главного после сборки или выкладки: запускается ли программа и работают ли ключевые функции. Пример: после выкладки магазина открыть главную, войти, положить товар в корзину; если что-то не работает, дальше можно не проверять, версию возвращают. Название пришло из электроники: включили плату, и если пошёл дым, дальше смотреть незачем. Такая проверка занимает минуты и обычно автоматизирована.',
+          en: 'Smoke testing is a quick check of the most important things after a build or release: does the program start and do the key functions work. Example: after releasing a shop, open the home page, sign in and put an item in the cart; if something fails, there is no point testing further and the version is rolled back. The name comes from electronics: power on the board, and if smoke appears, there is nothing more to look at. Such a check takes minutes and is usually automated.',
+        },
+        match: { ru: ['смоук\\p{L}*', 'smoke[- ]?test\\p{L}*', 'дымов\\p{L}* тест\\p{L}*'], en: ['smoke tests?', 'smoke testing', 'build verification tests?'] },
+        related: ['regression-testing', 'e2e-test', 'automated-test', 'preprod', 'ci-cd', 'test-case', 'qc'],
+        faq: [
+          { q: { ru: 'Что такое смоук-тест?', en: 'What is a smoke test?' }, a: { ru: 'Быстрая проверка главного после сборки или выкладки: запускается ли программа и работают ли ключевые функции.', en: 'A quick check of the main things after a build or release: does the program start and do the key functions work.' } },
+          { q: { ru: 'Почему «смоук», то есть дым?', en: 'Why “smoke”?' }, a: { ru: 'Название пришло из электроники: плату включают и смотрят, не пошёл ли дым. Если пошёл, дальнейшая проверка не нужна.', en: 'The name comes from electronics: you power on a board and see whether smoke appears. If it does, further testing is pointless.' } },
+          { q: { ru: 'Чем смоук отличается от регрессии?', en: 'How is smoke testing different from regression?' }, a: { ru: 'Смоук проверяет только главное и занимает минуты, регрессия проходит по всему, что работало раньше. Смоук отвечает «стоит ли тестировать дальше», регрессия — «не сломалось ли старое».', en: 'Smoke checks only the main things and takes minutes, while regression covers everything that worked before. Smoke answers “is it worth testing further”, regression answers “did the old things break”.' } },
+          { q: { ru: 'Чем смоук отличается от e2e?', en: 'How is smoke testing different from e2e?' }, a: { ru: 'Смоук широкий и поверхностный: проверяет, что главные части живы. Сквозной тест глубокий: проходит один путь пользователя от начала до конца.', en: 'Smoke is wide and shallow: it checks that the main parts are alive. An end-to-end test is deep: it walks one user path from start to finish.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Smoke_testing_(software)', label: { ru: 'Википедия: Smoke testing', en: 'Wikipedia: Smoke testing (software)' } },
+        seo: {
+          title: { ru: 'Смоук-тест (smoke testing): что это и когда запускать после выкладки', en: 'What is smoke testing: a quick check after release, vs regression and end-to-end' },
+          description: {
+            ru: 'Смоук-тест — быстрая проверка главного после выкладки: запускается ли программа и работают ли основные пути. Чем отличается от регрессии и сквозного теста.',
+            en: 'Smoke testing is a quick check of the main paths right after a release. What it covers, when to run it and how it differs from regression and end-to-end tests.',
+          },
+        },
+        compare: {
+          title: { ru: 'Смоук, регрессия и сквозной тест', en: 'Smoke, regression and end-to-end tests' },
+          head: { ru: ['Смоук', 'Регрессия', 'Сквозной тест (e2e)'], en: ['Smoke', 'Regression', 'End-to-end (e2e)'] },
+          headSlugs: ['smoke-testing', 'regression-testing', 'e2e-test'],
+          rows: [
+            { ru: ['Цель', 'понять, стоит ли проверять дальше', 'убедиться, что старое не сломалось', 'пройти путь пользователя целиком'], en: ['Goal', 'decide whether to test further', 'make sure old things did not break', 'walk a whole user path'] },
+            { ru: ['Когда', 'сразу после сборки или выкладки', 'после правок, ночью, перед релизом', 'перед релизом и после него'], en: ['When', 'right after a build or release', 'after changes, overnight, before release', 'before and after release'] },
+            { ru: ['Объём', 'малый: только главное', 'большой: всё, что работало', 'малый или средний: ключевые пути насквозь'], en: ['Scope', 'small: only the main things', 'large: everything that worked', 'small to medium: key paths end to end'] },
+            { ru: ['Кто', 'автотест или тестировщик, минуты', 'в основном автотесты', 'автотесты или QA'], en: ['Who', 'automated test or tester, minutes', 'mostly automated tests', 'automated tests or QA'] },
+          ],
+        },
       },
       {
         slug: 'sequence-diagram',
@@ -2456,6 +2697,89 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Что значит, если порча прошла незамеченной?', en: 'What does it mean if the break goes unnoticed?' }, a: { ru: 'Тесты этот случай не проверяют, и их нужно дополнить.', en: 'The tests do not cover this case and need to be extended.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Mutation_testing', label: { ru: 'Википедия: мутационное тестирование', en: 'Wikipedia: Mutation testing' } },
+      },
+      {
+        slug: 'e2e-test',
+        name: { ru: 'Сквозной тест', en: 'End-to-end test' },
+        aka: { ru: 'e2e, end-to-end, E2E-тест, сквозное тестирование', en: 'E2E test, end-to-end testing, system test' },
+        def: {
+          ru: 'Сквозной тест (end-to-end, e2e) — автоматическая проверка, которая проходит путь пользователя через всю систему целиком: например, открывает страницу, входит в аккаунт, кладёт товар в корзину и оформляет заказ. Он проверяет, что экран, сервер и база работают вместе, а не каждый по отдельности. Юнит-тест проверяет одну маленькую часть кода, смоук-тест быстро убеждается, что главное вообще запускается, а сквозной тест идёт долго и охватывает весь путь. Поэтому сквозных тестов делают меньше, чем юнит-тестов, и запускают на стенде.',
+          en: 'An end-to-end (E2E) test is an automated check that walks a user’s path through the whole system: for example, it opens a page, signs in, adds an item to the cart and places an order. It checks that the screen, the server and the database work together, not each on its own. A unit test checks one small piece of code, a smoke test quickly confirms that the main things start at all, while an end-to-end test is slow and covers the whole path. So there are fewer end-to-end tests than unit tests, and they run on a stand.',
+        },
+        match: { ru: ['сквозн\\p{L}* тест\\p{L}*', 'сквозн\\p{L}* тестировани\\p{L}*', 'e2e', 'end-to-end'], en: ['end-to-end tests?', 'end-to-end testing', 'e2e', 'system testing'] },
+        related: ['automated-test', 'smoke-testing', 'regression-testing', 'test-stand', 'flaky-test', 'mock', 'qa'],
+        faq: [
+          { q: { ru: 'Сквозной тест (e2e) — что это?', en: 'What is an end-to-end (E2E) test?' }, a: { ru: 'Автоматическая проверка, которая проходит путь пользователя через всю систему целиком: от экрана до базы данных.', en: 'An automated check that walks a user’s path through the whole system, from the screen to the database.' } },
+          { q: { ru: 'Чем сквозной тест отличается от юнит-теста?', en: 'How is an end-to-end test different from a unit test?' }, a: { ru: 'Юнит-тест проверяет одну маленькую часть кода и работает быстро. Сквозной тест проверяет всю систему вместе, он медленнее и чаще ломается по посторонним причинам.', en: 'A unit test checks one small piece of code and is fast. An end-to-end test checks the whole system together; it is slower and more often breaks for unrelated reasons.' } },
+          { q: { ru: 'Чем сквозной тест отличается от смоук-теста?', en: 'How is an end-to-end test different from a smoke test?' }, a: { ru: 'Смоук-тест быстро проверяет, что главное запускается. Сквозной тест подробно проходит целый сценарий пользователя.', en: 'A smoke test quickly checks that the main things start. An end-to-end test goes through a full user scenario in detail.' } },
+          { q: { ru: 'Где запускают сквозные тесты?', en: 'Where are end-to-end tests run?' }, a: { ru: 'На стенде, который собран как рабочая система, часто на препроде перед выкладкой.', en: 'On a stand that is built like the live system, often on staging before a release.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/System_testing', label: { ru: 'Википедия: системное тестирование (end-to-end)', en: 'Wikipedia: System testing (end-to-end)' } },
+        seo: {
+          title: { ru: 'Сквозной тест (e2e): что это и чем отличается от юнит-теста', en: 'End-to-end (E2E) test: what it is and how it differs from a unit test' },
+          description: {
+            ru: 'Сквозной тест, он же e2e, проверяет путь пользователя через всю систему сразу. Чем он отличается от юнит-теста и смоук-теста и где его запускают.',
+            en: 'An E2E test checks a user’s whole path through the system at once. How it differs from unit and smoke tests, and where it runs.',
+          },
+        },
+      },
+      {
+        slug: 'mock',
+        name: { ru: 'Мок', en: 'Mock' },
+        aka: { ru: 'заглушка, mock-объект, стаб, фейк, имитация зависимости', en: 'mock object, stub, fake, test double' },
+        def: {
+          ru: 'Мок (заглушка) — имитация настоящей зависимости, например базы данных или чужого сервиса оплаты, которую подставляют в тест или на стенд вместо настоящей. Система обращается к ней как к настоящей, а она отвечает заранее заготовленными ответами, поэтому тест быстрый, бесплатный и не трогает чужие данные. Например, вместо реальной оплаты картой мок всегда отвечает «оплачено». Слово «мок» часто используют для любой такой имитации, хотя в строгом смысле у неё есть разновидности.',
+          en: 'A mock is an imitation of a real dependency, such as a database or a third-party payment service, that is plugged into a test or onto a stand in place of the real one. The system calls it as if it were real, and it replies with prepared answers, so the test is fast, free and does not touch anyone’s data. For example, instead of a real card payment the mock always answers “paid”. The word “mock” is often used for any such imitation, although in the strict sense there are several kinds.',
+        },
+        match: { ru: ['мок(?:и|ов|ам|ами|ах)', 'мок-объект\\p{L}*', 'заглушк\\p{L}* зависимост\\p{L}*'], en: ['mocks?', 'mocked', 'mocking', 'test doubles?'] },
+        related: ['automated-test', 'test-stand', 'test-env', 'e2e-test', 'flaky-test', 'api'],
+        faq: [
+          { q: { ru: 'Мок — что это в тестировании?', en: 'What is a mock in testing?' }, a: { ru: 'Имитация настоящей зависимости, например базы или чужого сервиса, которая отвечает заготовленными ответами, пока идёт тест.', en: 'An imitation of a real dependency, such as a database or a third-party service, that replies with prepared answers while a test runs.' } },
+          { q: { ru: 'Чем мок отличается от стаба и фейка?', en: 'How is a mock different from a stub and a fake?' }, a: { ru: 'Стаб только возвращает заготовленный ответ. Мок ещё и проверяет, как к нему обратились. Фейк — упрощённая, но рабочая реализация, например база в памяти. Различие принимают не все, и слово «мок» часто значит любую из трёх.', en: 'A stub only returns a prepared answer. A mock also checks how it was called. A fake is a simplified but working implementation, such as an in-memory database. The split is not universally accepted, and “mock” often means any of the three.' } },
+          { q: { ru: 'Зачем нужны моки на стенде?', en: 'Why use mocks on a stand?' }, a: { ru: 'Они дешевле и быстрее копий настоящих сервисов и не отправляют настоящих писем и платежей. Цена — стенд чуть дальше от правды.', en: 'They are cheaper and faster than copies of real services and do not send real emails or payments. The price is that the stand is a little further from reality.' } },
+          { q: { ru: 'Как мок помогает против нестабильных тестов?', en: 'How do mocks help against flaky tests?' }, a: { ru: 'Мок убирает зависимость от внешней системы, которая отвечает то быстро, то медленно или недоступна, поэтому результат теста перестаёт зависеть от неё.', en: 'A mock removes the dependency on an outside system that answers fast, slow or not at all, so the test result no longer depends on it.' } },
+        ],
+        compare: {
+          title: { ru: 'Мок, стаб и фейк', en: 'Mock, stub and fake' },
+          head: { ru: ['Стаб', 'Мок', 'Фейк'], en: ['Stub', 'Mock', 'Fake'] },
+          rows: [
+            { ru: ['Что делает', 'отдаёт заготовленный ответ', 'проверяет, как к нему обратились', 'работает по-настоящему, но проще'], en: ['What it does', 'returns a prepared answer', 'checks how it was called', 'really works, only simpler'] },
+            { ru: ['Пример', 'курс валюты всегда 90', 'проверка: оплату запросили один раз', 'база данных в памяти'], en: ['Example', 'exchange rate is always 90', 'check: payment was requested once', 'in-memory database'] },
+          ],
+        },
+        source: { url: 'https://en.wikipedia.org/wiki/Test_double', label: { ru: 'Википедия: тестовый дублёр (test double)', en: 'Wikipedia: Test double' } },
+        seo: {
+          title: { ru: 'Мок (mock) в тестировании: что это и чем отличается от стаба и фейка', en: 'Mock in testing: what it is and how it differs from a stub and a fake' },
+          description: {
+            ru: 'Мок, или заглушка, подменяет базу или чужой сервис в тесте и на стенде. Чем мок отличается от стаба и фейка и зачем он нужен.',
+            en: 'A mock stands in for a database or outside service in a test or on a stand. How it differs from a stub and a fake, and why it is used.',
+          },
+        },
+      },
+      {
+        slug: 'flaky-test',
+        name: { ru: 'Нестабильный тест', en: 'Flaky test' },
+        aka: { ru: 'флаки-тест, флейки, плавающий тест, мигающий тест', en: 'flaky tests, flakiness, intermittent test' },
+        def: {
+          ru: 'Нестабильный тест (flaky test) — тест, который то проходит, то падает при одном и том же коде, без единой правки. Он как весы, которые при каждом взвешивании показывают разный вес: верить им нельзя. Причины обычно такие: гонка параллельных действий, зависимость от времени, обращение к внешней системе, тесты, которые влияют друг на друга. Такие тесты подрывают доверие ко всему набору и могут скрыть настоящую ошибку.',
+          en: 'A flaky test is a test that sometimes passes and sometimes fails on the same code, with no edit at all. It is like a scale that shows a different weight each time: you cannot trust it. The usual causes are a race between parallel actions, dependence on time, calls to an outside system, and tests that affect each other. Such tests erode trust in the whole suite and can hide a real defect.',
+        },
+        match: { ru: ['нестабильн\\p{L}* тест\\p{L}*', 'флак\\p{L}*-?тест\\p{L}*', 'flaky', 'флейк\\p{L}*'], en: ['flaky tests?', 'flakiness'] },
+        related: ['automated-test', 'e2e-test', 'mock', 'race-condition', 'ci-cd', 'regression-testing'],
+        faq: [
+          { q: { ru: 'Нестабильный тест (flaky test) — что это?', en: 'What is a flaky test?' }, a: { ru: 'Тест, который то проходит, то падает при одном и том же коде, без правок.', en: 'A test that sometimes passes and sometimes fails on the same code, with no edits.' } },
+          { q: { ru: 'Почему тесты становятся нестабильными?', en: 'Why do tests become flaky?' }, a: { ru: 'Из-за гонок между параллельными действиями, зависимости от времени, обращений к внешним системам и недостаточной изоляции тестов друг от друга.', en: 'Because of races between parallel actions, dependence on time, calls to outside systems and insufficient isolation between tests.' } },
+          { q: { ru: 'Чем вредит нестабильный тест?', en: 'Why is a flaky test harmful?' }, a: { ru: 'Команда привыкает к красным результатам и перестаёт на них смотреть, поэтому настоящая поломка может пройти незамеченной.', en: 'The team gets used to red results and stops looking at them, so a real breakage can go unnoticed.' } },
+          { q: { ru: 'Что делать с нестабильным тестом?', en: 'What to do with a flaky test?' }, a: { ru: 'Изолировать тест от других, зафиксировать время и случайные значения, заменить внешние сервисы моками. Пока тест чинят, его можно вынести в карантин, но не оставлять там навсегда.', en: 'Isolate it from other tests, pin down time and random values, replace outside services with mocks. While it is being fixed it can be quarantined, but not left there for good.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Flaky_test', label: { ru: 'Википедия: нестабильный тест (flaky test)', en: 'Wikipedia: Flaky test' } },
+        seo: {
+          title: { ru: 'Нестабильный тест (flaky test): что это, причины и что делать', en: 'Flaky test: what it is, why it happens and what to do' },
+          description: {
+            ru: 'Нестабильный тест то проходит, то падает без правок кода. Откуда берётся такая «плавающая» проверка, чем она вредит и как её исправить.',
+            en: 'A flaky test passes or fails on unchanged code. Where this inconsistency comes from, why it hurts a team and how to fix it.',
+          },
+        },
       },
     ],
   },
@@ -2602,7 +2926,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'A non-production environment (in Russian-speaking teams, a “test stand”) is any separate copy of a system on the team’s server where you can try and break things without touching production. The group includes the feature stand, dev, test (integration), staging (pre-prod) and demo; each has its own job, and a change moves through them in order. The developer’s local environment and production are not part of it. An AI agent reproduces bugs and checks changes here. Dependencies such as the database and external services are plugged in as copies or mocks: copies are closer to reality, mocks are cheaper. A sandbox differs in purpose: it fences in the agent’s actions, while a non-production environment is a copy of the whole system.',
         },
         match: { ru: ['тестов\\p{L}* стенд\\p{L}*', 'стенд\\p{L}*', 'тестов\\p{L}* контур\\p{L}*'], en: ['test stands?', 'non-production environments?', 'lower environments?'] },
-        related: ['environment', 'local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env', 'prod', 'sandbox', 'ai-agent', 'claude-in-chrome', 'human-in-the-loop'],
+        related: ['environment', 'local-env', 'feature-stand', 'dev-env', 'test-env', 'preprod', 'demo-env', 'prod', 'sandbox', 'ai-agent', 'claude-in-chrome', 'human-in-the-loop', 'smoke-testing', 'mock', 'ci-cd'],
         faq: [
           { q: { ru: 'Что такое тестовый стенд?', en: 'What is a non-production environment?' }, a: { ru: 'Отдельная копия системы на сервере команды, где можно пробовать и ломать, не задевая прод. К стендам относятся фича-стенд, дев, тест, препрод и демо.', en: 'A separate copy of the system on the team’s server where you can try and break things without touching production. They include the feature stand, dev, test, staging (pre-prod) and demo.' } },
           { q: { ru: 'Препрод — это тестовый стенд?', en: 'Is staging a non-production environment?' }, a: { ru: 'Да: препрод (стейджинг) — последний стенд перед продом, настроен как прод. До него идут дев и тест.', en: 'Yes: staging (pre-prod) is the last one before production and is set up like production. Dev and test come before it.' } },
@@ -2632,7 +2956,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'A staging environment (pre-prod, pre-production) is an environment set up like production where a change gets its last check before release: the same settings and a fresh copy of production data. Both “preprod” and “pre-prod” are used. In many teams staging and pre-prod are the same environment, the last one after the test (integration) environment; others keep them as two steps.',
         },
         match: { ru: ['препрод\\p{L}*', 'предпрод\\p{L}*', 'стейджинг\\p{L}*'], en: ['pre-?prod(?:uction)?', 'staging(?: environments?)?'] },
-        related: ['environment', 'test-stand', 'dev-env', 'demo-env', 'prod', 'time-to-market', 'sandbox'],
+        related: ['environment', 'test-stand', 'dev-env', 'demo-env', 'prod', 'time-to-market', 'sandbox', 'smoke-testing', 'dump', 'e2e-test'],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
           title: { ru: 'Препрод (pre-prod) или предпрод: что это в IT и как правильно писать', en: 'Staging environment (pre-prod): what it is, staging vs production vs test' },
@@ -2694,7 +3018,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Prod (production, the live environment) is the environment real users work with, and its data is real. A mistake here costs the most: users lose time or money. So changes reach production through checks on the stands, and an AI agent does not write to production: a release moves the changes, usually with a person’s confirmation.',
         },
         match: { ru: ['прод(?:а|е|у|ом)?', 'продакшен\\p{L}*', 'боев\\p{L}* сред\\p{L}*'], en: ['prod', 'production environments?'] },
-        related: ['environment', 'test-stand', 'preprod', 'demo-env', 'time-to-market'],
+        related: ['environment', 'test-stand', 'preprod', 'demo-env', 'time-to-market', 'ci-cd'],
         faq: [
           { q: { ru: 'Прод — что это в IT?', en: 'What is production in IT?' }, a: { ru: 'Среда, с которой работают настоящие пользователи, и данные в ней настоящие.', en: 'The environment real users work with, with real data.' } },
           { q: { ru: 'Почему на прод не пишут напрямую?', en: 'Why not write to production directly?' }, a: { ru: 'Ошибка там стоит дороже всего, поэтому изменения идут через проверки на стендах, а выкладку обычно подтверждает человек.', en: 'A mistake there costs the most, so changes go through checks on the stands, and a person usually confirms the release.' } },
@@ -2708,6 +3032,56 @@ export const TERM_SETS: TermSet[] = [
           description: {
             ru: 'Прод (продакшен, production) в IT и программировании — рабочая среда, где работают настоящие пользователи с настоящими данными. Чем прод отличается от препрода и теста и почему туда не пишут напрямую.',
             en: 'Production (prod) is the live environment where real users work with real data. How production differs from pre-prod and test, and why nobody writes there directly.',
+          },
+        },
+      },
+      {
+        slug: 'ci-cd',
+        name: { ru: 'CI/CD', en: 'CI/CD' },
+        aka: { ru: 'непрерывная интеграция и доставка, конвейер, пайплайн, pipeline', en: 'continuous integration and delivery, pipeline, CI/CD pipeline' },
+        def: {
+          ru: 'CI/CD (непрерывная интеграция и доставка) — практика, при которой каждая правка кода сама проходит цепочку шагов от коммита до выкладки: сборку, автоматические тесты и выкладку на стенд или на прод. Эту цепочку называют конвейером (пайплайном). Как на заводской линии, каждая правка идёт по тем же шагам, и брак останавливается на первом провалившемся. CI значит, что разработчики часто сливают небольшие правки в общую ветку и каждую проверяют; CD значит, что готовую версию можно выложить в любой момент, а при «непрерывном развёртывании» она выкладывается сама.',
+          en: 'CI/CD (continuous integration and continuous delivery) is a practice where every code change automatically goes through a chain of steps from commit to release: build, automated tests, and deployment to a stand or to production. The chain is called a pipeline. Like a factory line, each change goes through the same steps, and a defect stops at the first step that fails. CI means developers often merge small changes into a shared branch and each one is checked; CD means a ready version can be released at any moment, and with “continuous deployment” it is released automatically.',
+        },
+        match: { ru: ['CI/CD', 'CI\\/CD', 'непрерывн\\p{L}* интеграци\\p{L}*', 'непрерывн\\p{L}* доставк\\p{L}*', 'пайплайн\\p{L}*'], en: ['CI/CD', 'CI\\/CD', 'continuous integration', 'continuous delivery', 'continuous deployment', 'CI/CD pipelines?'] },
+        related: ['automated-test', 'test-stand', 'environment', 'prod', 'change-lead-time', 'deployment-frequency', 'change-fail-rate', 'e2e-test'],
+        faq: [
+          { q: { ru: 'CI/CD — что это?', en: 'What is CI/CD?' }, a: { ru: 'Практика, при которой каждая правка кода автоматически проходит сборку, тесты и выкладку по одной и той же цепочке шагов, конвейеру.', en: 'A practice where every code change automatically goes through build, tests and deployment along the same chain of steps, a pipeline.' } },
+          { q: { ru: 'Чем CI отличается от CD?', en: 'How is CI different from CD?' }, a: { ru: 'CI собирает и проверяет правки, которые часто сливают в общую ветку. CD доводит проверенную версию до выкладки; если она идёт на прод без участия человека, это непрерывное развёртывание.', en: 'CI builds and checks changes that are often merged into a shared branch. CD carries the checked version to release; if it goes to production without a person, that is continuous deployment.' } },
+          { q: { ru: 'Что делает конвейер от коммита до выкладки?', en: 'What does a pipeline do from commit to release?' }, a: { ru: 'Собирает программу, запускает автоматические тесты, выкладывает её на стенд и, если всё прошло, на прод.', en: 'It builds the program, runs automated tests, deploys it to a stand and, if everything passed, to production.' } },
+          { q: { ru: 'Как CI/CD связан со скоростью поставки?', en: 'How does CI/CD relate to delivery speed?' }, a: { ru: 'Автоматические шаги сокращают время изменения и позволяют выкладывать чаще, поэтому метрики время изменения и частота выкладок растут именно от конвейера.', en: 'Automated steps shorten change lead time and allow more frequent releases, so those delivery metrics improve largely thanks to the pipeline.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/CI/CD', label: { ru: 'Википедия: CI/CD', en: 'Wikipedia: CI/CD' } },
+        seo: {
+          title: { ru: 'CI/CD: что это, как работает конвейер от коммита до выкладки', en: 'CI/CD: what it is and how a pipeline works from commit to release' },
+          description: {
+            ru: 'CI/CD автоматически ведёт каждую правку кода через сборку, тесты и стенды до выкладки. Что такое конвейер, чем CI отличается от CD.',
+            en: 'CI/CD automatically takes every code change through build, tests and stands to release. What a pipeline is and how CI differs from CD.',
+          },
+        },
+      },
+      {
+        slug: 'dump',
+        name: { ru: 'Дамп базы данных', en: 'Database dump' },
+        aka: { ru: 'дамп, дамп БД, бэкап-файл, выгрузка базы', en: 'DB dump, database export, SQL dump' },
+        def: {
+          ru: 'Дамп базы данных — копия структуры таблиц и данных, сохранённая одним файлом, чаще всего как список команд SQL. Это как фотография склада: по ней можно развернуть такой же склад в другом месте. Дампы нужны для резервных копий и чтобы быстро поднять на стенде базу с данными, похожими на рабочие. Перед загрузкой на препрод или тест из дампа убирают или подменяют личные данные, чтобы они не попали к людям без доступа к проду.',
+          en: 'A database dump is a copy of table structure and data saved as one file, most often as a list of SQL statements. It is like a photograph of a warehouse: from it you can set up the same warehouse elsewhere. Dumps are used for backups and to quickly bring up a database on a stand with data similar to production. Before loading it onto staging or test, personal data is removed or replaced so that it does not reach people who have no access to production.',
+        },
+        match: { ru: ['дамп\\p{L}*'], en: ['database dumps?', 'db dumps?', 'sql dumps?'] },
+        related: ['preprod', 'test-env', 'test-stand', 'prod', 'sql', 'environment'],
+        faq: [
+          { q: { ru: 'Дамп базы данных — что это?', en: 'What is a database dump?' }, a: { ru: 'Копия структуры и данных базы в одном файле, обычно в виде команд SQL, из которых базу можно восстановить.', en: 'A copy of a database’s structure and data in one file, usually as SQL statements from which the database can be restored.' } },
+          { q: { ru: 'Зачем дамп нужен для препрода?', en: 'Why is a dump needed for staging?' }, a: { ru: 'С него быстро заполняют базу препрода свежими данными, похожими на рабочие, и проверяют выкладку и обновление базы в условиях, близких к проду.', en: 'It quickly fills the staging database with fresh data that resembles production, so a release and database migrations are checked under near-production conditions.' } },
+          { q: { ru: 'Как очистить личные данные в дампе?', en: 'How to remove personal data from a dump?' }, a: { ru: 'Их маскируют: заменяют имена, почты и телефоны вымышленными, так что данные остаются пригодными для проверок, но никого не раскрывают.', en: 'It is masked: names, emails and phone numbers are replaced with made-up ones, so the data stays usable for tests but reveals no one.' } },
+          { q: { ru: 'Чем дамп отличается от мока базы?', en: 'How is a dump different from a mocked database?' }, a: { ru: 'Дамп — настоящие данные в файле. Мок — имитация базы, которая отвечает заготовленными ответами.', en: 'A dump is real data in a file. A mock is an imitation of the database that replies with prepared answers.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Database_dump', label: { ru: 'Википедия: дамп базы данных', en: 'Wikipedia: Database dump' } },
+        seo: {
+          title: { ru: 'Дамп базы данных: что это и зачем он нужен для препрода', en: 'Database dump: what it is and why staging needs one' },
+          description: {
+            ru: 'Дамп — копия базы данных одним файлом. Для чего его делают, как на его основе поднимают препрод и почему из него убирают личные данные.',
+            en: 'A dump is a copy of a database in one file. What it is for, how staging is built from it and why personal data is removed first.',
           },
         },
       },
@@ -2751,7 +3125,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Change lead time is how long it takes from a change being committed to version control to it running in production. It is shortened with small changes, automated checks and fewer manual steps on the way to production. The shorter it is, the faster the team ships small changes. It counts from ready code, while time to market counts from the idea.',
         },
         match: { ru: ['change lead time', 'lead time'], en: ['change lead time', 'lead time'] },
-        related: ['time-to-market', 'deployment-frequency', 'preprod'],
+        related: ['time-to-market', 'deployment-frequency', 'preprod', 'ci-cd'],
         faq: [
           { q: { ru: 'Change lead time — что это?', en: 'What is change lead time?' }, a: { ru: 'Сколько проходит от коммита до момента, когда правка работает на проде.', en: 'How long it takes from a commit until the change runs in production.' } },
           { q: { ru: 'Как сократить время изменения?', en: 'How do you shorten change lead time?' }, a: { ru: 'Маленькими правками, автоматическими проверками и меньшим числом ручных шагов до прода.', en: 'With small changes, automated checks and fewer manual steps on the way to production.' } },
@@ -2774,7 +3148,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Deployment frequency is how many times in a period a team releases changes to production, or how much time passes between releases. The more environments and manual checks on the way, the rarer the releases.',
         },
         match: { ru: ['частот\\p{L}* выкладок', 'deployment frequency'], en: ['deployment frequency'] },
-        related: ['change-lead-time', 'change-fail-rate', 'time-to-market'],
+        related: ['change-lead-time', 'change-fail-rate', 'time-to-market', 'ci-cd'],
         faq: [
           { q: { ru: 'Частота выкладок — что это?', en: 'What is deployment frequency?' }, a: { ru: 'Сколько раз за период команда выкладывает изменения на прод.', en: 'How many times in a period a team releases changes to production.' } },
           { q: { ru: 'От чего зависит частота выкладок?', en: 'What does deployment frequency depend on?' }, a: { ru: 'Чем больше сред и ручных проверок на пути, тем выкладки реже.', en: 'The more environments and manual checks on the way, the rarer the releases.' } },
@@ -3167,7 +3541,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'A race condition is a defect in which the result depends on which of two actions got there first. Each action works correctly on its own, but together they cause a loss or a mix-up of data. The classic case: a condition is checked once, and by the time of the action it has already changed. It is cured by rechecking at the moment of the action or by a shared lock.',
         },
         match: { ru: ['состояни\\p{L}* гонки', 'гонк\\p{L}* входа', 'race conditions?'], en: ['race conditions?', 'races'] },
-        related: ['model-checking', 'invariant', 'quint'],
+        related: ['model-checking', 'invariant', 'quint', 'flaky-test'],
         more: { post: 'quint-models-find-races', label: { ru: 'Какие гонки нашли модели на Quint', en: 'The races found by Quint models' } },
         faq: [
           { q: { ru: 'Состояние гонки — что это?', en: 'What is a race condition?' }, a: { ru: 'Ошибка, при которой результат зависит от того, какое из двух действий успело раньше.', en: 'A defect where the result depends on which of two actions got there first.' } },

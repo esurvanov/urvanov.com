@@ -1,0 +1,352 @@
+{
+  "kiro": {
+    "aka": "Kiro AWS, Kiro IDE, AWS Kiro",
+    "def": "Kiro es un entorno de desarrollo con agente de IA de AWS que trabaja a partir de especificaciones: antes de escribir código el agente redacta tres archivos, `requirements.md` (qué debe resultar), `design.md` (cómo está construido) y `tasks.md` (una lista de pasos); tú los revisas y solo entonces escribe el código. Ejemplo: pides «añadir un carrito de compras», Kiro primero detalla requisitos y tareas, y edita el código después de tu «sí». Existe como entorno de escritorio, versión de terminal, aplicación web y aplicación móvil; los modelos son Claude, GPT, modelos abiertos o elección automática.",
+    "faq.0.q": "¿Qué es Kiro?",
+    "faq.0.a": "Un entorno de desarrollo con agente de IA de AWS: el agente primero escribe requisitos, diseño y una lista de tareas en archivos, tú los revisas y luego escribe el código.",
+    "faq.1.q": "¿Cuánto cuesta Kiro y hay un plan gratuito?",
+    "faq.1.a": "A 13 de noviembre de 2026: Free cuesta 0 dólares y da 50 créditos al mes, Pro cuesta 20 dólares con 1000 créditos, Pro+ cuesta 40 con 2000, Pro Max cuesta 100 con 5000 y Power cuesta 200 con 10 000. Un crédito es una unidad de trabajo del agente: una petición sencilla gasta menos de uno y una tarea compleja basada en especificación, más.",
+    "faq.2.q": "¿En qué se diferencia Kiro de Cursor?",
+    "faq.2.a": "Kiro organiza el trabajo en torno a especificaciones: requisitos, diseño y tareas se escriben en archivos antes del código. Cursor es un editor con agente donde puedes pedir cambios de inmediato, y el plan es uno de sus modos.",
+    "faq.3.q": "¿En qué se diferencia Kiro de OpenSpec y Spec Kit?",
+    "faq.3.a": "OpenSpec y Spec Kit son conjuntos abiertos que se conectan a tu propio agente. Kiro es un entorno listo con su propio agente, donde las especificaciones vienen integradas.",
+    "faq.4.q": "¿Dónde se descarga Kiro?",
+    "faq.4.a": "El entorno está en kiro.dev/downloads (figuran macOS, Windows y Linux), la versión de terminal se instala con un comando de cli.kiro.dev y la aplicación web se abre en app.kiro.dev.",
+    "source.label": "Sitio oficial de Kiro",
+    "seo.title": "Kiro de AWS: qué es, especificaciones, precios y plan gratuito",
+    "seo.description": "Kiro es un entorno de AWS con agente de IA que escribe requisitos, diseño y tareas antes del código. Planes y créditos, y en qué se diferencia de Cursor, OpenSpec y Spec Kit.",
+    "notes.title": "Kiro: especificaciones, créditos y modelos",
+    "notes.items.0.name": "Los tres archivos de especificación",
+    "notes.items.0.text": "`requirements.md` (`bugfix.md` para corregir un error) con historias de usuario y criterios de aceptación, `design.md` con la arquitectura y diagramas, `tasks.md` con pasos cuyo estado se actualiza durante el trabajo. Una especificación rápida genera los tres archivos de una sola pasada, sin paradas para revisar.",
+    "notes.items.1.name": "Créditos",
+    "notes.items.1.text": "una unidad de trabajo del agente; cada modelo los gasta a distinto ritmo. Los créditos mensuales de los planes personales no se acumulan; los créditos adicionales, a 0,04 dólares, duran 12 meses.",
+    "notes.items.2.name": "Estándares abiertos",
+    "notes.items.2.text": "admite MCP, `AGENTS.md`, skills y extensiones de Open VSX.",
+    "compare.title": "Kiro y Cursor",
+    "compare.rows.0": [
+      "Empresa",
+      "AWS",
+      "Anysphere"
+    ],
+    "compare.rows.1": [
+      "Idea principal",
+      "especificaciones antes del código",
+      "un editor con agente integrado"
+    ],
+    "compare.rows.2": [
+      "Plan gratuito",
+      "sí: 50 créditos al mes",
+      "sí, con límites"
+    ],
+    "compare.rows.3": [
+      "Dónde funciona",
+      "entorno de escritorio, terminal, web, aplicación móvil",
+      "editor, terminal, agentes en la nube"
+    ]
+  },
+  "github-copilot": {
+    "aka": "Copilot, modo agente de Copilot, agente de programación de Copilot",
+    "def": "GitHub Copilot es un asistente de programación con IA de GitHub (una empresa de Microsoft): sugiere código mientras escribes, responde preguntas sobre un proyecto y, en modo agente, edita varios archivos y ejecuta comandos por sí mismo. Ejemplo: escribes «añade validación de correo al formulario de registro», el agente encuentra los archivos y hace los cambios, y tú aceptas o deshaces cada uno. Funciona en VS Code, Visual Studio, los IDE de JetBrains, en GitHub.com, en la terminal (Copilot CLI) y en GitHub Mobile.",
+    "faq.0.q": "¿Qué es GitHub Copilot?",
+    "faq.0.a": "Un asistente de programación con IA de GitHub: sugiere código, responde preguntas sobre un proyecto y, en modo agente, edita archivos y ejecuta comandos por sí mismo.",
+    "faq.1.q": "¿Dónde funciona GitHub Copilot?",
+    "faq.1.a": "Según la documentación de GitHub: en VS Code, Visual Studio, los IDE de JetBrains, Eclipse y Xcode, en GitHub.com, en la terminal mediante Copilot CLI, en GitHub Mobile y GitHub Desktop, y en la aplicación GitHub Copilot para tareas en paralelo.",
+    "faq.2.q": "¿Cuánto cuesta GitHub Copilot y hay un plan gratuito?",
+    "faq.2.a": "A 13 de noviembre de 2026: Free no cuesta nada (2000 sugerencias al mes, y chat y agente limitados), Pro cuesta 10 dólares, Pro+ 39 y Max 100 por usuario al mes; para empresas existen Business y Enterprise.",
+    "faq.3.q": "¿Qué es el modo agente en Copilot?",
+    "faq.3.a": "Un modo en el que planteas una tarea con palabras normales y Copilot elige los pasos: edita archivos, ejecuta comandos, lee los errores de compilación y de pruebas y repite hasta que funcione. Cada cambio se puede aceptar o deshacer.",
+    "source.label": "Documentación de GitHub: dónde usar Copilot",
+    "seo.title": "GitHub Copilot: qué es, dónde funciona, modo agente y planes",
+    "seo.description": "GitHub Copilot es un asistente de código con IA: sugerencias, chat y un agente que edita archivos. Dónde funciona (VS Code, Visual Studio, JetBrains, terminal) y cuánto cuestan los planes.",
+    "table.title": "Planes de GitHub Copilot",
+    "table.rows.0": [
+      "Precio al mes",
+      "0",
+      "10 $",
+      "39 $",
+      "100 $"
+    ],
+    "table.rows.1": [
+      "Sugerencias de código",
+      "2000 al mes",
+      "sin límite",
+      "sin límite",
+      "sin límite"
+    ],
+    "table.rows.2": [
+      "Modo agente",
+      "sí, con límite",
+      "sí",
+      "sí",
+      "sí"
+    ],
+    "table.rows.3": [
+      "Créditos al mes",
+      "—",
+      "15 $",
+      "70 $",
+      "200 $"
+    ]
+  },
+  "visual-studio": {
+    "aka": "Visual Studio 2026, Visual Studio 2022, VS IDE (no VS Code)",
+    "def": "Visual Studio es el entorno de desarrollo integrado completo de Microsoft para Windows, donde una aplicación se escribe, compila, depura, prueba y despliega en un solo programa; no debe confundirse con VS Code, que es un editor ligero aparte. Es adecuado para grandes soluciones en C#, C++ y .NET, por ejemplo un programa para Windows o un sitio en ASP.NET. GitHub Copilot funciona en él, incluido el modo agente: edita archivos, ejecuta comandos y lee los resultados de compilación y de pruebas. Existe una edición Community gratuita.",
+    "faq.0.q": "¿Visual Studio y VS Code son lo mismo?",
+    "faq.0.a": "No. Visual Studio es un IDE grande para Windows; VS Code es un editor de código ligero y multiplataforma. Los nombres se parecen, los programas son distintos.",
+    "faq.1.q": "¿Visual Studio es gratis?",
+    "faq.1.a": "La edición Community es gratuita para desarrolladores individuales, estudiantes, colaboradores de código abierto y aulas, y para organizaciones pequeñas de hasta cinco usuarios. Las empresas grandes (más de 250 equipos o 1 millón de dólares de ingresos anuales) necesitan Professional o Enterprise fuera del código abierto y del uso académico.",
+    "faq.2.q": "¿Visual Studio tiene un agente de IA?",
+    "faq.2.a": "Sí: GitHub Copilot con modo agente, a partir de Visual Studio 2022 versión 17.14. Se inicia sesión con una cuenta de GitHub; el plan gratuito de Copilot tiene un límite mensual.",
+    "faq.3.q": "¿En qué sistemas funciona Visual Studio?",
+    "faq.3.a": "Según la documentación de Microsoft, Visual Studio está disponible para Windows. Para otros sistemas Microsoft recomienda VS Code.",
+    "source.label": "Microsoft Learn: qué es Visual Studio",
+    "seo.title": "Visual Studio frente a VS Code: qué es, edición Community y agente Copilot",
+    "seo.description": "Visual Studio es el IDE de Microsoft para Windows, no VS Code. En qué se diferencian, a quién es gratis Community y cómo funciona en él el agente de GitHub Copilot.",
+    "compare.title": "Visual Studio frente a VS Code: no los confundas",
+    "compare.rows.0": [
+      "Qué es",
+      "un IDE completo",
+      "un editor de código ligero con extensiones"
+    ],
+    "compare.rows.1": [
+      "Sistemas",
+      "Windows",
+      "varios sistemas"
+    ],
+    "compare.rows.2": [
+      "Precio",
+      "Community gratis con condiciones, las demás de pago",
+      "gratis"
+    ],
+    "compare.rows.3": [
+      "Ideal para",
+      "grandes soluciones .NET y C++, compilación, depuración, pruebas",
+      "editar código en cualquier lenguaje"
+    ],
+    "compare.rows.4": [
+      "Agente de IA",
+      "GitHub Copilot, modo agente",
+      "GitHub Copilot y otras extensiones"
+    ]
+  },
+  "qc": {
+    "aka": "quality control, control de calidad, control de calidad del software",
+    "def": "QC (quality control, «control de calidad») es la comprobación de un resultado terminado frente a los requisitos: encontrar defectos antes de que el producto llegue al usuario y decidir si se lanza o se devuelve para corregirlo. Igual que en una fábrica un inspector revisa las teteras terminadas y aparta las defectuosas, en el software QC comprueba la versión compilada: ejecuta pruebas y compara el resultado con los requisitos. QC responde a «¿qué hemos obtenido?», mientras que QA (garantía de calidad) trabaja sobre el proceso para que aparezcan menos defectos.",
+    "faq.0.q": "¿Qué es QC?",
+    "faq.0.a": "Quality control, «control de calidad»: comprobar un resultado terminado frente a los requisitos para encontrar defectos antes del lanzamiento.",
+    "faq.1.q": "¿En qué se diferencia QC de QA?",
+    "faq.1.a": "QC detecta defectos en el resultado terminado, mientras que QA los previene: vigila y mejora el proceso para que aparezcan menos errores.",
+    "faq.2.q": "¿QC y las pruebas son lo mismo?",
+    "faq.2.a": "Las pruebas son la forma principal de control de calidad, pero no la única: QC también incluye inspeccionar el resultado terminado y decidir si se lanza o no.",
+    "faq.3.q": "¿Quién se encarga de QC en un equipo?",
+    "faq.3.a": "Normalmente los testers y los ingenieros de QA; parte de las comprobaciones las asumen las pruebas automatizadas.",
+    "source.label": "Wikipedia: Quality control",
+    "seo.title": "QC (control de calidad): qué es y en qué se diferencia de QA y de las pruebas",
+    "seo.description": "QC, control de calidad, inspecciona un resultado terminado y detecta defectos antes del lanzamiento. En qué se diferencia de QA y de las pruebas, con un ejemplo de software."
+  },
+  "test-case": {
+    "name": "Caso de prueba",
+    "aka": "test case, escenario de prueba, caso de test",
+    "def": "Un caso de prueba es la descripción de una sola comprobación: qué hacer, con qué datos y qué debe resultar. Contiene precondiciones, pasos, datos de entrada y el resultado esperado, y al ejecutarlo se añade el resultado real y una marca de superada o fallida. Ejemplo para la reserva de habitaciones: iniciar sesión como huésped, elegir una habitación del 1 al 3 de junio y pulsar «Reservar»; se espera que la reserva aparezca en la lista y que la habitación ya no se pueda elegir en esas fechas. Un caso de prueba lo puede escribir una persona para una comprobación manual o un desarrollador como prueba automatizada.",
+    "faq.0.q": "¿Qué es un caso de prueba?",
+    "faq.0.a": "La descripción de una sola comprobación: precondiciones, pasos, datos de entrada y resultado esperado.",
+    "faq.1.q": "¿En qué se diferencia un caso de prueba de una prueba automatizada?",
+    "faq.1.a": "Un caso de prueba describe una comprobación con palabras, mientras que una prueba automatizada es la misma comprobación escrita como un programa que se ejecuta solo. Un caso de prueba también se puede ejecutar a mano.",
+    "faq.2.q": "¿En qué se diferencia un caso de prueba de un escenario?",
+    "faq.2.a": "Un caso de prueba es una comprobación exacta con un resultado esperado. Un escenario es una historia de usuario de varios pasos de la que se derivan varios casos de prueba.",
+    "faq.3.q": "¿Cómo se escribe un caso de prueba?",
+    "faq.3.a": "Indicar el objetivo en una frase, escribir las precondiciones y los pasos, dar los datos de entrada y describir con precisión el resultado esperado para que cualquiera distinga «superada» de «fallida».",
+    "source.label": "Wikipedia: Test case",
+    "seo.title": "Caso de prueba: qué es, sus partes y un ejemplo",
+    "seo.description": "Un caso de prueba describe una comprobación de un programa: pasos, datos y resultado esperado. Un ejemplo de reserva de habitación y la diferencia con una prueba automatizada y un escenario."
+  },
+  "regression-testing": {
+    "name": "Pruebas de regresión",
+    "aka": "regresión, prueba de regresión, suite de regresión",
+    "def": "Las pruebas de regresión son la comprobación repetida de lo que ya funcionaba tras un cambio, para asegurarse de que lo nuevo no rompió lo antiguo. Ejemplo: una tienda añade descuentos y la regresión vuelve a recorrer el pedido y el pago, porque podrían haberse visto afectados. El conjunto de estas comprobaciones crece con cada error encontrado, por eso se automatiza: las pruebas automatizadas se ejecutan tras cada cambio o por la noche. Una prueba que antes pasaba y ahora falla señala una regresión.",
+    "faq.0.q": "¿Qué son las pruebas de regresión?",
+    "faq.0.a": "Volver a comprobar lo que ya funcionaba tras un cambio para asegurarse de que lo nuevo no rompió nada.",
+    "faq.1.q": "¿Cuándo se debe ejecutar la regresión?",
+    "faq.1.a": "Tras cada cambio si el conjunto es rápido, y por la noche o antes del lanzamiento si es grande. Cuanto más a menudo, antes se ve una rotura.",
+    "faq.2.q": "¿En qué se diferencia la regresión de las pruebas de humo?",
+    "faq.2.a": "Las pruebas de humo comprueban rápidamente solo lo principal para decidir si seguir. La regresión cubre todo lo que funcionaba antes y tarda más.",
+    "faq.3.q": "¿Se puede automatizar la regresión?",
+    "faq.3.a": "Sí, es el lugar principal para las pruebas automatizadas: el conjunto se repite muchas veces. Las pruebas inestables, que fallan sin motivo, minan la confianza en ese conjunto.",
+    "source.label": "Wikipedia: Regression testing",
+    "compare.title": "Pruebas de humo, de regresión y de extremo a extremo",
+    "compare.head": [
+      "Humo",
+      "Regresión",
+      "Extremo a extremo (e2e)"
+    ],
+    "compare.rows.0": [
+      "Objetivo",
+      "decidir si merece la pena probar más",
+      "asegurarse de que lo antiguo no se rompió",
+      "recorrer un camino de usuario completo"
+    ],
+    "compare.rows.1": [
+      "Cuándo",
+      "justo después de una compilación o un lanzamiento",
+      "tras los cambios, por la noche, antes del lanzamiento",
+      "antes y después del lanzamiento"
+    ],
+    "compare.rows.2": [
+      "Alcance",
+      "pequeño: solo lo principal",
+      "grande: todo lo que funcionaba",
+      "pequeño a medio: los caminos clave de punta a punta"
+    ],
+    "compare.rows.3": [
+      "Quién",
+      "prueba automatizada o tester, minutos",
+      "sobre todo pruebas automatizadas",
+      "pruebas automatizadas o QA"
+    ],
+    "seo.title": "Pruebas de regresión: qué son y en qué se diferencian de las pruebas de humo",
+    "seo.description": "Las pruebas de regresión comprueban que un cambio nuevo no rompió lo que funcionaba. Cuándo ejecutarlas y en qué se diferencian de las pruebas de humo y de extremo a extremo."
+  },
+  "smoke-testing": {
+    "name": "Pruebas de humo",
+    "aka": "smoke test, prueba de humo, sanity test, prueba de verificación de compilación, BVT",
+    "def": "Las pruebas de humo (smoke testing) son una comprobación rápida de lo más importante tras una compilación o un lanzamiento: si el programa arranca y si las funciones clave funcionan. Ejemplo: tras lanzar una tienda, abrir la página principal, iniciar sesión y poner un artículo en el carrito; si algo falla, no tiene sentido probar más y se revierte la versión. El nombre viene de la electrónica: se enciende la placa y, si sale humo, no hay nada más que mirar. Esta comprobación dura minutos y suele estar automatizada.",
+    "faq.0.q": "¿Qué es una prueba de humo?",
+    "faq.0.a": "Una comprobación rápida de lo principal tras una compilación o un lanzamiento: si el programa arranca y si las funciones clave funcionan.",
+    "faq.1.q": "¿Por qué «humo»?",
+    "faq.1.a": "El nombre viene de la electrónica: se enciende una placa y se mira si sale humo. Si sale, seguir probando no tiene sentido.",
+    "faq.2.q": "¿En qué se diferencia la prueba de humo de la regresión?",
+    "faq.2.a": "La prueba de humo comprueba solo lo principal y dura minutos, mientras que la regresión cubre todo lo que funcionaba antes. La de humo responde «¿merece la pena probar más?»; la regresión, «¿se rompió lo antiguo?».",
+    "faq.3.q": "¿En qué se diferencia la prueba de humo de e2e?",
+    "faq.3.a": "La de humo es amplia y superficial: comprueba que las partes principales están vivas. Una prueba de extremo a extremo es profunda: recorre un camino de usuario de principio a fin.",
+    "source.label": "Wikipedia: Smoke testing (software)",
+    "compare.title": "Pruebas de humo, de regresión y de extremo a extremo",
+    "compare.head": [
+      "Humo",
+      "Regresión",
+      "Extremo a extremo (e2e)"
+    ],
+    "compare.rows.0": [
+      "Objetivo",
+      "decidir si merece la pena probar más",
+      "asegurarse de que lo antiguo no se rompió",
+      "recorrer un camino de usuario completo"
+    ],
+    "compare.rows.1": [
+      "Cuándo",
+      "justo después de una compilación o un lanzamiento",
+      "tras los cambios, por la noche, antes del lanzamiento",
+      "antes y después del lanzamiento"
+    ],
+    "compare.rows.2": [
+      "Alcance",
+      "pequeño: solo lo principal",
+      "grande: todo lo que funcionaba",
+      "pequeño a medio: los caminos clave de punta a punta"
+    ],
+    "compare.rows.3": [
+      "Quién",
+      "prueba automatizada o tester, minutos",
+      "sobre todo pruebas automatizadas",
+      "pruebas automatizadas o QA"
+    ],
+    "seo.title": "Prueba de humo (smoke testing): qué es y cuándo ejecutarla tras un despliegue",
+    "seo.description": "La prueba de humo es una comprobación rápida de lo esencial tras un despliegue. Qué cubre y en qué se diferencia de la regresión y de las pruebas de extremo a extremo."
+  },
+  "e2e-test": {
+    "name": "Prueba de extremo a extremo",
+    "aka": "prueba E2E, end-to-end, pruebas de extremo a extremo, prueba de sistema",
+    "def": "Una prueba de extremo a extremo (end-to-end, E2E) es una comprobación automatizada que recorre el camino de un usuario por todo el sistema: por ejemplo, abre una página, inicia sesión, añade un artículo al carrito y hace un pedido. Comprueba que la pantalla, el servidor y la base de datos funcionan juntos, no cada uno por separado. Una prueba unitaria comprueba un fragmento pequeño de código, una prueba de humo confirma rápidamente que lo principal arranca, mientras que una prueba de extremo a extremo es lenta y cubre todo el camino. Por eso hay menos pruebas de extremo a extremo que unitarias, y se ejecutan en un entorno no productivo.",
+    "faq.0.q": "¿Qué es una prueba de extremo a extremo (E2E)?",
+    "faq.0.a": "Una comprobación automatizada que recorre el camino de un usuario por todo el sistema, desde la pantalla hasta la base de datos.",
+    "faq.1.q": "¿En qué se diferencia una prueba de extremo a extremo de una prueba unitaria?",
+    "faq.1.a": "Una prueba unitaria comprueba un fragmento pequeño de código y es rápida. Una prueba de extremo a extremo comprueba todo el sistema junto; es más lenta y falla más a menudo por motivos ajenos.",
+    "faq.2.q": "¿En qué se diferencia una prueba de extremo a extremo de una prueba de humo?",
+    "faq.2.a": "Una prueba de humo comprueba rápidamente que lo principal arranca. Una prueba de extremo a extremo recorre en detalle un escenario completo de usuario.",
+    "faq.3.q": "¿Dónde se ejecutan las pruebas de extremo a extremo?",
+    "faq.3.a": "En un entorno construido como el sistema real, a menudo en staging antes de un lanzamiento.",
+    "source.label": "Wikipedia: System testing (end-to-end)",
+    "seo.title": "Prueba de extremo a extremo (E2E): qué es y en qué se diferencia de una prueba unitaria",
+    "seo.description": "Una prueba E2E comprueba de una vez todo el camino de un usuario por el sistema. En qué se diferencia de las pruebas unitarias y de humo, y dónde se ejecuta."
+  },
+  "mock": {
+    "name": "Mock",
+    "aka": "objeto mock, stub, fake, doble de prueba",
+    "def": "Un mock es una imitación de una dependencia real, como una base de datos o un servicio de pago de terceros, que se coloca en una prueba o en un entorno no productivo en lugar de la real. El sistema la llama como si fuera real y ella responde con respuestas preparadas, de modo que la prueba es rápida, gratuita y no toca los datos de nadie. Por ejemplo, en lugar de un pago real con tarjeta el mock siempre responde «pagado». La palabra «mock» se usa a menudo para cualquier imitación de este tipo, aunque en sentido estricto hay varias clases.",
+    "faq.0.q": "¿Qué es un mock en las pruebas?",
+    "faq.0.a": "Una imitación de una dependencia real, como una base de datos o un servicio de terceros, que responde con respuestas preparadas mientras se ejecuta una prueba.",
+    "faq.1.q": "¿En qué se diferencia un mock de un stub y de un fake?",
+    "faq.1.a": "Un stub solo devuelve una respuesta preparada. Un mock además comprueba cómo se le llamó. Un fake es una implementación simplificada pero funcional, como una base de datos en memoria. La distinción no la aceptan todos, y «mock» suele significar cualquiera de los tres.",
+    "faq.2.q": "¿Para qué sirven los mocks en un entorno no productivo?",
+    "faq.2.a": "Son más baratos y rápidos que las copias de servicios reales y no envían correos ni pagos reales. El precio es que el entorno queda algo más lejos de la realidad.",
+    "faq.3.q": "¿Cómo ayudan los mocks contra las pruebas inestables?",
+    "faq.3.a": "Un mock elimina la dependencia de un sistema externo que responde rápido, lento o no responde, así que el resultado de la prueba deja de depender de él.",
+    "compare.title": "Mock, stub y fake",
+    "compare.head": [
+      "Stub",
+      "Mock",
+      "Fake"
+    ],
+    "compare.rows.0": [
+      "Qué hace",
+      "devuelve una respuesta preparada",
+      "comprueba cómo se le llamó",
+      "funciona de verdad, pero más simple"
+    ],
+    "compare.rows.1": [
+      "Ejemplo",
+      "el tipo de cambio siempre es 90",
+      "comprobación: el pago se solicitó una vez",
+      "base de datos en memoria"
+    ],
+    "source.label": "Wikipedia: Test double",
+    "seo.title": "Mock en las pruebas: qué es y en qué se diferencia de un stub y de un fake",
+    "seo.description": "Un mock sustituye una base de datos o un servicio externo en una prueba o en un entorno no productivo. En qué se diferencia de un stub y de un fake, y para qué se usa."
+  },
+  "flaky-test": {
+    "name": "Prueba inestable",
+    "aka": "flaky test, pruebas flaky, flakiness, prueba intermitente",
+    "def": "Una prueba inestable (flaky test) es una prueba que unas veces pasa y otras falla con el mismo código, sin ningún cambio. Es como una báscula que muestra un peso distinto cada vez: no se puede confiar en ella. Las causas habituales son una carrera entre acciones en paralelo, la dependencia del tiempo, las llamadas a un sistema externo y pruebas que se afectan entre sí. Estas pruebas minan la confianza en todo el conjunto y pueden ocultar un defecto real.",
+    "faq.0.q": "¿Qué es una prueba inestable (flaky test)?",
+    "faq.0.a": "Una prueba que unas veces pasa y otras falla con el mismo código, sin cambios.",
+    "faq.1.q": "¿Por qué las pruebas se vuelven inestables?",
+    "faq.1.a": "Por carreras entre acciones en paralelo, dependencia del tiempo, llamadas a sistemas externos y aislamiento insuficiente entre pruebas.",
+    "faq.2.q": "¿Por qué es dañina una prueba inestable?",
+    "faq.2.a": "El equipo se acostumbra a los resultados en rojo y deja de mirarlos, así que una rotura real puede pasar inadvertida.",
+    "faq.3.q": "¿Qué hacer con una prueba inestable?",
+    "faq.3.a": "Aislarla de las demás, fijar el tiempo y los valores aleatorios, sustituir los servicios externos por mocks. Mientras se arregla se puede poner en cuarentena, pero no dejarla allí para siempre.",
+    "source.label": "Wikipedia: Flaky test",
+    "seo.title": "Prueba inestable (flaky test): qué es, por qué ocurre y qué hacer",
+    "seo.description": "Una prueba inestable pasa o falla con el código sin cambios. De dónde viene esa inconsistencia, por qué perjudica a un equipo y cómo arreglarla."
+  },
+  "ci-cd": {
+    "aka": "integración y entrega continuas, pipeline, canalización, pipeline de CI/CD",
+    "def": "CI/CD (integración continua y entrega continua) es una práctica en la que cada cambio de código pasa automáticamente por una cadena de pasos desde el commit hasta el lanzamiento: compilación, pruebas automatizadas y despliegue en un entorno no productivo o en producción. La cadena se llama pipeline (canalización). Como en una línea de fábrica, cada cambio sigue los mismos pasos y un defecto se detiene en el primer paso que falla. CI significa que los desarrolladores fusionan a menudo cambios pequeños en una rama compartida y cada uno se comprueba; CD significa que una versión lista puede lanzarse en cualquier momento y, con el «despliegue continuo», se lanza sola.",
+    "faq.0.q": "¿Qué es CI/CD?",
+    "faq.0.a": "Una práctica en la que cada cambio de código pasa automáticamente por compilación, pruebas y despliegue siguiendo la misma cadena de pasos, un pipeline.",
+    "faq.1.q": "¿En qué se diferencia CI de CD?",
+    "faq.1.a": "CI compila y comprueba los cambios que se fusionan a menudo en una rama compartida. CD lleva la versión comprobada hasta el lanzamiento; si llega a producción sin intervención de una persona, es despliegue continuo.",
+    "faq.2.q": "¿Qué hace un pipeline desde el commit hasta el lanzamiento?",
+    "faq.2.a": "Compila el programa, ejecuta pruebas automatizadas, lo despliega en un entorno no productivo y, si todo pasó, en producción.",
+    "faq.3.q": "¿Cómo se relaciona CI/CD con la velocidad de entrega?",
+    "faq.3.a": "Los pasos automáticos acortan el tiempo de entrega de un cambio y permiten lanzar con más frecuencia, por eso esas métricas de entrega mejoran en gran parte gracias al pipeline.",
+    "source.label": "Wikipedia: CI/CD",
+    "seo.title": "CI/CD: qué es y cómo funciona un pipeline del commit al lanzamiento",
+    "seo.description": "CI/CD lleva automáticamente cada cambio de código por compilación, pruebas y entornos hasta el lanzamiento. Qué es un pipeline y en qué se diferencia CI de CD."
+  },
+  "dump": {
+    "name": "Volcado de base de datos",
+    "aka": "dump, volcado, dump de BD, exportación de la base, volcado SQL",
+    "def": "Un volcado de base de datos es una copia de la estructura de las tablas y de los datos guardada en un solo archivo, casi siempre como una lista de sentencias SQL. Es como una fotografía de un almacén: a partir de ella se puede montar el mismo almacén en otro lugar. Los volcados sirven para las copias de seguridad y para levantar rápidamente en un entorno no productivo una base con datos parecidos a los de producción. Antes de cargarlo en staging o en test, se eliminan o sustituyen los datos personales para que no lleguen a personas sin acceso a producción.",
+    "faq.0.q": "¿Qué es un volcado de base de datos?",
+    "faq.0.a": "Una copia de la estructura y de los datos de una base en un solo archivo, normalmente como sentencias SQL a partir de las cuales se puede restaurar la base.",
+    "faq.1.q": "¿Para qué se necesita un volcado en staging?",
+    "faq.1.a": "Con él se llena rápidamente la base de staging con datos recientes parecidos a los de producción, y se comprueban el lanzamiento y las migraciones de la base en condiciones cercanas a producción.",
+    "faq.2.q": "¿Cómo se eliminan los datos personales de un volcado?",
+    "faq.2.a": "Se enmascaran: nombres, correos y teléfonos se sustituyen por otros inventados, de modo que los datos siguen siendo útiles para las pruebas pero no revelan a nadie.",
+    "faq.3.q": "¿En qué se diferencia un volcado de una base simulada con mock?",
+    "faq.3.a": "Un volcado son datos reales en un archivo. Un mock es una imitación de la base que responde con respuestas preparadas.",
+    "source.label": "Wikipedia: Database dump",
+    "seo.title": "Volcado de base de datos: qué es y por qué lo necesita staging",
+    "seo.description": "Un volcado es una copia de una base de datos en un solo archivo. Para qué se hace, cómo se monta staging a partir de él y por qué antes se eliminan los datos personales."
+  }
+}

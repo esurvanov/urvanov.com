@@ -1,0 +1,356 @@
+{
+  "kiro": {
+    "name": "Kiro",
+    "aka": "Kiro AWS, Kiro IDE, AWS Kiro",
+    "def": "Kiro là môi trường phát triển có tác nhân AI của AWS, làm việc theo đặc tả: trước khi viết mã, tác nhân viết ba tệp là `requirements.md` (kết quả phải ra sao), `design.md` (cách xây dựng) và `tasks.md` (danh sách các bước), bạn xem lại chúng, rồi nó mới viết mã. Ví dụ: bạn nhờ “thêm giỏ hàng”, Kiro trước hết nêu rõ yêu cầu và các nhiệm vụ, còn mã chỉ sửa sau khi bạn nói “đồng ý”. Có môi trường cho máy tính, bản terminal, bản web và ứng dụng di động; mô hình là Claude, GPT, mô hình mã nguồn mở hoặc tự động chọn.",
+    "source.label": "Trang chính thức của Kiro",
+    "seo.title": "Kiro của AWS: là gì, đặc tả, giá và gói miễn phí",
+    "seo.description": "Kiro là môi trường của AWS có tác nhân AI viết yêu cầu, thiết kế và nhiệm vụ trước khi viết mã. Các gói và credit, khác Cursor, OpenSpec và Spec Kit ra sao.",
+    "notes.title": "Kiro: đặc tả, credit và mô hình",
+    "notes.items.0.name": "Ba tệp đặc tả",
+    "notes.items.0.text": "`requirements.md` (`bugfix.md` khi sửa lỗi) với user story và tiêu chí nghiệm thu, `design.md` với kiến trúc và sơ đồ, `tasks.md` với các bước có trạng thái cập nhật theo tiến độ. Đặc tả nhanh tạo cả ba tệp trong một lượt, không dừng để duyệt.",
+    "notes.items.1.name": "Credit",
+    "notes.items.1.text": "đơn vị công việc của tác nhân; mỗi mô hình tiêu hao với tốc độ khác nhau. Credit hằng tháng ở gói cá nhân không cộng dồn, credit mua thêm giá $0,04 có hạn 12 tháng.",
+    "notes.items.2.name": "Chuẩn mở",
+    "notes.items.2.text": "hỗ trợ MCP, `AGENTS.md`, skill và tiện ích mở rộng Open VSX.",
+    "compare.title": "Kiro và Cursor",
+    "compare.rows.0": [
+      "Công ty",
+      "AWS",
+      "Anysphere"
+    ],
+    "compare.rows.1": [
+      "Ý tưởng chính",
+      "đặc tả trước mã",
+      "trình soạn thảo có tác nhân tích hợp"
+    ],
+    "compare.rows.2": [
+      "Gói miễn phí",
+      "có: 50 credit mỗi tháng",
+      "có, có giới hạn"
+    ],
+    "compare.rows.3": [
+      "Chạy ở đâu",
+      "IDE, terminal, web, ứng dụng di động",
+      "trình soạn thảo, terminal, tác nhân đám mây"
+    ],
+    "faq.0.q": "Kiro là gì?",
+    "faq.0.a": "Môi trường phát triển có tác nhân AI của AWS: tác nhân trước hết viết yêu cầu, thiết kế và danh sách nhiệm vụ vào các tệp, bạn xem lại, rồi nó mới viết mã.",
+    "faq.1.q": "Kiro giá bao nhiêu và có gói miễn phí không?",
+    "faq.1.a": "Tính đến 13/11/2026: gói Free giá $0 với 50 credit mỗi tháng, Pro $20 với 1.000 credit, Pro+ $40 với 2.000, Pro Max $100 với 5.000 và Power $200 với 10.000. Credit là đơn vị công việc của tác nhân: một yêu cầu đơn giản tốn chưa tới một credit, một nhiệm vụ đặc tả phức tạp tốn nhiều hơn.",
+    "faq.2.q": "Kiro khác Cursor thế nào?",
+    "faq.2.a": "Kiro xây công việc quanh đặc tả: yêu cầu, thiết kế và nhiệm vụ được ghi vào tệp trước khi có mã. Cursor là trình soạn thảo có tác nhân, nơi bạn có thể nhờ sửa ngay, còn kế hoạch chỉ là một trong các chế độ.",
+    "faq.3.q": "Kiro khác OpenSpec và Spec Kit thế nào?",
+    "faq.3.a": "OpenSpec và Spec Kit là bộ công cụ mở gắn vào tác nhân của riêng bạn. Kiro là môi trường hoàn chỉnh với tác nhân riêng, nơi đặc tả được tích hợp sẵn.",
+    "faq.4.q": "Tải Kiro ở đâu?",
+    "faq.4.a": "IDE có trên kiro.dev/downloads (có macOS, Windows và Linux), bản terminal cài bằng lệnh từ cli.kiro.dev, còn bản web mở tại app.kiro.dev."
+  },
+  "github-copilot": {
+    "name": "GitHub Copilot",
+    "aka": "Copilot, chế độ agent của Copilot, Copilot coding agent",
+    "def": "GitHub Copilot là trợ lý lập trình AI của GitHub (một công ty của Microsoft): gợi ý mã khi bạn gõ, trả lời câu hỏi về dự án và, ở chế độ agent, tự sửa nhiều tệp và chạy lệnh. Ví dụ: bạn viết “thêm kiểm tra email vào form đăng ký”, tác nhân tìm các tệp và sửa, còn bạn chấp nhận hoặc hoàn tác từng chỗ sửa. Nó chạy trong VS Code, Visual Studio, các IDE của JetBrains, trên GitHub.com, trong terminal (Copilot CLI) và trong GitHub Mobile.",
+    "source.label": "Tài liệu GitHub: dùng Copilot ở đâu",
+    "seo.title": "GitHub Copilot: là gì, chạy ở đâu, chế độ agent và các gói",
+    "seo.description": "GitHub Copilot là trợ lý lập trình AI: gợi ý, chat và tác nhân sửa tệp. Chạy ở đâu (VS Code, Visual Studio, JetBrains, terminal) và các gói giá bao nhiêu.",
+    "table.title": "Các gói GitHub Copilot",
+    "table.rows.0": [
+      "Giá mỗi tháng",
+      "0",
+      "$10",
+      "$39",
+      "$100"
+    ],
+    "table.rows.1": [
+      "Gợi ý mã",
+      "2.000 mỗi tháng",
+      "không giới hạn",
+      "không giới hạn",
+      "không giới hạn"
+    ],
+    "table.rows.2": [
+      "Chế độ agent",
+      "có, có giới hạn",
+      "có",
+      "có",
+      "có"
+    ],
+    "table.rows.3": [
+      "Credit mỗi tháng",
+      "—",
+      "$15",
+      "$70",
+      "$200"
+    ],
+    "faq.0.q": "GitHub Copilot là gì?",
+    "faq.0.a": "Trợ lý lập trình AI của GitHub: gợi ý mã, trả lời câu hỏi về dự án và, ở chế độ agent, tự sửa tệp và chạy lệnh.",
+    "faq.1.q": "GitHub Copilot chạy ở đâu?",
+    "faq.1.a": "Theo tài liệu GitHub: trong VS Code, Visual Studio, các IDE của JetBrains, Eclipse và Xcode, trên GitHub.com, trong terminal qua Copilot CLI, trong GitHub Mobile và GitHub Desktop, và trong ứng dụng GitHub Copilot cho các nhiệm vụ song song.",
+    "faq.2.q": "GitHub Copilot giá bao nhiêu và có gói miễn phí không?",
+    "faq.2.a": "Tính đến 13/11/2026: gói Free không mất phí (2.000 gợi ý mã mỗi tháng, chat và agent có giới hạn), Pro $10, Pro+ $39, Max $100 mỗi người dùng mỗi tháng; Business và Enterprise dành cho doanh nghiệp.",
+    "faq.3.q": "Chế độ agent trong Copilot là gì?",
+    "faq.3.a": "Chế độ mà bạn nêu nhiệm vụ bằng lời thường còn Copilot tự chọn các bước: sửa tệp, chạy lệnh, đọc lỗi build và lỗi kiểm thử rồi lặp lại cho đến khi chạy được. Mỗi chỗ sửa có thể chấp nhận hoặc hoàn tác."
+  },
+  "visual-studio": {
+    "aka": "Visual Studio 2026, Visual Studio 2022, VS IDE (không phải VS Code)",
+    "def": "Visual Studio là môi trường phát triển tích hợp đầy đủ của Microsoft cho Windows, nơi ứng dụng được viết, build, gỡ lỗi, kiểm thử và triển khai trong một chương trình; không nhầm với VS Code, một trình soạn thảo nhẹ riêng biệt. Nó phù hợp với các giải pháp lớn bằng C#, C++ và .NET, chẳng hạn chương trình cho Windows hay trang ASP.NET. GitHub Copilot chạy trong đó, kể cả chế độ agent: sửa tệp, chạy lệnh và đọc kết quả build và kiểm thử. Có bản Community miễn phí.",
+    "source.label": "Microsoft Learn: Visual Studio là gì",
+    "seo.title": "Visual Studio và VS Code: là gì, bản Community và tác nhân Copilot",
+    "seo.description": "Visual Studio là IDE Windows của Microsoft, không phải VS Code. Hai bên khác nhau ra sao, ai được dùng Community miễn phí và tác nhân GitHub Copilot hoạt động trong đó thế nào.",
+    "compare.title": "Visual Studio và VS Code: đừng nhầm lẫn",
+    "compare.rows.0": [
+      "Là gì",
+      "IDE đầy đủ",
+      "trình soạn thảo mã nhẹ có tiện ích mở rộng"
+    ],
+    "compare.rows.1": [
+      "Hệ điều hành",
+      "Windows",
+      "nhiều hệ điều hành"
+    ],
+    "compare.rows.2": [
+      "Giá",
+      "Community miễn phí có điều kiện, các bản khác trả phí",
+      "miễn phí"
+    ],
+    "compare.rows.3": [
+      "Phù hợp với",
+      "giải pháp lớn bằng .NET và C++, build, gỡ lỗi, kiểm thử",
+      "sửa mã ở mọi ngôn ngữ"
+    ],
+    "compare.rows.4": [
+      "Tác nhân AI",
+      "GitHub Copilot, chế độ agent",
+      "GitHub Copilot và các tiện ích mở rộng khác"
+    ],
+    "faq.0.q": "Visual Studio và VS Code có phải một thứ không?",
+    "faq.0.a": "Không. Visual Studio là IDE lớn cho Windows, còn VS Code là trình soạn thảo mã nhẹ, chạy trên nhiều hệ điều hành; tên giống nhau nhưng là hai chương trình khác nhau.",
+    "faq.1.q": "Visual Studio có miễn phí không?",
+    "faq.1.a": "Bản Community miễn phí cho lập trình viên cá nhân, sinh viên, người đóng góp mã nguồn mở và lớp học, cũng như tổ chức nhỏ tới năm người dùng. Công ty lớn (hơn 250 máy tính hoặc doanh thu 1 triệu đô la mỗi năm) ngoài mã nguồn mở và giáo dục cần Professional hoặc Enterprise.",
+    "faq.2.q": "Visual Studio có tác nhân AI không?",
+    "faq.2.a": "Có: GitHub Copilot với chế độ agent, từ Visual Studio 2022 phiên bản 17.14. Bạn đăng nhập bằng tài khoản GitHub; gói Copilot miễn phí có giới hạn hằng tháng.",
+    "faq.3.q": "Visual Studio chạy trên những hệ điều hành nào?",
+    "faq.3.a": "Theo tài liệu của Microsoft, Visual Studio có cho Windows. Với các hệ điều hành khác, Microsoft giới thiệu VS Code."
+  },
+  "qc": {
+    "name": "QC",
+    "aka": "kiểm soát chất lượng, kiểm soát chất lượng phần mềm",
+    "def": "QC (quality control, kiểm soát chất lượng) là việc kiểm tra kết quả đã hoàn thành so với yêu cầu: tìm khuyết tật trước khi sản phẩm đến tay người dùng và quyết định phát hành hay trả về làm lại. Như người kiểm hàng trong nhà máy xem xét những chiếc ấm đã làm xong và gạt riêng các chiếc lỗi, trong phần mềm QC kiểm tra phiên bản đã build: chạy kiểm thử và so kết quả với yêu cầu. QC trả lời câu hỏi “ta nhận được gì?”, còn QA (quality assurance) làm việc với quy trình để khuyết tật xuất hiện ít hơn.",
+    "source.label": "Wikipedia: Quality control",
+    "seo.title": "QC (kiểm soát chất lượng): là gì và khác QA và kiểm thử thế nào",
+    "seo.description": "QC, kiểm soát chất lượng, kiểm tra kết quả đã hoàn thành và bắt khuyết tật trước khi phát hành. QC khác QA và kiểm thử ra sao, kèm ví dụ phần mềm.",
+    "faq.0.q": "QC là gì?",
+    "faq.0.a": "Kiểm soát chất lượng: kiểm tra kết quả đã hoàn thành so với yêu cầu để tìm khuyết tật trước khi phát hành.",
+    "faq.1.q": "QC khác QA thế nào?",
+    "faq.1.a": "QC phát hiện khuyết tật trong sản phẩm đã hoàn thành, còn QA ngăn ngừa chúng: theo dõi và cải tiến quy trình để có ít lỗi hơn.",
+    "faq.2.q": "QC và kiểm thử có phải một không?",
+    "faq.2.a": "Kiểm thử là cách chính để kiểm soát chất lượng nhưng không phải cách duy nhất: QC còn gồm việc xem xét kết quả hoàn thành và quyết định có phát hành hay không.",
+    "faq.3.q": "Ai làm QC trong nhóm?",
+    "faq.3.a": "Thường là tester và kỹ sư QA, còn kiểm thử tự động đảm nhận một phần việc kiểm tra."
+  },
+  "test-case": {
+    "name": "Test case",
+    "aka": "test case, kịch bản kiểm thử, ca kiểm thử",
+    "def": "Test case (ca kiểm thử) là mô tả một lần kiểm tra: làm gì, với dữ liệu nào và kết quả phải ra sao. Nó gồm điều kiện tiên quyết, các bước, dữ liệu đầu vào và kết quả mong đợi, còn mỗi lần chạy thêm kết quả thực tế và dấu đạt hoặc không đạt. Ví dụ đặt phòng: đăng nhập với tư cách khách, chọn phòng cho ngày 1–3 tháng 6 và bấm “Đặt phòng”; mong đợi là đơn đặt xuất hiện trong danh sách và phòng không thể chọn lại cho các ngày đó. Test case có thể do người viết để kiểm tra thủ công hoặc do lập trình viên viết thành kiểm thử tự động.",
+    "source.label": "Wikipedia: Test case",
+    "seo.title": "Test case: là gì, các phần và ví dụ",
+    "seo.description": "Test case mô tả một lần kiểm tra chương trình: các bước, dữ liệu và kết quả mong đợi. Ví dụ đặt phòng và khác kiểm thử tự động và kịch bản thế nào.",
+    "faq.0.q": "Test case là gì?",
+    "faq.0.a": "Mô tả một lần kiểm tra: điều kiện tiên quyết, các bước, dữ liệu đầu vào và kết quả mong đợi.",
+    "faq.1.q": "Test case khác kiểm thử tự động thế nào?",
+    "faq.1.a": "Test case mô tả lần kiểm tra bằng lời, còn kiểm thử tự động là cùng lần kiểm tra đó viết thành chương trình tự chạy. Test case cũng có thể được chạy bằng tay.",
+    "faq.2.q": "Test case khác kịch bản thế nào?",
+    "faq.2.a": "Test case là một lần kiểm tra cụ thể với kết quả mong đợi. Kịch bản là câu chuyện người dùng gồm nhiều bước, từ đó suy ra nhiều test case.",
+    "faq.3.q": "Viết test case thế nào?",
+    "faq.3.a": "Nêu mục tiêu trong một câu, viết điều kiện tiên quyết và các bước, đưa dữ liệu đầu vào và mô tả kết quả mong đợi thật chính xác để ai cũng phân biệt được đạt và không đạt."
+  },
+  "regression-testing": {
+    "name": "Kiểm thử hồi quy",
+    "aka": "kiểm thử hồi quy, bộ kiểm thử hồi quy, regression test",
+    "def": "Kiểm thử hồi quy là kiểm tra lại những thứ đã chạy được sau một thay đổi, để bảo đảm thay đổi mới không làm hỏng cái cũ. Ví dụ: cửa hàng thêm giảm giá, và lượt hồi quy đi lại qua thanh toán và trả tiền, vì chúng có thể bị đụng tới. Bộ kiểm tra như vậy lớn dần theo từng lỗi tìm ra, nên nó được tự động hóa: kiểm thử tự động chạy sau mỗi thay đổi hoặc qua đêm. Kiểm thử từng đạt mà giờ không đạt là dấu hiệu của hồi quy.",
+    "source.label": "Wikipedia: Regression testing",
+    "faq.0.q": "Kiểm thử hồi quy là gì?",
+    "faq.0.a": "Kiểm tra lại những thứ đã chạy được sau một thay đổi để bảo đảm thay đổi mới không làm hỏng gì.",
+    "faq.1.q": "Khi nào nên chạy hồi quy?",
+    "faq.1.a": "Sau mỗi thay đổi nếu bộ kiểm tra chạy nhanh, và qua đêm hoặc trước khi phát hành nếu bộ lớn. Càng thường xuyên thì chỗ hỏng càng sớm lộ ra.",
+    "faq.2.q": "Hồi quy khác smoke testing thế nào?",
+    "faq.2.a": "Smoke testing nhanh chóng chỉ kiểm tra những thứ chính để quyết định có đi tiếp hay không. Hồi quy bao phủ mọi thứ đã chạy được trước đó và mất nhiều thời gian hơn.",
+    "faq.3.q": "Có thể tự động hóa hồi quy không?",
+    "faq.3.a": "Có, đó là nơi chính của kiểm thử tự động: bộ kiểm tra lặp lại nhiều lần. Flaky test thất bại vô cớ làm mòn niềm tin vào bộ như vậy.",
+    "compare.title": "Smoke, hồi quy và kiểm thử đầu cuối",
+    "compare.head": [
+      "Smoke",
+      "Hồi quy",
+      "Đầu cuối (e2e)"
+    ],
+    "compare.rows.0": [
+      "Mục tiêu",
+      "quyết định có kiểm thử tiếp hay không",
+      "bảo đảm những thứ cũ không hỏng",
+      "đi hết một đường đi của người dùng"
+    ],
+    "compare.rows.1": [
+      "Khi nào",
+      "ngay sau khi build hoặc phát hành",
+      "sau các thay đổi, qua đêm, trước khi phát hành",
+      "trước và sau khi phát hành"
+    ],
+    "compare.rows.2": [
+      "Phạm vi",
+      "nhỏ: chỉ những thứ chính",
+      "lớn: mọi thứ đã chạy được",
+      "nhỏ đến vừa: các đường đi chính từ đầu đến cuối"
+    ],
+    "compare.rows.3": [
+      "Ai làm",
+      "kiểm thử tự động hoặc tester, vài phút",
+      "chủ yếu là kiểm thử tự động",
+      "kiểm thử tự động hoặc QA"
+    ],
+    "seo.title": "Kiểm thử hồi quy (regression testing): là gì và khác smoke test thế nào",
+    "seo.description": "Kiểm thử hồi quy xác nhận thay đổi mới không làm hỏng thứ đã chạy tốt. Khi nào nên chạy và khác smoke test, kiểm thử đầu-cuối ra sao."
+  },
+  "smoke-testing": {
+    "name": "Smoke testing",
+    "aka": "smoke test, sanity test, build verification test, BVT",
+    "def": "Smoke testing là lần kiểm tra nhanh những thứ quan trọng nhất sau khi build hoặc phát hành: chương trình có khởi động không và các chức năng chính có chạy không. Ví dụ: sau khi phát hành một cửa hàng, mở trang chủ, đăng nhập và cho một món vào giỏ; nếu có gì hỏng thì kiểm thử tiếp là vô nghĩa và phiên bản bị quay lui. Cái tên đến từ điện tử: cấp điện cho bo mạch, nếu có khói thì không còn gì để xem nữa. Lần kiểm tra này mất vài phút và thường được tự động hóa.",
+    "source.label": "Wikipedia: Smoke testing (software)",
+    "faq.0.q": "Smoke test là gì?",
+    "faq.0.a": "Lần kiểm tra nhanh những thứ chính sau khi build hoặc phát hành: chương trình có khởi động không và các chức năng chính có chạy không.",
+    "faq.1.q": "Vì sao gọi là “smoke”?",
+    "faq.1.a": "Tên đến từ điện tử: bạn cấp điện cho bo mạch và xem có khói không. Nếu có, kiểm thử tiếp là vô nghĩa.",
+    "faq.2.q": "Smoke testing khác hồi quy thế nào?",
+    "faq.2.a": "Smoke chỉ kiểm tra những thứ chính và mất vài phút, còn hồi quy bao phủ mọi thứ đã chạy được trước đó. Smoke trả lời “có đáng kiểm thử tiếp không”, hồi quy trả lời “cái cũ có hỏng không”.",
+    "faq.3.q": "Smoke testing khác e2e thế nào?",
+    "faq.3.a": "Smoke rộng mà nông: kiểm tra các phần chính còn sống. Kiểm thử đầu cuối thì sâu: đi hết một đường đi của người dùng từ đầu đến cuối.",
+    "compare.title": "Smoke, hồi quy và kiểm thử đầu cuối",
+    "compare.head": [
+      "Smoke",
+      "Hồi quy",
+      "Đầu cuối (e2e)"
+    ],
+    "compare.rows.0": [
+      "Mục tiêu",
+      "quyết định có kiểm thử tiếp hay không",
+      "bảo đảm những thứ cũ không hỏng",
+      "đi hết một đường đi của người dùng"
+    ],
+    "compare.rows.1": [
+      "Khi nào",
+      "ngay sau khi build hoặc phát hành",
+      "sau các thay đổi, qua đêm, trước khi phát hành",
+      "trước và sau khi phát hành"
+    ],
+    "compare.rows.2": [
+      "Phạm vi",
+      "nhỏ: chỉ những thứ chính",
+      "lớn: mọi thứ đã chạy được",
+      "nhỏ đến vừa: các đường đi chính từ đầu đến cuối"
+    ],
+    "compare.rows.3": [
+      "Ai làm",
+      "kiểm thử tự động hoặc tester, vài phút",
+      "chủ yếu là kiểm thử tự động",
+      "kiểm thử tự động hoặc QA"
+    ],
+    "seo.title": "Smoke test là gì: kiểm tra nhanh sau khi phát hành và khi nào nên chạy",
+    "seo.description": "Smoke test là bước kiểm tra nhanh các luồng chính ngay sau khi phát hành. Nó bao phủ gì và khác kiểm thử hồi quy, kiểm thử đầu-cuối ở điểm nào."
+  },
+  "e2e-test": {
+    "name": "Kiểm thử đầu cuối",
+    "aka": "kiểm thử E2E, end-to-end testing, kiểm thử hệ thống",
+    "def": "Kiểm thử đầu cuối (end-to-end, E2E) là lần kiểm tra tự động đi hết đường đi của người dùng qua toàn bộ hệ thống: ví dụ mở một trang, đăng nhập, cho món hàng vào giỏ và đặt đơn. Nó kiểm tra màn hình, máy chủ và cơ sở dữ liệu chạy cùng nhau, chứ không riêng từng phần. Kiểm thử đơn vị kiểm tra một đoạn mã nhỏ, smoke test nhanh chóng xác nhận những thứ chính có khởi động không, còn kiểm thử đầu cuối thì chậm và bao phủ toàn bộ đường đi. Vì vậy kiểm thử đầu cuối ít hơn kiểm thử đơn vị và chạy trên một môi trường riêng.",
+    "source.label": "Wikipedia: System testing (end-to-end)",
+    "seo.title": "Kiểm thử đầu cuối (E2E): là gì và khác kiểm thử đơn vị thế nào",
+    "seo.description": "Kiểm thử E2E kiểm tra cùng lúc toàn bộ đường đi của người dùng qua hệ thống. Khác kiểm thử đơn vị và smoke test ra sao và chạy ở đâu.",
+    "faq.0.q": "Kiểm thử đầu cuối (E2E) là gì?",
+    "faq.0.a": "Lần kiểm tra tự động đi hết đường đi của người dùng qua toàn bộ hệ thống, từ màn hình đến cơ sở dữ liệu.",
+    "faq.1.q": "Kiểm thử đầu cuối khác kiểm thử đơn vị thế nào?",
+    "faq.1.a": "Kiểm thử đơn vị kiểm tra một đoạn mã nhỏ và chạy nhanh. Kiểm thử đầu cuối kiểm tra cả hệ thống cùng nhau; nó chậm hơn và hay hỏng vì những lý do không liên quan hơn.",
+    "faq.2.q": "Kiểm thử đầu cuối khác smoke test thế nào?",
+    "faq.2.a": "Smoke test nhanh chóng kiểm tra những thứ chính có khởi động không. Kiểm thử đầu cuối đi qua một kịch bản người dùng đầy đủ một cách chi tiết.",
+    "faq.3.q": "Kiểm thử đầu cuối chạy ở đâu?",
+    "faq.3.a": "Trên một môi trường dựng giống hệ thống thật, thường là staging trước khi phát hành."
+  },
+  "mock": {
+    "name": "Mock",
+    "aka": "đối tượng mock, stub, fake, test double",
+    "def": "Mock là bản mô phỏng của một thành phần phụ thuộc thật, như cơ sở dữ liệu hay dịch vụ thanh toán của bên thứ ba, được cắm vào kiểm thử hoặc vào môi trường thử thay cho thành phần thật. Hệ thống gọi nó như thể nó thật, và nó trả lời bằng các câu trả lời chuẩn bị sẵn, nên kiểm thử nhanh, miễn phí và không đụng đến dữ liệu của ai. Ví dụ: thay cho thanh toán thẻ thật, mock luôn trả lời “đã thanh toán”. Từ “mock” hay được dùng cho mọi bản mô phỏng như vậy, dù theo nghĩa chặt có nhiều loại.",
+    "compare.title": "Mock, stub và fake",
+    "compare.head": [
+      "Stub",
+      "Mock",
+      "Fake"
+    ],
+    "compare.rows.0": [
+      "Làm gì",
+      "trả về câu trả lời chuẩn bị sẵn",
+      "kiểm tra nó đã được gọi thế nào",
+      "chạy thật, chỉ đơn giản hơn"
+    ],
+    "compare.rows.1": [
+      "Ví dụ",
+      "tỷ giá luôn là 90",
+      "kiểm tra: thanh toán được yêu cầu đúng một lần",
+      "cơ sở dữ liệu trong bộ nhớ"
+    ],
+    "source.label": "Wikipedia: Test double",
+    "seo.title": "Mock trong kiểm thử: là gì và khác stub và fake thế nào",
+    "seo.description": "Mock thay cho cơ sở dữ liệu hay dịch vụ bên ngoài trong kiểm thử hoặc trên môi trường thử. Khác stub và fake ra sao và vì sao dùng.",
+    "faq.0.q": "Mock trong kiểm thử là gì?",
+    "faq.0.a": "Bản mô phỏng của một thành phần phụ thuộc thật, như cơ sở dữ liệu hay dịch vụ bên thứ ba, trả lời bằng các câu trả lời chuẩn bị sẵn khi kiểm thử chạy.",
+    "faq.1.q": "Mock khác stub và fake thế nào?",
+    "faq.1.a": "Stub chỉ trả về câu trả lời chuẩn bị sẵn. Mock còn kiểm tra nó đã được gọi thế nào. Fake là bản triển khai đơn giản hóa nhưng chạy thật, như cơ sở dữ liệu trong bộ nhớ. Cách chia này không được mọi người công nhận, và “mock” thường chỉ cả ba.",
+    "faq.2.q": "Vì sao dùng mock trên môi trường thử?",
+    "faq.2.a": "Chúng rẻ và nhanh hơn bản sao của dịch vụ thật, và không gửi email hay thanh toán thật. Cái giá là môi trường thử cách thực tế xa hơn một chút.",
+    "faq.3.q": "Mock giúp chống flaky test thế nào?",
+    "faq.3.a": "Mock loại bỏ sự phụ thuộc vào hệ thống bên ngoài lúc trả lời nhanh, lúc chậm, lúc không trả lời, nên kết quả kiểm thử không còn phụ thuộc vào nó."
+  },
+  "flaky-test": {
+    "name": "Flaky test",
+    "aka": "flaky tests, tính chập chờn, kiểm thử chập chờn",
+    "def": "Flaky test là kiểm thử lúc đạt lúc không đạt trên cùng một đoạn mã, không hề có chỉnh sửa nào. Nó giống chiếc cân mỗi lần hiện một cân nặng khác nhau: không thể tin được. Nguyên nhân thường gặp là tranh chấp giữa các hành động song song, phụ thuộc vào thời gian, gọi hệ thống bên ngoài và các kiểm thử ảnh hưởng lẫn nhau. Những kiểm thử như vậy làm mòn niềm tin vào cả bộ kiểm thử và có thể che mất một khuyết tật thật.",
+    "source.label": "Wikipedia: Flaky test",
+    "seo.title": "Flaky test: là gì, vì sao xảy ra và nên làm gì",
+    "seo.description": "Flaky test lúc đạt lúc không đạt trên mã không đổi. Sự không nhất quán này đến từ đâu, vì sao hại nhóm và cách sửa.",
+    "faq.0.q": "Flaky test là gì?",
+    "faq.0.a": "Kiểm thử lúc đạt lúc không đạt trên cùng một đoạn mã, không có chỉnh sửa.",
+    "faq.1.q": "Vì sao kiểm thử trở nên flaky?",
+    "faq.1.a": "Do tranh chấp giữa các hành động song song, phụ thuộc vào thời gian, gọi hệ thống bên ngoài và cách ly chưa đủ giữa các kiểm thử.",
+    "faq.2.q": "Vì sao flaky test có hại?",
+    "faq.2.a": "Nhóm quen với kết quả đỏ và thôi nhìn vào chúng, nên một chỗ hỏng thật có thể bị bỏ sót.",
+    "faq.3.q": "Làm gì với flaky test?",
+    "faq.3.a": "Cách ly nó khỏi các kiểm thử khác, cố định thời gian và giá trị ngẫu nhiên, thay dịch vụ bên ngoài bằng mock. Trong lúc sửa có thể đưa nó vào diện cách ly, nhưng không để ở đó mãi."
+  },
+  "ci-cd": {
+    "name": "CI/CD",
+    "aka": "tích hợp và phân phối liên tục, pipeline, pipeline CI/CD",
+    "def": "CI/CD (continuous integration và continuous delivery, tích hợp liên tục và phân phối liên tục) là thực hành trong đó mỗi thay đổi mã tự động đi qua một chuỗi bước từ commit đến phát hành: build, kiểm thử tự động và triển khai lên môi trường thử hoặc môi trường sản xuất. Chuỗi này gọi là pipeline. Như dây chuyền nhà máy, mỗi thay đổi đi qua các bước giống nhau, và khuyết tật dừng lại ở bước đầu tiên thất bại. CI nghĩa là lập trình viên thường xuyên gộp các thay đổi nhỏ vào nhánh chung và mỗi thay đổi được kiểm tra; CD nghĩa là phiên bản sẵn sàng có thể phát hành bất cứ lúc nào, và với “continuous deployment” nó được phát hành tự động.",
+    "source.label": "Wikipedia: CI/CD",
+    "seo.title": "CI/CD: là gì và pipeline hoạt động thế nào từ commit đến phát hành",
+    "seo.description": "CI/CD tự động đưa mỗi thay đổi mã qua build, kiểm thử và các môi trường đến phát hành. Pipeline là gì và CI khác CD ra sao.",
+    "faq.0.q": "CI/CD là gì?",
+    "faq.0.a": "Thực hành trong đó mỗi thay đổi mã tự động đi qua build, kiểm thử và triển khai theo cùng một chuỗi bước, gọi là pipeline.",
+    "faq.1.q": "CI khác CD thế nào?",
+    "faq.1.a": "CI build và kiểm tra các thay đổi được thường xuyên gộp vào nhánh chung. CD đưa phiên bản đã kiểm tra đến phát hành; nếu nó lên môi trường sản xuất mà không cần người thì đó là continuous deployment.",
+    "faq.2.q": "Pipeline làm gì từ commit đến phát hành?",
+    "faq.2.a": "Nó build chương trình, chạy kiểm thử tự động, triển khai lên môi trường thử và, nếu mọi thứ đạt, lên môi trường sản xuất.",
+    "faq.3.q": "CI/CD liên quan thế nào đến tốc độ phân phối?",
+    "faq.3.a": "Các bước tự động rút ngắn thời gian chờ của thay đổi và cho phép phát hành thường xuyên hơn, nên các chỉ số phân phối ấy cải thiện phần lớn nhờ pipeline."
+  },
+  "dump": {
+    "name": "Dump cơ sở dữ liệu",
+    "aka": "DB dump, xuất cơ sở dữ liệu, SQL dump",
+    "def": "Dump cơ sở dữ liệu là bản sao cấu trúc bảng và dữ liệu được lưu thành một tệp, thường là danh sách các câu lệnh SQL. Nó giống bức ảnh chụp một nhà kho: từ đó có thể dựng nhà kho y hệt ở nơi khác. Dump dùng để sao lưu và để nhanh chóng dựng cơ sở dữ liệu trên môi trường thử với dữ liệu giống môi trường sản xuất. Trước khi nạp lên staging hoặc test, dữ liệu cá nhân được xóa hoặc thay thế để không đến tay những người không có quyền truy cập môi trường sản xuất.",
+    "source.label": "Wikipedia: Database dump",
+    "seo.title": "Dump cơ sở dữ liệu: là gì và vì sao staging cần",
+    "seo.description": "Dump là bản sao cơ sở dữ liệu trong một tệp. Dùng để làm gì, staging được dựng từ nó thế nào và vì sao phải xóa dữ liệu cá nhân trước.",
+    "faq.0.q": "Dump cơ sở dữ liệu là gì?",
+    "faq.0.a": "Bản sao cấu trúc và dữ liệu của cơ sở dữ liệu trong một tệp, thường là các câu lệnh SQL để từ đó khôi phục cơ sở dữ liệu.",
+    "faq.1.q": "Vì sao staging cần dump?",
+    "faq.1.a": "Nó nhanh chóng lấp đầy cơ sở dữ liệu staging bằng dữ liệu mới giống môi trường sản xuất, nên bản phát hành và các lần di chuyển cơ sở dữ liệu được kiểm tra trong điều kiện gần môi trường sản xuất.",
+    "faq.2.q": "Xóa dữ liệu cá nhân khỏi dump thế nào?",
+    "faq.2.a": "Bằng cách che dữ liệu: tên, email và số điện thoại được thay bằng giá trị bịa ra, nên dữ liệu vẫn dùng được cho kiểm thử nhưng không lộ ai.",
+    "faq.3.q": "Dump khác cơ sở dữ liệu mock thế nào?",
+    "faq.3.a": "Dump là dữ liệu thật trong một tệp. Mock là bản mô phỏng cơ sở dữ liệu trả lời bằng các câu trả lời chuẩn bị sẵn."
+  }
+}

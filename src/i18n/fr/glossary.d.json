@@ -1,0 +1,352 @@
+{
+  "kiro": {
+    "aka": "Kiro AWS, Kiro IDE, AWS Kiro",
+    "def": "Kiro est un environnement de développement avec agent IA d’AWS qui travaille à partir de spécifications : avant tout code, l’agent écrit trois fichiers, `requirements.md` (ce qu’on doit obtenir), `design.md` (comment c’est construit) et `tasks.md` (une liste d’étapes) ; vous les relisez, et ce n’est qu’ensuite qu’il écrit le code. Exemple : vous demandez « d’ajouter un panier », Kiro détaille d’abord les exigences et les tâches, puis modifie le code après votre « oui ». Il existe en IDE de bureau, en version terminal, en application web et en application mobile ; les modèles sont Claude, GPT, des modèles ouverts ou un choix automatique.",
+    "faq.0.q": "Qu’est-ce que Kiro ?",
+    "faq.0.a": "Un environnement de développement avec agent IA d’AWS : l’agent écrit d’abord les exigences, la conception et une liste de tâches dans des fichiers, vous les relisez, puis il écrit le code.",
+    "faq.1.q": "Combien coûte Kiro et existe-t-il un forfait gratuit ?",
+    "faq.1.a": "Au 13 novembre 2026 : Free coûte 0 $ avec 50 crédits par mois, Pro 20 $ avec 1 000 crédits, Pro+ 40 $ avec 2 000, Pro Max 100 $ avec 5 000 et Power 200 $ avec 10 000. Un crédit est une unité de travail de l’agent : une simple requête en consomme moins d’un, une tâche de spécification complexe davantage.",
+    "faq.2.q": "En quoi Kiro diffère-t-il de Cursor ?",
+    "faq.2.a": "Kiro organise le travail autour de spécifications : exigences, conception et tâches sont écrites dans des fichiers avant le code. Cursor est un éditeur avec un agent où l’on peut demander des modifications tout de suite, et le plan n’est qu’un de ses modes.",
+    "faq.3.q": "En quoi Kiro diffère-t-il d’OpenSpec et de Spec Kit ?",
+    "faq.3.a": "OpenSpec et Spec Kit sont des boîtes à outils ouvertes qui se branchent sur votre propre agent. Kiro est un environnement prêt à l’emploi avec son propre agent, où les spécifications sont intégrées.",
+    "faq.4.q": "Où télécharger Kiro ?",
+    "faq.4.a": "L’IDE se trouve sur kiro.dev/downloads (macOS, Windows et Linux sont indiqués), la version terminal s’installe avec une commande donnée sur cli.kiro.dev, et l’application web s’ouvre sur app.kiro.dev.",
+    "source.label": "Site officiel de Kiro",
+    "seo.title": "Kiro d’AWS : ce que c’est, spécifications, prix et forfait gratuit",
+    "seo.description": "Kiro est un environnement d’AWS avec agent IA qui écrit exigences, conception et tâches avant le code. Forfaits et crédits, différences avec Cursor, OpenSpec et Spec Kit.",
+    "notes.title": "Kiro : spécifications, crédits et modèles",
+    "notes.items.0.name": "Les trois fichiers de spécification",
+    "notes.items.0.text": "`requirements.md` (`bugfix.md` pour la correction d’un bug) avec des user stories et des critères d’acceptation, `design.md` avec l’architecture et des schémas, `tasks.md` avec les étapes dont l’état est mis à jour au fil du travail. Une spec rapide produit les trois fichiers en une seule passe, sans pause de relecture.",
+    "notes.items.1.name": "Crédits",
+    "notes.items.1.text": "une unité de travail de l’agent ; les différents modèles les consomment à des rythmes différents. Les crédits mensuels des forfaits personnels ne sont pas reportés, les crédits supplémentaires à 0,04 $ restent valables 12 mois.",
+    "notes.items.2.name": "Standards ouverts",
+    "notes.items.2.text": "prend en charge MCP, `AGENTS.md`, les skills et les extensions Open VSX.",
+    "compare.title": "Kiro et Cursor",
+    "compare.rows.0": [
+      "Entreprise",
+      "AWS",
+      "Anysphere"
+    ],
+    "compare.rows.1": [
+      "Idée principale",
+      "des spécifications avant le code",
+      "un éditeur avec un agent intégré"
+    ],
+    "compare.rows.2": [
+      "Forfait gratuit",
+      "oui : 50 crédits par mois",
+      "oui, avec des limites"
+    ],
+    "compare.rows.3": [
+      "Où il fonctionne",
+      "IDE, terminal, web, application mobile",
+      "éditeur, terminal, agents cloud"
+    ]
+  },
+  "github-copilot": {
+    "aka": "Copilot, mode agent de Copilot, agent de code Copilot",
+    "def": "GitHub Copilot est un assistant de programmation IA de GitHub (une société de Microsoft) : il suggère du code pendant la saisie, répond aux questions sur un projet et, en mode agent, modifie plusieurs fichiers et exécute des commandes lui-même. Exemple : vous écrivez « ajoute la validation de l’e-mail au formulaire d’inscription », l’agent trouve les fichiers et fait les modifications, et vous acceptez ou annulez chacune. Il fonctionne dans VS Code, Visual Studio, les IDE JetBrains, sur GitHub.com, dans le terminal (Copilot CLI) et dans GitHub Mobile.",
+    "faq.0.q": "Qu’est-ce que GitHub Copilot ?",
+    "faq.0.a": "Un assistant de programmation IA de GitHub : il suggère du code, répond aux questions sur un projet et, en mode agent, modifie des fichiers et exécute des commandes lui-même.",
+    "faq.1.q": "Où fonctionne GitHub Copilot ?",
+    "faq.1.a": "Selon la documentation de GitHub : dans VS Code, Visual Studio, les IDE JetBrains, Eclipse et Xcode, sur GitHub.com, dans le terminal via Copilot CLI, dans GitHub Mobile et GitHub Desktop, ainsi que dans l’application GitHub Copilot pour les tâches parallèles.",
+    "faq.2.q": "Combien coûte GitHub Copilot et existe-t-il un forfait gratuit ?",
+    "faq.2.a": "Au 13 novembre 2026 : Free est gratuit (2 000 suggestions par mois, chat et agent limités), Pro coûte 10 $, Pro+ 39 $, Max 100 $ par utilisateur et par mois ; Business et Enterprise s’adressent aux entreprises.",
+    "faq.3.q": "Qu’est-ce que le mode agent dans Copilot ?",
+    "faq.3.a": "Un mode où vous formulez une tâche en mots simples et où Copilot choisit les étapes : il modifie des fichiers, exécute des commandes, lit les erreurs de build et de tests et recommence jusqu’à ce que ça marche. Chaque modification peut être acceptée ou annulée.",
+    "source.label": "Documentation GitHub : où utiliser Copilot",
+    "seo.title": "GitHub Copilot : ce que c’est, où il fonctionne, mode agent et forfaits",
+    "seo.description": "GitHub Copilot est un assistant de code IA : suggestions, chat et agent qui modifie des fichiers. Où il fonctionne (VS Code, Visual Studio, JetBrains, terminal) et le prix des forfaits.",
+    "table.title": "Forfaits GitHub Copilot",
+    "table.rows.0": [
+      "Prix par mois",
+      "0",
+      "10 $",
+      "39 $",
+      "100 $"
+    ],
+    "table.rows.1": [
+      "Suggestions de code",
+      "2 000 par mois",
+      "illimitées",
+      "illimitées",
+      "illimitées"
+    ],
+    "table.rows.2": [
+      "Mode agent",
+      "oui, limité",
+      "oui",
+      "oui",
+      "oui"
+    ],
+    "table.rows.3": [
+      "Crédits par mois",
+      "—",
+      "15 $",
+      "70 $",
+      "200 $"
+    ]
+  },
+  "visual-studio": {
+    "aka": "Visual Studio 2026, Visual Studio 2022, VS IDE (pas VS Code)",
+    "def": "Visual Studio est l’environnement de développement intégré complet de Microsoft pour Windows, où l’on écrit, compile, débogue, teste et déploie une application dans un seul programme ; à ne pas confondre avec VS Code, qui est un éditeur léger distinct. Il convient aux grandes solutions C#, C++ et .NET, par exemple un programme Windows ou un site ASP.NET. GitHub Copilot y fonctionne, y compris en mode agent : il modifie des fichiers, exécute des commandes et lit les résultats du build et des tests. Une édition Community gratuite existe.",
+    "faq.0.q": "Visual Studio et VS Code, est-ce la même chose ?",
+    "faq.0.a": "Non. Visual Studio est un grand IDE pour Windows, VS Code est un éditeur de code léger et multiplateforme ; les noms se ressemblent, les programmes sont différents.",
+    "faq.1.q": "Visual Studio est-il gratuit ?",
+    "faq.1.a": "L’édition Community est gratuite pour les développeurs individuels, les étudiants, les contributeurs open source et les salles de cours, ainsi que pour les petites organisations jusqu’à cinq utilisateurs. Les grandes entreprises (plus de 250 PC ou 1 million de dollars de chiffre d’affaires annuel) ont besoin de Professional ou d’Enterprise en dehors de l’open source et de l’enseignement.",
+    "faq.2.q": "Visual Studio a-t-il un agent IA ?",
+    "faq.2.a": "Oui : GitHub Copilot avec le mode agent, à partir de Visual Studio 2022 version 17.14. On se connecte avec un compte GitHub ; le forfait Copilot gratuit a une limite mensuelle.",
+    "faq.3.q": "Sur quels systèmes fonctionne Visual Studio ?",
+    "faq.3.a": "Selon la documentation de Microsoft, Visual Studio est disponible pour Windows. Pour les autres systèmes, Microsoft propose VS Code.",
+    "source.label": "Microsoft Learn : qu’est-ce que Visual Studio",
+    "seo.title": "Visual Studio et VS Code : ce que c’est, édition Community et agent Copilot",
+    "seo.description": "Visual Studio est l’IDE Windows de Microsoft, pas VS Code. En quoi ils diffèrent, qui a droit à Community gratuitement et comment l’agent GitHub Copilot y fonctionne.",
+    "compare.title": "Visual Studio et VS Code : ne pas les confondre",
+    "compare.rows.0": [
+      "Ce que c’est",
+      "un IDE complet",
+      "un éditeur de code léger avec des extensions"
+    ],
+    "compare.rows.1": [
+      "Systèmes",
+      "Windows",
+      "plusieurs systèmes"
+    ],
+    "compare.rows.2": [
+      "Prix",
+      "Community gratuite sous conditions, les autres payantes",
+      "gratuit"
+    ],
+    "compare.rows.3": [
+      "Idéal pour",
+      "grandes solutions .NET et C++, build, débogage, tests",
+      "modifier du code dans n’importe quel langage"
+    ],
+    "compare.rows.4": [
+      "Agent IA",
+      "GitHub Copilot, mode agent",
+      "GitHub Copilot et d’autres extensions"
+    ]
+  },
+  "qc": {
+    "aka": "quality control, contrôle qualité, contrôle qualité logiciel",
+    "def": "QC (quality control, « contrôle qualité ») est la vérification d’un résultat fini par rapport aux exigences : trouver les défauts avant que le produit n’atteigne l’utilisateur et décider de le livrer ou de le renvoyer en retouche. Comme dans une usine un contrôleur examine les bouilloires terminées et met de côté les défectueuses, dans un logiciel le QC vérifie la version construite : il lance des tests et compare le résultat aux exigences. Le QC répond à la question « qu’avons-nous obtenu ? », tandis que la QA (assurance qualité) travaille sur le processus pour que moins de défauts apparaissent.",
+    "faq.0.q": "Qu’est-ce que le QC ?",
+    "faq.0.a": "Quality control, « contrôle qualité » : la vérification d’un résultat fini par rapport aux exigences pour trouver les défauts avant la livraison.",
+    "faq.1.q": "En quoi le QC diffère-t-il de la QA ?",
+    "faq.1.a": "Le QC détecte les défauts dans le résultat fini, tandis que la QA les prévient : elle surveille et améliore le processus pour que moins d’erreurs apparaissent.",
+    "faq.2.q": "Le QC et le test, est-ce la même chose ?",
+    "faq.2.a": "Le test est le principal moyen du contrôle qualité mais pas le seul : le QC comprend aussi l’inspection du résultat fini et la décision de le livrer ou non.",
+    "faq.3.q": "Qui fait le QC dans une équipe ?",
+    "faq.3.a": "En général les testeurs et les ingénieurs QA, les tests automatisés prenant en charge une partie des vérifications.",
+    "source.label": "Wikipédia : Quality control",
+    "seo.title": "QC (contrôle qualité) : ce que c’est et en quoi il diffère de la QA et du test",
+    "seo.description": "Le QC, contrôle qualité, inspecte un résultat fini et attrape les défauts avant la livraison. En quoi il diffère de la QA et du test, avec un exemple logiciel."
+  },
+  "test-case": {
+    "name": "Cas de test",
+    "aka": "test case, scénario de test",
+    "def": "Un cas de test est la description d’une seule vérification : quoi faire, avec quelles données et ce qui doit en résulter. Il contient des préconditions, des étapes, des données d’entrée et le résultat attendu, et une exécution y ajoute le résultat réel et une marque « réussi ou échoué ». Exemple pour la réservation de chambres : se connecter en tant qu’invité, choisir une chambre du 1er au 3 juin et appuyer sur « Réserver » ; on attend que la réservation apparaisse dans la liste et que la chambre ne puisse plus être choisie pour ces dates. Un cas de test peut être écrit par une personne pour une vérification manuelle ou par un développeur sous forme de test automatisé.",
+    "faq.0.q": "Qu’est-ce qu’un cas de test ?",
+    "faq.0.a": "La description d’une seule vérification : préconditions, étapes, données d’entrée et résultat attendu.",
+    "faq.1.q": "En quoi un cas de test diffère-t-il d’un test automatisé ?",
+    "faq.1.a": "Un cas de test décrit une vérification en mots, alors qu’un test automatisé est la même vérification écrite sous forme de programme qui s’exécute seul. Un cas de test peut aussi être exécuté à la main.",
+    "faq.2.q": "En quoi un cas de test diffère-t-il d’un scénario ?",
+    "faq.2.a": "Un cas de test est une vérification précise avec un résultat attendu. Un scénario est une histoire d’utilisateur en plusieurs étapes dont on tire plusieurs cas de test.",
+    "faq.3.q": "Comment écrire un cas de test ?",
+    "faq.3.a": "Énoncer l’objectif en une phrase, écrire les préconditions et les étapes, donner les données d’entrée et décrire précisément le résultat attendu pour que chacun puisse distinguer « réussi » d’« échoué ».",
+    "source.label": "Wikipédia : Test case",
+    "seo.title": "Cas de test : ce que c’est, ses parties et un exemple",
+    "seo.description": "Un cas de test décrit une vérification d’un programme : étapes, données et résultat attendu. Un exemple de réservation de chambre et la différence avec un test automatisé et un scénario."
+  },
+  "regression-testing": {
+    "name": "Test de non-régression",
+    "aka": "régression, test de régression, non-régression",
+    "def": "Le test de non-régression consiste à revérifier ce qui fonctionnait déjà après une modification, pour s’assurer que le nouveau changement n’a pas cassé l’ancien. Exemple : une boutique ajoute des remises, et la non-régression repasse la commande et le paiement, car ils ont pu être touchés. L’ensemble de ces vérifications grandit à chaque bug trouvé, on l’automatise donc : des tests automatisés tournent après chaque modification ou la nuit. Un test qui passait avant et échoue maintenant signale une régression.",
+    "faq.0.q": "Qu’est-ce que le test de non-régression ?",
+    "faq.0.a": "Une nouvelle vérification de ce qui fonctionnait déjà après une modification, pour s’assurer que le nouveau changement n’a rien cassé.",
+    "faq.1.q": "Quand lancer la non-régression ?",
+    "faq.1.a": "Après chaque modification si l’ensemble est rapide, et la nuit ou avant la mise en production s’il est grand. Plus c’est fréquent, plus tôt on voit la casse.",
+    "faq.2.q": "En quoi la non-régression diffère-t-elle du smoke test ?",
+    "faq.2.a": "Le smoke test vérifie rapidement seulement l’essentiel pour décider s’il faut continuer. La non-régression couvre tout ce qui fonctionnait avant et dure plus longtemps.",
+    "faq.3.q": "La non-régression peut-elle être automatisée ?",
+    "faq.3.a": "Oui, c’est la principale place des tests automatisés : l’ensemble est répété très souvent. Les tests instables, qui échouent sans raison, ruinent la confiance dans un tel ensemble.",
+    "source.label": "Wikipédia : Regression testing",
+    "compare.title": "Smoke, non-régression et tests de bout en bout",
+    "compare.head": [
+      "Smoke",
+      "Non-régression",
+      "Test de bout en bout (e2e)"
+    ],
+    "compare.rows.0": [
+      "Objectif",
+      "décider s’il faut tester plus loin",
+      "s’assurer que l’ancien n’a pas été cassé",
+      "parcourir un chemin utilisateur complet"
+    ],
+    "compare.rows.1": [
+      "Quand",
+      "juste après un build ou une mise en production",
+      "après des modifications, la nuit, avant la release",
+      "avant et après la release"
+    ],
+    "compare.rows.2": [
+      "Étendue",
+      "petite : seulement l’essentiel",
+      "grande : tout ce qui fonctionnait",
+      "petite à moyenne : les parcours clés de bout en bout"
+    ],
+    "compare.rows.3": [
+      "Qui",
+      "test automatisé ou testeur, quelques minutes",
+      "surtout des tests automatisés",
+      "tests automatisés ou QA"
+    ],
+    "seo.title": "Test de non-régression : à quoi ça sert et différence avec le smoke test",
+    "seo.description": "Le test de non-régression vérifie qu'une modification n'a pas cassé ce qui fonctionnait. Quand le lancer et en quoi il diffère du smoke test et du test de bout en bout."
+  },
+  "smoke-testing": {
+    "name": "Smoke test",
+    "aka": "test de fumée, smoke test, sanity test, build verification test, BVT",
+    "def": "Le smoke test (test de fumée) est une vérification rapide de l’essentiel après un build ou une mise en production : le programme démarre-t-il et les fonctions clés marchent-elles. Exemple : après la mise en production d’une boutique, ouvrir la page d’accueil, se connecter et mettre un article au panier ; si quelque chose échoue, inutile de tester plus loin et la version est annulée. Le nom vient de l’électronique : on met la carte sous tension, et si de la fumée apparaît, il n’y a plus rien à regarder. Une telle vérification prend quelques minutes et est généralement automatisée.",
+    "faq.0.q": "Qu’est-ce qu’un smoke test ?",
+    "faq.0.a": "Une vérification rapide de l’essentiel après un build ou une mise en production : le programme démarre-t-il et les fonctions clés marchent-elles.",
+    "faq.1.q": "Pourquoi « smoke », c’est-à-dire fumée ?",
+    "faq.1.a": "Le nom vient de l’électronique : on met une carte sous tension et on regarde si de la fumée apparaît. Si c’est le cas, tester davantage n’a plus de sens.",
+    "faq.2.q": "En quoi le smoke test diffère-t-il de la non-régression ?",
+    "faq.2.a": "Le smoke test ne vérifie que l’essentiel et prend quelques minutes, alors que la non-régression couvre tout ce qui fonctionnait avant. Le smoke répond à « vaut-il la peine de tester plus loin », la non-régression à « l’ancien a-t-il cassé ».",
+    "faq.3.q": "En quoi le smoke test diffère-t-il de l’e2e ?",
+    "faq.3.a": "Le smoke est large et superficiel : il vérifie que les parties principales sont vivantes. Un test de bout en bout est profond : il parcourt un chemin utilisateur du début à la fin.",
+    "source.label": "Wikipédia : Smoke testing (software)",
+    "compare.title": "Smoke, non-régression et tests de bout en bout",
+    "compare.head": [
+      "Smoke",
+      "Non-régression",
+      "Test de bout en bout (e2e)"
+    ],
+    "compare.rows.0": [
+      "Objectif",
+      "décider s’il faut tester plus loin",
+      "s’assurer que l’ancien n’a pas été cassé",
+      "parcourir un chemin utilisateur complet"
+    ],
+    "compare.rows.1": [
+      "Quand",
+      "juste après un build ou une mise en production",
+      "après des modifications, la nuit, avant la release",
+      "avant et après la release"
+    ],
+    "compare.rows.2": [
+      "Étendue",
+      "petite : seulement l’essentiel",
+      "grande : tout ce qui fonctionnait",
+      "petite à moyenne : les parcours clés de bout en bout"
+    ],
+    "compare.rows.3": [
+      "Qui",
+      "test automatisé ou testeur, quelques minutes",
+      "surtout des tests automatisés",
+      "tests automatisés ou QA"
+    ],
+    "seo.title": "Smoke test : qu'est-ce que c'est et quand le lancer après une mise en production",
+    "seo.description": "Le smoke test est une vérification rapide de l'essentiel après une mise en production. Ce qu'il couvre et en quoi il diffère de la non-régression et du test de bout en bout."
+  },
+  "e2e-test": {
+    "name": "Test de bout en bout",
+    "aka": "test E2E, end-to-end, test système, tests de bout en bout",
+    "def": "Un test de bout en bout (end-to-end, E2E) est une vérification automatique qui parcourt le chemin d’un utilisateur à travers tout le système : par exemple, il ouvre une page, se connecte, ajoute un article au panier et passe une commande. Il vérifie que l’écran, le serveur et la base de données fonctionnent ensemble, et non chacun de son côté. Un test unitaire vérifie un petit morceau de code, un smoke test confirme rapidement que l’essentiel démarre, alors qu’un test de bout en bout est lent et couvre tout le chemin. Il y a donc moins de tests de bout en bout que de tests unitaires, et ils tournent sur un stand.",
+    "faq.0.q": "Qu’est-ce qu’un test de bout en bout (E2E) ?",
+    "faq.0.a": "Une vérification automatique qui parcourt le chemin d’un utilisateur à travers tout le système, de l’écran à la base de données.",
+    "faq.1.q": "En quoi un test de bout en bout diffère-t-il d’un test unitaire ?",
+    "faq.1.a": "Un test unitaire vérifie un petit morceau de code et est rapide. Un test de bout en bout vérifie tout le système ensemble ; il est plus lent et casse plus souvent pour des raisons sans rapport.",
+    "faq.2.q": "En quoi un test de bout en bout diffère-t-il d’un smoke test ?",
+    "faq.2.a": "Un smoke test vérifie rapidement que l’essentiel démarre. Un test de bout en bout parcourt en détail un scénario utilisateur complet.",
+    "faq.3.q": "Où exécute-t-on les tests de bout en bout ?",
+    "faq.3.a": "Sur un stand construit comme le système réel, souvent sur le staging avant une mise en production.",
+    "source.label": "Wikipédia : System testing (end-to-end)",
+    "seo.title": "Test de bout en bout (E2E) : ce que c’est et en quoi il diffère d’un test unitaire",
+    "seo.description": "Un test E2E vérifie d’un coup tout le chemin d’un utilisateur à travers le système. En quoi il diffère des tests unitaires et smoke, et où il s’exécute."
+  },
+  "mock": {
+    "name": "Mock",
+    "aka": "objet mock, stub, fake, doublure de test",
+    "def": "Un mock est une imitation d’une vraie dépendance, comme une base de données ou un service de paiement tiers, que l’on branche dans un test ou sur un stand à la place de la vraie. Le système l’appelle comme si elle était réelle, et elle répond par des réponses préparées, si bien que le test est rapide, gratuit et ne touche les données de personne. Par exemple, au lieu d’un vrai paiement par carte, le mock répond toujours « payé ». Le mot « mock » désigne souvent n’importe quelle imitation de ce genre, bien qu’au sens strict il en existe plusieurs sortes.",
+    "faq.0.q": "Qu’est-ce qu’un mock en test ?",
+    "faq.0.a": "Une imitation d’une vraie dépendance, comme une base de données ou un service tiers, qui répond par des réponses préparées pendant l’exécution d’un test.",
+    "faq.1.q": "En quoi un mock diffère-t-il d’un stub et d’un fake ?",
+    "faq.1.a": "Un stub ne fait que renvoyer une réponse préparée. Un mock vérifie en plus comment il a été appelé. Un fake est une implémentation simplifiée mais fonctionnelle, comme une base de données en mémoire. Cette distinction n’est pas acceptée par tous, et « mock » désigne souvent n’importe lequel des trois.",
+    "faq.2.q": "Pourquoi utiliser des mocks sur un stand ?",
+    "faq.2.a": "Ils sont moins chers et plus rapides que des copies de vrais services et n’envoient ni vrais e-mails ni vrais paiements. Le prix à payer : le stand est un peu plus éloigné de la réalité.",
+    "faq.3.q": "Comment les mocks aident-ils contre les tests instables ?",
+    "faq.3.a": "Un mock supprime la dépendance à un système extérieur qui répond vite, lentement ou pas du tout, de sorte que le résultat du test n’en dépend plus.",
+    "compare.title": "Mock, stub et fake",
+    "compare.head": [
+      "Stub",
+      "Mock",
+      "Fake"
+    ],
+    "compare.rows.0": [
+      "Ce qu’il fait",
+      "renvoie une réponse préparée",
+      "vérifie comment il a été appelé",
+      "fonctionne vraiment, en plus simple"
+    ],
+    "compare.rows.1": [
+      "Exemple",
+      "le taux de change est toujours 90",
+      "vérification : le paiement a été demandé une fois",
+      "base de données en mémoire"
+    ],
+    "source.label": "Wikipédia : Test double",
+    "seo.title": "Mock en test : ce que c’est et en quoi il diffère d’un stub et d’un fake",
+    "seo.description": "Un mock remplace une base de données ou un service extérieur dans un test ou sur un stand. En quoi il diffère d’un stub et d’un fake, et à quoi il sert."
+  },
+  "flaky-test": {
+    "name": "Test instable",
+    "aka": "flaky test, tests instables, flakiness, test intermittent",
+    "def": "Un test instable (flaky test) est un test qui tantôt réussit, tantôt échoue sur le même code, sans aucune modification. C’est comme une balance qui affiche un poids différent à chaque pesée : on ne peut pas s’y fier. Les causes habituelles sont une course entre des actions parallèles, la dépendance au temps, les appels à un système extérieur et des tests qui s’influencent mutuellement. De tels tests minent la confiance dans toute la suite et peuvent masquer un vrai défaut.",
+    "faq.0.q": "Qu’est-ce qu’un test instable (flaky test) ?",
+    "faq.0.a": "Un test qui tantôt réussit, tantôt échoue sur le même code, sans modification.",
+    "faq.1.q": "Pourquoi les tests deviennent-ils instables ?",
+    "faq.1.a": "À cause de courses entre des actions parallèles, de la dépendance au temps, d’appels à des systèmes extérieurs et d’une isolation insuffisante des tests les uns des autres.",
+    "faq.2.q": "En quoi un test instable est-il nuisible ?",
+    "faq.2.a": "L’équipe s’habitue aux résultats rouges et cesse de les regarder, de sorte qu’une vraie panne peut passer inaperçue.",
+    "faq.3.q": "Que faire d’un test instable ?",
+    "faq.3.a": "L’isoler des autres tests, figer le temps et les valeurs aléatoires, remplacer les services extérieurs par des mocks. Pendant qu’on le corrige, on peut le mettre en quarantaine, mais pas l’y laisser pour toujours.",
+    "source.label": "Wikipédia : Flaky test",
+    "seo.title": "Test instable (flaky test) : ce que c’est, pourquoi il apparaît et que faire",
+    "seo.description": "Un test instable réussit ou échoue sur un code inchangé. D’où vient cette incohérence, pourquoi elle nuit à une équipe et comment la corriger."
+  },
+  "ci-cd": {
+    "aka": "intégration et livraison continues, pipeline, pipeline CI/CD",
+    "def": "CI/CD (intégration continue et livraison continue) est une pratique où chaque modification de code traverse automatiquement une chaîne d’étapes du commit à la mise en production : build, tests automatisés et déploiement sur un stand ou en production. Cette chaîne s’appelle un pipeline. Comme sur une chaîne d’usine, chaque modification passe par les mêmes étapes, et un défaut s’arrête à la première étape qui échoue. CI signifie que les développeurs fusionnent souvent de petites modifications dans une branche commune et que chacune est vérifiée ; CD signifie qu’une version prête peut être livrée à tout moment, et avec le « déploiement continu » elle est livrée automatiquement.",
+    "faq.0.q": "Qu’est-ce que le CI/CD ?",
+    "faq.0.a": "Une pratique où chaque modification de code passe automatiquement par le build, les tests et le déploiement le long de la même chaîne d’étapes, un pipeline.",
+    "faq.1.q": "En quoi le CI diffère-t-il du CD ?",
+    "faq.1.a": "Le CI construit et vérifie les modifications fréquemment fusionnées dans une branche commune. Le CD amène la version vérifiée jusqu’à la mise en production ; si elle part en production sans intervention humaine, c’est du déploiement continu.",
+    "faq.2.q": "Que fait un pipeline du commit à la mise en production ?",
+    "faq.2.a": "Il construit le programme, lance les tests automatisés, le déploie sur un stand et, si tout a réussi, en production.",
+    "faq.3.q": "Quel est le lien entre le CI/CD et la vitesse de livraison ?",
+    "faq.3.a": "Les étapes automatiques raccourcissent le délai de livraison d’un changement et permettent de livrer plus souvent ; ces indicateurs de livraison s’améliorent donc en grande partie grâce au pipeline.",
+    "source.label": "Wikipédia : CI/CD",
+    "seo.title": "CI/CD : ce que c’est et comment fonctionne un pipeline du commit à la mise en production",
+    "seo.description": "Le CI/CD fait passer automatiquement chaque modification de code par le build, les tests et les stands jusqu’à la mise en production. Ce qu’est un pipeline et en quoi CI diffère de CD."
+  },
+  "dump": {
+    "name": "Dump de base de données",
+    "aka": "dump, dump de BD, export de base, dump SQL",
+    "def": "Un dump de base de données est une copie de la structure des tables et des données enregistrée dans un seul fichier, le plus souvent sous forme d’une liste d’instructions SQL. C’est comme une photographie d’un entrepôt : à partir d’elle, on peut monter le même entrepôt ailleurs. Les dumps servent aux sauvegardes et à monter rapidement sur un stand une base avec des données proches de la production. Avant de le charger sur le staging ou le test, on retire ou remplace les données personnelles pour qu’elles n’arrivent pas à des personnes sans accès à la production.",
+    "faq.0.q": "Qu’est-ce qu’un dump de base de données ?",
+    "faq.0.a": "Une copie de la structure et des données d’une base dans un seul fichier, généralement sous forme d’instructions SQL à partir desquelles la base peut être restaurée.",
+    "faq.1.q": "Pourquoi un dump est-il nécessaire pour le staging ?",
+    "faq.1.a": "Il permet de remplir rapidement la base du staging avec des données récentes proches de la production, et de vérifier une mise en production et les migrations de base dans des conditions proches de la production.",
+    "faq.2.q": "Comment retirer les données personnelles d’un dump ?",
+    "faq.2.a": "On les masque : noms, e-mails et numéros de téléphone sont remplacés par des valeurs inventées, de sorte que les données restent utilisables pour les tests mais ne révèlent personne.",
+    "faq.3.q": "En quoi un dump diffère-t-il d’une base mockée ?",
+    "faq.3.a": "Un dump contient de vraies données dans un fichier. Un mock est une imitation de la base qui répond par des réponses préparées.",
+    "source.label": "Wikipédia : Database dump",
+    "seo.title": "Dump de base de données : ce que c’est et pourquoi le staging en a besoin",
+    "seo.description": "Un dump est une copie d’une base de données dans un seul fichier. À quoi il sert, comment on monte un staging à partir de lui et pourquoi on en retire d’abord les données personnelles."
+  }
+}
