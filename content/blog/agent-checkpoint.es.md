@@ -63,18 +63,7 @@ El trabajo de un agente de IA se comprueba en el límite del agregado: por donde
   <b-why align="left">**Una distinción parecida** existe entre el enfoque imperativo y el declarativo. El código imperativo describe pasos y, en general, no se puede saber el resultado a partir de ellos. Una notación declarativa sencilla, como una restricción de base de datos, indica cuál debe ser el resultado, y la base de datos lo hace cumplir.</b-why>
   <iso-art name="term:rice-predicate"></iso-art>
   <b-cap>El código es el mismo. Una pregunta sobre el texto se resuelve leyendo un texto finito; una pregunta sobre el comportamiento exige recorrer todas las ejecuciones.</b-cap>
-  <b-why align="left">Por qué una pregunta de comportamiento no se puede responder para todos los programas se deduce de una sola construcción. Toma cualquier programa $P$ y cualquier entrada $w$ para él; $P(w)$ significa «el programa $P$ ejecutado con la entrada $w$». Construye un programa nuevo $Q$: primero ejecuta $P(w)$ y, cuando termina, da un paso $B$ que rompe la regla, como cobrar dinero sin un pedido. Si $P(w)$ nunca termina, el paso $B$ no se alcanza y la regla no se rompe. Así que una comprobación de la regla para $Q$ tiene que saber si $P(w)$ termina. El diagrama siguiente muestra esta construcción, con las fórmulas y la conclusión justo debajo.</b-why>
-  <b-art names="agent-checkpoint/rice" wide/>
-  <b-cap>La demostración en un diagrama: comprobar la regla para $Q$ diría si $P(w)$ se detiene.</b-cap>
-  Cómo es la demostración. Toma cualquier programa $P$ con entrada $w$ y construye a partir de él un programa nuevo $Q$:
-
-  $$Q(x) \;=\; \text{run } P(w)\text{; when it finishes, run } B(x)$$
-
-  El paso $B(x)$ rompe la regla, mientras que un programa que se ejecuta para siempre no la rompe. Así, $Q$ llega a la infracción solo si $P(w)$ llega a terminar:
-
-  $$Q \text{ breaks the rule} \iff P(w) \text{ halts}$$
-
-  Si existiera una comprobación de la regla para todos los programas, dado $Q$ respondería también si $P(w)$ se detiene. Esa pregunta, el problema de la parada, no la puede decidir ningún programa: lo demostró Alan Turing<b-proof href="https://en.wikipedia.org/wiki/Halting_problem" quote="Wikipedia: “Alan Turing proved in 1937 that the halting problem is undecidable.”"/>.
+  <b-why align="left">Por qué no se puede responder a una pregunta sobre el comportamiento para cualquier programa se muestra paso a paso en el artículo [«El teorema de Rice en palabras sencillas»](/blog/rice-theorem-explained/).</b-why>
   <b-finding>
     <ex>El agente trajo 2000 líneas. Una comprobación de que «este código nunca crea reservas solapadas» es imposible para código arbitrario en general, por mucho que se mejore.</ex>
     <gen>Queda una elección: comprobar menos que todo, o comprobar dentro de un marco donde la respuesta es finita. No hay una tercera vía, y esto vale tanto para la comprobación con programas como para la revisión humana.</gen>
@@ -86,16 +75,6 @@ El trabajo de un agente de IA se comprueba en el límite del agregado: por donde
   <b-why align="left">Como no hay una comprobación exacta para todos los programas, se limita la comprobación para que ya no cubra todos. Hay tres formas: reducir el mundo que se comprueba, estrechar el lenguaje en que se escribe el código, o dejar que la comprobación responda con honestidad «no lo sé». El diagrama pone las tres una junto a otra.</b-why>
   <b-art names="agent-checkpoint/three-ways" wide/>
   <b-cap>A la izquierda, probar un mundo pequeño por completo; en el centro, una sola vía de escritura en la base de datos; a la derecha, tres respuestas de la comprobación, la tercera para una persona.</b-cap>
-  <b-why align="left">La tabla da las mismas tres formas con más detalle: cómo funciona cada una, qué condición del teorema elimina y por qué entonces la respuesta es exacta, y qué se pierde. Cómo es cada forma para la regla «las reservas de una misma sala nunca se solapan» se ve más abajo, en «Cómo se ve en la práctica».</b-why>
-  <b-table>
-
-| Forma | Qué se hace en la práctica | Por qué la respuesta es exacta | Qué se pierde |
-|---|---|---|---|
-| <b-icon name="package"/> Mundo pequeño | se escribe un modelo de Quint de la reserva: 3 salas, hasta 5 reservas, acciones «reservar» y «cancelar». Un programa prueba cada secuencia de estas acciones y tras cada paso comprueba la regla «las reservas de una misma sala nunca se solapan» | hay un número finito de variantes, así que la búsqueda llega al final y dice «la regla se cumple» o muestra la cadena de pasos donde se rompió | un error que solo aparece con 50 reservas simultáneas no lo verá una búsqueda con 5 |
-| <b-icon name="list-check"/> Lenguaje estrecho | la regla se escribe como restricción de PostgreSQL, y solo el archivo `booking/repository.ts` puede escribir en la tabla de reservas. En cada cambio del agente, una búsqueda comprueba que ningún otro archivo escribe en la tabla de reservas | la restricción es una línea en el esquema de la base de datos y esta la comprueba en cada escritura; una búsqueda de archivos siempre termina y da una respuesta exacta | el agente no puede escribir reservas desde donde le resulte cómodo: hasta una importación masiva de reservas tiene que pasar por el mismo archivo permitido |
-| <b-icon name="help-circle"/> «No lo sé» | la comprobación de un cambio del agente devuelve una de tres respuestas: «se cumple», «rota», «no se puede saber». La tercera respuesta pone al cambio la etiqueta «necesita una persona» | la comprobación no tiene que resolver los casos difíciles, como una consulta a la base de datos construida con cadenas al vuelo: ahí dice con honestidad «no se puede saber», y donde dice «se cumple» o «rota» la respuesta es exacta | un desarrollador dedica tiempo a los cambios con la etiqueta «necesita una persona» |
-
-  </b-table>
   <b-why align="left">Más, con la demostración de por qué cada forma levanta la prohibición, en [«El teorema de Rice en palabras sencillas»](/blog/rice-theorem-explained/#frames).</b-why>
   <b-subhead>Cómo se ve en la práctica: una regla, tres comprobaciones</b-subhead>
   <b-why align="left">Toma la regla «las reservas de una misma sala nunca se solapan en el tiempo» y un agente que escribe el código de reservas. Abajo, para cada forma: qué se escribe exactamente, qué se ejecuta y qué sale.</b-why>
@@ -239,7 +218,7 @@ El trabajo de un agente de IA se comprueba en el límite del agregado: por donde
 <b-chapter id="faq" icon="chat" title="Preguntas frecuentes">
   <b-faq-cards>
     <q t="¿Dónde hay que comprobar el trabajo de un agente de IA?">En el límite del agregado: en los comandos, los eventos y las reglas que deben cumplirse siempre. Una máquina puede comprobar ese límite hasta el final, y el agente escribe el código dentro.</q>
-    <q t="¿Qué dice el teorema de Rice en palabras sencillas?">Ningún programa puede decir, para todos los programas, si tienen una propiedad de comportamiento dada. Por eso se acota la comprobación: con un mundo pequeño, un lenguaje estrecho o un «no lo sé» honesto.</q>
+    <q t="¿Por qué no se puede comprobar todo el código de un agente?">Teorema de Rice: ningún programa puede decir con exactitud, para cualquier código, si rompe una regla de comportamiento. Por eso la comprobación se pone dentro de un marco: un mundo pequeño, un lenguaje estrecho o un honesto «no lo sé». Los detalles están en el artículo sobre el teorema de Rice.</q>
     <q t="¿Cómo se dimensiona un bounded context?">Además de los cambios en el significado de las palabras y en el equipo, hay una señal comprobable: un modelo de las reglas del contexto debe terminar con números pequeños. Si no termina, el contexto se divide por reglas que no necesitan cumplirse juntas.</q>
     <q t="¿Cómo se elige el primer marco sin historial de cambios?">Las tablas mencionadas en una misma regla de datos van a una parte, y si aún no hay reglas, se empieza con una parte por concepto principal. Tras las primeras decenas de commits, se compara el corte con el historial y se mueve.</q>
   </b-faq-cards>

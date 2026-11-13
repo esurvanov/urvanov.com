@@ -63,18 +63,7 @@ Hãy đặt phép kiểm tra công việc của tác nhân AI (AI agent) ở ran
   <b-why align="left">**Một sự phân biệt tương tự** có giữa cách tiếp cận mệnh lệnh và khai báo. Mã mệnh lệnh mô tả các bước, và nói chung không thể biết kết quả từ chúng. Một ký pháp khai báo đơn giản, như ràng buộc của cơ sở dữ liệu, nêu kết quả phải là gì, và cơ sở dữ liệu thực thi nó.</b-why>
   <iso-art name="term:rice-predicate"></iso-art>
   <b-cap>Mã giống nhau. Câu hỏi về văn bản được giải quyết bằng cách đọc một văn bản hữu hạn; câu hỏi về hành vi đòi hỏi phải đi qua mọi lần chạy.</b-cap>
-  <b-why align="left">Vì sao không thể trả lời câu hỏi về hành vi cho mọi chương trình thì suy ra từ một cấu trúc. Lấy chương trình $P$ bất kỳ và đầu vào $w$ bất kỳ cho nó; $P(w)$ nghĩa là “chương trình $P$ chạy trên đầu vào $w$”. Dựng một chương trình mới $Q$: trước hết nó chạy $P(w)$, và khi việc đó kết thúc thì thực hiện một bước $B$ làm vỡ quy tắc, như trừ tiền khi không có đơn hàng. Nếu $P(w)$ không bao giờ kết thúc, bước $B$ không bao giờ đạt tới và quy tắc không bị vỡ. Vì vậy phép kiểm tra quy tắc cho $Q$ phải biết $P(w)$ có kết thúc không. Sơ đồ bên dưới cho thấy cấu trúc này, với các công thức và kết luận ngay dưới.</b-why>
-  <b-art names="agent-checkpoint/rice" wide/>
-  <b-cap>Chứng minh trong một sơ đồ: kiểm tra quy tắc cho $Q$ sẽ cho biết $P(w)$ có dừng hay không.</b-cap>
-  Chứng minh diễn ra như sau. Lấy chương trình $P$ bất kỳ với đầu vào $w$ và dựng từ đó chương trình mới $Q$:
-
-  $$Q(x) \;=\; \text{run } P(w)\text{; when it finishes, run } B(x)$$
-
-  Bước $B(x)$ làm vỡ quy tắc, còn chương trình chạy mãi thì không. Vậy $Q$ chỉ đến được chỗ vi phạm nếu $P(w)$ có lúc kết thúc:
-
-  $$Q \text{ breaks the rule} \iff P(w) \text{ halts}$$
-
-  Nếu có phép kiểm tra quy tắc cho mọi chương trình, thì với $Q$ nó cũng sẽ trả lời $P(w)$ có dừng không. Câu hỏi đó, bài toán dừng, không chương trình nào quyết định được: Alan Turing đã chứng minh<b-proof href="https://en.wikipedia.org/wiki/Halting_problem" quote="Wikipedia: “Alan Turing proved in 1937 that the halting problem is undecidable.”"/>.
+  <b-why align="left">Vì sao không thể trả lời câu hỏi về hành vi cho mọi chương trình được trình bày từng bước trong bài [“Định lý Rice bằng lời thường”](/blog/rice-theorem-explained/).</b-why>
   <b-finding>
     <ex>Tác nhân mang đến 2.000 dòng. Phép kiểm tra rằng “mã này không bao giờ tạo các lượt đặt chồng nhau” là không thể với mã bất kỳ nói chung, dù cải tiến đến đâu.</ex>
     <gen>Còn lại một lựa chọn: kiểm tra ít hơn tất cả, hoặc kiểm tra trong một khung nơi câu trả lời hữu hạn. Không có cách thứ ba, và điều này đúng với kiểm tra bằng chương trình lẫn review của con người.</gen>
@@ -86,16 +75,6 @@ Hãy đặt phép kiểm tra công việc của tác nhân AI (AI agent) ở ran
   <b-why align="left">Vì không có phép kiểm tra chính xác cho mọi chương trình, phép kiểm tra được giới hạn để nó không còn phủ mọi chương trình. Có ba cách: thu nhỏ thế giới được kiểm tra, thu hẹp ngôn ngữ viết mã, hoặc để phép kiểm tra trung thực trả lời “không biết”. Sơ đồ đặt cả ba cạnh nhau.</b-why>
   <b-art names="agent-checkpoint/three-ways" wide/>
   <b-cap>Trái, thử trọn vẹn một thế giới nhỏ; giữa, một đường ghi vào cơ sở dữ liệu; phải, ba câu trả lời của phép kiểm tra, câu thứ ba chuyển cho con người.</b-cap>
-  <b-why align="left">Bảng nêu ba cách đó chi tiết hơn: mỗi cách hoạt động thế nào, loại bỏ điều kiện nào của định lý và vì sao khi đó câu trả lời chính xác, và mất đi điều gì. Mỗi cách trông thế nào với quy tắc “các lượt đặt của một phòng không bao giờ chồng nhau” được trình bày bên dưới, ở mục “Trong thực tế trông thế nào”.</b-why>
-  <b-table>
-
-| Cách | Làm gì trong thực tế | Vì sao câu trả lời chính xác | Mất đi điều gì |
-|---|---|---|---|
-| <b-icon name="package"/> Thế giới nhỏ | viết mô hình Quint của việc đặt phòng: 3 phòng, tối đa 5 lượt đặt, các hành động “đặt” và “hủy”. Một chương trình thử mọi chuỗi các hành động này và sau mỗi bước kiểm tra quy tắc “các lượt đặt của một phòng không bao giờ chồng nhau” | số biến thể là hữu hạn, nên tìm kiếm đi đến cùng và hoặc nói “quy tắc đúng” hoặc chỉ ra chuỗi bước làm vỡ nó | lỗi chỉ xuất hiện với 50 lượt đặt đồng thời sẽ không được thấy bởi tìm kiếm với 5 |
-| <b-icon name="list-check"/> Ngôn ngữ hẹp | quy tắc được viết thành ràng buộc PostgreSQL, và chỉ tệp `booking/repository.ts` được ghi vào bảng bookings. Ở mỗi lần tác nhân sửa, một phép tìm kiếm kiểm tra rằng không tệp nào khác ghi vào bảng bookings | ràng buộc là một dòng trong lược đồ cơ sở dữ liệu và cơ sở dữ liệu kiểm tra nó ở mỗi lần ghi; tìm trong tệp luôn kết thúc và cho câu trả lời chính xác | tác nhân không thể ghi lượt đặt từ bất kỳ đâu thuận tiện: ngay cả nhập hàng loạt các lượt đặt cũng phải đi qua cùng tệp được phép |
-| <b-icon name="help-circle"/> “Không biết” | phép kiểm tra với một lần sửa của tác nhân trả về một trong ba câu trả lời: “đúng”, “vỡ”, “không xác định được”. Câu trả lời thứ ba gắn nhãn “cần con người” cho lần sửa | phép kiểm tra không phải giải các ca khó, như truy vấn cơ sở dữ liệu được ghép từ chuỗi ngay lúc chạy: ở đó nó trung thực nói “không xác định được”, và chỗ nào nó nói “đúng” hoặc “vỡ” thì câu trả lời chính xác | lập trình viên mất thời gian cho những lần sửa có nhãn “cần con người” |
-
-  </b-table>
   <b-why align="left">Chi tiết hơn, kèm chứng minh vì sao mỗi cách gỡ bỏ điều cấm, có trong [“Định lý Rice bằng lời thường”](/blog/rice-theorem-explained/#frames).</b-why>
   <b-subhead>Trong thực tế trông thế nào: một quy tắc, ba phép kiểm tra</b-subhead>
   <b-why align="left">Lấy quy tắc “các lượt đặt của một phòng không bao giờ chồng nhau về thời gian” và một tác nhân viết mã đặt phòng. Dưới đây, với mỗi cách: viết gì, chạy gì và kết quả ra sao.</b-why>
@@ -239,7 +218,7 @@ Hãy đặt phép kiểm tra công việc của tác nhân AI (AI agent) ở ran
 <b-chapter id="faq" icon="chat" title="Câu hỏi thường gặp">
   <b-faq-cards>
     <q t="Nên kiểm tra công việc của tác nhân AI ở đâu?">Ở ranh giới aggregate: trên các lệnh, sự kiện và những quy tắc phải luôn đúng. Máy kiểm tra được ranh giới đó đến cùng, và tác nhân viết mã bên trong nó.</q>
-    <q t="Định lý Rice nói gì bằng lời thường?">Không chương trình nào cho biết được, với mọi chương trình, nó có một thuộc tính hành vi cho trước hay không. Vì vậy phép kiểm tra được thu hẹp: bằng một thế giới nhỏ, một ngôn ngữ hẹp, hoặc một câu “không biết” trung thực.</q>
+    <q t="Vì sao không thể kiểm tra toàn bộ mã của tác nhân?">Định lý Rice: không có chương trình nào nói chính xác, với mọi đoạn mã, rằng nó có vi phạm quy tắc hành vi hay không. Vì vậy phép kiểm tra được đặt trong một khuôn khổ: thế giới nhỏ, ngôn ngữ hẹp hoặc câu trả lời trung thực “không biết”. Chi tiết nằm trong bài về định lý Rice.</q>
     <q t="Xác định kích thước bounded context như thế nào?">Ngoài sự dịch chuyển nghĩa của từ và nhóm, có một dấu hiệu kiểm tra được: mô hình các quy tắc của context nên kết thúc ở số nhỏ. Nếu không, context được tách theo các quy tắc không cần cùng đúng.</q>
     <q t="Chọn khung đầu tiên thế nào khi chưa có lịch sử thay đổi?">Các bảng được nhắc đến trong cùng một quy tắc dữ liệu đi vào cùng một phần, và nếu chưa có quy tắc nào, hãy bắt đầu với một phần cho mỗi khái niệm chính. Sau vài chục commit đầu tiên, đối chiếu lần cắt với lịch sử và dời nó.</q>
   </b-faq-cards>

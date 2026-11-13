@@ -63,18 +63,7 @@ Put the check on an AI agent's work at the aggregate boundary: where commands co
   <b-why align="left">**A similar distinction** exists between the imperative and declarative approaches. Imperative code describes steps, and in general you can't tell the result from them. A simple declarative notation, such as a database constraint, states what the result must be, and the database enforces it.</b-why>
   <iso-art name="term:rice-predicate"></iso-art>
   <b-cap>The code is the same. A question about the text is settled by reading a finite text; a question about behaviour requires going through every run.</b-cap>
-  <b-why align="left">Why a behaviour question can't be answered for every program follows from one construction. Take any program $P$ and any input $w$ for it; $P(w)$ means “program $P$ run on input $w$”. Build a new program $Q$: first it runs $P(w)$, and when that finishes it takes a step $B$ that breaks the rule, such as charging money without an order. If $P(w)$ never finishes, step $B$ is never reached and the rule is not broken. So a check of the rule for $Q$ has to know whether $P(w)$ finishes. The diagram below shows this construction, with the formulas and the conclusion right under it.</b-why>
-  <b-art names="agent-checkpoint/rice" wide/>
-  <b-cap>The proof in one diagram: checking the rule for $Q$ would tell whether $P(w)$ halts.</b-cap>
-  How the proof goes. Take any program $P$ with input $w$ and build a new program $Q$ from it:
-
-  $$Q(x) \;=\; \text{run } P(w)\text{; when it finishes, run } B(x)$$
-
-  Step $B(x)$ breaks the rule, while a program that runs forever does not. So $Q$ reaches the breach only if $P(w)$ ever finishes:
-
-  $$Q \text{ breaks the rule} \iff P(w) \text{ halts}$$
-
-  If a check of the rule existed for every program, then given $Q$ it would also answer whether $P(w)$ halts. That question, the halting problem, no program can decide: Alan Turing proved it<b-proof href="https://en.wikipedia.org/wiki/Halting_problem" quote="Wikipedia: “Alan Turing proved in 1937 that the halting problem is undecidable.”"/>.
+  <b-why align="left">Why a question about behaviour cannot be answered for every program is shown step by step in the article [“Rice's theorem in plain words”](/blog/rice-theorem-explained/).</b-why>
   <b-finding>
     <ex>The agent brought 2,000 lines. A check that “this code never creates overlapping bookings” is impossible for arbitrary code in general, however much it is improved.</ex>
     <gen>That leaves a choice: check less than everything, or check inside a frame where the answer is finite. There is no third way, and this holds for checking programs and for human review alike.</gen>
@@ -86,16 +75,6 @@ Put the check on an AI agent's work at the aggregate boundary: where commands co
   <b-why align="left">Since there is no exact check for every program, the check is limited so that it no longer covers every program. There are three ways to do that: shrink the world being checked, narrow the language the code is written in, or let the check honestly answer “don't know”. The diagram puts all three side by side.</b-why>
   <b-art names="agent-checkpoint/three-ways" wide/>
   <b-cap>Left, trying a small world in full; centre, one write path into the database; right, three answers of the check, the third going to a person.</b-cap>
-  <b-why align="left">The table gives the same three ways in more detail: how each works, which condition of the theorem it removes and why the answer is then exact, and what is lost. What each way looks like for the rule “bookings of one room never overlap” is shown below, under “What it looks like in practice”.</b-why>
-  <b-table>
-
-| Way | What is done in practice | Why the answer is exact | What is lost |
-|---|---|---|---|
-| <b-icon name="package"/> Small world | write a Quint model of booking: 3 rooms, up to 5 bookings, actions “book” and “cancel”. A program tries every sequence of these actions and after each step checks the rule “bookings of one room never overlap” | there are finitely many variants, so the search reaches the end and either says “the rule holds” or shows the chain of steps where it broke | an error that appears only with 50 simultaneous bookings won't be seen by a search with 5 |
-| <b-icon name="list-check"/> Narrow language | the rule is written as a PostgreSQL constraint, and only the file `booking/repository.ts` may write to the bookings table. On every agent edit a search checks that no other file writes to the bookings table | the constraint is one line in the database schema and the database checks it on every write; a file search always finishes and gives an exact answer | the agent can't write bookings from wherever is convenient: even a bulk import of bookings has to go through the same allowed file |
-| <b-icon name="help-circle"/> “Don't know” | the check on an agent's edit returns one of three answers: “holds”, “broken”, “can't tell”. The third answer puts a “needs a person” label on the edit | the check doesn't have to solve hard cases, such as a database query built from strings on the fly: there it honestly says “can't tell”, and where it says “holds” or “broken” the answer is exact | a developer spends time on edits labelled “needs a person” |
-
-  </b-table>
   <b-why align="left">More, with the proof of why each way lifts the ban, in [“Rice's theorem in plain words”](/blog/rice-theorem-explained/#frames).</b-why>
   <b-subhead>What it looks like in practice: one rule, three checks</b-subhead>
   <b-why align="left">Take the rule “bookings of one room never overlap in time” and an agent writing the booking code. Below, for each way: what exactly is written, what is run and what comes out.</b-why>
@@ -239,7 +218,7 @@ Put the check on an AI agent's work at the aggregate boundary: where commands co
 <b-chapter id="faq" icon="chat" title="Frequently asked questions">
   <b-faq-cards>
     <q t="Where should you check an AI agent's work?">At the aggregate boundary: on commands, events and the rules that must always hold. A machine can check that boundary to the end, and the agent writes the code inside it.</q>
-    <q t="What does Rice's theorem say in plain words?">No program can tell for every program whether it has a given behavioural property. So the check is narrowed: by a small world, a narrow language, or an honest “don't know”.</q>
+    <q t="Why can't all of an agent's code be checked?">Rice's theorem: no program can say, for every piece of code, exactly whether it breaks a behaviour rule. So the check is put inside a frame: a small world, a narrow language or an honest “don't know”. The details are in the article on Rice's theorem.</q>
     <q t="How do you size a bounded context?">Besides shifts in word meaning and team, there is a checkable sign: a model of the context's rules should finish at small numbers. If it doesn't, the context is split along rules that don't need to hold together.</q>
     <q t="How do you pick the first frame without edit history?">Tables mentioned in one data rule go into one part, and if there are no rules yet, start with one part per main concept. After the first few dozen commits, compare the cut with history and move it.</q>
   </b-faq-cards>

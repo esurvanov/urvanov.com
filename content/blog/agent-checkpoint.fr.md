@@ -63,18 +63,7 @@ Placez la vérification du travail d’un agent IA à la frontière de l’agré
   <b-why align="left">**Une distinction semblable** existe entre l’approche impérative et l’approche déclarative. Le code impératif décrit des étapes, et en général on ne peut pas en déduire le résultat. Une notation déclarative simple, comme une contrainte de base de données, énonce ce que le résultat doit être, et la base le fait respecter.</b-why>
   <iso-art name="term:rice-predicate"></iso-art>
   <b-cap>Le code est le même. Une question sur le texte se règle en lisant un texte fini ; une question sur le comportement exige de parcourir chaque exécution.</b-cap>
-  <b-why align="left">Pourquoi une question de comportement ne peut pas recevoir de réponse pour tout programme découle d’une construction. Prenons un programme quelconque $P$ et une entrée quelconque $w$ ; $P(w)$ signifie « le programme $P$ exécuté sur l’entrée $w$ ». Construisons un nouveau programme $Q$ : il exécute d’abord $P(w)$ et, quand celui-ci se termine, accomplit une étape $B$ qui brise la règle, par exemple prélever de l’argent sans commande. Si $P(w)$ ne se termine jamais, l’étape $B$ n’est jamais atteinte et la règle n’est pas brisée. Une vérification de la règle pour $Q$ doit donc savoir si $P(w)$ se termine. Le schéma ci-dessous montre cette construction, avec les formules et la conclusion juste dessous.</b-why>
-  <b-art names="agent-checkpoint/rice" wide/>
-  <b-cap>La preuve en un schéma : vérifier la règle pour $Q$ dirait si $P(w)$ s’arrête.</b-cap>
-  Voici comment se déroule la preuve. Prenons un programme quelconque $P$ avec l’entrée $w$ et construisons à partir de lui un nouveau programme $Q$ :
-
-  $$Q(x) \;=\; \text{run } P(w)\text{; when it finishes, run } B(x)$$
-
-  L’étape $B(x)$ brise la règle, alors qu’un programme qui tourne indéfiniment ne la brise pas. $Q$ n’atteint donc la violation que si $P(w)$ se termine un jour :
-
-  $$Q \text{ breaks the rule} \iff P(w) \text{ halts}$$
-
-  Si une vérification de la règle existait pour tout programme, elle répondrait aussi, à partir de $Q$, à la question de savoir si $P(w)$ s’arrête. Cette question, le problème de l’arrêt, aucun programme ne peut la trancher : Alan Turing l’a démontré<b-proof href="https://en.wikipedia.org/wiki/Halting_problem" quote="Wikipedia: “Alan Turing proved in 1937 that the halting problem is undecidable.”"/>.
+  <b-why align="left">La raison pour laquelle on ne peut pas répondre à une question sur le comportement pour n'importe quel programme est détaillée pas à pas dans l'article [« Le théorème de Rice en mots simples »](/blog/rice-theorem-explained/).</b-why>
   <b-finding>
     <ex>L’agent a apporté 2 000 lignes. Une vérification que « ce code ne crée jamais de réservations qui se chevauchent » est impossible en général pour un code arbitraire, quelles que soient les améliorations.</ex>
     <gen>Il reste un choix : vérifier moins que tout, ou vérifier dans un cadre où la réponse est finie. Il n’y a pas de troisième voie, et cela vaut pour la vérification par programme comme pour la relecture humaine.</gen>
@@ -86,16 +75,6 @@ Placez la vérification du travail d’un agent IA à la frontière de l’agré
   <b-why align="left">Puisqu’il n’existe pas de vérification exacte pour tout programme, la vérification est limitée pour ne plus couvrir tous les programmes. Il y a trois façons de le faire : réduire le monde vérifié, restreindre le langage dans lequel le code est écrit, ou laisser la vérification répondre honnêtement « je ne sais pas ». Le schéma met les trois côte à côte.</b-why>
   <b-art names="agent-checkpoint/three-ways" wide/>
   <b-cap>À gauche, un petit monde essayé en entier ; au centre, un seul chemin d’écriture vers la base ; à droite, trois réponses de la vérification, la troisième allant à une personne.</b-cap>
-  <b-why align="left">Le tableau donne les mêmes trois façons plus en détail : comment chacune fonctionne, quelle condition du théorème elle lève et pourquoi la réponse est alors exacte, et ce qui est perdu. À quoi ressemble chaque façon pour la règle « les réservations d’une même salle ne se chevauchent jamais » est montré plus bas, sous « À quoi cela ressemble en pratique ».</b-why>
-  <b-table>
-
-| Façon | Ce qui est fait en pratique | Pourquoi la réponse est exacte | Ce qui est perdu |
-|---|---|---|---|
-| <b-icon name="package"/> Petit monde | écrire un modèle Quint de la réservation : 3 salles, jusqu’à 5 réservations, actions « réserver » et « annuler ». Un programme essaie chaque suite de ces actions et, après chaque pas, vérifie la règle « les réservations d’une même salle ne se chevauchent jamais » | il y a un nombre fini de variantes ; la recherche va donc jusqu’au bout et dit soit « la règle tient », soit montre la chaîne d’étapes où elle s’est brisée | une erreur qui n’apparaît qu’avec 50 réservations simultanées ne sera pas vue par une recherche à 5 |
-| <b-icon name="list-check"/> Langage restreint | la règle est écrite comme une contrainte PostgreSQL, et seul le fichier `booking/repository.ts` a le droit d’écrire dans la table des réservations. À chaque modification de l’agent, une recherche vérifie qu’aucun autre fichier n’écrit dans la table des réservations | la contrainte tient en une ligne dans le schéma de la base et la base la vérifie à chaque écriture ; une recherche de fichiers se termine toujours et donne une réponse exacte | l’agent ne peut pas écrire des réservations de n’importe où : même un import massif de réservations doit passer par le même fichier autorisé |
-| <b-icon name="help-circle"/> « Je ne sais pas » | la vérification d’une modification de l’agent renvoie l’une de trois réponses : « tient », « brisée », « impossible de dire ». La troisième réponse pose une étiquette « demande une personne » sur la modification | la vérification n’a pas à résoudre les cas difficiles, comme une requête de base construite à la volée à partir de chaînes : elle y dit honnêtement « impossible de dire », et là où elle dit « tient » ou « brisée », la réponse est exacte | un développeur passe du temps sur les modifications étiquetées « demande une personne » |
-
-  </b-table>
   <b-why align="left">Plus de détails, avec la preuve de la raison pour laquelle chaque façon lève l’interdiction, dans [« Le théorème de Rice en mots simples »](/blog/rice-theorem-explained/#frames).</b-why>
   <b-subhead>À quoi cela ressemble en pratique : une règle, trois vérifications</b-subhead>
   <b-why align="left">Prenons la règle « les réservations d’une même salle ne se chevauchent jamais dans le temps » et un agent qui écrit le code de réservation. Ci-dessous, pour chaque façon : ce qui est écrit exactement, ce qui est exécuté et ce qui en sort.</b-why>
@@ -239,7 +218,7 @@ Placez la vérification du travail d’un agent IA à la frontière de l’agré
 <b-chapter id="faq" icon="chat" title="Questions fréquentes">
   <b-faq-cards>
     <q t="Où faut-il vérifier le travail d’un agent IA ?">À la frontière de l’agrégat : sur les commandes, les événements et les règles qui doivent toujours tenir. Une machine peut vérifier cette frontière jusqu’au bout, et l’agent écrit le code à l’intérieur.</q>
-    <q t="Que dit le théorème de Rice en mots simples ?">Aucun programme ne peut dire, pour tout programme, s’il possède une propriété de comportement donnée. La vérification est donc réduite : par un petit monde, un langage restreint ou un honnête « je ne sais pas ».</q>
+    <q t="Pourquoi ne peut-on pas vérifier tout le code d'un agent ?">Théorème de Rice : aucun programme ne peut dire avec exactitude, pour n'importe quel code, s'il enfreint une règle de comportement. La vérification se place donc dans un cadre : un petit monde, un langage étroit ou un honnête « je ne sais pas ». Les détails sont dans l'article sur le théorème de Rice.</q>
     <q t="Comment dimensionner un contexte délimité ?">Outre les changements de sens des mots et d’équipe, il existe un signe vérifiable : un modèle des règles du contexte doit se terminer avec de petits nombres. Sinon, le contexte est scindé selon des règles qui n’ont pas à tenir ensemble.</q>
     <q t="Comment choisir le premier cadre sans historique des modifications ?">Les tables citées dans une même règle de données vont dans une même partie, et s’il n’y a pas encore de règles, commencer par une partie par concept principal. Après les premières dizaines de commits, comparer le découpage avec l’historique et le déplacer.</q>
   </b-faq-cards>
