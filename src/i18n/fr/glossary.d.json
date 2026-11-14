@@ -4,22 +4,20 @@
     "def": "Kiro est un environnement de développement avec agent IA d’AWS qui travaille à partir de spécifications : avant tout code, l’agent écrit trois fichiers, `requirements.md` (ce qu’on doit obtenir), `design.md` (comment c’est construit) et `tasks.md` (une liste d’étapes) ; vous les relisez, et ce n’est qu’ensuite qu’il écrit le code. Exemple : vous demandez « d’ajouter un panier », Kiro détaille d’abord les exigences et les tâches, puis modifie le code après votre « oui ». Il existe en IDE de bureau, en version terminal, en application web et en application mobile ; les modèles sont Claude, GPT, des modèles ouverts ou un choix automatique.",
     "faq.0.q": "Qu’est-ce que Kiro ?",
     "faq.0.a": "Un environnement de développement avec agent IA d’AWS : l’agent écrit d’abord les exigences, la conception et une liste de tâches dans des fichiers, vous les relisez, puis il écrit le code.",
-    "faq.1.q": "Combien coûte Kiro et existe-t-il un forfait gratuit ?",
-    "faq.1.a": "Au 13 novembre 2026 : Free coûte 0 $ avec 50 crédits par mois, Pro 20 $ avec 1 000 crédits, Pro+ 40 $ avec 2 000, Pro Max 100 $ avec 5 000 et Power 200 $ avec 10 000. Un crédit est une unité de travail de l’agent : une simple requête en consomme moins d’un, une tâche de spécification complexe davantage.",
-    "faq.2.q": "En quoi Kiro diffère-t-il de Cursor ?",
-    "faq.2.a": "Kiro organise le travail autour de spécifications : exigences, conception et tâches sont écrites dans des fichiers avant le code. Cursor est un éditeur avec un agent où l’on peut demander des modifications tout de suite, et le plan n’est qu’un de ses modes.",
-    "faq.3.q": "En quoi Kiro diffère-t-il d’OpenSpec et de Spec Kit ?",
-    "faq.3.a": "OpenSpec et Spec Kit sont des boîtes à outils ouvertes qui se branchent sur votre propre agent. Kiro est un environnement prêt à l’emploi avec son propre agent, où les spécifications sont intégrées.",
-    "faq.4.q": "Où télécharger Kiro ?",
-    "faq.4.a": "L’IDE se trouve sur kiro.dev/downloads (macOS, Windows et Linux sont indiqués), la version terminal s’installe avec une commande donnée sur cli.kiro.dev, et l’application web s’ouvre sur app.kiro.dev.",
+    "faq.1.q": "En quoi Kiro diffère-t-il de Cursor ?",
+    "faq.1.a": "Kiro organise le travail autour de spécifications : exigences, conception et tâches sont écrites dans des fichiers avant le code. Cursor est un éditeur avec un agent où l’on peut demander des modifications tout de suite, et le plan n’est qu’un de ses modes.",
+    "faq.2.q": "En quoi Kiro diffère-t-il d’OpenSpec et de Spec Kit ?",
+    "faq.2.a": "OpenSpec et Spec Kit sont des boîtes à outils ouvertes qui se branchent sur votre propre agent. Kiro est un environnement prêt à l’emploi avec son propre agent, où les spécifications sont intégrées.",
+    "faq.3.q": "Où télécharger Kiro ?",
+    "faq.3.a": "L’IDE se trouve sur kiro.dev/downloads (macOS, Windows et Linux sont indiqués), la version terminal s’installe avec une commande donnée sur cli.kiro.dev, et l’application web s’ouvre sur app.kiro.dev.",
     "source.label": "Site officiel de Kiro",
-    "seo.title": "Kiro d’AWS : ce que c’est, spécifications, prix et forfait gratuit",
-    "seo.description": "Kiro est un environnement d’AWS avec agent IA qui écrit exigences, conception et tâches avant le code. Forfaits et crédits, différences avec Cursor, OpenSpec et Spec Kit.",
+    "seo.title": "Kiro d’AWS : ce que c’est, spécifications et différences avec Cursor",
+    "seo.description": "Kiro est un environnement d’AWS avec agent IA qui écrit exigences, conception et tâches avant le code. Différences avec Cursor, OpenSpec et Spec Kit.",
     "notes.title": "Kiro : spécifications, crédits et modèles",
     "notes.items.0.name": "Les trois fichiers de spécification",
     "notes.items.0.text": "`requirements.md` (`bugfix.md` pour la correction d’un bug) avec des user stories et des critères d’acceptation, `design.md` avec l’architecture et des schémas, `tasks.md` avec les étapes dont l’état est mis à jour au fil du travail. Une spec rapide produit les trois fichiers en une seule passe, sans pause de relecture.",
     "notes.items.1.name": "Crédits",
-    "notes.items.1.text": "une unité de travail de l’agent ; les différents modèles les consomment à des rythmes différents. Les crédits mensuels des forfaits personnels ne sont pas reportés, les crédits supplémentaires à 0,04 $ restent valables 12 mois.",
+    "notes.items.1.text": "une unité de travail de l’agent ; les différents modèles les consomment à des rythmes différents. Les crédits mensuels des forfaits personnels ne sont pas reportés.",
     "notes.items.2.name": "Standards ouverts",
     "notes.items.2.text": "prend en charge MCP, `AGENTS.md`, les skills et les extensions Open VSX.",
     "compare.title": "Kiro et Cursor",
@@ -35,7 +33,7 @@
     ],
     "compare.rows.2": [
       "Forfait gratuit",
-      "oui : 50 crédits par mois",
+      "oui",
       "oui, avec des limites"
     ],
     "compare.rows.3": [
@@ -51,42 +49,11 @@
     "faq.0.a": "Un assistant de programmation IA de GitHub : il suggère du code, répond aux questions sur un projet et, en mode agent, modifie des fichiers et exécute des commandes lui-même.",
     "faq.1.q": "Où fonctionne GitHub Copilot ?",
     "faq.1.a": "Selon la documentation de GitHub : dans VS Code, Visual Studio, les IDE JetBrains, Eclipse et Xcode, sur GitHub.com, dans le terminal via Copilot CLI, dans GitHub Mobile et GitHub Desktop, ainsi que dans l’application GitHub Copilot pour les tâches parallèles.",
-    "faq.2.q": "Combien coûte GitHub Copilot et existe-t-il un forfait gratuit ?",
-    "faq.2.a": "Au 13 novembre 2026 : Free est gratuit (2 000 suggestions par mois, chat et agent limités), Pro coûte 10 $, Pro+ 39 $, Max 100 $ par utilisateur et par mois ; Business et Enterprise s’adressent aux entreprises.",
-    "faq.3.q": "Qu’est-ce que le mode agent dans Copilot ?",
-    "faq.3.a": "Un mode où vous formulez une tâche en mots simples et où Copilot choisit les étapes : il modifie des fichiers, exécute des commandes, lit les erreurs de build et de tests et recommence jusqu’à ce que ça marche. Chaque modification peut être acceptée ou annulée.",
+    "faq.2.q": "Qu’est-ce que le mode agent dans Copilot ?",
+    "faq.2.a": "Un mode où vous formulez une tâche en mots simples et où Copilot choisit les étapes : il modifie des fichiers, exécute des commandes, lit les erreurs de build et de tests et recommence jusqu’à ce que ça marche. Chaque modification peut être acceptée ou annulée.",
     "source.label": "Documentation GitHub : où utiliser Copilot",
-    "seo.title": "GitHub Copilot : ce que c’est, où il fonctionne, mode agent et forfaits",
-    "seo.description": "GitHub Copilot est un assistant de code IA : suggestions, chat et agent qui modifie des fichiers. Où il fonctionne (VS Code, Visual Studio, JetBrains, terminal) et le prix des forfaits.",
-    "table.title": "Forfaits GitHub Copilot",
-    "table.rows.0": [
-      "Prix par mois",
-      "0",
-      "10 $",
-      "39 $",
-      "100 $"
-    ],
-    "table.rows.1": [
-      "Suggestions de code",
-      "2 000 par mois",
-      "illimitées",
-      "illimitées",
-      "illimitées"
-    ],
-    "table.rows.2": [
-      "Mode agent",
-      "oui, limité",
-      "oui",
-      "oui",
-      "oui"
-    ],
-    "table.rows.3": [
-      "Crédits par mois",
-      "—",
-      "15 $",
-      "70 $",
-      "200 $"
-    ]
+    "seo.title": "GitHub Copilot : ce que c’est, où il fonctionne et mode agent",
+    "seo.description": "GitHub Copilot est un assistant de code IA : suggestions, chat et agent qui modifie des fichiers. Où il fonctionne : VS Code, Visual Studio, JetBrains, terminal."
   },
   "visual-studio": {
     "aka": "Visual Studio 2026, Visual Studio 2022, VS IDE (pas VS Code)",
@@ -305,9 +272,9 @@
   "flaky-test": {
     "name": "Test instable",
     "aka": "flaky test, tests instables, flakiness, test intermittent",
-    "def": "Un test instable (flaky test) est un test qui tantôt réussit, tantôt échoue sur le même code, sans aucune modification. C’est comme une balance qui affiche un poids différent à chaque pesée : on ne peut pas s’y fier. Les causes habituelles sont une course entre des actions parallèles, la dépendance au temps, les appels à un système extérieur et des tests qui s’influencent mutuellement. De tels tests minent la confiance dans toute la suite et peuvent masquer un vrai défaut.",
+    "def": "Un test instable (flaky test) est un test qui, sur le même code, est tantôt vert et tantôt rouge, sans aucune modification. Un test vert a réussi, un test rouge a échoué ; un test instable change de couleur tout seul. C’est comme une balance qui affiche un poids différent à chaque pesée : on ne peut pas s’y fier. Les causes habituelles sont une course entre des actions parallèles, la dépendance au temps, les appels à un système extérieur et des tests qui s’influencent mutuellement. De tels tests minent la confiance dans toute la suite : l’équipe s’habitue au rouge et peut manquer un vrai défaut.",
     "faq.0.q": "Qu’est-ce qu’un test instable (flaky test) ?",
-    "faq.0.a": "Un test qui tantôt réussit, tantôt échoue sur le même code, sans modification.",
+    "faq.0.a": "Un test qui, sur le même code, est tantôt vert (réussi), tantôt rouge (échoué), sans modification.",
     "faq.1.q": "Pourquoi les tests deviennent-ils instables ?",
     "faq.1.a": "À cause de courses entre des actions parallèles, de la dépendance au temps, d’appels à des systèmes extérieurs et d’une isolation insuffisante des tests les uns des autres.",
     "faq.2.q": "En quoi un test instable est-il nuisible ?",
@@ -335,18 +302,20 @@
   },
   "dump": {
     "name": "Dump de base de données",
-    "aka": "dump, dump de BD, export de base, dump SQL",
-    "def": "Un dump de base de données est une copie de la structure des tables et des données enregistrée dans un seul fichier, le plus souvent sous forme d’une liste d’instructions SQL. C’est comme une photographie d’un entrepôt : à partir d’elle, on peut monter le même entrepôt ailleurs. Les dumps servent aux sauvegardes et à monter rapidement sur un stand une base avec des données proches de la production. Avant de le charger sur le staging ou le test, on retire ou remplace les données personnelles pour qu’elles n’arrivent pas à des personnes sans accès à la production.",
+    "aka": "dump, dump de BD, backup, sauvegarde, sauvegarde de la base, export de base, dump SQL",
+    "def": "Un dump de base de données (aussi appelé backup ou sauvegarde) est une copie de la structure des tables et des données enregistrée dans un seul fichier, le plus souvent sous forme d’une liste d’instructions SQL. C’est comme une photographie d’un entrepôt : à partir d’elle, on peut monter le même entrepôt ailleurs. Les dumps servent aux sauvegardes et à monter rapidement sur un stand une base avec des données proches de la production. Avant de le charger sur le staging ou le test, on retire ou remplace les données personnelles pour qu’elles n’arrivent pas à des personnes sans accès à la production.",
     "faq.0.q": "Qu’est-ce qu’un dump de base de données ?",
     "faq.0.a": "Une copie de la structure et des données d’une base dans un seul fichier, généralement sous forme d’instructions SQL à partir desquelles la base peut être restaurée.",
     "faq.1.q": "Pourquoi un dump est-il nécessaire pour le staging ?",
     "faq.1.a": "Il permet de remplir rapidement la base du staging avec des données récentes proches de la production, et de vérifier une mise en production et les migrations de base dans des conditions proches de la production.",
     "faq.2.q": "Comment retirer les données personnelles d’un dump ?",
     "faq.2.a": "On les masque : noms, e-mails et numéros de téléphone sont remplacés par des valeurs inventées, de sorte que les données restent utilisables pour les tests mais ne révèlent personne.",
-    "faq.3.q": "En quoi un dump diffère-t-il d’une base mockée ?",
-    "faq.3.a": "Un dump contient de vraies données dans un fichier. Un mock est une imitation de la base qui répond par des réponses préparées.",
+    "faq.3.q": "Un dump et un backup, est-ce la même chose ?",
+    "faq.3.a": "Oui, dans la pratique ces mots sont synonymes : tous deux désignent une copie d’une base de données enregistrée dans un fichier. « Backup » souligne le but (une copie de secours en cas de panne), « dump » souligne le fichier lui-même avec la structure et les données.",
+    "faq.4.q": "En quoi un dump diffère-t-il d’une base mockée ?",
+    "faq.4.a": "Un dump contient de vraies données dans un fichier. Un mock est une imitation de la base qui répond par des réponses préparées.",
     "source.label": "Wikipédia : Database dump",
-    "seo.title": "Dump de base de données : ce que c’est et pourquoi le staging en a besoin",
-    "seo.description": "Un dump est une copie d’une base de données dans un seul fichier. À quoi il sert, comment on monte un staging à partir de lui et pourquoi on en retire d’abord les données personnelles."
+    "seo.title": "Dump de base de données (backup) : ce que c’est et pourquoi le staging en a besoin",
+    "seo.description": "Un dump, ou backup, est une copie d’une base de données dans un seul fichier. À quoi il sert, comment on monte un staging à partir de lui et pourquoi on en retire d’abord les données personnelles."
   }
 }

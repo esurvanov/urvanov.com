@@ -787,6 +787,15 @@
   "faq.1.a": "Sus propios modelos de código Composer, el revisor de pull requests Bugbot, un agente de terminal y agentes en la nube.",
   "source.label": "Sitio oficial de Anysphere"
  },
+ "aws": {
+  "aka": "Amazon Web Services, nube de Amazon",
+  "def": "AWS (Amazon Web Services) es la plataforma en la nube de Amazon: en lugar de comprar sus propios servidores, las empresas le alquilan potencia de cálculo, almacenamiento de archivos, bases de datos y cientos de otros servicios, y pagan por lo que usaron, como la electricidad. La plataforma funciona desde 2006. Para quienes desarrollan con IA, AWS ofrece Kiro, un entorno donde el agente trabaja a partir de especificaciones, y el servicio Amazon Bedrock para ejecutar modelos de lenguaje.",
+  "faq.0.q": "¿Qué es AWS?",
+  "faq.0.a": "La plataforma en la nube de Amazon: alquiler de servidores, almacenamiento, bases de datos y otros servicios con pago por uso.",
+  "faq.1.q": "¿Qué ofrece AWS para trabajar con IA?",
+  "faq.1.a": "El entorno Kiro, con un agente que trabaja a partir de especificaciones, y el servicio Amazon Bedrock para ejecutar modelos de lenguaje.",
+  "source.label": "Página oficial de AWS: qué es AWS"
+ },
  "deepseek": {
   "def": "DeepSeek es una empresa china que desarrolla los modelos de lenguaje DeepSeek con pesos abiertos: puedes descargarlos y ejecutarlos en tu propio servidor. La generación actual V4 admite hasta un millón de tokens de contexto. Para personas: el chat de DeepSeek en la web y en el móvil. Para desarrolladores: la API. Los modelos de DeepSeek se conectan a agentes abiertos como Hermes Agent.",
   "faq.0.q": "¿Qué es DeepSeek?",

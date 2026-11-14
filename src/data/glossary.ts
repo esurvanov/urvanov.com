@@ -599,27 +599,26 @@ export const TERM_SETS: TermSet[] = [
           en: 'Kiro is an AI development environment from AWS that works from specifications: before any code the agent writes three files, `requirements.md` (what must result), `design.md` (how it is built) and `tasks.md` (a list of steps), you review them, and only then it writes code. Example: you ask to “add a shopping cart”, Kiro first spells out requirements and tasks, and edits code after your “yes”. It comes as a desktop IDE, a terminal version, a web app and a mobile app; models are Claude, GPT, open-weight ones or automatic choice.',
         },
         match: { ru: ['Kiro(?: IDE)?'], en: ['Kiro(?: IDE)?'] },
-        related: ['spec-driven-development', 'openspec', 'spec-kit', 'cursor', 'claude-code', 'agents-md', 'mcp', 'ide'],
+        related: ['aws', 'spec-driven-development', 'openspec', 'spec-kit', 'cursor', 'claude-code', 'agents-md', 'mcp', 'ide'],
         faq: [
           { q: { ru: 'Kiro — что это?', en: 'What is Kiro?' }, a: { ru: 'Среда разработки с ИИ-агентом от AWS: агент сначала пишет требования, дизайн и список задач в файлы, вы их проверяете, потом он пишет код.', en: 'An AI development environment from AWS: the agent first writes requirements, design and a task list into files, you review them, then it writes code.' } },
-          { q: { ru: 'Сколько стоит Kiro и есть ли бесплатный план?', en: 'How much does Kiro cost and is there a free plan?' }, a: { ru: 'На 13 ноября 2026: Free — 0 долларов и 50 кредитов в месяц, Pro — 20 долларов и 1000 кредитов, Pro+ — 40 и 2000, Pro Max — 100 и 5000, Power — 200 и 10 000. Кредит — единица работы агента: простой запрос тратит меньше одного, сложная задача по спецификации — больше.', en: 'As of Nov 13, 2026: Free is $0 with 50 credits a month, Pro is $20 with 1,000 credits, Pro+ is $40 with 2,000, Pro Max is $100 with 5,000 and Power is $200 with 10,000. A credit is a unit of agent work: a simple prompt uses less than one, a complex spec task more.' } },
           { q: { ru: 'Чем Kiro отличается от Cursor?', en: 'How is Kiro different from Cursor?' }, a: { ru: 'Kiro строит работу вокруг спецификаций: требования, дизайн и задачи записываются в файлы до кода. Cursor — редактор с агентом, где можно сразу просить правки, а план — один из режимов.', en: 'Kiro builds work around specifications: requirements, design and tasks are written to files before code. Cursor is an editor with an agent where you can ask for edits right away, and a plan is one of its modes.' } },
           { q: { ru: 'Чем Kiro отличается от OpenSpec и Spec Kit?', en: 'How is Kiro different from OpenSpec and Spec Kit?' }, a: { ru: 'OpenSpec и Spec Kit — открытые наборы, которые подключаются к вашему агенту. Kiro — готовая среда со своим агентом, где спецификации встроены.', en: 'OpenSpec and Spec Kit are open toolkits that plug into your own agent. Kiro is a ready environment with its own agent where specifications are built in.' } },
           { q: { ru: 'Где скачать Kiro?', en: 'Where do I download Kiro?' }, a: { ru: 'Среду — на странице kiro.dev/downloads (указаны macOS, Windows и Linux), версию для терминала ставят командой с cli.kiro.dev, веб-версия открывается на app.kiro.dev.', en: 'The IDE is on kiro.dev/downloads (macOS, Windows and Linux are listed), the terminal version installs with a command from cli.kiro.dev, and the web app opens at app.kiro.dev.' } },
         ],
         source: { url: 'https://kiro.dev/', label: { ru: 'Официальный сайт Kiro', en: 'Kiro official site' } },
         seo: {
-          title: { ru: 'Kiro от AWS: что это, спецификации, цена и бесплатный план', en: 'Kiro by AWS: what it is, specs, pricing and the free plan' },
+          title: { ru: 'Kiro от AWS: что это, спецификации и отличие от Cursor', en: 'Kiro by AWS: what it is, specs and how it differs from Cursor' },
           description: {
-            ru: 'Kiro — среда с ИИ-агентом от AWS, которая сначала пишет требования, дизайн и задачи, а потом код. Тарифы и кредиты, отличие от Cursor, OpenSpec и Spec Kit.',
-            en: 'Kiro is an AWS environment with an AI agent that writes requirements, design and tasks before code. Plans and credits, and how it differs from Cursor, OpenSpec and Spec Kit.',
+            ru: 'Kiro — среда с ИИ-агентом от AWS, которая сначала пишет требования, дизайн и задачи, а потом код. Чем отличается от Cursor, OpenSpec и Spec Kit.',
+            en: 'Kiro is an AWS environment with an AI agent that writes requirements, design and tasks before code. How it differs from Cursor, OpenSpec and Spec Kit.',
           },
         },
         notes: {
           title: { ru: 'Kiro: спецификации, кредиты и модели', en: 'Kiro: specs, credits and models' },
           items: [
             { name: { ru: 'Три файла спецификации', en: 'The three spec files' }, text: { ru: '`requirements.md` (для исправления ошибки — `bugfix.md`) с историями пользователя и критериями приёмки, `design.md` с архитектурой и схемами, `tasks.md` со списком шагов, чей статус виден по ходу работы. Есть быстрая спека: три файла за один проход без остановок на проверку.', en: '`requirements.md` (`bugfix.md` for a bug fix) with user stories and acceptance criteria, `design.md` with architecture and diagrams, `tasks.md` with steps whose status updates as work goes. A quick spec makes all three files in one pass with no review stops.' } },
-            { name: { ru: 'Кредиты', en: 'Credits' }, text: { ru: 'единица работы агента; разные модели тратят их с разной скоростью. Месячные кредиты личных тарифов не переносятся, докупленные по 0,04 доллара живут 12 месяцев.', en: 'a unit of agent work; different models burn them at different rates. Monthly credits on personal plans do not roll over, add-on credits at $0.04 last 12 months.' } },
+            { name: { ru: 'Кредиты', en: 'Credits' }, text: { ru: 'единица работы агента; разные модели тратят их с разной скоростью. Месячные кредиты личных тарифов не переносятся.', en: 'a unit of agent work; different models burn them at different rates. Monthly credits on personal plans do not roll over.' } },
             { name: { ru: 'Открытые стандарты', en: 'Open standards' }, text: { ru: 'поддерживает MCP, `AGENTS.md`, скиллы и расширения Open VSX.', en: 'supports MCP, `AGENTS.md`, skills and Open VSX extensions.' } },
           ],
         },
@@ -630,7 +629,7 @@ export const TERM_SETS: TermSet[] = [
           rows: [
             { ru: ['Компания', 'AWS', 'Anysphere'], en: ['Company', 'AWS', 'Anysphere'] },
             { ru: ['Главная идея', 'спецификации перед кодом', 'редактор со встроенным агентом'], en: ['Main idea', 'specs before code', 'an editor with a built-in agent'] },
-            { ru: ['Бесплатный план', 'есть: 50 кредитов в месяц', 'есть, с лимитами'], en: ['Free plan', 'yes: 50 credits a month', 'yes, with limits'] },
+            { ru: ['Бесплатный план', 'есть', 'есть, с лимитами'], en: ['Free plan', 'yes', 'yes, with limits'] },
             { ru: ['Где работает', 'среда, терминал, веб, мобильное приложение', 'редактор, терминал, облачные агенты'], en: ['Where it runs', 'IDE, terminal, web, mobile app', 'editor, terminal, cloud agents'] },
           ],
         },
@@ -648,26 +647,15 @@ export const TERM_SETS: TermSet[] = [
         faq: [
           { q: { ru: 'GitHub Copilot — что это?', en: 'What is GitHub Copilot?' }, a: { ru: 'ИИ-помощник программиста от GitHub: подсказывает код, отвечает на вопросы о проекте, а в режиме агента сам правит файлы и запускает команды.', en: 'An AI programming assistant from GitHub: it suggests code, answers questions about a project and, in agent mode, edits files and runs commands itself.' } },
           { q: { ru: 'Где работает GitHub Copilot?', en: 'Where does GitHub Copilot work?' }, a: { ru: 'По документации GitHub: в VS Code, Visual Studio, средах JetBrains, Eclipse и Xcode, на GitHub.com, в терминале через Copilot CLI, в GitHub Mobile и GitHub Desktop, а также в приложении GitHub Copilot для параллельных задач.', en: 'Per GitHub docs: in VS Code, Visual Studio, JetBrains IDEs, Eclipse and Xcode, on GitHub.com, in the terminal via Copilot CLI, in GitHub Mobile and GitHub Desktop, and in the GitHub Copilot app for parallel tasks.' } },
-          { q: { ru: 'Сколько стоит GitHub Copilot и есть ли бесплатный тариф?', en: 'How much is GitHub Copilot and is there a free plan?' }, a: { ru: 'На 13 ноября 2026: Free — бесплатно (2000 подсказок в месяц и ограниченный чат и агент), Pro — 10 долларов, Pro+ — 39, Max — 100 за пользователя в месяц; для компаний есть Business и Enterprise.', en: 'As of Nov 13, 2026: Free costs nothing (2,000 completions a month and limited chat and agent), Pro is $10, Pro+ is $39, Max is $100 per user per month; Business and Enterprise are for companies.' } },
           { q: { ru: 'Что такое режим агента в Copilot?', en: 'What is agent mode in Copilot?' }, a: { ru: 'Режим, где вы ставите задачу обычными словами, а Copilot сам выбирает шаги: правит файлы, запускает команды, смотрит на ошибки сборки и тестов и повторяет, пока не выйдет. Каждую правку можно принять или отменить.', en: 'A mode where you state a task in plain words and Copilot chooses the steps: edits files, runs commands, reads build and test errors and repeats until it works. Each edit can be accepted or undone.' } },
         ],
         source: { url: 'https://docs.github.com/en/copilot/get-started/where-to-use-github-copilot', label: { ru: 'Документация GitHub: где использовать Copilot', en: 'GitHub docs: where to use Copilot' } },
         seo: {
-          title: { ru: 'GitHub Copilot: что это, где работает, режим агента и тарифы', en: 'GitHub Copilot: what it is, where it works, agent mode and plans' },
+          title: { ru: 'GitHub Copilot: что это, где работает и режим агента', en: 'GitHub Copilot: what it is, where it works and agent mode' },
           description: {
-            ru: 'GitHub Copilot — ИИ-помощник для кода: подсказки, чат и агент, который правит файлы. Где он работает (VS Code, Visual Studio, JetBrains, терминал) и сколько стоят тарифы.',
-            en: 'GitHub Copilot is an AI coding assistant: suggestions, chat and an agent that edits files. Where it runs (VS Code, Visual Studio, JetBrains, terminal) and what the plans cost.',
+            ru: 'GitHub Copilot — ИИ-помощник для кода: подсказки, чат и агент, который правит файлы. Где он работает: VS Code, Visual Studio, JetBrains, терминал.',
+            en: 'GitHub Copilot is an AI coding assistant: suggestions, chat and an agent that edits files. Where it runs: VS Code, Visual Studio, JetBrains, terminal.',
           },
-        },
-        table: {
-          title: { ru: 'Тарифы GitHub Copilot', en: 'GitHub Copilot plans' },
-          head: { ru: ['Free', 'Pro', 'Pro+', 'Max'], en: ['Free', 'Pro', 'Pro+', 'Max'] },
-          rows: [
-            { ru: ['Цена в месяц', '0', '10 $', '39 $', '100 $'], en: ['Price per month', '0', '$10', '$39', '$100'] },
-            { ru: ['Подсказки кода', '2000 в месяц', 'без лимита', 'без лимита', 'без лимита'], en: ['Code completions', '2,000 a month', 'unlimited', 'unlimited', 'unlimited'] },
-            { ru: ['Режим агента', 'есть, с лимитом', 'есть', 'есть', 'есть'], en: ['Agent mode', 'yes, limited', 'yes', 'yes', 'yes'] },
-            { ru: ['Кредиты в месяц', '—', '15 $', '70 $', '200 $'], en: ['Credits per month', '—', '$15', '$70', '$200'] },
-          ],
         },
       },
       {
@@ -876,6 +864,23 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Что ещё делает Anysphere кроме Cursor?', en: 'What else does Anysphere make besides Cursor?' }, a: { ru: 'Свои модели для кода Composer, ревьюер пулл-реквестов Bugbot, агента для терминала и облачных агентов.', en: 'Its own Composer coding models, the Bugbot pull request reviewer, a terminal agent and cloud agents.' } },
         ],
         source: { url: 'https://anysphere.inc/', label: { ru: 'Официальный сайт Anysphere', en: 'Anysphere official site' } },
+      },
+      {
+        slug: 'aws',
+        name: { ru: 'AWS', en: 'AWS' },
+        aka: { ru: 'Amazon Web Services, Амазон Веб Сервисес, облако Амазона', en: 'Amazon Web Services' },
+        def: {
+          ru: 'AWS (Amazon Web Services) — облачная платформа компании Amazon: вместо покупки своих серверов компании арендуют у неё вычислительную мощность, хранилище файлов, базы данных и сотни других сервисов и платят за то, что использовали, как за электричество. Платформа работает с 2006 года. Для разработчиков с ИИ у AWS есть среда Kiro, где агент работает по спецификациям, и сервис Amazon Bedrock для запуска языковых моделей.',
+          en: 'AWS (Amazon Web Services) is the cloud platform of Amazon: instead of buying their own servers, companies rent computing power, file storage, databases and hundreds of other services from it and pay for what they used, like electricity. The platform has run since 2006. For developers working with AI, AWS has Kiro, an environment where the agent works from specifications, and the Amazon Bedrock service for running language models.',
+        },
+        match: { ru: ['AWS', 'Amazon Web Services'], en: ['AWS', 'Amazon Web Services'] },
+        exact: 'AWS',
+        related: ['kiro', 'llm', 'microsoft'],
+        faq: [
+          { q: { ru: 'AWS — что это?', en: 'What is AWS?' }, a: { ru: 'Облачная платформа компании Amazon: аренда серверов, хранилищ, баз данных и других сервисов с оплатой за использование.', en: 'The cloud platform of Amazon: rented servers, storage, databases and other services paid for by use.' } },
+          { q: { ru: 'Что у AWS есть для работы с ИИ?', en: 'What does AWS offer for working with AI?' }, a: { ru: 'Среду Kiro с агентом, который работает по спецификациям, и сервис Amazon Bedrock, через который запускают языковые модели.', en: 'The Kiro environment with an agent that works from specifications, and the Amazon Bedrock service for running language models.' } },
+        ],
+        source: { url: 'https://aws.amazon.com/what-is-aws/', label: { ru: 'Официальная страница AWS: что такое AWS', en: 'AWS official page: what is AWS' } },
       },
       {
         // На октябрь 2026: семейство V4 (V4 и V4-Pro — апрель, V4.1-Flash — сентябрь 2026), веса под MIT, чат-приложение и API
@@ -2515,7 +2520,7 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Что такое регрессионное тестирование?', en: 'What is regression testing?' }, a: { ru: 'Повторная проверка уже работавшего после правки, чтобы убедиться, что новое изменение ничего не сломало.', en: 'Rechecking what already worked after a change to make sure the new change broke nothing.' } },
           { q: { ru: 'Когда запускать регрессию?', en: 'When should regression run?' }, a: { ru: 'После каждой правки, если набор быстрый, и ночью или перед выкладкой, если он большой. Чем чаще, тем раньше видно поломку.', en: 'After every change if the set is fast, and overnight or before release if it is large. The more often, the sooner a break shows.' } },
           { q: { ru: 'Чем регрессия отличается от смоук-теста?', en: 'How is regression different from smoke testing?' }, a: { ru: 'Смоук быстро проверяет только главное, чтобы понять, стоит ли идти дальше. Регрессия проходит по всему, что работало раньше, и занимает дольше.', en: 'Smoke testing quickly checks only the main things to decide whether to go on. Regression covers everything that worked before and takes longer.' } },
-          { q: { ru: 'Регрессию можно автоматизировать?', en: 'Can regression be automated?' }, a: { ru: 'Да, это главное место для автотестов: набор повторяется много раз. Нестабильные тесты, которые падают без причины, портят доверие к такому набору.', en: 'Yes, it is the main place for automated tests: the set repeats many times. Flaky tests that fail for no reason erode trust in such a set.' } },
+          { q: { ru: 'Регрессию можно автоматизировать?', en: 'Can regression be automated?' }, a: { ru: 'Да, это главное место для автотестов: набор повторяется много раз. Флакующие тесты, которые падают без причины, портят доверие к такому набору.', en: 'Yes, it is the main place for automated tests: the set repeats many times. Flaky tests that fail for no reason erode trust in such a set.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Regression_testing', label: { ru: 'Википедия: Regression testing', en: 'Wikipedia: Regression testing' } },
         seo: {
@@ -2725,7 +2730,7 @@ export const TERM_SETS: TermSet[] = [
       },
       {
         slug: 'mock',
-        name: { ru: 'Мок', en: 'Mock' },
+        name: { ru: 'Мок (mock)', en: 'Mock' },
         aka: { ru: 'заглушка, mock-объект, стаб, фейк, имитация зависимости', en: 'mock object, stub, fake, test double' },
         def: {
           ru: 'Мок (заглушка) — имитация настоящей зависимости, например базы данных или чужого сервиса оплаты, которую подставляют в тест или на стенд вместо настоящей. Система обращается к ней как к настоящей, а она отвечает заранее заготовленными ответами, поэтому тест быстрый, бесплатный и не трогает чужие данные. Например, вместо реальной оплаты картой мок всегда отвечает «оплачено». Слово «мок» часто используют для любой такой имитации, хотя в строгом смысле у неё есть разновидности.',
@@ -2737,7 +2742,7 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Мок — что это в тестировании?', en: 'What is a mock in testing?' }, a: { ru: 'Имитация настоящей зависимости, например базы или чужого сервиса, которая отвечает заготовленными ответами, пока идёт тест.', en: 'An imitation of a real dependency, such as a database or a third-party service, that replies with prepared answers while a test runs.' } },
           { q: { ru: 'Чем мок отличается от стаба и фейка?', en: 'How is a mock different from a stub and a fake?' }, a: { ru: 'Стаб только возвращает заготовленный ответ. Мок ещё и проверяет, как к нему обратились. Фейк — упрощённая, но рабочая реализация, например база в памяти. Различие принимают не все, и слово «мок» часто значит любую из трёх.', en: 'A stub only returns a prepared answer. A mock also checks how it was called. A fake is a simplified but working implementation, such as an in-memory database. The split is not universally accepted, and “mock” often means any of the three.' } },
           { q: { ru: 'Зачем нужны моки на стенде?', en: 'Why use mocks on a stand?' }, a: { ru: 'Они дешевле и быстрее копий настоящих сервисов и не отправляют настоящих писем и платежей. Цена — стенд чуть дальше от правды.', en: 'They are cheaper and faster than copies of real services and do not send real emails or payments. The price is that the stand is a little further from reality.' } },
-          { q: { ru: 'Как мок помогает против нестабильных тестов?', en: 'How do mocks help against flaky tests?' }, a: { ru: 'Мок убирает зависимость от внешней системы, которая отвечает то быстро, то медленно или недоступна, поэтому результат теста перестаёт зависеть от неё.', en: 'A mock removes the dependency on an outside system that answers fast, slow or not at all, so the test result no longer depends on it.' } },
+          { q: { ru: 'Как мок помогает против флакующих тестов?', en: 'How do mocks help against flaky tests?' }, a: { ru: 'Мок убирает зависимость от внешней системы, которая отвечает то быстро, то медленно или недоступна, поэтому результат теста перестаёт зависеть от неё.', en: 'A mock removes the dependency on an outside system that answers fast, slow or not at all, so the test result no longer depends on it.' } },
         ],
         compare: {
           title: { ru: 'Мок, стаб и фейк', en: 'Mock, stub and fake' },
@@ -2758,25 +2763,25 @@ export const TERM_SETS: TermSet[] = [
       },
       {
         slug: 'flaky-test',
-        name: { ru: 'Нестабильный тест', en: 'Flaky test' },
-        aka: { ru: 'флаки-тест, флейки, плавающий тест, мигающий тест', en: 'flaky tests, flakiness, intermittent test' },
+        name: { ru: 'Флакующий тест (flaky test)', en: 'Flaky test' },
+        aka: { ru: 'нестабильный тест, флаки-тест, флейки, плавающий тест, мигающий тест', en: 'flaky tests, flakiness, intermittent test' },
         def: {
-          ru: 'Нестабильный тест (flaky test) — тест, который то проходит, то падает при одном и том же коде, без единой правки. Он как весы, которые при каждом взвешивании показывают разный вес: верить им нельзя. Причины обычно такие: гонка параллельных действий, зависимость от времени, обращение к внешней системе, тесты, которые влияют друг на друга. Такие тесты подрывают доверие ко всему набору и могут скрыть настоящую ошибку.',
-          en: 'A flaky test is a test that sometimes passes and sometimes fails on the same code, with no edit at all. It is like a scale that shows a different weight each time: you cannot trust it. The usual causes are a race between parallel actions, dependence on time, calls to an outside system, and tests that affect each other. Such tests erode trust in the whole suite and can hide a real defect.',
+          ru: 'Флакующий тест (flaky test, его же называют нестабильным) — тест, который при одном и том же коде то зелёный, то красный, без единой правки. Зелёный тест прошёл, красный упал; у флакующего цвет меняется сам, как у весов, которые при каждом взвешивании показывают разный вес: верить им нельзя. Причины обычно такие: гонка параллельных действий, зависимость от времени, обращение к внешней системе, тесты, которые влияют друг на друга. Такие тесты подрывают доверие ко всему набору: команда привыкает к красному цвету и может пропустить настоящую ошибку.',
+          en: 'A flaky test is a test that is sometimes green and sometimes red on the same code, with no edit at all. A green test passed and a red one failed; a flaky test changes colour on its own. It is like a scale that shows a different weight each time: you cannot trust it. The usual causes are a race between parallel actions, dependence on time, calls to an outside system, and tests that affect each other. Such tests erode trust in the whole suite: the team gets used to red and can miss a real defect.',
         },
-        match: { ru: ['нестабильн\\p{L}* тест\\p{L}*', 'флак\\p{L}*-?тест\\p{L}*', 'flaky', 'флейк\\p{L}*'], en: ['flaky tests?', 'flakiness'] },
+        match: { ru: ['флакующ\\p{L}* тест\\p{L}*', 'нестабильн\\p{L}* тест\\p{L}*', 'флак\\p{L}*-?тест\\p{L}*', 'flaky', 'флейк\\p{L}*'], en: ['flaky tests?', 'flakiness'] },
         related: ['automated-test', 'e2e-test', 'mock', 'race-condition', 'ci-cd', 'regression-testing'],
         faq: [
-          { q: { ru: 'Нестабильный тест (flaky test) — что это?', en: 'What is a flaky test?' }, a: { ru: 'Тест, который то проходит, то падает при одном и том же коде, без правок.', en: 'A test that sometimes passes and sometimes fails on the same code, with no edits.' } },
-          { q: { ru: 'Почему тесты становятся нестабильными?', en: 'Why do tests become flaky?' }, a: { ru: 'Из-за гонок между параллельными действиями, зависимости от времени, обращений к внешним системам и недостаточной изоляции тестов друг от друга.', en: 'Because of races between parallel actions, dependence on time, calls to outside systems and insufficient isolation between tests.' } },
-          { q: { ru: 'Чем вредит нестабильный тест?', en: 'Why is a flaky test harmful?' }, a: { ru: 'Команда привыкает к красным результатам и перестаёт на них смотреть, поэтому настоящая поломка может пройти незамеченной.', en: 'The team gets used to red results and stops looking at them, so a real breakage can go unnoticed.' } },
-          { q: { ru: 'Что делать с нестабильным тестом?', en: 'What to do with a flaky test?' }, a: { ru: 'Изолировать тест от других, зафиксировать время и случайные значения, заменить внешние сервисы моками. Пока тест чинят, его можно вынести в карантин, но не оставлять там навсегда.', en: 'Isolate it from other tests, pin down time and random values, replace outside services with mocks. While it is being fixed it can be quarantined, but not left there for good.' } },
+          { q: { ru: 'Флакующий тест (flaky test) — что это?', en: 'What is a flaky test?' }, a: { ru: 'Тест, который при одном и том же коде то зелёный (прошёл), то красный (упал), без правок.', en: 'A test that is sometimes green (passed) and sometimes red (failed) on the same code, with no edits.' } },
+          { q: { ru: 'Почему тесты становятся флакующими?', en: 'Why do tests become flaky?' }, a: { ru: 'Из-за гонок между параллельными действиями, зависимости от времени, обращений к внешним системам и недостаточной изоляции тестов друг от друга.', en: 'Because of races between parallel actions, dependence on time, calls to outside systems and insufficient isolation between tests.' } },
+          { q: { ru: 'Чем вредит флакующий тест?', en: 'Why is a flaky test harmful?' }, a: { ru: 'Команда привыкает к красному цвету и перестаёт на него смотреть, поэтому настоящая поломка может пройти незамеченной.', en: 'The team gets used to red results and stops looking at them, so a real breakage can go unnoticed.' } },
+          { q: { ru: 'Что делать с флакующим тестом?', en: 'What to do with a flaky test?' }, a: { ru: 'Изолировать тест от других, зафиксировать время и случайные значения, заменить внешние сервисы моками. Пока тест чинят, его можно вынести в карантин, но не оставлять там навсегда.', en: 'Isolate it from other tests, pin down time and random values, replace outside services with mocks. While it is being fixed it can be quarantined, but not left there for good.' } },
         ],
-        source: { url: 'https://en.wikipedia.org/wiki/Flaky_test', label: { ru: 'Википедия: нестабильный тест (flaky test)', en: 'Wikipedia: Flaky test' } },
+        source: { url: 'https://en.wikipedia.org/wiki/Flaky_test', label: { ru: 'Википедия: Flaky test (флакующий тест)', en: 'Wikipedia: Flaky test' } },
         seo: {
-          title: { ru: 'Нестабильный тест (flaky test): что это, причины и что делать', en: 'Flaky test: what it is, why it happens and what to do' },
+          title: { ru: 'Флакующий тест (flaky test): что это, причины и что делать', en: 'Flaky test: what it is, why it happens and what to do' },
           description: {
-            ru: 'Нестабильный тест то проходит, то падает без правок кода. Откуда берётся такая «плавающая» проверка, чем она вредит и как её исправить.',
+            ru: 'Флакующий тест при одном и том же коде то зелёный, то красный. Откуда берётся такая «плавающая» проверка, чем она вредит и как её исправить.',
             en: 'A flaky test passes or fails on unchanged code. Where this inconsistency comes from, why it hurts a team and how to fix it.',
           },
         },
@@ -2873,7 +2878,7 @@ export const TERM_SETS: TermSet[] = [
       },
       {
         slug: 'dev-env',
-        name: { ru: 'Дев', en: 'Dev environment' },
+        name: { ru: 'Дев (dev)', en: 'Dev environment' },
         aka: { ru: 'дев-среда, dev, среда разработки', en: 'dev, development environment' },
         def: {
           ru: 'Дев (dev, среда разработки) — общая для команды среда, куда попадает код после слияния: здесь проверяют, что код разных разработчиков собирается и работает вместе. Данные тестовые. Дев может ломаться, но его чинят быстро, потому что на нём работает вся команда. Это первый общий тестовый стенд после локальной среды. Фича-стенды обычно работают параллельно с девом.',
@@ -3063,25 +3068,26 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'dump',
         name: { ru: 'Дамп базы данных', en: 'Database dump' },
-        aka: { ru: 'дамп, дамп БД, бэкап-файл, выгрузка базы', en: 'DB dump, database export, SQL dump' },
+        aka: { ru: 'дамп, дамп БД, бэкап, бэкап базы, резервная копия, выгрузка базы', en: 'DB dump, backup, database backup, database export, SQL dump' },
         def: {
-          ru: 'Дамп базы данных — копия структуры таблиц и данных, сохранённая одним файлом, чаще всего как список команд SQL. Это как фотография склада: по ней можно развернуть такой же склад в другом месте. Дампы нужны для резервных копий и чтобы быстро поднять на стенде базу с данными, похожими на рабочие. Перед загрузкой на препрод или тест из дампа убирают или подменяют личные данные, чтобы они не попали к людям без доступа к проду.',
-          en: 'A database dump is a copy of table structure and data saved as one file, most often as a list of SQL statements. It is like a photograph of a warehouse: from it you can set up the same warehouse elsewhere. Dumps are used for backups and to quickly bring up a database on a stand with data similar to production. Before loading it onto staging or test, personal data is removed or replaced so that it does not reach people who have no access to production.',
+          ru: 'Дамп базы данных (его же называют бэкапом, резервной копией) — копия структуры таблиц и данных, сохранённая одним файлом, чаще всего как список команд SQL. Это как фотография склада: по ней можно развернуть такой же склад в другом месте. Дампы нужны для резервных копий и чтобы быстро поднять на стенде базу с данными, похожими на рабочие. Перед загрузкой на препрод или тест из дампа убирают или подменяют личные данные, чтобы они не попали к людям без доступа к проду.',
+          en: 'A database dump (also called a backup) is a copy of table structure and data saved as one file, most often as a list of SQL statements. It is like a photograph of a warehouse: from it you can set up the same warehouse elsewhere. Dumps are used for backups and to quickly bring up a database on a stand with data similar to production. Before loading it onto staging or test, personal data is removed or replaced so that it does not reach people who have no access to production.',
         },
-        match: { ru: ['дамп\\p{L}*'], en: ['database dumps?', 'db dumps?', 'sql dumps?'] },
+        match: { ru: ['дамп\\p{L}*', 'бэкап\\p{L}*'], en: ['database dumps?', 'db dumps?', 'sql dumps?', 'database backups?', 'db backups?'] },
         related: ['preprod', 'test-env', 'test-stand', 'prod', 'sql', 'environment'],
         faq: [
           { q: { ru: 'Дамп базы данных — что это?', en: 'What is a database dump?' }, a: { ru: 'Копия структуры и данных базы в одном файле, обычно в виде команд SQL, из которых базу можно восстановить.', en: 'A copy of a database’s structure and data in one file, usually as SQL statements from which the database can be restored.' } },
           { q: { ru: 'Зачем дамп нужен для препрода?', en: 'Why is a dump needed for staging?' }, a: { ru: 'С него быстро заполняют базу препрода свежими данными, похожими на рабочие, и проверяют выкладку и обновление базы в условиях, близких к проду.', en: 'It quickly fills the staging database with fresh data that resembles production, so a release and database migrations are checked under near-production conditions.' } },
           { q: { ru: 'Как очистить личные данные в дампе?', en: 'How to remove personal data from a dump?' }, a: { ru: 'Их маскируют: заменяют имена, почты и телефоны вымышленными, так что данные остаются пригодными для проверок, но никого не раскрывают.', en: 'It is masked: names, emails and phone numbers are replaced with made-up ones, so the data stays usable for tests but reveals no one.' } },
+          { q: { ru: 'Дамп и бэкап — это одно и то же?', en: 'Are a dump and a backup the same thing?' }, a: { ru: 'Да, в работе эти слова синонимы: и то и другое — копия базы, сохранённая файлом. Слово «бэкап» подчёркивает цель (резервная копия на случай поломки), слово «дамп» — сам файл со структурой и данными.', en: 'Yes, in practice the words are synonyms: both mean a copy of a database saved as a file. “Backup” stresses the purpose (a spare copy in case of failure), “dump” stresses the file with structure and data.' } },
           { q: { ru: 'Чем дамп отличается от мока базы?', en: 'How is a dump different from a mocked database?' }, a: { ru: 'Дамп — настоящие данные в файле. Мок — имитация базы, которая отвечает заготовленными ответами.', en: 'A dump is real data in a file. A mock is an imitation of the database that replies with prepared answers.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Database_dump', label: { ru: 'Википедия: дамп базы данных', en: 'Wikipedia: Database dump' } },
         seo: {
-          title: { ru: 'Дамп базы данных: что это и зачем он нужен для препрода', en: 'Database dump: what it is and why staging needs one' },
+          title: { ru: 'Дамп базы данных (бэкап): что это и зачем он нужен для препрода', en: 'Database dump (backup): what it is and why staging needs one' },
           description: {
-            ru: 'Дамп — копия базы данных одним файлом. Для чего его делают, как на его основе поднимают препрод и почему из него убирают личные данные.',
-            en: 'A dump is a copy of a database in one file. What it is for, how staging is built from it and why personal data is removed first.',
+            ru: 'Дамп, он же бэкап, — копия базы данных одним файлом. Для чего его делают, как на его основе поднимают препрод и почему из него убирают личные данные.',
+            en: 'A dump, also called a backup, is a copy of a database in one file. What it is for, how staging is built from it and why personal data is removed first.',
           },
         },
       },

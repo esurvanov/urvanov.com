@@ -4,22 +4,20 @@
     "def": "Kiro es un entorno de desarrollo con agente de IA de AWS que trabaja a partir de especificaciones: antes de escribir código el agente redacta tres archivos, `requirements.md` (qué debe resultar), `design.md` (cómo está construido) y `tasks.md` (una lista de pasos); tú los revisas y solo entonces escribe el código. Ejemplo: pides «añadir un carrito de compras», Kiro primero detalla requisitos y tareas, y edita el código después de tu «sí». Existe como entorno de escritorio, versión de terminal, aplicación web y aplicación móvil; los modelos son Claude, GPT, modelos abiertos o elección automática.",
     "faq.0.q": "¿Qué es Kiro?",
     "faq.0.a": "Un entorno de desarrollo con agente de IA de AWS: el agente primero escribe requisitos, diseño y una lista de tareas en archivos, tú los revisas y luego escribe el código.",
-    "faq.1.q": "¿Cuánto cuesta Kiro y hay un plan gratuito?",
-    "faq.1.a": "A 13 de noviembre de 2026: Free cuesta 0 dólares y da 50 créditos al mes, Pro cuesta 20 dólares con 1000 créditos, Pro+ cuesta 40 con 2000, Pro Max cuesta 100 con 5000 y Power cuesta 200 con 10 000. Un crédito es una unidad de trabajo del agente: una petición sencilla gasta menos de uno y una tarea compleja basada en especificación, más.",
-    "faq.2.q": "¿En qué se diferencia Kiro de Cursor?",
-    "faq.2.a": "Kiro organiza el trabajo en torno a especificaciones: requisitos, diseño y tareas se escriben en archivos antes del código. Cursor es un editor con agente donde puedes pedir cambios de inmediato, y el plan es uno de sus modos.",
-    "faq.3.q": "¿En qué se diferencia Kiro de OpenSpec y Spec Kit?",
-    "faq.3.a": "OpenSpec y Spec Kit son conjuntos abiertos que se conectan a tu propio agente. Kiro es un entorno listo con su propio agente, donde las especificaciones vienen integradas.",
-    "faq.4.q": "¿Dónde se descarga Kiro?",
-    "faq.4.a": "El entorno está en kiro.dev/downloads (figuran macOS, Windows y Linux), la versión de terminal se instala con un comando de cli.kiro.dev y la aplicación web se abre en app.kiro.dev.",
+    "faq.1.q": "¿En qué se diferencia Kiro de Cursor?",
+    "faq.1.a": "Kiro organiza el trabajo en torno a especificaciones: requisitos, diseño y tareas se escriben en archivos antes del código. Cursor es un editor con agente donde puedes pedir cambios de inmediato, y el plan es uno de sus modos.",
+    "faq.2.q": "¿En qué se diferencia Kiro de OpenSpec y Spec Kit?",
+    "faq.2.a": "OpenSpec y Spec Kit son conjuntos abiertos que se conectan a tu propio agente. Kiro es un entorno listo con su propio agente, donde las especificaciones vienen integradas.",
+    "faq.3.q": "¿Dónde se descarga Kiro?",
+    "faq.3.a": "El entorno está en kiro.dev/downloads (figuran macOS, Windows y Linux), la versión de terminal se instala con un comando de cli.kiro.dev y la aplicación web se abre en app.kiro.dev.",
     "source.label": "Sitio oficial de Kiro",
-    "seo.title": "Kiro de AWS: qué es, especificaciones, precios y plan gratuito",
-    "seo.description": "Kiro es un entorno de AWS con agente de IA que escribe requisitos, diseño y tareas antes del código. Planes y créditos, y en qué se diferencia de Cursor, OpenSpec y Spec Kit.",
+    "seo.title": "Kiro de AWS: qué es, especificaciones y en qué se diferencia de Cursor",
+    "seo.description": "Kiro es un entorno de AWS con agente de IA que escribe requisitos, diseño y tareas antes del código. En qué se diferencia de Cursor, OpenSpec y Spec Kit.",
     "notes.title": "Kiro: especificaciones, créditos y modelos",
     "notes.items.0.name": "Los tres archivos de especificación",
     "notes.items.0.text": "`requirements.md` (`bugfix.md` para corregir un error) con historias de usuario y criterios de aceptación, `design.md` con la arquitectura y diagramas, `tasks.md` con pasos cuyo estado se actualiza durante el trabajo. Una especificación rápida genera los tres archivos de una sola pasada, sin paradas para revisar.",
     "notes.items.1.name": "Créditos",
-    "notes.items.1.text": "una unidad de trabajo del agente; cada modelo los gasta a distinto ritmo. Los créditos mensuales de los planes personales no se acumulan; los créditos adicionales, a 0,04 dólares, duran 12 meses.",
+    "notes.items.1.text": "una unidad de trabajo del agente; cada modelo los gasta a distinto ritmo. Los créditos mensuales de los planes personales no se acumulan.",
     "notes.items.2.name": "Estándares abiertos",
     "notes.items.2.text": "admite MCP, `AGENTS.md`, skills y extensiones de Open VSX.",
     "compare.title": "Kiro y Cursor",
@@ -35,7 +33,7 @@
     ],
     "compare.rows.2": [
       "Plan gratuito",
-      "sí: 50 créditos al mes",
+      "sí",
       "sí, con límites"
     ],
     "compare.rows.3": [
@@ -51,42 +49,11 @@
     "faq.0.a": "Un asistente de programación con IA de GitHub: sugiere código, responde preguntas sobre un proyecto y, en modo agente, edita archivos y ejecuta comandos por sí mismo.",
     "faq.1.q": "¿Dónde funciona GitHub Copilot?",
     "faq.1.a": "Según la documentación de GitHub: en VS Code, Visual Studio, los IDE de JetBrains, Eclipse y Xcode, en GitHub.com, en la terminal mediante Copilot CLI, en GitHub Mobile y GitHub Desktop, y en la aplicación GitHub Copilot para tareas en paralelo.",
-    "faq.2.q": "¿Cuánto cuesta GitHub Copilot y hay un plan gratuito?",
-    "faq.2.a": "A 13 de noviembre de 2026: Free no cuesta nada (2000 sugerencias al mes, y chat y agente limitados), Pro cuesta 10 dólares, Pro+ 39 y Max 100 por usuario al mes; para empresas existen Business y Enterprise.",
-    "faq.3.q": "¿Qué es el modo agente en Copilot?",
-    "faq.3.a": "Un modo en el que planteas una tarea con palabras normales y Copilot elige los pasos: edita archivos, ejecuta comandos, lee los errores de compilación y de pruebas y repite hasta que funcione. Cada cambio se puede aceptar o deshacer.",
+    "faq.2.q": "¿Qué es el modo agente en Copilot?",
+    "faq.2.a": "Un modo en el que planteas una tarea con palabras normales y Copilot elige los pasos: edita archivos, ejecuta comandos, lee los errores de compilación y de pruebas y repite hasta que funcione. Cada cambio se puede aceptar o deshacer.",
     "source.label": "Documentación de GitHub: dónde usar Copilot",
-    "seo.title": "GitHub Copilot: qué es, dónde funciona, modo agente y planes",
-    "seo.description": "GitHub Copilot es un asistente de código con IA: sugerencias, chat y un agente que edita archivos. Dónde funciona (VS Code, Visual Studio, JetBrains, terminal) y cuánto cuestan los planes.",
-    "table.title": "Planes de GitHub Copilot",
-    "table.rows.0": [
-      "Precio al mes",
-      "0",
-      "10 $",
-      "39 $",
-      "100 $"
-    ],
-    "table.rows.1": [
-      "Sugerencias de código",
-      "2000 al mes",
-      "sin límite",
-      "sin límite",
-      "sin límite"
-    ],
-    "table.rows.2": [
-      "Modo agente",
-      "sí, con límite",
-      "sí",
-      "sí",
-      "sí"
-    ],
-    "table.rows.3": [
-      "Créditos al mes",
-      "—",
-      "15 $",
-      "70 $",
-      "200 $"
-    ]
+    "seo.title": "GitHub Copilot: qué es, dónde funciona y modo agente",
+    "seo.description": "GitHub Copilot es un asistente de código con IA: sugerencias, chat y un agente que edita archivos. Dónde funciona: VS Code, Visual Studio, JetBrains, terminal."
   },
   "visual-studio": {
     "aka": "Visual Studio 2026, Visual Studio 2022, VS IDE (no VS Code)",
@@ -305,9 +272,9 @@
   "flaky-test": {
     "name": "Prueba inestable",
     "aka": "flaky test, pruebas flaky, flakiness, prueba intermitente",
-    "def": "Una prueba inestable (flaky test) es una prueba que unas veces pasa y otras falla con el mismo código, sin ningún cambio. Es como una báscula que muestra un peso distinto cada vez: no se puede confiar en ella. Las causas habituales son una carrera entre acciones en paralelo, la dependencia del tiempo, las llamadas a un sistema externo y pruebas que se afectan entre sí. Estas pruebas minan la confianza en todo el conjunto y pueden ocultar un defecto real.",
+    "def": "Una prueba inestable (flaky test) es una prueba que, con el mismo código, unas veces está en verde y otras en rojo, sin ningún cambio. Una prueba en verde ha pasado y una en rojo ha fallado; una prueba inestable cambia de color por sí sola. Es como una báscula que muestra un peso distinto cada vez: no se puede confiar en ella. Las causas habituales son una carrera entre acciones en paralelo, la dependencia del tiempo, las llamadas a un sistema externo y pruebas que se afectan entre sí. Estas pruebas minan la confianza en todo el conjunto: el equipo se acostumbra al rojo y puede pasar por alto un defecto real.",
     "faq.0.q": "¿Qué es una prueba inestable (flaky test)?",
-    "faq.0.a": "Una prueba que unas veces pasa y otras falla con el mismo código, sin cambios.",
+    "faq.0.a": "Una prueba que, con el mismo código, unas veces está en verde (pasó) y otras en rojo (falló), sin cambios.",
     "faq.1.q": "¿Por qué las pruebas se vuelven inestables?",
     "faq.1.a": "Por carreras entre acciones en paralelo, dependencia del tiempo, llamadas a sistemas externos y aislamiento insuficiente entre pruebas.",
     "faq.2.q": "¿Por qué es dañina una prueba inestable?",
@@ -335,18 +302,20 @@
   },
   "dump": {
     "name": "Volcado de base de datos",
-    "aka": "dump, volcado, dump de BD, exportación de la base, volcado SQL",
-    "def": "Un volcado de base de datos es una copia de la estructura de las tablas y de los datos guardada en un solo archivo, casi siempre como una lista de sentencias SQL. Es como una fotografía de un almacén: a partir de ella se puede montar el mismo almacén en otro lugar. Los volcados sirven para las copias de seguridad y para levantar rápidamente en un entorno no productivo una base con datos parecidos a los de producción. Antes de cargarlo en staging o en test, se eliminan o sustituyen los datos personales para que no lleguen a personas sin acceso a producción.",
+    "aka": "dump, volcado, dump de BD, backup, copia de seguridad, copia de seguridad de la base, exportación de la base, volcado SQL",
+    "def": "Un volcado de base de datos (también llamado backup o copia de seguridad) es una copia de la estructura de las tablas y de los datos guardada en un solo archivo, casi siempre como una lista de sentencias SQL. Es como una fotografía de un almacén: a partir de ella se puede montar el mismo almacén en otro lugar. Los volcados sirven para las copias de seguridad y para levantar rápidamente en un entorno no productivo una base con datos parecidos a los de producción. Antes de cargarlo en staging o en test, se eliminan o sustituyen los datos personales para que no lleguen a personas sin acceso a producción.",
     "faq.0.q": "¿Qué es un volcado de base de datos?",
     "faq.0.a": "Una copia de la estructura y de los datos de una base en un solo archivo, normalmente como sentencias SQL a partir de las cuales se puede restaurar la base.",
     "faq.1.q": "¿Para qué se necesita un volcado en staging?",
     "faq.1.a": "Con él se llena rápidamente la base de staging con datos recientes parecidos a los de producción, y se comprueban el lanzamiento y las migraciones de la base en condiciones cercanas a producción.",
     "faq.2.q": "¿Cómo se eliminan los datos personales de un volcado?",
     "faq.2.a": "Se enmascaran: nombres, correos y teléfonos se sustituyen por otros inventados, de modo que los datos siguen siendo útiles para las pruebas pero no revelan a nadie.",
-    "faq.3.q": "¿En qué se diferencia un volcado de una base simulada con mock?",
-    "faq.3.a": "Un volcado son datos reales en un archivo. Un mock es una imitación de la base que responde con respuestas preparadas.",
+    "faq.3.q": "¿Un volcado y un backup son lo mismo?",
+    "faq.3.a": "Sí, en la práctica las palabras son sinónimas: ambas significan una copia de una base de datos guardada como archivo. «Backup» subraya el propósito (una copia de reserva por si algo falla), «volcado» subraya el propio archivo con estructura y datos.",
+    "faq.4.q": "¿En qué se diferencia un volcado de una base simulada con mock?",
+    "faq.4.a": "Un volcado son datos reales en un archivo. Un mock es una imitación de la base que responde con respuestas preparadas.",
     "source.label": "Wikipedia: Database dump",
-    "seo.title": "Volcado de base de datos: qué es y por qué lo necesita staging",
-    "seo.description": "Un volcado es una copia de una base de datos en un solo archivo. Para qué se hace, cómo se monta staging a partir de él y por qué antes se eliminan los datos personales."
+    "seo.title": "Volcado de base de datos (backup): qué es y por qué lo necesita staging",
+    "seo.description": "Un volcado, también llamado backup, es una copia de una base de datos en un solo archivo. Para qué se hace, cómo se monta staging a partir de él y por qué antes se eliminan los datos personales."
   }
 }

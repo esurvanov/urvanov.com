@@ -275,6 +275,15 @@
   "faq.1.a": "Các mô hình lập trình Composer riêng, công cụ review pull request Bugbot, tác nhân trong terminal và tác nhân đám mây.",
   "source.label": "Trang chính thức của Anysphere"
  },
+ "aws": {
+  "aka": "Amazon Web Services, đám mây của Amazon",
+  "def": "AWS (Amazon Web Services) là nền tảng đám mây của công ty Amazon: thay vì mua máy chủ riêng, các công ty thuê của AWS sức mạnh tính toán, kho lưu trữ tệp, cơ sở dữ liệu và hàng trăm dịch vụ khác, rồi trả tiền theo mức đã dùng, như tiền điện. Nền tảng hoạt động từ năm 2006. Với lập trình viên làm việc với AI, AWS có Kiro, môi trường nơi tác nhân làm việc theo đặc tả, và dịch vụ Amazon Bedrock để chạy các mô hình ngôn ngữ.",
+  "faq.0.q": "AWS là gì?",
+  "faq.0.a": "Nền tảng đám mây của Amazon: thuê máy chủ, kho lưu trữ, cơ sở dữ liệu và các dịch vụ khác, trả tiền theo mức dùng.",
+  "faq.1.q": "AWS có gì để làm việc với AI?",
+  "faq.1.a": "Môi trường Kiro với tác nhân làm việc theo đặc tả, và dịch vụ Amazon Bedrock để chạy các mô hình ngôn ngữ.",
+  "source.label": "Trang chính thức của AWS: AWS là gì"
+ },
  "deepseek": {
   "def": "DeepSeek là công ty Trung Quốc phát triển các mô hình ngôn ngữ DeepSeek với trọng số mở: có thể tải về và chạy trên máy chủ riêng. Thế hệ V4 hiện tại chứa được tới một triệu token ngữ cảnh. Cho người dùng: chat DeepSeek trên web và di động. Cho nhà phát triển: API. Mô hình DeepSeek gắn được vào các tác nhân mở như Hermes Agent.",
   "faq.0.q": "DeepSeek là gì?",

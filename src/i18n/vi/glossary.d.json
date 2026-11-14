@@ -4,13 +4,13 @@
     "aka": "Kiro AWS, Kiro IDE, AWS Kiro",
     "def": "Kiro là môi trường phát triển có tác nhân AI của AWS, làm việc theo đặc tả: trước khi viết mã, tác nhân viết ba tệp là `requirements.md` (kết quả phải ra sao), `design.md` (cách xây dựng) và `tasks.md` (danh sách các bước), bạn xem lại chúng, rồi nó mới viết mã. Ví dụ: bạn nhờ “thêm giỏ hàng”, Kiro trước hết nêu rõ yêu cầu và các nhiệm vụ, còn mã chỉ sửa sau khi bạn nói “đồng ý”. Có môi trường cho máy tính, bản terminal, bản web và ứng dụng di động; mô hình là Claude, GPT, mô hình mã nguồn mở hoặc tự động chọn.",
     "source.label": "Trang chính thức của Kiro",
-    "seo.title": "Kiro của AWS: là gì, đặc tả, giá và gói miễn phí",
-    "seo.description": "Kiro là môi trường của AWS có tác nhân AI viết yêu cầu, thiết kế và nhiệm vụ trước khi viết mã. Các gói và credit, khác Cursor, OpenSpec và Spec Kit ra sao.",
+    "seo.title": "Kiro của AWS: là gì, đặc tả và khác Cursor ở đâu",
+    "seo.description": "Kiro là môi trường của AWS có tác nhân AI viết yêu cầu, thiết kế và nhiệm vụ trước khi viết mã. Khác Cursor, OpenSpec và Spec Kit ra sao.",
     "notes.title": "Kiro: đặc tả, credit và mô hình",
     "notes.items.0.name": "Ba tệp đặc tả",
     "notes.items.0.text": "`requirements.md` (`bugfix.md` khi sửa lỗi) với user story và tiêu chí nghiệm thu, `design.md` với kiến trúc và sơ đồ, `tasks.md` với các bước có trạng thái cập nhật theo tiến độ. Đặc tả nhanh tạo cả ba tệp trong một lượt, không dừng để duyệt.",
     "notes.items.1.name": "Credit",
-    "notes.items.1.text": "đơn vị công việc của tác nhân; mỗi mô hình tiêu hao với tốc độ khác nhau. Credit hằng tháng ở gói cá nhân không cộng dồn, credit mua thêm giá $0,04 có hạn 12 tháng.",
+    "notes.items.1.text": "đơn vị công việc của tác nhân; mỗi mô hình tiêu hao với tốc độ khác nhau. Credit hằng tháng ở gói cá nhân không cộng dồn.",
     "notes.items.2.name": "Chuẩn mở",
     "notes.items.2.text": "hỗ trợ MCP, `AGENTS.md`, skill và tiện ích mở rộng Open VSX.",
     "compare.title": "Kiro và Cursor",
@@ -26,7 +26,7 @@
     ],
     "compare.rows.2": [
       "Gói miễn phí",
-      "có: 50 credit mỗi tháng",
+      "có",
       "có, có giới hạn"
     ],
     "compare.rows.3": [
@@ -36,59 +36,26 @@
     ],
     "faq.0.q": "Kiro là gì?",
     "faq.0.a": "Môi trường phát triển có tác nhân AI của AWS: tác nhân trước hết viết yêu cầu, thiết kế và danh sách nhiệm vụ vào các tệp, bạn xem lại, rồi nó mới viết mã.",
-    "faq.1.q": "Kiro giá bao nhiêu và có gói miễn phí không?",
-    "faq.1.a": "Tính đến 13/11/2026: gói Free giá $0 với 50 credit mỗi tháng, Pro $20 với 1.000 credit, Pro+ $40 với 2.000, Pro Max $100 với 5.000 và Power $200 với 10.000. Credit là đơn vị công việc của tác nhân: một yêu cầu đơn giản tốn chưa tới một credit, một nhiệm vụ đặc tả phức tạp tốn nhiều hơn.",
-    "faq.2.q": "Kiro khác Cursor thế nào?",
-    "faq.2.a": "Kiro xây công việc quanh đặc tả: yêu cầu, thiết kế và nhiệm vụ được ghi vào tệp trước khi có mã. Cursor là trình soạn thảo có tác nhân, nơi bạn có thể nhờ sửa ngay, còn kế hoạch chỉ là một trong các chế độ.",
-    "faq.3.q": "Kiro khác OpenSpec và Spec Kit thế nào?",
-    "faq.3.a": "OpenSpec và Spec Kit là bộ công cụ mở gắn vào tác nhân của riêng bạn. Kiro là môi trường hoàn chỉnh với tác nhân riêng, nơi đặc tả được tích hợp sẵn.",
-    "faq.4.q": "Tải Kiro ở đâu?",
-    "faq.4.a": "IDE có trên kiro.dev/downloads (có macOS, Windows và Linux), bản terminal cài bằng lệnh từ cli.kiro.dev, còn bản web mở tại app.kiro.dev."
+    "faq.1.q": "Kiro khác Cursor thế nào?",
+    "faq.1.a": "Kiro xây công việc quanh đặc tả: yêu cầu, thiết kế và nhiệm vụ được ghi vào tệp trước khi có mã. Cursor là trình soạn thảo có tác nhân, nơi bạn có thể nhờ sửa ngay, còn kế hoạch chỉ là một trong các chế độ.",
+    "faq.2.q": "Kiro khác OpenSpec và Spec Kit thế nào?",
+    "faq.2.a": "OpenSpec và Spec Kit là bộ công cụ mở gắn vào tác nhân của riêng bạn. Kiro là môi trường hoàn chỉnh với tác nhân riêng, nơi đặc tả được tích hợp sẵn.",
+    "faq.3.q": "Tải Kiro ở đâu?",
+    "faq.3.a": "IDE có trên kiro.dev/downloads (có macOS, Windows và Linux), bản terminal cài bằng lệnh từ cli.kiro.dev, còn bản web mở tại app.kiro.dev."
   },
   "github-copilot": {
     "name": "GitHub Copilot",
     "aka": "Copilot, chế độ agent của Copilot, Copilot coding agent",
     "def": "GitHub Copilot là trợ lý lập trình AI của GitHub (một công ty của Microsoft): gợi ý mã khi bạn gõ, trả lời câu hỏi về dự án và, ở chế độ agent, tự sửa nhiều tệp và chạy lệnh. Ví dụ: bạn viết “thêm kiểm tra email vào form đăng ký”, tác nhân tìm các tệp và sửa, còn bạn chấp nhận hoặc hoàn tác từng chỗ sửa. Nó chạy trong VS Code, Visual Studio, các IDE của JetBrains, trên GitHub.com, trong terminal (Copilot CLI) và trong GitHub Mobile.",
     "source.label": "Tài liệu GitHub: dùng Copilot ở đâu",
-    "seo.title": "GitHub Copilot: là gì, chạy ở đâu, chế độ agent và các gói",
-    "seo.description": "GitHub Copilot là trợ lý lập trình AI: gợi ý, chat và tác nhân sửa tệp. Chạy ở đâu (VS Code, Visual Studio, JetBrains, terminal) và các gói giá bao nhiêu.",
-    "table.title": "Các gói GitHub Copilot",
-    "table.rows.0": [
-      "Giá mỗi tháng",
-      "0",
-      "$10",
-      "$39",
-      "$100"
-    ],
-    "table.rows.1": [
-      "Gợi ý mã",
-      "2.000 mỗi tháng",
-      "không giới hạn",
-      "không giới hạn",
-      "không giới hạn"
-    ],
-    "table.rows.2": [
-      "Chế độ agent",
-      "có, có giới hạn",
-      "có",
-      "có",
-      "có"
-    ],
-    "table.rows.3": [
-      "Credit mỗi tháng",
-      "—",
-      "$15",
-      "$70",
-      "$200"
-    ],
+    "seo.title": "GitHub Copilot: là gì, chạy ở đâu và chế độ agent",
+    "seo.description": "GitHub Copilot là trợ lý lập trình AI: gợi ý, chat và tác nhân sửa tệp. Chạy ở đâu: VS Code, Visual Studio, JetBrains, terminal.",
     "faq.0.q": "GitHub Copilot là gì?",
     "faq.0.a": "Trợ lý lập trình AI của GitHub: gợi ý mã, trả lời câu hỏi về dự án và, ở chế độ agent, tự sửa tệp và chạy lệnh.",
     "faq.1.q": "GitHub Copilot chạy ở đâu?",
     "faq.1.a": "Theo tài liệu GitHub: trong VS Code, Visual Studio, các IDE của JetBrains, Eclipse và Xcode, trên GitHub.com, trong terminal qua Copilot CLI, trong GitHub Mobile và GitHub Desktop, và trong ứng dụng GitHub Copilot cho các nhiệm vụ song song.",
-    "faq.2.q": "GitHub Copilot giá bao nhiêu và có gói miễn phí không?",
-    "faq.2.a": "Tính đến 13/11/2026: gói Free không mất phí (2.000 gợi ý mã mỗi tháng, chat và agent có giới hạn), Pro $10, Pro+ $39, Max $100 mỗi người dùng mỗi tháng; Business và Enterprise dành cho doanh nghiệp.",
-    "faq.3.q": "Chế độ agent trong Copilot là gì?",
-    "faq.3.a": "Chế độ mà bạn nêu nhiệm vụ bằng lời thường còn Copilot tự chọn các bước: sửa tệp, chạy lệnh, đọc lỗi build và lỗi kiểm thử rồi lặp lại cho đến khi chạy được. Mỗi chỗ sửa có thể chấp nhận hoặc hoàn tác."
+    "faq.2.q": "Chế độ agent trong Copilot là gì?",
+    "faq.2.a": "Chế độ mà bạn nêu nhiệm vụ bằng lời thường còn Copilot tự chọn các bước: sửa tệp, chạy lệnh, đọc lỗi build và lỗi kiểm thử rồi lặp lại cho đến khi chạy được. Mỗi chỗ sửa có thể chấp nhận hoặc hoàn tác."
   },
   "visual-studio": {
     "aka": "Visual Studio 2026, Visual Studio 2022, VS IDE (không phải VS Code)",
@@ -308,12 +275,12 @@
   "flaky-test": {
     "name": "Flaky test",
     "aka": "flaky tests, tính chập chờn, kiểm thử chập chờn",
-    "def": "Flaky test là kiểm thử lúc đạt lúc không đạt trên cùng một đoạn mã, không hề có chỉnh sửa nào. Nó giống chiếc cân mỗi lần hiện một cân nặng khác nhau: không thể tin được. Nguyên nhân thường gặp là tranh chấp giữa các hành động song song, phụ thuộc vào thời gian, gọi hệ thống bên ngoài và các kiểm thử ảnh hưởng lẫn nhau. Những kiểm thử như vậy làm mòn niềm tin vào cả bộ kiểm thử và có thể che mất một khuyết tật thật.",
+    "def": "Flaky test là kiểm thử trên cùng một đoạn mã lúc xanh lúc đỏ, không hề có chỉnh sửa nào. Kiểm thử xanh là đã đạt, kiểm thử đỏ là không đạt; flaky test tự đổi màu. Nó giống chiếc cân mỗi lần hiện một cân nặng khác nhau: không thể tin được. Nguyên nhân thường gặp là tranh chấp giữa các hành động song song, phụ thuộc vào thời gian, gọi hệ thống bên ngoài và các kiểm thử ảnh hưởng lẫn nhau. Những kiểm thử như vậy làm mòn niềm tin vào cả bộ kiểm thử: nhóm quen với màu đỏ và có thể bỏ sót một khuyết tật thật.",
     "source.label": "Wikipedia: Flaky test",
     "seo.title": "Flaky test: là gì, vì sao xảy ra và nên làm gì",
     "seo.description": "Flaky test lúc đạt lúc không đạt trên mã không đổi. Sự không nhất quán này đến từ đâu, vì sao hại nhóm và cách sửa.",
     "faq.0.q": "Flaky test là gì?",
-    "faq.0.a": "Kiểm thử lúc đạt lúc không đạt trên cùng một đoạn mã, không có chỉnh sửa.",
+    "faq.0.a": "Kiểm thử trên cùng một đoạn mã lúc xanh (đạt) lúc đỏ (không đạt), không có chỉnh sửa.",
     "faq.1.q": "Vì sao kiểm thử trở nên flaky?",
     "faq.1.a": "Do tranh chấp giữa các hành động song song, phụ thuộc vào thời gian, gọi hệ thống bên ngoài và cách ly chưa đủ giữa các kiểm thử.",
     "faq.2.q": "Vì sao flaky test có hại?",
@@ -339,18 +306,20 @@
   },
   "dump": {
     "name": "Dump cơ sở dữ liệu",
-    "aka": "DB dump, xuất cơ sở dữ liệu, SQL dump",
-    "def": "Dump cơ sở dữ liệu là bản sao cấu trúc bảng và dữ liệu được lưu thành một tệp, thường là danh sách các câu lệnh SQL. Nó giống bức ảnh chụp một nhà kho: từ đó có thể dựng nhà kho y hệt ở nơi khác. Dump dùng để sao lưu và để nhanh chóng dựng cơ sở dữ liệu trên môi trường thử với dữ liệu giống môi trường sản xuất. Trước khi nạp lên staging hoặc test, dữ liệu cá nhân được xóa hoặc thay thế để không đến tay những người không có quyền truy cập môi trường sản xuất.",
+    "aka": "DB dump, backup, bản sao lưu, bản sao lưu cơ sở dữ liệu, xuất cơ sở dữ liệu, SQL dump",
+    "def": "Dump cơ sở dữ liệu (còn gọi là backup, bản sao lưu) là bản sao cấu trúc bảng và dữ liệu được lưu thành một tệp, thường là danh sách các câu lệnh SQL. Nó giống bức ảnh chụp một nhà kho: từ đó có thể dựng nhà kho y hệt ở nơi khác. Dump dùng để sao lưu và để nhanh chóng dựng cơ sở dữ liệu trên môi trường thử với dữ liệu giống môi trường sản xuất. Trước khi nạp lên staging hoặc test, dữ liệu cá nhân được xóa hoặc thay thế để không đến tay những người không có quyền truy cập môi trường sản xuất.",
     "source.label": "Wikipedia: Database dump",
-    "seo.title": "Dump cơ sở dữ liệu: là gì và vì sao staging cần",
-    "seo.description": "Dump là bản sao cơ sở dữ liệu trong một tệp. Dùng để làm gì, staging được dựng từ nó thế nào và vì sao phải xóa dữ liệu cá nhân trước.",
+    "seo.title": "Dump cơ sở dữ liệu (backup): là gì và vì sao staging cần",
+    "seo.description": "Dump, hay còn gọi là backup, là bản sao cơ sở dữ liệu trong một tệp. Dùng để làm gì, staging được dựng từ nó thế nào và vì sao phải xóa dữ liệu cá nhân trước.",
     "faq.0.q": "Dump cơ sở dữ liệu là gì?",
     "faq.0.a": "Bản sao cấu trúc và dữ liệu của cơ sở dữ liệu trong một tệp, thường là các câu lệnh SQL để từ đó khôi phục cơ sở dữ liệu.",
     "faq.1.q": "Vì sao staging cần dump?",
     "faq.1.a": "Nó nhanh chóng lấp đầy cơ sở dữ liệu staging bằng dữ liệu mới giống môi trường sản xuất, nên bản phát hành và các lần di chuyển cơ sở dữ liệu được kiểm tra trong điều kiện gần môi trường sản xuất.",
     "faq.2.q": "Xóa dữ liệu cá nhân khỏi dump thế nào?",
     "faq.2.a": "Bằng cách che dữ liệu: tên, email và số điện thoại được thay bằng giá trị bịa ra, nên dữ liệu vẫn dùng được cho kiểm thử nhưng không lộ ai.",
-    "faq.3.q": "Dump khác cơ sở dữ liệu mock thế nào?",
-    "faq.3.a": "Dump là dữ liệu thật trong một tệp. Mock là bản mô phỏng cơ sở dữ liệu trả lời bằng các câu trả lời chuẩn bị sẵn."
+    "faq.3.q": "Dump và backup có phải là một không?",
+    "faq.3.a": "Có, trong thực tế hai từ này là từ đồng nghĩa: cả hai đều là bản sao cơ sở dữ liệu được lưu thành tệp. “Backup” nhấn mạnh mục đích (bản sao dự phòng phòng khi hỏng), “dump” nhấn mạnh chính tệp chứa cấu trúc và dữ liệu.",
+    "faq.4.q": "Dump khác cơ sở dữ liệu mock thế nào?",
+    "faq.4.a": "Dump là dữ liệu thật trong một tệp. Mock là bản mô phỏng cơ sở dữ liệu trả lời bằng các câu trả lời chuẩn bị sẵn."
   }
 }
