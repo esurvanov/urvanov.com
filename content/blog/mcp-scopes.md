@@ -1,7 +1,7 @@
 ---
 title: Области MCP в Claude Code: local, project и user — где хранится сервер и кто его видит
 date: 2026-10-05
-updated: 2026-11-13
+updated: 2026-11-14
 description: Три области MCP-серверов в Claude Code: local, project и user. Где лежит настройка, кто её видит, что победит при совпадении имён, как делиться серверами с командой и не коммитить секреты.
 tags: AI, агенты, MCP, Claude Code, команда, харнесс
 category: harness
@@ -126,6 +126,7 @@ toc: what=Три области | pick=Какую выбрать | order=Что 
     <item href="/blog/mcp-agent-access/" k="Основа" t="MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту">Что такое MCP и как подключить</item>
     <item href="/blog/claude-in-chrome/" k="Браузер" t="Claude Code в Chrome: как агент тестирует сайт в браузере — отладка и формы под вашим входом">Агент в вашем браузере</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Пример" t="Работа QA после поддержки с ИИ-агентом: исследование, описание и документирование через MCP и скиллы">Агент воспроизводит баг из Jira</item>
+    <item href="/blog/quality-gates-ai-agents/" k="Гейты" t="Что такое quality gates для ИИ-агентов">права и набор функций MCP как часть гейта</item>
   </b-links>
 </b-chapter>
 <b-footer>Факты об областях и приоритете — по документации Claude Code: <a href="https://code.claude.com/docs/en/mcp#mcp-installation-scopes" target="_blank" rel="noopener">MCP installation scopes</a>.</b-footer>

@@ -1,7 +1,7 @@
 ---
 title: MCP for an AI agent: what problem it solves and how to delegate setup to the agent
 date: 2026-10-04
-updated: 2026-11-13
+updated: 2026-11-14
 unrelated: mcp-1c
 description: MCP plugs an agent into GitLab, Jira, Confluence and meeting recordings. What problem it solves, how to set it up in minutes and delegate that to the agent itself, how it saves time and tokens and why the agent invents less.
 tags: AI, agents, MCP, Jira, context, hallucinations, tokens, harness
@@ -218,6 +218,7 @@ MCP plugs an agent into working systems, so it reads facts from the source inste
     <item href="/blog/bug-report-to-reproduction-agent/" k="QA with an agent" t="QA after support">MCP and skills in QA work</item>
     <item href="/blog/specs-rules-skills/" k="Skills" t="Specs, rules and skills">what the agent must know about the project</item>
     <item href="/blog/harness-driven-development/" k="Error loop" t="Harness-Driven Development">how agent mistakes become rules</item>
+    <item href="/blog/quality-gates-ai-agents/" k="Gates" t="What are quality gates for AI agents">MCP permissions and function sets as part of a gate</item>
   </b-links>
 </b-chapter>
 <b-footer>Task PAY-142 is made up for the example.</b-footer>

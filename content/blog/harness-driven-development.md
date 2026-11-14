@@ -1,7 +1,7 @@
 ---
 title: Harness engineering на практике: как превращать ошибки ИИ-агента в правила окружения (HDD)
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-14
 description: Как превращать ошибки ИИ-агента (Claude Code, Codex) в правила его окружения: петля «ошибка → правило», направляющие и датчики, три слоя проверок, связь со спеками и пять первых шагов в своём проекте.
 tags: AI, Claude Code, harness engineering, харнесс, HDD, агенты
 category: harness
@@ -198,6 +198,8 @@ toc: loop=Петля HDD | canons=Устройство 3 × 3 | double=Двой�
   <b-links cols="2">
     <item href="/blog/work-prompts-examples/" k="Этап 1–2" t="Промпты для рабочих задач">как составить один запрос и подать данные</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Этап 3" t="Сравнение харнессов">Claude Code, Codex, Cursor, Hermes и чат</item>
+    <item href="/blog/quality-gates-ai-agents/" k="Гейты" t="Что такое quality gates для ИИ-агентов">гейт — датчик, у которого есть право остановить работу</item>
+    <item href="/blog/ai-agent-maturity-levels/" k="Зрелость" t="Уровни зрелости работы с ИИ-агентами">От чата к спекам, скиллам, скрипту, харнессу и агентной системе</item>
   </b-links>
   <b-cap>Ещё почитать: <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Бригитта Бёклер, martinfowler.com</a> · <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps" target="_blank" rel="noopener">Anthropic: Harness design</a> · <a href="https://leanpub.com/becoming-a-harness-driven-developer" target="_blank" rel="noopener">Becoming a Harness-Driven Developer</a> · <a href="https://github.com/ai-boost/awesome-harness-engineering" target="_blank" rel="noopener">awesome-harness-engineering</a></b-cap>
 </b-chapter>

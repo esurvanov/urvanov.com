@@ -1,7 +1,7 @@
 ---
 title: Что такое AGENTS.md и CLAUDE.md и чем они отличаются от spec.md: пример файла и где хранить спеки, правила и скиллы
 date: 2026-09-28
-updated: 2026-11-11
+updated: 2026-11-14
 description: AGENTS.md и CLAUDE.md задают агенту правила на весь проект, spec.md описывает одну задачу. Пример файла и что куда класть: спеки, библию проекта, правила и скиллы. По документации Anthropic, OpenAI, GitHub, Cursor и Cline.
 tags: AI, Claude Code, CLAUDE.md, харнесс, спеки, скиллы
 category: specs
@@ -171,6 +171,7 @@ AGENTS.md и CLAUDE.md — файлы в корне проекта с посто
     <item href="/blog/harness-work-approaches/" k="Подходы" t="Подходы к работе с харнессом">Цикл ответа и ревью</item>
     <item href="/blog/work-prompts-examples/" k="Практика" t="Промпты для рабочих задач">Пять частей и шесть примеров</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Сравнение" t="Сравнение харнессов">Claude Code, Codex, Cursor, Hermes</item>
+    <item href="/blog/ai-agent-maturity-levels/" k="Зрелость" t="Уровни зрелости работы с ИИ-агентами">От чата к спекам, скиллам, скрипту, харнессу и агентной системе</item>
   </b-links>
 </b-chapter>
 <b-footer>По документации Anthropic, OpenAI, GitHub, Cursor и Cline, источник у значка рядом с утверждением. «Библия проекта» — термин из практики; пересказы помечены в подсказке источника.</b-footer>

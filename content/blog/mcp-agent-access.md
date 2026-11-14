@@ -1,7 +1,7 @@
 ---
 title: MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту
 date: 2026-10-04
-updated: 2026-11-13
+updated: 2026-11-14
 unrelated: mcp-1c
 description: MCP подключает агента к GitLab, Jira, Confluence и записям встреч. Какую проблему решает, как подключить за несколько минут и поручить это самому агенту, как экономит время и токены и почему агент меньше выдумывает.
 tags: AI, агенты, MCP, Jira, контекст, галлюцинации, токены, харнесс
@@ -218,6 +218,7 @@ MCP подключает агента к рабочим системам, и о�
     <item href="/blog/bug-report-to-reproduction-agent/" k="QA с агентом" t="QA после поддержки">MCP и скиллы в работе QA</item>
     <item href="/blog/specs-rules-skills/" k="Скиллы" t="Спеки, правила и скиллы">что агент должен знать о проекте</item>
     <item href="/blog/harness-driven-development/" k="Петля ошибок" t="Harness-Driven Development">как ошибки агента становятся правилами</item>
+    <item href="/blog/quality-gates-ai-agents/" k="Гейты" t="Что такое quality gates для ИИ-агентов">права и набор функций MCP как часть гейта</item>
   </b-links>
 </b-chapter>
 <b-footer>Задача PAY-142 выдумана для примера.</b-footer>

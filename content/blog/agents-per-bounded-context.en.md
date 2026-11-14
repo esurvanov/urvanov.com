@@ -1,7 +1,7 @@
 ---
 title: How many AI agents you need: the number of agents grows with the number of bounded contexts
 date: 2026-10-10
-updated: 2026-11-13
+updated: 2026-11-14
 description: One agent per bounded context: why there are as many agents as meaning boundaries, how it scales, what sits between agents and where to start.
 tags: AI, agents, bounded context, DDD, architecture, scaling, harness
 category: harness
@@ -75,6 +75,7 @@ How many AI agents do you need? As many as there are bounded contexts: each mean
     <item href="/blog/agent-hands-work-back-to-you/" k="Agent" t="Will agents take your job">where the complexity is real</item>
     <item href="/materials/glossary/bounded-context/" k="Term" t="Bounded context">what it is and why</item>
     <item href="/blog/agent-checkpoint/" k="Checks" t="Where to check an AI agent's work">the aggregate boundary and context size</item>
+    <item href="/blog/quality-gates-ai-agents/" k="Gates" t="What are quality gates for AI agents">a gate at the border of each context</item>
   </b-links>
 </b-chapter>
 </b-post>

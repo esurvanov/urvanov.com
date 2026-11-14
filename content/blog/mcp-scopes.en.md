@@ -1,7 +1,7 @@
 ---
 title: MCP scopes in Claude Code: local, project and user — where a server lives and who sees it
 date: 2026-10-05
-updated: 2026-11-13
+updated: 2026-11-14
 description: The three MCP server scopes in Claude Code: local, project and user. Where the setup lives, who sees it, what wins when names collide, how to share servers with a team and keep secrets out of commits.
 tags: AI, agents, MCP, Claude Code, team, harness
 category: harness
@@ -126,6 +126,7 @@ If a variable is unset and has no default, the config loads as is, and claude mc
     <item href="/blog/mcp-agent-access/" k="Basics" t="MCP for an AI agent: what problem it solves and how to delegate setup to the agent">What MCP is and how to connect it</item>
     <item href="/blog/claude-in-chrome/" k="Browser" t="Claude Code in Chrome: how the agent tests your site in the browser — debugging and forms under your login">The agent in your browser</item>
     <item href="/blog/bug-report-to-reproduction-agent/" k="Example" t="QA work after support with an AI agent: investigation, description and documentation via MCP and skills">The agent reproduces a Jira bug</item>
+    <item href="/blog/quality-gates-ai-agents/" k="Gates" t="What are quality gates for AI agents">MCP permissions and function sets as part of a gate</item>
   </b-links>
 </b-chapter>
 <b-footer>Facts about scopes and precedence follow the Claude Code docs: <a href="https://code.claude.com/docs/en/mcp#mcp-installation-scopes" target="_blank" rel="noopener">MCP installation scopes</a>.</b-footer>

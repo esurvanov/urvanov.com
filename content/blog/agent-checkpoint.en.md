@@ -1,7 +1,7 @@
 ---
 title: Where to check an AI agent’s work: at the aggregate boundary, because no one can check every program (Rice’s theorem)
 date: 2026-11-06
-updated: 2026-11-13
+updated: 2026-11-14
 description: Why no check can verify any agent code against any rule, which three ways make a check finite, how an aggregate boundary from event storming becomes a checkpoint, how checkability sets the size of a bounded context, and why the first frame must be cheap to move.
 tags: AI, agents, DDD, aggregate, bounded context, event storming, Rice's theorem, Quint, model checking
 category: specs
@@ -231,6 +231,7 @@ Put the check on an AI agent's work at the aggregate boundary: where commands co
     <item href="/blog/quint-vs-tests-and-tla/" k="Checks" t="Model checking vs tests">Quint, QUnit and TLA+</item>
     <item href="/blog/quint-models-find-races/" k="Models" t="Finding race conditions">Quint models in practice</item>
     <item href="/blog/rice-theorem-explained/" k="Theory" t="Rice's theorem in plain words">predicate, proof, three frames</item>
+    <item href="/blog/quality-gates-ai-agents/" k="Gates" t="What are quality gates for AI agents">where to put a gate: the bounded-context border</item>
   </b-links>
 </b-chapter>
 <b-footer>Facts: as of 6 November 2026, from Wikipedia (Rice's and Gödel's theorems) and eventstorming.com. The booking example is illustrative.</b-footer>

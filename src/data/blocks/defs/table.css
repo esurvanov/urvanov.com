@@ -32,3 +32,8 @@
 .s-rich.bk .bk-table#rice-wishes td:first-child { color: var(--ink-2); font-weight: 400; }
 /* Отступ снизу: блок после таблицы (карточки, вывод, схема) не прилипает к её рамке */
 .s-rich.bk .bk-chapter > .bk-table { margin-bottom: 14px; }
+
+/* Телефон: колонки узкие, выравнивание по ширине растягивает слова — текст по левому краю */
+@media (max-width: 720px) {
+  .s-rich.bk .bk-table td { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
+}

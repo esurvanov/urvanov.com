@@ -1,7 +1,7 @@
 ---
 title: What are AGENTS.md and CLAUDE.md and how they differ from spec.md: an example file and where to keep specs, rules and skills
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-14
 description: AGENTS.md and CLAUDE.md give an agent rules for the whole project, while spec.md describes one task. An example file and what goes where: specs, the project bible, rules and skills. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.
 tags: AI, Claude Code, CLAUDE.md, harness, specs, skills
 category: specs
@@ -171,6 +171,7 @@ AGENTS.md and CLAUDE.md are files in the project root with standing instructions
     <item href="/en/blog/harness-work-approaches/" k="Approaches" t="Approaches to working with a harness">Answer loop and review</item>
     <item href="/en/blog/work-prompts-examples/" k="Practice" t="Prompts for work tasks">Five parts and six examples</item>
     <item href="/en/blog/ai-in-code-harness-and-tools/" k="Comparison" t="Comparing harnesses">Claude Code, Codex, Cursor, Hermes</item>
+    <item href="/blog/ai-agent-maturity-levels/" k="Maturity" t="AI agent maturity levels">From chat to specs, skills, scripts, a harness and an agentic system</item>
   </b-links>
 </b-chapter>
 <b-footer>Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs; the source is behind the icon next to each claim. “Project bible” is a practitioner term; paraphrases are marked in the source tooltip.</b-footer>
