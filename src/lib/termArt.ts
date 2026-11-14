@@ -2201,18 +2201,28 @@ export const ART: Record<string, Art> = {
     t(-12.4, -8.4, l('всё работает', 'all works'), A, { size: 14, w: 800, anchor: 'start', dy: -4 }); lane(-4.4, false)
     t(-12.4, -0.2, l('что-то не работает', 'something is broken'), W, { size: 14, w: 800, anchor: 'start', dy: -4 }); lane(4.2, true)
   } },
-  // Сквозной тест: один путь через все части системы; юнит-тест — только одна часть
-  'e2e-test': { ru: 'Сквозной тест проходит весь путь пользователя через все части системы; юнит-тест проверяет одну часть', en: 'An end-to-end test follows the whole user path through every part of the system; a unit test checks one part', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
-    const { g, arr, t, agent } = screen(I)
+  // E2E-тест: цепочка сценариев через системы разных команд; тест смотрит, как всё сходится на стыках
+  'e2e-test': { ru: 'E2E-тест проходит цепочку сценариев через системы разных команд и проверяет, что на стыках всё сходится', en: 'An E2E test walks a chain of scenarios across the systems of different teams and checks that everything fits at the joints', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
     const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
-    agent(-13.0, -2.0, l('тест', 'test'))
-    const parts: [number, string][] = [[-7.4, l('экран', 'screen')], [-1.4, l('сервер', 'server')], [4.6, l('база', 'database')]]
-    at(parts[0][0], -2.0, (x, y) => I.panel(x - 1.3, y - 0.1, 2.6, 1.6, M, '', 3)); at(parts[1][0], -2.0, (x, y) => I.box(x - 0.8, y - 0.8, 0, 1.6, 1.6, 1.0, M)); at(parts[2][0], -2.0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, M))
-    parts.forEach(([X, n]) => t(X, -0.2, n, M, { dy: 14, size: 13, w: 800 }))
-    arr(A, [-11.6, -2.0], [-9.6, -2.0]); arr(A, [-5.6, -2.0], [-3.6, -2.0]); arr(A, [0.6, -2.0], [2.6, -2.0])
-    I.path([g(-8.6, -6.2), g(5.2, -6.2)], A, { w: 2.4, op: 0.9 }); t(-1.6, -6.2, l('сквозной тест: весь путь, долго, на стенде', 'end-to-end test: the whole path, slow, on a stand'), A, { size: 13, w: 800, dy: -8 })
-    I.path([g(-3.0, 1.9), g(0.2, 1.9)], W, { w: 2.4, op: 0.9 }); t(-1.4, 1.9, l('юнит-тест: одна часть, мгновенно', 'unit test: one part, instant'), W, { size: 12.5, w: 800, dy: 16 })
-    I.pulse([g(-11.6, -2.0), g(-9.6, -2.0), g(-5.6, -2.0), g(-3.6, -2.0), g(0.6, -2.0), g(2.6, -2.0)], A, 4)
+    const sys: [number, string, string][] = [[-9.0, l('команда А', 'team A'), l('заказ', 'orders')], [-1.0, l('команда Б', 'team B'), l('оплата', 'payments')], [7.0, l('команда В', 'team C'), l('склад', 'warehouse')]]
+    sys.forEach(([X, team, name]) => { at(X, 0, (x, y) => I.tile(x - 1.9, y - 1.9, 3.8, 3.8, { col: S2, h: 0.04, grid: false, edge: M, dash: '6 5' })); at(X, 0, (x, y) => I.box(x - 0.55, y - 0.55, 0, 1.1, 1.1, 0.8, M)); t(X, -2.4, team, M, { size: 12.5, w: 800, dy: -6 }); t(X, 0.8, name, M, { dy: 14, size: 13, w: 800 }) })
+    arr(A, [-14.0, 0], [-10.8, 0]); arr(A, [-7.2, 0], [-2.8, 0]); arr(A, [0.8, 0], [5.2, 0]); arr(A, [8.8, 0], [11.6, 0])
+    ;[-5.0, 3.0].forEach((X) => { at(X, 0, (x, y) => I.pad(x, y, W, 0.5)); t(X, 1.0, l('стык', 'joint'), W, { size: 13, w: 800, dy: 8 }) })
+    I.path([g(-13.0, -7.4), g(11.0, -7.4)], A, { w: 2.4, op: 0.9 }); t(-1.0, -7.4, l('E2E-тест: весь сценарий, вместе со стыками', 'E2E test: the whole scenario, joints included'), A, { size: 13, w: 800, dy: -8 })
+    t(-1.0, 4.6, l('ломается чаще всего на стыках', 'it breaks most often at the joints'), W, { size: 13, w: 800, dy: 4 })
+  } },
+  // Критический путь: главная цепочка действий пользователя против второстепенных возможностей
+  'critical-path': { ru: 'Критический путь — главная цепочка действий: сломалась она, и продукт не работает; второстепенное подождёт', en: 'The critical path is the main chain of actions: if it breaks the product does not work; the secondary can wait', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const main: [number, string][] = [[-11.0, l('вход', 'sign-in')], [-5.0, l('поиск товара', 'find an item')], [1.0, l('корзина', 'cart')], [7.0, l('оплата', 'payment')]]
+    main.forEach(([X, n], i) => { at(X, -2.4, (x, y) => I.box(x - 0.8, y - 0.8, 0, 1.6, 1.6, 1.0, A)); t(X, -1.0, n, A, { dy: 14, size: 13, w: 800 }); if (i < 3) arr(A, [X + 1.6, -2.4], [main[i + 1][0] - 1.6, -2.4]) })
+    arr(A, [8.8, -2.4], [11.4, -2.4]); at(12.6, -2.4, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, A, 2, true)); t(12.6, -1.2, l('заказ', 'order'), A, { dy: 12, size: 12.5, w: 800 })
+    t(-11.0, -6.0, l('критический путь: проверяют первым, чинят первым', 'critical path: checked first, fixed first'), A, { size: 13.5, w: 800, anchor: 'start', dy: -4 })
+    const side: [number, string][] = [[-8.0, l('отзывы', 'reviews')], [-2.0, l('тёмная тема', 'dark theme')], [4.0, l('смена аватара', 'avatar change')]]
+    side.forEach(([X, n]) => { at(X, 4.2, (x, y) => I.box(x - 0.55, y - 0.55, 0, 1.1, 1.1, 0.6, M, 0.85)); t(X, 5.2, n, M, { dy: 12, size: 12, w: 700 }) })
+    t(-11.0, 1.6, l('второстепенное: продукт работает и без него', 'secondary: the product works without it'), M, { size: 12.5, w: 800, anchor: 'start', dy: 4 })
   } },
   // Мок: настоящую зависимость (оплата) в тесте заменяет имитация, которая отвечает заготовленно
   'mock': { ru: 'В тесте настоящую зависимость заменяет мок: он отвечает заготовленно, быстро и бесплатно', en: 'In a test a mock replaces the real dependency: it answers with canned replies, fast and free', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
@@ -2250,6 +2260,47 @@ export const ART: Record<string, Art> = {
     at(-5.2, 5.2, (x, y) => I.box(x - 0.5, y - 0.5, 0, 1.0, 1.0, 0.6, W)); t(-5.2, 5.2, '×', '#fff', { gz: 0.6, size: 20, w: 800 }); t(-3.8, 5.2, l('тест упал: правка дальше не идёт', 'a test failed: the change goes no further'), W, { size: 13, w: 800, anchor: 'start', dy: 4 })
     arr(W, [-5.2, 1.8], [-5.2, 4.2])
     I.pulse([g(-12.0, 0), g(-10.6, 0), g(-8.0, 0), g(-6.6, 0), g(-4.0, 0)], A, 4)
+  } },
+  // CI: разработчики часто сливают малые правки в общую ветку; каждое слияние собирается и проверяется, сбой возвращается автору
+  'ci-cd/2': { ru: 'CI: малые правки сливают в общую ветку часто, каждое слияние проверяется, сбой сразу возвращается автору', en: 'CI: small changes are merged into the shared branch often, every merge is checked, a failure goes straight back to the author', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t, person } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    ;[-3.6, 0, 3.6].forEach((Y) => { person(-13.6, Y, ''); at(-11.4, Y, (x, y) => I.doc(x - 0.5, y - 0.35, 0, 1.0, 0.7, M, 2)); arr(M, [-10.2, Y], [-7.4, Y * 0.3]) })
+    t(-13.6, -6.2, l('разработчики', 'developers'), M, { size: 12.5, w: 800, dy: -4 }); t(-11.4, 5.6, l('малые правки', 'small changes'), M, { size: 12, w: 700, dy: 8 })
+    at(-5.0, 0, (x, y) => I.box(x - 1.0, y - 1.0, 0, 2.0, 2.0, 1.1, A)); t(-5.0, 1.8, l('общая ветка', 'shared branch'), A, { dy: 12, size: 13, w: 800 }); t(-5.0, 1.8, l('слияния не реже раза в день', 'merges at least daily'), M, { dy: 29, size: 11.5, w: 600 })
+    arr(A, [-2.8, 0], [0.4, 0]); at(2.8, 0, (x, y) => I.clipboard(x, y, 1.6, A)); t(2.8, 1.9, l('сборка и тесты', 'build and tests'), A, { dy: 12, size: 13, w: 800 }); t(2.8, 1.9, l('автоматически, минуты', 'automatic, minutes'), M, { dy: 29, size: 11.5, w: 600 })
+    arr(A, [4.8, -0.8], [8.6, -3.0]); arr(W, [4.8, 0.8], [8.6, 3.0])
+    at(11.0, -3.4, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(12.8, -3.4, l('прошло: ветка рабочая', 'passed: the branch works'), A, { size: 12.5, w: 800, anchor: 'start', dy: 4 })
+    at(11.0, 3.4, (x, y) => I.box(x - 0.5, y - 0.5, 0, 1.0, 1.0, 0.6, W)); t(11.0, 3.4, '×', '#fff', { gz: 0.6, size: 20, w: 800 }); t(12.8, 3.4, l('упало: автор чинит сразу', 'failed: the author fixes it at once'), W, { size: 12.5, w: 800, anchor: 'start', dy: 4 })
+    I.path([g(11.0, 4.8), g(11.0, 8.0), g(-13.6, 8.0), g(-13.6, 5.2)], W, { w: 2.2, dash: '4 3', arrow: true, cls: 'fl' }); t(-1.0, 8.0, l('обратная связь за минуты', 'feedback within minutes'), W, { size: 12.5, w: 800, dy: -8 })
+  } },
+  // CD: две формы; в доставке на прод выкладывает человек по кнопке, в развёртывании — автоматика
+  'ci-cd/3': { ru: 'CD в двух видах: при доставке на прод выкладывает человек по кнопке, при развёртывании — автоматика', en: 'CD comes in two kinds: with delivery a person releases to production with a button, with deployment it is automatic', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const step = (X: number, Y: number, n: string, col = A) => { at(X, Y, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.8, col)); t(X, Y + 0.9, n, col, { dy: 12, size: 12, w: 800 }) }
+    const lane = (Y: number, title: string, manual: boolean) => {
+      t(-13.0, Y - 3.0, title, manual ? M : A, { size: 14, w: 800, anchor: 'start', dy: -4 })
+      at(-12.0, Y, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, A, 3, true)); t(-12.0, Y + 0.9, l('версия после CI', 'version after CI'), A, { dy: 12, size: 12, w: 800 })
+      arr(A, [-10.4, Y], [-8.4, Y]); step(-7.0, Y, l('тест', 'test')); arr(A, [-5.8, Y], [-3.8, Y]); step(-2.4, Y, l('препрод', 'pre-prod'))
+      if (manual) { arr(A, [-1.2, Y], [0.8, Y]); at(2.4, Y, (x, y) => I.person(x, y, M, '')); t(2.4, Y + 0.9, l('человек нажимает «выложить»', 'a person presses “release”'), W, { dy: 14, size: 12, w: 800 }); arr(W, [3.8, Y], [6.2, Y]) }
+      else { arr(A, [-1.2, Y], [6.2, Y]); t(2.5, Y, l('автоматически, без человека', 'automatically, no person'), A, { dy: -10, size: 12, w: 800 }) }
+      step(7.6, Y, l('прод', 'production'), manual ? W : A); arr(manual ? W : A, [8.8, Y], [10.4, Y]); at(11.8, Y, (x, y) => I.person(x, y, M, '')); t(11.8, Y + 0.9, l('пользователи', 'users'), M, { dy: 14, size: 12, w: 800 })
+    }
+    lane(-3.6, l('Continuous delivery: версия всегда готова, на прод — по решению человека', 'Continuous delivery: the version is always ready, production is a person’s decision'), true)
+    lane(4.4, l('Continuous deployment: прошла проверки — сразу на прод', 'Continuous deployment: passed the checks, straight to production'), false)
+  } },
+  // Юнит-тест: одна часть кода отдельно, соседи заменены моками
+  'unit-test': { ru: 'Юнит-тест проверяет одну часть кода отдельно: соседние части заменены моками, результат сверяется с ожидаемым', en: 'A unit test checks one part of the code in isolation: neighbouring parts are replaced with mocks, the result is compared with the expected one', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-11.0, 0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, M, 2)); t(-11.0, 1.2, l('вход', 'input'), M, { dy: 12, size: 13, w: 800 }); t(-11.0, 1.2, l('сумма 1000 ₽', 'amount 1000'), M, { dy: 29, size: 12, w: 700 })
+    arr(M, [-9.2, 0], [-2.6, 0])
+    at(0, 0, (x, y) => I.box(x - 1.0, y - 1.0, 0, 2.0, 2.0, 1.2, A)); t(0, 1.8, l('проверяемая часть', 'the part under test'), A, { dy: 12, size: 13, w: 800 }); t(0, 1.8, l('расчёт скидки', 'discount calculation'), M, { dy: 29, size: 12, w: 700 })
+    arr(A, [2.6, 0], [9.0, 0])
+    at(11.4, 0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(11.4, 1.2, l('результат: 100 ₽', 'result: 100'), A, { dy: 12, size: 13, w: 800 }); t(11.4, 1.2, l('совпал с ожидаемым', 'matches the expected one'), M, { dy: 29, size: 12, w: 700 })
+    ;[[-4.0, l('мок базы', 'database mock')], [4.0, l('мок оплаты', 'payment mock')]].forEach(([X, n]) => { at(X as number, -5.0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.8, M, 0.7)); t(X as number, -5.0, n as string, M, { dy: 30, size: 12, w: 700 }); arr(M, [(X as number) * 0.5, -3.4], [(X as number) * 0.25, -1.6]) })
+    t(0, 6.2, l('миллисекунды: без базы и сети', 'milliseconds: no database, no network'), A, { size: 13, w: 800, dy: 4 })
   } },
   // Дамп = бэкап: копия базы одним файлом; её хранят на случай поломки или разворачивают на стенде с подменой личных данных
   'dump': { ru: 'Дамп (он же бэкап) — копия базы одним файлом: её хранят на случай поломки или разворачивают на стенде без личных данных', en: 'A dump (a backup) is a copy of a database in one file: kept in case of a failure, or restored onto a stand without personal data', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
