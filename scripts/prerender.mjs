@@ -8,7 +8,7 @@ import { analyticsHead, headTags, esc, urlOf, SITE_URL, RSS_TITLE } from './lib.
 
 const DIST = 'dist'
 const {
-  render, allPages, POSTS, ALL_TERMS, TERM_SETS, GAMES, GAME_PAGES, ARCHITECTURES, LABS, config,
+  render, allPages, POSTS, ALL_TERMS, TERM_SETS, TERM_DATES, GAMES, GAME_PAGES, ARCHITECTURES, LABS, config,
   MILESTONES, ABOUT_LEAD, PLACES, LINK_GROUPS, itemText, CITY_CHATS, THEME_CHATS, BIO,
   ui, LANG_FONTS, I18N_PROBLEMS,
 } = await import(pathToFileURL(join(process.cwd(), 'dist-ssr/entry-server.js')).href)
@@ -236,6 +236,21 @@ write('robots.txt', ['User-agent: *', 'Allow: /', 'Disallow: /presenter', '', ..
 // RSS по языкам
 const rfc = (d) => new Date(d).toUTCString()
 const postUrl = (p) => urlOf(`${prefixOf(p.lang)}/blog/${p.slug}`)
+// Термины глоссария идут в ту же ленту: запись на термин с датой создания; на новых языках — только переведённые термины с готовой страницей
+const rssPlain = (t) => t.replace(/`/g, '').replace(/\$([^$]*)\$/g, '$1')
+const rssTranslations = (lang) => { const o = {}; for (const f of ['glossary', 'glossary.a', 'glossary.b', 'glossary.d']) { const fp = `src/i18n/${lang}/${f}.json`; if (existsSync(fp)) Object.assign(o, JSON.parse(readFileSync(fp, 'utf8'))) } return o }
+const rssTerms = (lang) => {
+  const tr = lang === 'en' || lang === 'ru' ? null : rssTranslations(lang)
+  const label = lang === 'ru' ? 'Глоссарий' : 'Glossary'
+  return ALL_TERMS.flatMap((x) => {
+    const name = tr ? tr[x.slug]?.name ?? x.name.en : x.name[lang]
+    const def = tr ? tr[x.slug]?.def : x.def[lang]
+    const url = urlOf(`${prefixOf(lang)}/materials/glossary/${x.slug}`)
+    if (!def || !existsSync(join(DIST, prefixOf(lang), 'materials/glossary', x.slug, 'index.html'))) return []
+    const date = TERM_DATES[x.slug]?.[0] ?? '2026-10-13'
+    return [{ date, xml: `<item><title>${esc(name)}</title><link>${url}</link><guid>${url}</guid><pubDate>${rfc(date)}</pubDate><category>${label}</category><description>${esc(rssPlain(def))}</description></item>` }]
+  })
+}
 const RSS_LANGS = ['en', 'ru', ...NEW_LANGS_RSS]
 for (const lang of RSS_LANGS) {
   const posts = POSTS.filter((p) => p.lang === lang)
@@ -244,7 +259,7 @@ for (const lang of RSS_LANGS) {
   const seo = lang === 'en' || lang === 'ru' ? null : JSON.parse(readFileSync(`src/i18n/${lang}/seo.json`, 'utf8'))['/blog']
   const title = RSS_TITLE[lang] ?? seo.title
   const desc = lang === 'en' ? 'AI development, engineering management, communities' : lang === 'ru' ? 'AI-разработка, инженерное управление, сообщества' : seo.description
-  write(`${prefix}/rss.xml`.replace(/^\//, ''), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>\n<title>${title}</title><link>${urlOf(prefix + '/blog')}</link><description>${desc}</description><language>${lang}</language>\n<atom:link href="${SITE_URL}${prefix}/rss.xml" rel="self" type="application/rss+xml" />\n${posts.map((p) => `<item><title>${esc(p.title)}</title><link>${postUrl(p)}</link><guid>${postUrl(p)}</guid><pubDate>${rfc(p.date)}</pubDate><description>${esc(p.description)}</description><content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[${p.html}]]></content:encoded></item>`).join('\n')}\n</channel></rss>\n`)
+  write(`${prefix}/rss.xml`.replace(/^\//, ''), `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>\n<title>${title}</title><link>${urlOf(prefix + '/blog')}</link><description>${desc}</description><language>${lang}</language>\n<atom:link href="${SITE_URL}${prefix}/rss.xml" rel="self" type="application/rss+xml" />\n${[...posts.map((p) => ({ date: p.date, xml: `<item><title>${esc(p.title)}</title><link>${postUrl(p)}</link><guid>${postUrl(p)}</guid><pubDate>${rfc(p.date)}</pubDate><description>${esc(p.description)}</description><content:encoded xmlns:content="http://purl.org/rss/1.0/modules/content/"><![CDATA[${p.html}]]></content:encoded></item>` })), ...rssTerms(lang)].sort((a, b) => new Date(b.date) - new Date(a.date)).map((x) => x.xml).join('\n')}\n</channel></rss>\n`)
 }
 
 // Старый адрес английской ленты
