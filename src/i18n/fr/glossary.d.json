@@ -383,5 +383,57 @@
     "source.label": "Wikipédia : Sauvegarde (Backup)",
     "seo.title": "Backup (sauvegarde) : ce que c’est et en quoi il diffère d’un dump",
     "seo.description": "Un backup est une copie de secours de données pour restaurer après une panne. Comment on le réalise, le conserve et le vérifie, et en quoi un backup diffère d’un dump de base de données."
+  },
+  "python": {
+    "aka": "langage de programmation",
+    "def": "Python est un langage de programmation généraliste à la syntaxe simple, l’un des plus répandus pour les données, l’automatisation et le code côté serveur. Sa bibliothèque standard contient de nombreux modules prêts à l’emploi, dont unittest pour les tests et unittest.mock pour les mocks.",
+    "faq.0.q": "Qu’est-ce que Python ?",
+    "faq.0.a": "Un langage de programmation généraliste à la syntaxe simple.",
+    "faq.1.q": "Quels outils de test existent en Python ?",
+    "faq.1.a": "La bibliothèque standard propose le module unittest pour les tests et unittest.mock pour les mocks, et la bibliothèque tierce pytest est elle aussi très populaire.",
+    "source.label": "Site officiel de Python"
+  },
+  "pure-function": {
+    "name": "Fonction pure",
+    "aka": "fonctions pures, fonction sans effets de bord",
+    "def": "Une fonction pure est une fonction dont le résultat dépend uniquement de ses données d’entrée et qui ne lit ni ne modifie rien à l’extérieur : elle n’accède ni à une base de données, ni au réseau, ni à des fichiers, ni à l’horloge, ni à des nombres aléatoires. Pour les mêmes données d’entrée, elle répond toujours de la même façon ; on la vérifie donc par un test unitaire sans mocks : on fournit l’entrée et on compare le résultat à celui attendu. Exemple : le calcul d’une remise à partir du montant de la commande est pur, alors qu’une fonction qui lit la remise dans une base ou enregistre la commande est impure. Le code réel se compose rarement de fonctions pures uniquement ; on sépare donc la partie pure de la logique des parties qui dialoguent avec le monde extérieur.",
+    "faq.0.q": "Qu’est-ce qu’une fonction pure ?",
+    "faq.0.a": "Une fonction dont le résultat dépend uniquement de ses données d’entrée et qui ne lit ni ne modifie rien à l’extérieur.",
+    "faq.1.q": "En quoi une fonction pure diffère-t-elle d’une fonction impure ?",
+    "faq.1.a": "Une fonction impure dépend de ce qui se trouve hors de ses données d’entrée (une base de données, l’heure, un nombre aléatoire) ou le modifie (une écriture en base, un fichier, un e-mail). Son résultat peut donc varier d’une exécution à l’autre.",
+    "faq.2.q": "Pourquoi les fonctions pures sont-elles faciles à tester ?",
+    "faq.2.a": "Elles n’ont besoin ni de mocks ni de stand : le test fournit l’entrée et compare le résultat à celui attendu en quelques millisecondes, et le résultat ne dépend pas de l’ordre des exécutions.",
+    "faq.3.q": "Comment obtenir davantage de fonctions pures ?",
+    "faq.3.a": "Séparer le calcul des appels au monde extérieur : d’abord rassembler les données, puis les passer à une fonction pure et seulement ensuite enregistrer le résultat.",
+    "source.label": "Wikipédia : Fonction pure",
+    "seo.title": "Fonction pure : ce que c’est et pourquoi elle se teste facilement",
+    "seo.description": "Une fonction pure dépend uniquement de ses données d’entrée et ne modifie rien à l’extérieur. En quoi elle diffère d’une fonction impure et pourquoi on la vérifie par des tests unitaires sans mocks."
+  },
+  "wiremock": {
+    "aka": "mock de services HTTP",
+    "def": "WireMock est un programme prêt à l’emploi qui imite des services HTTP : il se lance comme un serveur distinct, reçoit les requêtes du système testé et répond par des réponses préparées à l’avance. Au lieu d’un vrai service tiers, par exemple de paiement ou de livraison, le test voit un mock ; il est donc rapide, gratuit et ne touche les données de personne. Il fonctionne avec n’importe quel langage, car il communique par HTTP.",
+    "faq.0.q": "Qu’est-ce que WireMock ?",
+    "faq.0.a": "Un programme prêt à l’emploi qui imite des services HTTP et répond par des réponses préparées à l’avance.",
+    "faq.1.q": "Quand a-t-on besoin de WireMock ?",
+    "faq.1.a": "Quand le système testé appelle un service tiers par HTTP et que le test ne doit dépendre ni de sa disponibilité, ni de sa vitesse, ni du coût des requêtes.",
+    "source.label": "Site officiel de WireMock"
+  },
+  "tech-debt": {
+    "name": "Dette technique",
+    "aka": "tech debt, dette de code",
+    "def": "La dette technique désigne les erreurs et les mauvaises décisions accumulées dans le code parce qu’au départ on ignore comment exactement l’utilisateur va se comporter. L’équipe construit un produit sur des hypothèses et livre du code ; après vérification, une partie de ces hypothèses se révèle fausse. Le code écrit pour elles reste, et chaque nouvelle modification se fait par-dessus : elle devient plus coûteuse et plus risquée. Comme une dette d’argent, la dette technique porte des intérêts : plus on tarde à la rembourser, plus le moindre changement prend de temps. Une partie de la dette est contractée volontairement pour arriver plus vite sur le marché (time-to-market) ; on la rembourse alors après la vérification des hypothèses, en réécrivant le code pour ce qui s’est avéré juste.",
+    "faq.0.q": "Qu’est-ce que la dette technique ?",
+    "faq.0.a": "Les erreurs et les mauvaises décisions accumulées dans le code parce qu’au départ on ignore comment l’utilisateur va se comporter, une partie des hypothèses se révélant fausse après vérification.",
+    "faq.1.q": "D’où vient la dette technique ?",
+    "faq.1.a": "Des hypothèses que l’équipe formule tant qu’elle ne connaît pas le comportement des utilisateurs. La vérification en réfute une partie, mais le code écrit pour elles fonctionne déjà et d’autres parties s’appuient dessus.",
+    "faq.2.q": "Pourquoi parle-t-on de dette ?",
+    "faq.2.a": "Comme une dette d’argent, elle porte des intérêts : tant que le code bâti sur de fausses hypothèses n’est pas réécrit, chaque nouvelle modification coûte plus cher et casse plus souvent les parties voisines.",
+    "faq.3.q": "Comment rembourse-t-on la dette technique ?",
+    "faq.3.a": "On réécrit ou on supprime le code bâti sur des hypothèses réfutées, par petites étapes parallèlement au travail courant, et on couvre la partie réécrite par des tests automatiques.",
+    "faq.4.q": "Quel est le lien entre dette technique et tests unitaires ?",
+    "faq.4.a": "Dans un code endetté, les fonctions pures sont rares : la logique est mêlée aux appels à la base de données et au réseau. Il faut donc le tester avec des mocks et le réécrire en même temps que les tests.",
+    "source.label": "Martin Fowler : dette technique (Technical Debt)",
+    "seo.title": "Dette technique : ce que c’est et d’où elle vient",
+    "seo.description": "La dette technique, ce sont les erreurs accumulées dans le code à cause d’hypothèses sur le comportement des utilisateurs qui se sont révélées fausses après vérification. D’où elle vient et comment on la rembourse."
   }
 }

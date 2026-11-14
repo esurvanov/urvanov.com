@@ -2324,6 +2324,39 @@ export const ART: Record<string, Art> = {
     arr(A, [3.4, -2.2], [9.4, 1.6]); t(7.2, 0.2, l('восстановить', 'restore'), A, { dy: -12, size: 12, w: 800 })
     at(10.6, 2.6, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(10.6, 3.8, l('база восстановлена', 'database restored'), A, { dy: 14, size: 13, w: 800 }); t(10.6, 3.8, l('данные на нужный момент', 'data at the chosen moment'), M, { dy: 31, size: 11.5, w: 600 })
   } },
+  // Чистая функция: тот же вход даёт тот же результат и ничего снаружи не трогает; нечистая зависит от базы и часов
+  'pure-function': { ru: 'Чистая функция: на тот же вход всегда тот же результат, ничего снаружи она не читает и не меняет. Нечистая зависит от базы и часов, поэтому отвечает по-разному', en: 'A pure function: the same input always gives the same result, and it reads and changes nothing outside. An impure one depends on a database and a clock, so it answers differently', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const fn = (X: number, Y: number, col: string) => at(X, Y, (x, y) => I.box(x - 0.8, y - 0.8, 0, 1.6, 1.6, 1.0, col))
+    // верхняя дорожка: чистая
+    at(-11.0, -5.4, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, M, 2)); t(-11.0, -4.4, l('вход: сумма 1000', 'input: amount 1000'), M, { dy: 12, size: 12.5, w: 800 })
+    arr(M, [-9.2, -5.4], [-2.4, -5.4])
+    fn(0, -5.4, A); t(0, -10.0, l('чистая функция', 'pure function'), A, { dy: 0, size: 13, w: 800 }); t(0, -10.0, l('скидка = сумма × 10%', 'discount = amount × 10%'), M, { dy: 16, size: 12, w: 700 })
+    arr(A, [2.4, -5.4], [9.0, -5.4])
+    at(11.4, -5.4, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(11.4, -4.4, l('всегда 100', 'always 100'), A, { dy: 12, size: 13, w: 800 }); t(11.4, -4.4, l('сегодня и завтра', 'today and tomorrow'), M, { dy: 29, size: 12, w: 700 })
+    // нижняя дорожка: нечистая
+    at(-11.0, 3.2, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, M, 2)); t(-11.0, 4.2, l('вход: сумма 1000', 'input: amount 1000'), M, { dy: 12, size: 12.5, w: 800 })
+    arr(M, [-9.2, 3.2], [-2.4, 3.2])
+    fn(0, 3.2, W); t(0, -1.0, l('нечистая функция', 'impure function'), W, { dy: 0, size: 13, w: 800 })
+    at(-6.4, 8.2, (x, y) => I.cyl(x, y, 0, 0.8, 1.0, W)); t(-6.4, 9.2, l('база: скидка', 'database: discount'), W, { dy: 12, size: 12, w: 700 }); arr(W, [-5.2, 7.4], [-1.4, 4.4])
+    at(6.4, 8.2, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.8, W)); t(6.4, 9.2, l('часы: акция', 'clock: promotion'), W, { dy: 12, size: 12, w: 700 }); arr(W, [5.2, 7.4], [1.4, 4.4])
+    arr(W, [2.4, 3.2], [9.0, 3.2])
+    at(11.4, 3.2, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, W, 2)); t(11.4, 4.2, l('100 или 200', '100 or 200'), W, { dy: 12, size: 13, w: 800 }); t(11.4, 4.2, l('зависит от базы и часов', 'depends on database and clock'), M, { dy: 29, size: 12, w: 700 })
+  } },
+  // Технический долг: предположение о пользователях → код под него → проверка опровергает → правки поверх неверного копятся
+  'tech-debt': { ru: 'Технический долг: код написан под предположение о пользователях, проверка гипотезы его опровергла, а новые правки копятся поверх неверной основы', en: 'Technical debt: code is written for an assumption about users, testing the hypothesis disproves it, and new changes pile up on a wrong base', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-12.6, 0, (x, y) => I.person(x, y, M, '')); t(-12.6, 1.6, l('предположение', 'assumption'), M, { dy: 12, size: 13, w: 800 }); t(-12.6, 1.6, l('«так будут делать»', '“users will do this”'), M, { dy: 29, size: 12, w: 700 })
+    arr(M, [-10.8, 0], [-7.0, 0])
+    at(-4.6, 0, (x, y) => { for (let k = 0; k < 2; k++) I.box(x - 0.9, y - 0.9, k * 1.1, 1.8, 1.8, 1.0, A) }); t(-4.6, 1.8, l('код под него', 'code built for it'), A, { dy: 12, size: 13, w: 800 })
+    arr(A, [-2.4, 0], [1.4, 0])
+    at(4.0, 0, (x, y) => I.bug(x, y, W)); t(4.0, 1.8, l('проверка гипотезы', 'testing the hypothesis'), W, { dy: 12, size: 13, w: 800 }); t(4.0, 1.8, l('предположение неверно', 'the assumption was wrong'), M, { dy: 29, size: 12, w: 700 })
+    arr(W, [6.0, 0], [9.0, 0])
+    at(11.8, 1.4, (x, y) => { for (let k = 0; k < 5; k++) I.box(x - 0.9, y - 0.9, k * 1.1, 1.8, 1.8, 1.0, W, 1 - k * 0.1) }); t(11.8, 3.0, l('долг', 'debt'), W, { dy: 14, size: 14, w: 800 }); t(11.8, 3.0, l('каждая правка поверх дороже', 'each change on top costs more'), M, { dy: 31, size: 12, w: 700 })
+    t(-0.2, 6.2, l('проценты: чем дольше не переписано, тем дороже любое изменение', 'interest: the longer it stays unrewritten, the more any change costs'), W, { size: 13, w: 800, dy: 4 })
+  } },
 }
 
 export function termArt(slug: string, lang: Lang, step = 0): { svg: string; caption: string; wide: boolean; map: boolean; steps: number } | null {

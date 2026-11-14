@@ -387,5 +387,57 @@
     "faq.2.a": "Tách khỏi bản gốc: trên đĩa khác, máy chủ khác hoặc trên đám mây. Quy tắc phổ biến là 3-2-1: ba bản sao, trên hai loại phương tiện khác nhau, một bản ở nơi khác.",
     "faq.3.q": "Làm sao biết backup dùng được?",
     "faq.3.a": "Chỉ bằng cách khôi phục thử: định kỳ khôi phục bản sao trên một môi trường riêng và kiểm tra dữ liệu. Bản sao chưa từng được khôi phục vẫn chỉ là giả định."
+  },
+  "pure-function": {
+    "name": "Hàm thuần (pure function)",
+    "aka": "hàm thuần, hàm không có tác dụng phụ",
+    "def": "Hàm thuần là hàm có kết quả chỉ phụ thuộc vào dữ liệu đầu vào và không đọc hay thay đổi gì ở bên ngoài: nó không truy cập cơ sở dữ liệu, mạng, tệp, đồng hồ hay số ngẫu nhiên. Với cùng một đầu vào nó luôn trả lời giống nhau, nên người ta kiểm tra nó bằng unit test không cần mock: đưa đầu vào, so kết quả với kết quả mong đợi. Ví dụ: tính chiết khấu từ tổng tiền đơn hàng là hàm thuần, còn hàm lấy chiết khấu từ cơ sở dữ liệu hoặc lưu đơn hàng là hàm không thuần. Mã thật hiếm khi gồm toàn hàm thuần, vì vậy phần logic thuần được tách khỏi những phần giao tiếp với thế giới bên ngoài.",
+    "faq.0.q": "Hàm thuần là gì?",
+    "faq.0.a": "Hàm có kết quả chỉ phụ thuộc vào dữ liệu đầu vào và không đọc hay thay đổi gì ở bên ngoài.",
+    "faq.1.q": "Hàm thuần khác hàm không thuần thế nào?",
+    "faq.1.a": "Hàm không thuần phụ thuộc vào thứ nằm ngoài dữ liệu đầu vào (cơ sở dữ liệu, thời gian, số ngẫu nhiên) hoặc thay đổi nó (ghi vào cơ sở dữ liệu, tệp, gửi thư). Vì vậy kết quả của nó có thể khác nhau giữa các lần chạy.",
+    "faq.2.q": "Vì sao hàm thuần dễ kiểm thử?",
+    "faq.2.a": "Chúng không cần mock và môi trường thử nghiệm: bài kiểm thử đưa đầu vào và so kết quả với kết quả mong đợi trong vài mili giây, và kết quả không phụ thuộc vào thứ tự chạy.",
+    "faq.3.q": "Làm sao có nhiều hàm thuần hơn?",
+    "faq.3.a": "Tách phần tính toán khỏi các lệnh gọi ra thế giới bên ngoài: trước tiên thu thập dữ liệu, sau đó đưa vào hàm thuần và chỉ rồi mới lưu kết quả.",
+    "source.label": "Wikipedia: Pure function",
+    "seo.title": "Hàm thuần: là gì và vì sao dễ kiểm thử",
+    "seo.description": "Hàm thuần chỉ phụ thuộc vào dữ liệu đầu vào và không thay đổi gì ở bên ngoài. Khác hàm không thuần thế nào và vì sao các hàm này được kiểm tra bằng unit test không cần mock."
+  },
+  "tech-debt": {
+    "name": "Nợ kỹ thuật (technical debt)",
+    "aka": "nợ kỹ thuật, tech debt, nợ mã nguồn",
+    "def": "Nợ kỹ thuật là những lỗi và quyết định chưa tốt tích tụ trong mã, xuất hiện vì lúc bắt đầu chưa biết chính xác người dùng sẽ hành xử ra sao. Nhóm xây dựng sản phẩm trên các giả định và phát hành mã, rồi sau khi kiểm chứng giả thuyết, một phần giả định hóa ra sai. Mã viết cho các giả định đó vẫn còn, và mỗi thay đổi mới được làm chồng lên nó: thay đổi trở nên đắt hơn và rủi ro hơn. Giống nợ tiền, nợ kỹ thuật có lãi: càng lâu không trả, mọi thay đổi càng tốn nhiều thời gian. Một phần nợ được vay có chủ đích để ra thị trường nhanh hơn (time-to-market), khi đó nó được trả sau khi kiểm chứng giả thuyết: viết lại mã theo điều hóa ra đúng.",
+    "faq.0.q": "Nợ kỹ thuật là gì?",
+    "faq.0.a": "Những lỗi và quyết định chưa tốt tích tụ trong mã, xuất hiện vì lúc bắt đầu chưa biết người dùng sẽ hành xử ra sao, và một phần giả định sau khi kiểm chứng hóa ra sai.",
+    "faq.1.q": "Nợ kỹ thuật từ đâu ra?",
+    "faq.1.a": "Từ những giả định nhóm đưa ra khi chưa biết hành vi của người dùng. Kiểm chứng giả thuyết bác bỏ một phần trong số đó, nhưng mã viết cho chúng đã chạy và các phần khác dựa vào nó.",
+    "faq.2.q": "Vì sao nó được gọi là nợ?",
+    "faq.2.a": "Giống nợ tiền, nó có lãi: chừng nào mã dựa trên giả định sai chưa được viết lại, mỗi thay đổi mới tốn kém hơn và thường làm hỏng các phần lân cận hơn.",
+    "faq.3.q": "Nợ kỹ thuật được trả thế nào?",
+    "faq.3.a": "Viết lại hoặc xóa mã dựa trên các giả định đã bị bác bỏ, bằng những bước nhỏ song song với công việc thường ngày, và bao phủ phần viết lại bằng kiểm thử tự động.",
+    "faq.4.q": "Nợ kỹ thuật liên quan đến unit test thế nào?",
+    "faq.4.a": "Mã có nợ ít hàm thuần: logic trộn lẫn với các lệnh gọi cơ sở dữ liệu và mạng. Vì vậy nó phải được kiểm thử bằng mock và được viết lại cùng với kiểm thử.",
+    "source.label": "Martin Fowler: Technical Debt",
+    "seo.title": "Nợ kỹ thuật: là gì và từ đâu ra",
+    "seo.description": "Nợ kỹ thuật là các lỗi tích tụ trong mã do những giả định về hành vi người dùng hóa ra sai sau khi kiểm chứng giả thuyết. Nó từ đâu ra và được trả thế nào."
+  },
+  "python": {
+    "aka": "ngôn ngữ lập trình",
+    "def": "Python là ngôn ngữ lập trình đa dụng với cú pháp đơn giản, một trong những ngôn ngữ phổ biến nhất cho dữ liệu, tự động hóa và phần máy chủ. Thư viện chuẩn của nó có nhiều mô-đun dựng sẵn, trong đó có unittest cho kiểm thử và unittest.mock cho mock.",
+    "faq.0.q": "Python là gì?",
+    "faq.0.a": "Ngôn ngữ lập trình đa dụng với cú pháp đơn giản.",
+    "faq.1.q": "Python có những công cụ kiểm thử nào?",
+    "faq.1.a": "Thư viện chuẩn có mô-đun unittest cho kiểm thử và unittest.mock cho mock, ngoài ra thư viện bên thứ ba pytest cũng rất phổ biến.",
+    "source.label": "Trang chính thức của Python"
+  },
+  "wiremock": {
+    "aka": "mock dịch vụ HTTP",
+    "def": "WireMock là chương trình dựng sẵn mô phỏng các dịch vụ HTTP: nó chạy như một máy chủ riêng, nhận yêu cầu từ hệ thống đang được kiểm thử và trả lời bằng các phản hồi đã chuẩn bị. Thay cho dịch vụ bên thứ ba thật, ví dụ dịch vụ thanh toán hoặc giao hàng, bài kiểm thử thấy một mock, nên nó nhanh, miễn phí và không đụng đến dữ liệu của ai. Nó dùng được với mọi ngôn ngữ vì giao tiếp qua HTTP.",
+    "faq.0.q": "WireMock là gì?",
+    "faq.0.a": "Chương trình dựng sẵn mô phỏng các dịch vụ HTTP và trả lời bằng các phản hồi đã chuẩn bị.",
+    "faq.1.q": "Khi nào cần WireMock?",
+    "faq.1.a": "Khi hệ thống đang kiểm thử gọi một dịch vụ bên thứ ba qua HTTP và bài kiểm thử không được phụ thuộc vào tính sẵn sàng, tốc độ và chi phí các yêu cầu của dịch vụ đó.",
+    "source.label": "Trang chính thức của WireMock"
   }
 }

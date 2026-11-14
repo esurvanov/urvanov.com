@@ -5,6 +5,7 @@ import NotFoundView from '@/components/NotFoundView'
 import { Link } from 'react-router-dom'
 import { ActionLink } from '@/components/site/Links'
 import { ICONS } from '@/components/site/icons'
+import type { L } from '@/lib/i18n'
 import { noCode, TERM_SETS, findTerm, glossaryPath, postsWithTerm, setOfTerm, splitTerms, termForTag, termShort } from '@/data/glossary'
 import { findCategory, type Post } from '@/data/blog'
 import { TERM_DATES } from '@/data/termDates'
@@ -61,29 +62,44 @@ export function GlossaryView() {
   // На новом языке — только переведённые термины и наборы, где они есть
   const sets = TERM_SETS.map((s) => ({ ...s, terms: isNewLang(lang) ? s.terms.filter((x) => hasPage(withLang(glossaryPath(x.slug), lang))) : s.terms })).filter((s) => s.terms.length > 0)
   const total = sets.reduce((n, s) => n + s.terms.length, 0)
+  // Наборы одного раздела идут подряд
+  const groups = sets.reduce<{ id: string; name: L; sets: typeof sets }[]>((acc, s) => { const last = acc[acc.length - 1]; if (last && last.id === s.group.id) last.sets.push(s); else acc.push({ id: s.group.id, name: s.group.name, sets: [s] }); return acc }, [])
   return (
     <Page>
       <Crumbs items={[{ to: to('/'), label: t({ ru: 'Главная', en: 'Home' }) }, { to: to('/materials'), label: t({ ru: 'Материалы', en: 'Materials' }) }, { label: t({ ru: 'Глоссарий', en: 'Glossary' }) }]} />
       <h1 className="s-page-title">{t({ ru: 'Глоссарий', en: 'Glossary' })}</h1>
-      <p className="s-lead">{termWord(total, lang)} · {sets.length} {t({ ru: 'наборов', en: 'sets' })}</p>
-      <ul className="s-chips g-glos-nav" aria-label={t({ ru: 'Наборы терминов', en: 'Term sets' })}>
-        {sets.map((s) => <li key={s.slug}><a className="s-chip" href={`#${s.slug}`}>{ICONS[s.icon]}{t(s.name)}</a></li>)}
-      </ul>
-      {sets.map((s) => (
-        <section className="s-section" id={s.slug} key={s.slug} aria-labelledby={`h-${s.slug}`}>
-          <h2 className="s-label" id={`h-${s.slug}`}>{ICONS[s.icon]} {t(s.name)} · {s.terms.length}</h2>
-          <dl className="g-glos">
-            {s.terms.map((x) => (
-              <div key={x.slug}>
-                <dt><Link to={to(glossaryPath(x.slug))}>{t(x.name)}</Link></dt>
-                <dd>
-                  <TermText text={termShort(x, lang)} self={x.slug} />
-                  <PostLinks posts={postsWithTerm(x.slug, lang)} shown={3} className="g-glos-posts" />
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </section>
+      <p className="s-lead">{termWord(total, lang)} · {groups.length} {t({ ru: 'разделов', en: 'sections' })} · {sets.length} {t({ ru: 'наборов', en: 'sets' })}</p>
+      <nav className="g-glos-groups" aria-label={t({ ru: 'Разделы глоссария', en: 'Glossary sections' })}>
+        {groups.map((gr) => (
+          <div className="g-glos-group" key={gr.id}>
+            <p className="g-glos-group-title"><a href={`#g-${gr.id}`}>{t(gr.name)}</a> <span>· {gr.sets.reduce((n, s) => n + s.terms.length, 0)}</span></p>
+            <ul className="s-chips g-glos-nav">
+              {gr.sets.map((s) => <li key={s.slug}><a className="s-chip" href={`#${s.slug}`}>{ICONS[s.icon]}{t(s.name)}</a></li>)}
+            </ul>
+          </div>
+        ))}
+      </nav>
+      {groups.map((gr) => (
+        <div className="g-glos-section" id={`g-${gr.id}`} key={gr.id}>
+          <h2 className="g-glos-group-head">{t(gr.name)}</h2>
+          {gr.sets.map((s) => (
+            <section className="s-section" id={s.slug} key={s.slug} aria-labelledby={`h-${s.slug}`}>
+              <h3 className="s-label" id={`h-${s.slug}`}>{ICONS[s.icon]} {t(s.name)} · {s.terms.length}</h3>
+              <p className="s-card-text g-glos-hint">{t(s.hint)}</p>
+              <dl className="g-glos">
+                {s.terms.map((x) => (
+                  <div key={x.slug}>
+                    <dt><Link to={to(glossaryPath(x.slug))}>{t(x.name)}</Link></dt>
+                    <dd>
+                      <TermText text={termShort(x, lang)} self={x.slug} />
+                      <PostLinks posts={postsWithTerm(x.slug, lang)} shown={3} className="g-glos-posts" />
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          ))}
+        </div>
       ))}
     </Page>
   )

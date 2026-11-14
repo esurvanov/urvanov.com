@@ -92,6 +92,8 @@ export interface TermSet {
   icon: 'all' | 'harness' | 'specs' | 'prompts' | 'links' | 'research' | 'code' | 'tests'
   name: L
   hint: L
+  /** Раздел глоссария: наборы одного раздела идут подряд и показываются под общим заголовком */
+  group: { id: string; name: L }
   terms: Term[]
 }
 
@@ -101,6 +103,7 @@ export const TERM_SETS: TermSet[] = [
     icon: 'all',
     name: { ru: 'Агенты и инструменты', en: 'Agents and tools' },
     hint: { ru: 'Кто выполняет работу и в чём', en: 'Who does the work and where' },
+    group: { id: 'ai', name: { ru: 'ИИ-агенты', en: 'AI agents' } },
     terms: [
       {
         slug: 'ai-agent',
@@ -449,6 +452,7 @@ export const TERM_SETS: TermSet[] = [
     icon: 'all',
     name: { ru: 'Агенты для программирования', en: 'Coding agents' },
     hint: { ru: 'Готовые агенты: где работают и на каких моделях', en: 'Ready-made agents: where they run and on which models' },
+    group: { id: 'ai', name: { ru: 'ИИ-агенты', en: 'AI agents' } },
     terms: [
       {
         slug: 'claude-code',
@@ -799,202 +803,11 @@ export const TERM_SETS: TermSet[] = [
     ],
   },
   {
-    slug: 'companies',
-    icon: 'research',
-    name: { ru: 'Компании', en: 'Companies' },
-    hint: { ru: 'Кто делает модели и агентов', en: 'Who builds the models and agents' },
-    terms: [
-      {
-        slug: 'anthropic',
-        name: { ru: 'Anthropic', en: 'Anthropic' },
-        def: {
-          ru: 'Anthropic — американская компания, которая делает семейство языковых моделей Claude: Opus, Sonnet, Haiku и Fable. Людям — приложения Claude, агент Cowork для работы с папкой на компьютере и расширение Claude in Chrome. Для кода — агент Claude Code. Разработчикам — API, Managed Agents (агенты в облаке Anthropic), Agent SDK и открытый протокол MCP, на котором агенты подключаются к внешним системам.',
-          en: 'Anthropic is a US company that builds the Claude family of language models: Opus, Sonnet, Haiku and Fable. For people: the Claude apps, the Cowork agent that works in a folder on your computer, and the Claude in Chrome extension. For code: the Claude Code agent. For developers: the API, Managed Agents (agents in Anthropic’s cloud), the Agent SDK and the open MCP protocol agents use to connect to outside systems.',
-        },
-        match: { ru: ['Anthropic'], en: ['Anthropic'] },
-        related: ['claude-code', 'mcp', 'llm'],
-        faq: [
-          { q: { ru: 'Что такое Anthropic?', en: 'What is Anthropic?' }, a: { ru: 'Американская компания, которая делает модели Claude: Opus, Sonnet, Haiku и Fable.', en: 'A US company that builds the Claude models: Opus, Sonnet, Haiku and Fable.' } },
-          { q: { ru: 'Какие продукты у Anthropic?', en: 'What products does Anthropic have?' }, a: { ru: 'Приложения Claude, агент Cowork, расширение Claude in Chrome, агент для кода Claude Code, а для разработчиков — API, Managed Agents, Agent SDK и протокол MCP.', en: 'The Claude apps, the Cowork agent, the Claude in Chrome extension, the Claude Code coding agent, and for developers the API, Managed Agents, Agent SDK and the MCP protocol.' } },
-        ],
-        source: { url: 'https://www.anthropic.com/', label: { ru: 'Официальный сайт Anthropic', en: 'Anthropic official site' } },
-      },
-      {
-        slug: 'openai',
-        name: { ru: 'OpenAI', en: 'OpenAI' },
-        def: {
-          ru: 'OpenAI — американская компания, которая делает семейство языковых моделей GPT. Людям — чат ChatGPT, на компьютере в одном приложении с Codex. Для кода — агент Codex. Разработчикам — API, Agents SDK, Apps SDK для приложений внутри ChatGPT и формат инструкций `AGENTS.md`, который читают и другие агенты.',
-          en: 'OpenAI is a US company that builds the GPT family of language models. For people: the ChatGPT chat, on desktop in one app with Codex. For code: the Codex agent. For developers: the API, the Agents SDK, the Apps SDK for apps inside ChatGPT and the `AGENTS.md` instruction format that other agents read too.',
-        },
-        match: { ru: ['OpenAI'], en: ['OpenAI'] },
-        related: ['codex', 'agents-md', 'llm'],
-        faq: [
-          { q: { ru: 'Что такое OpenAI?', en: 'What is OpenAI?' }, a: { ru: 'Американская компания, которая делает модели GPT, чат ChatGPT и агента для кода Codex.', en: 'A US company that builds the GPT models, the ChatGPT chat and the Codex coding agent.' } },
-          { q: { ru: 'Что OpenAI даёт разработчикам?', en: 'What does OpenAI offer developers?' }, a: { ru: 'API к моделям, Agents SDK для своих агентов, Apps SDK для приложений внутри ChatGPT и формат инструкций AGENTS.md.', en: 'An API to the models, the Agents SDK for your own agents, the Apps SDK for apps inside ChatGPT and the AGENTS.md instruction format.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/OpenAI', label: { ru: 'Википедия: OpenAI', en: 'Wikipedia: OpenAI' } },
-      },
-      {
-        slug: 'nous-research',
-        name: { ru: 'Nous Research', en: 'Nous Research' },
-        def: {
-          ru: 'Nous Research — американская исследовательская лаборатория, которая делает открытые языковые модели Hermes. Продукты: открытый агент Hermes Agent, который ставится на ваш сервер и работает с любой моделью, чат Nous Chat и Forge, который усиливает рассуждения модели. Инфраструктура: Psyche для распределённого обучения и Atropos, открытая среда для обучения с подкреплением.',
-          en: 'Nous Research is a US research lab that builds the open Hermes language models. Products: the open Hermes Agent, which you install on your own server and run with any model, the Nous Chat chat and Forge, which boosts a model’s reasoning. Infrastructure: Psyche for distributed training and Atropos, an open environment for reinforcement learning.',
-        },
-        match: { ru: ['Nous Research'], en: ['Nous Research'] },
-        related: ['hermes-agent', 'llm'],
-        faq: [
-          { q: { ru: 'Nous Research — что это?', en: 'What is Nous Research?' }, a: { ru: 'Американская исследовательская лаборатория, которая делает открытые языковые модели Hermes.', en: 'A US research lab that builds the open Hermes language models.' } },
-          { q: { ru: 'Какие продукты у Nous Research?', en: 'What products does Nous Research have?' }, a: { ru: 'Открытый агент Hermes Agent, чат Nous Chat, Forge для усиления рассуждений, а для обучения — Psyche и Atropos.', en: 'The open Hermes Agent, the Nous Chat app, Forge for stronger reasoning, and Psyche and Atropos for training.' } },
-        ],
-        source: { url: 'https://nousresearch.com/', label: { ru: 'Официальный сайт Nous Research', en: 'Nous Research official site' } },
-      },
-      {
-        // Продукты на октябрь 2026: редактор Cursor с агентом, свои модели Composer (Composer 2 — март 2026),
-        // ревьюер пулл-реквестов Bugbot, агент в терминале (CLI), облачные агенты, веб и мобильные агенты.
-        // Сделка со SpaceX объявлена 21.04.2026, закрыта 14.08.2026 (en.wikipedia.org/wiki/Cursor_(company))
-        slug: 'anysphere',
-        name: { ru: 'Anysphere', en: 'Anysphere' },
-        def: {
-          ru: 'Anysphere — американская компания, которая делает Cursor: редактор кода со встроенным агентом. Кроме редактора у неё свои модели для кода Composer, ревьюер пулл-реквестов Bugbot, агент для терминала и облачные агенты. С августа 2026 принадлежит SpaceX.',
-          en: 'Anysphere is the US company behind Cursor, a code editor with a built-in agent. Besides the editor it makes its own Composer coding models, the Bugbot pull-request reviewer, a terminal agent and cloud agents. Owned by SpaceX since August 2026.',
-        },
-        match: { ru: ['Anysphere'], en: ['Anysphere'] },
-        related: ['cursor', 'llm'],
-        faq: [
-          { q: { ru: 'Anysphere — что это за компания?', en: 'What is Anysphere?' }, a: { ru: 'Американская компания, которая делает редактор кода Cursor со встроенным агентом.', en: 'A US company that makes the Cursor code editor with a built-in agent.' } },
-          { q: { ru: 'Что ещё делает Anysphere кроме Cursor?', en: 'What else does Anysphere make besides Cursor?' }, a: { ru: 'Свои модели для кода Composer, ревьюер пулл-реквестов Bugbot, агента для терминала и облачных агентов.', en: 'Its own Composer coding models, the Bugbot pull request reviewer, a terminal agent and cloud agents.' } },
-        ],
-        source: { url: 'https://anysphere.inc/', label: { ru: 'Официальный сайт Anysphere', en: 'Anysphere official site' } },
-      },
-      {
-        slug: 'aws',
-        name: { ru: 'AWS', en: 'AWS' },
-        aka: { ru: 'Amazon Web Services, Амазон Веб Сервисес, облако Амазона', en: 'Amazon Web Services' },
-        def: {
-          ru: 'AWS (Amazon Web Services) — облачная платформа компании Amazon: вместо покупки своих серверов компании арендуют у неё вычислительную мощность, хранилище файлов, базы данных и сотни других сервисов и платят за то, что использовали, как за электричество. Платформа работает с 2006 года. Для разработчиков с ИИ у AWS есть среда Kiro, где агент работает по спецификациям, и сервис Amazon Bedrock для запуска языковых моделей.',
-          en: 'AWS (Amazon Web Services) is the cloud platform of Amazon: instead of buying their own servers, companies rent computing power, file storage, databases and hundreds of other services from it and pay for what they used, like electricity. The platform has run since 2006. For developers working with AI, AWS has Kiro, an environment where the agent works from specifications, and the Amazon Bedrock service for running language models.',
-        },
-        match: { ru: ['AWS', 'Amazon Web Services'], en: ['AWS', 'Amazon Web Services'] },
-        exact: 'AWS',
-        related: ['kiro', 'llm', 'microsoft'],
-        faq: [
-          { q: { ru: 'AWS — что это?', en: 'What is AWS?' }, a: { ru: 'Облачная платформа компании Amazon: аренда серверов, хранилищ, баз данных и других сервисов с оплатой за использование.', en: 'The cloud platform of Amazon: rented servers, storage, databases and other services paid for by use.' } },
-          { q: { ru: 'Что у AWS есть для работы с ИИ?', en: 'What does AWS offer for working with AI?' }, a: { ru: 'Среду Kiro с агентом, который работает по спецификациям, и сервис Amazon Bedrock, через который запускают языковые модели.', en: 'The Kiro environment with an agent that works from specifications, and the Amazon Bedrock service for running language models.' } },
-        ],
-        source: { url: 'https://aws.amazon.com/what-is-aws/', label: { ru: 'Официальная страница AWS: что такое AWS', en: 'AWS official page: what is AWS' } },
-      },
-      {
-        // На октябрь 2026: семейство V4 (V4 и V4-Pro — апрель, V4.1-Flash — сентябрь 2026), веса под MIT, чат-приложение и API
-        slug: 'deepseek',
-        name: { ru: 'DeepSeek', en: 'DeepSeek' },
-        def: {
-          ru: 'DeepSeek — китайская компания, которая делает языковые модели DeepSeek с открытыми весами: их можно скачать и запустить на своём сервере. Текущее поколение V4 держит в контексте до миллиона токенов. Людям — чат DeepSeek в браузере и на телефоне. Разработчикам — API. Модели DeepSeek подключают к открытым агентам вроде Hermes Agent.',
-          en: 'DeepSeek is a Chinese company that builds the DeepSeek language models with open weights: you can download them and run them on your own server. The current V4 generation holds up to a million tokens of context. For people: the DeepSeek chat on the web and mobile. For developers: the API. DeepSeek models plug into open agents such as Hermes Agent.',
-        },
-        match: { ru: ['DeepSeek', 'Дипсик\\p{L}*'], en: ['DeepSeek'] },
-        related: ['llm', 'hermes-agent', 'openai'],
-        faq: [
-          { q: { ru: 'DeepSeek — что это?', en: 'What is DeepSeek?' }, a: { ru: 'Китайская компания, которая делает языковые модели DeepSeek с открытыми весами: их можно скачать и запустить на своём сервере.', en: 'A Chinese company that builds the DeepSeek language models with open weights: you can download them and run them on your own server.' } },
-          { q: { ru: 'Сколько держит в контексте DeepSeek V4?', en: 'How much context does DeepSeek V4 hold?' }, a: { ru: 'До миллиона токенов.', en: 'Up to a million tokens.' } },
-        ],
-        source: { url: 'https://www.deepseek.com/', label: { ru: 'Официальный сайт DeepSeek', en: 'DeepSeek official site' } },
-      },
-      {
-        // На октябрь 2026: модели Alice AI (LLM, LLM Flash, ART), YandexGPT — прежняя линейка; AI Studio — конструктор агентов (>18 тыс. агентов);
-        // Алиса AI Про для бизнеса — сентябрь 2026 (cnews.ru); SourceCraft — платформа для кода с Code Assistant и CLI (yandex.cloud/ru/blog)
-        slug: 'yandex',
-        name: { ru: 'Яндекс', en: 'Yandex' },
-        def: {
-          ru: 'Яндекс — российская компания, которая делает языковые модели Alice AI, а раньше — линейку YandexGPT. Людям — ассистент Алиса в приложении, браузере и колонках: отвечает на вопросы и выполняет действия по просьбе. Компаниям — корпоративный агент Алиса AI Про и Yandex AI Studio, где из моделей Alice AI и открытых моделей собирают своих агентов. Для кода — платформа SourceCraft с агентом Code Assistant.',
-          en: 'Yandex is a Russian company that builds the Alice AI language models, and earlier the YandexGPT line. For people: the Alice assistant in an app, a browser and smart speakers that answers questions and acts on requests. For companies: the Alice AI Pro corporate agent and Yandex AI Studio, where teams build their own agents on Alice AI and open models. For code: the SourceCraft platform with the Code Assistant agent.',
-        },
-        match: { ru: ['YandexGPT', 'Алис[аеуы]', 'Яндекс\\p{L}*(?! \\p{Lu})'], en: ['YandexGPT', 'Yandex'] },
-        related: ['llm', 'ai-agent'],
-        faq: [
-          { q: { ru: 'Какие ИИ-продукты есть у Яндекса?', en: 'What AI products does Yandex have?' }, a: { ru: 'Модели Alice AI, ассистент Алиса для людей, корпоративный агент Алиса AI Про и Yandex AI Studio для компаний, а для кода — SourceCraft с агентом Code Assistant.', en: 'The Alice AI models, the Alice assistant for people, the Alice AI Pro corporate agent and Yandex AI Studio for companies, and SourceCraft with the Code Assistant agent for code.' } },
-          { q: { ru: 'Что было до Alice AI?', en: 'What came before Alice AI?' }, a: { ru: 'Линейка моделей YandexGPT.', en: 'The YandexGPT model line.' } },
-        ],
-        source: { url: 'https://yandex.com/company', label: { ru: 'Яндекс: о компании', en: 'Yandex company page' } },
-        seo: {
-          title: { ru: 'Yandex AI (ИИ Яндекса): Alice AI, AI Studio и SourceCraft — что есть у Яндекса для ИИ-агентов', en: 'Yandex AI: Alice AI models, AI Studio and SourceCraft Code Assistant' },
-          description: {
-            ru: 'Что такое ИИ Яндекса: модели Alice AI (раньше YandexGPT), ассистент Алиса, корпоративный агент Алиса AI Про, конструктор агентов Yandex AI Studio и SourceCraft с агентом Code Assistant для кода.',
-            en: 'What Yandex AI is: the Alice AI models (formerly YandexGPT), the Alice assistant, Alice AI Pro for business, Yandex AI Studio for building agents and SourceCraft Code Assistant for code.',
-          },
-        },
-      },
-      {
-        // Junie вышел из беты 17.06.2026 (blog.jetbrains.com/junie/2026/06/junie-coding-agent-out-of-beta); Mellum — открытая модель автодополнения
-        slug: 'jetbrains',
-        name: { ru: 'JetBrains', en: 'JetBrains' },
-        def: {
-          ru: 'JetBrains — компания, основанная в Праге в 2000 году: делает IDE IntelliJ IDEA, PyCharm, WebStorm и другие, а также язык Kotlin. Свой агент для кода Junie работает в IDE и в терминале; рядом в IDE встроены Claude Agent и Codex, а другие агенты подключаются через открытый протокол ACP. Автодополнение — на своей модели Mellum. Air — среда, где несколько агентов работают параллельно (предварительная версия).',
-          en: 'JetBrains is a company founded in Prague in 2000 that makes the IntelliJ IDEA, PyCharm, WebStorm and other IDEs, plus the Kotlin language. Its own coding agent Junie works in the IDE and the terminal; Claude Agent and Codex are built into the IDE next to it, and other agents connect through the open ACP protocol. Code completion runs on its own Mellum model. Air is a workspace where several agents run in parallel (preview).',
-        },
-        match: { ru: ['JetBrains'], en: ['JetBrains'] },
-        related: ['ide', 'vs-code', 'claude-code', 'github-copilot'],
-        faq: [
-          { q: { ru: 'JetBrains — что это за компания?', en: 'What is JetBrains?' }, a: { ru: 'Компания, основанная в Праге в 2000 году: делает IDE IntelliJ IDEA, PyCharm, WebStorm и другие, а также язык Kotlin.', en: 'A company founded in Prague in 2000: it makes the IntelliJ IDEA, PyCharm, WebStorm and other IDEs, and the Kotlin language.' } },
-          { q: { ru: 'Какие ИИ-агенты работают в IDE JetBrains?', en: 'Which AI agents work in JetBrains IDEs?' }, a: { ru: 'Свой агент Junie, встроенные Claude Agent и Codex, а другие агенты подключаются через открытый протокол ACP.', en: 'JetBrains’ own Junie agent, built-in Claude Agent and Codex, and other agents connect through the open ACP protocol.' } },
-        ],
-        source: { url: 'https://www.jetbrains.com/', label: { ru: 'Официальный сайт JetBrains', en: 'JetBrains official site' } },
-      },
-      {
-        // На октябрь 2026: Copilot в Windows и Microsoft 365, GitHub Copilot (агент для кода), свои модели MAI рядом с моделями партнёров
-        slug: 'microsoft',
-        name: { ru: 'Microsoft', en: 'Microsoft' },
-        def: {
-          ru: 'Microsoft — американская компания, которая делает ассистента Copilot: он встроен в Windows, Word, Excel, Outlook и Teams. Для разработчиков — редактор VS Code, GitHub Copilot с агентом для кода и приложение GitHub Copilot для нескольких агентов сразу. Компаниям — Copilot Studio и Foundry, чтобы строить своих агентов. Работает на своих моделях MAI и на моделях партнёров, в том числе OpenAI и Anthropic.',
-          en: 'Microsoft is a US company that makes the Copilot assistant, built into Windows, Word, Excel, Outlook and Teams. For developers: the VS Code editor, GitHub Copilot with a coding agent and the GitHub Copilot app for running several agents. For companies: Copilot Studio and Foundry to build their own agents. It runs on its own MAI models and on partner models, including OpenAI and Anthropic.',
-        },
-        match: { ru: ['Microsoft', 'Copilot'], en: ['Microsoft', 'Copilot'] },
-        related: ['vs-code', 'openai', 'anthropic', 'llm', 'visual-studio', 'github-copilot'],
-        faq: [
-          { q: { ru: 'Что Microsoft делает в ИИ?', en: 'What does Microsoft do in AI?' }, a: { ru: 'Ассистента Copilot, встроенного в Windows, Word, Excel, Outlook и Teams.', en: 'The Copilot assistant built into Windows, Word, Excel, Outlook and Teams.' } },
-          { q: { ru: 'Что Microsoft даёт разработчикам?', en: 'What does Microsoft offer developers?' }, a: { ru: 'Редактор VS Code, GitHub Copilot с агентом для кода и приложение GitHub Copilot.', en: 'The VS Code editor, GitHub Copilot with a coding agent and the GitHub Copilot app.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Microsoft', label: { ru: 'Википедия: Microsoft', en: 'Wikipedia: Microsoft' } },
-      },
-      {
-        slug: 'bing',
-        name: { ru: 'Bing', en: 'Bing' },
-        def: {
-          ru: 'Bing — поисковая система компании Microsoft. Рядом с обычной выдачей ссылок в ней работает ассистент Copilot: отвечает на вопрос текстом со ссылками на источники. Для владельцев сайтов у Bing свой кабинет, Bing Webmaster Tools: индексация страниц, запросы и показы в поиске.',
-          en: 'Bing — microsoft’s search engine. Next to the usual list of links it runs the Copilot assistant, which answers a question in text with links to sources. For site owners Bing has its own console, Bing Webmaster Tools: page indexing, queries and impressions in search.',
-        },
-        match: { ru: ['Bing'], en: ['Bing'] },
-        related: ['microsoft', 'yandex'],
-        faq: [
-          { q: { ru: 'Bing — что это?', en: 'What is Bing?' }, a: { ru: 'Поисковая система Microsoft. Рядом с выдачей ссылок в ней работает ассистент Copilot, который отвечает текстом со ссылками на источники.', en: 'Microsoft’s search engine. Next to the link results it runs the Copilot assistant, which answers with text and source links.' } },
-          { q: { ru: 'Где владельцу сайта смотреть Bing?', en: 'Where does a site owner check Bing?' }, a: { ru: 'В Bing Webmaster Tools — кабинете Bing для владельцев сайтов.', en: 'In Bing Webmaster Tools, Bing’s dashboard for site owners.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Microsoft_Bing', label: { ru: 'Википедия: Microsoft Bing', en: 'Wikipedia: Microsoft Bing' } },
-      },
-      {
-        // Rovo MCP Server — GA 04.02.2026 (developer.atlassian.com/cloud/rovo-mcp); агенты Rovo в Jira — февраль 2026
-        // 11.2026: в справке называется «Atlassian MCP server», раздел Atlassian AI Gateway (support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/)
-        slug: 'atlassian',
-        name: { ru: 'Atlassian', en: 'Atlassian' },
-        def: {
-          ru: 'Atlassian — австралийская компания, которая делает Jira, Confluence и Bitbucket — рабочие системы многих команд разработки. Свой ИИ называется Rovo: агенты Rovo берут задачи в Jira, а MCP-сервер Atlassian (раньше Rovo MCP Server) даёт внешним агентам вроде Claude Code и Cursor читать и менять данные Jira и Confluence.',
-          en: 'Atlassian is an Australian company that makes Jira, Confluence and Bitbucket, the work systems of many development teams. Its AI is called Rovo: Rovo agents take tasks in Jira, and the Atlassian MCP server (formerly Rovo MCP Server) lets outside agents such as Claude Code and Cursor read and change Jira and Confluence data.',
-        },
-        match: { ru: ['Atlassian'], en: ['Atlassian'] },
-        related: ['jira', 'confluence', 'mcp-server'],
-        faq: [
-          { q: { ru: 'Atlassian — что это за компания?', en: 'What is Atlassian?' }, a: { ru: 'Австралийская компания, которая делает Jira, Confluence и Bitbucket.', en: 'An Australian company that makes Jira, Confluence and Bitbucket.' } },
-          { q: { ru: 'Как зовут ИИ Atlassian?', en: 'What is Atlassian’s AI called?' }, a: { ru: 'Rovo: агенты Rovo берут задачи в Jira, а MCP-сервер Atlassian (раньше Rovo MCP Server) даёт внешним агентам доступ к данным Atlassian.', en: 'Rovo: Rovo agents take on tasks in Jira, and the Atlassian MCP server (formerly Rovo MCP Server) gives outside agents access to Atlassian data.' } },
-        ],
-        source: { url: 'https://www.atlassian.com/', label: { ru: 'Официальный сайт Atlassian', en: 'Atlassian official site' } },
-      },
-    ],
-  },
-  {
     slug: 'harness',
     icon: 'harness',
     name: { ru: 'Харнесс', en: 'Harness' },
     hint: { ru: 'Среда вокруг агента и её правила', en: 'The environment around an agent and its rules' },
+    group: { id: 'ai', name: { ru: 'ИИ-агенты', en: 'AI agents' } },
     terms: [
       {
         slug: 'harness',
@@ -1283,6 +1096,7 @@ export const TERM_SETS: TermSet[] = [
     icon: 'links',
     name: { ru: 'MCP и безопасность', en: 'MCP and safety' },
     hint: { ru: 'Как агент получает доступ к сервисам', en: 'How an agent gets access to services' },
+    group: { id: 'ai', name: { ru: 'ИИ-агенты', en: 'AI agents' } },
     terms: [
       {
         slug: 'mcp',
@@ -1456,10 +1270,532 @@ export const TERM_SETS: TermSet[] = [
     ],
   },
   {
+    slug: 'models',
+    icon: 'prompts',
+    name: { ru: 'Модель и промпты', en: 'Model and prompts' },
+    hint: { ru: 'Как модель читает запрос и ошибается', en: 'How a model reads a request and errs' },
+    group: { id: 'ai', name: { ru: 'ИИ-агенты', en: 'AI agents' } },
+    terms: [
+      {
+        slug: 'prompt',
+        name: { ru: 'Промпт', en: 'Prompt' },
+        def: {
+          ru: 'Промпт — запрос к модели: задача, контекст, формат ответа и ограничения. Чем точнее собраны эти части, тем меньше правок после первого ответа.',
+          en: 'A prompt is a request to a model: task, context, answer format and constraints. The more precisely these parts are put together, the fewer edits follow the first answer.',
+        },
+        match: { ru: ['промпт\\p{L}*'], en: ['prompts?'] },
+        related: ['context', 'token', 'hallucination'],
+        faq: [
+          { q: { ru: 'Промпт — что это?', en: 'What is a prompt?' }, a: { ru: 'Запрос к модели: задача, контекст, формат ответа и ограничения.', en: 'A request to a model: the task, context, answer format and constraints.' } },
+          { q: { ru: 'Как написать хороший промпт?', en: 'How do you write a good prompt?' }, a: { ru: 'Собрать все части точно: чем точнее задача, данные и формат, тем меньше правок после первого ответа.', en: 'Put all parts together precisely: the more exact the task, data and format, the fewer edits after the first answer.' } },
+        ],
+        source: { url: 'https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview', label: { ru: 'Anthropic: промпт-инжиниринг', en: 'Anthropic: Prompt engineering' } },
+      },
+      {
+        slug: 'source',
+        name: { ru: 'Источник', en: 'Source' },
+        def: {
+          ru: 'Источник — система или документ, где лежит исходный факт: заявка, таблица, запись встречи. Ответ агента надёжен настолько, насколько его можно сверить с источником, поэтому у каждого утверждения в ответе стоит ссылка на источник.',
+          en: 'A source is the system or document where the original fact lives: a ticket, a sheet, a meeting record. An agent’s answer is as reliable as it can be checked against its source, so every claim in the answer carries a link to its source.',
+        },
+        match: { ru: ['источник\\p{L}*'], en: ['sources?(?! code)'] },
+        related: ['epimorphism', 'hallucination', 'context'],
+        faq: [
+          { q: { ru: 'Источник — что это?', en: 'What is a source?' }, a: { ru: 'Система или документ, где лежит исходный факт: заявка, таблица, запись встречи.', en: 'The system or document that holds the original fact: a ticket, a table, a meeting recording.' } },
+          { q: { ru: 'Зачем ссылка на источник в ответе агента?', en: 'Why should an agent’s answer cite sources?' }, a: { ru: 'Ответ надёжен настолько, насколько его можно сверить с источником.', en: 'An answer is only as reliable as it can be checked against its source.' } },
+        ],
+      },
+      {
+        slug: 'hallucination',
+        name: { ru: 'Галлюцинация', en: 'Hallucination' },
+        aka: { ru: 'галлюцинации LLM, галлюцинации ИИ, галлюцинации нейросети', en: 'LLM hallucination, AI hallucination' },
+        def: {
+          ru: 'Галлюцинация LLM — уверенный, но выдуманный ответ большой языковой модели: несуществующий факт, функция или ссылка. В коде это, например, вызов несуществующей функции или установка пакета, которого нет. Появляется там, где у части ответа нет опоры в данных, и модель заполняет пустое место правдоподобной догадкой. Обратный случай, когда опора есть у каждой части ответа, называют эпиморфизмом. Снижают её данными из надёжных источников и проверкой результата.',
+          en: 'An LLM hallucination is a confident but invented answer from a model: a nonexistent fact, function or link. In code it is, for example, a call to a function that does not exist or installing a package that is not there. It appears where part of the answer has no support in the data, and the model fills the empty spot with a plausible guess. The opposite case, where every part of the answer has support, is called an epimorphism. It is reduced by grounding in reliable sources and by checking the result.',
+        },
+        match: { ru: ['галлюцинаци\\p{L}*', 'галлюцинир\\p{L}*'], en: ['hallucinat\\p{L}*'] },
+        related: ['epimorphism', 'source', 'prompt', 'llm', 'checks'],
+        faq: [
+          { q: { ru: 'Галлюцинация LLM — что это?', en: 'What is an LLM hallucination?' }, a: { ru: 'Уверенный, но выдуманный ответ модели: несуществующий факт, функция или ссылка.', en: 'A confident but made-up model answer: a fact, function or link that does not exist.' } },
+          { q: { ru: 'Почему возникают галлюцинации?', en: 'Why do hallucinations happen?' }, a: { ru: 'Там, где у части ответа нет опоры в данных, модель заполняет пустое место правдоподобной догадкой.', en: 'Where part of the answer has no support in the data, the model fills the gap with a plausible guess.' } },
+          { q: { ru: 'Как снизить галлюцинации?', en: 'How do you reduce hallucinations?' }, a: { ru: 'Давать модели данные из надёжных источников и проверять результат.', en: 'Give the model data from reliable sources and check the result.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)', label: { ru: 'Википедия: галлюцинации ИИ', en: 'Wikipedia: AI hallucination' } },
+        seo: {
+          title: { ru: 'Галлюцинации LLM: что это и примеры галлюцинаций ИИ — в коде, пакетах и ссылках', en: 'LLM hallucination: meaning, examples and grounding in sources' },
+          description: {
+            ru: 'Что такое галлюцинации больших языковых моделей (LLM) и примеры галлюцинаций ИИ в работе агента: выдуманная функция, несуществующий пакет, ссылка в никуда. Почему они возникают и как их снижают опорой на источники и проверками.',
+            en: 'What an LLM hallucination means, with examples from coding agents: an invented function, a nonexistent package, a dead link. Why it happens, how grounding in sources reduces it, and how checks detect it.',
+          },
+        },
+        notes: {
+          title: { ru: 'Примеры галлюцинаций и как их снижать', en: 'Hallucination examples and how to reduce them' },
+          items: [
+            { name: { ru: 'Выдуманная функция', en: 'An invented function' }, text: { ru: 'агент вызывает метод, которого нет в библиотеке, или параметр, которого нет у функции. Код выглядит правдоподобно и падает при запуске.', en: 'the agent calls a method the library does not have, or a parameter the function does not take. The code looks plausible and fails when run.' } },
+            { name: { ru: 'Несуществующий пакет', en: 'A nonexistent package' }, text: { ru: 'агент предлагает поставить пакет, которого нет в npm или PyPI. Модели часто повторяют одни и те же выдуманные имена, и злоумышленники регистрируют пакеты с такими именами, чтобы подсунуть свой код (slopsquatting).', en: 'the agent suggests installing a package that does not exist on npm or PyPI. Models often repeat the same invented names, and attackers register packages under them to slip in their code (slopsquatting).' } },
+            { name: { ru: 'Ссылка в никуда', en: 'A dead link' }, text: { ru: 'ссылка на статью, документацию или раздел, которых не существует.', en: 'a link to an article, doc or section that does not exist.' } },
+            { name: { ru: '«Готово», а изменений нет', en: '“Done” with no changes' }, text: { ru: 'агент отчитывается о сделанной работе, которой не было.', en: 'the agent reports work it did not do.' } },
+            { name: { ru: 'Как снижать', en: 'How to reduce it' }, text: { ru: 'дать модели источники и контекст и требовать ссылку на опору для каждого утверждения (это и есть эпиморфизм); в промпте разрешить ответ «не знаю».', en: 'ground the model: give it sources and context and require a supporting reference for each claim (that is an epimorphism); allow “I don’t know” in the prompt.' } },
+            { name: { ru: 'Как ловить', en: 'How to detect it' }, text: { ru: 'проверками: тесты, сборка и линтер ловят выдуманный код, установка из списка разрешённых пакетов — выдуманные пакеты, переход по ссылкам — выдуманные источники.', en: 'with checks: tests, builds and linters catch invented code, an allow-list of packages catches invented packages, following links catches invented sources.' } },
+          ],
+        },
+      },
+      {
+        slug: 'context',
+        name: { ru: 'Контекст', en: 'Context' },
+        def: {
+          ru: 'Контекст — всё, что модель видит в данный момент: диалог, файлы проекта и данные подключённых систем. Чего нет в контексте, того агент не знает.',
+          en: 'Context — everything the model sees at the moment: the conversation, project files and data from connected systems. What is not in context, the agent does not know.',
+        },
+        match: { ru: ['контекст\\p{L}*'], en: ['contexts?'] },
+        related: ['token', 'prompt', 'source', 'mcp'],
+        faq: [
+          { q: { ru: 'Что такое контекст в ИИ?', en: 'What is context in AI?' }, a: { ru: 'Всё, что модель видит в данный момент: диалог, файлы проекта и данные подключённых систем.', en: 'Everything the model sees at the moment: the conversation, project files and data from connected systems.' } },
+          { q: { ru: 'Почему агент не знает про мой проект?', en: 'Why doesn’t the agent know about my project?' }, a: { ru: 'Чего нет в контексте, того агент не знает. Постоянные знания о проекте кладут в файлы инструкций вроде AGENTS.md или CLAUDE.md.', en: 'What is not in the context, the agent does not know. Standing project knowledge goes into instruction files like AGENTS.md or CLAUDE.md.' } },
+        ],
+        source: { url: 'https://platform.claude.com/docs/en/build-with-claude/context-windows', label: { ru: 'Anthropic: контекстное окно', en: 'Anthropic: Context windows' } },
+        seo: {
+          title: { ru: 'Контекст в ИИ: что это, контекстное окно и почему агент не знает про ваш проект', en: 'AI context: what it is, the context window and why the agent forgets' },
+          description: {
+            ru: 'Контекст — всё, что модель видит в данный момент: диалог, файлы проекта, данные подключённых систем. Что такое контекстное окно, почему агент забывает проект и куда класть постоянные знания: AGENTS.md, CLAUDE.md, память.',
+            en: 'Context is everything a model sees right now: the conversation, project files, data from connected systems. What the context window is, why an agent forgets your project, and where standing knowledge goes: AGENTS.md, CLAUDE.md, memory.',
+          },
+        },
+      },
+      {
+        slug: 'token',
+        name: { ru: 'Токен', en: 'Token' },
+        def: {
+          ru: 'Токен — единица текста, которую считает LLM: примерно слог или короткое слово. От числа токенов зависят цена запроса и то, сколько поместится в контекст.',
+          en: 'A token is a unit of text an LLM counts: roughly a syllable or a short word. The token count sets the price of a request and how much fits into context.',
+        },
+        match: { ru: ['токен\\p{L}*'], en: ['tokens?'] },
+        related: ['context', 'llm', 'prompt'],
+        faq: [
+          { q: { ru: 'Что такое токен в ИИ?', en: 'What is a token in AI?' }, a: { ru: 'Единица текста, которую считает LLM: примерно слог или короткое слово.', en: 'A unit of text an LLM counts: roughly a syllable or a short word.' } },
+          { q: { ru: 'Почему важно число токенов?', en: 'Why does the token count matter?' }, a: { ru: 'От него зависят цена запроса и то, сколько поместится в контекст модели.', en: 'It sets the request price and how much fits into the model’s context.' } },
+        ],
+        source: { url: 'https://platform.claude.com/docs/en/build-with-claude/token-counting', label: { ru: 'Anthropic: подсчёт токенов', en: 'Anthropic: Token counting' } },
+      },
+      {
+        slug: 'epimorphism',
+        name: { ru: 'Эпиморфизм', en: 'Epimorphism' },
+        aka: { ru: 'соответствие без пустых мест', en: 'a matching with no empty spots' },
+        def: {
+          ru: 'Эпиморфизм — соответствие, при котором каждая часть результата получена из чего-то в источнике: непокрытых частей нет. Для ответа агента это значит, что у каждого утверждения есть опора в данных. Там, где опоры нет, остаётся пустое место, и модель заполняет его догадкой: так возникает галлюцинация.',
+          en: 'An epimorphism is a matching where every part of the result comes from something in the source: no part is left uncovered. For an agent’s answer it means every statement has support in the data. Where there is no support an empty spot remains, and the model fills it with a guess: that is how a hallucination arises.',
+        },
+        match: { ru: ['эпиморфизм\\p{L}*'], en: ['epimorphisms?'] },
+        related: ['hallucination', 'source', 'context'],
+        faq: [
+          { q: { ru: 'Эпиморфизм — что это простыми словами?', en: 'What is an epimorphism in plain words?' }, a: { ru: 'Соответствие, при котором каждая часть результата получена из чего-то в источнике: непокрытых частей нет.', en: 'A mapping where every part of the result comes from something in the source: no part is left uncovered.' } },
+          { q: { ru: 'Как эпиморфизм связан с галлюцинациями?', en: 'How does an epimorphism relate to hallucinations?' }, a: { ru: 'Если у каждого утверждения ответа есть опора в данных, галлюцинации нет. Там, где опоры нет, модель заполняет пустое место догадкой.', en: 'If every statement in the answer has support in the data, there is no hallucination. Where support is missing, the model fills the gap with a guess.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Epimorphism', label: { ru: 'Википедия: эпиморфизм', en: 'Wikipedia: Epimorphism' } },
+      },
+    ],
+  },
+  {
+    slug: 'companies',
+    icon: 'research',
+    name: { ru: 'Компании', en: 'Companies' },
+    hint: { ru: 'Кто делает модели и агентов', en: 'Who builds the models and agents' },
+    group: { id: 'ai', name: { ru: 'ИИ-агенты', en: 'AI agents' } },
+    terms: [
+      {
+        slug: 'anthropic',
+        name: { ru: 'Anthropic', en: 'Anthropic' },
+        def: {
+          ru: 'Anthropic — американская компания, которая делает семейство языковых моделей Claude: Opus, Sonnet, Haiku и Fable. Людям — приложения Claude, агент Cowork для работы с папкой на компьютере и расширение Claude in Chrome. Для кода — агент Claude Code. Разработчикам — API, Managed Agents (агенты в облаке Anthropic), Agent SDK и открытый протокол MCP, на котором агенты подключаются к внешним системам.',
+          en: 'Anthropic is a US company that builds the Claude family of language models: Opus, Sonnet, Haiku and Fable. For people: the Claude apps, the Cowork agent that works in a folder on your computer, and the Claude in Chrome extension. For code: the Claude Code agent. For developers: the API, Managed Agents (agents in Anthropic’s cloud), the Agent SDK and the open MCP protocol agents use to connect to outside systems.',
+        },
+        match: { ru: ['Anthropic'], en: ['Anthropic'] },
+        related: ['claude-code', 'mcp', 'llm'],
+        faq: [
+          { q: { ru: 'Что такое Anthropic?', en: 'What is Anthropic?' }, a: { ru: 'Американская компания, которая делает модели Claude: Opus, Sonnet, Haiku и Fable.', en: 'A US company that builds the Claude models: Opus, Sonnet, Haiku and Fable.' } },
+          { q: { ru: 'Какие продукты у Anthropic?', en: 'What products does Anthropic have?' }, a: { ru: 'Приложения Claude, агент Cowork, расширение Claude in Chrome, агент для кода Claude Code, а для разработчиков — API, Managed Agents, Agent SDK и протокол MCP.', en: 'The Claude apps, the Cowork agent, the Claude in Chrome extension, the Claude Code coding agent, and for developers the API, Managed Agents, Agent SDK and the MCP protocol.' } },
+        ],
+        source: { url: 'https://www.anthropic.com/', label: { ru: 'Официальный сайт Anthropic', en: 'Anthropic official site' } },
+      },
+      {
+        slug: 'openai',
+        name: { ru: 'OpenAI', en: 'OpenAI' },
+        def: {
+          ru: 'OpenAI — американская компания, которая делает семейство языковых моделей GPT. Людям — чат ChatGPT, на компьютере в одном приложении с Codex. Для кода — агент Codex. Разработчикам — API, Agents SDK, Apps SDK для приложений внутри ChatGPT и формат инструкций `AGENTS.md`, который читают и другие агенты.',
+          en: 'OpenAI is a US company that builds the GPT family of language models. For people: the ChatGPT chat, on desktop in one app with Codex. For code: the Codex agent. For developers: the API, the Agents SDK, the Apps SDK for apps inside ChatGPT and the `AGENTS.md` instruction format that other agents read too.',
+        },
+        match: { ru: ['OpenAI'], en: ['OpenAI'] },
+        related: ['codex', 'agents-md', 'llm'],
+        faq: [
+          { q: { ru: 'Что такое OpenAI?', en: 'What is OpenAI?' }, a: { ru: 'Американская компания, которая делает модели GPT, чат ChatGPT и агента для кода Codex.', en: 'A US company that builds the GPT models, the ChatGPT chat and the Codex coding agent.' } },
+          { q: { ru: 'Что OpenAI даёт разработчикам?', en: 'What does OpenAI offer developers?' }, a: { ru: 'API к моделям, Agents SDK для своих агентов, Apps SDK для приложений внутри ChatGPT и формат инструкций AGENTS.md.', en: 'An API to the models, the Agents SDK for your own agents, the Apps SDK for apps inside ChatGPT and the AGENTS.md instruction format.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/OpenAI', label: { ru: 'Википедия: OpenAI', en: 'Wikipedia: OpenAI' } },
+      },
+      {
+        slug: 'nous-research',
+        name: { ru: 'Nous Research', en: 'Nous Research' },
+        def: {
+          ru: 'Nous Research — американская исследовательская лаборатория, которая делает открытые языковые модели Hermes. Продукты: открытый агент Hermes Agent, который ставится на ваш сервер и работает с любой моделью, чат Nous Chat и Forge, который усиливает рассуждения модели. Инфраструктура: Psyche для распределённого обучения и Atropos, открытая среда для обучения с подкреплением.',
+          en: 'Nous Research is a US research lab that builds the open Hermes language models. Products: the open Hermes Agent, which you install on your own server and run with any model, the Nous Chat chat and Forge, which boosts a model’s reasoning. Infrastructure: Psyche for distributed training and Atropos, an open environment for reinforcement learning.',
+        },
+        match: { ru: ['Nous Research'], en: ['Nous Research'] },
+        related: ['hermes-agent', 'llm'],
+        faq: [
+          { q: { ru: 'Nous Research — что это?', en: 'What is Nous Research?' }, a: { ru: 'Американская исследовательская лаборатория, которая делает открытые языковые модели Hermes.', en: 'A US research lab that builds the open Hermes language models.' } },
+          { q: { ru: 'Какие продукты у Nous Research?', en: 'What products does Nous Research have?' }, a: { ru: 'Открытый агент Hermes Agent, чат Nous Chat, Forge для усиления рассуждений, а для обучения — Psyche и Atropos.', en: 'The open Hermes Agent, the Nous Chat app, Forge for stronger reasoning, and Psyche and Atropos for training.' } },
+        ],
+        source: { url: 'https://nousresearch.com/', label: { ru: 'Официальный сайт Nous Research', en: 'Nous Research official site' } },
+      },
+      {
+        // Продукты на октябрь 2026: редактор Cursor с агентом, свои модели Composer (Composer 2 — март 2026),
+        // ревьюер пулл-реквестов Bugbot, агент в терминале (CLI), облачные агенты, веб и мобильные агенты.
+        // Сделка со SpaceX объявлена 21.04.2026, закрыта 14.08.2026 (en.wikipedia.org/wiki/Cursor_(company))
+        slug: 'anysphere',
+        name: { ru: 'Anysphere', en: 'Anysphere' },
+        def: {
+          ru: 'Anysphere — американская компания, которая делает Cursor: редактор кода со встроенным агентом. Кроме редактора у неё свои модели для кода Composer, ревьюер пулл-реквестов Bugbot, агент для терминала и облачные агенты. С августа 2026 принадлежит SpaceX.',
+          en: 'Anysphere is the US company behind Cursor, a code editor with a built-in agent. Besides the editor it makes its own Composer coding models, the Bugbot pull-request reviewer, a terminal agent and cloud agents. Owned by SpaceX since August 2026.',
+        },
+        match: { ru: ['Anysphere'], en: ['Anysphere'] },
+        related: ['cursor', 'llm'],
+        faq: [
+          { q: { ru: 'Anysphere — что это за компания?', en: 'What is Anysphere?' }, a: { ru: 'Американская компания, которая делает редактор кода Cursor со встроенным агентом.', en: 'A US company that makes the Cursor code editor with a built-in agent.' } },
+          { q: { ru: 'Что ещё делает Anysphere кроме Cursor?', en: 'What else does Anysphere make besides Cursor?' }, a: { ru: 'Свои модели для кода Composer, ревьюер пулл-реквестов Bugbot, агента для терминала и облачных агентов.', en: 'Its own Composer coding models, the Bugbot pull request reviewer, a terminal agent and cloud agents.' } },
+        ],
+        source: { url: 'https://anysphere.inc/', label: { ru: 'Официальный сайт Anysphere', en: 'Anysphere official site' } },
+      },
+      {
+        slug: 'aws',
+        name: { ru: 'AWS', en: 'AWS' },
+        aka: { ru: 'Amazon Web Services, Амазон Веб Сервисес, облако Амазона', en: 'Amazon Web Services' },
+        def: {
+          ru: 'AWS (Amazon Web Services) — облачная платформа компании Amazon: вместо покупки своих серверов компании арендуют у неё вычислительную мощность, хранилище файлов, базы данных и сотни других сервисов и платят за то, что использовали, как за электричество. Платформа работает с 2006 года. Для разработчиков с ИИ у AWS есть среда Kiro, где агент работает по спецификациям, и сервис Amazon Bedrock для запуска языковых моделей.',
+          en: 'AWS (Amazon Web Services) is the cloud platform of Amazon: instead of buying their own servers, companies rent computing power, file storage, databases and hundreds of other services from it and pay for what they used, like electricity. The platform has run since 2006. For developers working with AI, AWS has Kiro, an environment where the agent works from specifications, and the Amazon Bedrock service for running language models.',
+        },
+        match: { ru: ['AWS', 'Amazon Web Services'], en: ['AWS', 'Amazon Web Services'] },
+        exact: 'AWS',
+        related: ['kiro', 'llm', 'microsoft'],
+        faq: [
+          { q: { ru: 'AWS — что это?', en: 'What is AWS?' }, a: { ru: 'Облачная платформа компании Amazon: аренда серверов, хранилищ, баз данных и других сервисов с оплатой за использование.', en: 'The cloud platform of Amazon: rented servers, storage, databases and other services paid for by use.' } },
+          { q: { ru: 'Что у AWS есть для работы с ИИ?', en: 'What does AWS offer for working with AI?' }, a: { ru: 'Среду Kiro с агентом, который работает по спецификациям, и сервис Amazon Bedrock, через который запускают языковые модели.', en: 'The Kiro environment with an agent that works from specifications, and the Amazon Bedrock service for running language models.' } },
+        ],
+        source: { url: 'https://aws.amazon.com/what-is-aws/', label: { ru: 'Официальная страница AWS: что такое AWS', en: 'AWS official page: what is AWS' } },
+      },
+      {
+        // На октябрь 2026: семейство V4 (V4 и V4-Pro — апрель, V4.1-Flash — сентябрь 2026), веса под MIT, чат-приложение и API
+        slug: 'deepseek',
+        name: { ru: 'DeepSeek', en: 'DeepSeek' },
+        def: {
+          ru: 'DeepSeek — китайская компания, которая делает языковые модели DeepSeek с открытыми весами: их можно скачать и запустить на своём сервере. Текущее поколение V4 держит в контексте до миллиона токенов. Людям — чат DeepSeek в браузере и на телефоне. Разработчикам — API. Модели DeepSeek подключают к открытым агентам вроде Hermes Agent.',
+          en: 'DeepSeek is a Chinese company that builds the DeepSeek language models with open weights: you can download them and run them on your own server. The current V4 generation holds up to a million tokens of context. For people: the DeepSeek chat on the web and mobile. For developers: the API. DeepSeek models plug into open agents such as Hermes Agent.',
+        },
+        match: { ru: ['DeepSeek', 'Дипсик\\p{L}*'], en: ['DeepSeek'] },
+        related: ['llm', 'hermes-agent', 'openai'],
+        faq: [
+          { q: { ru: 'DeepSeek — что это?', en: 'What is DeepSeek?' }, a: { ru: 'Китайская компания, которая делает языковые модели DeepSeek с открытыми весами: их можно скачать и запустить на своём сервере.', en: 'A Chinese company that builds the DeepSeek language models with open weights: you can download them and run them on your own server.' } },
+          { q: { ru: 'Сколько держит в контексте DeepSeek V4?', en: 'How much context does DeepSeek V4 hold?' }, a: { ru: 'До миллиона токенов.', en: 'Up to a million tokens.' } },
+        ],
+        source: { url: 'https://www.deepseek.com/', label: { ru: 'Официальный сайт DeepSeek', en: 'DeepSeek official site' } },
+      },
+      {
+        // На октябрь 2026: модели Alice AI (LLM, LLM Flash, ART), YandexGPT — прежняя линейка; AI Studio — конструктор агентов (>18 тыс. агентов);
+        // Алиса AI Про для бизнеса — сентябрь 2026 (cnews.ru); SourceCraft — платформа для кода с Code Assistant и CLI (yandex.cloud/ru/blog)
+        slug: 'yandex',
+        name: { ru: 'Яндекс', en: 'Yandex' },
+        def: {
+          ru: 'Яндекс — российская компания, которая делает языковые модели Alice AI, а раньше — линейку YandexGPT. Людям — ассистент Алиса в приложении, браузере и колонках: отвечает на вопросы и выполняет действия по просьбе. Компаниям — корпоративный агент Алиса AI Про и Yandex AI Studio, где из моделей Alice AI и открытых моделей собирают своих агентов. Для кода — платформа SourceCraft с агентом Code Assistant.',
+          en: 'Yandex is a Russian company that builds the Alice AI language models, and earlier the YandexGPT line. For people: the Alice assistant in an app, a browser and smart speakers that answers questions and acts on requests. For companies: the Alice AI Pro corporate agent and Yandex AI Studio, where teams build their own agents on Alice AI and open models. For code: the SourceCraft platform with the Code Assistant agent.',
+        },
+        match: { ru: ['YandexGPT', 'Алис[аеуы]', 'Яндекс\\p{L}*(?! \\p{Lu})'], en: ['YandexGPT', 'Yandex'] },
+        related: ['llm', 'ai-agent'],
+        faq: [
+          { q: { ru: 'Какие ИИ-продукты есть у Яндекса?', en: 'What AI products does Yandex have?' }, a: { ru: 'Модели Alice AI, ассистент Алиса для людей, корпоративный агент Алиса AI Про и Yandex AI Studio для компаний, а для кода — SourceCraft с агентом Code Assistant.', en: 'The Alice AI models, the Alice assistant for people, the Alice AI Pro corporate agent and Yandex AI Studio for companies, and SourceCraft with the Code Assistant agent for code.' } },
+          { q: { ru: 'Что было до Alice AI?', en: 'What came before Alice AI?' }, a: { ru: 'Линейка моделей YandexGPT.', en: 'The YandexGPT model line.' } },
+        ],
+        source: { url: 'https://yandex.com/company', label: { ru: 'Яндекс: о компании', en: 'Yandex company page' } },
+        seo: {
+          title: { ru: 'Yandex AI (ИИ Яндекса): Alice AI, AI Studio и SourceCraft — что есть у Яндекса для ИИ-агентов', en: 'Yandex AI: Alice AI models, AI Studio and SourceCraft Code Assistant' },
+          description: {
+            ru: 'Что такое ИИ Яндекса: модели Alice AI (раньше YandexGPT), ассистент Алиса, корпоративный агент Алиса AI Про, конструктор агентов Yandex AI Studio и SourceCraft с агентом Code Assistant для кода.',
+            en: 'What Yandex AI is: the Alice AI models (formerly YandexGPT), the Alice assistant, Alice AI Pro for business, Yandex AI Studio for building agents and SourceCraft Code Assistant for code.',
+          },
+        },
+      },
+      {
+        // Junie вышел из беты 17.06.2026 (blog.jetbrains.com/junie/2026/06/junie-coding-agent-out-of-beta); Mellum — открытая модель автодополнения
+        slug: 'jetbrains',
+        name: { ru: 'JetBrains', en: 'JetBrains' },
+        def: {
+          ru: 'JetBrains — компания, основанная в Праге в 2000 году: делает IDE IntelliJ IDEA, PyCharm, WebStorm и другие, а также язык Kotlin. Свой агент для кода Junie работает в IDE и в терминале; рядом в IDE встроены Claude Agent и Codex, а другие агенты подключаются через открытый протокол ACP. Автодополнение — на своей модели Mellum. Air — среда, где несколько агентов работают параллельно (предварительная версия).',
+          en: 'JetBrains is a company founded in Prague in 2000 that makes the IntelliJ IDEA, PyCharm, WebStorm and other IDEs, plus the Kotlin language. Its own coding agent Junie works in the IDE and the terminal; Claude Agent and Codex are built into the IDE next to it, and other agents connect through the open ACP protocol. Code completion runs on its own Mellum model. Air is a workspace where several agents run in parallel (preview).',
+        },
+        match: { ru: ['JetBrains'], en: ['JetBrains'] },
+        related: ['ide', 'vs-code', 'claude-code', 'github-copilot'],
+        faq: [
+          { q: { ru: 'JetBrains — что это за компания?', en: 'What is JetBrains?' }, a: { ru: 'Компания, основанная в Праге в 2000 году: делает IDE IntelliJ IDEA, PyCharm, WebStorm и другие, а также язык Kotlin.', en: 'A company founded in Prague in 2000: it makes the IntelliJ IDEA, PyCharm, WebStorm and other IDEs, and the Kotlin language.' } },
+          { q: { ru: 'Какие ИИ-агенты работают в IDE JetBrains?', en: 'Which AI agents work in JetBrains IDEs?' }, a: { ru: 'Свой агент Junie, встроенные Claude Agent и Codex, а другие агенты подключаются через открытый протокол ACP.', en: 'JetBrains’ own Junie agent, built-in Claude Agent and Codex, and other agents connect through the open ACP protocol.' } },
+        ],
+        source: { url: 'https://www.jetbrains.com/', label: { ru: 'Официальный сайт JetBrains', en: 'JetBrains official site' } },
+      },
+      {
+        // На октябрь 2026: Copilot в Windows и Microsoft 365, GitHub Copilot (агент для кода), свои модели MAI рядом с моделями партнёров
+        slug: 'microsoft',
+        name: { ru: 'Microsoft', en: 'Microsoft' },
+        def: {
+          ru: 'Microsoft — американская компания, которая делает ассистента Copilot: он встроен в Windows, Word, Excel, Outlook и Teams. Для разработчиков — редактор VS Code, GitHub Copilot с агентом для кода и приложение GitHub Copilot для нескольких агентов сразу. Компаниям — Copilot Studio и Foundry, чтобы строить своих агентов. Работает на своих моделях MAI и на моделях партнёров, в том числе OpenAI и Anthropic.',
+          en: 'Microsoft is a US company that makes the Copilot assistant, built into Windows, Word, Excel, Outlook and Teams. For developers: the VS Code editor, GitHub Copilot with a coding agent and the GitHub Copilot app for running several agents. For companies: Copilot Studio and Foundry to build their own agents. It runs on its own MAI models and on partner models, including OpenAI and Anthropic.',
+        },
+        match: { ru: ['Microsoft', 'Copilot'], en: ['Microsoft', 'Copilot'] },
+        related: ['vs-code', 'openai', 'anthropic', 'llm', 'visual-studio', 'github-copilot'],
+        faq: [
+          { q: { ru: 'Что Microsoft делает в ИИ?', en: 'What does Microsoft do in AI?' }, a: { ru: 'Ассистента Copilot, встроенного в Windows, Word, Excel, Outlook и Teams.', en: 'The Copilot assistant built into Windows, Word, Excel, Outlook and Teams.' } },
+          { q: { ru: 'Что Microsoft даёт разработчикам?', en: 'What does Microsoft offer developers?' }, a: { ru: 'Редактор VS Code, GitHub Copilot с агентом для кода и приложение GitHub Copilot.', en: 'The VS Code editor, GitHub Copilot with a coding agent and the GitHub Copilot app.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Microsoft', label: { ru: 'Википедия: Microsoft', en: 'Wikipedia: Microsoft' } },
+      },
+      {
+        slug: 'bing',
+        name: { ru: 'Bing', en: 'Bing' },
+        def: {
+          ru: 'Bing — поисковая система компании Microsoft. Рядом с обычной выдачей ссылок в ней работает ассистент Copilot: отвечает на вопрос текстом со ссылками на источники. Для владельцев сайтов у Bing свой кабинет, Bing Webmaster Tools: индексация страниц, запросы и показы в поиске.',
+          en: 'Bing — microsoft’s search engine. Next to the usual list of links it runs the Copilot assistant, which answers a question in text with links to sources. For site owners Bing has its own console, Bing Webmaster Tools: page indexing, queries and impressions in search.',
+        },
+        match: { ru: ['Bing'], en: ['Bing'] },
+        related: ['microsoft', 'yandex'],
+        faq: [
+          { q: { ru: 'Bing — что это?', en: 'What is Bing?' }, a: { ru: 'Поисковая система Microsoft. Рядом с выдачей ссылок в ней работает ассистент Copilot, который отвечает текстом со ссылками на источники.', en: 'Microsoft’s search engine. Next to the link results it runs the Copilot assistant, which answers with text and source links.' } },
+          { q: { ru: 'Где владельцу сайта смотреть Bing?', en: 'Where does a site owner check Bing?' }, a: { ru: 'В Bing Webmaster Tools — кабинете Bing для владельцев сайтов.', en: 'In Bing Webmaster Tools, Bing’s dashboard for site owners.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Microsoft_Bing', label: { ru: 'Википедия: Microsoft Bing', en: 'Wikipedia: Microsoft Bing' } },
+      },
+      {
+        // Rovo MCP Server — GA 04.02.2026 (developer.atlassian.com/cloud/rovo-mcp); агенты Rovo в Jira — февраль 2026
+        // 11.2026: в справке называется «Atlassian MCP server», раздел Atlassian AI Gateway (support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/)
+        slug: 'atlassian',
+        name: { ru: 'Atlassian', en: 'Atlassian' },
+        def: {
+          ru: 'Atlassian — австралийская компания, которая делает Jira, Confluence и Bitbucket — рабочие системы многих команд разработки. Свой ИИ называется Rovo: агенты Rovo берут задачи в Jira, а MCP-сервер Atlassian (раньше Rovo MCP Server) даёт внешним агентам вроде Claude Code и Cursor читать и менять данные Jira и Confluence.',
+          en: 'Atlassian is an Australian company that makes Jira, Confluence and Bitbucket, the work systems of many development teams. Its AI is called Rovo: Rovo agents take tasks in Jira, and the Atlassian MCP server (formerly Rovo MCP Server) lets outside agents such as Claude Code and Cursor read and change Jira and Confluence data.',
+        },
+        match: { ru: ['Atlassian'], en: ['Atlassian'] },
+        related: ['jira', 'confluence', 'mcp-server'],
+        faq: [
+          { q: { ru: 'Atlassian — что это за компания?', en: 'What is Atlassian?' }, a: { ru: 'Австралийская компания, которая делает Jira, Confluence и Bitbucket.', en: 'An Australian company that makes Jira, Confluence and Bitbucket.' } },
+          { q: { ru: 'Как зовут ИИ Atlassian?', en: 'What is Atlassian’s AI called?' }, a: { ru: 'Rovo: агенты Rovo берут задачи в Jira, а MCP-сервер Atlassian (раньше Rovo MCP Server) даёт внешним агентам доступ к данным Atlassian.', en: 'Rovo: Rovo agents take on tasks in Jira, and the Atlassian MCP server (formerly Rovo MCP Server) gives outside agents access to Atlassian data.' } },
+        ],
+        source: { url: 'https://www.atlassian.com/', label: { ru: 'Официальный сайт Atlassian', en: 'Atlassian official site' } },
+      },
+    ],
+  },
+  {
+    slug: 'languages',
+    icon: 'code',
+    name: { ru: 'Языки и платформы', en: 'Languages and platforms' },
+    hint: { ru: 'JavaScript, его надстройки, среды запуска и каркасы для сайтов', en: 'JavaScript, its extensions, runtimes and web frameworks' },
+    group: { id: 'dev', name: { ru: 'Разработка', en: 'Software development' } },
+    terms: [
+      {
+        slug: 'javascript',
+        name: { ru: 'JavaScript', en: 'JavaScript' },
+        aka: { ru: 'язык сайтов и многих программ', en: 'the language of websites and many programs' },
+        def: {
+          ru: 'JavaScript — язык программирования, на котором работают страницы сайтов в браузере: кнопки, формы и всё, что откликается на действия. Им же пишут программы на сервере, например в среде Node.js. Тесты для такого кода запускают движки вроде Jest, Vitest и QUnit.',
+          en: 'JavaScript is a programming language that makes web pages work in the browser: buttons, forms and everything that reacts to actions. It is also used for server programs, for example in Node.js. Tests for such code are run by engines such as Jest, Vitest and QUnit.',
+        },
+        match: { ru: ['JavaScript'], en: ['JavaScript'] },
+        related: ['automated-test', 'node-js', 'jest', 'vitest', 'qunit'],
+        faq: [
+          { q: { ru: 'JavaScript — что это?', en: 'What is JavaScript?' }, a: { ru: 'Язык программирования, на котором работают страницы сайтов в браузере: кнопки, формы и всё, что откликается на действия.', en: 'The programming language that runs web pages in the browser: buttons, forms and everything that reacts to actions.' } },
+          { q: { ru: 'Где ещё работает JavaScript?', en: 'Where else does JavaScript run?' }, a: { ru: 'На сервере, например в среде Node.js.', en: 'On the server, for example in Node.js.' } },
+        ],
+        source: { url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', label: { ru: 'MDN: JavaScript', en: 'MDN: JavaScript' } },
+      },
+      {
+        slug: 'typescript',
+        name: { ru: 'TypeScript', en: 'TypeScript' },
+        aka: { ru: 'JavaScript с типами', en: 'JavaScript with types' },
+        def: {
+          ru: 'TypeScript — надстройка над JavaScript, в которой у значений указывают тип: число, строка и так далее. Благодаря этому ошибки вроде «вместо числа передали строку» находятся до запуска программы, а не у пользователя. Готовую программу переводят в обычный JavaScript.',
+          en: 'TypeScript is an extension of JavaScript in which values are given a type: number, string and so on. Thanks to this, errors like “a string was passed instead of a number” are found before the program runs, not at the user’s. The finished program is turned into ordinary JavaScript.',
+        },
+        match: { ru: ['TypeScript'], en: ['TypeScript'] },
+        related: ['javascript', 'babel', 'jest'],
+        faq: [
+          { q: { ru: 'TypeScript — что это?', en: 'What is TypeScript?' }, a: { ru: 'Надстройка над JavaScript, в которой у значений указывают тип: число, строка и так далее.', en: 'A layer over JavaScript where values have declared types: number, string and so on.' } },
+          { q: { ru: 'Зачем TypeScript?', en: 'Why use TypeScript?' }, a: { ru: 'Ошибки вроде «вместо числа передали строку» находятся до запуска программы, а не у пользователя.', en: 'Mistakes like passing a string instead of a number are caught before the program runs, before a user sees them.' } },
+        ],
+        source: { url: 'https://www.typescriptlang.org/', label: { ru: 'typescriptlang.org — сайт TypeScript', en: 'typescriptlang.org, the TypeScript site' } },
+      },
+      {
+        slug: 'babel',
+        name: { ru: 'Babel', en: 'Babel' },
+        aka: { ru: 'переводчик нового JavaScript', en: 'a translator of new JavaScript' },
+        def: {
+          ru: 'Babel — программа, которая переводит новый JavaScript в такой, который понимают более старые браузеры и среды. Можно писать современным языком, а запускать там, где его ещё не знают. Тесты в Jest работают и с проектами, которые собираются через Babel.',
+          en: 'Babel is a program that turns new JavaScript into one that older browsers and environments understand. You can write in the modern language and run it where it is not yet known. Jest tests work with projects that are built through Babel too.',
+        },
+        match: { ru: ['Babel'], en: ['Babel'] },
+        related: ['javascript', 'typescript', 'jest'],
+        faq: [
+          { q: { ru: 'Babel — что это?', en: 'What is Babel?' }, a: { ru: 'Программа, которая переводит новый JavaScript в такой, который понимают более старые браузеры и среды.', en: 'A program that translates new JavaScript into code older browsers and environments understand.' } },
+          { q: { ru: 'Зачем Babel?', en: 'Why use Babel?' }, a: { ru: 'Чтобы писать современным языком и запускать код там, где его ещё не знают.', en: 'To write in the modern language and run the code where it is not yet supported.' } },
+        ],
+        source: { url: 'https://babeljs.io/', label: { ru: 'babeljs.io — сайт Babel', en: 'babeljs.io, the Babel site' } },
+      },
+      {
+        slug: 'node-js',
+        name: { ru: 'Node.js', en: 'Node.js' },
+        aka: { ru: 'JavaScript вне браузера', en: 'JavaScript outside the browser' },
+        def: {
+          ru: 'Node.js — программа, которая запускает JavaScript вне браузера: на сервере, в командной строке и в скриптах. Без неё код на JavaScript работал бы только внутри страницы сайта. Благодаря Node.js на одном языке пишут и сайт, и серверную часть, и программы для разработчика. Тесты на Jest, Vitest и QUnit чаще всего тоже запускают в Node.js, а сборщик Vite сам работает на нём.',
+          en: 'Node.js is a program that runs JavaScript outside the browser: on a server, on the command line and in scripts. Without it, JavaScript code would only work inside a web page. Thanks to Node.js one language is used for the site, the server side and developer programs. Tests with Jest, Vitest and QUnit are most often run in Node.js too, and the Vite bundler itself runs on it.',
+        },
+        match: { ru: ['Node\\.js'], en: ['Node\\.js'] },
+        related: ['javascript', 'vite', 'jest', 'vitest', 'qunit'],
+        faq: [
+          { q: { ru: 'Node.js — что это?', en: 'What is Node.js?' }, a: { ru: 'Программа, которая запускает JavaScript вне браузера: на сервере, в командной строке и в скриптах.', en: 'A program that runs JavaScript outside the browser: on the server, on the command line and in scripts.' } },
+          { q: { ru: 'Зачем нужен Node.js?', en: 'Why is Node.js needed?' }, a: { ru: 'Благодаря ему на одном языке пишут и сайт, и сервер.', en: 'It lets one language serve both the website and the server.' } },
+        ],
+        source: { url: 'https://nodejs.org/', label: { ru: 'nodejs.org — сайт Node.js', en: 'nodejs.org, the Node.js site' } },
+      },
+      {
+        slug: 'vite',
+        name: { ru: 'Vite', en: 'Vite' },
+        aka: { ru: 'сборщик для сайтов', en: 'a bundler for web apps' },
+        def: {
+          ru: 'Vite — программа, которая собирает код сайта и в процессе работы мгновенно показывает правки в браузере. Его настройки описывают, как собирать проект. Vitest берёт эти же настройки для тестов, поэтому отдельная конфигурация для тестов не нужна.',
+          en: 'Vite is a program that builds the code of a website and instantly shows edits in the browser while you work. Its settings describe how to build the project. Vitest reuses these same settings for tests, so no separate test configuration is needed.',
+        },
+        match: { ru: ['Vite'], en: ['Vite'] },
+        related: ['vitest', 'javascript', 'node-js'],
+        faq: [
+          { q: { ru: 'Vite — что это?', en: 'What is Vite?' }, a: { ru: 'Программа, которая собирает код сайта и в процессе работы мгновенно показывает правки в браузере.', en: 'A program that builds a site’s code and shows edits in the browser instantly while you work.' } },
+          { q: { ru: 'Как Vite связан с Vitest?', en: 'How is Vite related to Vitest?' }, a: { ru: 'Vitest берёт настройки Vite для тестов, поэтому отдельная настройка тестов не нужна.', en: 'Vitest reuses Vite’s settings for tests, so no separate test configuration is needed.' } },
+        ],
+        source: { url: 'https://vite.dev/', label: { ru: 'vite.dev — сайт Vite', en: 'vite.dev, the Vite site' } },
+      },
+      {
+        slug: 'react-js',
+        name: { ru: 'React', en: 'React' },
+        aka: { ru: 'библиотека для сайтов, не путать с ReAct', en: 'a web library, not to be confused with ReAct' },
+        def: {
+          ru: 'React — библиотека на JavaScript для построения страниц сайтов: страница собирается из готовых блоков-компонентов, и при изменении данных обновляются только нужные блоки. Одна из самых распространённых наряду с Angular и Vue. К схеме работы агента ReAct отношения не имеет, у них только похожие названия.',
+          en: 'React is a JavaScript library for building web pages: a page is assembled from ready-made blocks called components, and when data changes only the needed blocks are updated. One of the most widespread along with Angular and Vue. It has nothing to do with the ReAct agent scheme: only the names are similar.',
+        },
+        match: { ru: ['React'], en: ['React'] },
+        exact: 'React',
+        related: ['javascript', 'angular', 'vue', 'react'],
+        faq: [
+          { q: { ru: 'React — что это?', en: 'What is React?' }, a: { ru: 'Библиотека на JavaScript для построения страниц сайтов: страница собирается из блоков-компонентов.', en: 'A JavaScript library for building web pages: a page is assembled from component blocks.' } },
+          { q: { ru: 'Чем React отличается от ReAct?', en: 'How is React different from ReAct?' }, a: { ru: 'React — библиотека для страниц сайтов, ReAct — схема работы ИИ-агента. Совпадает только написание.', en: 'React is a library for web pages, ReAct is an AI agent pattern. Only the spelling is similar.' } },
+        ],
+        source: { url: 'https://react.dev/', label: { ru: 'react.dev — сайт React', en: 'react.dev, the React site' } },
+      },
+      {
+        slug: 'angular',
+        name: { ru: 'Angular', en: 'Angular' },
+        aka: { ru: 'каркас для сайтов', en: 'a web framework' },
+        def: {
+          ru: 'Angular — каркас для построения сайтов и веб-приложений на JavaScript и TypeScript: страница собирается из готовых блоков-компонентов. Один из самых распространённых наряду с React и Vue.',
+          en: 'Angular is a framework for building websites and web apps in JavaScript and TypeScript: a page is assembled from ready-made blocks called components. One of the most widespread along with React and Vue.',
+        },
+        match: { ru: ['Angular'], en: ['Angular'] },
+        related: ['javascript', 'typescript', 'react-js', 'vue'],
+        faq: [
+          { q: { ru: 'Angular — что это?', en: 'What is Angular?' }, a: { ru: 'Каркас для построения сайтов и веб-приложений на JavaScript и TypeScript: страница собирается из блоков-компонентов.', en: 'A framework for building websites and web apps in JavaScript and TypeScript: a page is assembled from component blocks.' } },
+          { q: { ru: 'Чем Angular отличается от React и Vue?', en: 'How is Angular different from React and Vue?' }, a: { ru: 'Все три собирают страницу из компонентов и входят в число самых распространённых. Angular — полный каркас, React — библиотека.', en: 'All three build a page from components and are among the most widely used. Angular is a full framework, React is a library.' } },
+        ],
+        source: { url: 'https://angular.dev/', label: { ru: 'angular.dev — сайт Angular', en: 'angular.dev, the Angular site' } },
+      },
+      {
+        slug: 'vue',
+        name: { ru: 'Vue', en: 'Vue' },
+        aka: { ru: 'каркас для сайтов', en: 'a web framework' },
+        def: {
+          ru: 'Vue — каркас для построения сайтов на JavaScript: страница собирается из блоков-компонентов, и его можно подключать к проекту постепенно. Один из самых распространённых наряду с Angular и React.',
+          en: 'Vue is a framework for building websites in JavaScript: a page is assembled from blocks called components, and it can be adopted in a project gradually. One of the most widespread along with Angular and React.',
+        },
+        match: { ru: ['Vue(?:\\.js)?'], en: ['Vue(?:\\.js)?'] },
+        related: ['javascript', 'react-js', 'angular', 'typescript'],
+        faq: [
+          { q: { ru: 'Vue — что это?', en: 'What is Vue?' }, a: { ru: 'Каркас для построения сайтов на JavaScript: страница собирается из блоков-компонентов.', en: 'A JavaScript framework for building websites: a page is assembled from component blocks.' } },
+          { q: { ru: 'Чем Vue удобен?', en: 'What makes Vue convenient?' }, a: { ru: 'Его можно подключать к проекту постепенно.', en: 'It can be added to a project gradually.' } },
+        ],
+        source: { url: 'https://vuejs.org/', label: { ru: 'vuejs.org — сайт Vue', en: 'vuejs.org, the Vue site' } },
+      },
+      {
+        slug: 'python',
+        name: { ru: 'Python', en: 'Python' },
+        aka: { ru: 'язык программирования', en: 'programming language' },
+        def: {
+          ru: 'Python — язык программирования общего назначения с простым синтаксисом, один из самых распространённых для данных, автоматизации и серверной части. В его стандартную библиотеку входит много готовых модулей, в том числе unittest для тестов и unittest.mock для моков.',
+          en: 'Python is a general-purpose programming language with a simple syntax, one of the most widespread for data, automation and server code. Its standard library includes many ready-made modules, among them unittest for tests and unittest.mock for mocks.',
+        },
+        exact: 'Python',
+        match: { ru: ['Python'], en: ['Python'] },
+        related: ['unit-test', 'mock', 'javascript', 'sql'],
+        faq: [
+          { q: { ru: 'Python — что это?', en: 'What is Python?' }, a: { ru: 'Язык программирования общего назначения с простым синтаксисом.', en: 'A general-purpose programming language with a simple syntax.' } },
+          { q: { ru: 'Какие средства для тестов есть в Python?', en: 'What testing tools does Python have?' }, a: { ru: 'В стандартной библиотеке есть модуль unittest для тестов и unittest.mock для моков, а ещё популярна сторонняя библиотека pytest.', en: 'The standard library has the unittest module for tests and unittest.mock for mocks, and the third-party pytest library is also popular.' } },
+        ],
+        source: { url: 'https://www.python.org/', label: { ru: 'Официальный сайт Python', en: 'Python official site' } },
+      },
+      {
+        slug: 'sql',
+        name: { ru: 'SQL', en: 'SQL' },
+        def: {
+          ru: 'SQL — декларативный язык запросов к реляционным базам данных. Запрос говорит, какие данные нужны: «брони комнаты 5 на завтра», а как их достать — по индексу или перебором — выбирает сама база. Ограничения CHECK, UNIQUE и EXCLUDE задают правила, которые база держит при каждой записи, поэтому они проверяются по тексту схемы.',
+          en: 'SQL is a declarative language for querying relational databases. A query says which data is needed, “room 5 bookings for tomorrow”, and the database itself decides how to fetch it, by index or by scanning. CHECK, UNIQUE and EXCLUDE constraints set rules the database enforces on every write, so they can be checked from the schema text.',
+        },
+        match: { ru: ['SQL'], en: ['SQL'] },
+        related: ['declarative', 'invariant'],
+        faq: [
+          { q: { ru: 'SQL — что это?', en: 'What is SQL?' }, a: { ru: 'Декларативный язык запросов к реляционным базам данных: запрос говорит, какие данные нужны, а как их достать, выбирает база.', en: 'A declarative query language for relational databases: a query says which data is needed, and the database chooses how to get it.' } },
+          { q: { ru: 'Как SQL помогает проверять правила?', en: 'How does SQL help enforce rules?' }, a: { ru: 'Ограничения CHECK, UNIQUE и EXCLUDE записывают правила о данных прямо в базе, и база не даст их нарушить.', en: 'CHECK, UNIQUE and EXCLUDE constraints write data rules directly into the database, and the database will not let them be broken.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/SQL', label: { ru: 'Википедия: SQL', en: 'Wikipedia: SQL' } },
+      },
+      {
+        slug: 'prolog',
+        name: { ru: 'Prolog', en: 'Prolog' },
+        aka: { ru: 'язык логического программирования', en: 'a logic programming language' },
+        def: {
+          ru: 'Prolog — язык, в котором программа — это факты и правила вывода, а движок сам ищет ответ на вопрос. Факты: «бронь б1 — комната 2, с 10 до 11». Правило: «две брони пересекаются, если комната одна и время накладывается». Вопрос: «с какими бронями пересекается б1?». Создан в 1972 году во Франции. На Prolog можно написать любую программу, в том числе ту, что никогда не закончится, поэтому на него действует теорема Райса.',
+          en: 'Prolog is a language in which a program is facts and inference rules, and an engine finds the answer to a question by itself. Facts: “booking b1 is room 2, from 10 to 11”. A rule: “two bookings overlap if the room is the same and the times overlap”. A question: “which bookings overlap b1?”. Created in 1972 in France. Any program can be written in Prolog, including one that never finishes, so Rice’s theorem applies to it.',
+        },
+        match: { ru: ['Prolog'], en: ['Prolog'] },
+        related: ['datalog', 'declarative', 'rice-theorem'],
+        faq: [
+          { q: { ru: 'Prolog — что это за язык?', en: 'What is the Prolog language?' }, a: { ru: 'Язык, в котором программа — это факты и правила вывода, а движок сам ищет ответ на вопрос.', en: 'A language where a program is facts and inference rules, and an engine finds the answer to a question itself.' } },
+          { q: { ru: 'Чем Prolog отличается от Datalog?', en: 'How is Prolog different from Datalog?' }, a: { ru: 'Datalog — урезанный Prolog без возможностей, из-за которых программа может работать вечно, поэтому любой его запрос к конечным данным заканчивается.', en: 'Datalog is a trimmed Prolog without the features that let a program run forever, so any of its queries over finite data finishes.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Prolog', label: { ru: 'Википедия: Prolog', en: 'Wikipedia: Prolog' } },
+      },
+      {
+        slug: 'datalog',
+        name: { ru: 'Datalog', en: 'Datalog' },
+        aka: { ru: 'узкий Prolog для баз данных', en: 'a narrow Prolog for databases' },
+        def: {
+          ru: 'Datalog — урезанный Prolog для запросов к данным: те же факты и правила вывода, но без возможностей, из-за которых программа может работать вечно. Поэтому любой запрос на Datalog к конечным данным гарантированно заканчивается и даёт точный ответ. Это пример узкого языка: им нельзя написать любую программу, зато про его программы можно отвечать точно. Datalog-подобные языки используют в анализе кода и в правилах доступа.',
+          en: 'Datalog is a cut-down Prolog for querying data: the same facts and inference rules, but without the features that let a program run forever. So any Datalog query over finite data is guaranteed to finish and give an exact answer. It is an example of a narrow language: you can’t write any program in it, but you can answer exactly about its programs. Datalog-like languages are used in code analysis and access rules.',
+        },
+        match: { ru: ['Datalog'], en: ['Datalog'] },
+        related: ['prolog', 'declarative', 'rice-theorem'],
+        faq: [
+          { q: { ru: 'Datalog — что это?', en: 'What is Datalog?' }, a: { ru: 'Урезанный Prolog для запросов к данным: те же факты и правила вывода.', en: 'A trimmed Prolog for querying data: the same facts and inference rules.' } },
+          { q: { ru: 'Почему запрос на Datalog всегда заканчивается?', en: 'Why does a Datalog query always finish?' }, a: { ru: 'Из языка убраны возможности, из-за которых программа может работать вечно.', en: 'The language drops the features that would let a program run forever.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Datalog', label: { ru: 'Википедия: Datalog', en: 'Wikipedia: Datalog' } },
+      },
+    ],
+  },
+  {
     slug: 'systems',
     icon: 'links',
     name: { ru: 'Системы и сервисы', en: 'Systems and services' },
     hint: { ru: 'К чему подключают агента', en: 'What an agent is connected to' },
+    group: { id: 'dev', name: { ru: 'Разработка', en: 'Software development' } },
     terms: [
       {
         slug: 'jira',
@@ -1542,8 +1878,9 @@ export const TERM_SETS: TermSet[] = [
   {
     slug: 'specs',
     icon: 'specs',
-    name: { ru: 'Спеки и архитектура', en: 'Specs and architecture' },
-    hint: { ru: 'Как описывать, что должен делать код', en: 'How to describe what the code must do' },
+    name: { ru: 'Спеки и требования', en: 'Specs and requirements' },
+    hint: { ru: 'Как описывать, что должен делать код, и работать по этому описанию', en: 'How to describe what the code must do and work from that description' },
+    group: { id: 'dev', name: { ru: 'Разработка', en: 'Software development' } },
     terms: [
       {
         slug: 'harness-engineering',
@@ -1687,6 +2024,127 @@ export const TERM_SETS: TermSet[] = [
         source: { url: 'https://www.rfc-editor.org/rfc/rfc2119', label: { ru: 'RFC 2119 — текст стандарта', en: 'RFC 2119, the standard text' } },
       },
       {
+        slug: 'imperative',
+        name: { ru: 'Императивный подход', en: 'Imperative approach' },
+        aka: { ru: 'как: шаги', en: 'how: steps' },
+        def: {
+          ru: 'Императивный подход — стиль записи программы, где по шагам расписано, как прийти к результату: найти брони комнаты, сравнить интервалы, записать новую. Правило о результате в таком коде нигде не записано целиком, оно складывается из шагов, поэтому проверять его приходится по поведению.',
+          en: 'An imperative approach is a style of writing a program where the steps to reach a result are spelled out: find the room’s bookings, compare intervals, save the new one. A rule about the result is not written anywhere in full in such code; it emerges from the steps, so it has to be checked against behaviour.',
+        },
+        match: { ru: ['императивн\\p{L}* (?:подход|стил|язык|программирован|код)\\p{L}*', 'императивн\\p{L}*(?= и декларативн)'], en: ['imperative (?:approach|style|programming|code|languages?)', 'imperative(?= and declarative)'] },
+        related: ['declarative', 'rice-theorem', 'invariant'],
+        faq: [
+          { q: { ru: 'Императивный подход — что это?', en: 'What is the imperative approach?' }, a: { ru: 'Стиль записи программы, где по шагам расписано, как прийти к результату.', en: 'A style of writing a program that spells out step by step how to reach the result.' } },
+          { q: { ru: 'Чем императивный подход отличается от декларативного?', en: 'How is the imperative approach different from the declarative one?' }, a: { ru: 'Императивный код описывает шаги, а правило о результате складывается из них. Декларативный описывает, что должно быть верно, а шаги выбирает движок.', en: 'Imperative code describes the steps, and the rule about the result emerges from them. Declarative code describes what must hold, and an engine picks the steps.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Imperative_programming', label: { ru: 'Википедия: императивное программирование', en: 'Wikipedia: Imperative programming' } },
+      },
+      {
+        slug: 'declarative',
+        name: { ru: 'Декларативный подход', en: 'Declarative approach' },
+        aka: { ru: 'что: правила и ограничения', en: 'what: rules and constraints' },
+        def: {
+          ru: 'Декларативный подход — стиль записи, где программа — система правил и ограничений, описывающих нужный результат, без порядка шагов: сказано, что должно быть верно, а как этого добиться, решает движок. Так устроены ограничения и запросы в базе данных, правила вывода, описание желаемого состояния системы. Пример: «брони одной комнаты не пересекаются», «бронь не дольше 4 часов» в виде ограничений в базе. Простые декларативные записи проверяются по тексту точно, потому что их поведение видно из самой записи. На мощном декларативном языке это уже не так, и теорема Райса задевает его так же, как императивный код.',
+          en: 'A style of writing where a program is a system of rules and constraints describing the desired result, with no order of steps: it states what must hold, and an engine decides how to get there. Database constraints and queries, inference rules and descriptions of a system’s desired state work this way. Example: “bookings of one room never overlap” and “a booking lasts at most 4 hours” as database constraints. Simple declarative notations can be checked exactly from the text, because their behaviour is visible in the statement itself. In a powerful declarative language this no longer holds, and Rice’s theorem hits it just like imperative code.',
+        },
+        match: { ru: ['декларативн\\p{L}* (?:подход|стил|язык|запис|программирован)\\p{L}*'], en: ['declarative (?:approach|style|programming|notations?|languages?)'] },
+        related: ['imperative', 'rice-theorem', 'invariant', 'ubiquitous-language', 'sql', 'kubernetes', 'json-schema', 'quint', 'z3', 'prolog', 'datalog'],
+        notes: {
+          title: { ru: 'Где встречается: языки, валидаторы, движки', en: 'Where it shows up: languages, validators, engines' },
+          items: [
+            { name: { ru: 'SQL', en: 'SQL' }, text: { ru: 'запрос описывает, какие данные нужны, а база сама выбирает, как их достать. Ограничения CHECK, UNIQUE и EXCLUDE — правила, которые база держит при каждой записи.', en: 'a query says which data is needed and the database picks how to fetch it. CHECK, UNIQUE and EXCLUDE constraints are rules the database enforces on every write.' } },
+            { name: { ru: 'Kubernetes', en: 'Kubernetes' }, text: { ru: 'описывают желаемое состояние: какие сервисы и сколько копий запустить. Контроллеры в петле сверки приводят систему к нему.', en: 'you describe the desired state: which services and how many copies to run. Controllers in a reconcile loop bring the system to it.' } },
+            { name: { ru: 'JSON Schema', en: 'JSON Schema' }, text: { ru: 'схема описывает форму данных, валидатор проверяет по ней каждый документ.', en: 'a schema describes the shape of data; a validator checks every document against it.' } },
+            { name: { ru: 'Quint', en: 'Quint' }, text: { ru: 'а также TLA+ и Alloy: правила и инварианты системы записаны как утверждения, проверка моделей перебирает состояния.', en: 'as well as TLA+ and Alloy: system rules and invariants are written as statements, and model checking goes through the states.' } },
+            { name: { ru: 'Z3', en: 'Z3' }, text: { ru: 'ограничения на значения; решатель ищет значения, которые им удовлетворяют, или доказывает, что таких нет.', en: 'constraints on values; the solver finds values that satisfy them or proves there are none.' } },
+            { name: { ru: 'Prolog', en: 'Prolog' }, text: { ru: 'факты и правила вывода; движок сам ищет ответ на вопрос. Язык полный: на нём можно написать и вечный цикл.', en: 'facts and inference rules; the engine finds the answer to a question itself. The language is complete: an endless loop can be written in it too.' } },
+            { name: { ru: 'Datalog', en: 'Datalog' }, text: { ru: 'урезанный Prolog для запросов к данным: любой запрос гарантированно заканчивается, поэтому ответ всегда точный.', en: 'a cut-down Prolog for querying data: every query is guaranteed to finish, so the answer is always exact.' } },
+          ],
+        },
+        more: { post: 'agent-checkpoint', label: { ru: 'Где ставить проверку работы ИИ-агента', en: "Where to check an AI agent's work" } },
+        also: [
+          { post: 'spec-reconcile-loop', label: { ru: 'Петля сверки для спек: как в Kubernetes', en: 'A reconcile loop for specs: like Kubernetes' } },
+          { post: 'quint-vs-tests-and-tla', label: { ru: 'Чем model checking отличается от тестов', en: 'How model checking differs from testing' } },
+          { post: 'specs-by-aggregates', label: { ru: 'Спеки по агрегатам', en: 'Specs by aggregate' } },
+        ],
+        faq: [
+          { q: { ru: 'Декларативный подход — что это?', en: 'What is the declarative approach?' }, a: { ru: 'Стиль записи, где программа — система правил и ограничений, описывающих нужный результат, без порядка шагов.', en: 'A style where a program is a system of rules and constraints describing the result, with no order of steps.' } },
+          { q: { ru: 'Где используется декларативный подход?', en: 'Where is the declarative approach used?' }, a: { ru: 'В ограничениях и запросах баз данных, правилах вывода и описаниях желаемого состояния системы, например в SQL и Kubernetes.', en: 'In database constraints and queries, inference rules and descriptions of a system’s desired state, such as SQL and Kubernetes.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Declarative_programming', label: { ru: 'Википедия: декларативное программирование', en: 'Wikipedia: Declarative programming' } },
+      },
+      {
+        slug: 'requirements',
+        name: { ru: 'Требования', en: 'Requirements' },
+        def: {
+          ru: 'Требования — описание того, что система должна делать и при каких условиях. У каждого требования есть источник, и от него зависит, насколько серьёзной будет правка: мажорной или минорной.',
+          en: 'Requirements is a description of what the system must do and under which conditions. Every requirement has a source, and it decides how serious an edit is: major or minor.',
+        },
+        match: { ru: ['требовани\\p{L}*'], en: ['requirements?'] },
+        related: ['source', 'hallucination'],
+        faq: [
+          { q: { ru: 'Требования — что это?', en: 'What are requirements?' }, a: { ru: 'Описание того, что система должна делать и при каких условиях.', en: 'A description of what a system must do and under which conditions.' } },
+          { q: { ru: 'Зачем у требования источник?', en: 'Why does a requirement need a source?' }, a: { ru: 'От источника зависит, насколько серьёзной будет правка: мажорной или минорной.', en: 'The source decides how serious a change is: major or minor.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Requirements_engineering', label: { ru: 'Википедия: инженерия требований', en: 'Wikipedia: Requirements engineering' } },
+      },
+      {
+        slug: 'memory-bank',
+        name: { ru: 'Memory Bank', en: 'Memory Bank' },
+        def: {
+          ru: 'Memory Bank — папка `memory-bank` с шестью markdown-файлами, где агент держит контекст проекта между сессиями: `projectbrief` (цели и рамки), `productContext` (зачем продукт), `systemPatterns` (архитектура), `techContext` (стек), `activeContext` (текущий фокус) и `progress` (что готово). Агент читает их в начале каждой задачи и обновляет после крупных изменений или по команде «update memory bank». Это набор инструкций для агента из Cline, он работает и с другими агентами: частный случай памяти проекта в файлах, как CLAUDE.md.',
+          en: 'Memory Bank is a `memory-bank` folder with six markdown files where the agent keeps project context between sessions: `projectbrief` (goals and scope), `productContext` (why the product exists), `systemPatterns` (architecture), `techContext` (stack), `activeContext` (current focus) and `progress` (what is done). The agent reads them at the start of every task and updates them after major changes or on "update memory bank". It is a set of agent instructions from Cline that works with other agents too: one case of project memory kept in files, like CLAUDE.md.',
+        },
+        match: { ru: ['Memory Bank'], en: ['Memory Bank'] },
+        related: ['memory', 'bible', 'claude-md', 'agent-skills'],
+        faq: [
+          { q: { ru: 'Memory Bank — что это?', en: 'What is a Memory Bank?' }, a: { ru: 'Папка memory-bank с шестью markdown-файлами, где агент держит контекст проекта между сессиями: цели, архитектуру, стек, текущий фокус и прогресс.', en: 'A memory-bank folder with six markdown files where the agent keeps project context between sessions: goals, architecture, stack, current focus and progress.' } },
+          { q: { ru: 'Когда агент обновляет Memory Bank?', en: 'When does the agent update the Memory Bank?' }, a: { ru: 'После крупных изменений или по команде «update memory bank». Читает файлы в начале каждой задачи.', en: 'After large changes or on the “update memory bank” command. It reads the files at the start of every task.' } },
+        ],
+        source: { url: 'https://docs.cline.bot/best-practices/memory-bank', label: { ru: 'Cline: Memory Bank', en: 'Cline Memory Bank docs' } },
+      },
+      {
+        slug: 'agile',
+        name: { ru: 'Agile', en: 'Agile' },
+        aka: { ru: 'гибкая разработка', en: 'agile development' },
+        def: {
+          ru: 'Agile — подход к разработке короткими циклами: сделать небольшую часть, показать её, получить обратную связь и поправить план. Основа — Манифест гибкой разработки 2001 года, где реакция на изменения ценится выше следования плану. Подход нужен там, где будущее нельзя знать заранее: план всё равно будет ошибаться, поэтому важно, чтобы его было дёшево поправить.',
+          en: 'Agile is an approach to development in short cycles: build a small part, show it, get feedback and adjust the plan. It rests on the 2001 Manifesto for Agile Software Development, which values responding to change over following a plan. The approach fits where the future can’t be known in advance: the plan will be wrong anyway, so what matters is that it is cheap to adjust.',
+        },
+        match: { ru: ['[Aa]gile', 'аджайл\\p{L}*', 'гибк\\p{L}* разработк\\p{L}*'], en: ['[Aa]gile(?= (?:development|approach|cycles?|methods?|teams?))', 'Agile'] },
+        related: ['bounded-context', 'domain'],
+        more: { post: 'agent-checkpoint', label: { ru: 'Первая рамка: почему она ошибётся и как сделать её дешёвой', en: 'The first frame: why it will be wrong and how to make it cheap' } },
+        faq: [
+          { q: { ru: 'Agile — что это?', en: 'What is Agile?' }, a: { ru: 'Подход к разработке короткими циклами: сделать небольшую часть, показать её, получить обратную связь и поправить план.', en: 'An approach to development in short cycles: build a small part, show it, get feedback and adjust the plan.' } },
+          { q: { ru: 'На чём основан Agile?', en: 'What is Agile based on?' }, a: { ru: 'На Манифесте гибкой разработки 2001 года, где реакция на изменения ценится выше следования плану.', en: 'On the 2001 Agile Manifesto, which values responding to change over following a plan.' } },
+        ],
+        source: { url: 'https://agilemanifesto.org/', label: { ru: 'Манифест гибкой разработки', en: 'Manifesto for Agile Software Development' } },
+      },
+      {
+        slug: 'json-schema',
+        name: { ru: 'JSON Schema', en: 'JSON Schema' },
+        def: {
+          ru: 'JSON Schema — декларативный язык, которым описывают форму данных в JSON: какие поля обязательны, какого они типа, какие значения допустимы. Валидатор берёт схему и документ и отвечает, подходит ли документ. Так проверяют ответы программ и агентов, настройки и входящие запросы.',
+          en: 'JSON Schema is a declarative language for describing the shape of JSON data: which fields are required, of what type, which values are allowed. A validator takes the schema and a document and answers whether the document fits. This is how program and agent output, settings and incoming requests are checked.',
+        },
+        match: { ru: ['JSON Schema'], en: ['JSON Schema'] },
+        related: ['declarative', 'checks'],
+        faq: [
+          { q: { ru: 'JSON Schema — что это?', en: 'What is JSON Schema?' }, a: { ru: 'Декларативный язык, которым описывают форму данных в JSON: какие поля обязательны, какого они типа и какие значения допустимы.', en: 'A declarative language that describes the shape of JSON data: which fields are required, their types and allowed values.' } },
+          { q: { ru: 'Как работает проверка по JSON Schema?', en: 'How does JSON Schema validation work?' }, a: { ru: 'Валидатор берёт схему и документ и отвечает, подходит ли документ.', en: 'A validator takes the schema and a document and answers whether the document fits.' } },
+        ],
+        source: { url: 'https://json-schema.org/', label: { ru: 'json-schema.org', en: 'json-schema.org' } },
+      },
+    ],
+  },
+  {
+    slug: 'architecture',
+    icon: 'specs',
+    name: { ru: 'Архитектура и надёжность', en: 'Architecture and reliability' },
+    hint: { ru: 'Как устроена система, где её границы и что происходит при сбоях', en: 'How a system is built, where its borders lie and what happens when parts fail' },
+    group: { id: 'dev', name: { ru: 'Разработка', en: 'Software development' } },
+    terms: [
+      {
         slug: 'ddd',
         name: { ru: 'Domain-Driven Design', en: 'Domain-Driven Design' },
         aka: { ru: 'DDD', en: 'DDD' },
@@ -1765,55 +2223,168 @@ export const TERM_SETS: TermSet[] = [
         source: { url: 'https://martinfowler.com/bliki/UbiquitousLanguage.html', label: { ru: 'Мартин Фаулер: Ubiquitous Language', en: 'Martin Fowler: Ubiquitous Language' } },
       },
       {
-        slug: 'imperative',
-        name: { ru: 'Императивный подход', en: 'Imperative approach' },
-        aka: { ru: 'как: шаги', en: 'how: steps' },
+        slug: 'c4-model',
+        name: { ru: 'Модель C4', en: 'C4 model' },
+        aka: { ru: 'схема устройства системы в четыре приближения', en: 'system structure in four zoom levels' },
         def: {
-          ru: 'Императивный подход — стиль записи программы, где по шагам расписано, как прийти к результату: найти брони комнаты, сравнить интервалы, записать новую. Правило о результате в таком коде нигде не записано целиком, оно складывается из шагов, поэтому проверять его приходится по поведению.',
-          en: 'An imperative approach is a style of writing a program where the steps to reach a result are spelled out: find the room’s bookings, compare intervals, save the new one. A rule about the result is not written anywhere in full in such code; it emerges from the steps, so it has to be checked against behaviour.',
+          ru: 'C4 — способ рисовать устройство программной системы в четыре приближения, как карту: от целой страны до отдельной улицы. На каждом уровне своя картинка, и уровни не смешивают в одну схему. Благодаря этому и новичок, и разработчик видят ровно столько подробностей, сколько им нужно. Название C4 — от четырёх слов на английском: context, containers, components, code.',
+          en: 'C4 is a way to draw the structure of a software system at four zoom levels, like a map: from a whole country down to a single street. Each level gets its own picture, and levels are not mixed into one diagram. That way a newcomer and a developer each see exactly as much detail as they need. The name C4 comes from four English words: context, containers, components, code.',
         },
-        match: { ru: ['императивн\\p{L}* (?:подход|стил|язык|программирован|код)\\p{L}*', 'императивн\\p{L}*(?= и декларативн)'], en: ['imperative (?:approach|style|programming|code|languages?)', 'imperative(?= and declarative)'] },
-        related: ['declarative', 'rice-theorem', 'invariant'],
-        faq: [
-          { q: { ru: 'Императивный подход — что это?', en: 'What is the imperative approach?' }, a: { ru: 'Стиль записи программы, где по шагам расписано, как прийти к результату.', en: 'A style of writing a program that spells out step by step how to reach the result.' } },
-          { q: { ru: 'Чем императивный подход отличается от декларативного?', en: 'How is the imperative approach different from the declarative one?' }, a: { ru: 'Императивный код описывает шаги, а правило о результате складывается из них. Декларативный описывает, что должно быть верно, а шаги выбирает движок.', en: 'Imperative code describes the steps, and the rule about the result emerges from them. Declarative code describes what must hold, and an engine picks the steps.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Imperative_programming', label: { ru: 'Википедия: императивное программирование', en: 'Wikipedia: Imperative programming' } },
-      },
-      {
-        slug: 'declarative',
-        name: { ru: 'Декларативный подход', en: 'Declarative approach' },
-        aka: { ru: 'что: правила и ограничения', en: 'what: rules and constraints' },
-        def: {
-          ru: 'Декларативный подход — стиль записи, где программа — система правил и ограничений, описывающих нужный результат, без порядка шагов: сказано, что должно быть верно, а как этого добиться, решает движок. Так устроены ограничения и запросы в базе данных, правила вывода, описание желаемого состояния системы. Пример: «брони одной комнаты не пересекаются», «бронь не дольше 4 часов» в виде ограничений в базе. Простые декларативные записи проверяются по тексту точно, потому что их поведение видно из самой записи. На мощном декларативном языке это уже не так, и теорема Райса задевает его так же, как императивный код.',
-          en: 'A style of writing where a program is a system of rules and constraints describing the desired result, with no order of steps: it states what must hold, and an engine decides how to get there. Database constraints and queries, inference rules and descriptions of a system’s desired state work this way. Example: “bookings of one room never overlap” and “a booking lasts at most 4 hours” as database constraints. Simple declarative notations can be checked exactly from the text, because their behaviour is visible in the statement itself. In a powerful declarative language this no longer holds, and Rice’s theorem hits it just like imperative code.',
-        },
-        match: { ru: ['декларативн\\p{L}* (?:подход|стил|язык|запис|программирован)\\p{L}*'], en: ['declarative (?:approach|style|programming|notations?|languages?)'] },
-        related: ['imperative', 'rice-theorem', 'invariant', 'ubiquitous-language', 'sql', 'kubernetes', 'json-schema', 'quint', 'z3', 'prolog', 'datalog'],
         notes: {
-          title: { ru: 'Где встречается: языки, валидаторы, движки', en: 'Where it shows up: languages, validators, engines' },
+          title: { ru: 'Четыре уровня', en: 'Four levels' },
           items: [
-            { name: { ru: 'SQL', en: 'SQL' }, text: { ru: 'запрос описывает, какие данные нужны, а база сама выбирает, как их достать. Ограничения CHECK, UNIQUE и EXCLUDE — правила, которые база держит при каждой записи.', en: 'a query says which data is needed and the database picks how to fetch it. CHECK, UNIQUE and EXCLUDE constraints are rules the database enforces on every write.' } },
-            { name: { ru: 'Kubernetes', en: 'Kubernetes' }, text: { ru: 'описывают желаемое состояние: какие сервисы и сколько копий запустить. Контроллеры в петле сверки приводят систему к нему.', en: 'you describe the desired state: which services and how many copies to run. Controllers in a reconcile loop bring the system to it.' } },
-            { name: { ru: 'JSON Schema', en: 'JSON Schema' }, text: { ru: 'схема описывает форму данных, валидатор проверяет по ней каждый документ.', en: 'a schema describes the shape of data; a validator checks every document against it.' } },
-            { name: { ru: 'Quint', en: 'Quint' }, text: { ru: 'а также TLA+ и Alloy: правила и инварианты системы записаны как утверждения, проверка моделей перебирает состояния.', en: 'as well as TLA+ and Alloy: system rules and invariants are written as statements, and model checking goes through the states.' } },
-            { name: { ru: 'Z3', en: 'Z3' }, text: { ru: 'ограничения на значения; решатель ищет значения, которые им удовлетворяют, или доказывает, что таких нет.', en: 'constraints on values; the solver finds values that satisfy them or proves there are none.' } },
-            { name: { ru: 'Prolog', en: 'Prolog' }, text: { ru: 'факты и правила вывода; движок сам ищет ответ на вопрос. Язык полный: на нём можно написать и вечный цикл.', en: 'facts and inference rules; the engine finds the answer to a question itself. The language is complete: an endless loop can be written in it too.' } },
-            { name: { ru: 'Datalog', en: 'Datalog' }, text: { ru: 'урезанный Prolog для запросов к данным: любой запрос гарантированно заканчивается, поэтому ответ всегда точный.', en: 'a cut-down Prolog for querying data: every query is guaranteed to finish, so the answer is always exact.' } },
+            { name: { ru: 'Контекст', en: 'Context' }, text: { ru: 'система целиком одним блоком и те, кто с ней связан: люди и соседние системы. Вопрос: кто и зачем ею пользуется.', en: 'the whole system as one block and everyone linked to it: people and neighboring systems. The question: who uses it and why.' } },
+            { name: { ru: 'Контейнеры', en: 'Containers' }, text: { ru: 'из каких отдельно запускаемых частей она состоит: сайт, сервер, база данных. Вопрос: из чего собрана система.', en: 'the separately running parts it is made of: a website, a server, a database. The question: what the system is built from.' } },
+            { name: { ru: 'Компоненты', en: 'Components' }, text: { ru: 'из чего состоит одна такая часть, например сервер: оплата, заказы, промокоды. Вопрос: как устроена одна часть.', en: 'what one such part is made of, for example a server: payment, orders, promo codes. The question: how one part is organized.' } },
+            { name: { ru: 'Код', en: 'Code' }, text: { ru: 'как устроен один компонент внутри: классы и функции. Этот уровень рисуют редко: его и так показывает сам код.', en: 'how one component is organized inside: classes and functions. This level is rarely drawn: the code itself shows it.' } },
           ],
         },
-        more: { post: 'agent-checkpoint', label: { ru: 'Где ставить проверку работы ИИ-агента', en: "Where to check an AI agent's work" } },
-        also: [
-          { post: 'spec-reconcile-loop', label: { ru: 'Петля сверки для спек: как в Kubernetes', en: 'A reconcile loop for specs: like Kubernetes' } },
-          { post: 'quint-vs-tests-and-tla', label: { ru: 'Чем model checking отличается от тестов', en: 'How model checking differs from testing' } },
-          { post: 'specs-by-aggregates', label: { ru: 'Спеки по агрегатам', en: 'Specs by aggregate' } },
-        ],
+        match: { ru: ['C4(?:-диаграмм\\p{L}*| model)?', 'модел\\p{L}* C4'], en: ['C4 model', 'C4 diagrams?', 'C4'] },
+        related: ['sequence-diagram', 'bounded-context', 'ddd', 'spec-driven-development'],
+        more: { post: 'bug-report-to-reproduction-agent', label: { ru: 'Как агент рисует схемы по запросу: sequence и C4', en: 'How an agent draws diagrams on request: sequence and C4' } },
         faq: [
-          { q: { ru: 'Декларативный подход — что это?', en: 'What is the declarative approach?' }, a: { ru: 'Стиль записи, где программа — система правил и ограничений, описывающих нужный результат, без порядка шагов.', en: 'A style where a program is a system of rules and constraints describing the result, with no order of steps.' } },
-          { q: { ru: 'Где используется декларативный подход?', en: 'Where is the declarative approach used?' }, a: { ru: 'В ограничениях и запросах баз данных, правилах вывода и описаниях желаемого состояния системы, например в SQL и Kubernetes.', en: 'In database constraints and queries, inference rules and descriptions of a system’s desired state, such as SQL and Kubernetes.' } },
+          { q: { ru: 'Модель C4 — что это?', en: 'What is the C4 model?' }, a: { ru: 'Способ рисовать устройство программной системы в четыре приближения: context, containers, components и code.', en: 'A way to draw a software system’s structure at four zoom levels: context, containers, components and code.' } },
+          { q: { ru: 'Зачем четыре уровня?', en: 'Why four levels?' }, a: { ru: 'На каждом уровне своя картинка, поэтому и новичок, и разработчик видят ровно столько подробностей, сколько им нужно.', en: 'Each level has its own picture, so both a newcomer and a developer see exactly as much detail as they need.' } },
         ],
-        source: { url: 'https://en.wikipedia.org/wiki/Declarative_programming', label: { ru: 'Википедия: декларативное программирование', en: 'Wikipedia: Declarative programming' } },
+        source: { url: 'https://c4model.com/', label: { ru: 'c4model.com — сайт методологии, автор Саймон Браун', en: 'c4model.com, the method site by Simon Brown' } },
       },
+      {
+        slug: 'sequence-diagram',
+        name: { ru: 'Диаграмма последовательности', en: 'Sequence diagram' },
+        aka: { ru: 'sequence-диаграмма', en: 'sequence chart' },
+        def: {
+          ru: 'Диаграмма последовательности показывает, как участники системы обмениваются сообщениями по порядку времени: участники стоят сверху, стрелки идут вниз. По ней видно, кто кого вызвал и на каком шаге всё сломалось. Агент рисует такую диаграмму по запросу, чтобы разработчик сразу увидел место ошибки.',
+          en: 'A sequence diagram shows how the parts of a system exchange messages in time order: participants stand at the top and arrows run downward. It shows who called whom and at which step things broke. An agent draws such a diagram on request so the developer sees the place of the error at once.',
+        },
+        match: { ru: ['диаграмм\\p{L}* последовательности', 'sequence(?:-диаграмм\\p{L}*)?'], en: ['sequence diagrams?'] },
+        related: ['c4-model', 'bug', 'api'],
+        faq: [
+          { q: { ru: 'Диаграмма последовательности — что это?', en: 'What is a sequence diagram?' }, a: { ru: 'Схема, где участники системы стоят сверху, а стрелки сообщений идут вниз по порядку времени.', en: 'A diagram with the system’s participants at the top and message arrows running down in time order.' } },
+          { q: { ru: 'Зачем диаграмма последовательности?', en: 'Why use a sequence diagram?' }, a: { ru: 'По ней видно, кто кого вызвал и на каком шаге всё сломалось.', en: 'It shows who called whom and at which step things broke.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Sequence_diagram', label: { ru: 'Википедия: Sequence diagram', en: 'Wikipedia: Sequence diagram' } },
+      },
+      {
+        slug: 'api',
+        name: { ru: 'API', en: 'API' },
+        aka: { ru: 'программный интерфейс', en: 'application programming interface' },
+        def: {
+          ru: 'API — набор правил, по которым одна программа обращается к другой: какие запросы можно отправить и какие ответы придут. Через API агент вызывает сервис напрямую, без браузера. Например, оплата обращается к сервису промокодов именно через его API.',
+          en: 'An API is a set of rules by which one program calls another: which requests can be sent and which answers come back. Through an API an agent calls a service directly, without a browser. For example, payment calls the promo-code service through its API.',
+        },
+        match: { ru: ['API'], en: ['APIs?'] },
+        related: ['mcp', 'sequence-diagram', 'poc'],
+        faq: [
+          { q: { ru: 'API — что это?', en: 'What is an API?' }, a: { ru: 'Набор правил, по которым одна программа обращается к другой: какие запросы можно отправить и какие ответы придут.', en: 'A set of rules for how one program talks to another: which requests can be sent and which responses come back.' } },
+          { q: { ru: 'Зачем агенту API?', en: 'Why does an agent use an API?' }, a: { ru: 'Через API агент вызывает сервис напрямую, без браузера.', en: 'Through an API the agent calls a service directly, without a browser.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/API', label: { ru: 'Википедия: API', en: 'Wikipedia: API' } },
+      },
+      {
+        slug: 'poc',
+        name: { ru: 'PoC', en: 'PoC' },
+        aka: { ru: 'proof of concept, доказательство осуществимости', en: 'proof of concept' },
+        def: {
+          ru: 'PoC (proof of concept, «доказательство осуществимости») — небольшой код или сценарий, который показывает, что проблема действительно воспроизводится. Для бага это короткий запуск без браузера, который повторяет ошибку. Агент пишет такой PoC по коду и тестам, чтобы подтвердить баг.',
+          en: 'A PoC (proof of concept) is a small piece of code or a script that shows the problem really reproduces. For a bug it is a short run without a browser that repeats the error. An agent writes such a PoC from the code and tests to confirm the bug.',
+        },
+        match: { ru: ['PoC', 'proof of concept'], en: ['PoC', 'proof of concept'] },
+        related: ['bug', 'automated-test', 'test-stand'],
+        faq: [
+          { q: { ru: 'PoC — что это в программировании?', en: 'What is a PoC in programming?' }, a: { ru: 'Proof of concept: небольшой код или сценарий, который показывает, что проблема действительно воспроизводится.', en: 'Proof of concept: a small piece of code or a scenario that shows the problem really reproduces.' } },
+          { q: { ru: 'Зачем агенту PoC для бага?', en: 'Why does an agent write a PoC for a bug?' }, a: { ru: 'Чтобы подтвердить баг: короткий запуск без браузера повторяет ошибку, и её видно до исправления.', en: 'To confirm the bug: a short run without a browser repeats the error, so it is visible before the fix.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Proof_of_concept', label: { ru: 'Википедия: Proof of concept', en: 'Wikipedia: Proof of concept' } },
+      },
+      {
+        slug: 'osi',
+        name: { ru: 'Модель OSI', en: 'OSI model' },
+        aka: { ru: 'семь уровней', en: 'seven layers' },
+        def: {
+          ru: 'Модель OSI — эталонная модель, которая раскладывает сетевое взаимодействие на семь уровней: от физического до прикладного. Каждый уровень может жить на другой физической системе, поэтому чем больше уровней и систем на пути запроса, тем больше мест, где он ломается. Через эту модель удобно оценивать, насколько задача на самом деле сложна для агента.',
+          en: 'OSI model is a reference model that splits network communication into seven layers, from physical to application. Each layer may live on a different physical system, so the more layers and systems on the request path, the more places it can break. A handy lens for judging how hard a task really is for an agent.',
+        },
+        match: { ru: ['модел\\p{L}* OSI', 'OSI'], en: ['OSI model', 'OSI'] },
+        related: ['bounded-context', 'c4-model'],
+        faq: [
+          { q: { ru: 'Модель OSI — что это?', en: 'What is the OSI model?' }, a: { ru: 'Эталонная модель, которая раскладывает сетевое взаимодействие на семь уровней: от физического до прикладного.', en: 'A reference model that splits network communication into seven layers, from physical to application.' } },
+          { q: { ru: 'Зачем модель OSI для ИИ-агента?', en: 'Why use the OSI model for an AI agent?' }, a: { ru: 'Чем больше уровней и систем на пути запроса, тем больше мест, где он ломается. По этой модели удобно оценивать, насколько задача сложна для агента.', en: 'The more layers and systems a request crosses, the more places it can break. The model helps estimate how hard a task really is for an agent.' } },
+        ],
+        source: { url: 'https://www.iso.org/standard/20269.html', label: { ru: 'ISO/IEC 7498-1 — стандарт модели OSI', en: 'ISO/IEC 7498-1, the OSI model standard' } },
+      },
+      {
+        slug: 'cap-theorem',
+        name: { ru: 'Теорема CAP', en: 'CAP theorem' },
+        aka: { ru: 'согласованность, доступность, разрыв связи', en: 'consistency, availability, partition' },
+        def: {
+          ru: 'Теорема CAP говорит: когда данные лежат на нескольких серверах и связь между ними оборвалась, система не может одновременно отвечать на каждый запрос и показывать всем одни и те же данные: приходится либо ждать восстановления связи, либо отвечать по своей, возможно устаревшей, копии. Эрик Брюер высказал это в 2000 году, Сет Гилберт и Нэнси Линч доказали в 2002-м. Позже Брюер писал, что формула «два из трёх» упрощает картину: выбор встаёт только во время разрыва.',
+          en: 'The CAP theorem says that when data lives on several servers and the link between them breaks, the system can’t both answer every request and show everyone the same data: it must either wait for the link to return or answer from its own, possibly stale, copy. Eric Brewer stated this in 2000; Seth Gilbert and Nancy Lynch proved it in 2002. Brewer later wrote that the “two of three” formula oversimplifies: the choice arises only during a partition.',
+        },
+        match: { ru: ['теорем\\p{L}* CAP'], en: ['CAP theorem'] },
+        related: ['rice-theorem', 'halting-problem', 'aggregate', 'bounded-context'],
+        screens: [
+          {
+            ru: 'Буквы названия: C — согласованность, все видят одни и те же данные; A — доступность, каждый запрос получает ответ; P — устойчивость к разрыву связи, система продолжает работать, когда сообщения между серверами теряются или опаздывают. Разрывы связи случаются сами, поэтому на практике выбирают между C и A на время разрыва.\n\nОбщее ядро с теоремой Райса: пока событие не произошло, нельзя понять, случится ли оно позже или не случится никогда, сколько бы ни ждать. Сервер не знает, потеряно сообщение соседа или опаздывает; проверка программы не знает, закончится программа или будет работать вечно. Поэтому и выходы похожи: пока время не ограничено, выбирают одно из двух — ждать или ответить сейчас с риском ошибки; а ограничение времени снимает саму развилку, потому что после предела «никогда» уже известно. Причины невозможности разные: серверу не хватает сведений, а проверке программы сведений хватает, весь код перед ней, но ответ из него нельзя вычислить. Это сопоставление автора, единой теоремы для обоих случаев нет.',
+            en: 'The letters: C is consistency, everyone sees the same data; A is availability, every request gets an answer; P is partition tolerance, the system keeps working when messages between servers are lost or delayed. Partitions happen on their own, so in practice the choice is between C and A for the duration of a partition.\n\nThe common core with Rice’s theorem: while an event hasn’t happened yet, you can’t tell whether it will happen later or never, however long you wait. A server doesn’t know whether a neighbour’s message is lost or late; a program check doesn’t know whether the program will finish or run forever. So the ways out are similar: while time is unbounded, you pick one of two — wait, or answer now at the risk of being wrong; and bounding the time removes the fork itself, because after the limit “never” is already known. The reasons for the impossibility differ: a server lacks information, while a program check has it, the whole code is in front of it, but the answer can’t be computed from it. This comparison is the author’s; there is no single theorem covering both.',
+          },
+        ],
+        more: { post: 'rice-theorem-explained', label: { ru: 'Теорема Райса и связь с CAP', en: "Rice's theorem and the link to CAP" } },
+        faq: [
+          { q: { ru: 'Теорема CAP — что это простыми словами?', en: 'What is the CAP theorem in plain words?' }, a: { ru: 'Когда данные лежат на нескольких серверах и связь оборвалась, система не может одновременно отвечать на каждый запрос и показывать всем одни и те же данные.', en: 'When data lives on several servers and the link breaks, the system cannot both answer every request and show everyone the same data.' } },
+          { q: { ru: 'Что выбирает система при обрыве связи?', en: 'What does a system choose when the link breaks?' }, a: { ru: 'Либо ждать восстановления связи, либо отвечать по своим данным, которые могут устареть.', en: 'Either wait for the link to return, or answer from its own data, which may be stale.' } },
+        ],
+        source: { url: 'https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/', label: { ru: 'Эрик Брюер: CAP двенадцать лет спустя', en: 'Eric Brewer: CAP twelve years later' } },
+      },
+      {
+        slug: 'chaos-engineering',
+        name: { ru: 'Хаос-инжиниринг', en: 'Chaos engineering' },
+        aka: { ru: 'намеренные сбои на проде', en: 'deliberate failures in production' },
+        def: {
+          ru: 'Хаос-инжиниринг — практика, в которой в работающую систему намеренно вносят сбои: выключают сервер, замедляют сеть, роняют базу, — и смотрят, выдержит ли она. Это проверка на примерах: она показывает, как система ведёт себя в устроенных сбоях, но доказательства для всех случаев не даёт. В системах с декларативным подходом, как Kubernetes, такой эксперимент проверяет петлю сверки: упавшую копию система должна поднять сама.',
+          en: 'Chaos engineering is a practice of deliberately injecting failures into a running system: shutting down a server, slowing the network, dropping a database, and watching whether it holds. It is checking by example: it shows how the system behaves in the staged failures but gives no proof for every case. In systems with a declarative approach, like Kubernetes, such an experiment tests the reconcile loop: the system should restart the crashed copy on its own.',
+        },
+        match: { ru: ['хаос-инжиниринг\\p{L}*', 'chaos engineering'], en: ['chaos engineering'] },
+        related: ['declarative', 'kubernetes', 'reconcile-loop', 'rice-theorem', 'checks'],
+        faq: [
+          { q: { ru: 'Хаос-инжиниринг — что это?', en: 'What is chaos engineering?' }, a: { ru: 'Практика, в которой в работающую систему намеренно вносят сбои и смотрят, выдержит ли она.', en: 'A practice of deliberately injecting failures into a running system and watching whether it holds.' } },
+          { q: { ru: 'Доказывает ли хаос-инжиниринг надёжность?', en: 'Does chaos engineering prove reliability?' }, a: { ru: 'Нет, это проверка на примерах: она показывает поведение в устроенных сбоях, но не во всех возможных.', en: 'No, it is checking by example: it shows behaviour in the staged failures, not in every possible one.' } },
+        ],
+        source: { url: 'https://principlesofchaos.org/', label: { ru: 'Principles of Chaos Engineering', en: 'Principles of Chaos Engineering' } },
+      },
+      {
+        slug: 'fail-fast',
+        name: { ru: 'Fail-fast', en: 'Fail-fast' },
+        aka: { ru: 'падать сразу', en: 'fail immediately' },
+        def: {
+          ru: 'Fail-fast — принцип, по которому программа сообщает о проблеме сразу, как только её заметила, и останавливает действие, вместо того чтобы молча продолжать с неверными данными. Ошибка видна там, где она возникла, и её дешевле найти. В Kubernetes на этом построена работа с сервисами: сервис падает сразу при ошибке, а система сама перезапускает его и не пускает к нему запросы, пока он не готов.',
+          en: 'Fail-fast is a principle where a program reports a problem as soon as it notices it and stops the action, instead of silently carrying on with wrong data. The error shows up where it arose and is cheaper to find. Kubernetes builds service handling on this: a service fails right away on an error, and the system restarts it on its own and sends it no requests until it is ready.',
+        },
+        match: { ru: ['fail-fast', 'fail fast'], en: ['fail-fast', 'fail fast'] },
+        related: ['kubernetes', 'kubelet', 'pod', 'deployment', 'chaos-engineering', 'checks'],
+        notes: {
+          title: { ru: 'Fail-fast в Kubernetes', en: 'Fail-fast in Kubernetes' },
+          items: [
+            { name: { ru: 'Упасть при старте', en: 'Crash on start' }, text: { ru: 'сервис с неверной настройкой сразу завершается с ошибкой, вместо того чтобы работать наполовину. kubelet перезапускает контейнер, а при повторных падениях делает паузы между попытками: под в состоянии CrashLoopBackOff виден сразу.', en: 'a service with a bad setting exits with an error at once instead of half-working. kubelet restarts the container and waits longer between repeated failures: a pod in CrashLoopBackOff is visible right away.' } },
+            { name: { ru: 'Проверка живости', en: 'Liveness probe' }, text: { ru: 'kubelet регулярно спрашивает сервис «жив?». Не ответил — контейнер перезапускают, зависший сервис не висит молча.', en: 'kubelet regularly asks the service “are you alive?”. No answer, and the container is restarted: a hung service does not hang silently.' } },
+            { name: { ru: 'Проверка готовности', en: 'Readiness probe' }, text: { ru: 'пока сервис не готов, на него не идут запросы покупателей: Kubernetes убирает под из списка получателей.', en: 'until the service is ready, no customer requests reach it: Kubernetes removes the pod from the list of receivers.' } },
+            { name: { ru: 'Остановка выкладки', en: 'Halting a rollout' }, text: { ru: 'Deployment заменяет старые поды новыми по очереди. Если новые не становятся готовыми, замена дальше не идёт, и старые копии продолжают работать.', en: 'a Deployment replaces old pods with new ones in turn. If the new ones never become ready, the replacement goes no further, and the old copies keep running.' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Fail-fast — что это?', en: 'What is fail-fast?' }, a: { ru: 'Принцип, по которому программа сообщает о проблеме сразу и останавливает действие, вместо того чтобы молча продолжать.', en: 'A principle where a program reports a problem right away and stops the action instead of silently carrying on.' } },
+          { q: { ru: 'Зачем нужен fail-fast?', en: 'Why fail fast?' }, a: { ru: 'Ошибка видна там, где возникла, поэтому её дешевле найти и исправить.', en: 'The error shows up where it arose, so it is cheaper to find and fix.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Fail-fast_system', label: { ru: 'Википедия: fail-fast', en: 'Wikipedia: Fail-fast system' } },
+      },
+    ],
+  },
+  {
+    slug: 'kubernetes',
+    icon: 'code',
+    name: { ru: 'Kubernetes', en: 'Kubernetes' },
+    hint: { ru: 'Из чего состоит кластер и как он поддерживает нужное состояние', en: 'What a cluster consists of and how it keeps the desired state' },
+    group: { id: 'dev', name: { ru: 'Разработка', en: 'Software development' } },
+    terms: [
       {
         slug: 'kubernetes',
         name: { ru: 'Kubernetes', en: 'Kubernetes' },
@@ -1996,149 +2567,6 @@ export const TERM_SETS: TermSet[] = [
         source: { url: 'https://helm.sh/', label: { ru: 'Helm', en: 'Helm' } },
       },
       {
-        slug: 'chaos-engineering',
-        name: { ru: 'Хаос-инжиниринг', en: 'Chaos engineering' },
-        aka: { ru: 'намеренные сбои на проде', en: 'deliberate failures in production' },
-        def: {
-          ru: 'Хаос-инжиниринг — практика, в которой в работающую систему намеренно вносят сбои: выключают сервер, замедляют сеть, роняют базу, — и смотрят, выдержит ли она. Это проверка на примерах: она показывает, как система ведёт себя в устроенных сбоях, но доказательства для всех случаев не даёт. В системах с декларативным подходом, как Kubernetes, такой эксперимент проверяет петлю сверки: упавшую копию система должна поднять сама.',
-          en: 'Chaos engineering is a practice of deliberately injecting failures into a running system: shutting down a server, slowing the network, dropping a database, and watching whether it holds. It is checking by example: it shows how the system behaves in the staged failures but gives no proof for every case. In systems with a declarative approach, like Kubernetes, such an experiment tests the reconcile loop: the system should restart the crashed copy on its own.',
-        },
-        match: { ru: ['хаос-инжиниринг\\p{L}*', 'chaos engineering'], en: ['chaos engineering'] },
-        related: ['declarative', 'kubernetes', 'reconcile-loop', 'rice-theorem', 'checks'],
-        faq: [
-          { q: { ru: 'Хаос-инжиниринг — что это?', en: 'What is chaos engineering?' }, a: { ru: 'Практика, в которой в работающую систему намеренно вносят сбои и смотрят, выдержит ли она.', en: 'A practice of deliberately injecting failures into a running system and watching whether it holds.' } },
-          { q: { ru: 'Доказывает ли хаос-инжиниринг надёжность?', en: 'Does chaos engineering prove reliability?' }, a: { ru: 'Нет, это проверка на примерах: она показывает поведение в устроенных сбоях, но не во всех возможных.', en: 'No, it is checking by example: it shows behaviour in the staged failures, not in every possible one.' } },
-        ],
-        source: { url: 'https://principlesofchaos.org/', label: { ru: 'Principles of Chaos Engineering', en: 'Principles of Chaos Engineering' } },
-      },
-      {
-        slug: 'fail-fast',
-        name: { ru: 'Fail-fast', en: 'Fail-fast' },
-        aka: { ru: 'падать сразу', en: 'fail immediately' },
-        def: {
-          ru: 'Fail-fast — принцип, по которому программа сообщает о проблеме сразу, как только её заметила, и останавливает действие, вместо того чтобы молча продолжать с неверными данными. Ошибка видна там, где она возникла, и её дешевле найти. В Kubernetes на этом построена работа с сервисами: сервис падает сразу при ошибке, а система сама перезапускает его и не пускает к нему запросы, пока он не готов.',
-          en: 'Fail-fast is a principle where a program reports a problem as soon as it notices it and stops the action, instead of silently carrying on with wrong data. The error shows up where it arose and is cheaper to find. Kubernetes builds service handling on this: a service fails right away on an error, and the system restarts it on its own and sends it no requests until it is ready.',
-        },
-        match: { ru: ['fail-fast', 'fail fast'], en: ['fail-fast', 'fail fast'] },
-        related: ['kubernetes', 'kubelet', 'pod', 'deployment', 'chaos-engineering', 'checks'],
-        notes: {
-          title: { ru: 'Fail-fast в Kubernetes', en: 'Fail-fast in Kubernetes' },
-          items: [
-            { name: { ru: 'Упасть при старте', en: 'Crash on start' }, text: { ru: 'сервис с неверной настройкой сразу завершается с ошибкой, вместо того чтобы работать наполовину. kubelet перезапускает контейнер, а при повторных падениях делает паузы между попытками: под в состоянии CrashLoopBackOff виден сразу.', en: 'a service with a bad setting exits with an error at once instead of half-working. kubelet restarts the container and waits longer between repeated failures: a pod in CrashLoopBackOff is visible right away.' } },
-            { name: { ru: 'Проверка живости', en: 'Liveness probe' }, text: { ru: 'kubelet регулярно спрашивает сервис «жив?». Не ответил — контейнер перезапускают, зависший сервис не висит молча.', en: 'kubelet regularly asks the service “are you alive?”. No answer, and the container is restarted: a hung service does not hang silently.' } },
-            { name: { ru: 'Проверка готовности', en: 'Readiness probe' }, text: { ru: 'пока сервис не готов, на него не идут запросы покупателей: Kubernetes убирает под из списка получателей.', en: 'until the service is ready, no customer requests reach it: Kubernetes removes the pod from the list of receivers.' } },
-            { name: { ru: 'Остановка выкладки', en: 'Halting a rollout' }, text: { ru: 'Deployment заменяет старые поды новыми по очереди. Если новые не становятся готовыми, замена дальше не идёт, и старые копии продолжают работать.', en: 'a Deployment replaces old pods with new ones in turn. If the new ones never become ready, the replacement goes no further, and the old copies keep running.' } },
-          ],
-        },
-        faq: [
-          { q: { ru: 'Fail-fast — что это?', en: 'What is fail-fast?' }, a: { ru: 'Принцип, по которому программа сообщает о проблеме сразу и останавливает действие, вместо того чтобы молча продолжать.', en: 'A principle where a program reports a problem right away and stops the action instead of silently carrying on.' } },
-          { q: { ru: 'Зачем нужен fail-fast?', en: 'Why fail fast?' }, a: { ru: 'Ошибка видна там, где возникла, поэтому её дешевле найти и исправить.', en: 'The error shows up where it arose, so it is cheaper to find and fix.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Fail-fast_system', label: { ru: 'Википедия: fail-fast', en: 'Wikipedia: Fail-fast system' } },
-      },
-      {
-        slug: 'sql',
-        name: { ru: 'SQL', en: 'SQL' },
-        def: {
-          ru: 'SQL — декларативный язык запросов к реляционным базам данных. Запрос говорит, какие данные нужны: «брони комнаты 5 на завтра», а как их достать — по индексу или перебором — выбирает сама база. Ограничения CHECK, UNIQUE и EXCLUDE задают правила, которые база держит при каждой записи, поэтому они проверяются по тексту схемы.',
-          en: 'SQL is a declarative language for querying relational databases. A query says which data is needed, “room 5 bookings for tomorrow”, and the database itself decides how to fetch it, by index or by scanning. CHECK, UNIQUE and EXCLUDE constraints set rules the database enforces on every write, so they can be checked from the schema text.',
-        },
-        match: { ru: ['SQL'], en: ['SQL'] },
-        related: ['declarative', 'invariant'],
-        faq: [
-          { q: { ru: 'SQL — что это?', en: 'What is SQL?' }, a: { ru: 'Декларативный язык запросов к реляционным базам данных: запрос говорит, какие данные нужны, а как их достать, выбирает база.', en: 'A declarative query language for relational databases: a query says which data is needed, and the database chooses how to get it.' } },
-          { q: { ru: 'Как SQL помогает проверять правила?', en: 'How does SQL help enforce rules?' }, a: { ru: 'Ограничения CHECK, UNIQUE и EXCLUDE записывают правила о данных прямо в базе, и база не даст их нарушить.', en: 'CHECK, UNIQUE and EXCLUDE constraints write data rules directly into the database, and the database will not let them be broken.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/SQL', label: { ru: 'Википедия: SQL', en: 'Wikipedia: SQL' } },
-      },
-      {
-        slug: 'json-schema',
-        name: { ru: 'JSON Schema', en: 'JSON Schema' },
-        def: {
-          ru: 'JSON Schema — декларативный язык, которым описывают форму данных в JSON: какие поля обязательны, какого они типа, какие значения допустимы. Валидатор берёт схему и документ и отвечает, подходит ли документ. Так проверяют ответы программ и агентов, настройки и входящие запросы.',
-          en: 'JSON Schema is a declarative language for describing the shape of JSON data: which fields are required, of what type, which values are allowed. A validator takes the schema and a document and answers whether the document fits. This is how program and agent output, settings and incoming requests are checked.',
-        },
-        match: { ru: ['JSON Schema'], en: ['JSON Schema'] },
-        related: ['declarative', 'checks'],
-        faq: [
-          { q: { ru: 'JSON Schema — что это?', en: 'What is JSON Schema?' }, a: { ru: 'Декларативный язык, которым описывают форму данных в JSON: какие поля обязательны, какого они типа и какие значения допустимы.', en: 'A declarative language that describes the shape of JSON data: which fields are required, their types and allowed values.' } },
-          { q: { ru: 'Как работает проверка по JSON Schema?', en: 'How does JSON Schema validation work?' }, a: { ru: 'Валидатор берёт схему и документ и отвечает, подходит ли документ.', en: 'A validator takes the schema and a document and answers whether the document fits.' } },
-        ],
-        source: { url: 'https://json-schema.org/', label: { ru: 'json-schema.org', en: 'json-schema.org' } },
-      },
-      {
-        slug: 'cap-theorem',
-        name: { ru: 'Теорема CAP', en: 'CAP theorem' },
-        aka: { ru: 'согласованность, доступность, разрыв связи', en: 'consistency, availability, partition' },
-        def: {
-          ru: 'Теорема CAP говорит: когда данные лежат на нескольких серверах и связь между ними оборвалась, система не может одновременно отвечать на каждый запрос и показывать всем одни и те же данные: приходится либо ждать восстановления связи, либо отвечать по своей, возможно устаревшей, копии. Эрик Брюер высказал это в 2000 году, Сет Гилберт и Нэнси Линч доказали в 2002-м. Позже Брюер писал, что формула «два из трёх» упрощает картину: выбор встаёт только во время разрыва.',
-          en: 'The CAP theorem says that when data lives on several servers and the link between them breaks, the system can’t both answer every request and show everyone the same data: it must either wait for the link to return or answer from its own, possibly stale, copy. Eric Brewer stated this in 2000; Seth Gilbert and Nancy Lynch proved it in 2002. Brewer later wrote that the “two of three” formula oversimplifies: the choice arises only during a partition.',
-        },
-        match: { ru: ['теорем\\p{L}* CAP'], en: ['CAP theorem'] },
-        related: ['rice-theorem', 'halting-problem', 'aggregate', 'bounded-context'],
-        screens: [
-          {
-            ru: 'Буквы названия: C — согласованность, все видят одни и те же данные; A — доступность, каждый запрос получает ответ; P — устойчивость к разрыву связи, система продолжает работать, когда сообщения между серверами теряются или опаздывают. Разрывы связи случаются сами, поэтому на практике выбирают между C и A на время разрыва.\n\nОбщее ядро с теоремой Райса: пока событие не произошло, нельзя понять, случится ли оно позже или не случится никогда, сколько бы ни ждать. Сервер не знает, потеряно сообщение соседа или опаздывает; проверка программы не знает, закончится программа или будет работать вечно. Поэтому и выходы похожи: пока время не ограничено, выбирают одно из двух — ждать или ответить сейчас с риском ошибки; а ограничение времени снимает саму развилку, потому что после предела «никогда» уже известно. Причины невозможности разные: серверу не хватает сведений, а проверке программы сведений хватает, весь код перед ней, но ответ из него нельзя вычислить. Это сопоставление автора, единой теоремы для обоих случаев нет.',
-            en: 'The letters: C is consistency, everyone sees the same data; A is availability, every request gets an answer; P is partition tolerance, the system keeps working when messages between servers are lost or delayed. Partitions happen on their own, so in practice the choice is between C and A for the duration of a partition.\n\nThe common core with Rice’s theorem: while an event hasn’t happened yet, you can’t tell whether it will happen later or never, however long you wait. A server doesn’t know whether a neighbour’s message is lost or late; a program check doesn’t know whether the program will finish or run forever. So the ways out are similar: while time is unbounded, you pick one of two — wait, or answer now at the risk of being wrong; and bounding the time removes the fork itself, because after the limit “never” is already known. The reasons for the impossibility differ: a server lacks information, while a program check has it, the whole code is in front of it, but the answer can’t be computed from it. This comparison is the author’s; there is no single theorem covering both.',
-          },
-        ],
-        more: { post: 'rice-theorem-explained', label: { ru: 'Теорема Райса и связь с CAP', en: "Rice's theorem and the link to CAP" } },
-        faq: [
-          { q: { ru: 'Теорема CAP — что это простыми словами?', en: 'What is the CAP theorem in plain words?' }, a: { ru: 'Когда данные лежат на нескольких серверах и связь оборвалась, система не может одновременно отвечать на каждый запрос и показывать всем одни и те же данные.', en: 'When data lives on several servers and the link breaks, the system cannot both answer every request and show everyone the same data.' } },
-          { q: { ru: 'Что выбирает система при обрыве связи?', en: 'What does a system choose when the link breaks?' }, a: { ru: 'Либо ждать восстановления связи, либо отвечать по своим данным, которые могут устареть.', en: 'Either wait for the link to return, or answer from its own data, which may be stale.' } },
-        ],
-        source: { url: 'https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/', label: { ru: 'Эрик Брюер: CAP двенадцать лет спустя', en: 'Eric Brewer: CAP twelve years later' } },
-      },
-      {
-        slug: 'agile',
-        name: { ru: 'Agile', en: 'Agile' },
-        aka: { ru: 'гибкая разработка', en: 'agile development' },
-        def: {
-          ru: 'Agile — подход к разработке короткими циклами: сделать небольшую часть, показать её, получить обратную связь и поправить план. Основа — Манифест гибкой разработки 2001 года, где реакция на изменения ценится выше следования плану. Подход нужен там, где будущее нельзя знать заранее: план всё равно будет ошибаться, поэтому важно, чтобы его было дёшево поправить.',
-          en: 'Agile is an approach to development in short cycles: build a small part, show it, get feedback and adjust the plan. It rests on the 2001 Manifesto for Agile Software Development, which values responding to change over following a plan. The approach fits where the future can’t be known in advance: the plan will be wrong anyway, so what matters is that it is cheap to adjust.',
-        },
-        match: { ru: ['[Aa]gile', 'аджайл\\p{L}*', 'гибк\\p{L}* разработк\\p{L}*'], en: ['[Aa]gile(?= (?:development|approach|cycles?|methods?|teams?))', 'Agile'] },
-        related: ['bounded-context', 'domain'],
-        more: { post: 'agent-checkpoint', label: { ru: 'Первая рамка: почему она ошибётся и как сделать её дешёвой', en: 'The first frame: why it will be wrong and how to make it cheap' } },
-        faq: [
-          { q: { ru: 'Agile — что это?', en: 'What is Agile?' }, a: { ru: 'Подход к разработке короткими циклами: сделать небольшую часть, показать её, получить обратную связь и поправить план.', en: 'An approach to development in short cycles: build a small part, show it, get feedback and adjust the plan.' } },
-          { q: { ru: 'На чём основан Agile?', en: 'What is Agile based on?' }, a: { ru: 'На Манифесте гибкой разработки 2001 года, где реакция на изменения ценится выше следования плану.', en: 'On the 2001 Agile Manifesto, which values responding to change over following a plan.' } },
-        ],
-        source: { url: 'https://agilemanifesto.org/', label: { ru: 'Манифест гибкой разработки', en: 'Manifesto for Agile Software Development' } },
-      },
-      {
-        slug: 'prolog',
-        name: { ru: 'Prolog', en: 'Prolog' },
-        aka: { ru: 'язык логического программирования', en: 'a logic programming language' },
-        def: {
-          ru: 'Prolog — язык, в котором программа — это факты и правила вывода, а движок сам ищет ответ на вопрос. Факты: «бронь б1 — комната 2, с 10 до 11». Правило: «две брони пересекаются, если комната одна и время накладывается». Вопрос: «с какими бронями пересекается б1?». Создан в 1972 году во Франции. На Prolog можно написать любую программу, в том числе ту, что никогда не закончится, поэтому на него действует теорема Райса.',
-          en: 'Prolog is a language in which a program is facts and inference rules, and an engine finds the answer to a question by itself. Facts: “booking b1 is room 2, from 10 to 11”. A rule: “two bookings overlap if the room is the same and the times overlap”. A question: “which bookings overlap b1?”. Created in 1972 in France. Any program can be written in Prolog, including one that never finishes, so Rice’s theorem applies to it.',
-        },
-        match: { ru: ['Prolog'], en: ['Prolog'] },
-        related: ['datalog', 'declarative', 'rice-theorem'],
-        faq: [
-          { q: { ru: 'Prolog — что это за язык?', en: 'What is the Prolog language?' }, a: { ru: 'Язык, в котором программа — это факты и правила вывода, а движок сам ищет ответ на вопрос.', en: 'A language where a program is facts and inference rules, and an engine finds the answer to a question itself.' } },
-          { q: { ru: 'Чем Prolog отличается от Datalog?', en: 'How is Prolog different from Datalog?' }, a: { ru: 'Datalog — урезанный Prolog без возможностей, из-за которых программа может работать вечно, поэтому любой его запрос к конечным данным заканчивается.', en: 'Datalog is a trimmed Prolog without the features that let a program run forever, so any of its queries over finite data finishes.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Prolog', label: { ru: 'Википедия: Prolog', en: 'Wikipedia: Prolog' } },
-      },
-      {
-        slug: 'datalog',
-        name: { ru: 'Datalog', en: 'Datalog' },
-        aka: { ru: 'узкий Prolog для баз данных', en: 'a narrow Prolog for databases' },
-        def: {
-          ru: 'Datalog — урезанный Prolog для запросов к данным: те же факты и правила вывода, но без возможностей, из-за которых программа может работать вечно. Поэтому любой запрос на Datalog к конечным данным гарантированно заканчивается и даёт точный ответ. Это пример узкого языка: им нельзя написать любую программу, зато про его программы можно отвечать точно. Datalog-подобные языки используют в анализе кода и в правилах доступа.',
-          en: 'Datalog is a cut-down Prolog for querying data: the same facts and inference rules, but without the features that let a program run forever. So any Datalog query over finite data is guaranteed to finish and give an exact answer. It is an example of a narrow language: you can’t write any program in it, but you can answer exactly about its programs. Datalog-like languages are used in code analysis and access rules.',
-        },
-        match: { ru: ['Datalog'], en: ['Datalog'] },
-        related: ['prolog', 'declarative', 'rice-theorem'],
-        faq: [
-          { q: { ru: 'Datalog — что это?', en: 'What is Datalog?' }, a: { ru: 'Урезанный Prolog для запросов к данным: те же факты и правила вывода.', en: 'A trimmed Prolog for querying data: the same facts and inference rules.' } },
-          { q: { ru: 'Почему запрос на Datalog всегда заканчивается?', en: 'Why does a Datalog query always finish?' }, a: { ru: 'Из языка убраны возможности, из-за которых программа может работать вечно.', en: 'The language drops the features that would let a program run forever.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Datalog', label: { ru: 'Википедия: Datalog', en: 'Wikipedia: Datalog' } },
-      },
-      {
         slug: 'reconcile-loop',
         name: { ru: 'Петля сверки', en: 'Reconcile loop' },
         aka: { ru: 'как в Kubernetes', en: 'as in Kubernetes' },
@@ -2165,231 +2593,6 @@ export const TERM_SETS: TermSet[] = [
           ],
         },
       },
-      {
-        slug: 'memory-bank',
-        name: { ru: 'Memory Bank', en: 'Memory Bank' },
-        def: {
-          ru: 'Memory Bank — папка `memory-bank` с шестью markdown-файлами, где агент держит контекст проекта между сессиями: `projectbrief` (цели и рамки), `productContext` (зачем продукт), `systemPatterns` (архитектура), `techContext` (стек), `activeContext` (текущий фокус) и `progress` (что готово). Агент читает их в начале каждой задачи и обновляет после крупных изменений или по команде «update memory bank». Это набор инструкций для агента из Cline, он работает и с другими агентами: частный случай памяти проекта в файлах, как CLAUDE.md.',
-          en: 'Memory Bank is a `memory-bank` folder with six markdown files where the agent keeps project context between sessions: `projectbrief` (goals and scope), `productContext` (why the product exists), `systemPatterns` (architecture), `techContext` (stack), `activeContext` (current focus) and `progress` (what is done). The agent reads them at the start of every task and updates them after major changes or on "update memory bank". It is a set of agent instructions from Cline that works with other agents too: one case of project memory kept in files, like CLAUDE.md.',
-        },
-        match: { ru: ['Memory Bank'], en: ['Memory Bank'] },
-        related: ['memory', 'bible', 'claude-md', 'agent-skills'],
-        faq: [
-          { q: { ru: 'Memory Bank — что это?', en: 'What is a Memory Bank?' }, a: { ru: 'Папка memory-bank с шестью markdown-файлами, где агент держит контекст проекта между сессиями: цели, архитектуру, стек, текущий фокус и прогресс.', en: 'A memory-bank folder with six markdown files where the agent keeps project context between sessions: goals, architecture, stack, current focus and progress.' } },
-          { q: { ru: 'Когда агент обновляет Memory Bank?', en: 'When does the agent update the Memory Bank?' }, a: { ru: 'После крупных изменений или по команде «update memory bank». Читает файлы в начале каждой задачи.', en: 'After large changes or on the “update memory bank” command. It reads the files at the start of every task.' } },
-        ],
-        source: { url: 'https://docs.cline.bot/best-practices/memory-bank', label: { ru: 'Cline: Memory Bank', en: 'Cline Memory Bank docs' } },
-      },
-      {
-        slug: 'requirements',
-        name: { ru: 'Требования', en: 'Requirements' },
-        def: {
-          ru: 'Требования — описание того, что система должна делать и при каких условиях. У каждого требования есть источник, и от него зависит, насколько серьёзной будет правка: мажорной или минорной.',
-          en: 'Requirements is a description of what the system must do and under which conditions. Every requirement has a source, and it decides how serious an edit is: major or minor.',
-        },
-        match: { ru: ['требовани\\p{L}*'], en: ['requirements?'] },
-        related: ['source', 'hallucination'],
-        faq: [
-          { q: { ru: 'Требования — что это?', en: 'What are requirements?' }, a: { ru: 'Описание того, что система должна делать и при каких условиях.', en: 'A description of what a system must do and under which conditions.' } },
-          { q: { ru: 'Зачем у требования источник?', en: 'Why does a requirement need a source?' }, a: { ru: 'От источника зависит, насколько серьёзной будет правка: мажорной или минорной.', en: 'The source decides how serious a change is: major or minor.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Requirements_engineering', label: { ru: 'Википедия: инженерия требований', en: 'Wikipedia: Requirements engineering' } },
-      },
-      {
-        slug: 'c4-model',
-        name: { ru: 'Модель C4', en: 'C4 model' },
-        aka: { ru: 'схема устройства системы в четыре приближения', en: 'system structure in four zoom levels' },
-        def: {
-          ru: 'C4 — способ рисовать устройство программной системы в четыре приближения, как карту: от целой страны до отдельной улицы. На каждом уровне своя картинка, и уровни не смешивают в одну схему. Благодаря этому и новичок, и разработчик видят ровно столько подробностей, сколько им нужно. Название C4 — от четырёх слов на английском: context, containers, components, code.',
-          en: 'C4 is a way to draw the structure of a software system at four zoom levels, like a map: from a whole country down to a single street. Each level gets its own picture, and levels are not mixed into one diagram. That way a newcomer and a developer each see exactly as much detail as they need. The name C4 comes from four English words: context, containers, components, code.',
-        },
-        notes: {
-          title: { ru: 'Четыре уровня', en: 'Four levels' },
-          items: [
-            { name: { ru: 'Контекст', en: 'Context' }, text: { ru: 'система целиком одним блоком и те, кто с ней связан: люди и соседние системы. Вопрос: кто и зачем ею пользуется.', en: 'the whole system as one block and everyone linked to it: people and neighboring systems. The question: who uses it and why.' } },
-            { name: { ru: 'Контейнеры', en: 'Containers' }, text: { ru: 'из каких отдельно запускаемых частей она состоит: сайт, сервер, база данных. Вопрос: из чего собрана система.', en: 'the separately running parts it is made of: a website, a server, a database. The question: what the system is built from.' } },
-            { name: { ru: 'Компоненты', en: 'Components' }, text: { ru: 'из чего состоит одна такая часть, например сервер: оплата, заказы, промокоды. Вопрос: как устроена одна часть.', en: 'what one such part is made of, for example a server: payment, orders, promo codes. The question: how one part is organized.' } },
-            { name: { ru: 'Код', en: 'Code' }, text: { ru: 'как устроен один компонент внутри: классы и функции. Этот уровень рисуют редко: его и так показывает сам код.', en: 'how one component is organized inside: classes and functions. This level is rarely drawn: the code itself shows it.' } },
-          ],
-        },
-        match: { ru: ['C4(?:-диаграмм\\p{L}*| model)?', 'модел\\p{L}* C4'], en: ['C4 model', 'C4 diagrams?', 'C4'] },
-        related: ['sequence-diagram', 'bounded-context', 'ddd', 'spec-driven-development'],
-        more: { post: 'bug-report-to-reproduction-agent', label: { ru: 'Как агент рисует схемы по запросу: sequence и C4', en: 'How an agent draws diagrams on request: sequence and C4' } },
-        faq: [
-          { q: { ru: 'Модель C4 — что это?', en: 'What is the C4 model?' }, a: { ru: 'Способ рисовать устройство программной системы в четыре приближения: context, containers, components и code.', en: 'A way to draw a software system’s structure at four zoom levels: context, containers, components and code.' } },
-          { q: { ru: 'Зачем четыре уровня?', en: 'Why four levels?' }, a: { ru: 'На каждом уровне своя картинка, поэтому и новичок, и разработчик видят ровно столько подробностей, сколько им нужно.', en: 'Each level has its own picture, so both a newcomer and a developer see exactly as much detail as they need.' } },
-        ],
-        source: { url: 'https://c4model.com/', label: { ru: 'c4model.com — сайт методологии, автор Саймон Браун', en: 'c4model.com, the method site by Simon Brown' } },
-      },
-      {
-        slug: 'osi',
-        name: { ru: 'Модель OSI', en: 'OSI model' },
-        aka: { ru: 'семь уровней', en: 'seven layers' },
-        def: {
-          ru: 'Модель OSI — эталонная модель, которая раскладывает сетевое взаимодействие на семь уровней: от физического до прикладного. Каждый уровень может жить на другой физической системе, поэтому чем больше уровней и систем на пути запроса, тем больше мест, где он ломается. Через эту модель удобно оценивать, насколько задача на самом деле сложна для агента.',
-          en: 'OSI model is a reference model that splits network communication into seven layers, from physical to application. Each layer may live on a different physical system, so the more layers and systems on the request path, the more places it can break. A handy lens for judging how hard a task really is for an agent.',
-        },
-        match: { ru: ['модел\\p{L}* OSI', 'OSI'], en: ['OSI model', 'OSI'] },
-        related: ['bounded-context', 'c4-model'],
-        faq: [
-          { q: { ru: 'Модель OSI — что это?', en: 'What is the OSI model?' }, a: { ru: 'Эталонная модель, которая раскладывает сетевое взаимодействие на семь уровней: от физического до прикладного.', en: 'A reference model that splits network communication into seven layers, from physical to application.' } },
-          { q: { ru: 'Зачем модель OSI для ИИ-агента?', en: 'Why use the OSI model for an AI agent?' }, a: { ru: 'Чем больше уровней и систем на пути запроса, тем больше мест, где он ломается. По этой модели удобно оценивать, насколько задача сложна для агента.', en: 'The more layers and systems a request crosses, the more places it can break. The model helps estimate how hard a task really is for an agent.' } },
-        ],
-        source: { url: 'https://www.iso.org/standard/20269.html', label: { ru: 'ISO/IEC 7498-1 — стандарт модели OSI', en: 'ISO/IEC 7498-1, the OSI model standard' } },
-      },
-      {
-        slug: 'epimorphism',
-        name: { ru: 'Эпиморфизм', en: 'Epimorphism' },
-        aka: { ru: 'соответствие без пустых мест', en: 'a matching with no empty spots' },
-        def: {
-          ru: 'Эпиморфизм — соответствие, при котором каждая часть результата получена из чего-то в источнике: непокрытых частей нет. Для ответа агента это значит, что у каждого утверждения есть опора в данных. Там, где опоры нет, остаётся пустое место, и модель заполняет его догадкой: так возникает галлюцинация.',
-          en: 'An epimorphism is a matching where every part of the result comes from something in the source: no part is left uncovered. For an agent’s answer it means every statement has support in the data. Where there is no support an empty spot remains, and the model fills it with a guess: that is how a hallucination arises.',
-        },
-        match: { ru: ['эпиморфизм\\p{L}*'], en: ['epimorphisms?'] },
-        related: ['hallucination', 'source', 'context'],
-        faq: [
-          { q: { ru: 'Эпиморфизм — что это простыми словами?', en: 'What is an epimorphism in plain words?' }, a: { ru: 'Соответствие, при котором каждая часть результата получена из чего-то в источнике: непокрытых частей нет.', en: 'A mapping where every part of the result comes from something in the source: no part is left uncovered.' } },
-          { q: { ru: 'Как эпиморфизм связан с галлюцинациями?', en: 'How does an epimorphism relate to hallucinations?' }, a: { ru: 'Если у каждого утверждения ответа есть опора в данных, галлюцинации нет. Там, где опоры нет, модель заполняет пустое место догадкой.', en: 'If every statement in the answer has support in the data, there is no hallucination. Where support is missing, the model fills the gap with a guess.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Epimorphism', label: { ru: 'Википедия: эпиморфизм', en: 'Wikipedia: Epimorphism' } },
-      },
-    ],
-  },
-  {
-    slug: 'languages',
-    icon: 'code',
-    name: { ru: 'Языки и платформы', en: 'Languages and platforms' },
-    hint: { ru: 'JavaScript, его надстройки, среды запуска и каркасы для сайтов', en: 'JavaScript, its extensions, runtimes and web frameworks' },
-    terms: [
-      {
-        slug: 'javascript',
-        name: { ru: 'JavaScript', en: 'JavaScript' },
-        aka: { ru: 'язык сайтов и многих программ', en: 'the language of websites and many programs' },
-        def: {
-          ru: 'JavaScript — язык программирования, на котором работают страницы сайтов в браузере: кнопки, формы и всё, что откликается на действия. Им же пишут программы на сервере, например в среде Node.js. Тесты для такого кода запускают движки вроде Jest, Vitest и QUnit.',
-          en: 'JavaScript is a programming language that makes web pages work in the browser: buttons, forms and everything that reacts to actions. It is also used for server programs, for example in Node.js. Tests for such code are run by engines such as Jest, Vitest and QUnit.',
-        },
-        match: { ru: ['JavaScript'], en: ['JavaScript'] },
-        related: ['automated-test', 'node-js', 'jest', 'vitest', 'qunit'],
-        faq: [
-          { q: { ru: 'JavaScript — что это?', en: 'What is JavaScript?' }, a: { ru: 'Язык программирования, на котором работают страницы сайтов в браузере: кнопки, формы и всё, что откликается на действия.', en: 'The programming language that runs web pages in the browser: buttons, forms and everything that reacts to actions.' } },
-          { q: { ru: 'Где ещё работает JavaScript?', en: 'Where else does JavaScript run?' }, a: { ru: 'На сервере, например в среде Node.js.', en: 'On the server, for example in Node.js.' } },
-        ],
-        source: { url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', label: { ru: 'MDN: JavaScript', en: 'MDN: JavaScript' } },
-      },
-      {
-        slug: 'typescript',
-        name: { ru: 'TypeScript', en: 'TypeScript' },
-        aka: { ru: 'JavaScript с типами', en: 'JavaScript with types' },
-        def: {
-          ru: 'TypeScript — надстройка над JavaScript, в которой у значений указывают тип: число, строка и так далее. Благодаря этому ошибки вроде «вместо числа передали строку» находятся до запуска программы, а не у пользователя. Готовую программу переводят в обычный JavaScript.',
-          en: 'TypeScript is an extension of JavaScript in which values are given a type: number, string and so on. Thanks to this, errors like “a string was passed instead of a number” are found before the program runs, not at the user’s. The finished program is turned into ordinary JavaScript.',
-        },
-        match: { ru: ['TypeScript'], en: ['TypeScript'] },
-        related: ['javascript', 'babel', 'jest'],
-        faq: [
-          { q: { ru: 'TypeScript — что это?', en: 'What is TypeScript?' }, a: { ru: 'Надстройка над JavaScript, в которой у значений указывают тип: число, строка и так далее.', en: 'A layer over JavaScript where values have declared types: number, string and so on.' } },
-          { q: { ru: 'Зачем TypeScript?', en: 'Why use TypeScript?' }, a: { ru: 'Ошибки вроде «вместо числа передали строку» находятся до запуска программы, а не у пользователя.', en: 'Mistakes like passing a string instead of a number are caught before the program runs, before a user sees them.' } },
-        ],
-        source: { url: 'https://www.typescriptlang.org/', label: { ru: 'typescriptlang.org — сайт TypeScript', en: 'typescriptlang.org, the TypeScript site' } },
-      },
-      {
-        slug: 'babel',
-        name: { ru: 'Babel', en: 'Babel' },
-        aka: { ru: 'переводчик нового JavaScript', en: 'a translator of new JavaScript' },
-        def: {
-          ru: 'Babel — программа, которая переводит новый JavaScript в такой, который понимают более старые браузеры и среды. Можно писать современным языком, а запускать там, где его ещё не знают. Тесты в Jest работают и с проектами, которые собираются через Babel.',
-          en: 'Babel is a program that turns new JavaScript into one that older browsers and environments understand. You can write in the modern language and run it where it is not yet known. Jest tests work with projects that are built through Babel too.',
-        },
-        match: { ru: ['Babel'], en: ['Babel'] },
-        related: ['javascript', 'typescript', 'jest'],
-        faq: [
-          { q: { ru: 'Babel — что это?', en: 'What is Babel?' }, a: { ru: 'Программа, которая переводит новый JavaScript в такой, который понимают более старые браузеры и среды.', en: 'A program that translates new JavaScript into code older browsers and environments understand.' } },
-          { q: { ru: 'Зачем Babel?', en: 'Why use Babel?' }, a: { ru: 'Чтобы писать современным языком и запускать код там, где его ещё не знают.', en: 'To write in the modern language and run the code where it is not yet supported.' } },
-        ],
-        source: { url: 'https://babeljs.io/', label: { ru: 'babeljs.io — сайт Babel', en: 'babeljs.io, the Babel site' } },
-      },
-      {
-        slug: 'node-js',
-        name: { ru: 'Node.js', en: 'Node.js' },
-        aka: { ru: 'JavaScript вне браузера', en: 'JavaScript outside the browser' },
-        def: {
-          ru: 'Node.js — программа, которая запускает JavaScript вне браузера: на сервере, в командной строке и в скриптах. Без неё код на JavaScript работал бы только внутри страницы сайта. Благодаря Node.js на одном языке пишут и сайт, и серверную часть, и программы для разработчика. Тесты на Jest, Vitest и QUnit чаще всего тоже запускают в Node.js, а сборщик Vite сам работает на нём.',
-          en: 'Node.js is a program that runs JavaScript outside the browser: on a server, on the command line and in scripts. Without it, JavaScript code would only work inside a web page. Thanks to Node.js one language is used for the site, the server side and developer programs. Tests with Jest, Vitest and QUnit are most often run in Node.js too, and the Vite bundler itself runs on it.',
-        },
-        match: { ru: ['Node\\.js'], en: ['Node\\.js'] },
-        related: ['javascript', 'vite', 'jest', 'vitest', 'qunit'],
-        faq: [
-          { q: { ru: 'Node.js — что это?', en: 'What is Node.js?' }, a: { ru: 'Программа, которая запускает JavaScript вне браузера: на сервере, в командной строке и в скриптах.', en: 'A program that runs JavaScript outside the browser: on the server, on the command line and in scripts.' } },
-          { q: { ru: 'Зачем нужен Node.js?', en: 'Why is Node.js needed?' }, a: { ru: 'Благодаря ему на одном языке пишут и сайт, и сервер.', en: 'It lets one language serve both the website and the server.' } },
-        ],
-        source: { url: 'https://nodejs.org/', label: { ru: 'nodejs.org — сайт Node.js', en: 'nodejs.org, the Node.js site' } },
-      },
-      {
-        slug: 'vite',
-        name: { ru: 'Vite', en: 'Vite' },
-        aka: { ru: 'сборщик для сайтов', en: 'a bundler for web apps' },
-        def: {
-          ru: 'Vite — программа, которая собирает код сайта и в процессе работы мгновенно показывает правки в браузере. Его настройки описывают, как собирать проект. Vitest берёт эти же настройки для тестов, поэтому отдельная конфигурация для тестов не нужна.',
-          en: 'Vite is a program that builds the code of a website and instantly shows edits in the browser while you work. Its settings describe how to build the project. Vitest reuses these same settings for tests, so no separate test configuration is needed.',
-        },
-        match: { ru: ['Vite'], en: ['Vite'] },
-        related: ['vitest', 'javascript', 'node-js'],
-        faq: [
-          { q: { ru: 'Vite — что это?', en: 'What is Vite?' }, a: { ru: 'Программа, которая собирает код сайта и в процессе работы мгновенно показывает правки в браузере.', en: 'A program that builds a site’s code and shows edits in the browser instantly while you work.' } },
-          { q: { ru: 'Как Vite связан с Vitest?', en: 'How is Vite related to Vitest?' }, a: { ru: 'Vitest берёт настройки Vite для тестов, поэтому отдельная настройка тестов не нужна.', en: 'Vitest reuses Vite’s settings for tests, so no separate test configuration is needed.' } },
-        ],
-        source: { url: 'https://vite.dev/', label: { ru: 'vite.dev — сайт Vite', en: 'vite.dev, the Vite site' } },
-      },
-      {
-        slug: 'react-js',
-        name: { ru: 'React', en: 'React' },
-        aka: { ru: 'библиотека для сайтов, не путать с ReAct', en: 'a web library, not to be confused with ReAct' },
-        def: {
-          ru: 'React — библиотека на JavaScript для построения страниц сайтов: страница собирается из готовых блоков-компонентов, и при изменении данных обновляются только нужные блоки. Одна из самых распространённых наряду с Angular и Vue. К схеме работы агента ReAct отношения не имеет, у них только похожие названия.',
-          en: 'React is a JavaScript library for building web pages: a page is assembled from ready-made blocks called components, and when data changes only the needed blocks are updated. One of the most widespread along with Angular and Vue. It has nothing to do with the ReAct agent scheme: only the names are similar.',
-        },
-        match: { ru: ['React'], en: ['React'] },
-        exact: 'React',
-        related: ['javascript', 'angular', 'vue', 'react'],
-        faq: [
-          { q: { ru: 'React — что это?', en: 'What is React?' }, a: { ru: 'Библиотека на JavaScript для построения страниц сайтов: страница собирается из блоков-компонентов.', en: 'A JavaScript library for building web pages: a page is assembled from component blocks.' } },
-          { q: { ru: 'Чем React отличается от ReAct?', en: 'How is React different from ReAct?' }, a: { ru: 'React — библиотека для страниц сайтов, ReAct — схема работы ИИ-агента. Совпадает только написание.', en: 'React is a library for web pages, ReAct is an AI agent pattern. Only the spelling is similar.' } },
-        ],
-        source: { url: 'https://react.dev/', label: { ru: 'react.dev — сайт React', en: 'react.dev, the React site' } },
-      },
-      {
-        slug: 'angular',
-        name: { ru: 'Angular', en: 'Angular' },
-        aka: { ru: 'каркас для сайтов', en: 'a web framework' },
-        def: {
-          ru: 'Angular — каркас для построения сайтов и веб-приложений на JavaScript и TypeScript: страница собирается из готовых блоков-компонентов. Один из самых распространённых наряду с React и Vue.',
-          en: 'Angular is a framework for building websites and web apps in JavaScript and TypeScript: a page is assembled from ready-made blocks called components. One of the most widespread along with React and Vue.',
-        },
-        match: { ru: ['Angular'], en: ['Angular'] },
-        related: ['javascript', 'typescript', 'react-js', 'vue'],
-        faq: [
-          { q: { ru: 'Angular — что это?', en: 'What is Angular?' }, a: { ru: 'Каркас для построения сайтов и веб-приложений на JavaScript и TypeScript: страница собирается из блоков-компонентов.', en: 'A framework for building websites and web apps in JavaScript and TypeScript: a page is assembled from component blocks.' } },
-          { q: { ru: 'Чем Angular отличается от React и Vue?', en: 'How is Angular different from React and Vue?' }, a: { ru: 'Все три собирают страницу из компонентов и входят в число самых распространённых. Angular — полный каркас, React — библиотека.', en: 'All three build a page from components and are among the most widely used. Angular is a full framework, React is a library.' } },
-        ],
-        source: { url: 'https://angular.dev/', label: { ru: 'angular.dev — сайт Angular', en: 'angular.dev, the Angular site' } },
-      },
-      {
-        slug: 'vue',
-        name: { ru: 'Vue', en: 'Vue' },
-        aka: { ru: 'каркас для сайтов', en: 'a web framework' },
-        def: {
-          ru: 'Vue — каркас для построения сайтов на JavaScript: страница собирается из блоков-компонентов, и его можно подключать к проекту постепенно. Один из самых распространённых наряду с Angular и React.',
-          en: 'Vue is a framework for building websites in JavaScript: a page is assembled from blocks called components, and it can be adopted in a project gradually. One of the most widespread along with Angular and React.',
-        },
-        match: { ru: ['Vue(?:\\.js)?'], en: ['Vue(?:\\.js)?'] },
-        related: ['javascript', 'react-js', 'angular', 'typescript'],
-        faq: [
-          { q: { ru: 'Vue — что это?', en: 'What is Vue?' }, a: { ru: 'Каркас для построения сайтов на JavaScript: страница собирается из блоков-компонентов.', en: 'A JavaScript framework for building websites: a page is assembled from component blocks.' } },
-          { q: { ru: 'Чем Vue удобен?', en: 'What makes Vue convenient?' }, a: { ru: 'Его можно подключать к проекту постепенно.', en: 'It can be added to a project gradually.' } },
-        ],
-        source: { url: 'https://vuejs.org/', label: { ru: 'vuejs.org — сайт Vue', en: 'vuejs.org, the Vue site' } },
-      },
     ],
   },
   {
@@ -2397,6 +2600,7 @@ export const TERM_SETS: TermSet[] = [
     icon: 'tests',
     name: { ru: 'Тестирование', en: 'Testing' },
     hint: { ru: 'Автоматические тесты, движки и проверка самих тестов', en: 'Automated tests, frameworks and checking the tests themselves' },
+    group: { id: 'quality', name: { ru: 'Качество и тестирование', en: 'Quality and testing' } },
     terms: [
       {
         slug: 'automated-test',
@@ -2415,6 +2619,376 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Test_automation', label: { ru: 'Википедия: автоматизация тестирования', en: 'Wikipedia: Test automation' } },
       },
+      {
+        slug: 'pure-function',
+        name: { ru: 'Чистая функция (pure function)', en: 'Pure function' },
+        aka: { ru: 'чистые функции, функция без побочных эффектов', en: 'pure functions, function without side effects' },
+        def: {
+          ru: 'Чистая функция — функция, результат которой зависит только от её входных данных и которая ничего не читает и не меняет снаружи: не обращается к базе, сети, файлам, часам и случайным числам. На одни и те же входные данные она всегда отвечает одинаково, поэтому её проверяют юнит-тестом без моков: подали вход, сравнили результат с ожидаемым. Пример: расчёт скидки от суммы заказа чистый, а функция, которая берёт скидку из базы или записывает заказ, нечистая. Реальный код редко состоит из одних чистых функций, поэтому чистую часть логики отделяют от частей, которые общаются с внешним миром.',
+          en: 'A pure function is a function whose result depends only on its input and which reads and changes nothing outside: it touches no database, network, files, clock or random numbers. For the same input it always answers the same way, so it is checked with a unit test without mocks: feed the input, compare the result with the expected one. Example: a discount calculated from the order amount is pure, while a function that takes the discount from a database or saves the order is impure. Real code rarely consists of pure functions alone, so the pure part of the logic is separated from the parts that talk to the outside world.',
+        },
+        match: { ru: ['чист\\p{L}* функци\\p{L}*'], en: ['pure functions?'] },
+        related: ['unit-test', 'mock', 'automated-test', 'tech-debt', 'e2e-test'],
+        faq: [
+          { q: { ru: 'Чистая функция — что это?', en: 'What is a pure function?' }, a: { ru: 'Функция, результат которой зависит только от входных данных и которая ничего не читает и не меняет снаружи.', en: 'A function whose result depends only on its input and which reads and changes nothing outside.' } },
+          { q: { ru: 'Чем чистая функция отличается от нечистой?', en: 'How is a pure function different from an impure one?' }, a: { ru: 'Нечистая функция зависит от того, что лежит вне её входных данных (база, время, случайное число), или меняет это (запись в базу, файл, письмо). Поэтому её результат может отличаться между запусками.', en: 'An impure function depends on something outside its input (a database, the time, a random number) or changes it (a write to a database, a file, an email). So its result may differ between runs.' } },
+          { q: { ru: 'Почему чистые функции удобны для тестов?', en: 'Why are pure functions easy to test?' }, a: { ru: 'Им не нужны моки и стенд: тест подаёт вход и сравнивает результат с ожидаемым за миллисекунды, и результат не зависит от порядка запусков.', en: 'They need no mocks and no stand: a test feeds the input and compares the result with the expected one in milliseconds, and the result does not depend on the order of runs.' } },
+          { q: { ru: 'Как получить больше чистых функций?', en: 'How do you get more pure functions?' }, a: { ru: 'Отделить вычисления от обращений во внешний мир: сначала собрать данные, затем передать их в чистую функцию и только потом записать результат.', en: 'Separate the computation from the calls to the outside world: first gather the data, then pass it to a pure function and only then save the result.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Pure_function', label: { ru: 'Википедия: чистая функция', en: 'Wikipedia: Pure function' } },
+        seo: {
+          title: { ru: 'Чистая функция: что это и почему её легко тестировать', en: 'Pure function: what it is and why it is easy to test' },
+          description: {
+            ru: 'Чистая функция зависит только от входных данных и ничего не меняет снаружи. Чем она отличается от нечистой и почему такие функции проверяют юнит-тестами без моков.',
+            en: 'A pure function depends only on its input and changes nothing outside. How it differs from an impure one and why such functions are unit-tested without mocks.',
+          },
+        },
+      },
+      {
+        slug: 'unit-test',
+        name: { ru: 'Юнит-тест (unit test)', en: 'Unit test' },
+        aka: { ru: 'модульный тест, юнит тест, unit test, модульное тестирование', en: 'unit testing, module test' },
+        def: {
+          ru: 'Юнит-тест (модульный тест) — автоматическая проверка одной небольшой части кода (функции, класса или модуля) отдельно от остальной системы: тест подаёт на вход заранее выбранные данные и сравнивает результат с ожидаемым. Чаще всего юнит-тестами покрывают чистые функции, то есть функции без зависимостей: они не обращаются к базе, сети и файлам и при одинаковых входных данных всегда возвращают один и тот же результат, поэтому тест выполняется за миллисекунды. Граница размытая: из-за накопленного технического долга чистых функций в реальном коде мало, и проверяемая часть нередко обращается к базе или сети. Тогда её зависимости заменяют моками, и юнит-тест остаётся быстрым. Юнит-тесты работают на уровне приложения: они проверяют код внутри одной программы, а её взаимодействие с другими системами проверяют E2E-тесты. Пример: функцию расчёта скидки проверяют на нескольких суммах, не запуская магазин целиком. Юнит-тестов в проекте обычно больше всего: они быстрые и точно показывают, в какой части кода ошибка.',
+          en: 'A unit test is an automated check of one small piece of code (a function, a class or a module) separately from the rest of the system: the test feeds in pre-chosen input and compares the result with the expected one. Unit tests most often cover pure functions, that is, functions with no dependencies: they touch no database, network or files and always return the same result for the same input, so the test runs in milliseconds. The border is blurry: because of accumulated technical debt, real code has few pure functions, and the part under test often calls a database or a network. Then its dependencies are replaced with mocks and the unit test stays fast. Unit tests work at the application level: they check code inside one program, while its interaction with other systems is checked by E2E tests. Example: a discount function is checked on several amounts without starting the whole shop. A project usually has the most unit tests: they are fast and show exactly which part of the code is faulty.',
+        },
+        match: { ru: ['юнит[- ]?тест\\p{L}*', 'модульн\\p{L}* тест\\p{L}*', 'unit[- ]?test\\p{L}*'], en: ['unit tests?', 'unit testing'] },
+        related: ['automated-test', 'mock', 'e2e-test', 'test-case', 'smoke-testing', 'regression-testing', 'flaky-test'],
+        faq: [
+          { q: { ru: 'Юнит-тест — что это?', en: 'What is a unit test?' }, a: { ru: 'Автоматическая проверка одной небольшой части кода отдельно от остальной системы: входные данные подаются заранее, результат сверяется с ожидаемым.', en: 'An automated check of one small piece of code separately from the rest of the system: the input is given in advance and the result is compared with the expected one.' } },
+          { q: { ru: 'Чем юнит-тест отличается от E2E-теста?', en: 'How is a unit test different from an E2E test?' }, a: { ru: 'Юнит-тест проверяет одну часть кода и выполняется за миллисекунды. E2E-тест проверяет цепочку сценариев через несколько систем, идёт долго и запускается на стенде.', en: 'A unit test checks one part of the code and runs in milliseconds. An E2E test checks a chain of scenarios across several systems, is slow and runs on a stand.' } },
+          { q: { ru: 'Что такое чистая функция и при чём здесь юнит-тесты?', en: 'What is a pure function and how does it relate to unit tests?' }, a: { ru: 'Чистая функция не содержит зависимостей: не обращается к базе, сети и файлам и на одинаковые входные данные отвечает одинаково. Её проще всего покрыть юнит-тестом, моки не нужны.', en: 'A pure function has no dependencies: it touches no database, network or files and answers the same way for the same input. It is the easiest to cover with a unit test, and no mocks are needed.' } },
+          { q: { ru: 'Зачем в юнит-тестах моки?', en: 'Why do unit tests use mocks?' }, a: { ru: 'Чистых функций в реальном коде часто мало из-за технического долга, и проверяемая часть обращается к базе, сети или чужому сервису. Мок заменяет эти зависимости, чтобы результат зависел только от самой части и тест оставался быстрым.', en: 'Real code often has few pure functions because of technical debt, and the part under test calls a database, a network or a third-party service. A mock replaces those dependencies so that the result depends only on the part itself and the test stays fast.' } },
+          { q: { ru: 'Кто пишет юнит-тесты?', en: 'Who writes unit tests?' }, a: { ru: 'Обычно разработчик, который пишет проверяемый код, одновременно с ним или до него.', en: 'Usually the developer who writes the code under test, alongside it or before it.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Unit_testing', label: { ru: 'Википедия: модульное тестирование (unit testing)', en: 'Wikipedia: Unit testing' } },
+        seo: {
+          title: { ru: 'Юнит-тест: что это, зачем нужны моки и чем он отличается от E2E-теста', en: 'Unit test: what it is, why mocks are used and how it differs from an E2E test' },
+          description: {
+            ru: 'Юнит-тест проверяет одну небольшую часть кода отдельно от системы и выполняется за миллисекунды. Пример с расчётом скидки и отличие от E2E-теста.',
+            en: 'A unit test checks one small piece of code in isolation and runs in milliseconds. A discount example and how it differs from an E2E test.',
+          },
+        },
+      },
+      {
+        slug: 'e2e-test',
+        name: { ru: 'E2E-тест', en: 'End-to-end test' },
+        aka: { ru: 'e2e, end-to-end, сквозной тест, сквозное тестирование', en: 'E2E test, end-to-end testing, system test' },
+        def: {
+          ru: 'E2E-тест (end-to-end, «от края до края») — проверка, что несколько сценариев работают верно вместе, в том числе на стыках: цепочка идёт от первого действия пользователя до последнего результата через все части и системы, которые в ней участвуют. Чаще всего эти системы принадлежат разным командам, и тест ловит то, что видно только на стыках: например, данные одной системы не подходят другой. Пример: в интернет-магазине заказ создаёт одна команда, оплату принимает вторая, склад ведёт третья; E2E-тест оформляет заказ и проверяет, что он оплачен и дошёл до склада. Системы в такой цепочке обычно соответствуют ограниченным контекстам предметной области (заказы, оплата, склад), у каждого свой язык и своя команда, а стыки лежат на границах контекстов. В частном случае стыки лежат внутри одной команды — между людьми или сервисами. Юнит-тест проверяет одну маленькую часть кода, смоук-тест быстро убеждается, что главное запускается, а E2E-тест идёт долго и охватывает всю цепочку, поэтому таких тестов меньше и запускают их на стенде.',
+          en: 'An end-to-end (E2E) test checks that several scenarios work correctly together, including at the joints: the chain runs from a user’s first action to the final result through every part and system involved. Most often those systems belong to different teams, and the test catches what shows only at the joints, for example one system’s data does not fit another. Example: in an online shop one team creates the order, a second takes the payment, a third runs the warehouse; the E2E test places an order and checks that it was paid and reached the warehouse. The systems in such a chain usually correspond to bounded contexts of the business domain (orders, payment, warehouse), each with its own language and its own team, and the joints lie on the borders between contexts. In a narrower case the joints lie inside one team, between people or services. A unit test checks one small piece of code, a smoke test quickly confirms that the main things start, while an E2E test is slow and covers the whole chain, so there are fewer of them and they run on a stand.',
+        },
+        match: { ru: ['e2e[- ]тест\\p{L}*', 'сквозн\\p{L}* тест\\p{L}*', 'сквозн\\p{L}* тестировани\\p{L}*', 'e2e', 'end-to-end'], en: ['end-to-end tests?', 'end-to-end testing', 'e2e', 'system testing'] },
+        related: ['unit-test', 'automated-test', 'smoke-testing', 'regression-testing', 'critical-path', 'test-stand', 'flaky-test', 'mock', 'qa'],
+        faq: [
+          { q: { ru: 'E2E-тест — что это?', en: 'What is an end-to-end (E2E) test?' }, a: { ru: 'Проверка, что несколько сценариев работают верно вместе и на стыках: цепочка целиком, часто через системы разных команд.', en: 'A check that several scenarios work correctly together and at the joints: the whole chain, often across systems of different teams.' } },
+          { q: { ru: 'Чем E2E-тест отличается от юнит-теста?', en: 'How is an end-to-end test different from a unit test?' }, a: { ru: 'Юнит-тест проверяет одну маленькую часть кода и работает быстро. E2E-тест проверяет цепочку целиком, он медленнее и чаще ломается по посторонним причинам.', en: 'A unit test checks one small piece of code and is fast. An end-to-end test checks the whole chain together; it is slower and more often breaks for unrelated reasons.' } },
+          { q: { ru: 'Чем E2E-тест отличается от смоук-теста?', en: 'How is an end-to-end test different from a smoke test?' }, a: { ru: 'Смоук-тест быстро проверяет, что главное запускается. E2E-тест подробно проходит цепочку сценариев вместе со стыками.', en: 'A smoke test quickly checks that the main things start. An end-to-end test goes through a chain of scenarios in detail, joints included.' } },
+          { q: { ru: 'Где запускают E2E-тесты?', en: 'Where are end-to-end tests run?' }, a: { ru: 'На стенде, который собран как рабочая система, часто на препроде перед выкладкой.', en: 'On a stand that is built like the live system, often on staging before a release.' } },
+          { q: { ru: 'Как E2E-тест связан с ограниченными контекстами?', en: 'How is an E2E test related to bounded contexts?' }, a: { ru: 'Каждая система в цепочке обычно отвечает за свой ограниченный контекст предметной области, например заказы, оплату или склад. E2E-тест проходит сквозь эти контексты и проверяет их границы: слова и данные одного контекста должны правильно переводиться на язык соседнего.', en: 'Each system in the chain usually owns its own bounded context of the business domain, for example orders, payment or warehouse. An E2E test runs through these contexts and checks their borders: the words and data of one context must be translated correctly into the language of its neighbour.' } },
+          { q: { ru: 'Кто отвечает за E2E-тест, если систем несколько команд?', en: 'Who owns an E2E test when several teams are involved?' }, a: { ru: 'Стык принадлежит всем его сторонам, поэтому команды заранее договариваются, кто поддерживает тест и кто чинит его, когда он падает.', en: 'A joint belongs to everyone on it, so the teams agree in advance who maintains the test and who fixes it when it fails.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/System_testing', label: { ru: 'Википедия: системное тестирование (end-to-end)', en: 'Wikipedia: System testing (end-to-end)' } },
+        seo: {
+          title: { ru: 'E2E-тест: что это и чем отличается от юнит-теста', en: 'End-to-end (E2E) test: what it is and how it differs from a unit test' },
+          description: {
+            ru: 'E2E-тест проверяет, что несколько сценариев вместе и на стыках систем работают верно, часто у разных команд. Чем он отличается от юнит-теста и смоук-теста и где его запускают.',
+            en: 'An E2E test checks that several scenarios work together and at the joints between systems, often owned by different teams. How it differs from unit and smoke tests, and where it runs.',
+          },
+        },
+      },
+      {
+        slug: 'smoke-testing',
+        name: { ru: 'Смоук-тест', en: 'Smoke testing' },
+        aka: { ru: 'смоук тестирование, дымовое тестирование, smoke test, sanity-тест, build verification test', en: 'smoke test, sanity test, build verification test, BVT' },
+        def: {
+          ru: 'Смоук-тест (дымовое тестирование) — быстрая проверка самого главного после сборки или выкладки: запускается ли программа и проходит ли критический путь, то есть главная цепочка действий пользователя. Пример: после выкладки магазина открыть главную, войти, положить товар в корзину и оплатить; если что-то не работает, дальше можно не проверять, версию возвращают. Название пришло из электроники: включили плату, и если пошёл дым, дальше смотреть незачем. Такая проверка занимает минуты и обычно автоматизирована.',
+          en: 'Smoke testing is a quick check of the most important things after a build or release: does the program start and does the critical path work, the main chain of a user’s actions. Example: after releasing a shop, open the home page, sign in, put an item in the cart and pay; if something fails, there is no point testing further and the version is rolled back. The name comes from electronics: power on the board, and if smoke appears, there is nothing more to look at. Such a check takes minutes and is usually automated.',
+        },
+        match: { ru: ['смоук[- ]тест\\p{L}*', 'смоук\\p{L}*', 'smoke[- ]?test\\p{L}*', 'дымов\\p{L}* тест\\p{L}*'], en: ['smoke tests?', 'smoke testing', 'build verification tests?'] },
+        related: ['critical-path', 'regression-testing', 'e2e-test', 'automated-test', 'preprod', 'ci-cd', 'test-case', 'qc'],
+        faq: [
+          { q: { ru: 'Что такое смоук-тест?', en: 'What is a smoke test?' }, a: { ru: 'Быстрая проверка главного после сборки или выкладки: запускается ли программа и работают ли ключевые функции.', en: 'A quick check of the main things after a build or release: does the program start and do the key functions work.' } },
+          { q: { ru: 'Почему «смоук», то есть дым?', en: 'Why “smoke”?' }, a: { ru: 'Название пришло из электроники: плату включают и смотрят, не пошёл ли дым. Если пошёл, дальнейшая проверка не нужна.', en: 'The name comes from electronics: you power on a board and see whether smoke appears. If it does, further testing is pointless.' } },
+          { q: { ru: 'Чем смоук отличается от регрессии?', en: 'How is smoke testing different from regression?' }, a: { ru: 'Смоук проверяет только главное и занимает минуты, регрессия проходит по всему, что работало раньше. Смоук отвечает «стоит ли тестировать дальше», регрессия — «не сломалось ли старое».', en: 'Smoke checks only the main things and takes minutes, while regression covers everything that worked before. Smoke answers “is it worth testing further”, regression answers “did the old things break”.' } },
+          { q: { ru: 'Чем смоук отличается от e2e?', en: 'How is smoke testing different from e2e?' }, a: { ru: 'Смоук широкий и поверхностный: проверяет, что главные части живы. Сквозной тест глубокий: проходит один путь пользователя от начала до конца.', en: 'Smoke is wide and shallow: it checks that the main parts are alive. An end-to-end test is deep: it walks one user path from start to finish.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Smoke_testing_(software)', label: { ru: 'Википедия: Smoke testing', en: 'Wikipedia: Smoke testing (software)' } },
+        seo: {
+          title: { ru: 'Смоук-тест (smoke testing): что это и когда запускать после выкладки', en: 'What is smoke testing: a quick check after release, vs regression and end-to-end' },
+          description: {
+            ru: 'Смоук-тест — быстрая проверка главного после выкладки: запускается ли программа и работают ли основные пути. Чем отличается от регрессии и сквозного теста.',
+            en: 'Smoke testing is a quick check of the main paths right after a release. What it covers, when to run it and how it differs from regression and end-to-end tests.',
+          },
+        },
+        compare: {
+          title: { ru: 'Смоук, регрессия и E2E-тест', en: 'Smoke, regression and end-to-end tests' },
+          head: { ru: ['Смоук', 'Регрессия', 'E2E-тест'], en: ['Smoke', 'Regression', 'End-to-end (e2e)'] },
+          headSlugs: ['smoke-testing', 'regression-testing', 'e2e-test'],
+          rows: [
+            { ru: ['Цель', 'понять, стоит ли проверять дальше', 'убедиться, что старое не сломалось', 'пройти путь пользователя целиком'], en: ['Goal', 'decide whether to test further', 'make sure old things did not break', 'walk a whole user path'] },
+            { ru: ['Когда', 'сразу после сборки или выкладки', 'после правок, ночью, перед релизом', 'перед релизом и после него'], en: ['When', 'right after a build or release', 'after changes, overnight, before release', 'before and after release'] },
+            { ru: ['Объём', 'малый: только главное', 'большой: всё, что работало', 'малый или средний: ключевые пути насквозь'], en: ['Scope', 'small: only the main things', 'large: everything that worked', 'small to medium: key paths end to end'] },
+            { ru: ['Кто', 'автотест или тестировщик, минуты', 'в основном автотесты', 'автотесты или QA'], en: ['Who', 'automated test or tester, minutes', 'mostly automated tests', 'automated tests or QA'] },
+          ],
+        },
+      },
+      {
+        slug: 'regression-testing',
+        name: { ru: 'Регрессионное тестирование', en: 'Regression testing' },
+        aka: { ru: 'регрессия, регрессионный тест, регресс', en: 'regression test, regression suite' },
+        def: {
+          ru: 'Регрессионное тестирование — повторная проверка того, что уже работало, после правки: убедиться, что новое изменение не сломало старое. Пример: в магазине добавили скидки, а регрессия снова проходит оформление заказа и оплату, ведь их могли задеть. Набор таких проверок растёт с каждым найденным багом, поэтому его автоматизируют: автотесты гоняют после каждой правки или ночью. Падение теста, который раньше проходил, называют регрессией.',
+          en: 'Regression testing is rechecking what already worked after a change, to make sure the new change did not break the old. Example: a shop adds discounts, and the regression run goes through checkout and payment again, since they might have been touched. The set of such checks grows with every bug found, so it is automated: automated tests run after every change or overnight. A test that passed before and now fails signals a regression.',
+        },
+        match: { ru: ['регрессионн\\p{L}* тест\\p{L}*', 'регрессионн\\p{L}* прогон\\p{L}*'], en: ['regression tests?', 'regression testing', 'regression suites?'] },
+        related: ['automated-test', 'smoke-testing', 'e2e-test', 'flaky-test', 'ci-cd', 'test-case', 'qc'],
+        faq: [
+          { q: { ru: 'Что такое регрессионное тестирование?', en: 'What is regression testing?' }, a: { ru: 'Повторная проверка уже работавшего после правки, чтобы убедиться, что новое изменение ничего не сломало.', en: 'Rechecking what already worked after a change to make sure the new change broke nothing.' } },
+          { q: { ru: 'Когда запускать регрессию?', en: 'When should regression run?' }, a: { ru: 'После каждой правки, если набор быстрый, и ночью или перед выкладкой, если он большой. Чем чаще, тем раньше видно поломку.', en: 'After every change if the set is fast, and overnight or before release if it is large. The more often, the sooner a break shows.' } },
+          { q: { ru: 'Чем регрессия отличается от смоук-теста?', en: 'How is regression different from smoke testing?' }, a: { ru: 'Смоук быстро проверяет только главное, чтобы понять, стоит ли идти дальше. Регрессия проходит по всему, что работало раньше, и занимает дольше.', en: 'Smoke testing quickly checks only the main things to decide whether to go on. Regression covers everything that worked before and takes longer.' } },
+          { q: { ru: 'Регрессию можно автоматизировать?', en: 'Can regression be automated?' }, a: { ru: 'Да, это главное место для автотестов: набор повторяется много раз. Флакующие тесты, которые падают без причины, портят доверие к такому набору.', en: 'Yes, it is the main place for automated tests: the set repeats many times. Flaky tests that fail for no reason erode trust in such a set.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Regression_testing', label: { ru: 'Википедия: Regression testing', en: 'Wikipedia: Regression testing' } },
+        seo: {
+          title: { ru: 'Регрессионное тестирование: что это и чем отличается от смоук-теста', en: 'What is regression testing: how it differs from smoke and end-to-end tests' },
+          description: {
+            ru: 'Регрессионное тестирование проверяет, что новая правка не сломала работавшее. Когда его запускать и чем оно отличается от смоук-теста и сквозного теста.',
+            en: 'Regression testing checks that a new change did not break what worked. When to run it and how it differs from smoke and end-to-end tests.',
+          },
+        },
+        compare: {
+          title: { ru: 'Смоук, регрессия и E2E-тест', en: 'Smoke, regression and end-to-end tests' },
+          head: { ru: ['Смоук', 'Регрессия', 'E2E-тест'], en: ['Smoke', 'Regression', 'End-to-end (e2e)'] },
+          headSlugs: ['smoke-testing', 'regression-testing', 'e2e-test'],
+          rows: [
+            { ru: ['Цель', 'понять, стоит ли проверять дальше', 'убедиться, что старое не сломалось', 'пройти путь пользователя целиком'], en: ['Goal', 'decide whether to test further', 'make sure old things did not break', 'walk a whole user path'] },
+            { ru: ['Когда', 'сразу после сборки или выкладки', 'после правок, ночью, перед релизом', 'перед релизом и после него'], en: ['When', 'right after a build or release', 'after changes, overnight, before release', 'before and after release'] },
+            { ru: ['Объём', 'малый: только главное', 'большой: всё, что работало', 'малый или средний: ключевые пути насквозь'], en: ['Scope', 'small: only the main things', 'large: everything that worked', 'small to medium: key paths end to end'] },
+            { ru: ['Кто', 'автотест или тестировщик, минуты', 'в основном автотесты', 'автотесты или QA'], en: ['Who', 'automated test or tester, minutes', 'mostly automated tests', 'automated tests or QA'] },
+          ],
+        },
+      },
+      {
+        slug: 'mutation-testing',
+        name: { ru: 'Мутационное тестирование', en: 'Mutation testing' },
+        aka: { ru: 'испорченная копия', en: 'a deliberately broken copy' },
+        def: {
+          ru: 'Мутационное тестирование — способ проверить сами проверки: человек или агент нарочно портит копию кода или модели, например убирает одно условие, и смотрит, заметят ли это автоматические тесты и правила. Если порча прошла незамеченной, проверка ничего не проверяет. В моделях на Quint такие копии называют мутантами.',
+          en: 'Mutation testing is a way to test the checks themselves: a person or an agent deliberately breaks a copy of the code or model, for example removes one condition, and sees whether tests and rules notice it. If the defect passes unnoticed, the check checks nothing. In Quint models such copies are called mutants.',
+        },
+        match: { ru: ['испорченн\\p{L}* коп\\p{L}*', 'мутационн\\p{L}* тестировани\\p{L}*', 'mutation testing'], en: ['mutation testing', 'broken cop(?:y|ies)'] },
+        related: ['automated-test', 'qunit', 'model-checking', 'quint'],
+        more: { post: 'quint-models-find-races', label: { ru: 'Проверка проверок в моделях на Quint', en: 'Checking the checks in Quint models' } },
+        faq: [
+          { q: { ru: 'Мутационное тестирование — что это?', en: 'What is mutation testing?' }, a: { ru: 'Способ проверить сами проверки: копию кода нарочно портят и смотрят, заметят ли это тесты.', en: 'A way to check the checks themselves: a copy of the code is broken on purpose to see whether the tests notice.' } },
+          { q: { ru: 'Что значит, если порча прошла незамеченной?', en: 'What does it mean if the break goes unnoticed?' }, a: { ru: 'Тесты этот случай не проверяют, и их нужно дополнить.', en: 'The tests do not cover this case and need to be extended.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Mutation_testing', label: { ru: 'Википедия: мутационное тестирование', en: 'Wikipedia: Mutation testing' } },
+      },
+      {
+        slug: 'mock',
+        name: { ru: 'Мок (mock)', en: 'Mock' },
+        aka: { ru: 'заглушка, mock-объект, стаб, фейк, имитация зависимости', en: 'mock object, stub, fake, test double' },
+        def: {
+          ru: 'Мок (заглушка) — имитация настоящей зависимости, например базы данных или чужого сервиса оплаты, которую подставляют в тест или на стенд вместо настоящей. Система обращается к ней как к настоящей, а она отвечает заранее заготовленными ответами, поэтому тест быстрый, бесплатный и не трогает чужие данные. Например, вместо реальной оплаты картой мок всегда отвечает «оплачено». Чаще всего моки встречаются в юнит-тестах, где ими заменяют зависимости проверяемой части. Слово «мок» часто используют для любой такой имитации, хотя в строгом смысле у неё есть разновидности. Моки пишут вручную под конкретный тест или берут готовые: стандартные средства есть почти в каждом языке. Например, модуль unittest.mock входит в стандартную библиотеку Python, а WireMock имитирует HTTP-сервисы.',
+          en: 'A mock is an imitation of a real dependency, such as a database or a third-party payment service, that is plugged into a test or onto a stand in place of the real one. The system calls it as if it were real, and it replies with prepared answers, so the test is fast, free and does not touch anyone’s data. For example, instead of a real card payment the mock always answers “paid”. Mocks are most often found in unit tests, where they replace the dependencies of the part under test. The word “mock” is often used for any such imitation, although in the strict sense there are several kinds. Mocks are sometimes written by hand for a specific test and sometimes taken ready-made: standard tools exist in almost every language. For example, the unittest.mock module ships in the Python standard library, and WireMock imitates HTTP services.',
+        },
+        match: { ru: ['мок(?:и|ов|ам|ами|ах)', 'мок-объект\\p{L}*', 'заглушк\\p{L}* зависимост\\p{L}*'], en: ['mocks?', 'mocked', 'mocking', 'test doubles?'] },
+        related: ['automated-test', 'test-stand', 'test-env', 'e2e-test', 'flaky-test', 'api'],
+        faq: [
+          { q: { ru: 'Мок — что это в тестировании?', en: 'What is a mock in testing?' }, a: { ru: 'Имитация настоящей зависимости, например базы или чужого сервиса, которая отвечает заготовленными ответами, пока идёт тест.', en: 'An imitation of a real dependency, such as a database or a third-party service, that replies with prepared answers while a test runs.' } },
+          { q: { ru: 'Чем мок отличается от стаба и фейка?', en: 'How is a mock different from a stub and a fake?' }, a: { ru: 'Стаб только возвращает заготовленный ответ. Мок ещё и проверяет, как к нему обратились. Фейк — упрощённая, но рабочая реализация, например база в памяти. Различие принимают не все, и слово «мок» часто значит любую из трёх.', en: 'A stub only returns a prepared answer. A mock also checks how it was called. A fake is a simplified but working implementation, such as an in-memory database. The split is not universally accepted, and “mock” often means any of the three.' } },
+          { q: { ru: 'Зачем нужны моки на стенде?', en: 'Why use mocks on a stand?' }, a: { ru: 'Они дешевле и быстрее копий настоящих сервисов и не отправляют настоящих писем и платежей. Цена — стенд чуть дальше от правды.', en: 'They are cheaper and faster than copies of real services and do not send real emails or payments. The price is that the stand is a little further from reality.' } },
+          { q: { ru: 'Как мок помогает против флакующих тестов?', en: 'How do mocks help against flaky tests?' }, a: { ru: 'Мок убирает зависимость от внешней системы, которая отвечает то быстро, то медленно или недоступна, поэтому результат теста перестаёт зависеть от неё.', en: 'A mock removes the dependency on an outside system that answers fast, slow or not at all, so the test result no longer depends on it.' } },
+          { q: { ru: 'Мок пишут самому или берут готовый?', en: 'Are mocks written by hand or taken ready-made?' }, a: { ru: 'Бывает и так, и так. Простой мок пишут вручную под один тест. Для типовых задач берут готовые средства: unittest.mock входит в стандартную библиотеку Python, Mockito подменяет объекты в Java, WireMock имитирует HTTP-сервисы, jest.fn() делает то же в JavaScript.', en: 'Both happen. A simple mock is written by hand for one test. For typical tasks ready-made tools are used: unittest.mock ships in the Python standard library, Mockito replaces objects in Java, WireMock imitates HTTP services, jest.fn() does the same in JavaScript.' } },
+        ],
+        compare: {
+          title: { ru: 'Мок, стаб и фейк', en: 'Mock, stub and fake' },
+          head: { ru: ['Стаб', 'Мок', 'Фейк'], en: ['Stub', 'Mock', 'Fake'] },
+          rows: [
+            { ru: ['Что делает', 'отдаёт заготовленный ответ', 'проверяет, как к нему обратились', 'работает по-настоящему, но проще'], en: ['What it does', 'returns a prepared answer', 'checks how it was called', 'really works, only simpler'] },
+            { ru: ['Пример', 'курс валюты всегда 90', 'проверка: оплату запросили один раз', 'база данных в памяти'], en: ['Example', 'exchange rate is always 90', 'check: payment was requested once', 'in-memory database'] },
+          ],
+        },
+        source: { url: 'https://en.wikipedia.org/wiki/Test_double', label: { ru: 'Википедия: тестовый дублёр (test double)', en: 'Wikipedia: Test double' } },
+        site: { url: 'https://docs.python.org/3/library/unittest.mock.html', label: { ru: 'Пример готового мока: unittest.mock в стандартной библиотеке Python', en: 'A ready-made mock: unittest.mock in the Python standard library' } },
+        sites: [
+          { url: 'https://site.mockito.org/', label: { ru: 'Ещё пример: Mockito, моки для Java', en: 'Another example: Mockito, mocks for Java' } },
+          { url: 'https://wiremock.org/', label: { ru: 'Ещё пример: WireMock, имитация HTTP-сервисов', en: 'Another example: WireMock, imitation of HTTP services' } },
+          { url: 'https://jestjs.io/docs/mock-functions', label: { ru: 'Ещё пример: jest.fn(), моки в JavaScript', en: 'Another example: jest.fn(), mocks in JavaScript' } },
+        ],
+        seo: {
+          title: { ru: 'Мок (mock) в тестировании: что это и чем отличается от стаба и фейка', en: 'Mock in testing: what it is and how it differs from a stub and a fake' },
+          description: {
+            ru: 'Мок, или заглушка, подменяет базу или чужой сервис в тесте и на стенде. Чем мок отличается от стаба и фейка и зачем он нужен.',
+            en: 'A mock stands in for a database or outside service in a test or on a stand. How it differs from a stub and a fake, and why it is used.',
+          },
+        },
+      },
+      {
+        slug: 'wiremock',
+        name: { ru: 'WireMock', en: 'WireMock' },
+        aka: { ru: 'мок HTTP-сервисов', en: 'HTTP service mock' },
+        def: {
+          ru: 'WireMock — готовая программа, которая имитирует HTTP-сервисы: запускается как отдельный сервер, получает запросы от проверяемой системы и отвечает заранее заданными ответами. Вместо настоящего чужого сервиса, например платёжного или службы доставки, тест видит мок, поэтому он быстрый, бесплатный и не трогает чужие данные. Работает с любым языком, потому что общается по HTTP.',
+          en: 'WireMock is a ready-made program that imitates HTTP services: it runs as a separate server, receives requests from the system under test and answers with prepared responses. Instead of a real third-party service, such as a payment or delivery service, the test sees a mock, so it is fast, free and does not touch anyone’s data. It works with any language because it talks over HTTP.',
+        },
+        exact: 'WireMock',
+        match: { ru: ['WireMock'], en: ['WireMock'] },
+        related: ['mock', 'api', 'e2e-test', 'test-stand', 'unit-test'],
+        faq: [
+          { q: { ru: 'WireMock — что это?', en: 'What is WireMock?' }, a: { ru: 'Готовая программа, которая имитирует HTTP-сервисы и отвечает заранее заданными ответами.', en: 'A ready-made program that imitates HTTP services and answers with prepared responses.' } },
+          { q: { ru: 'Когда нужен WireMock?', en: 'When is WireMock needed?' }, a: { ru: 'Когда проверяемая система обращается к чужому сервису по HTTP и тест не должен зависеть от его работы, скорости и стоимости запросов.', en: 'When the system under test calls a third-party service over HTTP and the test must not depend on its availability, speed or the cost of requests.' } },
+        ],
+        source: { url: 'https://wiremock.org/', label: { ru: 'Официальный сайт WireMock', en: 'WireMock official site' } },
+      },
+      {
+        slug: 'critical-path',
+        name: { ru: 'Критический путь', en: 'Critical path' },
+        aka: { ru: 'критический сценарий, критический путь пользователя, critical user journey, CUJ', en: 'critical user journey, CUJ, critical flow' },
+        def: {
+          ru: 'Критический путь — самая важная цепочка действий пользователя, без которой продукт теряет смысл: в интернет-магазине это найти товар, положить в корзину и оплатить. Такая цепочка обычно проходит через несколько ограниченных контекстов предметной области (каталог, корзина, оплата), каждый со своим языком и часто со своей командой, и чаще всего ломается на их границах. Если эта цепочка ломается, продукт по сути не работает, поэтому её проверяют первой, после каждой выкладки (это и есть смоук-тест), а ошибки на ней чинят в первую очередь. У критического пути в управлении проектами другой смысл: там так называют самую длинную цепочку задач, которая определяет срок проекта.',
+          en: 'The critical path is the most important chain of a user’s actions, without which the product loses its point: in an online shop it is finding an item, adding it to the cart and paying. Such a chain usually runs through several bounded contexts of the business domain (catalogue, cart, payment), each with its own language and often its own team, and most often it breaks at their borders. If that chain breaks, the product effectively does not work, so it is checked first, after every release (that is what a smoke test does), and errors on it are fixed first. In project management the critical path means something else: the longest chain of tasks, which sets the project’s deadline.',
+        },
+        match: { ru: ['критическ(?:ий|ого|ому|ым|ом) пут(?:ь|и|ём)', 'critical user journey\\p{L}*'], en: ['critical user journeys?', 'critical path(?!s)'] },
+        related: ['smoke-testing', 'e2e-test', 'regression-testing', 'test-case', 'qc', 'bug'],
+        faq: [
+          { q: { ru: 'Что такое критический путь в тестировании?', en: 'What is the critical path in testing?' }, a: { ru: 'Самая важная цепочка действий пользователя, без которой продукт теряет смысл, например поиск товара, корзина и оплата.', en: 'The most important chain of a user’s actions, without which the product loses its point, for example finding an item, the cart and payment.' } },
+          { q: { ru: 'Чем критический путь в тестировании отличается от критического пути проекта?', en: 'How is the critical path in testing different from the critical path of a project?' }, a: { ru: 'В тестировании это главная цепочка действий пользователя. В управлении проектами это самая длинная цепочка задач, которая определяет срок проекта.', en: 'In testing it is the main chain of a user’s actions. In project management it is the longest chain of tasks, which sets the project’s deadline.' } },
+          { q: { ru: 'Как критический путь связан с ограниченными контекстами?', en: 'How is the critical path related to bounded contexts?' }, a: { ru: 'Критический путь идёт сквозь несколько ограниченных контекстов предметной области, например каталог, корзину и оплату. Поэтому его проверяют целиком, а не по частям: ошибки чаще всего прячутся на границах контекстов.', en: 'The critical path runs through several bounded contexts of the business domain, for example catalogue, cart and payment. So it is checked as a whole and not part by part: errors most often hide at the borders between contexts.' } },
+          { q: { ru: 'Как найти критический путь своего продукта?', en: 'How do I find my product’s critical path?' }, a: { ru: 'Спросить себя, без каких действий продукт не нужен пользователю и не приносит денег: обычно это вход, главное действие и оплата. Эти шаги и образуют путь.', en: 'Ask which actions the user cannot do without, and which bring the money: usually sign-in, the main action and payment. Those steps form the path.' } },
+          { q: { ru: 'Как критический путь связан со смоук-тестом?', en: 'How is the critical path related to a smoke test?' }, a: { ru: 'Смоук-тест проходит именно критический путь после каждой сборки или выкладки: если он сломан, версию возвращают.', en: 'A smoke test walks exactly the critical path after every build or release: if it is broken, the version is rolled back.' } },
+        ],
+        source: { url: 'https://sre.google/workbook/implementing-slos/', label: { ru: 'Google SRE Workbook: критические пользовательские сценарии (critical user journeys)', en: 'Google SRE Workbook: critical user journeys' } },
+        seo: {
+          title: { ru: 'Критический путь в тестировании: что это и как его проверять', en: 'Critical path in testing: what it is and how to check it' },
+          description: {
+            ru: 'Критический путь — главная цепочка действий пользователя, без которой продукт теряет смысл. Как его найти, почему его проверяет смоук-тест и чем он отличается от критического пути проекта.',
+            en: 'The critical path is the main chain of a user’s actions, without which the product loses its point. How to find it, why a smoke test walks it and how it differs from a project’s critical path.',
+          },
+        },
+      },
+      {
+        slug: 'flaky-test',
+        name: { ru: 'Флакующий тест (flaky test)', en: 'Flaky test' },
+        aka: { ru: 'нестабильный тест, флаки-тест, флейки, плавающий тест, мигающий тест', en: 'flaky tests, flakiness, intermittent test' },
+        def: {
+          ru: 'Флакующий тест (flaky test, его же называют нестабильным) — тест, который при одном и том же коде то зелёный, то красный, без единой правки. Зелёный тест прошёл, красный упал; у флакующего цвет меняется сам, как у весов, которые при каждом взвешивании показывают разный вес: верить им нельзя. Причины обычно такие: состояние гонки между параллельными действиями, зависимость от времени, обращение к внешней системе, тесты, которые влияют друг на друга. Такие тесты подрывают доверие ко всему набору: команда привыкает к красному цвету и может пропустить настоящую ошибку.',
+          en: 'A flaky test is a test that is sometimes green and sometimes red on the same code, with no edit at all. A green test passed and a red one failed; a flaky test changes colour on its own. It is like a scale that shows a different weight each time: you cannot trust it. The usual causes are a race condition between parallel actions, dependence on time, calls to an outside system, and tests that affect each other. Such tests erode trust in the whole suite: the team gets used to red and can miss a real defect.',
+        },
+        match: { ru: ['флакующ\\p{L}* тест\\p{L}*', 'нестабильн\\p{L}* тест\\p{L}*', 'флак\\p{L}*-?тест\\p{L}*', 'flaky', 'флейк\\p{L}*'], en: ['flaky tests?', 'flakiness'] },
+        related: ['automated-test', 'e2e-test', 'mock', 'race-condition', 'ci-cd', 'regression-testing'],
+        more: { post: 'quint-models-find-races', label: { ru: 'Какие гонки нашли модели на Quint', en: 'The races found by Quint models' } },
+        faq: [
+          { q: { ru: 'Флакующий тест (flaky test) — что это?', en: 'What is a flaky test?' }, a: { ru: 'Тест, который при одном и том же коде то зелёный (прошёл), то красный (упал), без правок.', en: 'A test that is sometimes green (passed) and sometimes red (failed) on the same code, with no edits.' } },
+          { q: { ru: 'Почему тесты становятся флакующими?', en: 'Why do tests become flaky?' }, a: { ru: 'Из-за состояния гонки между параллельными действиями, зависимости от времени, обращений к внешним системам и недостаточной изоляции тестов друг от друга.', en: 'Because of races between parallel actions, dependence on time, calls to outside systems and insufficient isolation between tests.' } },
+          { q: { ru: 'Чем вредит флакующий тест?', en: 'Why is a flaky test harmful?' }, a: { ru: 'Команда привыкает к красному цвету и перестаёт на него смотреть, поэтому настоящая поломка может пройти незамеченной.', en: 'The team gets used to red results and stops looking at them, so a real breakage can go unnoticed.' } },
+          { q: { ru: 'Что делать с флакующим тестом?', en: 'What to do with a flaky test?' }, a: { ru: 'Изолировать тест от других, зафиксировать время и случайные значения, заменить внешние сервисы моками. Пока тест чинят, его можно вынести в карантин, но не оставлять там навсегда.', en: 'Isolate it from other tests, pin down time and random values, replace outside services with mocks. While it is being fixed it can be quarantined, but not left there for good.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Flaky_test', label: { ru: 'Википедия: Flaky test (флакующий тест)', en: 'Wikipedia: Flaky test' } },
+        seo: {
+          title: { ru: 'Флакующий тест (flaky test): что это, причины и что делать', en: 'Flaky test: what it is, why it happens and what to do' },
+          description: {
+            ru: 'Флакующий тест при одном и том же коде то зелёный, то красный. Откуда берётся такая «плавающая» проверка, чем она вредит и как её исправить.',
+            en: 'A flaky test passes or fails on unchanged code. Where this inconsistency comes from, why it hurts a team and how to fix it.',
+          },
+        },
+      },
+      {
+        slug: 'test-case',
+        name: { ru: 'Тест-кейс', en: 'Test case' },
+        aka: { ru: 'тест кейс, тестовый случай, тестовый сценарий, test case', en: 'test case, test scenario' },
+        def: {
+          ru: 'Тест-кейс — описание одной проверки: что сделать, с какими данными и что должно получиться. В нём есть предусловия, шаги, входные данные и ожидаемый результат, а при прогоне добавляется фактический результат и отметка «прошёл или упал». Пример для брони комнат: войти как гость, выбрать комнату на 1–3 июня и нажать «Забронировать»; ожидается, что бронь появится в списке, а в эти даты комнату нельзя выбрать второй раз. Тест-кейс пишет и человек для ручной проверки, и разработчик в виде автотеста.',
+          en: 'A test case is the description of a single check: what to do, with what data, and what should result. It holds preconditions, steps, input data and the expected result, and a run adds the actual result and a pass or fail mark. Example for room booking: sign in as a guest, pick a room for June 1–3 and press “Book”; expected, the booking appears in the list and the room can no longer be picked for those dates. A test case may be written by a person for a manual check or by a developer as an automated test.',
+        },
+        match: { ru: ['тест-кейс\\p{L}*', 'тест кейс\\p{L}*', 'тестов\\p{L}* случа\\p{L}*'], en: ['test cases?'] },
+        related: ['automated-test', 'qa', 'qc', 'bug', 'regression-testing', 'smoke-testing', 'e2e-test'],
+        faq: [
+          { q: { ru: 'Что такое тест-кейс?', en: 'What is a test case?' }, a: { ru: 'Описание одной проверки: предусловия, шаги, входные данные и ожидаемый результат.', en: 'The description of a single check: preconditions, steps, input data and the expected result.' } },
+          { q: { ru: 'Чем тест-кейс отличается от автотеста?', en: 'How is a test case different from an automated test?' }, a: { ru: 'Тест-кейс описывает проверку словами, а автотест — та же проверка, записанная программой, которая выполняет её сама. Тест-кейс можно пройти и вручную.', en: 'A test case describes a check in words, while an automated test is the same check written as a program that runs itself. A test case can also be run by hand.' } },
+          { q: { ru: 'Чем тест-кейс отличается от сценария?', en: 'How is a test case different from a scenario?' }, a: { ru: 'Тест-кейс — одна точная проверка с ожидаемым результатом. Сценарий — история пользователя из нескольких шагов, из которой выводят несколько тест-кейсов.', en: 'A test case is one exact check with an expected result. A scenario is a user story of several steps from which several test cases are derived.' } },
+          { q: { ru: 'Как написать тест-кейс?', en: 'How do you write a test case?' }, a: { ru: 'Назвать цель одной фразой, записать предусловия и шаги, указать входные данные и точно описать ожидаемый результат, чтобы по нему любой отличил «прошёл» от «упал».', en: 'State the goal in one phrase, write the preconditions and steps, give the input data and describe the expected result precisely so anyone can tell pass from fail.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Test_case_(software)', label: { ru: 'Википедия: Test case', en: 'Wikipedia: Test case' } },
+        seo: {
+          title: { ru: 'Тест-кейс: что это, из чего состоит и пример на бронировании', en: 'Test case: what it is, its parts and an example' },
+          description: {
+            ru: 'Тест-кейс описывает одну проверку программы: шаги, данные и ожидаемый результат. Пример с бронью комнаты и разница между тест-кейсом, автотестом и сценарием.',
+            en: 'A test case describes one check of a program: steps, data and the expected result. A room-booking example and how it differs from an automated test and a scenario.',
+          },
+        },
+      },
+      {
+        slug: 'jest',
+        name: { ru: 'Jest', en: 'Jest' },
+        aka: { ru: 'движок тестов для JavaScript', en: 'a JavaScript test framework' },
+        def: {
+          ru: 'Jest — один из самых распространённых движков автоматических тестов для кода на JavaScript. Вы описываете, что функция должна вернуть на заданный вход, а Jest запускает все такие проверки и показывает, какие упали. Из той же семьи, что Vitest и QUnit, и проверяет готовый код, а не правила системы, как Quint.',
+          en: 'Jest — one of the most widespread automated test frameworks for JavaScript code. You describe what a function must return for a given input, and Jest runs all such checks and shows which ones failed. From the same family as Vitest and QUnit, and it checks finished code, not the rules of a system as Quint does.',
+        },
+        match: { ru: ['Jest'], en: ['Jest'] },
+        related: ['automated-test', 'javascript', 'vitest', 'qunit'],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        faq: [
+          { q: { ru: 'Jest — что это?', en: 'What is Jest?' }, a: { ru: 'Один из самых распространённых движков автоматических тестов для кода на JavaScript.', en: 'One of the most widely used automated testing frameworks for JavaScript.' } },
+          { q: { ru: 'Jest или Vitest?', en: 'Jest or Vitest?' }, a: { ru: 'Делают одно и то же. На проекте с Vite удобнее Vitest, на остальных Jest остаётся надёжным выбором.', en: 'They do the same job. On a Vite project Vitest is handier; elsewhere Jest remains a solid choice.' } },
+        ],
+        source: { url: 'https://jestjs.io/', label: { ru: 'jestjs.io — сайт Jest', en: 'jestjs.io, the Jest site' } },
+      },
+      {
+        slug: 'vitest',
+        name: { ru: 'Vitest', en: 'Vitest' },
+        aka: { ru: 'тесты на базе сборщика Vite', en: 'tests powered by Vite' },
+        def: {
+          ru: 'Vitest — движок автоматических тестов для JavaScript нового поколения, построенный на сборщике Vite. Делает то же, что Jest: запускает проверки готового кода и показывает упавшие, но использует настройки проекта на Vite и поэтому быстро перезапускается. Из той же семьи, что Jest и QUnit.',
+          en: 'Vitest is a next-generation automated test framework for JavaScript, powered by the Vite bundler. It does what Jest does: runs checks of finished code and shows the failed ones, but it reuses the project’s Vite setup and so restarts quickly. From the same family as Jest and QUnit.',
+        },
+        match: { ru: ['Vitest'], en: ['Vitest'] },
+        related: ['automated-test', 'javascript', 'jest', 'qunit'],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        faq: [
+          { q: { ru: 'Что такое Vitest?', en: 'What is Vitest?' }, a: { ru: 'Движок автоматических тестов для JavaScript, построенный на сборщике Vite.', en: 'An automated testing framework for JavaScript built on the Vite bundler.' } },
+          { q: { ru: 'Vitest или Jest?', en: 'Vitest or Jest?' }, a: { ru: 'На проекте с Vite берите Vitest: он использует те же настройки и быстро перезапускается. Делают они одно и то же.', en: 'On a Vite project take Vitest: it reuses the same settings and reruns quickly. They do the same job.' } },
+        ],
+        source: { url: 'https://vitest.dev/', label: { ru: 'vitest.dev — сайт Vitest', en: 'vitest.dev, the Vitest site' } },
+      },
+      {
+        slug: 'qunit',
+        name: { ru: 'QUnit', en: 'QUnit' },
+        aka: { ru: 'тестовый движок для JavaScript', en: 'a JavaScript test framework' },
+        def: {
+          ru: 'QUnit — движок автоматических тестов для кода на JavaScript, из той же семьи, что Jest и Vitest. Тест подаёт заданный вход в готовую функцию и сверяет ответ с ожидаемым. Названием похож на Quint, но это программа другого класса: QUnit проверяет написанный код, а Quint проверяет правила системы. Надёжность самих тестов проверяет мутационное тестирование: в код вносят порчу и смотрят, упадёт ли тест.',
+          en: 'QUnit is an automated test framework for JavaScript code, from the same family as Jest and Vitest. A test feeds a given input to a finished function and compares the answer with the expected one. The name resembles Quint, but it is a program of a different class: QUnit checks written code, while Quint checks the rules of a system. The reliability of the tests themselves is checked by mutation testing: a defect is introduced into the code to see whether a test fails.',
+        },
+        match: { ru: ['QUnit'], en: ['QUnit'] },
+        related: ['automated-test', 'jest', 'vitest', 'mutation-testing', 'quint', 'model-checking'],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
+        faq: [
+          { q: { ru: 'QUnit — что это?', en: 'What is QUnit?' }, a: { ru: 'Движок автоматических тестов для JavaScript из той же семьи, что Jest и Vitest.', en: 'An automated testing framework for JavaScript from the same family as Jest and Vitest.' } },
+          { q: { ru: 'QUnit и Quint — одно и то же?', en: 'Are QUnit and Quint the same?' }, a: { ru: 'Нет: QUnit запускает тесты готового кода, Quint — язык для описания и проверки правил системы до кода.', en: 'No: QUnit runs tests on finished code, Quint is a language for describing and checking a system’s rules before the code.' } },
+        ],
+        source: { url: 'https://qunitjs.com/', label: { ru: 'qunitjs.com — сайт QUnit', en: 'qunitjs.com, the QUnit site' } },
+        compare: {
+          title: { ru: 'QUnit и Quint', en: 'QUnit and Quint' },
+          head: { ru: ['QUnit', 'Quint'], en: ['QUnit', 'Quint'] },
+          rows: [
+            { ru: ['Что проверяет', 'ответ готовой функции на заданные входы', 'отсутствие запрещённых состояний во всех порядках действий'], en: ['What it checks', 'a finished function’s answer for given inputs', 'no forbidden states in any order of actions'] },
+            { ru: ['Что нужно', 'написанный код', 'описание правил, кода может не быть'], en: ['What it needs', 'written code', 'a description of rules, the code may not exist'] },
+            { ru: ['Что сложно', 'придумать входы', 'сформулировать правила так, чтобы они отражали реальность'], en: ['What is hard', 'thinking up inputs', 'stating rules so that they reflect reality'] },
+          ],
+        },
+      },
+    ],
+  },
+  {
+    slug: 'quality',
+    icon: 'tests',
+    name: { ru: 'Качество и дефекты', en: 'Quality and defects' },
+    hint: { ru: 'Кто отвечает за качество, что считается дефектом и откуда берётся технический долг', en: 'Who owns quality, what counts as a defect and where technical debt comes from' },
+    group: { id: 'quality', name: { ru: 'Качество и тестирование', en: 'Quality and testing' } },
+    terms: [
       {
         slug: 'qa',
         name: { ru: 'QA', en: 'QA' },
@@ -2484,369 +3058,28 @@ export const TERM_SETS: TermSet[] = [
         source: { url: 'https://en.wikipedia.org/wiki/Software_bug', label: { ru: 'Википедия: Software bug', en: 'Wikipedia: Software bug' } },
       },
       {
-        slug: 'test-case',
-        name: { ru: 'Тест-кейс', en: 'Test case' },
-        aka: { ru: 'тест кейс, тестовый случай, тестовый сценарий, test case', en: 'test case, test scenario' },
+        slug: 'tech-debt',
+        name: { ru: 'Технический долг (technical debt)', en: 'Technical debt' },
+        aka: { ru: 'техдолг, tech debt', en: 'tech debt, code debt' },
         def: {
-          ru: 'Тест-кейс — описание одной проверки: что сделать, с какими данными и что должно получиться. В нём есть предусловия, шаги, входные данные и ожидаемый результат, а при прогоне добавляется фактический результат и отметка «прошёл или упал». Пример для брони комнат: войти как гость, выбрать комнату на 1–3 июня и нажать «Забронировать»; ожидается, что бронь появится в списке, а в эти даты комнату нельзя выбрать второй раз. Тест-кейс пишет и человек для ручной проверки, и разработчик в виде автотеста.',
-          en: 'A test case is the description of a single check: what to do, with what data, and what should result. It holds preconditions, steps, input data and the expected result, and a run adds the actual result and a pass or fail mark. Example for room booking: sign in as a guest, pick a room for June 1–3 and press “Book”; expected, the booking appears in the list and the room can no longer be picked for those dates. A test case may be written by a person for a manual check or by a developer as an automated test.',
+          ru: 'Технический долг — накопленные в коде ошибки и неудачные решения, которые появились потому, что на старте неизвестно, как точно поведёт себя пользователь. Команда строит продукт на предположениях и выпускает код, а после проверки гипотез часть предположений оказывается неверной. Код, написанный под них, остаётся, и каждая новая правка делается поверх него: она становится дороже и рискованнее. Как у денежного долга, у технического есть проценты: чем дольше его не гасят, тем больше времени уходит на любое изменение. Часть долга берут сознательно, чтобы быстрее выйти на рынок (time-to-market), и тогда его выплачивают после проверки гипотез: переписывают код под то, что оказалось верным.',
+          en: 'Technical debt is the mistakes and poor decisions accumulated in code because at the start it is unknown how exactly a user will behave. A team builds a product on assumptions and ships code, and after the hypotheses are tested some of the assumptions turn out to be wrong. The code written for them stays, and every new change is made on top of it: it becomes more expensive and riskier. As with money debt, technical debt has interest: the longer it is left unpaid, the more time any change takes. Part of the debt is taken on purpose to reach the market faster (time-to-market), and then it is paid back after the hypotheses are tested: the code is rewritten for what turned out to be true.',
         },
-        match: { ru: ['тест-кейс\\p{L}*', 'тест кейс\\p{L}*', 'тестов\\p{L}* случа\\p{L}*'], en: ['test cases?'] },
-        related: ['automated-test', 'qa', 'qc', 'bug', 'regression-testing', 'smoke-testing', 'e2e-test'],
+        match: { ru: ['техническ\\p{L}* долг\\p{L}*', 'техдолг\\p{L}*'], en: ['technical debt', 'tech debt'] },
+        related: ['pure-function', 'unit-test', 'mock', 'time-to-market', 'bug', 'qa'],
         faq: [
-          { q: { ru: 'Что такое тест-кейс?', en: 'What is a test case?' }, a: { ru: 'Описание одной проверки: предусловия, шаги, входные данные и ожидаемый результат.', en: 'The description of a single check: preconditions, steps, input data and the expected result.' } },
-          { q: { ru: 'Чем тест-кейс отличается от автотеста?', en: 'How is a test case different from an automated test?' }, a: { ru: 'Тест-кейс описывает проверку словами, а автотест — та же проверка, записанная программой, которая выполняет её сама. Тест-кейс можно пройти и вручную.', en: 'A test case describes a check in words, while an automated test is the same check written as a program that runs itself. A test case can also be run by hand.' } },
-          { q: { ru: 'Чем тест-кейс отличается от сценария?', en: 'How is a test case different from a scenario?' }, a: { ru: 'Тест-кейс — одна точная проверка с ожидаемым результатом. Сценарий — история пользователя из нескольких шагов, из которой выводят несколько тест-кейсов.', en: 'A test case is one exact check with an expected result. A scenario is a user story of several steps from which several test cases are derived.' } },
-          { q: { ru: 'Как написать тест-кейс?', en: 'How do you write a test case?' }, a: { ru: 'Назвать цель одной фразой, записать предусловия и шаги, указать входные данные и точно описать ожидаемый результат, чтобы по нему любой отличил «прошёл» от «упал».', en: 'State the goal in one phrase, write the preconditions and steps, give the input data and describe the expected result precisely so anyone can tell pass from fail.' } },
+          { q: { ru: 'Технический долг — что это?', en: 'What is technical debt?' }, a: { ru: 'Накопленные в коде ошибки и неудачные решения, возникшие потому, что на старте неизвестно, как поведёт себя пользователь, а часть предположений после проверки оказывается неверной.', en: 'Mistakes and poor decisions accumulated in code because at the start it is unknown how a user will behave, and some of the assumptions turn out to be wrong after testing.' } },
+          { q: { ru: 'Откуда берётся технический долг?', en: 'Where does technical debt come from?' }, a: { ru: 'Из предположений, которые команда делает, пока не знает поведения пользователей. Проверка гипотез опровергает часть из них, но код, написанный под них, уже работает и на него опираются другие части.', en: 'From assumptions the team makes while it does not yet know how users behave. Testing hypotheses disproves some of them, but the code written for them already works and other parts rely on it.' } },
+          { q: { ru: 'Почему технический долг называют долгом?', en: 'Why is it called a debt?' }, a: { ru: 'Как у денежного долга, у него есть проценты: пока код на неверных предположениях не переписан, каждая новая правка стоит дороже и чаще ломает соседние части.', en: 'Like money debt, it has interest: until the code built on wrong assumptions is rewritten, every new change costs more and more often breaks neighbouring parts.' } },
+          { q: { ru: 'Как гасят технический долг?', en: 'How is technical debt paid down?' }, a: { ru: 'Переписывают или удаляют код, построенный на опровергнутых предположениях, небольшими шагами рядом с обычной работой, и закрывают переписанное автоматическими тестами.', en: 'The code built on disproved assumptions is rewritten or removed in small steps alongside regular work, and the rewritten part is covered with automated tests.' } },
+          { q: { ru: 'Как технический долг связан с юнит-тестами?', en: 'How is technical debt related to unit tests?' }, a: { ru: 'В коде с долгом мало чистых функций: логика смешана с обращениями к базе и сети. Поэтому его приходится проверять с моками, а переписывать вместе с тестами.', en: 'Code with debt has few pure functions: the logic is mixed with calls to a database and the network. So it has to be tested with mocks and rewritten together with tests.' } },
         ],
-        source: { url: 'https://en.wikipedia.org/wiki/Test_case_(software)', label: { ru: 'Википедия: Test case', en: 'Wikipedia: Test case' } },
+        source: { url: 'https://martinfowler.com/bliki/TechnicalDebt.html', label: { ru: 'Мартин Фаулер: технический долг', en: 'Martin Fowler: Technical Debt' } },
         seo: {
-          title: { ru: 'Тест-кейс: что это, из чего состоит и пример на бронировании', en: 'Test case: what it is, its parts and an example' },
+          title: { ru: 'Технический долг: что это и откуда он берётся', en: 'Technical debt: what it is and where it comes from' },
           description: {
-            ru: 'Тест-кейс описывает одну проверку программы: шаги, данные и ожидаемый результат. Пример с бронью комнаты и разница между тест-кейсом, автотестом и сценарием.',
-            en: 'A test case describes one check of a program: steps, data and the expected result. A room-booking example and how it differs from an automated test and a scenario.',
-          },
-        },
-      },
-      {
-        slug: 'regression-testing',
-        name: { ru: 'Регрессионное тестирование', en: 'Regression testing' },
-        aka: { ru: 'регрессия, регрессионный тест, регресс', en: 'regression test, regression suite' },
-        def: {
-          ru: 'Регрессионное тестирование — повторная проверка того, что уже работало, после правки: убедиться, что новое изменение не сломало старое. Пример: в магазине добавили скидки, а регрессия снова проходит оформление заказа и оплату, ведь их могли задеть. Набор таких проверок растёт с каждым найденным багом, поэтому его автоматизируют: автотесты гоняют после каждой правки или ночью. Падение теста, который раньше проходил, называют регрессией.',
-          en: 'Regression testing is rechecking what already worked after a change, to make sure the new change did not break the old. Example: a shop adds discounts, and the regression run goes through checkout and payment again, since they might have been touched. The set of such checks grows with every bug found, so it is automated: automated tests run after every change or overnight. A test that passed before and now fails signals a regression.',
-        },
-        match: { ru: ['регрессионн\\p{L}* тест\\p{L}*', 'регрессионн\\p{L}* прогон\\p{L}*'], en: ['regression tests?', 'regression testing', 'regression suites?'] },
-        related: ['automated-test', 'smoke-testing', 'e2e-test', 'flaky-test', 'ci-cd', 'test-case', 'qc'],
-        faq: [
-          { q: { ru: 'Что такое регрессионное тестирование?', en: 'What is regression testing?' }, a: { ru: 'Повторная проверка уже работавшего после правки, чтобы убедиться, что новое изменение ничего не сломало.', en: 'Rechecking what already worked after a change to make sure the new change broke nothing.' } },
-          { q: { ru: 'Когда запускать регрессию?', en: 'When should regression run?' }, a: { ru: 'После каждой правки, если набор быстрый, и ночью или перед выкладкой, если он большой. Чем чаще, тем раньше видно поломку.', en: 'After every change if the set is fast, and overnight or before release if it is large. The more often, the sooner a break shows.' } },
-          { q: { ru: 'Чем регрессия отличается от смоук-теста?', en: 'How is regression different from smoke testing?' }, a: { ru: 'Смоук быстро проверяет только главное, чтобы понять, стоит ли идти дальше. Регрессия проходит по всему, что работало раньше, и занимает дольше.', en: 'Smoke testing quickly checks only the main things to decide whether to go on. Regression covers everything that worked before and takes longer.' } },
-          { q: { ru: 'Регрессию можно автоматизировать?', en: 'Can regression be automated?' }, a: { ru: 'Да, это главное место для автотестов: набор повторяется много раз. Флакующие тесты, которые падают без причины, портят доверие к такому набору.', en: 'Yes, it is the main place for automated tests: the set repeats many times. Flaky tests that fail for no reason erode trust in such a set.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Regression_testing', label: { ru: 'Википедия: Regression testing', en: 'Wikipedia: Regression testing' } },
-        seo: {
-          title: { ru: 'Регрессионное тестирование: что это и чем отличается от смоук-теста', en: 'What is regression testing: how it differs from smoke and end-to-end tests' },
-          description: {
-            ru: 'Регрессионное тестирование проверяет, что новая правка не сломала работавшее. Когда его запускать и чем оно отличается от смоук-теста и сквозного теста.',
-            en: 'Regression testing checks that a new change did not break what worked. When to run it and how it differs from smoke and end-to-end tests.',
-          },
-        },
-        compare: {
-          title: { ru: 'Смоук, регрессия и E2E-тест', en: 'Smoke, regression and end-to-end tests' },
-          head: { ru: ['Смоук', 'Регрессия', 'E2E-тест'], en: ['Smoke', 'Regression', 'End-to-end (e2e)'] },
-          headSlugs: ['smoke-testing', 'regression-testing', 'e2e-test'],
-          rows: [
-            { ru: ['Цель', 'понять, стоит ли проверять дальше', 'убедиться, что старое не сломалось', 'пройти путь пользователя целиком'], en: ['Goal', 'decide whether to test further', 'make sure old things did not break', 'walk a whole user path'] },
-            { ru: ['Когда', 'сразу после сборки или выкладки', 'после правок, ночью, перед релизом', 'перед релизом и после него'], en: ['When', 'right after a build or release', 'after changes, overnight, before release', 'before and after release'] },
-            { ru: ['Объём', 'малый: только главное', 'большой: всё, что работало', 'малый или средний: ключевые пути насквозь'], en: ['Scope', 'small: only the main things', 'large: everything that worked', 'small to medium: key paths end to end'] },
-            { ru: ['Кто', 'автотест или тестировщик, минуты', 'в основном автотесты', 'автотесты или QA'], en: ['Who', 'automated test or tester, minutes', 'mostly automated tests', 'automated tests or QA'] },
-          ],
-        },
-      },
-      {
-        slug: 'smoke-testing',
-        name: { ru: 'Смоук-тест', en: 'Smoke testing' },
-        aka: { ru: 'смоук тестирование, дымовое тестирование, smoke test, sanity-тест, build verification test', en: 'smoke test, sanity test, build verification test, BVT' },
-        def: {
-          ru: 'Смоук-тест (дымовое тестирование) — быстрая проверка самого главного после сборки или выкладки: запускается ли программа и проходит ли критический путь, то есть главная цепочка действий пользователя. Пример: после выкладки магазина открыть главную, войти, положить товар в корзину и оплатить; если что-то не работает, дальше можно не проверять, версию возвращают. Название пришло из электроники: включили плату, и если пошёл дым, дальше смотреть незачем. Такая проверка занимает минуты и обычно автоматизирована.',
-          en: 'Smoke testing is a quick check of the most important things after a build or release: does the program start and does the critical path work, the main chain of a user’s actions. Example: after releasing a shop, open the home page, sign in, put an item in the cart and pay; if something fails, there is no point testing further and the version is rolled back. The name comes from electronics: power on the board, and if smoke appears, there is nothing more to look at. Such a check takes minutes and is usually automated.',
-        },
-        match: { ru: ['смоук[- ]тест\\p{L}*', 'смоук\\p{L}*', 'smoke[- ]?test\\p{L}*', 'дымов\\p{L}* тест\\p{L}*'], en: ['smoke tests?', 'smoke testing', 'build verification tests?'] },
-        related: ['critical-path', 'regression-testing', 'e2e-test', 'automated-test', 'preprod', 'ci-cd', 'test-case', 'qc'],
-        faq: [
-          { q: { ru: 'Что такое смоук-тест?', en: 'What is a smoke test?' }, a: { ru: 'Быстрая проверка главного после сборки или выкладки: запускается ли программа и работают ли ключевые функции.', en: 'A quick check of the main things after a build or release: does the program start and do the key functions work.' } },
-          { q: { ru: 'Почему «смоук», то есть дым?', en: 'Why “smoke”?' }, a: { ru: 'Название пришло из электроники: плату включают и смотрят, не пошёл ли дым. Если пошёл, дальнейшая проверка не нужна.', en: 'The name comes from electronics: you power on a board and see whether smoke appears. If it does, further testing is pointless.' } },
-          { q: { ru: 'Чем смоук отличается от регрессии?', en: 'How is smoke testing different from regression?' }, a: { ru: 'Смоук проверяет только главное и занимает минуты, регрессия проходит по всему, что работало раньше. Смоук отвечает «стоит ли тестировать дальше», регрессия — «не сломалось ли старое».', en: 'Smoke checks only the main things and takes minutes, while regression covers everything that worked before. Smoke answers “is it worth testing further”, regression answers “did the old things break”.' } },
-          { q: { ru: 'Чем смоук отличается от e2e?', en: 'How is smoke testing different from e2e?' }, a: { ru: 'Смоук широкий и поверхностный: проверяет, что главные части живы. Сквозной тест глубокий: проходит один путь пользователя от начала до конца.', en: 'Smoke is wide and shallow: it checks that the main parts are alive. An end-to-end test is deep: it walks one user path from start to finish.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Smoke_testing_(software)', label: { ru: 'Википедия: Smoke testing', en: 'Wikipedia: Smoke testing (software)' } },
-        seo: {
-          title: { ru: 'Смоук-тест (smoke testing): что это и когда запускать после выкладки', en: 'What is smoke testing: a quick check after release, vs regression and end-to-end' },
-          description: {
-            ru: 'Смоук-тест — быстрая проверка главного после выкладки: запускается ли программа и работают ли основные пути. Чем отличается от регрессии и сквозного теста.',
-            en: 'Smoke testing is a quick check of the main paths right after a release. What it covers, when to run it and how it differs from regression and end-to-end tests.',
-          },
-        },
-        compare: {
-          title: { ru: 'Смоук, регрессия и E2E-тест', en: 'Smoke, regression and end-to-end tests' },
-          head: { ru: ['Смоук', 'Регрессия', 'E2E-тест'], en: ['Smoke', 'Regression', 'End-to-end (e2e)'] },
-          headSlugs: ['smoke-testing', 'regression-testing', 'e2e-test'],
-          rows: [
-            { ru: ['Цель', 'понять, стоит ли проверять дальше', 'убедиться, что старое не сломалось', 'пройти путь пользователя целиком'], en: ['Goal', 'decide whether to test further', 'make sure old things did not break', 'walk a whole user path'] },
-            { ru: ['Когда', 'сразу после сборки или выкладки', 'после правок, ночью, перед релизом', 'перед релизом и после него'], en: ['When', 'right after a build or release', 'after changes, overnight, before release', 'before and after release'] },
-            { ru: ['Объём', 'малый: только главное', 'большой: всё, что работало', 'малый или средний: ключевые пути насквозь'], en: ['Scope', 'small: only the main things', 'large: everything that worked', 'small to medium: key paths end to end'] },
-            { ru: ['Кто', 'автотест или тестировщик, минуты', 'в основном автотесты', 'автотесты или QA'], en: ['Who', 'automated test or tester, minutes', 'mostly automated tests', 'automated tests or QA'] },
-          ],
-        },
-      },
-      {
-        slug: 'sequence-diagram',
-        name: { ru: 'Диаграмма последовательности', en: 'Sequence diagram' },
-        aka: { ru: 'sequence-диаграмма', en: 'sequence chart' },
-        def: {
-          ru: 'Диаграмма последовательности показывает, как участники системы обмениваются сообщениями по порядку времени: участники стоят сверху, стрелки идут вниз. По ней видно, кто кого вызвал и на каком шаге всё сломалось. Агент рисует такую диаграмму по запросу, чтобы разработчик сразу увидел место ошибки.',
-          en: 'A sequence diagram shows how the parts of a system exchange messages in time order: participants stand at the top and arrows run downward. It shows who called whom and at which step things broke. An agent draws such a diagram on request so the developer sees the place of the error at once.',
-        },
-        match: { ru: ['диаграмм\\p{L}* последовательности', 'sequence(?:-диаграмм\\p{L}*)?'], en: ['sequence diagrams?'] },
-        related: ['c4-model', 'bug', 'api'],
-        faq: [
-          { q: { ru: 'Диаграмма последовательности — что это?', en: 'What is a sequence diagram?' }, a: { ru: 'Схема, где участники системы стоят сверху, а стрелки сообщений идут вниз по порядку времени.', en: 'A diagram with the system’s participants at the top and message arrows running down in time order.' } },
-          { q: { ru: 'Зачем диаграмма последовательности?', en: 'Why use a sequence diagram?' }, a: { ru: 'По ней видно, кто кого вызвал и на каком шаге всё сломалось.', en: 'It shows who called whom and at which step things broke.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Sequence_diagram', label: { ru: 'Википедия: Sequence diagram', en: 'Wikipedia: Sequence diagram' } },
-      },
-      {
-        slug: 'api',
-        name: { ru: 'API', en: 'API' },
-        aka: { ru: 'программный интерфейс', en: 'application programming interface' },
-        def: {
-          ru: 'API — набор правил, по которым одна программа обращается к другой: какие запросы можно отправить и какие ответы придут. Через API агент вызывает сервис напрямую, без браузера. Например, оплата обращается к сервису промокодов именно через его API.',
-          en: 'An API is a set of rules by which one program calls another: which requests can be sent and which answers come back. Through an API an agent calls a service directly, without a browser. For example, payment calls the promo-code service through its API.',
-        },
-        match: { ru: ['API'], en: ['APIs?'] },
-        related: ['mcp', 'sequence-diagram', 'poc'],
-        faq: [
-          { q: { ru: 'API — что это?', en: 'What is an API?' }, a: { ru: 'Набор правил, по которым одна программа обращается к другой: какие запросы можно отправить и какие ответы придут.', en: 'A set of rules for how one program talks to another: which requests can be sent and which responses come back.' } },
-          { q: { ru: 'Зачем агенту API?', en: 'Why does an agent use an API?' }, a: { ru: 'Через API агент вызывает сервис напрямую, без браузера.', en: 'Through an API the agent calls a service directly, without a browser.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/API', label: { ru: 'Википедия: API', en: 'Wikipedia: API' } },
-      },
-      {
-        slug: 'poc',
-        name: { ru: 'PoC', en: 'PoC' },
-        aka: { ru: 'proof of concept, доказательство осуществимости', en: 'proof of concept' },
-        def: {
-          ru: 'PoC (proof of concept, «доказательство осуществимости») — небольшой код или сценарий, который показывает, что проблема действительно воспроизводится. Для бага это короткий запуск без браузера, который повторяет ошибку. Агент пишет такой PoC по коду и тестам, чтобы подтвердить баг.',
-          en: 'A PoC (proof of concept) is a small piece of code or a script that shows the problem really reproduces. For a bug it is a short run without a browser that repeats the error. An agent writes such a PoC from the code and tests to confirm the bug.',
-        },
-        match: { ru: ['PoC', 'proof of concept'], en: ['PoC', 'proof of concept'] },
-        related: ['bug', 'automated-test', 'test-stand'],
-        faq: [
-          { q: { ru: 'PoC — что это в программировании?', en: 'What is a PoC in programming?' }, a: { ru: 'Proof of concept: небольшой код или сценарий, который показывает, что проблема действительно воспроизводится.', en: 'Proof of concept: a small piece of code or a scenario that shows the problem really reproduces.' } },
-          { q: { ru: 'Зачем агенту PoC для бага?', en: 'Why does an agent write a PoC for a bug?' }, a: { ru: 'Чтобы подтвердить баг: короткий запуск без браузера повторяет ошибку, и её видно до исправления.', en: 'To confirm the bug: a short run without a browser repeats the error, so it is visible before the fix.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Proof_of_concept', label: { ru: 'Википедия: Proof of concept', en: 'Wikipedia: Proof of concept' } },
-      },
-      {
-        slug: 'jest',
-        name: { ru: 'Jest', en: 'Jest' },
-        aka: { ru: 'движок тестов для JavaScript', en: 'a JavaScript test framework' },
-        def: {
-          ru: 'Jest — один из самых распространённых движков автоматических тестов для кода на JavaScript. Вы описываете, что функция должна вернуть на заданный вход, а Jest запускает все такие проверки и показывает, какие упали. Из той же семьи, что Vitest и QUnit, и проверяет готовый код, а не правила системы, как Quint.',
-          en: 'Jest — one of the most widespread automated test frameworks for JavaScript code. You describe what a function must return for a given input, and Jest runs all such checks and shows which ones failed. From the same family as Vitest and QUnit, and it checks finished code, not the rules of a system as Quint does.',
-        },
-        match: { ru: ['Jest'], en: ['Jest'] },
-        related: ['automated-test', 'javascript', 'vitest', 'qunit'],
-        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
-        faq: [
-          { q: { ru: 'Jest — что это?', en: 'What is Jest?' }, a: { ru: 'Один из самых распространённых движков автоматических тестов для кода на JavaScript.', en: 'One of the most widely used automated testing frameworks for JavaScript.' } },
-          { q: { ru: 'Jest или Vitest?', en: 'Jest or Vitest?' }, a: { ru: 'Делают одно и то же. На проекте с Vite удобнее Vitest, на остальных Jest остаётся надёжным выбором.', en: 'They do the same job. On a Vite project Vitest is handier; elsewhere Jest remains a solid choice.' } },
-        ],
-        source: { url: 'https://jestjs.io/', label: { ru: 'jestjs.io — сайт Jest', en: 'jestjs.io, the Jest site' } },
-      },
-      {
-        slug: 'vitest',
-        name: { ru: 'Vitest', en: 'Vitest' },
-        aka: { ru: 'тесты на базе сборщика Vite', en: 'tests powered by Vite' },
-        def: {
-          ru: 'Vitest — движок автоматических тестов для JavaScript нового поколения, построенный на сборщике Vite. Делает то же, что Jest: запускает проверки готового кода и показывает упавшие, но использует настройки проекта на Vite и поэтому быстро перезапускается. Из той же семьи, что Jest и QUnit.',
-          en: 'Vitest is a next-generation automated test framework for JavaScript, powered by the Vite bundler. It does what Jest does: runs checks of finished code and shows the failed ones, but it reuses the project’s Vite setup and so restarts quickly. From the same family as Jest and QUnit.',
-        },
-        match: { ru: ['Vitest'], en: ['Vitest'] },
-        related: ['automated-test', 'javascript', 'jest', 'qunit'],
-        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
-        faq: [
-          { q: { ru: 'Что такое Vitest?', en: 'What is Vitest?' }, a: { ru: 'Движок автоматических тестов для JavaScript, построенный на сборщике Vite.', en: 'An automated testing framework for JavaScript built on the Vite bundler.' } },
-          { q: { ru: 'Vitest или Jest?', en: 'Vitest or Jest?' }, a: { ru: 'На проекте с Vite берите Vitest: он использует те же настройки и быстро перезапускается. Делают они одно и то же.', en: 'On a Vite project take Vitest: it reuses the same settings and reruns quickly. They do the same job.' } },
-        ],
-        source: { url: 'https://vitest.dev/', label: { ru: 'vitest.dev — сайт Vitest', en: 'vitest.dev, the Vitest site' } },
-      },
-      {
-        slug: 'qunit',
-        name: { ru: 'QUnit', en: 'QUnit' },
-        aka: { ru: 'тестовый движок для JavaScript', en: 'a JavaScript test framework' },
-        def: {
-          ru: 'QUnit — движок автоматических тестов для кода на JavaScript, из той же семьи, что Jest и Vitest. Тест подаёт заданный вход в готовую функцию и сверяет ответ с ожидаемым. Названием похож на Quint, но это программа другого класса: QUnit проверяет написанный код, а Quint проверяет правила системы. Надёжность самих тестов проверяет мутационное тестирование: в код вносят порчу и смотрят, упадёт ли тест.',
-          en: 'QUnit is an automated test framework for JavaScript code, from the same family as Jest and Vitest. A test feeds a given input to a finished function and compares the answer with the expected one. The name resembles Quint, but it is a program of a different class: QUnit checks written code, while Quint checks the rules of a system. The reliability of the tests themselves is checked by mutation testing: a defect is introduced into the code to see whether a test fails.',
-        },
-        match: { ru: ['QUnit'], en: ['QUnit'] },
-        related: ['automated-test', 'jest', 'vitest', 'mutation-testing', 'quint', 'model-checking'],
-        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }],
-        faq: [
-          { q: { ru: 'QUnit — что это?', en: 'What is QUnit?' }, a: { ru: 'Движок автоматических тестов для JavaScript из той же семьи, что Jest и Vitest.', en: 'An automated testing framework for JavaScript from the same family as Jest and Vitest.' } },
-          { q: { ru: 'QUnit и Quint — одно и то же?', en: 'Are QUnit and Quint the same?' }, a: { ru: 'Нет: QUnit запускает тесты готового кода, Quint — язык для описания и проверки правил системы до кода.', en: 'No: QUnit runs tests on finished code, Quint is a language for describing and checking a system’s rules before the code.' } },
-        ],
-        source: { url: 'https://qunitjs.com/', label: { ru: 'qunitjs.com — сайт QUnit', en: 'qunitjs.com, the QUnit site' } },
-        compare: {
-          title: { ru: 'QUnit и Quint', en: 'QUnit and Quint' },
-          head: { ru: ['QUnit', 'Quint'], en: ['QUnit', 'Quint'] },
-          rows: [
-            { ru: ['Что проверяет', 'ответ готовой функции на заданные входы', 'отсутствие запрещённых состояний во всех порядках действий'], en: ['What it checks', 'a finished function’s answer for given inputs', 'no forbidden states in any order of actions'] },
-            { ru: ['Что нужно', 'написанный код', 'описание правил, кода может не быть'], en: ['What it needs', 'written code', 'a description of rules, the code may not exist'] },
-            { ru: ['Что сложно', 'придумать входы', 'сформулировать правила так, чтобы они отражали реальность'], en: ['What is hard', 'thinking up inputs', 'stating rules so that they reflect reality'] },
-          ],
-        },
-      },
-      {
-        slug: 'mutation-testing',
-        name: { ru: 'Мутационное тестирование', en: 'Mutation testing' },
-        aka: { ru: 'испорченная копия', en: 'a deliberately broken copy' },
-        def: {
-          ru: 'Мутационное тестирование — способ проверить сами проверки: человек или агент нарочно портит копию кода или модели, например убирает одно условие, и смотрит, заметят ли это автоматические тесты и правила. Если порча прошла незамеченной, проверка ничего не проверяет. В моделях на Quint такие копии называют мутантами.',
-          en: 'Mutation testing is a way to test the checks themselves: a person or an agent deliberately breaks a copy of the code or model, for example removes one condition, and sees whether tests and rules notice it. If the defect passes unnoticed, the check checks nothing. In Quint models such copies are called mutants.',
-        },
-        match: { ru: ['испорченн\\p{L}* коп\\p{L}*', 'мутационн\\p{L}* тестировани\\p{L}*', 'mutation testing'], en: ['mutation testing', 'broken cop(?:y|ies)'] },
-        related: ['automated-test', 'qunit', 'model-checking', 'quint'],
-        more: { post: 'quint-models-find-races', label: { ru: 'Проверка проверок в моделях на Quint', en: 'Checking the checks in Quint models' } },
-        faq: [
-          { q: { ru: 'Мутационное тестирование — что это?', en: 'What is mutation testing?' }, a: { ru: 'Способ проверить сами проверки: копию кода нарочно портят и смотрят, заметят ли это тесты.', en: 'A way to check the checks themselves: a copy of the code is broken on purpose to see whether the tests notice.' } },
-          { q: { ru: 'Что значит, если порча прошла незамеченной?', en: 'What does it mean if the break goes unnoticed?' }, a: { ru: 'Тесты этот случай не проверяют, и их нужно дополнить.', en: 'The tests do not cover this case and need to be extended.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Mutation_testing', label: { ru: 'Википедия: мутационное тестирование', en: 'Wikipedia: Mutation testing' } },
-      },
-      {
-        slug: 'critical-path',
-        name: { ru: 'Критический путь', en: 'Critical path' },
-        aka: { ru: 'критический сценарий, критический путь пользователя, critical user journey, CUJ', en: 'critical user journey, CUJ, critical flow' },
-        def: {
-          ru: 'Критический путь — самая важная цепочка действий пользователя, без которой продукт теряет смысл: в интернет-магазине это найти товар, положить в корзину и оплатить. Такая цепочка обычно проходит через несколько ограниченных контекстов предметной области (каталог, корзина, оплата), каждый со своим языком и часто со своей командой, и чаще всего ломается на их границах. Если эта цепочка ломается, продукт по сути не работает, поэтому её проверяют первой, после каждой выкладки (это и есть смоук-тест), а ошибки на ней чинят в первую очередь. У критического пути в управлении проектами другой смысл: там так называют самую длинную цепочку задач, которая определяет срок проекта.',
-          en: 'The critical path is the most important chain of a user’s actions, without which the product loses its point: in an online shop it is finding an item, adding it to the cart and paying. Such a chain usually runs through several bounded contexts of the business domain (catalogue, cart, payment), each with its own language and often its own team, and most often it breaks at their borders. If that chain breaks, the product effectively does not work, so it is checked first, after every release (that is what a smoke test does), and errors on it are fixed first. In project management the critical path means something else: the longest chain of tasks, which sets the project’s deadline.',
-        },
-        match: { ru: ['критическ(?:ий|ого|ому|ым|ом) пут(?:ь|и|ём)', 'critical user journey\\p{L}*'], en: ['critical user journeys?', 'critical path(?!s)'] },
-        related: ['smoke-testing', 'e2e-test', 'regression-testing', 'test-case', 'qc', 'bug'],
-        faq: [
-          { q: { ru: 'Что такое критический путь в тестировании?', en: 'What is the critical path in testing?' }, a: { ru: 'Самая важная цепочка действий пользователя, без которой продукт теряет смысл, например поиск товара, корзина и оплата.', en: 'The most important chain of a user’s actions, without which the product loses its point, for example finding an item, the cart and payment.' } },
-          { q: { ru: 'Чем критический путь в тестировании отличается от критического пути проекта?', en: 'How is the critical path in testing different from the critical path of a project?' }, a: { ru: 'В тестировании это главная цепочка действий пользователя. В управлении проектами это самая длинная цепочка задач, которая определяет срок проекта.', en: 'In testing it is the main chain of a user’s actions. In project management it is the longest chain of tasks, which sets the project’s deadline.' } },
-          { q: { ru: 'Как критический путь связан с ограниченными контекстами?', en: 'How is the critical path related to bounded contexts?' }, a: { ru: 'Критический путь идёт сквозь несколько ограниченных контекстов предметной области, например каталог, корзину и оплату. Поэтому его проверяют целиком, а не по частям: ошибки чаще всего прячутся на границах контекстов.', en: 'The critical path runs through several bounded contexts of the business domain, for example catalogue, cart and payment. So it is checked as a whole and not part by part: errors most often hide at the borders between contexts.' } },
-          { q: { ru: 'Как найти критический путь своего продукта?', en: 'How do I find my product’s critical path?' }, a: { ru: 'Спросить себя, без каких действий продукт не нужен пользователю и не приносит денег: обычно это вход, главное действие и оплата. Эти шаги и образуют путь.', en: 'Ask which actions the user cannot do without, and which bring the money: usually sign-in, the main action and payment. Those steps form the path.' } },
-          { q: { ru: 'Как критический путь связан со смоук-тестом?', en: 'How is the critical path related to a smoke test?' }, a: { ru: 'Смоук-тест проходит именно критический путь после каждой сборки или выкладки: если он сломан, версию возвращают.', en: 'A smoke test walks exactly the critical path after every build or release: if it is broken, the version is rolled back.' } },
-        ],
-        source: { url: 'https://sre.google/workbook/implementing-slos/', label: { ru: 'Google SRE Workbook: критические пользовательские сценарии (critical user journeys)', en: 'Google SRE Workbook: critical user journeys' } },
-        seo: {
-          title: { ru: 'Критический путь в тестировании: что это и как его проверять', en: 'Critical path in testing: what it is and how to check it' },
-          description: {
-            ru: 'Критический путь — главная цепочка действий пользователя, без которой продукт теряет смысл. Как его найти, почему его проверяет смоук-тест и чем он отличается от критического пути проекта.',
-            en: 'The critical path is the main chain of a user’s actions, without which the product loses its point. How to find it, why a smoke test walks it and how it differs from a project’s critical path.',
-          },
-        },
-      },
-      {
-        slug: 'unit-test',
-        name: { ru: 'Юнит-тест (unit test)', en: 'Unit test' },
-        aka: { ru: 'модульный тест, юнит тест, unit test, модульное тестирование', en: 'unit testing, module test' },
-        def: {
-          ru: 'Юнит-тест (модульный тест) — автоматическая проверка одной небольшой части кода (функции, класса или модуля) отдельно от остальной системы: тест подаёт на вход заранее выбранные данные и сравнивает результат с ожидаемым. Чаще всего юнит-тестами покрывают чистые функции, то есть функции без зависимостей: они не обращаются к базе, сети и файлам и при одинаковых входных данных всегда возвращают один и тот же результат, поэтому тест выполняется за миллисекунды. Граница размытая: из-за накопленного технического долга чистых функций в реальном коде мало, и проверяемая часть нередко обращается к базе или сети. Тогда её зависимости заменяют моками, и юнит-тест остаётся быстрым. Юнит-тесты работают на уровне приложения: они проверяют код внутри одной программы, а её взаимодействие с другими системами проверяют E2E-тесты. Пример: функцию расчёта скидки проверяют на нескольких суммах, не запуская магазин целиком. Юнит-тестов в проекте обычно больше всего: они быстрые и точно показывают, в какой части кода ошибка.',
-          en: 'A unit test is an automated check of one small piece of code (a function, a class or a module) separately from the rest of the system: the test feeds in pre-chosen input and compares the result with the expected one. Unit tests most often cover pure functions, that is, functions with no dependencies: they touch no database, network or files and always return the same result for the same input, so the test runs in milliseconds. The border is blurry: because of accumulated technical debt, real code has few pure functions, and the part under test often calls a database or a network. Then its dependencies are replaced with mocks and the unit test stays fast. Unit tests work at the application level: they check code inside one program, while its interaction with other systems is checked by E2E tests. Example: a discount function is checked on several amounts without starting the whole shop. A project usually has the most unit tests: they are fast and show exactly which part of the code is faulty.',
-        },
-        match: { ru: ['юнит[- ]?тест\\p{L}*', 'модульн\\p{L}* тест\\p{L}*', 'unit[- ]?test\\p{L}*'], en: ['unit tests?', 'unit testing'] },
-        related: ['automated-test', 'mock', 'e2e-test', 'test-case', 'smoke-testing', 'regression-testing', 'flaky-test'],
-        faq: [
-          { q: { ru: 'Юнит-тест — что это?', en: 'What is a unit test?' }, a: { ru: 'Автоматическая проверка одной небольшой части кода отдельно от остальной системы: входные данные подаются заранее, результат сверяется с ожидаемым.', en: 'An automated check of one small piece of code separately from the rest of the system: the input is given in advance and the result is compared with the expected one.' } },
-          { q: { ru: 'Чем юнит-тест отличается от E2E-теста?', en: 'How is a unit test different from an E2E test?' }, a: { ru: 'Юнит-тест проверяет одну часть кода и выполняется за миллисекунды. E2E-тест проверяет цепочку сценариев через несколько систем, идёт долго и запускается на стенде.', en: 'A unit test checks one part of the code and runs in milliseconds. An E2E test checks a chain of scenarios across several systems, is slow and runs on a stand.' } },
-          { q: { ru: 'Что такое чистая функция и при чём здесь юнит-тесты?', en: 'What is a pure function and how does it relate to unit tests?' }, a: { ru: 'Чистая функция не содержит зависимостей: не обращается к базе, сети и файлам и на одинаковые входные данные отвечает одинаково. Её проще всего покрыть юнит-тестом, моки не нужны.', en: 'A pure function has no dependencies: it touches no database, network or files and answers the same way for the same input. It is the easiest to cover with a unit test, and no mocks are needed.' } },
-          { q: { ru: 'Зачем в юнит-тестах моки?', en: 'Why do unit tests use mocks?' }, a: { ru: 'Чистых функций в реальном коде часто мало из-за технического долга, и проверяемая часть обращается к базе, сети или чужому сервису. Мок заменяет эти зависимости, чтобы результат зависел только от самой части и тест оставался быстрым.', en: 'Real code often has few pure functions because of technical debt, and the part under test calls a database, a network or a third-party service. A mock replaces those dependencies so that the result depends only on the part itself and the test stays fast.' } },
-          { q: { ru: 'Кто пишет юнит-тесты?', en: 'Who writes unit tests?' }, a: { ru: 'Обычно разработчик, который пишет проверяемый код, одновременно с ним или до него.', en: 'Usually the developer who writes the code under test, alongside it or before it.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Unit_testing', label: { ru: 'Википедия: модульное тестирование (unit testing)', en: 'Wikipedia: Unit testing' } },
-        seo: {
-          title: { ru: 'Юнит-тест: что это, зачем нужны моки и чем он отличается от E2E-теста', en: 'Unit test: what it is, why mocks are used and how it differs from an E2E test' },
-          description: {
-            ru: 'Юнит-тест проверяет одну небольшую часть кода отдельно от системы и выполняется за миллисекунды. Пример с расчётом скидки и отличие от E2E-теста.',
-            en: 'A unit test checks one small piece of code in isolation and runs in milliseconds. A discount example and how it differs from an E2E test.',
-          },
-        },
-      },
-      {
-        slug: 'e2e-test',
-        name: { ru: 'E2E-тест', en: 'End-to-end test' },
-        aka: { ru: 'e2e, end-to-end, сквозной тест, сквозное тестирование', en: 'E2E test, end-to-end testing, system test' },
-        def: {
-          ru: 'E2E-тест (end-to-end, «от края до края») — проверка, что несколько сценариев работают верно вместе, в том числе на стыках: цепочка идёт от первого действия пользователя до последнего результата через все части и системы, которые в ней участвуют. Чаще всего эти системы принадлежат разным командам, и тест ловит то, что видно только на стыках: например, данные одной системы не подходят другой. Пример: в интернет-магазине заказ создаёт одна команда, оплату принимает вторая, склад ведёт третья; E2E-тест оформляет заказ и проверяет, что он оплачен и дошёл до склада. Системы в такой цепочке обычно соответствуют ограниченным контекстам предметной области (заказы, оплата, склад), у каждого свой язык и своя команда, а стыки лежат на границах контекстов. В частном случае стыки лежат внутри одной команды — между людьми или сервисами. Юнит-тест проверяет одну маленькую часть кода, смоук-тест быстро убеждается, что главное запускается, а E2E-тест идёт долго и охватывает всю цепочку, поэтому таких тестов меньше и запускают их на стенде.',
-          en: 'An end-to-end (E2E) test checks that several scenarios work correctly together, including at the joints: the chain runs from a user’s first action to the final result through every part and system involved. Most often those systems belong to different teams, and the test catches what shows only at the joints, for example one system’s data does not fit another. Example: in an online shop one team creates the order, a second takes the payment, a third runs the warehouse; the E2E test places an order and checks that it was paid and reached the warehouse. The systems in such a chain usually correspond to bounded contexts of the business domain (orders, payment, warehouse), each with its own language and its own team, and the joints lie on the borders between contexts. In a narrower case the joints lie inside one team, between people or services. A unit test checks one small piece of code, a smoke test quickly confirms that the main things start, while an E2E test is slow and covers the whole chain, so there are fewer of them and they run on a stand.',
-        },
-        match: { ru: ['e2e[- ]тест\\p{L}*', 'сквозн\\p{L}* тест\\p{L}*', 'сквозн\\p{L}* тестировани\\p{L}*', 'e2e', 'end-to-end'], en: ['end-to-end tests?', 'end-to-end testing', 'e2e', 'system testing'] },
-        related: ['unit-test', 'automated-test', 'smoke-testing', 'regression-testing', 'critical-path', 'test-stand', 'flaky-test', 'mock', 'qa'],
-        faq: [
-          { q: { ru: 'E2E-тест — что это?', en: 'What is an end-to-end (E2E) test?' }, a: { ru: 'Проверка, что несколько сценариев работают верно вместе и на стыках: цепочка целиком, часто через системы разных команд.', en: 'A check that several scenarios work correctly together and at the joints: the whole chain, often across systems of different teams.' } },
-          { q: { ru: 'Чем E2E-тест отличается от юнит-теста?', en: 'How is an end-to-end test different from a unit test?' }, a: { ru: 'Юнит-тест проверяет одну маленькую часть кода и работает быстро. E2E-тест проверяет цепочку целиком, он медленнее и чаще ломается по посторонним причинам.', en: 'A unit test checks one small piece of code and is fast. An end-to-end test checks the whole chain together; it is slower and more often breaks for unrelated reasons.' } },
-          { q: { ru: 'Чем E2E-тест отличается от смоук-теста?', en: 'How is an end-to-end test different from a smoke test?' }, a: { ru: 'Смоук-тест быстро проверяет, что главное запускается. E2E-тест подробно проходит цепочку сценариев вместе со стыками.', en: 'A smoke test quickly checks that the main things start. An end-to-end test goes through a chain of scenarios in detail, joints included.' } },
-          { q: { ru: 'Где запускают E2E-тесты?', en: 'Where are end-to-end tests run?' }, a: { ru: 'На стенде, который собран как рабочая система, часто на препроде перед выкладкой.', en: 'On a stand that is built like the live system, often on staging before a release.' } },
-          { q: { ru: 'Как E2E-тест связан с ограниченными контекстами?', en: 'How is an E2E test related to bounded contexts?' }, a: { ru: 'Каждая система в цепочке обычно отвечает за свой ограниченный контекст предметной области, например заказы, оплату или склад. E2E-тест проходит сквозь эти контексты и проверяет их границы: слова и данные одного контекста должны правильно переводиться на язык соседнего.', en: 'Each system in the chain usually owns its own bounded context of the business domain, for example orders, payment or warehouse. An E2E test runs through these contexts and checks their borders: the words and data of one context must be translated correctly into the language of its neighbour.' } },
-          { q: { ru: 'Кто отвечает за E2E-тест, если систем несколько команд?', en: 'Who owns an E2E test when several teams are involved?' }, a: { ru: 'Стык принадлежит всем его сторонам, поэтому команды заранее договариваются, кто поддерживает тест и кто чинит его, когда он падает.', en: 'A joint belongs to everyone on it, so the teams agree in advance who maintains the test and who fixes it when it fails.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/System_testing', label: { ru: 'Википедия: системное тестирование (end-to-end)', en: 'Wikipedia: System testing (end-to-end)' } },
-        seo: {
-          title: { ru: 'E2E-тест: что это и чем отличается от юнит-теста', en: 'End-to-end (E2E) test: what it is and how it differs from a unit test' },
-          description: {
-            ru: 'E2E-тест проверяет, что несколько сценариев вместе и на стыках систем работают верно, часто у разных команд. Чем он отличается от юнит-теста и смоук-теста и где его запускают.',
-            en: 'An E2E test checks that several scenarios work together and at the joints between systems, often owned by different teams. How it differs from unit and smoke tests, and where it runs.',
-          },
-        },
-      },
-      {
-        slug: 'mock',
-        name: { ru: 'Мок (mock)', en: 'Mock' },
-        aka: { ru: 'заглушка, mock-объект, стаб, фейк, имитация зависимости', en: 'mock object, stub, fake, test double' },
-        def: {
-          ru: 'Мок (заглушка) — имитация настоящей зависимости, например базы данных или чужого сервиса оплаты, которую подставляют в тест или на стенд вместо настоящей. Система обращается к ней как к настоящей, а она отвечает заранее заготовленными ответами, поэтому тест быстрый, бесплатный и не трогает чужие данные. Например, вместо реальной оплаты картой мок всегда отвечает «оплачено». Чаще всего моки встречаются в юнит-тестах, где ими заменяют зависимости проверяемой части. Слово «мок» часто используют для любой такой имитации, хотя в строгом смысле у неё есть разновидности. Моки пишут вручную под конкретный тест или берут готовые: стандартные средства есть почти в каждом языке. Например, модуль unittest.mock входит в стандартную библиотеку Python, а WireMock имитирует HTTP-сервисы.',
-          en: 'A mock is an imitation of a real dependency, such as a database or a third-party payment service, that is plugged into a test or onto a stand in place of the real one. The system calls it as if it were real, and it replies with prepared answers, so the test is fast, free and does not touch anyone’s data. For example, instead of a real card payment the mock always answers “paid”. Mocks are most often found in unit tests, where they replace the dependencies of the part under test. The word “mock” is often used for any such imitation, although in the strict sense there are several kinds. Mocks are sometimes written by hand for a specific test and sometimes taken ready-made: standard tools exist in almost every language. For example, the unittest.mock module ships in the Python standard library, and WireMock imitates HTTP services.',
-        },
-        match: { ru: ['мок(?:и|ов|ам|ами|ах)', 'мок-объект\\p{L}*', 'заглушк\\p{L}* зависимост\\p{L}*'], en: ['mocks?', 'mocked', 'mocking', 'test doubles?'] },
-        related: ['automated-test', 'test-stand', 'test-env', 'e2e-test', 'flaky-test', 'api'],
-        faq: [
-          { q: { ru: 'Мок — что это в тестировании?', en: 'What is a mock in testing?' }, a: { ru: 'Имитация настоящей зависимости, например базы или чужого сервиса, которая отвечает заготовленными ответами, пока идёт тест.', en: 'An imitation of a real dependency, such as a database or a third-party service, that replies with prepared answers while a test runs.' } },
-          { q: { ru: 'Чем мок отличается от стаба и фейка?', en: 'How is a mock different from a stub and a fake?' }, a: { ru: 'Стаб только возвращает заготовленный ответ. Мок ещё и проверяет, как к нему обратились. Фейк — упрощённая, но рабочая реализация, например база в памяти. Различие принимают не все, и слово «мок» часто значит любую из трёх.', en: 'A stub only returns a prepared answer. A mock also checks how it was called. A fake is a simplified but working implementation, such as an in-memory database. The split is not universally accepted, and “mock” often means any of the three.' } },
-          { q: { ru: 'Зачем нужны моки на стенде?', en: 'Why use mocks on a stand?' }, a: { ru: 'Они дешевле и быстрее копий настоящих сервисов и не отправляют настоящих писем и платежей. Цена — стенд чуть дальше от правды.', en: 'They are cheaper and faster than copies of real services and do not send real emails or payments. The price is that the stand is a little further from reality.' } },
-          { q: { ru: 'Как мок помогает против флакующих тестов?', en: 'How do mocks help against flaky tests?' }, a: { ru: 'Мок убирает зависимость от внешней системы, которая отвечает то быстро, то медленно или недоступна, поэтому результат теста перестаёт зависеть от неё.', en: 'A mock removes the dependency on an outside system that answers fast, slow or not at all, so the test result no longer depends on it.' } },
-          { q: { ru: 'Мок пишут самому или берут готовый?', en: 'Are mocks written by hand or taken ready-made?' }, a: { ru: 'Бывает и так, и так. Простой мок пишут вручную под один тест. Для типовых задач берут готовые средства: unittest.mock входит в стандартную библиотеку Python, Mockito подменяет объекты в Java, WireMock имитирует HTTP-сервисы, jest.fn() делает то же в JavaScript.', en: 'Both happen. A simple mock is written by hand for one test. For typical tasks ready-made tools are used: unittest.mock ships in the Python standard library, Mockito replaces objects in Java, WireMock imitates HTTP services, jest.fn() does the same in JavaScript.' } },
-        ],
-        compare: {
-          title: { ru: 'Мок, стаб и фейк', en: 'Mock, stub and fake' },
-          head: { ru: ['Стаб', 'Мок', 'Фейк'], en: ['Stub', 'Mock', 'Fake'] },
-          rows: [
-            { ru: ['Что делает', 'отдаёт заготовленный ответ', 'проверяет, как к нему обратились', 'работает по-настоящему, но проще'], en: ['What it does', 'returns a prepared answer', 'checks how it was called', 'really works, only simpler'] },
-            { ru: ['Пример', 'курс валюты всегда 90', 'проверка: оплату запросили один раз', 'база данных в памяти'], en: ['Example', 'exchange rate is always 90', 'check: payment was requested once', 'in-memory database'] },
-          ],
-        },
-        source: { url: 'https://en.wikipedia.org/wiki/Test_double', label: { ru: 'Википедия: тестовый дублёр (test double)', en: 'Wikipedia: Test double' } },
-        site: { url: 'https://docs.python.org/3/library/unittest.mock.html', label: { ru: 'Пример готового мока: unittest.mock в стандартной библиотеке Python', en: 'A ready-made mock: unittest.mock in the Python standard library' } },
-        sites: [
-          { url: 'https://site.mockito.org/', label: { ru: 'Ещё пример: Mockito, моки для Java', en: 'Another example: Mockito, mocks for Java' } },
-          { url: 'https://wiremock.org/', label: { ru: 'Ещё пример: WireMock, имитация HTTP-сервисов', en: 'Another example: WireMock, imitation of HTTP services' } },
-          { url: 'https://jestjs.io/docs/mock-functions', label: { ru: 'Ещё пример: jest.fn(), моки в JavaScript', en: 'Another example: jest.fn(), mocks in JavaScript' } },
-        ],
-        seo: {
-          title: { ru: 'Мок (mock) в тестировании: что это и чем отличается от стаба и фейка', en: 'Mock in testing: what it is and how it differs from a stub and a fake' },
-          description: {
-            ru: 'Мок, или заглушка, подменяет базу или чужой сервис в тесте и на стенде. Чем мок отличается от стаба и фейка и зачем он нужен.',
-            en: 'A mock stands in for a database or outside service in a test or on a stand. How it differs from a stub and a fake, and why it is used.',
-          },
-        },
-      },
-      {
-        slug: 'flaky-test',
-        name: { ru: 'Флакующий тест (flaky test)', en: 'Flaky test' },
-        aka: { ru: 'нестабильный тест, флаки-тест, флейки, плавающий тест, мигающий тест', en: 'flaky tests, flakiness, intermittent test' },
-        def: {
-          ru: 'Флакующий тест (flaky test, его же называют нестабильным) — тест, который при одном и том же коде то зелёный, то красный, без единой правки. Зелёный тест прошёл, красный упал; у флакующего цвет меняется сам, как у весов, которые при каждом взвешивании показывают разный вес: верить им нельзя. Причины обычно такие: состояние гонки между параллельными действиями, зависимость от времени, обращение к внешней системе, тесты, которые влияют друг на друга. Такие тесты подрывают доверие ко всему набору: команда привыкает к красному цвету и может пропустить настоящую ошибку.',
-          en: 'A flaky test is a test that is sometimes green and sometimes red on the same code, with no edit at all. A green test passed and a red one failed; a flaky test changes colour on its own. It is like a scale that shows a different weight each time: you cannot trust it. The usual causes are a race condition between parallel actions, dependence on time, calls to an outside system, and tests that affect each other. Such tests erode trust in the whole suite: the team gets used to red and can miss a real defect.',
-        },
-        match: { ru: ['флакующ\\p{L}* тест\\p{L}*', 'нестабильн\\p{L}* тест\\p{L}*', 'флак\\p{L}*-?тест\\p{L}*', 'flaky', 'флейк\\p{L}*'], en: ['flaky tests?', 'flakiness'] },
-        related: ['automated-test', 'e2e-test', 'mock', 'race-condition', 'ci-cd', 'regression-testing'],
-        more: { post: 'quint-models-find-races', label: { ru: 'Какие гонки нашли модели на Quint', en: 'The races found by Quint models' } },
-        faq: [
-          { q: { ru: 'Флакующий тест (flaky test) — что это?', en: 'What is a flaky test?' }, a: { ru: 'Тест, который при одном и том же коде то зелёный (прошёл), то красный (упал), без правок.', en: 'A test that is sometimes green (passed) and sometimes red (failed) on the same code, with no edits.' } },
-          { q: { ru: 'Почему тесты становятся флакующими?', en: 'Why do tests become flaky?' }, a: { ru: 'Из-за состояния гонки между параллельными действиями, зависимости от времени, обращений к внешним системам и недостаточной изоляции тестов друг от друга.', en: 'Because of races between parallel actions, dependence on time, calls to outside systems and insufficient isolation between tests.' } },
-          { q: { ru: 'Чем вредит флакующий тест?', en: 'Why is a flaky test harmful?' }, a: { ru: 'Команда привыкает к красному цвету и перестаёт на него смотреть, поэтому настоящая поломка может пройти незамеченной.', en: 'The team gets used to red results and stops looking at them, so a real breakage can go unnoticed.' } },
-          { q: { ru: 'Что делать с флакующим тестом?', en: 'What to do with a flaky test?' }, a: { ru: 'Изолировать тест от других, зафиксировать время и случайные значения, заменить внешние сервисы моками. Пока тест чинят, его можно вынести в карантин, но не оставлять там навсегда.', en: 'Isolate it from other tests, pin down time and random values, replace outside services with mocks. While it is being fixed it can be quarantined, but not left there for good.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Flaky_test', label: { ru: 'Википедия: Flaky test (флакующий тест)', en: 'Wikipedia: Flaky test' } },
-        seo: {
-          title: { ru: 'Флакующий тест (flaky test): что это, причины и что делать', en: 'Flaky test: what it is, why it happens and what to do' },
-          description: {
-            ru: 'Флакующий тест при одном и том же коде то зелёный, то красный. Откуда берётся такая «плавающая» проверка, чем она вредит и как её исправить.',
-            en: 'A flaky test passes or fails on unchanged code. Where this inconsistency comes from, why it hurts a team and how to fix it.',
+            ru: 'Технический долг — ошибки в коде, накопленные из-за предположений о поведении пользователей, которые после проверки гипотез оказались неверными. Откуда он берётся и как его гасят.',
+            en: 'Technical debt is the mistakes accumulated in code from assumptions about user behaviour that turned out wrong after testing hypotheses. Where it comes from and how it is paid down.',
           },
         },
       },
@@ -2857,6 +3090,7 @@ export const TERM_SETS: TermSet[] = [
     icon: 'code',
     name: { ru: 'Среды и стенды', en: 'Environments' },
     hint: { ru: 'Где живёт система на пути изменения к пользователям', en: 'Where a system lives on a change’s way to users' },
+    group: { id: 'delivery', name: { ru: 'Выкладка и среды', en: 'Release and environments' } },
     terms: [
       {
         slug: 'environment',
@@ -3192,6 +3426,7 @@ export const TERM_SETS: TermSet[] = [
     icon: 'tests',
     name: { ru: 'Метрики поставки', en: 'Delivery metrics' },
     hint: { ru: 'Как быстро и как надёжно изменения доходят до пользователей', en: 'How fast and how reliably changes reach users' },
+    group: { id: 'delivery', name: { ru: 'Выкладка и среды', en: 'Release and environments' } },
     terms: [
       {
         slug: 'time-to-market',
@@ -3338,6 +3573,7 @@ export const TERM_SETS: TermSet[] = [
     icon: 'research',
     name: { ru: 'Формальная верификация', en: 'Formal verification' },
     hint: { ru: 'Языки моделей, проверяющие программы и ошибки, которые они находят', en: 'Modeling languages, checking programs and the errors they find' },
+    group: { id: 'theory', name: { ru: 'Теория', en: 'Theory' } },
     terms: [
       {
         slug: 'quint',
@@ -3652,119 +3888,11 @@ export const TERM_SETS: TermSet[] = [
     ],
   },
   {
-    slug: 'models',
-    icon: 'prompts',
-    name: { ru: 'Модель и промпты', en: 'Model and prompts' },
-    hint: { ru: 'Как модель читает запрос и ошибается', en: 'How a model reads a request and errs' },
-    terms: [
-      {
-        slug: 'prompt',
-        name: { ru: 'Промпт', en: 'Prompt' },
-        def: {
-          ru: 'Промпт — запрос к модели: задача, контекст, формат ответа и ограничения. Чем точнее собраны эти части, тем меньше правок после первого ответа.',
-          en: 'A prompt is a request to a model: task, context, answer format and constraints. The more precisely these parts are put together, the fewer edits follow the first answer.',
-        },
-        match: { ru: ['промпт\\p{L}*'], en: ['prompts?'] },
-        related: ['context', 'token', 'hallucination'],
-        faq: [
-          { q: { ru: 'Промпт — что это?', en: 'What is a prompt?' }, a: { ru: 'Запрос к модели: задача, контекст, формат ответа и ограничения.', en: 'A request to a model: the task, context, answer format and constraints.' } },
-          { q: { ru: 'Как написать хороший промпт?', en: 'How do you write a good prompt?' }, a: { ru: 'Собрать все части точно: чем точнее задача, данные и формат, тем меньше правок после первого ответа.', en: 'Put all parts together precisely: the more exact the task, data and format, the fewer edits after the first answer.' } },
-        ],
-        source: { url: 'https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview', label: { ru: 'Anthropic: промпт-инжиниринг', en: 'Anthropic: Prompt engineering' } },
-      },
-      {
-        slug: 'source',
-        name: { ru: 'Источник', en: 'Source' },
-        def: {
-          ru: 'Источник — система или документ, где лежит исходный факт: заявка, таблица, запись встречи. Ответ агента надёжен настолько, насколько его можно сверить с источником, поэтому у каждого утверждения в ответе стоит ссылка на источник.',
-          en: 'A source is the system or document where the original fact lives: a ticket, a sheet, a meeting record. An agent’s answer is as reliable as it can be checked against its source, so every claim in the answer carries a link to its source.',
-        },
-        match: { ru: ['источник\\p{L}*'], en: ['sources?(?! code)'] },
-        related: ['epimorphism', 'hallucination', 'context'],
-        faq: [
-          { q: { ru: 'Источник — что это?', en: 'What is a source?' }, a: { ru: 'Система или документ, где лежит исходный факт: заявка, таблица, запись встречи.', en: 'The system or document that holds the original fact: a ticket, a table, a meeting recording.' } },
-          { q: { ru: 'Зачем ссылка на источник в ответе агента?', en: 'Why should an agent’s answer cite sources?' }, a: { ru: 'Ответ надёжен настолько, насколько его можно сверить с источником.', en: 'An answer is only as reliable as it can be checked against its source.' } },
-        ],
-      },
-      {
-        slug: 'hallucination',
-        name: { ru: 'Галлюцинация', en: 'Hallucination' },
-        aka: { ru: 'галлюцинации LLM, галлюцинации ИИ, галлюцинации нейросети', en: 'LLM hallucination, AI hallucination' },
-        def: {
-          ru: 'Галлюцинация LLM — уверенный, но выдуманный ответ большой языковой модели: несуществующий факт, функция или ссылка. В коде это, например, вызов несуществующей функции или установка пакета, которого нет. Появляется там, где у части ответа нет опоры в данных, и модель заполняет пустое место правдоподобной догадкой. Обратный случай, когда опора есть у каждой части ответа, называют эпиморфизмом. Снижают её данными из надёжных источников и проверкой результата.',
-          en: 'An LLM hallucination is a confident but invented answer from a model: a nonexistent fact, function or link. In code it is, for example, a call to a function that does not exist or installing a package that is not there. It appears where part of the answer has no support in the data, and the model fills the empty spot with a plausible guess. The opposite case, where every part of the answer has support, is called an epimorphism. It is reduced by grounding in reliable sources and by checking the result.',
-        },
-        match: { ru: ['галлюцинаци\\p{L}*', 'галлюцинир\\p{L}*'], en: ['hallucinat\\p{L}*'] },
-        related: ['epimorphism', 'source', 'prompt', 'llm', 'checks'],
-        faq: [
-          { q: { ru: 'Галлюцинация LLM — что это?', en: 'What is an LLM hallucination?' }, a: { ru: 'Уверенный, но выдуманный ответ модели: несуществующий факт, функция или ссылка.', en: 'A confident but made-up model answer: a fact, function or link that does not exist.' } },
-          { q: { ru: 'Почему возникают галлюцинации?', en: 'Why do hallucinations happen?' }, a: { ru: 'Там, где у части ответа нет опоры в данных, модель заполняет пустое место правдоподобной догадкой.', en: 'Where part of the answer has no support in the data, the model fills the gap with a plausible guess.' } },
-          { q: { ru: 'Как снизить галлюцинации?', en: 'How do you reduce hallucinations?' }, a: { ru: 'Давать модели данные из надёжных источников и проверять результат.', en: 'Give the model data from reliable sources and check the result.' } },
-        ],
-        source: { url: 'https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)', label: { ru: 'Википедия: галлюцинации ИИ', en: 'Wikipedia: AI hallucination' } },
-        seo: {
-          title: { ru: 'Галлюцинации LLM: что это и примеры галлюцинаций ИИ — в коде, пакетах и ссылках', en: 'LLM hallucination: meaning, examples and grounding in sources' },
-          description: {
-            ru: 'Что такое галлюцинации больших языковых моделей (LLM) и примеры галлюцинаций ИИ в работе агента: выдуманная функция, несуществующий пакет, ссылка в никуда. Почему они возникают и как их снижают опорой на источники и проверками.',
-            en: 'What an LLM hallucination means, with examples from coding agents: an invented function, a nonexistent package, a dead link. Why it happens, how grounding in sources reduces it, and how checks detect it.',
-          },
-        },
-        notes: {
-          title: { ru: 'Примеры галлюцинаций и как их снижать', en: 'Hallucination examples and how to reduce them' },
-          items: [
-            { name: { ru: 'Выдуманная функция', en: 'An invented function' }, text: { ru: 'агент вызывает метод, которого нет в библиотеке, или параметр, которого нет у функции. Код выглядит правдоподобно и падает при запуске.', en: 'the agent calls a method the library does not have, or a parameter the function does not take. The code looks plausible and fails when run.' } },
-            { name: { ru: 'Несуществующий пакет', en: 'A nonexistent package' }, text: { ru: 'агент предлагает поставить пакет, которого нет в npm или PyPI. Модели часто повторяют одни и те же выдуманные имена, и злоумышленники регистрируют пакеты с такими именами, чтобы подсунуть свой код (slopsquatting).', en: 'the agent suggests installing a package that does not exist on npm or PyPI. Models often repeat the same invented names, and attackers register packages under them to slip in their code (slopsquatting).' } },
-            { name: { ru: 'Ссылка в никуда', en: 'A dead link' }, text: { ru: 'ссылка на статью, документацию или раздел, которых не существует.', en: 'a link to an article, doc or section that does not exist.' } },
-            { name: { ru: '«Готово», а изменений нет', en: '“Done” with no changes' }, text: { ru: 'агент отчитывается о сделанной работе, которой не было.', en: 'the agent reports work it did not do.' } },
-            { name: { ru: 'Как снижать', en: 'How to reduce it' }, text: { ru: 'дать модели источники и контекст и требовать ссылку на опору для каждого утверждения (это и есть эпиморфизм); в промпте разрешить ответ «не знаю».', en: 'ground the model: give it sources and context and require a supporting reference for each claim (that is an epimorphism); allow “I don’t know” in the prompt.' } },
-            { name: { ru: 'Как ловить', en: 'How to detect it' }, text: { ru: 'проверками: тесты, сборка и линтер ловят выдуманный код, установка из списка разрешённых пакетов — выдуманные пакеты, переход по ссылкам — выдуманные источники.', en: 'with checks: tests, builds and linters catch invented code, an allow-list of packages catches invented packages, following links catches invented sources.' } },
-          ],
-        },
-      },
-      {
-        slug: 'context',
-        name: { ru: 'Контекст', en: 'Context' },
-        def: {
-          ru: 'Контекст — всё, что модель видит в данный момент: диалог, файлы проекта и данные подключённых систем. Чего нет в контексте, того агент не знает.',
-          en: 'Context — everything the model sees at the moment: the conversation, project files and data from connected systems. What is not in context, the agent does not know.',
-        },
-        match: { ru: ['контекст\\p{L}*'], en: ['contexts?'] },
-        related: ['token', 'prompt', 'source', 'mcp'],
-        faq: [
-          { q: { ru: 'Что такое контекст в ИИ?', en: 'What is context in AI?' }, a: { ru: 'Всё, что модель видит в данный момент: диалог, файлы проекта и данные подключённых систем.', en: 'Everything the model sees at the moment: the conversation, project files and data from connected systems.' } },
-          { q: { ru: 'Почему агент не знает про мой проект?', en: 'Why doesn’t the agent know about my project?' }, a: { ru: 'Чего нет в контексте, того агент не знает. Постоянные знания о проекте кладут в файлы инструкций вроде AGENTS.md или CLAUDE.md.', en: 'What is not in the context, the agent does not know. Standing project knowledge goes into instruction files like AGENTS.md or CLAUDE.md.' } },
-        ],
-        source: { url: 'https://platform.claude.com/docs/en/build-with-claude/context-windows', label: { ru: 'Anthropic: контекстное окно', en: 'Anthropic: Context windows' } },
-        seo: {
-          title: { ru: 'Контекст в ИИ: что это, контекстное окно и почему агент не знает про ваш проект', en: 'AI context: what it is, the context window and why the agent forgets' },
-          description: {
-            ru: 'Контекст — всё, что модель видит в данный момент: диалог, файлы проекта, данные подключённых систем. Что такое контекстное окно, почему агент забывает проект и куда класть постоянные знания: AGENTS.md, CLAUDE.md, память.',
-            en: 'Context is everything a model sees right now: the conversation, project files, data from connected systems. What the context window is, why an agent forgets your project, and where standing knowledge goes: AGENTS.md, CLAUDE.md, memory.',
-          },
-        },
-      },
-      {
-        slug: 'token',
-        name: { ru: 'Токен', en: 'Token' },
-        def: {
-          ru: 'Токен — единица текста, которую считает LLM: примерно слог или короткое слово. От числа токенов зависят цена запроса и то, сколько поместится в контекст.',
-          en: 'A token is a unit of text an LLM counts: roughly a syllable or a short word. The token count sets the price of a request and how much fits into context.',
-        },
-        match: { ru: ['токен\\p{L}*'], en: ['tokens?'] },
-        related: ['context', 'llm', 'prompt'],
-        faq: [
-          { q: { ru: 'Что такое токен в ИИ?', en: 'What is a token in AI?' }, a: { ru: 'Единица текста, которую считает LLM: примерно слог или короткое слово.', en: 'A unit of text an LLM counts: roughly a syllable or a short word.' } },
-          { q: { ru: 'Почему важно число токенов?', en: 'Why does the token count matter?' }, a: { ru: 'От него зависят цена запроса и то, сколько поместится в контекст модели.', en: 'It sets the request price and how much fits into the model’s context.' } },
-        ],
-        source: { url: 'https://platform.claude.com/docs/en/build-with-claude/token-counting', label: { ru: 'Anthropic: подсчёт токенов', en: 'Anthropic: Token counting' } },
-      },
-    ],
-  },
-  {
     slug: 'group-theory',
     icon: 'research',
     name: { ru: 'Группы, ходы и правила', en: 'Groups, moves and rules' },
     hint: { ru: 'Язык головоломок и симметрий', en: 'The language of puzzles and symmetries' },
+    group: { id: 'theory', name: { ru: 'Теория', en: 'Theory' } },
     terms: [
       {
         slug: 'math-group',

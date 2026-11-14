@@ -1,16 +1,87 @@
 {
-  "agents": { "name": "Tác nhân và công cụ", "hint": "Ai làm việc và làm ở đâu" },
-  "coding-agents": { "name": "Tác nhân lập trình", "hint": "Tác nhân có sẵn: chạy ở đâu và trên mô hình nào" },
-  "companies": { "name": "Công ty", "hint": "Ai tạo ra các mô hình và tác nhân" },
-  "harness": { "name": "Harness", "hint": "Môi trường xung quanh tác nhân và các quy tắc của nó" },
-  "mcp": { "name": "MCP và an toàn", "hint": "Cách tác nhân được cấp quyền vào các dịch vụ" },
-  "systems": { "name": "Hệ thống và dịch vụ", "hint": "Tác nhân được kết nối với những gì" },
-  "specs": { "name": "Đặc tả và kiến trúc", "hint": "Cách mô tả những gì mã phải làm" },
-  "languages": { "name": "Ngôn ngữ và nền tảng", "hint": "JavaScript, các phần mở rộng, môi trường chạy và framework web" },
-  "testing": { "name": "Kiểm thử", "hint": "Kiểm thử tự động, framework và việc kiểm tra chính các bài kiểm thử" },
-  "environments": { "name": "Môi trường", "hint": "Hệ thống nằm ở đâu trên đường từ thay đổi đến người dùng" },
-  "delivery": { "name": "Chỉ số chuyển giao", "hint": "Thay đổi đến tay người dùng nhanh và đáng tin cậy đến mức nào" },
-  "formal": { "name": "Kiểm chứng hình thức", "hint": "Ngôn ngữ mô hình hóa, kiểm tra chương trình và các lỗi chúng tìm ra" },
-  "models": { "name": "Mô hình và prompt", "hint": "Cách mô hình đọc yêu cầu và mắc lỗi" },
-  "group-theory": { "name": "Nhóm, nước đi và quy tắc", "hint": "Ngôn ngữ của các câu đố và phép đối xứng" }
+  "agents": {
+    "name": "Tác nhân và công cụ",
+    "hint": "Ai làm việc và làm ở đâu",
+    "group.name": "Tác nhân AI"
+  },
+  "coding-agents": {
+    "name": "Tác nhân lập trình",
+    "hint": "Tác nhân có sẵn: chạy ở đâu và trên mô hình nào",
+    "group.name": "Tác nhân AI"
+  },
+  "harness": {
+    "name": "Harness",
+    "hint": "Môi trường xung quanh tác nhân và các quy tắc của nó",
+    "group.name": "Tác nhân AI"
+  },
+  "mcp": {
+    "name": "MCP và an toàn",
+    "hint": "Cách tác nhân được cấp quyền vào các dịch vụ",
+    "group.name": "Tác nhân AI"
+  },
+  "models": {
+    "name": "Mô hình và prompt",
+    "hint": "Cách mô hình đọc yêu cầu và mắc lỗi",
+    "group.name": "Tác nhân AI"
+  },
+  "companies": {
+    "name": "Công ty",
+    "hint": "Ai tạo ra các mô hình và tác nhân",
+    "group.name": "Tác nhân AI"
+  },
+  "languages": {
+    "name": "Ngôn ngữ và nền tảng",
+    "hint": "JavaScript, các phần mở rộng, môi trường chạy và framework web",
+    "group.name": "Phát triển phần mềm"
+  },
+  "systems": {
+    "name": "Hệ thống và dịch vụ",
+    "hint": "Tác nhân được kết nối với những gì",
+    "group.name": "Phát triển phần mềm"
+  },
+  "specs": {
+    "name": "Đặc tả và yêu cầu",
+    "hint": "Cách mô tả những gì mã phải làm và làm việc theo mô tả đó",
+    "group.name": "Phát triển phần mềm"
+  },
+  "architecture": {
+    "name": "Kiến trúc và độ tin cậy",
+    "hint": "Hệ thống được xây dựng thế nào, ranh giới của nó ở đâu và điều gì xảy ra khi các phần gặp sự cố",
+    "group.name": "Phát triển phần mềm"
+  },
+  "kubernetes": {
+    "name": "Kubernetes",
+    "hint": "Cụm gồm những gì và cách nó giữ trạng thái mong muốn",
+    "group.name": "Phát triển phần mềm"
+  },
+  "testing": {
+    "name": "Kiểm thử",
+    "hint": "Kiểm thử tự động, framework và việc kiểm tra chính các bài kiểm thử",
+    "group.name": "Chất lượng và kiểm thử"
+  },
+  "quality": {
+    "name": "Chất lượng và lỗi",
+    "hint": "Ai chịu trách nhiệm về chất lượng, điều gì được coi là lỗi và nợ kỹ thuật từ đâu ra",
+    "group.name": "Chất lượng và kiểm thử"
+  },
+  "environments": {
+    "name": "Môi trường",
+    "hint": "Hệ thống nằm ở đâu trên đường từ thay đổi đến người dùng",
+    "group.name": "Phát hành và môi trường"
+  },
+  "delivery": {
+    "name": "Chỉ số chuyển giao",
+    "hint": "Thay đổi đến tay người dùng nhanh và đáng tin cậy đến mức nào",
+    "group.name": "Phát hành và môi trường"
+  },
+  "formal": {
+    "name": "Kiểm chứng hình thức",
+    "hint": "Ngôn ngữ mô hình hóa, kiểm tra chương trình và các lỗi chúng tìm ra",
+    "group.name": "Lý thuyết"
+  },
+  "group-theory": {
+    "name": "Nhóm, nước đi và quy tắc",
+    "hint": "Ngôn ngữ của các câu đố và phép đối xứng",
+    "group.name": "Lý thuyết"
+  }
 }

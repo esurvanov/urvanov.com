@@ -1,19 +1,87 @@
 {
-  "specs": {
-    "name": "Especificaciones y arquitectura",
-    "hint": "Cómo describir lo que debe hacer el código"
+  "agents": {
+    "name": "Agentes y herramientas",
+    "hint": "Quién hace el trabajo y dónde",
+    "group.name": "Agentes de IA"
   },
-  "agents": { "name": "Agentes y herramientas", "hint": "Quién hace el trabajo y dónde" },
-  "coding-agents": { "name": "Agentes de programación", "hint": "Agentes listos para usar: dónde se ejecutan y con qué modelos" },
-  "companies": { "name": "Empresas", "hint": "Quién crea los modelos y los agentes" },
-  "harness": { "name": "Harness", "hint": "El entorno que rodea al agente y sus reglas" },
-  "mcp": { "name": "MCP y seguridad", "hint": "Cómo accede un agente a los servicios" },
-  "systems": { "name": "Sistemas y servicios", "hint": "A qué se conecta un agente" },
-  "languages": { "name": "Lenguajes y plataformas", "hint": "JavaScript, sus extensiones, entornos de ejecución y frameworks web" },
-  "testing": { "name": "Pruebas", "hint": "Pruebas automáticas, frameworks y cómo comprobar las propias pruebas" },
-  "environments": { "name": "Entornos", "hint": "Dónde vive un sistema en el camino de un cambio hasta los usuarios" },
-  "delivery": { "name": "Métricas de entrega", "hint": "Con qué rapidez y fiabilidad llegan los cambios a los usuarios" },
-  "formal": { "name": "Verificación formal", "hint": "Lenguajes de modelado, comprobación de programas y los errores que encuentran" },
-  "models": { "name": "Modelo y prompts", "hint": "Cómo lee una petición un modelo y cómo se equivoca" },
-  "group-theory": { "name": "Grupos, movimientos y reglas", "hint": "El lenguaje de los puzles y las simetrías" }
+  "coding-agents": {
+    "name": "Agentes de programación",
+    "hint": "Agentes listos para usar: dónde se ejecutan y con qué modelos",
+    "group.name": "Agentes de IA"
+  },
+  "harness": {
+    "name": "Harness",
+    "hint": "El entorno que rodea al agente y sus reglas",
+    "group.name": "Agentes de IA"
+  },
+  "mcp": {
+    "name": "MCP y seguridad",
+    "hint": "Cómo accede un agente a los servicios",
+    "group.name": "Agentes de IA"
+  },
+  "models": {
+    "name": "Modelo y prompts",
+    "hint": "Cómo lee una petición un modelo y cómo se equivoca",
+    "group.name": "Agentes de IA"
+  },
+  "companies": {
+    "name": "Empresas",
+    "hint": "Quién crea los modelos y los agentes",
+    "group.name": "Agentes de IA"
+  },
+  "languages": {
+    "name": "Lenguajes y plataformas",
+    "hint": "JavaScript, sus extensiones, entornos de ejecución y frameworks web",
+    "group.name": "Desarrollo de software"
+  },
+  "systems": {
+    "name": "Sistemas y servicios",
+    "hint": "A qué se conecta un agente",
+    "group.name": "Desarrollo de software"
+  },
+  "specs": {
+    "name": "Especificaciones y requisitos",
+    "hint": "Cómo describir lo que debe hacer el código y trabajar a partir de esa descripción",
+    "group.name": "Desarrollo de software"
+  },
+  "architecture": {
+    "name": "Arquitectura y fiabilidad",
+    "hint": "Cómo está construido un sistema, dónde están sus fronteras y qué ocurre cuando fallan partes",
+    "group.name": "Desarrollo de software"
+  },
+  "kubernetes": {
+    "name": "Kubernetes",
+    "hint": "De qué se compone un clúster y cómo mantiene el estado deseado",
+    "group.name": "Desarrollo de software"
+  },
+  "testing": {
+    "name": "Pruebas",
+    "hint": "Pruebas automáticas, frameworks y cómo comprobar las propias pruebas",
+    "group.name": "Calidad y pruebas"
+  },
+  "quality": {
+    "name": "Calidad y defectos",
+    "hint": "Quién responde de la calidad, qué cuenta como defecto y de dónde viene la deuda técnica",
+    "group.name": "Calidad y pruebas"
+  },
+  "environments": {
+    "name": "Entornos",
+    "hint": "Dónde vive un sistema en el camino de un cambio hasta los usuarios",
+    "group.name": "Despliegue y entornos"
+  },
+  "delivery": {
+    "name": "Métricas de entrega",
+    "hint": "Con qué rapidez y fiabilidad llegan los cambios a los usuarios",
+    "group.name": "Despliegue y entornos"
+  },
+  "formal": {
+    "name": "Verificación formal",
+    "hint": "Lenguajes de modelado, comprobación de programas y los errores que encuentran",
+    "group.name": "Teoría"
+  },
+  "group-theory": {
+    "name": "Grupos, movimientos y reglas",
+    "hint": "El lenguaje de los puzles y las simetrías",
+    "group.name": "Teoría"
+  }
 }

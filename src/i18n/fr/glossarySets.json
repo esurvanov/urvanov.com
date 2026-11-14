@@ -1,16 +1,87 @@
 {
-  "agents": { "name": "Agents et outils", "hint": "Qui fait le travail et où" },
-  "coding-agents": { "name": "Agents de code", "hint": "Agents prêts à l’emploi : où ils tournent et sur quels modèles" },
-  "companies": { "name": "Entreprises", "hint": "Qui construit les modèles et les agents" },
-  "harness": { "name": "Harness", "hint": "L’environnement autour d’un agent et ses règles" },
-  "mcp": { "name": "MCP et sécurité", "hint": "Comment un agent accède aux services" },
-  "systems": { "name": "Systèmes et services", "hint": "À quoi un agent est connecté" },
-  "specs": { "name": "Spécifications et architecture", "hint": "Comment décrire ce que le code doit faire" },
-  "languages": { "name": "Langages et plateformes", "hint": "JavaScript, ses extensions, ses environnements d’exécution et ses frameworks web" },
-  "testing": { "name": "Tests", "hint": "Tests automatisés, frameworks et vérification des tests eux-mêmes" },
-  "environments": { "name": "Environnements", "hint": "Où vit un système sur le chemin d’un changement vers les utilisateurs" },
-  "delivery": { "name": "Métriques de livraison", "hint": "À quelle vitesse et avec quelle fiabilité les changements atteignent les utilisateurs" },
-  "formal": { "name": "Vérification formelle", "hint": "Langages de modélisation, vérification de programmes et erreurs qu’ils trouvent" },
-  "models": { "name": "Modèle et prompts", "hint": "Comment un modèle lit une requête et se trompe" },
-  "group-theory": { "name": "Groupes, mouvements et règles", "hint": "Le langage des casse-têtes et des symétries" }
+  "agents": {
+    "name": "Agents et outils",
+    "hint": "Qui fait le travail et où",
+    "group.name": "Agents IA"
+  },
+  "coding-agents": {
+    "name": "Agents de code",
+    "hint": "Agents prêts à l’emploi : où ils tournent et sur quels modèles",
+    "group.name": "Agents IA"
+  },
+  "harness": {
+    "name": "Harness",
+    "hint": "L’environnement autour d’un agent et ses règles",
+    "group.name": "Agents IA"
+  },
+  "mcp": {
+    "name": "MCP et sécurité",
+    "hint": "Comment un agent accède aux services",
+    "group.name": "Agents IA"
+  },
+  "models": {
+    "name": "Modèle et prompts",
+    "hint": "Comment un modèle lit une requête et se trompe",
+    "group.name": "Agents IA"
+  },
+  "companies": {
+    "name": "Entreprises",
+    "hint": "Qui construit les modèles et les agents",
+    "group.name": "Agents IA"
+  },
+  "languages": {
+    "name": "Langages et plateformes",
+    "hint": "JavaScript, ses extensions, ses environnements d’exécution et ses frameworks web",
+    "group.name": "Développement logiciel"
+  },
+  "systems": {
+    "name": "Systèmes et services",
+    "hint": "À quoi un agent est connecté",
+    "group.name": "Développement logiciel"
+  },
+  "specs": {
+    "name": "Spécifications et exigences",
+    "hint": "Comment décrire ce que le code doit faire et travailler à partir de cette description",
+    "group.name": "Développement logiciel"
+  },
+  "architecture": {
+    "name": "Architecture et fiabilité",
+    "hint": "Comment un système est construit, où se trouvent ses frontières et ce qui se passe quand des parties tombent en panne",
+    "group.name": "Développement logiciel"
+  },
+  "kubernetes": {
+    "name": "Kubernetes",
+    "hint": "De quoi se compose un cluster et comment il maintient l’état souhaité",
+    "group.name": "Développement logiciel"
+  },
+  "testing": {
+    "name": "Tests",
+    "hint": "Tests automatisés, frameworks et vérification des tests eux-mêmes",
+    "group.name": "Qualité et tests"
+  },
+  "quality": {
+    "name": "Qualité et défauts",
+    "hint": "Qui répond de la qualité, ce qui compte comme défaut et d’où vient la dette technique",
+    "group.name": "Qualité et tests"
+  },
+  "environments": {
+    "name": "Environnements",
+    "hint": "Où vit un système sur le chemin d’un changement vers les utilisateurs",
+    "group.name": "Livraison et environnements"
+  },
+  "delivery": {
+    "name": "Métriques de livraison",
+    "hint": "À quelle vitesse et avec quelle fiabilité les changements atteignent les utilisateurs",
+    "group.name": "Livraison et environnements"
+  },
+  "formal": {
+    "name": "Vérification formelle",
+    "hint": "Langages de modélisation, vérification de programmes et erreurs qu’ils trouvent",
+    "group.name": "Théorie"
+  },
+  "group-theory": {
+    "name": "Groupes, mouvements et règles",
+    "hint": "Le langage des casse-têtes et des symétries",
+    "group.name": "Théorie"
+  }
 }

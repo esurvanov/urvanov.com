@@ -644,6 +644,15 @@ details[open] > summary .s-fold-chev { transform: rotate(180deg); }
 a.s-term { color: var(--accent); text-decoration: underline; text-decoration-style: dotted; text-decoration-thickness: 1.5px; text-underline-offset: 3px; cursor: pointer; }
 a.s-term:hover, a.s-term:focus-visible { text-decoration-style: solid; }
 .s-terms { margin-bottom: var(--sp-2); }
+/* Глоссарий: разделы над наборами */
+.g-glos-groups { display: flex; flex-direction: column; gap: var(--sp-4); margin: var(--sp-5) 0; }
+.g-glos-group-title { margin: 0 0 var(--sp-2); font-weight: 600; }
+.g-glos-group-title a { color: var(--ink); text-decoration: none; }
+.g-glos-group-title a:hover, .g-glos-group-title a:focus-visible { color: var(--accent); }
+.g-glos-group-title span { color: var(--ink-3, var(--ink-2)); font-weight: 500; }
+.g-glos-section { margin-top: var(--sp-7, 56px); }
+.g-glos-group-head { margin: 0 0 var(--sp-3); padding-bottom: var(--sp-2); border-bottom: 2px solid var(--line); font-size: 1.5rem; line-height: 1.2; }
+.g-glos-hint { margin: 0 0 var(--sp-2); }
 .g-glos-nav .s-chip svg { width: 14px; height: 14px; margin-right: 6px; vertical-align: -2px; }
 .s-label svg { width: 14px; height: 14px; vertical-align: -2px; }
 .g-glos { margin: 0; display: flex; flex-direction: column; }

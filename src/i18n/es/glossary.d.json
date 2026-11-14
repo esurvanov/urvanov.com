@@ -383,5 +383,57 @@
     "source.label": "Wikipedia: Backup",
     "seo.title": "Backup (copia de seguridad): qué es y en qué se diferencia de un volcado",
     "seo.description": "Un backup es una copia de reserva de datos para recuperarse tras un fallo. Cómo se hace, se guarda y se comprueba, y en qué se diferencia de un volcado de base de datos."
+  },
+  "pure-function": {
+    "name": "Función pura (pure function)",
+    "aka": "funciones puras, función sin efectos secundarios",
+    "def": "Una función pura es una función cuyo resultado depende solo de sus datos de entrada y que no lee ni cambia nada fuera de ella: no accede a la base de datos, a la red, a archivos, al reloj ni a números aleatorios. Ante los mismos datos de entrada responde siempre igual, así que se comprueba con una prueba unitaria sin mocks: se da la entrada y se compara el resultado con el esperado. Ejemplo: el cálculo de un descuento a partir del importe del pedido es puro, mientras que una función que toma el descuento de una base de datos o guarda el pedido es impura. El código real rara vez se compone solo de funciones puras, por eso la parte pura de la lógica se separa de las partes que se comunican con el mundo exterior.",
+    "faq.0.q": "¿Qué es una función pura?",
+    "faq.0.a": "Una función cuyo resultado depende solo de los datos de entrada y que no lee ni cambia nada fuera de ella.",
+    "faq.1.q": "¿En qué se diferencia una función pura de una impura?",
+    "faq.1.a": "Una función impura depende de algo ajeno a sus datos de entrada (una base de datos, la hora, un número aleatorio) o lo cambia (una escritura en la base de datos, un archivo, un correo). Por eso su resultado puede variar de una ejecución a otra.",
+    "faq.2.q": "¿Por qué las funciones puras son cómodas para las pruebas?",
+    "faq.2.a": "No necesitan mocks ni un entorno no productivo: la prueba da la entrada y compara el resultado con el esperado en milisegundos, y el resultado no depende del orden de las ejecuciones.",
+    "faq.3.q": "¿Cómo conseguir más funciones puras?",
+    "faq.3.a": "Separando el cálculo de las llamadas al mundo exterior: primero se reúnen los datos, luego se pasan a una función pura y solo después se guarda el resultado.",
+    "source.label": "Wikipedia: Función pura",
+    "seo.title": "Función pura: qué es y por qué es fácil de probar",
+    "seo.description": "Una función pura depende solo de sus datos de entrada y no cambia nada fuera de ella. En qué se diferencia de una impura y por qué estas funciones se comprueban con pruebas unitarias sin mocks."
+  },
+  "tech-debt": {
+    "name": "Deuda técnica (technical debt)",
+    "aka": "deuda técnica, tech debt, deuda de código",
+    "def": "La deuda técnica son los errores y las malas decisiones acumulados en el código porque al empezar se desconoce cómo se comportará exactamente el usuario. El equipo construye el producto sobre suposiciones y lanza código, y tras comprobar las hipótesis parte de las suposiciones resulta errónea. El código escrito para ellas se queda, y cada nuevo cambio se hace encima: sale más caro y es más arriesgado. Como la deuda de dinero, la técnica tiene intereses: cuanto más tiempo se deja sin pagar, más tiempo lleva cualquier cambio. Una parte de la deuda se asume a propósito para llegar antes al mercado (time-to-market), y entonces se paga tras comprobar las hipótesis: se reescribe el código para lo que resultó cierto.",
+    "faq.0.q": "¿Qué es la deuda técnica?",
+    "faq.0.a": "Los errores y las malas decisiones acumulados en el código porque al empezar se desconoce cómo se comportará el usuario, y parte de las suposiciones resulta errónea tras comprobarlas.",
+    "faq.1.q": "¿De dónde viene la deuda técnica?",
+    "faq.1.a": "De las suposiciones que hace el equipo mientras aún no conoce el comportamiento de los usuarios. La comprobación de hipótesis refuta parte de ellas, pero el código escrito para ellas ya funciona y otras partes se apoyan en él.",
+    "faq.2.q": "¿Por qué se llama deuda?",
+    "faq.2.a": "Como la deuda de dinero, tiene intereses: mientras no se reescribe el código construido sobre suposiciones erróneas, cada nuevo cambio cuesta más y rompe con más frecuencia las partes vecinas.",
+    "faq.3.q": "¿Cómo se paga la deuda técnica?",
+    "faq.3.a": "Se reescribe o se elimina el código construido sobre suposiciones refutadas, en pasos pequeños junto al trabajo habitual, y lo reescrito se cubre con pruebas automáticas.",
+    "faq.4.q": "¿Qué relación tiene la deuda técnica con las pruebas unitarias?",
+    "faq.4.a": "En el código con deuda hay pocas funciones puras: la lógica está mezclada con llamadas a la base de datos y a la red. Por eso hay que probarlo con mocks y reescribirlo junto con las pruebas.",
+    "source.label": "Martin Fowler: Technical Debt",
+    "seo.title": "Deuda técnica: qué es y de dónde viene",
+    "seo.description": "La deuda técnica son errores en el código acumulados por suposiciones sobre el comportamiento de los usuarios que, tras comprobar las hipótesis, resultaron erróneas. De dónde viene y cómo se paga."
+  },
+  "python": {
+    "aka": "lenguaje de programación",
+    "def": "Python es un lenguaje de programación de propósito general con una sintaxis sencilla, uno de los más extendidos para datos, automatización y código de servidor. Su biblioteca estándar incluye muchos módulos ya hechos, entre ellos unittest para pruebas y unittest.mock para mocks.",
+    "faq.0.q": "¿Qué es Python?",
+    "faq.0.a": "Un lenguaje de programación de propósito general con una sintaxis sencilla.",
+    "faq.1.q": "¿Qué herramientas de pruebas tiene Python?",
+    "faq.1.a": "La biblioteca estándar tiene el módulo unittest para pruebas y unittest.mock para mocks, y también es popular la biblioteca de terceros pytest.",
+    "source.label": "Sitio oficial de Python"
+  },
+  "wiremock": {
+    "aka": "mock de servicios HTTP",
+    "def": "WireMock es un programa ya hecho que imita servicios HTTP: se ejecuta como un servidor aparte, recibe las peticiones del sistema comprobado y responde con respuestas preparadas. En lugar de un servicio ajeno real, por ejemplo uno de pagos o de reparto, la prueba ve un mock, así que es rápida, gratuita y no toca datos de nadie. Funciona con cualquier lenguaje porque se comunica por HTTP.",
+    "faq.0.q": "¿Qué es WireMock?",
+    "faq.0.a": "Un programa ya hecho que imita servicios HTTP y responde con respuestas preparadas.",
+    "faq.1.q": "¿Cuándo hace falta WireMock?",
+    "faq.1.a": "Cuando el sistema comprobado llama a un servicio ajeno por HTTP y la prueba no debe depender de su disponibilidad, su velocidad ni del coste de las peticiones.",
+    "source.label": "Sitio oficial de WireMock"
   }
 }
