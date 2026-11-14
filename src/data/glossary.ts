@@ -989,6 +989,40 @@ export const TERM_SETS: TermSet[] = [
         source: { url: 'https://en.wikipedia.org/wiki/Static_program_analysis', label: { ru: 'Википедия: статический анализ кода', en: 'Wikipedia: Static program analysis' } },
       },
       {
+        slug: 'quality-gate',
+        name: { ru: 'Гейт качества', en: 'Quality gate' },
+        aka: { ru: 'quality gate · контрольная точка', en: 'checkpoint' },
+        def: {
+          ru: 'Гейт качества — точка, где работа агента останавливается, пока независимая проверка не вернёт «принято»: сам агент слово «готово» не ставит. У гейта три ответа: принято, не принято (ошибки возвращаются агенту) и «не уверена» (решает человек). Проверку делает машина (тесты, типы, линтер), отдельный проверяющий агент или человек, и стоит она вне агента: в хуке или в правах сервера.',
+          en: 'A quality gate is a point where an agent’s work stops until an independent check answers “accepted”: the agent does not mark “done” itself. A gate has three answers: accepted, not accepted (errors go back to the agent) and “not sure” (a person decides). The check is done by a machine (tests, types, linter), a separate reviewing agent or a person, and it stands outside the agent: in a hook or in server permissions.',
+        },
+        match: { ru: ['гейт\\p{L}*', 'quality gates?'], en: ['quality gates?'] },
+        related: ['hooks', 'checks', 'harness', 'human-in-the-loop', 'bounded-context', 'mcp', 'reward-hacking'],
+        faq: [
+          { q: { ru: 'Что такое quality gate для ИИ-агента?', en: 'What is a quality gate for an AI agent?' }, a: { ru: 'Точка, где работа агента останавливается, пока независимая проверка не ответит «принято». Агент сам «готово» не ставит.', en: 'A point where an agent’s work stops until an independent check answers “accepted”. The agent does not mark “done” itself.' } },
+          { q: { ru: 'Где ставить гейт качества?', en: 'Where should a quality gate stand?' }, a: { ru: 'Вне агента, в хуке клиента или в правах сервера, и на границе ограниченного контекста.', en: 'Outside the agent, in a client hook or in server permissions, and at a bounded-context border.' } },
+        ],
+        source: { url: 'https://docs.sonarsource.com/sonarqube-server/quality-standards-administration/ai-code-assurance/quality-gate-for-agentic-ai', label: { ru: 'Sonar: гейт качества для агентной разработки', en: 'Sonar: quality gate for agentic AI' } },
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+      },
+      {
+        slug: 'reward-hacking',
+        name: { ru: 'Взлом награды', en: 'Reward hacking' },
+        aka: { ru: 'reward hacking', en: 'specification gaming' },
+        def: {
+          ru: 'Взлом награды — поведение агента, который добивается формального прохождения проверки, не выполняя работу: правит или отключает тесты, возвращает ожидаемые значения теста вместо общего решения, подменяет функцию оценки. Против него гейт и его настройки закрывают от агента на запись, а отметку «прошло» ставит только программа проверки.',
+          en: 'Reward hacking is behaviour of an agent that makes a check pass formally without doing the work: it edits or disables tests, returns a test’s expected values instead of a general solution, or replaces the scoring function. Against it, a gate and its settings are closed to the agent for writing, and only the check program sets the “passed” mark.',
+        },
+        match: { ru: ['взлом\\p{L}* награды', 'reward.hacking'], en: ['reward[- ]hack\\p{L}*'] },
+        related: ['quality-gate', 'checks', 'hooks'],
+        faq: [
+          { q: { ru: 'Что такое взлом награды у ИИ-агента?', en: 'What is reward hacking in an AI agent?' }, a: { ru: 'Агент проходит проверку формально, не делая работу: правит тесты, подгоняет под них результат или подменяет оценку.', en: 'The agent passes a check formally without doing the work: it edits tests, fits the result to them or replaces the score.' } },
+          { q: { ru: 'Как защититься от взлома награды?', en: 'How do you defend against reward hacking?' }, a: { ru: 'Закрыть тесты и сам гейт от записи, ставить отметку «прошло» программой и добавить проверку по смыслу.', en: 'Make the tests and the gate read-only, set the “passed” mark by a program and add a check by meaning.' } },
+        ],
+        source: { url: 'https://metr.org/blog/2025-06-05-recent-reward-hacking', label: { ru: 'METR: современные модели взламывают награду', en: 'METR: Recent frontier models are reward hacking' } },
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+      },
+      {
         slug: 'orchestration',
         name: { ru: 'Оркестрация', en: 'Orchestration' },
         def: {
@@ -3794,6 +3828,32 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Можно ли решить проблему остановки?', en: 'Can the halting problem be solved?' }, a: { ru: 'Нет: Алан Тьюринг доказал, что нет программы, которая отвечает верно для любой программы и любого входа.', en: 'No: Alan Turing proved that no program answers correctly for every program and every input.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Halting_problem', label: { ru: 'Википедия: проблема остановки', en: 'Wikipedia: Halting problem' } },
+      },
+      {
+        slug: 'p-vs-np',
+        name: { ru: 'P против NP', en: 'P versus NP' },
+        aka: { ru: 'проблема P и NP', en: 'P vs NP problem' },
+        def: {
+          ru: 'P против NP — нерешённая задача теории сложности: если готовый ответ можно быстро проверить, всегда ли его можно так же быстро найти. К классу P относят задачи, которые решаются быстро, к классу NP — задачи, у которых готовый ответ проверяется быстро. Быстро значит за время, которое растёт не быстрее степени размера задачи. Большинство специалистов уверены, что найти труднее, чем проверить, но доказательства нет; Институт Клэя назначил за него миллион долларов. Для ИИ-агентов это только аналогия: гейт качества работает там, где проверка дешевле самой работы.',
+          en: 'P versus NP is an unsolved problem of complexity theory: if a finished answer can be checked quickly, can it always be found just as quickly. The class P holds problems that are solved quickly, the class NP holds problems whose finished answer is checked quickly. Quickly means in time that grows no faster than a power of the problem size. Most specialists believe finding is harder than checking, but there is no proof; the Clay Institute set a million dollars for it. For AI agents this is only an analogy: a quality gate works where a check is cheaper than the work itself.',
+        },
+        match: { ru: ['P против NP', 'P и NP', 'проблем\\p{L}* P и NP'], en: ['P versus NP', 'P vs\\.? NP', 'P and NP'] },
+        exact: 'P',
+        related: ['halting-problem', 'quality-gate', 'model-checking', 'smt-solver'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Институт Клэя: вопрос', en: 'Clay Institute: the question' }, text: { ru: '«If it is easy to check that a solution to a problem is correct, is it also easy to solve the problem?» — то есть: если ответ легко проверить, легко ли его найти.', en: '“If it is easy to check that a solution to a problem is correct, is it also easy to solve the problem?”' } },
+            { name: { ru: 'Пример: общежитие', en: 'Example: the dormitory' }, text: { ru: '«it is easy to check if a given choice of one hundred students proposed by a coworker is satisfactory» — а составить такой список с нуля «seems to be so hard as to be completely impractical».', en: '“it is easy to check if a given choice of one hundred students proposed by a coworker is satisfactory”, while generating such a list from scratch “seems to be so hard as to be completely impractical”.' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'P против NP — что это?', en: 'What is P versus NP?' }, a: { ru: 'Нерешённый вопрос: если готовый ответ задачи можно быстро проверить, всегда ли его можно так же быстро найти.', en: 'An unsolved question: if a finished answer to a problem can be checked quickly, can it always be found just as quickly.' } },
+          { q: { ru: 'Чем класс P отличается от NP?', en: 'How does class P differ from NP?' }, a: { ru: 'В P задачи, которые решаются быстро. В NP задачи, у которых готовый ответ проверяется быстро; найти его может быть очень долго.', en: 'P holds problems that are solved quickly. NP holds problems whose finished answer is checked quickly; finding it may take very long.' } },
+          { q: { ru: 'Какое отношение P и NP имеет к ИИ-агентам?', en: 'What do P and NP have to do with AI agents?' }, a: { ru: 'Только аналогия: гейт качества опирается на то, что проверить обычно проще, чем сделать. Для задач без дешёвой проверки решает человек.', en: 'Only an analogy: a quality gate relies on checking being usually easier than doing. For tasks without a cheap check a person decides.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://www.claymath.org/millennium/p-vs-np/', label: { ru: 'Институт Клэя: P против NP', en: 'Clay Mathematics Institute: P vs NP' } },
       },
       {
         slug: 'predicate',

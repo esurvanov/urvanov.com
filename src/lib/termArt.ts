@@ -2344,6 +2344,20 @@ export const ART: Record<string, Art> = {
     arr(W, [2.4, 3.2], [9.0, 3.2])
     at(11.4, 3.2, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, W, 2)); t(11.4, 4.2, l('100 или 200', '100 or 200'), W, { dy: 12, size: 13, w: 800 }); t(11.4, 4.2, l('зависит от базы и часов', 'depends on database and clock'), M, { dy: 29, size: 12, w: 700 })
   } },
+  // P против NP: найти ответ — долгий перебор вариантов, проверить готовый — один быстрый взгляд
+  'p-vs-np': { ru: 'P против NP: найти ответ приходится перебором многих вариантов, а проверить готовый ответ можно одним быстрым взглядом. Вопрос в том, всегда ли найти так же легко, как проверить', en: 'P versus NP: finding an answer takes trying many options, while a finished answer can be checked in one quick look. The question is whether finding is always as easy as checking', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-12.6, -4.0, (x, y) => I.person(x, y, M, '')); t(-12.6, -2.4, l('найти ответ', 'find the answer'), W, { dy: 12, size: 13, w: 800 })
+    arr(W, [-10.6, -4.0], [-8.6, -4.0])
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) at(-7.0 + c * 2.0, -6.0 + r * 2.0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.6, W, 0.55))
+    t(-4.0, -0.8, l('перебор многих вариантов', 'trying many options'), W, { dy: 12, size: 12, w: 800 })
+    t(-4.0, -0.8, l('долго', 'long'), M, { dy: 29, size: 12, w: 700 })
+    at(-12.6, 5.4, (x, y) => I.person(x, y, M, '')); t(-12.6, 7.0, l('проверить ответ', 'check the answer'), A, { dy: 12, size: 13, w: 800 })
+    arr(A, [-10.6, 5.4], [-5.6, 5.4])
+    at(-3.2, 5.4, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(-3.2, 6.6, l('готовый ответ', 'finished answer'), A, { dy: 12, size: 13, w: 800 }); t(-3.2, 6.6, l('быстро', 'quick'), M, { dy: 29, size: 12, w: 700 })
+    at(8.8, 1.2, (x, y) => I.agent(x - 0.9, y - 0.9, A, 1.8, '')); t(8.8, 3.4, l('ИИ-агент и гейт', 'AI agent and gate'), A, { dy: 12, size: 13, w: 800 }); t(8.8, 3.4, l('только аналогия: проверка дешевле работы', 'only an analogy: a check is cheaper than the work'), M, { dy: 29, size: 12, w: 700 })
+  } },
   // Технический долг: предположение о пользователях → код под него → проверка опровергает → правки поверх неверного копятся
   'tech-debt': { ru: 'Технический долг: код написан под предположение о пользователях, проверка гипотезы его опровергла, а новые правки копятся поверх неверной основы', en: 'Technical debt: code is written for an assumption about users, testing the hypothesis disproves it, and new changes pile up on a wrong base', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
     const { g, arr, t } = screen(I)
