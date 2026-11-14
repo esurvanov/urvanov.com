@@ -407,7 +407,7 @@
   "tech-debt": {
     "name": "Nợ kỹ thuật (technical debt)",
     "aka": "nợ kỹ thuật, tech debt, nợ mã nguồn",
-    "def": "Nợ kỹ thuật là những lỗi và quyết định chưa tốt tích tụ trong mã, xuất hiện vì lúc bắt đầu chưa biết chính xác người dùng sẽ hành xử ra sao. Nhóm xây dựng sản phẩm trên các giả định và phát hành mã, rồi sau khi kiểm chứng giả thuyết, một phần giả định hóa ra sai. Mã viết cho các giả định đó vẫn còn, và mỗi thay đổi mới được làm chồng lên nó: thay đổi trở nên đắt hơn và rủi ro hơn. Giống nợ tiền, nợ kỹ thuật có lãi: càng lâu không trả, mọi thay đổi càng tốn nhiều thời gian. Một phần nợ được vay có chủ đích để ra thị trường nhanh hơn (time-to-market), khi đó nó được trả sau khi kiểm chứng giả thuyết: viết lại mã theo điều hóa ra đúng.",
+    "def": "Nợ kỹ thuật là những lỗi và quyết định chưa tốt tích tụ trong mã, xuất hiện vì lúc bắt đầu chưa biết chính xác người dùng sẽ hành xử ra sao. Nhóm xây dựng sản phẩm trên các giả định và phát hành mã, rồi sau khi kiểm chứng giả thuyết, một phần giả định hóa ra sai. Phần lớn nợ kỹ thuật sinh ra từ các tích hợp sai: ranh giới giữa các phần của hệ thống được vạch theo một giả định, và nếu giả định đó sai thì các phần bị gắn với nhau ở chỗ không phải ranh giới thật của miền nghiệp vụ. Đó là việc chia sai thành các ngữ cảnh giới hạn (bounded context): từ ngữ và dữ liệu của ngữ cảnh này liên tục phải dịch sang ngôn ngữ của ngữ cảnh bên cạnh, sửa ở một nơi kéo theo sửa ở nơi khác, và mỗi tích hợp mới lại cộng thêm vào nợ. Mã viết cho các giả định đó vẫn còn, và mỗi thay đổi mới được làm chồng lên nó: thay đổi trở nên đắt hơn và rủi ro hơn. Giống nợ tiền, nợ kỹ thuật có lãi: càng lâu không trả, mọi thay đổi càng tốn nhiều thời gian. Một phần nợ được vay có chủ đích để ra thị trường nhanh hơn (time-to-market), khi đó nó được trả sau khi kiểm chứng giả thuyết: viết lại mã theo điều hóa ra đúng.",
     "faq.0.q": "Nợ kỹ thuật là gì?",
     "faq.0.a": "Những lỗi và quyết định chưa tốt tích tụ trong mã, xuất hiện vì lúc bắt đầu chưa biết người dùng sẽ hành xử ra sao, và một phần giả định sau khi kiểm chứng hóa ra sai.",
     "faq.1.q": "Nợ kỹ thuật từ đâu ra?",
@@ -418,6 +418,8 @@
     "faq.3.a": "Viết lại hoặc xóa mã dựa trên các giả định đã bị bác bỏ, bằng những bước nhỏ song song với công việc thường ngày, và bao phủ phần viết lại bằng kiểm thử tự động.",
     "faq.4.q": "Nợ kỹ thuật liên quan đến unit test thế nào?",
     "faq.4.a": "Mã có nợ ít hàm thuần: logic trộn lẫn với các lệnh gọi cơ sở dữ liệu và mạng. Vì vậy nó phải được kiểm thử bằng mock và được viết lại cùng với kiểm thử.",
+    "faq.5.q": "Nợ kỹ thuật liên quan đến các ngữ cảnh giới hạn thế nào?",
+    "faq.5.a": "Phần lớn nợ kỹ thuật sinh ra từ các tích hợp sai, tức là từ việc chia sai thành các ngữ cảnh giới hạn. Nếu ranh giới được vạch không đúng chỗ ranh giới của miền nghiệp vụ, các ngữ cảnh liên tục trao đổi dữ liệu và dịch từ ngữ của nhau, còn mỗi thay đổi đều chạm đến các ngữ cảnh lân cận.",
     "source.label": "Martin Fowler: Technical Debt",
     "seo.title": "Nợ kỹ thuật: là gì và từ đâu ra",
     "seo.description": "Nợ kỹ thuật là các lỗi tích tụ trong mã do những giả định về hành vi người dùng hóa ra sai sau khi kiểm chứng giả thuyết. Nó từ đâu ra và được trả thế nào."
