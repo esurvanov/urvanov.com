@@ -1,6 +1,7 @@
 // Концептуальные иллюстрации терминов глоссария: сцены из общей библиотеки инфографики (src/lib/infographic).
 // Здесь только рецепты сцен; фигуры, цвета, легенда и рамка — в библиотеке.
-import { type Lang, type Pt, A, W, M, S2, Iso, tw, isoScene, frame, esc, f } from './infographic'
+import { type Lang, type Pt, type Scene, A, W, M, S2, Iso, tw, isoScene, frame, esc, f, renderScene } from './infographic'
+import maturityScenes from '@/data/blogArt/ai-agent-maturity-levels'
 
 // Пример для LLM: начало фразы и на каждом шаге три варианта следующего слова с вероятностью, первый — выбранный
 export const LLM_SEQ: Record<Lang, { start: string[]; picks: [string, number][][] }> = {
@@ -8,7 +9,7 @@ export const LLM_SEQ: Record<Lang, { start: string[]; picks: [string, number][][
   en: { start: ['The', 'cat', 'loves'], picks: [[['to', 55], ['fish', 30], ['milk', 10]], [['sleep', 60], ['play', 25], ['eat', 10]], [['all', 40], ['.', 35], ['in', 20]], [['day', 85], ['night', 10], ['week', 3]]] },
 }
 
-interface Art { ru: string; en: string; draw: (I: Iso, l: (ru: string, en: string) => string, step?: number) => void; steps?: number; I2?: (l: (ru: string, en: string) => string) => Iso; h?: number; tile?: [number, number, number, number]; wide?: boolean; map?: boolean; legend?: false }
+interface Art { ru: string; en: string; /** Готовая сцена поста вместо рецепта островка: схема на странице термина та же, что в статье */ scene?: Scene; draw: (I: Iso, l: (ru: string, en: string) => string, step?: number) => void; steps?: number; I2?: (l: (ru: string, en: string) => string) => Iso; h?: number; tile?: [number, number, number, number]; wide?: boolean; map?: boolean; legend?: false }
 
 
 // Плоское окно (IDE, терминал): прямоугольники, подписи, стрелки и CSS-появление по кругу.
@@ -696,6 +697,26 @@ export const ART: Record<string, Art> = {
     arr(M, [0.5, 4.0], [0.5, 1.6]); t(0.5, 2.8, l('да / нет', 'yes / no'), M, { dx: 36, size: 11 })
     I.pulse([g(-5.2, 0), g(-1.4, 0), g(-0.5, 1.6), g(-0.5, 4.0), g(0.5, 4.0), g(0.5, 1.6), g(1.4, 0), g(5.2, 0)], A, 6)
   } },
+  'escalation': { ru: 'Эскалация к человеку: агент доходит до остановки, задаёт вопрос, человек отвечает принять, отказать или отменить', en: 'Escalation to a human: the agent reaches a stop, asks a question, and the person answers accept, decline or cancel', tile: [0, 0, 0, 0], draw: (I, l) => {
+    const { g, arr, t, person, agent } = screen(I)
+    agent(-6.5, 0, l('агент', 'agent'))
+    { const [x, y] = g(0, 0); I.barrier(x, y, 2.0, W) }
+    t(0, -3.2, l('остановка', 'a stop'), W, { dy: -4 })
+    person(6.5, 0, l('человек', 'person'))
+    arr(A, [-5.2, 0], [-1.4, 0]); t(-3.3, -1.0, l('вопрос', 'question'), A, { dy: -4, size: 11 })
+    arr(M, [5.2, 2.2], [1.4, 2.2]); t(3.3, 3.6, l('принять · отказать · отменить', 'accept · decline · cancel'), M, { dy: 4, size: 11 })
+  } },
+  'progressive-crystallization': { ru: 'Прогрессивная кристаллизация: путь, найденный агентом, после повторных успехов становится гибридом, затем кодом без модели; при сбое возвращается назад', en: 'Progressive crystallization: a path found by an agent becomes a hybrid after repeated successes, then code without a model; on a failure it goes back', tile: [0, 0, 0, 0], draw: (I, l) => {
+    const { g, arr, t, agent } = screen(I)
+    agent(-7, 0, l('агент', 'agent'))
+    { const [x, y] = g(0, 0); I.agent(x - 0.9, y - 0.65, A, 1.1, ''); I.doc(x + 0.1, y - 0.2, 0, 0.9, 0.65, M, 2) }
+    t(0, 1.8, l('гибрид', 'hybrid'), A, { dy: 10 })
+    { const [x, y] = g(7, 0); I.doc(x - 0.5, y - 0.35, 0, 1.0, 0.7, A, 3, true) }
+    t(7, 1.8, l('код без модели', 'code, no model'), A, { dy: 10 })
+    arr(A, [-5.6, 0], [-1.8, 0]); t(-3.7, -1.0, l('10 удач', '10 successes'), A, { dy: -4, size: 11 })
+    arr(A, [1.8, 0], [5.6, 0]); t(3.7, -1.0, l('50 удач', '50 successes'), A, { dy: -4, size: 11 })
+    arr(W, [6, -3.2], [-6, -3.2]); t(0, -4.4, l('сбой: назад на ступень', 'failure: one step back'), W, { dy: -4, size: 11 })
+  } },
   'anthropic': { ru: 'Компания, которая делает модели Claude', en: 'The company that builds the Claude models', tile: [0, 0, 0, 0], draw: (I, l) => companyScene(I, 'Claude', 'Opus · Sonnet · Haiku · Fable', [
     { title: l('людям', 'for people'), items: [
       { kind: 'panel', name: l('приложения Claude', 'Claude apps'), sub: l('веб, компьютер, телефон', 'web, desktop, mobile') },
@@ -709,6 +730,13 @@ export const ART: Record<string, Art> = {
       { kind: 'doc', name: 'Agent SDK', sub: l('свой агент', 'build your agent') },
       { kind: 'plug', name: 'MCP', sub: l('открытый протокол', 'open protocol') },
     ] },
+  ]) },
+  'google-deepmind': { ru: 'Лаборатория ИИ в составе Google: модели Gemini, научные системы и платформа для агентов', en: 'The AI lab inside Google: the Gemini models, scientific systems and a platform for agents', tile: [0, 0, 0, 0], draw: (I, l) => companyScene(I, 'Gemini', 'AlphaGo · AlphaFold · AlphaEvolve', [
+    { title: l('наука', 'science'), items: [
+      { kind: 'doc', name: 'AlphaFold', sub: l('белки', 'proteins') },
+      { kind: 'agent', name: 'AlphaEvolve', sub: l('поиск алгоритмов', 'algorithm search') },
+    ] },
+    { title: l('для агентов', 'for agents'), items: [{ kind: 'agent', name: 'Antigravity', sub: l('платформа разработки', 'development platform') }] },
   ]) },
   'openai': { ru: 'Компания, которая делает модели GPT', en: 'The company that builds the GPT models', tile: [0, 0, 0, 0], draw: (I, l) => companyScene(I, 'GPT', 'GPT-5.5 · 5.4 · 5.6 · 5.3-Codex', [
     { title: l('людям', 'for people'), items: [
@@ -2358,6 +2386,112 @@ export const ART: Record<string, Art> = {
     at(-3.2, 5.4, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(-3.2, 6.6, l('готовый ответ', 'finished answer'), A, { dy: 12, size: 13, w: 800 }); t(-3.2, 6.6, l('быстро', 'quick'), M, { dy: 29, size: 12, w: 700 })
     at(8.8, 1.2, (x, y) => I.agent(x - 0.9, y - 0.9, A, 1.8, '')); t(8.8, 3.4, l('ИИ-агент и гейт', 'AI agent and gate'), A, { dy: 12, size: 13, w: 800 }); t(8.8, 3.4, l('только аналогия: проверка дешевле работы', 'only an analogy: a check is cheaper than the work'), M, { dy: 29, size: 12, w: 700 })
   } },
+  // Claude: одна модель, три способа работать с ней
+  'claude': { ru: 'Claude: одна модель в чате, в агенте для кода и в API', en: 'Claude: one model in chat, in a coding agent and in the API', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.0, 0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 1.8, A)); t(-8.0, 0, 'Claude', '#fff', { gz: 1.8, size: 13, w: 800 })
+    t(-8.0, 2.2, l('одна модель', 'one model'), A, { dy: 12, size: 13, w: 800 }); t(-8.0, 2.2, 'Opus · Sonnet · Haiku · Fable', M, { dy: 29, size: 11, w: 700 })
+    arr(A, [-5.6, 0], [-3.0, -8.0]); arr(A, [-5.6, 0], [-3.0, 0]); arr(A, [-5.6, 0], [-3.0, 8.0])
+    at(0.2, -8.0, (x, y) => I.monitor(x, y, 1.4, M)); t(0.2, -6.2, l('чат', 'chat'), M, { dy: 12, size: 13, w: 800 }); t(0.2, -6.2, l('вы спрашиваете, он отвечает', 'you ask, it answers'), M, { dy: 29, size: 11, w: 700 })
+    at(0.2, 0, (x, y) => I.agent(x - 0.7, y - 0.7, A, 1.4, '')); t(0.2, 1.8, 'Claude Code', A, { dy: 12, size: 13, w: 800 }); t(0.2, 1.8, l('агент: правит файлы, запускает проверки', 'an agent: edits files, runs checks'), M, { dy: 29, size: 11, w: 700 })
+    at(0.2, 8.0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, M, 3)); t(0.2, 9.6, 'API', M, { dy: 12, size: 13, w: 800 }); t(0.2, 9.6, l('ваша программа вызывает модель', 'your program calls the model'), M, { dy: 29, size: 11, w: 700 })
+  } },
+  // Компилятор: исходный код → компилятор → программа; ошибка в коде останавливает сборку
+  'compiler': { ru: 'Компилятор: код собирается в программу или сборка останавливается на ошибке', en: 'Compiler: the code builds into a program or the build stops at an error', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-9.0, 0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, M, 4)); t(-9.0, 1.4, l('исходный код', 'source code'), M, { dy: 12, size: 13, w: 800 }); t(-9.0, 1.4, l('C, Go, Rust, Swift…', 'C, Go, Rust, Swift…'), M, { dy: 29, size: 11, w: 700 })
+    arr(M, [-7.0, 0], [-4.6, 0])
+    at(-2.7, 0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 1.6, A)); t(-2.7, 0, 'cc', '#fff', { gz: 1.6, size: 13, w: 800 }); t(-2.7, 1.8, l('компилятор', 'compiler'), A, { dy: 12, size: 13, w: 800 })
+    arr(A, [-0.6, 0], [2.0, 0])
+    at(4.4, 0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(4.4, 1.4, l('программа', 'program'), A, { dy: 12, size: 13, w: 800 }); t(4.4, 1.4, l('машинный код', 'machine code'), M, { dy: 29, size: 11, w: 700 })
+    arr(W, [-2.7, 3.2], [-2.7, 6.0])
+    at(-2.7, 8.4, (x, y) => I.bug(x, y, W)); t(-2.7, 9.8, l('ошибка в коде: сборка остановлена', 'an error in the code: the build stops'), W, { dy: 12, size: 13, w: 800 })
+  } },
+  // Гейт качества: работа агента упирается в пост приёмки; три ответа: принято, не принято (ошибки назад), не уверена (человек)
+  'quality-gate': { ru: 'Гейт качества: «готово» говорит проверка, а не агент', en: 'Quality gate: the check says “done”, not the agent', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-9.0, 0, (x, y) => I.agent(x - 0.8, y - 0.8, A, 1.6, '')); t(-9.0, 1.8, l('агент', 'agent'), A, { dy: 12, size: 13, w: 800 }); t(-9.0, 1.8, l('принёс результат', 'brings a result'), M, { dy: 29, size: 11, w: 700 })
+    arr(A, [-6.8, 0], [-2.6, 0])
+    at(0, 0, (x, y) => I.barrier(x, y, 1.8, W)); t(0, 2.0, l('гейт', 'gate'), W, { dy: 12, size: 14, w: 800 }); t(0, 2.0, l('независимая проверка', 'an independent check'), M, { dy: 29, size: 11, w: 700 })
+    arr(A, [1.8, -1.0], [5.4, -4.4])
+    at(8.0, -4.8, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, A, 2, true)); t(8.0, -3.4, l('принято', 'accepted'), A, { dy: 12, size: 13, w: 800 }); t(8.0, -3.4, l('работа готова', 'the work is done'), M, { dy: 29, size: 11, w: 700 })
+    arr(W, [1.8, 1.0], [5.4, 4.4])
+    at(8.0, 4.8, (x, y) => I.person(x, y, M, '')); t(8.0, 6.2, l('не уверена', 'not sure'), W, { dy: 12, size: 13, w: 800 }); t(8.0, 6.2, l('решает человек', 'a person decides'), M, { dy: 29, size: 11, w: 700 })
+    arr(W, [0, -2.6], [0, -7.0], [-9.0, -7.0], [-9.0, -2.8])
+    at(-4.5, -7.0, (x, y) => I.bug(x, y, W)); t(-4.5, -7.0, l('не принято: ошибки назад агенту', 'not accepted: errors go back to the agent'), W, { dy: -26, size: 12, w: 800 })
+  } },
+  // Stage-Gate: этапы и гейты между ними, на каждом гейте решение «идти дальше или остановить»
+  'stage-gate': { ru: 'Stage-Gate: на каждом гейте решают, идти дальше или остановить', en: 'Stage-Gate: at each gate people decide to go on or stop', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const stages: [number, string, string][] = [[-9.0, 'этап 1', 'stage 1'], [-1.0, 'этап 2', 'stage 2'], [7.0, 'этап 3', 'stage 3']]
+    for (const [X, ru, en] of stages) { at(X, 0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 1.2, A)); t(X, 1.8, l(ru, en), A, { dy: 12, size: 13, w: 800 }) }
+    for (const X of [-5.0, 3.0]) {
+      at(X, 0, (x, y) => I.barrier(x, y, 1.5, W)); t(X, 1.8, l('гейт', 'gate'), W, { dy: 12, size: 13, w: 800 })
+      arr(A, [X - 2.4, 0], [X - 1.0, 0]); arr(A, [X + 1.0, 0], [X + 2.4, 0])
+      arr(W, [X, -2.0], [X, -5.0]); t(X, -5.8, l('остановить', 'stop'), W, { dy: 4, size: 12, w: 800 })
+    }
+    at(11.0, 0, (x, y) => I.doc(x - 0.7, y - 0.5, 0, 1.4, 1.0, A, 2, true)); t(11.0, 1.4, l('готово', 'done'), A, { dy: 12, size: 13, w: 800 })
+    arr(A, [9.0, 0], [10.0, 0])
+    at(-5.0, 7.0, (x, y) => I.person(x, y, M, '')); t(-5.0, 8.6, l('привратник решает:', 'a gatekeeper decides:'), M, { dy: 12, size: 12, w: 800 }); t(-5.0, 8.6, l('идти дальше или остановить', 'go on or stop'), M, { dy: 28, size: 12, w: 800 })
+    arr(M, [-5.0, 5.2], [-5.0, 2.6])
+    t(3.0, 8.6, l('у агента решает проверка', 'for an agent a check decides'), A, { dy: 12, size: 12, w: 800 })
+  } },
+  // Горизонт задачи METR: длина задачи в часах человека, при которой агент успешен в 50% и в 80% запусков
+  'time-horizon': { ru: 'Горизонт задачи METR: чем выше надёжность, тем короче задача', en: 'METR time horizon: the higher the reliability, the shorter the task', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-8.0, -9.0, (x, y) => I.person(x, y, M, '')); t(-8.0, -7.4, l('время человека на ту же задачу', 'human time on the same task'), M, { dy: 12, size: 13, w: 800, anchor: 'start' })
+    t(-8.0, -3.6, l('успех в 50% запусков: около 12 часов', 'success in 50% of runs: about 12 hours'), A, { size: 13, w: 800, anchor: 'start' })
+    I.path([g(-8.0, -1.6), g(6.0, -1.6)], A, { w: 18 })
+    t(-8.0, 3.4, l('успех в 80% запусков: около 70 минут', 'success in 80% of runs: about 70 minutes'), W, { size: 13, w: 800, anchor: 'start' })
+    I.path([g(-8.0, 5.4), g(-6.6, 5.4)], W, { w: 18 })
+    arr(M, [-8.0, 9.0], [7.0, 9.0]); t(-0.5, 9.0, l('длина задачи по часам человека, а не время работы агента', 'task length in human hours, not the agent’s run time'), M, { dy: 18, size: 12, w: 700 })
+  } },
+  // Детерминированная проверка: тот же ввод, тот же вердикт; у модели-судьи ответ меняется
+  'determinism': { ru: 'Те же данные: тест отвечает одинаково, модель-судья по-разному', en: 'Same data: a test answers alike, a judge model differently', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const verdict = (X: number, Y: number, ok: boolean) => { at(X, Y, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.8, ok ? A : W)); t(X, Y, ok ? '✓' : '✕', '#fff', { gz: 0.8, size: 14, w: 800 }) }
+    at(-10.0, 0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, M, 4)); t(-10.0, 1.4, l('те же данные', 'the same data'), M, { dy: 12, size: 13, w: 800 })
+    arr(A, [-8.2, 0], [-6.4, -5.0]); arr(W, [-8.2, 0], [-6.4, 5.0])
+    at(-4.4, -5.0, (x, y) => I.box(x - 0.9, y - 0.9, 0, 1.8, 1.8, 1.4, A)); t(-4.4, -3.0, l('тест, линтер', 'test, linter'), A, { dy: 12, size: 13, w: 800 })
+    at(-4.4, 5.0, (x, y) => I.agent(x - 0.8, y - 0.8, W, 1.6, '')); t(-4.4, 6.8, l('модель-судья', 'judge model'), W, { dy: 12, size: 13, w: 800 })
+    arr(A, [-2.4, -5.0], [-0.6, -5.0]); arr(W, [-2.4, 5.0], [-0.6, 5.0])
+    ;[1.2, 3.6, 6.0].forEach((X) => verdict(X, -5.0, true))
+    ;[true, false, true].forEach((ok, k) => verdict(1.2 + k * 2.4, 5.0, ok))
+    t(3.6, -3.2, l('каждый раз то же', 'the same every time'), A, { dy: 12, size: 13, w: 800 })
+    t(3.6, 6.8, l('ответ может меняться', 'the answer may change'), W, { dy: 12, size: 13, w: 800 })
+  } },
+  // Вытягивание: лестница из шести ступеней, как в статье про уровни зрелости; каждый шаг вверх — вытягивание повторяемого из нижней ступени
+  'pulling-out': { ru: 'Вытягивание: семь ступеней; на каждом шаге вверх повторяемое вытягивается из нижней ступени и записывается выше', en: 'Pulling out: seven steps; with every step up, what repeats is pulled out of the step below and written higher', scene: maturityScenes.ladder, tile: [0, 0, 0, 0], wide: true, draw: () => {} },
+  // Агентная система: цепочка кода и проверок со сложным блоком-агентом, всё внутри одного сервиса
+  'agentic-system': { ru: 'Агентная система: код, проверки и агент работают вместе в одном сервисе', en: 'Agentic system: code, checks and an agent work together in one service', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    const code = (X: number) => at(X, 0, (x, y) => I.box(x - 0.6, y - 0.6, 0, 1.2, 1.2, 0.8, A, 0.6))
+    const check = (X: number) => { at(X, 0, (x, y) => I.box(x - 0.45, y - 0.45, 0, 0.9, 0.9, 0.6, A)); t(X, 0, '✓', '#fff', { gz: 0.6, size: 12, w: 800 }) }
+    // граница сервиса: один контур вокруг всей цепочки
+    I.path([g(-14.2, -6.4), g(14.2, -6.4), g(14.2, 7.4), g(-14.2, 7.4), g(-14.2, -6.4)], M, { w: 2.2, dash: '7 5' })
+    t(-11.6, -5.2, l('один сервис', 'one service'), M, { dy: 10, size: 15, w: 800 })
+    t(-11.6, -4.0, l('код, проверки, расписание и агент — вместе', 'code, checks, schedule and agent together'), M, { dy: 10, size: 12, w: 700 })
+    at(-12.2, 0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, M, 4)); t(-12.2, 1.6, l('данные', 'data'), M, { dy: 12, size: 13, w: 800 })
+    arr(M, [-10.8, 0], [-9.6, 0])
+    code(-8.2); t(-8.2, 1.6, l('обычный код', 'ordinary code'), A, { dy: 12, size: 13, w: 800 })
+    arr(A, [-6.9, 0], [-5.7, 0])
+    check(-4.6); t(-4.6, 1.4, l('проверка', 'check'), A, { dy: 12, size: 13, w: 800 })
+    arr(A, [-3.5, 0], [-2.7, 0])
+    at(0.2, 0, (x, y) => I.agent(x - 1.3, y - 1.3, A, 2.6, '')); t(0.2, 2.9, l('сложный блок — агент', 'complex block: an agent'), A, { dy: 12, size: 13, w: 800 }); t(0.2, 2.9, l('раньше — команда ML-специалистов', 'before: a team of ML specialists'), M, { dy: 29, size: 12, w: 700 })
+    arr(A, [3.1, 0], [3.7, 0])
+    check(4.8); t(4.8, 1.4, l('проверка', 'check'), A, { dy: 12, size: 13, w: 800 })
+    arr(A, [6.0, 0], [7.2, 0])
+    code(8.6); t(8.6, 1.6, l('обычный код', 'ordinary code'), A, { dy: 12, size: 13, w: 800 })
+    arr(A, [10.0, 0], [11.2, 0])
+    at(12.4, 0, (x, y) => I.doc(x - 0.8, y - 0.55, 0, 1.6, 1.1, M, 4, true)); t(12.4, 1.6, l('результат', 'result'), M, { dy: 12, size: 13, w: 800 })
+  } },
   // Технический долг: предположение о пользователях → код под него → проверка опровергает → правки поверх неверного копятся
   'tech-debt': { ru: 'Технический долг: код написан под предположение о пользователях, проверка гипотезы его опровергла, а новые правки копятся поверх неверной основы', en: 'Technical debt: code is written for an assumption about users, testing the hypothesis disproves it, and new changes pile up on a wrong base', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
     const { g, arr, t } = screen(I)
@@ -2377,6 +2511,10 @@ export function termArt(slug: string, lang: Lang, step = 0): { svg: string; capt
   const a = ART[slug]
   if (!a) return null
   const l = (ru: string, en: string) => (lang === 'ru' ? ru : en)
+  if (a.scene) {
+    const caption = lang === 'ru' ? a.ru : a.en
+    return { svg: renderScene({ ...a.scene, cls: undefined, style: undefined }, lang), caption, wide: !!a.wide, map: !!a.map, steps: 0 }
+  }
   const I = isoScene(a.tile)
   I.lang = lang
   a.draw(I, l, step)

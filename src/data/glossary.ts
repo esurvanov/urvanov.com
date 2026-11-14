@@ -856,13 +856,19 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'agent-loop',
         name: { ru: 'Agent loop (цикл агента)', en: 'Agent loop' },
-        aka: { ru: 'луп · агентный цикл', en: 'agentic loop' },
+        aka: { ru: 'луп · агентный цикл · петля обратной связи', en: 'agentic loop · feedback loop' },
         def: {
           ru: 'Agent loop (цикл агента) — повторяющийся ход работы агента: подумать, вызвать тул, посмотреть результат и снова подумать. Цикл идёт, пока задача не решена или агенту не нужна помощь человека.',
           en: 'An agent loop is the repeating rhythm of an agent’s work: think, call a tool, look at the result, think again. The loop runs until the task is solved or the agent needs a human.',
         },
-        match: { ru: ['цикл\\p{L}* агента', 'агентн\\p{L}* цикл\\p{L}*', 'agent loop', 'луп(?:ом|е|ы|ов)?'], en: ['agent loop', 'agentic loop'] },
-        related: ['harness', 'tool', 'human-in-the-loop'],
+        match: { ru: ['цикл\\p{L}* агента', 'агентн\\p{L}* цикл\\p{L}*', 'agent loop', 'луп(?:ом|е|ы|ов)?', 'петл\\p{L}* обратной связи'], en: ['agent loop', 'agentic loop', 'feedback loops?'] },
+        related: ['harness', 'tool', 'human-in-the-loop', 'quality-gate'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Anthropic: Building effective agents', en: 'Anthropic: Building effective agents' }, text: { ru: '«it\'s crucial for the agents to gain “ground truth” from the environment at each step»: результат шага возвращается агенту как петля обратной связи', en: '“it\'s crucial for the agents to gain “ground truth” from the environment at each step”: the result of a step returns to the agent as a feedback loop' } },
+          ],
+        },
         faq: [
           { q: { ru: 'Agent loop — что это?', en: 'What is the agent loop?' }, a: { ru: 'Повторяющийся ход работы агента: подумать, вызвать инструмент, посмотреть результат и снова подумать.', en: 'The repeating rhythm of an agent’s work: think, call a tool, look at the result and think again.' } },
           { q: { ru: 'Когда цикл агента останавливается?', en: 'When does the agent loop stop?' }, a: { ru: 'Когда задача решена или агенту нужна помощь человека.', en: 'When the task is done or the agent needs a person’s help.' } },
@@ -1006,6 +1012,40 @@ export const TERM_SETS: TermSet[] = [
         more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
       },
       {
+        slug: 'escalation',
+        name: { ru: 'Эскалация к человеку', en: 'Escalation to a human' },
+        aka: { ru: 'передача решения человеку · escalation', en: 'handoff to a person · escalation' },
+        def: {
+          ru: 'Эскалация к человеку — остановка, при которой агент или программа вокруг него передаёт решение человеку: уточняющим вопросом, запросом разрешения на опасное действие или подтверждением результата. Решение «спросить» принимают правила и хуки, ответ даёт человек. В MCP для этого есть elicitation с тремя ответами: принять, отказать, отменить. Human-in-the-loop — принцип «человек решает на важных шагах», эскалация — сам момент передачи.',
+          en: 'Escalation to a human is a stop where an agent or the program around it hands a decision to a person: by a clarifying question, a permission request for a dangerous action or a confirmation of the result. Rules and hooks take the decision to ask, and the person gives the answer. MCP has elicitation for this, with three answers: accept, decline, cancel. Human in the loop is the principle “a person decides at the important steps”, while escalation is the moment of the handoff itself.',
+        },
+        match: { ru: ['эскалаци\\p{L}* к человеку', 'эскалаци\\p{L}* человеку'], en: ['escalation to (?:a )?(?:human|person)', 'human escalation'] },
+        related: ['human-in-the-loop', 'quality-gate', 'hooks', 'permissions', 'mcp'],
+        faq: [
+          { q: { ru: 'Что такое эскалация к человеку у ИИ-агента?', en: 'What is escalation to a human for an AI agent?' }, a: { ru: 'Остановка, при которой агент или программа вокруг него передаёт решение человеку: вопросом, запросом разрешения или подтверждением результата.', en: 'A stop where the agent or the program around it hands a decision to a person: by a question, a permission request or a confirmation of the result.' } },
+          { q: { ru: 'Чем эскалация отличается от human-in-the-loop?', en: 'How does escalation differ from human in the loop?' }, a: { ru: 'Human-in-the-loop — принцип, по которому человек решает на важных шагах. Эскалация — сам момент, когда решение уходит к человеку.', en: 'Human in the loop is the principle that a person decides at the important steps. Escalation is the moment the decision goes to the person.' } },
+        ],
+        source: { url: 'https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation', label: { ru: 'MCP: elicitation', en: 'MCP: elicitation' } },
+        more: { post: 'agent-escalation-to-human', label: { ru: 'Эскалация к человеку в ИИ-агентах', en: 'Escalation to a human in AI agents' } },
+      },
+      {
+        slug: 'progressive-crystallization',
+        name: { ru: 'Прогрессивная кристаллизация', en: 'Progressive crystallization' },
+        aka: { ru: 'progressive crystallization', en: 'agent exploration to deterministic workflow' },
+        def: {
+          ru: 'Прогрессивная кристаллизация — жизненный цикл, при котором путь, найденный агентом, постепенно превращается в детерминированный код. Сначала новую задачу решает агент и его путь записывается. После серии успешных запусков путь становится гибридом: шаги фиксированы, модель подключается на отдельных этапах. Затем гибрид становится кодом без модели. При сбое сценарий возвращают на ступень назад. Термин ввёл Arun Malik в работе об инцидентах в облачной сети: за восемь месяцев доля исполнений кодом выросла с 0 до 45%, а стоимость агента на один инцидент упала более чем на 70%.',
+          en: 'Progressive crystallization is a lifecycle in which a path found by an agent gradually turns into deterministic code. First an agent solves a new task and its path is recorded. After a series of successful runs the path becomes a hybrid: the steps are fixed and a model joins only at some stages. Then the hybrid becomes code without a model. On a failure the scenario goes one step back. The term was introduced by Arun Malik in a paper on incidents in a cloud network: over eight months the share of runs by code grew from 0 to 45%, and the agent cost per incident fell by more than 70%.',
+        },
+        match: { ru: ['прогрессивн\\p{L}* кристаллизаци\\p{L}*'], en: ['progressive crystallization'] },
+        related: ['ai-agent', 'agent-skills', 'harness-engineering', 'determinism'],
+        faq: [
+          { q: { ru: 'Что такое прогрессивная кристаллизация?', en: 'What is progressive crystallization?' }, a: { ru: 'Жизненный цикл, при котором путь, найденный агентом, после повторных успехов становится гибридом, затем кодом без модели, а при сбое возвращается на ступень назад.', en: 'A lifecycle in which a path found by an agent becomes a hybrid after repeated successes, then code without a model, and goes one step back on a failure.' } },
+          { q: { ru: 'Когда сценарий повышают от агента к гибриду?', en: 'When is a scenario promoted from agent to hybrid?' }, a: { ru: 'В работе Malik: не менее 10 успешных запусков, ноль нарушений безопасности, не менее 90% запусков дают одну последовательность действий и проходят автоматические приёмочные тесты.', en: 'In Malik’s paper: at least 10 successful runs, zero safety violations, at least 90% of runs give the same sequence of actions and pass automatic acceptance tests.' } },
+        ],
+        source: { url: 'https://arxiv.org/abs/2607.07052', label: { ru: 'Malik: Progressive Crystallization (arXiv 2607.07052)', en: 'Malik: Progressive Crystallization (arXiv 2607.07052)' } },
+        more: { post: 'ai-agent-maturity-levels', label: { ru: 'Уровни зрелости работы с ИИ-агентами', en: 'AI agent maturity levels' } },
+      },
+      {
         slug: 'reward-hacking',
         name: { ru: 'Взлом награды', en: 'Reward hacking' },
         aka: { ru: 'reward hacking', en: 'specification gaming' },
@@ -1021,6 +1061,162 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://metr.org/blog/2025-06-05-recent-reward-hacking', label: { ru: 'METR: современные модели взламывают награду', en: 'METR: Recent frontier models are reward hacking' } },
         more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+      },
+      {
+        slug: 'stage-gate',
+        name: { ru: 'Stage-Gate (Роберт Купер)', en: 'Stage-Gate (Robert Cooper)' },
+        aka: { ru: 'стадии и гейты, 1990', en: 'stages and gates, 1990' },
+        def: {
+          ru: 'Stage-Gate — метод, который Роберт Купер описал в 1990 году: проект идёт как цепочка этапов, между этапами стоят гейты, где решают «идти дальше или остановить». Гейты качества для агентов наследуют эту идею: работа не идёт дальше без решения. У агента решение принимает проверка.',
+          en: 'Stage-Gate is a method Robert Cooper described in 1990: a project runs as a chain of stages with gates between them, where people decide “go on or stop”. Quality gates for agents inherit the idea: work does not go further without a decision. For an agent a check makes the decision.',
+        },
+        match: { ru: ['Stage-Gate', 'Роберт\\p{L}* Купер\\p{L}*', 'Купер\\p{L}*'], en: ['Stage-Gate', 'Robert Cooper'] },
+        related: ['quality-gate', 'human-in-the-loop', 'checks'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Stage-Gate International', en: 'Stage-Gate International' }, text: { ru: '«Gatekeepers make timely, Go/Kill decisions.»', en: '“Gatekeepers make timely, Go/Kill decisions.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое Stage-Gate?', en: 'What is Stage-Gate?' }, a: { ru: 'Метод Роберта Купера (1990): проект делится на этапы, между этапами гейты, где решают, идти дальше или остановить.', en: 'Robert Cooper’s method (1990): a project is split into stages with gates between them, where people decide to go on or stop.' } },
+          { q: { ru: 'Чем гейт качества у агента похож на Stage-Gate?', en: 'How is an agent’s quality gate like Stage-Gate?' }, a: { ru: 'Обоим нужен вердикт перед следующим шагом. У агента вердикт даёт проверка, у Купера — люди.', en: 'Both need a verdict before the next step. For an agent a check gives it, in Cooper’s method people do.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://stage-gate.com/blog/improving-go-kill-decision-culture/', label: { ru: 'Stage-Gate International: решения «идти или остановить»', en: 'Stage-Gate International: Go/Kill decisions' } },
+      },
+      {
+        slug: 'determinism',
+        name: { ru: 'Детерминированная проверка', en: 'Deterministic check' },
+        aka: { ru: 'детерминизм', en: 'determinism' },
+        def: {
+          ru: 'Детерминированная проверка на одних и тех же данных всегда даёт один и тот же вердикт: так работают компилятор, линтер и набор тестов. Модель-судья вероятностная, её ответ может отличаться от запуска к запуску, поэтому в гейте качества её ставят рядом с детерминированной проверкой, но не вместо неё.',
+          en: 'A deterministic check on the same data always gives the same verdict: a compiler, a linter and a test suite work this way. A judge model is probabilistic, and its answer may differ from run to run, so in a quality gate it stands next to a deterministic check and never replaces it.',
+        },
+        match: { ru: ['детерминир\\p{L}*', 'детерминизм\\p{L}*'], en: ['deterministic', 'determinism'] },
+        related: ['quality-gate', 'checks', 'reward-hacking', 'pure-function'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Thoughtworks Radar, выпуск 34', en: 'Thoughtworks Radar, vol. 34' }, text: { ru: '«Developers have long relied on deterministic quality gates such as compilers, linters, structural tests and test suites»', en: '“Developers have long relied on deterministic quality gates such as compilers, linters, structural tests and test suites”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что значит детерминированная проверка?', en: 'What is a deterministic check?' }, a: { ru: 'Проверка, которая на тех же данных всегда даёт тот же вердикт: тесты, линтер, компилятор.', en: 'A check that always gives the same verdict on the same data: tests, a linter, a compiler.' } },
+          { q: { ru: 'Почему модель-судья не детерминирована?', en: 'Why is a judge model not deterministic?' }, a: { ru: 'Модель вероятностная: ответ на тот же вопрос может отличаться от запуска к запуску.', en: 'A model is probabilistic: the answer to the same question may differ from run to run.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2026/04/tr_technology_radar_vol_34_en.pdf', label: { ru: 'Thoughtworks Technology Radar, выпуск 34', en: 'Thoughtworks Technology Radar, vol. 34' } },
+      },
+      {
+        slug: 'agentic-system',
+        name: { ru: 'Агентная система', en: 'Agentic system' },
+        aka: { ru: 'агентская система, система с ИИ-агентами', en: 'agent system, system with AI agents' },
+        def: {
+          ru: 'Агентная система — обычная программная система на классических принципах: код, проверки, расписание, данные. Её сложные блоки, которые раньше решали команды ML-специалистов, например разбор текста или классификация, заменены ИИ-агентами. Система остаётся предсказуемой, потому что сложная часть стоит между детерминированными шагами и проверками.',
+          en: 'An agentic system is an ordinary software system built on classic principles: code, checks, a schedule, data. Its complex blocks, which teams of ML specialists used to solve, such as parsing text or classification, are replaced by AI agents. The system stays predictable because the complex part stands between deterministic steps and checks.',
+        },
+        match: { ru: ['агентн\\p{L}* систем\\p{L}*', 'агентск\\p{L}* систем\\p{L}*'], en: ['agentic systems?', 'agent systems?'] },
+        related: ['ai-agent', 'determinism', 'pulling-out', 'harness', 'quality-gate'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Anthropic, «Building effective agents»: схемы с кодом', en: 'Anthropic, “Building effective agents”: code-driven designs' }, text: { ru: '«Workflows are systems where LLMs and tools are orchestrated through predefined code paths.»', en: '“Workflows are systems where LLMs and tools are orchestrated through predefined code paths.”' } },
+            { name: { ru: 'Anthropic: когда усложнять', en: 'Anthropic: when to add complexity' }, text: { ru: '«we recommend finding the simplest solution possible, and only increasing complexity when needed.»', en: '“we recommend finding the simplest solution possible, and only increasing complexity when needed.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое агентная система?', en: 'What is an agentic system?' }, a: { ru: 'Обычная система на коде и проверках, в которой сложные блоки заменены ИИ-агентами.', en: 'An ordinary system of code and checks in which complex blocks are replaced by AI agents.' } },
+          { q: { ru: 'Как прийти к агентной системе?', en: 'How do you arrive at an agentic system?' }, a: { ru: 'По ступеням: чат, агент, спека, скилл, скрипт. Повторяемое вытягивается в код, а сложные блоки остаются агентам.', en: 'Step by step: chat, agent, spec, skill, script. What repeats is pulled out into code, and the complex blocks stay with agents.' } },
+        ],
+        more: { post: 'ai-agent-maturity-levels', label: { ru: 'Уровни зрелости работы с ИИ-агентами', en: 'AI agent maturity levels' } },
+        source: { url: 'https://www.anthropic.com/engineering/building-effective-agents', label: { ru: 'Anthropic: Building effective agents', en: 'Anthropic: Building effective agents' } },
+      },
+      {
+        slug: 'pulling-out',
+        name: { ru: 'Вытягивание', en: 'Pulling out' },
+        aka: { ru: 'вытягивание повторяемого вверх по лестнице', en: 'moving what works one step up' },
+        def: {
+          ru: 'Вытягивание — переход на следующую ступень лестницы «чат → агент → спека → скилл → скрипт → харнесс → агентная система»: из того, что человек и агент уже сделали вместе, вытягивается повторяемая часть и записывается выше. Это эволюционный процесс развития процессов в организации: их не проектируют заранее целиком, они вырастают ступень за ступенью из повторяющейся работы. Из чата вытягиваются правила для агента, из работы агента спека, из спеки скилл, из скилла скрипт, из ошибок и проверок вокруг агента харнесс, а в конце получается агентная система, где основа — код, а агенты занимают только сложные места. Работающее поведение не придумывается заново, оно закрепляется там, где его не нужно объяснять снова.',
+          en: 'Pulling out is the move to the next step of the ladder “chat → agent → spec → skill → script → harness → agentic system”: the repeatable part of what a person and an agent already did together is pulled out and written down one step higher. This is an evolutionary process of developing processes in an organisation: they are not designed whole in advance but grow step by step out of repeated work. Rules for the agent are pulled out of a chat, a spec out of the agent’s work, a skill out of the spec, a script out of the skill, a harness out of mistakes and checks around the agent, and in the end an agentic system results, where the base is code and agents take only the complex spots. Working behaviour is not invented again but fixed where it no longer has to be explained.',
+        },
+        match: { ru: ['вытягивани\\p{L}*', 'вытягива\\p{L}*'], en: ['pulling out'] },
+        related: ['agent-skills', 'agents-md', 'spec-driven-development', 'harness', 'agentic-system'],
+        faq: [
+          { q: { ru: 'Что такое вытягивание?', en: 'What is pulling out?' }, a: { ru: 'Переход на следующую ступень: повторяемая часть сделанного вытягивается и записывается выше, в правила, спеку, скилл или скрипт.', en: 'A move to the next step: the repeatable part of what was done is pulled out and written higher, into rules, a spec, a skill or a script.' } },
+          { q: { ru: 'Когда вытягивать скилл в скрипт?', en: 'When to pull a skill out into a script?' }, a: { ru: 'Когда скилл повторяется, работает с данными и результат должен быть одинаков при каждом запуске.', en: 'When the skill repeats, works with data and the result must be the same on every run.' } },
+        ],
+        more: { post: 'ai-agent-maturity-levels', label: { ru: 'Уровни зрелости работы с ИИ-агентами', en: 'AI agent maturity levels' } },
+      },
+      {
+        slug: 'time-horizon',
+        name: { ru: 'Горизонт задачи (METR)', en: 'Task time horizon (METR)' },
+        aka: { ru: 'метрика METR', en: 'METR time horizon' },
+        def: {
+          ru: 'Горизонт задачи — метрика организации METR: длина задачи, которую агент выполняет с заданной вероятностью успеха (50% или 80%), измеренная по времени, которое на неё тратит человек. Это не время работы агента. Метрика показывает, насколько долгую работу агент доводит до конца сам.',
+          en: 'The task time horizon is a metric by the organisation METR: the length of a task an agent completes with a given probability of success (50% or 80%), measured by the time a person spends on it. It is not the agent’s run time. The metric shows how long a job an agent finishes by itself.',
+        },
+        match: { ru: ['METR', 'горизонт\\p{L}* задачи'], en: ['METR', 'time horizons?'] },
+        exact: 'METR',
+        related: ['quality-gate', 'human-in-the-loop', 'ai-agent'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'METR: Time Horizons', en: 'METR: Time Horizons' }, text: { ru: '«It\'s a measure of the difficulty of a task, rather than the time an AI spends to complete the task.»', en: '“It\'s a measure of the difficulty of a task, rather than the time an AI spends to complete the task.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что измеряет METR?', en: 'What does METR measure?' }, a: { ru: 'Длину задачи, которую агент выполняет с заданной вероятностью успеха, по времени человека.', en: 'The length of a task an agent completes with a given success probability, in human time.' } },
+          { q: { ru: 'Горизонт задачи — это время работы агента?', en: 'Is the time horizon the agent’s run time?' }, a: { ru: 'Нет, это мера сложности задачи в часах человека, а не время работы модели.', en: 'No, it is a measure of task difficulty in human hours, not the model’s run time.' } },
+        ],
+        more: { post: 'agent-escalation-to-human', label: { ru: 'Эскалация к человеку в ИИ-агентах', en: 'Escalation to a human in AI agents' } },
+        source: { url: 'https://metr.org/time-horizons', label: { ru: 'METR: горизонты задач', en: 'METR: time horizons' } },
+      },
+      {
+        slug: 'llm-as-a-judge',
+        name: { ru: 'LLM как судья', en: 'LLM as a judge' },
+        aka: { ru: 'модель-судья, LLM-as-a-judge', en: 'judge model' },
+        def: {
+          ru: 'LLM как судья — приём, при котором одна языковая модель оценивает работу другой модели или агента по заданным критериям. В гейте качества такой судья проверяет смысл там, где тесты бессильны. Его ответ вероятностный и может меняться от запуска к запуску, поэтому судья дополняет детерминированную проверку. Судья внутри цикла самого агента получает те же слепые пятна, что и агент.',
+          en: 'LLM as a judge is a technique where one language model evaluates the work of another model or agent against given criteria. In a quality gate such a judge checks meaning where tests are powerless. Its answer is probabilistic and may change from run to run, so the judge adds to a deterministic check. A judge inside the agent\'s own loop inherits the agent\'s blind spots.',
+        },
+        match: { ru: ['LLM как судья', '(?:модель-|агент-)?судь(?:я|и|ю|ей|е|ям|ями)'], en: ['LLM[- ]as[- ]a[- ]judge', 'judge models?', 'judges?'] },
+        related: ['quality-gate', 'determinism', 'agent-loop', 'llm', 'checks'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Zheng и др., 2023', en: 'Zheng и др., 2023' }, text: { ru: '«To address this, we explore using strong LLMs as judges to evaluate these models on more open-ended questions.»', en: '“To address this, we explore using strong LLMs as judges to evaluate these models on more open-ended questions.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'LLM как судья — что это?', en: 'What is LLM as a judge?' }, a: { ru: 'Языковая модель, которая оценивает работу другой модели или агента по критериям.', en: 'A language model that evaluates the work of another model or agent against criteria.' } },
+          { q: { ru: 'Чем судья-модель хуже теста?', en: 'How is a judge model weaker than a test?' }, a: { ru: 'Её ответ вероятностный: на тех же данных он может отличаться от запуска к запуску.', en: 'Its answer is probabilistic: on the same data it may differ from run to run.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://arxiv.org/abs/2306.05685', label: { ru: 'Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena (arXiv)', en: 'Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena (arXiv)' } },
+      },
+      {
+        slug: 'swe-bench-live',
+        name: { ru: 'SWE-bench Live', en: 'SWE-bench Live' },
+        aka: { ru: 'обновляемый набор задач', en: 'a live-updatable benchmark' },
+        def: {
+          ru: 'SWE-bench Live — обновляемый набор задач по исправлению ошибок в настоящих репозиториях. Агенту дают описание проблемы, а результат проверяют тестами. В статье про гейты он показывает, как падает доля решённых задач, когда правка вырастает с одного файла до нескольких.',
+          en: 'SWE-bench Live is a live-updatable set of tasks for fixing bugs in real repositories. An agent gets a problem description and the result is checked by tests. In the article on gates it shows how the share of solved tasks drops when a change grows from one file to several.',
+        },
+        match: { ru: ['SWE-bench[ -]Live'], en: ['SWE-bench[ -]Live'] },
+        related: ['quality-gate', 'bug', 'automated-test', 'ai-agent'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Авторы SWE-bench Live', en: 'Авторы SWE-bench Live' }, text: { ru: '«In this work, we present SWE-bench-Live, a live-updatable benchmark designed to overcome these challenges.»', en: '“In this work, we present SWE-bench-Live, a live-updatable benchmark designed to overcome these challenges.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое SWE-bench Live?', en: 'What is SWE-bench Live?' }, a: { ru: 'Обновляемый набор задач по исправлению ошибок в настоящих репозиториях с проверкой тестами.', en: 'A live-updatable set of bug-fixing tasks in real repositories checked by tests.' } },
+          { q: { ru: 'Что он показывает про размер правки?', en: 'What does it show about change size?' }, a: { ru: 'Правка в одном файле до пяти строк решается в 48% случаев, три файла и больше — меньше чем в 10%.', en: 'A change in one file up to five lines is solved in 48% of cases, three files or more in under 10%.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://arxiv.org/abs/2505.23419', label: { ru: 'SWE-bench Goes Live! (arXiv)', en: 'SWE-bench Goes Live! (arXiv)' } },
       },
       {
         slug: 'orchestration',
@@ -1452,6 +1648,62 @@ export const TERM_SETS: TermSet[] = [
         source: { url: 'https://www.anthropic.com/', label: { ru: 'Официальный сайт Anthropic', en: 'Anthropic official site' } },
       },
       {
+        slug: 'google-deepmind',
+        name: { ru: 'Google DeepMind', en: 'Google DeepMind' },
+        aka: { ru: 'DeepMind · Gemini', en: 'DeepMind · Gemini' },
+        def: {
+          ru: 'Google DeepMind — исследовательская лаборатория ИИ в составе Google, которая делает модели Gemini и научные системы AlphaGo, AlphaFold и AlphaEvolve. Лаборатория DeepMind начала работу в 2010 году, а в апреле 2023 года Google объединил её с Google Brain в одну команду под руководством Демиса Хассабиса. Для агентов у компании есть платформа разработки Google Antigravity.',
+          en: 'Google DeepMind is the AI research lab inside Google that builds the Gemini models and the scientific systems AlphaGo, AlphaFold and AlphaEvolve. The DeepMind lab started in 2010, and in April 2023 Google merged it with Google Brain into one team led by Demis Hassabis. For agents the company has the Google Antigravity development platform.',
+        },
+        match: { ru: ['Google DeepMind', 'DeepMind'], en: ['Google DeepMind', 'DeepMind'] },
+        related: ['anthropic', 'openai', 'llm'],
+        faq: [
+          { q: { ru: 'Что такое Google DeepMind?', en: 'What is Google DeepMind?' }, a: { ru: 'Лаборатория ИИ в составе Google: делает модели Gemini и системы AlphaGo, AlphaFold и AlphaEvolve.', en: 'The AI lab inside Google: it builds the Gemini models and the AlphaGo, AlphaFold and AlphaEvolve systems.' } },
+          { q: { ru: 'Когда DeepMind объединили с Google Brain?', en: 'When was DeepMind merged with Google Brain?' }, a: { ru: 'В апреле 2023 года: две лаборатории стали одной командой под руководством Демиса Хассабиса.', en: 'In April 2023: the two labs became one team led by Demis Hassabis.' } },
+        ],
+        source: { url: 'https://deepmind.google/about/', label: { ru: 'Google DeepMind: о компании', en: 'Google DeepMind: about' } },
+      },
+      {
+        slug: 'claude',
+        name: { ru: 'Claude', en: 'Claude' },
+        aka: { ru: 'модели Anthropic', en: 'Anthropic models' },
+        def: {
+          ru: 'Claude — семейство языковых моделей Anthropic: Opus, Sonnet, Haiku и Fable. Одна и та же модель работает в чате, в агенте для кода Claude Code и через API, поэтому слово «Claude» называет модель, и приложение у неё не одно.',
+          en: 'Claude is the family of language models by Anthropic: Opus, Sonnet, Haiku and Fable. The same model works in chat, in the coding agent Claude Code and through the API, so the word “Claude” names a model that has more than one application.',
+        },
+        match: { ru: ['Claude'], en: ['Claude'] },
+        exact: 'Claude',
+        related: ['anthropic', 'claude-code', 'llm'],
+        faq: [
+          { q: { ru: 'Что такое Claude?', en: 'What is Claude?' }, a: { ru: 'Семейство языковых моделей Anthropic: Opus, Sonnet, Haiku и Fable.', en: 'The family of language models by Anthropic: Opus, Sonnet, Haiku and Fable.' } },
+          { q: { ru: 'Claude и Claude Code — одно и то же?', en: 'Are Claude and Claude Code the same?' }, a: { ru: 'Claude — модель, Claude Code — агент для кода на этой модели.', en: 'Claude is the model, Claude Code is a coding agent that runs on it.' } },
+        ],
+        source: { url: 'https://www.anthropic.com/claude', label: { ru: 'Anthropic: Claude', en: 'Anthropic: Claude' } },
+      },
+      {
+        slug: 'sonar',
+        name: { ru: 'Sonar', en: 'Sonar' },
+        aka: { ru: 'SonarQube, SonarCloud', en: 'SonarQube, SonarCloud' },
+        def: {
+          ru: 'Sonar — компания, чьи программы SonarQube и SonarCloud проверяют качество кода и безопасность. У Sonar гейт качества — двоичное решение «прошёл или нет» по новому коду; для кода, который пишут агенты, есть отдельный набор из шести условий: нет новых багов и уязвимостей, покрытие нового кода от 80%, дубли до 3% и другие.',
+          en: 'Sonar is a company whose programs SonarQube and SonarCloud check code quality and security. In Sonar a quality gate is a binary “pass or fail” decision over new code; for code written by agents there is a separate set of six conditions: no new bugs or vulnerabilities, coverage of new code from 80%, duplication up to 3%, and others.',
+        },
+        match: { ru: ['Sonar\\p{L}*'], en: ['Sonar\\p{L}*'] },
+        related: ['quality-gate', 'checks', 'stage-gate'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Sonar: гейт качества', en: 'Sonar: quality gate' }, text: { ru: '«called a Quality Gate and it\'s binary in nature - either pass or fail.»', en: '“called a Quality Gate and it\'s binary in nature - either pass or fail.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое Sonar?', en: 'What is Sonar?' }, a: { ru: 'Компания, чьи программы SonarQube и SonarCloud проверяют качество и безопасность кода.', en: 'A company whose programs SonarQube and SonarCloud check code quality and security.' } },
+          { q: { ru: 'Что такое гейт качества у Sonar?', en: 'What is a quality gate in Sonar?' }, a: { ru: 'Двоичное решение «прошёл или нет» по новому коду.', en: 'A binary “pass or fail” decision over new code.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://www.sonarsource.com/blog/clean_coding-quality_profile_quality_gate_guidance/', label: { ru: 'Sonar: гейт качества', en: 'Sonar: quality gate' } },
+      },
+      {
         slug: 'openai',
         name: { ru: 'OpenAI', en: 'OpenAI' },
         def: {
@@ -1555,6 +1807,145 @@ export const TERM_SETS: TermSet[] = [
             en: 'What Yandex AI is: the Alice AI models (formerly YandexGPT), the Alice assistant, Alice AI Pro for business, Yandex AI Studio for building agents and SourceCraft Code Assistant for code.',
           },
         },
+      },
+      {
+        slug: 'stripe',
+        name: { ru: 'Stripe', en: 'Stripe' },
+        aka: { ru: 'платёжная компания', en: 'payments company' },
+        def: {
+          ru: 'Stripe — платёжная компания. Её инженеры описали «minions»: агентов, которые целиком пишут правки кода. Больше тысячи слитых PR в неделю написаны ими и проверены людьми. Между шагами модели стоят шаги без неё: линтеры и не больше двух прогонов полного CI.',
+          en: 'Stripe is a payments company. Its engineers described “minions”: agents that write code changes end to end. More than a thousand merged PRs a week are written by them and reviewed by people. Steps without a model stand between model steps: linters and at most two full CI runs.',
+        },
+        match: { ru: ['Stripe'], en: ['Stripe'] },
+        related: ['quality-gate', 'ai-agent', 'ci-cd', 'checks'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Stripe', en: 'Stripe' }, text: { ru: '«Over a thousand pull requests merged each week at Stripe are completely minion-produced, and while they\'re human-reviewed, they contain no human-written code.»', en: '“Over a thousand pull requests merged each week at Stripe are completely minion-produced, and while they\'re human-reviewed, they contain no human-written code.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое Stripe?', en: 'What is Stripe?' }, a: { ru: 'Платёжная компания, чьи инженеры описали агентов-«minions», которые пишут PR целиком.', en: 'A payments company whose engineers described “minion” agents that write PRs end to end.' } },
+          { q: { ru: 'Как Stripe проверяет работу агентов?', en: 'How does Stripe check agents’ work?' }, a: { ru: 'Шаги модели чередуются с шагами без неё: линтеры на каждый пуш и не больше двух прогонов CI, потом ветка уходит человеку.', en: 'Model steps alternate with steps without one: linters on every push and at most two CI runs, then the branch goes to a person.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents', label: { ru: 'Stripe: minions', en: 'Stripe: minions' } },
+      },
+      {
+        slug: 'spotify',
+        name: { ru: 'Spotify', en: 'Spotify' },
+        aka: { ru: 'музыкальный сервис', en: 'music service' },
+        def: {
+          ru: 'Spotify — музыкальный сервис. Его инженеры описали фоновых кодирующих агентов с автоматическими верификаторами и судьёй, который отклоняет около четверти сессий; в половине таких случаев агент исправляется. По пересказу InfoQ, судью позже убрали как слишком жёсткого.',
+          en: 'Spotify is a music service. Its engineers described background coding agents with automatic verifiers and a judge that vetoes about a quarter of sessions; in half of those the agent corrects itself. According to an InfoQ write-up, the judge was later removed as too rigid.',
+        },
+        match: { ru: ['Spotify'], en: ['Spotify'] },
+        related: ['quality-gate', 'llm-as-a-judge', 'ai-agent', 'infoq'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Spotify', en: 'Spotify' }, text: { ru: '«the judge vetoes about a quarter of them. When that happens, the agent is able to course correct half the time.»', en: '“the judge vetoes about a quarter of them. When that happens, the agent is able to course correct half the time.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое Spotify в статье про гейты?', en: 'What is Spotify in the article on gates?' }, a: { ru: 'Музыкальный сервис, чьи агенты работают под автоматическими верификаторами и судьёй.', en: 'A music service whose agents work under automatic verifiers and a judge.' } },
+          { q: { ru: 'Как работает судья Spotify?', en: 'How does Spotify’s judge work?' }, a: { ru: 'Сравнивает правку с исходной просьбой, отклоняет около четверти сессий, и в половине случаев агент исправляется.', en: 'It compares the change with the original request, vetoes about a quarter of sessions, and in half of those the agent corrects itself.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://engineering.atspotify.com/2025/12/feedback-loops-background-coding-agents-part-3', label: { ru: 'Spotify Engineering: обратная связь для фоновых агентов', en: 'Spotify Engineering: feedback loops for background agents' } },
+      },
+      {
+        slug: 'github',
+        name: { ru: 'GitHub', en: 'GitHub' },
+        aka: { ru: 'хранение кода, Copilot', en: 'code hosting, Copilot' },
+        def: {
+          ru: 'GitHub — платформа для хранения кода и совместной работы над ним, принадлежит Microsoft. В агенте Copilot для кода человек встроен в процесс: агент не может пометить свой PR готовым к ревью, одобрить его или слить.',
+          en: 'GitHub is a platform for hosting code and working on it together, owned by Microsoft. In the Copilot coding agent a person is part of the process: the agent cannot mark its PR ready for review, approve it or merge it.',
+        },
+        match: { ru: ['GitHub'], en: ['GitHub'] },
+        exact: 'GitHub',
+        related: ['github-copilot', 'microsoft', 'gitlab', 'quality-gate', 'human-in-the-loop'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'GitHub Docs', en: 'GitHub Docs' }, text: { ru: '«Copilot cloud agent cannot mark its pull requests as ‘Ready for review’ and cannot approve or merge a pull request.»', en: '“Copilot cloud agent cannot mark its pull requests as ‘Ready for review’ and cannot approve or merge a pull request.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое GitHub?', en: 'What is GitHub?' }, a: { ru: 'Платформа для хранения кода и совместной работы над ним.', en: 'A platform for hosting code and working on it together.' } },
+          { q: { ru: 'Как GitHub ограничивает агента Copilot?', en: 'How does GitHub limit the Copilot agent?' }, a: { ru: 'Агент не может пометить PR готовым к ревью, одобрить его и слить: это делает человек.', en: 'The agent cannot mark a PR ready for review, approve or merge it: a person does that.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://docs.github.com/en/copilot/concepts/agents/coding-agent/risks-and-mitigations', label: { ru: 'GitHub Docs: риски и меры для агента Copilot', en: 'GitHub Docs: risks and mitigations for the Copilot agent' } },
+      },
+      {
+        slug: 'docker',
+        name: { ru: 'Docker', en: 'Docker' },
+        aka: { ru: 'контейнеры, MCP Gateway', en: 'containers, MCP Gateway' },
+        def: {
+          ru: 'Docker — платформа для упаковки программ в контейнеры. У Docker есть MCP Gateway: открытая программа-посредник, которая управляет серверами MCP. Она отвечает за права, секреты и запуск серверов; проверки «работа сделана верно» в ней нет.',
+          en: 'Docker is a platform for packaging programs into containers. Docker has the MCP Gateway: an open source intermediary program that manages MCP servers. It is responsible for permissions, secrets and running servers; a check that “the work was done correctly” is not part of it.',
+        },
+        match: { ru: ['Docker'], en: ['Docker'] },
+        related: ['mcp-server', 'mcp', 'lasso', 'quality-gate'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Docker Docs', en: 'Docker Docs' }, text: { ru: '«The MCP Gateway is Docker\'s open source solution for orchestrating Model Context Protocol (MCP) servers.»', en: '“The MCP Gateway is Docker\'s open source solution for orchestrating Model Context Protocol (MCP) servers.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое Docker?', en: 'What is Docker?' }, a: { ru: 'Платформа для упаковки программ в контейнеры.', en: 'A platform for packaging programs into containers.' } },
+          { q: { ru: 'Что такое Docker MCP Gateway?', en: 'What is the Docker MCP Gateway?' }, a: { ru: 'Открытая программа-посредник, которая управляет серверами MCP.', en: 'An open source intermediary program that manages MCP servers.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://docs.docker.com/ai/mcp-gateway/', label: { ru: 'Docker Docs: MCP Gateway', en: 'Docker Docs: MCP Gateway' } },
+      },
+      {
+        slug: 'lasso',
+        name: { ru: 'Lasso Security', en: 'Lasso Security' },
+        aka: { ru: 'шлюз MCP', en: 'MCP gateway' },
+        def: {
+          ru: 'Lasso Security — компания по безопасности ИИ. Её открытый MCP Gateway стоит между клиентом модели и серверами MCP и фильтрует запросы и ответы: маскирует секреты и персональные данные. Гейта «работа сделана верно» в нём нет.',
+          en: 'Lasso Security is an AI security company. Its open source MCP Gateway sits between a model client and MCP servers and filters requests and responses: it masks secrets and personal data. A gate for “the work was done correctly” is not part of it.',
+        },
+        match: { ru: ['Lasso(?: Security)?'], en: ['Lasso(?: Security)?'] },
+        related: ['mcp-server', 'mcp', 'docker', 'quality-gate'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Lasso Security', en: 'Lasso Security' }, text: { ru: '«MCP Gateway is an advanced intermediary solution for Model Context Protocol (MCP) servers that centralizes and enhances your AI infrastructure.»', en: '“MCP Gateway is an advanced intermediary solution for Model Context Protocol (MCP) servers that centralizes and enhances your AI infrastructure.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое Lasso Security?', en: 'What is Lasso Security?' }, a: { ru: 'Компания по безопасности ИИ с открытым шлюзом MCP Gateway.', en: 'An AI security company with an open source gateway, MCP Gateway.' } },
+          { q: { ru: 'Что делает MCP Gateway от Lasso?', en: 'What does Lasso’s MCP Gateway do?' }, a: { ru: 'Стоит между клиентом и серверами MCP, фильтрует запросы и ответы, маскирует секреты.', en: 'Sits between a client and MCP servers, filters requests and responses, masks secrets.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://github.com/lasso-security/mcp-gateway', label: { ru: 'Lasso Security: mcp-gateway (GitHub)', en: 'Lasso Security: mcp-gateway (GitHub)' } },
+      },
+      {
+        slug: 'infoq',
+        name: { ru: 'InfoQ', en: 'InfoQ' },
+        aka: { ru: 'издание для разработчиков', en: 'a publication for developers' },
+        def: {
+          ru: 'InfoQ — отраслевое издание для разработчиков и архитекторов: новости, статьи и пересказы докладов с конференций QCon. В статье про гейты его пересказ доклада Spotify остаётся единственным источником про удаление судьи: в постах самого Spotify такого нет.',
+          en: 'InfoQ is a trade publication for developers and architects: news, articles and write-ups of talks from the QCon conferences. In the article on gates its write-up of a Spotify talk is the only source for the removal of the judge: Spotify\'s own posts do not say so.',
+        },
+        match: { ru: ['InfoQ'], en: ['InfoQ'] },
+        related: ['spotify', 'llm-as-a-judge', 'quality-gate'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'InfoQ', en: 'InfoQ' }, text: { ru: '«found it too rigid, blocking valid changes»', en: '“found it too rigid, blocking valid changes”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое InfoQ?', en: 'What is InfoQ?' }, a: { ru: 'Издание для разработчиков и архитекторов с новостями и пересказами докладов QCon.', en: 'A publication for developers and architects with news and QCon talk write-ups.' } },
+          { q: { ru: 'Почему InfoQ упомянут в статье про гейты?', en: 'Why is InfoQ mentioned in the article on gates?' }, a: { ru: 'Его пересказ доклада Spotify — единственный источник про удаление судьи.', en: 'Its write-up of a Spotify talk is the only source for the removal of the judge.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://www.infoq.com/news/2026/03/spotify-honk-rewrite', label: { ru: 'InfoQ: пересказ доклада Spotify', en: 'InfoQ: write-up of the Spotify talk' } },
       },
       {
         // Junie вышел из беты 17.06.2026 (blog.jetbrains.com/junie/2026/06/junie-coding-agent-out-of-beta); Mellum — открытая модель автодополнения
@@ -1757,6 +2148,51 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Чем Vue удобен?', en: 'What makes Vue convenient?' }, a: { ru: 'Его можно подключать к проекту постепенно.', en: 'It can be added to a project gradually.' } },
         ],
         source: { url: 'https://vuejs.org/', label: { ru: 'vuejs.org — сайт Vue', en: 'vuejs.org, the Vue site' } },
+      },
+      {
+        slug: 'compiler',
+        name: { ru: 'Компилятор', en: 'Compiler' },
+        aka: { ru: 'сборка кода в программу', en: 'builds code into a program' },
+        def: {
+          ru: 'Компилятор — программа, которая переводит исходный код, написанный на одном языке программирования, в другой вид, чаще всего в машинный код. Если в коде есть ошибка, компилятор останавливает сборку и сообщает, где она. Поэтому у компилятора точный критерий успеха: собралось или нет, и ответ не зависит от настроения проверяющего.',
+          en: 'A compiler is a program that translates source code written in one programming language into another form, most often machine code. If the code has an error, the compiler stops the build and says where it is. So a compiler has a precise success criterion: it built or it did not, and the answer does not depend on the checker’s mood.',
+        },
+        match: { ru: ['компилятор\\p{L}*'], en: ['compilers?'] },
+        related: ['c-language', 'python', 'typescript', 'babel', 'automated-test', 'determinism'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Википедия: Compiler', en: 'Wikipedia: Compiler' }, text: { ru: '«In computing, a compiler is software that translates computer code written in one programming language»', en: '“In computing, a compiler is software that translates computer code written in one programming language”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое компилятор?', en: 'What is a compiler?' }, a: { ru: 'Программа, которая переводит исходный код с одного языка программирования в другой вид, чаще всего в машинный код.', en: 'A program that translates source code from one programming language into another form, most often machine code.' } },
+          { q: { ru: 'Что делает компилятор с ошибкой в коде?', en: 'What does a compiler do with an error in the code?' }, a: { ru: 'Останавливает сборку и показывает, где ошибка.', en: 'It stops the build and shows where the error is.' } },
+          { q: { ru: 'Чем компилятор отличается от интерпретатора?', en: 'How does a compiler differ from an interpreter?' }, a: { ru: 'Компилятор переводит весь код заранее, интерпретатор выполняет его по ходу чтения.', en: 'A compiler translates all the code beforehand, an interpreter executes it as it reads.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Compiler', label: { ru: 'Википедия: компилятор', en: 'Wikipedia: Compiler' } },
+      },
+      {
+        slug: 'c-language',
+        name: { ru: 'Язык C', en: 'C language' },
+        aka: { ru: 'Си, язык программирования', en: 'C, programming language' },
+        def: {
+          ru: 'C (Си) — язык программирования общего назначения, который Деннис Ритчи создал в 1972 году. Код на C переводит в машинный компилятор, а сам язык близок к железу, поэтому на нём пишут операционные системы, драйверы и базы данных. Многие более поздние языки заимствовали его синтаксис.',
+          en: 'C is a general-purpose programming language created by Dennis Ritchie in 1972. C code is translated into machine code by a compiler, and the language is close to the hardware, so operating systems, drivers and databases are written in it. Many later languages borrowed its syntax.',
+        },
+        match: { ru: ['язык\\p{L}* Си', 'язык\\p{L}* C(?![\\p{L}+#\\d])', 'на C(?![\\p{L}+#\\d])'], en: ['C language', 'C programming language'] },
+        related: ['compiler', 'python', 'javascript', 'typescript'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Википедия: C', en: 'Wikipedia: C' }, text: { ru: '«C is a general-purpose programming language created in 1972 by Dennis Ritchie.»', en: '“C is a general-purpose programming language created in 1972 by Dennis Ritchie.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое язык C?', en: 'What is the C language?' }, a: { ru: 'Язык программирования общего назначения, созданный Деннисом Ритчи в 1972 году.', en: 'A general-purpose programming language created by Dennis Ritchie in 1972.' } },
+          { q: { ru: 'Зачем компилятору язык C?', en: 'Why does a compiler relate to C?' }, a: { ru: 'Код на C нужно перевести в машинный компилятором: без него программа не запустится.', en: 'C code must be translated into machine code by a compiler: without one the program cannot run.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/C_(programming_language)', label: { ru: 'Википедия: язык C', en: 'Wikipedia: C (programming language)' } },
       },
       {
         slug: 'python',
@@ -2178,6 +2614,29 @@ export const TERM_SETS: TermSet[] = [
     hint: { ru: 'Как устроена система, где её границы и что происходит при сбоях', en: 'How a system is built, where its borders lie and what happens when parts fail' },
     group: { id: 'dev', name: { ru: 'Разработка', en: 'Software development' } },
     terms: [
+      {
+        slug: 'eric-evans',
+        name: { ru: 'Эрик Эванс', en: 'Eric Evans' },
+        aka: { ru: 'автор DDD', en: 'author of DDD' },
+        def: {
+          ru: 'Эрик Эванс — автор книги «Предметно-ориентированное проектирование» (2003), где описаны ограниченный контекст и слой защиты. Для чужой модели он рекомендует изолирующий слой, который переводит чужие понятия в свои. Гейт на границе контекста стоит на таком слое.',
+          en: 'Eric Evans is the author of the book “Domain-Driven Design” (2003), which describes the bounded context and the anti-corruption layer. For a foreign model he recommends an isolating layer that translates foreign concepts into your own. A gate at a context border stands on such a layer.',
+        },
+        match: { ru: ['Эрик\\p{L}* Эванс\\p{L}*', 'Эванс\\p{L}*'], en: ['Eric Evans', 'Evans'] },
+        related: ['ddd', 'bounded-context', 'aggregate', 'ubiquitous-language'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'Evans, DDD Reference', en: 'Evans, DDD Reference' }, text: { ru: '«As a downstream client, create an isolating layer to provide your system with functionality of the upstream system in terms of your own domain model.»', en: '“As a downstream client, create an isolating layer to provide your system with functionality of the upstream system in terms of your own domain model.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Кто такой Эрик Эванс?', en: 'Who is Eric Evans?' }, a: { ru: 'Автор книги «Предметно-ориентированное проектирование» (2003) об ограниченных контекстах.', en: 'The author of the 2003 book “Domain-Driven Design” about bounded contexts.' } },
+          { q: { ru: 'Что такое слой защиты у Эванса?', en: 'What is the isolating layer in Evans?' }, a: { ru: 'Слой, который переводит понятия чужой системы в понятия вашей модели.', en: 'A layer that translates another system’s concepts into your own model’s concepts.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://www.domainlanguage.com/wp-content/uploads/2016/05/DDD_Reference_2015-03.pdf', label: { ru: 'Эванс: справочник по DDD', en: 'Evans: DDD Reference' } },
+      },
       {
         slug: 'ddd',
         name: { ru: 'Domain-Driven Design', en: 'Domain-Driven Design' },
@@ -3485,6 +3944,30 @@ export const TERM_SETS: TermSet[] = [
             en: 'Time to market (TTM) is the time from idea to users. How the delivery cycle, environments and checks affect speed and quality.',
           },
         },
+      },
+      {
+        slug: 'dora',
+        name: { ru: 'DORA', en: 'DORA' },
+        aka: { ru: 'исследование Google Cloud', en: 'Google Cloud research' },
+        def: {
+          ru: 'DORA — исследовательская программа Google Cloud об эффективности разработки. Её ежегодный отчёт и четыре метрики поставки (частота выкладки, время изменений, доля неудачных изменений, время восстановления) стали общим языком команд. Отчёт 2025 года фиксирует: ИИ повышает скорость поставки, но снижает стабильность.',
+          en: 'DORA is a Google Cloud research programme on software delivery performance. Its yearly report and four delivery metrics (deployment frequency, change lead time, change failure rate, recovery time) became a common language for teams. The 2025 report records that AI raises delivery speed but lowers stability.',
+        },
+        match: { ru: ['DORA'], en: ['DORA'] },
+        exact: 'DORA',
+        related: ['deployment-frequency', 'change-lead-time', 'change-fail-rate', 'recovery-time', 'quality-gate'],
+        notes: {
+          title: { ru: 'Слова первоисточника', en: 'Words of the source' },
+          items: [
+            { name: { ru: 'DORA 2025', en: 'DORA 2025' }, text: { ru: '«AI adoption does continue to have a negative relationship with software delivery stability.»', en: '“AI adoption does continue to have a negative relationship with software delivery stability.”' } },
+          ],
+        },
+        faq: [
+          { q: { ru: 'Что такое DORA?', en: 'What is DORA?' }, a: { ru: 'Исследовательская программа Google Cloud об эффективности разработки с ежегодным отчётом и четырьмя метриками поставки.', en: 'A Google Cloud research programme on delivery performance with a yearly report and four delivery metrics.' } },
+          { q: { ru: 'Что отчёт DORA 2025 говорит про ИИ?', en: 'What does the DORA 2025 report say about AI?' }, a: { ru: 'ИИ повышает скорость поставки, но снижает стабильность; польза зависит от работы маленькими пакетами.', en: 'AI raises delivery speed but lowers stability; the benefit depends on working in small batches.' } },
+        ],
+        more: { post: 'quality-gates-ai-agents', label: { ru: 'Что такое quality gates для ИИ-агентов', en: 'What are quality gates for AI agents' } },
+        source: { url: 'https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report', label: { ru: 'Google Cloud: отчёт DORA 2025', en: 'Google Cloud: the 2025 DORA report' } },
       },
       {
         slug: 'change-lead-time',
