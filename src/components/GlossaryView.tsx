@@ -235,9 +235,9 @@ export function TermView() {
         </p>
       )}
 
-      {term.site && (
+      {(term.site || term.sites) && (
         <p className="g-actions">
-          <a className="s-link" href={term.site.url} target="_blank" rel="noopener noreferrer">{ICONS.ext} {t(term.site.label)}</a>
+          {[...(term.site ? [term.site] : []), ...(term.sites ?? [])].map((x) => <a key={x.url} className="s-link" href={x.url} target="_blank" rel="noopener noreferrer">{ICONS.ext} {t(x.label)}</a>)}
         </p>
       )}
 

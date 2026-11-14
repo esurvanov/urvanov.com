@@ -2303,15 +2303,26 @@ export const ART: Record<string, Art> = {
     t(0, 6.2, l('миллисекунды: без базы и сети', 'milliseconds: no database, no network'), A, { size: 13, w: 800, dy: 4 })
   } },
   // Дамп = бэкап: копия базы одним файлом; её хранят на случай поломки или разворачивают на стенде с подменой личных данных
-  'dump': { ru: 'Дамп (он же бэкап) — копия базы одним файлом: её хранят на случай поломки или разворачивают на стенде без личных данных', en: 'A dump (a backup) is a copy of a database in one file: kept in case of a failure, or restored onto a stand without personal data', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+  'dump': { ru: 'Дамп — копия базы одним файлом, чаще всего из команд SQL: из него делают бэкап или разворачивают базу на стенде без личных данных', en: 'A dump is a copy of a database in one file, most often SQL statements: it is kept as a backup or restored onto a stand without personal data', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
     const { g, arr, t } = screen(I)
     const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
     at(-12.4, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, M)); t(-12.4, 1.6, l('база на проде', 'production database'), M, { dy: 12, size: 13, w: 800 })
     arr(M, [-10.6, 0], [-7.6, 0]); t(-9.1, 0, l('сохранить', 'save'), M, { dy: -12, size: 12, w: 800 })
-    at(-5.2, 0, (x, y) => { for (let k = 0; k < 3; k++) I.doc(x - 0.8, y - 0.6, k * 0.2, 1.6, 1.2, A, 3) }); t(-5.2, 1.6, l('файл-дамп', 'dump file'), A, { dy: 12, size: 14, w: 800 }); t(-5.2, 1.6, l('он же бэкап', 'a.k.a. backup'), M, { dy: 29, size: 12, w: 700 })
-    arr(A, [-3.2, -0.8], [1.8, -3.2]); at(4.6, -3.4, (x, y) => I.cabinet(x, y, 1.3, M)); t(4.6, -2.2, l('бэкап: хранить', 'backup: keep it'), M, { dy: 14, size: 13, w: 800 }); t(4.6, -2.2, l('на случай поломки базы', 'in case the database breaks'), M, { dy: 31, size: 11.5, w: 600 })
+    at(-5.2, 0, (x, y) => { for (let k = 0; k < 3; k++) I.doc(x - 0.8, y - 0.6, k * 0.2, 1.6, 1.2, A, 3) }); t(-5.2, 1.6, l('файл-дамп', 'dump file'), A, { dy: 12, size: 14, w: 800 }); t(-5.2, 1.6, l('команды SQL', 'SQL statements'), M, { dy: 29, size: 12, w: 700 })
+    arr(A, [-3.2, -0.8], [1.8, -3.2]); at(4.6, -3.4, (x, y) => I.cabinet(x, y, 1.3, M)); t(4.6, -2.2, l('как бэкап: хранить', 'as a backup: keep it'), M, { dy: 14, size: 13, w: 800 }); t(4.6, -2.2, l('на случай поломки базы', 'in case the database breaks'), M, { dy: 31, size: 11.5, w: 600 })
     arr(A, [-3.2, 0.8], [-0.8, 2.0]); at(1.2, 3.0, (x, y) => I.barrier(x, y, 1.1, W)); t(1.2, 4.0, l('личные данные подменяют', 'personal data is replaced'), W, { dy: 14, size: 12, w: 800 })
     arr(A, [2.6, 3.0], [4.6, 3.0]); at(6.4, 3.0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(6.4, 4.2, l('база на стенде', 'database on a stand'), A, { dy: 14, size: 13, w: 800 }); t(6.4, 4.2, l('данные как рабочие', 'data like the real thing'), A, { dy: 31, size: 11.5, w: 600 })
+  } },
+  // Бэкап: копия хранится отдельно от оригинала; после поломки из неё возвращают данные
+  'backup': { ru: 'Бэкап — копия, которая лежит отдельно от оригинала: когда база ломается, данные возвращают из неё', en: 'A backup is a copy kept apart from the original: when the database breaks, the data is brought back from it', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t } = screen(I)
+    const at = (X: number, Y: number, f: (x: number, y: number) => void) => { const [x, y] = g(X, Y); f(x, y) }
+    at(-10.4, 0, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, M)); t(-10.4, 1.6, l('база на проде', 'production database'), M, { dy: 12, size: 13, w: 800 })
+    arr(M, [-8.6, -0.6], [-1.2, -3.0]); t(-5.0, -2.2, l('по расписанию', 'on a schedule'), M, { dy: -12, size: 12, w: 800 })
+    at(1.4, -3.2, (x, y) => I.cabinet(x, y, 1.3, A)); t(1.4, -2.0, l('бэкап', 'backup'), A, { dy: 14, size: 14, w: 800 }); t(1.4, -2.0, l('отдельно от оригинала', 'apart from the original'), M, { dy: 31, size: 11.5, w: 600 })
+    at(-10.4, 3.6, (x, y) => I.bug(x, y, W)); t(-8.4, 4.0, l('сбой: база потеряна', 'failure: database lost'), W, { dy: 14, size: 12.5, w: 800 })
+    arr(A, [3.4, -2.2], [9.4, 1.6]); t(7.2, 0.2, l('восстановить', 'restore'), A, { dy: -12, size: 12, w: 800 })
+    at(10.6, 2.6, (x, y) => I.cyl(x, y, 0, 0.9, 1.2, A)); t(10.6, 3.8, l('база восстановлена', 'database restored'), A, { dy: 14, size: 13, w: 800 }); t(10.6, 3.8, l('данные на нужный момент', 'data at the chosen moment'), M, { dy: 31, size: 11.5, w: 600 })
   } },
 }
 
