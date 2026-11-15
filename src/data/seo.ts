@@ -601,6 +601,8 @@ function blogListPages(): PageMeta[] {
           prev,
           next,
           alternates,
+          // Глубокие страницы ленты (3 и дальше) Google держит в «просканировано, не в индексе»: закрываем от индекса, ссылки на статьи остаются (noindex, follow)
+          noindex: page >= 3 ? true : undefined,
           jsonLd: {
             '@type': 'CollectionPage',
             name: cat ? tr(cat.name, l) : head,

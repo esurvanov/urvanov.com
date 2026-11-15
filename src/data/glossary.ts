@@ -853,7 +853,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Hooks — scripts the harness runs automatically at set moments of the agent’s work: before an action, after a file edit, on finish. An agent treats a rule in the instructions as advice, while a hook always runs, so hooks close the blocks that allow no exceptions.',
         },
         match: { ru: ['хук\\p{L}*'], en: ['hooks?'] },
-        related: ['harness', 'claude-md', 'human-in-the-loop'],
+        related: ['harness', 'claude-md', 'human-in-the-loop', 'rules'],
         faq: [
           { q: { ru: 'Хук — это что?', en: 'What is a hook?' }, a: { ru: 'Скрипт, который харнесс запускает автоматически в заданный момент работы агента: перед действием, после правки файла или при завершении.', en: 'A script the harness runs automatically at a set moment of the agent’s work: before an action, after a file edit or at the end.' } },
           { q: { ru: 'Чем хук отличается от правила?', en: 'How is a hook different from a rule?' }, a: { ru: 'Правило агент считает советом и может нарушить, хук выполняется всегда. Поэтому запреты без исключений закрывают хуками.', en: 'The agent treats a rule as advice and may break it, while a hook always runs. That is why prohibitions with no exceptions are enforced with hooks.' } },
@@ -1278,7 +1278,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'CLAUDE.md is a file in the project root with standing instructions for Claude Code: project layout, build and test commands, conventions. It enters the agent’s context at the start of every session.',
         },
         match: { ru: ['CLAUDE\\.md'], en: ['CLAUDE\\.md'] },
-        related: ['agents-md', 'agent-skills', 'claude-code'],
+        related: ['agents-md', 'agent-skills', 'claude-code', 'rules'],
         faq: [
           { q: { ru: 'CLAUDE.md — что это?', en: 'What is CLAUDE.md?' }, a: { ru: 'Файл в корне проекта с постоянными инструкциями для Claude Code: структура проекта, команды сборки и тестов, соглашения.', en: 'A file in the project root with standing instructions for Claude Code: project structure, build and test commands, conventions.' } },
           { q: { ru: 'Когда Claude Code читает CLAUDE.md?', en: 'When does Claude Code read CLAUDE.md?' }, a: { ru: 'В начале каждой сессии: файл попадает в контекст агента.', en: 'At the start of every session: the file goes into the agent’s context.' } },
@@ -1293,7 +1293,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'AGENTS.md is a shared instructions file for a project that many agents read. Codex, Cursor, Copilot, Windsurf, OpenCode and others use it, and Claude Code does when the project has no `CLAUDE.md`, so it is a vendor-neutral counterpart of `CLAUDE.md`.',
         },
         match: { ru: ['AGENTS\\.md'], en: ['AGENTS\\.md'] },
-        related: ['claude-md', 'codex', 'cursor'],
+        related: ['claude-md', 'codex', 'cursor', 'rules'],
         faq: [
           { q: { ru: 'AGENTS.md — что это?', en: 'What is AGENTS.md?' }, a: { ru: 'Общий для разных агентов файл с инструкциями по проекту: команды, стиль, запреты.', en: 'A shared instruction file for different agents: commands, style, prohibitions.' } },
           { q: { ru: 'Какие агенты читают AGENTS.md?', en: 'Which agents read AGENTS.md?' }, a: { ru: 'Codex, Cursor, Copilot, Windsurf, OpenCode и другие. Claude Code читает AGENTS.md, если в проекте нет CLAUDE.md; Gemini CLI — после добавления имени в настройку context.fileName. Таблица по каждому агенту — в статье, сверено 15.11.2026.', en: 'Codex, Cursor, Copilot, Windsurf, OpenCode and others. Claude Code reads AGENTS.md when the project has no CLAUDE.md; Gemini CLI does after the name is added to the context.fileName setting. A per-agent table is in the article, checked 15.11.2026.' } },
@@ -1601,7 +1601,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Context — everything the model sees at the moment: the conversation, project files and data from connected systems. What is not in context, the agent does not know.',
         },
         match: { ru: ['контекст\\p{L}*'], en: ['contexts?'] },
-        related: ['token', 'prompt', 'source', 'mcp'],
+        related: ['token', 'prompt', 'source', 'mcp', 'memory'],
         faq: [
           { q: { ru: 'Что такое контекст в ИИ?', en: 'What is context in AI?' }, a: { ru: 'Всё, что модель видит в данный момент: диалог, файлы проекта и данные подключённых систем.', en: 'Everything the model sees at the moment: the conversation, project files and data from connected systems.' } },
           { q: { ru: 'Почему агент не знает про мой проект?', en: 'Why doesn’t the agent know about my project?' }, a: { ru: 'Чего нет в контексте, того агент не знает. Постоянные знания о проекте кладут в файлы инструкций вроде AGENTS.md или CLAUDE.md.', en: 'What is not in the context, the agent does not know. Standing project knowledge goes into instruction files like AGENTS.md or CLAUDE.md.' } },
@@ -1619,8 +1619,8 @@ export const TERM_SETS: TermSet[] = [
         slug: 'token',
         name: { ru: 'Токен', en: 'Token' },
         def: {
-          ru: 'Токен — единица текста, которую считает LLM: примерно слог или короткое слово. От числа токенов зависят цена запроса и то, сколько поместится в контекст.',
-          en: 'A token is a unit of text an LLM counts: roughly a syllable or a short word. The token count sets the price of a request and how much fits into context.',
+          ru: 'Токен — единица текста, которую считает LLM: примерно слог или короткое слово. От числа токенов зависят цена запроса и то, сколько поместится в контекст. Число токенов сообщения Claude можно узнать до отправки: отдельный запрос подсчёта учитывает системную инструкцию, описания вызываемых функций, картинки и PDF, он бесплатный, но число приблизительное. У моделей Claude начиная с Opus 4.7 токенизатор другой: тот же текст даёт примерно на 30% больше токенов, поэтому считать нужно под ту модель, которую вы выберете.',
+          en: 'A token is a unit of text an LLM counts: roughly a syllable or a short word. The token count sets the price of a request and how much fits into context. The token count of a Claude message can be checked before sending: a separate counting request covers the system prompt, tool definitions, images and PDFs, it is free, but the number is an estimate. Claude models from Opus 4.7 on use a different tokenizer: the same text gives about 30 percent more tokens, so count against the model you plan to use.',
         },
         match: { ru: ['токен\\p{L}*'], en: ['tokens?'] },
         related: ['context', 'llm', 'prompt'],
@@ -2415,7 +2415,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Spec-Driven Development (SDD) is an approach where a specification — what the system must do — is written first, and an agent writes the code and checks it against the spec. The spec becomes the main document and the code its consequence.',
         },
         match: { ru: ['Spec-Driven Development', 'spec-driven development', 'SDD'], en: ['Spec-Driven Development', 'spec-driven development', 'SDD'] },
-        related: ['openspec', 'spec-kit', 'reconcile-loop', 'kiro'],
+        related: ['openspec', 'spec-kit', 'reconcile-loop', 'kiro', 'agile'],
         faq: [
           { q: { ru: 'Spec-Driven Development — что это?', en: 'What is spec-driven development?' }, a: { ru: 'Подход, где сначала пишется спецификация — что система должна делать, — а код по ней пишет и сверяет агент.', en: 'An approach where the specification of what the system must do comes first, and an agent writes and checks the code against it.' } },
           { q: { ru: 'Какие программы есть для Spec-Driven Development?', en: 'Which frameworks support spec-driven development?' }, a: { ru: 'Например, OpenSpec от Fission AI и Spec Kit от GitHub.', en: 'For example, OpenSpec by Fission AI and Spec Kit by GitHub.' } },
@@ -2669,7 +2669,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'Domain-Driven Design is a design approach where code is built around the business domain and a language shared with the business. The domain is split into bounded contexts; inside them live aggregates that take commands, hold business rules and send events to neighbouring contexts.',
         },
         match: { ru: ['Domain-Driven Design', 'DDD'], en: ['Domain-Driven Design', 'DDD'] },
-        related: ['aggregate', 'bounded-context', 'spec-driven-development'],
+        related: ['aggregate', 'bounded-context', 'spec-driven-development', 'agile', 'c4-model'],
         faq: [
           { q: { ru: 'DDD — что это?', en: 'What is DDD?' }, a: { ru: 'Domain-Driven Design: подход, где код строится вокруг предметной области и её языка, общего с бизнесом.', en: 'Domain-Driven Design: an approach where code is built around the business domain and a language shared with the business.' } },
           { q: { ru: 'Из чего состоит DDD?', en: 'What are the parts of DDD?' }, a: { ru: 'Предметная область делится на ограниченные контексты, внутри них живут агрегаты: принимают команды, держат бизнес-правила и отправляют события.', en: 'The domain is split into bounded contexts, and aggregates live inside them: they take commands, hold business rules and send events.' } },
@@ -2715,7 +2715,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'A business domain is the part of the real world a program is written for, with its own concepts and rules: for example, booking meeting rooms. In DDD the domain is split into subdomains, and each one’s model lives in code in its own bounded context with its own ubiquitous language.',
         },
         match: { ru: ['предметн\\p{L}* област\\p{L}*'], en: ['business domains?'] },
-        related: ['bounded-context', 'ubiquitous-language', 'ddd', 'aggregate'],
+        related: ['bounded-context', 'ubiquitous-language', 'ddd', 'aggregate', 'agile'],
         faq: [
           { q: { ru: 'Предметная область — что это?', en: 'What is a business domain?' }, a: { ru: 'Часть реального мира, для которой пишут программу, со своими понятиями и правилами, например бронирование переговорных.', en: 'The part of the real world a program is written for, with its own concepts and rules, such as meeting room booking.' } },
           { q: { ru: 'Как предметную область делят в DDD?', en: 'How is a domain split in DDD?' }, a: { ru: 'На поддомены, и модель каждого в коде живёт в своём ограниченном контексте.', en: 'Into subdomains, and each one’s model lives in its own bounded context in the code.' } },
@@ -2949,8 +2949,8 @@ export const TERM_SETS: TermSet[] = [
         slug: 'pod',
         name: { ru: 'Под', en: 'Pod' },
         def: {
-          ru: 'Под — самая маленькая единица запуска в Kubernetes: один или несколько контейнеров, которые работают вместе. Например, одна копия сервиса броней.',
-          en: 'A pod is the smallest unit that runs in Kubernetes: one or more containers working together. For example, one copy of the booking service.',
+          ru: 'Под — самая маленькая единица запуска в Kubernetes: группа из одного или нескольких контейнеров с общим хранилищем и сетью и описанием, как их запускать. Например, одна копия сервиса броней. Поды задуманы недолговечными и заменяемыми: их редко создают напрямую, а поручают рабочему объекту, например Deployment или Job. Под остаётся на узле, пока не завершит работу, не будет удалён, не будет вытеснен из-за нехватки ресурсов или пока не откажет узел.',
+          en: 'A pod is the smallest unit that runs in Kubernetes: a group of one or more containers with shared storage and network and a specification for how to run them. For example, one copy of the booking service. Pods are designed to be ephemeral and disposable: they are rarely created directly, but through a workload resource such as a Deployment or a Job. A pod stays on its node until it finishes, is deleted, is evicted for lack of resources, or the node fails.',
         },
         match: { ru: ['поды', 'подов', 'подами', 'подах'], en: ['pods?'] },
         related: ['kubernetes', 'k8s-node', 'replicaset', 'eviction'],
@@ -3071,14 +3071,14 @@ export const TERM_SETS: TermSet[] = [
         slug: 'helm',
         name: { ru: 'Helm', en: 'Helm' },
         def: {
-          ru: 'Helm — менеджер пакетов для Kubernetes. Чарт описывает приложение целиком, со всеми его частями, и его ставят и обновляют одной командой.',
-          en: 'Helm is the package manager for Kubernetes. A chart describes a whole application with all its parts, and it is installed and upgraded with one command.',
+          ru: 'Helm — менеджер пакетов для Kubernetes. Чарт — набор файлов, который описывает связанную группу ресурсов Kubernetes: шаблоны, значения по умолчанию в `values.yaml` и описание в `Chart.yaml`. Установка чарта создаёт релиз с именем, например `helm install happy-panda bitnami/wordpress`; настройки переопределяют файлом (`-f`) или флагом `--set`. Команда `helm upgrade` меняет только изменившееся, а при каждой установке, обновлении и откате номер ревизии релиза растёт на единицу, поэтому `helm rollback happy-panda 1` возвращает релиз к прежнему состоянию.',
+          en: 'Helm is the package manager for Kubernetes. A chart is a collection of files that describes a related set of Kubernetes resources: templates, default values in `values.yaml` and a description in `Chart.yaml`. Installing a chart creates a named release, for example `helm install happy-panda bitnami/wordpress`; settings are overridden with a file (`-f`) or the `--set` flag. `helm upgrade` changes only what differs, and every install, upgrade and rollback raises the release revision number by one, so `helm rollback happy-panda 1` returns the release to its earlier state.',
         },
         match: { ru: ['Helm-чарт\\p{L}*', 'Helm', 'хельм\\p{L}*'], en: ['Helm charts?', 'Helm'] },
         exact: 'Helm',
         related: ['kubernetes', 'deployment', 'kube-apiserver', 'declarative'],
         faq: [
-          { q: { ru: 'Helm — что это?', en: 'What is Helm?' }, a: { ru: 'Менеджер пакетов для Kubernetes.', en: 'The package manager for Kubernetes.' } },
+          { q: { ru: 'Helm — что это?', en: 'What is Helm?' }, a: { ru: 'Менеджер пакетов для Kubernetes: ставит и обновляет приложение из чарта одной командой и умеет откатить релиз к прежней ревизии.', en: 'The package manager for Kubernetes: it installs and upgrades an application from a chart with one command and can roll a release back to an earlier revision.' } },
         ],
         source: { url: 'https://helm.sh/', label: { ru: 'Helm', en: 'Helm' } },
       },
@@ -4162,7 +4162,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'TLA+ is a way to describe how a system behaves step by step so precisely that the description can be checked by a program, the way a blueprint is checked before construction. For example, a blueprint of a money transfer reveals that if a failure hits between the debit and the credit, money vanishes, and this is found before any code is written. The notation resembles mathematical formulas, so the entry step is higher than with Quint. The language was created by Leslie Lamport.',
         },
         match: { ru: ['TLA\\+'], en: ['TLA\\+'] },
-        related: ['quint', 'alloy', 'apalache', 'model-checking'],
+        related: ['quint', 'alloy', 'apalache', 'model-checking', 'smt-solver', 'tlc'],
         also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Quint против TLA+ и Alloy', en: 'Quint versus TLA+ and Alloy' } }],
         faq: [
           { q: { ru: 'TLA+ — что это?', en: 'What is TLA+?' }, a: { ru: 'Способ описать, как система ведёт себя шаг за шагом, настолько точно, что описание можно проверить программой до написания кода. Автор — Лесли Лэмпорт.', en: 'A way to describe how a system behaves step by step so precisely that a program can check the description before code is written. Its author is Leslie Lamport.' } },
@@ -4252,7 +4252,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'SMT solver is a program that, given a set of conditions such as “the sum is greater than ten and the balance is not negative”, finds values for which all conditions hold, or proves that no such values exist. It does not have to try everything one by one: it reasons about whole classes of cases at once. The best-known solver, Z3, was created by Microsoft Research. The Apalache engine turns a model into such conditions and hands them to a solver.',
         },
         match: { ru: ['SMT-решател\\p{L}*'], en: ['SMT solvers?'] },
-        related: ['z3', 'apalache', 'model-checking', 'quint'],
+        related: ['z3', 'apalache', 'model-checking', 'quint', 'computer-algebra-system'],
         faq: [
           { q: { ru: 'SMT-решатель — что это?', en: 'What is an SMT solver?' }, a: { ru: 'Программа, которая по набору условий находит значения, при которых все условия выполняются, или доказывает, что таких значений нет.', en: 'A program that, given a set of conditions, finds values that satisfy all of them or proves none exist.' } },
           { q: { ru: 'Какой SMT-решатель самый известный?', en: 'Which SMT solver is best known?' }, a: { ru: 'Z3.', en: 'Z3.' } },
@@ -4302,7 +4302,7 @@ export const TERM_SETS: TermSet[] = [
           en: 'An invariant is a condition that must hold in every state of the system, in whatever order actions come. For example, in a shop money is never charged without an order, and in a meeting transcriber a private recording never reaches shared storage. Model checking looks for a chain of steps after which the invariant breaks.',
         },
         match: { ru: ['инвариант\\p{L}*'], en: ['invariants?'] },
-        related: ['model-checking', 'quint', 'rfc-2119'],
+        related: ['model-checking', 'quint', 'rfc-2119', 'smt-solver'],
         faq: [
           { q: { ru: 'Инвариант — что это?', en: 'What is an invariant?' }, a: { ru: 'Условие, которое должно выполняться в каждом состоянии системы, в каком бы порядке ни шли действия.', en: 'A condition that must hold in every state of a system, whatever the order of actions.' } },
           { q: { ru: 'Пример инварианта?', en: 'An example of an invariant?' }, a: { ru: 'В магазине деньги никогда не списаны без заказа.', en: 'In a shop, money is never charged without an order.' } },
@@ -4492,7 +4492,7 @@ export const TERM_SETS: TermSet[] = [
           ru: ['теори\\p{L}* групп', 'свободн\\p{L}+ групп\\p{L}*', 'циклическ\\p{L}+ групп\\p{L}*'],
           en: ['group theory', 'free groups?', 'cyclic groups?'],
         },
-        related: ['generators', 'group-relation', 'group-presentation', 'cayley-graph'],
+        related: ['generators', 'group-relation', 'group-presentation', 'cayley-graph', 'computer-algebra-system'],
         more: { post: 'relation-gap-how-many-rules', label: { ru: 'Сколько правил нужно, чтобы описать игру: шаг и лифт', en: 'How many rules does a game need: a step and a lift' } },
         faq: [
           { q: { ru: 'Группа в математике — что это?', en: 'What is a group in mathematics?' }, a: { ru: 'Набор ходов, которые можно выполнять цепочкой и отменять: есть ход «ничего не делать», и у каждого хода есть обратный.', en: 'A set of moves that can be chained and undone: there is a “do nothing” move, and every move has an inverse.' } },
