@@ -1,13 +1,13 @@
 ---
 title: Что такое OpenSpec, установка и команды: пример изменения от плана до слияния
 date: 2026-11-07
-updated: 2026-11-13
+updated: 2026-11-15
 description: Как устроен OpenSpec от Fission AI: папка изменения с планом, требованиями и задачами, три команды агенту и слияние в общие спеки. Установка за две команды, реальный пример изменения из репозитория сайта urvanov.com, сравнение со Spec Kit и готовые запросы, чтобы начать.
 tags: AI, OpenSpec, спеки, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
 layout: wide
 mentions: OpenSpec, Spec-Driven Development, Spec Kit, Claude Code, Codex, Cursor, GitHub Copilot
-toc: what=Что это | install=Установка | flow=Три команды | example=Пример | kit=OpenSpec или Spec Kit | start=С чего начать | faq=Вопросы | next=Дальше по теме
+toc: what=Что это | install=Установка | flow=Три команды | example=Пример | notneeded=Когда не нужен | kit=OpenSpec или Spec Kit | start=С чего начать | problems=Проблемы | faq=Вопросы | next=Дальше по теме
 ---
 
 OpenSpec — бесплатная открытая программа для разработки по спецификациям (Spec-Driven Development). До кода ИИ-агент пишет в папку проекта план изменения: зачем оно, какие требования, как сделать и какие задачи. Вы проверяете план, агент пишет код по задачам, а готовые требования вливаются в общие спеки проекта. Ниже — установка, три команды и разбор настоящего изменения.
@@ -82,6 +82,7 @@ OpenSpec — бесплатная открытая программа для р�
   | <code>/openspec-archive-change</code> | вливает требования в общие спеки | обновлённые <code>openspec/specs</code>, папка в архиве | ничего, это завершение |
   </b-table>
   <b-why align="left">Для больших задач есть расширенный набор: создать изменение по шагам, продолжить начатое, проверить код по спеке. Его включают командой <code>openspec config profile</code>, а применяют в проекте командой <code>openspec update</code>.</b-why>
+  <b-callout icon="clock">**Команды актуальны на 15.11.2026 (OpenSpec 2.0.0).** В статьях 2025 года и в документации других сайтов встречаются старые команды `/openspec:*` и `/opsx:*`: в версии 2.0 вместо них работают скиллы `/openspec-*`<b-proof href="https://openspec.dev/docs/upgrade-to-2" quote="OpenSpec, Upgrade to 2.0: «/opsx:propose → openspec-propose; /opsx:apply → openspec-apply-change» — openspec.dev/docs/upgrade-to-2"/>. После обновления программы выполните <code>openspec update</code> в каждом проекте.</b-callout>
   <b-finding>
     <ex>После архивации в <code>openspec/specs</code> лежит актуальное описание системы, а история решений — в архиве изменений.</ex>
     <gen>Спеки обновляются тем же шагом, что и код, поэтому не устаревают, как отдельная вики.</gen>
@@ -118,6 +119,21 @@ OpenSpec — бесплатная открытая программа для р�
   </b-finding>
 </b-chapter>
 
+<b-chapter id="notneeded" icon="ban" title="Когда OpenSpec не нужен">
+  <b-why align="left">Папка изменения с четырьмя файлами окупается там, где замысел сложнее одного абзаца. Для мелочей она тяжелее самой работы. Авторы советуют подбирать подробность под масштаб изменения: для простой правки не нужны несколько требований и файл с дизайном<b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/writing-specs.md" quote="OpenSpec, Writing Good Specs: «A trivial fix doesn&#39;t need multiple requirements and a design doc» — github.com/Fission-AI/OpenSpec/blob/main/docs/writing-specs.md"/>.</b-why>
+  <b-rules cols="2">
+    <rule icon="edit" t="Правка в одну строку">Опечатка, цвет кнопки, константа. Сообщения коммита достаточно, план длиннее самой правки.</rule>
+    <rule icon="zap" t="Срочная заплатка">Прод лежит, дыру нужно закрыть за час. Заплатку делают сразу, а требование записывают после, если оно нужно.</rule>
+    <rule icon="terminal" t="Одноразовый скрипт">Разовая выгрузка или миграция, которую выбросят завтра. Спеке нечего описывать: поведение никто не будет поддерживать.</rule>
+    <rule icon="flask" t="Эксперимент и набросок">Пока неясно, что строить, спеку писать рано. Сначала разведка, при желании через <code>/openspec-explore</code>, и только потом план.</rule>
+  </b-rules>
+  <b-finding>
+    <ex>Изменение, которое можно сказать одним предложением и проверить одним взглядом, в папку изменения не нужно.</ex>
+    <gen>OpenSpec полезен, когда план стоит прочитать: несколько файлов, несколько агентов, правка через неделю. В остальных случаях он превращается в церемонию.</gen>
+    <do>Если сомневаетесь, сделайте правку без плана. Нужна история решений — заведите изменение.</do>
+  </b-finding>
+</b-chapter>
+
 <b-chapter id="kit" icon="crosshair" title="OpenSpec или Spec Kit">
   <b-why align="left">Обе программы ведут разработку от спецификации, но по-разному понимают порядок. Spec Kit от GitHub проводит по фазам строго друг за другом. OpenSpec позволяет вернуться к плану в любой момент и рассчитан на проект, где код уже есть<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «fluid not rigid → iterative not waterfall → easy not complex → built for brownfield not just greenfield» — github.com/Fission-AI/OpenSpec"/>.</b-why>
   <b-table>
@@ -145,6 +161,16 @@ OpenSpec — бесплатная открытая программа для р�
     <step t="Код">«/openspec-apply-change Сделай задачи по одной, после каждой запускай тесты»</step>
     <step t="Слияние">«/openspec-archive-change Перенеси требования в спеки и покажи, что изменилось в openspec/specs»</step>
   </b-hdd-steps>
+</b-chapter>
+
+<b-chapter id="problems" icon="alert-circle" title="Типичные проблемы">
+  <b-why align="left">Четыре случая, которые встречаются чаще всего. Решения взяты со страницы устранения неполадок и из руководства по спекам в репозитории OpenSpec.</b-why>
+  <b-rules cols="2">
+    <rule icon="terminal-screen" t="Команда не срабатывает">Команды набирают в чате агента, а в терминале они не работают. Затем выполните <code>openspec update</code> в корне проекта и перезапустите агента: большинство программ ищет скиллы при запуске. В Claude Code проверьте, что в <code>.claude/skills/</code> есть папки <code>openspec-*</code>; в Codex пишут <code>$openspec-propose</code>. Команды <code>/openspec:*</code> и <code>/opsx:*</code> из старых статей в версии 2.0 заменены скиллами<b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/troubleshooting.md" quote="OpenSpec, Troubleshooting: «Slash commands go in your AI assistant&#39;s chat, not your terminal» / «Most tools scan for skills and commands at startup» — github.com/Fission-AI/OpenSpec"/>.</rule>
+    <rule icon="lines" t="Спеки слишком подробные">Спека описывает поведение, а устройство остаётся в коде: очередь, библиотека или схема таблицы в требовании быстро устаревают. Одно требование — одно поведение, «как» уходит в <code>design.md</code>. Изменение должно умещаться в одно предложение, иначе его стоит разрезать<b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/writing-specs.md" quote="OpenSpec, Writing Good Specs: «A good change has one intent you can say in a sentence» — github.com/Fission-AI/OpenSpec/blob/main/docs/writing-specs.md"/>.</rule>
+    <rule icon="eye" t="Агент не читает спецификацию">План получается неполным или неверным, когда агент не знает контекста проекта. В <code>openspec/config.yaml</code> добавьте описание проекта и правила для каждого файла плана, подробнее опишите изменение и проверяйте файлы по одному. Настройки применяются сразу, перезапуск не нужен<b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/troubleshooting.md" quote="OpenSpec, Troubleshooting: «Add project context and per-artifact rules to config.yaml» / «Config changes take effect immediately» — github.com/Fission-AI/OpenSpec"/>.</rule>
+    <rule icon="swap" t="Спека разошлась с кодом">Расхождение появляется, когда изменение сделано, а архивация пропущена: требования остаются в черновике. Завершайте изменение командой <code>/openspec-archive-change</code> и соглашайтесь на слияние дельты в общие спеки. Формат файлов проверяет <code>openspec validate</code>, а сверку кода со спекой делает <code>/openspec-verify-change</code> из расширенного набора.</rule>
+  </b-rules>
 </b-chapter>
 
 <b-chapter id="faq" icon="chat" title="Частые вопросы">
