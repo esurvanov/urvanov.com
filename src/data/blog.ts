@@ -68,6 +68,8 @@ export interface Post {
   slug: string
   lang: Lang
   title: string
+  /** Заголовок для выдачи (<title>), если вырезка до двоеточия теряет слова запроса */
+  seoTitle?: string
   description: string
   date: string
   /** Дата последней содержательной правки: показывается на странице, идёт в dateModified и lastmod. Обязательна: без неё сборка падает */
@@ -139,6 +141,7 @@ function parse(path: string, raw: string): Post | null {
     slug,
     lang,
     title: meta.title,
+    seoTitle: meta.seoTitle || undefined,
     description: meta.description ?? '',
     date: meta.date,
     updated: meta.updated,

@@ -14,7 +14,7 @@ export default function SlideView() {
 
   const openPatterns = () => {
     sessionStorage.setItem('lastSlide', String(currentIndex))
-    navigate('/patterns')
+    navigate('/patterns/')
   }
 
   const openLinks = () => {

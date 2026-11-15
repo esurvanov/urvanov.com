@@ -1,8 +1,9 @@
 ---
 title: What are AGENTS.md and CLAUDE.md and how they differ from spec.md: an example file and where to keep specs, rules and skills
+seoTitle: AGENTS.md vs spec.md: the difference and what goes where
 date: 2026-09-28
-updated: 2026-11-14
-description: AGENTS.md and CLAUDE.md give an agent rules for the whole project, while spec.md describes one task. An example file and what goes where: specs, the project bible, rules and skills. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.
+updated: 2026-11-15
+description: AGENTS.md and CLAUDE.md set rules for a whole project, spec.md describes one task. A file example and what goes where: specs, rules, skills.
 tags: AI, Claude Code, CLAUDE.md, harness, specs, skills
 category: specs
 layout: wide

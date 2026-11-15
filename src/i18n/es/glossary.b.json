@@ -518,7 +518,7 @@
     "faq.1.q": "¿Qué encuentra TLA+?",
     "faq.1.a": "Secuencias de pasos que rompen una regla. Por ejemplo, que el dinero desaparece si ocurre un fallo entre el cargo y el abono.",
     "source.label": "La página de TLA+ de Leslie Lamport",
-    "seo.title": "TLA+: qué es — glosario de desarrollo con IA",
+    "seo.title": "TLA+: qué es y para qué sirve",
     "seo.description": "TLA+ es el lenguaje de Leslie Lamport para describir el comportamiento de un sistema paso a paso y comprobarlo con TLC y Apalache antes de escribir código. Un ejemplo y la comparación con Quint y Alloy.",
     "more.label": "TLA+ vs Quint vs Alloy: cuál elegir"
   },

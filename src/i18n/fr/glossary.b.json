@@ -823,7 +823,7 @@
     "faq.1.q": "Que trouve TLA+ ?",
     "faq.1.a": "Des suites d’étapes qui violent une règle. Par exemple, que l’argent disparaît si une panne survient entre le débit et le crédit.",
     "source.label": "Page de Leslie Lamport sur TLA+",
-    "seo.title": "TLA+ : ce que c’est — glossaire du développement avec l’IA",
+    "seo.title": "TLA+ : ce que c’est et à quoi ça sert",
     "seo.description": "TLA+ est le langage de Leslie Lamport pour décrire le comportement d’un système pas à pas et le vérifier avec TLC et Apalache avant d’écrire le code. Un exemple et la comparaison avec Quint et Alloy.",
     "more.label": "TLA+ vs Quint vs Alloy : lequel choisir"
   },

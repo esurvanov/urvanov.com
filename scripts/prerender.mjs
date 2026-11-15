@@ -120,7 +120,8 @@ function breadcrumbs(page, all) {
     acc += '/' + part
     const p = all.find((x) => x.path === acc)
     // Служебные сегменты без своей страницы (/blog/category/, /blog/page/) в крошки не попадают
-    if (!p && !CRUMBS.en[part]) continue
+    // talk — только метка раздела: страницы /talk/ нет, а крошка с таким адресом вела бы на 404
+    if (!p && (!CRUMBS.en[part] || part === 'talk')) continue
     // На новом языке раздел может быть ещё не переведён: крошка ведёт на английскую страницу
     const url = p || page.lang === 'ru' || page.lang === 'en' ? urlOf(acc) : urlOf(acc.slice(pre.length) || '/')
     items.push({ name: names[part] ?? p?.crumb ?? p?.title.split(' — ')[0] ?? part, url })
@@ -231,7 +232,8 @@ write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet t
 
 // robots: обычные и ИИ-краулеры разрешены явно
 const AI_BOTS = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'anthropic-ai', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot-Extended', 'CCBot', 'Bytespider', 'Amazonbot', 'meta-externalagent', 'cohere-ai', 'YandexAdditional', 'YandexGPT']
-write('robots.txt', ['User-agent: *', 'Allow: /', 'Disallow: /presenter', '', ...AI_BOTS.flatMap((b) => [`User-agent: ${b}`, 'Allow: /', '']), `Sitemap: ${SITE_URL}/sitemap.xml`, `Host: ${SITE_URL.replace('https://', '')}`, ''].join('\n'))
+// 3D-модели (.glb) — не страницы: Google сканирует их и держит в «просканировано, не в индексе»
+write('robots.txt', ['User-agent: *', 'Allow: /', 'Disallow: /presenter', 'Disallow: /decks/ai-agent-architecture/models/', 'Disallow: /models/', '', ...AI_BOTS.flatMap((b) => [`User-agent: ${b}`, 'Allow: /', '']), `Sitemap: ${SITE_URL}/sitemap.xml`, `Host: ${SITE_URL.replace('https://', '')}`, ''].join('\n'))
 
 // RSS по языкам
 const rfc = (d) => new Date(d).toUTCString()

@@ -823,7 +823,7 @@
     "faq.1.q": "TLA+ tìm ra điều gì?",
     "faq.1.a": "Những chuỗi bước phá một quy tắc. Ví dụ, tiền biến mất nếu có lỗi xảy ra giữa lúc ghi nợ và ghi có.",
     "source.label": "Trang TLA+ của Leslie Lamport",
-    "seo.title": "TLA+: là gì — bảng thuật ngữ phát triển với AI",
+    "seo.title": "TLA+: là gì và dùng để làm gì",
     "seo.description": "TLA+ là ngôn ngữ của Leslie Lamport để mô tả hành vi của hệ thống từng bước và kiểm tra nó bằng TLC và Apalache trước khi viết mã. Một ví dụ và so sánh với Quint và Alloy.",
     "more.label": "TLA+ vs Quint vs Alloy: chọn cái nào"
   },

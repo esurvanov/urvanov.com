@@ -187,6 +187,27 @@ const BASE_LANGS: BaseLang[] = ['ru', 'en']
 const siteName = (l: Lang) => (l === 'ru' ? SITE_NAME : 'Egor Urvanov')
 const fill = (s: string, vars: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k: string) => String(vars[k] ?? ''))
 
+// Предел длины в выдаче: заголовок около 60 знаков, описание около 155 (больше Google обрезает)
+const TITLE_MAX = 60
+const SNIPPET_MAX = 155
+// Хвост с именем автора ставим, только если заголовок целиком остаётся в пределах выдачи
+const withSite = (base: string, l: Lang) => (`${base} — ${siteName(l)}`.length <= TITLE_MAX ? `${base} — ${siteName(l)}` : base)
+// Описание из определения: целые предложения до предела, а если первое длиннее — обрезка по слову с многоточием
+function snippetOf(text: string): string {
+  const flat = text.replace(/\s+/g, ' ').trim()
+  const sentences = flat.match(/[^.!?。]+(?:[.!?。]+(?=\s|$)|$)/g)?.map((x) => x.trim()) ?? [flat]
+  let out = ''
+  for (const sent of sentences) {
+    const next = out ? `${out} ${sent}` : sent
+    if (next.length > SNIPPET_MAX) break
+    out = next
+  }
+  if (out.length >= 70 || (out && out === flat)) return out
+  if (flat.length <= SNIPPET_MAX) return flat
+  const cut = flat.slice(0, SNIPPET_MAX - 1)
+  return `${cut.slice(0, cut.lastIndexOf(' '))}…`
+}
+
 // Готовность единиц на новых языках (правило — в src/i18n/index.ts и src/i18n/README.md)
 const termReady = (slug: string, l: Lang) => !isNewLang(l) || (unitReady('glossary', slug, l) && unitReady('glossarySets', setOfTerm(slug).slug, l))
 const glossaryReady = (l: Lang) => !isNewLang(l) || (!!seoMeta('/materials/glossary', l) && moduleReady('glossarySets', l) && ALL_TERMS.some((x) => termReady(x.slug, l)))
@@ -334,7 +355,9 @@ function buildPages(): PageMeta[] {
         }
       }
     }
-    const alternates = [...metas.keys()].map((l) => ({ lang: l, path: withLang(b.path, l) }))
+    // Закрытая от индекса версия (английский адрес доклада) в hreflang не нужна: ссылка на неё противоречит noindex
+    const open = [...metas.keys()].filter((l) => isNewLang(l) || !b.noindex?.[l])
+    const alternates = (open.length ? open : [...metas.keys()]).map((l) => ({ lang: l, path: withLang(b.path, l) }))
     for (const [l, m] of metas) {
       pages.push({ path: withLang(b.path, l), lang: l, title: m.title, description: m.description, noindex: isNewLang(l) ? undefined : b.noindex?.[l], jsonLd: b.jsonLd?.(l), sources: b.sources, alternates })
     }
@@ -353,7 +376,7 @@ function buildPages(): PageMeta[] {
           ...AI_OFFERS.filter((o) => offerReady(o.slug, l)).map((o) => ({
             path: withLang(`/ai/${o.slug}`, l), lang: l, sources: ['src/components/AiOfferView.tsx', 'src/data/aiOffers.ts'],
             alternates: langsWhere((x) => offerReady(o.slug, x)).map((x) => ({ lang: x, path: withLang(`/ai/${o.slug}`, x) })),
-            title: `${tr(o.name, l)} — ${siteName(l)}`,
+            title: withSite(tr(o.name, l), l),
             description: `${tr(o.hook, l)}. ${tr(o.outcomes, l).slice(0, 2).join('; ')}.`,
           })),
         ]
@@ -383,7 +406,7 @@ function buildPages(): PageMeta[] {
       path: withLang(`/blog/${p.slug}`, p.lang),
       lang: p.lang,
       // В выдаче длинный заголовок обрезается: в <title> — суть до двоеточия, полный — в соцсетях и разметке
-      title: `${p.title.split(': ')[0]} — ${siteName(p.lang)}`,
+      title: withSite(p.seoTitle ?? p.title.split(': ')[0], p.lang),
       ogTitle: p.title,
       description: p.description,
       type: 'article',
@@ -461,7 +484,7 @@ function buildPages(): PageMeta[] {
     const modified = [a.date, ex?.updated].filter(Boolean).sort().pop() || undefined
     pages.push({
       path, lang: a.lang,
-      title: `${a.title.split(': ')[0]} — ${siteName(a.lang)}`,
+      title: withSite(a.title.split(': ')[0], a.lang),
       ogTitle: fullTitle,
       description: a.description,
       type: 'article',
@@ -520,8 +543,8 @@ function buildPages(): PageMeta[] {
       const name = tr(x.name, l), def = tr(x.def, l)
       pages.push({
         path: withLang(glossaryPath(x.slug), l), lang: l, crumb: name,
-        title: x.seo ? tr(x.seo.title, l) : l === 'en' ? `${x.name.en}: what it is — AI development glossary` : l === 'ru' ? `${x.name.ru}: что это — глоссарий AI-разработки` : fill(ui(l, '{name}: what it is — AI development glossary'), { name }),
-        description: x.seo ? tr(x.seo.description, l) : def.replace(/`/g, ''), alternates, sources: ['src/data/glossary.ts', 'src/components/GlossaryView.tsx'],
+        title: x.seo ? tr(x.seo.title, l) : l === 'en' ? `${x.name.en}: what it is` : l === 'ru' ? `${x.name.ru}: что это` : fill(ui(l, '{name}: what it is'), { name }),
+        description: x.seo ? tr(x.seo.description, l) : snippetOf(def.replace(/`/g, '')), alternates, sources: ['src/data/glossary.ts', 'src/components/GlossaryView.tsx'],
         // Даты термина (scripts/term-dates.py): создание и последняя правка — lastmod в карте сайта и dateModified в разметке
         date: TERM_DATES[x.slug]?.[0], modified: TERM_DATES[x.slug]?.[1],
         jsonLdExtra: [

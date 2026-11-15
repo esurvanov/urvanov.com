@@ -40,6 +40,8 @@ jobs:
           path: games
           fetch-depth: 0
       - run: npm run build
+      # Длина заголовка и описания страниц: новые нарушения (заголовок свыше 60 знаков, описание вне 70–160) останавливают выкладку
+      - run: npm run check:seo
       - run: |
           for game in berezovka sibiria severny-razlom skhodka zhitie work-programmer malenkie-bombery; do
             mkdir -p "dist/$game"

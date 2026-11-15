@@ -20,7 +20,7 @@ export default function PatternsCategoryView() {
       <div className="patterns-category-page">
         <button className="patterns-close" onClick={closePatterns} title="Закрыть">×</button>
         <div className="patterns-category-header">
-          <button className="patterns-back-btn" onClick={() => navigate('/patterns')}>←</button>
+          <button className="patterns-back-btn" onClick={() => navigate('/patterns/')}>←</button>
           <h1 className="patterns-category-title">Категория не найдена</h1>
         </div>
       </div>
@@ -31,7 +31,7 @@ export default function PatternsCategoryView() {
     <div className="patterns-category-page">
       <button className="patterns-close" onClick={closePatterns} title="Закрыть">×</button>
       <div className="patterns-category-header">
-        <button className="patterns-back-btn" onClick={() => navigate('/patterns')}>←</button>
+        <button className="patterns-back-btn" onClick={() => navigate('/patterns/')}>←</button>
         <h1 className="patterns-category-title">{category.title}</h1>
       </div>
       <div className="patterns-category-grid">

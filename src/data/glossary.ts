@@ -181,10 +181,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Large_language_model', label: { ru: 'Википедия: большая языковая модель', en: 'Wikipedia: Large language model' } },
         seo: {
-          title: { ru: 'LLM: что это в IT простыми словами — большая языковая модель и чем она отличается от ИИ-агента', en: 'LLM meaning: what a large language model is and how it differs from an AI agent' },
+          title: { ru: 'LLM: что это в IT и чем отличается от ИИ-агента', en: 'LLM meaning: what a large language model is, in plain words' },
           description: {
-            ru: 'LLM (большая языковая модель) простыми словами: что это в IT и программировании, как модель читает текст токенами, что держит в контексте и почему без харнесса сама ничего не делает. Примеры: GPT, Claude, DeepSeek, Alice AI.',
-            en: 'LLM meaning in plain words: a large language model reads text in tokens, keeps a context and only replies on its own; with a harness it becomes an agent. Examples: GPT, Claude, DeepSeek, Alice AI.',
+            ru: 'LLM (большая языковая модель) читает и пишет текст токенами и сама только отвечает; с харнессом становится ИИ-агентом. Примеры: GPT, Claude, DeepSeek, Alice AI.',
+            en: 'An LLM (large language model) reads and writes text in tokens and only replies on its own; with a harness it becomes an AI agent. E.g. GPT, Claude, DeepSeek.',
           },
         },
         compare: {
@@ -249,10 +249,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://code.visualstudio.com/', label: { ru: 'Официальный сайт VS Code', en: 'VS Code official site' } },
         seo: {
-          title: { ru: 'VS Code: что это и какие ИИ-агенты в нём работают — Copilot, Claude Code, Codex', en: 'AI agents in VS Code: Claude Code, Codex and Copilot in Visual Studio Code' },
+          title: { ru: 'VS Code: что это и какие ИИ-агенты в нём работают', en: 'What is VS Code: AI agents that run in Visual Studio Code' },
           description: {
-            ru: 'VS Code — бесплатный редактор кода от Microsoft. Какие ИИ-агенты для VS Code бывают: GitHub Copilot, Claude Code, Codex, Cline, GigaCode — какие из них бесплатные и как подключить Claude к VS Code.',
-            en: 'VS Code is Microsoft’s free code editor. Which AI agents run in it: GitHub Copilot, Claude Code, Codex, Cline — which are free and how Claude Code works in VS Code.',
+            ru: 'VS Code — бесплатный редактор кода от Microsoft. ИИ-агенты для него: GitHub Copilot, Claude Code, Codex, Cline; какие бесплатные и как подключить Claude.',
+            en: 'VS Code is Microsoft’s free code editor. AI agents that run in it: GitHub Copilot, Claude Code, Codex, Cline; which are free and how Claude Code works there.',
           },
         },
         notes: {
@@ -509,6 +509,13 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://explainx.ai/dictionary/clauding', label: { ru: 'explainx.ai: словарь ИИ-сленга, статья Clauding', en: 'explainx.ai AI dictionary: Clauding' } },
         site: { url: 'https://clauding.me/', label: { ru: 'clauding.me — страница про термин', en: 'clauding.me, a page about the term' } },
+        seo: {
+          title: { ru: 'Clauding: что это значит и как работать через Claude', en: 'Clauding meaning: working with and through Claude' },
+          description: {
+            ru: 'Clauding — неформальное слово для работы с Claude: человек ставит задачу, смотрит результат и уточняет. По образцу «гуглить»; пример и откуда слово.',
+            en: 'Clauding is an informal word for working with Claude: you set the task, review the result and refine it. Modeled on “to google”; an example and the origin.',
+          },
+        },
         notes: {
           title: { ru: 'Слова из первоисточника', en: 'Words from the source' },
           items: [
@@ -537,10 +544,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://github.com/openai/codex', label: { ru: 'Репозиторий Codex на GitHub', en: 'Codex GitHub repo' } },
         seo: {
-          title: { ru: 'Чем Codex отличается от ChatGPT: что такое Codex от OpenAI', en: 'What is OpenAI Codex: Codex vs ChatGPT Chat and Work' },
+          title: { ru: 'Codex и ChatGPT: чем отличаются, таблица 2026', en: 'Codex vs ChatGPT: how they differ, table 2026' },
           description: {
-            ru: 'Codex и ChatGPT — разные продукты: ChatGPT отвечает текстом, Codex сам правит код, запускает тесты и готовит пулл-реквест. Таблица Chat, Work и Codex, где работает и в какие тарифы входит.',
-            en: 'OpenAI Codex is a coding agent that reads your repo, edits files and runs tests. How it differs from ChatGPT Chat and Work, where it runs and which plans include it.',
+            ru: 'ChatGPT отвечает текстом, Codex сам правит код, запускает тесты и готовит пулл-реквест. Таблица режимов Chat, Work и Codex: где работают и в каких тарифах.',
+            en: 'ChatGPT replies with text; Codex edits code, runs tests and opens pull requests. Table of Chat, Work and Codex modes: where they run, which plans include them.',
           },
         },
         more: { post: 'ai-in-code-harness-and-tools', label: { ru: 'Claude Code, Codex, Cursor и Hermes Agent: что выбрать', en: 'Claude Code, Codex, Cursor and Hermes Agent: which to pick' } },
@@ -576,10 +583,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://cursor.com/', label: { ru: 'Официальный сайт Cursor', en: 'Cursor official site' } },
         seo: {
-          title: { ru: 'Cursor AI: что это за редактор, какие модели и как работает агент', en: 'What is Cursor AI: models, the agent and rules vs AGENTS.md' },
+          title: { ru: 'Cursor AI: что это — редактор с ИИ-агентом, модели и правила', en: 'What is Cursor AI: an AI code editor, its models and rules' },
           description: {
-            ru: 'Cursor — программа-редактор кода на основе VS Code со встроенным ИИ-агентом. Какие модели в нём есть, где лежат правила (.cursor/rules и AGENTS.md) и чем он отличается от Claude Code.',
-            en: 'Cursor is a VS Code–based code editor with a built-in AI agent. Which models it offers, where rules live (.cursor/rules vs AGENTS.md), and how it differs from Claude Code.',
+            ru: 'Cursor — редактор кода на основе VS Code со встроенным ИИ-агентом. Какие модели, где правила (.cursor/rules или AGENTS.md) и чем отличается от Claude Code.',
+            en: 'Cursor is a VS Code–based code editor with a built-in AI agent. Its models, where rules live (.cursor/rules or AGENTS.md) and how it differs from Claude Code.',
           },
         },
         more: { post: 'ai-in-code-harness-and-tools', label: { ru: 'Claude Code, Codex, Cursor и Hermes Agent: что выбрать', en: 'Claude Code, Codex, Cursor and Hermes Agent: which to pick' } },
@@ -708,7 +715,7 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://opencode.ai/docs/', label: { ru: 'Документация OpenCode', en: 'OpenCode docs' } },
         seo: {
-          title: { ru: 'OpenCode (опенкод): что это — бесплатный открытый ИИ-агент в терминале с любой моделью', en: 'What is OpenCode: a free open-source AI coding agent in the terminal' },
+          title: { ru: 'OpenCode (опенкод): что это — бесплатный открытый ИИ-агент', en: 'What is OpenCode: a free open-source AI coding agent' },
           description: {
             ru: 'OpenCode — бесплатный открытый ИИ-агент для программирования в терминале: подключаете любую модель или локальную, режимы Build и Plan, правила в AGENTS.md.',
             en: 'OpenCode is a free open-source AI coding agent for the terminal: any model or a local one, Build and Plan modes, rules in AGENTS.md.',
@@ -2442,10 +2449,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://github.com/Fission-AI/OpenSpec', label: { ru: 'Репозиторий OpenSpec на GitHub', en: 'OpenSpec GitHub repo' } },
         seo: {
-          title: { ru: 'OpenSpec, Spec Kit и Kiro: чем отличаются программы для разработки по спецификациям', en: 'OpenSpec vs Spec Kit vs Kiro: spec-driven development frameworks compared' },
+          title: { ru: 'OpenSpec: что это и как писать спеки для ИИ-агента', en: 'OpenSpec: what it is and how to write specs for an AI agent' },
           description: {
-            ru: 'OpenSpec от Fission AI — бесплатная программа, где план изменения пишется до кода. Чем она отличается от Spec Kit от GitHub и среды Kiro от AWS: цена, файлы, порядок шагов, агенты.',
-            en: 'OpenSpec by Fission AI is a free framework that puts the change plan before code. How it differs from GitHub\'s Spec Kit and AWS Kiro: price, files, step order, agents.',
+            ru: 'OpenSpec — бесплатная программа для разработки по спецификациям: план изменения пишется до кода. Что даёт, как начать и чем отличается от Spec Kit и Kiro.',
+            en: 'OpenSpec is a free program for spec-driven development: the change plan is written before code. What it gives, how to start and how it differs from Spec Kit and Kiro.',
           },
         },
         more: { post: 'openspec', label: { ru: 'OpenSpec: установка, команды и пример изменения', en: 'OpenSpec: setup, commands and a change example' } },
@@ -3732,10 +3739,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
-          title: { ru: 'Стенд в IT: что это, какие бывают — тестовый, препрод, прод — и что можно ИИ-агенту', en: 'Non-production environments: dev, test, staging, demo — what each is for' },
+          title: { ru: 'Тестовый стенд: что это в IT и чем отличается от прода', en: 'Test environment (test stand): dev, test, staging, demo' },
           description: {
-            ru: 'Стенд в IT и программировании — копия системы, где команда и ИИ-агент проверяют изменения, не трогая рабочую. Какие бывают стенды: локальный, тестовый, препрод, прод — и чем стенд отличается от песочницы.',
-            en: 'Non-production environments are copies of a system where the team and an AI agent check changes without touching production: feature, dev, test, staging, demo. How they differ.',
+            ru: 'Тестовый стенд — отдельная копия системы, где проверяют изменения до выкладки. Виды: dev, тест, препрод, демо; что на каждом можно ИИ-агенту.',
+            en: 'A test environment is a separate copy of a system where changes are checked before release. Types: dev, test, staging, demo; what an AI agent may do on each.',
           },
         },
         screens: [
@@ -3756,10 +3763,10 @@ export const TERM_SETS: TermSet[] = [
         related: ['environment', 'test-stand', 'dev-env', 'demo-env', 'prod', 'time-to-market', 'sandbox', 'smoke-testing', 'dump', 'e2e-test'],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
-          title: { ru: 'Препрод (pre-prod) или предпрод: что это в IT и как правильно писать', en: 'Staging environment (pre-prod): what it is, staging vs production vs test' },
+          title: { ru: 'Препрод: что это в IT и чем отличается от прода', en: 'Staging environment (pre-prod): what it is' },
           description: {
-            ru: 'Препрод и предпрод — одно слово, верны оба написания. Что такое препрод в IT, чем он отличается от тестового стенда и прода и зачем нужен перед выкладкой.',
-            en: 'Staging, or pre-prod, is an environment set up like production for the last check before release. What is tested on staging and how it differs from test and production.',
+            ru: 'Препрод (предпрод) — копия прода, где проверяют релиз до выкладки. Чем отличается от теста и прода, что на нём проверяют, как писать правильно.',
+            en: 'Staging (pre-prod) is a copy of production where a release is checked before it ships. How it differs from test and production, what is checked, spelling.',
           },
         },
         faq: [
@@ -3825,10 +3832,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
-          title: { ru: 'Прод (production): что это в IT и почему туда не пишут напрямую', en: 'Production (prod): what it is and why nobody writes there directly' },
+          title: { ru: 'Прод в IT: что это и почему туда не пишут напрямую', en: 'Production (prod): what it is and why it stays untouched' },
           description: {
-            ru: 'Прод (продакшен, production) в IT и программировании — рабочая среда, где работают настоящие пользователи с настоящими данными. Чем прод отличается от препрода и теста и почему туда не пишут напрямую.',
-            en: 'Production (prod) is the live environment where real users work with real data. How production differs from pre-prod and test, and why nobody writes there directly.',
+            ru: 'Прод — рабочая среда с настоящими пользователями и данными. Чем отличается от препрода и теста и почему туда не пишут напрямую.',
+            en: 'Production is the live environment with real users and data. How it differs from pre-prod and test, and why nobody writes there directly.',
           },
         },
       },
@@ -4128,10 +4135,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://lamport.azurewebsites.net/tla/tla.html', label: { ru: 'Страница TLA+ Лесли Лэмпорта', en: 'Leslie Lamport’s TLA+ page' } },
         seo: {
-          title: { ru: 'TLA+: что это — глоссарий AI-разработки', en: 'TLA+: what it is — AI development glossary' },
+          title: { ru: 'TLA+: что это и зачем он нужен', en: 'TLA+: what it is and why use it' },
           description: {
-            ru: 'TLA+ — язык Лесли Лэмпорта, чтобы описать поведение системы шаг за шагом и проверить его программами TLC и Apalache до кода. Пример и сравнение с Quint и Alloy.',
-            en: 'TLA+ is Leslie Lamport’s language for describing a system’s behaviour step by step and checking it with TLC and Apalache before code. An example and how it compares with Quint and Alloy.',
+            ru: 'TLA+ — язык Лесли Лэмпорта: систему описывают шаг за шагом и проверяют программами TLC и Apalache до кода. Пример и сравнение с Quint и Alloy.',
+            en: 'TLA+ is Leslie Lamport’s language: a system is described step by step and checked by TLC and Apalache before code. An example and how it compares with Quint and Alloy.',
           },
         },
         more: { post: 'tla-alloy-quint-compare', label: { ru: 'TLA+ vs Quint vs Alloy: что выбрать', en: 'TLA+ vs Quint vs Alloy: which to choose' } },

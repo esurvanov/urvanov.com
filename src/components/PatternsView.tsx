@@ -20,7 +20,7 @@ export default function PatternsView() {
           <Link
             key={cat.id}
             className="pattern-tile"
-            to={`/patterns/${cat.id}`}
+            to={`/patterns/${cat.id}/`}
           >
             <div className="pattern-tile-header">
               <span className="pattern-tile-title">{cat.title}</span>
