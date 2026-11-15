@@ -1,13 +1,13 @@
 ---
 title: What is OpenSpec, setup and commands: a change example from plan to merge
 date: 2026-11-07
-updated: 2026-11-13
+updated: 2026-11-15
 description: How OpenSpec by Fission AI works: a change folder with a plan, requirements and tasks, three agent commands and a merge into the shared specs. Setup in two commands, a real change from the urvanov.com site repository, a comparison with Spec Kit and ready prompts to start.
 tags: AI, OpenSpec, specs, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
 layout: wide
 mentions: OpenSpec, Spec-Driven Development, Spec Kit, Claude Code, Codex, Cursor, GitHub Copilot
-toc: what=What it is | install=Setup | flow=Three commands | example=Example | kit=OpenSpec or Spec Kit | start=How to start | faq=Questions | next=Further reading
+toc: what=What it is | install=Setup | flow=Three commands | example=Example | notneeded=When not needed | kit=OpenSpec or Spec Kit | start=How to start | problems=Problems | faq=Questions | next=Further reading
 ---
 
 OpenSpec is a free open-source framework for spec-driven development. Before any code, an AI agent writes a change plan into the project folder: why the change is needed, the requirements, the approach and the tasks. You review the plan, the agent writes code by the tasks, and the finished requirements merge into the project's shared specs. Below are setup, three commands and a walkthrough of a real change.
@@ -82,6 +82,7 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
   | <code>/openspec-archive-change</code> | merges the requirements into the shared specs | updated <code>openspec/specs</code>, the folder archived | nothing, this is the end |
   </b-table>
   <b-why align="left">For large tasks there is an expanded set: create a change step by step, continue one in progress, verify the code against the spec. Switch it on with <code>openspec config profile</code> and apply it in the project with <code>openspec update</code>.</b-why>
+  <b-callout icon="clock">**Commands are current as of 15 Nov 2026 (OpenSpec 2.0.0).** Articles from 2025 and other sites' docs still show the old `/openspec:*` and `/opsx:*` commands: in version 2.0 the `/openspec-*` skills replace them<b-proof href="https://openspec.dev/docs/upgrade-to-2" quote="OpenSpec, Upgrade to 2.0: «/opsx:propose → openspec-propose; /opsx:apply → openspec-apply-change» — openspec.dev/docs/upgrade-to-2"/>. After upgrading the program, run <code>openspec update</code> in each project.</b-callout>
   <b-finding>
     <ex>After archiving, <code>openspec/specs</code> holds the current description of the system, and the history of decisions sits in the change archive.</ex>
     <gen>Specs are updated in the same step as the code, so they do not go stale like a separate wiki.</gen>
@@ -118,6 +119,21 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
   </b-finding>
 </b-chapter>
 
+<b-chapter id="notneeded" icon="ban" title="When OpenSpec isn't needed">
+  <b-why align="left">A change folder with four files pays off where the idea is longer than a paragraph. For small things it weighs more than the work itself. The authors advise matching the level of detail to the size of the change: a trivial fix doesn't need several requirements and a design file<b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/writing-specs.md" quote="OpenSpec, Writing Good Specs: «A trivial fix doesn&#39;t need multiple requirements and a design doc» — github.com/Fission-AI/OpenSpec/blob/main/docs/writing-specs.md"/>.</b-why>
+  <b-rules cols="2">
+    <rule icon="edit" t="A one-line fix">A typo, a button colour, a constant. A commit message is enough; a plan would be longer than the change.</rule>
+    <rule icon="zap" t="An urgent patch">Production is down and the hole must be closed within the hour. Patch first, and write the requirement afterwards if it is needed.</rule>
+    <rule icon="terminal" t="A throwaway script">A one-time export or migration that goes in the bin tomorrow. There is nothing for a spec to describe: nobody will maintain the behaviour.</rule>
+    <rule icon="flask" t="An experiment or sketch">While it is unclear what to build, it is too early for a spec. Explore first, optionally with <code>/openspec-explore</code>, and plan later.</rule>
+  </b-rules>
+  <b-finding>
+    <ex>A change you can state in one sentence and check at a glance does not need a change folder.</ex>
+    <gen>OpenSpec helps when a plan is worth reading: several files, several agents, an edit a week later. In other cases it turns into ceremony.</gen>
+    <do>When in doubt, make the edit without a plan. If you need a record of the decision, open a change.</do>
+  </b-finding>
+</b-chapter>
+
 <b-chapter id="kit" icon="crosshair" title="OpenSpec or Spec Kit">
   <b-why align="left">Both drive development from a specification, but they see order differently. GitHub’s Spec Kit walks through phases strictly one after another. OpenSpec lets you return to the plan at any time and is built for a project where code already exists<b-proof href="https://github.com/Fission-AI/OpenSpec" quote="OpenSpec: «fluid not rigid → iterative not waterfall → easy not complex → built for brownfield not just greenfield» — github.com/Fission-AI/OpenSpec"/>.</b-why>
   <b-table>
@@ -145,6 +161,16 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
     <step t="Code">“/openspec-apply-change Do the tasks one by one and run the tests after each”</step>
     <step t="Merge">“/openspec-archive-change Move the requirements into the specs and show what changed in openspec/specs”</step>
   </b-hdd-steps>
+</b-chapter>
+
+<b-chapter id="problems" icon="alert-circle" title="Common problems">
+  <b-why align="left">Four cases that come up most often. The fixes come from the troubleshooting page and the spec-writing guide in the OpenSpec repository.</b-why>
+  <b-rules cols="2">
+    <rule icon="terminal-screen" t="A command does nothing">Type commands in the agent's chat; in the terminal they do not work. Then run <code>openspec update</code> in the project root and restart the agent: most programs look for skills at startup. In Claude Code check that <code>.claude/skills/</code> has <code>openspec-*</code> folders; in Codex type <code>$openspec-propose</code>. The <code>/openspec:*</code> and <code>/opsx:*</code> commands from old articles are replaced by skills in version 2.0<b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/troubleshooting.md" quote="OpenSpec, Troubleshooting: «Slash commands go in your AI assistant&#39;s chat, not your terminal» / «Most tools scan for skills and commands at startup» — github.com/Fission-AI/OpenSpec"/>.</rule>
+    <rule icon="lines" t="Specs are too detailed">A spec describes behaviour while construction stays in code: a queue, a library or a table schema in a requirement goes stale fast. One requirement is one behaviour; the “how” goes into <code>design.md</code>. A change should fit in one sentence, otherwise split it<b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/writing-specs.md" quote="OpenSpec, Writing Good Specs: «A good change has one intent you can say in a sentence» — github.com/Fission-AI/OpenSpec/blob/main/docs/writing-specs.md"/>.</rule>
+    <rule icon="eye" t="The agent ignores the spec">A plan comes out incomplete or wrong when the agent lacks project context. Put a project description and per-file rules into <code>openspec/config.yaml</code>, describe the change in more detail and review the files one at a time. Config changes apply immediately, no restart needed<b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/troubleshooting.md" quote="OpenSpec, Troubleshooting: «Add project context and per-artifact rules to config.yaml» / «Config changes take effect immediately» — github.com/Fission-AI/OpenSpec"/>.</rule>
+    <rule icon="swap" t="Spec and code drifted apart">Drift appears when a change is done but archiving is skipped: the requirements stay in the draft. Finish the change with <code>/openspec-archive-change</code> and agree to merge the delta into the shared specs. <code>openspec validate</code> checks file format, and <code>/openspec-verify-change</code> from the expanded set checks the code against the spec.</rule>
+  </b-rules>
 </b-chapter>
 
 <b-chapter id="faq" icon="chat" title="Frequently asked questions">
