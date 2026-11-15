@@ -258,7 +258,63 @@
     "seo.description": "Los entornos no productivos son copias de un sistema donde el equipo y un agente de IA comprueban cambios sin tocar producción: feature, dev, test, staging, demo. En qué se diferencian.",
     "screens.0": "Un entorno no productivo se construye como una copia de producción. El servicio se copia entero y sus dependencias, la base de datos y los servicios externos, se conectan de dos maneras: como copias de las reales, que se parecen más a la realidad, o como mocks, que son más baratos y rápidos. El agente trabaja allí y no escribe en producción.",
     "screens.1": "Un cambio avanza de izquierda a derecha. Desde el entorno local el código va por dos caminos: a dev después de un merge y a un entorno de feature donde se comprueba una sola rama. Ambos caminos se juntan en test, donde todos integran. Después preproducción comprueba cómo se comporta el cambio como en producción, demo lo enseña al cliente y solo entonces llega a producción. Todo lo que está dentro del marco es un entorno no productivo.",
-    "parts.title": "Dónde se comprueban los cambios: el entorno local y los entornos de pruebas"
+    "parts.title": "Dónde se comprueban los cambios: el entorno local y los entornos de pruebas",
+    "table.title": "Siete entornos lado a lado: quién trabaja, qué datos, qué puede hacer un agente de IA",
+    "table.head": [
+      "Local",
+      "Feature",
+      "Dev",
+      "Test",
+      "Pre-prod",
+      "Demo",
+      "Prod"
+    ],
+    "table.rows.0": [
+      "Quién trabaja",
+      "un desarrollador",
+      "el autor de la rama",
+      "el equipo",
+      "QA y autotests",
+      "el equipo de despliegue",
+      "cliente, ventas",
+      "clientes"
+    ],
+    "table.rows.1": [
+      "Datos",
+      "de prueba",
+      "de prueba",
+      "de prueba",
+      "copia de producción o mocks",
+      "copia reciente de producción",
+      "ejemplos preparados",
+      "reales"
+    ],
+    "table.rows.2": [
+      "Qué se comprueba",
+      "escribir y probar",
+      "una función por separado",
+      "que el código encaja",
+      "que los cambios de todos funcionan juntos",
+      "el lanzamiento como en producción",
+      "mostrar una versión terminada",
+      "usuarios trabajando"
+    ],
+    "table.rows.3": [
+      "Qué puede hacer un agente de IA",
+      "escribir código, ejecutar tests",
+      "levantar y comprobar una rama",
+      "editar y comprobar",
+      "reproducir errores, ejecutar autotests",
+      "solo comprobaciones; los cambios llegan por el despliegue",
+      "mirar y mostrar, sin editar",
+      "solo leer, sin escribir"
+    ],
+    "notes.title": "Qué dice el glosario ISTQB",
+    "notes.items.0.name": "ISTQB: test environment",
+    "notes.items.0.text": "El glosario ISTQB define un entorno de pruebas (test environment) así: “An environment containing hardware, instrumentation, simulators, software tools, and other support elements needed to conduct a test.” En los equipos de software, ese entorno es lo que se llama test stand.",
+    "sites.0.label": "Glosario ISTQB: el término test environment",
+    "faq.4.q": "¿Un stand y un entorno son lo mismo?",
+    "faq.4.a": "Casi. Entorno es la palabra general para cualquier copia de un sistema, incluidos producción y el entorno local del desarrollador. Un stand suele ser un entorno de pruebas compartido en el servidor del equipo: todo salvo el entorno local y producción."
   },
   "preprod": {
     "name": "Staging (preproducción)",
@@ -335,7 +391,9 @@
     "faq.3.q": "¿Prod y producción son lo mismo?",
     "faq.3.a": "Sí: prod es la abreviatura de production (producción), también llamado entorno real.",
     "faq.4.q": "¿En qué se diferencia producción de pre-prod?",
-    "faq.4.a": "Pre-prod es una copia de producción para la última comprobación antes del lanzamiento, sin clientes. En producción trabajan los clientes, y un error ahí cuesta lo más caro."
+    "faq.4.a": "Pre-prod es una copia de producción para la última comprobación antes del lanzamiento, sin clientes. En producción trabajan los clientes, y un error ahí cuesta lo más caro.",
+    "faq.5.q": "¿Se puede probar en producción?",
+    "faq.5.a": "Las comprobaciones principales se hacen en los stands antes de producción, pero algunas también se hacen en producción. Un lanzamiento canario entrega primero la nueva versión a un grupo pequeño de usuarios y amplía el despliegue cuando todo va bien. El agente tampoco escribe directamente en producción."
   },
   "math-group": {
     "name": "Grupo (en matemáticas)",
