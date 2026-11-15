@@ -1,7 +1,7 @@
 ---
 title: Specs by aggregate: RFC requirements and bounded contexts instead of a spec per feature
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-15
 description: Spec-driven development without spec sprawl: how to keep specs in one aggregate dictionary so they do not multiply with every feature: requirement levels, the aggregate card and context boundaries.
 tags: AI, spec-driven development, specs, DDD, agents
 category: specs
@@ -33,7 +33,7 @@ Specs by aggregates mean one entry per domain concept, such as a booking or an o
     <step em="+1 MUST">[booking::Reservation]</step>
     <step em="+1">test</step>
   </b-spec-growth>
-  <b-cap>Numbers are illustrative. How <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener">OpenSpec</a> lays out specs and changes: specs/ and changes/ folders, finished changes go to an archive.</b-cap>
+  <b-cap>Numbers are illustrative. How <a href="/blog/openspec/">OpenSpec</a> lays out specs and changes: specs/ and changes/ folders, finished changes go to an archive.</b-cap>
   <b-finding>
     <ex>Twelve features produced twelve specs, and booking is described in seven of them, each a little differently. In the dictionary the same features added lines to four aggregate entries.</ex>
     <gen>When a spec is tied to a change or a feature, every task adds files, and one concept drifts across several places. When the unit is an aggregate, the number of entries is bounded by the domain itself, and a feature only adds requirements to an entry.</gen>

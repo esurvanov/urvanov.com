@@ -10,7 +10,7 @@ mentions: OpenSpec, Spec-Driven Development, Spec Kit, Claude Code, Codex, Curso
 toc: what=What it is | install=Setup | flow=Three commands | example=Example | notneeded=When not needed | kit=OpenSpec or Spec Kit | start=How to start | problems=Problems | faq=Questions | next=Further reading
 ---
 
-OpenSpec is a free open-source framework for spec-driven development. Before any code, an AI agent writes a change plan into the project folder: why the change is needed, the requirements, the approach and the tasks. You review the plan, the agent writes code by the tasks, and the finished requirements merge into the project's shared specs. Below are setup, three commands and a walkthrough of a real change.
+OpenSpec is a free open-source framework for spec-driven development (SDD): before any code, an AI agent writes a change plan into the project folder, covering why, requirements, approach and tasks. You review the plan, the agent codes by the tasks, and the requirements merge into the shared specs. Below: setup, three commands and a real change.
 
 <b-post series="specs">
 <b-chapter id="what" icon="file-lines" title="What OpenSpec is">
@@ -153,6 +153,23 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
 </b-chapter>
 
 <b-chapter id="start" icon="flag" title="How to start">
+  <b-why align="left"><b>A short example in 5 minutes.</b> Two commands in the terminal and three in the agent chat. First, setup and project preparation:</b-why>
+  <b-codebox title="Terminal: install and openspec init">
+    curl -fsSL https://openspec.dev/cli/install.sh | sh
+    cd your-project
+    openspec init
+  </b-codebox>
+  <b-why align="left">Then three commands in the agent chat: <code>/openspec-propose add-dark-mode</code> (the agent writes the plan), <code>/openspec-apply-change</code> (code by the tasks), <code>/openspec-archive-change</code> (merge into the shared specs). After <code>/openspec-propose</code> a change folder appears in the project; after archiving it moves to <code>archive</code> and the requirements land in <code>specs</code><b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md" quote="OpenSpec, Getting Started: «openspec/ ├── specs/ # Source of truth … └── changes/ # Proposed updates (one folder per change) … proposal.md, design.md, tasks.md, specs/ # Delta specs» — github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md"/>:</b-why>
+  <b-codebox title="What openspec/ holds after /openspec-propose add-dark-mode">
+    openspec/
+    ├── specs/                  current requirements
+    └── changes/
+        └── add-dark-mode/
+            ├── proposal.md     why and what changes
+            ├── specs/          delta: what is added, changed, removed
+            ├── design.md       how to build it
+            └── tasks.md        tasks with checkboxes
+  </b-codebox>
   <b-why align="left">Start with one small change you were going to make anyway. Five prompts for the agent, one per step: paste them into Claude Code, Codex or Cursor and fill in your task.</b-why>
   <b-hdd-steps>
     <step t="Setup">“Install OpenSpec and run openspec init in this project. Show which commands appeared”</step>
@@ -179,6 +196,8 @@ OpenSpec is a free open-source framework for spec-driven development. Before any
     <q t="How do I install OpenSpec?">With curl -fsSL https://openspec.dev/cli/install.sh | sh on macOS and Linux, or with npm install -g @fission-ai/openspec@latest. Then run openspec init in the project folder.</q>
     <q t="How is OpenSpec different from Spec Kit?">OpenSpec is more flexible and built for code that already runs; steps can repeat in any order. GitHub's Spec Kit walks through fixed phases: principles, spec, plan, tasks, code.</q>
     <q t="Which agents does OpenSpec work with?">Claude Code, Codex, Cursor, GitHub Copilot and others, more than 30 in all. openspec init installs skills for the agents you pick.</q>
+    <q t="How do I use OpenSpec?">Install the program, run openspec init in the project folder and call /openspec-propose with a change name in the agent chat. Review the plan, then /openspec-apply-change writes code by the tasks and /openspec-archive-change merges the requirements into the shared specs. Not sure what to build? Start with /openspec-explore.</q>
+    <q t="What is SDD (spec-driven development)?">SDD (Spec-Driven Development) is an approach where the specification, what the system must do, is written first. The agent writes code from that specification, and it lives in the project files. OpenSpec, Spec Kit and Kiro are three ways to work like this.</q>
   </b-faq-cards>
 </b-chapter>
 
