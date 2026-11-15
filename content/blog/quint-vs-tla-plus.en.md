@@ -56,7 +56,7 @@ Quint and TLA+ describe the same system behavior and are checked by the same pro
     <rule icon="book" t="TLA+: existing specs">Books, courses and walkthroughs in TLA+ stay valid, and there is no reason to rewrite them</rule>
     <rule icon="code" t="Quint: the whole team reads it">Code-like notation is easier to review, especially when an agent writes the spec</rule>
     <rule icon="flask" t="Quint: tests from the model">Model runs turn into tests for the implementation</rule>
-    <rule icon="rocket" t="Quint: quick start">REPL, simulator and model checking install with one npm command, and the VS Code editor highlights type errors</rule>
+    <rule icon="zap" t="Quint: quick start">REPL, simulator and model checking install with one npm command, and the VS Code editor highlights type errors</rule>
     <rule icon="users" t="Quint: team without math">Product rules such as "a private note never reaches shared storage" read without formulas</rule>
   </b-rules>
   <b-why align="left">This matches the Thoughtworks Technology Radar assessment of November 2026. It puts Quint in the "Assess" ring and calls the choice between Quint and TLA+ close<b-proof href="https://www.thoughtworks.com/radar/languages-and-frameworks/quint" quote="Our teams have found the choice between Quint and TLA+ a close call"/>: Quint's developer tooling on one side, TLA+'s maturity on the other. The radar describes Quint's differences as readability and developer experience, a TypeScript-like syntax that is easier to review when an agent writes the spec, and an editor, REPL and simulator.</b-why>

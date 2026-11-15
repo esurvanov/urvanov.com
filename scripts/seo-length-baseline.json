@@ -313,7 +313,6 @@
   "description"
  ],
  "/es/materials/glossary/preprod": [
-  "title",
   "description"
  ],
  "/es/materials/glossary/prod": [
@@ -652,7 +651,6 @@
   "description"
  ],
  "/fr/materials/glossary/preprod": [
-  "title",
   "description"
  ],
  "/fr/materials/glossary/prod": [
@@ -934,10 +932,6 @@
   "title",
   "description"
  ],
- "/ka/materials/glossary/preprod": [
-  "title",
-  "description"
- ],
  "/ka/materials/glossary/prod": [
   "title",
   "description"
@@ -1083,9 +1077,6 @@
  ],
  "/materials/glossary/model-checking": [
   "title"
- ],
- "/materials/glossary/openspec": [
-  "description"
  ],
  "/materials/glossary/permissions": [
   "title",
@@ -1550,9 +1541,6 @@
   "title",
   "description"
  ],
- "/th/materials/glossary/preprod": [
-  "title"
- ],
  "/th/materials/glossary/pure-function": [
   "title",
   "description"
@@ -1781,10 +1769,6 @@
   "description"
  ],
  "/vi/materials/glossary/planes": [
-  "title",
-  "description"
- ],
- "/vi/materials/glossary/preprod": [
   "title",
   "description"
  ],
