@@ -8,10 +8,10 @@ tags: AI, спеки, TLA+, Alloy, Quint, формальная верифика�
 category: specs
 layout: wide
 mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, проверка моделей, model checking, формальная спецификация, формальные языки, TLA+ vs Alloy vs Quint, Лесли Лэмпорт
-toc: idea=Одна задача | table=Сводка | tla-alloy=TLA+ и Alloy | tla-quint=TLA+ и Quint | alloy-quint=Alloy и Quint | choose=Что выбрать | faq=Вопросы | next=Дальше по теме
+toc: idea=Одна задача | table=Сводка | tla-alloy=TLA+ и Alloy | tla-quint=TLA+ и Quint | qt=Quint или TLA+ | alloy-quint=Alloy и Quint | choose=Что выбрать | faq=Вопросы | next=Дальше по теме
 ---
 
-Среди языков формальной верификации TLA+ и Quint описывают поведение системы шаг за шагом и различаются записью: Quint похож на обычный код, TLA+ пишется формулами. Alloy описывает объекты и связи между ними. Для правил продукта во времени берут Quint, для строгих доказательств TLA+, для данных и прав Alloy.
+Quint и TLA+ описывают поведение системы шаг за шагом, но записывают его по-разному. Quint написан как код с типами, переводится в TLA+ и запускает проверяющие программы Apalache и TLC. TLA+ пишется формулами и имеет систему доказательств TLAPS, которой у Quint нет. Ниже к ним добавлен Alloy: он описывает объекты и связи.
 
 <b-post series="harness">
 <b-art names="tla-alloy-quint-compare/trio" wide/>
@@ -73,6 +73,38 @@ toc: idea=Одна задача | table=Сводка | tla-alloy=TLA+ и Alloy |
   <b-why align="left">Описывают они одно и то же, различается запись. Quint задуман как синтаксис, удобный инженерам<b-proof href="https://apalache-mc.org/" quote="The Quint language provides an engineer-friendly syntax for writing specifications."/>, а проверяют обе записи одни и те же программы. TLC перебирает состояния по одному<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, а Apalache символьный и рассматривает все цепочки до заданной длины<b-proof href="https://apalache-mc.org/" quote="Bounded model checking to reason about all executions up to length k"/>.</b-why>
 </b-chapter>
 
+<b-chapter id="qt" icon="scales" title="Quint или TLA+: таблица и когда что брать">
+  <b-why align="left">Сначала прямое сравнение пары. Документация Quint описывает его как язык с синтаксисом в духе TypeScript<b-proof href="https://quint.sh/faq" quote="Quint uses programming-style syntax inspired by TypeScript and functional languages."/>, а TLA+ как язык математической записи. Остальные различия видны в таблице.</b-why>
+<b-table id="quint-tla-table">
+
+| | TLA+ | Quint |
+|---|---|---|
+| **Запись** | математическая, в стиле LaTeX | как код: синтаксис в духе TypeScript и функциональных языков |
+| **Типы** | нет: язык намеренно без типов | есть проверка типов и эффектов, большинство типов выводится само |
+| **Доказательства** | есть система доказательств TLAPS | нет |
+| **Проверка** | TLC и Apalache | Apalache и TLC из командной строки Quint, плюс собственный случайный прогон |
+| **Запуск как тесты** | прямого аналога нет | «прогон» (конкретная цепочка шагов) есть в языке и может служить тестом |
+| **Выразительность** | в теории шире | подмножество TLA+, авторы не упирались в границы, кроме некоторых видов рекурсии |
+| **Порог входа** | у многих крутой | для новичка в формальных спецификациях, скорее всего, быстрее |
+
+</b-table>
+  <b-why align="left">Каждая строка опирается на раздел сравнения в FAQ Quint. Про типы там сказано, что TLA+ намеренно без них<b-proof href="https://quint.sh/faq" quote="TLA+ is purposely untyped so that designers can focus on algorithmic concepts."/>, а проверка типов и эффектов в Quint находит часть ошибок в редакторе до запуска. Про границы сказано прямо: система доказательств TLAPS есть у TLA+, у Quint её нет. Quint работает с подмножеством TLA+, поэтому большинство спецификаций TLA+ переводится в запись Quint напрямую<b-proof href="https://quint.sh/faq" quote="most TLA+ specs can be directly translated into the Quint syntax"/>.</b-why>
+  <b-sublabel>Когда TLA+, когда Quint</b-sublabel>
+  <b-rules cols="2">
+    <rule icon="shield-check" t="TLA+: нужны доказательства">Строгие гарантии для сложной системы: у TLA+ есть TLAPS, у Quint нет</rule>
+    <rule icon="book" t="TLA+: есть наследие">Готовые спецификации и книги на TLA+, их не нужно переписывать</rule>
+    <rule icon="code" t="Quint: читает команда">Запись как код проще для ревью, особенно когда спецификацию пишет агент</rule>
+    <rule icon="flask" t="Quint: нужны тесты">Прогоны модели превращаются в тесты для реализации</rule>
+  </b-rules>
+  <b-why align="left">Эти четыре карточки опираются на оценку Thoughtworks Technology Radar, где Quint стоит в кольце «Assess» (стоит изучить). По словам авторов радара, выбор между ними близок<b-proof href="https://www.thoughtworks.com/radar/languages-and-frameworks/quint" quote="Our teams have found the choice between Quint and TLA+ a close call"/>: на одной чаше средства разработки Quint, на другой зрелость TLA+. Отличия Quint радар описывает так: читаемость, удобство разработки и синтаксис, похожий на TypeScript, который проще проверять, когда спецификацию пишет агент.</b-why>
+  <b-why align="left">Пример из практики сайта. Модели Quint здесь проверяют правила продукта во времени, а сами проверки проверяют испорченными копиями модели: правило, которое код и так соблюдает, обязано сломаться на копии с одной порчей. Разбор с примерами и схемами: [Как найти состояние гонки: модель на Quint](/blog/quint-models-find-races/), раздел «Проверка проверок». Файлов моделей в этом репозитории нет: статья описывает модели из другого проекта.</b-why>
+  <b-finding>
+    <ex>Quint и TLA+ описывают одно и то же поведение: различаются запись, типы, доказательства и тестовые прогоны.</ex>
+    <gen>Выбор близкий: радар считает средства Quint и зрелость TLA+ почти равными доводами.</gen>
+    <do>Если доказательства не нужны, начните с Quint. Если нужны, пишите на TLA+ и подключайте TLAPS.</do>
+  </b-finding>
+</b-chapter>
+
 <b-chapter id="alloy-quint" icon="search" title="Чем Alloy отличается от Quint">
   <b-art names="tla-alloy-quint-compare/alloy-vs-quint" wide/>
 <b-table id="alloy-quint">
@@ -101,6 +133,10 @@ toc: idea=Одна задача | table=Сводка | tla-alloy=TLA+ и Alloy |
     <q t="Quint или TLA+: что выбрать?">Quint, если команде ближе обычный код и нужно проверять правила продукта во времени. TLA+, если нужны строгие доказательства по сложной распределённой системе. Описывают они одно и то же, и проверяют обе записи одни и те же программы, TLC и Apalache.</q>
     <q t="Что выбрать: TLA+, Alloy или Quint?">Для правил продукта во времени и команды без математики берите Quint, для строгих доказательств по сложной распределённой системе TLA+, для устройства данных и прав доступа Alloy.</q>
     <q t="Чем проверяют модели на TLA+, Alloy и Quint?">TLA+ и Quint проверяют программы TLC и Apalache. У Alloy свой анализатор, Alloy Analyzer: он берёт ограничения модели и находит структуры, которые им удовлетворяют.</q>
+    <q t="Стоит ли переходить с TLA+ на Quint?">Если нужны доказательства, нет: система TLAPS есть у TLA+, у Quint её нет. Если нужны читаемая запись и тесты, можно: большинство спецификаций TLA+ переводится в Quint напрямую, а спецификацию Quint можно автоматически перевести в TLA+<b-proof href="https://quint.sh/faq" quote="most TLA+ specs can be directly translated into the Quint syntax"/>. Пошагового руководства по переходу в FAQ нет.</q>
+    <q t="Чем Quint отличается от PlusCal?">PlusCal надстроен над TLA+ и компилируется в него<b-proof href="https://quint.sh/faq" quote="PlusCal is a language on top of TLA+ that is precompiled into TLA+."/>. Он добавляет к декларативному языку циклы и присваивания. Quint остаётся декларативным: описывает переходы между состояниями, а не последовательность шагов. TLA+ как промежуточный язык Quint использует только при проверке моделей, а его консоль, симулятор и средства тестов свои.</q>
+    <q t="Нужны ли типы в формальной спецификации?">TLA+ намеренно без типов, чтобы проектировщики сосредоточились на идеях алгоритма. Цена в том, что ошибку вроде строки в множестве целых иногда видно только в контрпримере проверки. Quint проверяет типы и эффекты и показывает часть ошибок в редакторе до запуска. Большинство типов выводится само, их почти не приходится писать.</q>
+    <q t="Что быстрее выучить: Quint или TLA+?">Для новичка в формальных спецификациях Quint, скорее всего, быстрее: чтение TLA+ у многих идёт с крутой кривой обучения<b-proof href="https://quint.sh/faq" quote="If you are new to formal specification, Quint is likely the faster path"/>. Кто уже знает TLA+, найдёт Quint знакомым.</q>
   </b-faq-cards>
 </b-chapter>
 
@@ -110,5 +146,5 @@ toc: idea=Одна задача | table=Сводка | tla-alloy=TLA+ и Alloy |
     <item href="/blog/quint-models-find-races/" k="Модели" t="Как найти состояние гонки: модель на Quint">Формальные модели на Quint</item>
   </b-links>
 </b-chapter>
-<b-footer>Факты: сайты TLA+ Лесли Лэмпорта, Alloy, Quint и Apalache на 25 октября 2026. Выбор зависит от задачи, здесь описаны общие признаки.</b-footer>
+<b-footer>Факты: сайты TLA+ Лесли Лэмпорта, Alloy, Quint (FAQ) и Apalache, Thoughtworks Technology Radar, на 15 ноября 2026. Выбор зависит от задачи, здесь описаны общие признаки.</b-footer>
 </b-post>
