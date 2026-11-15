@@ -1195,12 +1195,67 @@
   },
   "epimorphism": {
     "name": "Epimorfismo",
-    "aka": "una correspondencia sin huecos vacíos",
-    "def": "Un epimorfismo es una correspondencia en la que cada parte del resultado proviene de algo de la fuente: ninguna parte queda sin cubrir. En la respuesta de un agente significa que cada afirmación tiene respaldo en los datos. Donde no hay respaldo queda un hueco vacío, y el modelo lo rellena con una conjetura: así surge una alucinación.",
-    "faq.0.q": "¿Qué es un epimorfismo en palabras sencillas?",
-    "faq.0.a": "Una aplicación en la que cada parte del resultado proviene de algo de la fuente: ninguna parte queda sin cubrir.",
-    "faq.1.q": "¿Cómo se relaciona un epimorfismo con las alucinaciones?",
-    "faq.1.a": "Si cada afirmación de la respuesta tiene respaldo en los datos, no hay alucinación. Donde falta el respaldo, el modelo rellena el hueco con una conjetura.",
+    "aka": "morfismo cancelable por la derecha",
+    "def": "Un epimorfismo es un morfismo f: X → Y cancelable por la derecha: si g₁∘f = g₂∘f, entonces g₁ = g₂. Generaliza la función sobreyectiva: en conjuntos y grupos los epimorfismos son las aplicaciones sobreyectivas, pero en anillos hay epimorfismos no sobreyectivos, como la inclusión ℤ → ℚ. Su noción dual es el monomorfismo.",
+    "seo.title": "Epimorfismo: qué es y diferencia con isomorfismo",
+    "seo.description": "Un epimorfismo es un morfismo cancelable por la derecha: en grupos es sobreyectivo, en anillos no siempre (ℤ → ℚ). Tabla con isomorfismo y monomorfismo.",
+    "notes.title": "Ejemplos, un contraejemplo y uso en IA",
+    "notes.items.0.name": "En grupos, aplicaciones sobreyectivas",
+    "notes.items.0.text": "En la categoría de grupos todo epimorfismo es sobreyectivo (resultado de Otto Schreier). Lo mismo vale para los grupos finitos, los grupos abelianos, los conjuntos, los espacios vectoriales y los módulos.",
+    "notes.items.1.name": "No tiene por qué ser sobreyectivo",
+    "notes.items.1.text": "La inclusión ℤ → ℚ en la categoría de anillos es un epimorfismo, pero no es sobreyectiva: un homomorfismo de anillos definido sobre ℚ queda determinado por sus valores en ℤ, así que dos homomorfismos que coinciden en los enteros coinciden en los racionales. Esta inclusión además es un monomorfismo, pero no un isomorfismo.",
+    "notes.items.2.name": "La respuesta de un agente de IA",
+    "notes.items.2.text": "Por analogía con la función sobreyectiva: una respuesta está fundamentada cuando cada una de sus partes tiene respaldo en los datos. Donde no hay respaldo queda un hueco, y el modelo lo rellena con una conjetura: así surge una alucinación.",
+    "table.title": "Isomorfismo, epimorfismo y monomorfismo, lado a lado",
+    "table.head": [
+      "Isomorfismo",
+      "Epimorfismo",
+      "Monomorfismo"
+    ],
+    "table.rows.0": [
+      "Definición",
+      "tiene un morfismo inverso g: g∘f = id y f∘g = id",
+      "cancelable por la derecha: g₁∘f = g₂∘f ⇒ g₁ = g₂",
+      "cancelable por la izquierda: f∘g₁ = f∘g₂ ⇒ g₁ = g₂"
+    ],
+    "table.rows.1": [
+      "En la categoría de conjuntos",
+      "biyecciones",
+      "funciones sobreyectivas",
+      "funciones inyectivas"
+    ],
+    "table.rows.2": [
+      "En grupos",
+      "homomorfismos biyectivos",
+      "homomorfismos sobreyectivos",
+      "homomorfismos inyectivos"
+    ],
+    "table.rows.3": [
+      "En la categoría de anillos",
+      "homomorfismos biyectivos",
+      "no necesariamente sobreyectivos",
+      "homomorfismos inyectivos"
+    ],
+    "table.rows.4": [
+      "Ejemplo",
+      "x ↦ −x en ℤ",
+      "la inclusión ℤ → ℚ en anillos",
+      "la inclusión ℤ → ℚ"
+    ],
+    "table.rows.5": [
+      "Invertibilidad",
+      "siempre es invertible",
+      "solo un epimorfismo escindido tiene inverso por la derecha",
+      "solo un monomorfismo escindido tiene inverso por la izquierda"
+    ],
+    "faq.0.q": "¿Qué es el epimorfismo?",
+    "faq.0.a": "Un morfismo f: X → Y cancelable por la derecha: si g₁∘f = g₂∘f, entonces g₁ = g₂. Generaliza la función sobreyectiva a categorías arbitrarias.",
+    "faq.1.q": "¿Cuál es la diferencia entre isomorfismo, epimorfismo y monomorfismo?",
+    "faq.1.a": "Un isomorfismo tiene un morfismo inverso. Un epimorfismo se cancela por la derecha y un monomorfismo por la izquierda. Todo isomorfismo es ambas cosas, pero no al revés: la inclusión ℤ → ℚ en anillos es epimorfismo y monomorfismo, pero no isomorfismo.",
+    "faq.2.q": "¿Qué es un homomorfismo?",
+    "faq.2.a": "Una aplicación entre dos estructuras algebraicas del mismo tipo que conserva las operaciones. Para grupos: f(x·y) = f(x)·f(y).",
+    "faq.3.q": "¿Todo epimorfismo es sobreyectivo?",
+    "faq.3.a": "No. En conjuntos, grupos, grupos abelianos y espacios vectoriales sí, pero en anillos no: la inclusión ℤ → ℚ es un epimorfismo que no es sobreyectivo.",
     "source.label": "Wikipedia: Epimorphism"
   }
 }

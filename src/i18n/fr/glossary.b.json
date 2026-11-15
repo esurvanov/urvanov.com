@@ -456,12 +456,67 @@
   },
   "epimorphism": {
     "name": "Épimorphisme",
-    "aka": "une correspondance sans trous",
-    "def": "Un épimorphisme est une correspondance où chaque partie du résultat vient de quelque chose dans la source : aucune partie n’est laissée sans couverture. Pour la réponse d’un agent, cela signifie que chaque énoncé s’appuie sur les données. Là où il n’y a pas d’appui, un trou reste, et le modèle le comble par une supposition : c’est ainsi qu’apparaît une hallucination.",
-    "faq.0.q": "Qu’est-ce qu’un épimorphisme en termes simples ?",
-    "faq.0.a": "Une application où chaque partie du résultat vient de quelque chose dans la source : aucune partie n’est laissée sans couverture.",
-    "faq.1.q": "Quel est le lien entre épimorphisme et hallucinations ?",
-    "faq.1.a": "Si chaque énoncé de la réponse s’appuie sur les données, il n’y a pas d’hallucination. Là où l’appui manque, le modèle comble le vide par une supposition.",
+    "aka": "morphisme simplifiable à droite",
+    "def": "Un épimorphisme est un morphisme f : X → Y simplifiable à droite : si g₁∘f = g₂∘f pour des morphismes g₁, g₂ issus de Y, alors g₁ = g₂. Il généralise la surjection : dans les ensembles et dans les groupes, les épimorphismes sont exactement les applications surjectives, mais dans les anneaux il en existe de non surjectifs, comme l’inclusion ℤ → ℚ. La notion duale est le monomorphisme.",
+    "seo.title": "Épimorphisme : définition et différence avec isomorphisme",
+    "seo.description": "Un épimorphisme est simplifiable à droite : surjectif dans les groupes, pas toujours dans les anneaux (ℤ → ℚ). Tableau avec isomorphisme et monomorphisme.",
+    "notes.title": "Exemples, contre-exemple et usage en IA",
+    "notes.items.0.name": "Dans les groupes : des surjections",
+    "notes.items.0.text": "Dans la catégorie des groupes, tout épimorphisme est surjectif (résultat d’Otto Schreier). C’est aussi vrai pour les groupes finis, les groupes abéliens, les ensembles, les espaces vectoriels et les modules.",
+    "notes.items.1.name": "Pas forcément surjectif",
+    "notes.items.1.text": "L’inclusion ℤ → ℚ dans la catégorie des anneaux est un épimorphisme, mais elle n’est pas surjective : un homomorphisme d’anneaux défini sur ℚ est entièrement déterminé par ses valeurs sur ℤ, donc deux homomorphismes qui coïncident sur les entiers coïncident sur les rationnels. Cette inclusion est aussi un monomorphisme, mais pas un isomorphisme.",
+    "notes.items.2.name": "La réponse d’un agent d’IA",
+    "notes.items.2.text": "Par analogie avec la surjection : une réponse est fondée quand chacune de ses parties s’appuie sur les données. Là où il n’y a pas d’appui, un trou reste, et le modèle le comble par une supposition : c’est ainsi qu’apparaît une hallucination.",
+    "table.title": "Isomorphisme, épimorphisme et monomorphisme côte à côte",
+    "table.head": [
+      "Isomorphisme",
+      "Épimorphisme",
+      "Monomorphisme"
+    ],
+    "table.rows.0": [
+      "Définition",
+      "possède un morphisme inverse g : g∘f = id et f∘g = id",
+      "simplifiable à droite : g₁∘f = g₂∘f ⇒ g₁ = g₂",
+      "simplifiable à gauche : f∘g₁ = f∘g₂ ⇒ g₁ = g₂"
+    ],
+    "table.rows.1": [
+      "Dans la catégorie des ensembles",
+      "bijections",
+      "surjections",
+      "injections"
+    ],
+    "table.rows.2": [
+      "Dans les groupes",
+      "homomorphismes bijectifs",
+      "homomorphismes surjectifs",
+      "homomorphismes injectifs"
+    ],
+    "table.rows.3": [
+      "Dans la catégorie des anneaux",
+      "homomorphismes bijectifs",
+      "pas forcément surjectifs",
+      "homomorphismes injectifs"
+    ],
+    "table.rows.4": [
+      "Exemple",
+      "x ↦ −x sur ℤ",
+      "l’inclusion ℤ → ℚ dans les anneaux",
+      "l’inclusion ℤ → ℚ"
+    ],
+    "table.rows.5": [
+      "Inversibilité",
+      "toujours inversible",
+      "seul un épimorphisme scindé admet un inverse à droite",
+      "seul un monomorphisme scindé admet un inverse à gauche"
+    ],
+    "faq.0.q": "Qu’est-ce qu’un épimorphisme ?",
+    "faq.0.a": "Un morphisme f : X → Y simplifiable à droite : si g₁∘f = g₂∘f, alors g₁ = g₂. Il généralise la surjection à des catégories quelconques.",
+    "faq.1.q": "Quelle est la différence entre isomorphisme, épimorphisme et monomorphisme ?",
+    "faq.1.a": "Un isomorphisme possède un morphisme inverse. Un épimorphisme se simplifie à droite, un monomorphisme à gauche. Tout isomorphisme est les deux, mais la réciproque est fausse : l’inclusion ℤ → ℚ dans les anneaux est un épimorphisme et un monomorphisme, sans être un isomorphisme.",
+    "faq.2.q": "Qu’est-ce qu’un homomorphisme ?",
+    "faq.2.a": "Une application entre deux structures algébriques de même type qui conserve les opérations. Pour les groupes : f(x·y) = f(x)·f(y).",
+    "faq.3.q": "Tout épimorphisme est-il surjectif ?",
+    "faq.3.a": "Non. Dans les ensembles, les groupes, les groupes abéliens et les espaces vectoriels oui, mais pas dans les anneaux : l’inclusion ℤ → ℚ est un épimorphisme non surjectif.",
     "source.label": "Wikipédia : Épimorphisme"
   },
   "automated-test": {
