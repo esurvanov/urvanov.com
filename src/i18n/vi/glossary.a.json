@@ -429,32 +429,56 @@
  "planes": {
   "name": "Mặt phẳng dữ liệu và mặt phẳng điều khiển",
   "aka": "mặt phẳng dữ liệu và mặt phẳng điều khiển",
-  "def": "Mặt phẳng dữ liệu (data plane) và mặt phẳng điều khiển (control plane) là hai mặt phẳng trong cách một hệ thống làm việc: mặt phẳng điều khiển quyết định làm gì và ở đâu, còn mặt phẳng dữ liệu thực hiện việc đó trên chính dữ liệu. Các thuật ngữ này đến từ mạng máy tính: trong router, mặt phẳng điều khiển dựng bảng định tuyến còn mặt phẳng dữ liệu chuyển tiếp gói tin. Với tác nhân AI, mặt phẳng điều khiển là tin nhắn và quy tắc của bạn, còn mặt phẳng dữ liệu là mọi thứ nó đọc: trang web, ticket, tài liệu và phản hồi của máy chủ. Phòng thủ trước prompt injection là giữ văn bản lạ ở mặt phẳng dữ liệu để nó không bao giờ thành lệnh.",
+  "def": "Mặt phẳng dữ liệu (data plane) là phần của hệ thống làm việc với chính dữ liệu: trong mạng nó chuyển tiếp gói tin, còn trong Kubernetes đó là các node chạy ứng dụng. Các quyết định đến từ phần khác, mặt phẳng điều khiển (control plane): trong router nó dựng bảng định tuyến, còn với tác nhân AI đó là tin nhắn và quy tắc của bạn, trong khi mặt phẳng dữ liệu của tác nhân là mọi thứ nó đọc: trang web, ticket, tài liệu và phản hồi của máy chủ. Phòng thủ trước prompt injection là giữ văn bản lạ ở mặt phẳng dữ liệu để nó không bao giờ thành lệnh.",
   "faq.0.q": "Mặt phẳng dữ liệu là gì?",
   "faq.0.a": "Mặt phẳng dữ liệu là phần của hệ thống xử lý chính dữ liệu: trong mạng, nó chuyển tiếp gói tin; trong Kubernetes, đó là các node chứa pod. Với tác nhân AI, đó là mọi thứ nó đọc: trang web, ticket, tài liệu và phản hồi của máy chủ.",
   "faq.1.q": "Mặt phẳng điều khiển khác mặt phẳng dữ liệu thế nào?",
   "faq.1.a": "Mặt phẳng điều khiển là lệnh, tức tin nhắn và quy tắc của bạn. Mặt phẳng dữ liệu là dữ liệu. Chống prompt injection là giữ cho văn bản bên ngoài nằm trong dữ liệu không trở thành lệnh.",
+  "faq.2.q": "Management plane là gì?",
+  "faq.2.a": "Management plane là mặt phẳng thứ ba: các chức năng giám sát, cấu hình và bảo trì thiết bị mạng (theo định nghĩa của RFC 7426). Control plane quyết định cách chuyển tiếp dữ liệu, data plane chuyển tiếp dữ liệu, còn management plane cấu hình và theo dõi chính các thiết bị.",
+  "faq.3.q": "Data plane trong Kubernetes là gì?",
+  "faq.3.a": "Tài liệu chính thức chia cụm thành control plane (kube-apiserver, etcd, kube-controller-manager, kube-scheduler) và các node nơi ứng dụng chạy trong pod. Chữ «data plane» không xuất hiện ở các trang đó; về nghĩa đó là các node chứa pod, còn tài liệu xếp etcd vào control plane.",
+  "faq.4.q": "Liên quan gì đến prompt injection?",
+  "faq.4.a": "Với tác nhân AI, control plane là tin nhắn và quy tắc của bạn, còn data plane là mọi thứ nó đọc. Prompt injection xảy ra khi một lệnh được giấu trong dữ liệu và tác nhân thực thi nó như lệnh của mình. Phòng thủ giữ văn bản lạ ở data plane: quyền tối thiểu, xác nhận khi ghi, nguồn đáng tin.",
   "source.label": "Wikipedia: Control plane",
   "seo.title": "Mặt phẳng dữ liệu và mặt phẳng điều khiển là gì: mạng, Kubernetes, tác nhân AI",
   "seo.description": "Mặt phẳng điều khiển quyết định làm gì và ở đâu; mặt phẳng dữ liệu thực hiện trên chính dữ liệu. Cách hai mặt phẳng hoạt động trong router, cụm Kubernetes và tác nhân AI, và liên hệ với prompt injection.",
-  "compare.title": "Hai mặt phẳng trong mạng, Kubernetes và tác nhân AI",
+  "compare.title": "Mặt phẳng điều khiển và mặt phẳng dữ liệu trong bốn hệ thống",
   "compare.head": [
-   "Mạng",
-   "Kubernetes",
-   "Tác nhân AI"
+   "Mặt phẳng điều khiển",
+   "Mặt phẳng dữ liệu"
   ],
   "compare.rows.0": [
-   "Mặt phẳng điều khiển",
+   "Mạng",
    "bảng định tuyến: gửi gói tin đi đâu",
-   "các thành phần điều khiển của cụm: chạy gì và ở đâu",
-   "tin nhắn và quy tắc của bạn"
+   "việc chuyển tiếp chính các gói tin"
   ],
   "compare.rows.1": [
-   "Mặt phẳng dữ liệu",
-   "chuyển tiếp chính các gói tin",
-   "các node nơi pod chứa ứng dụng chạy",
+   "Kubernetes",
+   "kube-apiserver, etcd, bộ lập lịch, các controller: chạy gì và ở đâu",
+   "các node nơi pod chứa ứng dụng chạy"
+  ],
+  "compare.rows.2": [
+   "Đám mây (lấy AWS làm ví dụ)",
+   "API tạo tài nguyên: chạy máy chủ, tạo bucket",
+   "chính máy chủ đang chạy, đọc và ghi đối tượng"
+  ],
+  "compare.rows.3": [
+   "Tác nhân AI",
+   "tin nhắn và quy tắc của bạn",
    "trang web, ticket, tài liệu, phản hồi của máy chủ"
-  ]
+  ],
+  "notes.title": "Khi control plane hỏng, và nơi các định nghĩa khác nhau",
+  "notes.items.0.name": "Mạng",
+  "notes.items.0.text": "Router có khởi động lại êm (RFC 4724) vẫn chuyển tiếp theo bảng cũ trong lúc control plane khởi động lại; các tuyến cũ được đánh dấu. RFC 7426 nêu thêm lưu ý: mô hình SDN cơ bản không giải quyết việc mất kết nối với bộ điều khiển, và cho đến khi kết nối được khôi phục thì luồng không khả dụng.",
+  "notes.items.1.name": "Kubernetes",
+  "notes.items.1.text": "Control plane quản lý node và pod, còn ứng dụng chạy trên các node. Nếu node controller kết luận rằng kết nối giữa control plane và các node bị hỏng, nó không trục xuất pod nào. Tài liệu không có câu nói «pod vẫn tiếp tục chạy», nên trang này không khẳng định điều đó.",
+  "notes.items.2.name": "Đám mây",
+  "notes.items.2.text": "Theo tài liệu AWS, control plane tạo và cấu hình tài nguyên, còn data plane cung cấp chức năng chính của dịch vụ: máy chủ đang chạy, đọc và ghi đối tượng. Data plane đơn giản hơn và ít phụ thuộc hơn, nên sự cố diện rộng ở đó xảy ra ít hơn về mặt thống kê so với control plane.",
+  "notes.items.3.name": "Management plane",
+  "notes.items.3.text": "Mặt phẳng thứ ba. RFC 7426 định nghĩa nó là các chức năng giám sát, cấu hình và bảo trì thiết bị mạng; ở đó control plane là các chức năng điều khiển thiết bị. Nó thường bị bỏ qua và người ta chỉ nói về hai mặt phẳng.",
+  "notes.items.4.name": "Các định nghĩa khác nhau",
+  "notes.items.4.text": "Tài liệu chính thức của Kubernetes xếp etcd vào các thành phần control plane và không dùng chữ «data plane» ở các trang về kiến trúc và thành phần: ở đó là «control plane» và «node». Tác giả hiểu thuật ngữ này theo nghĩa nào thì phải kiểm tra ở từng nguồn."
  },
  "permissions": {
   "name": "Quyền hạn (permissions)",

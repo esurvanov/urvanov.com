@@ -1353,32 +1353,56 @@
  "planes": {
   "name": "Plano de datos y plano de control",
   "aka": "planos de datos y de control",
-  "def": "Plano de datos y plano de control son dos planos del funcionamiento de un sistema: el plano de control decide qué hacer y dónde, y el plano de datos lo hace con los propios datos. Los términos vienen de las redes: en un router el plano de control construye la tabla de rutas y el plano de datos reenvía los paquetes. Para un agente de IA, el plano de control son tus mensajes y reglas, y el plano de datos es todo lo que lee: páginas, tickets, documentos y respuestas de servidores. La defensa contra la inyección de prompts mantiene el texto ajeno en el plano de datos para que nunca se convierta en una orden.",
+  "def": "El plano de datos (data plane) es la parte de un sistema que trabaja con los propios datos: en una red reenvía paquetes y en Kubernetes son los nodos que ejecutan las aplicaciones. Las decisiones las toma otra parte, el plano de control (control plane): en un router construye la tabla de rutas y, para un agente de IA, son tus mensajes y reglas, mientras que su plano de datos es todo lo que lee: páginas, tickets, documentos y respuestas de servidores. La defensa contra la inyección de prompts mantiene el texto ajeno en el plano de datos para que nunca se convierta en una orden.",
   "faq.0.q": "¿Qué es el plano de datos?",
   "faq.0.a": "El plano de datos es la parte de un sistema que maneja los propios datos: en una red reenvía paquetes, en Kubernetes son los nodos con pods. Para un agente de IA es todo lo que lee: páginas, tickets, documentos y respuestas de servidores.",
   "faq.1.q": "¿En qué se diferencia el plano de control del plano de datos?",
   "faq.1.a": "El plano de control son las órdenes, es decir, tus mensajes y reglas. El plano de datos son los datos. La protección contra la inyección de prompts evita que el texto externo que está en los datos se convierta en una orden.",
+  "faq.2.q": "¿Qué es el plano de gestión (management plane)?",
+  "faq.2.a": "El plano de gestión es un tercer plano: las funciones de supervisión, configuración y mantenimiento de dispositivos de red (así lo define RFC 7426). El plano de control decide cómo reenviar los datos, el plano de datos los reenvía y el plano de gestión configura y observa los propios dispositivos.",
+  "faq.3.q": "¿Qué es el plano de datos en Kubernetes?",
+  "faq.3.a": "La documentación oficial divide un clúster en el plano de control (kube-apiserver, etcd, kube-controller-manager, kube-scheduler) y los nodos donde las aplicaciones se ejecutan en pods. Las palabras «data plane» no aparecen en esas páginas; por su sentido son los nodos con pods, y la documentación sitúa etcd en el plano de control.",
+  "faq.4.q": "¿Qué tiene que ver con la inyección de prompts?",
+  "faq.4.a": "Para un agente de IA, el plano de control son tus mensajes y reglas, y el plano de datos es todo lo que lee. La inyección de prompts ocurre cuando una orden está oculta en los datos y el agente la ejecuta como propia. La defensa mantiene el texto ajeno en el plano de datos: permisos mínimos, confirmación de las escrituras, fuentes de confianza.",
   "source.label": "Wikipedia: Control plane",
   "seo.title": "Qué son el plano de datos y el plano de control: redes, Kubernetes y agentes de IA",
   "seo.description": "El plano de control decide qué hacer y dónde; el plano de datos lo hace con los datos. Cómo funcionan los planos en un router, un clúster de Kubernetes y un agente de IA, y su relación con la inyección de prompts.",
-  "compare.title": "Los dos planos en una red, Kubernetes y un agente de IA",
+  "compare.title": "Plano de control y plano de datos en cuatro sistemas",
   "compare.head": [
-   "Red",
-   "Kubernetes",
-   "Agente de IA"
+   "Plano de control",
+   "Plano de datos"
   ],
   "compare.rows.0": [
-   "Plano de control",
+   "Red",
    "la tabla de rutas: adónde enviar los paquetes",
-   "los componentes de control del clúster: qué ejecutar y dónde",
-   "tus mensajes y reglas"
+   "el reenvío de los propios paquetes"
   ],
   "compare.rows.1": [
-   "Plano de datos",
-   "el reenvío de los propios paquetes",
-   "los nodos donde se ejecutan los pods con las apps",
+   "Kubernetes",
+   "kube-apiserver, etcd, planificador, controladores: qué ejecutar y dónde",
+   "los nodos donde se ejecutan los pods con las apps"
+  ],
+  "compare.rows.2": [
+   "Nube (con AWS como ejemplo)",
+   "la API para crear recursos: lanzar un servidor, crear un bucket",
+   "el propio servidor en ejecución, leer y escribir objetos"
+  ],
+  "compare.rows.3": [
+   "Agente de IA",
+   "tus mensajes y reglas",
    "páginas, tickets, documentos, respuestas de servidores"
-  ]
+  ],
+  "notes.title": "Cuando falla el plano de control, y dónde difieren las definiciones",
+  "notes.items.0.name": "Red",
+  "notes.items.0.text": "Un router con reinicio elegante (RFC 4724) sigue reenviando con la tabla anterior mientras su plano de control se reinicia; las rutas obsoletas se marcan. RFC 7426 añade una salvedad: el modelo SDN básico no contempla perder la conexión con el controlador, y hasta que se restablece el flujo no está disponible.",
+  "notes.items.1.name": "Kubernetes",
+  "notes.items.1.text": "El plano de control gestiona nodos y pods, y las aplicaciones se ejecutan en los nodos. Si el controlador de nodos concluye que la conectividad entre el plano de control y los nodos está rota, no desaloja ningún pod. La documentación no tiene una frase que diga «los pods siguen funcionando», así que esta página no lo afirma.",
+  "notes.items.2.name": "Nube",
+  "notes.items.2.text": "Según la documentación de AWS, el plano de control crea y configura recursos, y el plano de datos ofrece la función principal del servicio: el servidor en ejecución, leer y escribir objetos. El plano de datos es más simple y tiene menos dependencias, por eso los fallos masivos son estadísticamente menos probables que en el plano de control.",
+  "notes.items.3.name": "Plano de gestión (management plane)",
+  "notes.items.3.text": "Un tercer plano. RFC 7426 lo define como las funciones de supervisión, configuración y mantenimiento de dispositivos de red; allí el plano de control son las funciones que controlan los dispositivos. A menudo se omite y solo se habla de dos planos.",
+  "notes.items.4.name": "Las definiciones difieren",
+  "notes.items.4.text": "La documentación oficial de Kubernetes sitúa etcd entre los componentes del plano de control y no usa las palabras «data plane» en las páginas de arquitectura y componentes: dice «control plane» y «nodos». Lo que un autor entiende por el término hay que comprobarlo en cada fuente."
  },
  "permissions": {
   "name": "Permisos",
