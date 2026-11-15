@@ -456,12 +456,67 @@
   },
   "epimorphism": {
     "name": "Epimorphism (toàn cấu)",
-    "aka": "phép ánh xạ không có chỗ trống",
-    "def": "Epimorphism (toàn cấu) là phép ánh xạ trong đó mọi phần của kết quả đều đến từ một thứ nào đó ở nguồn: không còn phần nào bị bỏ trống. Với câu trả lời của tác nhân AI, điều này nghĩa là mọi khẳng định đều có chỗ dựa trong dữ liệu. Nơi nào thiếu chỗ dựa thì còn một chỗ trống, và mô hình lấp nó bằng suy đoán: đó là cách ảo giác (hallucination) hình thành.",
-    "faq.0.q": "Epimorphism là gì, nói đơn giản?",
-    "faq.0.a": "Phép ánh xạ trong đó mọi phần của kết quả đều đến từ một thứ nào đó ở nguồn: không còn phần nào bị bỏ trống.",
-    "faq.1.q": "Epimorphism liên quan thế nào đến ảo giác?",
-    "faq.1.a": "Nếu mọi khẳng định trong câu trả lời đều có chỗ dựa trong dữ liệu thì không có ảo giác. Nơi thiếu chỗ dựa, mô hình lấp khoảng trống bằng suy đoán.",
+    "aka": "cấu xạ giản ước được bên phải",
+    "def": "Epimorphism (toàn cấu) là cấu xạ f: X → Y giản ước được bên phải: nếu g₁∘f = g₂∘f với các cấu xạ g₁, g₂ xuất phát từ Y thì g₁ = g₂. Đây là sự tổng quát hóa của toàn ánh: trong tập hợp và trong nhóm, toàn cấu chính là các ánh xạ toàn ánh, còn trong vành có toàn cấu không phải toàn ánh, ví dụ phép nhúng ℤ → ℚ. Khái niệm đối ngẫu là đơn cấu (monomorphism).",
+    "seo.title": "Epimorphism (toàn cấu): là gì, khác đẳng cấu thế nào",
+    "seo.description": "Toàn cấu là cấu xạ giản ước được bên phải: trong nhóm là toàn ánh, trong vành thì không phải lúc nào cũng vậy (ℤ → ℚ). Bảng: đẳng cấu, toàn cấu, đơn cấu.",
+    "notes.title": "Ví dụ, phản ví dụ và cách dùng trong AI",
+    "notes.items.0.name": "Trong nhóm: toàn ánh",
+    "notes.items.0.text": "Trong phạm trù các nhóm, mọi toàn cấu đều là toàn ánh (kết quả của Otto Schreier). Điều này cũng đúng với nhóm hữu hạn, nhóm abel, tập hợp, không gian vectơ và môđun.",
+    "notes.items.1.name": "Không nhất thiết là toàn ánh",
+    "notes.items.1.text": "Phép nhúng ℤ → ℚ trong phạm trù các vành là toàn cấu nhưng không phải toàn ánh: một đồng cấu vành xuất phát từ ℚ hoàn toàn được xác định bởi giá trị trên ℤ, nên hai đồng cấu trùng nhau trên số nguyên thì cũng trùng nhau trên số hữu tỉ. Phép nhúng này còn là đơn cấu, nhưng không phải đẳng cấu.",
+    "notes.items.2.name": "Câu trả lời của tác nhân AI",
+    "notes.items.2.text": "Theo phép loại suy với toàn ánh: câu trả lời có căn cứ khi mọi phần của nó đều có chỗ dựa trong dữ liệu. Nơi nào thiếu chỗ dựa thì còn một chỗ trống, và mô hình lấp nó bằng suy đoán: đó là cách ảo giác hình thành.",
+    "table.title": "Đẳng cấu, toàn cấu và đơn cấu cạnh nhau",
+    "table.head": [
+      "Đẳng cấu",
+      "Toàn cấu",
+      "Đơn cấu"
+    ],
+    "table.rows.0": [
+      "Định nghĩa",
+      "có cấu xạ ngược g: g∘f = id và f∘g = id",
+      "giản ước được bên phải: g₁∘f = g₂∘f ⇒ g₁ = g₂",
+      "giản ước được bên trái: f∘g₁ = f∘g₂ ⇒ g₁ = g₂"
+    ],
+    "table.rows.1": [
+      "Trong phạm trù tập hợp",
+      "song ánh",
+      "toàn ánh",
+      "đơn ánh"
+    ],
+    "table.rows.2": [
+      "Trong nhóm",
+      "đồng cấu song ánh",
+      "đồng cấu toàn ánh",
+      "đồng cấu đơn ánh"
+    ],
+    "table.rows.3": [
+      "Trong phạm trù các vành",
+      "đồng cấu song ánh",
+      "không nhất thiết toàn ánh",
+      "đồng cấu đơn ánh"
+    ],
+    "table.rows.4": [
+      "Ví dụ",
+      "x ↦ −x trên ℤ",
+      "phép nhúng ℤ → ℚ trong vành",
+      "phép nhúng ℤ → ℚ"
+    ],
+    "table.rows.5": [
+      "Khả nghịch",
+      "luôn khả nghịch",
+      "chỉ toàn cấu chẻ được mới có nghịch đảo bên phải",
+      "chỉ đơn cấu chẻ được mới có nghịch đảo bên trái"
+    ],
+    "faq.0.q": "Epimorphism (toàn cấu) là gì?",
+    "faq.0.a": "Cấu xạ f: X → Y giản ước được bên phải: nếu g₁∘f = g₂∘f thì g₁ = g₂. Nó tổng quát hóa toàn ánh cho các phạm trù bất kỳ.",
+    "faq.1.q": "Đẳng cấu, toàn cấu và đơn cấu khác nhau thế nào?",
+    "faq.1.a": "Đẳng cấu có cấu xạ ngược. Toàn cấu giản ước được bên phải, đơn cấu giản ước được bên trái. Mọi đẳng cấu đều là cả hai, nhưng chiều ngược lại sai: phép nhúng ℤ → ℚ trong vành vừa là toàn cấu vừa là đơn cấu nhưng không phải đẳng cấu.",
+    "faq.2.q": "Đồng cấu (homomorphism) là gì?",
+    "faq.2.a": "Ánh xạ giữa hai cấu trúc đại số cùng loại và bảo toàn các phép toán. Với nhóm: f(x·y) = f(x)·f(y).",
+    "faq.3.q": "Mọi toàn cấu có phải là toàn ánh không?",
+    "faq.3.a": "Không. Trong tập hợp, nhóm, nhóm abel và không gian vectơ thì có, nhưng trong vành thì không: phép nhúng ℤ → ℚ là toàn cấu không phải toàn ánh.",
     "source.label": "Wikipedia: Epimorphism"
   },
   "automated-test": {

@@ -1633,18 +1633,51 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'epimorphism',
         name: { ru: 'Эпиморфизм', en: 'Epimorphism' },
-        aka: { ru: 'соответствие без пустых мест', en: 'a matching with no empty spots' },
+        aka: { ru: 'морфизм, сокращаемый справа', en: 'right-cancellable morphism' },
         def: {
-          ru: 'Эпиморфизм — соответствие, при котором каждая часть результата получена из чего-то в источнике: непокрытых частей нет. Для ответа агента это значит, что у каждого утверждения есть опора в данных. Там, где опоры нет, остаётся пустое место, и модель заполняет его догадкой: так возникает галлюцинация.',
-          en: 'An epimorphism is a matching where every part of the result comes from something in the source: no part is left uncovered. For an agent’s answer it means every statement has support in the data. Where there is no support an empty spot remains, and the model fills it with a guess: that is how a hallucination arises.',
+          ru: 'Эпиморфизм — морфизм f: X → Y, который можно сократить справа: если g₁∘f = g₂∘f для морфизмов g₁, g₂ из Y, то g₁ = g₂. Это обобщение сюръекции: в множествах и в группах эпиморфизмы — именно сюръекции, а в кольцах есть и несюръективные, например вложение ℤ → ℚ. Двойственное понятие — мономорфизм.',
+          en: 'An epimorphism is a morphism f: X → Y that is right-cancellative: if g₁∘f = g₂∘f, then g₁ = g₂. It generalises a surjection: in sets and groups epimorphisms are exactly the surjective maps, while in rings there are non-surjective ones, such as the inclusion ℤ → ℚ. The dual notion is a monomorphism.',
+        },
+        seo: {
+          title: { ru: 'Эпиморфизм: что это и чем отличается от изоморфизма', en: 'Epimorphism: what it is vs isomorphism, monomorphism' },
+          description: {
+            ru: 'Эпиморфизм — морфизм, сокращаемый справа; в группах это сюръекция, в кольцах бывает и несюръективный (ℤ → ℚ). Таблица: изоморфизм, эпиморфизм, мономорфизм.',
+            en: 'An epimorphism is a right-cancellative morphism: a surjection in groups, but not always in rings (ℤ → ℚ). Table: isomorphism vs epimorphism vs monomorphism.',
+          },
         },
         match: { ru: ['эпиморфизм\\p{L}*'], en: ['epimorphisms?'] },
         related: ['hallucination', 'source', 'context'],
+        notes: {
+          title: { ru: 'Примеры, контрпример и применение в ИИ', en: 'Examples, a counterexample and use in AI' },
+          items: [
+            { name: { ru: 'В группах — сюръекции', en: 'In groups: surjections' }, text: { ru: 'В категории групп каждый эпиморфизм сюръективен (результат Отто Шрайера). То же верно для конечных и абелевых групп, множеств, векторных пространств и модулей.', en: 'In the category of groups every epimorphism is surjective (a result of Otto Schreier). The same holds for finite groups, abelian groups, sets, vector spaces and modules.' } },
+            { name: { ru: 'Не обязан быть сюръекцией', en: 'Need not be surjective' }, text: { ru: 'Вложение ℤ → ℚ в категории колец — эпиморфизм, но не сюръекция: гомоморфизм из ℚ целиком определяется значениями на ℤ, поэтому два гомоморфизма, совпавшие на целых числах, совпадают и на рациональных. Это вложение ещё и мономорфизм, но не изоморфизм.', en: 'The inclusion ℤ → ℚ in the category of rings is an epimorphism but not a surjection: a ring homomorphism out of ℚ is determined entirely by its values on ℤ, so two homomorphisms that agree on the integers agree on the rationals. The inclusion is also a monomorphism, yet not an isomorphism.' } },
+            { name: { ru: 'Ответ ИИ-агента', en: 'An AI agent’s answer' }, text: { ru: 'По аналогии с сюръекцией: ответ обоснован, когда у каждой его части есть опора в данных. Там, где опоры нет, остаётся пустое место, и модель заполняет его догадкой: так возникает галлюцинация.', en: 'By analogy with a surjection: an answer is grounded when every part of it has support in the data. Where there is no support an empty spot remains, and the model fills it with a guess: that is how a hallucination arises.' } },
+          ],
+        },
+        table: {
+          title: { ru: 'Изоморфизм, эпиморфизм и мономорфизм рядом', en: 'Isomorphism, epimorphism and monomorphism side by side' },
+          head: { ru: ['Изоморфизм', 'Эпиморфизм', 'Мономорфизм'], en: ['Isomorphism', 'Epimorphism', 'Monomorphism'] },
+          rows: [
+            { ru: ['Определение', 'есть обратный морфизм g: g∘f = id и f∘g = id', 'сокращаемый справа: g₁∘f = g₂∘f ⇒ g₁ = g₂', 'сокращаемый слева: f∘g₁ = f∘g₂ ⇒ g₁ = g₂'], en: ['Definition', 'has an inverse morphism g: g∘f = id and f∘g = id', 'right-cancellative: g₁∘f = g₂∘f ⇒ g₁ = g₂', 'left-cancellative: f∘g₁ = f∘g₂ ⇒ g₁ = g₂'] },
+            { ru: ['В категории множеств', 'биекции', 'сюръекции', 'инъекции'], en: ['In the category of sets', 'bijections', 'surjections', 'injections'] },
+            { ru: ['В группах', 'биективные гомоморфизмы', 'сюръективные гомоморфизмы', 'инъективные гомоморфизмы'], en: ['In groups', 'bijective homomorphisms', 'surjective homomorphisms', 'injective homomorphisms'] },
+            { ru: ['В категории колец', 'биективные гомоморфизмы', 'не обязательно сюръективные', 'инъективные гомоморфизмы'], en: ['In the category of rings', 'bijective homomorphisms', 'not necessarily surjective', 'injective homomorphisms'] },
+            { ru: ['Пример', 'x ↦ −x на ℤ', 'вложение ℤ → ℚ в кольцах', 'вложение ℤ → ℚ'], en: ['Example', 'x ↦ −x on ℤ', 'the inclusion ℤ → ℚ in rings', 'the inclusion ℤ → ℚ'] },
+            { ru: ['Обратимость', 'всегда обратим', 'обратный справа есть только у расщепляемого эпиморфизма', 'обратный слева есть только у расщепляемого мономорфизма'], en: ['Invertibility', 'always invertible', 'a right inverse exists only for a split epimorphism', 'a left inverse exists only for a split monomorphism'] },
+          ],
+        },
         faq: [
-          { q: { ru: 'Эпиморфизм — что это простыми словами?', en: 'What is an epimorphism in plain words?' }, a: { ru: 'Соответствие, при котором каждая часть результата получена из чего-то в источнике: непокрытых частей нет.', en: 'A mapping where every part of the result comes from something in the source: no part is left uncovered.' } },
-          { q: { ru: 'Как эпиморфизм связан с галлюцинациями?', en: 'How does an epimorphism relate to hallucinations?' }, a: { ru: 'Если у каждого утверждения ответа есть опора в данных, галлюцинации нет. Там, где опоры нет, модель заполняет пустое место догадкой.', en: 'If every statement in the answer has support in the data, there is no hallucination. Where support is missing, the model fills the gap with a guess.' } },
+          { q: { ru: 'Что такое эпиморфизм?', en: 'What is an epimorphism?' }, a: { ru: 'Морфизм f: X → Y, который можно сократить справа: если g₁∘f = g₂∘f, то g₁ = g₂. Это обобщение сюръекции на произвольные категории.', en: 'A morphism f: X → Y that can be cancelled on the right: if g₁∘f = g₂∘f, then g₁ = g₂. It generalises a surjection to arbitrary categories.' } },
+          { q: { ru: 'Чем отличаются изоморфизм, эпиморфизм и мономорфизм?', en: 'What is the difference between an isomorphism, an epimorphism and a monomorphism?' }, a: { ru: 'Изоморфизм имеет обратный морфизм. Эпиморфизм сокращается справа, мономорфизм — слева. Каждый изоморфизм — и то и другое, обратное неверно: вложение ℤ → ℚ в кольцах эпиморфизм и мономорфизм, но не изоморфизм.', en: 'An isomorphism has an inverse morphism. An epimorphism is cancellable on the right, a monomorphism on the left. Every isomorphism is both, the converse fails: the inclusion ℤ → ℚ in rings is an epimorphism and a monomorphism but not an isomorphism.' } },
+          { q: { ru: 'Что такое гомоморфизм?', en: 'What is a homomorphism?' }, a: { ru: 'Отображение между двумя алгебраическими структурами одного типа, сохраняющее операции. Для групп: f(x·y) = f(x)·f(y).', en: 'A structure-preserving map between two algebraic structures of the same type. For groups: f(x·y) = f(x)·f(y).' } },
+          { q: { ru: 'Всякий ли эпиморфизм сюръективен?', en: 'Is every epimorphism surjective?' }, a: { ru: 'Нет. В множествах, группах, абелевых группах и векторных пространствах да, а в кольцах нет: вложение ℤ → ℚ — эпиморфизм, но не сюръекция.', en: 'No. In sets, groups, abelian groups and vector spaces yes, but in rings no: the inclusion ℤ → ℚ is an epimorphism but not a surjection.' } },
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Epimorphism', label: { ru: 'Википедия: эпиморфизм', en: 'Wikipedia: Epimorphism' } },
+        sites: [
+          { url: 'https://ncatlab.org/nlab/show/epimorphism', label: { ru: 'nLab: epimorphism', en: 'nLab: epimorphism' } },
+          { url: 'https://en.wikipedia.org/wiki/Homomorphism', label: { ru: 'Wikipedia: Homomorphism', en: 'Wikipedia: Homomorphism' } },
+        ],
       },
     ],
   },
