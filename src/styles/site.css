@@ -689,6 +689,8 @@ a.s-term:hover, a.s-term:focus-visible { text-decoration-style: solid; }
 .am-info b { color: var(--ink); margin-right: 6px; }
 .am-hint { color: var(--ink-3); }
 .s-art-wide { position: relative; left: 50%; width: min(980px, calc(100vw - 32px)); transform: translateX(-50%); }
+/* Узкий экран: широкая схема не сжимается до нечитаемых подписей, а листается вбок */
+@media (max-width: 640px) { div.s-art.s-art-wide { left: auto; transform: none; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; } div.s-art.s-art-wide > svg { width: 760px; max-width: none; } }
 .g-glos dd { margin: 0; color: var(--ink-2); }
 @media (max-width: 640px) { .g-glos > div { grid-template-columns: 1fr; gap: 2px; } }
 /* Глоссарий: плотнее, без больших промежутков между заголовком, чипами и списками */
