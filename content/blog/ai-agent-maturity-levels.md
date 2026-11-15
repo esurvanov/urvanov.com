@@ -1,7 +1,7 @@
 ---
 title: Уровни зрелости работы с ИИ-агентами: от чата к спекам, скиллам, коду, харнессу и агентной системе
 date: 2026-11-14
-updated: 2026-11-14
+updated: 2026-11-15
 description: Как опыт разработчика с ИИ растёт от вопроса в чате до агентной системы: что записывается на каждой ступени, когда переходить дальше и чего это стоит. Лестницы Every, Hashimoto, Eledath, Rezvov, Clark и Shapiro, четыре опоры Red Hat и цифры Malik.
 tags: AI, агенты, спеки, скиллы, харнесс, зрелость, compound engineering
 category: specs
@@ -119,7 +119,7 @@ toc: map=Семь ступеней | sources=Что говорит рынок | 
     </thead>
     <tbody>
       <tr><td><b>Spec-first</b></td><td>спеку пишут до кода и используют на одну задачу</td><td>GitHub Spec Kit</td></tr>
-      <tr><td><b>Spec-anchored</b></td><td>спека живёт после задачи: изменения вливаются в неё</td><td>OpenSpec</td></tr>
+      <tr><td><b>Spec-anchored</b></td><td>спека живёт после задачи: изменения вливаются в неё</td><td><a href="/blog/openspec/">OpenSpec</a></td></tr>
       <tr><td><b>Spec-as-source</b></td><td>человек правит только спеку, код генерируется из неё</td><td>Tessl; у <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Böckeler</a> заявлен только он</td></tr>
       <tr><td><b>Spec-in-the-loop</b></td><td>спеку поправляют метрики и инциденты из работающей системы</td><td>готовых программ нет; близкое поведение у <a href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" target="_blank" rel="noopener">Red Hat</a> и <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>, см. ниже</td></tr>
     </tbody>

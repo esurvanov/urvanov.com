@@ -1,7 +1,7 @@
 ---
 title: AI agent maturity levels: from chat to specs, skills, code, a harness and an agentic system
 date: 2026-11-14
-updated: 2026-11-14
+updated: 2026-11-15
 description: How a developer's work with AI grows from a question in a chat to an agentic system: what gets written down at each step, when to move on and what it costs. The ladders of Every, Hashimoto, Eledath, Rezvov, Clark and Shapiro, Red Hat's four pillars and Malik's numbers.
 tags: AI, agents, specs, skills, harness, maturity, compound engineering
 category: specs
@@ -119,7 +119,7 @@ AI agent maturity levels run from a chat to an agent, a spec, a skill, a script,
     </thead>
     <tbody>
       <tr><td><b>Spec-first</b></td><td>the spec is written before the code and used for one task</td><td>GitHub Spec Kit</td></tr>
-      <tr><td><b>Spec-anchored</b></td><td>the spec lives on after the task: changes are merged into it</td><td>OpenSpec</td></tr>
+      <tr><td><b>Spec-anchored</b></td><td>the spec lives on after the task: changes are merged into it</td><td><a href="/blog/openspec/">OpenSpec</a></td></tr>
       <tr><td><b>Spec-as-source</b></td><td>a person edits only the spec, the code is generated from it</td><td>Tessl; only this one is claimed by <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Böckeler</a></td></tr>
       <tr><td><b>Spec-in-the-loop</b></td><td>metrics and incidents from the running system correct the spec</td><td>no ready programs; similar behaviour at <a href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" target="_blank" rel="noopener">Red Hat</a> and <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>, see below</td></tr>
     </tbody>

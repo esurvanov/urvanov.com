@@ -2452,8 +2452,8 @@ export const TERM_SETS: TermSet[] = [
         slug: 'openspec',
         name: { ru: 'OpenSpec', en: 'OpenSpec' },
         def: {
-          ru: 'OpenSpec — бесплатная открытая программа от Fission AI для разработки по спецификациям (Spec-Driven Development): агент сначала пишет план изменения в файлы, вы его проверяете, потом агент пишет код. Действующие спеки лежат в `openspec/specs`, а каждое изменение — отдельная папка в `openspec/changes`: `proposal.md` (зачем и что), дельта к спекам, `design.md` и `tasks.md`. Агент идёт по скиллам `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (до версии 2.0 — команды `/opsx:propose`, `/opsx:apply`, `/opsx:archive`); при архивации дельта вливается в спеки. Легче Spec Kit: без жёстких фаз, работает с 30+ агентами.',
-          en: 'OpenSpec is a free, open-source framework by Fission AI for Spec-Driven Development: the agent first writes a change plan into files, you review it, then the agent writes code. Live specs sit in `openspec/specs`, and every change is its own folder in `openspec/changes`: `proposal.md` (why and what), a spec delta, `design.md` and `tasks.md`. The agent follows the skills `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (before 2.0: `/opsx:propose`, `/opsx:apply`, `/opsx:archive`); archiving merges the delta into the specs. Lighter than Spec Kit, with no rigid phases, and works with 30+ agents.',
+          ru: 'OpenSpec — бесплатная открытая программа от Fission AI для разработки по спецификациям (Spec-Driven Development): агент сначала пишет план изменения в файлы, вы его проверяете, потом агент пишет код. Действующие спеки лежат в `openspec/specs`, а каждое изменение — отдельная папка в `openspec/changes`: `proposal.md` (зачем и что), дельта к спекам, `design.md` и `tasks.md`. Агент идёт по скиллам `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (до версии 2.0 — команды `/opsx:propose`, `/opsx:apply`, `/opsx:archive`); при архивации дельта вливается в спеки. Среди трёх способов работать по спецификациям (OpenSpec, Spec Kit, Kiro) OpenSpec самый лёгкий: без жёстких фаз, с готовым кодом и 30+ агентами; Spec Kit ведёт по фазам, Kiro — среда AWS со своим агентом (таблица сравнения ниже). Установка, команды и пример изменения — подробный разбор в статье.',
+          en: 'OpenSpec is a free, open-source framework by Fission AI for Spec-Driven Development: the agent first writes a change plan into files, you review it, then the agent writes code. Live specs sit in `openspec/specs`, and every change is its own folder in `openspec/changes`: `proposal.md` (why and what), a spec delta, `design.md` and `tasks.md`. The agent follows the skills `/openspec-propose` → `/openspec-apply-change` → `/openspec-archive-change` (before 2.0: `/opsx:propose`, `/opsx:apply`, `/opsx:archive`); archiving merges the delta into the specs. Among the three ways to work from specifications (OpenSpec, Spec Kit, Kiro), OpenSpec is the lightest: no rigid phases, fits existing code and works with 30+ agents; Spec Kit walks through phases, Kiro is an AWS environment with its own agent (comparison table below). Setup, commands and a change example are covered in detail in the article.',
         },
         match: { ru: ['OpenSpec'], en: ['OpenSpec'] },
         related: ['spec-driven-development', 'spec-kit', 'kiro'],
@@ -2465,10 +2465,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://github.com/Fission-AI/OpenSpec', label: { ru: 'Репозиторий OpenSpec на GitHub', en: 'OpenSpec GitHub repo' } },
         seo: {
-          title: { ru: 'OpenSpec: что это и как писать спеки для ИИ-агента', en: 'OpenSpec: what it is and how to write specs for an AI agent' },
+          title: { ru: 'OpenSpec, Spec Kit и Kiro: определение и сравнение', en: 'OpenSpec, Spec Kit and Kiro: definition and comparison' },
           description: {
-            ru: 'OpenSpec — бесплатная программа для разработки по спецификациям: план изменения пишется до кода. Что даёт, как начать и чем отличается от Spec Kit и Kiro.',
-            en: 'OpenSpec is a free program for spec-driven development: the change plan is written before code. What it gives, how to start and how it differs from Spec Kit and Kiro.',
+            ru: 'Определение OpenSpec и сравнение со Spec Kit и Kiro: цена, файлы изменения, порядок шагов, агенты. Установка и команды — в подробной статье.',
+            en: 'OpenSpec defined and compared with Spec Kit and Kiro: price, change files, step order, agents. Setup and commands are in the detailed article.',
           },
         },
         more: { post: 'openspec', label: { ru: 'OpenSpec: установка, команды и пример изменения', en: 'OpenSpec: setup, commands and a change example' } },

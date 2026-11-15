@@ -10,7 +10,7 @@ mentions: OpenSpec, Spec-Driven Development, Spec Kit, Claude Code, Codex, Curso
 toc: what=Что это | install=Установка | flow=Три команды | example=Пример | notneeded=Когда не нужен | kit=OpenSpec или Spec Kit | start=С чего начать | problems=Проблемы | faq=Вопросы | next=Дальше по теме
 ---
 
-OpenSpec — бесплатная открытая программа для разработки по спецификациям (Spec-Driven Development). До кода ИИ-агент пишет в папку проекта план изменения: зачем оно, какие требования, как сделать и какие задачи. Вы проверяете план, агент пишет код по задачам, а готовые требования вливаются в общие спеки проекта. Ниже — установка, три команды и разбор настоящего изменения.
+OpenSpec — это бесплатная открытая программа для разработки по спецификациям (Spec-Driven Development, SDD): перед кодом ИИ-агент пишет в папку проекта план изменения — зачем оно, какие требования, как сделать и какие задачи. Вы проверяете план, агент пишет код по задачам, а готовые требования вливаются в общие спеки. Ниже — установка, три команды и разбор настоящего изменения.
 
 <b-post series="specs">
 <b-chapter id="what" icon="file-lines" title="Что такое OpenSpec">
@@ -153,6 +153,23 @@ OpenSpec — бесплатная открытая программа для р�
 </b-chapter>
 
 <b-chapter id="start" icon="flag" title="С чего начать">
+  <b-why align="left"><b>Короткий пример за 5 минут.</b> Две команды в терминале и три в чате агента. Сначала установка и подготовка проекта:</b-why>
+  <b-codebox title="Терминал: установка и openspec init">
+    curl -fsSL https://openspec.dev/cli/install.sh | sh
+    cd your-project
+    openspec init
+  </b-codebox>
+  <b-why align="left">Дальше три команды в чате агента: <code>/openspec-propose add-dark-mode</code> (агент пишет план), <code>/openspec-apply-change</code> (код по задачам), <code>/openspec-archive-change</code> (слияние в общие спеки). После <code>/openspec-propose</code> в проекте появляется папка изменения, а после архивации она переезжает в <code>archive</code>, и требования попадают в <code>specs</code><b-proof href="https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md" quote="OpenSpec, Getting Started: «openspec/ ├── specs/ # Source of truth … └── changes/ # Proposed updates (one folder per change) … proposal.md, design.md, tasks.md, specs/ # Delta specs» — github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md"/>:</b-why>
+  <b-codebox title="Что лежит в openspec/ после /openspec-propose add-dark-mode">
+    openspec/
+    ├── specs/                  действующие требования
+    └── changes/
+        └── add-dark-mode/
+            ├── proposal.md     зачем и что меняется
+            ├── specs/          дельта: что добавляется, меняется, убирается
+            ├── design.md       как сделать
+            └── tasks.md        задачи с галочками
+  </b-codebox>
   <b-why align="left">Начните с одной небольшой правки, которую вы и так собирались сделать. Пять запросов агенту, по одному на шаг: скопируйте их в Claude Code, Codex или Cursor и подставьте свою задачу.</b-why>
   <b-hdd-steps>
     <step t="Установка">«Установи OpenSpec и запусти openspec init в этом проекте. Покажи, какие команды появились»</step>
@@ -179,6 +196,8 @@ OpenSpec — бесплатная открытая программа для р�
     <q t="Как установить OpenSpec?">Командой curl -fsSL https://openspec.dev/cli/install.sh | sh на macOS и Linux или через npm install -g @fission-ai/openspec@latest. Затем в папке проекта запустите openspec init.</q>
     <q t="Чем OpenSpec отличается от Spec Kit?">OpenSpec гибче и рассчитан на уже работающий код, шаги можно повторять в любом порядке. Spec Kit от GitHub ведёт по жёстким фазам: принципы, спека, план, задачи, код.</q>
     <q t="С какими агентами работает OpenSpec?">С Claude Code, Codex, Cursor, GitHub Copilot и другими, всего с 30 с лишним агентами. Команда openspec init ставит скиллы под те агенты, которые вы выбрали.</q>
+    <q t="Как использовать OpenSpec?">Установите программу, выполните openspec init в папке проекта и в чате агента вызовите /openspec-propose с именем изменения. Проверьте план, затем /openspec-apply-change пишет код по задачам, а /openspec-archive-change вливает требования в общие спеки. Не уверены, что строить, — начните с /openspec-explore.</q>
+    <q t="Что такое SDD (разработка по спецификациям)?">SDD (Spec-Driven Development) — подход, где сначала записывают спецификацию: что система должна делать. Агент пишет код по этой спецификации, а она лежит в файлах проекта. OpenSpec, Spec Kit и Kiro — три способа так работать.</q>
   </b-faq-cards>
 </b-chapter>
 
