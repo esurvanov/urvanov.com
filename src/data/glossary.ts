@@ -4145,8 +4145,8 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['Quint'], en: ['Quint'] },
         related: ['model-checking', 'apalache', 'tla-plus', 'invariant', 'qunit'],
-        more: { post: 'quint-models-find-races', label: { ru: 'Как найти гонки и потерянные данные моделями на Quint', en: 'Finding races and lost data with Quint models' } },
-        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }, { post: 'tla-alloy-quint-compare', label: { ru: 'TLA+ vs Quint vs Alloy: что выбрать', en: 'TLA+ vs Quint vs Alloy: which to choose' } }],
+        more: { post: 'quint-vs-tla-plus', label: { ru: 'Quint vs TLA+: чем отличаются и что выбрать', en: 'Quint vs TLA+: differences and which to choose' } },
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Чем Quint отличается от QUnit, Jest и TLA+', en: 'How Quint differs from QUnit, Jest and TLA+' } }, { post: 'tla-alloy-quint-compare', label: { ru: 'TLA+ vs Quint vs Alloy: что выбрать', en: 'TLA+ vs Quint vs Alloy: which to choose' } }, { post: 'quint-models-find-races', label: { ru: 'Как найти гонки и потерянные данные моделями на Quint', en: 'Finding races and lost data with Quint models' } }],
         faq: [
           { q: { ru: 'Quint — что это за язык?', en: 'What is the Quint language?' }, a: { ru: 'Язык, на котором описывают правила системы так, чтобы их можно было запускать и проверять до написания кода. Запись похожа на обычный код.', en: 'A language for describing a system’s rules so they can be run and checked before code is written. It reads like ordinary code.' } },
           { q: { ru: 'Чем Quint отличается от TLA+?', en: 'How is Quint different from TLA+?' }, a: { ru: 'Quint читается как обычный код, TLA+ похож на математические формулы, поэтому порог входа у Quint ниже. Проверяют их одними программами: TLC и Apalache.', en: 'Quint reads like ordinary code, TLA+ looks like math formulas, so Quint is easier to start with. Both are checked by the same programs: TLC and Apalache.' } },
@@ -4163,7 +4163,7 @@ export const TERM_SETS: TermSet[] = [
         },
         match: { ru: ['TLA\\+'], en: ['TLA\\+'] },
         related: ['quint', 'alloy', 'apalache', 'model-checking', 'smt-solver', 'tlc'],
-        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Quint против TLA+ и Alloy', en: 'Quint versus TLA+ and Alloy' } }],
+        also: [{ post: 'quint-vs-tests-and-tla', label: { ru: 'Quint против TLA+ и Alloy', en: 'Quint versus TLA+ and Alloy' } }, { post: 'tla-alloy-quint-compare', label: { ru: 'TLA+ vs Quint vs Alloy: что выбрать', en: 'TLA+ vs Quint vs Alloy: which to choose' } }],
         faq: [
           { q: { ru: 'TLA+ — что это?', en: 'What is TLA+?' }, a: { ru: 'Способ описать, как система ведёт себя шаг за шагом, настолько точно, что описание можно проверить программой до написания кода. Автор — Лесли Лэмпорт.', en: 'A way to describe how a system behaves step by step so precisely that a program can check the description before code is written. Its author is Leslie Lamport.' } },
           { q: { ru: 'Что находит TLA+?', en: 'What does TLA+ find?' }, a: { ru: 'Цепочки шагов, где правило нарушается. Например, что при сбое между списанием и зачислением деньги пропадают.', en: 'Step sequences that break a rule. For example, that money disappears if a failure happens between the debit and the credit.' } },
@@ -4176,7 +4176,7 @@ export const TERM_SETS: TermSet[] = [
             en: 'TLA+ is Leslie Lamport’s language: a system is described step by step and checked by TLC and Apalache before code. An example and how it compares with Quint and Alloy.',
           },
         },
-        more: { post: 'tla-alloy-quint-compare', label: { ru: 'TLA+ vs Quint vs Alloy: что выбрать', en: 'TLA+ vs Quint vs Alloy: which to choose' } },
+        more: { post: 'quint-vs-tla-plus', label: { ru: 'Quint vs TLA+: чем отличаются и что выбрать', en: 'Quint vs TLA+: differences and which to choose' } },
       },
       {
         slug: 'alloy',

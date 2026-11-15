@@ -73,36 +73,8 @@ Quint and TLA+ both describe system behavior step by step but write it different
   <b-why align="left">They describe the same thing, and only the notation differs. Quint is designed as a syntax that suits engineers<b-proof href="https://apalache-mc.org/" quote="The Quint language provides an engineer-friendly syntax for writing specifications."/>, and the same programs check both notations. TLC goes through states one by one<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, while Apalache is symbolic and considers all chains up to a given length<b-proof href="https://apalache-mc.org/" quote="Bounded model checking to reason about all executions up to length k"/>.</b-why>
 </b-chapter>
 
-<b-chapter id="qt" icon="scales" title="Quint or TLA+: a table and when to pick which">
-  <b-why align="left">First, a direct comparison of the pair. The Quint documentation describes Quint as a language with TypeScript-inspired syntax<b-proof href="https://quint.sh/faq" quote="Quint uses programming-style syntax inspired by TypeScript and functional languages."/>, and TLA+ as written in mathematical notation. The other differences are in the table.</b-why>
-<b-table id="quint-tla-table">
-
-| | TLA+ | Quint |
-|---|---|---|
-| **Notation** | mathematical, LaTeX-style | code-like: syntax inspired by TypeScript and functional languages |
-| **Types** | none: the language is deliberately untyped | type and effect checker, most types are inferred |
-| **Proofs** | has the TLAPS proof system | none |
-| **Checking** | TLC and Apalache | Apalache and TLC from the Quint command line, plus its own random simulator |
-| **Running as tests** | no direct equivalent | a "run" (a concrete execution path) is part of the language and can serve as a test |
-| **Expressiveness** | wider in theory | a fragment of TLA+; the authors hit no limits except some forms of recursion |
-| **Learning curve** | steep for many people | likely faster for newcomers to formal specification |
-
-</b-table>
-  <b-why align="left">Each row rests on the comparison section of the Quint FAQ. On types, it says TLA+ is untyped on purpose<b-proof href="https://quint.sh/faq" quote="TLA+ is purposely untyped so that designers can focus on algorithmic concepts."/>, while Quint's type and effect checker catches some errors in the editor before anything runs. On limits it is direct: TLA+ has the TLAPS proof system, Quint does not. Quint works with a fragment of TLA+, so most TLA+ specs translate into Quint syntax directly<b-proof href="https://quint.sh/faq" quote="most TLA+ specs can be directly translated into the Quint syntax"/>.</b-why>
-  <b-sublabel>When TLA+, when Quint</b-sublabel>
-  <b-rules cols="2">
-    <rule icon="shield-check" t="TLA+: you need proofs">Strict guarantees for a complex system: TLA+ has TLAPS, Quint does not</rule>
-    <rule icon="book" t="TLA+: existing legacy">Ready-made TLA+ specs and books that need no rewriting</rule>
-    <rule icon="code" t="Quint: the team reads it">Code-like notation is easier to review, especially when an agent writes the spec</rule>
-    <rule icon="flask" t="Quint: you need tests">Model runs turn into tests for the implementation</rule>
-  </b-rules>
-  <b-why align="left">These four cards follow the Thoughtworks Technology Radar assessment, which puts Quint in the "Assess" ring. The radar authors call the choice close<b-proof href="https://www.thoughtworks.com/radar/languages-and-frameworks/quint" quote="Our teams have found the choice between Quint and TLA+ a close call"/>: Quint's developer tooling on one side, TLA+'s maturity on the other. As the radar describes Quint's differences: readability, developer experience, and a TypeScript-like syntax that is easier to review when an agent writes the spec.</b-why>
-  <b-why align="left">An example from this site's practice. Quint models here check product rules over time, and the checks themselves are tested with deliberately broken copies of the model: a rule the code already satisfies must fail on a copy with one defect. Details, examples and diagrams: [How to find a race condition: a Quint model](/blog/quint-models-find-races/), section on testing the checks. This repository holds no model files: the article describes models from another project.</b-why>
-  <b-finding>
-    <ex>Quint and TLA+ describe the same behavior: they differ in notation, types, proofs and test runs.</ex>
-    <gen>The choice is close: the radar treats Quint's tooling and TLA+'s maturity as nearly equal arguments.</gen>
-    <do>If you do not need proofs, start with Quint. If you do, write TLA+ and use TLAPS.</do>
-  </b-finding>
+<b-chapter id="qt" icon="scales" title="Quint or TLA+: a short summary">
+  <b-why align="left">Quint and TLA+ describe the same behavior and are checked by the same programs. They differ in notation, types, TLAPS proofs (only TLA+ has them) and test runs (only Quint has them). The Thoughtworks radar calls the choice between them close<b-proof href="https://www.thoughtworks.com/radar/languages-and-frameworks/quint" quote="Our teams have found the choice between Quint and TLA+ a close call"/>: without proofs, start with Quint; with proofs, take TLA+. A table of seven differences, selection rules and moving specs over: [Quint vs TLA+: differences and which to choose](/blog/quint-vs-tla-plus/).</b-why>
 </b-chapter>
 
 <b-chapter id="alloy-quint" icon="search" title="How Alloy differs from Quint">
@@ -142,6 +114,7 @@ Quint and TLA+ both describe system behavior step by step but write it different
 
 <b-chapter id="next" title="Further reading">
   <b-links>
+    <item href="/blog/quint-vs-tla-plus/" k="Comparison" t="Quint vs TLA+: differences and which to choose">A table of seven differences and a choice between the two languages</item>
     <item href="/blog/quint-vs-tests-and-tla/" k="Comparison" t="Model checking vs testing: Quint, QUnit, TLA+">How Quint differs from QUnit, Jest and TLA+</item>
     <item href="/blog/quint-models-find-races/" k="Models" t="How to find a race condition: a Quint model">Formal models in Quint</item>
   </b-links>

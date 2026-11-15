@@ -863,14 +863,15 @@
   "quint": {
     "aka": "un langage de modèles formels",
     "def": "Quint est un langage pour décrire les règles d’un système de sorte qu’on puisse les exécuter et les vérifier avant d’écrire le moindre code. La notation ressemble à du code ordinaire et des ingénieurs sans formation mathématique peuvent la lire. Le programme essaie des ordres d’actions et montre la chaîne d’étapes où une règle est violée. Deux programmes le vérifient, TLC et Apalache, et il existe aussi une simulation aléatoire rapide.",
-    "more.label": "Trouver des courses critiques et des données perdues avec des modèles Quint",
+    "more.label": "Quint vs TLA+ : différences et lequel choisir",
     "also.0.label": "En quoi Quint diffère de QUnit, Jest et TLA+",
     "faq.0.q": "Qu’est-ce que le langage Quint ?",
     "faq.0.a": "Un langage pour décrire les règles d’un système afin de les exécuter et de les vérifier avant d’écrire le code. Il se lit comme du code ordinaire.",
     "faq.1.q": "En quoi Quint diffère-t-il de TLA+ ?",
     "faq.1.a": "Quint se lit comme du code ordinaire, TLA+ ressemble à des formules mathématiques : Quint est donc plus facile pour débuter. Les deux sont vérifiés par les mêmes programmes : TLC et Apalache.",
     "source.label": "quint-lang.org, le site et la documentation de Quint",
-    "also.1.label": "TLA+ vs Quint vs Alloy : lequel choisir"
+    "also.1.label": "TLA+ vs Quint vs Alloy : lequel choisir",
+    "also.2.label": "Trouver des courses critiques et des données perdues avec des modèles Quint"
   },
   "tla-plus": {
     "aka": "de Leslie Lamport",
@@ -883,7 +884,8 @@
     "source.label": "Page de Leslie Lamport sur TLA+",
     "seo.title": "TLA+ : ce que c’est et à quoi ça sert",
     "seo.description": "TLA+ est le langage de Leslie Lamport pour décrire le comportement d’un système pas à pas et le vérifier avec TLC et Apalache avant d’écrire le code. Un exemple et la comparaison avec Quint et Alloy.",
-    "more.label": "TLA+ vs Quint vs Alloy : lequel choisir"
+    "more.label": "Quint vs TLA+ : différences et lequel choisir",
+    "also.1.label": "TLA+ vs Quint vs Alloy : lequel choisir"
   },
   "alloy": {
     "aka": "un langage de modélisation et un analyseur",

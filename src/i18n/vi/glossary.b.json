@@ -863,14 +863,15 @@
   "quint": {
     "aka": "ngôn ngữ cho mô hình hình thức",
     "def": "Quint là ngôn ngữ để mô tả quy tắc của một hệ thống sao cho có thể chạy và kiểm tra chúng trước khi viết bất kỳ mã nào. Ký pháp trông như mã thông thường, và kỹ sư không có nền tảng toán cũng đọc được. Chương trình thử các thứ tự hành động và cho thấy chuỗi bước mà tại đó một quy tắc bị phá. Hai chương trình kiểm tra nó là TLC và Apalache, ngoài ra còn có mô phỏng ngẫu nhiên nhanh.",
-    "more.label": "Tìm race condition và dữ liệu bị mất bằng mô hình Quint",
+    "more.label": "Quint vs TLA+: khác nhau thế nào và nên chọn gì",
     "also.0.label": "Quint khác QUnit, Jest và TLA+ ở đâu",
     "faq.0.q": "Ngôn ngữ Quint là gì?",
     "faq.0.a": "Ngôn ngữ để mô tả quy tắc của hệ thống sao cho có thể chạy và kiểm tra chúng trước khi viết mã. Đọc giống mã thông thường.",
     "faq.1.q": "Quint khác TLA+ ở đâu?",
     "faq.1.a": "Quint đọc giống mã thông thường, TLA+ trông như công thức toán, nên Quint dễ bắt đầu hơn. Cả hai được kiểm tra bằng cùng các chương trình: TLC và Apalache.",
     "source.label": "quint-lang.org, trang và tài liệu của Quint",
-    "also.1.label": "TLA+ vs Quint vs Alloy: chọn cái nào"
+    "also.1.label": "TLA+ vs Quint vs Alloy: chọn cái nào",
+    "also.2.label": "Tìm race condition và dữ liệu bị mất bằng mô hình Quint"
   },
   "tla-plus": {
     "aka": "của Leslie Lamport",
@@ -883,7 +884,8 @@
     "source.label": "Trang TLA+ của Leslie Lamport",
     "seo.title": "TLA+: là gì và dùng để làm gì",
     "seo.description": "TLA+ là ngôn ngữ của Leslie Lamport để mô tả hành vi của hệ thống từng bước và kiểm tra nó bằng TLC và Apalache trước khi viết mã. Một ví dụ và so sánh với Quint và Alloy.",
-    "more.label": "TLA+ vs Quint vs Alloy: chọn cái nào"
+    "more.label": "Quint vs TLA+: khác nhau thế nào và nên chọn gì",
+    "also.1.label": "TLA+ vs Quint vs Alloy: chọn cái nào"
   },
   "alloy": {
     "aka": "ngôn ngữ mô hình hóa và bộ phân tích",

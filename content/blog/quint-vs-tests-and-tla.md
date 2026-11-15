@@ -1,7 +1,7 @@
 ---
 title: Чем model checking отличается от тестов: тест проверяет один сценарий, модель — все порядки действий (Quint, QUnit и TLA+)
 date: 2026-10-25
-updated: 2026-11-13
+updated: 2026-11-15
 description: Тест проверяет придуманный сценарий, model checking перебирает все порядки действий. Что ловят QUnit, Jest, Vitest и что Quint, TLA+, Alloy. Как выбрать.
 tags: AI, спеки, Quint, TLA+, Alloy, QUnit, Jest, Vitest, тестирование, формальная верификация
 category: specs
@@ -75,7 +75,7 @@ toc: names=Два названия | tests=Тестовые движки | tla=T
 
 <b-chapter id="tla" icon="scales" title="Чем Quint отличается от TLA+ и Alloy">
   <b-art names="quint-vs-tests-and-tla/notation" wide/>
-    <b-why align="left">TLA+ и Alloy — формальные языки того же рода: в них тоже описывают правила и ищут их нарушения. Они старше Quint и лучше описаны в книгах. Но в TLA+ запись математическая, и новичку нужно время, чтобы её читать. Quint придуман как более доступная запись для той же задачи: она похожа на обычный код, и её читают инженеры без математической подготовки. Подробное сравнение всех трёх языков есть в статье [TLA+, Alloy или Quint](/blog/tla-alloy-quint-compare/).</b-why>
+    <b-why align="left">TLA+ и Alloy — формальные языки того же рода: в них тоже описывают правила и ищут их нарушения. Они старше Quint и лучше описаны в книгах. Но в TLA+ запись математическая, и новичку нужно время, чтобы её читать. Quint придуман как более доступная запись для той же задачи: она похожа на обычный код, и её читают инженеры без математической подготовки. Сравнение пары по семи пунктам есть в статье [Quint vs TLA+: чем отличаются и что выбрать](/blog/quint-vs-tla-plus/), а всех трёх языков в статье [TLA+, Alloy или Quint](/blog/tla-alloy-quint-compare/).</b-why>
   <b-art names="quint-vs-tests-and-tla/engine" wide/>
   <b-why align="left">Что значит «одни и те же программы». Quint можно проверять двумя программами: TLC и Apalache<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Quint specifications can be verified by two model checkers: TLC and Apalache"/>. TLC — самая первая проверяющая программа для TLA+: она перебирает состояния по одному<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, а для Quint её запускают флагом <code>quint verify --backend=tlc</code><b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC (no acronym defined!) is the first model checker for TLA+, and is provided as an alternative backend for quint verify by passing the --backend=tlc flag"/>. Перебор предсказуем, но мир должен быть небольшим.</b-why>
   <b-why align="left">[Apalache](/materials/glossary/apalache/) встроен в Quint<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache is a symbolic model checker that is integrated with Quint tooling"/>: он переводит модель в условия и спрашивает решатель [Z3](/materials/glossary/z3/). Проверять он умеет цепочки только до заданной длины<b-proof href="https://quint-lang.org/docs/model-checkers" quote="Apalache cannot check an arbitrary number of steps"/>, поэтому его «ок» значит «нарушений нет в пределах этой длины». TLA+ проверяют теми же двумя программами, а у Alloy свой анализатор. Кроме проверки, у Quint есть быстрый случайный прогон: он ищет нарушения выборочно и не доказывает, что их нет.</b-why>
@@ -132,7 +132,7 @@ toc: names=Два названия | tests=Тестовые движки | tla=T
 <b-chapter id="faq" icon="chat" title="Частые вопросы">
   <b-faq-cards>
     <q t="Чем Quint отличается от QUnit?">QUnit запускает тесты готового кода на JavaScript, а Quint описывает правила системы и сам перебирает порядки действий. Название похоже, но это программы разных классов.</q>
-    <q t="Чем Quint отличается от TLA+?">Описывают одно и то же и различаются записью: Quint похож на обычный код, TLA+ пишется формулами. Подробное сравнение трёх языков — в статье «TLA+ vs Quint vs Alloy».</q>
+    <q t="Чем Quint отличается от TLA+?">Описывают одно и то же и различаются записью: Quint похож на обычный код, TLA+ пишется формулами. Сравнение пары по семи пунктам — в статье «Quint vs TLA+: чем отличаются и что выбрать», трёх языков — в статье «TLA+ vs Quint vs Alloy».</q>
     <q t="Что выбрать: Quint, Jest или TLA+?">Если вопрос «верно ли работает функция», берите тест. Если «может ли нарушиться правило в какой-то последовательности событий», берите Quint, а для тяжёлых доказательств по распределённой системе берут TLA+.</q>
     <q t="Можно ли использовать Quint вместе с тестами?">Да, они дополняют друг друга. Модель находит цепочку шагов, где ломается правило, а короткий тест закрепляет её в коде, чтобы ошибка не вернулась.</q>
   </b-faq-cards>
@@ -141,6 +141,7 @@ toc: names=Два названия | tests=Тестовые движки | tla=T
 <b-chapter id="next" title="Дальше по теме">
   <b-links>
     <item href="/blog/jest-vs-vitest-vs-qunit/" k="Сравнение" t="Vitest или Jest, и когда хватит QUnit">Какой тестовый движок для JavaScript выбрать</item>
+    <item href="/blog/quint-vs-tla-plus/" k="Сравнение" t="Quint vs TLA+: чем отличаются и что выбрать">Таблица из семи различий и выбор между двумя языками</item>
     <item href="/blog/tla-alloy-quint-compare/" k="Сравнение" t="Какой язык формальной верификации выбрать">Чем отличаются языки формальных спецификаций</item>
     <item href="/blog/quint-models-find-races/" k="Модели" t="Как найти состояние гонки: модель на Quint">Формальные модели на Quint: находки, пары моделей, проверка проверок</item>
     <item href="/blog/agents-per-bounded-context/" k="Агенты" t="Сколько нужно ИИ-агентов">Один агент на один ограниченный контекст</item>
