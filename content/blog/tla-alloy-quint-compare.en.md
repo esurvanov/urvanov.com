@@ -1,16 +1,16 @@
 ---
 title: TLA+ vs Quint vs Alloy, which formal verification language to choose: side-by-side comparisons and a table
 date: 2026-10-25
-updated: 2026-11-11
+updated: 2026-11-15
 description: TLA+ vs Alloy vs Quint: what each language describes, how it is written, what checks it, and who it suits, from event order to data relationships.
 tags: AI, specs, TLA+, Alloy, Quint, formal verification, model checking, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide
 mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, model checking, formal specification, formal methods, TLA+ vs Alloy vs Quint, Leslie Lamport
-toc: idea=One task | table=Summary | tla-alloy=TLA+ and Alloy | tla-quint=TLA+ and Quint | alloy-quint=Alloy and Quint | choose=What to choose | faq=FAQ | next=Further reading
+toc: idea=One task | table=Summary | tla-alloy=TLA+ and Alloy | tla-quint=TLA+ and Quint | qt=Quint or TLA+ | alloy-quint=Alloy and Quint | choose=What to choose | faq=FAQ | next=Further reading
 ---
 
-TLA+ vs Quint vs Alloy comes down to what you model. TLA+ and Quint describe system behavior step by step and differ in notation: Quint reads like ordinary code, TLA+ like formulas. Alloy describes objects and the links between them. Use Quint for product rules over time, TLA+ for strict proofs, Alloy for data structure and access rights.
+Quint and TLA+ both describe system behavior step by step but write it differently. Quint is written like code with types, translates to TLA+, and runs the Apalache and TLC model checkers. TLA+ is written as formulas and has the TLAPS proof system, which Quint lacks. Alloy is added below: it describes objects and the links between them.
 
 <b-post series="harness">
 <b-art names="tla-alloy-quint-compare/trio" wide/>
@@ -72,6 +72,38 @@ TLA+ vs Quint vs Alloy comes down to what you model. TLA+ and Quint describe sys
   <b-why align="left">They describe the same thing, and only the notation differs. Quint is designed as a syntax that suits engineers<b-proof href="https://apalache-mc.org/" quote="The Quint language provides an engineer-friendly syntax for writing specifications."/>, and the same programs check both notations. TLC goes through states one by one<b-proof href="https://quint-lang.org/docs/model-checkers" quote="TLC is an explicit-state model checker"/>, while Apalache is symbolic and considers all chains up to a given length<b-proof href="https://apalache-mc.org/" quote="Bounded model checking to reason about all executions up to length k"/>.</b-why>
 </b-chapter>
 
+<b-chapter id="qt" icon="scales" title="Quint or TLA+: a table and when to pick which">
+  <b-why align="left">First, a direct comparison of the pair. The Quint documentation describes Quint as a language with TypeScript-inspired syntax<b-proof href="https://quint.sh/faq" quote="Quint uses programming-style syntax inspired by TypeScript and functional languages."/>, and TLA+ as written in mathematical notation. The other differences are in the table.</b-why>
+<b-table id="quint-tla-table">
+
+| | TLA+ | Quint |
+|---|---|---|
+| **Notation** | mathematical, LaTeX-style | code-like: syntax inspired by TypeScript and functional languages |
+| **Types** | none: the language is deliberately untyped | type and effect checker, most types are inferred |
+| **Proofs** | has the TLAPS proof system | none |
+| **Checking** | TLC and Apalache | Apalache and TLC from the Quint command line, plus its own random simulator |
+| **Running as tests** | no direct equivalent | a "run" (a concrete execution path) is part of the language and can serve as a test |
+| **Expressiveness** | wider in theory | a fragment of TLA+; the authors hit no limits except some forms of recursion |
+| **Learning curve** | steep for many people | likely faster for newcomers to formal specification |
+
+</b-table>
+  <b-why align="left">Each row rests on the comparison section of the Quint FAQ. On types, it says TLA+ is untyped on purpose<b-proof href="https://quint.sh/faq" quote="TLA+ is purposely untyped so that designers can focus on algorithmic concepts."/>, while Quint's type and effect checker catches some errors in the editor before anything runs. On limits it is direct: TLA+ has the TLAPS proof system, Quint does not. Quint works with a fragment of TLA+, so most TLA+ specs translate into Quint syntax directly<b-proof href="https://quint.sh/faq" quote="most TLA+ specs can be directly translated into the Quint syntax"/>.</b-why>
+  <b-sublabel>When TLA+, when Quint</b-sublabel>
+  <b-rules cols="2">
+    <rule icon="shield-check" t="TLA+: you need proofs">Strict guarantees for a complex system: TLA+ has TLAPS, Quint does not</rule>
+    <rule icon="book" t="TLA+: existing legacy">Ready-made TLA+ specs and books that need no rewriting</rule>
+    <rule icon="code" t="Quint: the team reads it">Code-like notation is easier to review, especially when an agent writes the spec</rule>
+    <rule icon="flask" t="Quint: you need tests">Model runs turn into tests for the implementation</rule>
+  </b-rules>
+  <b-why align="left">These four cards follow the Thoughtworks Technology Radar assessment, which puts Quint in the "Assess" ring. The radar authors call the choice close<b-proof href="https://www.thoughtworks.com/radar/languages-and-frameworks/quint" quote="Our teams have found the choice between Quint and TLA+ a close call"/>: Quint's developer tooling on one side, TLA+'s maturity on the other. As the radar describes Quint's differences: readability, developer experience, and a TypeScript-like syntax that is easier to review when an agent writes the spec.</b-why>
+  <b-why align="left">An example from this site's practice. Quint models here check product rules over time, and the checks themselves are tested with deliberately broken copies of the model: a rule the code already satisfies must fail on a copy with one defect. Details, examples and diagrams: [How to find a race condition: a Quint model](/blog/quint-models-find-races/), section on testing the checks. This repository holds no model files: the article describes models from another project.</b-why>
+  <b-finding>
+    <ex>Quint and TLA+ describe the same behavior: they differ in notation, types, proofs and test runs.</ex>
+    <gen>The choice is close: the radar treats Quint's tooling and TLA+'s maturity as nearly equal arguments.</gen>
+    <do>If you do not need proofs, start with Quint. If you do, write TLA+ and use TLAPS.</do>
+  </b-finding>
+</b-chapter>
+
 <b-chapter id="alloy-quint" icon="search" title="How Alloy differs from Quint">
   <b-art names="tla-alloy-quint-compare/alloy-vs-quint" wide/>
 <b-table id="alloy-quint">
@@ -100,6 +132,10 @@ TLA+ vs Quint vs Alloy comes down to what you model. TLA+ and Quint describe sys
     <q t="Quint or TLA+: which to choose?">Quint, if the team is closer to ordinary code and needs to check product rules over time. TLA+, if you need strict proofs about a complex distributed system. They describe the same thing, and the same programs check both notations, TLC and Apalache.</q>
     <q t="Which should I choose: TLA+, Alloy or Quint?">For product rules over time and a team without maths, take Quint; for strict proofs about a complex distributed system, TLA+; for the structure of data and access rights, Alloy.</q>
     <q t="What checks models written in TLA+, Alloy and Quint?">TLA+ and Quint are checked by TLC and Apalache. Alloy has its own analyzer, Alloy Analyzer, which takes the constraints of a model and finds structures that satisfy them.</q>
+    <q t="Should I switch from TLA+ to Quint?">If you need proofs, no: TLA+ has the TLAPS proof system and Quint does not. If you want readable notation and tests, you can: most TLA+ specs translate into Quint directly, and a Quint spec can be translated to TLA+ automatically<b-proof href="https://quint.sh/faq" quote="most TLA+ specs can be directly translated into the Quint syntax"/>. The FAQ gives no step-by-step migration guide.</q>
+    <q t="How does Quint differ from PlusCal?">PlusCal sits on top of TLA+ and is compiled into it<b-proof href="https://quint.sh/faq" quote="PlusCal is a language on top of TLA+ that is precompiled into TLA+."/>. It adds loops and assignments to a declarative language. Quint stays declarative: it describes state transitions, not a sequence of steps. Quint uses TLA+ as an intermediate language only for model checking, and its REPL, simulator and testing tools are its own.</q>
+    <q t="Does a formal specification need types?">TLA+ is untyped on purpose so designers can focus on algorithm ideas. The cost is that a mistake such as a string in a set of integers may show up only in a model checker counterexample. Quint has a type and effect checker and shows some errors in the editor before anything runs. Most types are inferred, so you rarely write them.</q>
+    <q t="Which is faster to learn, Quint or TLA+?">For someone new to formal specification, Quint is likely faster: reading TLA+ has a steep learning curve for many people<b-proof href="https://quint.sh/faq" quote="If you are new to formal specification, Quint is likely the faster path"/>. Anyone who already knows TLA+ will find Quint familiar.</q>
   </b-faq-cards>
 </b-chapter>
 
@@ -109,5 +145,5 @@ TLA+ vs Quint vs Alloy comes down to what you model. TLA+ and Quint describe sys
     <item href="/blog/quint-models-find-races/" k="Models" t="How to find a race condition: a Quint model">Formal models in Quint</item>
   </b-links>
 </b-chapter>
-<b-footer>Facts: the sites of Leslie Lamport’s TLA+, Alloy, Quint and Apalache as of 25 October 2026. The choice depends on the task, and general signs are described here.</b-footer>
+<b-footer>Facts: the sites of Leslie Lamport’s TLA+, Alloy, Quint (FAQ) and Apalache, and the Thoughtworks Technology Radar, as of 15 November 2026. The choice depends on the task, and general signs are described here.</b-footer>
 </b-post>
