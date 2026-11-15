@@ -163,6 +163,9 @@ AGENTS.md задаёт ИИ-агенту правила на весь проек
     <gen>AGENTS.md и CLAUDE.md в Cursor действуют в каждом чате; для правил с условием Cursor отсылает к <code>.cursor/rules</code><b-proof href="https://cursor.com/help/customization/rules" quote="Cursor: «CLAUDE.md files are always applied to every conversation, regardless of any alwaysApply frontmatter setting»; для условных правил — project rules в .cursor/rules — cursor.com/help/customization/rules"/>.</gen>
     <do>Перенесите общее в AGENTS.md, а правила для отдельных типов файлов оставьте в .cursor/rules.</do>
   </b-finding>
+  <b-links cols="1">
+    <item href="/blog/cursor-rules-vs-agents-md/" k="Подробно" t="Cursor rules и AGENTS.md: что куда класть">Таблица сравнения, четыре режима .mdc, перенос из .cursorrules по файлам</item>
+  </b-links>
 </b-chapter>
 <b-chapter id="example" title="Пример: настоящий CLAUDE.md" icon="notebook">
   <b-why>Фрагмент CLAUDE.md репозитория этого сайта: только то, чего агент не узнает из кода — откуда берётся версия игр и правило про даты. Для Cursor, Codex и Copilot такой текст переносится в AGENTS.md.</b-why>
