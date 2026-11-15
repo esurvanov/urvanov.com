@@ -30,6 +30,8 @@ function* pagesOf(dir, rel = '') {
 
 const found = {}
 for (const { path, file } of pagesOf(DIST)) {
+  // Страницы игр собираются из репозитория игр (games.lock), их тексты здесь не правятся
+  if (/\/materials\/games\//.test(path)) continue
   const root = parse(readFileSync(file, 'utf8'))
   if (/noindex/i.test(root.querySelector('meta[name="robots"]')?.getAttribute('content') ?? '')) continue
   if (root.querySelector('meta[http-equiv="refresh"]')) continue

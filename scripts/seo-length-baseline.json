@@ -185,25 +185,6 @@
  "/es/blog/work-prompts-examples": [
   "description"
  ],
- "/es/materials/games/chronicles-of-kingdoms": [
-  "title",
-  "description"
- ],
- "/es/materials/games/echo-of-the-rift": [
-  "description"
- ],
- "/es/materials/games/northern-rift": [
-  "description"
- ],
- "/es/materials/games/skhodka": [
-  "description"
- ],
- "/es/materials/games/uptime": [
-  "description"
- ],
- "/es/materials/games/zhitie": [
-  "description"
- ],
  "/es/materials/glossary/agents-md": [
   "title",
   "description"
@@ -542,28 +523,6 @@
  "/fr/blog/work-prompts-examples": [
   "description"
  ],
- "/fr/materials/games/chronicles-of-kingdoms": [
-  "title",
-  "description"
- ],
- "/fr/materials/games/echo-of-the-rift": [
-  "description"
- ],
- "/fr/materials/games/little-bombers": [
-  "title"
- ],
- "/fr/materials/games/northern-rift": [
-  "description"
- ],
- "/fr/materials/games/skhodka": [
-  "description"
- ],
- "/fr/materials/games/uptime": [
-  "description"
- ],
- "/fr/materials/games/zhitie": [
-  "description"
- ],
  "/fr/materials/glossary/agents-md": [
   "title",
   "description"
@@ -882,28 +841,6 @@
  "/ka/blog/work-prompts-examples": [
   "description"
  ],
- "/ka/materials/games/chronicles-of-kingdoms": [
-  "title",
-  "description"
- ],
- "/ka/materials/games/echo-of-the-rift": [
-  "description"
- ],
- "/ka/materials/games/little-bombers": [
-  "title"
- ],
- "/ka/materials/games/northern-rift": [
-  "description"
- ],
- "/ka/materials/games/skhodka": [
-  "description"
- ],
- "/ka/materials/games/uptime": [
-  "description"
- ],
- "/ka/materials/games/zhitie": [
-  "description"
- ],
  "/ka/materials/glossary": [
   "description"
  ],
@@ -1079,24 +1016,6 @@
   "description"
  ],
  "/materials/games": [
-  "description"
- ],
- "/materials/games/berezovka": [
-  "description"
- ],
- "/materials/games/echo-of-the-rift": [
-  "description"
- ],
- "/materials/games/northern-rift": [
-  "description"
- ],
- "/materials/games/sibiria": [
-  "title"
- ],
- "/materials/games/skhodka": [
-  "description"
- ],
- "/materials/games/uptime": [
   "description"
  ],
  "/materials/glossary/agents-md": [
@@ -1364,12 +1283,6 @@
  "/ru/materials/games": [
   "description"
  ],
- "/ru/materials/games/sibiria": [
-  "title"
- ],
- "/ru/materials/games/uptime": [
-  "description"
- ],
  "/ru/materials/glossary/agents-md": [
   "title",
   "description"
@@ -1579,15 +1492,6 @@
   "description"
  ],
  "/th/blog/work-prompts-examples": [
-  "description"
- ],
- "/th/materials/games/chronicles-of-kingdoms": [
-  "title"
- ],
- "/th/materials/games/uptime": [
-  "description"
- ],
- "/th/materials/games/zhitie": [
   "description"
  ],
  "/th/materials/glossary/agents-md": [
@@ -1804,28 +1708,6 @@
   "description"
  ],
  "/vi/blog/work-prompts-examples": [
-  "description"
- ],
- "/vi/materials/games/chronicles-of-kingdoms": [
-  "title",
-  "description"
- ],
- "/vi/materials/games/echo-of-the-rift": [
-  "description"
- ],
- "/vi/materials/games/little-bombers": [
-  "title"
- ],
- "/vi/materials/games/northern-rift": [
-  "description"
- ],
- "/vi/materials/games/skhodka": [
-  "description"
- ],
- "/vi/materials/games/uptime": [
-  "description"
- ],
- "/vi/materials/games/zhitie": [
   "description"
  ],
  "/vi/materials/glossary/agents-md": [
