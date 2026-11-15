@@ -698,7 +698,8 @@
   "faq.3.a": "AGENTS.md đặt quy tắc cho cả dự án và đi vào mỗi phiên của tác nhân. spec.md mô tả một nhiệm vụ — yêu cầu và tiêu chí hoàn thành — và tồn tại đến khi nhiệm vụ đóng.",
   "seo.title": "AGENTS.md, quy tắc Cursor và CLAUDE.md: mỗi tệp làm gì",
   "seo.description": "AGENTS.md là tệp hướng dẫn chung cho Codex, Cursor và các tác nhân khác. Nó khác quy tắc Cursor trong .cursor/rules và CLAUDE.md thế nào, mỗi tệp nằm ở đâu và khi nào tác nhân đọc.",
-  "more.label": "AGENTS.md, CLAUDE.md và spec.md: cái gì để ở đâu"
+  "more.label": "AGENTS.md, CLAUDE.md và spec.md: cái gì để ở đâu",
+  "also.0.label": "Cursor rules và AGENTS.md: cái gì đặt ở đâu"
  },
  "agent-skills": {
   "name": "Skill",
@@ -1132,7 +1133,7 @@
  },
  "codex": {
   "aka": "OpenAI Codex, Codex AI, ChatGPT Codex",
-  "def": "Codex là ứng dụng tác nhân lập trình của OpenAI trên các mô hình GPT, và là thứ khác với ChatGPT: chat trả lời bằng văn bản, còn Codex làm việc ngay trong dự án — đọc mã, sửa tệp, chạy lệnh và test, chuẩn bị pull request. Nó chạy trong ChatGPT, trong ứng dụng desktop, trong terminal, trong IDE và trên đám mây, nơi nhiệm vụ chạy trong một sandbox riêng; ở đâu cũng là một tác nhân và đi kèm các gói ChatGPT, với giới hạn tùy theo gói. Cấu tạo giống Claude Code và Cursor. Nó đọc chỉ dẫn dự án từ `AGENTS.md`, giữ các quy trình lặp lại trong skill và kết nối hệ thống bên ngoài qua MCP.",
+  "def": "Codex là ứng dụng tác nhân lập trình của OpenAI trên các mô hình GPT, và là thứ khác với ChatGPT: chat trả lời bằng văn bản, còn Codex làm việc ngay trong dự án — đọc mã, sửa tệp, chạy lệnh và test, chuẩn bị pull request. Nó chạy trong ChatGPT, trong ứng dụng desktop, trong terminal, trong IDE và trên đám mây, nơi nhiệm vụ chạy trong một sandbox riêng; ở đâu cũng là một tác nhân và đi kèm các gói ChatGPT, với giới hạn tùy theo gói. Cấu tạo giống Claude Code và Cursor. Nó đọc chỉ dẫn dự án từ `AGENTS.md`, giữ các quy trình lặp lại trong skill và kết nối hệ thống bên ngoài qua MCP. Tóm lại: ChatGPT trả lời, còn Codex làm việc ngay trong dự án; trong ứng dụng ChatGPT cho máy tính, Codex hiển thị chế độ xem diff và review, còn ChatGPT ẩn các chi tiết kỹ thuật.",
   "faq.0.q": "Codex và ChatGPT có phải là một không?",
   "faq.0.a": "Không: ChatGPT là chat trả lời bằng văn bản, Codex là tác nhân lập trình tự đọc dự án, sửa tệp và chạy test. Codex đi kèm các gói ChatGPT.",
   "faq.1.q": "Codex chạy ở đâu?",
@@ -1238,7 +1239,14 @@
    "yes"
   ],
   "faq.6.q": "Codex khác GPT thế nào?",
-  "faq.6.a": "GPT là họ mô hình của OpenAI; Codex là tác nhân chạy trên đó: cùng một mô hình nhưng có quyền truy cập dự án, lệnh và kiểm thử của bạn."
+  "faq.6.a": "GPT là họ mô hình của OpenAI; Codex là tác nhân chạy trên đó: cùng một mô hình nhưng có quyền truy cập dự án, lệnh và kiểm thử của bạn.",
+  "faq.7.q": "Codex hay Claude Code tốt hơn?",
+  "faq.7.a": "Tài liệu của cả hai không chọn ra bên thắng, chúng mô tả những điều khác nhau. Codex chạy trên mô hình GPT, nằm trong các gói ChatGPT và mở được trong ứng dụng ChatGPT, terminal, IDE và đám mây; đọc chỉ dẫn từ AGENTS.md. Claude Code chạy trên mô hình Claude và mở được trong terminal, IDE, ứng dụng máy tính và web với gói đăng ký Claude hoặc tài khoản Anthropic Console; đọc chỉ dẫn từ CLAUDE.md, và từ AGENTS.md khi không có CLAUDE.md. Lựa chọn phụ thuộc vào mô hình và gói đăng ký bạn đã có. Nguồn: learn.chatgpt.com/docs và code.claude.com/docs/en/overview, đã kiểm tra ngày 15.11.2026.",
+  "faq.8.q": "Codex có nằm trong gói ChatGPT Go không?",
+  "faq.8.a": "Có. Trang giá của OpenAI nêu rằng ChatGPT Work và Codex nằm trong các gói Free, Go, Plus, Pro, Business, Edu và Enterprise; ở gói Go, Codex dành cho các tác vụ lập trình nhẹ. Trang này không công bố giới hạn cụ thể của Go. Nguồn: learn.chatgpt.com/docs/pricing, đã kiểm tra ngày 15.11.2026.",
+  "sites.0.label": "OpenAI: các gói ChatGPT có Codex",
+  "sites.1.label": "OpenAI: Codex và ChatGPT trong ứng dụng",
+  "sites.2.label": "OpenAI: tài liệu Codex"
  },
  "cursor": {
   "aka": "Cursor AI, Cursor IDE",
@@ -1317,7 +1325,8 @@
    "yes"
   ],
   "faq.3.q": "Các mô hình GPT còn chạy trong Cursor sau ngày 12 tháng 11 năm 2026 không?",
-  "faq.3.a": "Tính đến ngày 13 tháng 11 năm 2026, các mô hình OpenAI vẫn còn trong danh sách mô hình của Cursor. OpenAI quyết định ngừng cung cấp mô hình cho Cursor và đề xuất ngày 12 tháng 11; ngày chính thức sẽ được công bố riêng. Phương án dự phòng: khóa OpenAI của riêng bạn trong chat và tác nhân của Cursor, hoặc tiện ích mở rộng Codex bên trong Cursor."
+  "faq.3.a": "Tính đến ngày 13 tháng 11 năm 2026, các mô hình OpenAI vẫn còn trong danh sách mô hình của Cursor. OpenAI quyết định ngừng cung cấp mô hình cho Cursor và đề xuất ngày 12 tháng 11; ngày chính thức sẽ được công bố riêng. Phương án dự phòng: khóa OpenAI của riêng bạn trong chat và tác nhân của Cursor, hoặc tiện ích mở rộng Codex bên trong Cursor.",
+  "also.1.label": "Cursor rules và AGENTS.md: cái gì đặt ở đâu"
  },
  "hermes-agent": {
   "aka": "Hermes AI agent",

@@ -528,8 +528,8 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Codex', en: 'Codex' },
         aka: { ru: 'OpenAI Codex, Codex AI, Codex в ChatGPT, Кодекс', en: 'OpenAI Codex, Codex AI, ChatGPT Codex' },
         def: {
-          ru: 'Codex — агент OpenAI для программирования на моделях GPT; от ChatGPT отличается тем, что сам работает в проекте: читает код, правит файлы, запускает команды и тесты, готовит пулл-реквесты, а ChatGPT отвечает текстом. Работает в ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице; везде это один агент, и он входит в тарифы ChatGPT, лимиты зависят от тарифа. Устроен как Claude Code и Cursor. Инструкции проекта читает из `AGENTS.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP.',
-          en: 'Codex is a coding agent app from OpenAI on GPT models, and it is a different thing from ChatGPT: the chat answers with text, while Codex works in the project itself — it reads the code, edits files, runs commands and tests, and prepares pull requests. It runs in ChatGPT, in the desktop app, in the terminal, in the IDE and in the cloud, where tasks run in a separate sandbox; it is one agent everywhere and comes with ChatGPT plans, with limits that depend on the plan. It is built like Claude Code and Cursor. It reads project instructions from `AGENTS.md`, keeps repeatable processes in skills and connects outside systems through MCP.',
+          ru: 'Codex — агент OpenAI для программирования на моделях GPT; от ChatGPT отличается тем, что сам работает в проекте: читает код, правит файлы, запускает команды и тесты, готовит пулл-реквесты, а ChatGPT отвечает текстом. Работает в ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице; везде это один агент, и он входит в тарифы ChatGPT, лимиты зависят от тарифа. Устроен как Claude Code и Cursor. Инструкции проекта читает из `AGENTS.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP. Коротко: ChatGPT отвечает, Codex делает работу в проекте; в приложении ChatGPT для компьютера Codex показывает дифф и ревью, а ChatGPT технические подробности скрывает.',
+          en: 'Codex is a coding agent app from OpenAI on GPT models, and it is a different thing from ChatGPT: the chat answers with text, while Codex works in the project itself — it reads the code, edits files, runs commands and tests, and prepares pull requests. It runs in ChatGPT, in the desktop app, in the terminal, in the IDE and in the cloud, where tasks run in a separate sandbox; it is one agent everywhere and comes with ChatGPT plans, with limits that depend on the plan. It is built like Claude Code and Cursor. It reads project instructions from `AGENTS.md`, keeps repeatable processes in skills and connects outside systems through MCP. In short: ChatGPT answers, Codex does the work in the project; in the ChatGPT desktop app Codex shows diff and review views, while ChatGPT hides technical details.',
         },
         match: { ru: ['(?:OpenAI )?Codex(?: AI| CLI)?'], en: ['(?:OpenAI )?Codex(?: AI| CLI)?'] },
         related: ['openai', 'agents-md', 'claude-code', 'cursor', 'ai-agent'],
@@ -541,8 +541,15 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Сколько стоит Codex?', en: 'How much does Codex cost?' }, a: { ru: 'Отдельной оплаты нет: Codex входит в тарифы ChatGPT Free, Go, Plus, Pro, Business, Edu и Enterprise. Лимиты общие с ChatGPT Work и зависят от тарифа.', en: 'There is no separate fee: Codex comes with the ChatGPT Free, Go, Plus, Pro, Business, Edu and Enterprise plans. Limits are shared with ChatGPT Work and depend on the plan.' } },
           { q: { ru: 'Работает ли Codex в России?', en: 'Does Codex work in Russia?' }, a: { ru: 'Официально нет: России нет в списке стран, где OpenAI предоставляет свои сервисы.', en: 'Not officially: Russia is not on the list of countries where OpenAI offers its services.' } },
           { q: { ru: 'Чем Codex (Кодекс) отличается от GPT?', en: 'How is Codex different from GPT?' }, a: { ru: 'GPT — семейство моделей OpenAI, Codex — агент, который на них работает: та же модель, но с доступом к проекту, командам и тестам.', en: 'GPT is OpenAI’s model family; Codex is the agent that runs on it: the same model with access to your project, commands and tests.' } },
+          { q: { ru: 'Что лучше: Codex или Claude Code?', en: 'Which is better: Codex or Claude Code?' }, a: { ru: 'Документации обоих не выбирают победителя, они описывают разное. Codex работает на моделях GPT, входит в тарифы ChatGPT и открывается в приложении ChatGPT, в терминале, в IDE и в облаке; инструкции читает из AGENTS.md. Claude Code работает на моделях Claude, открывается в терминале, в IDE, в приложении для компьютера и в вебе по подписке Claude или через аккаунт Anthropic Console; инструкции читает из CLAUDE.md, а AGENTS.md — когда CLAUDE.md нет. Выбирают по тому, какая модель и какая подписка уже есть. Источники: learn.chatgpt.com/docs и code.claude.com/docs/en/overview, сверено 15.11.2026.', en: 'The docs of both do not pick a winner, they describe different things. Codex runs on GPT models, comes with ChatGPT plans and opens in the ChatGPT app, in the terminal, in the IDE and in the cloud; it reads instructions from AGENTS.md. Claude Code runs on Claude models and opens in the terminal, in the IDE, in the desktop app and on the web with a Claude subscription or an Anthropic Console account; it reads instructions from CLAUDE.md, and from AGENTS.md when there is no CLAUDE.md. The choice follows the model and the subscription you already have. Sources: learn.chatgpt.com/docs and code.claude.com/docs/en/overview, checked 15.11.2026.' } },
+          { q: { ru: 'Входит ли Codex в тариф ChatGPT Go?', en: 'Is Codex included in the ChatGPT Go plan?' }, a: { ru: 'Да. На странице тарифов OpenAI сказано, что ChatGPT Work и Codex входят в тарифы Free, Go, Plus, Pro, Business, Edu и Enterprise; на Go Codex предназначен для лёгких задач по коду. Точные лимиты для Go страница не публикует. Источник: learn.chatgpt.com/docs/pricing, сверено 15.11.2026.', en: 'Yes. The OpenAI pricing page says ChatGPT Work and Codex are included in the Free, Go, Plus, Pro, Business, Edu and Enterprise plans; on Go, Codex is meant for lightweight coding tasks. The page does not publish exact limits for Go. Source: learn.chatgpt.com/docs/pricing, checked 15.11.2026.' } },
         ],
         source: { url: 'https://github.com/openai/codex', label: { ru: 'Репозиторий Codex на GitHub', en: 'Codex GitHub repo' } },
+        sites: [
+          { url: 'https://learn.chatgpt.com/docs/pricing', label: { ru: 'OpenAI: тарифы ChatGPT с Codex', en: 'OpenAI: ChatGPT plans with Codex' } },
+          { url: 'https://learn.chatgpt.com/docs/use-chatgpt', label: { ru: 'OpenAI: Codex и ChatGPT в приложении', en: 'OpenAI: Codex and ChatGPT in the app' } },
+          { url: 'https://learn.chatgpt.com/docs', label: { ru: 'OpenAI: документация Codex', en: 'OpenAI: Codex documentation' } },
+        ],
         seo: {
           title: { ru: 'Codex и ChatGPT: чем отличаются, таблица 2026', en: 'Codex vs ChatGPT: how they differ, table 2026' },
           description: {
@@ -590,7 +597,10 @@ export const TERM_SETS: TermSet[] = [
           },
         },
         more: { post: 'ai-in-code-harness-and-tools', label: { ru: 'Claude Code, Codex, Cursor и Hermes Agent: что выбрать', en: 'Claude Code, Codex, Cursor and Hermes Agent: which to pick' } },
-        also: [{ post: 'mcp-1c', label: { ru: 'Cursor для 1С через MCP', en: 'Cursor for 1C through MCP' } }],
+        also: [
+          { post: 'mcp-1c', label: { ru: 'Cursor для 1С через MCP', en: 'Cursor for 1C through MCP' } },
+          { post: 'cursor-rules-vs-agents-md', label: { ru: 'Cursor rules и AGENTS.md: что куда класть', en: 'Cursor rules vs AGENTS.md: what goes where' } },
+        ],
         notes: {
           title: { ru: 'Cursor: модели, агент и правила', en: 'Cursor: models, the agent and rules' },
           items: [
@@ -1309,6 +1319,7 @@ export const TERM_SETS: TermSet[] = [
           },
         },
         more: { post: 'specs-rules-skills', label: { ru: 'AGENTS.md, CLAUDE.md и spec.md: что куда класть', en: 'AGENTS.md, CLAUDE.md and spec.md: what goes where' } },
+        also: [{ post: 'cursor-rules-vs-agents-md', label: { ru: 'Cursor rules и AGENTS.md: что куда класть', en: 'Cursor rules vs AGENTS.md: what goes where' } }],
       },
       {
         slug: 'agent-skills',

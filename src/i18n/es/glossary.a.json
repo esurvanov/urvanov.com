@@ -421,7 +421,7 @@
  },
  "codex": {
   "aka": "OpenAI Codex, Codex AI, ChatGPT Codex",
-  "def": "Codex es una app de agente de código de OpenAI con modelos GPT, y es algo distinto de ChatGPT: el chat responde con texto, mientras que Codex trabaja en el propio proyecto: lee el código, edita archivos, ejecuta comandos y pruebas, y prepara pull requests. Funciona en ChatGPT, en la app de escritorio, en la terminal, en el IDE y en la nube, donde las tareas se ejecutan en un sandbox aparte; es un solo agente en todas partes y viene con los planes de ChatGPT, con límites que dependen del plan. Está construido como Claude Code y Cursor. Lee las instrucciones del proyecto de `AGENTS.md`, guarda procesos repetibles en skills y conecta sistemas externos mediante MCP.",
+  "def": "Codex es una app de agente de código de OpenAI con modelos GPT, y es algo distinto de ChatGPT: el chat responde con texto, mientras que Codex trabaja en el propio proyecto: lee el código, edita archivos, ejecuta comandos y pruebas, y prepara pull requests. Funciona en ChatGPT, en la app de escritorio, en la terminal, en el IDE y en la nube, donde las tareas se ejecutan en un sandbox aparte; es un solo agente en todas partes y viene con los planes de ChatGPT, con límites que dependen del plan. Está construido como Claude Code y Cursor. Lee las instrucciones del proyecto de `AGENTS.md`, guarda procesos repetibles en skills y conecta sistemas externos mediante MCP. En resumen: ChatGPT responde, Codex hace el trabajo en el proyecto; en la app de escritorio de ChatGPT, Codex muestra las vistas de diff y revisión, mientras que ChatGPT oculta los detalles técnicos.",
   "faq.0.q": "¿Codex y ChatGPT son lo mismo?",
   "faq.0.a": "No: ChatGPT es un chat que responde con texto, Codex es un agente de código que lee el proyecto, edita archivos y ejecuta pruebas por sí mismo. Codex viene con los planes de ChatGPT.",
   "faq.1.q": "¿Dónde funciona Codex?",
@@ -527,7 +527,14 @@
    "yes"
   ],
   "faq.6.q": "¿En qué se diferencia Codex de GPT?",
-  "faq.6.a": "GPT es la familia de modelos de OpenAI; Codex es el agente que funciona con ellos: el mismo modelo, pero con acceso a su proyecto, a los comandos y a las pruebas."
+  "faq.6.a": "GPT es la familia de modelos de OpenAI; Codex es el agente que funciona con ellos: el mismo modelo, pero con acceso a su proyecto, a los comandos y a las pruebas.",
+  "faq.7.q": "¿Qué es mejor: Codex o Claude Code?",
+  "faq.7.a": "La documentación de ambos no elige un ganador, describe cosas distintas. Codex funciona con modelos GPT, viene con los planes de ChatGPT y se abre en la app de ChatGPT, en la terminal, en el IDE y en la nube; lee las instrucciones de AGENTS.md. Claude Code funciona con modelos Claude y se abre en la terminal, en el IDE, en la app de escritorio y en la web con una suscripción de Claude o una cuenta de Anthropic Console; lee las instrucciones de CLAUDE.md, y de AGENTS.md cuando no hay CLAUDE.md. La elección depende del modelo y de la suscripción que ya tenga. Fuentes: learn.chatgpt.com/docs y code.claude.com/docs/en/overview, verificado el 15.11.2026.",
+  "faq.8.q": "¿Codex está incluido en el plan ChatGPT Go?",
+  "faq.8.a": "Sí. La página de precios de OpenAI dice que ChatGPT Work y Codex están incluidos en los planes Free, Go, Plus, Pro, Business, Edu y Enterprise; en Go, Codex está pensado para tareas de código ligeras. La página no publica los límites exactos de Go. Fuente: learn.chatgpt.com/docs/pricing, verificado el 15.11.2026.",
+  "sites.0.label": "OpenAI: planes de ChatGPT con Codex",
+  "sites.1.label": "OpenAI: Codex y ChatGPT en la app",
+  "sites.2.label": "OpenAI: documentación de Codex"
  },
  "cursor": {
   "aka": "Cursor AI, Cursor IDE",
@@ -606,7 +613,8 @@
    "yes"
   ],
   "faq.3.q": "¿Siguen funcionando los modelos GPT en Cursor después del 12 de noviembre de 2026?",
-  "faq.3.a": "A 13 de noviembre de 2026, los modelos de OpenAI siguen en la lista de modelos de Cursor. OpenAI decidió dejar de suministrar modelos a Cursor y propuso el 12 de noviembre; la fecha definitiva se anunciará aparte. Alternativas: su propia clave de OpenAI en el chat y el agente de Cursor, o la extensión de Codex dentro de Cursor."
+  "faq.3.a": "A 13 de noviembre de 2026, los modelos de OpenAI siguen en la lista de modelos de Cursor. OpenAI decidió dejar de suministrar modelos a Cursor y propuso el 12 de noviembre; la fecha definitiva se anunciará aparte. Alternativas: su propia clave de OpenAI en el chat y el agente de Cursor, o la extensión de Codex dentro de Cursor.",
+  "also.1.label": "Cursor rules y AGENTS.md: qué va dónde"
  },
  "hermes-agent": {
   "aka": "agente de IA Hermes",
@@ -1176,7 +1184,8 @@
   "faq.3.a": "AGENTS.md fija reglas para todo el proyecto y entra en cada sesión del agente. spec.md describe una tarea —requisitos y criterios de terminado— y vive hasta que la tarea se cierra.",
   "seo.title": "AGENTS.md frente a reglas de Cursor y CLAUDE.md: qué hace cada archivo",
   "seo.description": "AGENTS.md es un archivo de instrucciones común para Codex, Cursor y otros agentes. En qué se diferencia de las reglas de Cursor en .cursor/rules y de CLAUDE.md, dónde está cada uno y cuándo lo lee el agente.",
-  "more.label": "AGENTS.md, CLAUDE.md y spec.md: qué va dónde"
+  "more.label": "AGENTS.md, CLAUDE.md y spec.md: qué va dónde",
+  "also.0.label": "Cursor rules y AGENTS.md: qué va dónde"
  },
  "agent-skills": {
   "name": "Skill",
