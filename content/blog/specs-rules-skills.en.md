@@ -157,10 +157,10 @@ AGENTS.md gives an AI agent rules for the whole project and enters every session
     <step t="Mode">Always Apply</step>
     <step t="Delete">.cursorrules from the root</step>
   </b-seq-row>
-  <b-cap>Cursor docs call the root .cursorrules legacy and to be deprecated<b-proof href="https://cursor.com/help/customization/rules" quote="Cursor: «The .cursorrules file in your project root is legacy and will be deprecated» + четыре шага миграции — cursor.com/help/customization/rules"/>. The Always Apply mode matches the old behavior of the file.</b-cap>
+  <b-cap>Cursor docs call the root .cursorrules legacy and to be deprecated<b-proof href="https://cursor.com/help/customization/rules" quote="Cursor: «The .cursorrules file in your project root is legacy and will be deprecated» + four migration steps — cursor.com/help/customization/rules"/>. The Always Apply mode matches the old behavior of the file.</b-cap>
   <b-finding>
     <ex>One rule for the whole project goes in AGENTS.md; a conditional rule goes in .mdc.</ex>
-    <gen>AGENTS.md and CLAUDE.md in Cursor apply in every chat; for conditional rules Cursor points to <code>.cursor/rules</code><b-proof href="https://cursor.com/help/customization/rules" quote="Cursor: «CLAUDE.md files are always applied to every conversation, regardless of any alwaysApply frontmatter setting»; для условных правил — project rules в .cursor/rules — cursor.com/help/customization/rules"/>.</gen>
+    <gen>AGENTS.md and CLAUDE.md in Cursor apply in every chat; for conditional rules Cursor points to <code>.cursor/rules</code><b-proof href="https://cursor.com/help/customization/rules" quote="Cursor: «CLAUDE.md files are always applied to every conversation, regardless of any alwaysApply frontmatter setting»; for conditional rules — project rules in .cursor/rules — cursor.com/help/customization/rules"/>.</gen>
     <do>Move shared content to AGENTS.md and keep rules for specific file types in .cursor/rules.</do>
   </b-finding>
 </b-chapter>
