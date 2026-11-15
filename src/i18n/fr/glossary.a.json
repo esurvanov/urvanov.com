@@ -1150,32 +1150,56 @@
  "planes": {
   "name": "Plan de données et plan de contrôle",
   "aka": "plans de données et de contrôle",
-  "def": "Le plan de données et le plan de contrôle sont deux plans du fonctionnement d’un système : le plan de contrôle décide quoi faire et où, et le plan de données le fait sur les données elles-mêmes. Les termes viennent des réseaux : dans un routeur, le plan de contrôle construit la table de routage et le plan de données transmet les paquets. Pour un agent IA, le plan de contrôle est constitué de vos messages et de vos règles, et le plan de données de tout ce qu’il lit : pages, tickets, documents et réponses de serveurs. La défense contre l’injection de prompt garde le texte étranger dans le plan de données pour qu’il ne devienne jamais une commande.",
+  "def": "Le plan de données (data plane) est la partie d’un système qui travaille avec les données elles-mêmes : dans un réseau, il transmet les paquets ; dans Kubernetes, ce sont les nœuds qui exécutent les applications. Les décisions viennent d’une autre partie, le plan de contrôle (control plane) : dans un routeur, il construit la table de routage ; pour un agent IA, ce sont vos messages et vos règles, tandis que son plan de données est tout ce qu’il lit : pages, tickets, documents et réponses de serveurs. La défense contre l’injection de prompt garde le texte étranger dans le plan de données pour qu’il ne devienne jamais une commande.",
   "faq.0.q": "Qu’est-ce que le plan de données ?",
   "faq.0.a": "Le plan de données est la partie d’un système qui traite les données elles-mêmes : dans un réseau, il transmet les paquets ; dans Kubernetes, ce sont les nœuds avec les pods. Pour un agent IA, c’est tout ce qu’il lit : pages, tickets, documents et réponses de serveurs.",
   "faq.1.q": "En quoi le plan de contrôle diffère-t-il du plan de données ?",
   "faq.1.a": "Le plan de contrôle, ce sont les commandes, c’est-à-dire vos messages et vos règles. Le plan de données, ce sont les données. La protection contre l’injection de prompt empêche le texte externe, placé dans les données, de devenir une commande.",
+  "faq.2.q": "Qu’est-ce que le plan de gestion (management plane) ?",
+  "faq.2.a": "Le plan de gestion est un troisième plan : les fonctions de supervision, de configuration et de maintenance des équipements réseau (comme le définit la RFC 7426). Le plan de contrôle décide comment transmettre les données, le plan de données les transmet, et le plan de gestion configure et observe les équipements eux-mêmes.",
+  "faq.3.q": "Qu’est-ce que le plan de données dans Kubernetes ?",
+  "faq.3.a": "La documentation officielle divise un cluster en plan de contrôle (kube-apiserver, etcd, kube-controller-manager, kube-scheduler) et nœuds où les applications tournent dans des pods. Les mots « data plane » n’apparaissent pas dans ces pages ; par le sens, ce sont les nœuds avec les pods, et la documentation range etcd dans le plan de contrôle.",
+  "faq.4.q": "Quel rapport avec l’injection de prompt ?",
+  "faq.4.a": "Pour un agent IA, le plan de contrôle est constitué de vos messages et de vos règles, et le plan de données de tout ce qu’il lit. L’injection de prompt se produit quand une commande est cachée dans les données et que l’agent l’exécute comme la sienne. La défense garde le texte étranger dans le plan de données : droits minimaux, confirmation des écritures, sources de confiance.",
   "source.label": "Wikipédia : Control plane",
   "seo.title": "Plan de données et plan de contrôle : réseaux, Kubernetes et agents IA",
   "seo.description": "Le plan de contrôle décide quoi faire et où ; le plan de données le fait sur les données. Comment fonctionnent les plans dans un routeur, un cluster Kubernetes et un agent IA, et leur lien avec l’injection de prompt.",
-  "compare.title": "Les deux plans dans un réseau, Kubernetes et un agent IA",
+  "compare.title": "Plan de contrôle et plan de données dans quatre systèmes",
   "compare.head": [
-   "Réseau",
-   "Kubernetes",
-   "Agent IA"
+   "Plan de contrôle",
+   "Plan de données"
   ],
   "compare.rows.0": [
-   "Plan de contrôle",
+   "Réseau",
    "la table de routage : où envoyer les paquets",
-   "les composants de contrôle du cluster : quoi lancer et où",
-   "vos messages et vos règles"
+   "la transmission des paquets eux-mêmes"
   ],
   "compare.rows.1": [
-   "Plan de données",
-   "la transmission des paquets eux-mêmes",
-   "les nœuds où tournent les pods avec les applications",
+   "Kubernetes",
+   "kube-apiserver, etcd, ordonnanceur, contrôleurs : quoi lancer et où",
+   "les nœuds où tournent les pods avec les applications"
+  ],
+  "compare.rows.2": [
+   "Cloud (AWS comme exemple)",
+   "l’API de création de ressources : lancer un serveur, créer un bucket",
+   "le serveur en marche lui-même, la lecture et l’écriture d’objets"
+  ],
+  "compare.rows.3": [
+   "Agent IA",
+   "vos messages et vos règles",
    "pages, tickets, documents, réponses de serveurs"
-  ]
+  ],
+  "notes.title": "Quand le plan de contrôle tombe, et où les définitions divergent",
+  "notes.items.0.name": "Réseau",
+  "notes.items.0.text": "Un routeur avec redémarrage en douceur (RFC 4724) continue de transmettre avec l’ancienne table pendant que son plan de contrôle redémarre ; les routes périmées sont marquées. La RFC 7426 ajoute une réserve : le modèle SDN de base ne traite pas la perte de connexion avec le contrôleur, et tant qu’elle n’est pas rétablie, le flux est indisponible.",
+  "notes.items.1.name": "Kubernetes",
+  "notes.items.1.text": "Le plan de contrôle gère les nœuds et les pods, et les applications tournent sur les nœuds. Si le contrôleur de nœuds conclut que la connectivité entre le plan de contrôle et les nœuds est rompue, il n’évince aucun pod. La documentation n’a pas de phrase disant « les pods continuent de fonctionner », donc cette page ne l’affirme pas.",
+  "notes.items.2.name": "Cloud",
+  "notes.items.2.text": "Selon la documentation AWS, le plan de contrôle crée et configure les ressources, et le plan de données fournit la fonction principale du service : le serveur en marche, la lecture et l’écriture d’objets. Le plan de données est plus simple, avec moins de dépendances, donc les pannes massives y sont statistiquement moins probables que dans le plan de contrôle.",
+  "notes.items.3.name": "Plan de gestion (management plane)",
+  "notes.items.3.text": "Un troisième plan. La RFC 7426 le définit comme les fonctions de supervision, de configuration et de maintenance des équipements réseau ; le plan de contrôle y désigne les fonctions qui pilotent les équipements. On l’omet souvent et on ne parle que de deux plans.",
+  "notes.items.4.name": "Les définitions divergent",
+  "notes.items.4.text": "La documentation officielle de Kubernetes range etcd parmi les composants du plan de contrôle et n’emploie pas les mots « data plane » dans les pages d’architecture et de composants : elle dit « control plane » et « nœuds ». Ce qu’un auteur entend par le terme doit être vérifié dans chaque source."
  },
  "permissions": {
   "name": "Permissions",
