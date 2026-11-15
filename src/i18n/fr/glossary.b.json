@@ -723,7 +723,63 @@
     "seo.description": "Les environnements hors production sont des copies d’un système où l’équipe et un agent IA vérifient des changements sans toucher à la production : feature, dev, test, staging, démo. Ce qui les distingue.",
     "screens.0": "Un environnement hors production est construit comme une copie de la production. Le service est copié en entier, et ses dépendances, la base de données et les services externes, sont branchées de deux façons : sous forme de copies des vraies, plus proches de la réalité, ou sous forme de mocks, moins chers et plus rapides. L’agent y travaille et n’écrit pas en production.",
     "screens.1": "Un changement avance de gauche à droite. Depuis l’environnement local, le code prend deux chemins : vers dev après une fusion, et vers un stand de feature où une branche est vérifiée. Les deux chemins se rejoignent sur test, où tout le monde intègre. Ensuite, la préproduction vérifie comment le changement se comporte comme en production, la démo le montre au client, et seulement après il arrive en production. Tout ce qui est dans le cadre est un environnement hors production.",
-    "parts.title": "Où les changements sont vérifiés : l’environnement local et les stands de test"
+    "parts.title": "Où les changements sont vérifiés : l’environnement local et les stands de test",
+    "table.title": "Sept environnements côte à côte : qui travaille, quelles données, ce que peut faire un agent IA",
+    "table.head": [
+      "Local",
+      "Feature",
+      "Dev",
+      "Test",
+      "Pré-prod",
+      "Démo",
+      "Prod"
+    ],
+    "table.rows.0": [
+      "Qui travaille",
+      "un développeur",
+      "l’auteur de la branche",
+      "l’équipe",
+      "QA et tests automatiques",
+      "l’équipe de déploiement",
+      "client, ventes",
+      "les clients"
+    ],
+    "table.rows.1": [
+      "Données",
+      "de test",
+      "de test",
+      "de test",
+      "copie de la production ou mocks",
+      "copie récente de la production",
+      "exemples préparés",
+      "réelles"
+    ],
+    "table.rows.2": [
+      "Ce qu’on vérifie",
+      "écrire et essayer",
+      "une fonctionnalité isolée",
+      "que le code s’assemble",
+      "que les changements de tous fonctionnent ensemble",
+      "la livraison comme en production",
+      "la présentation d’une version finie",
+      "les utilisateurs au travail"
+    ],
+    "table.rows.3": [
+      "Ce que peut faire un agent IA",
+      "écrire du code, lancer les tests",
+      "monter et vérifier une branche",
+      "modifier et vérifier",
+      "reproduire des bugs, lancer les tests automatiques",
+      "vérifications seulement ; les changements passent par le déploiement",
+      "regarder et montrer, sans modifier",
+      "lecture seule, pas d’écriture"
+    ],
+    "notes.title": "Ce que dit le glossaire ISTQB",
+    "notes.items.0.name": "ISTQB : test environment",
+    "notes.items.0.text": "Le glossaire ISTQB définit un environnement de test (test environment) ainsi : “An environment containing hardware, instrumentation, simulators, software tools, and other support elements needed to conduct a test.” Dans les équipes logicielles, cet environnement est ce qu’on appelle un test stand.",
+    "sites.0.label": "Glossaire ISTQB : le terme test environment",
+    "faq.4.q": "Un stand et un environnement, est-ce la même chose ?",
+    "faq.4.a": "Presque. Environnement est le mot général pour toute copie d’un système, y compris la production et l’environnement local du développeur. Un stand désigne en général un environnement de test partagé sur le serveur de l’équipe : tout sauf l’environnement local et la production."
   },
   "preprod": {
     "name": "Staging (préproduction)",
@@ -800,7 +856,9 @@
     "faq.3.q": "Prod et production, est-ce la même chose ?",
     "faq.3.a": "Oui : prod est l’abréviation de production, aussi appelée environnement réel.",
     "faq.4.q": "En quoi la production diffère-t-elle de la pré-prod ?",
-    "faq.4.a": "La pré-prod est une copie de la production pour la dernière vérification avant la mise en production, sans clients. Les clients travaillent sur la production, et une erreur y coûte le plus cher."
+    "faq.4.a": "La pré-prod est une copie de la production pour la dernière vérification avant la mise en production, sans clients. Les clients travaillent sur la production, et une erreur y coûte le plus cher.",
+    "faq.5.q": "Peut-on tester en production ?",
+    "faq.5.a": "Les vérifications principales se font sur les stands avant la production, mais certaines ont aussi lieu en production. Une version canari donne d’abord la nouvelle version à un petit groupe d’utilisateurs, puis élargit le déploiement quand tout va bien. L’agent n’écrit pas non plus directement en production."
   },
   "quint": {
     "aka": "un langage de modèles formels",

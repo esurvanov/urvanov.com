@@ -723,7 +723,63 @@
     "seo.description": "Môi trường phi sản xuất là các bản sao của hệ thống, nơi nhóm và tác nhân AI kiểm tra thay đổi mà không đụng đến môi trường sản xuất: feature, dev, test, staging, demo. Chúng khác nhau thế nào.",
     "screens.0": "Môi trường phi sản xuất được dựng như bản sao của môi trường sản xuất. Dịch vụ được sao chép nguyên vẹn, còn các phụ thuộc của nó, cơ sở dữ liệu và dịch vụ bên ngoài, được nối theo hai cách: bản sao của thứ thật, gần thực tế hơn, hoặc mock, rẻ và nhanh hơn. Tác nhân làm việc ở đó và không ghi vào môi trường sản xuất.",
     "screens.1": "Một thay đổi đi từ trái sang phải. Từ môi trường local, mã đi hai đường: tới dev sau khi merge và tới feature stand, nơi một nhánh được kiểm tra. Hai đường gặp nhau ở test, nơi mọi người tích hợp. Sau đó pre-prod kiểm tra thay đổi cư xử ra sao như trên môi trường sản xuất, demo cho khách hàng xem, và chỉ sau đó nó mới đến môi trường sản xuất. Mọi thứ trong khung là môi trường phi sản xuất.",
-    "parts.title": "Nơi thay đổi được kiểm tra: môi trường local và các stand kiểm thử"
+    "parts.title": "Nơi thay đổi được kiểm tra: môi trường local và các stand kiểm thử",
+    "table.title": "Bảy môi trường cạnh nhau: ai làm việc, dữ liệu gì, tác tử AI được làm gì",
+    "table.head": [
+      "Local",
+      "Feature",
+      "Dev",
+      "Test",
+      "Pre-prod",
+      "Demo",
+      "Prod"
+    ],
+    "table.rows.0": [
+      "Ai làm việc",
+      "lập trình viên",
+      "tác giả nhánh",
+      "nhóm",
+      "QA và autotest",
+      "nhóm phát hành",
+      "khách hàng, kinh doanh",
+      "người dùng"
+    ],
+    "table.rows.1": [
+      "Dữ liệu",
+      "thử nghiệm",
+      "thử nghiệm",
+      "thử nghiệm",
+      "bản sao dữ liệu thật hoặc mock",
+      "bản sao mới của dữ liệu thật",
+      "mẫu chuẩn bị sẵn",
+      "dữ liệu thật"
+    ],
+    "table.rows.2": [
+      "Kiểm tra gì",
+      "viết và thử",
+      "một tính năng riêng lẻ",
+      "mã có khớp với nhau không",
+      "thay đổi của mọi người chạy cùng nhau",
+      "bản phát hành như trên production",
+      "trình diễn bản hoàn chỉnh",
+      "người dùng đang làm việc"
+    ],
+    "table.rows.3": [
+      "Tác tử AI được làm gì",
+      "viết mã, chạy test",
+      "dựng và kiểm tra một nhánh",
+      "sửa và kiểm tra",
+      "tái hiện lỗi, chạy autotest",
+      "chỉ chạy kiểm tra; thay đổi đến qua bản phát hành",
+      "xem và trình diễn, không sửa",
+      "chỉ đọc, không ghi"
+    ],
+    "notes.title": "Bảng thuật ngữ ISTQB nói gì",
+    "notes.items.0.name": "ISTQB: test environment",
+    "notes.items.0.text": "Bảng thuật ngữ ISTQB định nghĩa môi trường kiểm thử (test environment) như sau: “An environment containing hardware, instrumentation, simulators, software tools, and other support elements needed to conduct a test.” Trong các nhóm phần mềm, môi trường như vậy chính là test stand.",
+    "sites.0.label": "Bảng thuật ngữ ISTQB: thuật ngữ test environment",
+    "faq.4.q": "Stand và môi trường có phải một không?",
+    "faq.4.a": "Gần như vậy. Môi trường là từ chung cho mọi bản sao của hệ thống, kể cả production và môi trường cục bộ của lập trình viên. Stand thường là môi trường kiểm thử dùng chung trên máy chủ của nhóm: mọi thứ trừ môi trường cục bộ và production."
   },
   "preprod": {
     "name": "Staging (pre-prod)",
@@ -800,7 +856,9 @@
     "faq.3.q": "Prod và production có phải là một không?",
     "faq.3.a": "Có: prod là cách viết tắt của production, còn gọi là môi trường đang chạy thật.",
     "faq.4.q": "Production khác pre-prod thế nào?",
-    "faq.4.a": "Pre-prod là bản sao của production để kiểm tra lần cuối trước khi phát hành, không có khách hàng. Khách hàng làm việc trên production, và một lỗi ở đó tốn kém nhất."
+    "faq.4.a": "Pre-prod là bản sao của production để kiểm tra lần cuối trước khi phát hành, không có khách hàng. Khách hàng làm việc trên production, và một lỗi ở đó tốn kém nhất.",
+    "faq.5.q": "Có thể kiểm thử trên production không?",
+    "faq.5.a": "Các kiểm tra chính chạy trên stand trước production, nhưng một số kiểm tra vẫn diễn ra trên production. Bản phát hành canary trước hết đưa phiên bản mới cho một nhóm nhỏ người dùng và mở rộng khi mọi thứ ổn. Tác tử cũng không ghi trực tiếp vào production."
   },
   "quint": {
     "aka": "ngôn ngữ cho mô hình hình thức",
