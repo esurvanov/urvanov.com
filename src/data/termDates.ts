@@ -61,7 +61,7 @@ export const TERM_DATES: Record<string, [string, string]> = {
   'hallucination': ['2026-10-13', '2026-11-14'],
   'context': ['2026-10-13', '2026-11-15'],
   'token': ['2026-10-13', '2026-11-15'],
-  'epimorphism': ['2026-10-13', '2026-11-14'],
+  'epimorphism': ['2026-10-13', '2026-11-15'],
   'anthropic': ['2026-10-13', '2026-11-14'],
   'google-deepmind': ['2026-11-14', '2026-11-14'],
   'claude': ['2026-11-14', '2026-11-14'],
