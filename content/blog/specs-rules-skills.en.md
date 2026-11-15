@@ -1,16 +1,16 @@
 ---
 title: What are AGENTS.md and CLAUDE.md and how they differ from spec.md: an example file and where to keep specs, rules and skills
 date: 2026-09-28
-updated: 2026-11-14
-description: AGENTS.md and CLAUDE.md give an agent rules for the whole project, while spec.md describes one task. An example file and what goes where: specs, the project bible, rules and skills. Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs.
+updated: 2026-11-15
+description: How a project rules file differs from a single-task description, which agent reads which file, and how to move off .cursorrules. A real CLAUDE.md example and what goes where. Based on vendor docs.
 tags: AI, Claude Code, CLAUDE.md, harness, specs, skills
 category: specs
 layout: wide
 mentions: AGENTS.md, CLAUDE.md, Agent Skills, Spec Kit, Memory Bank
-toc: map=Four layers | spec=Spec | bible=Bible | rules=Rules | skills=Skills | chat=In a chat | pick=What goes where | faq=Questions | next=Further reading
+toc: map=Four layers | spec=Spec | bible=Bible | rules=Rules | matrix=Who reads what | cursor=Cursor | example=Example | skills=Skills | chat=In a chat | pick=What goes where | faq=Questions | next=Further reading
 ---
 
-AGENTS.md and CLAUDE.md are files in the project root with standing instructions for an AI agent: build and test commands, code style, prohibitions. AGENTS.md is read by Codex, Cursor, Gemini CLI, Copilot and other agents, CLAUDE.md by Claude Code. They differ from spec.md in scope: rules cover the whole project, a spec covers one task.
+AGENTS.md gives an AI agent rules for the whole project and enters every session, while spec.md describes one task: requirements and done criteria. Cursor reads both AGENTS.md and its own rules in .cursor/rules; Claude Code reads AGENTS.md when the project has no CLAUDE.md. Below: which agent reads which file, an example file and what goes where.
 
 <b-post series="prompts">
 <b-ctx-layers>
@@ -76,7 +76,7 @@ AGENTS.md and CLAUDE.md are files in the project root with standing instructions
   <b-why>Rules are instructions the harness puts at the start of every session<b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: «CLAUDE.md files are loaded into the context window at the start of every session» — code.claude.com/docs/en/memory"/>.</b-why>
   <b-io justify>
     <item k="CLAUDE.md" mono>Claude Code, path-scoped rules in <code>.claude/rules/</code><b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: «Rules can also be scoped to specific file paths, so they only load into context when Claude works with matching files» — code.claude.com/docs/en/memory"/></item>
-    <item k="AGENTS.md" mono>“A README for agents”: Codex, Cursor, Gemini CLI, Copilot and others<b-proof href="https://agents.md/" quote="agents.md: «Think of AGENTS.md as a README for agents: a dedicated, predictable place to provide the context and instructions to help AI coding agents work on your project» — agents.md"/></item>
+    <item k="AGENTS.md" mono>“A README for agents”: Codex, Cursor, Copilot, Windsurf, OpenCode and others; Claude Code when there is no CLAUDE.md<b-proof href="https://agents.md/" quote="agents.md: «Think of AGENTS.md as a README for agents: a dedicated, predictable place to provide the context and instructions to help AI coding agents work on your project» — agents.md"/></item>
     <item k=".cursor/rules" mono>Cursor, four ways to apply<b-proof href="https://cursor.com/docs/context/rules" quote="Cursor: four modes — Always Apply, Apply Intelligently, Apply to Specific Files, Apply Manually — cursor.com/docs/context/rules"/></item>
   </b-io>
   <b-why align="left">An AGENTS.md example for a web project. The file holds only what the agent cannot learn from the code: commands, style and prohibitions. CLAUDE.md for Claude Code works the same way.</b-why>
@@ -95,18 +95,88 @@ AGENTS.md and CLAUDE.md are files in the project root with standing instructions
     ## Before finishing
     - Run the tests and the type check
   </b-codebox>
-  <b-sublabel top="18">When a rule enters the context · Cursor</b-sublabel>
+  <b-metric-line value="≤ 200">lines per CLAUDE.md file<b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: «Size: target under 200 lines per CLAUDE.md file. Longer files consume more context and reduce adherence» — code.claude.com/docs/en/memory"/></b-metric-line>
+  <b-finding>
+    <ex>Three formats of one idea: an instructions file the harness reads at the start.</ex>
+    <gen>Rules stay context, and the model can break them; an action that must never happen is blocked with a hook. The more specific and concise a rule, the more consistently it is followed<b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: «Claude treats them as context, not enforced configuration. To block an action regardless of what Claude decides, use a PreToolUse hook instead. The more specific and concise your instructions, the more consistently Claude follows them» — code.claude.com/docs/en/memory"/>.</gen>
+    <do>Create AGENTS.md or CLAUDE.md: build and test commands, code style, prohibitions. Move folder-specific rules into path-scoped rules.</do>
+  </b-finding>
+</b-chapter>
+<b-chapter id="matrix" title="Which agent reads which file" icon="table-grid">
+  <b-why>The table was checked against vendor docs on 15.11.2026. A cell marked “not confirmed” means the docs do not describe it.</b-why>
+  <b-ctx-table phone="wrap">
+    <table>
+    <thead>
+      <tr><th>Agent</th><th>AGENTS.md</th><th>CLAUDE.md</th><th>Own files</th><th>Source · checked 15.11.2026</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Claude Code</td><td>yes when there is no CLAUDE.md (v2.1.277+); otherwise via an <code>@AGENTS.md</code> line inside CLAUDE.md</td><td>the main file</td><td><code>.claude/rules/</code></td><td><a href="https://code.claude.com/docs/en/memory">code.claude.com/docs/en/memory</a></td></tr>
+      <tr><td>Codex</td><td>yes; in each folder <code>AGENTS.override.md</code> goes first; 32 KiB limit by default</td><td>only if the name is added to <code>project_doc_fallback_filenames</code></td><td><code>AGENTS.override.md</code></td><td><a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">learn.chatgpt.com · agents-md</a></td></tr>
+      <tr><td>Cursor</td><td>yes, in the root and in subfolders</td><td>yes, applied in every chat</td><td><code>.cursor/rules/*.mdc</code></td><td><a href="https://cursor.com/help/customization/rules">cursor.com/help/customization/rules</a> · <a href="https://cursor.com/docs/context/rules">docs/context/rules</a></td></tr>
+      <tr><td>GitHub Copilot</td><td>yes, the nearest file in the directory tree</td><td>yes, repository root only (together with GEMINI.md)</td><td><code>.github/copilot-instructions.md</code>, <code>.github/instructions/*.instructions.md</code></td><td><a href="https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions">docs.github.com · repository instructions</a></td></tr>
+      <tr><td>Gemini CLI</td><td>only if the name is added to the <code>context.fileName</code> setting</td><td>not confirmed</td><td><code>GEMINI.md</code></td><td><a href="https://geminicli.com/docs/cli/gemini-md/">geminicli.com/docs/cli/gemini-md</a></td></tr>
+      <tr><td>Windsurf</td><td>yes, in the root and every folder down to the working one; always on</td><td>not confirmed</td><td><code>.windsurf/rules/</code>, <code>.devin/rules/</code></td><td><a href="https://docs.devin.ai/desktop/cascade/agents-md">docs.devin.ai · cascade/agents-md</a></td></tr>
+      <tr><td>OpenCode</td><td>yes, checked first</td><td>fallback when there is no AGENTS.md</td><td>global <code>~/.config/opencode/AGENTS.md</code></td><td><a href="https://opencode.ai/docs/rules/">opencode.ai/docs/rules</a></td></tr>
+    </tbody>
+    </table>
+  </b-ctx-table>
+  <b-finding>
+    <ex>Almost every agent reads AGENTS.md; CLAUDE.md is read by Claude Code, Cursor, Copilot and OpenCode.</ex>
+    <gen>Gemini CLI reads AGENTS.md only after a setting change, and Codex reads CLAUDE.md only after a setting change. If a project has both files, Claude Code takes only CLAUDE.md: shared rules are pulled in with an <code>@AGENTS.md</code> line<b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: with both AGENTS.md and CLAUDE.md present, Claude Code reads «Your CLAUDE.md files only»; to read both, CLAUDE.md starts with an @AGENTS.md line — code.claude.com/docs/en/memory"/>.</gen>
+    <do>Keep shared rules in AGENTS.md; leave an <code>@AGENTS.md</code> line in CLAUDE.md plus whatever only Claude Code needs.</do>
+  </b-finding>
+</b-chapter>
+<b-chapter id="cursor" title="Cursor rules and AGENTS.md" icon="list-arrow">
+  <b-why>Cursor accepts two formats: AGENTS.md is plain markdown with no metadata, and rules in <code>.cursor/rules</code> have apply modes<b-proof href="https://cursor.com/docs/context/rules" quote="Cursor: «Cursor supports AGENTS.md in the project root and subdirectories»; «Project rules must use the .mdc extension» — cursor.com/docs/context/rules"/>.</b-why>
+  <b-sublabel top="18">When a rule enters the context · .cursor/rules</b-sublabel>
   <b-rule-modes>
     <mode t="Always">every chat</mode>
     <mode t="By description">the agent decides</mode>
     <mode t="By files">path pattern matches</mode>
     <mode t="Manually">@rule</mode>
   </b-rule-modes>
-  <b-metric-line value="≤ 200">lines per CLAUDE.md file<b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: «Size: target under 200 lines per CLAUDE.md file. Longer files consume more context and reduce adherence» — code.claude.com/docs/en/memory"/></b-metric-line>
+  <b-cap>Four modes per the Cursor docs<b-proof href="https://cursor.com/help/customization/rules" quote="Cursor: Always Apply — «included in every conversation»; Apply Intelligently — «Agent decides when it is relevant»; Apply to Specific Files — «only applies for files matching a pattern»; Apply Manually — «only used when you @mention it in chat» — cursor.com/help/customization/rules"/>.</b-cap>
+  <b-ctx-table phone="wrap">
+    <table>
+    <thead>
+      <tr><th></th><th>AGENTS.md</th><th>.cursor/rules/*.mdc</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Format</td><td>plain markdown</td><td>a file with the <code>.mdc</code> extension; a <code>.md</code> in this folder is ignored</td></tr>
+      <tr><td>When it applies</td><td>always</td><td>always, by description, by file pattern or manually</td></tr>
+      <tr><td>Folders</td><td>root and nested; the nearest file takes precedence</td><td><code>.cursor/rules</code></td></tr>
+      <tr><td>Size</td><td>no number in the docs</td><td>under 500 lines per rule</td></tr>
+    </tbody>
+    </table>
+  </b-ctx-table>
+  <b-sublabel top="18">Moving off legacy .cursorrules · per Cursor docs</b-sublabel>
+  <b-seq-row>
+    <step t="Create">a new rule via the command palette: “New Cursor Rule”</step>
+    <step t="Copy">the .cursorrules text</step>
+    <step t="Mode">Always Apply</step>
+    <step t="Delete">.cursorrules from the root</step>
+  </b-seq-row>
+  <b-cap>Cursor docs call the root .cursorrules legacy and to be deprecated<b-proof href="https://cursor.com/help/customization/rules" quote="Cursor: «The .cursorrules file in your project root is legacy and will be deprecated» + четыре шага миграции — cursor.com/help/customization/rules"/>. The Always Apply mode matches the old behavior of the file.</b-cap>
   <b-finding>
-    <ex>Three formats of one idea: an instructions file the harness reads at the start.</ex>
-    <gen>Rules stay context, and the model can break them; an action that must never happen is blocked with a hook. The more specific and concise a rule, the more consistently it is followed<b-proof href="https://code.claude.com/docs/en/memory" quote="Anthropic: «Claude treats them as context, not enforced configuration. To block an action regardless of what Claude decides, use a PreToolUse hook instead. The more specific and concise your instructions, the more consistently Claude follows them» — code.claude.com/docs/en/memory"/>.</gen>
-    <do>Create AGENTS.md or CLAUDE.md: build and test commands, code style, prohibitions. Move folder-specific rules into path-scoped rules.</do>
+    <ex>One rule for the whole project goes in AGENTS.md; a conditional rule goes in .mdc.</ex>
+    <gen>AGENTS.md and CLAUDE.md in Cursor apply in every chat; for conditional rules Cursor points to <code>.cursor/rules</code><b-proof href="https://cursor.com/help/customization/rules" quote="Cursor: «CLAUDE.md files are always applied to every conversation, regardless of any alwaysApply frontmatter setting»; для условных правил — project rules в .cursor/rules — cursor.com/help/customization/rules"/>.</gen>
+    <do>Move shared content to AGENTS.md and keep rules for specific file types in .cursor/rules.</do>
+  </b-finding>
+</b-chapter>
+<b-chapter id="example" title="Example: a real CLAUDE.md" icon="notebook">
+  <b-why>An excerpt from the CLAUDE.md of this site’s repository: only what the agent cannot learn from the code, such as where the game version comes from and a rule about dates. For Cursor, Codex and Copilot the same text moves to AGENTS.md.</b-why>
+  <b-codebox title="CLAUDE.md">
+    ## Games: version pinned in games.lock
+    - The site is built from the commit recorded in games.lock
+    - For a new game version: push to games main and wait
+    ## Creation and update dates
+    - On any edit of an article, set updated to today, in ru and en
+    - The build fails if the text changed after updated
+  </b-codebox>
+  <b-finding>
+    <ex>A rule backed by a build check holds better than one without it.</ex>
+    <gen>Rules remain context, so a prohibition that must never be broken is closed with a check. Requirements with a model work the same way: see <a href="/en/blog/quint-vs-tests-and-tla/">Quint vs tests and TLA+</a>.</gen>
+    <do>For every rule the agent broke twice, add a build check or a hook.</do>
   </b-finding>
 </b-chapter>
 <b-chapter id="skills" title="Skills: a procedure on call" icon="zap">
@@ -158,10 +228,10 @@ AGENTS.md and CLAUDE.md are files in the project root with standing instructions
 </b-chapter>
 <b-chapter id="faq" icon="chat" title="Frequently asked questions">
   <b-faq-cards>
-    <q t="What are AGENTS.md and CLAUDE.md?">Files in the project root with standing instructions for an AI agent: build and test commands, code style, prohibitions.</q>
-    <q t="Which agents read AGENTS.md?">Codex, Cursor, Gemini CLI, Copilot and others. Claude Code reads CLAUDE.md.</q>
-    <q t="How long should CLAUDE.md be?">Anthropic recommends under 200 lines per file: rules load into every session. Long and rare content moves into skills.</q>
-    <q t="How are rules different from skills?">The agent sees rules in every session. A skill is a procedure the agent loads fully only when a task matches.</q>
+    <q t="Does Claude Code read AGENTS.md?">Yes, when the project has no CLAUDE.md (version 2.1.277 and newer). With both files present, Claude Code reads only CLAUDE.md; to include AGENTS.md, add an @AGENTS.md line to CLAUDE.md. Source: code.claude.com/docs/en/memory, checked 15.11.2026.</q>
+    <q t="Do I still need .cursorrules?">No. Cursor docs call the root .cursorrules legacy and describe the move: create a new rule in Always Apply mode, then delete the file. Shared rules can live in AGENTS.md. Source: cursor.com/help/customization/rules, checked 15.11.2026.</q>
+    <q t="How many lines should a rules file have?">Anthropic recommends under 200 lines per CLAUDE.md, Cursor under 500 lines per rule; Codex reads up to 32 KiB in total by default. AGENTS.md has no general number. Sources: Anthropic, Cursor and OpenAI docs, checked 15.11.2026.</q>
+    <q t="Where does spec.md live and who creates it?">A spec is created at the start of a task: in GitHub Spec Kit the /speckit-specify command in the agent chat starts it from a task description. The docs name no required folder; the file usually sits in the repository next to the task code and is closed together with the task.</q>
   </b-faq-cards>
 </b-chapter>
 
@@ -172,7 +242,8 @@ AGENTS.md and CLAUDE.md are files in the project root with standing instructions
     <item href="/en/blog/work-prompts-examples/" k="Practice" t="Prompts for work tasks">Five parts and six examples</item>
     <item href="/en/blog/ai-in-code-harness-and-tools/" k="Comparison" t="Comparing harnesses">Claude Code, Codex, Cursor, Hermes</item>
     <item href="/blog/ai-agent-maturity-levels/" k="Maturity" t="AI agent maturity levels">From chat to specs, skills, scripts, a harness and an agentic system</item>
+      <item href="/en/blog/quint-vs-tests-and-tla/" k="Requirements" t="Quint vs tests and TLA+">Requirements as a checkable model</item>
   </b-links>
 </b-chapter>
-<b-footer>Based on Anthropic, OpenAI, GitHub, Cursor and Cline docs; the source is behind the icon next to each claim. “Project bible” is a practitioner term; paraphrases are marked in the source tooltip.</b-footer>
+<b-footer>Based on Anthropic, OpenAI, GitHub, Cursor, Google, Windsurf, OpenCode and Cline docs; the source is behind the icon next to each claim; the table was checked on 15.11.2026. “Project bible” is a practitioner term; paraphrases are marked in the source tooltip.</b-footer>
 </b-post>
