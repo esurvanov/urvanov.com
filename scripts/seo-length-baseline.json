@@ -1,0 +1,1980 @@
+{
+ "/ai/appsec": [
+  "description"
+ ],
+ "/blog/agent-checkpoint": [
+  "description"
+ ],
+ "/blog/agent-escalation-to-human": [
+  "description"
+ ],
+ "/blog/agent-hands-work-back-to-you": [
+  "description"
+ ],
+ "/blog/ai-agent-llm-harness": [
+  "description"
+ ],
+ "/blog/ai-agent-maturity-levels": [
+  "description"
+ ],
+ "/blog/ai-in-code-harness-and-tools": [
+  "title",
+  "description"
+ ],
+ "/blog/ai-interviews-without-leading-questions": [
+  "description"
+ ],
+ "/blog/analytics-reports-agent": [
+  "description"
+ ],
+ "/blog/bug-report-to-reproduction-agent": [
+  "description"
+ ],
+ "/blog/chatgpt-enterprise-usage-report": [
+  "description"
+ ],
+ "/blog/claude-in-chrome": [
+  "description"
+ ],
+ "/blog/data-plane-control-plane-prompt-injection": [
+  "description"
+ ],
+ "/blog/harness-work-approaches": [
+  "description"
+ ],
+ "/blog/incident-investigation-agent": [
+  "description"
+ ],
+ "/blog/longest-ring-arrangement": [
+  "title",
+  "description"
+ ],
+ "/blog/mcp-1c": [
+  "description"
+ ],
+ "/blog/mcp-agent-access": [
+  "description"
+ ],
+ "/blog/mcp-scopes": [
+  "description"
+ ],
+ "/blog/openspec": [
+  "description"
+ ],
+ "/blog/quality-gates-ai-agents": [
+  "description"
+ ],
+ "/blog/relation-gap-how-many-rules": [
+  "description"
+ ],
+ "/blog/rice-theorem-explained": [
+  "description"
+ ],
+ "/blog/rubik-cube-neural-network": [
+  "description"
+ ],
+ "/blog/spec-reconcile-loop": [
+  "description"
+ ],
+ "/blog/specs-by-aggregates": [
+  "description"
+ ],
+ "/blog/work-prompts-examples": [
+  "description"
+ ],
+ "/es/about": [
+  "description"
+ ],
+ "/es/ai/appsec": [
+  "description"
+ ],
+ "/es/ai/engineers": [
+  "description"
+ ],
+ "/es/blog/agent-checkpoint": [
+  "description"
+ ],
+ "/es/blog/agent-hands-work-back-to-you": [
+  "description"
+ ],
+ "/es/blog/ai-agent-llm-harness": [
+  "description"
+ ],
+ "/es/blog/ai-in-code-harness-and-tools": [
+  "description"
+ ],
+ "/es/blog/ai-interviews-without-leading-questions": [
+  "description"
+ ],
+ "/es/blog/analytics-reports-agent": [
+  "description"
+ ],
+ "/es/blog/bug-report-to-reproduction-agent": [
+  "description"
+ ],
+ "/es/blog/chatgpt-enterprise-usage-report": [
+  "description"
+ ],
+ "/es/blog/claude-in-chrome": [
+  "description"
+ ],
+ "/es/blog/data-plane-control-plane-prompt-injection": [
+  "description"
+ ],
+ "/es/blog/feedback-loop-bug-fix": [
+  "description"
+ ],
+ "/es/blog/harness-work-approaches": [
+  "description"
+ ],
+ "/es/blog/incident-investigation-agent": [
+  "description"
+ ],
+ "/es/blog/jest-vs-vitest-vs-qunit": [
+  "description"
+ ],
+ "/es/blog/jira-ai-agent-boundaries": [
+  "description"
+ ],
+ "/es/blog/longest-ring-arrangement": [
+  "title",
+  "description"
+ ],
+ "/es/blog/mcp-1c": [
+  "description"
+ ],
+ "/es/blog/mcp-agent-access": [
+  "description"
+ ],
+ "/es/blog/mcp-scopes": [
+  "description"
+ ],
+ "/es/blog/openspec": [
+  "description"
+ ],
+ "/es/blog/quint-models-find-races": [
+  "description"
+ ],
+ "/es/blog/quint-vs-tests-and-tla": [
+  "description"
+ ],
+ "/es/blog/relation-gap-how-many-rules": [
+  "description"
+ ],
+ "/es/blog/rice-theorem-explained": [
+  "description"
+ ],
+ "/es/blog/rubik-cube-neural-network": [
+  "description"
+ ],
+ "/es/blog/spec-reconcile-loop": [
+  "description"
+ ],
+ "/es/blog/specs-by-aggregates": [
+  "description"
+ ],
+ "/es/blog/specs-rules-skills": [
+  "description"
+ ],
+ "/es/blog/tla-alloy-quint-compare": [
+  "description"
+ ],
+ "/es/blog/who-to-interview-before-buying-ai-tools": [
+  "description"
+ ],
+ "/es/blog/work-prompts-examples": [
+  "description"
+ ],
+ "/es/materials/games/chronicles-of-kingdoms": [
+  "title",
+  "description"
+ ],
+ "/es/materials/games/echo-of-the-rift": [
+  "description"
+ ],
+ "/es/materials/games/northern-rift": [
+  "description"
+ ],
+ "/es/materials/games/skhodka": [
+  "description"
+ ],
+ "/es/materials/games/uptime": [
+  "description"
+ ],
+ "/es/materials/games/zhitie": [
+  "description"
+ ],
+ "/es/materials/glossary/agents-md": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/ai-agent": [
+  "description"
+ ],
+ "/es/materials/glossary/antigravity-cli": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/backup": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/change-fail-rate": [
+  "description"
+ ],
+ "/es/materials/glossary/change-lead-time": [
+  "description"
+ ],
+ "/es/materials/glossary/ci-cd": [
+  "title"
+ ],
+ "/es/materials/glossary/claude-code": [
+  "title"
+ ],
+ "/es/materials/glossary/claude-in-chrome": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/cloud-agent": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/codex": [
+  "description"
+ ],
+ "/es/materials/glossary/context": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/critical-path": [
+  "description"
+ ],
+ "/es/materials/glossary/cursor": [
+  "description"
+ ],
+ "/es/materials/glossary/demo-env": [
+  "title"
+ ],
+ "/es/materials/glossary/deployment-frequency": [
+  "description"
+ ],
+ "/es/materials/glossary/deployment-rework-rate": [
+  "description"
+ ],
+ "/es/materials/glossary/dump": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/e2e-test": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/environment": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/flaky-test": [
+  "title"
+ ],
+ "/es/materials/glossary/gemini-cli": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/hallucination": [
+  "description"
+ ],
+ "/es/materials/glossary/harness": [
+  "description"
+ ],
+ "/es/materials/glossary/hermes-agent": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/human-in-the-loop": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/ide": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/kiro": [
+  "title"
+ ],
+ "/es/materials/glossary/llm": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/local-env": [
+  "title"
+ ],
+ "/es/materials/glossary/mock": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/model-checking": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/opencode": [
+  "title"
+ ],
+ "/es/materials/glossary/openspec": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/permissions": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/planes": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/preprod": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/prod": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/pure-function": [
+  "description"
+ ],
+ "/es/materials/glossary/qa": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/qc": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/recovery-time": [
+  "title"
+ ],
+ "/es/materials/glossary/regression-testing": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/relation-gap": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/smoke-testing": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/spec-driven-development": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/tech-debt": [
+  "description"
+ ],
+ "/es/materials/glossary/terminal": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/test-case": [
+  "description"
+ ],
+ "/es/materials/glossary/test-env": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/test-stand": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/time-to-market": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/tla-plus": [
+  "description"
+ ],
+ "/es/materials/glossary/tool": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/unit-test": [
+  "title"
+ ],
+ "/es/materials/glossary/visual-studio": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/vs-code": [
+  "title",
+  "description"
+ ],
+ "/es/materials/glossary/yandex": [
+  "title",
+  "description"
+ ],
+ "/fr/about": [
+  "description"
+ ],
+ "/fr/ai/appsec": [
+  "description"
+ ],
+ "/fr/ai/engineers": [
+  "description"
+ ],
+ "/fr/blog/agent-checkpoint": [
+  "description"
+ ],
+ "/fr/blog/agent-hands-work-back-to-you": [
+  "description"
+ ],
+ "/fr/blog/agents-per-bounded-context": [
+  "description"
+ ],
+ "/fr/blog/ai-agent-llm-harness": [
+  "description"
+ ],
+ "/fr/blog/ai-in-code-harness-and-tools": [
+  "description"
+ ],
+ "/fr/blog/ai-interviews-without-leading-questions": [
+  "description"
+ ],
+ "/fr/blog/analytics-reports-agent": [
+  "description"
+ ],
+ "/fr/blog/bug-report-to-reproduction-agent": [
+  "description"
+ ],
+ "/fr/blog/category/specs/page/2": [
+  "description"
+ ],
+ "/fr/blog/chatgpt-enterprise-usage-report": [
+  "title",
+  "description"
+ ],
+ "/fr/blog/claude-in-chrome": [
+  "description"
+ ],
+ "/fr/blog/data-plane-control-plane-prompt-injection": [
+  "description"
+ ],
+ "/fr/blog/feedback-loop-bug-fix": [
+  "description"
+ ],
+ "/fr/blog/harness-driven-development": [
+  "description"
+ ],
+ "/fr/blog/harness-work-approaches": [
+  "description"
+ ],
+ "/fr/blog/incident-investigation-agent": [
+  "description"
+ ],
+ "/fr/blog/jest-vs-vitest-vs-qunit": [
+  "description"
+ ],
+ "/fr/blog/jira-ai-agent-boundaries": [
+  "description"
+ ],
+ "/fr/blog/longest-ring-arrangement": [
+  "title",
+  "description"
+ ],
+ "/fr/blog/mcp-1c": [
+  "description"
+ ],
+ "/fr/blog/mcp-agent-access": [
+  "description"
+ ],
+ "/fr/blog/mcp-scopes": [
+  "description"
+ ],
+ "/fr/blog/openspec": [
+  "description"
+ ],
+ "/fr/blog/page/2": [
+  "description"
+ ],
+ "/fr/blog/page/3": [
+  "description"
+ ],
+ "/fr/blog/page/4": [
+  "description"
+ ],
+ "/fr/blog/page/5": [
+  "description"
+ ],
+ "/fr/blog/page/6": [
+  "description"
+ ],
+ "/fr/blog/quint-models-find-races": [
+  "description"
+ ],
+ "/fr/blog/quint-vs-tests-and-tla": [
+  "description"
+ ],
+ "/fr/blog/relation-gap-how-many-rules": [
+  "description"
+ ],
+ "/fr/blog/rice-theorem-explained": [
+  "description"
+ ],
+ "/fr/blog/rubik-cube-neural-network": [
+  "title",
+  "description"
+ ],
+ "/fr/blog/spec-reconcile-loop": [
+  "description"
+ ],
+ "/fr/blog/specs-by-aggregates": [
+  "description"
+ ],
+ "/fr/blog/specs-rules-skills": [
+  "description"
+ ],
+ "/fr/blog/tla-alloy-quint-compare": [
+  "description"
+ ],
+ "/fr/blog/who-to-interview-before-buying-ai-tools": [
+  "description"
+ ],
+ "/fr/blog/work-prompts-examples": [
+  "description"
+ ],
+ "/fr/materials/games/chronicles-of-kingdoms": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/games/echo-of-the-rift": [
+  "description"
+ ],
+ "/fr/materials/games/little-bombers": [
+  "title"
+ ],
+ "/fr/materials/games/northern-rift": [
+  "description"
+ ],
+ "/fr/materials/games/skhodka": [
+  "description"
+ ],
+ "/fr/materials/games/uptime": [
+  "description"
+ ],
+ "/fr/materials/games/zhitie": [
+  "description"
+ ],
+ "/fr/materials/glossary/agents-md": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/ai-agent": [
+  "description"
+ ],
+ "/fr/materials/glossary/antigravity-cli": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/backup": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/change-fail-rate": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/change-lead-time": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/ci-cd": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/claude-code": [
+  "title"
+ ],
+ "/fr/materials/glossary/claude-in-chrome": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/cloud-agent": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/codex": [
+  "description"
+ ],
+ "/fr/materials/glossary/context": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/critical-path": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/cursor": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/demo-env": [
+  "title"
+ ],
+ "/fr/materials/glossary/deployment-frequency": [
+  "description"
+ ],
+ "/fr/materials/glossary/deployment-rework-rate": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/dump": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/e2e-test": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/environment": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/feature-stand": [
+  "title"
+ ],
+ "/fr/materials/glossary/flaky-test": [
+  "title"
+ ],
+ "/fr/materials/glossary/gemini-cli": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/github-copilot": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/hallucination": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/harness": [
+  "description"
+ ],
+ "/fr/materials/glossary/hermes-agent": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/human-in-the-loop": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/ide": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/kiro": [
+  "title"
+ ],
+ "/fr/materials/glossary/llm": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/local-env": [
+  "title"
+ ],
+ "/fr/materials/glossary/mock": [
+  "title"
+ ],
+ "/fr/materials/glossary/model-checking": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/opencode": [
+  "title"
+ ],
+ "/fr/materials/glossary/openspec": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/permissions": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/planes": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/preprod": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/prod": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/pure-function": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/qa": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/qc": [
+  "title"
+ ],
+ "/fr/materials/glossary/recovery-time": [
+  "title"
+ ],
+ "/fr/materials/glossary/regression-testing": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/relation-gap": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/smoke-testing": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/spec-driven-development": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/tech-debt": [
+  "description"
+ ],
+ "/fr/materials/glossary/terminal": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/test-case": [
+  "description"
+ ],
+ "/fr/materials/glossary/test-env": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/test-stand": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/time-to-market": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/tla-plus": [
+  "description"
+ ],
+ "/fr/materials/glossary/tool": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/unit-test": [
+  "title"
+ ],
+ "/fr/materials/glossary/visual-studio": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/vs-code": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/glossary/yandex": [
+  "title",
+  "description"
+ ],
+ "/fr/materials/interactive/methods-lab": [
+  "description"
+ ],
+ "/ka/about": [
+  "description"
+ ],
+ "/ka/ai/appsec": [
+  "description"
+ ],
+ "/ka/blog/agent-checkpoint": [
+  "description"
+ ],
+ "/ka/blog/agent-hands-work-back-to-you": [
+  "description"
+ ],
+ "/ka/blog/ai-agent-llm-harness": [
+  "description"
+ ],
+ "/ka/blog/ai-in-code-harness-and-tools": [
+  "description"
+ ],
+ "/ka/blog/ai-interviews-without-leading-questions": [
+  "title",
+  "description"
+ ],
+ "/ka/blog/analytics-reports-agent": [
+  "description"
+ ],
+ "/ka/blog/bug-report-to-reproduction-agent": [
+  "description"
+ ],
+ "/ka/blog/chatgpt-enterprise-usage-report": [
+  "description"
+ ],
+ "/ka/blog/claude-in-chrome": [
+  "description"
+ ],
+ "/ka/blog/data-plane-control-plane-prompt-injection": [
+  "description"
+ ],
+ "/ka/blog/feedback-loop-bug-fix": [
+  "description"
+ ],
+ "/ka/blog/harness-work-approaches": [
+  "description"
+ ],
+ "/ka/blog/incident-investigation-agent": [
+  "description"
+ ],
+ "/ka/blog/jest-vs-vitest-vs-qunit": [
+  "description"
+ ],
+ "/ka/blog/longest-ring-arrangement": [
+  "title",
+  "description"
+ ],
+ "/ka/blog/mcp-1c": [
+  "description"
+ ],
+ "/ka/blog/mcp-agent-access": [
+  "description"
+ ],
+ "/ka/blog/mcp-scopes": [
+  "description"
+ ],
+ "/ka/blog/openspec": [
+  "description"
+ ],
+ "/ka/blog/quint-vs-tests-and-tla": [
+  "description"
+ ],
+ "/ka/blog/relation-gap-how-many-rules": [
+  "description"
+ ],
+ "/ka/blog/rice-theorem-explained": [
+  "description"
+ ],
+ "/ka/blog/rubik-cube-neural-network": [
+  "title",
+  "description"
+ ],
+ "/ka/blog/spec-reconcile-loop": [
+  "description"
+ ],
+ "/ka/blog/specs-by-aggregates": [
+  "description"
+ ],
+ "/ka/blog/specs-rules-skills": [
+  "description"
+ ],
+ "/ka/blog/tla-alloy-quint-compare": [
+  "description"
+ ],
+ "/ka/blog/work-prompts-examples": [
+  "description"
+ ],
+ "/ka/materials/games/chronicles-of-kingdoms": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/games/echo-of-the-rift": [
+  "description"
+ ],
+ "/ka/materials/games/little-bombers": [
+  "title"
+ ],
+ "/ka/materials/games/northern-rift": [
+  "description"
+ ],
+ "/ka/materials/games/skhodka": [
+  "description"
+ ],
+ "/ka/materials/games/uptime": [
+  "description"
+ ],
+ "/ka/materials/games/zhitie": [
+  "description"
+ ],
+ "/ka/materials/glossary": [
+  "description"
+ ],
+ "/ka/materials/glossary/agents-md": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/ai-agent": [
+  "description"
+ ],
+ "/ka/materials/glossary/backup": [
+  "title"
+ ],
+ "/ka/materials/glossary/ci-cd": [
+  "title"
+ ],
+ "/ka/materials/glossary/claude-code": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/claude-in-chrome": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/cloud-agent": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/codex": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/context": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/critical-path": [
+  "description"
+ ],
+ "/ka/materials/glossary/cursor": [
+  "description"
+ ],
+ "/ka/materials/glossary/demo-env": [
+  "title"
+ ],
+ "/ka/materials/glossary/dump": [
+  "title"
+ ],
+ "/ka/materials/glossary/e2e-test": [
+  "description"
+ ],
+ "/ka/materials/glossary/environment": [
+  "title"
+ ],
+ "/ka/materials/glossary/feature-stand": [
+  "title"
+ ],
+ "/ka/materials/glossary/flaky-test": [
+  "title"
+ ],
+ "/ka/materials/glossary/gemini-cli": [
+  "description"
+ ],
+ "/ka/materials/glossary/hallucination": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/hermes-agent": [
+  "title"
+ ],
+ "/ka/materials/glossary/human-in-the-loop": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/ide": [
+  "description"
+ ],
+ "/ka/materials/glossary/kiro": [
+  "title"
+ ],
+ "/ka/materials/glossary/llm": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/local-env": [
+  "title"
+ ],
+ "/ka/materials/glossary/mock": [
+  "title"
+ ],
+ "/ka/materials/glossary/model-checking": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/openspec": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/permissions": [
+  "title"
+ ],
+ "/ka/materials/glossary/planes": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/preprod": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/prod": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/pure-function": [
+  "description"
+ ],
+ "/ka/materials/glossary/qa": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/qc": [
+  "title"
+ ],
+ "/ka/materials/glossary/regression-testing": [
+  "title"
+ ],
+ "/ka/materials/glossary/relation-gap": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/spec-driven-development": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/tech-debt": [
+  "description"
+ ],
+ "/ka/materials/glossary/terminal": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/test-case": [
+  "description"
+ ],
+ "/ka/materials/glossary/test-env": [
+  "title"
+ ],
+ "/ka/materials/glossary/test-stand": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/time-to-market": [
+  "title"
+ ],
+ "/ka/materials/glossary/tla-plus": [
+  "description"
+ ],
+ "/ka/materials/glossary/tool": [
+  "description"
+ ],
+ "/ka/materials/glossary/unit-test": [
+  "title"
+ ],
+ "/ka/materials/glossary/visual-studio": [
+  "title",
+  "description"
+ ],
+ "/ka/materials/glossary/vs-code": [
+  "description"
+ ],
+ "/ka/materials/glossary/yandex": [
+  "title",
+  "description"
+ ],
+ "/materials/games": [
+  "description"
+ ],
+ "/materials/games/berezovka": [
+  "description"
+ ],
+ "/materials/games/echo-of-the-rift": [
+  "description"
+ ],
+ "/materials/games/northern-rift": [
+  "description"
+ ],
+ "/materials/games/sibiria": [
+  "title"
+ ],
+ "/materials/games/skhodka": [
+  "description"
+ ],
+ "/materials/games/uptime": [
+  "description"
+ ],
+ "/materials/glossary/agents-md": [
+  "description"
+ ],
+ "/materials/glossary/ai-agent": [
+  "description"
+ ],
+ "/materials/glossary/antigravity-cli": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/ci-cd": [
+  "title"
+ ],
+ "/materials/glossary/claude-code": [
+  "title"
+ ],
+ "/materials/glossary/claude-in-chrome": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/cloud-agent": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/context": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/critical-path": [
+  "description"
+ ],
+ "/materials/glossary/demo-env": [
+  "title"
+ ],
+ "/materials/glossary/dump": [
+  "description"
+ ],
+ "/materials/glossary/e2e-test": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/environment": [
+  "title"
+ ],
+ "/materials/glossary/feature-stand": [
+  "title"
+ ],
+ "/materials/glossary/gemini-cli": [
+  "title"
+ ],
+ "/materials/glossary/hallucination": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/hermes-agent": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/human-in-the-loop": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/ide": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/kiro": [
+  "title"
+ ],
+ "/materials/glossary/local-env": [
+  "title"
+ ],
+ "/materials/glossary/mock": [
+  "title"
+ ],
+ "/materials/glossary/model-checking": [
+  "title"
+ ],
+ "/materials/glossary/openspec": [
+  "description"
+ ],
+ "/materials/glossary/permissions": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/planes": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/qc": [
+  "title"
+ ],
+ "/materials/glossary/regression-testing": [
+  "title"
+ ],
+ "/materials/glossary/relation-gap": [
+  "title"
+ ],
+ "/materials/glossary/smoke-testing": [
+  "title"
+ ],
+ "/materials/glossary/spec-driven-development": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/tech-debt": [
+  "description"
+ ],
+ "/materials/glossary/terminal": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/test-case": [
+  "description"
+ ],
+ "/materials/glossary/test-env": [
+  "title"
+ ],
+ "/materials/glossary/time-to-market": [
+  "title"
+ ],
+ "/materials/glossary/tla-plus": [
+  "description"
+ ],
+ "/materials/glossary/tool": [
+  "title",
+  "description"
+ ],
+ "/materials/glossary/unit-test": [
+  "title"
+ ],
+ "/materials/glossary/visual-studio": [
+  "title"
+ ],
+ "/materials/glossary/yandex": [
+  "title",
+  "description"
+ ],
+ "/patterns/antipatterns": [
+  "description"
+ ],
+ "/patterns/code-architecture": [
+  "description"
+ ],
+ "/patterns/context-memory": [
+  "description"
+ ],
+ "/patterns/observability": [
+  "description"
+ ],
+ "/patterns/orchestration": [
+  "description"
+ ],
+ "/patterns/process": [
+  "description"
+ ],
+ "/patterns/quality": [
+  "description"
+ ],
+ "/patterns/security": [
+  "description"
+ ],
+ "/patterns/specification": [
+  "description"
+ ],
+ "/patterns/tooling": [
+  "description"
+ ],
+ "/ru/about": [
+  "description"
+ ],
+ "/ru/ai": [
+  "description"
+ ],
+ "/ru/ai/appsec": [
+  "description"
+ ],
+ "/ru/blog/agent-checkpoint": [
+  "description"
+ ],
+ "/ru/blog/agent-escalation-to-human": [
+  "description"
+ ],
+ "/ru/blog/agent-hands-work-back-to-you": [
+  "description"
+ ],
+ "/ru/blog/ai-agent-llm-harness": [
+  "title",
+  "description"
+ ],
+ "/ru/blog/ai-agent-maturity-levels": [
+  "description"
+ ],
+ "/ru/blog/ai-in-code-harness-and-tools": [
+  "title",
+  "description"
+ ],
+ "/ru/blog/ai-interviews-without-leading-questions": [
+  "description"
+ ],
+ "/ru/blog/analytics-reports-agent": [
+  "description"
+ ],
+ "/ru/blog/bug-report-to-reproduction-agent": [
+  "description"
+ ],
+ "/ru/blog/chatgpt-enterprise-usage-report": [
+  "title",
+  "description"
+ ],
+ "/ru/blog/claude-in-chrome": [
+  "description"
+ ],
+ "/ru/blog/data-plane-control-plane-prompt-injection": [
+  "description"
+ ],
+ "/ru/blog/harness-driven-development": [
+  "description"
+ ],
+ "/ru/blog/harness-work-approaches": [
+  "description"
+ ],
+ "/ru/blog/incident-investigation-agent": [
+  "description"
+ ],
+ "/ru/blog/longest-ring-arrangement": [
+  "description"
+ ],
+ "/ru/blog/mcp-1c": [
+  "description"
+ ],
+ "/ru/blog/mcp-agent-access": [
+  "description"
+ ],
+ "/ru/blog/mcp-scopes": [
+  "description"
+ ],
+ "/ru/blog/openspec": [
+  "description"
+ ],
+ "/ru/blog/quality-gates-ai-agents": [
+  "description"
+ ],
+ "/ru/blog/relation-gap-how-many-rules": [
+  "description"
+ ],
+ "/ru/blog/rice-theorem-explained": [
+  "description"
+ ],
+ "/ru/blog/rubik-cube-neural-network": [
+  "title",
+  "description"
+ ],
+ "/ru/blog/spec-reconcile-loop": [
+  "description"
+ ],
+ "/ru/blog/specs-by-aggregates": [
+  "description"
+ ],
+ "/ru/blog/work-prompts-examples": [
+  "description"
+ ],
+ "/ru/materials/games": [
+  "description"
+ ],
+ "/ru/materials/games/sibiria": [
+  "title"
+ ],
+ "/ru/materials/games/uptime": [
+  "description"
+ ],
+ "/ru/materials/glossary/agents-md": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/ai-agent": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/antigravity-cli": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/change-fail-rate": [
+  "title"
+ ],
+ "/ru/materials/glossary/claude-code": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/claude-in-chrome": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/cloud-agent": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/context": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/critical-path": [
+  "description"
+ ],
+ "/ru/materials/glossary/deployment-frequency": [
+  "title"
+ ],
+ "/ru/materials/glossary/dump": [
+  "description"
+ ],
+ "/ru/materials/glossary/e2e-test": [
+  "description"
+ ],
+ "/ru/materials/glossary/environment": [
+  "title"
+ ],
+ "/ru/materials/glossary/gemini-cli": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/hallucination": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/hermes-agent": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/human-in-the-loop": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/ide": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/local-env": [
+  "title"
+ ],
+ "/ru/materials/glossary/mock": [
+  "title"
+ ],
+ "/ru/materials/glossary/model-checking": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/permissions": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/planes": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/pure-function": [
+  "description"
+ ],
+ "/ru/materials/glossary/qa": [
+  "description"
+ ],
+ "/ru/materials/glossary/qc": [
+  "title"
+ ],
+ "/ru/materials/glossary/regression-testing": [
+  "title"
+ ],
+ "/ru/materials/glossary/relation-gap": [
+  "title"
+ ],
+ "/ru/materials/glossary/smoke-testing": [
+  "title"
+ ],
+ "/ru/materials/glossary/spec-driven-development": [
+  "title"
+ ],
+ "/ru/materials/glossary/tech-debt": [
+  "description"
+ ],
+ "/ru/materials/glossary/terminal": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/test-env": [
+  "title"
+ ],
+ "/ru/materials/glossary/time-to-market": [
+  "title"
+ ],
+ "/ru/materials/glossary/tool": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/unit-test": [
+  "title"
+ ],
+ "/ru/materials/glossary/visual-studio": [
+  "title",
+  "description"
+ ],
+ "/ru/materials/glossary/yandex": [
+  "title",
+  "description"
+ ],
+ "/ru/talk/spec-driven-development": [
+  "description"
+ ],
+ "/th/ai": [
+  "description"
+ ],
+ "/th/ai/appsec": [
+  "description"
+ ],
+ "/th/blog/agent-checkpoint": [
+  "description"
+ ],
+ "/th/blog/agent-hands-work-back-to-you": [
+  "description"
+ ],
+ "/th/blog/ai-in-code-harness-and-tools": [
+  "description"
+ ],
+ "/th/blog/ai-interviews-without-leading-questions": [
+  "description"
+ ],
+ "/th/blog/analytics-reports-agent": [
+  "description"
+ ],
+ "/th/blog/bug-report-to-reproduction-agent": [
+  "description"
+ ],
+ "/th/blog/chatgpt-enterprise-usage-report": [
+  "description"
+ ],
+ "/th/blog/claude-in-chrome": [
+  "description"
+ ],
+ "/th/blog/data-plane-control-plane-prompt-injection": [
+  "description"
+ ],
+ "/th/blog/harness-work-approaches": [
+  "description"
+ ],
+ "/th/blog/jest-vs-vitest-vs-qunit": [
+  "description"
+ ],
+ "/th/blog/longest-ring-arrangement": [
+  "description"
+ ],
+ "/th/blog/mcp-1c": [
+  "description"
+ ],
+ "/th/blog/mcp-agent-access": [
+  "description"
+ ],
+ "/th/blog/mcp-scopes": [
+  "description"
+ ],
+ "/th/blog/openspec": [
+  "description"
+ ],
+ "/th/blog/relation-gap-how-many-rules": [
+  "description"
+ ],
+ "/th/blog/rice-theorem-explained": [
+  "description"
+ ],
+ "/th/blog/rubik-cube-neural-network": [
+  "description"
+ ],
+ "/th/blog/spec-reconcile-loop": [
+  "description"
+ ],
+ "/th/blog/specs-by-aggregates": [
+  "description"
+ ],
+ "/th/blog/specs-rules-skills": [
+  "description"
+ ],
+ "/th/blog/work-prompts-examples": [
+  "description"
+ ],
+ "/th/materials/games/chronicles-of-kingdoms": [
+  "title"
+ ],
+ "/th/materials/games/uptime": [
+  "description"
+ ],
+ "/th/materials/games/zhitie": [
+  "description"
+ ],
+ "/th/materials/glossary/agents-md": [
+  "title",
+  "description"
+ ],
+ "/th/materials/glossary/antigravity-cli": [
+  "title",
+  "description"
+ ],
+ "/th/materials/glossary/ci-cd": [
+  "title"
+ ],
+ "/th/materials/glossary/claude-in-chrome": [
+  "title",
+  "description"
+ ],
+ "/th/materials/glossary/codex": [
+  "title"
+ ],
+ "/th/materials/glossary/context": [
+  "description"
+ ],
+ "/th/materials/glossary/critical-path": [
+  "description"
+ ],
+ "/th/materials/glossary/demo-env": [
+  "title"
+ ],
+ "/th/materials/glossary/environment": [
+  "title"
+ ],
+ "/th/materials/glossary/feature-stand": [
+  "title"
+ ],
+ "/th/materials/glossary/flaky-test": [
+  "title"
+ ],
+ "/th/materials/glossary/gemini-cli": [
+  "title"
+ ],
+ "/th/materials/glossary/hallucination": [
+  "description"
+ ],
+ "/th/materials/glossary/hermes-agent": [
+  "title"
+ ],
+ "/th/materials/glossary/human-in-the-loop": [
+  "title"
+ ],
+ "/th/materials/glossary/ide": [
+  "description"
+ ],
+ "/th/materials/glossary/model-checking": [
+  "title"
+ ],
+ "/th/materials/glossary/opencode": [
+  "title"
+ ],
+ "/th/materials/glossary/openspec": [
+  "title"
+ ],
+ "/th/materials/glossary/permissions": [
+  "title",
+  "description"
+ ],
+ "/th/materials/glossary/planes": [
+  "title",
+  "description"
+ ],
+ "/th/materials/glossary/preprod": [
+  "title"
+ ],
+ "/th/materials/glossary/pure-function": [
+  "title",
+  "description"
+ ],
+ "/th/materials/glossary/qa": [
+  "title"
+ ],
+ "/th/materials/glossary/qc": [
+  "title"
+ ],
+ "/th/materials/glossary/regression-testing": [
+  "title"
+ ],
+ "/th/materials/glossary/relation-gap": [
+  "title"
+ ],
+ "/th/materials/glossary/smoke-testing": [
+  "title"
+ ],
+ "/th/materials/glossary/spec-driven-development": [
+  "title"
+ ],
+ "/th/materials/glossary/terminal": [
+  "title",
+  "description"
+ ],
+ "/th/materials/glossary/test-env": [
+  "title"
+ ],
+ "/th/materials/glossary/test-stand": [
+  "title",
+  "description"
+ ],
+ "/th/materials/glossary/time-to-market": [
+  "title"
+ ],
+ "/th/materials/glossary/tool": [
+  "description"
+ ],
+ "/th/materials/glossary/unit-test": [
+  "title"
+ ],
+ "/th/materials/glossary/visual-studio": [
+  "title"
+ ],
+ "/th/materials/glossary/vs-code": [
+  "description"
+ ],
+ "/th/materials/glossary/yandex": [
+  "title",
+  "description"
+ ],
+ "/th/materials/interactive": [
+  "description"
+ ],
+ "/vi/about": [
+  "description"
+ ],
+ "/vi/ai/appsec": [
+  "description"
+ ],
+ "/vi/blog/agent-checkpoint": [
+  "description"
+ ],
+ "/vi/blog/agent-hands-work-back-to-you": [
+  "description"
+ ],
+ "/vi/blog/ai-agent-llm-harness": [
+  "description"
+ ],
+ "/vi/blog/ai-in-code-harness-and-tools": [
+  "description"
+ ],
+ "/vi/blog/ai-interviews-without-leading-questions": [
+  "description"
+ ],
+ "/vi/blog/analytics-reports-agent": [
+  "description"
+ ],
+ "/vi/blog/bug-report-to-reproduction-agent": [
+  "description"
+ ],
+ "/vi/blog/chatgpt-enterprise-usage-report": [
+  "description"
+ ],
+ "/vi/blog/claude-in-chrome": [
+  "description"
+ ],
+ "/vi/blog/data-plane-control-plane-prompt-injection": [
+  "description"
+ ],
+ "/vi/blog/feedback-loop-bug-fix": [
+  "description"
+ ],
+ "/vi/blog/harness-work-approaches": [
+  "description"
+ ],
+ "/vi/blog/incident-investigation-agent": [
+  "description"
+ ],
+ "/vi/blog/jest-vs-vitest-vs-qunit": [
+  "description"
+ ],
+ "/vi/blog/jira-ai-agent-boundaries": [
+  "description"
+ ],
+ "/vi/blog/longest-ring-arrangement": [
+  "description"
+ ],
+ "/vi/blog/mcp-1c": [
+  "description"
+ ],
+ "/vi/blog/mcp-agent-access": [
+  "description"
+ ],
+ "/vi/blog/mcp-scopes": [
+  "description"
+ ],
+ "/vi/blog/openspec": [
+  "description"
+ ],
+ "/vi/blog/quint-vs-tests-and-tla": [
+  "description"
+ ],
+ "/vi/blog/relation-gap-how-many-rules": [
+  "description"
+ ],
+ "/vi/blog/rice-theorem-explained": [
+  "description"
+ ],
+ "/vi/blog/rubik-cube-neural-network": [
+  "description"
+ ],
+ "/vi/blog/spec-reconcile-loop": [
+  "description"
+ ],
+ "/vi/blog/specs-by-aggregates": [
+  "description"
+ ],
+ "/vi/blog/specs-rules-skills": [
+  "description"
+ ],
+ "/vi/blog/work-prompts-examples": [
+  "description"
+ ],
+ "/vi/materials/games/chronicles-of-kingdoms": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/games/echo-of-the-rift": [
+  "description"
+ ],
+ "/vi/materials/games/little-bombers": [
+  "title"
+ ],
+ "/vi/materials/games/northern-rift": [
+  "description"
+ ],
+ "/vi/materials/games/skhodka": [
+  "description"
+ ],
+ "/vi/materials/games/uptime": [
+  "description"
+ ],
+ "/vi/materials/games/zhitie": [
+  "description"
+ ],
+ "/vi/materials/glossary/agents-md": [
+  "description"
+ ],
+ "/vi/materials/glossary/ai-agent": [
+  "description"
+ ],
+ "/vi/materials/glossary/antigravity-cli": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/ci-cd": [
+  "title"
+ ],
+ "/vi/materials/glossary/claude-code": [
+  "title"
+ ],
+ "/vi/materials/glossary/claude-in-chrome": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/cloud-agent": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/context": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/critical-path": [
+  "description"
+ ],
+ "/vi/materials/glossary/cursor": [
+  "description"
+ ],
+ "/vi/materials/glossary/dump": [
+  "description"
+ ],
+ "/vi/materials/glossary/e2e-test": [
+  "description"
+ ],
+ "/vi/materials/glossary/environment": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/gemini-cli": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/hallucination": [
+  "description"
+ ],
+ "/vi/materials/glossary/harness": [
+  "description"
+ ],
+ "/vi/materials/glossary/hermes-agent": [
+  "title"
+ ],
+ "/vi/materials/glossary/human-in-the-loop": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/ide": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/llm": [
+  "description"
+ ],
+ "/vi/materials/glossary/model-checking": [
+  "title"
+ ],
+ "/vi/materials/glossary/opencode": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/openspec": [
+  "title"
+ ],
+ "/vi/materials/glossary/permissions": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/planes": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/preprod": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/prod": [
+  "description"
+ ],
+ "/vi/materials/glossary/pure-function": [
+  "description"
+ ],
+ "/vi/materials/glossary/qa": [
+  "title"
+ ],
+ "/vi/materials/glossary/qc": [
+  "title"
+ ],
+ "/vi/materials/glossary/regression-testing": [
+  "title"
+ ],
+ "/vi/materials/glossary/relation-gap": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/smoke-testing": [
+  "title"
+ ],
+ "/vi/materials/glossary/spec-driven-development": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/terminal": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/test-stand": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/time-to-market": [
+  "title"
+ ],
+ "/vi/materials/glossary/tla-plus": [
+  "description"
+ ],
+ "/vi/materials/glossary/tool": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/unit-test": [
+  "title"
+ ],
+ "/vi/materials/glossary/visual-studio": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/vs-code": [
+  "title",
+  "description"
+ ],
+ "/vi/materials/glossary/yandex": [
+  "title",
+  "description"
+ ]
+}
