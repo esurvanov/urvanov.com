@@ -195,7 +195,8 @@ const withSite = (base: string, l: Lang) => (`${base} — ${siteName(l)}`.length
 // Описание из определения: целые предложения до предела, а если первое длиннее — обрезка по слову с многоточием
 function snippetOf(text: string): string {
   const flat = text.replace(/\s+/g, ' ').trim()
-  const sentences = flat.match(/[^.!?。]+(?:[.!?。]+(?=\s|$)|$)/g)?.map((x) => x.trim()) ?? [flat]
+  // Конец предложения — знак и пробел: точка внутри «CLAUDE.md» или «Node.js» предложение не обрывает
+  const sentences = flat.split(/(?<=[.!?。])\s+/).filter(Boolean)
   let out = ''
   for (const sent of sentences) {
     const next = out ? `${out} ${sent}` : sent
@@ -406,7 +407,7 @@ function buildPages(): PageMeta[] {
       path: withLang(`/blog/${p.slug}`, p.lang),
       lang: p.lang,
       // В выдаче длинный заголовок обрезается: в <title> — суть до двоеточия, полный — в соцсетях и разметке
-      title: withSite(p.seoTitle ?? p.title.split(': ')[0], p.lang),
+      title: withSite(p.seoTitle ?? p.title.split(/\s*:\s/)[0], p.lang),
       ogTitle: p.title,
       description: p.description,
       type: 'article',
@@ -479,12 +480,12 @@ function buildPages(): PageMeta[] {
     const path = withLang(architecturePath(a.game), a.lang), pageUrl = url(path)
     const image = `/games/${g.slug}/${g.shots[0].file}`
     const ex = ARCHITECTURE_EXTRA[a.game]
-    const fullTitle = ex ? `${a.title.split(': ')[0]}: ${tr(ex.sub, a.lang)}` : a.title
+    const fullTitle = ex ? `${a.title.split(/\s*:\s/)[0]}: ${tr(ex.sub, a.lang)}` : a.title
     // Дата правки: разбор или дополнения сайта к нему — что позже
     const modified = [a.date, ex?.updated].filter(Boolean).sort().pop() || undefined
     pages.push({
       path, lang: a.lang,
-      title: withSite(a.title.split(': ')[0], a.lang),
+      title: withSite(a.title.split(/\s*:\s/)[0], a.lang),
       ogTitle: fullTitle,
       description: a.description,
       type: 'article',
