@@ -5,20 +5,10 @@
  "/blog/agent-checkpoint": [
   "description"
  ],
- "/blog/agent-escalation-to-human": [
-  "description"
- ],
  "/blog/agent-hands-work-back-to-you": [
   "description"
  ],
  "/blog/ai-agent-llm-harness": [
-  "description"
- ],
- "/blog/ai-agent-maturity-levels": [
-  "description"
- ],
- "/blog/ai-in-code-harness-and-tools": [
-  "title",
   "description"
  ],
  "/blog/ai-interviews-without-leading-questions": [
@@ -28,12 +18,6 @@
   "description"
  ],
  "/blog/bug-report-to-reproduction-agent": [
-  "description"
- ],
- "/blog/chatgpt-enterprise-usage-report": [
-  "description"
- ],
- "/blog/claude-in-chrome": [
   "description"
  ],
  "/blog/data-plane-control-plane-prompt-injection": [
@@ -56,12 +40,6 @@
   "description"
  ],
  "/blog/mcp-scopes": [
-  "description"
- ],
- "/blog/openspec": [
-  "description"
- ],
- "/blog/quality-gates-ai-agents": [
   "description"
  ],
  "/blog/relation-gap-how-many-rules": [
@@ -100,9 +78,6 @@
  "/es/blog/ai-agent-llm-harness": [
   "description"
  ],
- "/es/blog/ai-in-code-harness-and-tools": [
-  "description"
- ],
  "/es/blog/ai-interviews-without-leading-questions": [
   "description"
  ],
@@ -110,12 +85,6 @@
   "description"
  ],
  "/es/blog/bug-report-to-reproduction-agent": [
-  "description"
- ],
- "/es/blog/chatgpt-enterprise-usage-report": [
-  "description"
- ],
- "/es/blog/claude-in-chrome": [
   "description"
  ],
  "/es/blog/data-plane-control-plane-prompt-injection": [
@@ -128,9 +97,6 @@
   "description"
  ],
  "/es/blog/incident-investigation-agent": [
-  "description"
- ],
- "/es/blog/jest-vs-vitest-vs-qunit": [
   "description"
  ],
  "/es/blog/jira-ai-agent-boundaries": [
@@ -149,13 +115,7 @@
  "/es/blog/mcp-scopes": [
   "description"
  ],
- "/es/blog/openspec": [
-  "description"
- ],
  "/es/blog/quint-models-find-races": [
-  "description"
- ],
- "/es/blog/quint-vs-tests-and-tla": [
   "description"
  ],
  "/es/blog/relation-gap-how-many-rules": [
@@ -173,27 +133,13 @@
  "/es/blog/specs-by-aggregates": [
   "description"
  ],
- "/es/blog/specs-rules-skills": [
-  "description"
- ],
- "/es/blog/tla-alloy-quint-compare": [
-  "description"
- ],
  "/es/blog/who-to-interview-before-buying-ai-tools": [
   "description"
  ],
  "/es/blog/work-prompts-examples": [
   "description"
  ],
- "/es/materials/glossary/agents-md": [
-  "title",
-  "description"
- ],
  "/es/materials/glossary/ai-agent": [
-  "description"
- ],
- "/es/materials/glossary/antigravity-cli": [
-  "title",
   "description"
  ],
  "/es/materials/glossary/backup": [
@@ -212,15 +158,8 @@
  "/es/materials/glossary/claude-code": [
   "title"
  ],
- "/es/materials/glossary/claude-in-chrome": [
-  "title",
-  "description"
- ],
  "/es/materials/glossary/cloud-agent": [
   "title",
-  "description"
- ],
- "/es/materials/glossary/codex": [
   "description"
  ],
  "/es/materials/glossary/context": [
@@ -230,14 +169,8 @@
  "/es/materials/glossary/critical-path": [
   "description"
  ],
- "/es/materials/glossary/cursor": [
-  "description"
- ],
  "/es/materials/glossary/demo-env": [
   "title"
- ],
- "/es/materials/glossary/deployment-frequency": [
-  "description"
  ],
  "/es/materials/glossary/deployment-rework-rate": [
   "description"
@@ -257,16 +190,6 @@
  "/es/materials/glossary/flaky-test": [
   "title"
  ],
- "/es/materials/glossary/gemini-cli": [
-  "title",
-  "description"
- ],
- "/es/materials/glossary/hallucination": [
-  "description"
- ],
- "/es/materials/glossary/harness": [
-  "description"
- ],
  "/es/materials/glossary/hermes-agent": [
   "title",
   "description"
@@ -282,10 +205,6 @@
  "/es/materials/glossary/kiro": [
   "title"
  ],
- "/es/materials/glossary/llm": [
-  "title",
-  "description"
- ],
  "/es/materials/glossary/local-env": [
   "title"
  ],
@@ -297,13 +216,6 @@
   "title",
   "description"
  ],
- "/es/materials/glossary/opencode": [
-  "title"
- ],
- "/es/materials/glossary/openspec": [
-  "title",
-  "description"
- ],
  "/es/materials/glossary/permissions": [
   "title",
   "description"
@@ -312,18 +224,7 @@
   "title",
   "description"
  ],
- "/es/materials/glossary/preprod": [
-  "description"
- ],
- "/es/materials/glossary/prod": [
-  "title",
-  "description"
- ],
  "/es/materials/glossary/pure-function": [
-  "description"
- ],
- "/es/materials/glossary/qa": [
-  "title",
   "description"
  ],
  "/es/materials/glossary/qc": [
@@ -345,10 +246,6 @@
   "title",
   "description"
  ],
- "/es/materials/glossary/spec-driven-development": [
-  "title",
-  "description"
- ],
  "/es/materials/glossary/tech-debt": [
   "description"
  ],
@@ -363,15 +260,8 @@
   "title",
   "description"
  ],
- "/es/materials/glossary/test-stand": [
-  "title",
-  "description"
- ],
  "/es/materials/glossary/time-to-market": [
   "title",
-  "description"
- ],
- "/es/materials/glossary/tla-plus": [
   "description"
  ],
  "/es/materials/glossary/tool": [
@@ -382,14 +272,6 @@
   "title"
  ],
  "/es/materials/glossary/visual-studio": [
-  "title",
-  "description"
- ],
- "/es/materials/glossary/vs-code": [
-  "title",
-  "description"
- ],
- "/es/materials/glossary/yandex": [
   "title",
   "description"
  ],
@@ -414,9 +296,6 @@
  "/fr/blog/ai-agent-llm-harness": [
   "description"
  ],
- "/fr/blog/ai-in-code-harness-and-tools": [
-  "description"
- ],
  "/fr/blog/ai-interviews-without-leading-questions": [
   "description"
  ],
@@ -429,29 +308,16 @@
  "/fr/blog/category/specs/page/2": [
   "description"
  ],
- "/fr/blog/chatgpt-enterprise-usage-report": [
-  "title",
-  "description"
- ],
- "/fr/blog/claude-in-chrome": [
-  "description"
- ],
  "/fr/blog/data-plane-control-plane-prompt-injection": [
   "description"
  ],
  "/fr/blog/feedback-loop-bug-fix": [
   "description"
  ],
- "/fr/blog/harness-driven-development": [
-  "description"
- ],
  "/fr/blog/harness-work-approaches": [
   "description"
  ],
  "/fr/blog/incident-investigation-agent": [
-  "description"
- ],
- "/fr/blog/jest-vs-vitest-vs-qunit": [
   "description"
  ],
  "/fr/blog/jira-ai-agent-boundaries": [
@@ -470,16 +336,10 @@
  "/fr/blog/mcp-scopes": [
   "description"
  ],
- "/fr/blog/openspec": [
-  "description"
- ],
  "/fr/blog/page/2": [
   "description"
  ],
  "/fr/blog/quint-models-find-races": [
-  "description"
- ],
- "/fr/blog/quint-vs-tests-and-tla": [
   "description"
  ],
  "/fr/blog/relation-gap-how-many-rules": [
@@ -498,27 +358,13 @@
  "/fr/blog/specs-by-aggregates": [
   "description"
  ],
- "/fr/blog/specs-rules-skills": [
-  "description"
- ],
- "/fr/blog/tla-alloy-quint-compare": [
-  "description"
- ],
  "/fr/blog/who-to-interview-before-buying-ai-tools": [
   "description"
  ],
  "/fr/blog/work-prompts-examples": [
   "description"
  ],
- "/fr/materials/glossary/agents-md": [
-  "title",
-  "description"
- ],
  "/fr/materials/glossary/ai-agent": [
-  "description"
- ],
- "/fr/materials/glossary/antigravity-cli": [
-  "title",
   "description"
  ],
  "/fr/materials/glossary/backup": [
@@ -540,15 +386,8 @@
  "/fr/materials/glossary/claude-code": [
   "title"
  ],
- "/fr/materials/glossary/claude-in-chrome": [
-  "title",
-  "description"
- ],
  "/fr/materials/glossary/cloud-agent": [
   "title",
-  "description"
- ],
- "/fr/materials/glossary/codex": [
   "description"
  ],
  "/fr/materials/glossary/context": [
@@ -559,15 +398,8 @@
   "title",
   "description"
  ],
- "/fr/materials/glossary/cursor": [
-  "title",
-  "description"
- ],
  "/fr/materials/glossary/demo-env": [
   "title"
- ],
- "/fr/materials/glossary/deployment-frequency": [
-  "description"
  ],
  "/fr/materials/glossary/deployment-rework-rate": [
   "title",
@@ -591,19 +423,8 @@
  "/fr/materials/glossary/flaky-test": [
   "title"
  ],
- "/fr/materials/glossary/gemini-cli": [
-  "title",
-  "description"
- ],
  "/fr/materials/glossary/github-copilot": [
   "title",
-  "description"
- ],
- "/fr/materials/glossary/hallucination": [
-  "title",
-  "description"
- ],
- "/fr/materials/glossary/harness": [
   "description"
  ],
  "/fr/materials/glossary/hermes-agent": [
@@ -621,10 +442,6 @@
  "/fr/materials/glossary/kiro": [
   "title"
  ],
- "/fr/materials/glossary/llm": [
-  "title",
-  "description"
- ],
  "/fr/materials/glossary/local-env": [
   "title"
  ],
@@ -632,13 +449,6 @@
   "title"
  ],
  "/fr/materials/glossary/model-checking": [
-  "title",
-  "description"
- ],
- "/fr/materials/glossary/opencode": [
-  "title"
- ],
- "/fr/materials/glossary/openspec": [
   "title",
   "description"
  ],
@@ -650,18 +460,7 @@
   "title",
   "description"
  ],
- "/fr/materials/glossary/preprod": [
-  "description"
- ],
- "/fr/materials/glossary/prod": [
-  "title",
-  "description"
- ],
  "/fr/materials/glossary/pure-function": [
-  "title",
-  "description"
- ],
- "/fr/materials/glossary/qa": [
   "title",
   "description"
  ],
@@ -683,10 +482,6 @@
   "title",
   "description"
  ],
- "/fr/materials/glossary/spec-driven-development": [
-  "title",
-  "description"
- ],
  "/fr/materials/glossary/tech-debt": [
   "description"
  ],
@@ -701,15 +496,8 @@
   "title",
   "description"
  ],
- "/fr/materials/glossary/test-stand": [
-  "title",
-  "description"
- ],
  "/fr/materials/glossary/time-to-market": [
   "title",
-  "description"
- ],
- "/fr/materials/glossary/tla-plus": [
   "description"
  ],
  "/fr/materials/glossary/tool": [
@@ -720,14 +508,6 @@
   "title"
  ],
  "/fr/materials/glossary/visual-studio": [
-  "title",
-  "description"
- ],
- "/fr/materials/glossary/vs-code": [
-  "title",
-  "description"
- ],
- "/fr/materials/glossary/yandex": [
   "title",
   "description"
  ],
@@ -749,9 +529,6 @@
  "/ka/blog/ai-agent-llm-harness": [
   "description"
  ],
- "/ka/blog/ai-in-code-harness-and-tools": [
-  "description"
- ],
  "/ka/blog/ai-interviews-without-leading-questions": [
   "title",
   "description"
@@ -760,12 +537,6 @@
   "description"
  ],
  "/ka/blog/bug-report-to-reproduction-agent": [
-  "description"
- ],
- "/ka/blog/chatgpt-enterprise-usage-report": [
-  "description"
- ],
- "/ka/blog/claude-in-chrome": [
   "description"
  ],
  "/ka/blog/data-plane-control-plane-prompt-injection": [
@@ -780,9 +551,6 @@
  "/ka/blog/incident-investigation-agent": [
   "description"
  ],
- "/ka/blog/jest-vs-vitest-vs-qunit": [
-  "description"
- ],
  "/ka/blog/longest-ring-arrangement": [
   "title",
   "description"
@@ -794,12 +562,6 @@
   "description"
  ],
  "/ka/blog/mcp-scopes": [
-  "description"
- ],
- "/ka/blog/openspec": [
-  "description"
- ],
- "/ka/blog/quint-vs-tests-and-tla": [
   "description"
  ],
  "/ka/blog/relation-gap-how-many-rules": [
@@ -818,20 +580,10 @@
  "/ka/blog/specs-by-aggregates": [
   "description"
  ],
- "/ka/blog/specs-rules-skills": [
-  "description"
- ],
- "/ka/blog/tla-alloy-quint-compare": [
-  "description"
- ],
  "/ka/blog/work-prompts-examples": [
   "description"
  ],
  "/ka/materials/glossary": [
-  "description"
- ],
- "/ka/materials/glossary/agents-md": [
-  "title",
   "description"
  ],
  "/ka/materials/glossary/ai-agent": [
@@ -847,15 +599,7 @@
   "title",
   "description"
  ],
- "/ka/materials/glossary/claude-in-chrome": [
-  "title",
-  "description"
- ],
  "/ka/materials/glossary/cloud-agent": [
-  "title",
-  "description"
- ],
- "/ka/materials/glossary/codex": [
   "title",
   "description"
  ],
@@ -864,9 +608,6 @@
   "description"
  ],
  "/ka/materials/glossary/critical-path": [
-  "description"
- ],
- "/ka/materials/glossary/cursor": [
   "description"
  ],
  "/ka/materials/glossary/demo-env": [
@@ -887,13 +628,6 @@
  "/ka/materials/glossary/flaky-test": [
   "title"
  ],
- "/ka/materials/glossary/gemini-cli": [
-  "description"
- ],
- "/ka/materials/glossary/hallucination": [
-  "title",
-  "description"
- ],
  "/ka/materials/glossary/hermes-agent": [
   "title"
  ],
@@ -907,10 +641,6 @@
  "/ka/materials/glossary/kiro": [
   "title"
  ],
- "/ka/materials/glossary/llm": [
-  "title",
-  "description"
- ],
  "/ka/materials/glossary/local-env": [
   "title"
  ],
@@ -921,10 +651,6 @@
   "title",
   "description"
  ],
- "/ka/materials/glossary/openspec": [
-  "title",
-  "description"
- ],
  "/ka/materials/glossary/permissions": [
   "title"
  ],
@@ -932,15 +658,7 @@
   "title",
   "description"
  ],
- "/ka/materials/glossary/prod": [
-  "title",
-  "description"
- ],
  "/ka/materials/glossary/pure-function": [
-  "description"
- ],
- "/ka/materials/glossary/qa": [
-  "title",
   "description"
  ],
  "/ka/materials/glossary/qc": [
@@ -950,10 +668,6 @@
   "title"
  ],
  "/ka/materials/glossary/relation-gap": [
-  "title",
-  "description"
- ],
- "/ka/materials/glossary/spec-driven-development": [
   "title",
   "description"
  ],
@@ -969,10 +683,6 @@
  ],
  "/ka/materials/glossary/test-env": [
   "title"
- ],
- "/ka/materials/glossary/test-stand": [
-  "title",
-  "description"
  ],
  "/ka/materials/glossary/time-to-market": [
   "title"
@@ -990,24 +700,10 @@
   "title",
   "description"
  ],
- "/ka/materials/glossary/vs-code": [
-  "description"
- ],
- "/ka/materials/glossary/yandex": [
-  "title",
-  "description"
- ],
  "/materials/games": [
   "description"
  ],
- "/materials/glossary/agents-md": [
-  "description"
- ],
  "/materials/glossary/ai-agent": [
-  "description"
- ],
- "/materials/glossary/antigravity-cli": [
-  "title",
   "description"
  ],
  "/materials/glossary/ci-cd": [
@@ -1015,10 +711,6 @@
  ],
  "/materials/glossary/claude-code": [
   "title"
- ],
- "/materials/glossary/claude-in-chrome": [
-  "title",
-  "description"
  ],
  "/materials/glossary/cloud-agent": [
   "title",
@@ -1046,13 +738,6 @@
  ],
  "/materials/glossary/feature-stand": [
   "title"
- ],
- "/materials/glossary/gemini-cli": [
-  "title"
- ],
- "/materials/glossary/hallucination": [
-  "title",
-  "description"
  ],
  "/materials/glossary/hermes-agent": [
   "title",
@@ -1098,10 +783,6 @@
  "/materials/glossary/smoke-testing": [
   "title"
  ],
- "/materials/glossary/spec-driven-development": [
-  "title",
-  "description"
- ],
  "/materials/glossary/tech-debt": [
   "description"
  ],
@@ -1118,9 +799,6 @@
  "/materials/glossary/time-to-market": [
   "title"
  ],
- "/materials/glossary/tla-plus": [
-  "description"
- ],
  "/materials/glossary/tool": [
   "title",
   "description"
@@ -1130,10 +808,6 @@
  ],
  "/materials/glossary/visual-studio": [
   "title"
- ],
- "/materials/glossary/yandex": [
-  "title",
-  "description"
  ],
  "/patterns/antipatterns": [
   "description"
@@ -1177,20 +851,10 @@
  "/ru/blog/agent-checkpoint": [
   "description"
  ],
- "/ru/blog/agent-escalation-to-human": [
-  "description"
- ],
  "/ru/blog/agent-hands-work-back-to-you": [
   "description"
  ],
  "/ru/blog/ai-agent-llm-harness": [
-  "title",
-  "description"
- ],
- "/ru/blog/ai-agent-maturity-levels": [
-  "description"
- ],
- "/ru/blog/ai-in-code-harness-and-tools": [
   "title",
   "description"
  ],
@@ -1203,17 +867,7 @@
  "/ru/blog/bug-report-to-reproduction-agent": [
   "description"
  ],
- "/ru/blog/chatgpt-enterprise-usage-report": [
-  "title",
-  "description"
- ],
- "/ru/blog/claude-in-chrome": [
-  "description"
- ],
  "/ru/blog/data-plane-control-plane-prompt-injection": [
-  "description"
- ],
- "/ru/blog/harness-driven-development": [
   "description"
  ],
  "/ru/blog/harness-work-approaches": [
@@ -1232,12 +886,6 @@
   "description"
  ],
  "/ru/blog/mcp-scopes": [
-  "description"
- ],
- "/ru/blog/openspec": [
-  "description"
- ],
- "/ru/blog/quality-gates-ai-agents": [
   "description"
  ],
  "/ru/blog/relation-gap-how-many-rules": [
@@ -1262,15 +910,7 @@
  "/ru/materials/games": [
   "description"
  ],
- "/ru/materials/glossary/agents-md": [
-  "title",
-  "description"
- ],
  "/ru/materials/glossary/ai-agent": [
-  "title",
-  "description"
- ],
- "/ru/materials/glossary/antigravity-cli": [
   "title",
   "description"
  ],
@@ -1278,10 +918,6 @@
   "title"
  ],
  "/ru/materials/glossary/claude-code": [
-  "title",
-  "description"
- ],
- "/ru/materials/glossary/claude-in-chrome": [
   "title",
   "description"
  ],
@@ -1296,9 +932,6 @@
  "/ru/materials/glossary/critical-path": [
   "description"
  ],
- "/ru/materials/glossary/deployment-frequency": [
-  "title"
- ],
  "/ru/materials/glossary/dump": [
   "description"
  ],
@@ -1307,14 +940,6 @@
  ],
  "/ru/materials/glossary/environment": [
   "title"
- ],
- "/ru/materials/glossary/gemini-cli": [
-  "title",
-  "description"
- ],
- "/ru/materials/glossary/hallucination": [
-  "title",
-  "description"
  ],
  "/ru/materials/glossary/hermes-agent": [
   "title",
@@ -1349,9 +974,6 @@
  "/ru/materials/glossary/pure-function": [
   "description"
  ],
- "/ru/materials/glossary/qa": [
-  "description"
- ],
  "/ru/materials/glossary/qc": [
   "title"
  ],
@@ -1362,9 +984,6 @@
   "title"
  ],
  "/ru/materials/glossary/smoke-testing": [
-  "title"
- ],
- "/ru/materials/glossary/spec-driven-development": [
   "title"
  ],
  "/ru/materials/glossary/tech-debt": [
@@ -1391,10 +1010,6 @@
   "title",
   "description"
  ],
- "/ru/materials/glossary/yandex": [
-  "title",
-  "description"
- ],
  "/ru/talk/spec-driven-development": [
   "description"
  ],
@@ -1410,9 +1025,6 @@
  "/th/blog/agent-hands-work-back-to-you": [
   "description"
  ],
- "/th/blog/ai-in-code-harness-and-tools": [
-  "description"
- ],
  "/th/blog/ai-interviews-without-leading-questions": [
   "description"
  ],
@@ -1422,19 +1034,10 @@
  "/th/blog/bug-report-to-reproduction-agent": [
   "description"
  ],
- "/th/blog/chatgpt-enterprise-usage-report": [
-  "description"
- ],
- "/th/blog/claude-in-chrome": [
-  "description"
- ],
  "/th/blog/data-plane-control-plane-prompt-injection": [
   "description"
  ],
  "/th/blog/harness-work-approaches": [
-  "description"
- ],
- "/th/blog/jest-vs-vitest-vs-qunit": [
   "description"
  ],
  "/th/blog/longest-ring-arrangement": [
@@ -1447,9 +1050,6 @@
   "description"
  ],
  "/th/blog/mcp-scopes": [
-  "description"
- ],
- "/th/blog/openspec": [
   "description"
  ],
  "/th/blog/relation-gap-how-many-rules": [
@@ -1467,28 +1067,10 @@
  "/th/blog/specs-by-aggregates": [
   "description"
  ],
- "/th/blog/specs-rules-skills": [
-  "description"
- ],
  "/th/blog/work-prompts-examples": [
   "description"
  ],
- "/th/materials/glossary/agents-md": [
-  "title",
-  "description"
- ],
- "/th/materials/glossary/antigravity-cli": [
-  "title",
-  "description"
- ],
  "/th/materials/glossary/ci-cd": [
-  "title"
- ],
- "/th/materials/glossary/claude-in-chrome": [
-  "title",
-  "description"
- ],
- "/th/materials/glossary/codex": [
   "title"
  ],
  "/th/materials/glossary/context": [
@@ -1509,12 +1091,6 @@
  "/th/materials/glossary/flaky-test": [
   "title"
  ],
- "/th/materials/glossary/gemini-cli": [
-  "title"
- ],
- "/th/materials/glossary/hallucination": [
-  "description"
- ],
  "/th/materials/glossary/hermes-agent": [
   "title"
  ],
@@ -1525,12 +1101,6 @@
   "description"
  ],
  "/th/materials/glossary/model-checking": [
-  "title"
- ],
- "/th/materials/glossary/opencode": [
-  "title"
- ],
- "/th/materials/glossary/openspec": [
   "title"
  ],
  "/th/materials/glossary/permissions": [
@@ -1545,9 +1115,6 @@
   "title",
   "description"
  ],
- "/th/materials/glossary/qa": [
-  "title"
- ],
  "/th/materials/glossary/qc": [
   "title"
  ],
@@ -1560,19 +1127,12 @@
  "/th/materials/glossary/smoke-testing": [
   "title"
  ],
- "/th/materials/glossary/spec-driven-development": [
-  "title"
- ],
  "/th/materials/glossary/terminal": [
   "title",
   "description"
  ],
  "/th/materials/glossary/test-env": [
   "title"
- ],
- "/th/materials/glossary/test-stand": [
-  "title",
-  "description"
  ],
  "/th/materials/glossary/time-to-market": [
   "title"
@@ -1585,13 +1145,6 @@
  ],
  "/th/materials/glossary/visual-studio": [
   "title"
- ],
- "/th/materials/glossary/vs-code": [
-  "description"
- ],
- "/th/materials/glossary/yandex": [
-  "title",
-  "description"
  ],
  "/th/materials/interactive": [
   "description"
@@ -1611,9 +1164,6 @@
  "/vi/blog/ai-agent-llm-harness": [
   "description"
  ],
- "/vi/blog/ai-in-code-harness-and-tools": [
-  "description"
- ],
  "/vi/blog/ai-interviews-without-leading-questions": [
   "description"
  ],
@@ -1621,12 +1171,6 @@
   "description"
  ],
  "/vi/blog/bug-report-to-reproduction-agent": [
-  "description"
- ],
- "/vi/blog/chatgpt-enterprise-usage-report": [
-  "description"
- ],
- "/vi/blog/claude-in-chrome": [
   "description"
  ],
  "/vi/blog/data-plane-control-plane-prompt-injection": [
@@ -1639,9 +1183,6 @@
   "description"
  ],
  "/vi/blog/incident-investigation-agent": [
-  "description"
- ],
- "/vi/blog/jest-vs-vitest-vs-qunit": [
   "description"
  ],
  "/vi/blog/jira-ai-agent-boundaries": [
@@ -1659,12 +1200,6 @@
  "/vi/blog/mcp-scopes": [
   "description"
  ],
- "/vi/blog/openspec": [
-  "description"
- ],
- "/vi/blog/quint-vs-tests-and-tla": [
-  "description"
- ],
  "/vi/blog/relation-gap-how-many-rules": [
   "description"
  ],
@@ -1680,20 +1215,10 @@
  "/vi/blog/specs-by-aggregates": [
   "description"
  ],
- "/vi/blog/specs-rules-skills": [
-  "description"
- ],
  "/vi/blog/work-prompts-examples": [
   "description"
  ],
- "/vi/materials/glossary/agents-md": [
-  "description"
- ],
  "/vi/materials/glossary/ai-agent": [
-  "description"
- ],
- "/vi/materials/glossary/antigravity-cli": [
-  "title",
   "description"
  ],
  "/vi/materials/glossary/ci-cd": [
@@ -1702,22 +1227,11 @@
  "/vi/materials/glossary/claude-code": [
   "title"
  ],
- "/vi/materials/glossary/claude-in-chrome": [
-  "title",
-  "description"
- ],
- "/vi/materials/glossary/cloud-agent": [
-  "title",
-  "description"
- ],
  "/vi/materials/glossary/context": [
   "title",
   "description"
  ],
  "/vi/materials/glossary/critical-path": [
-  "description"
- ],
- "/vi/materials/glossary/cursor": [
   "description"
  ],
  "/vi/materials/glossary/dump": [
@@ -1730,56 +1244,22 @@
   "title",
   "description"
  ],
- "/vi/materials/glossary/gemini-cli": [
-  "title",
-  "description"
- ],
- "/vi/materials/glossary/hallucination": [
-  "description"
- ],
- "/vi/materials/glossary/harness": [
-  "description"
- ],
  "/vi/materials/glossary/hermes-agent": [
   "title"
- ],
- "/vi/materials/glossary/human-in-the-loop": [
-  "title",
-  "description"
  ],
  "/vi/materials/glossary/ide": [
   "title",
   "description"
  ],
- "/vi/materials/glossary/llm": [
-  "description"
- ],
  "/vi/materials/glossary/model-checking": [
   "title"
- ],
- "/vi/materials/glossary/opencode": [
-  "title",
-  "description"
- ],
- "/vi/materials/glossary/openspec": [
-  "title"
- ],
- "/vi/materials/glossary/permissions": [
-  "title",
-  "description"
  ],
  "/vi/materials/glossary/planes": [
   "title",
   "description"
  ],
- "/vi/materials/glossary/prod": [
-  "description"
- ],
  "/vi/materials/glossary/pure-function": [
   "description"
- ],
- "/vi/materials/glossary/qa": [
-  "title"
  ],
  "/vi/materials/glossary/qc": [
   "title"
@@ -1794,15 +1274,7 @@
  "/vi/materials/glossary/smoke-testing": [
   "title"
  ],
- "/vi/materials/glossary/spec-driven-development": [
-  "title",
-  "description"
- ],
  "/vi/materials/glossary/terminal": [
-  "title",
-  "description"
- ],
- "/vi/materials/glossary/test-stand": [
   "title",
   "description"
  ],
@@ -1820,14 +1292,6 @@
   "title"
  ],
  "/vi/materials/glossary/visual-studio": [
-  "title",
-  "description"
- ],
- "/vi/materials/glossary/vs-code": [
-  "title",
-  "description"
- ],
- "/vi/materials/glossary/yandex": [
   "title",
   "description"
  ]
