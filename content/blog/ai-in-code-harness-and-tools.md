@@ -1,8 +1,9 @@
 ---
 title: Codex или Claude Code, что выбрать, и когда брать Cursor или Hermes Agent: сравнение ИИ-агентов для программирования
+seoTitle: Codex или Claude Code: что выбрать, и когда Cursor
 date: 2026-09-28
-updated: 2026-11-13
-description: Чем различаются Codex и Claude Code: модель, тариф, где работает агент и что он видит. Рядом Cursor и Hermes Agent — какой харнесс брать под задачу. Со ссылками на документацию.
+updated: 2026-11-17
+description: Чем различаются Codex и Claude Code: модель, тариф, где работает агент и что видит. Рядом Cursor и Hermes Agent: какой харнесс взять под задачу.
 tags: AI, харнесс, Claude Code, Codex, Cursor, Hermes Agent
 category: harness
 layout: wide
@@ -141,6 +142,8 @@ Codex или Claude Code: по доступу к проекту и действ�
   <b-links cols="2">
     <item href="/blog/chatgpt-enterprise-usage-report/" k="Отчёт" t="Отчёт по ChatGPT Enterprise">Кто в компании чем пользуется</item>
     <item href="/blog/ai-interviews-without-leading-questions/" k="Интервью" t="Интервью без наводящих вопросов">Как выяснить реальные потребности сотрудников в AI</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Выбор" t="Codex или ChatGPT: что выбрать">Чат или агент для кода</item>
+    <item href="/blog/claude-code-install-and-price/" k="Установка" t="Claude Code: установка и цена">Команда, вход, тарифы</item>
   </b-links>
 </b-chapter>
 <b-footer>Срез на сентябрь 2026. Утверждения о продуктах — по официальной документации Anthropic, OpenAI, Cursor и Nous Research, источник — у значка рядом с утверждением. Две цитаты из справки OpenAI даны пересказом.</b-footer>

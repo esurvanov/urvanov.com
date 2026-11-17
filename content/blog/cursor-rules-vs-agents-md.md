@@ -2,7 +2,7 @@
 title: Cursor rules и AGENTS.md: что куда класть
 seoTitle: Cursor rules и AGENTS.md: что куда класть (2026)
 date: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-17
 description: Правила Cursor лежат в .cursor/rules и имеют режимы, AGENTS.md читают многие агенты. Таблица сравнения, перенос из .cursorrules по файлам, вопросы.
 tags: AI, Cursor, AGENTS.md, правила, .cursorrules, харнесс
 category: specs
@@ -177,6 +177,7 @@ Cursor rules и AGENTS.md одинаково дают агенту постоя�
   <b-links cols="2">
     <item href="/blog/specs-rules-skills/" k="Контекст" t="AGENTS.md, CLAUDE.md и spec.md: что куда класть">Четыре слоя, таблица агентов, настоящий файл</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Сравнение" t="Claude Code, Codex, Cursor и Hermes Agent">Какой агент для какой задачи</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Выбор" t="Codex или ChatGPT: что выбрать">Чат или агент для кода</item>
     <item href="/blog/harness-driven-development/" k="Метод" t="Harness-Driven Development">Ошибка агента становится правилом</item>
   </b-links>
 </b-chapter>

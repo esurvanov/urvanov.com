@@ -1,8 +1,8 @@
 ---
 title: Escalation to a human in AI agents: how an agent stops and asks through MCP and hooks
 date: 2026-11-14
-updated: 2026-11-14
-description: What happens when an agent hands a decision to a person. The three elicitation answers in MCP, Claude Code permission modes and hooks, what autonomy benchmarks measure, how often agents really ask, and why the path to a person is narrow.
+updated: 2026-11-17
+description: What happens when an agent hands a decision to a person: three MCP elicitation answers, Claude Code hooks, autonomy benchmarks and why the path is narrow.
 tags: AI, agents, MCP, elicitation, escalation, hooks, Claude Code, autonomy, harness
 category: harness
 layout: wide
@@ -10,7 +10,7 @@ mentions: MCP, hooks, harness, bounded context, quality gate, Google DeepMind, e
 toc: answer=In short | seen=First look | penalty=Penalty | measure=Metrics | time=Autonomy | behavior=Behavior | mcp=MCP | cc=Claude Code | narrow=Window | claims=Results | start=Start | faq=Questions | next=Read next
 ---
 
-Escalation to a human is the moment an agent stops working and hands a decision to a person: by a question, a permission request or a confirmation. MCP has elicitation for this, with three answers (accept, decline, cancel); Claude Code has hooks and permission modes. The check stands outside the agent, and the escalation itself passes through a narrow window. Below: what it looked like at first and what the checks showed.
+Escalation to a human is the moment an agent stops and hands a decision to a person: by a question, a permission request or a confirmation. MCP has elicitation with three answers (accept, decline, cancel); Claude Code has hooks and permission modes. The check stands outside the agent, and the escalation passes through a narrow window.
 
 <b-post series="harness">
 <b-callout icon="bulb">**An observation.** I thought agents are trained and measured on how long they work on their own, without a person. The score is given for the outcome: task solved is 1, not solved is 0. A question to a person does not produce an outcome by itself, so the penalty arrives for an unfinished task, and guessing pays better. I checked this against documents and papers and derived the formulas below. A penalty for the question itself turned out to be rare: some metrics do not provide for a question and some reward it.</b-callout>

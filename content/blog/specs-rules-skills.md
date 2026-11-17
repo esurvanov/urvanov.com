@@ -2,7 +2,7 @@
 title: Что такое AGENTS.md и CLAUDE.md и чем они отличаются от spec.md: пример файла и где хранить спеки, правила и скиллы
 seoTitle: AGENTS.md и spec.md: в чём разница, что куда класть
 date: 2026-09-28
-updated: 2026-11-15
+updated: 2026-11-17
 description: AGENTS.md и CLAUDE.md задают агенту правила на весь проект, spec.md описывает одну задачу. Пример файла и что куда класть: спеки, правила, скиллы.
 tags: AI, Claude Code, CLAUDE.md, харнесс, спеки, скиллы
 category: specs
@@ -245,6 +245,7 @@ AGENTS.md задаёт ИИ-агенту правила на весь проек
     <item href="/blog/harness-work-approaches/" k="Подходы" t="Подходы к работе с харнессом">Цикл ответа и ревью</item>
     <item href="/blog/work-prompts-examples/" k="Практика" t="Промпты для рабочих задач">Пять частей и шесть примеров</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Сравнение" t="Сравнение харнессов">Claude Code, Codex, Cursor, Hermes</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Выбор" t="Codex или ChatGPT: что выбрать">Чат или агент для кода</item>
     <item href="/blog/ai-agent-maturity-levels/" k="Зрелость" t="Уровни зрелости работы с ИИ-агентами">От чата к спекам, скиллам, скрипту, харнессу и агентной системе</item>
       <item href="/blog/quint-vs-tests-and-tla/" k="Требования" t="Quint против тестов и TLA+">Требования как проверяемая модель</item>
   </b-links>

@@ -1,7 +1,7 @@
 ---
 title: Harness engineering in practice: turning AI agent mistakes into rules of its environment (HDD)
 date: 2026-09-28
-updated: 2026-11-14
+updated: 2026-11-17
 description: The mistake-to-rule loop, guides and sensors, three layers of checks, how it fits with specs, and five first steps in your own project.
 tags: AI, Claude Code, harness engineering, harness, HDD, agents
 category: harness
@@ -198,6 +198,7 @@ toc: loop=The HDD loop | canons=The 3 × 3 layout | double=Double loop | control
   <b-links cols="2">
     <item href="/en/blog/work-prompts-examples/" k="Stage 1–2" t="Prompts for work tasks">how to write a single request and supply data</item>
     <item href="/en/blog/ai-in-code-harness-and-tools/" k="Stage 3" t="Comparing harnesses">Claude Code, Codex, Cursor, Hermes and chat</item>
+    <item href="/en/blog/claude-code-install-and-price/" k="Install" t="Claude Code: install and price">Command, sign-in, plans</item>
     <item href="/blog/quality-gates-ai-agents/" k="Gates" t="What are quality gates for AI agents">a gate is a sensor with the right to stop the work</item>
     <item href="/blog/ai-agent-maturity-levels/" k="Maturity" t="AI agent maturity levels">From chat to specs, skills, scripts, a harness and an agentic system</item>
   </b-links>

@@ -181,7 +181,7 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Large_language_model', label: { ru: 'Википедия: большая языковая модель', en: 'Wikipedia: Large language model' } },
         seo: {
-          title: { ru: 'LLM: что это в IT и чем отличается от ИИ-агента', en: 'LLM meaning: what a large language model is, in plain words' },
+          title: { ru: 'LLM — большая языковая модель: что это простыми словами', en: 'LLM meaning: what a large language model is, in plain words' },
           description: {
             ru: 'LLM (большая языковая модель) читает и пишет текст токенами и сама только отвечает; с харнессом становится ИИ-агентом. Примеры: GPT, Claude, DeepSeek, Alice AI.',
             en: 'An LLM (large language model) reads and writes text in tokens and only replies on its own; with a harness it becomes an AI agent. E.g. GPT, Claude, DeepSeek.',
@@ -249,10 +249,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://code.visualstudio.com/', label: { ru: 'Официальный сайт VS Code', en: 'VS Code official site' } },
         seo: {
-          title: { ru: 'VS Code: что это и какие ИИ-агенты в нём работают', en: 'What is VS Code: AI agents that run in Visual Studio Code' },
+          title: { ru: 'VS Code: что это — редактор Microsoft и ИИ-агенты в нём', en: 'What is VS Code: Microsoft’s editor and the AI agents in it' },
           description: {
-            ru: 'VS Code — бесплатный редактор кода от Microsoft. ИИ-агенты для него: GitHub Copilot, Claude Code, Codex, Cline; какие бесплатные и как подключить Claude.',
-            en: 'VS Code is Microsoft’s free code editor. AI agents that run in it: GitHub Copilot, Claude Code, Codex, Cline; which are free and how Claude Code works there.',
+            ru: 'VS Code — бесплатный редактор кода от Microsoft. ИИ-агенты в нём: GitHub Copilot, Claude Code, Codex, Cline; какие бесплатные, как подключить Claude.',
+            en: 'VS Code is Microsoft’s free code editor. AI agents that run in it: GitHub Copilot, Claude Code, Codex, Cline; which are free, how Claude works there.',
           },
         },
         notes: {
@@ -413,6 +413,13 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'sandbox',
         name: { ru: 'Песочница', en: 'Sandbox' },
+        seo: {
+          title: { ru: 'Песочница (sandbox) для ИИ-агента: что это и зачем', en: 'Sandbox for an AI agent: what it is and why' },
+          description: {
+            ru: 'Песочница (sandbox) ограждает действия агента: видны лишь разрешённые папки, в сеть можно только на разрешённые адреса. Ошибка или обман не выйдут наружу.',
+            en: 'A sandbox fences an agent’s actions: only allowed folders and network hosts are reachable. If the agent errs or is tricked, the damage stays inside.',
+          },
+        },
         def: {
           // Общее определение. Что именно внутри, зависит от продукта (проверено по документации, октябрь 2026):
           // - Claude Code на своём компьютере и Cursor: только команды терминала (Seatbelt на macOS, bubblewrap на Linux);
@@ -478,6 +485,7 @@ export const TERM_SETS: TermSet[] = [
           },
         },
         more: { post: 'ai-in-code-harness-and-tools', label: { ru: 'Claude Code, Codex, Cursor и Hermes Agent: что выбрать', en: 'Claude Code, Codex, Cursor and Hermes Agent: which to pick' } },
+        also: [{ post: 'claude-code-install-and-price', label: { ru: 'Claude Code: установка и цена', en: 'Claude Code: install and pricing' } }],
         compare: {
           title: { ru: 'Чем Claude Code отличается от Claude в чате', en: 'Claude Code vs Claude: the difference' },
           head: { ru: ['Claude в чате', 'Claude Code'], en: ['Claude chat', 'Claude Code'] },
@@ -551,13 +559,14 @@ export const TERM_SETS: TermSet[] = [
           { url: 'https://learn.chatgpt.com/docs', label: { ru: 'OpenAI: документация Codex', en: 'OpenAI: Codex documentation' } },
         ],
         seo: {
-          title: { ru: 'Codex и ChatGPT: чем отличаются, таблица 2026', en: 'Codex vs ChatGPT: how they differ, table 2026' },
+          title: { ru: 'Чем Codex отличается от ChatGPT: агент и чат, таблица', en: 'Codex vs ChatGPT: what is the difference, in one table' },
           description: {
-            ru: 'ChatGPT отвечает текстом, Codex сам правит код, запускает тесты и готовит пулл-реквест. Таблица режимов Chat, Work и Codex: где работают и в каких тарифах.',
-            en: 'ChatGPT replies with text; Codex edits code, runs tests and opens pull requests. Table of Chat, Work and Codex modes: where they run, which plans include them.',
+            ru: 'Codex — агент OpenAI: сам правит код, запускает тесты и готовит пулл-реквест, а ChatGPT отвечает текстом. Таблица режимов и тарифов.',
+            en: 'Codex is OpenAI’s coding agent: it edits code, runs tests and opens pull requests, while ChatGPT replies with text. Modes and plans in a table.',
           },
         },
         more: { post: 'ai-in-code-harness-and-tools', label: { ru: 'Claude Code, Codex, Cursor и Hermes Agent: что выбрать', en: 'Claude Code, Codex, Cursor and Hermes Agent: which to pick' } },
+        also: [{ post: 'codex-or-chatgpt-what-to-choose', label: { ru: 'Codex или ChatGPT: что выбрать', en: 'Codex vs ChatGPT: which to pick' } }],
         compare: {
           title: { ru: 'Чем Codex отличается от ChatGPT: Chat и Work', en: 'Codex vs ChatGPT: Chat and Work' },
           head: { ru: ['ChatGPT Chat', 'ChatGPT Work', 'Codex'], en: ['ChatGPT Chat', 'ChatGPT Work', 'Codex'] },
@@ -590,10 +599,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://cursor.com/', label: { ru: 'Официальный сайт Cursor', en: 'Cursor official site' } },
         seo: {
-          title: { ru: 'Cursor AI: что это — редактор с ИИ-агентом, модели и правила', en: 'What is Cursor AI: an AI code editor, its models and rules' },
+          title: { ru: 'Cursor AI (курсор ИИ): что это — редактор с ИИ-агентом', en: 'Cursor AI: what it is, an AI code editor built on VS Code' },
           description: {
-            ru: 'Cursor — редактор кода на основе VS Code со встроенным ИИ-агентом. Какие модели, где правила (.cursor/rules или AGENTS.md) и чем отличается от Claude Code.',
-            en: 'Cursor is a VS Code–based code editor with a built-in AI agent. Its models, where rules live (.cursor/rules or AGENTS.md) and how it differs from Claude Code.',
+            ru: 'Cursor — ИИ-редактор кода на основе VS Code: агент работает рядом, модели Grok, Composer и других компаний. Правила в .cursor/rules или AGENTS.md.',
+            en: 'Cursor is an AI code editor built on VS Code: the agent works next to you, with Grok, Composer or other vendors’ models. Rules: .cursor/rules, AGENTS.md.',
           },
         },
         more: { post: 'ai-in-code-harness-and-tools', label: { ru: 'Claude Code, Codex, Cursor и Hermes Agent: что выбрать', en: 'Claude Code, Codex, Cursor and Hermes Agent: which to pick' } },
@@ -725,10 +734,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://opencode.ai/docs/', label: { ru: 'Документация OpenCode', en: 'OpenCode docs' } },
         seo: {
-          title: { ru: 'OpenCode (опенкод): что это — бесплатный открытый ИИ-агент', en: 'What is OpenCode: a free open-source AI coding agent' },
+          title: { ru: 'OpenCode (Open Code, опенкод): бесплатный ИИ-агент', en: 'What is OpenCode (Open Code): a free open-source AI agent' },
           description: {
-            ru: 'OpenCode — бесплатный открытый ИИ-агент для программирования в терминале: подключаете любую модель или локальную, режимы Build и Plan, правила в AGENTS.md.',
-            en: 'OpenCode is a free open-source AI coding agent for the terminal: any model or a local one, Build and Plan modes, rules in AGENTS.md.',
+            ru: 'OpenCode — бесплатный открытый ИИ-агент в терминале. Подключите Claude, GPT, Gemini или локальную модель, платите только провайдеру модели.',
+            en: 'OpenCode is a free open-source AI coding agent for the terminal. Plug in Claude, GPT, Gemini or a local model; pay only the model provider.',
           },
         },
         more: { post: 'ai-in-code-harness-and-tools', label: { ru: 'Claude Code, Codex, Cursor и Hermes Agent: что выбрать', en: 'Claude Code, Codex, Cursor and Hermes Agent: which to pick' } },
@@ -749,10 +758,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://www.theregister.com/ai-ml/2026/05/20/bye-bye-gemini-cli-google-nudges-devs-toward-antigravity/5243605', label: { ru: 'The Register: Google переводит Gemini CLI в Antigravity', en: 'The Register: Google nudges Gemini CLI users to Antigravity' } },
         seo: {
-          title: { ru: 'Gemini CLI: что это и что с ним стало — агент Google в терминале', en: 'What is Gemini CLI and what happened to it: Google’s terminal agent' },
+          title: { ru: 'Gemini CLI: что это и кому доступен с 18 июня 2026', en: 'Gemini CLI: what it is and who can use it since June 2026' },
           description: {
-            ru: 'Gemini CLI — открытый агент Google в терминале на моделях Gemini. Что он умеет, почему с 18 июня 2026 обычным пользователям он недоступен и кому Gemini CLI работает до сих пор.',
-            en: 'Gemini CLI is Google’s open-source terminal agent on Gemini models. What it does, why individual users lost access on June 18, 2026, and who can still use it.',
+            ru: 'Gemini CLI — открытый агент Google в терминале на моделях Gemini. С 18 июня 2026 обычным пользователям его заменил Antigravity CLI; кому он ещё работает.',
+            en: 'Gemini CLI is Google’s open-source terminal agent on Gemini models. Since June 18, 2026 Antigravity CLI replaced it for individual users; who can still use it.',
           },
         },
       },
@@ -772,10 +781,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://virtualizationreview.com/articles/2026/05/19/google-moves-gemini-cli-into-antigravity-cli-as-agent-platform-expands.aspx', label: { ru: 'Virtualization Review: Gemini CLI переходит в Antigravity CLI', en: 'Virtualization Review: Gemini CLI moves into Antigravity CLI' } },
         seo: {
-          title: { ru: 'Antigravity CLI: что это — агент Google в терминале вместо Gemini CLI', en: 'What is Antigravity CLI: Google’s terminal agent that replaced Gemini CLI' },
+          title: { ru: 'Antigravity CLI: что это — агент Google вместо Gemini CLI', en: 'Antigravity CLI: what it is, Google’s Gemini CLI replacement' },
           description: {
-            ru: 'Gemini CLI — открытый агент Google в терминале; с июня 2026 для обычных пользователей его заменил закрытый Antigravity CLI. Что изменилось и кому старый Gemini CLI ещё доступен.',
-            en: 'Gemini CLI was Google’s open-source terminal agent; since June 2026 the closed-source Antigravity CLI replaced it for individual users. What changed and who can still use Gemini CLI.',
+            ru: 'Antigravity CLI — закрытый агент Google в терминале, с июня 2026 заменивший Gemini CLI для обычных пользователей. Что изменилось, кому доступен старый.',
+            en: 'Antigravity CLI is Google’s closed-source terminal agent that replaced Gemini CLI for individual users in June 2026. What changed, who keeps the old one.',
           },
         },
       },
@@ -799,10 +808,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://support.claude.com/en/articles/12012173-get-started-with-claude-in-chrome', label: { ru: 'Справка: как начать с Claude in Chrome', en: 'Help: Get started with Claude in Chrome' } },
         seo: {
-          title: { ru: 'Claude in Chrome: расширение Claude для Chrome — установка, тарифы и браузеры', en: 'Claude in Chrome: the Claude Chrome extension — install, plans and browsers' },
+          title: { ru: 'Claude in Chrome: расширение Claude для Chrome, тарифы', en: 'Claude in Chrome: the Chrome extension, plans and setup' },
           description: {
-            ru: 'Что делает расширение Claude для Chrome, как поставить его из Chrome Web Store, на каких платных тарифах Claude оно работает и где: боковая панель в Chrome на компьютере или Claude Code в браузерах на Chromium.',
-            en: 'What the Claude for Chrome extension does, how to install it from the Chrome Web Store, which paid Claude plans include it, and where it runs: the side panel in desktop Chrome or Claude Code in Chromium browsers.',
+            ru: 'Расширение Claude для Chrome: агент кликает, заполняет формы и читает консоль под вашим входом. Ставится из Chrome Web Store, нужен платный тариф Claude.',
+            en: 'The Claude for Chrome extension: the agent clicks, fills forms and reads the console under your login. From the Chrome Web Store; paid plans only.',
           },
         },
         more: { post: 'claude-in-chrome', label: { ru: 'Claude Code в Chrome: как агент тестирует сайт в браузере — отладка и формы под вашим входом', en: 'Claude Code in Chrome: how the agent tests your site in the browser — debugging and forms under your login' } },
@@ -842,7 +851,7 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents', label: { ru: 'Anthropic: харнессы для долгих агентов', en: 'Anthropic: Effective harnesses for agents' } },
         seo: {
-          title: { ru: 'Харнесс в ИИ: что это и из чего состоит', en: 'Agent harness: what it is and what it includes' },
+          title: { ru: 'Харнесс (harness) агента: что это и из чего состоит', en: 'Agent harness: what it is and what it includes' },
           description: {
             ru: 'Харнесс — всё вокруг нейросети, что делает её агентом: цикл, инструменты, контекст, память, правила, права и проверки. Список частей со ссылками.',
             en: 'An agent harness is everything around the model that makes it an agent: loop, tools, context, memory, rules, permissions and checks. Every part, linked.',
@@ -858,6 +867,13 @@ export const TERM_SETS: TermSet[] = [
         slug: 'hooks',
         name: { ru: 'Хуки', en: 'Hooks' },
         aka: { ru: 'hooks', en: 'hooks' },
+        seo: {
+          title: { ru: 'Хуки (hooks) в ИИ-агентах: что это и когда срабатывают', en: 'Hooks in AI agents: what they are and when they run' },
+          description: {
+            ru: 'Хук — скрипт, который харнесс сам запускает в заданный момент работы ИИ-агента: перед действием, после правки файла, при завершении. Срабатывает всегда.',
+            en: 'A hook is a script the harness runs at a set moment of an AI agent’s work: before an action, after a file edit, on finish. It always runs.',
+          },
+        },
         def: {
           ru: 'Хуки — скрипты, которые харнесс запускает автоматически в заданные моменты работы агента: перед действием, после правки файла, при завершении. Правило в инструкции агент считает советом, а хук выполняется всегда, поэтому им закрывают запреты без исключений.',
           en: 'Hooks — scripts the harness runs automatically at set moments of the agent’s work: before an action, after a file edit, on finish. An agent treats a rule in the instructions as advice, while a hook always runs, so hooks close the blocks that allow no exceptions.',
@@ -913,6 +929,13 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'session',
         name: { ru: 'Сессия', en: 'Session' },
+        seo: {
+          title: { ru: 'Сессия агента: что это и что переходит в следующую', en: 'Agent session: what it is and what carries over' },
+          description: {
+            ru: 'Сессия — один непрерывный разговор с агентом, от запуска до выхода. Знания живут в контексте и исчезают с её концом; дальше идут лишь память и CLAUDE.md.',
+            en: 'A session is one continuous conversation with an agent, from start to exit. Knowledge lives in context and ends with it; only memory and CLAUDE.md remain.',
+          },
+        },
         def: {
           ru: 'Сессия — один непрерывный разговор с агентом: от запуска до выхода или очистки. Всё, что агент узнал за сессию, лежит в его контексте и пропадает с её концом; в следующую сессию переходит только записанное в память и в файлы вроде `CLAUDE.md`. Сам разговор харнесс сохраняет в журнал сессий: из него прошлую сессию можно поднять целиком, в Claude Code — командой `/resume` или `claude --continue`.',
           en: 'Session — one continuous conversation with an agent, from launch to exit or a reset. Everything the agent learned in it sits in its context and is gone when the session ends; only what was written to memory and files like `CLAUDE.md` carries over to the next session. The harness keeps the conversation itself in a session log, from which a past session can be brought back whole; in Claude Code with `/resume` or `claude --continue`.',
@@ -942,6 +965,13 @@ export const TERM_SETS: TermSet[] = [
       },
       {
         slug: 'bible',
+        seo: {
+          title: { ru: 'Библия проекта: что это и где её хранить для ИИ-агента', en: 'Project bible: what it is and where to store it for AI' },
+          description: {
+            ru: 'Библия проекта — описание, как устроен проект и почему: границы систем, договорённости, принципы. Агент читает её перед работой; лежит в CLAUDE.md или AGENTS.md',
+            en: 'A project bible describes how a project is built and why: boundaries, agreements, principles. The agent reads it before work; kept in CLAUDE.md or AGENTS.md.',
+          },
+        },
         name: { ru: 'Библия проекта', en: 'Project bible' },
         def: {
           ru: 'Библия проекта — описание того, как устроен проект и почему: границы систем, договорённости, принципы и ценности — что важнее при выборе и чего нельзя ни при каких условиях. Агент читает её перед работой, а вы не повторяете одно и то же в каждой задаче. Конкретные указания «делай так, не делай этого» из неё выводят в правила. Библия лежит в `CLAUDE.md` для Claude Code или в `AGENTS.md` для Codex и Cursor, либо в отдельных файлах, на которые они ссылаются.',
@@ -1283,6 +1313,13 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'claude-md',
         name: { ru: 'CLAUDE.md', en: 'CLAUDE.md' },
+        seo: {
+          title: { ru: 'CLAUDE.md: что это и что писать в файл для Claude Code', en: 'CLAUDE.md: what it is and what to put in it' },
+          description: {
+            ru: 'CLAUDE.md — файл в корне проекта с постоянными инструкциями для Claude Code: структура, команды сборки и тестов, соглашения. Читается в начале сессии.',
+            en: 'CLAUDE.md is a file in the project root with standing instructions for Claude Code: layout, build and test commands, conventions. Read at session start.',
+          },
+        },
         def: {
           ru: 'CLAUDE.md — файл в корне проекта с постоянными инструкциями для Claude Code: структура проекта, команды сборки и тестов, соглашения. Попадает в контекст агента в начале каждой сессии.',
           en: 'CLAUDE.md is a file in the project root with standing instructions for Claude Code: project layout, build and test commands, conventions. It enters the agent’s context at the start of every session.',
@@ -1312,10 +1349,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://agents.md/', label: { ru: 'Официальный сайт AGENTS.md', en: 'AGENTS.md official site' } },
         seo: {
-          title: { ru: 'AGENTS.md: что это и чем отличается от правил Cursor (.cursor/rules) и CLAUDE.md', en: 'AGENTS.md vs Cursor rules vs CLAUDE.md: what each file does' },
+          title: { ru: 'AGENTS.md: что это и чем отличается от CLAUDE.md', en: 'AGENTS.md vs Cursor rules vs CLAUDE.md: what each file does' },
           description: {
-            ru: 'AGENTS.md — общий файл инструкций для Codex, Cursor и других агентов. Чем он отличается от правил Cursor в .cursor/rules и от CLAUDE.md, где лежат и когда агент их читает.',
-            en: 'AGENTS.md is a shared instructions file for Codex, Cursor and other agents. How it differs from Cursor rules in .cursor/rules and from CLAUDE.md, where each lives and when the agent reads it.',
+            ru: 'AGENTS.md — общий файл инструкций для Codex, Cursor и других агентов. Чем отличается от правил Cursor и от CLAUDE.md, где лежит и когда его читает агент.',
+            en: 'AGENTS.md is a shared instructions file for Codex, Cursor and other agents. How it differs from Cursor rules and CLAUDE.md, where it lives and when it is read.',
           },
         },
         more: { post: 'specs-rules-skills', label: { ru: 'AGENTS.md, CLAUDE.md и spec.md: что куда класть', en: 'AGENTS.md, CLAUDE.md and spec.md: what goes where' } },
@@ -1543,6 +1580,13 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'prompt',
         name: { ru: 'Промпт', en: 'Prompt' },
+        seo: {
+          title: { ru: 'Промпт: что это — запрос к модели и из чего он состоит', en: 'What is a prompt: a request to a model and its parts' },
+          description: {
+            ru: 'Промпт — запрос к модели: задача, контекст, формат ответа и ограничения. Чем точнее собраны эти части, тем меньше правок после первого ответа модели.',
+            en: 'A prompt is a request to a model: task, context, answer format and constraints. The more precisely these are set, the fewer edits follow the first answer.',
+          },
+        },
         def: {
           ru: 'Промпт — запрос к модели: задача, контекст, формат ответа и ограничения. Чем точнее собраны эти части, тем меньше правок после первого ответа.',
           en: 'A prompt is a request to a model: task, context, answer format and constraints. The more precisely these parts are put together, the fewer edits follow the first answer.',
@@ -1586,10 +1630,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)', label: { ru: 'Википедия: галлюцинации ИИ', en: 'Wikipedia: AI hallucination' } },
         seo: {
-          title: { ru: 'Галлюцинации LLM: что это и примеры галлюцинаций ИИ — в коде, пакетах и ссылках', en: 'LLM hallucination: meaning, examples and grounding in sources' },
+          title: { ru: 'Галлюцинации LLM: что это и примеры галлюцинаций ИИ', en: 'LLM hallucination: meaning, examples and grounding' },
           description: {
-            ru: 'Что такое галлюцинации больших языковых моделей (LLM) и примеры галлюцинаций ИИ в работе агента: выдуманная функция, несуществующий пакет, ссылка в никуда. Почему они возникают и как их снижают опорой на источники и проверками.',
-            en: 'What an LLM hallucination means, with examples from coding agents: an invented function, a nonexistent package, a dead link. Why it happens, how grounding in sources reduces it, and how checks detect it.',
+            ru: 'Галлюцинация LLM — уверенный, но выдуманный ответ модели. Примеры в работе агента: несуществующая функция, пакет, ссылка. Почему возникает и как снижают.',
+            en: 'What an LLM hallucination means, with coding-agent examples: an invented function, a nonexistent package, a dead link. Why it happens and how grounding helps.',
           },
         },
         notes: {
@@ -1868,10 +1912,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://yandex.com/company', label: { ru: 'Яндекс: о компании', en: 'Yandex company page' } },
         seo: {
-          title: { ru: 'Yandex AI (ИИ Яндекса): Alice AI, AI Studio и SourceCraft — что есть у Яндекса для ИИ-агентов', en: 'Yandex AI: Alice AI models, AI Studio and SourceCraft Code Assistant' },
+          title: { ru: 'Yandex AI (ИИ Яндекса): Alice AI, AI Studio, SourceCraft', en: 'Yandex AI: Alice AI models, AI Studio, SourceCraft' },
           description: {
-            ru: 'Что такое ИИ Яндекса: модели Alice AI (раньше YandexGPT), ассистент Алиса, корпоративный агент Алиса AI Про, конструктор агентов Yandex AI Studio и SourceCraft с агентом Code Assistant для кода.',
-            en: 'What Yandex AI is: the Alice AI models (formerly YandexGPT), the Alice assistant, Alice AI Pro for business, Yandex AI Studio for building agents and SourceCraft Code Assistant for code.',
+            ru: 'Yandex AI — это ИИ Яндекса: модели Alice AI (раньше YandexGPT), Алиса, агент Алиса AI Про, конструктор агентов AI Studio и Code Assistant в SourceCraft.',
+            en: 'Yandex AI is Yandex’s AI: Alice AI models (formerly YandexGPT), the Alice assistant, Alice AI Pro, Yandex AI Studio for agents and SourceCraft Code Assistant.',
           },
         },
       },
@@ -2018,6 +2062,13 @@ export const TERM_SETS: TermSet[] = [
         // Junie вышел из беты 17.06.2026 (blog.jetbrains.com/junie/2026/06/junie-coding-agent-out-of-beta); Mellum — открытая модель автодополнения
         slug: 'jetbrains',
         name: { ru: 'JetBrains', en: 'JetBrains' },
+        seo: {
+          title: { ru: 'JetBrains: что это — IDE, агент Junie и ИИ-агенты в IDE', en: 'What is JetBrains: IDEs, the Junie agent and AI in them' },
+          description: {
+            ru: 'JetBrains — компания из Праги (2000): IntelliJ IDEA, PyCharm, WebStorm, язык Kotlin. Свой агент Junie, Claude Agent и Codex в IDE, прочие через ACP.',
+            en: 'JetBrains is a Prague company (2000) behind IntelliJ IDEA, PyCharm, WebStorm and Kotlin. Own agent Junie, Claude Agent and Codex in the IDE.',
+          },
+        },
         def: {
           ru: 'JetBrains — компания, основанная в Праге в 2000 году: делает IDE IntelliJ IDEA, PyCharm, WebStorm и другие, а также язык Kotlin. Свой агент для кода Junie работает в IDE и в терминале; рядом в IDE встроены Claude Agent и Codex, а другие агенты подключаются через открытый протокол ACP. Автодополнение — на своей модели Mellum. Air — среда, где несколько агентов работают параллельно (предварительная версия).',
           en: 'JetBrains is a company founded in Prague in 2000 that makes the IntelliJ IDEA, PyCharm, WebStorm and other IDEs, plus the Kotlin language. Its own coding agent Junie works in the IDE and the terminal; Claude Agent and Codex are built into the IDE next to it, and other agents connect through the open ACP protocol. Code completion runs on its own Mellum model. Air is a workspace where several agents run in parallel (preview).',
@@ -2155,6 +2206,13 @@ export const TERM_SETS: TermSet[] = [
         slug: 'vite',
         name: { ru: 'Vite', en: 'Vite' },
         aka: { ru: 'сборщик для сайтов', en: 'a bundler for web apps' },
+        seo: {
+          title: { ru: 'Vite: что это — быстрый сборщик и сервер для сайтов', en: 'What is Vite: a fast bundler and dev server for websites' },
+          description: {
+            ru: 'Vite собирает код сайта командой vite build и мгновенно показывает правки в браузере. Как с ним связан Vitest, который берёт его настройки для тестов.',
+            en: 'Vite builds website code with vite build and shows edits in the browser instantly. How Vitest ties to it: tests reuse the same settings.',
+          },
+        },
         def: {
           ru: 'Vite — программа, которая собирает код сайта и в процессе работы мгновенно показывает правки в браузере. Его настройки описывают, как собирать проект. Vitest берёт эти же настройки для тестов, поэтому отдельная конфигурация для тестов не нужна.',
           en: 'Vite is a program that builds the code of a website and instantly shows edits in the browser while you work. Its settings describe how to build the project. Vitest reuses these same settings for tests, so no separate test configuration is needed.',
@@ -2368,6 +2426,13 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'grafana',
         name: { ru: 'Grafana', en: 'Grafana' },
+        seo: {
+          title: { ru: 'Grafana: что это — дашборды для метрик и логов, MCP', en: 'What is Grafana: dashboards for metrics and logs, and MCP' },
+          description: {
+            ru: 'Grafana — система графиков и дашбордов для метрик и логов. Агент читает их через MCP; флаг --disable-write оставляет ему только чтение.',
+            en: 'Grafana is a charts and dashboards system for metrics and logs. An agent reads them via MCP; the --disable-write flag keeps it read-only.',
+          },
+        },
         def: {
           ru: 'Grafana — система графиков и дашбордов для метрик и логов. Агент через MCP читает метрики и логи и собирает картину инцидента. Чтобы он ничего не поменял сам, MCP-сервер Grafana запускают с флагом `--disable-write`: тогда агенту доступно только чтение, а создавать и править дашборды, алерты и инциденты он не может.',
           en: 'Grafana is a charts and dashboards system for metrics and logs. Through MCP the agent reads metrics and logs and builds the incident picture. To keep it from changing anything, the Grafana MCP server is started with the `--disable-write` flag: the agent can then only read and cannot create or edit dashboards, alerts or incidents.',
@@ -2468,10 +2533,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/', label: { ru: 'Блог GitHub: разработка от спецификаций', en: 'GitHub Blog: Spec-driven development' } },
         seo: {
-          title: { ru: 'Spec-Driven Development (SDD): что это, как работает и какие программы есть', en: 'What is spec-driven development (SDD): how it works and which frameworks to use' },
+          title: { ru: 'Spec-Driven Development (SDD): что это и как работает', en: 'What is spec-driven development (SDD) and how it works' },
           description: {
-            ru: 'Spec-driven development: сначала спека с требованиями, потом код от ИИ-агента. Шаги подхода, OpenSpec, Spec Kit и Kiro, сверка спеки и кода.',
-            en: 'Spec-driven development: a spec with requirements comes first, then an AI agent writes code against it. The steps, OpenSpec, Spec Kit and Kiro, and keeping spec and code in sync.',
+            ru: 'Spec-driven development — разработка по спецификациям: сначала спека с требованиями, потом код от ИИ-агента. Шаги, OpenSpec, Spec Kit, Kiro.',
+            en: 'Spec-driven development: a spec with requirements comes first, then an AI agent codes against it. Steps, OpenSpec, Spec Kit and Kiro.',
           },
         },
         more: { post: 'openspec', label: { ru: 'OpenSpec: разработка по спецификациям на практике', en: 'OpenSpec: spec-driven development in practice' } },
@@ -2509,10 +2574,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://github.com/Fission-AI/OpenSpec', label: { ru: 'Репозиторий OpenSpec на GitHub', en: 'OpenSpec GitHub repo' } },
         seo: {
-          title: { ru: 'OpenSpec, Spec Kit и Kiro: определение и сравнение', en: 'OpenSpec, Spec Kit and Kiro: definition and comparison' },
+          title: { ru: 'OpenSpec: что это и чем отличается от Spec Kit и Kiro', en: 'OpenSpec: what it is and how it differs from Spec Kit' },
           description: {
-            ru: 'Определение OpenSpec и сравнение со Spec Kit и Kiro: цена, файлы изменения, порядок шагов, агенты. Установка и команды — в подробной статье.',
-            en: 'OpenSpec defined and compared with Spec Kit and Kiro: price, change files, step order, agents. Setup and commands are in the detailed article.',
+            ru: 'OpenSpec — бесплатная открытая программа Fission AI: агент пишет план, вы проверяете, потом он пишет код. Сравнение со Spec Kit и Kiro.',
+            en: 'OpenSpec is a free open-source framework by Fission AI: the agent writes a plan, you review it, then it codes. Compared with Spec Kit and Kiro.',
           },
         },
         more: { post: 'openspec', label: { ru: 'OpenSpec: установка, команды и пример изменения', en: 'OpenSpec: setup, commands and a change example' } },
@@ -2546,6 +2611,13 @@ export const TERM_SETS: TermSet[] = [
       },
       {
         slug: 'rfc-2119',
+        seo: {
+          title: { ru: 'RFC 2119: что это и что значат MUST, SHOULD и MAY', en: 'RFC 2119: what it is and what MUST, SHOULD and MAY mean' },
+          description: {
+            ru: 'RFC 2119 — стандарт, который задаёт значение слов MUST, SHOULD и MAY в требованиях. В спеках они показывают агенту, что обязательно, а что желательно.',
+            en: 'RFC 2119 is a standard that fixes the meaning of MUST, SHOULD and MAY in requirements. In specs they tell an agent what is mandatory and what is advised.',
+          },
+        },
         name: { ru: 'RFC 2119', en: 'RFC 2119' },
         aka: { ru: 'MUST · SHOULD · MAY', en: 'MUST · SHOULD · MAY' },
         def: {
@@ -2644,6 +2716,13 @@ export const TERM_SETS: TermSet[] = [
         slug: 'agile',
         name: { ru: 'Agile', en: 'Agile' },
         aka: { ru: 'гибкая разработка', en: 'agile development' },
+        seo: {
+          title: { ru: 'Agile: что это — гибкая разработка короткими циклами', en: 'What is Agile: development in short feedback cycles' },
+          description: {
+            ru: 'Agile — разработка короткими циклами: сделать малую часть, показать, получить отзыв, поправить план. Основан на Манифесте гибкой разработки 2001 года.',
+            en: 'Agile is development in short cycles: build a small part, show it, get feedback, adjust the plan. Based on the 2001 Agile Manifesto.',
+          },
+        },
         def: {
           ru: 'Agile — подход к разработке короткими циклами: сделать небольшую часть, показать её, получить обратную связь и поправить план. Основа — Манифест гибкой разработки 2001 года, где реакция на изменения ценится выше следования плану. Подход нужен там, где будущее нельзя знать заранее: план всё равно будет ошибаться, поэтому важно, чтобы его было дёшево поправить.',
           en: 'Agile is an approach to development in short cycles: build a small part, show it, get feedback and adjust the plan. It rests on the 2001 Manifesto for Agile Software Development, which values responding to change over following a plan. The approach fits where the future can’t be known in advance: the plan will be wrong anyway, so what matters is that it is cheap to adjust.',
@@ -2828,6 +2907,13 @@ export const TERM_SETS: TermSet[] = [
         slug: 'api',
         name: { ru: 'API', en: 'API' },
         aka: { ru: 'программный интерфейс', en: 'application programming interface' },
+        seo: {
+          title: { ru: 'API: что это — программный интерфейс простыми словами', en: 'What is an API: an application programming interface' },
+          description: {
+            ru: 'API — набор правил, по которым одна программа обращается к другой: какие запросы можно слать и какие ответы придут. Агент зовёт сервис напрямую.',
+            en: 'An API is a set of rules for one program to call another: which requests can be sent and which answers return. An agent uses it without a browser.',
+          },
+        },
         def: {
           ru: 'API — набор правил, по которым одна программа обращается к другой: какие запросы можно отправить и какие ответы придут. Через API агент вызывает сервис напрямую, без браузера. Например, оплата обращается к сервису промокодов именно через его API.',
           en: 'An API is a set of rules by which one program calls another: which requests can be sent and which answers come back. Through an API an agent calls a service directly, without a browser. For example, payment calls the promo-code service through its API.',
@@ -2844,6 +2930,13 @@ export const TERM_SETS: TermSet[] = [
         slug: 'poc',
         name: { ru: 'PoC', en: 'PoC' },
         aka: { ru: 'proof of concept, доказательство осуществимости', en: 'proof of concept' },
+        seo: {
+          title: { ru: 'PoC: что это — proof of concept, доказательство идеи', en: 'PoC: what it is — proof of concept for a bug or idea' },
+          description: {
+            ru: 'PoC (proof of concept) — небольшой код или сценарий, показывающий, что проблема воспроизводится. Для бага — короткий запуск, повторяющий ошибку.',
+            en: 'A PoC (proof of concept) is a small bit of code or script showing a problem reproduces. For a bug, a short run without a browser that repeats the error.',
+          },
+        },
         def: {
           ru: 'PoC (proof of concept, «доказательство осуществимости») — небольшой код или сценарий, который показывает, что проблема действительно воспроизводится. Для бага это короткий запуск без браузера, который повторяет ошибку. Агент пишет такой PoC по коду и тестам, чтобы подтвердить баг.',
           en: 'A PoC (proof of concept) is a small piece of code or a script that shows the problem really reproduces. For a bug it is a short run without a browser that repeats the error. An agent writes such a PoC from the code and tests to confirm the bug.',
@@ -3062,6 +3155,13 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'deployment',
         name: { ru: 'Deployment', en: 'Deployment' },
+        seo: {
+          title: { ru: 'Deployment в Kubernetes: что это и как обновляет поды', en: 'Deployment in Kubernetes: what it is, how it updates pods' },
+          description: {
+            ru: 'Deployment — запись в Kubernetes о версии сервиса и числе копий, например три копии сервиса броней. При обновлении старые поды сменяются новыми.',
+            en: 'A Deployment is a Kubernetes record of a service version and copy count, e.g. three booking-service copies. On update, old pods are replaced in turn.',
+          },
+        },
         def: {
           ru: 'Deployment — запись в Kubernetes о том, какую версию сервиса запускать и сколько копий держать, например «три копии сервиса броней». При обновлении он по очереди заменяет старые поды новыми.',
           en: 'A Deployment is a Kubernetes record of which version of a service to run and how many copies to keep, such as “three copies of the booking service”. On an update it replaces old pods with new ones in turn.',
@@ -3114,6 +3214,13 @@ export const TERM_SETS: TermSet[] = [
       {
         slug: 'helm',
         name: { ru: 'Helm', en: 'Helm' },
+        seo: {
+          title: { ru: 'Helm: что это — менеджер пакетов для Kubernetes, чарты', en: 'What is Helm: the Kubernetes package manager and charts' },
+          description: {
+            ru: 'Helm ставит приложения в Kubernetes одной командой: чарт с шаблонами и values.yaml становится релизом. Установка, обновление, helm rollback.',
+            en: 'Helm installs apps into Kubernetes with one command: a chart of templates and values.yaml becomes a release. Install, upgrade, helm rollback.',
+          },
+        },
         def: {
           ru: 'Helm — менеджер пакетов для Kubernetes. Чарт — набор файлов, который описывает связанную группу ресурсов Kubernetes: шаблоны, значения по умолчанию в `values.yaml` и описание в `Chart.yaml`. Установка чарта создаёт релиз с именем, например `helm install happy-panda bitnami/wordpress`; настройки переопределяют файлом (`-f`) или флагом `--set`. Команда `helm upgrade` меняет только изменившееся, а при каждой установке, обновлении и откате номер ревизии релиза растёт на единицу, поэтому `helm rollback happy-panda 1` возвращает релиз к прежнему состоянию.',
           en: 'Helm is the package manager for Kubernetes. A chart is a collection of files that describes a related set of Kubernetes resources: templates, default values in `values.yaml` and a description in `Chart.yaml`. Installing a chart creates a named release, for example `helm install happy-panda bitnami/wordpress`; settings are overridden with a file (`-f`) or the `--set` flag. `helm upgrade` changes only what differs, and every install, upgrade and rollback raises the release revision number by one, so `helm rollback happy-panda 1` returns the release to its earlier state.',
@@ -3484,6 +3591,13 @@ export const TERM_SETS: TermSet[] = [
         slug: 'jest',
         name: { ru: 'Jest', en: 'Jest' },
         aka: { ru: 'движок тестов для JavaScript', en: 'a JavaScript test framework' },
+        seo: {
+          title: { ru: 'Jest: что это — движок тестов для JavaScript, Jest и Vitest', en: 'What is Jest: a JavaScript test framework, Jest vs Vitest' },
+          description: {
+            ru: 'Jest — движок автоматических тестов для JavaScript: вы описываете, что вернёт функция, а он показывает упавшие проверки. Отличия от Vitest и QUnit.',
+            en: 'Jest is an automated test framework for JavaScript: you describe what a function returns and it shows failed checks. How it differs from Vitest and QUnit.',
+          },
+        },
         def: {
           ru: 'Jest — один из самых распространённых движков автоматических тестов для кода на JavaScript. Вы описываете, что функция должна вернуть на заданный вход, а Jest запускает все такие проверки и показывает, какие упали. Из той же семьи, что Vitest и QUnit, и проверяет готовый код, а не правила системы, как Quint.',
           en: 'Jest — one of the most widespread automated test frameworks for JavaScript code. You describe what a function must return for a given input, and Jest runs all such checks and shows which ones failed. From the same family as Vitest and QUnit, and it checks finished code, not the rules of a system as Quint does.',
@@ -3501,6 +3615,13 @@ export const TERM_SETS: TermSet[] = [
         slug: 'vitest',
         name: { ru: 'Vitest', en: 'Vitest' },
         aka: { ru: 'тесты на базе сборщика Vite', en: 'tests powered by Vite' },
+        seo: {
+          title: { ru: 'Vitest: что это — движок тестов для JavaScript на Vite', en: 'What is Vitest: a JavaScript test framework on Vite' },
+          description: {
+            ru: 'Vitest — движок тестов для JavaScript на сборщике Vite: запускает проверки кода и показывает упавшие. Берёт настройки Vite, быстро перезапускается.',
+            en: 'Vitest is a JavaScript test framework on the Vite bundler: it runs code checks and shows failed ones. It reuses Vite settings and restarts quickly.',
+          },
+        },
         def: {
           ru: 'Vitest — движок автоматических тестов для JavaScript нового поколения, построенный на сборщике Vite. Делает то же, что Jest: запускает проверки готового кода и показывает упавшие, но использует настройки проекта на Vite и поэтому быстро перезапускается. Из той же семьи, что Jest и QUnit.',
           en: 'Vitest is a next-generation automated test framework for JavaScript, powered by the Vite bundler. It does what Jest does: runs checks of finished code and shows the failed ones, but it reuses the project’s Vite setup and so restarts quickly. From the same family as Jest and QUnit.',
@@ -3569,8 +3690,8 @@ export const TERM_SETS: TermSet[] = [
         seo: {
           title: { ru: 'QA: что это в IT и чем QA отличается от QC и тестирования', en: 'QA (quality assurance): what it is, QA vs QC vs testing' },
           description: {
-            ru: 'QA (quality assurance) — обеспечение качества: процесс и роль, которые не дают багам дойти до пользователей. Чем QA отличается от QC и тестирования и что делает QA рядом с ИИ-агентом.',
-            en: 'QA (quality assurance) is the process and the role that keep bugs from reaching users. How QA differs from QC and testing, and what QA does next to an AI agent.',
+            ru: 'QA (quality assurance) — обеспечение качества: процесс и роль, не дающие багам дойти до пользователей. Чем QA отличается от QC и тестирования.',
+            en: 'QA (quality assurance) is the process and role that keep bugs from reaching users. How QA differs from QC and testing, and QA next to an AI agent.',
           },
         },
       },
@@ -3803,10 +3924,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
-          title: { ru: 'Тестовый стенд: что это в IT и чем отличается от прода', en: 'Test environment (test stand): dev, test, staging, demo' },
+          title: { ru: 'Тестовый стенд в IT: что это, виды и отличие от прода', en: 'Test environment (test stand): what it is and its types' },
           description: {
-            ru: 'Тестовый стенд — отдельная копия системы, где проверяют изменения до выкладки. Виды: dev, тест, препрод, демо; что на каждом можно ИИ-агенту.',
-            en: 'A test environment is a separate copy of a system where changes are checked before release. Types: dev, test, staging, demo; what an AI agent may do on each.',
+            ru: 'Тестовый стенд — отдельная копия системы, где можно ломать, не задевая прод. Виды: дев, тест, препрод, демо; что на каждом можно ИИ-агенту.',
+            en: 'A test environment is a separate copy of a system where you can break things without touching production. Types: dev, test, staging, demo.',
           },
         },
         table: {
@@ -3844,7 +3965,7 @@ export const TERM_SETS: TermSet[] = [
         related: ['environment', 'test-stand', 'dev-env', 'demo-env', 'prod', 'time-to-market', 'sandbox', 'smoke-testing', 'dump', 'e2e-test'],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
-          title: { ru: 'Препрод: что это в IT и чем отличается от прода', en: 'Preprod meaning: preprod vs staging vs UAT' },
+          title: { ru: 'Препрод (предпрод): что это в IT и чем отличается от прода', en: 'Preprod meaning: preprod vs staging vs UAT' },
           description: {
             ru: 'Препрод (предпрод) — копия прода, где проверяют релиз до выкладки. Чем отличается от теста и прода, что на нём проверяют, как писать правильно.',
             en: 'Preprod (pre-production) is a production-like environment for the last check before release. Preprod vs staging, UAT, test and prod in one table.',
@@ -3966,9 +4087,9 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://en.wikipedia.org/wiki/Deployment_environment', label: { ru: 'Википедия: среды развёртывания', en: 'Wikipedia: Deployment environment' } },
         seo: {
-          title: { ru: 'Что такое прод в IT: простыми словами и с примерами', en: 'Production (prod): what it is and why it stays untouched' },
+          title: { ru: 'Что такое прод в IT и в программировании: простыми словами', en: 'Production (prod): what it is and why it stays untouched' },
           description: {
-            ru: 'Прод в IT — рабочая версия системы с настоящими пользователями и данными. Что значат «выкатить в прод» и «упал прод», чем прод отличается от дева и теста.',
+            ru: 'Прод это в IT и программировании — рабочая версия системы с настоящими пользователями и данными. Что значит «выкатить в прод» и чем прод отличается от теста.',
             en: 'Production is the live environment with real users and data. How it differs from pre-prod and test, and why nobody writes there directly.',
           },
         },
@@ -4149,7 +4270,7 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://dora.dev/guides/dora-metrics/', label: { ru: 'DORA: метрики поставки ПО', en: 'DORA: software delivery metrics' } },
         seo: {
-          title: { ru: 'Частота выкладок (deployment frequency): что это и от чего зависит', en: 'Deployment frequency: what it is and what it depends on' },
+          title: { ru: 'Частота выкладок (deployment frequency): что это', en: 'Deployment frequency: what it is and what it depends on' },
           description: {
             ru: 'Частота выкладок — сколько раз за период изменения доходят до прода. Метрика DORA и связь с тестовыми стендами и препродом.',
             en: 'Deployment frequency is how many times a period changes reach production. A DORA metric and how it relates to test environments and pre-prod.',
@@ -4269,10 +4390,10 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://lamport.azurewebsites.net/tla/tla.html', label: { ru: 'Страница TLA+ Лесли Лэмпорта', en: 'Leslie Lamport’s TLA+ page' } },
         seo: {
-          title: { ru: 'TLA+: что это и зачем он нужен', en: 'TLA+: what it is and why use it' },
+          title: { ru: 'TLA+ это язык Лэмпорта для проверки систем до кода', en: 'TLA+: what it is and why use it' },
           description: {
             ru: 'TLA+ — язык Лесли Лэмпорта: систему описывают шаг за шагом и проверяют программами TLC и Apalache до кода. Пример и сравнение с Quint и Alloy.',
-            en: 'TLA+ is Leslie Lamport’s language: a system is described step by step and checked by TLC and Apalache before code. An example and how it compares with Quint and Alloy.',
+            en: 'TLA+ is Leslie Lamport’s language: a system is described step by step and checked by TLC and Apalache before code. An example and a Quint and Alloy comparison.',
           },
         },
         more: { post: 'quint-vs-tla-plus', label: { ru: 'Quint vs TLA+: чем отличаются и что выбрать', en: 'Quint vs TLA+: differences and which to choose' } },
@@ -4346,6 +4467,13 @@ export const TERM_SETS: TermSet[] = [
         slug: 'smt-solver',
         name: { ru: 'SMT-решатель', en: 'SMT solver' },
         aka: { ru: 'например, Z3', en: 'for example, Z3' },
+        seo: {
+          title: { ru: 'SMT-решатель: что это, пример и связь с Z3 и Apalache', en: 'What is an SMT solver: an example, Z3 and Apalache' },
+          description: {
+            ru: 'SMT-решатель по набору условий находит значения, при которых все они выполняются, или доказывает, что таких нет. Пример, Z3, Apalache.',
+            en: 'An SMT solver takes a set of conditions and finds values satisfying all of them, or proves none exist. An example, Z3 and Apalache.',
+          },
+        },
         def: {
           ru: 'SMT-решатель — программа, которая по набору условий вроде «сумма больше десяти, а счёт не отрицательный» сама находит значения, при которых все условия выполняются, или доказывает, что таких значений нет. Перебирать всё подряд ей не нужно: она рассуждает о целых классах случаев сразу. Самый известный решатель Z3 создала Microsoft Research. Движок Apalache переводит модель в такие условия и отдаёт их решателю.',
           en: 'SMT solver is a program that, given a set of conditions such as “the sum is greater than ten and the balance is not negative”, finds values for which all conditions hold, or proves that no such values exist. It does not have to try everything one by one: it reasons about whole classes of cases at once. The best-known solver, Z3, was created by Microsoft Research. The Apalache engine turns a model into such conditions and hands them to a solver.',
@@ -4412,6 +4540,13 @@ export const TERM_SETS: TermSet[] = [
         slug: 'rice-theorem',
         name: { ru: 'Теорема Райса', en: "Rice's theorem" },
         aka: { ru: 'неразрешимость свойств программ', en: 'undecidability of program properties' },
+        seo: {
+          title: { ru: 'Теорема Райса: что это и почему код не проверить до конца', en: 'Rice\'s theorem: what it is, why code can\'t be fully checked' },
+          description: {
+            ru: 'Теорема Райса: нет программы, что для любого кода определит, есть ли у него заданное свойство поведения. Выход: перебрать малый мир или ответить «не знаю».',
+            en: 'Rice\'s theorem: no program can tell for any code if it has a given behavioural property. The way out: try a small world in full or allow “don’t know”.',
+          },
+        },
         def: {
           ru: 'Теорема Райса: нет программы, которая для любой программы точно скажет, есть ли у неё заданное свойство поведения, например «никогда не списывает деньги без заказа», если это свойство есть у одних программ и нет у других. Вопросы о тексте кода решаются чтением, вопросы о поведении — нет. Поэтому проверку сужают рамкой: перебирают маленький мир, пишут так, чтобы правило держалось по построению, или разрешают ответ «не знаю».',
           en: 'Rice’s theorem says no program can tell for every program whether it has a given behavioural property, such as “never charges money without an order”, if some programs have the property and others don’t. Questions about the code text are settled by reading; questions about behaviour are not. So checks are narrowed by a frame: try a small world in full, write code so the rule holds by construction, or allow a “don’t know” answer.',
@@ -4513,6 +4648,13 @@ export const TERM_SETS: TermSet[] = [
       },
       {
         slug: 'barber-paradox',
+        seo: {
+          title: { ru: 'Парадокс брадобрея: что это и почему такого брадобрея нет', en: 'Barber paradox: what it is and why no such barber exists' },
+          description: {
+            ru: 'Парадокс брадобрея: брадобрей бреет всех, кто не бреет себя сам. Бреет ли он себя? Разбор с множествами, связь с парадоксом Рассела и проблемой остановки.',
+            en: 'The barber paradox: a barber shaves all who do not shave themselves. Does he shave himself? A walkthrough with sets, Russell’s paradox and the halting problem.',
+          },
+        },
         name: { ru: 'Парадокс брадобрея', en: 'Barber paradox' },
         aka: { ru: 'вопрос о самом себе', en: 'a question about itself' },
         def: {

@@ -2,7 +2,7 @@
 title: What are AGENTS.md and CLAUDE.md and how they differ from spec.md: an example file and where to keep specs, rules and skills
 seoTitle: AGENTS.md vs spec.md: the difference and what goes where
 date: 2026-09-28
-updated: 2026-11-15
+updated: 2026-11-17
 description: AGENTS.md and CLAUDE.md set rules for a whole project, spec.md describes one task. A file example and what goes where: specs, rules, skills.
 tags: AI, Claude Code, CLAUDE.md, harness, specs, skills
 category: specs
@@ -245,6 +245,7 @@ AGENTS.md gives an AI agent rules for the whole project and enters every session
     <item href="/en/blog/harness-work-approaches/" k="Approaches" t="Approaches to working with a harness">Answer loop and review</item>
     <item href="/en/blog/work-prompts-examples/" k="Practice" t="Prompts for work tasks">Five parts and six examples</item>
     <item href="/en/blog/ai-in-code-harness-and-tools/" k="Comparison" t="Comparing harnesses">Claude Code, Codex, Cursor, Hermes</item>
+    <item href="/en/blog/codex-or-chatgpt-what-to-choose/" k="Choice" t="Codex or ChatGPT: which to choose">Chat or a coding agent</item>
     <item href="/blog/ai-agent-maturity-levels/" k="Maturity" t="AI agent maturity levels">From chat to specs, skills, scripts, a harness and an agentic system</item>
       <item href="/en/blog/quint-vs-tests-and-tla/" k="Requirements" t="Quint vs tests and TLA+">Requirements as a checkable model</item>
   </b-links>

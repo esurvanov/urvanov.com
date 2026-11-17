@@ -1,7 +1,7 @@
 ---
 title: Quint vs TLA+: differences and which to choose
 date: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-17
 description: Quint or TLA+: a seven-point comparison (notation, types, proofs, checking, tests, maturity, learning curve), how to choose and how to move specs over.
 tags: AI, specs, Quint, TLA+, Quint vs TLA+, TLA+ vs Quint, TLAPS, Apalache, TLC, PlusCal, formal verification, model checking
 category: specs
@@ -10,7 +10,7 @@ mentions: Quint, TLA+, TLAPS, Apalache, TLC, PlusCal, model checking, formal spe
 toc: same=Common ground | table=Table | choose=What to choose | migrate=Moving over | practice=Practice | faq=FAQ | next=Further reading
 ---
 
-Quint and TLA+ describe the same system behavior and are checked by the same programs, TLC and Apalache. They differ in notation, types and proofs: Quint is written like typed code and checked in the editor, while TLA+ uses formulas without types and has the TLAPS proof system. A team without a math background gets started faster with Quint, and strict proofs call for TLA+.
+Quint and TLA+ describe the same system behavior and are checked by the same programs, TLC and Apalache. They differ in notation, types and proofs: Quint is written like typed code and checked in the editor, while TLA+ uses untyped formulas and has the TLAPS proof system. A team without math starts faster with Quint; strict proofs call for TLA+.
 
 <b-post series="harness">
 

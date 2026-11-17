@@ -1,8 +1,8 @@
 ---
 title: Уровни зрелости работы с ИИ-агентами: от чата к спекам, скиллам, коду, харнессу и агентной системе
 date: 2026-11-14
-updated: 2026-11-15
-description: Как опыт разработчика с ИИ растёт от вопроса в чате до агентной системы: что записывается на каждой ступени, когда переходить дальше и чего это стоит. Лестницы Every, Hashimoto, Eledath, Rezvov, Clark и Shapiro, четыре опоры Red Hat и цифры Malik.
+updated: 2026-11-17
+description: Как опыт работы с ИИ растёт от вопроса в чате до агентной системы: что записывать на каждой ступени, когда переходить дальше и чего это стоит.
 tags: AI, агенты, спеки, скиллы, харнесс, зрелость, compound engineering
 category: specs
 layout: wide
@@ -10,7 +10,7 @@ mentions: Compound Engineering, Agent Skills, AGENTS.md, CLAUDE.md, Spec-Driven 
 toc: map=Семь ступеней | sources=Что говорит рынок | chat=Чат | agent=Агент и правила | spec=Спека | skill=Скилл | script=Скрипт | crystal=Цена перехода | harness=Харнесс | system=Агентная система | traps=Ловушки | stop=Когда остановиться | start=С чего начать | faq=Вопросы | next=Дальше по теме
 ---
 
-Уровни зрелости работы с ИИ-агентами идут от чата к агенту, спеке, скиллу, скрипту, харнессу и агентной системе: на каждой ступени то, что человек раньше объяснял словами, записывается в файл или код и перестаёт зависеть от его памяти. Ту же последовательность в разных вариантах описывают лестницы <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>, <a href="https://mitchellh.com/writing/my-ai-adoption-journey" target="_blank" rel="noopener">Hashimoto</a>, <a href="https://www.bassimeledath.com/blog/levels-of-agentic-engineering" target="_blank" rel="noopener">Eledath</a>, <a href="https://dev.to/arezvov/five-levels-of-ai-agent-adoption-in-software-development-teams-50pi" target="_blank" rel="noopener">Rezvov</a>, <a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a> и <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a>. Ниже — ступени, переходы между ними и цена последних шагов.
+Уровни зрелости работы с ИИ-агентами идут от чата к агенту, спеке, скиллу, скрипту, харнессу и агентной системе: на каждой ступени то, что человек раньше объяснял словами, записывается в файл или код и перестаёт зависеть от его памяти. Ту же последовательность описывают лестницы <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>, <a href="https://mitchellh.com/writing/my-ai-adoption-journey" target="_blank" rel="noopener">Hashimoto</a>, <a href="https://www.bassimeledath.com/blog/levels-of-agentic-engineering" target="_blank" rel="noopener">Eledath</a>, <a href="https://dev.to/arezvov/five-levels-of-ai-agent-adoption-in-software-development-teams-50pi" target="_blank" rel="noopener">Rezvov</a>, <a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a> и <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a>. Ниже — ступени и цена последних шагов.
 
 <b-post series="prompts">
 <b-chapter id="map" title="Семь ступеней" icon="stairs">

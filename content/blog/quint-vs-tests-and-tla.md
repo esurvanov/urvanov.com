@@ -1,7 +1,8 @@
 ---
 title: Чем model checking отличается от тестов: тест проверяет один сценарий, модель — все порядки действий (Quint, QUnit и TLA+)
+seoTitle: Чем model checking отличается от тестов: Quint и TLA+
 date: 2026-10-25
-updated: 2026-11-15
+updated: 2026-11-17
 description: Тест проверяет придуманный сценарий, model checking перебирает все порядки действий. Что ловят QUnit, Jest, Vitest и что Quint, TLA+, Alloy. Как выбрать.
 tags: AI, спеки, Quint, TLA+, Alloy, QUnit, Jest, Vitest, тестирование, формальная верификация
 category: specs

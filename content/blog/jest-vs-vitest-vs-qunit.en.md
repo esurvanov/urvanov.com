@@ -1,8 +1,9 @@
 ---
 title: Vitest vs Jest: which to pick for a JavaScript project, and when QUnit is enough
+seoTitle: Vitest vs Jest: which to pick and when QUnit is enough
 date: 2026-10-25
-updated: 2026-11-13
-description: Vitest vs Jest: setup, where tests run, how checks are written. When to pick Vitest on Vite, keep Jest, or use QUnit in the browser. Table and FAQ.
+updated: 2026-11-17
+description: On Vite take Vitest, and if Jest already works, keep it. QUnit is enough for tests right in the browser. Setup, where tests run and check style compared.
 tags: AI, testing, JavaScript, Jest, Vitest, QUnit, Vite, Jest vs Vitest, test automation
 category: specs
 layout: wide

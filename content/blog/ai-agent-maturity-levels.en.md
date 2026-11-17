@@ -1,8 +1,8 @@
 ---
 title: AI agent maturity levels: from chat to specs, skills, code, a harness and an agentic system
 date: 2026-11-14
-updated: 2026-11-15
-description: How a developer's work with AI grows from a question in a chat to an agentic system: what gets written down at each step, when to move on and what it costs. The ladders of Every, Hashimoto, Eledath, Rezvov, Clark and Shapiro, Red Hat's four pillars and Malik's numbers.
+updated: 2026-11-17
+description: How work with AI grows from a chat question to an agentic system: what to write down at each step, when to move on and what it costs.
 tags: AI, agents, specs, skills, harness, maturity, compound engineering
 category: specs
 layout: wide
@@ -10,7 +10,7 @@ mentions: Compound Engineering, Agent Skills, AGENTS.md, CLAUDE.md, Spec-Driven 
 toc: map=Seven steps | sources=What the market says | chat=Chat | agent=Agent and rules | spec=Spec | skill=Skill | script=Script | crystal=The cost of a step | harness=Harness | system=Agentic system | traps=Traps | stop=When to stop | start=Where to start | faq=Questions | next=Further reading
 ---
 
-AI agent maturity levels run from a chat to an agent, a spec, a skill, a script, a harness and an agentic system: at each step, what a person used to explain in words is written into a file or code and stops depending on anyone's memory. The ladders of <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>, <a href="https://mitchellh.com/writing/my-ai-adoption-journey" target="_blank" rel="noopener">Hashimoto</a>, <a href="https://www.bassimeledath.com/blog/levels-of-agentic-engineering" target="_blank" rel="noopener">Eledath</a>, <a href="https://dev.to/arezvov/five-levels-of-ai-agent-adoption-in-software-development-teams-50pi" target="_blank" rel="noopener">Rezvov</a>, <a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a> and <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a> describe the same sequence in different variants. Below are the steps, the transitions between them and the cost of the last steps.
+AI agent maturity levels run from a chat to an agent, a spec, a skill, a script, a harness and an agentic system: at each step, what a person explained in words is written into a file or code. The ladders of <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>, <a href="https://mitchellh.com/writing/my-ai-adoption-journey" target="_blank" rel="noopener">Hashimoto</a>, <a href="https://www.bassimeledath.com/blog/levels-of-agentic-engineering" target="_blank" rel="noopener">Eledath</a>, <a href="https://dev.to/arezvov/five-levels-of-ai-agent-adoption-in-software-development-teams-50pi" target="_blank" rel="noopener">Rezvov</a>, <a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a> and <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a> describe the same sequence. Below: the steps and their cost.
 
 <b-post series="prompts">
 <b-chapter id="map" title="Seven steps" icon="stairs">

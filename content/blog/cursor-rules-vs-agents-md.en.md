@@ -2,7 +2,7 @@
 title: Cursor rules vs AGENTS.md: what goes where
 seoTitle: Cursor rules vs AGENTS.md: what goes where (2026)
 date: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-17
 description: Cursor rules live in .cursor/rules and have modes; AGENTS.md is plain markdown many agents read. Comparison table, a before-and-after migration, FAQ.
 tags: AI, Cursor, AGENTS.md, rules, .cursorrules, harness
 category: specs
@@ -177,6 +177,7 @@ Cursor rules and AGENTS.md both give an agent standing instructions, and they di
   <b-links cols="2">
     <item href="/blog/specs-rules-skills/" k="Context" t="AGENTS.md, CLAUDE.md and spec.md: what goes where">Four layers, a table of agents, a real file</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Comparison" t="Claude Code, Codex, Cursor and Hermes Agent">Which agent for which task</item>
+    <item href="/en/blog/codex-or-chatgpt-what-to-choose/" k="Choice" t="Codex or ChatGPT: which to choose">Chat or a coding agent</item>
     <item href="/blog/harness-driven-development/" k="Method" t="Harness-Driven Development">An agent mistake becomes a rule</item>
   </b-links>
 </b-chapter>

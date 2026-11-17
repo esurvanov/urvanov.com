@@ -1,8 +1,8 @@
 ---
 title: What are quality gates for AI agents: checkpoints that raise quality and autonomous run time
 date: 2026-11-14
-updated: 2026-11-14
-description: A quality gate is an intake post between an agent’s work and the word “done”. Three kinds of check, numbers on quality and cost, the arithmetic of autonomous run time, the bounded-context border as the place for a gate, MCP permissions and hooks, ways to bypass a gate and five steps to start.
+updated: 2026-11-17
+description: A quality gate is an intake post between an agent’s work and the word “done”: three kinds of check, quality and cost numbers, MCP permissions, hooks, bypasses.
 tags: AI, agents, quality gates, MCP, bounded context, harness, hooks, Claude Code
 category: harness
 layout: wide

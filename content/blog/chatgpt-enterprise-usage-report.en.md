@@ -1,8 +1,9 @@
 ---
 title: ChatGPT Enterprise usage report from admin console exports: who uses it, for what, and which AI tools to buy next
+seoTitle: ChatGPT Enterprise usage report: who uses it and for what
 date: 2026-09-28
-updated: 2026-11-13
-description: How to find out how employees use ChatGPT Enterprise: five admin console exports turn into adoption depth, uniformity across teams, main tools, a task map, data checks and an interview shortlist.
+updated: 2026-11-17
+description: How to see who uses ChatGPT Enterprise and for what: five admin console exports give adoption depth, a task map and an interview shortlist.
 tags: AI, research, analytics
 category: research
 layout: wide

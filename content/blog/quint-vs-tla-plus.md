@@ -1,7 +1,7 @@
 ---
 title: Quint vs TLA+: чем отличаются и что выбрать
 date: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-17
 description: Quint или TLA+: сравнение по семи пунктам (запись, типы, доказательства, проверка, тесты, зрелость, порог входа), выбор и перенос спецификаций.
 tags: AI, спеки, Quint, TLA+, Quint vs TLA+, TLA+ vs Quint, TLAPS, Apalache, TLC, PlusCal, формальная верификация, проверка моделей
 category: specs

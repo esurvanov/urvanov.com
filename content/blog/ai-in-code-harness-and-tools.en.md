@@ -1,8 +1,9 @@
 ---
 title: Codex vs Claude Code, which to pick, and when Cursor or Hermes Agent fits: AI coding agents compared
+seoTitle: Codex vs Claude Code: which to pick, and when Cursor fits
 date: 2026-09-28
-updated: 2026-11-13
-description: How Codex and Claude Code differ: the model, the plan, where the agent runs and what it sees. Cursor and Hermes Agent alongside, and which harness to take for the task. With links to the docs.
+updated: 2026-11-17
+description: How Codex and Claude Code differ: the model, the plan, where the agent runs and what it sees. Cursor and Hermes Agent alongside: which harness fits.
 tags: AI, harness, Claude Code, Codex, Cursor, Hermes Agent
 category: harness
 layout: wide
@@ -141,6 +142,8 @@ Codex vs Claude Code: in project access and actions they are nearly the same and
   <b-links cols="2">
     <item href="/en/blog/chatgpt-enterprise-usage-report/" k="Report" t="ChatGPT Enterprise usage report">Who in the company uses what</item>
     <item href="/en/blog/ai-interviews-without-leading-questions/" k="Interviews" t="Interviews without leading questions">How to establish what employees actually need from AI</item>
+    <item href="/en/blog/codex-or-chatgpt-what-to-choose/" k="Choice" t="Codex or ChatGPT: which to choose">Chat or a coding agent</item>
+    <item href="/en/blog/claude-code-install-and-price/" k="Install" t="Claude Code: install and price">Command, sign-in, plans</item>
   </b-links>
 </b-chapter>
 <b-footer>Snapshot as of September 2026. Product claims follow the official docs of Anthropic, OpenAI, Cursor and Nous Research; the source is behind the icon next to each claim. Two OpenAI Help Center quotes are paraphrased.</b-footer>
