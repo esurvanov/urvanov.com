@@ -1,8 +1,9 @@
 ---
 title: Cài đặt và lệnh OpenSpec: ví dụ một thay đổi từ kế hoạch đến merge
+seoTitle: OpenSpec là gì: cài đặt và lệnh kèm ví dụ
 date: 2026-11-07
-updated: 2026-11-13
-description: OpenSpec của Fission AI hoạt động ra sao: thư mục thay đổi gồm kế hoạch, yêu cầu và tác vụ, ba lệnh cho tác nhân và việc merge vào đặc tả chung. Cài đặt bằng hai lệnh, một thay đổi thật từ repository của trang urvanov.com, so sánh với Spec Kit và các prompt có sẵn để bắt đầu.
+updated: 2026-11-17
+description: OpenSpec của Fission AI: thư mục thay đổi với kế hoạch và tác vụ, ba lệnh cho tác nhân, merge vào đặc tả. Cài hai lệnh, ví dụ, so sánh với Spec Kit.
 tags: AI, OpenSpec, đặc tả, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
 layout: wide

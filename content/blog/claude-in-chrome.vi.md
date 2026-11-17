@@ -1,8 +1,8 @@
 ---
 title: Claude Code trong Chrome: tác nhân kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn
 date: 2026-10-05
-updated: 2026-11-13
-description: Claude in Chrome nối Claude Code với trình duyệt: tác nhân mở tab, đọc console, chạy kịch bản và điền form dưới phiên đăng nhập của bạn. Cách kết nối, nó làm được gì và nên cấp quyền nào.
+updated: 2026-11-17
+description: Claude in Chrome nối Claude Code với trình duyệt: tác nhân mở tab, đọc console và điền form dưới phiên đăng nhập của bạn. Cách kết nối và quyền.
 tags: AI, tác nhân, Claude Code, Claude in Chrome, trình duyệt, QA, harness
 category: harness
 layout: wide

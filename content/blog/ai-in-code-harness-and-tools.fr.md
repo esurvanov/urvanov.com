@@ -1,8 +1,9 @@
 ---
 title: Codex ou Claude Code, Cursor ou Hermes Agent : comparatif des agents IA de programmation
+seoTitle: Codex ou Claude Code : lequel choisir, quand Cursor convient
 date: 2026-09-28
-updated: 2026-11-13
-description: Claude Code ou Codex, Cursor ou Hermes Agent : où tourne l'agent, ce qu'il voit, avec quel modèle il raisonne et ce qu'il coûte — cinq harness côte à côte et lequel choisir selon la tâche. Avec des liens vers la documentation.
+updated: 2026-11-17
+description: Codex ou Claude Code : le modèle, l’offre, où tourne l’agent et ce qu’il voit. Cursor et Hermes Agent à côté : quel harness convient à la tâche.
 tags: IA, harness, Claude Code, Codex, Cursor, Hermes Agent
 category: harness
 layout: wide

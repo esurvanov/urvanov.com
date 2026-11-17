@@ -21,8 +21,8 @@
     "source.label": "Wikipedia: Quality assurance",
     "faq.2.q": "¿En qué se diferencia QA de QC y de las pruebas?",
     "faq.2.a": "QA previene defectos: vigila y mejora el proceso para que aparezcan menos errores. QC (quality control, control de calidad) detecta defectos en el resultado terminado. Las pruebas son una de las formas de hacer esa comprobación.",
-    "seo.title": "QA (quality assurance): qué es y en qué se diferencia de QC y de las pruebas",
-    "seo.description": "QA (quality assurance) es el proceso y el rol que evitan que los errores lleguen a los usuarios. En qué se diferencia QA de QC y de las pruebas, y qué hace QA junto a un agente de IA."
+    "seo.title": "QA: qué es en IT y diferencia con QC y pruebas",
+    "seo.description": "QA (quality assurance) es el proceso y el rol que evitan que los errores lleguen a los usuarios. Diferencias con QC y pruebas, y QA con un agente de IA."
   },
   "bug": {
     "name": "Bug",
@@ -254,8 +254,8 @@
     "faq.3.q": "¿Qué puede hacer un agente de IA en un entorno de pruebas?",
     "faq.3.a": "Reproducir errores y comprobar cambios. El agente no escribe en producción.",
     "source.label": "Wikipedia: Deployment environment",
-    "seo.title": "Entornos no productivos: dev, test, staging, demo — para qué sirve cada uno",
-    "seo.description": "Los entornos no productivos son copias de un sistema donde el equipo y un agente de IA comprueban cambios sin tocar producción: feature, dev, test, staging, demo. En qué se diferencian.",
+    "seo.title": "Entorno de pruebas: qué es, tipos y diferencia con prod",
+    "seo.description": "Un entorno de pruebas es una copia aparte del sistema donde se puede romper todo sin tocar producción. Tipos: dev, test, staging, demo.",
     "screens.0": "Un entorno no productivo se construye como una copia de producción. El servicio se copia entero y sus dependencias, la base de datos y los servicios externos, se conectan de dos maneras: como copias de las reales, que se parecen más a la realidad, o como mocks, que son más baratos y rápidos. El agente trabaja allí y no escribe en producción.",
     "screens.1": "Un cambio avanza de izquierda a derecha. Desde el entorno local el código va por dos caminos: a dev después de un merge y a un entorno de feature donde se comprueba una sola rama. Ambos caminos se juntan en test, donde todos integran. Después preproducción comprueba cómo se comporta el cambio como en producción, demo lo enseña al cliente y solo entonces llega a producción. Todo lo que está dentro del marco es un entorno no productivo.",
     "parts.title": "Dónde se comprueban los cambios: el entorno local y los entornos de pruebas",
@@ -328,7 +328,7 @@
     "def": "Preprod (preproducción) es un entorno configurado como producción donde una versión recibe su última comprobación antes de salir: la misma configuración, una copia reciente de los datos de producción, sin clientes reales. La mayoría de los equipos usa la palabra como sinónimo de staging. Las pruebas de aceptación de usuario (UAT) pueden hacerse aquí o en el entorno de test, según el equipo.",
     "source.label": "Wikipedia: Deployment environment",
     "seo.title": "Qué es preprod: preprod vs staging vs UAT",
-    "seo.description": "Preprod (preproducción) es un entorno similar a producción para la última comprobación antes del lanzamiento. Preprod frente a staging, UAT, test y prod en una tabla.",
+    "seo.description": "Preprod (preproducción) es un entorno similar a producción para la última comprobación antes del lanzamiento. Preprod frente a staging, UAT, test y prod.",
     "faq.0.q": "¿Cómo se escribe: preprod o pre-prod?",
     "faq.0.a": "Ambas formas valen: la palabra viene de pre-production y no tiene una norma de diccionario. Elige una y úsala en todo el documento.",
     "faq.1.q": "¿Qué es preproducción?",
@@ -375,11 +375,50 @@
     "faq.9.q": "Preprod frente a staging: ¿cuál es la diferencia?",
     "faq.9.a": "En la mayoría de las fuentes no hay diferencia. Wikipedia nombra pre-production como uno de los nombres de staging, y Atlassian describe staging como “a pre-production environment, where the systems administration team can establish exact procedures prior to rollout”. La diferencia aparece dentro de un equipo si pre-prod es una etapa aparte después de test: entonces se fija por acuerdo.",
     "table.title": "Dev, test, staging, preprod, UAT y prod lado a lado",
-    "table.head": ["Dev", "Test", "Staging", "Pre-prod", "UAT", "Prod"],
-    "table.rows.0": ["Objetivo", "escribir y probar cambios", "comprobar que los cambios de todos funcionan juntos", "comprobar la versión como en producción", "última comprobación antes de publicar, a menudo igual que staging", "aceptación por futuros usuarios", "atender a usuarios reales"],
-    "table.rows.1": ["Datos", "de prueba", "una copia de producción o mocks", "una copia reciente de producción", "una copia reciente de producción", "depende del equipo", "reales"],
-    "table.rows.2": ["Quién entra", "desarrolladores", "QA y autotests", "QA y el equipo de publicación", "QA y el equipo de publicación", "futuros usuarios o el cliente", "los clientes"],
-    "table.rows.3": ["En qué se diferencia de prod", "configuración para desarrollar", "configuración cómoda para probar", "configuración como en producción, sin clientes", "igual que staging, o una etapa aparte antes de prod", "un tipo de comprobación; se hace en test o staging", "datos y clientes reales"],
+    "table.head": [
+      "Dev",
+      "Test",
+      "Staging",
+      "Pre-prod",
+      "UAT",
+      "Prod"
+    ],
+    "table.rows.0": [
+      "Objetivo",
+      "escribir y probar cambios",
+      "comprobar que los cambios de todos funcionan juntos",
+      "comprobar la versión como en producción",
+      "última comprobación antes de publicar, a menudo igual que staging",
+      "aceptación por futuros usuarios",
+      "atender a usuarios reales"
+    ],
+    "table.rows.1": [
+      "Datos",
+      "de prueba",
+      "una copia de producción o mocks",
+      "una copia reciente de producción",
+      "una copia reciente de producción",
+      "depende del equipo",
+      "reales"
+    ],
+    "table.rows.2": [
+      "Quién entra",
+      "desarrolladores",
+      "QA y autotests",
+      "QA y el equipo de publicación",
+      "QA y el equipo de publicación",
+      "futuros usuarios o el cliente",
+      "los clientes"
+    ],
+    "table.rows.3": [
+      "En qué se diferencia de prod",
+      "configuración para desarrollar",
+      "configuración cómoda para probar",
+      "configuración como en producción, sin clientes",
+      "igual que staging, o una etapa aparte antes de prod",
+      "un tipo de comprobación; se hace en test o staging",
+      "datos y clientes reales"
+    ],
     "notes.title": "Qué dicen las fuentes sobre preprod, staging y UAT",
     "notes.items.0.name": "Wikipedia: Deployment environment",
     "notes.items.1.name": "AWS Well-Architected: DevOps Guidance",
@@ -414,8 +453,8 @@
     "faq.1.q": "¿Por qué no escribir directamente en producción?",
     "faq.1.a": "Un error ahí cuesta lo máximo, así que los cambios pasan por comprobaciones en los entornos de pruebas y normalmente una persona confirma el lanzamiento.",
     "source.label": "Wikipedia: Deployment environment",
-    "seo.title": "Producción (prod): qué es y por qué nadie escribe en ella directamente",
-    "seo.description": "Producción (prod) es el entorno real donde trabajan usuarios reales con datos reales. En qué se diferencia producción de pre-prod y de test, y por qué nadie escribe en ella directamente.",
+    "seo.title": "Producción (prod): qué es y por qué no se toca",
+    "seo.description": "Producción es el entorno real con usuarios y datos reales. En qué se diferencia de preprod y de test, y por qué nadie escribe en ella directamente.",
     "faq.2.q": "¿Qué significa prod en programación?",
     "faq.2.a": "La versión en vivo del sistema en los servidores que usan los clientes. «Desplegar a prod» significa publicar un cambio para los usuarios; «prod está caído» significa que el sistema en vivo dejó de funcionar.",
     "faq.3.q": "¿Prod y producción son lo mismo?",
@@ -431,11 +470,35 @@
     "faq.8.q": "¿Qué significa “prod is down”?",
     "faq.8.a": "El sistema real dejó de responder o funciona con errores: el sitio no abre, el pago falla. En ese momento un equipo restablece producción primero y busca la causa después. Un error que solo se ve en un stand no tumba producción: el stand es una copia aparte.",
     "table.title": "Dev, test, prod: objetivo, datos, quién trabaja",
-    "table.head": ["Dev", "Test", "Prod"],
-    "table.rows.0": ["Objetivo", "escribir y probar cambios", "comprobar que los cambios de todos funcionan juntos", "atender a usuarios reales"],
-    "table.rows.1": ["Datos", "de prueba", "una copia de producción o mocks", "reales"],
-    "table.rows.2": ["Quién trabaja", "el equipo de desarrollo", "QA y autotests", "los clientes"],
-    "table.rows.3": ["Qué puede hacer un agente de IA", "editar y comprobar", "reproducir errores, ejecutar autotests", "solo leer, sin escribir"],
+    "table.head": [
+      "Dev",
+      "Test",
+      "Prod"
+    ],
+    "table.rows.0": [
+      "Objetivo",
+      "escribir y probar cambios",
+      "comprobar que los cambios de todos funcionan juntos",
+      "atender a usuarios reales"
+    ],
+    "table.rows.1": [
+      "Datos",
+      "de prueba",
+      "una copia de producción o mocks",
+      "reales"
+    ],
+    "table.rows.2": [
+      "Quién trabaja",
+      "el equipo de desarrollo",
+      "QA y autotests",
+      "los clientes"
+    ],
+    "table.rows.3": [
+      "Qué puede hacer un agente de IA",
+      "editar y comprobar",
+      "reproducir errores, ejecutar autotests",
+      "solo leer, sin escribir"
+    ],
     "notes.title": "Qué dicen las fuentes primarias sobre producción",
     "notes.items.0.name": "Wikipedia: Deployment environment",
     "notes.items.0.text": "El artículo sobre entornos de despliegue dice de producción: “it is the environment that users directly interact with”, es decir, el entorno con el que los usuarios interactúan directamente.",
@@ -629,7 +692,7 @@
     "faq.1.a": "Secuencias de pasos que rompen una regla. Por ejemplo, que el dinero desaparece si ocurre un fallo entre el cargo y el abono.",
     "source.label": "La página de TLA+ de Leslie Lamport",
     "seo.title": "TLA+: qué es y para qué sirve",
-    "seo.description": "TLA+ es el lenguaje de Leslie Lamport para describir el comportamiento de un sistema paso a paso y comprobarlo con TLC y Apalache antes de escribir código. Un ejemplo y la comparación con Quint y Alloy.",
+    "seo.description": "TLA+ es el lenguaje de Leslie Lamport: un sistema se describe paso a paso y TLC y Apalache lo comprueban antes del código. Ejemplo y comparación con Quint.",
     "more.label": "Quint vs TLA+: en qué se diferencian y cuál elegir",
     "also.1.label": "TLA+ vs Quint vs Alloy: cuál elegir"
   },
@@ -837,8 +900,8 @@
     "faq.2.a": "En TDD primero se escribe una prueba que falla para una función y luego el código para ella. En SDD primero se escribe una especificación de todo el cambio —requisitos y escenarios «cuando — entonces»— y el agente deduce de ella las pruebas y el código.",
     "faq.3.q": "¿En qué se diferencia una especificación de AGENTS.md?",
     "faq.3.a": "Una especificación describe un cambio y vive hasta que se cierra. AGENTS.md contiene las reglas de todo el proyecto y entra en cada sesión del agente.",
-    "seo.title": "Qué es el spec-driven development (SDD): cómo funciona y qué frameworks usar",
-    "seo.description": "Spec-driven development: primero una especificación con requisitos y luego un agente de IA escribe el código según ella. Los pasos, OpenSpec, Spec Kit y Kiro, y cómo mantener sincronizados especificación y código.",
+    "seo.title": "Spec-Driven Development (SDD): qué es y cómo funciona",
+    "seo.description": "Spec-driven development: primero una especificación con requisitos, después un agente de IA programa según ella. Pasos, OpenSpec, Spec Kit y Kiro.",
     "more.label": "OpenSpec: el spec-driven development en la práctica",
     "also.0.label": "Especificaciones por agregado: cómo evitar que se multipliquen",
     "also.1.label": "Un bucle de conciliación: especificación y código en sintonía",
@@ -1198,7 +1261,7 @@
     "aka": "morfismo cancelable por la derecha",
     "def": "Un epimorfismo es un morfismo f: X → Y cancelable por la derecha: si g₁∘f = g₂∘f, entonces g₁ = g₂. Generaliza la función sobreyectiva: en conjuntos y grupos los epimorfismos son las aplicaciones sobreyectivas, pero en anillos hay epimorfismos no sobreyectivos, como la inclusión ℤ → ℚ. Su noción dual es el monomorfismo.",
     "seo.title": "Epimorfismo: qué es y diferencia con isomorfismo",
-    "seo.description": "Un epimorfismo es un morfismo cancelable por la derecha: en grupos es sobreyectivo, en anillos no siempre (ℤ → ℚ). Tabla con isomorfismo y monomorfismo.",
+    "seo.description": "Un epimorfismo es un morfismo cancelable por la derecha: en grupos es sobreyectivo, en anillos no siempre (ℤ → ℚ). Comparación con isomorfismo.",
     "notes.title": "Ejemplos, un contraejemplo y uso en IA",
     "notes.items.0.name": "En grupos, aplicaciones sobreyectivas",
     "notes.items.0.text": "En la categoría de grupos todo epimorfismo es sobreyectivo (resultado de Otto Schreier). Lo mismo vale para los grupos finitos, los grupos abelianos, los conjuntos, los espacios vectoriales y los módulos.",

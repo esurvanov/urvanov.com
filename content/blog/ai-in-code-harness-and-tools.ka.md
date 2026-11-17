@@ -1,8 +1,9 @@
 ---
 title: Codex და Claude Code, Cursor და Hermes Agent: AI კოდინგ-აგენტების შედარება
+seoTitle: Codex თუ Claude Code: რომელი აირჩიოთ და როდის Cursor
 date: 2026-09-28
-updated: 2026-11-13
-description: Claude Code თუ Codex, Cursor თუ Hermes Agent: სად მუშაობს აგენტი, რას ხედავს, რომელი მოდელით ფიქრობს და რა ღირს — ხუთი harness გვერდიგვერდ და რომელი აირჩიოთ ამოცანისთვის. დოკუმენტაციის ბმულებით.
+updated: 2026-11-17
+description: როგორ განსხვავდება Codex და Claude Code: მოდელი, გეგმა, სად მუშაობს აგენტი და რას ხედავს. გვერდით Cursor და Hermes Agent: რომელი harness გამოდგება.
 tags: AI, harness, Claude Code, Codex, Cursor, Hermes Agent
 category: harness
 layout: wide

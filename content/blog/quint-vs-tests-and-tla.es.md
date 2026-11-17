@@ -1,8 +1,9 @@
 ---
 title: Diferencia entre verificación de modelos y pruebas: una prueba comprueba un escenario, un modelo comprueba todos los órdenes de acciones (Quint, QUnit y TLA+)
+seoTitle: Verificación de modelos vs pruebas: qué detecta cada una
 date: 2026-10-25
-updated: 2026-11-13
-description: Una prueba comprueba un escenario que se te ocurrió; la verificación de modelos prueba todos los órdenes de acciones. Qué detectan QUnit, Jest y Vitest, y qué detectan Quint, TLA+ y Alloy.
+updated: 2026-11-17
+description: Una prueba comprueba un escenario que se te ocurrió; la verificación de modelos prueba todos los órdenes. Qué detectan QUnit, Jest, Vitest, Quint, TLA+ y Alloy.
 tags: IA, specs, Quint, TLA+, Alloy, QUnit, Jest, Vitest, pruebas, verificación formal
 category: specs
 layout: wide

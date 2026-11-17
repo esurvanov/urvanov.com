@@ -52,8 +52,8 @@
     "faq.2.a": "En TDD, on écrit d’abord un test qui échoue pour une fonction, puis le code correspondant. En SDD, on écrit d’abord une spécification pour tout le changement — exigences et scénarios « quand — alors » — et l’agent en déduit les tests et le code.",
     "faq.3.q": "En quoi une spécification diffère-t-elle d’AGENTS.md ?",
     "faq.3.a": "Une spécification décrit un changement et vit jusqu’à sa clôture. AGENTS.md contient les règles de tout le projet et entre dans chaque session de l’agent.",
-    "seo.title": "Qu’est-ce que le spec-driven development (SDD) : comment il fonctionne et quels frameworks utiliser",
-    "seo.description": "Spec-driven development : une spécification avec des exigences d’abord, puis un agent IA écrit le code d’après elle. Les étapes, OpenSpec, Spec Kit et Kiro, et comment garder spécification et code synchronisés.",
+    "seo.title": "Spec-Driven Development (SDD) : définition et fonctionnement",
+    "seo.description": "Le spec-driven development : une spécification avec les exigences d’abord, puis l’agent IA code en s’y conformant. Les étapes, OpenSpec, Spec Kit et Kiro.",
     "more.label": "OpenSpec : le spec-driven development en pratique",
     "also.0.label": "Spécifications par agrégat : éviter qu’elles se multiplient",
     "also.1.label": "Une boucle de réconciliation : spécification et code en accord",
@@ -70,8 +70,8 @@
     "faq.3.q": "En quoi OpenSpec diffère-t-il de Spec Kit ?",
     "faq.3.a": "OpenSpec est plus léger : les étapes peuvent se répéter dans n’importe quel ordre, et il convient au code déjà en production. Spec Kit de GitHub suit des phases fixes.",
     "source.label": "Dépôt GitHub d’OpenSpec",
-    "seo.title": "OpenSpec, Spec Kit et Kiro : frameworks de développement piloté par les spécifications, comparés",
-    "seo.description": "OpenSpec de Fission AI est un framework gratuit qui place le plan du changement avant le code. En quoi il diffère de Spec Kit de GitHub et de Kiro d’AWS : prix, fichiers, ordre des étapes, agents.",
+    "seo.title": "OpenSpec : qu’est-ce que c’est, différence avec Spec Kit",
+    "seo.description": "OpenSpec est un framework gratuit et open source de Fission AI : l’agent rédige un plan, vous le relisez, puis il code. Comparaison avec Spec Kit et Kiro.",
     "more.label": "OpenSpec : installation, commandes et exemple de changement",
     "compare.title": "OpenSpec, Spec Kit et Kiro",
     "compare.rows.0": [
@@ -541,8 +541,8 @@
     "source.label": "Wikipédia : Assurance qualité",
     "faq.2.q": "En quoi QA diffère-t-il de QC et des tests ?",
     "faq.2.a": "QA prévient les défauts : il surveille et améliore le processus pour que les erreurs soient moins nombreuses. QC (quality control, contrôle qualité) détecte les défauts dans le résultat fini. Les tests sont l’un des moyens de faire cette vérification.",
-    "seo.title": "QA (quality assurance) : ce que c’est et en quoi QA diffère de QC et des tests",
-    "seo.description": "QA (quality assurance) est le processus et le rôle qui empêchent les bugs d’arriver aux utilisateurs. En quoi QA diffère de QC et des tests, et ce que fait QA à côté d’un agent IA."
+    "seo.title": "QA : définition et différence avec le QC et les tests",
+    "seo.description": "QA (quality assurance) : assurance qualité, processus et rôle qui empêchent les bugs d’atteindre les utilisateurs. En quoi la QA diffère du QC et des tests."
   },
   "bug": {
     "name": "Bug",
@@ -774,8 +774,8 @@
     "faq.3.q": "Que peut faire un agent IA sur un stand ?",
     "faq.3.a": "Reproduire des bugs et vérifier des changements. L’agent n’écrit pas en production.",
     "source.label": "Wikipédia : Deployment environment",
-    "seo.title": "Environnements hors production : dev, test, staging, démo — à quoi sert chacun",
-    "seo.description": "Les environnements hors production sont des copies d’un système où l’équipe et un agent IA vérifient des changements sans toucher à la production : feature, dev, test, staging, démo. Ce qui les distingue.",
+    "seo.title": "Environnement de test : définition, types, écart avec prod",
+    "seo.description": "Un environnement de test est une copie séparée d’un système où l’on peut tout casser sans toucher la production. Types : dev, test, préproduction, démo.",
     "screens.0": "Un environnement hors production est construit comme une copie de la production. Le service est copié en entier, et ses dépendances, la base de données et les services externes, sont branchées de deux façons : sous forme de copies des vraies, plus proches de la réalité, ou sous forme de mocks, moins chers et plus rapides. L’agent y travaille et n’écrit pas en production.",
     "screens.1": "Un changement avance de gauche à droite. Depuis l’environnement local, le code prend deux chemins : vers dev après une fusion, et vers un stand de feature où une branche est vérifiée. Les deux chemins se rejoignent sur test, où tout le monde intègre. Ensuite, la préproduction vérifie comment le changement se comporte comme en production, la démo le montre au client, et seulement après il arrive en production. Tout ce qui est dans le cadre est un environnement hors production.",
     "parts.title": "Où les changements sont vérifiés : l’environnement local et les stands de test",
@@ -847,8 +847,8 @@
     "aka": "environnement de staging, préproduction, préprod, preprod, stage",
     "def": "Preprod (préproduction) est un environnement configuré comme la production où une version reçoit sa dernière vérification avant la mise en ligne : les mêmes réglages, une copie récente des données de production, pas de vrais clients. La plupart des équipes emploient le mot comme synonyme de staging. Les tests d’acceptation utilisateur (UAT) peuvent s’y dérouler ou sur l’environnement de test, selon l’équipe.",
     "source.label": "Wikipédia : Deployment environment",
-    "seo.title": "Preprod : sens, preprod vs staging vs UAT",
-    "seo.description": "Preprod (préproduction) est un environnement proche de la production pour la dernière vérification avant la livraison. Preprod face à staging, UAT, test et prod dans un tableau.",
+    "seo.title": "Preprod : définition, preprod vs staging vs UAT",
+    "seo.description": "La preprod (préproduction) est un environnement proche de la production pour la dernière vérification avant livraison. Face à staging, UAT, test et prod.",
     "faq.0.q": "Comment l’écrire : preprod ou pre-prod ?",
     "faq.0.a": "Les deux écritures conviennent : le mot vient de pre-production et n’a pas de norme de dictionnaire. Choisissez-en une et gardez-la dans tout le document.",
     "faq.1.q": "Qu’est-ce que la préprod ?",
@@ -895,11 +895,50 @@
     "faq.9.q": "Preprod et staging : quelle différence ?",
     "faq.9.a": "Dans la plupart des sources, il n’y en a pas. Wikipedia cite pre-production comme l’un des noms du staging, et Atlassian décrit le staging comme “a pre-production environment, where the systems administration team can establish exact procedures prior to rollout”. Une différence apparaît dans une équipe si pre-prod est une étape distincte après test : elle est alors fixée par accord.",
     "table.title": "Dev, test, staging, preprod, UAT et prod côte à côte",
-    "table.head": ["Dev", "Test", "Staging", "Pre-prod", "UAT", "Prod"],
-    "table.rows.0": ["Objectif", "écrire et essayer des changements", "vérifier que les changements de tous fonctionnent ensemble", "vérifier la version comme en production", "dernière vérification avant la livraison, souvent comme staging", "acceptation par de futurs utilisateurs", "servir de vrais utilisateurs"],
-    "table.rows.1": ["Données", "de test", "une copie de la production ou des mocks", "une copie récente de la production", "une copie récente de la production", "selon l’équipe", "réelles"],
-    "table.rows.2": ["Qui y accède", "les développeurs", "QA et autotests", "QA et l’équipe de livraison", "QA et l’équipe de livraison", "futurs utilisateurs ou le client", "les clients"],
-    "table.rows.3": ["En quoi il diffère de la prod", "réglages pour développer", "réglages pratiques pour tester", "réglages comme en production, sans clients", "comme staging, ou une étape distincte avant la prod", "un type de vérification ; se fait sur test ou staging", "données et clients réels"],
+    "table.head": [
+      "Dev",
+      "Test",
+      "Staging",
+      "Pre-prod",
+      "UAT",
+      "Prod"
+    ],
+    "table.rows.0": [
+      "Objectif",
+      "écrire et essayer des changements",
+      "vérifier que les changements de tous fonctionnent ensemble",
+      "vérifier la version comme en production",
+      "dernière vérification avant la livraison, souvent comme staging",
+      "acceptation par de futurs utilisateurs",
+      "servir de vrais utilisateurs"
+    ],
+    "table.rows.1": [
+      "Données",
+      "de test",
+      "une copie de la production ou des mocks",
+      "une copie récente de la production",
+      "une copie récente de la production",
+      "selon l’équipe",
+      "réelles"
+    ],
+    "table.rows.2": [
+      "Qui y accède",
+      "les développeurs",
+      "QA et autotests",
+      "QA et l’équipe de livraison",
+      "QA et l’équipe de livraison",
+      "futurs utilisateurs ou le client",
+      "les clients"
+    ],
+    "table.rows.3": [
+      "En quoi il diffère de la prod",
+      "réglages pour développer",
+      "réglages pratiques pour tester",
+      "réglages comme en production, sans clients",
+      "comme staging, ou une étape distincte avant la prod",
+      "un type de vérification ; se fait sur test ou staging",
+      "données et clients réels"
+    ],
     "notes.title": "Ce que disent les sources sur preprod, staging et UAT",
     "notes.items.0.name": "Wikipedia: Deployment environment",
     "notes.items.1.name": "AWS Well-Architected: DevOps Guidance",
@@ -934,8 +973,8 @@
     "faq.1.q": "Pourquoi ne pas écrire directement en production ?",
     "faq.1.a": "Une erreur y coûte le plus cher : les changements passent donc par des vérifications sur les stands, et une personne confirme en général la mise en production.",
     "source.label": "Wikipédia : Deployment environment",
-    "seo.title": "Production (prod) : définition et pourquoi personne n’y écrit directement",
-    "seo.description": "La production (prod) est l’environnement réel où de vrais utilisateurs travaillent avec de vraies données. En quoi la production diffère de la pré-prod et du test, et pourquoi personne n’y écrit directement.",
+    "seo.title": "Qu’est-ce que la prod : définition de la production",
+    "seo.description": "La prod (production) est l’environnement réel, avec de vrais utilisateurs et données. Différence avec la pré-prod et le test, et pourquoi on n’y écrit pas.",
     "faq.2.q": "Que signifie prod en programmation ?",
     "faq.2.a": "La version réelle du système sur les serveurs que les clients utilisent. « Déployer en prod » signifie livrer un changement aux utilisateurs ; « la prod est tombée » signifie que le système réel a cessé de fonctionner.",
     "faq.3.q": "Prod et production, est-ce la même chose ?",
@@ -951,11 +990,35 @@
     "faq.8.q": "Que signifie « prod is down » ?",
     "faq.8.a": "Le système réel ne répond plus ou fonctionne avec des erreurs : le site ne s’ouvre pas, le paiement échoue. À ce moment, l’équipe rétablit d’abord la production et cherche la cause ensuite. Une erreur visible seulement sur un stand ne fait pas tomber la production : le stand est une copie séparée.",
     "table.title": "Dev, test, prod : objectif, données, qui travaille",
-    "table.head": ["Dev", "Test", "Prod"],
-    "table.rows.0": ["Objectif", "écrire et essayer des changements", "vérifier que les changements de tous fonctionnent ensemble", "servir de vrais utilisateurs"],
-    "table.rows.1": ["Données", "de test", "une copie de la production ou des mocks", "réelles"],
-    "table.rows.2": ["Qui travaille", "l’équipe de développement", "QA et autotests", "les clients"],
-    "table.rows.3": ["Ce que peut faire un agent IA", "modifier et vérifier", "reproduire des bugs, lancer des autotests", "lecture seule, aucune écriture"],
+    "table.head": [
+      "Dev",
+      "Test",
+      "Prod"
+    ],
+    "table.rows.0": [
+      "Objectif",
+      "écrire et essayer des changements",
+      "vérifier que les changements de tous fonctionnent ensemble",
+      "servir de vrais utilisateurs"
+    ],
+    "table.rows.1": [
+      "Données",
+      "de test",
+      "une copie de la production ou des mocks",
+      "réelles"
+    ],
+    "table.rows.2": [
+      "Qui travaille",
+      "l’équipe de développement",
+      "QA et autotests",
+      "les clients"
+    ],
+    "table.rows.3": [
+      "Ce que peut faire un agent IA",
+      "modifier et vérifier",
+      "reproduire des bugs, lancer des autotests",
+      "lecture seule, aucune écriture"
+    ],
     "notes.title": "Ce que disent les sources primaires sur la production",
     "notes.items.0.name": "Wikipedia: Deployment environment",
     "notes.items.0.text": "L’article sur les environnements de déploiement dit de la production : “it is the environment that users directly interact with”, c’est-à-dire l’environnement avec lequel les utilisateurs interagissent directement.",
@@ -988,8 +1051,8 @@
     "faq.1.q": "Que trouve TLA+ ?",
     "faq.1.a": "Des suites d’étapes qui violent une règle. Par exemple, que l’argent disparaît si une panne survient entre le débit et le crédit.",
     "source.label": "Page de Leslie Lamport sur TLA+",
-    "seo.title": "TLA+ : ce que c’est et à quoi ça sert",
-    "seo.description": "TLA+ est le langage de Leslie Lamport pour décrire le comportement d’un système pas à pas et le vérifier avec TLC et Apalache avant d’écrire le code. Un exemple et la comparaison avec Quint et Alloy.",
+    "seo.title": "TLA+ : définition, ce que c’est et à quoi ça sert",
+    "seo.description": "TLA+ est le langage de Leslie Lamport : on décrit un système pas à pas, TLC et Apalache le vérifient avant le code. Exemple, comparaison avec Quint, Alloy.",
     "more.label": "Quint vs TLA+ : différences et lequel choisir",
     "also.1.label": "TLA+ vs Quint vs Alloy : lequel choisir"
   },

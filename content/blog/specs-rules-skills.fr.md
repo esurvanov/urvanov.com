@@ -1,8 +1,8 @@
 ---
 title: Que sont AGENTS.md et CLAUDE.md : un exemple de fichier et où garder les spécifications, les règles et les skills
 date: 2026-09-28
-updated: 2026-11-08
-description: Quatre sortes de contexte permanent pour l'IA (AGENTS.md, CLAUDE.md, skills) : la spécification de tâche, la bible du projet, les règles et les skills. Ce que contient chacune, quand elle entre dans le contexte et ce que proposent ChatGPT et Claude. D'après les documentations d'Anthropic, d'OpenAI, de GitHub, de Cursor et de Cline.
+updated: 2026-11-17
+description: Quatre sortes de contexte permanent pour l'IA (AGENTS.md, CLAUDE.md, skills) : spécification, bible du projet, règles et skills. Contenu et moment d'entrée.
 tags: IA, Claude Code, CLAUDE.md, harness, spécifications, skills
 category: specs
 layout: wide

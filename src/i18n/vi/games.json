@@ -107,7 +107,10 @@
       "game tuyết thế giới mở",
       "game làng Nga",
       "chơi trên trình duyệt"
-    ]
+    ],
+    "shots.3.alt": "Berezovka: đàn hươu bên rìa rừng",
+    "shots.4.alt": "Berezovka: ngôi nhà thờ làng trong một ngày mùa đông",
+    "shots.5.alt": "Berezovka: những cây vân sam ở rìa làng"
   },
   "sibiria": {
     "name": "Sibiria",
@@ -161,7 +164,11 @@
       "game Siberia 1993",
       "game sinh tồn miễn phí online",
       "game sinh tồn không cần tải về"
-    ]
+    ],
+    "shots.3.alt": "Sibiria: nhân vật vác một thân cây trên vai qua lớp tuyết sâu",
+    "shots.4.alt": "Sibiria: chiếc xe trượt chở củi buộc bằng dây và một ôm khúc gỗ trong tay",
+    "shots.5.alt": "Sibiria: con đường mòn được xúc sạch bằng xẻng, tuyết hất lên bờ",
+    "shots.6.alt": "Sibiria: cây vân sam đã đẽo khía đang đổ, nhân vật bước sang một bên, mảnh gỗ vụn trên tuyết"
   },
   "echo-of-the-rift": {
     "name": "Echo of the Rift",

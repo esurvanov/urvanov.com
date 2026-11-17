@@ -1,8 +1,9 @@
 ---
 title: Codex vs Claude Code, Cursor vs Hermes Agent: so sánh các tác nhân AI viết code
+seoTitle: Codex vs Claude Code: chọn cái nào và khi nào hợp Cursor
 date: 2026-09-28
-updated: 2026-11-13
-description: Claude Code hay Codex, Cursor hay Hermes Agent: tác nhân chạy ở đâu, thấy gì, dùng mô hình nào và tốn bao nhiêu — năm harness đặt cạnh nhau và cách chọn theo tác vụ. Có liên kết tới tài liệu.
+updated: 2026-11-17
+description: Codex và Claude Code khác nhau ở đâu: mô hình, gói, nơi tác nhân chạy và những gì nó thấy. Cursor và Hermes Agent bên cạnh: harness nào hợp.
 tags: AI, harness, Claude Code, Codex, Cursor, Hermes Agent, tác nhân AI
 category: harness
 layout: wide

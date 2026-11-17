@@ -8,7 +8,6 @@
   "term": "terme",
   "terms": "termes",
   "sets": "ensembles",
-  "Term sets": "Ensembles de termes",
   " Page {n} of {total}.": " Page {n} sur {total}.",
   ", page {n}": ", page {n}",
   "60 problem-solving methods from maths and algorithms in step-by-step 3D: the task, the head-on way, what we notice and how to solve it faster. In Russian and English, right in the browser.": "60 méthodes de résolution de problèmes issues des mathématiques et des algorithmes, en 3D pas à pas : l’énoncé, la voie directe, ce que l’on remarque et comment résoudre plus vite. En russe et en anglais, directement dans le navigateur.",
@@ -148,5 +147,8 @@
   " IT community in {place}": " de {place}",
   "{place} chat": "Chat de {place}",
   "post": "article",
-  "posts": "articles"
+  "posts": "articles",
+  "Glossary sections": "Sections du glossaire",
+  "sections": "sections",
+  "A free Bomberman-style game online in your browser, no download: drop bombs, blow up crates and enemies, find the exit. 50 levels in ten worlds, power-ups, 18 achievements, a level editor and 7 interface languages. Progress is saved in the browser.": "Jeu gratuit façon Bomberman en ligne dans le navigateur, sans téléchargement : poser des bombes, faire sauter caisses et ennemis, trouver la sortie. 50 niveaux répartis en dix mondes, bonus, 18 succès, un éditeur de niveaux et 7 langues d’interface. La progression est enregistrée dans le navigateur."
 }

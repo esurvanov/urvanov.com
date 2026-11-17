@@ -214,14 +214,17 @@
       ]
     ],
     "shots.0.alt": "Berezovka : la rue du village par une journée d’hiver",
-    "shots.1.alt": "Berezovka : l’église sur la colline",
-    "shots.2.alt": "Berezovka : la forêt enneigée",
+    "shots.1.alt": "Berezovka : aurore boréale au-dessus de la rue du village la nuit",
+    "shots.2.alt": "Berezovka : la Jigouli sur la route du village",
     "keywords": [
       "jeu 3D dans le navigateur",
       "jeu de neige en monde ouvert",
       "jeu village russe",
       "jouer dans le navigateur"
-    ]
+    ],
+    "shots.3.alt": "Berezovka : un troupeau de cerfs près de la forêt",
+    "shots.4.alt": "Berezovka : l’église du village par une journée d’hiver",
+    "shots.5.alt": "Berezovka : des épicéas à la lisière du village"
   },
   "sibiria": {
     "name": "Sibiria",
@@ -326,7 +329,11 @@
       "jeu Sibérie 1993",
       "jeu de survie gratuit en ligne",
       "jeu de survie sans téléchargement"
-    ]
+    ],
+    "shots.3.alt": "Sibiria : le héros porte un tronc sur l’épaule dans la neige profonde",
+    "shots.4.alt": "Sibiria : un traîneau chargé de bois au bout d’une corde et une brassée de bûches",
+    "shots.5.alt": "Sibiria : un sentier dégagé à la pelle, la neige rejetée sur un talus",
+    "shots.6.alt": "Sibiria : un épicéa entaillé tombe pendant que le héros s’écarte, copeaux sur la neige"
   },
   "echo-of-the-rift": {
     "name": "Echo of the Rift",
@@ -757,32 +764,98 @@
       "Sept langues d’interface : le jeu démarre dans la langue du site, avec un sélecteur dans le menu"
     ],
     "controls": [
-      ["← ↑ → ↓ / W A S D", "déplacement"],
-      ["Espace / X", "poser une bombe"],
-      ["Esc / P", "pause"],
-      ["R", "recommencer le niveau"],
-      ["1 … =", "outil de l’éditeur"]
+      [
+        "← ↑ → ↓ / W A S D",
+        "déplacement"
+      ],
+      [
+        "Espace / X",
+        "poser une bombe"
+      ],
+      [
+        "Esc / P",
+        "pause"
+      ],
+      [
+        "R",
+        "recommencer le niveau"
+      ],
+      [
+        "1 … =",
+        "outil de l’éditeur"
+      ]
     ],
     "facts": [
-      ["Plateforme", "navigateur sur ordinateur et téléphone"],
-      ["Niveaux", "50 en campagne et autant de niveaux perso que tu veux"],
-      ["Taille", "un seul fichier, les polices sont chargées depuis le réseau"],
-      ["Sauvegarde", "dans le navigateur (localStorage)"],
-      ["Code", "ouvert, MIT"],
-      ["Langues", "russe, anglais, thaï, géorgien, vietnamien, espagnol, français"]
+      [
+        "Plateforme",
+        "navigateur sur ordinateur et téléphone"
+      ],
+      [
+        "Niveaux",
+        "50 en campagne et autant de niveaux perso que tu veux"
+      ],
+      [
+        "Taille",
+        "un seul fichier, les polices sont chargées depuis le réseau"
+      ],
+      [
+        "Sauvegarde",
+        "dans le navigateur (localStorage)"
+      ],
+      [
+        "Code",
+        "ouvert, MIT"
+      ],
+      [
+        "Langues",
+        "russe, anglais, thaï, géorgien, vietnamien, espagnol, français"
+      ]
     ],
     "faq": [
-      ["Peut-on jouer à Little Bombers en ligne sans téléchargement ?", "Oui. Le jeu s’ouvre avec le bouton « Jouez dans votre navigateur » de cette page et tourne directement dans l’onglet, sur ordinateur et sur mobile. Rien à installer, aucun compte à créer."],
-      ["Est-ce le même jeu que Little Bombers Returns d’Alawar ?", "Non. Le jeu d’Alawar est sorti en 2004 comme programme Windows. Celui-ci est refait de zéro pour le navigateur, avec ses propres niveaux, un éditeur et 18 succès. Ils partagent l’idée de Bomberman : un labyrinthe, des bombes et une sortie sous une caisse."],
-      ["Little Bombers Returns d’Alawar ne démarre pas sous Windows 10 ou 11 : que faire ?", "Sur les forums, des joueurs signalent que l’ancien jeu d’Alawar scintille, affiche un écran blanc ou ne démarre pas sur les Windows récents. Pour certains, il suffit de remplacer fullscreen=1 par fullscreen=0 dans le fichier config.ini du dossier du jeu pour jouer en fenêtre ; pour d’autres, cela ne change rien. Si vous voulez simplement jouer à un Bomberman, ce jeu s’ouvre dans le navigateur, sans rien installer."],
-      ["Dans quelles langues est le jeu ?", "En russe, anglais, thaï, géorgien, vietnamien, espagnol et français. Le jeu démarre dans la langue de la page du site depuis laquelle vous avez appuyé sur « Jouer », et vous pouvez en changer avec le bouton de langue du menu."],
-      ["Y a-t-il un mode à deux joueurs ?", "Pas encore : ce jeu est solo, avec une campagne de 50 niveaux et vos propres niveaux créés dans l’éditeur. Le jeu d’Alawar accepte jusqu’à quatre joueurs."],
-      ["Où est sauvegardée la progression ?", "Dans le navigateur de ton appareil : niveaux terminés, étoiles, meilleurs temps et tes niveaux. Si tu effaces les données du site, ils disparaissent."],
-      ["Comment transférer la progression sur un autre appareil ?", "Dans le menu, appuie sur « Progression », copie le code et colle-le au même endroit sur l’autre appareil : il se fusionne avec l’existant."],
-      ["Les bonus passent-ils au niveau suivant ?", "Oui. Les bombes en plus, les flammes plus longues et les pas plus rapides que tu ramasses dans un niveau restent avec toi dans le suivant. Si tu perds, le niveau recommence avec l’ensemble avec lequel tu y es entré : une tentative ratée ne te coûte rien. Cet ensemble fait partie du code de progression."],
-      ["Comment obtenir trois étoiles ?", "Termine le niveau plus vite que le temps cible affiché sur l’écran de victoire."],
-      ["Comment partager mon niveau ?", "Dans l’éditeur, appuie sur le bouton de code et envoie le texte obtenu à un ami. Il le colle dans la section « Mes niveaux »."],
-      ["Peut-on jouer sur téléphone ?", "Oui, un joystick et un bouton de bombe apparaissent sur les écrans tactiles."]
+      [
+        "Peut-on jouer à Little Bombers en ligne sans téléchargement ?",
+        "Oui. Le jeu s’ouvre avec le bouton « Jouez dans votre navigateur » de cette page et tourne directement dans l’onglet, sur ordinateur et sur mobile. Rien à installer, aucun compte à créer."
+      ],
+      [
+        "Est-ce le même jeu que Little Bombers Returns d’Alawar ?",
+        "Non. Le jeu d’Alawar est sorti en 2004 comme programme Windows. Celui-ci est refait de zéro pour le navigateur, avec ses propres niveaux, un éditeur et 18 succès. Ils partagent l’idée de Bomberman : un labyrinthe, des bombes et une sortie sous une caisse."
+      ],
+      [
+        "Little Bombers Returns d’Alawar ne démarre pas sous Windows 10 ou 11 : que faire ?",
+        "Sur les forums, des joueurs signalent que l’ancien jeu d’Alawar scintille, affiche un écran blanc ou ne démarre pas sur les Windows récents. Pour certains, il suffit de remplacer fullscreen=1 par fullscreen=0 dans le fichier config.ini du dossier du jeu pour jouer en fenêtre ; pour d’autres, cela ne change rien. Si vous voulez simplement jouer à un Bomberman, ce jeu s’ouvre dans le navigateur, sans rien installer."
+      ],
+      [
+        "Dans quelles langues est le jeu ?",
+        "En russe, anglais, thaï, géorgien, vietnamien, espagnol et français. Le jeu démarre dans la langue de la page du site depuis laquelle vous avez appuyé sur « Jouer », et vous pouvez en changer avec le bouton de langue du menu."
+      ],
+      [
+        "Y a-t-il un mode à deux joueurs ?",
+        "Pas encore : ce jeu est solo, avec une campagne de 50 niveaux et vos propres niveaux créés dans l’éditeur. Le jeu d’Alawar accepte jusqu’à quatre joueurs."
+      ],
+      [
+        "Où est sauvegardée la progression ?",
+        "Dans le navigateur de ton appareil : niveaux terminés, étoiles, meilleurs temps et tes niveaux. Si tu effaces les données du site, ils disparaissent."
+      ],
+      [
+        "Comment transférer la progression sur un autre appareil ?",
+        "Dans le menu, appuie sur « Progression », copie le code et colle-le au même endroit sur l’autre appareil : il se fusionne avec l’existant."
+      ],
+      [
+        "Les bonus passent-ils au niveau suivant ?",
+        "Oui. Les bombes en plus, les flammes plus longues et les pas plus rapides que tu ramasses dans un niveau restent avec toi dans le suivant. Si tu perds, le niveau recommence avec l’ensemble avec lequel tu y es entré : une tentative ratée ne te coûte rien. Cet ensemble fait partie du code de progression."
+      ],
+      [
+        "Comment obtenir trois étoiles ?",
+        "Termine le niveau plus vite que le temps cible affiché sur l’écran de victoire."
+      ],
+      [
+        "Comment partager mon niveau ?",
+        "Dans l’éditeur, appuie sur le bouton de code et envoie le texte obtenu à un ami. Il le colle dans la section « Mes niveaux »."
+      ],
+      [
+        "Peut-on jouer sur téléphone ?",
+        "Oui, un joystick et un bouton de bombe apparaissent sur les écrans tactiles."
+      ]
     ],
     "shots.0.alt": "Little Bombers : une explosion sur un niveau de dunes",
     "shots.1.alt": "Little Bombers : le menu principal",

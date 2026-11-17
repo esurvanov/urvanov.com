@@ -1,8 +1,9 @@
 ---
 title: Vitest vs Jest: chọn cái nào cho dự án JavaScript, và khi nào QUnit là đủ
+seoTitle: Vitest vs Jest: chọn cái nào và khi nào QUnit là đủ
 date: 2026-10-25
-updated: 2026-11-13
-description: Vitest vs Jest: cách thiết lập, nơi test chạy, cách viết phép kiểm tra. Khi nào chọn Vitest trên Vite, giữ Jest hay dùng QUnit trong trình duyệt. Có bảng và FAQ.
+updated: 2026-11-17
+description: Trên Vite hãy chọn Vitest, còn nếu Jest đã chạy tốt thì giữ. QUnit đủ cho test ngay trong trình duyệt. So sánh thiết lập, nơi chạy và cách viết kiểm tra.
 tags: AI, kiểm thử, JavaScript, Jest, Vitest, QUnit, Vite, Jest vs Vitest, kiểm thử tự động
 category: specs
 layout: wide

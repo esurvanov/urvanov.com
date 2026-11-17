@@ -1,8 +1,8 @@
 ---
 title: Harness engineering en pratique : transformer les erreurs d’un agent IA en règles de son environnement (HDD)
 date: 2026-09-28
-updated: 2026-11-13
-description: La boucle erreur-règle, guides et capteurs, trois couches de vérifications, l’articulation avec les spécifications et cinq premiers pas dans votre propre projet.
+updated: 2026-11-17
+description: La boucle erreur-règle, guides et capteurs, trois couches de vérifications, lien avec les spécifications et cinq premiers pas dans votre projet.
 tags: IA, Claude Code, harness engineering, harness, HDD, agents
 category: harness
 layout: wide

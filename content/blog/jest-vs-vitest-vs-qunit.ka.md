@@ -1,8 +1,9 @@
 ---
 title: Vitest და Jest: რომელი აირჩიოთ JavaScript პროექტისთვის და როდის არის QUnit საკმარისი
+seoTitle: Vitest და Jest: რომელი აირჩიოთ და როდის კმარა QUnit
 date: 2026-10-25
-updated: 2026-11-13
-description: Vitest და Jest შედარებაში: გამართვა, სად სრულდება ტესტები, როგორ იწერება შემოწმებები. როდის აირჩიოთ Vitest Vite-ზე, დატოვოთ Jest ან გამოიყენოთ QUnit ბრაუზერში. ცხრილი და კითხვები.
+updated: 2026-11-17
+description: Vite-ზე აიღეთ Vitest, თუ Jest უკვე მუშაობს — დატოვეთ. ბრაუზერში ტესტებისთვის QUnit საკმარისია. გამართვა, ტესტების გაშვების ადგილი და შემოწმებების სტილი.
 tags: AI, ტესტირება, JavaScript, Jest, Vitest, QUnit, Vite, Jest და Vitest, ტესტების ავტომატიზაცია
 category: specs
 layout: wide

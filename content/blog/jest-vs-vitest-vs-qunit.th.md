@@ -1,8 +1,9 @@
 ---
 title: Vitest vs Jest: เลือกตัวไหนสำหรับโปรเจกต์ JavaScript และเมื่อไรที่ QUnit ก็พอ
+seoTitle: Vitest vs Jest: เลือกตัวไหน และเมื่อไรที่ QUnit ก็พอ
 date: 2026-10-25
-updated: 2026-11-13
-description: Vitest vs Jest: การตั้งค่า ที่ที่การทดสอบรัน และวิธีเขียนการตรวจ เมื่อไรควรเลือก Vitest บน Vite เก็บ Jest ไว้ หรือใช้ QUnit ในเบราว์เซอร์ พร้อมตารางและคำถามที่พบบ่อย
+updated: 2026-11-17
+description: บน Vite ให้เลือก Vitest และถ้า Jest ใช้งานได้อยู่แล้วก็เก็บไว้. QUnit พอสำหรับการทดสอบในเบราว์เซอร์โดยตรง. เทียบการตั้งค่า ที่ที่เทสต์รัน และรูปแบบการตรวจ.
 tags: AI, การทดสอบ, JavaScript, Jest, Vitest, QUnit, Vite, Jest vs Vitest, ระบบทดสอบอัตโนมัติ
 category: specs
 layout: wide

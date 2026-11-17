@@ -207,8 +207,8 @@
   "faq.2.q": "Làm sao giảm ảo giác?",
   "faq.2.a": "Cung cấp cho mô hình dữ liệu từ nguồn đáng tin và kiểm tra kết quả.",
   "source.label": "Wikipedia: AI hallucination",
-  "seo.title": "Ảo giác LLM là gì: ví dụ và cách neo vào nguồn",
-  "seo.description": "Ảo giác LLM nghĩa là gì, kèm ví dụ từ tác nhân lập trình: hàm bịa, gói không tồn tại, liên kết chết. Vì sao xảy ra, neo vào nguồn giúp giảm thế nào và kiểm tra phát hiện ra sao.",
+  "seo.title": "AI hallucination là gì: ví dụ ảo giác của LLM",
+  "seo.description": "AI hallucination (ảo giác LLM) là câu trả lời tự tin nhưng bịa: hàm, gói hay liên kết không tồn tại. Vì sao xảy ra và cách giảm bằng nguồn, kiểm tra.",
   "notes.title": "Ví dụ ảo giác và cách giảm",
   "notes.items.0.name": "Hàm bịa",
   "notes.items.0.text": "tác nhân gọi một phương thức mà thư viện không có, hoặc một tham số mà hàm không nhận. Mã trông hợp lý nhưng lỗi khi chạy.",
@@ -300,8 +300,8 @@
   "faq.1.q": "Trước Alice AI là gì?",
   "faq.1.a": "Dòng mô hình YandexGPT.",
   "source.label": "Trang giới thiệu công ty Yandex",
-  "seo.title": "Yandex AI: các mô hình Alice AI, AI Studio và SourceCraft Code Assistant",
-  "seo.description": "Yandex AI là gì: các mô hình Alice AI (trước đây là YandexGPT), trợ lý Alice, Alice AI Pro cho doanh nghiệp, Yandex AI Studio để xây tác nhân và SourceCraft Code Assistant cho mã."
+  "seo.title": "Yandex AI: mô hình Alice AI, AI Studio và SourceCraft",
+  "seo.description": "Yandex AI là gì: mô hình Alice AI (trước là YandexGPT), trợ lý Alice, Alice AI Pro, Yandex AI Studio để xây tác nhân và SourceCraft Code Assistant."
  },
  "jetbrains": {
   "def": "JetBrains là công ty thành lập ở Praha năm 2000, làm các IDE IntelliJ IDEA, PyCharm, WebStorm và nhiều IDE khác, cùng ngôn ngữ Kotlin. Tác nhân lập trình riêng Junie chạy trong IDE và terminal; Claude Agent và Codex được tích hợp ngay cạnh trong IDE, còn các tác nhân khác kết nối qua giao thức mở ACP. Gợi ý hoàn thành mã chạy trên mô hình Mellum riêng. Air là không gian làm việc để chạy song song nhiều tác nhân (bản xem trước).",
@@ -489,8 +489,8 @@
   "faq.1.q": "Claude Code và Codex có những chế độ quyền nào?",
   "faq.1.a": "Từ hỏi trước mỗi hành động đến làm việc không cần xác nhận; ở giữa là các chế độ mà tác nhân tự thực hiện những bước an toàn.",
   "source.label": "Tài liệu về quyền của Claude Code",
-  "seo.title": "Quyền của tác nhân AI: quyền tối thiểu, chế độ quyền Claude Code và --dangerously-skip-permissions",
-  "seo.description": "Quyền của tác nhân AI và nguyên tắc quyền tối thiểu: nên cấp quyền gì và nâng dần từng bước ra sao. Các chế độ quyền trong Claude Code và Codex, và --dangerously-skip-permissions làm gì.",
+  "seo.title": "Quyền của tác nhân AI là gì: quyền tối thiểu và chế độ quyền",
+  "seo.description": "Quyền của tác nhân AI và quyền tối thiểu: cấp quyền gì, nâng dần ra sao. Chế độ quyền trong Claude Code, Codex và cờ --dangerously-skip-permissions.",
   "notes.title": "Quyền hạn trong tác nhân",
   "notes.items.0.name": "Các bước",
   "notes.items.0.text": "đầu tiên chỉ đọc, sau đó ghi vào môi trường kiểm thử; ghi vào hệ thống thật chỉ qua con người.",
@@ -511,7 +511,7 @@
   "faq.1.a": "Mô hình vẫn là một, còn việc tác nhân biết gì, làm được gì và tự kiểm tra ra sao đều do harness quyết định.",
   "source.label": "Anthropic: Effective harnesses for agents",
   "seo.title": "Agent harness là gì và gồm những phần nào",
-  "seo.description": "Agent harness là toàn bộ phần bao quanh mô hình để nó thành tác nhân: vòng lặp, công cụ, ngữ cảnh, bộ nhớ, quy tắc, quyền hạn và kiểm tra. Từng phần, có liên kết.",
+  "seo.description": "Agent harness là toàn bộ phần bao quanh mô hình để nó thành tác nhân: vòng lặp, công cụ, ngữ cảnh, bộ nhớ, quy tắc, quyền hạn và kiểm tra. Có liên kết.",
   "more.label": "Tác nhân AI = LLM + harness: LLM, harness và tác nhân khác nhau thế nào",
   "parts.title": "Harness gồm những gì"
  },
@@ -696,8 +696,8 @@
   "faq.2.a": "Cursor đọc cả hai. AGENTS.md là tệp chung cho nhiều tác nhân, ở gốc và trong các thư mục con; quy tắc trong .cursor/rules chỉ dành cho Cursor, nhưng có thể áp dụng luôn, theo mô tả, theo mẫu tệp hoặc thủ công.",
   "faq.3.q": "AGENTS.md khác spec.md thế nào?",
   "faq.3.a": "AGENTS.md đặt quy tắc cho cả dự án và đi vào mỗi phiên của tác nhân. spec.md mô tả một nhiệm vụ — yêu cầu và tiêu chí hoàn thành — và tồn tại đến khi nhiệm vụ đóng.",
-  "seo.title": "AGENTS.md, quy tắc Cursor và CLAUDE.md: mỗi tệp làm gì",
-  "seo.description": "AGENTS.md là tệp hướng dẫn chung cho Codex, Cursor và các tác nhân khác. Nó khác quy tắc Cursor trong .cursor/rules và CLAUDE.md thế nào, mỗi tệp nằm ở đâu và khi nào tác nhân đọc.",
+  "seo.title": "AGENTS.md là gì: khác quy tắc Cursor và CLAUDE.md",
+  "seo.description": "AGENTS.md là tệp hướng dẫn chung cho Codex, Cursor và các tác nhân khác. Nó khác quy tắc Cursor và CLAUDE.md thế nào, nằm ở đâu và khi nào được đọc.",
   "more.label": "AGENTS.md, CLAUDE.md và spec.md: cái gì để ở đâu",
   "also.0.label": "Cursor rules và AGENTS.md: cái gì đặt ở đâu"
  },
@@ -813,8 +813,8 @@
   "faq.1.q": "Tác nhân chờ con người ở đâu?",
   "faq.1.a": "Thường là trước khi cấp quyền, ghi vào hệ thống thật và chấp nhận kết quả.",
   "source.label": "Wikipedia: Human-in-the-loop",
-  "seo.title": "Human in the loop (HITL) cho tác nhân AI: khi nào tác nhân dừng chờ duyệt",
-  "seo.description": "Human in the loop nghĩa là gì với tác nhân AI: ở những bước quan trọng tác nhân chờ con người quyết định. Đặt điểm duyệt ở đâu và khác human on the loop thế nào.",
+  "seo.title": "Human in the loop là gì: khi nào tác nhân AI dừng chờ duyệt",
+  "seo.description": "Human in the loop với tác nhân AI nghĩa là gì: ở bước quan trọng tác nhân chờ người quyết định. Đặt điểm duyệt ở đâu và khác human on the loop thế nào.",
   "compare.title": "Con người quyết định đến đâu",
   "compare.head": [
    "Human in the loop",
@@ -857,7 +857,7 @@
   "faq.2.a": "“An LLM”: chữ viết tắt đọc từng chữ cái, và chữ L đầu đọc là “el”, bắt đầu bằng nguyên âm.",
   "source.label": "Wikipedia: Large language model",
   "seo.title": "LLM là gì: mô hình ngôn ngữ lớn và khác tác nhân AI thế nào",
-  "seo.description": "LLM là gì nói đơn giản: mô hình ngôn ngữ lớn đọc văn bản theo token, giữ ngữ cảnh và tự nó chỉ trả lời; thêm harness thì thành tác nhân. Ví dụ: GPT, Claude, DeepSeek, Alice AI.",
+  "seo.description": "LLM là gì nói đơn giản: mô hình ngôn ngữ lớn đọc văn bản theo token và tự nó chỉ trả lời; thêm harness thì thành tác nhân. Ví dụ: GPT, Claude, DeepSeek.",
   "compare.title": "Ví dụ về LLM: ai làm ra và tác nhân nào chạy trên chúng",
   "compare.head": [
    "Mô hình (LLM)",
@@ -911,8 +911,8 @@
   "faq.1.q": "VS Code khác Cursor thế nào?",
   "faq.1.a": "Cursor xây dựng trên VS Code với tác nhân tích hợp ngay từ đầu. Trong VS Code, tác nhân được thêm dưới dạng tiện ích mở rộng.",
   "source.label": "Trang chính thức của VS Code",
-  "seo.title": "Tác nhân AI trong VS Code: Claude Code, Codex và Copilot trong Visual Studio Code",
-  "seo.description": "VS Code là trình soạn thảo mã miễn phí của Microsoft. Những tác nhân AI chạy trong đó: GitHub Copilot, Claude Code, Codex, Cline, cái nào miễn phí và Claude Code hoạt động thế nào trong VS Code.",
+  "seo.title": "VS Code là gì: trình soạn thảo của Microsoft và tác nhân AI",
+  "seo.description": "VS Code là trình soạn thảo mã miễn phí của Microsoft. Tác nhân AI trong đó: GitHub Copilot, Claude Code, Codex, Cline; cái nào miễn phí, Claude chạy ra sao.",
   "notes.title": "Tác nhân AI cho VS Code",
   "notes.items.0.text": "Microsoft tích hợp sẵn trong VS Code, có chế độ tác nhân và gói miễn phí có giới hạn.",
   "notes.items.1.text": "tiện ích mở rộng của Anthropic: cùng tác nhân như trong terminal, dùng gói Claude hoặc API trả theo mức dùng.",
@@ -979,8 +979,8 @@
   "faq.2.q": "Có những tác nhân đám mây nào?",
   "faq.2.a": "Codex cloud, Claude Code trên web và các tác nhân đám mây của Cursor.",
   "source.label": "Tài liệu Claude Code trên đám mây",
-  "seo.title": "Tác nhân lập trình đám mây: đám mây và cục bộ, chạy Codex hoặc Claude Code từ điện thoại",
-  "seo.description": "Tác nhân lập trình đám mây làm việc trên máy chủ từ xa với bản sao repo của bạn và gửi lại một nhánh hoàn chỉnh. Codex cloud và cục bộ, tác nhân nền và đám mây, cách chạy Codex hay Claude Code từ điện thoại, có hoặc không cần bật máy tính.",
+  "seo.title": "Tác nhân đám mây là gì: khác cục bộ, chạy từ điện thoại",
+  "seo.description": "Tác nhân đám mây chạy trên máy chủ từ xa với bản sao repo và gửi lại nhánh hoàn chỉnh. Khác tác nhân cục bộ thế nào, chạy Codex hay Claude Code từ điện thoại.",
   "notes.title": "Tác nhân đám mây và tác nhân cục bộ",
   "notes.items.0.name": "Chạy ở đâu",
   "notes.items.0.text": "tác nhân đám mây chạy trên máy chủ của hãng làm ra tác nhân; tác nhân cục bộ chạy trên máy tính của bạn.",
@@ -1147,8 +1147,8 @@
   "faq.5.q": "Codex có dùng được ở Nga không?",
   "faq.5.a": "Không chính thức: Nga không nằm trong danh sách các nước mà OpenAI cung cấp dịch vụ.",
   "source.label": "Repo GitHub của Codex",
-  "seo.title": "OpenAI Codex là gì: Codex và ChatGPT Chat, Work",
-  "seo.description": "OpenAI Codex là tác nhân lập trình đọc repo, sửa tệp và chạy test. Khác ChatGPT Chat và Work thế nào, chạy ở đâu và gói nào có sẵn.",
+  "seo.title": "Codex là gì: khác ChatGPT thế nào, gói trong một bảng",
+  "seo.description": "Codex là tác nhân lập trình của OpenAI: sửa mã, chạy test và tạo pull request, còn ChatGPT trả lời bằng văn bản. Chế độ và gói trong một bảng.",
   "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào",
   "compare.title": "Codex và ChatGPT: Chat và Work",
   "compare.rows.0": [
@@ -1258,8 +1258,8 @@
   "faq.2.q": "Cursor rules hay AGENTS.md?",
   "faq.2.a": "Cursor đọc cả hai: AGENTS.md là tệp chung cho nhiều tác nhân, còn các quy tắc trong .cursor/rules là của riêng Cursor và có thể giới hạn cho những tệp cụ thể.",
   "source.label": "Trang chính thức của Cursor",
-  "seo.title": "Cursor AI là gì: mô hình, tác nhân và rules so với AGENTS.md",
-  "seo.description": "Cursor là trình soạn thảo mã dựa trên VS Code với tác nhân AI tích hợp. Có những mô hình nào, quy tắc nằm ở đâu (.cursor/rules hay AGENTS.md) và khác Claude Code thế nào.",
+  "seo.title": "Cursor AI là gì: trình soạn thảo mã AI trên nền VS Code",
+  "seo.description": "Cursor là trình soạn thảo mã AI trên nền VS Code: tác nhân làm việc bên cạnh, với mô hình Grok, Composer hoặc của hãng khác. Quy tắc: .cursor/rules, AGENTS.md.",
   "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào",
   "also.0.label": "Cursor cho 1C qua MCP",
   "notes.title": "Cursor: mô hình, tác nhân và quy tắc",
@@ -1405,8 +1405,8 @@
   "faq.4.q": "OpenCode khác Claude Code thế nào?",
   "faq.4.a": "Cấu tạo giống nhau: cả hai đều đọc dự án, sửa tệp và chạy lệnh. OpenCode là mã nguồn mở và làm việc với bất kỳ mô hình nào, còn Claude Code chỉ với các mô hình Claude.",
   "source.label": "Tài liệu OpenCode",
-  "seo.title": "OpenCode là gì: tác nhân lập trình AI mã nguồn mở, miễn phí trong terminal",
-  "seo.description": "OpenCode là tác nhân lập trình AI mã nguồn mở, miễn phí cho terminal: dùng bất kỳ mô hình nào hoặc mô hình cục bộ, chế độ Build và Plan, quy tắc trong AGENTS.md.",
+  "seo.title": "OpenCode là gì: tác nhân AI mã nguồn mở, miễn phí",
+  "seo.description": "OpenCode là tác nhân lập trình AI mã nguồn mở, miễn phí trong terminal. Gắn Claude, GPT, Gemini hay mô hình cục bộ; chỉ trả tiền cho nhà cung cấp mô hình.",
   "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào"
  },
  "gemini-cli": {
@@ -1417,8 +1417,8 @@
   "faq.1.q": "Chuyện gì đã xảy ra với Gemini CLI?",
   "faq.1.a": "Từ ngày 18/6/2026, Antigravity CLI mã nguồn đóng thay thế nó cho người dùng thường. Bản thân Gemini CLI vẫn là mã nguồn mở và dùng được cho các gói enterprise và khóa API trả phí.",
   "source.label": "The Register: Google nudges Gemini CLI users to Antigravity",
-  "seo.title": "Gemini CLI là gì và chuyện gì đã xảy ra: tác nhân terminal của Google",
-  "seo.description": "Gemini CLI là tác nhân terminal mã nguồn mở của Google trên các mô hình Gemini. Nó làm gì, vì sao người dùng cá nhân mất quyền truy cập ngày 18/6/2026 và ai vẫn còn dùng được."
+  "seo.title": "Gemini CLI là gì và ai dùng được từ tháng 6 năm 2026",
+  "seo.description": "Gemini CLI là tác nhân terminal mã nguồn mở của Google trên mô hình Gemini. Từ 18/6/2026 Antigravity CLI thay nó cho người dùng cá nhân; ai còn dùng được."
  },
  "antigravity-cli": {
   "def": "Antigravity CLI là tác nhân lập trình của Google cho terminal, gắn với ứng dụng Antigravity. Tháng 5 năm 2026, Google thông báo chuyển Gemini CLI, tác nhân mã nguồn mở của hãng trên các mô hình Gemini, vào đó; từ ngày 18/6/2026, Gemini CLI không còn phục vụ người dùng cá nhân, kể cả truy cập miễn phí. Antigravity CLI là mã nguồn đóng; Gemini CLI cũ vẫn là mã nguồn mở nhưng chỉ dùng được cho doanh nghiệp theo gói enterprise và cho khóa API trả phí.",
@@ -1427,8 +1427,8 @@
   "faq.1.q": "Antigravity CLI thay Gemini CLI khi nào?",
   "faq.1.a": "Google thông báo việc chuyển vào tháng 5 năm 2026, và ngày 18/6/2026 Gemini CLI ngừng hoạt động với người dùng thường.",
   "source.label": "Virtualization Review: Gemini CLI moves into Antigravity CLI",
-  "seo.title": "Antigravity CLI là gì: tác nhân terminal của Google thay thế Gemini CLI",
-  "seo.description": "Gemini CLI từng là tác nhân terminal mã nguồn mở của Google; từ tháng 6 năm 2026, Antigravity CLI mã nguồn đóng thay nó cho người dùng cá nhân. Điều gì thay đổi và ai vẫn dùng được Gemini CLI."
+  "seo.title": "Antigravity CLI là gì: bản thay Gemini CLI của Google",
+  "seo.description": "Antigravity CLI là tác nhân terminal mã nguồn đóng của Google, thay Gemini CLI cho người dùng cá nhân từ tháng 6/2026. Điều gì đổi, ai còn dùng bản cũ."
  },
  "claude-in-chrome": {
   "aka": "Claude for Chrome, tiện ích Claude cho Chrome",
@@ -1440,8 +1440,8 @@
   "faq.5.q": "Claude in Chrome có chạy trong các trình duyệt khác không?",
   "faq.5.a": "Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính và không chạy trên điện thoại. Chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
   "source.label": "Trợ giúp: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome: tiện ích Claude cho Chrome — cài đặt, gói và trình duyệt",
-  "seo.description": "Tiện ích Claude cho Chrome làm gì, cách cài từ Chrome Web Store, những gói Claude trả phí nào có nó và nó chạy ở đâu: bảng bên cạnh trong Chrome trên máy tính hoặc Claude Code trong các trình duyệt Chromium.",
+  "seo.title": "Claude in Chrome là gì: tiện ích Chrome, gói, cài đặt",
+  "seo.description": "Claude in Chrome là tiện ích Claude cho Chrome: tác nhân bấm, điền form và đọc console dưới tài khoản của bạn. Cài từ Chrome Web Store, chỉ gói trả phí.",
   "more.label": "Claude Code trong Chrome: tác nhân kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn",
   "compare.title": "Hai chế độ: bảng bên cạnh và Claude Code",
   "compare.head": [

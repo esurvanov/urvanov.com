@@ -1,8 +1,9 @@
 ---
 title: Diferencia entre Codex y Claude Code, Cursor y Hermes Agent: comparativa de agentes de programación con IA
+seoTitle: Codex vs Claude Code: cuál elegir y cuándo encaja Cursor
 date: 2026-09-28
-updated: 2026-11-13
-description: Claude Code o Codex, Cursor o Hermes Agent: dónde se ejecuta el agente, qué ve, con qué modelo piensa y cuánto cuesta. Cinco harness lado a lado y cuál elegir según la tarea, con enlaces a la documentación.
+updated: 2026-11-17
+description: Qué diferencia a Codex de Claude Code: el modelo, el plan, dónde se ejecuta el agente y qué ve. Cursor y Hermes Agent al lado: qué harness encaja.
 tags: IA, harness, Claude Code, Codex, Cursor, Hermes Agent
 category: harness
 layout: wide

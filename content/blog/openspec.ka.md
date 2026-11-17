@@ -1,8 +1,9 @@
 ---
 title: OpenSpec-ის დაყენება და ბრძანებები: ცვლილების მაგალითი გეგმიდან merge-მდე
+seoTitle: OpenSpec: რა არის, დაყენება და ბრძანებები მაგალითით
 date: 2026-11-07
-updated: 2026-11-13
-description: როგორ მუშაობს Fission AI-ის OpenSpec: ცვლილების საქაღალდე გეგმით, მოთხოვნებითა და ამოცანებით, აგენტის სამი ბრძანება და merge საერთო სპეციფიკაციებში. დაყენება ორი ბრძანებით, რეალური ცვლილება urvanov.com-ის საიტის რეპოზიტორიიდან, შედარება Spec Kit-თან და მზა პრომპტები დასაწყებად.
+updated: 2026-11-17
+description: Fission AI-ის OpenSpec: ცვლილების საქაღალდე გეგმითა და ამოცანებით, აგენტის სამი ბრძანება, merge სპეციფიკაციებში. დაყენება, მაგალითი, შედარება Spec Kit-თან.
 tags: AI, OpenSpec, სპეციფიკაციები, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
 layout: wide

@@ -8,7 +8,6 @@
   "term": "thuật ngữ",
   "terms": "thuật ngữ",
   "sets": "nhóm",
-  "Term sets": "Nhóm thuật ngữ",
   " IT community in {place}": " ở {place}",
   " Page {n} of {total}.": " Trang {n}/{total}.",
   ", page {n}": ", trang {n}",
@@ -148,5 +147,11 @@
   "{name}: what it is": "{name} là gì",
   "{place} chat": "Chat {place}",
   "post": "bài viết",
-  "posts": "bài viết"
+  "posts": "bài viết",
+  "Glossary sections": "Các nhóm thuật ngữ",
+  "sections": "nhóm",
+  "en": "en",
+  "ru": "ru",
+  "Little Bombers": "Little Bombers",
+  "A free Bomberman-style game online in your browser, no download: drop bombs, blow up crates and enemies, find the exit. 50 levels in ten worlds, power-ups, 18 achievements, a level editor and 7 interface languages. Progress is saved in the browser.": "Game kiểu Bomberman miễn phí chơi online trên trình duyệt, không cần tải về: đặt bom, cho nổ thùng và kẻ địch, tìm lối ra. 50 màn trong mười thế giới, vật phẩm tăng sức mạnh, 18 thành tích, trình tạo màn và 7 ngôn ngữ giao diện. Tiến trình được lưu trong trình duyệt."
 }

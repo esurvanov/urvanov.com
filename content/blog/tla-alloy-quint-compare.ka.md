@@ -1,8 +1,8 @@
 ---
 title: TLA+, Quint და Alloy: რომელი ფორმალური ვერიფიკაციის ენა აირჩიოთ
 date: 2026-10-25
-updated: 2026-11-08
-description: TLA+, Alloy და Quint შედარებაში: რას აღწერს თითოეული ენა, როგორ იწერება, რა ამოწმებს მას და ვისთვის გამოდგება, მოვლენების თანმიმდევრობიდან მონაცემთა კავშირებამდე.
+updated: 2026-11-17
+description: TLA+, Alloy და Quint შედარებაში: რას აღწერს თითოეული ენა, როგორ იწერება, რა ამოწმებს მას და ვისთვის გამოდგება.
 tags: AI, სპეციფიკაციები, TLA+, Alloy, Quint, ფორმალური ვერიფიკაცია, მოდელების ვერიფიკაცია (model checking), TLA+ და Alloy, Quint და TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide

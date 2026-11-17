@@ -1,8 +1,8 @@
 ---
 title: Diferencia entre TLA+, Quint y Alloy: qué lenguaje de verificación formal elegir
 date: 2026-10-25
-updated: 2026-11-08
-description: TLA+ frente a Alloy frente a Quint: qué describe cada lenguaje, cómo se escribe, qué lo comprueba y a quién le conviene, del orden de los sucesos a las relaciones entre datos.
+updated: 2026-11-17
+description: TLA+, Alloy y Quint: qué describe cada lenguaje, cómo se escribe, qué lo comprueba y a quién le conviene, del orden de los sucesos a los datos.
 tags: IA, specs, TLA+, Alloy, Quint, verificación formal, verificación de modelos, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide

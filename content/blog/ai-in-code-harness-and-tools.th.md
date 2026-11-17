@@ -1,8 +1,9 @@
 ---
 title: Codex กับ Claude Code, Cursor กับ Hermes Agent: เปรียบเทียบเอเจนต์ AI สำหรับเขียนโค้ด
+seoTitle: Codex กับ Claude Code: เลือกตัวไหน และเมื่อ Cursor เหมาะ
 date: 2026-09-28
-updated: 2026-11-13
-description: Claude Code หรือ Codex, Cursor หรือ Hermes Agent: เอเจนต์รันที่ไหน มองเห็นอะไร คิดด้วยโมเดลอะไร และราคาเท่าไร เปรียบเทียบ harness ห้าตัวเคียงกัน และเลือกตัวไหนสำหรับงานแบบใด พร้อมลิงก์ไปยังเอกสาร
+updated: 2026-11-17
+description: Codex กับ Claude Code ต่างกันอย่างไร: โมเดล แผน ที่ที่เอเจนต์รัน และสิ่งที่มองเห็น พร้อม Cursor และ Hermes Agent: harness ตัวไหนเหมาะ.
 tags: AI, harness, Claude Code, Codex, Cursor, Hermes Agent
 category: harness
 layout: wide

@@ -144,8 +144,8 @@
   "faq.2.q": "ინგლისურად „a LLM“ იწერება თუ „an LLM“?",
   "faq.2.a": "„an LLM“: აბრევიატურა ასო-ასო იკითხება და პირველი ასო „ელ“-ად ჟღერს.",
   "source.label": "Wikipedia: Large language model",
-  "seo.title": "რა არის LLM: დიდი ენობრივი მოდელი და მისი განსხვავება AI აგენტისგან",
-  "seo.description": "რა არის LLM მარტივად: დიდი ენობრივი მოდელი ტექსტს ტოკენებით კითხულობს, კონტექსტს ინახავს და მხოლოდ პასუხობს; harness-თან ერთად აგენტი ხდება. მაგალითები: GPT, Claude, DeepSeek, Alice AI.",
+  "seo.title": "რა არის LLM: დიდი ენობრივი მოდელი და AI აგენტი",
+  "seo.description": "LLM (დიდი ენობრივი მოდელი) ტექსტს ტოკენებით კითხულობს და მხოლოდ პასუხობს; harness-თან ერთად AI აგენტი ხდება. მაგალითები: GPT, Claude, DeepSeek.",
   "compare.title": "LLM-ის მაგალითები: ვინ ქმნის და რომელი აგენტები მუშაობს მათზე",
   "compare.head": [
    "მოდელები (LLM)",
@@ -199,8 +199,8 @@
   "faq.1.q": "რით განსხვავდება VS Code Cursor-ისგან?",
   "faq.1.a": "Cursor VS Code-ზეა აგებული და აგენტი თავიდანვეა ჩაშენებული. VS Code-ში აგენტი გაფართოებით ემატება.",
   "source.label": "VS Code-ის ოფიციალური საიტი",
-  "seo.title": "AI აგენტები VS Code-ში: Claude Code, Codex და Copilot",
-  "seo.description": "VS Code არის Microsoft-ის უფასო კოდის რედაქტორი. რომელი AI აგენტები მუშაობს მასში: GitHub Copilot, Claude Code, Codex, Cline — რომელია უფასო და როგორ მუშაობს Claude Code VS Code-ში.",
+  "seo.title": "VS Code: რა არის — Microsoft-ის რედაქტორი და AI აგენტები",
+  "seo.description": "VS Code Microsoft-ის უფასო კოდის რედაქტორია. AI აგენტები მასში: GitHub Copilot, Claude Code, Codex, Cline; რომელია უფასო, როგორ მუშაობს Claude.",
   "notes.title": "AI აგენტები VS Code-ისთვის",
   "notes.items.0.text": "Microsoft-მა ჩააშენა VS Code-ში; აქვს აგენტის რეჟიმი და უფასო გეგმა ლიმიტებით.",
   "notes.items.1.text": "Anthropic-ის გაფართოება: იგივე აგენტი, რაც ტერმინალში, Claude-ის გეგმით ან API-ით გადახდით გამოყენებისთვის.",
@@ -435,8 +435,8 @@
   "faq.5.q": "მუშაობს Codex რუსეთში?",
   "faq.5.a": "ოფიციალურად არა: რუსეთი იმ ქვეყნების სიაში არ არის, სადაც OpenAI თავის სერვისებს სთავაზობს.",
   "source.label": "Codex GitHub repo",
-  "seo.title": "რა არის OpenAI Codex: განსხვავება ChatGPT Chat-სა და Work-ისგან",
-  "seo.description": "OpenAI Codex არის აგენტი პროგრამირებისთვის: კითხულობს რეპოს, ასწორებს ფაილებს, უშვებს ტესტებს. რით განსხვავდება ChatGPT Chat-სა და Work-ისგან და რომელ გეგმებშია.",
+  "seo.title": "რით განსხვავდება Codex ChatGPT-ისგან: აგენტი და ჩატი",
+  "seo.description": "Codex OpenAI-ის კოდინგ-აგენტია: თვითონ ასწორებს კოდს, უშვებს ტესტებს და ამზადებს pull request-ს, ChatGPT კი ტექსტით პასუხობს. რეჟიმები და გეგმები ცხრილში.",
   "more.label": "Claude Code, Codex, Cursor და Hermes Agent: რომელი ავირჩიოთ",
   "compare.title": "Codex vs ChatGPT: Chat და Work",
   "compare.rows.0": [
@@ -546,8 +546,8 @@
   "faq.2.q": "Cursor rules თუ AGENTS.md?",
   "faq.2.a": "Cursor ორივეს კითხულობს: AGENTS.md საერთო ფაილია სხვადასხვა აგენტისთვის, .cursor/rules-ის წესები კი Cursor-ის საკუთარია და კონკრეტულ ფაილებზე შეიძლება შეიზღუდოს.",
   "source.label": "Cursor-ის ოფიციალური საიტი",
-  "seo.title": "რა არის Cursor AI: მოდელები, აგენტი და rules vs AGENTS.md",
-  "seo.description": "Cursor არის VS Code-ზე დაფუძნებული რედაქტორი AI აგენტით. რომელ მოდელებს სთავაზობს, სად ინახება წესები (.cursor/rules vs AGENTS.md) და რით განსხვავდება Claude Code-ისგან.",
+  "seo.title": "Cursor AI: რა არის — AI რედაქტორი VS Code-ის ბაზაზე",
+  "seo.description": "Cursor VS Code-ზე აგებული AI კოდის რედაქტორია: აგენტი გვერდით მუშაობს, მოდელებით Grok, Composer ან სხვა კომპანიებისა. Rules: .cursor/rules, AGENTS.md.",
   "more.label": "Claude Code, Codex, Cursor და Hermes Agent: რომელი ავირჩიოთ",
   "also.0.label": "Cursor 1C-სთვის MCP-ით",
   "notes.title": "Cursor: მოდელები, აგენტი და წესები",
@@ -693,8 +693,8 @@
   "faq.4.q": "რით განსხვავდება OpenCode Claude Code-ისგან?",
   "faq.4.a": "ისინი ერთნაირადაა აგებული: ორივე კითხულობს პროექტს, ასწორებს ფაილებს და უშვებს ბრძანებებს. OpenCode ღია კოდისაა და ნებისმიერ მოდელთან მუშაობს, Claude Code — მხოლოდ Claude-ის მოდელებთან.",
   "source.label": "OpenCode docs",
-  "seo.title": "რა არის OpenCode: უფასო ღია AI აგენტი ტერმინალში",
-  "seo.description": "OpenCode არის უფასო ღია კოდის AI აგენტი ტერმინალისთვის: ნებისმიერი ან ლოკალური მოდელი, Build და Plan რეჟიმები, წესები AGENTS.md-ში.",
+  "seo.title": "რა არის OpenCode (Open Code): უფასო AI აგენტი",
+  "seo.description": "OpenCode უფასო ღია AI კოდინგ-აგენტია ტერმინალისთვის. დააკავშირეთ Claude, GPT, Gemini ან ლოკალური მოდელი; იხდით მხოლოდ მოდელის პროვაიდერს.",
   "more.label": "Claude Code, Codex, Cursor და Hermes Agent: რომელი ავირჩიოთ"
  },
  "gemini-cli": {
@@ -705,8 +705,8 @@
   "faq.1.q": "რა დაემართა Gemini CLI-ს?",
   "faq.1.a": "2026 წლის 18 ივნისიდან რიგითი მომხმარებლებისთვის მას დახურული Antigravity CLI ცვლის. თავად Gemini CLI ღია კოდით რჩება და მუშაობს კორპორაციულ გეგმებზე და ფასიანი API გასაღებებით.",
   "source.label": "The Register: Google nudges Gemini CLI users to Antigravity",
-  "seo.title": "რა არის Gemini CLI და რა დაემართა მას",
-  "seo.description": "Gemini CLI Google-ის ღია კოდის ტერმინალური აგენტია. რას აკეთებს, რატომ დაკარგეს წვდომა ინდივიდუალურმა მომხმარებლებმა 2026 წლის 18 ივნისს და ვის შეუძლია მისი გამოყენება ახლაც."
+  "seo.title": "Gemini CLI: რა არის და ვის ეძლევა წვდომა 2026 ივნისიდან",
+  "seo.description": "Gemini CLI Google-ის ღია ტერმინალური აგენტია Gemini მოდელებზე. 2026 წლის 18 ივნისიდან ჩვეულებრივ მომხმარებლებს მას Antigravity CLI ცვლის; ვისთვის მუშაობს."
  },
  "antigravity-cli": {
   "def": "Antigravity CLI — Google-ის კოდინგ-აგენტია ტერმინალისთვის, რომელიც Antigravity აპლიკაციასთანაა დაკავშირებული. 2026 წლის მაისში Google-მა გამოაცხადა, რომ Gemini CLI-ს, Gemini მოდელებზე მომუშავე თავის ღია კოდის აგენტს, მასში გადაიყვანდა; 2026 წლის 18 ივნისიდან Gemini CLI ინდივიდუალურ მომხმარებლებს აღარ ემსახურება, უფასო წვდომის ჩათვლით. Antigravity CLI დახურული კოდისაა; ძველი Gemini CLI ღია კოდით რჩება, მაგრამ მუშაობს მხოლოდ კომპანიებისთვის კორპორაციულ გეგმებზე და ფასიანი API გასაღებებით.",
@@ -715,8 +715,8 @@
   "faq.1.q": "როდის ჩაანაცვლა Antigravity CLI-მ Gemini CLI?",
   "faq.1.a": "Google-მა გადასვლა 2026 წლის მაისში გამოაცხადა, ხოლო 2026 წლის 18 ივნისს Gemini CLI-მ რიგითი მომხმარებლებისთვის მუშაობა შეწყვიტა.",
   "source.label": "Virtualization Review: Gemini CLI moves into Antigravity CLI",
-  "seo.title": "რა არის Antigravity CLI — Gemini CLI-ის შემცვლელი",
-  "seo.description": "2026 წლის ივნისიდან ინდივიდუალური მომხმარებლებისთვის Gemini CLI-ს დახურული Antigravity CLI ცვლის. რა შეიცვალა და ვინ იყენებს ისევ Gemini CLI-ს."
+  "seo.title": "Antigravity CLI: რა არის — Google-ის Gemini CLI-ის შემცვლელი",
+  "seo.description": "Antigravity CLI Google-ის დახურული აგენტია ტერმინალში, რომელმაც 2026 წლის ივნისში Gemini CLI ჩაანაცვლა. რა შეიცვალა და ვის რჩება ძველი."
  },
  "claude-in-chrome": {
   "aka": "Claude for Chrome, Claude Chrome extension",
@@ -728,8 +728,8 @@
   "faq.5.q": "მუშაობს თუ არა Claude in Chrome სხვა ბრაუზერებში?",
   "faq.5.a": "გვერდითი პანელი ოფიციალურად მხოლოდ დესკტოპის Chrome-ში მუშაობს და ტელეფონზე არა. Claude Code-ის რეჟიმი Edge-სა და სხვა Chromium ბრაუზერებშიც მუშაობს.",
   "source.label": "Help: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome: Claude-ის გაფართოება Chrome-ისთვის — დაყენება, გეგმები და ბრაუზერები",
-  "seo.description": "რას აკეთებს Claude-ის გაფართოება Chrome-ისთვის, როგორ დავაყენოთ Chrome Web Store-დან, Claude-ის რომელ ფასიან გეგმებშია და სად მუშაობს: გვერდითი პანელი დესკტოპის Chrome-ში ან Claude Code Chromium ბრაუზერებში.",
+  "seo.title": "Claude in Chrome: გაფართოება Chrome-ისთვის, გეგმები",
+  "seo.description": "Claude-ის გაფართოება Chrome-ისთვის: აგენტი თქვენი შესვლით აჭერს ღილაკებს, ავსებს ფორმებს და კითხულობს კონსოლს. Chrome Web Store-დან, საჭიროა ფასიანი გეგმა.",
   "more.label": "Claude Code Chrome-ში: როგორ ამოწმებს აგენტი საიტს ბრაუზერში — გამართვა და ფორმები თქვენი ავტორიზაციით",
   "compare.title": "ორი რეჟიმი: გვერდითი პანელი და Claude Code",
   "compare.head": [
@@ -820,8 +820,8 @@
   "faq.1.q": "რა იყო Alice AI-მდე?",
   "faq.1.a": "YandexGPT მოდელების ხაზი.",
   "source.label": "Yandex-ის კომპანიის გვერდი",
-  "seo.title": "Yandex AI: Alice AI მოდელები, AI Studio და SourceCraft Code Assistant",
-  "seo.description": "რა არის Yandex AI: Alice AI მოდელები (ადრე YandexGPT), ასისტენტი Alice, Alice AI Pro ბიზნესისთვის, Yandex AI Studio აგენტების ასაგებად და SourceCraft Code Assistant კოდისთვის."
+  "seo.title": "Yandex AI: Alice AI მოდელები, AI Studio და SourceCraft",
+  "seo.description": "რა არის Yandex AI: Alice AI მოდელები (ადრე YandexGPT), Alice, Alice AI Pro, Yandex AI Studio აგენტებისთვის და SourceCraft Code Assistant."
  },
  "jetbrains": {
   "def": "JetBrains — პრაღაში 2000 წელს დაარსებული კომპანიაა, რომელიც ქმნის IntelliJ IDEA-ს, PyCharm-ს, WebStorm-სა და სხვა IDE-ებს, ასევე Kotlin ენას. მისი საკუთარი კოდინგ-აგენტი Junie მუშაობს IDE-სა და ტერმინალში; Claude Agent და Codex IDE-ში მის გვერდით არის ჩაშენებული, სხვა აგენტები კი ღია ACP პროტოკოლით უერთდებიან. კოდის დასრულება საკუთარ Mellum მოდელზე მუშაობს. Air — სამუშაო სივრცეა, სადაც რამდენიმე აგენტი პარალელურად მუშაობს (preview).",
@@ -1050,8 +1050,8 @@
   "faq.2.a": "Cursor ორივეს კითხულობს. AGENTS.md არის საერთო ფაილი სხვადასხვა აგენტისთვის, ძირში და ქვესაქაღალდეებში; წესები .cursor/rules-ში მხოლოდ Cursor-ისთვისაა, მაგრამ შეიძლება მოქმედებდეს ყოველთვის, აღწერით, ფაილების შაბლონით ან ხელით.",
   "faq.3.q": "რით განსხვავდება AGENTS.md spec.md-გან?",
   "faq.3.a": "AGENTS.md მთელი პროექტის წესებს აყენებს და აგენტის ყოველ სესიაში შედის. spec.md აღწერს ერთ ამოცანას — მოთხოვნებსა და მზადყოფნის ნიშნებს — და არსებობს, სანამ ამოცანა არ დაიხურება.",
-  "seo.title": "AGENTS.md, Cursor-ის წესები და CLAUDE.md: რას აკეთებს თითოეული ფაილი",
-  "seo.description": "AGENTS.md არის საერთო ინსტრუქციების ფაილი Codex-ის, Cursor-ისა და სხვა აგენტებისთვის. რით განსხვავდება Cursor-ის წესებისგან .cursor/rules-ში და CLAUDE.md-გან, სად დევს თითოეული და როდის კითხულობს აგენტი.",
+  "seo.title": "AGENTS.md, Cursor-ის წესები და CLAUDE.md: განსხვავებები",
+  "seo.description": "AGENTS.md — საერთო ინსტრუქციების ფაილი Codex-ის, Cursor-ისა და სხვა აგენტებისთვის. რით განსხვავდება Cursor-ის წესებისა და CLAUDE.md-გან და როდის იკითხება.",
   "more.label": "AGENTS.md, CLAUDE.md და spec.md: რა სად ჩავდოთ",
   "also.0.label": "Cursor rules და AGENTS.md: რა სად ჩავდოთ"
  },
@@ -1439,8 +1439,8 @@
   "faq.2.q": "როგორ შევამციროთ ჰალუცინაციები?",
   "faq.2.a": "მოდელს საიმედო წყაროებიდან მონაცემები უნდა მისცეთ და შედეგი შეამოწმოთ.",
   "source.label": "Wikipedia: AI hallucination",
-  "seo.title": "LLM-ის ჰალუცინაცია: მნიშვნელობა, მაგალითები და წყაროებზე დაფუძნება",
-  "seo.description": "რას ნიშნავს LLM-ის ჰალუცინაცია, მაგალითებით: გამოგონილი ფუნქცია, არარსებული პაკეტი, მკვდარი ბმული. რატომ ჩნდება, როგორ ამცირებს მას წყაროებზე დაფუძნება და როგორ იჭერს შემოწმებები.",
+  "seo.title": "LLM-ის ჰალუცინაცია: მნიშვნელობა, მაგალითები, წყაროები",
+  "seo.description": "რას ნიშნავს LLM-ის ჰალუცინაცია, მაგალითებით: გამოგონილი ფუნქცია, არარსებული პაკეტი, მკვდარი ბმული. რატომ ჩნდება და როგორ მცირდება წყაროებზე დაფუძნებით.",
   "notes.title": "ჰალუცინაციის მაგალითები და როგორ შევამციროთ",
   "notes.items.0.name": "გამოგონილი ფუნქცია",
   "notes.items.0.text": "აგენტი იძახებს მეთოდს, რომელიც ბიბლიოთეკას არ აქვს, ან პარამეტრს, რომელსაც ფუნქცია არ იღებს. კოდი დამაჯერებლად გამოიყურება და გაშვებისას ვარდება.",

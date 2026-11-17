@@ -1,8 +1,9 @@
 ---
 title: Comment analyser l'usage de ChatGPT Enterprise dans une entreprise : qui l'utilise, pour quoi et quels outils d'IA acheter ensuite
+seoTitle: Rapport d’usage de ChatGPT Enterprise : qui, pour quoi
 date: 2026-09-28
-updated: 2026-11-13
-description: Comment savoir ce que les employés font de ChatGPT Enterprise : cinq exports de la console d'administration donnent la profondeur d'adoption, l'homogénéité entre équipes, l'outil principal, une carte des tâches, des contrôles de données et une courte liste de personnes à interviewer.
+updated: 2026-11-17
+description: Voir qui utilise ChatGPT Enterprise et pour quoi : cinq exports de la console d’administration donnent profondeur d’adoption, carte des tâches, entretiens.
 tags: IA, recherche, analytique
 category: research
 layout: wide

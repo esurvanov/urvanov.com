@@ -1,0 +1,88 @@
+{
+  "hooks": {
+    "seo.title": "Hooks dans les agents IA : définition et moments d’exécution",
+    "seo.description": "Un hook est un script que le harness lance à un moment précis du travail d’un agent IA : avant une action, après une modif de fichier, à la fin. Toujours."
+  },
+  "jetbrains": {
+    "seo.title": "JetBrains : définition, IDE, agent Junie et IA",
+    "seo.description": "JetBrains : société de Prague (2000) derrière IntelliJ IDEA, PyCharm, WebStorm et Kotlin. Agent Junie, Claude Agent et Codex dans l’IDE, autres via ACP."
+  },
+  "vite": {
+    "seo.title": "Vite : qu’est-ce que c’est, bundler et serveur rapides",
+    "seo.description": "Vite assemble le code d’un site avec vite build et affiche les modifications dans le navigateur à l’instant. Vitest : les tests réutilisent ses réglages."
+  },
+  "grafana": {
+    "seo.title": "Grafana : qu’est-ce que c’est, tableaux de bord et MCP",
+    "seo.description": "Grafana : graphiques et tableaux de bord pour métriques et logs. Un agent les lit via MCP ; l’option --disable-write le limite à la lecture."
+  },
+  "helm": {
+    "seo.title": "Helm : qu’est-ce que c’est, gestionnaire de paquets K8s",
+    "seo.description": "Helm installe des applications dans Kubernetes en une commande : un chart de modèles et values.yaml devient une release. Mise à jour, helm rollback."
+  },
+  "jest": {
+    "seo.title": "Jest : qu’est-ce que c’est, framework de tests JavaScript",
+    "seo.description": "Jest, framework de tests automatiques pour JavaScript : vous décrivez ce que renvoie une fonction, il montre les vérifications en échec. Face à Vitest, QUnit."
+  },
+  "smt-solver": {
+    "seo.title": "Solveur SMT : qu’est-ce que c’est, exemple, Z3 et Apalache",
+    "seo.description": "Un solveur SMT prend un ensemble de conditions et trouve des valeurs qui les satisfont toutes, ou prouve qu’il n’en existe pas. Un exemple, Z3 et Apalache."
+  },
+  "rfc-2119": {
+    "seo.title": "RFC 2119 : définition de MUST, SHOULD et MAY",
+    "seo.description": "La RFC 2119 fixe le sens de MUST, SHOULD et MAY dans les exigences. Dans une spécification, ils disent à l’agent ce qui est obligatoire ou conseillé."
+  },
+  "barber-paradox": {
+    "seo.title": "Paradoxe du barbier : définition et explication",
+    "seo.description": "Paradoxe du barbier : il rase tous ceux qui ne se rasent pas eux-mêmes. Se rase-t-il ? Explication avec les ensembles, Russell et le problème de l’arrêt."
+  },
+  "bible": {
+    "seo.title": "Bible de projet : définition, pour un agent IA",
+    "seo.description": "Une bible de projet décrit comment le projet est construit et pourquoi : limites, accords, principes. L’agent la lit avant de travailler, dans CLAUDE.md."
+  },
+  "rice-theorem": {
+    "seo.title": "Théorème de Rice : définition et limites du contrôle",
+    "seo.description": "Théorème de Rice : aucun programme ne dit, pour tout code, s’il a une propriété de comportement donnée. Issue : tester un petit monde ou admettre le doute."
+  },
+  "claude-md": {
+    "seo.title": "CLAUDE.md : définition et contenu du fichier",
+    "seo.description": "CLAUDE.md est un fichier à la racine du projet avec les consignes permanentes de Claude Code : structure, commandes de build et de test, conventions."
+  },
+  "sandbox": {
+    "seo.title": "Sandbox : définition pour un agent IA et usage",
+    "seo.description": "Une sandbox enferme les actions d’un agent : seuls les dossiers et hôtes réseau autorisés sont accessibles. En cas d’erreur, les dégâts restent dedans."
+  },
+  "deployment": {
+    "seo.title": "Deployment Kubernetes : définition et mise à jour des pods",
+    "seo.description": "Un Deployment Kubernetes fixe la version d’un service et son nombre de copies, comme trois booking-service. À la mise à jour, les pods changent un à un."
+  },
+  "vitest": {
+    "seo.title": "Vitest : définition, framework de test JavaScript",
+    "seo.description": "Vitest est un framework de test JavaScript sur le bundler Vite : il lance les vérifications du code et signale les échecs. Il reprend la config Vite."
+  },
+  "api": {
+    "seo.title": "API : définition, interface de programmation",
+    "seo.description": "Une API est un ensemble de règles pour qu’un programme en appelle un autre : requêtes possibles et réponses reçues. L’agent s’en sert sans navigateur."
+  },
+  "agile": {
+    "seo.title": "Agile : définition, développement par cycles courts",
+    "seo.description": "Agile est un développement par cycles courts : construire une petite partie, la montrer, recueillir un retour, ajuster. Né du Manifeste Agile de 2001."
+  },
+  "session": {
+    "seo.title": "Session d’agent : définition et ce qui se conserve",
+    "seo.description": "Une session est une conversation continue avec un agent, du début à la sortie. Le savoir vit dans le contexte et s’y arrête ; mémoire et CLAUDE.md restent."
+  },
+  "poc": {
+    "seo.title": "Qu’est-ce qu’un PoC : définition, preuve de concept",
+    "seo.description": "Un PoC (proof of concept) est un petit code ou script qui montre qu’un problème se reproduit. Pour un bug : une courte exécution sans navigateur."
+  },
+  "prompt": {
+    "seo.title": "Qu’est-ce qu’un prompt : définition d’une requête",
+    "seo.description": "Un prompt est une requête à un modèle : tâche, contexte, format de réponse, contraintes. Plus ils sont précis, moins il faut de retouches."
+  },
+  "codex": {
+    "also.0.label": "Codex ou ChatGPT : lequel choisir"
+  },
+  "claude-code": {
+    "also.0.label": "Claude Code : installation et prix"
+  }
+}

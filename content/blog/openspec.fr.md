@@ -1,8 +1,9 @@
 ---
 title: Installation et commandes d’OpenSpec : un exemple de changement, du plan à la fusion
+seoTitle: OpenSpec : définition, installation et commandes, exemple
 date: 2026-11-07
-updated: 2026-11-13
-description: Comment fonctionne OpenSpec de Fission AI : un dossier de changement avec un plan, des exigences et des tâches, trois commandes pour l’agent et une fusion dans les spécifications communes. Installation en deux commandes, un vrai changement du dépôt du site urvanov.com, comparaison avec Spec Kit et prompts prêts pour démarrer.
+updated: 2026-11-17
+description: OpenSpec de Fission AI : dossier de changement avec plan et tâches, trois commandes d’agent, fusion dans les specs. Installation, exemple, Spec Kit.
 tags: IA, OpenSpec, spécifications, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
 layout: wide

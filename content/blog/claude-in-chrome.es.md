@@ -1,8 +1,8 @@
 ---
 title: Claude Code en Chrome: cómo prueba el agente un sitio en el navegador, depuración y formularios con tu sesión iniciada
 date: 2026-10-05
-updated: 2026-11-13
-description: Claude in Chrome conecta Claude Code con el navegador: el agente abre pestañas, lee la consola, ejecuta escenarios y rellena formularios con tu sesión iniciada. Cómo conectarlo, qué hace y qué permisos dar.
+updated: 2026-11-17
+description: Claude in Chrome conecta Claude Code con el navegador: el agente abre pestañas, lee la consola y rellena formularios con tu sesión. Conexión y permisos.
 tags: IA, agentes, Claude Code, Claude in Chrome, navegador, QA, harness
 category: harness
 layout: wide

@@ -52,8 +52,8 @@
     "faq.2.a": "Với TDD, trước hết viết một kiểm thử thất bại cho một hàm, rồi viết mã cho nó. Với SDD, trước hết viết đặc tả cho cả thay đổi — yêu cầu và các kịch bản «khi — thì» — còn tác nhân suy ra kiểm thử và mã từ đó.",
     "faq.3.q": "Đặc tả khác AGENTS.md thế nào?",
     "faq.3.a": "Đặc tả mô tả một thay đổi và tồn tại đến khi thay đổi đóng. AGENTS.md giữ quy tắc cho cả dự án và đi vào mỗi phiên của tác nhân.",
-    "seo.title": "Spec-driven development (SDD) là gì: hoạt động thế nào và dùng framework nào",
-    "seo.description": "Spec-driven development: trước hết là đặc tả với các yêu cầu, rồi tác nhân AI viết mã theo đó. Các bước, OpenSpec, Spec Kit và Kiro, và cách giữ đặc tả và mã đồng bộ.",
+    "seo.title": "SDD là gì: spec-driven development hoạt động thế nào",
+    "seo.description": "SDD (spec-driven development) là cách làm viết đặc tả trước, rồi tác nhân AI viết mã và kiểm tra theo đó. Các bước, OpenSpec, Spec Kit và Kiro.",
     "more.label": "OpenSpec: spec-driven development trong thực tế",
     "also.0.label": "Đặc tả theo aggregate: cách để chúng không sinh sôi",
     "also.1.label": "Vòng đối soát: đặc tả và mã luôn khớp nhau",
@@ -70,8 +70,8 @@
     "faq.3.q": "OpenSpec khác Spec Kit ở đâu?",
     "faq.3.a": "OpenSpec nhẹ hơn: các bước có thể lặp lại theo thứ tự bất kỳ và được làm cho mã đang chạy sẵn. Spec Kit của GitHub đi qua các giai đoạn cố định.",
     "source.label": "Repo GitHub của OpenSpec",
-    "seo.title": "OpenSpec, Spec Kit và Kiro: so sánh các framework phát triển dựa trên đặc tả",
-    "seo.description": "OpenSpec của Fission AI là framework miễn phí đặt kế hoạch thay đổi trước mã. Khác Spec Kit của GitHub và Kiro của AWS ở đâu: giá, tệp, thứ tự bước, tác nhân.",
+    "seo.title": "OpenSpec là gì và khác Spec Kit, Kiro ở đâu",
+    "seo.description": "OpenSpec là framework mã nguồn mở miễn phí của Fission AI: tác nhân viết kế hoạch, bạn xem lại, rồi nó mới viết mã. So sánh với Spec Kit và Kiro.",
     "more.label": "OpenSpec: cài đặt, lệnh và ví dụ một thay đổi",
     "compare.title": "OpenSpec, Spec Kit và Kiro",
     "compare.rows.0": [
@@ -541,8 +541,8 @@
     "source.label": "Wikipedia: Quality assurance",
     "faq.2.q": "QA khác QC và kiểm thử thế nào?",
     "faq.2.a": "QA ngăn ngừa khuyết tật: theo dõi và cải tiến quy trình để có ít lỗi hơn. QC (quality control, kiểm soát chất lượng) phát hiện khuyết tật trong sản phẩm đã hoàn thành. Kiểm thử là một trong những cách để thực hiện việc kiểm tra đó.",
-    "seo.title": "QA (quality assurance): là gì và QA khác QC và kiểm thử thế nào",
-    "seo.description": "QA (quality assurance) là quy trình và vai trò không để lỗi đến tay người dùng. QA khác QC và kiểm thử thế nào, và QA làm gì bên cạnh tác nhân AI."
+    "seo.title": "QA (quality assurance) là gì: QA khác QC và kiểm thử thế nào",
+    "seo.description": "QA (quality assurance) là quy trình và vai trò không để lỗi đến tay người dùng. QA khác QC và kiểm thử thế nào, và QA bên cạnh tác nhân AI."
   },
   "bug": {
     "name": "Bug",
@@ -774,8 +774,8 @@
     "faq.3.q": "Tác nhân AI được làm gì trên stand?",
     "faq.3.a": "Tái hiện bug và kiểm tra thay đổi. Tác nhân không ghi vào môi trường sản xuất.",
     "source.label": "Wikipedia: Deployment environment",
-    "seo.title": "Môi trường phi sản xuất: dev, test, staging, demo — mỗi cái để làm gì",
-    "seo.description": "Môi trường phi sản xuất là các bản sao của hệ thống, nơi nhóm và tác nhân AI kiểm tra thay đổi mà không đụng đến môi trường sản xuất: feature, dev, test, staging, demo. Chúng khác nhau thế nào.",
+    "seo.title": "Test stand (môi trường kiểm thử) là gì: các loại stand",
+    "seo.description": "Test stand là bản sao riêng của hệ thống, nơi có thể làm hỏng mà không đụng tới prod. Các loại: dev, test, staging, demo; tác nhân AI làm gì ở mỗi loại.",
     "screens.0": "Môi trường phi sản xuất được dựng như bản sao của môi trường sản xuất. Dịch vụ được sao chép nguyên vẹn, còn các phụ thuộc của nó, cơ sở dữ liệu và dịch vụ bên ngoài, được nối theo hai cách: bản sao của thứ thật, gần thực tế hơn, hoặc mock, rẻ và nhanh hơn. Tác nhân làm việc ở đó và không ghi vào môi trường sản xuất.",
     "screens.1": "Một thay đổi đi từ trái sang phải. Từ môi trường local, mã đi hai đường: tới dev sau khi merge và tới feature stand, nơi một nhánh được kiểm tra. Hai đường gặp nhau ở test, nơi mọi người tích hợp. Sau đó pre-prod kiểm tra thay đổi cư xử ra sao như trên môi trường sản xuất, demo cho khách hàng xem, và chỉ sau đó nó mới đến môi trường sản xuất. Mọi thứ trong khung là môi trường phi sản xuất.",
     "parts.title": "Nơi thay đổi được kiểm tra: môi trường local và các stand kiểm thử",
@@ -895,11 +895,50 @@
     "faq.9.q": "Preprod và staging khác nhau thế nào?",
     "faq.9.a": "Trong hầu hết nguồn thì không khác. Wikipedia nêu pre-production là một tên của staging, còn Atlassian mô tả staging là “a pre-production environment, where the systems administration team can establish exact procedures prior to rollout”. Sự khác biệt xuất hiện trong nội bộ nhóm nếu pre-prod là bước riêng sau test: khi đó nó được chốt bằng thỏa thuận.",
     "table.title": "Dev, test, staging, preprod, UAT và prod cạnh nhau",
-    "table.head": ["Dev", "Test", "Staging", "Pre-prod", "UAT", "Prod"],
-    "table.rows.0": ["Mục tiêu", "viết và thử thay đổi", "kiểm tra thay đổi của mọi người chạy cùng nhau", "kiểm tra bản phát hành như trên prod", "kiểm tra lần cuối trước khi phát hành, thường giống staging", "người dùng tương lai chấp nhận hệ thống", "phục vụ người dùng thật"],
-    "table.rows.1": ["Dữ liệu", "dữ liệu thử", "bản sao dữ liệu thật hoặc mock", "bản sao dữ liệu thật mới", "bản sao dữ liệu thật mới", "tùy nhóm", "dữ liệu thật"],
-    "table.rows.2": ["Ai vào", "lập trình viên", "QA và autotest", "QA và nhóm phát hành", "QA và nhóm phát hành", "người dùng tương lai hoặc khách đặt hàng", "khách hàng"],
-    "table.rows.3": ["Khác prod thế nào", "cấu hình để phát triển", "cấu hình thuận tiện cho kiểm tra", "cấu hình như prod, không có khách", "giống staging, hoặc là bước riêng trước prod", "là một loại kiểm tra; chạy trên test hoặc staging", "dữ liệu và khách hàng thật"],
+    "table.head": [
+      "Dev",
+      "Test",
+      "Staging",
+      "Pre-prod",
+      "UAT",
+      "Prod"
+    ],
+    "table.rows.0": [
+      "Mục tiêu",
+      "viết và thử thay đổi",
+      "kiểm tra thay đổi của mọi người chạy cùng nhau",
+      "kiểm tra bản phát hành như trên prod",
+      "kiểm tra lần cuối trước khi phát hành, thường giống staging",
+      "người dùng tương lai chấp nhận hệ thống",
+      "phục vụ người dùng thật"
+    ],
+    "table.rows.1": [
+      "Dữ liệu",
+      "dữ liệu thử",
+      "bản sao dữ liệu thật hoặc mock",
+      "bản sao dữ liệu thật mới",
+      "bản sao dữ liệu thật mới",
+      "tùy nhóm",
+      "dữ liệu thật"
+    ],
+    "table.rows.2": [
+      "Ai vào",
+      "lập trình viên",
+      "QA và autotest",
+      "QA và nhóm phát hành",
+      "QA và nhóm phát hành",
+      "người dùng tương lai hoặc khách đặt hàng",
+      "khách hàng"
+    ],
+    "table.rows.3": [
+      "Khác prod thế nào",
+      "cấu hình để phát triển",
+      "cấu hình thuận tiện cho kiểm tra",
+      "cấu hình như prod, không có khách",
+      "giống staging, hoặc là bước riêng trước prod",
+      "là một loại kiểm tra; chạy trên test hoặc staging",
+      "dữ liệu và khách hàng thật"
+    ],
     "notes.title": "Nguồn nói gì về preprod, staging và UAT",
     "notes.items.0.name": "Wikipedia: Deployment environment",
     "notes.items.1.name": "AWS Well-Architected: DevOps Guidance",
@@ -935,7 +974,7 @@
     "faq.1.a": "Sai lầm ở đó tốn kém nhất, nên thay đổi đi qua các phép kiểm tra trên các stand, và thường có một người xác nhận đợt phát hành.",
     "source.label": "Wikipedia: Deployment environment",
     "seo.title": "Production (prod) là gì và vì sao không ai ghi thẳng vào đó",
-    "seo.description": "Production (prod) là môi trường đang chạy thật, nơi người dùng thật làm việc với dữ liệu thật. Production khác pre-prod và test thế nào, và vì sao không ai ghi thẳng vào đó.",
+    "seo.description": "Production (prod) là môi trường chạy thật với người dùng và dữ liệu thật. Khác pre-prod và test thế nào, và vì sao không ai ghi thẳng vào đó.",
     "faq.2.q": "Prod nghĩa là gì trong lập trình?",
     "faq.2.a": "Phiên bản đang chạy thật của hệ thống trên các máy chủ mà khách hàng dùng. «Deploy lên prod» nghĩa là đưa thay đổi đến người dùng; «prod sập» nghĩa là hệ thống đang chạy thật ngừng hoạt động.",
     "faq.3.q": "Prod và production có phải là một không?",
@@ -951,11 +990,35 @@
     "faq.8.q": "“prod is down” nghĩa là gì?",
     "faq.8.a": "Hệ thống thật ngừng phản hồi hoặc chạy lỗi: trang không mở được, thanh toán không qua. Lúc đó nhóm khôi phục prod trước rồi mới tìm nguyên nhân. Lỗi chỉ thấy trên stand không làm prod sập: stand là một bản sao riêng.",
     "table.title": "Dev, test, prod: mục tiêu, dữ liệu, ai làm việc",
-    "table.head": ["Dev", "Test", "Prod"],
-    "table.rows.0": ["Mục tiêu", "viết và thử thay đổi", "kiểm tra thay đổi của mọi người chạy cùng nhau", "phục vụ người dùng thật"],
-    "table.rows.1": ["Dữ liệu", "dữ liệu thử", "bản sao dữ liệu thật hoặc mock", "dữ liệu thật"],
-    "table.rows.2": ["Ai làm việc", "nhóm phát triển", "QA và autotest", "khách hàng"],
-    "table.rows.3": ["AI agent được làm gì", "sửa và kiểm tra", "tái hiện lỗi, chạy autotest", "chỉ đọc, không ghi"],
+    "table.head": [
+      "Dev",
+      "Test",
+      "Prod"
+    ],
+    "table.rows.0": [
+      "Mục tiêu",
+      "viết và thử thay đổi",
+      "kiểm tra thay đổi của mọi người chạy cùng nhau",
+      "phục vụ người dùng thật"
+    ],
+    "table.rows.1": [
+      "Dữ liệu",
+      "dữ liệu thử",
+      "bản sao dữ liệu thật hoặc mock",
+      "dữ liệu thật"
+    ],
+    "table.rows.2": [
+      "Ai làm việc",
+      "nhóm phát triển",
+      "QA và autotest",
+      "khách hàng"
+    ],
+    "table.rows.3": [
+      "AI agent được làm gì",
+      "sửa và kiểm tra",
+      "tái hiện lỗi, chạy autotest",
+      "chỉ đọc, không ghi"
+    ],
     "notes.title": "Nguồn gốc nói gì về prod",
     "notes.items.0.name": "Wikipedia: Deployment environment",
     "notes.items.0.text": "Bài viết về môi trường triển khai nói về production: “it is the environment that users directly interact with”, tức là môi trường người dùng làm việc trực tiếp.",

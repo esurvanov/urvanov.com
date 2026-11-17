@@ -144,8 +144,8 @@
   "faq.2.q": "Dit-on un LLM ou une LLM ?",
   "faq.2.a": "On dit un LLM : le sigle s’épelle lettre par lettre, et la première lettre se prononce « èl » ; en français, on parle d’un modèle, donc au masculin.",
   "source.label": "Wikipédia : Grand modèle de langage",
-  "seo.title": "LLM : définition d’un grand modèle de langage et différence avec un agent IA",
-  "seo.description": "Le LLM en termes simples : un grand modèle de langage lit le texte en tokens, garde un contexte et ne fait que répondre seul ; avec un harness, il devient un agent. Exemples : GPT, Claude, DeepSeek, Alice AI.",
+  "seo.title": "LLM : définition d’un grand modèle de langage",
+  "seo.description": "Un LLM (grand modèle de langage) lit et écrit le texte en tokens et ne fait que répondre ; avec un harness, il devient un agent IA. Ex. : GPT, Claude.",
   "compare.title": "Exemples de LLM : qui les fabrique et quels agents tournent dessus",
   "compare.head": [
    "Modèles (LLM)",
@@ -199,8 +199,8 @@
   "faq.1.q": "En quoi VS Code diffère-t-il de Cursor ?",
   "faq.1.a": "Cursor est construit sur VS Code avec l’agent intégré dès le départ. Dans VS Code, un agent s’ajoute comme extension.",
   "source.label": "Site officiel de VS Code",
-  "seo.title": "Agents IA dans VS Code : Claude Code, Codex et Copilot dans Visual Studio Code",
-  "seo.description": "VS Code est l’éditeur de code gratuit de Microsoft. Quels agents IA y fonctionnent : GitHub Copilot, Claude Code, Codex, Cline — lesquels sont gratuits et comment Claude Code travaille dans VS Code.",
+  "seo.title": "VS Code : qu’est-ce que c’est, éditeur Microsoft, agents IA",
+  "seo.description": "VS Code est l’éditeur de code gratuit de Microsoft. Agents IA : GitHub Copilot, Claude Code, Codex, Cline ; lesquels sont gratuits, comment Claude y marche.",
   "notes.title": "Agents IA pour VS Code",
   "notes.items.0.text": "intégré à VS Code par Microsoft, avec un mode agent et une offre gratuite limitée.",
   "notes.items.1.text": "une extension d’Anthropic : le même agent que dans le terminal, avec un abonnement Claude ou l’API à l’usage.",
@@ -435,8 +435,8 @@
   "faq.5.q": "Codex fonctionne-t-il en Russie ?",
   "faq.5.a": "Pas officiellement : la Russie ne figure pas dans la liste des pays où OpenAI propose ses services.",
   "source.label": "Dépôt GitHub de Codex",
-  "seo.title": "Qu’est-ce qu’OpenAI Codex : Codex et ChatGPT Chat et Work",
-  "seo.description": "OpenAI Codex est un agent de code qui lit votre dépôt, modifie des fichiers et lance des tests. En quoi il diffère de ChatGPT Chat et Work, où il fonctionne et quels abonnements l’incluent.",
+  "seo.title": "Codex ou ChatGPT : la différence, en un tableau",
+  "seo.description": "Codex est l’agent d’OpenAI : il modifie le code, lance les tests et ouvre des pull requests, alors que ChatGPT répond par du texte. Modes et offres en tableau.",
   "more.label": "Claude Code, Codex, Cursor et Hermes Agent : lequel choisir",
   "compare.title": "Codex et ChatGPT : Chat et Work",
   "compare.rows.0": [
@@ -546,8 +546,8 @@
   "faq.2.q": "Règles Cursor ou AGENTS.md ?",
   "faq.2.a": "Cursor lit les deux : AGENTS.md est un fichier commun à différents agents, et les règles de .cursor/rules sont propres à Cursor et peuvent cibler des fichiers précis.",
   "source.label": "Site officiel de Cursor",
-  "seo.title": "Qu’est-ce que Cursor AI : modèles, agent et règles ou AGENTS.md",
-  "seo.description": "Cursor est un éditeur de code fondé sur VS Code avec un agent IA intégré. Les modèles proposés, où se trouvent les règles (.cursor/rules ou AGENTS.md) et en quoi il diffère de Claude Code.",
+  "seo.title": "Cursor AI : qu’est-ce que c’est, éditeur IA basé sur VS Code",
+  "seo.description": "Cursor est un éditeur IA basé sur VS Code : l’agent travaille à vos côtés, avec Grok, Composer ou d’autres modèles. Règles : .cursor/rules, AGENTS.md.",
   "more.label": "Claude Code, Codex, Cursor et Hermes Agent : lequel choisir",
   "also.0.label": "Cursor pour 1C via MCP",
   "notes.title": "Cursor : modèles, agent et règles",
@@ -693,8 +693,8 @@
   "faq.4.q": "En quoi OpenCode diffère-t-il de Claude Code ?",
   "faq.4.a": "Ils sont construits de la même façon : tous deux lisent le projet, modifient des fichiers et lancent des commandes. OpenCode est open source et fonctionne avec n’importe quel modèle, Claude Code seulement avec les modèles Claude.",
   "source.label": "Documentation d’OpenCode",
-  "seo.title": "Qu’est-ce qu’OpenCode : un agent de code IA gratuit et open source dans le terminal",
-  "seo.description": "OpenCode est un agent de code IA gratuit et open source pour le terminal : n’importe quel modèle ou un modèle local, modes Build et Plan, règles dans AGENTS.md.",
+  "seo.title": "OpenCode : définition, agent IA gratuit en terminal",
+  "seo.description": "OpenCode est un agent IA gratuit et open source pour le terminal. Branchez Claude, GPT, Gemini ou un modèle local ; seul le fournisseur est payant.",
   "more.label": "Claude Code, Codex, Cursor et Hermes Agent : lequel choisir"
  },
  "gemini-cli": {
@@ -705,8 +705,8 @@
   "faq.1.q": "Qu’est-il arrivé à Gemini CLI ?",
   "faq.1.a": "Depuis le 18 juin 2026, Antigravity CLI, fermé, l’a remplacé pour les utilisateurs ordinaires. Gemini CLI lui-même reste open source et fonctionne avec les abonnements entreprise et les clés d’API payantes.",
   "source.label": "The Register : Google nudges Gemini CLI users to Antigravity",
-  "seo.title": "Qu’est-ce que Gemini CLI et qu’en est-il advenu : l’agent de terminal de Google",
-  "seo.description": "Gemini CLI est l’agent de terminal open source de Google sur les modèles Gemini. Ce qu’il fait, pourquoi les particuliers ont perdu l’accès le 18 juin 2026 et qui peut encore l’utiliser."
+  "seo.title": "Gemini CLI : qu’est-ce que c’est, qui peut l’utiliser",
+  "seo.description": "Gemini CLI : agent open source de Google pour le terminal. Depuis le 18 juin 2026, Antigravity CLI le remplace pour les particuliers ; qui peut l’utiliser."
  },
  "antigravity-cli": {
   "def": "Antigravity CLI est l’agent de code de Google pour le terminal, lié à l’application Antigravity. En mai 2026, Google a annoncé y transférer Gemini CLI, son agent open source sur les modèles Gemini ; depuis le 18 juin 2026, Gemini CLI ne sert plus les particuliers, accès gratuit compris. Antigravity CLI est à code fermé ; l’ancien Gemini CLI reste open source mais ne fonctionne que pour les entreprises avec des abonnements entreprise et pour les clés d’API payantes.",
@@ -715,8 +715,8 @@
   "faq.1.q": "Quand Antigravity CLI a-t-il remplacé Gemini CLI ?",
   "faq.1.a": "Google a annoncé la transition en mai 2026, et le 18 juin 2026 Gemini CLI a cessé de fonctionner pour les utilisateurs ordinaires.",
   "source.label": "Virtualization Review : Gemini CLI moves into Antigravity CLI",
-  "seo.title": "Qu’est-ce qu’Antigravity CLI : l’agent de terminal de Google qui a remplacé Gemini CLI",
-  "seo.description": "Gemini CLI était l’agent de terminal open source de Google ; depuis juin 2026, Antigravity CLI, à code fermé, l’a remplacé pour les particuliers. Ce qui a changé et qui peut encore utiliser Gemini CLI."
+  "seo.title": "Antigravity CLI : qu’est-ce que c’est, remplace Gemini CLI",
+  "seo.description": "Antigravity CLI est l’agent de Google pour le terminal, à code fermé, qui a remplacé Gemini CLI pour les particuliers en juin 2026. Ce qui change."
  },
  "claude-in-chrome": {
   "aka": "Claude for Chrome, extension Chrome de Claude",
@@ -728,8 +728,8 @@
   "faq.5.q": "Claude in Chrome fonctionne-t-il dans d’autres navigateurs ?",
   "faq.5.a": "Le panneau latéral ne fonctionne officiellement que dans Chrome pour ordinateur, pas sur mobile. Le mode Claude Code fonctionne aussi dans Edge et d’autres navigateurs Chromium.",
   "source.label": "Aide : Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome : l’extension Claude pour Chrome — installation, formules et navigateurs",
-  "seo.description": "Ce que fait l’extension Claude pour Chrome, comment l’installer depuis le Chrome Web Store, quelles formules payantes de Claude l’incluent et où elle fonctionne : le panneau latéral dans Chrome pour ordinateur ou Claude Code dans les navigateurs Chromium.",
+  "seo.title": "Claude in Chrome : l’extension Chrome, offres, installation",
+  "seo.description": "L’extension Claude pour Chrome : l’agent clique, remplit des formulaires et lit la console avec votre session. Chrome Web Store ; offres payantes seulement.",
   "more.label": "Claude Code dans Chrome : comment l'agent teste un site dans le navigateur — débogage et formulaires sous votre identifiant",
   "compare.title": "Deux modes : le panneau latéral et Claude Code",
   "compare.head": [
@@ -820,8 +820,8 @@
   "faq.1.q": "Qu’y avait-il avant Alice AI ?",
   "faq.1.a": "La gamme de modèles YandexGPT.",
   "source.label": "Page de l’entreprise Yandex",
-  "seo.title": "Yandex AI : modèles Alice AI, AI Studio et SourceCraft Code Assistant",
-  "seo.description": "Ce qu’est Yandex AI : les modèles Alice AI (anciennement YandexGPT), l’assistant Alice, Alice AI Pro pour les entreprises, Yandex AI Studio pour créer des agents et SourceCraft Code Assistant pour le code."
+  "seo.title": "Yandex AI : modèles Alice AI, AI Studio, SourceCraft",
+  "seo.description": "Yandex AI : modèles Alice AI (ex-YandexGPT), assistant Alice, Alice AI Pro, Yandex AI Studio pour les agents et SourceCraft Code Assistant pour le code."
  },
  "jetbrains": {
   "def": "JetBrains est une entreprise fondée à Prague en 2000 qui fabrique les IDE IntelliJ IDEA, PyCharm, WebStorm et d’autres, ainsi que le langage Kotlin. Son propre agent de code Junie fonctionne dans l’IDE et dans le terminal ; Claude Agent et Codex sont intégrés à l’IDE à côté, et d’autres agents se connectent via le protocole ouvert ACP. La complétion de code repose sur son propre modèle Mellum. Air est un espace de travail où plusieurs agents tournent en parallèle (préversion).",
@@ -865,7 +865,7 @@
   "faq.1.a": "Le modèle est le même, mais ce que l’agent sait, ce qu’il peut faire et la façon dont il se vérifie sont fixés par le harness.",
   "source.label": "Anthropic : Effective harnesses for agents",
   "seo.title": "Harness d’agent : définition et contenu",
-  "seo.description": "Un harness d’agent est tout ce qui entoure le modèle et en fait un agent : boucle, outils, contexte, mémoire, règles, permissions et vérifications. Chaque partie, avec ses liens.",
+  "seo.description": "Un harness d’agent est tout ce qui entoure le modèle et en fait un agent : boucle, outils, contexte, mémoire, règles, permissions et vérifications.",
   "more.label": "Agent IA = LLM + harness : LLM, harness et agent comparés",
   "parts.title": "De quoi est fait un harness"
  },
@@ -1050,8 +1050,8 @@
   "faq.2.a": "Cursor lit les deux. AGENTS.md est un fichier commun à différents agents, à la racine et dans les sous-dossiers ; les règles de .cursor/rules sont propres à Cursor, mais elles peuvent s’appliquer toujours, selon une description, selon un motif de fichiers ou manuellement.",
   "faq.3.q": "En quoi AGENTS.md diffère-t-il de spec.md ?",
   "faq.3.a": "AGENTS.md fixe les règles de tout le projet et entre dans chaque session de l’agent. spec.md décrit une tâche — exigences et critères de fin — et vit jusqu’à la clôture de la tâche.",
-  "seo.title": "AGENTS.md, règles Cursor et CLAUDE.md : à quoi sert chaque fichier",
-  "seo.description": "AGENTS.md est un fichier d’instructions commun à Codex, Cursor et d’autres agents. En quoi il diffère des règles Cursor dans .cursor/rules et de CLAUDE.md, où chacun se trouve et quand l’agent le lit.",
+  "seo.title": "AGENTS.md, règles Cursor et CLAUDE.md : rôle de chacun",
+  "seo.description": "AGENTS.md est un fichier d’instructions commun à Codex, Cursor et d’autres agents. En quoi il diffère des règles Cursor et de CLAUDE.md, quand il est lu.",
   "more.label": "AGENTS.md, CLAUDE.md et spec.md : quoi mettre où",
   "also.0.label": "Cursor rules et AGENTS.md : quoi mettre où"
  },
@@ -1366,7 +1366,7 @@
   "faq.1.a": "Plus il y a d’environnements et de vérifications manuelles sur le chemin, plus les livraisons sont rares.",
   "source.label": "DORA : software delivery metrics",
   "seo.title": "Fréquence de déploiement : définition et facteurs",
-  "seo.description": "La fréquence de déploiement est le nombre de fois, sur une période, où des changements atteignent la production. Une métrique DORA et son lien avec les environnements de test et la préproduction."
+  "seo.description": "La fréquence de déploiement est le nombre de fois, sur une période, où des changements atteignent la production. Métrique DORA, lien avec tests et préprod."
  },
  "change-fail-rate": {
   "name": "Taux d’échec des changements",
@@ -1430,8 +1430,8 @@
   "faq.2.q": "Comment réduire les hallucinations ?",
   "faq.2.a": "Donner au modèle des données issues de sources fiables et vérifier le résultat.",
   "source.label": "Wikipédia : Hallucination (intelligence artificielle)",
-  "seo.title": "Hallucination de LLM : définition, exemples et ancrage dans des sources",
-  "seo.description": "Ce que signifie une hallucination de LLM, avec des exemples d’agents de code : une fonction inventée, un paquet inexistant, un lien mort. Pourquoi elle se produit, comment l’ancrage dans des sources la réduit et comment les vérifications la détectent.",
+  "seo.title": "Hallucination de LLM : définition, exemples, ancrage",
+  "seo.description": "Hallucination de LLM : sens, exemples d’agents de code (fonction inventée, paquet inexistant, lien mort), causes et moyens de la réduire.",
   "notes.title": "Exemples d’hallucinations et comment les réduire",
   "notes.items.0.name": "Une fonction inventée",
   "notes.items.0.text": "l’agent appelle une méthode que la bibliothèque n’a pas, ou un paramètre que la fonction n’accepte pas. Le code paraît plausible et échoue à l’exécution.",

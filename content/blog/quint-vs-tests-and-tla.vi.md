@@ -1,8 +1,9 @@
 ---
 title: Kiểm chứng mô hình khác kiểm thử thế nào: test kiểm tra một kịch bản, mô hình kiểm tra mọi thứ tự hành động (Quint, QUnit và TLA+)
+seoTitle: Kiểm chứng mô hình vs kiểm thử: mỗi cái bắt được gì
 date: 2026-10-25
-updated: 2026-11-13
-description: Test kiểm tra kịch bản bạn đã nghĩ tới, còn kiểm chứng mô hình thử mọi thứ tự hành động. QUnit, Jest, Vitest bắt được lỗi nào, và Quint, TLA+, Alloy bắt được lỗi nào.
+updated: 2026-11-17
+description: Test kiểm tra kịch bản bạn đã nghĩ tới, còn kiểm chứng mô hình thử mọi thứ tự hành động. QUnit, Jest, Vitest, Quint, TLA+ và Alloy bắt được lỗi nào.
 tags: AI, đặc tả, Quint, TLA+, Alloy, QUnit, Jest, Vitest, kiểm thử, kiểm chứng hình thức
 category: specs
 layout: wide

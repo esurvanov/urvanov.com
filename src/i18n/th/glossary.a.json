@@ -15,8 +15,8 @@
   "faq.5.q": "Codex ใช้งานในรัสเซียได้หรือไม่",
   "faq.5.a": "ไม่ได้อย่างเป็นทางการ เพราะรัสเซียไม่อยู่ในรายชื่อประเทศที่ OpenAI ให้บริการ.",
   "source.label": "GitHub repo ของ Codex",
-  "seo.title": "OpenAI Codex คืออะไร: Codex ต่างจาก ChatGPT Chat และ Work อย่างไร",
-  "seo.description": "OpenAI Codex คือเอเจนต์เขียนโค้ดที่อ่าน repo แก้ไฟล์ และรันเทสต์ ต่างจาก ChatGPT Chat และ Work อย่างไร ทำงานที่ไหน และอยู่ในแพ็กเกจไหน",
+  "seo.title": "Codex ต่างจาก ChatGPT อย่างไร: ตารางเทียบในตารางเดียว",
+  "seo.description": "Codex คือเอเจนต์เขียนโค้ดของ OpenAI: แก้โค้ด รันเทสต์ และเปิด pull request ส่วน ChatGPT ตอบเป็นข้อความ. โหมดและแพ็กเกจในตารางเดียว.",
   "more.label": "Claude Code, Codex, Cursor และ Hermes Agent: เลือกอันไหนดี",
   "compare.title": "Codex กับ ChatGPT: Chat และ Work",
   "compare.rows.0": [
@@ -151,8 +151,8 @@
   "faq.4.q": "OpenCode ต่างจาก Claude Code อย่างไร",
   "faq.4.a": "โครงสร้างเหมือนกัน คือทั้งคู่อ่านโปรเจกต์ แก้ไฟล์ และรันคำสั่ง. OpenCode เป็นโอเพนซอร์สและใช้ได้กับทุกโมเดล ส่วน Claude Code ใช้ได้เฉพาะโมเดล Claude.",
   "source.label": "เอกสาร OpenCode",
-  "seo.title": "OpenCode คืออะไร: เอเจนต์เขียนโค้ด AI โอเพนซอร์สฟรีในเทอร์มินัล",
-  "seo.description": "OpenCode คือเอเจนต์เขียนโค้ด AI โอเพนซอร์สฟรีสำหรับเทอร์มินัล: ใช้โมเดลใดก็ได้หรือโมเดลในเครื่อง มีโหมด Build และ Plan กฎอยู่ใน AGENTS.md",
+  "seo.title": "OpenCode (Open Code) คืออะไร: เอเจนต์ AI โอเพนซอร์สฟรี",
+  "seo.description": "OpenCode คือเอเจนต์เขียนโค้ด AI โอเพนซอร์สฟรีในเทอร์มินัล. เชื่อม Claude, GPT, Gemini หรือโมเดลในเครื่อง และจ่ายเฉพาะผู้ให้บริการโมเดล.",
   "more.label": "Claude Code, Codex, Cursor และ Hermes Agent: เลือกตัวไหนดี"
  },
  "human-in-the-loop": {
@@ -381,8 +381,8 @@
   "faq.2.q": "กฎของ Cursor หรือ AGENTS.md",
   "faq.2.a": "Cursor อ่านได้ทั้งสองแบบ AGENTS.md เป็นไฟล์กลางที่เอเจนต์หลายตัวใช้ร่วมกัน ส่วนกฎใน .cursor/rules เป็นของ Cursor เองและกำหนดขอบเขตให้ใช้กับบางไฟล์ได้",
   "source.label": "เว็บไซต์ทางการของ Cursor",
-  "seo.title": "Cursor AI คืออะไร: โมเดล เอเจนต์ และกฎเทียบกับ AGENTS.md",
-  "seo.description": "Cursor คือเอดิเตอร์โค้ดบน VS Code ที่มีเอเจนต์ AI ในตัว มีโมเดลอะไรให้เลือก กฎอยู่ที่ไหน (.cursor/rules หรือ AGENTS.md) และต่างจาก Claude Code อย่างไร",
+  "seo.title": "Cursor AI คืออะไร: เอดิเตอร์โค้ด AI ที่สร้างบน VS Code",
+  "seo.description": "Cursor คือเอดิเตอร์โค้ด AI ที่สร้างบน VS Code: เอเจนต์ทำงานอยู่ข้างคุณ ใช้โมเดล Grok, Composer หรือของบริษัทอื่น. กฎ: .cursor/rules, AGENTS.md.",
   "more.label": "Claude Code, Codex, Cursor และ Hermes Agent: เลือกตัวไหนดี",
   "also.0.label": "Cursor สำหรับ 1C ผ่าน MCP",
   "notes.title": "Cursor: โมเดล เอเจนต์ และกฎ",
@@ -482,8 +482,8 @@
   "faq.5.q": "Claude in Chrome ใช้กับเบราว์เซอร์อื่นได้ไหม",
   "faq.5.a": "แผงด้านข้างรองรับอย่างเป็นทางการเฉพาะ Chrome บนเดสก์ท็อปและไม่รองรับบนมือถือ ส่วนโหมด Claude Code ใช้ได้กับ Edge และเบราว์เซอร์ Chromium อื่นด้วย.",
   "source.label": "Help: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome: ส่วนขยาย Claude สำหรับ Chrome — การติดตั้ง แพ็กเกจ และเบราว์เซอร์",
-  "seo.description": "ส่วนขยาย Claude สำหรับ Chrome ทำอะไรได้ ติดตั้งจาก Chrome Web Store อย่างไร แพ็กเกจ Claude แบบเสียเงินใดมีให้ และใช้ได้ที่ไหน: แผงด้านข้างใน Chrome บนเดสก์ท็อป หรือ Claude Code ในเบราว์เซอร์ Chromium.",
+  "seo.title": "Claude in Chrome: ส่วนขยาย Chrome แพ็กเกจและการติดตั้ง",
+  "seo.description": "ส่วนขยาย Claude for Chrome: เอเจนต์คลิก กรอกฟอร์ม และอ่านคอนโซลภายใต้การล็อกอินของคุณ. ติดตั้งจาก Chrome Web Store มีเฉพาะแพ็กเกจเสียเงิน.",
   "more.label": "Claude Code ใน Chrome: เอเจนต์ทดสอบเว็บไซต์ในเบราว์เซอร์อย่างไร ดีบักและกรอกฟอร์มภายใต้การล็อกอินของคุณ",
   "compare.title": "สองโหมด: แผงด้านข้างและ Claude Code",
   "compare.head": [
@@ -634,8 +634,8 @@
   "faq.1.q": "Gemini CLI เกิดอะไรขึ้น",
   "faq.1.a": "ตั้งแต่ 18 มิ.ย. 2026 Antigravity CLI ที่เป็นซอร์สปิดมาแทนสำหรับผู้ใช้ทั่วไป ตัว Gemini CLI ยังเป็นโอเพนซอร์ส และใช้ได้กับแพลนองค์กรและ API key แบบเสียเงิน",
   "source.label": "The Register: Google nudges Gemini CLI users to Antigravity",
-  "seo.title": "Gemini CLI คืออะไร และเกิดอะไรขึ้น: เอเจนต์เทอร์มินัลของ Google",
-  "seo.description": "Gemini CLI คือเอเจนต์เทอร์มินัลโอเพนซอร์สของ Google บนโมเดล Gemini ทำอะไรได้ ทำไมผู้ใช้ทั่วไปเสียสิทธิ์เมื่อ 18 มิ.ย. 2026 และใครยังใช้ได้"
+  "seo.title": "Gemini CLI คืออะไร และใครใช้ได้ตั้งแต่มิถุนายน 2026",
+  "seo.description": "Gemini CLI คือเอเจนต์เทอร์มินัลโอเพนซอร์สของ Google บนโมเดล Gemini. ตั้งแต่ 18 มิ.ย. 2026 Antigravity CLI มาแทนสำหรับผู้ใช้ทั่วไป ใครยังใช้ได้."
  },
  "jetbrains": {
   "def": "JetBrains คือบริษัทที่ก่อตั้งในกรุงปรากเมื่อปี 2000 ผลิต IDE อย่าง IntelliJ IDEA, PyCharm, WebStorm และอื่น ๆ รวมถึงภาษา Kotlin. เอเจนต์เขียนโค้ดของตัวเองชื่อ Junie ทำงานใน IDE และเทอร์มินัล Claude Agent และ Codex ฝังอยู่ใน IDE ข้างกัน ส่วนเอเจนต์อื่นเชื่อมผ่านโปรโตคอลเปิด ACP การเติมโค้ดอัตโนมัติใช้โมเดล Mellum ของตัวเอง Air คือพื้นที่ทำงานที่รันเอเจนต์หลายตัวพร้อมกัน (พรีวิว).",
@@ -870,7 +870,7 @@
   "faq.2.a": "ให้ข้อมูลจากแหล่งที่เชื่อถือได้แก่โมเดล และตรวจผลลัพธ์",
   "source.label": "Wikipedia: AI hallucination",
   "seo.title": "Hallucination ของ LLM คืออะไร ตัวอย่างและวิธีลด",
-  "seo.description": "Hallucination ของ LLM คืออะไร พร้อมตัวอย่างจากเอเจนต์เขียนโค้ด: ฟังก์ชันที่แต่งขึ้น แพ็กเกจที่ไม่มีจริง ลิงก์เสีย เกิดจากอะไร ลดด้วยแหล่งข้อมูลและการตรวจได้อย่างไร",
+  "seo.description": "Hallucination ของ LLM คืออะไร พร้อมตัวอย่างจากเอเจนต์เขียนโค้ด: ฟังก์ชันที่แต่งขึ้น แพ็กเกจที่ไม่มีจริง ลิงก์เสีย เกิดจากอะไร และลดได้อย่างไร",
   "notes.title": "ตัวอย่าง hallucination และวิธีลด",
   "notes.items.0.name": "ฟังก์ชันที่แต่งขึ้น",
   "notes.items.0.text": "เอเจนต์เรียกเมธอดที่ไลบรารีไม่มี หรือใส่พารามิเตอร์ที่ฟังก์ชันไม่รับ โค้ดดูสมเหตุสมผลแต่พังตอนรัน",
@@ -942,15 +942,15 @@
  "llm": {
   "aka": "โมเดลภาษาขนาดใหญ่, โมเดล LLM",
   "def": "LLM (large language model หรือโมเดลภาษาขนาดใหญ่) คือโครงข่ายประสาทเทียมที่ฝึกจากข้อความและโค้ดจำนวนมาก และเขียนต่อจากข้อความใน prompt โดยอ่านและเขียนเป็นหน่วยที่เรียกว่า token. ตัวมันเองทำได้แค่ตอบ หากจะลงมือในสภาพแวดล้อมของคุณต้องมี harness และโมเดลที่รวมกับ harness คือเอเจนต์.",
-  "faq.0.q": "LLM ในวงการ IT หมายถึงอะไร",
-  "faq.0.a": "โมเดลภาษาขนาดใหญ่ (large language model) คือโครงข่ายประสาทเทียมที่ฝึกจากข้อความและโค้ดจำนวนมาก และเขียนต่อจากข้อความตามที่ขอ",
+  "faq.0.q": "LLM คืออะไร",
+  "faq.0.a": "LLM (large language model หรือโมเดลภาษาขนาดใหญ่) คือโครงข่ายประสาทเทียมที่ฝึกจากข้อความและโค้ดจำนวนมาก และเขียนต่อจากข้อความตามที่ขอ",
   "faq.1.q": "LLM ต่างจากเอเจนต์ AI อย่างไร",
   "faq.1.a": "โมเดลเพียงตัวเดียวตอบเป็นข้อความเท่านั้น หากจะลงมือในสภาพแวดล้อมของคุณต้องมี harness และโมเดลรวมกับ harness คือเอเจนต์",
   "faq.2.q": "ควรใช้ “a LLM” หรือ “an LLM”",
   "faq.2.a": "ใช้ “an LLM” เพราะอ่านตัวย่อทีละตัวอักษร และตัวแรกออกเสียงว่า “เอล”",
   "source.label": "Wikipedia: Large language model",
-  "seo.title": "LLM คืออะไร ต่างจากเอเจนต์ AI อย่างไร",
-  "seo.description": "LLM คืออะไร: โมเดลภาษาขนาดใหญ่อ่านข้อความเป็น token เก็บบริบท และตอบได้อย่างเดียว เมื่อมี harness จึงเป็นเอเจนต์ ตัวอย่าง: GPT, Claude, DeepSeek, Alice AI",
+  "seo.title": "LLM คืออะไร: โมเดลภาษาขนาดใหญ่ ต่างจากเอเจนต์ AI",
+  "seo.description": "LLM คือโมเดลภาษาขนาดใหญ่ที่อ่านและเขียนข้อความเป็น token และตอบได้อย่างเดียว เมื่อมี harness จึงเป็นเอเจนต์ AI ตัวอย่าง: GPT, Claude, DeepSeek",
   "compare.title": "ตัวอย่าง LLM: ใครเป็นผู้ทำ และมีเอเจนต์ใดทำงานบนโมเดลเหล่านี้",
   "compare.head": [
    "โมเดล (LLM)",
@@ -1023,8 +1023,8 @@
   "faq.1.q": "Antigravity CLI มาแทน Gemini CLI เมื่อไร",
   "faq.1.a": "Google ประกาศการย้ายในเดือนพฤษภาคม 2026 และเมื่อ 18 มิถุนายน 2026 Gemini CLI หยุดทำงานสำหรับผู้ใช้ทั่วไป",
   "source.label": "Virtualization Review: Gemini CLI moves into Antigravity CLI",
-  "seo.title": "Antigravity CLI คืออะไร เอเจนต์ของ Google ที่มาแทน Gemini CLI",
-  "seo.description": "Gemini CLI เคยเป็นเอเจนต์เทอร์มินัลโอเพนซอร์สของ Google ตั้งแต่มิถุนายน 2026 Antigravity CLI แบบโค้ดปิดมาแทนสำหรับผู้ใช้ทั่วไป อะไรเปลี่ยนไป และใครยังใช้ Gemini CLI ได้"
+  "seo.title": "Antigravity CLI คืออะไร: ตัวมาแทน Gemini CLI ของ Google",
+  "seo.description": "Antigravity CLI คือเอเจนต์เทอร์มินัลโค้ดปิดของ Google ที่มาแทน Gemini CLI สำหรับผู้ใช้ทั่วไปในมิถุนายน 2026. อะไรเปลี่ยน ใครยังมีตัวเก่า."
  },
  "session-messaging": {
   "name": "การส่งข้อความข้ามเซสชัน",
@@ -1055,8 +1055,8 @@
   "faq.1.q": "ก่อน Alice AI คืออะไร",
   "faq.1.a": "โมเดลชุด YandexGPT",
   "source.label": "หน้าบริษัท Yandex",
-  "seo.title": "Yandex AI: โมเดล Alice AI, AI Studio และ SourceCraft Code Assistant",
-  "seo.description": "Yandex AI คืออะไร: โมเดล Alice AI (เดิมคือ YandexGPT), ผู้ช่วย Alice, Alice AI Pro สำหรับธุรกิจ, Yandex AI Studio สำหรับสร้างเอเจนต์ และ SourceCraft Code Assistant สำหรับโค้ด."
+  "seo.title": "Yandex AI: โมเดล Alice AI, AI Studio และ SourceCraft",
+  "seo.description": "Yandex AI คือ AI ของ Yandex: โมเดล Alice AI (เดิม YandexGPT), ผู้ช่วย Alice, Alice AI Pro, Yandex AI Studio สร้างเอเจนต์ และ SourceCraft Code Assistant."
  },
  "oauth": {
   "def": "OAuth คือการลงชื่อเข้าใช้ผ่านเบราว์เซอร์: เมื่อเอเจนต์เชื่อมต่อกับบริการ harness จะเปิดหน้าลงชื่อเข้าใช้ของบริการนั้น คุณกรอกรหัสผ่านที่นั่นและอนุมัติการเข้าถึง แล้วเอเจนต์จะได้ token. เอเจนต์ไม่เห็นรหัสผ่านเลย token จำกัดอยู่ที่สิทธิ์ที่ให้ไว้และเพิกถอนได้ เซิร์ฟเวอร์ MCP เชื่อมต่อกับ Jira และ Sentry ด้วยวิธีนี้ เป็นต้น.",
@@ -1152,8 +1152,8 @@
   "faq.2.a": "Cursor อ่านทั้งสองอย่าง. AGENTS.md เป็นไฟล์กลางสำหรับเอเจนต์หลายตัว อยู่ที่ราก และในโฟลเดอร์ย่อย; กฎใน .cursor/rules ใช้เฉพาะกับ Cursor แต่ตั้งให้ใช้เสมอ ตามคำอธิบาย ตามรูปแบบไฟล์ หรือเรียกเองได้.",
   "faq.3.q": "AGENTS.md ต่างจาก spec.md อย่างไร",
   "faq.3.a": "AGENTS.md กำหนดกฎของทั้งโปรเจกต์และเข้าไปในทุกเซสชันของเอเจนต์. spec.md อธิบายงานหนึ่งอย่าง — ข้อกำหนดและเกณฑ์ว่าเสร็จ — และอยู่จนกว่างานจะปิด.",
-  "seo.title": "AGENTS.md เทียบกับกฎของ Cursor และ CLAUDE.md: แต่ละไฟล์ทำอะไร",
-  "seo.description": "AGENTS.md คือไฟล์คำสั่งกลางสำหรับ Codex, Cursor และเอเจนต์อื่น. ต่างจากกฎของ Cursor ใน .cursor/rules และ CLAUDE.md อย่างไร แต่ละไฟล์อยู่ที่ไหน และเอเจนต์อ่านเมื่อใด.",
+  "seo.title": "AGENTS.md กับกฎ Cursor และ CLAUDE.md: แต่ละไฟล์ทำอะไร",
+  "seo.description": "AGENTS.md คือไฟล์คำสั่งกลางสำหรับ Codex, Cursor และเอเจนต์อื่น ต่างจากกฎของ Cursor และ CLAUDE.md อย่างไร อยู่ที่ไหน และเอเจนต์อ่านเมื่อใด",
   "more.label": "AGENTS.md, CLAUDE.md และ spec.md: อะไรอยู่ที่ไหน",
   "also.0.label": "Cursor rules กับ AGENTS.md: อะไรควรอยู่ตรงไหน"
  },
@@ -1218,8 +1218,8 @@
   "faq.1.q": "เอเจนต์ AI สร้างขึ้นจากอะไร",
   "faq.1.a": "โครงข่ายประสาทเทียม (LLM) ทำงานอยู่ภายใน harness โมเดลทำหน้าที่คิด ส่วน harness ให้เครื่องมือ สิทธิ์ และการตรวจสอบแก่โมเดล",
   "source.label": "Anthropic: Building effective agents",
-  "seo.title": "เอเจนต์ AI (LLM agent) คืออะไร: LLM + harness",
-  "seo.description": "เอเจนต์ AI คือโปรแกรมที่ LLM ทำงานภายใน harness และพางานไปจนได้ผลลัพธ์ สถาปัตยกรรม LLM agent ในตารางเดียว พร้อมตัวอย่าง Claude Code, Codex, Cursor",
+  "seo.title": "AI agent คืออะไร: LLM + harness ทำงานอย่างไร",
+  "seo.description": "AI agent หรือเอเจนต์ AI คือโปรแกรมที่ LLM ทำงานใน harness และพางานไปจนได้ผล สถาปัตยกรรมในตารางเดียว ตัวอย่าง Claude Code, Codex, Cursor",
   "parts.title": "ตัวอย่างเอเจนต์ AI",
   "more.label": "เอเจนต์ AI = LLM + harness: LLM, harness และเอเจนต์ต่างกันอย่างไร",
   "matrix.title": "เอเจนต์ AI ประกอบด้วยอะไร",
@@ -1329,8 +1329,8 @@
   "faq.1.q": "VS Code ต่างจาก Cursor อย่างไร",
   "faq.1.a": "Cursor สร้างบน VS Code และฝังเอเจนต์มาตั้งแต่แรก ส่วนใน VS Code เอเจนต์ถูกเพิ่มเป็นส่วนขยาย",
   "source.label": "เว็บไซต์ทางการของ VS Code",
-  "seo.title": "เอเจนต์ AI ใน VS Code: Claude Code, Codex, Copilot",
-  "seo.description": "VS Code คือตัวแก้ไขโค้ดฟรีของ Microsoft มีเอเจนต์ AI ตัวไหนใช้ได้บ้าง ได้แก่ GitHub Copilot, Claude Code, Codex, Cline ตัวไหนฟรี และ Claude Code ทำงานใน VS Code อย่างไร",
+  "seo.title": "VS Code คืออะไร: ตัวแก้ไขโค้ด Microsoft และเอเจนต์ AI ในนั้น",
+  "seo.description": "VS Code คือตัวแก้ไขโค้ดฟรีของ Microsoft. เอเจนต์ AI ที่ทำงานในนั้น: GitHub Copilot, Claude Code, Codex, Cline ตัวไหนฟรี และ Claude ทำงานอย่างไร.",
   "notes.title": "เอเจนต์ AI สำหรับ VS Code",
   "notes.items.0.text": "Microsoft ฝังไว้ใน VS Code มีโหมดเอเจนต์และแพ็กเกจฟรีที่มีข้อจำกัด",
   "notes.items.1.text": "ส่วนขยายจาก Anthropic เป็นเอเจนต์ตัวเดียวกับในเทอร์มินัล ใช้ผ่านแพ็กเกจ Claude หรือ API แบบจ่ายตามการใช้งาน",

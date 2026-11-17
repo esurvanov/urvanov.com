@@ -1,8 +1,8 @@
 ---
 title: რა არის AGENTS.md და CLAUDE.md: ფაილის მაგალითი და სად შევინახოთ სპეციფიკაციები, წესები და skill-ები
 date: 2026-09-28
-updated: 2026-11-08
-description: მუდმივი კონტექსტის ოთხი სახეობა AI-სთვის (AGENTS.md, CLAUDE.md, skill-ები): ამოცანის სპეციფიკაცია, პროექტის ბიბლია, წესები და skill-ები. რა შედის თითოეულში, როდის ხვდება კონტექსტში და რას სთავაზობენ ChatGPT და Claude. ეფუძნება Anthropic-ის, OpenAI-ის, GitHub-ის, Cursor-ისა და Cline-ის დოკუმენტაციას.
+updated: 2026-11-17
+description: მუდმივი კონტექსტის ოთხი სახეობა AI-სთვის (AGENTS.md, CLAUDE.md, skill-ები): სპეციფიკაცია, პროექტის ბიბლია, წესები და skill-ები. რა შედის და როდის.
 tags: AI, Claude Code, CLAUDE.md, harness, სპეციფიკაციები, skill-ები
 category: specs
 layout: wide

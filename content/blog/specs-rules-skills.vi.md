@@ -1,8 +1,8 @@
 ---
 title: AGENTS.md và CLAUDE.md là gì: file ví dụ và nơi giữ đặc tả, quy tắc và skill
 date: 2026-09-28
-updated: 2026-11-08
-description: Bốn loại ngữ cảnh bền vững cho AI (AGENTS.md, CLAUDE.md, skill): đặc tả nhiệm vụ, bible dự án, quy tắc và skill. Mỗi loại chứa gì, vào ngữ cảnh khi nào, và ChatGPT cùng Claude cung cấp gì. Dựa trên tài liệu của Anthropic, OpenAI, GitHub, Cursor và Cline.
+updated: 2026-11-17
+description: Bốn loại ngữ cảnh bền vững cho AI (AGENTS.md, CLAUDE.md, skill): đặc tả nhiệm vụ, bible dự án, quy tắc và skill. Mỗi loại chứa gì và vào ngữ cảnh khi nào.
 tags: AI, Claude Code, CLAUDE.md, harness, đặc tả, skill
 category: specs
 layout: wide

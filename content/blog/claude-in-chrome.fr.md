@@ -1,8 +1,8 @@
 ---
 title: Claude Code dans Chrome : comment l'agent teste un site dans le navigateur — débogage et formulaires sous votre identifiant
 date: 2026-10-05
-updated: 2026-11-13
-description: Claude in Chrome relie Claude Code au navigateur : l'agent ouvre des onglets, lit la console, exécute des scénarios et remplit des formulaires sous votre identifiant. Comment le connecter, ce qu'il fait et quelles permissions donner.
+updated: 2026-11-17
+description: Claude in Chrome relie Claude Code au navigateur : l'agent ouvre des onglets, lit la console et remplit des formulaires. Connexion et permissions.
 tags: IA, agents, Claude Code, Claude in Chrome, navigateur, QA, harness
 category: harness
 layout: wide

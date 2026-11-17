@@ -1,8 +1,9 @@
 ---
 title: Báo cáo sử dụng ChatGPT Enterprise trong công ty: ai dùng, dùng để làm gì và nên mua công cụ AI nào tiếp theo
+seoTitle: Báo cáo sử dụng ChatGPT Enterprise: ai dùng, để làm gì
 date: 2026-09-28
-updated: 2026-11-13
-description: Cách biết nhân viên dùng ChatGPT Enterprise ra sao: năm bản xuất từ bảng quản trị cho ra mức độ áp dụng, độ đồng đều giữa các nhóm, công cụ chính, bản đồ tác vụ, kiểm tra dữ liệu và danh sách người cần phỏng vấn.
+updated: 2026-11-17
+description: Cách xem ai dùng ChatGPT Enterprise và để làm gì: năm bản xuất từ bảng quản trị cho ra mức độ áp dụng, bản đồ tác vụ và danh sách phỏng vấn.
 tags: AI, nghiên cứu, phân tích
 category: research
 layout: wide

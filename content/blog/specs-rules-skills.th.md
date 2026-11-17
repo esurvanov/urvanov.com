@@ -1,8 +1,8 @@
 ---
 title: AGENTS.md และ CLAUDE.md คืออะไร: ไฟล์ตัวอย่าง และที่เก็บ spec, rule และ skill
 date: 2026-09-28
-updated: 2026-11-08
-description: บริบทถาวรสี่ประเภทสำหรับ AI (AGENTS.md, CLAUDE.md, skill): spec ของงาน bible ของโปรเจกต์ rule และ skill แต่ละอย่างใส่อะไร เข้าสู่บริบทเมื่อไร และ ChatGPT กับ Claude มีอะไรให้ อ้างอิงเอกสารของ Anthropic, OpenAI, GitHub, Cursor และ Cline
+updated: 2026-11-17
+description: บริบทถาวรสี่ประเภทสำหรับ AI (AGENTS.md, CLAUDE.md, skill): spec ของงาน bible ของโปรเจกต์ rule และ skill แต่ละอย่างใส่อะไรและเข้าบริบทเมื่อไร
 tags: AI, Claude Code, CLAUDE.md, harness, spec, skill
 category: specs
 layout: wide

@@ -1,0 +1,88 @@
+{
+  "hooks": {
+    "seo.title": "Hook trong tác nhân AI: là gì và chạy vào lúc nào",
+    "seo.description": "Hook là script mà harness chạy vào thời điểm định sẵn khi tác nhân AI làm việc: trước một hành động, sau khi sửa tệp, khi kết thúc. Nó luôn chạy."
+  },
+  "jetbrains": {
+    "seo.title": "JetBrains là gì: IDE, tác nhân Junie và AI",
+    "seo.description": "JetBrains là công ty ở Praha (2000) đứng sau IntelliJ IDEA, PyCharm, WebStorm và Kotlin. Tác nhân riêng Junie, Claude Agent và Codex ngay trong IDE."
+  },
+  "vite": {
+    "seo.title": "Vite là gì: bundler nhanh và dev server cho trang web",
+    "seo.description": "Vite build mã trang web bằng vite build và hiện chỉnh sửa trong trình duyệt ngay lập tức. Vitest gắn với nó thế nào: test dùng lại cùng cấu hình."
+  },
+  "grafana": {
+    "seo.title": "Grafana là gì: dashboard cho metric và log, và MCP",
+    "seo.description": "Grafana là hệ thống biểu đồ và dashboard cho metric và log. Tác nhân đọc chúng qua MCP; cờ --disable-write giữ cho nó chỉ đọc."
+  },
+  "helm": {
+    "seo.title": "Helm là gì: trình quản lý gói cho Kubernetes và chart",
+    "seo.description": "Helm cài ứng dụng vào Kubernetes bằng một lệnh: chart gồm template và values.yaml trở thành một release. Cài đặt, nâng cấp, helm rollback."
+  },
+  "jest": {
+    "seo.title": "Jest là gì: framework test JavaScript, Jest vs Vitest",
+    "seo.description": "Jest là framework test tự động cho JavaScript: bạn mô tả hàm trả về gì, nó hiện các phép kiểm tra thất bại. Khác Vitest và QUnit ở đâu."
+  },
+  "smt-solver": {
+    "seo.title": "SMT solver là gì: ví dụ, Z3 và Apalache",
+    "seo.description": "SMT solver nhận một tập điều kiện và tìm giá trị thỏa mọi điều kiện, hoặc chứng minh không có giá trị nào. Một ví dụ, Z3 và Apalache."
+  },
+  "rfc-2119": {
+    "seo.title": "RFC 2119 là gì: ý nghĩa của MUST, SHOULD và MAY",
+    "seo.description": "RFC 2119 là tiêu chuẩn quy định nghĩa của MUST, SHOULD và MAY trong yêu cầu. Trong spec, chúng cho tác nhân biết điều gì bắt buộc, điều gì chỉ nên làm."
+  },
+  "barber-paradox": {
+    "seo.title": "Nghịch lý người thợ cắt tóc là gì và vì sao không tồn tại",
+    "seo.description": "Nghịch lý người thợ cắt tóc: thợ cạo cho mọi người không tự cạo. Ông có tự cạo không? Phân tích bằng tập hợp, liên hệ nghịch lý Russell và bài toán dừng."
+  },
+  "bible": {
+    "seo.title": "Project bible là gì và nên lưu ở đâu cho tác nhân AI",
+    "seo.description": "Project bible mô tả dự án được xây thế nào và vì sao: ranh giới, thỏa thuận, nguyên tắc. Tác nhân đọc nó trước khi làm; để trong CLAUDE.md hoặc AGENTS.md."
+  },
+  "rice-theorem": {
+    "seo.title": "Định lý Rice là gì và vì sao không kiểm tra hết được mã",
+    "seo.description": "Định lý Rice: không chương trình nào biết với mọi mã liệu nó có một tính chất hành vi cho trước. Lối ra: duyệt hết thế giới nhỏ hoặc nhận \"không biết\"."
+  },
+  "claude-md": {
+    "seo.title": "CLAUDE.md là gì và nên viết gì trong tệp cho Claude Code",
+    "seo.description": "CLAUDE.md là tệp ở gốc dự án chứa chỉ dẫn cố định cho Claude Code: cấu trúc, lệnh build và test, quy ước. Được đọc ngay khi bắt đầu mỗi phiên làm việc."
+  },
+  "sandbox": {
+    "seo.title": "Sandbox là gì: môi trường cách ly cho tác nhân AI",
+    "seo.description": "Sandbox rào hành động của tác nhân: chỉ thấy thư mục được phép, chỉ vào mạng tới địa chỉ cho phép. Tác nhân sai hoặc bị lừa thì thiệt hại vẫn ở bên trong."
+  },
+  "deployment": {
+    "seo.title": "Deployment là gì: đối tượng cập nhật pod trong Kubernetes",
+    "seo.description": "Deployment là bản ghi trong Kubernetes về phiên bản dịch vụ và số bản sao, ví dụ ba bản sao dịch vụ đặt chỗ. Khi cập nhật, pod cũ lần lượt được thay mới."
+  },
+  "vitest": {
+    "seo.title": "Vitest là gì: framework test JavaScript chạy trên Vite",
+    "seo.description": "Vitest là framework test JavaScript trên bundler Vite: chạy các kiểm tra mã và hiển thị ca thất bại. Dùng lại cấu hình Vite và khởi động lại rất nhanh."
+  },
+  "api": {
+    "seo.title": "API là gì: giao diện lập trình ứng dụng giải thích đơn giản",
+    "seo.description": "API là tập quy tắc để một chương trình gọi chương trình khác: gửi được những yêu cầu nào và nhận phản hồi nào. Tác nhân dùng nó mà không cần trình duyệt."
+  },
+  "agile": {
+    "seo.title": "Agile là gì: phát triển phần mềm theo chu kỳ phản hồi ngắn",
+    "seo.description": "Agile là cách phát triển theo chu kỳ ngắn: làm một phần nhỏ, đưa ra xem, nhận phản hồi, chỉnh kế hoạch. Dựa trên Tuyên ngôn Agile năm 2001."
+  },
+  "session": {
+    "seo.title": "Session của tác nhân là gì và điều gì được mang sang sau",
+    "seo.description": "Session là một cuộc trò chuyện liền mạch với tác nhân, từ lúc chạy đến khi thoát. Kiến thức nằm trong ngữ cảnh và mất khi hết; còn lại bộ nhớ, CLAUDE.md."
+  },
+  "poc": {
+    "seo.title": "PoC là gì: proof of concept, chứng minh ý tưởng hoặc lỗi",
+    "seo.description": "PoC (proof of concept) là đoạn mã hoặc kịch bản nhỏ cho thấy vấn đề tái hiện được. Với lỗi, đó là lần chạy ngắn không cần trình duyệt, lặp lại đúng lỗi."
+  },
+  "prompt": {
+    "seo.title": "Prompt là gì: yêu cầu gửi cho mô hình và các phần của nó",
+    "seo.description": "Prompt là yêu cầu cho mô hình: nhiệm vụ, ngữ cảnh, định dạng câu trả lời và ràng buộc. Các phần càng chính xác thì càng ít phải sửa sau câu trả lời đầu."
+  },
+  "codex": {
+    "also.0.label": "Codex hay ChatGPT: nên chọn gì"
+  },
+  "claude-code": {
+    "also.0.label": "Claude Code: cài đặt và giá"
+  }
+}
