@@ -736,8 +736,8 @@
   "faq.9.q": "Claude in Chrome არ შედის ან არ უკავშირდება: რა შევამოწმო?",
   "faq.9.a": "საჭიროა Anthropic-ის პირდაპირი ფასიანი გეგმა: API გასაღებით შესვლა არ მუშაობს. გაფართოებაში უნდა იყოს შესული იმავე ორგანიზაციაში, რომელშიც Claude Code. შეამოწმეთ, რომ ის ჩართულია chrome://extensions გვერდზე, აირჩიეთ /chrome-ში «Reconnect extension» და პირველი დაყენების შემდეგ გადატვირთეთ Chrome.",
   "source.label": "Help: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome: Claude-ის გაფართოება Chrome-ისთვის, ჩამოტვირთვა და გეგმები",
-  "seo.description": "Claude-ის გაფართოება Chrome-ისთვის (Claude Chrome extension): სად ჩამოვტვირთოთ, რომელი გეგმაა საჭირო, რა ხდება Edge-ში, Brave-სა და Windows-ზე და როგორ არ მივცეთ აგენტს ზედმეტი.",
+  "seo.title": "Claude in Chrome: Chrome-ის გაფართოება, ჩამოტვირთვა",
+  "seo.description": "Claude-ის გაფართოება Chrome-ისთვის: სად ჩამოვტვირთოთ, რომელი გეგმაა საჭირო, რა ხდება Edge-ში, Brave-სა და Windows-ზე და როგორ ვიმუშაოთ უსაფრთხოდ.",
   "more.label": "Claude Code Chrome-ში: როგორ ამოწმებს აგენტი საიტს ბრაუზერში — გამართვა და ფორმები თქვენი ავტორიზაციით",
   "compare.title": "ორი რეჟიმი: გვერდითი პანელი და Claude Code",
   "compare.head": [

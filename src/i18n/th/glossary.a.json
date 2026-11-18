@@ -490,8 +490,8 @@
   "faq.9.q": "Claude in Chrome ล็อกอินหรือเชื่อมต่อไม่ได้ ต้องตรวจอะไร",
   "faq.9.a": "ต้องใช้แพ็กเกจ Anthropic แบบเสียเงินโดยตรง การล็อกอินด้วยคีย์ API ใช้ไม่ได้ ส่วนขยายต้องล็อกอินในองค์กรเดียวกับ Claude Code ตรวจว่าเปิดใช้งานอยู่ในหน้า chrome://extensions เลือก «Reconnect extension» ใน /chrome และรีสตาร์ท Chrome หลังติดตั้งครั้งแรก",
   "source.label": "Help: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome: ส่วนขยาย Claude สำหรับ Chrome ดาวน์โหลดจากไหนและต้องใช้แพ็กเกจอะไร",
-  "seo.description": "ส่วนขยาย Claude สำหรับ Chrome (Claude for Chrome): ดาวน์โหลดจากไหน ต้องใช้แพ็กเกจอะไร ใช้ได้ใน Edge, Brave และ Windows ไหม และจะไม่ให้เอเจนต์เข้าถึงเกินจำเป็นได้อย่างไร",
+  "seo.title": "Claude in Chrome: ส่วนขยาย Chrome ดาวน์โหลดและแพ็กเกจ",
+  "seo.description": "ส่วนขยาย Claude สำหรับ Chrome: ดาวน์โหลดจากไหน ต้องใช้แพ็กเกจอะไร ใช้ได้ใน Edge, Brave และ Windows ไหม และใช้อย่างปลอดภัยได้อย่างไร",
   "more.label": "Claude in Chrome: Claude Code ทดสอบเว็บไซต์ในเบราว์เซอร์อย่างไร ดีบักและกรอกฟอร์มภายใต้การล็อกอินของคุณ",
   "compare.title": "สองโหมด: แผงด้านข้างและ Claude Code",
   "compare.head": [

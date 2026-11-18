@@ -736,8 +736,8 @@
   "faq.9.q": "Claude in Chrome ne se connecte pas : que vérifier ?",
   "faq.9.a": "Il faut une formule payante d’Anthropic en direct : la connexion par clé d’API ne fonctionne pas. L’extension doit être connectée à la même organisation que Claude Code. Vérifiez qu’elle est activée sur la page chrome://extensions, choisissez « Reconnect extension » dans /chrome et redémarrez Chrome après la première installation.",
   "source.label": "Aide : Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome : l’extension Claude pour Chrome, téléchargement et forfaits",
-  "seo.description": "L’extension Claude pour Chrome (Claude for Chrome) : où la télécharger, quels forfaits il faut, ce qui marche dans Edge, Brave et sous Windows, et comment ne pas donner trop à l’agent.",
+  "seo.title": "Claude in Chrome : extension Chrome, téléchargement",
+  "seo.description": "L’extension Claude pour Chrome : où la télécharger, quels forfaits il faut, ce qui marche dans Edge, Brave et Windows, et comment l’utiliser sans risque.",
   "more.label": "Claude in Chrome : comment Claude Code teste votre site dans le navigateur — débogage et formulaires sous votre connexion",
   "compare.title": "Deux modes : le panneau latéral et Claude Code",
   "compare.head": [

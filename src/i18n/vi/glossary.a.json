@@ -1442,8 +1442,8 @@
   "faq.5.q": "Claude in Chrome có chạy trong Edge, Brave và trên điện thoại không?",
   "faq.5.a": "Trên điện thoại thì không. Trang trợ giúp của Anthropic nói tiện ích không được hỗ trợ trong các trình duyệt Chromium khác. Tài liệu Claude Code nêu Chrome và Edge, đồng thời cho biết Claude Code tự tìm thấy tiện ích trong Brave, Arc, Vivaldi và Opera; với các trình duyệt này không có cam kết hỗ trợ chính thức.",
   "source.label": "Trợ giúp: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome: tiện ích Claude cho Chrome, tải về và các gói",
-  "seo.description": "Tiện ích Claude cho Chrome (Claude for Chrome): tải ở đâu, cần gói nào, Edge, Brave và Windows ra sao và cách không giao cho tác nhân quá nhiều.",
+  "seo.title": "Claude in Chrome: tiện ích Chrome, tải về và các gói",
+  "seo.description": "Tiện ích Claude cho Chrome (Claude for Chrome): tải ở đâu, cần gói nào, Edge, Brave và Windows ra sao và cách dùng an toàn.",
   "more.label": "Claude in Chrome: Claude Code kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn",
   "compare.title": "Hai chế độ: bảng bên cạnh và Claude Code",
   "compare.head": [

@@ -736,8 +736,8 @@
     "faq.9.q": "Claude in Chrome no inicia sesión o no se conecta: ¿qué reviso?",
     "faq.9.a": "Hace falta un plan de pago de Anthropic directo: iniciar sesión con una clave de API no funciona. La extensión debe tener la sesión iniciada en la misma organización que Claude Code. Compruebe que está activada en la página chrome://extensions, elija «Reconnect extension» en /chrome y reinicie Chrome tras la primera instalación.",
     "source.label": "Ayuda: Get started with Claude in Chrome",
-    "seo.title": "Claude in Chrome: la extensión Claude para Chrome, descarga y planes",
-    "seo.description": "La extensión de Claude para Chrome (Claude in Chrome): dónde descargarla, qué planes exige, qué pasa con Edge, Brave y Windows y cómo no dar de más al agente.",
+    "seo.title": "Claude in Chrome: extensión de Chrome, descarga y planes",
+    "seo.description": "Extensión de Claude para Chrome (Claude for Chrome): dónde descargarla, qué planes necesita, qué pasa en Edge, Brave y Windows y cómo usarla con seguridad.",
     "more.label": "Claude in Chrome: cómo Claude Code prueba su sitio en el navegador — depuración y formularios con su sesión",
     "compare.title": "Dos modos: el panel lateral y Claude Code",
     "compare.head": [

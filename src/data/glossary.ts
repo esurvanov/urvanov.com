@@ -812,7 +812,7 @@ export const TERM_SETS: TermSet[] = [
         ],
         source: { url: 'https://support.claude.com/en/articles/12012173-get-started-with-claude-in-chrome', label: { ru: 'Справка: как начать с Claude in Chrome', en: 'Help: Get started with Claude in Chrome' } },
         seo: {
-          title: { ru: 'Claude in Chrome: расширение Claude для Chrome, скачать и тарифы', en: 'Claude in Chrome: the Claude Chrome extension, download and plans' },
+          title: { ru: 'Claude in Chrome: расширение Chrome, скачать, тарифы', en: 'Claude in Chrome: Chrome extension, download and plans' },
           description: {
             ru: 'Расширение Claude для Chrome (Claude Chrome extension): где скачать, какие тарифы нужны, что с Edge, Brave и Windows и как не отдать агенту лишнего.',
             en: 'The Claude Chrome extension (Claude for Chrome): where to download it, which plans it needs, what works in Edge, Brave and on Windows, and how to stay safe.',
