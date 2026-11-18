@@ -1,7 +1,7 @@
 ---
-title: Claude Code в Chrome: как агент тестирует сайт в браузере — отладка и формы под вашим входом
+title: Claude in Chrome: как агент Claude Code тестирует сайт в браузере — отладка и формы под вашим входом
 date: 2026-10-05
-updated: 2026-11-17
+updated: 2026-11-18
 description: Claude in Chrome соединяет Claude Code с браузером: агент открывает вкладки, читает консоль и заполняет формы под вашим входом. Подключение и права.
 tags: AI, агенты, Claude Code, Claude in Chrome, браузер, QA, харнесс
 category: harness
@@ -18,7 +18,7 @@ Claude Code тестирует сайт в браузере через расш�
   <b-why>Расширение для Chrome соединяет Claude Code с браузером. Агент открывает новые вкладки и работает в видимом окне<b-proof href="https://code.claude.com/docs/en/chrome" quote="Browser actions run in a visible Chrome window in real time."/>.</b-why>
   <iso-art name="claude-in-chrome/terminal-to-browser"></iso-art>
   <b-why align="left">На картинке три участника слева направо: Claude Code в терминале, расширение и ваш браузер. Агент отдаёт расширению команды (открыть вкладку, нажать, прочитать страницу), а расширение выполняет их в браузере, где вы уже вошли в свои сервисы. Поэтому агенту не нужно вводить пароли: сессия у вас уже открыта<b-proof href="https://code.claude.com/docs/en/chrome" quote="shares your browser's login state"/>. Работа идёт в видимом окне, и за шагами можно следить.</b-why>
-  <b-why align="left">Плашки ниже показывают, с какими браузерами работает расширение. Официально поддерживаются Chrome и Edge<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi и Opera построены на том же движке Chromium: Claude Code находит в них расширение и подключается<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. Последняя плашка «WSL: нет» означает, что в подсистеме Windows для Linux (WSL) такое подключение не работает<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
+  <b-why align="left">Плашки показывают, с какими браузерами работает расширение. Официально поддерживаются Chrome и Edge<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi и Opera построены на том же движке Chromium: Claude Code находит в них расширение и подключается<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. Последняя плашка «WSL: нет» означает, что в подсистеме Windows для Linux (WSL) такое подключение не работает<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
   <b-pills>
     <pill>Chrome</pill>
     <pill>Edge</pill>
@@ -91,7 +91,7 @@ Claude Code тестирует сайт в браузере через расш�
 <b-chapter id="risks" icon="shield-check" title="Права и риски">
   <b-why align="left">Агент работает внутри вашего браузера, поэтому всё, куда вы вошли, ему доступно. Первая линия защиты на картинке: список разрешённых сайтов и запрос разрешения на новых.</b-why>
   <iso-art name="claude-in-chrome/site-permissions"></iso-art>
-  <b-why align="left">Слева на картинке решаете вы: агент спрашивает «разрешить?». В центре сайты A и B, которые вы разрешили, и на них агент работает. Справа сайт C, закрытый для агента. Действие на новом сайте начинается с вашего согласия. Ниже правила по пунктам: что агент видит, где он останавливается и на что смотреть до отправки записи.</b-why>
+  <b-why align="left">Слева на картинке решаете вы: агент спрашивает «разрешить?». В центре сайты A и B, которые вы разрешили, и на них агент работает. Справа сайт C, закрытый для агента. Действие на новом сайте начинается с вашего согласия. Правила по пунктам: что агент видит, где он останавливается и на что смотреть до отправки записи.</b-why>
   <b-rules sw="1.8">
     <rule icon="lines" t="Сайты">Какие сайты агент может открывать, нажимать и печатать, задают настройки расширения.</rule>
     <rule icon="bell" t="Запрос">Окно «Claude in Chrome wants to» разрешает действие или весь сайт на сессию.</rule>
@@ -163,7 +163,7 @@ Claude Code тестирует сайт в браузере через расш�
   <b-faq-cards>
     <q t="Как подключить Claude in Chrome?">Поставить расширение из Chrome Web Store, остальное сделает Claude Code. Это занимает минуты.</q>
     <q t="Что умеет агент в браузере?">Читает консоль и разметку страницы, проходит сценарии, заполняет формы, загружает файлы до 10 МБ и записывает GIF.</q>
-    <q t="Безопасно ли давать агенту браузер?">Действия видны в окне в реальном времени, на странице входа или капче агент останавливается и ждёт вас. Права и риски разобраны в статье отдельно.</q>
+    <q t="Безопасно ли давать агенту браузер?">Действия видны в окне в реальном времени, на странице входа или капче агент останавливается и ждёт вас. Расширение работает под вашим входом, поэтому оставьте в настройках только нужные сайты и просмотрите запись GIF до отправки: на ней видны данные аккаунта.</q>
     <q t="Когда лучше свой скрипт?">Агент в браузере медленнее скрипта и может ошибиться. Для повторяющихся проверок, где важны скорость и точность, пишут скрипт.</q>
   </b-faq-cards>
 </b-chapter>

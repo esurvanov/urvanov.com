@@ -1,7 +1,7 @@
 ---
-title: Claude Code ใน Chrome: เอเจนต์ทดสอบเว็บไซต์ในเบราว์เซอร์อย่างไร ดีบักและกรอกฟอร์มภายใต้การล็อกอินของคุณ
+title: Claude in Chrome: Claude Code ทดสอบเว็บไซต์ในเบราว์เซอร์อย่างไร ดีบักและกรอกฟอร์มภายใต้การล็อกอินของคุณ
 date: 2026-10-05
-updated: 2026-11-17
+updated: 2026-11-18
 description: Claude in Chrome เชื่อม Claude Code กับเบราว์เซอร์ เอเจนต์เปิดแท็บ อ่านคอนโซล และกรอกฟอร์มภายใต้การล็อกอินของคุณ วิธีเชื่อมและสิทธิ์
 tags: AI, เอเจนต์, Claude Code, Claude in Chrome, เบราว์เซอร์, QA, harness
 category: harness
@@ -18,7 +18,7 @@ Claude Code ทดสอบเว็บไซต์ในเบราว์เ�
   <b-why>ส่วนขยายของ Chrome เชื่อม Claude Code กับเบราว์เซอร์ เอเจนต์เปิดแท็บใหม่และทำงานในหน้าต่างที่มองเห็นได้<b-proof href="https://code.claude.com/docs/en/chrome" quote="Browser actions run in a visible Chrome window in real time."/></b-why>
   <iso-art name="claude-in-chrome/terminal-to-browser"></iso-art>
   <b-why align="left">ภาพแสดงผู้เข้าร่วมสามฝ่ายจากซ้ายไปขวา คือ Claude Code ในเทอร์มินัล ส่วนขยาย และเบราว์เซอร์ของคุณ เอเจนต์ส่งคำสั่งให้ส่วนขยาย (เปิดแท็บ คลิก อ่านหน้า) และส่วนขยายทำตามในเบราว์เซอร์ที่คุณล็อกอินบริการต่าง ๆ ไว้แล้ว เอเจนต์จึงไม่ต้องพิมพ์รหัสผ่าน เพราะเซสชันของคุณเปิดอยู่แล้ว<b-proof href="https://code.claude.com/docs/en/chrome" quote="shares your browser's login state"/> งานเกิดในหน้าต่างที่มองเห็นได้ และคุณติดตามขั้นตอนได้</b-why>
-  <b-why align="left">แท็กด้านล่างแสดงเบราว์เซอร์ที่ส่วนขยายใช้ได้ Chrome และ Edge รองรับอย่างเป็นทางการ<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/> Brave, Arc, Vivaldi และ Opera สร้างบนเอนจิน Chromium เดียวกัน Claude Code พบส่วนขยายในนั้นและเชื่อมต่อได้<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/> แท็กสุดท้าย “WSL: no” หมายความว่าการเชื่อมต่อนี้ใช้ไม่ได้ใน Windows Subsystem for Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/></b-why>
+  <b-why align="left">ป้ายเหล่านี้แสดงเบราว์เซอร์ที่ส่วนขยายใช้ได้ Chrome และ Edge รองรับอย่างเป็นทางการ<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/> Brave, Arc, Vivaldi และ Opera สร้างบนเอนจิน Chromium เดียวกัน Claude Code พบส่วนขยายในนั้นและเชื่อมต่อได้<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/> แท็กสุดท้าย “WSL: no” หมายความว่าการเชื่อมต่อนี้ใช้ไม่ได้ใน Windows Subsystem for Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/></b-why>
   <b-pills>
     <pill>Chrome</pill>
     <pill>Edge</pill>
@@ -91,7 +91,7 @@ Claude Code ทดสอบเว็บไซต์ในเบราว์เ�
 <b-chapter id="risks" icon="shield-check" title="สิทธิ์และความเสี่ยง">
   <b-why align="left">เอเจนต์ทำงานภายในเบราว์เซอร์ของคุณ ทุกอย่างที่คุณล็อกอินอยู่จึงเข้าถึงได้ ด่านป้องกันแรกในภาพคือรายการเว็บไซต์ที่อนุญาตและคำขอสิทธิ์สำหรับเว็บไซต์ใหม่</b-why>
   <iso-art name="claude-in-chrome/site-permissions"></iso-art>
-  <b-why align="left">ทางซ้ายของภาพคุณเป็นผู้ตัดสินใจ เอเจนต์ถามว่า “อนุญาตไหม” ตรงกลางคือเว็บไซต์ A และ B ที่คุณอนุญาตและเอเจนต์ทำงานอยู่ ทางขวาคือเว็บไซต์ C ที่ปิดไม่ให้เอเจนต์เข้า การกระทำบนเว็บไซต์ใหม่เริ่มจากความยินยอมของคุณ ด้านล่างเป็นกฎทีละข้อ คือเอเจนต์เห็นอะไร หยุดตรงไหน และควรดูอะไรก่อนส่งการบันทึก</b-why>
+  <b-why align="left">ทางซ้ายของภาพคุณเป็นผู้ตัดสินใจ เอเจนต์ถามว่า “อนุญาตไหม” ตรงกลางคือเว็บไซต์ A และ B ที่คุณอนุญาตและเอเจนต์ทำงานอยู่ ทางขวาคือเว็บไซต์ C ที่ปิดไม่ให้เอเจนต์เข้า การกระทำบนเว็บไซต์ใหม่เริ่มจากความยินยอมของคุณ กฎทีละข้อ: เอเจนต์เห็นอะไร หยุดตรงไหน และควรดูอะไรก่อนส่งการบันทึก</b-why>
   <b-rules sw="1.8">
     <rule icon="lines" t="เว็บไซต์">การตั้งค่าของส่วนขยายควบคุมว่าเอเจนต์เข้าดู คลิก และพิมพ์บนเว็บไซต์ใดได้</rule>
     <rule icon="bell" t="คำขอ">กล่องโต้ตอบ “Claude in Chrome wants to” อนุญาตการกระทำหนึ่งอย่างหรือทั้งเว็บไซต์สำหรับเซสชัน</rule>
@@ -163,7 +163,7 @@ Claude Code ทดสอบเว็บไซต์ในเบราว์เ�
   <b-faq-cards>
     <q t="เชื่อมต่อ Claude in Chrome อย่างไร">ติดตั้งส่วนขยายจาก Chrome Web Store แล้ว Claude Code ทำที่เหลือ ใช้เวลาไม่กี่นาที</q>
     <q t="เอเจนต์ทำอะไรในเบราว์เซอร์ได้บ้าง">อ่านคอนโซลและมาร์กอัปของหน้า รันสถานการณ์ทดสอบ กรอกฟอร์ม อัปโหลดไฟล์รวมไม่เกิน 10 MB และบันทึก GIF</q>
-    <q t="ให้เอเจนต์ใช้เบราว์เซอร์ปลอดภัยไหม">การกระทำมองเห็นได้ในหน้าต่างแบบเรียลไทม์ และเมื่อเจอหน้าลงชื่อเข้าใช้หรือ CAPTCHA เอเจนต์หยุดและรอคุณ สิทธิ์และความเสี่ยงอธิบายแยกไว้ในบทความ</q>
+    <q t="ให้เอเจนต์ใช้เบราว์เซอร์ปลอดภัยไหม">การกระทำมองเห็นได้ในหน้าต่างแบบเรียลไทม์ และเมื่อเจอหน้าลงชื่อเข้าใช้หรือ CAPTCHA เอเจนต์หยุดและรอคุณ ส่วนขยายทำงานภายใต้การล็อกอินของคุณ ดังนั้นในการตั้งค่าให้เหลือเฉพาะเว็บไซต์ที่จำเป็น และตรวจทานการบันทึก GIF ก่อนส่ง</q>
     <q t="เมื่อไรสคริปต์ดีกว่า">เอเจนต์ในเบราว์เซอร์ช้ากว่าสคริปต์และผิดพลาดได้ สำหรับการตรวจซ้ำที่ความเร็วและความแม่นยำสำคัญ ให้เขียนสคริปต์</q>
   </b-faq-cards>
 </b-chapter>

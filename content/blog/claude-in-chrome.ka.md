@@ -18,7 +18,7 @@ Claude Code ამოწმებს საიტს ბრაუზერში
   <b-why>Chrome-ის გაფართოება Claude Code-ს ბრაუზერთან აკავშირებს. აგენტი ხსნის ახალ ჩანართებს და ხილულ ფანჯარაში მუშაობს<b-proof href="https://code.claude.com/docs/en/chrome" quote="Browser actions run in a visible Chrome window in real time."/>.</b-why>
   <iso-art name="claude-in-chrome/terminal-to-browser"></iso-art>
   <b-why align="left">სურათზე მარცხნიდან მარჯვნივ სამი მონაწილეა: Claude Code ტერმინალში, გაფართოება და თქვენი ბრაუზერი. აგენტი გაფართოებას ბრძანებებს აძლევს (გახსენი ჩანართი, დააწკაპუნე, წაიკითხე გვერდი), გაფართოება კი მათ ბრაუზერში ასრულებს, სადაც თქვენს სერვისებში უკვე შესული ხართ. ამიტომ აგენტს პაროლების აკრეფა არ სჭირდება: თქვენი სესია უკვე გახსნილია<b-proof href="https://code.claude.com/docs/en/chrome" quote="shares your browser's login state"/>. მუშაობა ხილულ ფანჯარაში მიმდინარეობს და ნაბიჯებს თვალს ადევნებთ.</b-why>
-  <b-why align="left">ტეგები გვიჩვენებს, რომელ ბრაუზერებთან მუშაობს გაფართოება. Chrome და Edge ოფიციალურად არის მხარდაჭერილი<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi და Opera იმავე Chromium ძრავზეა აგებული: Claude Code მათში გაფართოებას პოულობს და უკავშირდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. ბოლო ტეგი, „WSL: no“, ნიშნავს, რომ ეს კავშირი Windows Subsystem for Linux-ში (WSL) არ მუშაობს<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
+  <b-why align="left">ეტიკეტები აჩვენებს, რომელ ბრაუზერებთან მუშაობს გაფართოება. Chrome და Edge ოფიციალურად არის მხარდაჭერილი<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi და Opera იმავე Chromium ძრავზეა აგებული: Claude Code მათში გაფართოებას პოულობს და უკავშირდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. ბოლო ტეგი, „WSL: no“, ნიშნავს, რომ ეს კავშირი Windows Subsystem for Linux-ში (WSL) არ მუშაობს<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
   <b-pills>
     <pill>Chrome</pill>
     <pill>Edge</pill>
@@ -91,7 +91,7 @@ Claude Code ამოწმებს საიტს ბრაუზერში
 <b-chapter id="risks" icon="shield-check" title="ნებართვები და რისკები">
   <b-why align="left">აგენტი თქვენს ბრაუზერში მუშაობს, ამიტომ ყველაფერი, რაშიც შესული ხართ, მისთვის ხელმისაწვდომია. სურათზე დაცვის პირველი ხაზია დაშვებული საიტების სია და ახალ საიტებზე ნებართვის მოთხოვნა.</b-why>
   <iso-art name="claude-in-chrome/site-permissions"></iso-art>
-  <b-why align="left">სურათის მარცხენა მხარეს თქვენ წყვეტთ: აგენტი კითხულობს „დავუშვა?“. ცენტრში A და B საიტებია, რომლებიც დაუშვით და სადაც აგენტი მუშაობს. მარჯვნივ C საიტია, აგენტისთვის დახურული. ახალ საიტზე მოქმედება თქვენი თანხმობით იწყება. ქვემოთ წესები სათითაოდ: რას ხედავს აგენტი, სად ჩერდება და რას უნდა დააკვირდეთ ჩანაწერის გაგზავნამდე.</b-why>
+  <b-why align="left">სურათის მარცხენა მხარეს თქვენ წყვეტთ: აგენტი კითხულობს „დავუშვა?“. ცენტრში A და B საიტებია, რომლებიც დაუშვით და სადაც აგენტი მუშაობს. მარჯვნივ C საიტია, აგენტისთვის დახურული. ახალ საიტზე მოქმედება თქვენი თანხმობით იწყება. წესები პუნქტობრივად: რას ხედავს აგენტი, სად ჩერდება და რას უნდა დააკვირდეთ ჩანაწერის გაგზავნამდე.</b-why>
   <b-rules sw="1.8">
     <rule icon="lines" t="საიტები">გაფართოების პარამეტრები განსაზღვრავს, რომელ საიტებზე შეუძლია აგენტს დათვალიერება, წკაპუნი და წერა.</rule>
     <rule icon="bell" t="მოთხოვნა">დიალოგი „Claude in Chrome wants to“ დაუშვებს მოქმედებას ან მთელ საიტს სესიისთვის.</rule>
@@ -163,7 +163,7 @@ Claude Code ამოწმებს საიტს ბრაუზერში
   <b-faq-cards>
     <q t="როგორ დავაკავშიროთ Claude in Chrome?">დააყენეთ გაფართოება Chrome Web Store-დან და დანარჩენს Claude Code გააკეთებს. ამას წუთები სჭირდება.</q>
     <q t="რას აკეთებს აგენტი ბრაუზერში?">კითხულობს კონსოლსა და გვერდის მარკაპს, გადის სცენარებს, ავსებს ფორმებს, ტვირთავს ფაილებს ჯამში 10 MB-მდე და წერს GIF-ებს.</q>
-    <q t="უსაფრთხოა თუ არა აგენტისთვის ბრაუზერის მიცემა?">მოქმედებები ფანჯარაში რეალურ დროში ჩანს, ხოლო შესვლის გვერდზე ან captcha-ზე აგენტი ჩერდება და თქვენ გელოდებათ. ნებართვები და რისკები ცალკე არის განხილული სტატიაში.</q>
+    <q t="უსაფრთხოა თუ არა აგენტისთვის ბრაუზერის მიცემა?">მოქმედებები ფანჯარაში რეალურ დროში ჩანს, ხოლო შესვლის გვერდზე ან captcha-ზე აგენტი ჩერდება და თქვენ გელოდებათ. გაფართოება თქვენი შესვლით მუშაობს, ამიტომ დატოვეთ პარამეტრებში მხოლოდ საჭირო საიტები და GIF-ჩანაწერი გაგზავნამდე გადაამოწმეთ.</q>
     <q t="როდის არის სკრიპტი უკეთესი?">ბრაუზერში აგენტი სკრიპტზე ნელია და შეიძლება შეცდეს. განმეორებადი შემოწმებისთვის, სადაც სიჩქარე და სიზუსტე მნიშვნელოვანია, დაწერეთ სკრიპტი.</q>
   </b-faq-cards>
 </b-chapter>

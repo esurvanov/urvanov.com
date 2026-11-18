@@ -1,7 +1,7 @@
 ---
-title: Claude Code trong Chrome: tác nhân kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn
+title: Claude in Chrome: Claude Code kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn
 date: 2026-10-05
-updated: 2026-11-17
+updated: 2026-11-18
 description: Claude in Chrome nối Claude Code với trình duyệt: tác nhân mở tab, đọc console và điền form dưới phiên đăng nhập của bạn. Cách kết nối và quyền.
 tags: AI, tác nhân, Claude Code, Claude in Chrome, trình duyệt, QA, harness
 category: harness
@@ -18,7 +18,7 @@ Claude Code kiểm thử trang web trong trình duyệt qua tiện ích Claude i
   <b-why>Một tiện ích mở rộng của Chrome nối Claude Code với trình duyệt. Tác nhân mở tab mới và làm việc trong một cửa sổ nhìn thấy được<b-proof href="https://code.claude.com/docs/en/chrome" quote="Browser actions run in a visible Chrome window in real time."/>.</b-why>
   <iso-art name="claude-in-chrome/terminal-to-browser"></iso-art>
   <b-why align="left">Hình cho thấy ba thành phần từ trái sang phải: Claude Code trong terminal, tiện ích mở rộng và trình duyệt của bạn. Tác nhân ra lệnh cho tiện ích (mở tab, bấm, đọc trang), và tiện ích thực hiện chúng trong trình duyệt nơi bạn đã đăng nhập vào các dịch vụ. Vì vậy tác nhân không cần gõ mật khẩu: phiên của bạn đã mở sẵn<b-proof href="https://code.claude.com/docs/en/chrome" quote="shares your browser's login state"/>. Công việc diễn ra trong cửa sổ nhìn thấy được, và bạn có thể theo dõi từng bước.</b-why>
-  <b-why align="left">Các nhãn bên dưới cho biết tiện ích hoạt động với trình duyệt nào. Chrome và Edge được hỗ trợ chính thức<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi và Opera được xây trên cùng engine Chromium: Claude Code tìm thấy tiện ích trong đó và kết nối<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. Nhãn cuối, “WSL: không”, nghĩa là kết nối này không hoạt động trong Windows Subsystem for Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
+  <b-why align="left">Các nhãn cho thấy tiện ích hoạt động với trình duyệt nào. Chrome và Edge được hỗ trợ chính thức<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi và Opera được xây trên cùng engine Chromium: Claude Code tìm thấy tiện ích trong đó và kết nối<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. Nhãn cuối, “WSL: không”, nghĩa là kết nối này không hoạt động trong Windows Subsystem for Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
   <b-pills>
     <pill>Chrome</pill>
     <pill>Edge</pill>
@@ -91,7 +91,7 @@ Claude Code kiểm thử trang web trong trình duyệt qua tiện ích Claude i
 <b-chapter id="risks" icon="shield-check" title="Quyền và rủi ro">
   <b-why align="left">Tác nhân làm việc bên trong trình duyệt của bạn, nên mọi thứ bạn đã đăng nhập đều nằm trong tầm với của nó. Tuyến phòng thủ đầu tiên trong hình là danh sách các trang được phép và yêu cầu cấp quyền với trang mới.</b-why>
   <iso-art name="claude-in-chrome/site-permissions"></iso-art>
-  <b-why align="left">Bên trái hình là nơi bạn quyết định: tác nhân hỏi “cho phép không?”. Ở giữa là trang A và B, bạn đã cho phép và tác nhân làm việc ở đó. Bên phải là trang C, đóng với tác nhân. Mọi hành động trên trang mới đều bắt đầu bằng sự đồng ý của bạn. Dưới đây là từng quy tắc: tác nhân thấy gì, dừng ở đâu và cần xem gì trước khi gửi một đoạn ghi.</b-why>
+  <b-why align="left">Bên trái hình là nơi bạn quyết định: tác nhân hỏi “cho phép không?”. Ở giữa là trang A và B, bạn đã cho phép và tác nhân làm việc ở đó. Bên phải là trang C, đóng với tác nhân. Mọi hành động trên trang mới đều bắt đầu bằng sự đồng ý của bạn. Các quy tắc theo từng điểm: tác nhân thấy gì, dừng ở đâu và cần xem gì trước khi gửi một đoạn ghi.</b-why>
   <b-rules sw="1.8">
     <rule icon="lines" t="Trang web">Cài đặt của tiện ích quyết định tác nhân được duyệt, bấm và gõ trên những trang nào.</rule>
     <rule icon="bell" t="Yêu cầu cấp quyền">Hộp thoại “Claude in Chrome wants to” cho phép một hành động hoặc cả trang trong phiên làm việc.</rule>
@@ -163,7 +163,7 @@ Claude Code kiểm thử trang web trong trình duyệt qua tiện ích Claude i
   <b-faq-cards>
     <q t="Kết nối Claude in Chrome như thế nào?">Cài tiện ích từ Chrome Web Store, phần còn lại do Claude Code làm. Chỉ mất vài phút.</q>
     <q t="Tác nhân làm được gì trong trình duyệt?">Nó đọc console và mã đánh dấu của trang, chạy các kịch bản, điền form, tải tệp lên tổng cộng tối đa 10 MB và quay GIF.</q>
-    <q t="Giao trình duyệt cho tác nhân có an toàn không?">Các hành động hiện ra trong cửa sổ theo thời gian thực, và gặp trang đăng nhập hoặc captcha thì tác nhân dừng và chờ bạn. Quyền và rủi ro được trình bày riêng trong bài.</q>
+    <q t="Giao trình duyệt cho tác nhân có an toàn không?">Các hành động hiện ra trong cửa sổ theo thời gian thực, và gặp trang đăng nhập hoặc captcha thì tác nhân dừng và chờ bạn. Tiện ích chạy bằng phiên đăng nhập của bạn, vì vậy chỉ giữ trong phần cài đặt những trang cần cho tác vụ và xem lại bản ghi GIF trước khi chia sẻ.</q>
     <q t="Khi nào script tốt hơn?">Tác nhân trong trình duyệt chậm hơn script và có thể mắc lỗi. Với các phép kiểm tra lặp lại cần tốc độ và độ chính xác, hãy viết script.</q>
   </b-faq-cards>
 </b-chapter>

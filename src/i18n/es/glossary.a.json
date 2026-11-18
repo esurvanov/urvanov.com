@@ -720,17 +720,25 @@
   },
   "claude-in-chrome": {
     "aka": "Claude para Chrome, extensión de Claude para Chrome",
-    "def": "La extensión de Claude para Chrome (Claude in Chrome) es la extensión oficial de Anthropic con la que un agente trabaja en su navegador: abre páginas, hace clic, rellena formularios y lee la consola con su sesión. Se instala desde Chrome Web Store y solo funciona en planes de pago. Tiene dos modos: panel lateral y control desde Claude Code.",
+    "def": "Claude in Chrome (Claude para Chrome, la extensión de Claude para Chrome) es la extensión oficial de Anthropic con la que Claude lee páginas, hace clic y rellena formularios en su Chrome con su sesión iniciada. Se instala desde Chrome Web Store, requiere un plan de pago de Claude (Pro, Max, Ultra, Team o Enterprise) y funciona en Chrome de escritorio; en el teléfono no existe.",
     "faq.3.q": "¿Qué hace la extensión de Claude para Chrome?",
     "faq.3.a": "Permite que el agente trabaje en tu navegador: abrir páginas, hacer clic, rellenar formularios y leer la consola con tu sesión iniciada.",
     "faq.4.q": "¿Cómo se usa Claude in Chrome?",
     "faq.4.a": "Hay dos modos: un panel lateral donde Claude hace la tarea en la página abierta, y el control del navegador desde Claude Code.",
-    "faq.5.q": "¿Claude in Chrome funciona en otros navegadores?",
-    "faq.5.a": "El panel lateral solo funciona oficialmente en Chrome de escritorio y no en el móvil. El modo de Claude Code también funciona en Edge y otros navegadores Chromium.",
+    "faq.5.q": "¿Claude in Chrome funciona en Edge, Brave y en el teléfono?",
+    "faq.5.a": "En el teléfono no. La ayuda de Anthropic indica que la extensión no es compatible con otros navegadores Chromium. La documentación de Claude Code nombra Chrome y Edge y añade que Claude Code mismo encuentra la extensión en Brave, Arc, Vivaldi y Opera, sin garantía oficial de soporte para ellos.",
+    "faq.6.q": "¿Dónde descargo la extensión de Claude para Chrome?",
+    "faq.6.a": "Solo en la página de Claude en Chrome Web Store: chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn, a la que enlazan la ayuda de Anthropic y la documentación de Claude Code. Pulse «Añadir a Chrome» e inicie sesión con su cuenta de Claude.",
+    "faq.7.q": "¿Claude in Chrome funciona en Windows y Mac?",
+    "faq.7.a": "Sí, en el ordenador. La documentación de Claude Code cubre macOS, Linux y Windows y nombra una sola excepción: el Subsistema de Windows para Linux (WSL). Si Chrome se ejecuta dentro de WSL, la conexión no funcionará.",
+    "faq.8.q": "¿Es seguro dar a Claude in Chrome acceso a mi navegador?",
+    "faq.8.a": "Anthropic misma califica la extensión de arriesgada, a pesar de sus clasificadores de seguridad. El agente ve todo aquello en lo que usted tiene la sesión iniciada en ese navegador, y el texto de una página puede contener órdenes dirigidas al agente. Ante una página de inicio de sesión o un CAPTCHA, el agente se detiene y le espera. Deje en los ajustes de la extensión solo los sitios necesarios y revise la grabación GIF antes de compartirla: en ella se ven los datos de la cuenta.",
+    "faq.9.q": "Claude in Chrome no inicia sesión o no se conecta: ¿qué reviso?",
+    "faq.9.a": "Hace falta un plan de pago de Anthropic directo: iniciar sesión con una clave de API no funciona. La extensión debe tener la sesión iniciada en la misma organización que Claude Code. Compruebe que está activada en la página chrome://extensions, elija «Reconnect extension» en /chrome y reinicie Chrome tras la primera instalación.",
     "source.label": "Ayuda: Get started with Claude in Chrome",
-    "seo.title": "Extensión de Claude para Chrome: qué es y planes",
-    "seo.description": "Claude in Chrome, la extensión de Claude para Chrome: el agente hace clic, rellena formularios y lee la consola con tu sesión. Solo con plan de pago.",
-    "more.label": "Claude Code en Chrome: cómo prueba el agente un sitio en el navegador, depuración y formularios con tu sesión iniciada",
+    "seo.title": "Claude in Chrome: la extensión Claude para Chrome, descarga y planes",
+    "seo.description": "La extensión de Claude para Chrome (Claude in Chrome): dónde descargarla, qué planes exige, qué pasa con Edge, Brave y Windows y cómo no dar de más al agente.",
+    "more.label": "Claude in Chrome: cómo Claude Code prueba su sitio en el navegador — depuración y formularios con su sesión",
     "compare.title": "Dos modos: el panel lateral y Claude Code",
     "compare.head": [
       "Panel lateral",
@@ -744,7 +752,7 @@
     "compare.rows.1": [
       "Quién ejecuta la tarea",
       "Claude en el panel",
-      "el agente Claude Code; el navegador es su herramienta"
+      "el agente Claude Code; el navegador es uno de sus medios"
     ],
     "compare.rows.2": [
       "Para qué",

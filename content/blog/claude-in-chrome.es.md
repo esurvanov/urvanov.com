@@ -1,5 +1,5 @@
 ---
-title: Extensión de Claude para Chrome (Claude in Chrome): cómo prueba el agente un sitio en el navegador, depuración y formularios con tu sesión
+title: Claude in Chrome: cómo Claude Code prueba su sitio en el navegador — depuración y formularios con su sesión
 date: 2026-10-05
 updated: 2026-11-18
 description: Cómo conectar la extensión de Claude para Chrome con Claude Code: el agente abre pestañas, lee la consola y rellena formularios con tu sesión. Pasos y permisos.
@@ -18,7 +18,7 @@ La extensión de Claude para Chrome (Claude in Chrome) permite que Claude Code p
   <b-why>Una extensión de Chrome conecta Claude Code con el navegador. El agente abre pestañas nuevas y trabaja en una ventana visible<b-proof href="https://code.claude.com/docs/en/chrome" quote="Browser actions run in a visible Chrome window in real time."/>.</b-why>
   <iso-art name="claude-in-chrome/terminal-to-browser"></iso-art>
   <b-why align="left">La imagen muestra tres participantes de izquierda a derecha: Claude Code en la terminal, la extensión y tu navegador. El agente da órdenes a la extensión (abrir una pestaña, hacer clic, leer la página), y la extensión las ejecuta en el navegador donde ya has iniciado sesión en tus servicios. Así el agente no necesita escribir contraseñas: tu sesión ya está abierta<b-proof href="https://code.claude.com/docs/en/chrome" quote="shares your browser's login state"/>. El trabajo ocurre en una ventana visible y puedes seguir los pasos.</b-why>
-  <b-why align="left">Las etiquetas de abajo muestran con qué navegadores funciona la extensión. Chrome y Edge tienen soporte oficial<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi y Opera están construidos sobre el mismo motor Chromium: Claude Code encuentra la extensión en ellos y se conecta<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. La última etiqueta, «WSL: no», significa que esta conexión no funciona en el Subsistema de Windows para Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
+  <b-why align="left">Las etiquetas muestran con qué navegadores funciona la extensión. Chrome y Edge tienen soporte oficial<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi y Opera están construidos sobre el mismo motor Chromium: Claude Code encuentra la extensión en ellos y se conecta<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. La última etiqueta, «WSL: no», significa que esta conexión no funciona en el Subsistema de Windows para Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
   <b-pills>
     <pill>Chrome</pill>
     <pill>Edge</pill>
@@ -91,7 +91,7 @@ La extensión de Claude para Chrome (Claude in Chrome) permite que Claude Code p
 <b-chapter id="risks" icon="shield-check" title="Permisos y riesgos">
   <b-why align="left">El agente trabaja dentro de tu navegador, así que todo aquello en lo que tienes la sesión iniciada está a su alcance. La primera línea de defensa en la imagen es la lista de sitios permitidos y la solicitud de permiso en los nuevos.</b-why>
   <iso-art name="claude-in-chrome/site-permissions"></iso-art>
-  <b-why align="left">A la izquierda de la imagen decides tú: el agente pregunta «¿permitir?». En el centro están los sitios A y B, que permitiste y donde el agente trabaja. A la derecha está el sitio C, cerrado al agente. Una acción en un sitio nuevo empieza con tu consentimiento. Abajo están las reglas una por una: qué ve el agente, dónde se detiene y qué mirar antes de enviar una grabación.</b-why>
+  <b-why align="left">A la izquierda de la imagen decides tú: el agente pregunta «¿permitir?». En el centro están los sitios A y B, que permitiste y donde el agente trabaja. A la derecha está el sitio C, cerrado al agente. Una acción en un sitio nuevo empieza con tu consentimiento. Reglas punto por punto: qué ve el agente, dónde se detiene y qué mirar antes de enviar una grabación.</b-why>
   <b-rules sw="1.8">
     <rule icon="lines" t="Sitios">La configuración de la extensión controla en qué sitios puede navegar, hacer clic y escribir el agente.</rule>
     <rule icon="bell" t="Solicitud">El cuadro «Claude in Chrome wants to» permite una acción o todo el sitio durante la sesión.</rule>
@@ -163,7 +163,7 @@ La extensión de Claude para Chrome (Claude in Chrome) permite que Claude Code p
   <b-faq-cards>
     <q t="¿Cómo se conecta Claude in Chrome?">Instala la extensión desde Chrome Web Store, y Claude Code hace el resto. Lleva minutos.</q>
     <q t="¿Qué puede hacer el agente en el navegador?">Lee la consola y el marcado de la página, recorre escenarios, rellena formularios, sube archivos de hasta 10 MB en total y graba GIF.</q>
-    <q t="¿Es seguro dar el navegador a un agente?">Las acciones se ven en la ventana en tiempo real, y ante una página de inicio de sesión o un captcha el agente se detiene y te espera. Los permisos y riesgos se tratan por separado en el artículo.</q>
+    <q t="¿Es seguro dar el navegador a un agente?">Las acciones se ven en la ventana en tiempo real, y ante una página de inicio de sesión o un captcha el agente se detiene y te espera. La extensión trabaja con su sesión iniciada, así que deje en los ajustes solo los sitios necesarios y revise la grabación GIF antes de compartirla.</q>
     <q t="¿Cuándo es mejor un script?">Un agente en el navegador es más lento que un script y puede cometer errores. Para comprobaciones repetidas donde importan la velocidad y la precisión, escribe un script.</q>
   </b-faq-cards>
 </b-chapter>

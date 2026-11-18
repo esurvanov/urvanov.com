@@ -1434,17 +1434,17 @@
  },
  "claude-in-chrome": {
   "aka": "Claude for Chrome, tiện ích Claude cho Chrome",
-  "def": "Claude in Chrome là gì (Claude for Chrome): tiện ích mở rộng chính thức của Claude do Anthropic phát hành cho Chrome, cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console. Cài từ Chrome Web Store, chỉ chạy trên các gói Claude trả phí.",
+  "def": "Claude in Chrome (Claude for Chrome, tiện ích Claude cho Chrome) là tiện ích mở rộng chính thức của Anthropic, qua đó Claude đọc trang, bấm nút và điền biểu mẫu trong Chrome của bạn dưới phiên đăng nhập của bạn. Cài từ Chrome Web Store, cần gói Claude trả phí (Pro, Max, Ultra, Team hoặc Enterprise) và chạy trong Chrome trên máy tính, không có bản cho điện thoại.",
   "faq.3.q": "Tiện ích Claude cho Chrome làm gì?",
   "faq.3.a": "Cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console dưới tài khoản đăng nhập của bạn.",
   "faq.4.q": "Dùng Claude in Chrome như thế nào?",
   "faq.4.a": "Có hai chế độ: bảng bên cạnh, nơi Claude làm nhiệm vụ trên trang đang mở, và điều khiển trình duyệt từ Claude Code.",
-  "faq.5.q": "Claude in Chrome có chạy trong các trình duyệt khác không?",
-  "faq.5.a": "Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính và không chạy trên điện thoại. Chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
+  "faq.5.q": "Claude in Chrome có chạy trong Edge, Brave và trên điện thoại không?",
+  "faq.5.a": "Trên điện thoại thì không. Trang trợ giúp của Anthropic nói tiện ích không được hỗ trợ trong các trình duyệt Chromium khác. Tài liệu Claude Code nêu Chrome và Edge, đồng thời cho biết Claude Code tự tìm thấy tiện ích trong Brave, Arc, Vivaldi và Opera; với các trình duyệt này không có cam kết hỗ trợ chính thức.",
   "source.label": "Trợ giúp: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome là gì (Claude for Chrome): tiện ích",
-  "seo.description": "Claude in Chrome (Claude for Chrome) là tiện ích Claude cho Chrome: tác nhân bấm, điền form và đọc console dưới tài khoản của bạn. Chỉ gói Claude trả phí.",
-  "more.label": "Claude Code trong Chrome: tác nhân kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn",
+  "seo.title": "Claude in Chrome: tiện ích Claude cho Chrome, tải về và các gói",
+  "seo.description": "Tiện ích Claude cho Chrome (Claude for Chrome): tải ở đâu, cần gói nào, Edge, Brave và Windows ra sao và cách không giao cho tác nhân quá nhiều.",
+  "more.label": "Claude in Chrome: Claude Code kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn",
   "compare.title": "Hai chế độ: bảng bên cạnh và Claude Code",
   "compare.head": [
    "Bảng bên cạnh",
@@ -1458,7 +1458,7 @@
   "compare.rows.1": [
    "Ai chạy nhiệm vụ",
    "Claude trong bảng",
-   "tác nhân Claude Code; trình duyệt là công cụ của nó"
+   "tác nhân Claude Code; trình duyệt là một trong các phương tiện của nó"
   ],
   "compare.rows.2": [
    "Dùng để làm gì",
@@ -1475,6 +1475,14 @@
   "faq.1.q": "Claude in Chrome có miễn phí không?",
   "faq.1.a": "Không. Nó chỉ chạy trên các gói Claude trả phí: Pro, Max, Ultra, Team và Enterprise. Ở Team và Enterprise, quản trị viên quyết định có bật nó hay không.",
   "faq.2.q": "Dùng Claude in Chrome từ Claude Code thế nào?",
-  "faq.2.a": "Chạy claude --chrome hoặc bật Enabled by default trong /chrome; trong VS Code, gõ @browser. Cần gói Anthropic trực tiếp và đăng nhập bằng /login: không chạy qua Bedrock, Google Cloud hay Microsoft Foundry, cũng không chạy với khóa API."
+  "faq.2.a": "Chạy claude --chrome hoặc bật Enabled by default trong /chrome; trong VS Code, gõ @browser. Cần gói Anthropic trực tiếp và đăng nhập bằng /login: không chạy qua Bedrock, Google Cloud hay Microsoft Foundry, cũng không chạy với khóa API.",
+  "faq.6.q": "Tải tiện ích Claude cho Chrome ở đâu?",
+  "faq.6.a": "Chỉ trên trang Claude trong Chrome Web Store: chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn; trang trợ giúp của Anthropic và tài liệu Claude Code đều dẫn tới đó. Bấm «Thêm vào Chrome» và đăng nhập bằng tài khoản Claude.",
+  "faq.7.q": "Claude in Chrome có chạy trên Windows và Mac không?",
+  "faq.7.a": "Có, trên máy tính. Tài liệu Claude Code mô tả macOS, Linux và Windows và nêu một ngoại lệ: Windows Subsystem for Linux (WSL). Nếu Chrome chạy bên trong WSL thì kết nối sẽ không hoạt động.",
+  "faq.8.q": "Cho Claude in Chrome truy cập trình duyệt có an toàn không?",
+  "faq.8.a": "Chính Anthropic gọi tiện ích này là có rủi ro, dù đã có bộ phân loại bảo vệ. Tác nhân thấy mọi thứ bạn đã đăng nhập trong trình duyệt đó, và văn bản trên trang có thể chứa lệnh nhắm vào tác nhân. Ở trang đăng nhập và CAPTCHA, tác nhân dừng lại và chờ bạn. Chỉ giữ trong phần cài đặt của tiện ích những trang cần thiết và xem lại bản ghi GIF trước khi gửi: trong đó thấy cả thông tin tài khoản.",
+  "faq.9.q": "Claude in Chrome không đăng nhập hoặc không kết nối được: cần kiểm tra gì?",
+  "faq.9.a": "Cần gói Anthropic trả phí trực tiếp: đăng nhập bằng khóa API không hoạt động. Tiện ích phải đăng nhập cùng tổ chức với Claude Code. Kiểm tra tiện ích đã bật ở trang chrome://extensions, chọn «Reconnect extension» trong /chrome và khởi động lại Chrome sau lần cài đầu tiên."
  }
 }

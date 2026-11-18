@@ -720,17 +720,25 @@
  },
  "claude-in-chrome": {
   "aka": "Claude for Chrome, extension Chrome de Claude",
-  "def": "Claude in Chrome (Claude for Chrome) est l’extension officielle de Claude, créée par Anthropic, pour le navigateur Chrome : elle permet à un agent de travailler dans votre navigateur : ouvrir des pages, cliquer, remplir des formulaires et lire la console. Elle fonctionne avec votre session, donc elle voit ce que vous voyez. Elle s’installe depuis le Chrome Web Store et ne fonctionne que sur les formules payantes de Claude : Pro, Max, Ultra, Team et Enterprise. Il y a deux modes : un panneau latéral, où Claude exécute la tâche sur la page ouverte, et le pilotage du navigateur depuis Claude Code. Le panneau latéral ne fonctionne officiellement que dans Chrome pour ordinateur ; le mode Claude Code fonctionne aussi dans Edge et d’autres navigateurs Chromium.",
+  "def": "Claude in Chrome (Claude for Chrome, extension Chrome de Claude) est l’extension officielle d’Anthropic, par laquelle Claude lit les pages, clique et remplit des formulaires dans votre Chrome, sous votre connexion. Elle s’installe depuis le Chrome Web Store, exige une formule payante de Claude (Pro, Max, Ultra, Team ou Enterprise) et fonctionne dans Chrome sur ordinateur ; il n’existe pas de version pour téléphone.",
   "faq.3.q": "Que fait l’extension Chrome de Claude ?",
   "faq.3.a": "Elle permet à l’agent de travailler dans votre navigateur : ouvrir des pages, cliquer, remplir des formulaires et lire la console sous votre connexion.",
   "faq.4.q": "Comment utiliser Claude in Chrome ?",
   "faq.4.a": "Il y a deux modes : un panneau latéral où Claude exécute la tâche sur la page ouverte, et le pilotage du navigateur depuis Claude Code.",
-  "faq.5.q": "Claude in Chrome fonctionne-t-il dans d’autres navigateurs ?",
-  "faq.5.a": "Le panneau latéral ne fonctionne officiellement que dans Chrome pour ordinateur, pas sur mobile. Le mode Claude Code fonctionne aussi dans Edge et d’autres navigateurs Chromium.",
+  "faq.5.q": "Claude in Chrome fonctionne-t-il dans Edge, Brave et sur un téléphone ?",
+  "faq.5.a": "Pas sur un téléphone. L’aide d’Anthropic indique que l’extension n’est pas prise en charge dans les autres navigateurs Chromium. La documentation de Claude Code cite Chrome et Edge et ajoute que Claude Code trouve lui-même l’extension dans Brave, Arc, Vivaldi et Opera, sans garantie officielle pour eux.",
+  "faq.6.q": "Où télécharger l’extension Claude pour Chrome ?",
+  "faq.6.a": "Uniquement sur la page de Claude dans le Chrome Web Store : chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn, vers laquelle pointent l’aide d’Anthropic et la documentation de Claude Code. Cliquez sur « Ajouter à Chrome » et connectez-vous avec votre compte Claude.",
+  "faq.7.q": "Claude in Chrome fonctionne-t-il sous Windows et sur Mac ?",
+  "faq.7.a": "Oui, sur ordinateur. La documentation de Claude Code décrit macOS, Linux et Windows et nomme une seule exception : le sous-système Windows pour Linux (WSL). Si Chrome tourne dans WSL, la connexion ne fonctionnera pas.",
+  "faq.8.q": "Est-il sûr de donner à Claude in Chrome l’accès à mon navigateur ?",
+  "faq.8.a": "Anthropic qualifie elle-même l’extension de risquée, malgré ses classificateurs de protection. L’agent voit tout ce où vous êtes connecté dans ce navigateur, et le texte d’une page peut contenir des commandes adressées à l’agent. Sur une page de connexion ou un CAPTCHA, l’agent s’arrête et vous attend. Ne laissez dans les réglages de l’extension que les sites nécessaires et relisez l’enregistrement GIF avant de le partager : les données du compte y sont visibles.",
+  "faq.9.q": "Claude in Chrome ne se connecte pas : que vérifier ?",
+  "faq.9.a": "Il faut une formule payante d’Anthropic en direct : la connexion par clé d’API ne fonctionne pas. L’extension doit être connectée à la même organisation que Claude Code. Vérifiez qu’elle est activée sur la page chrome://extensions, choisissez « Reconnect extension » dans /chrome et redémarrez Chrome après la première installation.",
   "source.label": "Aide : Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome : l’extension Chrome, offres, installation",
-  "seo.description": "L’extension Claude pour Chrome : l’agent clique, remplit des formulaires et lit la console avec votre session. Chrome Web Store ; offres payantes seulement.",
-  "more.label": "Claude Code dans Chrome : comment l'agent teste un site dans le navigateur — débogage et formulaires sous votre identifiant",
+  "seo.title": "Claude in Chrome : l’extension Claude pour Chrome, téléchargement et forfaits",
+  "seo.description": "L’extension Claude pour Chrome (Claude for Chrome) : où la télécharger, quels forfaits il faut, ce qui marche dans Edge, Brave et sous Windows, et comment ne pas donner trop à l’agent.",
+  "more.label": "Claude in Chrome : comment Claude Code teste votre site dans le navigateur — débogage et formulaires sous votre connexion",
   "compare.title": "Deux modes : le panneau latéral et Claude Code",
   "compare.head": [
    "Panneau latéral",
@@ -744,7 +752,7 @@
   "compare.rows.1": [
    "Qui exécute la tâche",
    "Claude dans le panneau",
-   "l’agent Claude Code ; le navigateur est son outil"
+   "l’agent Claude Code ; le navigateur est l’un de ses moyens"
   ],
   "compare.rows.2": [
    "Pour quoi faire",

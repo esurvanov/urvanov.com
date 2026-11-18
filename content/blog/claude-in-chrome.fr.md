@@ -1,5 +1,5 @@
 ---
-title: Claude Code dans Chrome : comment l'agent teste un site dans le navigateur — débogage et formulaires sous votre identifiant
+title: Claude in Chrome : comment Claude Code teste votre site dans le navigateur — débogage et formulaires sous votre connexion
 date: 2026-10-05
 updated: 2026-11-18
 description: Claude in Chrome relie Claude Code au navigateur : l'agent ouvre des onglets, lit la console et remplit des formulaires. Connexion et permissions.
@@ -91,7 +91,7 @@ Claude Code teste un site dans le navigateur grâce à l'extension Claude in Chr
 <b-chapter id="risks" icon="shield-check" title="Permissions et risques">
   <b-why align="left">L'agent travaille dans votre navigateur : tout ce à quoi vous êtes connecté lui est donc accessible. La première ligne de défense, sur le schéma, est la liste des sites autorisés et la demande de permission sur les nouveaux.</b-why>
   <iso-art name="claude-in-chrome/site-permissions"></iso-art>
-  <b-why align="left">À gauche du schéma, vous décidez : l'agent demande « autoriser ? ». Au centre se trouvent les sites A et B, que vous avez autorisés et où l'agent travaille. À droite, le site C, fermé à l'agent. Une action sur un nouveau site commence par votre accord. Voici les règles une à une : ce que voit l'agent, où il s'arrête et ce qu'il faut regarder avant d'envoyer un enregistrement.</b-why>
+  <b-why align="left">À gauche du schéma, vous décidez : l'agent demande « autoriser ? ». Au centre se trouvent les sites A et B, que vous avez autorisés et où l'agent travaille. À droite, le site C, fermé à l'agent. Une action sur un nouveau site commence par votre accord. Les règles, point par point : ce que voit l'agent, où il s'arrête et ce qu'il faut regarder avant d'envoyer un enregistrement.</b-why>
   <b-rules sw="1.8">
     <rule icon="lines" t="Sites">Les réglages de l'extension déterminent sur quels sites l'agent peut naviguer, cliquer et saisir du texte.</rule>
     <rule icon="bell" t="Demande">La boîte de dialogue « Claude in Chrome wants to » autorise une action ou tout le site pour la session.</rule>
@@ -163,7 +163,7 @@ Claude Code teste un site dans le navigateur grâce à l'extension Claude in Chr
   <b-faq-cards>
     <q t="Comment connecter Claude in Chrome ?">Installez l'extension depuis le Chrome Web Store, et Claude Code fait le reste. Cela prend quelques minutes.</q>
     <q t="Que sait faire l'agent dans le navigateur ?">Il lit la console et le balisage des pages, parcourt des scénarios, remplit des formulaires, téléverse des fichiers jusqu'à 10 Mo au total et enregistre des GIF.</q>
-    <q t="Donner le navigateur à un agent est-il sûr ?">Les actions sont visibles dans la fenêtre en temps réel, et sur une page de connexion ou un captcha l'agent s'arrête et vous attend. Les permissions et les risques sont traités à part dans l'article.</q>
+    <q t="Donner le navigateur à un agent est-il sûr ?">Les actions sont visibles dans la fenêtre en temps réel, et sur une page de connexion ou un captcha l'agent s'arrête et vous attend. L'extension travaille sous votre connexion : ne laissez dans les réglages que les sites nécessaires et relisez l'enregistrement GIF avant de le partager.</q>
     <q t="Quand un script est-il préférable ?">Un agent dans le navigateur est plus lent qu'un script et peut commettre des erreurs. Pour des vérifications répétées où la vitesse et la précision comptent, écrivez un script.</q>
   </b-faq-cards>
 </b-chapter>

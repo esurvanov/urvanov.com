@@ -1,7 +1,7 @@
 ---
-title: Claude Code in Chrome: how the agent tests your site in the browser — debugging and forms under your login
+title: Claude in Chrome: how Claude Code tests your site in the browser — debugging and forms under your login
 date: 2026-10-05
-updated: 2026-11-17
+updated: 2026-11-18
 description: Claude in Chrome connects Claude Code to the browser: the agent opens tabs, reads the console and fills forms under your login. Setup and permissions.
 tags: AI, agents, Claude Code, Claude in Chrome, browser, QA, harness
 category: harness
@@ -18,7 +18,7 @@ Claude Code tests a site in the browser through the Claude in Chrome extension: 
   <b-why>A Chrome extension connects Claude Code to the browser. The agent opens new tabs and works in a visible window<b-proof href="https://code.claude.com/docs/en/chrome" quote="Browser actions run in a visible Chrome window in real time."/>.</b-why>
   <iso-art name="claude-in-chrome/terminal-to-browser"></iso-art>
   <b-why align="left">The picture shows three participants from left to right: Claude Code in the terminal, the extension and your browser. The agent gives the extension commands (open a tab, click, read the page), and the extension carries them out in the browser where you are already signed in to your services. So the agent does not need to type passwords: your session is already open<b-proof href="https://code.claude.com/docs/en/chrome" quote="shares your browser's login state"/>. The work happens in a visible window, and you can follow the steps.</b-why>
-  <b-why align="left">The tags below show which browsers the extension works with. Chrome and Edge are officially supported<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi and Opera are built on the same Chromium engine: Claude Code finds the extension in them and connects<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. The last tag, “WSL: no”, means this connection does not work in the Windows Subsystem for Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
+  <b-why align="left">The tags show which browsers the extension works with. Chrome and Edge are officially supported<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi and Opera are built on the same Chromium engine: Claude Code finds the extension in them and connects<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. The last tag, “WSL: no”, means this connection does not work in the Windows Subsystem for Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
   <b-pills>
     <pill>Chrome</pill>
     <pill>Edge</pill>
@@ -91,7 +91,7 @@ Claude Code tests a site in the browser through the Claude in Chrome extension: 
 <b-chapter id="risks" icon="shield-check" title="Permissions and risks">
   <b-why align="left">The agent works inside your browser, so everything you are signed in to is available to it. The first line of defence in the picture is the list of allowed sites and the permission request on new ones.</b-why>
   <iso-art name="claude-in-chrome/site-permissions"></iso-art>
-  <b-why align="left">On the left of the picture you decide: the agent asks “allow?”. In the center are sites A and B, which you allowed and where the agent works. On the right is site C, closed to the agent. An action on a new site starts with your consent. Below are the rules one by one: what the agent sees, where it stops and what to look at before sending a recording.</b-why>
+  <b-why align="left">On the left of the picture you decide: the agent asks “allow?”. In the center are sites A and B, which you allowed and where the agent works. On the right is site C, closed to the agent. An action on a new site starts with your consent. The rules, one by one: what the agent sees, where it stops and what to look at before sending a recording.</b-why>
   <b-rules sw="1.8">
     <rule icon="lines" t="Sites">The extension settings control which sites the agent can browse, click and type on.</rule>
     <rule icon="bell" t="Prompt">The “Claude in Chrome wants to” dialog allows an action or the whole site for the session.</rule>
@@ -163,7 +163,7 @@ Claude Code tests a site in the browser through the Claude in Chrome extension: 
   <b-faq-cards>
     <q t="How do you connect Claude in Chrome?">Install the extension from the Chrome Web Store, and Claude Code does the rest. It takes minutes.</q>
     <q t="What can the agent do in the browser?">It reads the console and page markup, walks through scenarios, fills in forms, uploads files up to 10 MB in total and records GIFs.</q>
-    <q t="Is it safe to give an agent the browser?">Actions are visible in the window in real time, and on a sign-in page or captcha the agent stops and waits for you. Permissions and risks are covered separately in the article.</q>
+    <q t="Is it safe to give an agent the browser?">Actions are visible in the window in real time, and on a sign-in page or captcha the agent stops and waits for you. The extension works under your login, so keep only the sites you need in its settings and review a GIF recording before sharing it: account details are visible in it.</q>
     <q t="When is a script better?">An agent in the browser is slower than a script and can make mistakes. For repeated checks where speed and precision matter, write a script.</q>
   </b-faq-cards>
 </b-chapter>
