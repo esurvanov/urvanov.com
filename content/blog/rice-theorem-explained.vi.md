@@ -1,7 +1,7 @@
 ---
 title: Định lý Rice là gì: vì sao không có phép kiểm tra nào đúng cho mọi chương trình và cách xử lý
 date: 2026-11-06
-updated: 2026-11-13
+updated: 2026-11-18
 description: Định lý Rice nói gì và vì sao việc kiểm tra hành vi của chương trình đụng phải bài toán dừng. Vị từ về văn bản và về hành vi, chứng minh qua ví dụ thanh toán, mối liên hệ với nghịch lý người thợ cạo và ba khung giúp phép kiểm tra trở nên chính xác.
 tags: định lý Rice, bài toán dừng, nghịch lý người thợ cạo, vị từ, kiểm chứng hình thức, Quint, DDD, tác nhân AI
 category: specs
@@ -54,7 +54,7 @@ toc: essence=Ý chính | predicate=Lối thoát 1: văn bản mã | small-model=
 | **Nếu bỏ — văn bản mã:** một lệnh tìm kiếm kiểm tra rằng chỉ module thanh toán ghi vào bảng thanh toán | **Nếu bỏ — mô hình nhỏ:** quy tắc thanh toán cho 3 đơn hàng và 2 khách hàng, thử mọi biến thể; nó kiểm tra mô hình quy tắc, còn mã được kiểm tra riêng | **Nếu bỏ — con người:** với thay đổi khó, phép kiểm tra trả lời “không biết”, và lập trình viên xem xét nó |
 
   </b-table>
-  <b-why align="left">Chọn một cạnh của tam giác: hai tính chất ở hai đầu cạnh được giữ, tính chất thứ ba bị bỏ. Các tab ở đây và dưới sơ đồ tính chất được liên kết với nhau: số tab là số tính chất, và cột tương ứng trong bảng phía trên sáng lên.</b-why>
+  <b-why align="left">Chọn một cạnh của tam giác: hai tính chất ở hai đầu cạnh được giữ, tính chất thứ ba bị bỏ. Các tab và bảng tính chất được liên kết với nhau: số tab là số tính chất, và cột tương ứng trong bảng sáng lên.</b-why>
   <b-lane title="Bỏ tính chất nào" color="accent">
   <b-scene names="rice-theorem-explained/triangle"/>
   <b-pick-tabs id="rice-tri" group="rice-k" tone="accent">
@@ -195,7 +195,7 @@ toc: essence=Ý chính | predicate=Lối thoát 1: văn bản mã | small-model=
 
   </b-table>
   <b-why align="left">Vậy mô hình nhỏ kiểm tra thiết kế, còn mã được giữ bằng các phương tiện khác: ràng buộc cơ sở dữ liệu từ chối thanh toán không có đơn hàng, và test so sánh mã với mô hình trên các ví dụ.</b-why>
-  <b-why align="left">**Liên hệ với bounded context.** Mô hình thường được viết cho một bounded context, chẳng hạn “Thanh toán”, nhưng mấu chốt của lối thoát này là số nhỏ: chính chúng làm cho tìm kiếm hữu hạn. Xem thêm ghi chú về DDD trong phần “Ý chính”.</b-why>
+  <b-why align="left">**Liên hệ với bounded context.** Mô hình thường được viết cho một bounded context, chẳng hạn “Thanh toán”, nhưng mấu chốt của lối thoát này là số nhỏ: chính chúng làm cho tìm kiếm hữu hạn.</b-why>
   <b-finding>
     <ex>Tìm kiếm ra một chuỗi: hai khách hàng bấm “thanh toán” cùng lúc, cả hai phép kiểm tra “đơn hàng chưa thanh toán” đều qua trước khi bất kỳ lần trừ tiền nào xảy ra, và tiền bị trừ hai lần.</ex>
     <gen>Mô hình nhỏ bắt lỗi thiết kế trước khi có mã, nhưng mã được kiểm tra riêng: bằng test, ràng buộc cơ sở dữ liệu và tìm kiếm trong mã.</gen>
@@ -290,7 +290,7 @@ toc: essence=Ý chính | predicate=Lối thoát 1: văn bản mã | small-model=
 |---|---|---|---|
 | 1901 | Bertrand Russell | tập của mọi tập hợp không chứa chính nó | nó có là phần tử của chính nó không? |
 | 1936 | Alan Turing | không thẩm phán nào cho biết được mọi chương trình có dừng không | chương trình phản nghịch hỏi về chính mình |
-| 1951 | Henry Gordon Rice | không có phép kiểm tra nào cho mọi tính chất hành vi có câu trả lời khác nhau | quy bài toán dừng về phép kiểm tra, như trong chứng minh ở trên |
+| 1951 | Henry Gordon Rice | không có phép kiểm tra nào cho mọi tính chất hành vi có câu trả lời khác nhau | quy bài toán dừng về phép kiểm tra, như trong chứng minh của định lý |
 
   </b-table>
   <b-why align="left">Vì sao câu hỏi về chính mình mạnh đến vậy. Chương trình cũng là văn bản, nên có thể đưa cho một chương trình khác và thậm chí cho chính nó. Hễ bộ kiểm tra nói được về mọi chương trình, nó cũng phải nói được về chương trình hỏi nó về chính mình rồi làm điều ngược lại. Khi đó câu trả lời nào nó đưa ra cũng sai. Cùng một nước đi xuất hiện trong nghịch lý người thợ cạo, nghịch lý Russell và định lý bất toàn của Gödel (trong mọi hệ quy tắc nhất quán, cho bởi một danh sách tiên đề và đủ mô tả số học, có những mệnh đề không chứng minh cũng không bác bỏ được).</b-why>
@@ -342,7 +342,7 @@ toc: essence=Ý chính | predicate=Lối thoát 1: văn bản mã | small-model=
 | <b-icon name="zap"/> trả lời ngay | máy chủ trả lời từ bản sao của mình; có câu trả lời, nhưng có thể thiếu lượt đặt mới từ máy chủ kia | phép kiểm tra trả lời từ test hoặc một lần chạy 1000 bước; có câu trả lời, nhưng chương trình có thể phá quy tắc ở bước 1001 |
 
   </b-table>
-  <b-why align="left">**Chặn thời gian: giúp chương trình, không giúp mạng.** Nếu một ngôn ngữ hoặc mô hình bảo đảm mọi chương trình kết thúc trong số bước đã biết, phép kiểm tra chạy nó đến cùng và trả lời chính xác. Thế giới nhỏ ở phần trước hoạt động như vậy; cái giá là một ngôn ngữ không viết được vòng lặp vô tận. Trong mạng, độ trễ bị chặn chỉ xóa sự không chắc chắn: nếu một thông điệp đi không quá 2 giây, sau 2 giây máy chủ biết chắc đường liên lạc đã đứt. Điều đó không mang lại dữ liệu mới hơn, và lựa chọn vẫn còn: từ chối trả lời hoặc trả lời từ bản sao của mình. Lệnh cấm CAP vẫn đúng.</b-why>
+  <b-why align="left">**Chặn thời gian: giúp chương trình, không giúp mạng.** Nếu một ngôn ngữ hoặc mô hình bảo đảm mọi chương trình kết thúc trong số bước đã biết, phép kiểm tra chạy nó đến cùng và trả lời chính xác. Thế giới nhỏ, với mô hình 3 phòng và 5 lượt đặt, hoạt động như vậy; cái giá là một ngôn ngữ không viết được vòng lặp vô tận. Trong mạng, độ trễ bị chặn chỉ xóa sự không chắc chắn: nếu một thông điệp đi không quá 2 giây, sau 2 giây máy chủ biết chắc đường liên lạc đã đứt. Điều đó không mang lại dữ liệu mới hơn, và lựa chọn vẫn còn: từ chối trả lời hoặc trả lời từ bản sao của mình. Lệnh cấm CAP vẫn đúng.</b-why>
   <b-why align="left">**Lý do khác nhau.** Máy chủ CAP thiếu thông tin: ngay cả máy chủ thông minh vô hạn cũng không biết được điều xảy ra ở máy bên cạnh sau đường liên lạc bị đứt. Phép kiểm tra chương trình có thông tin, toàn bộ mã nằm trước mặt, nhưng câu trả lời không tính được từ mã đó. Đây là hai loại bất khả khác nhau, nên định lý Rice và CAP không phải là một.</b-why>
   <b-why align="left">**Mức độ chặt chẽ.** Cả hai nửa đều đã được xác lập: định lý Rice và chứng minh CAP đã được công bố. Việc các lối thoát trùng nhau là quan sát của tác giả; không có một định lý chung cho cả hai trường hợp. Chính Brewer sau này cảnh báo rằng công thức “hai trong ba” (ý rằng trong ba tính chất chỉ có được hai) đơn giản hóa quá mức<b-proof href="https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/" quote="Eric Brewer: “The «2 of 3» formulation was always misleading”"/>: thực tế đó là một thang đo, và lựa chọn chỉ nảy sinh trong lúc có phân vùng. Phép kiểm tra cũng vậy: điều quan trọng là phép kiểm tra nói “không biết” hoặc sai thường xuyên đến đâu.</b-why>
   <b-finding>

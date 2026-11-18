@@ -1,7 +1,7 @@
 ---
 title: პრომპტები სამუშაო ამოცანებისთვის: ხუთი ნაწილი და ექვსი მაგალითი ChatGPT-სა და Claude-ისთვის
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-18
 description: პრომპტები AI ჩატთან სამუშაოდ: კარგი სამუშაო პრომპტის ნაწილები, როგორ გამოიყურება სუსტი და ძლიერი თხოვნა, ექვსი მზა შაბლონი გავრცელებული ამოცანებისთვის და როგორ შევინახოთ ისინი პროექტში, Anthropic-ის, OpenAI-სა და Google-ის სახელმძღვანელოების მიხედვით.
 tags: AI, პრომპტები, ChatGPT, Claude
 category: prompts
@@ -63,7 +63,7 @@ toc: model=ადამიანი ციკლში | parts=ხუთი ნ�
       </b-prompt-parts>
       <b-prompt>
         შენ ხარ [კომპანიის] მხარდაჭერის აგენტი.
-        ქვემოთ მომხმარებელთან მთელი მიმოწერაა.
+        ეს მომხმარებელთან მთელი მიმოწერაა.
         &lt;thread&gt;
         [ჩაწებეთ სრულად]
         &lt;/thread&gt;
@@ -239,6 +239,7 @@ toc: model=ადამიანი ციკლში | parts=ხუთი ნ�
     <item href="/blog/specs-rules-skills/" k="კონტექსტი" t="სპეციფიკაციები, bible, წესები და skill-ები">სად ცხოვრობს პრომპტი ერთი ჩატის მიღმა</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="ინჟინერია" t="AI კოდში">harness და ინსტრუმენტების ოთხი ჯგუფი</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="ანგარიში" t="ChatGPT Enterprise-ის გამოყენების ანგარიში">კომპანიაში ვინ რას იყენებს</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="არჩევანი" t="Codex თუ ChatGPT">ჩატი თუ კოდის აგენტი</item>
   </b-links>
 </b-chapter>
 <b-footer>პრომპტები შაბლონებია: შეავსეთ ის, რაც კვადრატულ ფრჩხილებშია. ხერხები Anthropic-ის, OpenAI-სა და Google-ის ოფიციალურ სახელმძღვანელოებს ემყარება; წყარო თითოეული მტკიცების გვერდით მდებარე ხატულის უკანაა. OpenAI Help Center-ისა და Google-ის სახელმძღვანელოს ციტატები გადმოცემულია თავისუფლად.</b-footer>

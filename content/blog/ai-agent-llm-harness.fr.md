@@ -1,8 +1,8 @@
 ---
-title: Agent IA = LLM + harness : différence entre LLM, harness et agent, et ce que contient le harness
+title: Harness IA, c'est quoi : l'agent IA = LLM + harness, différence et contenu du harness
 date: 2026-10-12
-updated: 2026-11-13
-description: Agent IA = LLM + harness. LLM, harness et agent dans un seul tableau, les cinq groupes d'un harness et pourquoi le même modèle se comporte autrement dans un chat et dans Claude Code.
+updated: 2026-11-18
+description: Harness IA, définition simple : agent IA = LLM + harness, les cinq groupes d'un harness et pourquoi un même modèle agit autrement dans Claude Code.
 tags: IA, agents, agent IA, LLM, harness, harness d'agent, ingénierie du harness
 category: harness
 layout: wide
@@ -10,7 +10,7 @@ mentions: AI agent, LLM, agent harness, harness engineering, agent loop, MCP, Cl
 toc: formula=Agent = LLM + harness | concepts=Cinq notions | table=LLM, harness et agent | parts=Ce que contient le harness | same=Le même modèle | example=Exemple | loop=Fonctionnement | when=Quoi choisir | faq=FAQ | next=À lire ensuite
 ---
 
-Un agent IA est un LLM plus un harness (le harnais de l'agent) : le LLM ne fait que raisonner et écrire du texte, et le harness est tout ce qui l'entoure et lui permet d'agir — une boucle d'étapes, des outils, du contexte, des règles et des vérifications. Ensemble, ils mènent une tâche à son résultat, alors qu'un LLM seul se contente de répondre. Ci-dessous : LLM, harness et agent dans un tableau, les cinq groupes d'un harness et le même modèle dans deux harness.
+Un harness IA est tout ce qui entoure un LLM pour en faire un agent : une boucle d'étapes, des outils, du contexte, des règles et des vérifications. Le LLM ne fait que raisonner et écrire du texte ; le harness lui permet d'agir. Seul, un LLM répond ; avec un harness, il mène une tâche à son terme. Ci-dessous : LLM, harness et agent dans un tableau, les cinq groupes d'un harness et le même modèle dans deux harness.
 
 <b-post series="harness">
 <b-chapter id="formula" icon="target-dot" title="Agent = LLM + harness">
@@ -129,6 +129,7 @@ Un agent IA est un LLM plus un harness (le harnais de l'agent) : le LLM ne fait 
     <item href="/materials/glossary/harness/" k="Terme" t="Harness">chaque partie, avec ses liens</item>
     <item href="/blog/harness-driven-development/" k="Pratique" t="Ingénierie du harness">transformer les erreurs en règles</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Choix" t="Claude Code, Codex, Cursor">quel agent choisir</item>
+  <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Choix" t="Codex ou ChatGPT">Chat ou agent de code</item>
   </b-links>
 </b-chapter>
 </b-post>

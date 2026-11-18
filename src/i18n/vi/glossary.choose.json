@@ -1,0 +1,66 @@
+{
+  "pull-request": {
+    "aka": "PR, yêu cầu hợp nhất thay đổi",
+    "def": "Pull request là đề xuất đưa một tập thay đổi vào dự án: tác giả gửi các thay đổi lên một trang, nơi người khác xem được từng dòng, thảo luận, rồi chấp nhận hoặc từ chối. Chừng nào chưa có người bấm chấp nhận, mã chính vẫn giữ nguyên. Các tác nhân lập trình như Codex thường nộp bài theo cách này: bạn thấy toàn bộ chỉnh sửa cùng lúc và tự quyết định giữ lại hay bỏ.",
+    "more.label": "Codex hay ChatGPT: nên chọn gì khi làm việc với mã",
+    "faq.0.q": "Pull request là gì?",
+    "faq.0.a": "Đề xuất đưa thay đổi vào dự án: có thể xem, thảo luận rồi chấp nhận hoặc từ chối.",
+    "faq.1.q": "Vì sao tác nhân dùng pull request?",
+    "faq.1.a": "Chỉnh sửa của tác nhân không tự vào mã chính: một người xem toàn bộ rồi quyết định có chấp nhận hay không.",
+    "faq.2.q": "Pull request khác commit ở điểm nào?",
+    "faq.2.a": "Commit là một thay đổi đã được ghi vào lịch sử. Pull request là yêu cầu đưa một tập các thay đổi như vậy vào nhánh chính, kèm thảo luận trước khi chấp nhận.",
+    "source.label": "Tài liệu GitHub: giới thiệu về pull request",
+    "seo.title": "Pull request: là gì và vì sao tác nhân lập trình dùng nó",
+    "seo.description": "Pull request (PR) là đề xuất đưa thay đổi vào dự án, được người xem xét rồi chấp nhận hoặc từ chối. Cách Codex và các tác nhân lập trình khác dùng nó."
+  },
+  "repository": {
+    "aka": "repo, kho chứa dự án kèm lịch sử",
+    "def": "Repository là thư mục dự án cùng lịch sử mọi thay đổi: các tệp mã và ghi chép ai đã sửa gì. Thường do Git quản lý, còn một bản sao được lưu trên trang như GitHub. Tác nhân lập trình làm việc với repository: đọc tệp, sửa tệp và chạy kiểm tra. Chat thông thường không có quyền này, nó chỉ thấy đoạn văn bản được dán vào.",
+    "more.label": "Codex hay ChatGPT: nên chọn gì khi làm việc với mã",
+    "faq.0.q": "Repository là gì?",
+    "faq.0.a": "Thư mục dự án kèm lịch sử mọi thay đổi: các tệp và ghi chép ai đã sửa gì.",
+    "faq.1.q": "Repository khác thư mục thông thường ở điểm nào?",
+    "faq.1.a": "Nó lưu toàn bộ lịch sử thay đổi, nên bạn xem được bất kỳ phiên bản cũ nào và quay lại phiên bản đó.",
+    "faq.2.q": "Vì sao tác nhân lập trình cần repository?",
+    "faq.2.a": "Tác nhân đọc toàn bộ dự án từ đó, còn lịch sử giúp bạn xem lại và hoàn tác chỉnh sửa của nó.",
+    "source.label": "Wikipedia (tiếng Anh): Repository (version control)"
+  },
+  "sdk": {
+    "aka": "bộ công cụ phát triển, Software Development Kit",
+    "def": "SDK là bộ mã dựng sẵn và hướng dẫn mà lập trình viên gắn vào dự án để dùng dịch vụ của bên khác từ chương trình của mình. SDK của Codex cho phép khởi chạy tác nhân từ script hoặc ứng dụng riêng thay vì gõ nhiệm vụ bằng tay. Nó hoạt động bằng khóa API: bạn trả theo giá API, gói đăng ký ChatGPT không dùng cho việc này.",
+    "more.label": "Codex hay ChatGPT: nên chọn gì khi làm việc với mã",
+    "faq.0.q": "SDK là gì?",
+    "faq.0.a": "Bộ mã dựng sẵn và hướng dẫn để kết nối dịch vụ của bên khác vào chương trình của bạn.",
+    "faq.1.q": "SDK khác API ở điểm nào?",
+    "faq.1.a": "API là các quy tắc để chương trình gọi một dịch vụ. SDK là mã dựng sẵn thực hiện các lệnh gọi đó thay bạn.",
+    "faq.2.q": "Dùng Codex có cần SDK không?",
+    "faq.2.a": "Không: Codex chạy trong ứng dụng, terminal và tiện ích mở rộng cho IDE. SDK cần khi bạn muốn khởi chạy tác nhân từ chương trình của mình.",
+    "source.label": "Wikipedia (tiếng Anh): Software development kit"
+  },
+  "cli": {
+    "aka": "giao diện dòng lệnh, Command-Line Interface",
+    "def": "CLI là chương trình điều khiển bằng lệnh văn bản trong terminal, không có cửa sổ hay nút bấm. Claude Code và Codex đều có phiên bản như vậy: bạn chạy nó trong thư mục dự án và gõ nhiệm vụ cho tác nhân thành từng dòng chữ. Terminal là cửa sổ để nhập lệnh, còn CLI là chương trình nhận các lệnh đó.",
+    "more.label": "Codex hay ChatGPT: nên chọn gì khi làm việc với mã",
+    "faq.0.q": "CLI là gì?",
+    "faq.0.a": "Chương trình điều khiển bằng lệnh văn bản trong terminal.",
+    "faq.1.q": "CLI khác terminal ở điểm nào?",
+    "faq.1.a": "Terminal là cửa sổ để nhập lệnh. CLI là chương trình nhận và chạy các lệnh đó.",
+    "faq.2.q": "Với Codex nên chọn CLI hay tiện ích mở rộng cho IDE?",
+    "faq.2.a": "Tùy thói quen: CLI chạy trong terminal, tiện ích mở rộng hiện chỉnh sửa ngay trong trình soạn thảo. Khả năng của tác nhân như nhau.",
+    "source.label": "Wikipedia (tiếng Anh): Command-line interface"
+  },
+  "chatgpt-work": {
+    "aka": "chế độ Work trong ChatGPT, nhiệm vụ lớn làm đến kết quả hoàn chỉnh",
+    "def": "ChatGPT Work là chế độ của ChatGPT cho các nhiệm vụ lớn: nó tự lập kế hoạch, thu thập dữ liệu, tìm trên web, chạy mã và giao kết quả hoàn chỉnh như tài liệu, bảng tính, bản trình bày hoặc PDF. Chế độ này bật bằng nút Work trong ChatGPT. Để viết mã trong dự án, OpenAI có tác nhân riêng là Codex; ChatGPT Work và Codex nằm trong các gói ChatGPT và dùng chung hạn mức.",
+    "more.label": "Codex hay ChatGPT: nên chọn gì khi làm việc với mã",
+    "faq.0.q": "ChatGPT Work là gì?",
+    "faq.0.a": "Chế độ ChatGPT cho nhiệm vụ lớn: tác nhân tự làm đến khi có tài liệu, bảng tính hoặc bản trình bày hoàn chỉnh.",
+    "faq.1.q": "ChatGPT Work khác Codex ở điểm nào?",
+    "faq.1.a": "Work giao tài liệu hoặc báo cáo hoàn chỉnh, còn Codex sửa mã của dự án và kiểm tra bằng test.",
+    "faq.2.q": "ChatGPT Work chạy ở đâu?",
+    "faq.2.a": "Trên web, trong môi trường đám mây của OpenAI; ở ứng dụng máy tính đôi khi có thể chọn đám mây hoặc máy của bạn. Nguồn: learn.chatgpt.com/docs/use-chatgpt.",
+    "source.label": "Tài liệu OpenAI: sử dụng ChatGPT",
+    "seo.title": "ChatGPT Work: là gì và khác Codex ở điểm nào",
+    "seo.description": "ChatGPT Work là chế độ của ChatGPT làm nhiệm vụ lớn đến khi có tài liệu, bảng tính hoặc bản trình bày hoàn chỉnh. Khác Codex ở đâu và hạn mức chia thế nào."
+  }
+}

@@ -2,7 +2,7 @@
 title: En quoi la vérification de modèles diffère des tests : un test vérifie un scénario, un modèle vérifie tous les ordres d'actions (Quint, QUnit et TLA+)
 seoTitle: Vérification de modèles ou tests : ce que chacun détecte
 date: 2026-10-25
-updated: 2026-11-17
+updated: 2026-11-18
 description: Un test vérifie un scénario auquel vous avez pensé, la vérification de modèles tous les ordres d’actions. Ce que détectent QUnit, Jest, Vitest, Quint, TLA+.
 tags: IA, spécifications, Quint, TLA+, Alloy, QUnit, Jest, Vitest, tests, vérification formelle
 category: specs
@@ -116,7 +116,7 @@ Un test vérifie un scénario auquel vous avez pensé, tandis que la vérificati
   <b-finding>
     <ex>Trois options répondent à trois questions différentes, et aucune ne remplace une autre.</ex>
     <gen>Pour une logique de produit avec des agents et plusieurs participants, il faut le plus souvent à la fois des tests et Quint.</gen>
-    <do>Notez trois questions sur votre produit et placez en face de chacune l'option adaptée à l'aide du tableau ci-dessus.</do>
+    <do>Notez trois questions sur votre produit et placez en face de chacune l'option adaptée à l'aide du tableau.</do>
   </b-finding>
 </b-chapter>
 

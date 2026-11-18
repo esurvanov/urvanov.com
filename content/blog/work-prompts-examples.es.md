@@ -1,7 +1,7 @@
 ---
 title: Cómo escribir un buen prompt para el trabajo: cinco partes y seis ejemplos para ChatGPT y Claude
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-18
 description: Prompts para trabajar con un chat de IA: las partes de un buen prompt de trabajo, cómo se ven una petición débil y una fuerte, seis plantillas listas para tareas habituales y cómo guardarlas en un proyecto, según las guías de Anthropic, OpenAI y Google.
 tags: IA, prompts, ChatGPT, Claude
 category: prompts
@@ -239,6 +239,7 @@ Un prompt de trabajo para ChatGPT y Claude se construye con cinco partes: un rol
     <item href="/blog/specs-rules-skills/" k="Contexto" t="Specs, biblia, reglas y skills">Dónde vive un prompt más allá de un chat</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Ingeniería" t="IA en el código">El harness y cuatro grupos de herramientas</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="Informe" t="Informe de uso de ChatGPT Enterprise">Quién en la empresa usa qué</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Elección" t="Codex o ChatGPT">Chat o agente de código</item>
   </b-links>
 </b-chapter>
 <b-footer>Los prompts son plantillas: rellena lo que va entre corchetes. Las técnicas siguen las guías oficiales de Anthropic, OpenAI y Google; la fuente está tras el icono junto a cada afirmación. Las citas del Centro de ayuda de OpenAI y de la guía de Google son paráfrasis.</b-footer>

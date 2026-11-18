@@ -1,7 +1,7 @@
 ---
 title: Cómo escribir requisitos y actas de reunión con IA: fuente, suposición, hecho y qué sigue
 date: 2026-10-05
-updated: 2026-11-13
+updated: 2026-11-18
 description: Requisitos con IA: fuente, suposición, estado. Los hechos llegan por MCP desde Git; el agente hace las ediciones menores y una persona decide las mayores.
 tags: IA, agentes, requisitos, alucinaciones, actas de reunión, harness
 category: harness
@@ -26,7 +26,7 @@ Un agente de IA escribe requisitos con aplomo, y sus conjeturas parecen hechos. 
 | Fuente | no se indica | reunión del 12 de oct., 14:32, «el cliente paga con tarjeta al finalizar la compra» |
 | Suposición | oculta en el texto: «en rublos» | en su propia línea: «pago solo en rublos» |
 | Estado | se lee como un hecho | no hecho: la moneda no se discutió en la reunión |
-| Qué hace el lector | lo da por bueno | comprueba la suposición o hace una pregunta |
+| Qué hace quien lee | lo da por bueno | comprueba la suposición o hace una pregunta |
 
   </b-table>
   <b-rules sw="1.8">

@@ -1,7 +1,7 @@
 ---
 title: Serveur MCP et agent IA pour 1C : comment laisser Claude Code, Codex ou Cursor entrer dans la base sans la casser
 date: 2026-10-12
-updated: 2026-11-13
+updated: 2026-11-18
 description: Un serveur MCP pour 1C:Enterprise donne à un agent IA (Claude Code, Codex ou Cursor) accès au code de la configuration et aux données de la base. Comment le connecter en 3 étapes, ce qui casse en pratique, comment séparer la lecture de l'écriture et vérifier les résultats.
 tags: IA, agents, MCP, 1C, permissions, sécurité, Claude Code, Codex, Cursor
 category: harness
@@ -24,7 +24,7 @@ Pour laisser Claude Code, Codex ou Cursor entrer dans une base 1C sans la casser
 <b-finding>
   <ex k="Code">L'agent cesse d'inventer des méthodes et des attributs qui ne sont pas dans la configuration.</ex>
   <gen k="Données">L'agent répond à partir de la base, ce qui veut dire qu'il peut aussi la modifier. C'est là que des règles d'accès sont nécessaires.</gen>
-  <do k="À faire">Commencez par le code : c'est plus sûr. N'activez l'accès aux données que d'après le schéma ci-dessous, même si le serveur sait faire les deux.</do>
+  <do k="À faire">Commencez par le code : c'est plus sûr. N'activez l'accès aux données que d'après le schéma, même si le serveur sait faire les deux.</do>
 </b-finding>
 </b-chapter>
 <b-chapter id="specifics" icon="form" title="En quoi 1C diffère pour un agent IA">
@@ -251,7 +251,7 @@ Pour laisser Claude Code, Codex ou Cursor entrer dans une base 1C sans la casser
 <b-why align="left">Un serveur MCP pour 1C se connecte à n'importe quel agent qui prend en charge MCP. Seul l'endroit de la configuration diffère.</b-why>
 <b-section-h3 top="4">Connexion en 3 étapes</b-section-h3>
 <b-step-chain>
-  <node t="1. Choisir un serveur">Pour le code ou pour les données, dans la liste ci-dessus</node>
+  <node t="1. Choisir un serveur">Pour le code ou pour les données, dans la liste</node>
   <node t="2. Confier à l'agent">« Connecte le serveur MCP 1C en suivant son README »</node>
   <node t="3. Tester sur une copie">Demander la liste des outils et chercher un référentiel</node>
 </b-step-chain>
@@ -276,7 +276,7 @@ Pour laisser Claude Code, Codex ou Cursor entrer dans une base 1C sans la casser
 </b-pick-tabs>
 </b-lane>
 <b-finding>
-  <ex k="Point commun">Les droits sont fixés par le serveur et l'utilisateur 1C. Le schéma ci-dessus fonctionne avec chacun des trois.</ex>
+  <ex k="Point commun">Les droits sont fixés par le serveur et l'utilisateur 1C. Le schéma fonctionne avec chacun des trois.</ex>
   <gen k="Confirmations">Gardez la confirmation activée pour les outils qui modifient des données.</gen>
   <do k="À faire">Confiez la configuration à l'agent lui-même, comme décrit <a href="/blog/mcp-agent-access/#connect">dans l'article sur MCP</a>.</do>
 </b-finding>

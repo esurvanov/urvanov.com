@@ -1,7 +1,7 @@
 ---
 title: Exigences et comptes rendus de réunion avec l'IA : source, hypothèse, fait — et la suite
 date: 2026-10-05
-updated: 2026-11-13
+updated: 2026-11-18
 description: Les exigences avec l'IA : source, hypothèse, statut. Les faits viennent de Git via MCP ; l'agent fait les petites corrections, une personne tranche les grandes.
 tags: IA, agents, exigences, hallucinations, comptes rendus, harness
 category: harness
@@ -34,7 +34,7 @@ Un agent rédige des exigences avec assurance, et ses suppositions ressemblent �
     <rule icon="help" t="Hypothèse">Ce que l'agent a complété de lui-même est écrit sur une ligne à part.</rule>
     <rule icon="shield-check" t="Statut">Fait, pas un fait ou question à une personne.</rule>
   </b-rules>
-  <b-why align="left">La règle est simple : sans source, le statut est « pas un fait ». Ainsi, un point sans preuve ne se transforme pas discrètement en exigence. Une personne voit ces points sous forme de liste et décide quoi en faire : trouver une source, confirmer en réunion ou abandonner. Les marques accélèrent la vérification : une citation avec l'heure se vérifie en quelques secondes, et la ligne d'hypothèse indique où chercher une erreur. Où trouver les sources, c'est dans le chapitre suivant, et que faire quand un point change vient après.</b-why>
+  <b-why align="left">La règle est simple : sans source, le statut est « pas un fait ». Ainsi, un point sans preuve ne se transforme pas discrètement en exigence. Une personne voit ces points sous forme de liste et décide quoi en faire : trouver une source, confirmer en réunion ou abandonner. Les marques accélèrent la vérification : une citation avec l'heure se vérifie en quelques secondes, et la ligne d'hypothèse indique où chercher une erreur.</b-why>
   <b-finding>
     <ex>Chaque point a une source, une ligne séparée pour la supposition et un statut.</ex>
     <gen>Un point sans source reçoit le statut « pas un fait », et une personne le vérifie avant de s'y fier. Cela prolonge l'idée de la section sur [les hallucinations dans l'article sur MCP](/blog/mcp-agent-access/#facts).</gen>
@@ -126,7 +126,7 @@ Un agent rédige des exigences avec assurance, et ses suppositions ressemblent �
 </b-chapter>
 
 <b-chapter id="cases" icon="git-branch" title="Cas d'usage">
-  <b-why align="left">Un cas d'usage (par définition, une description structurée du comportement d'un système lorsqu'il répond aux requêtes d'acteurs externes<b-proof href="https://en.wikipedia.org/wiki/Use_case" quote="structured description of a system’s behavior as it responds to requests from external actors"/>) est un scénario d'utilisation d'une exigence par les gens. L'exigence « Paiement par carte » en compte trois : un paiement normal, un refus de la banque et un paiement répété. Ils sont écrits parce qu'une modification touche en général un ou deux scénarios, et ce sont ceux-là qu'il faut revérifier. C'est le lien avec le chapitre précédent : une grande modification change le comportement, l'agent dresse donc la liste des cas d'usage concernés et de leurs tests. Une petite modification ne change pas le comportement, et l'agent se contente de confirmer que les cas d'usage sont restés tels quels. Ainsi, une petite modification n'oblige pas à revérifier toute l'exigence.</b-why>
+  <b-why align="left">Un cas d'usage (par définition, une description structurée du comportement d'un système lorsqu'il répond aux requêtes d'acteurs externes<b-proof href="https://en.wikipedia.org/wiki/Use_case" quote="structured description of a system’s behavior as it responds to requests from external actors"/>) est un scénario d'utilisation d'une exigence par les gens. L'exigence « Paiement par carte » en compte trois : un paiement normal, un refus de la banque et un paiement répété. Ils sont écrits parce qu'une modification touche en général un ou deux scénarios, et ce sont ceux-là qu'il faut revérifier. Cela relie les cas d'usage à la modification : une grande modification change le comportement, l'agent dresse donc la liste des cas d'usage concernés et de leurs tests. Une petite modification ne change pas le comportement, et l'agent se contente de confirmer que les cas d'usage sont restés tels quels. Ainsi, une petite modification n'oblige pas à revérifier toute l'exigence.</b-why>
   <iso-art name="requirements-sources-facts-assumptions/use-cases"></iso-art>
   <b-why align="left">L'image le montre sur un exemple. À gauche se trouve l'exigence « Paiement par carte ». À droite, ses trois cas d'usage : un paiement normal (le client paie aussitôt), un refus de la banque (une erreur et une nouvelle tentative) et un paiement répété (protection contre le double débit). Le point d'exclamation est sur le troisième : supposons que la réunion ait décidé de changer la protection contre le double débit. C'est une grande modification, et elle ne touche que le paiement répété. L'agent liste exactement ce cas d'usage et ses tests, tandis que le paiement normal et le refus de la banque restent tels quels.</b-why>
   <b-pills>

@@ -681,7 +681,7 @@
   },
   "opencode": {
     "aka": "Open Code",
-    "def": "OpenCode es un agente de programación gratuito y de código abierto que funciona en la terminal; también hay una app de escritorio y una app web. Usted elige el modelo: Claude, GPT, Gemini y decenas más mediante API, o uno local; solo paga al proveedor del modelo. Modos: Build edita código, Plan solo planifica y no cambia archivos. Lee las reglas del proyecto de `AGENTS.md`, y el comando `/init` crea ese archivo a partir del repositorio.",
+    "def": "OpenCode (Open Code) es un agente de programación gratuito y de código abierto que funciona en la terminal (OpenCode CLI), con app de escritorio y app web. Usted elige el modelo, de Claude a uno local, y solo paga a su proveedor. Modos: Build edita código, Plan solo planifica. Lee las reglas del proyecto de `AGENTS.md`; `/init` crea ese archivo.",
     "faq.0.q": "¿Qué es OpenCode?",
     "faq.0.a": "Un agente de programación gratuito y de código abierto en la terminal, también con app de escritorio y app web. Usted elige el modelo y paga solo a su proveedor.",
     "faq.1.q": "¿Qué modelos funcionan en OpenCode?",
@@ -693,8 +693,8 @@
     "faq.4.q": "¿En qué se diferencia OpenCode de Claude Code?",
     "faq.4.a": "Están construidos igual: ambos leen el proyecto, editan archivos y ejecutan comandos. OpenCode es de código abierto y funciona con cualquier modelo; Claude Code solo con modelos de Claude.",
     "source.label": "Documentación de OpenCode",
-    "seo.title": "OpenCode: qué es este agente de IA gratuito y abierto",
-    "seo.description": "OpenCode es un agente de IA gratuito y abierto para el terminal. Conecta Claude, GPT, Gemini o un modelo local; solo pagas al proveedor del modelo.",
+    "seo.title": "Qué es OpenCode (Open Code): agente de IA gratuito",
+    "seo.description": "OpenCode CLI, app de escritorio y web: agente de programación gratuito y abierto. Usa Claude, GPT, Gemini o un modelo local; OpenCode Go, 10 $ al mes.",
     "more.label": "Claude Code, Codex, Cursor y Hermes Agent: cuál elegir"
   },
   "gemini-cli": {
@@ -720,7 +720,7 @@
   },
   "claude-in-chrome": {
     "aka": "Claude para Chrome, extensión de Claude para Chrome",
-    "def": "Claude in Chrome (Claude for Chrome) es la extensión oficial de Claude de Anthropic para el navegador Chrome, con la que un agente trabaja en su navegador: abre páginas, hace clic, rellena formularios y lee la consola. Funciona con su sesión iniciada, así que ve lo mismo que usted. Se instala desde Chrome Web Store y solo funciona en los planes de pago de Claude: Pro, Max, Ultra, Team y Enterprise. Hay dos modos: un panel lateral, donde Claude hace la tarea en la página abierta, y el control del navegador desde Claude Code. El panel lateral solo funciona oficialmente en Chrome de escritorio; el modo de Claude Code también funciona en Edge y otros navegadores Chromium.",
+    "def": "La extensión de Claude para Chrome (Claude in Chrome) es la extensión oficial de Anthropic con la que un agente trabaja en su navegador: abre páginas, hace clic, rellena formularios y lee la consola con su sesión. Se instala desde Chrome Web Store y solo funciona en planes de pago. Tiene dos modos: panel lateral y control desde Claude Code.",
     "faq.3.q": "¿Qué hace la extensión de Claude para Chrome?",
     "faq.3.a": "Permite que el agente trabaje en tu navegador: abrir páginas, hacer clic, rellenar formularios y leer la consola con tu sesión iniciada.",
     "faq.4.q": "¿Cómo se usa Claude in Chrome?",
@@ -729,7 +729,7 @@
     "faq.5.a": "El panel lateral solo funciona oficialmente en Chrome de escritorio y no en el móvil. El modo de Claude Code también funciona en Edge y otros navegadores Chromium.",
     "source.label": "Ayuda: Get started with Claude in Chrome",
     "seo.title": "Extensión de Claude para Chrome: qué es y planes",
-    "seo.description": "Claude in Chrome es la extensión de Claude para Chrome: el agente hace clic, rellena formularios y lee la consola con tu sesión. Solo planes de pago.",
+    "seo.description": "Claude in Chrome, la extensión de Claude para Chrome: el agente hace clic, rellena formularios y lee la consola con tu sesión. Solo con plan de pago.",
     "more.label": "Claude Code en Chrome: cómo prueba el agente un sitio en el navegador, depuración y formularios con tu sesión iniciada",
     "compare.title": "Dos modos: el panel lateral y Claude Code",
     "compare.head": [
@@ -990,14 +990,14 @@
   "harness": {
     "name": "Harness",
     "aka": "arnés del agente",
-    "def": "Harness (arnés del agente) es todo lo que rodea al modelo y lo convierte en un agente que funciona: instrucciones, herramientas, permisos, memoria y comprobaciones. El modelo es el mismo; el resultado depende del harness.",
+    "def": "Un harness en IA (arnés del agente, agent harness) es todo lo que rodea al modelo y lo convierte en un agente que funciona: instrucciones, herramientas, permisos, memoria y comprobaciones. Es la parte del agente que no es el modelo: agente = LLM + harness. El modelo es el mismo; el resultado depende del harness.",
     "faq.0.q": "¿Qué es un harness en IA?",
     "faq.0.a": "Todo lo que rodea a un modelo y lo convierte en un agente que funciona: instrucciones, herramientas, derechos de acceso, memoria y comprobaciones.",
     "faq.1.q": "¿Por qué el resultado depende del harness?",
     "faq.1.a": "El modelo es el mismo, pero lo que el agente sabe, lo que puede hacer y cómo se comprueba a sí mismo lo define el harness.",
     "source.label": "Anthropic: Effective harnesses for agents",
-    "seo.title": "Harness de un agente: qué es y qué incluye",
-    "seo.description": "El harness de un agente es todo lo que rodea al modelo y lo convierte en agente: bucle, herramientas, contexto, memoria, reglas, permisos y comprobaciones.",
+    "seo.title": "Qué es un harness en IA: partes de un agente",
+    "seo.description": "Qué es un harness en IA y de qué se compone: bucle, herramientas, contexto, memoria, reglas, permisos y comprobaciones que hacen de un modelo un agente.",
     "more.label": "Agente de IA = LLM + harness: LLM vs harness vs agente",
     "parts.title": "De qué se compone un harness"
   },
@@ -1275,6 +1275,8 @@
     "faq.1.q": "¿Quién controla los permisos en MCP?",
     "faq.1.a": "Tú: el servidor MCP ofrece al agente un conjunto de herramientas y los derechos de acceso se fijan en el lado del servidor.",
     "source.label": "Sitio de Model Context Protocol",
+    "seo.title": "Qué es MCP: protocolo que conecta agentes de IA",
+    "seo.description": "MCP (Model Context Protocol) es un protocolo abierto que conecta un agente de IA con Jira, bases de datos y otros servicios. Quién fija los permisos.",
     "more.label": "MCP para un agente de IA: qué problema resuelve y cómo delegar la conexión en el agente"
   },
   "mcp-client": {

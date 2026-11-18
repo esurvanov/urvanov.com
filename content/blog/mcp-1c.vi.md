@@ -1,7 +1,7 @@
 ---
 title: MCP server và tác nhân AI cho 1C: cho Claude Code, Codex hay Cursor vào cơ sở dữ liệu mà không làm hỏng nó
 date: 2026-10-12
-updated: 2026-11-13
+updated: 2026-11-18
 description: MCP server cho 1C:Enterprise cho phép tác nhân AI (Claude Code, Codex hay Cursor) truy cập mã cấu hình và dữ liệu trong cơ sở dữ liệu. Cách kết nối trong 3 bước, điều gì hỏng trong thực tế, cách tách đọc khỏi ghi và kiểm tra kết quả.
 tags: AI, tác nhân, MCP, 1C, quyền truy cập, bảo mật, Claude Code, Codex, Cursor
 category: harness
@@ -24,7 +24,7 @@ toc: what=Là gì | specifics=Đặc thù 1C | breaks=Hỏng ở đâu | servers
 <b-finding>
   <ex k="Mã">Tác nhân thôi bịa ra các phương thức và thuộc tính không có trong cấu hình.</ex>
   <gen k="Dữ liệu">Tác nhân trả lời từ cơ sở dữ liệu, nghĩa là nó cũng có thể thay đổi dữ liệu. Chính ở đây cần các quy tắc truy cập.</gen>
-  <do k="Làm gì">Bắt đầu từ mã: an toàn hơn. Chỉ bật truy cập dữ liệu theo sơ đồ bên dưới, ngay cả khi server làm được cả hai.</do>
+  <do k="Làm gì">Bắt đầu từ mã: an toàn hơn. Chỉ bật truy cập dữ liệu theo sơ đồ, ngay cả khi server làm được cả hai.</do>
 </b-finding>
 </b-chapter>
 <b-chapter id="specifics" icon="form" title="1C khác biệt thế nào đối với tác nhân AI">
@@ -276,7 +276,7 @@ toc: what=Là gì | specifics=Đặc thù 1C | breaks=Hỏng ở đâu | servers
 </b-pick-tabs>
 </b-lane>
 <b-finding>
-  <ex k="Điểm chung">Quyền do server và người dùng 1C quyết định. Sơ đồ ở trên dùng được với cả ba.</ex>
+  <ex k="Điểm chung">Quyền do server và người dùng 1C quyết định. Sơ đồ này dùng được với cả ba.</ex>
   <gen k="Xác nhận">Giữ bước xác nhận cho các công cụ thay đổi dữ liệu.</gen>
   <do k="Làm gì">Giao việc thiết lập cho chính tác nhân, như mô tả <a href="/blog/mcp-agent-access/#connect">trong bài về MCP</a>.</do>
 </b-finding>

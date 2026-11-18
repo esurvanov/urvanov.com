@@ -2,7 +2,7 @@
 title: OpenSpec-ის დაყენება და ბრძანებები: ცვლილების მაგალითი გეგმიდან merge-მდე
 seoTitle: OpenSpec: რა არის, დაყენება და ბრძანებები მაგალითით
 date: 2026-11-07
-updated: 2026-11-17
+updated: 2026-11-18
 description: Fission AI-ის OpenSpec: ცვლილების საქაღალდე გეგმითა და ამოცანებით, აგენტის სამი ბრძანება, merge სპეციფიკაციებში. დაყენება, მაგალითი, შედარება Spec Kit-თან.
 tags: AI, OpenSpec, სპეციფიკაციები, Spec-Driven Development, Claude Code, Codex, Cursor
 category: specs
@@ -101,7 +101,7 @@ OpenSpec უფასო ღია კოდის ფრეიმვორკ�
   | <code>specs/pattern-detail/spec.md</code> | მოთხოვნა „ყოველ პატერნს შევსებული detail აქვს“ და ბარათის ჩვენების სამი სცენარი |
   | <code>tasks.md</code> | 10 ამოცანა 10 კატეგორიაზე, ყველა მონიშნული |
   </b-table>
-  <b-why align="left">ქვემოთ მოთხოვნების ფაილის ნაწყვეტია. SHALL სავალდებულო მოთხოვნას აღნიშნავს. Scenario შემოწმებაა: WHEN სიტუაციას აღწერს, THEN — რა უნდა მოხდეს. აქ detail ხერხის სრული აღწერაა, problem და solution კი მისი „პრობლემა“ და „გადაწყვეტა“ ნაწილებია.</b-why>
+  <b-why align="left">ეს მოთხოვნების ფაილის ნაწყვეტია. SHALL სავალდებულო მოთხოვნას აღნიშნავს. Scenario შემოწმებაა: WHEN სიტუაციას აღწერს, THEN — რა უნდა მოხდეს. აქ detail ხერხის სრული აღწერაა, problem და solution კი მისი „პრობლემა“ და „გადაწყვეტა“ ნაწილებია.</b-why>
   <b-codebox title="მოთხოვნის ნაწყვეტი specs/pattern-detail/spec.md-დან">
     ## MODIFIED Requirements
     ### Requirement: Pattern detail content structure

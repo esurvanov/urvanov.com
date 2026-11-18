@@ -1,7 +1,7 @@
 ---
 title: Travail de QA après le support avec un agent IA : enquête, description et documentation via MCP et skills
 date: 2026-10-04
-updated: 2026-11-13
+updated: 2026-11-18
 description: Une seule étape de la chaîne est optimisée : la QA après le support. Un agent reproduit un bug Jira sur un banc de test via MCP, réduit le chemin, le décrit et le documente, un skill fait des étapes un processus répétable, la QA vérifie à la main. Le support et le développement ne changent pas.
 tags: IA, agents, QA, Jira, MCP, skills, bugs, harness
 category: harness
@@ -47,7 +47,7 @@ Un bug signalé par un client passe par le support et arrive à la QA. C'est là
 </b-chapter>
 
 <b-chapter id="stages" icon="lines" title="Trois parties du travail de QA et ce qu'elles deviennent">
-  <b-why align="left">Le travail de la QA sur un bug se divise en trois parties : enquête, description et documentation. Pour chacune, les images ci-dessous montrent comment la QA la faisait avant, ce que fait l'agent et ce qui reste à un humain.</b-why>
+  <b-why align="left">Le travail de la QA sur un bug se divise en trois parties : enquête, description et documentation. Pour chacune, les images montrent comment la QA la faisait avant, ce que fait l'agent et ce qui reste à un humain.</b-why>
   <b-view kind="pic">
     <b-lane-stack>
     <b-icon-lane icon="search-alt" title="Enquête">
@@ -159,7 +159,7 @@ Un bug signalé par un client passe par le support et arrive à la QA. C'est là
 
 <b-chapter id="skill" icon="doc-square" title="Un skill : un processus écrit plutôt qu'une répétition à la main">
   <b-why>Un skill est une manière de travailler consignée par écrit pour l'agent : étapes, modèle de rapport, règles. Une autre personne et un autre agent peuvent la reproduire.</b-why>
-  <b-why align="left">Un skill fait parcourir à l'agent six étapes. Il lit le ticket, parcourt le chemin critique sur le banc, le réduit au minimum, décrit le bug d'après le modèle, dessine des schémas sur demande et écrit le résultat dans Jira. Les trois premières étapes relèvent de l'enquête, les autres de la description et de la documentation du chapitre précédent. Une erreur de l'agent revient dans le skill sous forme de nouvelle règle, pour ne pas se répéter la fois suivante.</b-why>
+  <b-why align="left">Un skill fait parcourir à l'agent six étapes. Il lit le ticket, parcourt le chemin critique sur le banc, le réduit au minimum, décrit le bug d'après le modèle, dessine des schémas sur demande et écrit le résultat dans Jira. Les trois premières étapes relèvent de l'enquête, les autres de la description et de la documentation. Une erreur de l'agent revient dans le skill sous forme de nouvelle règle, pour ne pas se répéter la fois suivante.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/skill-pipeline"/>
   </b-view>
@@ -214,7 +214,7 @@ Un bug signalé par un client passe par le support et arrive à la QA. C'est là
 </b-chapter>
 
 <b-chapter id="example" icon="chat-square" title="Exemple : PAY-142, du ticket au rapport">
-  <b-why align="left">Un client a écrit une seule ligne au support : le paiement avec un code promo échoue. L'image ci-dessous se lit de gauche à droite en trois étapes : la plainte du client, le travail de l'agent, le résultat dans Jira. Ensuite, chaque étape est montrée en détail sur le ticket PAY-142.</b-why>
+  <b-why align="left">Un client a écrit une seule ligne au support : le paiement avec un code promo échoue. L'image se lit de gauche à droite en trois étapes : la plainte du client, le travail de l'agent, le résultat dans Jira. Ensuite, chaque étape est montrée en détail sur le ticket PAY-142.</b-why>
   <b-view kind="pic">
     <b-art-plain name="bug-report-to-reproduction-agent/complaint-to-report"/>
   </b-view>

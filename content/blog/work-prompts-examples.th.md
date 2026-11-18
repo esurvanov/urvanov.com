@@ -1,7 +1,7 @@
 ---
 title: Prompt สำหรับงานจริง: ห้าส่วนและหกตัวอย่างสำหรับ ChatGPT และ Claude
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-18
 description: Prompt สำหรับทำงานกับแชต AI: ส่วนประกอบของ prompt งานที่ดี คำขอที่อ่อนและที่แข็งแรงต่างกันอย่างไร เทมเพลตพร้อมใช้หกแบบสำหรับงานที่พบบ่อย และวิธีเก็บไว้ใน project อ้างอิงคู่มือของ Anthropic, OpenAI และ Google
 tags: AI, prompt, ChatGPT, Claude
 category: prompts
@@ -239,6 +239,7 @@ prompt งานสำหรับ ChatGPT และ Claude ประกอบ�
     <item href="/blog/specs-rules-skills/" k="บริบท" t="Spec, bible, rule และ skill">prompt อยู่ที่ไหนนอกเหนือจากแชตเดียว</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="วิศวกรรม" t="AI ในงานโค้ด">harness และเครื่องมือสี่กลุ่ม</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="รายงาน" t="รายงานการใช้งาน ChatGPT Enterprise">ใครในบริษัทใช้อะไร</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="เลือก" t="Codex หรือ ChatGPT">แชตหรือเอเจนต์เขียนโค้ด</item>
   </b-links>
 </b-chapter>
 <b-footer>prompt เหล่านี้เป็นเทมเพลต: กรอกส่วนที่อยู่ในวงเล็บเหลี่ยม เทคนิคอ้างอิงคู่มืออย่างเป็นทางการของ Anthropic, OpenAI และ Google แหล่งที่มาอยู่หลังไอคอนข้างแต่ละข้อความ คำพูดจากศูนย์ช่วยเหลือของ OpenAI และคู่มือของ Google เป็นการสรุปความ</b-footer>

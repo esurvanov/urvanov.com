@@ -1,9 +1,9 @@
 ---
-title: MCP cho tác nhân AI (AI agent): giải quyết vấn đề gì và cách giao việc thiết lập cho chính tác nhân
+title: MCP là gì: giải quyết vấn đề gì cho tác nhân AI (AI agent) và cách giao việc thiết lập cho chính tác nhân
 date: 2026-10-04
-updated: 2026-11-13
+updated: 2026-11-18
 unrelated: mcp-1c
-description: MCP nối tác nhân vào GitLab, Jira, Confluence và bản ghi cuộc họp. Nó giải quyết vấn đề gì, thiết lập trong vài phút và giao việc đó cho chính tác nhân ra sao, tiết kiệm thời gian và token thế nào và vì sao tác nhân bịa ít hơn.
+description: MCP nối tác nhân vào GitLab, Jira, Confluence và bản ghi cuộc họp. Giải quyết vấn đề gì, thiết lập trong vài phút, tiết kiệm token, vì sao tác nhân bịa ít hơn.
 tags: AI, tác nhân, MCP, Jira, ngữ cảnh, ảo giác, token, harness
 category: harness
 layout: wide
@@ -11,7 +11,7 @@ mentions: Model Context Protocol, MCP, AI agent, Claude Code, Jira, Airtable, ha
 toc: what=Là gì | ours=Ngữ cảnh | connect=Kết nối | saving=Tiết kiệm | facts=Dữ kiện | risks=Rủi ro | first=Bắt đầu từ đâu | cases=Tình huống | faq=Câu hỏi | next=Đọc tiếp
 ---
 
-MCP nối tác nhân AI (AI agent) vào các hệ thống đang làm việc, để nó đọc dữ kiện từ nguồn thay vì từ lời kể lại. Việc này dễ và nhanh: chỉ cần hiểu nó giải quyết vấn đề gì và giao việc thiết lập cho chính tác nhân. Bên dưới: ý tưởng, cách kết nối, MCP mang lại gì và nên cấp những quyền nào. Ví dụ QA với MCP có trong bài [QA cùng tác nhân qua MCP](/blog/bug-report-to-reproduction-agent/#mcp).
+MCP là gì: chuẩn mở nối tác nhân AI (AI agent) vào các hệ thống đang làm việc, như Jira, GitLab hay Confluence, để nó đọc dữ kiện từ nguồn thay vì từ lời kể lại. Việc này dễ và nhanh, và có thể giao cho chính tác nhân thiết lập. Bên dưới: ý tưởng, cách kết nối, MCP mang lại gì và nên cấp những quyền nào. Ví dụ QA với MCP có trong bài [QA cùng tác nhân qua MCP](/blog/bug-report-to-reproduction-agent/#mcp).
 
 <b-post series="harness">
 <b-chapter id="what" icon="plug" title="MCP là gì">
@@ -23,7 +23,7 @@ MCP nối tác nhân AI (AI agent) vào các hệ thống đang làm việc, đ�
 <b-finding>
   <ex>Trong Jira, tác nhân thấy những gì con người thấy: chính nhiệm vụ PAY-142, các bình luận và lịch sử thay đổi. Không cần tìm nhiệm vụ rồi chép vào cuộc trò chuyện. Nó kéo các nhiệm vụ liên quan khi được yêu cầu. Nó có thể bình luận thay bạn, tạo nhiệm vụ hoặc đổi trạng thái (sau khi bạn xác nhận). Lần đầu dùng, bạn nên thấy một tiếng “wow”: nghĩa là đã thiết lập đúng. Và việc này rất đơn giản.</ex>
   <gen>Tác nhân nhìn rộng hơn con người: nó cân nhắc các nhiệm vụ lân cận, bài trong cơ sở tri thức và các quyết định cũ, rồi tìm ra những hướng đi không hiển nhiên mà riêng một nhiệm vụ không cho thấy. Không có MCP, nó chỉ biết những gì được dán vào. Con người thôi làm người chuyển phát giữa các cửa sổ và ở lại vai người duyệt.</gen>
-  <do k="Việc cần làm">Bắt đầu từ hệ thống theo dõi nhiệm vụ: khởi đầu dễ và nhanh nhất. Cách kết nối Jira: <a href="#connect">xem bên dưới</a>. Cũng nên đếm một ngày bạn chép văn bản vào cuộc trò chuyện bao nhiêu lần: đó là danh sách ứng viên để kết nối.</do>
+  <do k="Việc cần làm">Bắt đầu từ hệ thống theo dõi nhiệm vụ: khởi đầu dễ và nhanh nhất. <a href="#connect">Cách kết nối Jira</a>. Cũng nên đếm một ngày bạn chép văn bản vào cuộc trò chuyện bao nhiêu lần: đó là danh sách ứng viên để kết nối.</do>
 </b-finding>
 </b-chapter>
 <b-chapter id="ours" icon="target-ring" title="Ngữ cảnh của tác nhân và các ngữ cảnh khác">
@@ -66,7 +66,7 @@ MCP nối tác nhân AI (AI agent) vào các hệ thống đang làm việc, đ�
 </b-table-plain>
 <b-why align="left">Bảng cho thấy việc kiểm tra chỗ dựa trên một ví dụ. Các bước tái hiện lấy từ phiếu Jira, chỗ code lỗi từ GitLab, lý do của quyết định từ bản ghi cuộc họp. Nếu một phần của câu trả lời không có chỗ dựa như vậy, nó được kiểm lại bằng tay.</b-why>
 <b-section-h3 top="18">Ảo giác: phần không có chỗ dựa</b-section-h3>
-<b-why align="left"><a href="/materials/glossary/hallucination/">Ảo giác (hallucination)</a> là một phỏng đoán tự tin ở chỗ không có chỗ dựa. Nó trông trơn tru y như câu trả lời từ dữ liệu. Chi tiết và lời khuyên của Anthropic có <a href="#facts">trong mục về ảo giác bên dưới</a>.</b-why>
+<b-why align="left"><a href="/materials/glossary/hallucination/">Ảo giác (hallucination)</a> là một phỏng đoán tự tin ở chỗ không có chỗ dựa. Nó trông trơn tru y như câu trả lời từ dữ liệu. Chi tiết và lời khuyên của Anthropic có <a href="#facts">trong mục về ảo giác</a>.</b-why>
 <b-lane title="Ảo giác" color="accent" top="12">
 <b-scene names="term:hallucination"/>
 </b-lane>
@@ -113,7 +113,7 @@ MCP nối tác nhân AI (AI agent) vào các hệ thống đang làm việc, đ�
 <b-scene names="mcp-agent-access/scopes"/>
 <p>Thiết lập nằm ở đâu và ai thấy server: <a href="/blog/mcp-scopes/">phạm vi MCP trong Claude Code</a>.</p>
 </b-details-more>
-<b-why align="left">Làm tay là ba lệnh: thêm server, đăng nhập qua trình duyệt bằng /mcp và kiểm tra trạng thái. Trạng thái có ba loại: đã kết nối, cần đăng nhập hoặc lỗi. Sơ đồ ở trên cho thấy từng bước, còn các phạm vi bên dưới nói thiết lập được lưu ở đâu.</b-why>
+<b-why align="left">Làm tay là ba lệnh: thêm server, đăng nhập qua trình duyệt bằng /mcp và kiểm tra trạng thái. Trạng thái có ba loại: đã kết nối, cần đăng nhập hoặc lỗi. Sơ đồ cho thấy từng bước, còn các phạm vi cho biết thiết lập được lưu ở đâu.</b-why>
 <b-finding>
   <ex>Tác nhân tự chạy các lệnh và kiểm tra kết nối, và nhiệm vụ PAY-142 được đọc đầy đủ cùng các bình luận. Đó là khoảnh khắc “wow”.</ex>
   <gen>Kết nối mất vài phút. Phạm vi “Project” đặt thiết lập vào repo để cả nhóm có cùng các server. Cả ba phạm vi được nói trong <a href="/blog/mcp-scopes/">phạm vi MCP trong Claude Code</a>.</gen>

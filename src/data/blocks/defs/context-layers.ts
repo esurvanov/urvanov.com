@@ -53,8 +53,15 @@ const table = defineBlock({
   tag: 'ctx-table',
   title: 'Таблица слоёв',
   doc: 'HTML-таблица в рамке, которая на телефоне ужимается до ширины экрана.',
-  attrs: { phone: { doc: 'на телефоне: hide4 — без 4-й колонки, wrap — перенос в последней', required: true, values: ['hide4', 'wrap'] } },
-  render: ({ attrs, children }) => `<div class="bk-table bk-ctx-layers-lt bk-ctx-layers-lt-${attrs.phone}">${children.trim()}</div>`,
+  attrs: {
+    phone: { doc: 'на телефоне: hide4 — без 4-й колонки, wrap — перенос в последней', required: true, values: ['hide4', 'wrap'] },
+    first: { doc: 'ширина первой колонки в процентах (число): колонки таблиц с одним значением выравниваются между собой' },
+  },
+  render: ({ attrs, children }) => {
+    const w = Number(attrs.first)
+    const fixed = w >= 10 && w <= 80
+    return `<div class="bk-table bk-ctx-layers-lt bk-ctx-layers-lt-${attrs.phone}${fixed ? ' bk-ctx-layers-lt-fixed' : ''}"${fixed ? ` style="--first:${w}%"` : ''}>${children.trim()}</div>`
+  },
   example: {
     ru: '<b-ctx-table phone="wrap"><table><thead><tr><th>Если это…</th><th>Куда</th></tr></thead><tbody><tr><td>команда, стиль или запрет, нужные в каждой задаче</td><td><b-ctx-layer kind="rules">Правила</b-ctx-layer></td></tr><tr><td>требования к одной задаче</td><td><b-ctx-layer kind="spec">Спека</b-ctx-layer></td></tr></tbody></table></b-ctx-table>',
     en: '<b-ctx-table phone="wrap"><table><thead><tr><th>If it is…</th><th>Where</th></tr></thead><tbody><tr><td>a command, style or ban needed in every task</td><td><b-ctx-layer kind="rules">Rules</b-ctx-layer></td></tr><tr><td>requirements for one task</td><td><b-ctx-layer kind="spec">Spec</b-ctx-layer></td></tr></tbody></table></b-ctx-table>',

@@ -1,7 +1,7 @@
 ---
 title: Qué son las puertas de calidad para agentes de IA: puntos de control que elevan la calidad y el tiempo de trabajo autónomo
 date: 2026-11-14
-updated: 2026-11-17
+updated: 2026-11-18
 description: Una puerta de calidad es un puesto de control entre el trabajo de un agente y la palabra «hecho»: tipos de comprobación, cifras, hooks de MCP y cómo empezar.
 tags: IA, agentes, puertas de calidad, MCP, bounded context, harness, hooks, Claude Code
 category: harness
@@ -99,7 +99,7 @@ Una puerta de calidad para un agente de IA es un punto de control externo: el tr
   <b-rules cols="2">
     <rule icon="flask" t="Anthropic: una petición, dos ejecuciones">Un agente: 20 minutos y 9 dólares, la función principal no funcionaba. Un agente con un revisor: 6 horas y 200 dólares, el resultado funcionaba<b-proof href="https://www.anthropic.com/engineering/harness-design-long-running-apps" quote="Anthropic: „The harness was over 20x more expensive, but the difference in output quality was immediately apparent.“"/>. Con Opus 4.6: 3 horas 50 minutos y 124,70 dólares. Compensa en las tareas que el modelo no resuelve de forma fiable por sí solo<b-proof href="https://www.anthropic.com/engineering/harness-design-long-running-apps" quote="Anthropic: „It is worth the cost when the task sits beyond what the current model does reliably solo.“"/>.</rule>
     <rule icon="modules" t="Stripe: escala">Más de mil PR integrados por semana los escriben agentes y los revisan personas<b-proof href="https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents" quote="Stripe: „Over a thousand pull requests merged each week at Stripe are completely minion-produced, and while they're human-reviewed, they contain no human-written code.“"/>. Entre los pasos del modelo hay pasos sin modelo: linters en cinco segundos, como mucho dos ejecuciones de CI, y después la rama pasa a una persona<b-proof href="https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents-part-2" quote="Stripe, part 2: „those particular nodes don't invoke an LLM at all—they just run code“"/>.</rule>
-    <rule icon="refresh-cw" t="Spotify: el juez">Los verificadores se ejecutan solos, el agente no los conoce; un juez comprueba el significado. No hay cifras de antes y después: solo un veto en una cuarta parte de las sesiones y la recuperación en la mitad de ellas (la cita está en la sección anterior).</rule>
+    <rule icon="refresh-cw" t="Spotify: el juez">Los verificadores se ejecutan solos, el agente no los conoce; un juez comprueba el significado. No hay cifras de antes y después: solo un veto en una cuarta parte de las sesiones y la recuperación en la mitad de ellas.</rule>
     <rule icon="chart-line" t="DORA 2025: velocidad y estabilidad">La IA eleva la velocidad de entrega pero reduce la estabilidad<b-proof href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report" quote="DORA 2025: „AI adoption does continue to have a negative relationship with software delivery stability.“"/>. El argumento «la inestabilidad se compensa con arreglos rápidos» no encontró respaldo<b-proof href="https://services.google.com/fh/files/misc/2025_state_of_ai_assisted_software_development.pdf" quote="DORA 2025, p. 41: „We found no evidence of such a moderating effect.“"/>. Mi conclusión: las puertas evitan que la velocidad se pague con estabilidad. El informe no menciona las puertas.</rule>
   </b-rules>
   <b-finding>

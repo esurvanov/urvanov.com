@@ -1,7 +1,7 @@
 ---
 title: Một trò chơi cần bao nhiêu luật: trò chơi bước-và-nâng cần hai luật, còn kế toán chỉ cần một dòng ghi — khoảng trống quan hệ
 date: 2026-11-02
-updated: 2026-11-13
+updated: 2026-11-18
 description: Cách đếm số luật của một trò chơi vừa trung thực vừa nhanh, và liệu hai kết quả có thể khác nhau. Diễn giải bài báo của Bartholdi, Bridson, Mikhailov và Nicholson về khoảng trống quan hệ (arXiv 2610.23637): trò chơi có hai nước đi mà người chơi cần hai luật còn kế toán cần một dòng ghi, kèm sơ đồ, công thức và phép tính.
 tags: nghiên cứu, toán học, lý thuyết nhóm, tô pô, AI trong toán học
 category: research
@@ -125,7 +125,7 @@ Một trò chơi có hai nước đi, bước và nâng, cần hai luật nếu 
   <b-art names="relation-gap-how-many-rules/player"/>
   <b-cap>Trong bốn ứng viên, hai luật vào danh sách; các luật còn lại là hệ quả. <a href="https://youtu.be/yPvbfDa_GCk?t=124" target="_blank" rel="noopener">▶ 2:04</a></b-cap>
 
-  Vì sao danh sách không thể chỉ có một luật? Nếu một trò chơi có một luật, định lý Newman nói rằng các bạn của một nước đi bất kỳ là bạn của nhau. Ở đây các bạn của nửa vòng, hai bước và cái móc, không phải bạn của nhau (chương “Các bạn” bên dưới), nên một luật là không đủ. Các nhà toán học viết điều này là $d_F(R)=2$: số phần tử sinh chuẩn tắc ít nhất của nhóm các luật là hai.
+  Vì sao danh sách không thể chỉ có một luật? Nếu một trò chơi có một luật, định lý Newman nói rằng các bạn của một nước đi bất kỳ là bạn của nhau. Ở đây các bạn của nửa vòng, hai bước và cái móc, không phải bạn của nhau, nên một luật là không đủ. Các nhà toán học viết điều này là $d_F(R)=2$: số phần tử sinh chuẩn tắc ít nhất của nhóm các luật là hai.
 </b-chapter>
 
 <b-chapter id="accountant" icon="bulb" title="Cách đếm của kế toán: một dòng ghi">
@@ -269,7 +269,7 @@ Một trò chơi có hai nước đi, bước và nâng, cần hai luật nếu 
   <b-steps top="14" round>
     <step t="Không phải một luật">Nhóm này không phải nhóm một luật: nửa vòng $a=x^{p}$ có cấp $q$, còn $x^{q}$ và cái móc $b$ đều giao hoán với nó nhưng không giao hoán với nhau. Vậy $d_F(R)=2$ (định lý Newman).</step>
     <step t="Hai dòng ghi">Mô-đun quan hệ là ảnh của ánh xạ biên của phức phủ. Ma trận Fox cho hai dòng ghi: $N_x$ và $u$.</step>
-    <step t="Một dòng ghi">Với $p=3$, $q=2$ dựng $v=N_x+(b+b^{2})\,u$, rồi $N_x$, $u$ được biểu diễn qua $v$ (phép tính ở trên). Trường hợp tổng quát tương tự, với công thức cho $v$ cồng kềnh hơn.</step>
+    <step t="Một dòng ghi">Với $p=3$, $q=2$ dựng $v=N_x+(b+b^{2})\,u$, rồi $N_x$, $u$ được biểu diễn qua $v$. Trường hợp tổng quát tương tự, với công thức cho $v$ cồng kềnh hơn.</step>
   </b-steps>
 
   Nhóm này có thể định nghĩa trong <a href="/materials/glossary/computer-algebra-system/">hệ đại số máy tính</a> GAP bằng hai dòng: <a href="https://youtu.be/yPvbfDa_GCk?t=389" target="_blank" rel="noopener">▶ 6:29</a>
@@ -322,7 +322,7 @@ Một trò chơi có hai nước đi, bước và nâng, cần hai luật nếu 
     <q t="Các bạn của một nước đi là gì?">Những nước đi đổi chỗ được với nước đi đã cho. Trong bài báo đó là tâm hóa tử của một phần tử. Định lý Newman nói rằng với một luật và một nước đi quay về điểm xuất phát, các bạn giao hoán với nhau.</q>
     <q t="Bài toán D2 của Wall đã được giải chưa?">Có điều kiện. Bài báo dựng một phức D2 gồm sáu ô, nhưng kết luận dựa vào bản thảo của OpenAI ngày 6 tháng 10 năm 2026, và các tác giả gọi Hệ quả B là có điều kiện. Định lý A, về khoảng trống quan hệ, không phụ thuộc vào bản thảo đó.</q>
     <q t="AI đóng vai trò gì?">Theo các tác giả, ChatGPT giúp tìm các nhóm và phần chứng minh và viết bản nháp đầu, còn Claude được hỏi ý kiến khi biên tập. Các tác giả tự kiểm tra và sửa các lập luận và văn bản, và chịu trách nhiệm về kết quả.</q>
-    <q t="Có thể tự kiểm tra không?">Có: nhóm của Định lý A được định nghĩa trong GAP bằng hai dòng (mã ở trên), còn phép tính cho $p=3$, $q=2$ là đại số phổ thông, có trong chương về ba và hai.</q>
+    <q t="Có thể tự kiểm tra không?">Có: nhóm của Định lý A được định nghĩa trong GAP bằng hai dòng, còn phép tính cho $p=3$, $q=2$ là đại số phổ thông, làm được từng bước bằng tay.</q>
   </b-faq-cards>
 </b-chapter>
 

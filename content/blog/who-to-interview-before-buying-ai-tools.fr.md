@@ -1,7 +1,7 @@
 ---
 title: Qui interviewer avant d'acheter des outils d'IA : 16 personnes issues de huit groupes polaires
 date: 2026-09-28
-updated: 2026-11-08
+updated: 2026-11-18
 description: Comment choisir 16 personnes à partir du rapport, d'un questionnaire et des listes de licences, vérifier la couverture des équipes et les remplacements, et décider quoi leur demander.
 tags: IA, custdev, recherche
 category: research
@@ -50,7 +50,7 @@ Il faut d'abord définir les façons d'accomplir les tâches qu'il faut voir : v
 </b-chapter>
 
 <b-chapter id="groups" icon="grid" title="Huit groupes">
-  <b-why>Six groupes viennent des seuils du rapport, « abandon » de la date de dernière activité, et « autres outils » du questionnaire. Chaque groupe aide à tester une question. La réponse peut être n'importe laquelle, y compris « aucun nouvel outil n'est nécessaire ». Les seuils ci-dessous servent de repère : ajustez-les pour que chaque groupe compte 2 à 5 personnes.</b-why>
+  <b-why>Six groupes viennent des seuils du rapport, « abandon » de la date de dernière activité, et « autres outils » du questionnaire. Chaque groupe aide à tester une question. La réponse peut être n'importe laquelle, y compris « aucun nouvel outil n'est nécessaire ». Les seuils servent de repère : ajustez-les pour que chaque groupe compte 2 à 5 personnes.</b-why>
   <b-gruppy-groups>
     <group icon="code-alt" color="c-code" t="Les plus actifs en code" c="code &gt; 200 $ / 3 mois" p="Hana Sato, Luis Moreno">ce qui manque en développement : un outil, l'accès au dépôt, ou rien</group>
     <group icon="zap-alt" color="c-work" t="Tâches d'agent" c="agent &gt; 60 $ / 3 mois" p="Mira Castellano, Tomás Reid">où l'agent est insuffisant et pourquoi : les données, la tâche ou l'agent lui-même</group>

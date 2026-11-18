@@ -104,7 +104,7 @@
  "time-horizon": {
   "name": "Horizon temporel d’une tâche (METR)",
   "aka": "horizon temporel METR",
-  "def": "L’horizon temporel d’une tâche est une métrique de l’organisation METR : la longueur d’une tâche qu’un agent accomplit avec une probabilité de succès donnée (50 % ou 80 %), mesurée par le temps qu’y passe une personne. Ce n’est pas le temps d’exécution de l’agent. La métrique montre quelle durée de travail un agent mène à bien seul.",
+  "def": "L’horizon temporel d’une tâche est une métrique de l’organisation METR : la longueur d’une tâche qu’un agent accomplit avec une probabilité de succès donnée (50 % ou 80 %), mesurée par le temps qu’y passe une personne. Elle décrit la difficulté de la tâche, quel que soit le temps d’exécution de l’agent. La métrique montre quelle durée de travail un agent mène à bien seul.",
   "notes.title": "Mots de la source",
   "notes.items.0.text": "« It's a measure of the difficulty of a task, rather than the time an AI spends to complete the task. »",
   "faq.0.q": "Que mesure METR ?",

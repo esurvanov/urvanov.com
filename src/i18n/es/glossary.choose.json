@@ -1,0 +1,68 @@
+{
+  "pull-request": {
+    "name": "Pull request",
+    "aka": "PR, solicitud de integración de cambios",
+    "def": "Un pull request es una propuesta para añadir un conjunto de cambios a un proyecto: el autor envía los cambios a una página donde se pueden revisar línea por línea, comentar y aceptar o rechazar. Mientras nadie pulse «aceptar», el código principal no cambia. Los agentes de programación, como Codex, suelen entregar su trabajo así: ves todos los cambios juntos y decides si te los quedas o no.",
+    "more.label": "Codex o ChatGPT: qué elegir para trabajar con código",
+    "faq.0.q": "¿Qué es un pull request?",
+    "faq.0.a": "Una propuesta para añadir cambios a un proyecto: se pueden revisar, comentar y aceptar o rechazar.",
+    "faq.1.q": "¿Para qué usa un agente un pull request?",
+    "faq.1.a": "Los cambios del agente no llegan solos al código principal: una persona los revisa en conjunto y decide si los acepta.",
+    "faq.2.q": "¿En qué se diferencia un pull request de un commit?",
+    "faq.2.a": "Un commit es un cambio guardado en el historial. Un pull request es la petición de aceptar un conjunto de esos cambios en la rama principal, con una conversación antes de aceptarlos.",
+    "source.label": "Documentación de GitHub: acerca de los pull requests",
+    "seo.title": "Pull request: qué es y por qué lo usan los agentes de código",
+    "seo.description": "Un pull request (PR) es una propuesta de cambios para un proyecto que una persona revisa y acepta o rechaza. Cómo lo usan Codex y otros agentes de programación."
+  },
+  "repository": {
+    "name": "Repositorio",
+    "aka": "repo, almacén del proyecto con su historial",
+    "def": "Un repositorio es la carpeta de un proyecto junto con el historial de todos sus cambios: los archivos de código y los registros de quién cambió qué. Suele gestionarlo Git, y una copia se guarda en un sitio como GitHub. Un agente de programación trabaja con el repositorio: lee los archivos, los edita y ejecuta comprobaciones. Un chat normal no tiene ese acceso y solo ve el texto que se le pega.",
+    "more.label": "Codex o ChatGPT: qué elegir para trabajar con código",
+    "faq.0.q": "¿Qué es un repositorio?",
+    "faq.0.a": "La carpeta de un proyecto con el historial de todos los cambios: los archivos y los registros de quién cambió qué.",
+    "faq.1.q": "¿En qué se diferencia un repositorio de una carpeta normal?",
+    "faq.1.a": "Guarda todo el historial de cambios, así que puedes ver cualquier versión anterior y volver a ella.",
+    "faq.2.q": "¿Por qué un agente de programación necesita un repositorio?",
+    "faq.2.a": "De él lee el proyecto completo, y el historial permite revisar y deshacer sus cambios.",
+    "source.label": "Wikipedia (en inglés): Repository (version control)"
+  },
+  "sdk": {
+    "aka": "kit de desarrollo, Software Development Kit",
+    "def": "Un SDK es un conjunto de código listo y de instrucciones que un programador conecta a su proyecto para usar el servicio de otra empresa desde un programa. El SDK de Codex permite iniciar el agente desde un script o una aplicación propios, en lugar de escribir las tareas a mano. Funciona con una clave de API: se paga según las tarifas de la API y la suscripción de ChatGPT no se usa para esto.",
+    "more.label": "Codex o ChatGPT: qué elegir para trabajar con código",
+    "faq.0.q": "¿Qué es un SDK?",
+    "faq.0.a": "Un conjunto de código listo e instrucciones para conectar el servicio de otra empresa a tu propio programa.",
+    "faq.1.q": "¿En qué se diferencia un SDK de una API?",
+    "faq.1.a": "Una API son las reglas con las que un programa llama a un servicio. Un SDK es código listo que hace esas llamadas por ti.",
+    "faq.2.q": "¿Hace falta un SDK para usar Codex?",
+    "faq.2.a": "No: Codex funciona en la aplicación, en el terminal y en la extensión para IDE. El SDK sirve cuando el agente se inicia desde un programa propio.",
+    "source.label": "Wikipedia (en inglés): Software development kit"
+  },
+  "cli": {
+    "aka": "interfaz de línea de comandos, Command-Line Interface",
+    "def": "Una CLI es un programa que se controla con comandos de texto en un terminal, sin ventanas ni botones. Claude Code y Codex tienen una versión así: la inicias en la carpeta del proyecto y le escribes las tareas al agente como líneas de texto. El terminal es la ventana donde se escriben los comandos, y la CLI es el programa que los recibe.",
+    "more.label": "Codex o ChatGPT: qué elegir para trabajar con código",
+    "faq.0.q": "¿Qué es una CLI?",
+    "faq.0.a": "Un programa que se controla con comandos de texto en un terminal.",
+    "faq.1.q": "¿En qué se diferencia una CLI de un terminal?",
+    "faq.1.a": "El terminal es la ventana donde se escriben los comandos. La CLI es el programa que los recibe y los ejecuta.",
+    "faq.2.q": "¿Qué elegir para Codex: la CLI o la extensión para IDE?",
+    "faq.2.a": "Depende de la costumbre: la CLI funciona en el terminal y la extensión muestra los cambios en el propio editor. Las capacidades del agente son las mismas.",
+    "source.label": "Wikipedia (en inglés): Command-line interface"
+  },
+  "chatgpt-work": {
+    "aka": "modo Work de ChatGPT, tareas grandes hasta un resultado terminado",
+    "def": "ChatGPT Work es un modo de ChatGPT para tareas grandes: planifica los pasos por sí mismo, reúne datos, busca en internet, ejecuta código y entrega un resultado terminado, como un documento, una hoja de cálculo, una presentación o un PDF. Se activa con el interruptor Work de ChatGPT. Para programar dentro de un proyecto, OpenAI tiene un agente aparte, Codex; ChatGPT Work y Codex están incluidos en los planes de ChatGPT y comparten los mismos límites de uso.",
+    "more.label": "Codex o ChatGPT: qué elegir para trabajar con código",
+    "faq.0.q": "¿Qué es ChatGPT Work?",
+    "faq.0.a": "Un modo de ChatGPT para tareas grandes: el agente lleva la tarea hasta un documento, una hoja de cálculo o una presentación terminados.",
+    "faq.1.q": "¿En qué se diferencia ChatGPT Work de Codex?",
+    "faq.1.a": "Work entrega un documento o un informe terminado; Codex edita el código de un proyecto y lo comprueba con pruebas.",
+    "faq.2.q": "¿Dónde funciona ChatGPT Work?",
+    "faq.2.a": "En la web, en el entorno en la nube de OpenAI; en la aplicación de escritorio a veces se puede elegir entre la nube y tu propio ordenador. Fuente: learn.chatgpt.com/docs/use-chatgpt.",
+    "source.label": "Documentación de OpenAI: usar ChatGPT",
+    "seo.title": "ChatGPT Work: qué es y en qué se diferencia de Codex",
+    "seo.description": "ChatGPT Work es un modo de ChatGPT que lleva una tarea grande hasta un documento, una hoja de cálculo o una presentación. Qué lo separa de Codex y los límites."
+  }
+}

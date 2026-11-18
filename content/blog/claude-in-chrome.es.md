@@ -1,8 +1,8 @@
 ---
-title: Claude Code en Chrome: cómo prueba el agente un sitio en el navegador, depuración y formularios con tu sesión iniciada
+title: Extensión de Claude para Chrome (Claude in Chrome): cómo prueba el agente un sitio en el navegador, depuración y formularios con tu sesión
 date: 2026-10-05
-updated: 2026-11-17
-description: Claude in Chrome conecta Claude Code con el navegador: el agente abre pestañas, lee la consola y rellena formularios con tu sesión. Conexión y permisos.
+updated: 2026-11-18
+description: Cómo conectar la extensión de Claude para Chrome con Claude Code: el agente abre pestañas, lee la consola y rellena formularios con tu sesión. Pasos y permisos.
 tags: IA, agentes, Claude Code, Claude in Chrome, navegador, QA, harness
 category: harness
 layout: wide
@@ -10,7 +10,7 @@ mentions: Claude in Chrome, Claude Code, Chrome extension, browser automation, M
 toc: what=Qué es | connect=Conexión | gives=Qué hace | qa=Ejemplo | risks=Permisos y riesgos | tradeoff=Precio de la flexibilidad | custom=Script propio | first=Por dónde empezar | faq=Preguntas | next=Siguiente
 ---
 
-Claude Code prueba un sitio en el navegador mediante la extensión Claude in Chrome: iniciado con `claude --chrome`, el agente abre tu sitio en una pestaña, recorre un escenario, rellena formularios y lee la consola con tu sesión iniciada, y luego corrige el código que falló. Hace falta un plan de pago de Claude. La extensión en sí está descrita en el [glosario](/materials/glossary/claude-in-chrome/). Abajo: conexión, qué puede hacer el agente y qué permisos darle.
+La extensión de Claude para Chrome (Claude in Chrome) permite que Claude Code pruebe un sitio en el navegador: iniciado con `claude --chrome`, el agente abre tu sitio en una pestaña, rellena formularios y lee la consola con tu sesión iniciada, y luego corrige el código que falló. Hace falta un plan de pago de Claude. Abajo: conexión, qué hace el agente y qué permisos darle; la extensión está en el [glosario](/materials/glossary/claude-in-chrome/).
 
 <b-post series="harness">
 
@@ -80,7 +80,7 @@ Claude Code prueba un sitio en el navegador mediante la extensión Claude in Chr
   <b-say-agent title="Dile al agente">Abre el entorno de pruebas, añade un artículo al carrito, aplica el código promocional y paga con una tarjeta de prueba. Si el pago falla, mira la consola y graba un GIF del camino.</b-say-agent>
   <b-why align="left">A continuación, el ejemplo del artículo de QA: el ticket PAY-142 y el camino del agente hasta un resultado terminado.</b-why>
   <iso-art name="claude-in-chrome/ticket-to-report"></iso-art>
-  <b-why align="left">La imagen muestra el camino del ticket al resultado. El ticket llega al agente, el agente recorre en el navegador el carrito, el código promocional y el pago, encuentra el error en la consola y graba un GIF. QA recibe no un relato sino un rastro verificable: el texto de la consola y una grabación del recorrido por la página. Si la grabación y la consola no coinciden con el informe, se nota enseguida.</b-why>
+  <b-why align="left">La imagen muestra el camino del ticket al resultado. El ticket llega al agente, el agente recorre en el navegador el carrito, el código promocional y el pago, encuentra el error en la consola y graba un GIF. QA recibe un rastro verificable: el texto de la consola y una grabación del recorrido por la página. Si la grabación y la consola no coinciden con el informe, se nota enseguida.</b-why>
   <b-finding>
     <ex>El agente recorre el camino, encuentra el error de la consola y graba un GIF para el ticket.</ex>
     <gen>La ventana es visible, así que QA sigue los pasos y puede detener al agente. El texto de la consola y el GIF dejan un rastro comprobable.</gen>

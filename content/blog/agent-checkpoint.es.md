@@ -1,7 +1,7 @@
 ---
 title: Dónde comprobar el trabajo de un agente de IA: en el límite del agregado, porque nadie puede comprobar todos los programas (teorema de Rice)
 date: 2026-11-06
-updated: 2026-11-13
+updated: 2026-11-18
 description: Por qué ninguna comprobación puede verificar cualquier código de un agente contra cualquier regla, qué tres vías vuelven finita una comprobación, cómo el límite de un agregado del event storming se convierte en punto de control, cómo la comprobabilidad fija el tamaño de un bounded context y por qué el primer marco debe ser barato de mover.
 tags: IA, agentes, DDD, agregado, bounded context, event storming, teorema de Rice, Quint, verificación de modelos
 category: specs
@@ -186,7 +186,7 @@ El trabajo de un agente de IA se comprueba en el límite del agregado: por donde
 
   <b-why align="left">Elegir un marco choca con una prohibición distinta de la del teorema de Rice. Una comprobación de código tiene toda la información, todo el código está delante, pero la respuesta no se puede calcular a partir de él. A un marco le falta la propia información. Un buen marco es aquel donde vivirán los cambios futuros, y no hay datos sobre el futuro ni en el código ni en ningún otro sitio. Es exactamente la posición del servidor en el teorema CAP: no sabe qué pasa en su vecino al otro lado del enlace roto, y aquí nadie sabe qué cambios llegarán el mes que viene.</b-why>
   <b-why align="left">Por eso las salidas son las mismas que en CAP. Esperar a que el futuro se conozca no es posible: el trabajo se hace ahora. Queda responder ahora con lo disponible y estar preparado para equivocarse. «Lo disponible» son dos aproximaciones al futuro: el historial de cambios pasados, que muestra qué suele cambiar junto, y tus planes, que solo tú conoces. Y la tercera salida de CAP, acotar el tiempo, se convierte aquí en los ciclos cortos de agile: fijar el marco para dos semanas, ver cómo viven los cambios en él y moverlo. Como el marco será erróneo de todos modos, lo que importa es que moverlo sea barato.</b-why>
-  <b-why align="left">El teorema de Rice sigue participando en esta sección, con otro papel. No ayuda a adivinar el futuro, pero da una comprobación de un marco ya elegido: si un modelo de Quint de las reglas de una parte se puede recorrer hasta el final, la parte es lo bastante pequeña; si no, debe dividirse. Esa señal se trató en la sección sobre el tamaño del contexto.</b-why>
+  <b-why align="left">El teorema de Rice sigue participando aquí, con otro papel. No ayuda a adivinar el futuro, pero da una comprobación de un marco ya elegido: si un modelo de Quint de las reglas de una parte se puede recorrer hasta el final, la parte es lo bastante pequeña; si no, debe dividirse. Esa señal es el tamaño del contexto.</b-why>
 
   <b-subhead>De dónde salen las primeras partes</b-subhead>
   <b-why align="left">No hace falta conocer las partes de antemano: el primer corte sale de lo que ya existe, y una persona solo nombra las partes y fija los puntos discutidos.</b-why>

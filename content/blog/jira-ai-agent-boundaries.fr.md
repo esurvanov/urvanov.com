@@ -1,7 +1,7 @@
 ---
 title: Jira et un agent IA : avantages, limites et où tracer la frontière
 date: 2026-10-20
-updated: 2026-11-13
+updated: 2026-11-18
 description: Comment un agent IA se connecte à Jira via MCP, ce qui marche, ce qui casse, et pourquoi la collecte des bugs relève d’un service séparé. Alternatives à Jira incluses.
 tags: IA, agents, Jira, MCP, Claude Code, bug tracker, harness
 category: harness
@@ -49,7 +49,7 @@ Un agent IA se connecte à Jira via MCP. Il s’en sort bien pour la planificati
 </b-chapter>
 
 <b-chapter id="minus" icon="alert" title="Limites">
-  <b-why align="left">Les limites se voient dans les chiffres et dans la façon dont les tickets sont construits. Le graphique montre combien de tokens ont été dépensés pour les mêmes 23 tickets : environ 612 mille via Rovo MCP, moins de 6 mille avec un script direct. Un token est ici une unité de volume de texte pour le modèle ; la vitesse et la facturation se comptent en tokens. Les cartes ci-dessous nomment les autres problèmes : captures d’écran absentes, tickets d’une ligne sans étapes, tromperie par le texte d’un ticket, token aux droits trop larges et limites de requêtes.</b-why>
+  <b-why align="left">Les limites se voient dans les chiffres et dans la façon dont les tickets sont construits. Le graphique montre combien de tokens ont été dépensés pour les mêmes 23 tickets : environ 612 mille via Rovo MCP, moins de 6 mille avec un script direct. Un token est ici une unité de volume de texte pour le modèle ; la vitesse et la facturation se comptent en tokens. Les cartes nomment les autres problèmes : captures d’écran absentes, tickets d’une ligne sans étapes, tromperie par le texte d’un ticket, token aux droits trop larges et limites de requêtes.</b-why>
   <b-sublabel>Tokens pour 23 tickets</b-sublabel>
   <b-count-bars>
     <bar k="Via Rovo MCP" w="100%" color="c-none">612k</bar>
@@ -72,7 +72,7 @@ Un agent IA se connecte à Jira via MCP. Il s’en sort bien pour la planificati
 </b-chapter>
 
 <b-chapter id="russia" icon="flag" title="Jira en Russie">
-  <b-why align="left">Les équipes russes font face à une difficulté à part : Atlassian a progressivement fermé ses produits à la Russie. La chronologie ci-dessous : nouveaux abonnements indisponibles depuis 2022, cloud fermé en septembre 2024, et en mars 2029 Data Center passe en lecture seule. Le MCP cloud officiel et les agents dans Jira sont donc de fait inaccessibles aux équipes russes.</b-why>
+  <b-why align="left">Les équipes russes font face à une difficulté à part : Atlassian a progressivement fermé ses produits à la Russie. La chronologie : nouveaux abonnements indisponibles depuis 2022, cloud fermé en septembre 2024, et en mars 2029 Data Center passe en lecture seule. Le MCP cloud officiel et les agents dans Jira sont donc de fait inaccessibles aux équipes russes.</b-why>
   <b-steps>
     <step t="2022">nouveaux abonnements et renouvellements indisponibles</step>
     <step t="Février 2024">fin du support de Server</step>
@@ -108,7 +108,7 @@ Un agent IA se connecte à Jira via MCP. Il s’en sort bien pour la planificati
 </b-chapter>
 
 <b-chapter id="border" icon="split" title="Où tracer la frontière">
-  <b-why align="left">Les limites indiquent la frontière. Jira reste le lieu de la planification et des défauts confirmés, et la collecte des bugs passe dans un service séparé : il capte le problème là où il a été vu et rassemble lui-même le contexte. Les deux colonnes ci-dessous montrent ce qui reste à qui.</b-why>
+  <b-why align="left">Les limites indiquent la frontière. Jira reste le lieu de la planification et des défauts confirmés, et la collecte des bugs passe dans un service séparé : il capte le problème là où il a été vu et rassemble lui-même le contexte. Les deux colonnes montrent ce qui reste à qui.</b-why>
   <b-two-lists>
     <list icon="workflow" t="Jira : planification" items="backlog et priorités|statuts et processus|liens et historique|défaut confirmé"></list>
     <list icon="bug" t="Collecte de bugs : un service séparé" items="un bouton là où le bug a été vu|contexte automatique|masquage des données personnelles|accès étroit de l’agent et ses règles"></list>

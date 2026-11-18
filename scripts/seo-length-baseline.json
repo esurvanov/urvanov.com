@@ -75,9 +75,6 @@
  "/es/blog/agent-hands-work-back-to-you": [
   "description"
  ],
- "/es/blog/ai-agent-llm-harness": [
-  "description"
- ],
  "/es/blog/ai-interviews-without-leading-questions": [
   "description"
  ],
@@ -293,9 +290,6 @@
  "/fr/blog/agents-per-bounded-context": [
   "description"
  ],
- "/fr/blog/ai-agent-llm-harness": [
-  "description"
- ],
  "/fr/blog/ai-interviews-without-leading-questions": [
   "description"
  ],
@@ -382,9 +376,6 @@
  "/fr/materials/glossary/ci-cd": [
   "title",
   "description"
- ],
- "/fr/materials/glossary/claude-code": [
-  "title"
  ],
  "/fr/materials/glossary/cloud-agent": [
   "title",
@@ -594,10 +585,6 @@
  ],
  "/ka/materials/glossary/ci-cd": [
   "title"
- ],
- "/ka/materials/glossary/claude-code": [
-  "title",
-  "description"
  ],
  "/ka/materials/glossary/cloud-agent": [
   "title",
@@ -1161,9 +1148,6 @@
  "/vi/blog/agent-hands-work-back-to-you": [
   "description"
  ],
- "/vi/blog/ai-agent-llm-harness": [
-  "description"
- ],
  "/vi/blog/ai-interviews-without-leading-questions": [
   "description"
  ],
@@ -1194,9 +1178,6 @@
  "/vi/blog/mcp-1c": [
   "description"
  ],
- "/vi/blog/mcp-agent-access": [
-  "description"
- ],
  "/vi/blog/mcp-scopes": [
   "description"
  ],
@@ -1218,18 +1199,8 @@
  "/vi/blog/work-prompts-examples": [
   "description"
  ],
- "/vi/materials/glossary/ai-agent": [
-  "description"
- ],
  "/vi/materials/glossary/ci-cd": [
   "title"
- ],
- "/vi/materials/glossary/claude-code": [
-  "title"
- ],
- "/vi/materials/glossary/context": [
-  "title",
-  "description"
  ],
  "/vi/materials/glossary/critical-path": [
   "description"

@@ -83,5 +83,10 @@
     "name": "Grupos, movimientos y reglas",
     "hint": "El lenguaje de los puzles y las simetrías",
     "group.name": "Teoría"
+  },
+  "access": {
+    "name": "Acceso, cuenta y pago",
+    "hint": "Redes, verificaciones y pagos en torno a los servicios de IA",
+    "group.name": "Agentes de IA"
   }
 }

@@ -934,6 +934,24 @@ export const ART: Record<string, Art> = {
     I.path([g(3.4, 1.2), g(6.8, 2.2)], W, { dash: '2 4', w: 1.8, op: 0.8 }); t(5.2, 1.7, '✕', W, { size: 16, w: 800, dy: 5 })
     I.pulse([g(3.4, -1.2), g(6.8, -2.2)], A, 2.5)
   } },
+  // VPN: сайт видит адрес, с которого пришёл трафик; человек остаётся там же
+  'vpn': { ru: 'VPN меняет адрес, с которого сайт видит трафик, а человек остаётся на месте', en: 'A VPN changes the address the site sees the traffic from; the person stays where they are', tile: [0, 0, 0, 0], wide: true, draw: (I, l) => {
+    const { g, arr, t, person, box } = screen(I)
+    person(-9.5, 0, l('вы', 'you'))
+    { const [x, y] = g(9.5, 0); I.cyl(x, y, 0, 0.5, 0.8, M) } t(9.5, 1.2, l('сайт', 'site'), M, { dy: 12 })
+    // Без VPN: прямой путь
+    arr(M, [-7.8, -1.2], [-7.8, -4.4], [7.8, -4.4], [7.8, -1.6])
+    t(0, -4.4, l('без VPN', 'without VPN'), M, { dy: -30, size: 13, w: 800 }); t(0, -4.4, l('сайт видит адрес подключения', 'the site sees your connection address'), M, { dy: -14, size: 12 })
+    // С VPN: через сервер
+    arr(A, [-7.8, 1.2], [-7.8, 4.4], [-2.2, 4.4])
+    arr(A, [2.2, 4.4], [7.8, 4.4], [7.8, 1.6])
+    box(0, 4.4, 1.3, 0.8, A)
+    t(0, 4.4, l('VPN-сервер', 'VPN server'), A, { dy: 34, size: 13, w: 800 })
+    t(-5.0, 4.4, l('с VPN', 'with VPN'), A, { dy: -10, size: 13, w: 800 }); t(5.0, 4.4, l('сайт видит адрес сервера', 'the site sees the server address'), A, { dy: -10, size: 12 })
+    I.pulse([g(-7.8, 1.2), g(-7.8, 4.4), g(-2.2, 4.4)], A, 3)
+    // Человек на месте
+    t(0, 8.2, l('Адрес меняется, человек остаётся на месте', 'The address changes, the person stays in place'), W, { dy: 10, size: 14, w: 800 })
+  } },
   'subagent': { ru: 'Главный агент раздаёт части работы, назад получает только итог', en: 'The main agent hands out parts of the work and gets back only the result', tile: [0, 0, 0, 0], draw: (I, l) => {
     const { g, arr, t } = screen(I)
     { const [x, y] = g(-6.5, 0); I.agent(x - 0.8, y - 0.8, A, 1.6, '') } t(-6.5, 1.6, l('главный агент', 'main agent'), A, { dy: 10 })

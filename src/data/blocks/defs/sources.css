@@ -10,7 +10,7 @@
 .s-rich.bk .bk-sources-src-name a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
 .s-rich.bk .bk-sources-src:hover .bk-sources-src-name a, .s-rich.bk .bk-sources-src-name a:hover { color: var(--accent); border-color: var(--accent); }
 .s-rich.bk .bk-sources-src-path { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--muted); margin-top: 1px; word-break: break-word; }
-.s-rich.bk .bk-sources-src-what { font-size: 14.5px; color: var(--ink-2); margin-top: 5px; line-height: 1.45; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-sources-src-what { font-size: 14.5px; color: var(--ink-2); margin-top: 5px; line-height: 1.45; text-align: left; hyphens: manual; -webkit-hyphens: manual; }
 .s-rich.bk .bk-sources-tip { position: relative; z-index: 2; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink-2); display: grid; place-items: center; font-size: 12px; font-weight: 700; cursor: help; margin-top: 6px; }
 .s-rich.bk .bk-sources-tip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 .s-rich.bk .bk-sources-tip-body { position: absolute; right: -6px; top: calc(100% + 8px); z-index: 5; width: min(300px, 78vw); background: var(--tip-bg); color: var(--tip-ink); border-radius: 4px; padding: 12px 14px; font-size: 13px; font-weight: 400; line-height: 1.5; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,.18); opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity .15s, transform .15s, visibility .15s; pointer-events: none; }

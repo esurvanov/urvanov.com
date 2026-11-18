@@ -1,5 +1,5 @@
 /* «Вывод»: пример → общее правило → что сделать, части разделены пунктиром */
-.s-rich.bk .bk-finding { margin-top: 14px; background: var(--mark); color: var(--mark-ink); border: 1px solid var(--line); border-radius: 4px; padding: 11px 15px; font-size: 15.5px; line-height: 1.5; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-finding { margin-top: 14px; background: var(--mark); color: var(--mark-ink); border: 1px solid var(--line); border-radius: 4px; padding: 11px 15px; font-size: 15.5px; line-height: 1.5; text-align: left; hyphens: manual; -webkit-hyphens: manual; }
 .s-rich.bk .bk-finding b { font-weight: 700; margin-right: 4px; }
 .s-rich.bk .bk-finding > b:first-child { display: block; font-family: "JetBrains Mono", monospace; font-size: .8rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 4px; }
 .s-rich.bk .bk-finding a { text-decoration-line: underline; text-underline-offset: 3px; }

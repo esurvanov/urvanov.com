@@ -1,0 +1,123 @@
+{
+  "vpn": {
+    "aka": "mạng riêng ảo",
+    "def": "VPN (mạng riêng ảo) là chương trình chuyển lưu lượng của bạn qua một máy chủ khác, nên trang web thấy địa chỉ của máy chủ đó thay cho địa chỉ kết nối của bạn. VPN chỉ đổi địa chỉ mà từ đó lưu lượng được nhìn thấy. Bản thân nó không xác định và không thay đổi quốc gia của một người theo quy định của các công ty.",
+    "more.label": "Claude Code không dùng được ở nước bạn: các quốc gia được hỗ trợ, VPN và lệnh cấm",
+    "faq.0.q": "VPN là gì?",
+    "faq.0.a": "Chương trình chuyển lưu lượng qua một máy chủ khác, nên trang web thấy địa chỉ của máy chủ đó.",
+    "faq.1.q": "Trang web thấy gì khi bật VPN?",
+    "faq.1.a": "Địa chỉ của máy chủ VPN thay cho địa chỉ kết nối của bạn.",
+    "faq.2.q": "VPN có đổi quốc gia của một người không?",
+    "faq.2.a": "Không: VPN đổi địa chỉ mà từ đó lưu lượng được nhìn thấy, còn người dùng vẫn ở nơi họ đang ở. Quy định của công ty về quốc gia được đọc trong tài liệu của chính công ty đó.",
+    "source.label": "Wikipedia (tiếng Anh): Virtual private network",
+    "sites.0.label": "Wikipedia (tiếng Nga): VPN"
+  },
+  "persona": {
+    "aka": "Persona Identities, xác minh danh tính",
+    "def": "Persona là dịch vụ bên ngoài xác minh danh tính qua ảnh giấy tờ và ảnh selfie. Anthropic dùng dịch vụ này để xác minh tài khoản Claude: ảnh giấy tờ và selfie do chính Persona tiếp nhận và lưu giữ. Đây là một công ty riêng có trang web riêng, không thuộc Anthropic.",
+    "more.label": "Claude Code không dùng được ở nước bạn: các quốc gia được hỗ trợ, VPN và lệnh cấm",
+    "faq.0.q": "Persona là gì?",
+    "faq.0.a": "Dịch vụ bên ngoài xác minh danh tính qua giấy tờ và ảnh selfie.",
+    "faq.1.q": "Ai dùng Persona?",
+    "faq.1.a": "Anthropic: theo trung tâm trợ giúp của Claude, việc xác minh danh tính trên Claude do đối tác Persona thực hiện.",
+    "faq.2.q": "Giấy tờ và ảnh selfie được lưu ở đâu?",
+    "faq.2.a": "Ở Persona; trang trợ giúp của Anthropic nói rằng Persona lưu giữ chúng, không phải hệ thống của Anthropic.",
+    "source.label": "Trợ giúp Claude: xác minh danh tính",
+    "sites.0.label": "withpersona.com, trang web của Persona"
+  },
+  "voip": {
+    "name": "Số VoIP",
+    "aka": "VoIP, điện thoại IP, số điện thoại internet",
+    "def": "Số VoIP là số điện thoại có cuộc gọi và tin nhắn đi qua internet và không có thẻ SIM vật lý. Các dịch vụ và ứng dụng trực tuyến cấp loại số này. Trang trợ giúp của Anthropic về xác minh tài khoản Claude xếp chúng vào loại không phù hợp: cần một số di động thông thường nhận được tin nhắn SMS.",
+    "faq.0.q": "Số VoIP là gì?",
+    "faq.0.a": "Số điện thoại hoạt động qua internet và không gắn với thẻ SIM vật lý.",
+    "faq.1.q": "Số VoIP khác số di động thông thường thế nào?",
+    "faq.1.a": "Số thông thường gắn với thẻ SIM của nhà mạng, còn số VoIP nằm trong một ứng dụng hoặc dịch vụ trực tuyến.",
+    "faq.2.q": "Anthropic có chấp nhận số VoIP không?",
+    "faq.2.a": "Không: trang trợ giúp về xác minh điện thoại liệt kê chúng trong số các số không được dùng.",
+    "source.label": "Wikipedia (tiếng Anh): Voice over IP",
+    "sites.0.label": "Wikipedia (tiếng Nga): điện thoại IP",
+    "sites.1.label": "Trợ giúp Claude: xác minh số điện thoại"
+  },
+  "google-voice": {
+    "aka": "số Google Voice",
+    "def": "Google Voice là dịch vụ của Google cấp cho bạn một số điện thoại để gọi, nhắn tin và nhận thư thoại qua internet, không gắn với thẻ SIM. Đây là một loại số VoIP. Trang trợ giúp của Anthropic về xác minh tài khoản Claude nêu Google Voice trong số các số không được dùng.",
+    "faq.0.q": "Google Voice là gì?",
+    "faq.0.a": "Dịch vụ của Google: số điện thoại để gọi, nhắn tin và nhận thư thoại qua internet.",
+    "faq.1.q": "Google Voice có phải VoIP không?",
+    "faq.1.a": "Có: số này hoạt động qua internet và không gắn với thẻ SIM.",
+    "faq.2.q": "Google Voice có dùng được để xác minh tài khoản Claude không?",
+    "faq.2.a": "Không: trang trợ giúp của Anthropic liệt kê nó trong số các số không được dùng.",
+    "source.label": "Trợ giúp Google Voice",
+    "sites.0.label": "Trợ giúp Claude: xác minh số điện thoại"
+  },
+  "http-403": {
+    "name": "Lỗi HTTP 403",
+    "aka": "403, lỗi 403, HTTP 403, Forbidden",
+    "def": "Lỗi 403 (Forbidden, “bị cấm”) là mã phản hồi HTTP: máy chủ hiểu yêu cầu nhưng từ chối thực hiện. Đăng nhập lại bằng cùng tài khoản không thay đổi gì. Nguyên nhân có nhiều: quyền truy cập, quy tắc của trang, chống bot. Một lỗi như vậy tự nó không cho biết quốc gia của người dùng.",
+    "faq.0.q": "Lỗi 403 là gì?",
+    "faq.0.a": "Mã phản hồi HTTP: máy chủ hiểu yêu cầu nhưng từ chối thực hiện.",
+    "faq.1.q": "403 khác 401 thế nào?",
+    "faq.1.a": "Với 401 bạn cần đăng nhập hoặc xác nhận lại đăng nhập, còn với 403 đăng nhập lại không thay đổi gì, vì việc từ chối do quy tắc của máy chủ đặt ra.",
+    "faq.2.q": "Lỗi 403 có nghĩa là bị chặn theo quốc gia không?",
+    "faq.2.a": "Tự nó thì không: cùng mã này cũng được trả về khi thiếu quyền, do quy tắc của trang và do chống bot.",
+    "source.label": "MDN: 403 Forbidden",
+    "sites.0.label": "Wikipedia (tiếng Anh): HTTP 403",
+    "sites.1.label": "Wikipedia (tiếng Nga): danh sách mã trạng thái HTTP"
+  },
+  "paypal": {
+    "aka": "ví PayPal",
+    "def": "PayPal là dịch vụ thanh toán: qua đó mọi người trả và nhận tiền trực tuyến. Để chuyển tiền giữa các cá nhân ở Mỹ, công ty có ứng dụng riêng là Venmo. Thanh toán trên web cần có tài khoản PayPal, và dịch vụ có dùng được hay không còn tùy từng quốc gia.",
+    "faq.0.q": "PayPal là gì?",
+    "faq.0.a": "Dịch vụ thanh toán để trả và nhận tiền trực tuyến.",
+    "faq.1.q": "PayPal liên quan gì đến Venmo?",
+    "faq.1.a": "Venmo là ứng dụng của cùng công ty để chuyển tiền giữa các cá nhân ở Mỹ.",
+    "faq.2.q": "PayPal dùng để làm gì?",
+    "faq.2.a": "Để trả tiền mua hàng và nhận tiền trực tuyến qua tài khoản của dịch vụ.",
+    "source.label": "Trang web chính thức của PayPal"
+  },
+  "venmo": {
+    "aka": "ứng dụng Venmo",
+    "def": "Venmo là ứng dụng thanh toán nhanh và an toàn giữa bạn bè ở Mỹ. Đây là dịch vụ của công ty PayPal. Từ năm 2009, ứng dụng được xây dựng quanh thanh toán mang tính xã hội: chuyển tiền cho bạn giống như gửi một tin nhắn.",
+    "faq.0.q": "Venmo là gì?",
+    "faq.0.a": "Ứng dụng thanh toán giữa bạn bè ở Mỹ.",
+    "faq.1.q": "Dịch vụ này của ai?",
+    "faq.2.q": "Venmo dành cho ai?",
+    "faq.2.a": "Dành cho thanh toán giữa bạn bè ở Mỹ.",
+    "source.label": "Venmo: giới thiệu"
+  },
+  "zdr": {
+    "aka": "Zero Data Retention, không lưu giữ dữ liệu",
+    "def": "ZDR (Zero Data Retention, không lưu giữ dữ liệu) là chế độ trong đó nhà cung cấp xử lý yêu cầu và phản hồi theo thời gian thực và không lưu chúng sau khi trả lời. Ở Anthropic, chế độ này dành cho một số tổ chức theo thỏa thuận. Ngoại lệ: việc lưu giữ mà pháp luật hoặc việc chống lạm dụng yêu cầu.",
+    "faq.0.q": "ZDR là gì?",
+    "faq.0.a": "Chế độ không lưu giữ dữ liệu: yêu cầu và phản hồi được xử lý và không được lưu sau khi trả lời.",
+    "faq.1.q": "ZDR có bật cho mọi người không?",
+    "faq.1.a": "Không: theo tài liệu của Anthropic, chế độ này dành cho các tài khoản Claude for Enterprise đủ điều kiện và được bật riêng cho từng tổ chức.",
+    "faq.2.q": "Nhà cung cấp có giữ gì khi dùng ZDR không?",
+    "faq.2.a": "Dữ liệu vẫn được giữ ở nơi pháp luật hoặc việc chống lạm dụng yêu cầu; dữ liệu quản trị như email tài khoản và số chỗ trong gói đăng ký vẫn còn.",
+    "source.label": "Tài liệu Claude Code: Zero Data Retention",
+    "sites.0.label": "Tài liệu Claude Code: việc sử dụng dữ liệu"
+  },
+  "hipaa": {
+    "def": "HIPAA là đạo luật của Mỹ năm 1996 về bảo vệ thông tin y tế (Health Insurance Portability and Accountability Act). Luật đặt ra quy tắc cho các tổ chức y tế và nhà thầu của họ khi xử lý dữ liệu bệnh nhân. Dịch vụ AI nhận loại dữ liệu này hoạt động theo một thỏa thuận riêng với khách hàng.",
+    "faq.0.q": "HIPAA là gì?",
+    "faq.0.a": "Đạo luật của Mỹ về bảo vệ thông tin y tế, ban hành năm 1996.",
+    "faq.1.q": "HIPAA áp dụng cho ai?",
+    "faq.1.a": "Các tổ chức y tế và những nhà thầu được giao dữ liệu bệnh nhân.",
+    "faq.2.q": "HIPAA liên quan gì đến ZDR?",
+    "faq.2.a": "Các tổ chức có dữ liệu bệnh nhân chọn nhà cung cấp có thỏa thuận HIPAA; theo tài liệu của Anthropic, một số dịch vụ còn cần cả chế độ ZDR.",
+    "sites.0.label": "Wikipedia (tiếng Nga): HIPAA",
+    "sites.1.label": "Wikipedia (tiếng Anh): HIPAA"
+  },
+  "telegram": {
+    "aka": "ứng dụng nhắn tin Telegram",
+    "def": "Telegram là ứng dụng nhắn tin để trò chuyện, gọi điện và theo dõi kênh: theo mô tả của chính dịch vụ, ứng dụng nhanh, đơn giản và miễn phí. Kênh công khai mở cho mọi người. Bài trong đó là ghi chép của tác giả kênh, và nội dung các bài này không ai kiểm chứng bên ngoài Telegram.",
+    "faq.0.q": "Telegram là gì?",
+    "faq.0.a": "Ứng dụng nhắn tin để trò chuyện và theo dõi kênh.",
+    "faq.1.q": "Kênh công khai là gì?",
+    "faq.1.a": "Kênh mở cho mọi người, không cần lời mời; tác giả hoặc một nhóm đăng bài ở đó.",
+    "faq.2.q": "Có thể tin các bài trong kênh không?",
+    "faq.2.a": "Bài đăng vẫn là ghi chép của tác giả kênh: Telegram không kiểm chứng nội dung, nên cần đối chiếu sự việc với nguồn gốc.",
+    "source.label": "Telegram: câu hỏi thường gặp"
+  }
+}

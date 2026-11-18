@@ -1,7 +1,7 @@
 ---
 title: AI აგენტის სიმწიფის დონეები: ჩატიდან სპეციფიკაციებამდე, skills-მდე, კოდამდე, harness-ამდე და აგენტურ სისტემამდე
 date: 2026-11-14
-updated: 2026-11-17
+updated: 2026-11-18
 description: როგორ იზრდება დეველოპერის მუშაობა AI-თან ჩატიდან აგენტურ სისტემამდე: რა იწერება ყოველ საფეხურზე, როდის გადავიდეთ შემდეგზე და რა ჯდება ეს.
 tags: AI, აგენტები, სპეციფიკაციები, skills, harness, სიმწიფე, compound engineering
 category: specs
@@ -16,7 +16,7 @@ AI აგენტის სიმწიფის დონეები ჩა�
 <b-chapter id="map" title="შვიდი საფეხური" icon="stairs">
   <b-art names="ai-agent-maturity-levels/ladder ai-agent-maturity-levels/ladder-mobile"></b-art>
   <b-cap>შვიდი საფეხური. რუხი არის ადამიანი, ლურჯი არის აგენტი და ყველაფერი, რაც მისთვის არის ჩაწერილი, ნარინჯისფერი არის რისკი: ხელახლა ახსნის აუცილებლობა. ნარინჯისფერი ბაგი Harness-ის საფეხურზე მზა ანგარიშში ნაპოვნი შეცდომაა: harness მას შემოწმებად აქცევს, ისრით ნაჩვენები, რათა იგივე შეცდომა არ დაბრუნდეს.</b-cap>
-  <b-why>სურათი აჩვენებს, სად მიდის ცოდნა. ჩატში ის ადამიანის თავში და საუბარშია. შემდეგ სათითაოდ გადადის აგენტის სესიაში, მოთხოვნების ფაილში, პროცედურის ფაილში, სკრიპტში და ბოლოს რეპოზიტორიაში შემოწმებებთან ერთად. ქვემოთ ცხრილი იმავე ანგარიშს ორშაბათებით გადის: რას აკეთებს ადამიანი ხელით და რა ხდება მომდევნო ორშაბათს.</b-why>
+  <b-why>სურათი აჩვენებს, სად მიდის ცოდნა. ჩატში ის ადამიანის თავში და საუბარშია. შემდეგ სათითაოდ გადადის აგენტის სესიაში, მოთხოვნების ფაილში, პროცედურის ფაილში, სკრიპტში და ბოლოს რეპოზიტორიაში შემოწმებებთან ერთად. ცხრილი იმავე ანგარიშს ორშაბათებით გადის: რას აკეთებს ადამიანი ხელით და რა ხდება მომდევნო ორშაბათს.</b-why>
   <b-table code="prose">
     <table>
     <thead>
@@ -33,7 +33,7 @@ AI აგენტის სიმწიფის დონეები ჩა�
     </tbody>
     </table>
   </b-table>
-  ეს სტატია ერთი საფეხურიდან მეორეზე გადასვლას უწოდებს <b><a class="s-term" href="/materials/glossary/pulling-out/">ამოყვანას</a></b> (რუსულ ვერსიაში „vytyagivanie“): განმეორებადი ნაწილი იმისა, რასაც ადამიანი და აგენტი უკვე ერთად აკეთებდნენ, ამოიყვანება და ერთი საფეხურით ზემოთ ჩაიწერება. ეს ორგანიზაციაში პროცესების განვითარების ევოლუციური პროცესია: ისინი წინასწარ მთლიანად არ დაიგეგმება, არამედ განმეორებადი მუშაობიდან ნაბიჯ-ნაბიჯ იზრდება. წესები ჩატიდან ამოიყვანება, სპეციფიკაცია წესებიდან და კარგი სესიებიდან, skill-ის პროცედურა სპეციფიკაციიდან, სკრიპტი skill-იდან, harness კი შეცდომებიდან და აგენტის გარშემო შემოწმებებიდან. კიბის დასასრული აგენტური სისტემაა. ყველაფერი მიდგომით „აგენტი აკეთებს“ იწყება, მაგრამ გზის ბოლოს აგენტების წილი მცირე რჩება: სისტემის საფუძველი კლასიკური კოდი, შემოწმებები და განრიგია, აგენტები კი მხოლოდ რთულ ბლოკებს იღებენ, რომლებიც სხვაგვარად არ წყდება. სამუშაო ქცევა თავიდან არ იგონება. ის უკვე მომუშავედან მოდის და იქ ფიქსირდება, სადაც მისი ახსნა აღარ არის საჭირო.
+  ეს სტატია ერთი საფეხურიდან მეორეზე გადასვლას უწოდებს <b><a class="s-term" href="/materials/glossary/pulling-out/">ამოყვანას</a></b> (რუსულ ვერსიაში „vytyagivanie“): განმეორებადი ნაწილი იმისა, რასაც ადამიანი და აგენტი უკვე ერთად აკეთებდნენ, ამოიყვანება და ერთი საფეხურით ზემოთ ჩაიწერება. ეს ორგანიზაციაში პროცესების განვითარების ევოლუციური პროცესია: ისინი განმეორებადი მუშაობიდან ნაბიჯ-ნაბიჯ იზრდება და წინასწარ მთლიანად არ იგეგმება. წესები ჩატიდან ამოიყვანება, სპეციფიკაცია წესებიდან და კარგი სესიებიდან, skill-ის პროცედურა სპეციფიკაციიდან, სკრიპტი skill-იდან, harness კი შეცდომებიდან და აგენტის გარშემო შემოწმებებიდან. კიბის დასასრული აგენტური სისტემაა. ყველაფერი მიდგომით „აგენტი აკეთებს“ იწყება, მაგრამ გზის ბოლოს აგენტების წილი მცირე რჩება: სისტემის საფუძველი კლასიკური კოდი, შემოწმებები და განრიგია, აგენტები კი მხოლოდ რთულ ბლოკებს იღებენ, რომლებიც სხვაგვარად არ წყდება. სამუშაო ქცევა თავიდან არ იგონება. ის უკვე მომუშავედან მოდის და იქ ფიქსირდება, სადაც მისი ახსნა აღარ არის საჭირო.
   <b-finding>
     <ex>ერთმა ყოველკვირეულმა ანგარიშმა ჩატში განმეორებითი ახსნიდან განრიგით ანგარიშამდე გაიარა გზა.</ex>
     <gen>საფეხურს განსაზღვრავს, სად ცხოვრობს ცოდნა: ადამიანის თავში, სესიაში, ფაილში თუ კოდში. რაც მეტია ჩაწერილი, მით ნაკლებია დამოკიდებული ადამიანის მეხსიერებასა და მოდელის გუნებაზე.</gen>
@@ -42,11 +42,11 @@ AI აგენტის სიმწიფის დონეები ჩა�
 </b-chapter>
 
 <b-chapter id="sources" title="ავტორის პოზიცია და რას ამბობს ბაზარი" icon="book">
-  <b-why>ზემოთ მოცემული შვიდი საფეხური ავტორის პოზიციაა, აგებული ერთი კრიტერიუმით: რა ზუსტად იწერება საფეხურზე. ბაზარზე სხვადასხვა ავტორი ერთსა და იმავე მოძრაობას აღწერს, თითოეული თავისი მონაკვეთით: ზოგი წესებზე, ზოგი სპეციფიკაციებზე, სხვები skills-ზე ან harness-ზე. ყველა ერთი მიმართულებით მიდის: საუბრიდან ფაილში და ფაილიდან კოდში. ცხრილი აჩვენებს, როგორ ემთხვევა საფეხურები წყაროებს.</b-why>
+  <b-why>შვიდი საფეხური ავტორის პოზიციაა, აგებული ერთი კრიტერიუმით: რა ზუსტად იწერება საფეხურზე. ბაზარზე სხვადასხვა ავტორი ერთსა და იმავე მოძრაობას აღწერს, თითოეული თავისი მონაკვეთით: ზოგი წესებზე, ზოგი სპეციფიკაციებზე, სხვები skills-ზე ან harness-ზე. ყველა ერთი მიმართულებით მიდის: საუბრიდან ფაილში და ფაილიდან კოდში. ცხრილი აჩვენებს, როგორ ემთხვევა საფეხურები წყაროებს.</b-why>
   <b-art names="ai-agent-maturity-levels/matrix"></b-art>
   <b-cap>შევსებული ნიშნავს, რომ ავტორი საფეხურს ცალსახად აღწერს, რგოლი ნიშნავს, რომ აღწერილია ახლო ეკვივალენტი (მაგალითად, „deterministic tooling“ <a href="https://dev.to/arezvov/five-levels-of-ai-agent-adoption-in-software-development-teams-50pi" target="_blank" rel="noopener">Rezvov</a>-სა და <a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a>-თან სკრიპტთან ახლოდ ითვლება). ქვედა სტრიქონი ამ სტატიის შვიდი საფეხურია; ბოლო საფეხურს მხოლოდ <a href="https://arxiv.org/abs/2607.07052" target="_blank" rel="noopener">Malik</a> აღწერს ცალსახად.</b-cap>
 
-  მატრიცა აჩვენებს, როგორ არის ბაზარი მოწყობილი: თითოეული ავტორი გზის თავის მონაკვეთს აღწერს და ერთად მონაკვეთები ყველა შვიდ საფეხურს ფარავს. <a href="https://mitchellh.com/writing/my-ai-adoption-journey" target="_blank" rel="noopener">Hashimoto</a>-ს არ აქვს სპეციფიკაციები და skills, Rezvov-სა და Clark-ს არ აქვთ skills, <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a>-ს არ აქვს სკრიპტი. დეტალები თითოეული ავტორისთვის ქვემოთ ცხრილშია.
+  მატრიცა აჩვენებს, როგორ არის ბაზარი მოწყობილი: თითოეული ავტორი გზის თავის მონაკვეთს აღწერს და ერთად მონაკვეთები ყველა შვიდ საფეხურს ფარავს. <a href="https://mitchellh.com/writing/my-ai-adoption-journey" target="_blank" rel="noopener">Hashimoto</a>-ს არ აქვს სპეციფიკაციები და skills, Rezvov-სა და Clark-ს არ აქვთ skills, <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a>-ს არ აქვს სკრიპტი. დეტალები თითოეული ავტორისთვის ცხრილშია.
   <b-table>
     <table>
     <thead>
@@ -68,7 +68,7 @@ AI აგენტის სიმწიფის დონეები ჩა�
   <b-finding>
     <ex>Rezvov, Clark და Shapiro სპეციფიკაციებს აყენებენ, Eledath და Shapiro skills-ს; ეს სტატია მათ ერთ კიბეზე ათავსებს.</ex>
     <gen>სხვადასხვა კიბე ერთსა და იმავე მოძრაობას სხვადასხვა მხრიდან აღწერს: ჯერ ყველაფერი საუბარშია, შემდეგ ფაილში, შემდეგ კოდში.</gen>
-    <do>შეადარეთ საკუთარი გამოცდილება ზემოთ მოცემულ შვიდ საფეხურს და არა რომელიმე ერთი ავტორის სიას.</do>
+    <do>შეადარეთ საკუთარი გამოცდილება ამ შვიდ საფეხურს და არა რომელიმე ერთი ავტორის სიას.</do>
   </b-finding>
 </b-chapter>
 
@@ -121,13 +121,13 @@ AI აგენტის სიმწიფის დონეები ჩა�
       <tr><td><b>Spec-first</b></td><td>სპეციფიკაცია კოდამდე იწერება და ერთ ამოცანაზე გამოიყენება</td><td>GitHub Spec Kit</td></tr>
       <tr><td><b>Spec-anchored</b></td><td>სპეციფიკაცია ამოცანის შემდეგაც ცოცხლობს: ცვლილებები მასში ერწყმის</td><td><a href="/blog/openspec/">OpenSpec</a></td></tr>
       <tr><td><b>Spec-as-source</b></td><td>ადამიანი მხოლოდ სპეციფიკაციას არედაქტირებს, კოდი მისგან გენერირდება</td><td>Tessl; მხოლოდ ამას ამტკიცებს <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Böckeler</a></td></tr>
-      <tr><td><b>Spec-in-the-loop</b></td><td>მომუშავე სისტემის მეტრიკები და ინციდენტები სპეციფიკაციას ასწორებს</td><td>მზა პროგრამები არ არის; მსგავსი ქცევა <a href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" target="_blank" rel="noopener">Red Hat</a>-თან და <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>-თან, იხილეთ ქვემოთ</td></tr>
+      <tr><td><b>Spec-in-the-loop</b></td><td>მომუშავე სისტემის მეტრიკები და ინციდენტები სპეციფიკაციას ასწორებს</td><td>მზა პროგრამები არ არის; მსგავსი ქცევა <a href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" target="_blank" rel="noopener">Red Hat</a>-თან და <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>-თან</td></tr>
     </tbody>
     </table>
   </b-table>
 
   Red Hat სპეციფიკაციასთან მუშაობის ორ რეჟიმს ასხვავებს. რეჟიმში „interacting“ ადამიანი სპეციფიკაციას აგენტთან ერთად ხვეწს: მაგალითად, სთხოვს აგენტს შეაფასოს ის 0-დან 10-მდე და თქვას, რა აკლია ავტონომიური რეალიზაციისთვის. როცა შეფასება 9–10-ია, იწყება რეჟიმი „instructing“: აგენტი კითხულობს სპეციფიკაციებს, პოულობს საჭირო skills-ს, წერს კოდს, უშვებს ტესტებს და შეცდომებს თავად ასწორებს. <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a>-თან ეს მეოთხე დონეს ეთანხმება, სადაც ადამიანი სპეციფიკაციას წერს, აგენტთან მასზე კამათობს და მიდის<b-proof href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" quote="Shapiro: “You write a spec. You argue with it about the spec.” — danshapiro.com"></b-proof>.
-  <b-callout icon="refresh">Red Hat მეოთხე დონეს სპეციფიკაციის „თანაევოლუციას“ უწოდებს. აგენტი ინახავს ფაილს LessonsLearned.md: ყოველი შეცდომისას ჩაწერს მიზეზსა და გასწორებას და შესაბამის „როგორ“ სპეციფიკაციაში ცვლილებას გვთავაზობს<b-proof href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" quote="Naszcyniec, Red Hat: “turns every off-key moment into a permanent improvement” — developers.redhat.com"></b-proof>. Every იგივეს აკეთებს Compound საფეხურზე, რომელიც ქვემოთ არის აღწერილი.</b-callout>
+  <b-callout icon="refresh">Red Hat მეოთხე დონეს სპეციფიკაციის „თანაევოლუციას“ უწოდებს. აგენტი ინახავს ფაილს LessonsLearned.md: ყოველი შეცდომისას ჩაწერს მიზეზსა და გასწორებას და შესაბამის „როგორ“ სპეციფიკაციაში ცვლილებას გვთავაზობს<b-proof href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" quote="Naszcyniec, Red Hat: “turns every off-key moment into a permanent improvement” — developers.redhat.com"></b-proof>. Every იგივეს აკეთებს Compound საფეხურზე.</b-callout>
   <b-finding>
     <ex>ანგარიშის spec.md-ში წერია: რომელი სვეტები, საიდან მოდის მონაცემები და რომ ანგარიში მზადაა, როცა თანხები ექსპორტს ემთხვევა.</ex>
     <gen><a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a> სპეციფიკაციებს თავისი კიბის თავში აყენებს: იქ რეალიზაცია გახდება ურთიერთშესაცვლელი გამოსავალი და არა გამძლე აქტივი<b-proof href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" quote="Clark: “interchangeable output rather than a durable asset” — hyperact.co.uk"></b-proof>. ის ასევე მეშვიდე დონეს კიბის გაგრძელებაზე უფრო გადატვირთვასთან ახლოს უწოდებს.</gen>
@@ -139,7 +139,7 @@ AI აგენტის სიმწიფის დონეები ჩა�
   <b-why>თუ სპეციფიკაცია ამბობს, რა უნდა გამოვიდეს, skill ამბობს, როგორ კეთდება. ეს არის საქაღალდე SKILL.md ფაილით: სახელი, აღწერა და ნაბიჯ-ნაბიჯ ინსტრუქციები, ზოგჯერ შაბლონებითა და სკრიპტებით.</b-why>
   <b-art names="ai-agent-maturity-levels/spec-skill"></b-art>
   <b-cap>სპეციფიკაცია ამოცანის კონტექსტში დგას. skill კონტექსტიდან ორ სტრიქონს იკავებს, სანამ საჭირო არ გახდება, და სრულად მხოლოდ გამოძახებისას იტვირთება.</b-cap>
-  <a href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" target="_blank" rel="noopener">Red Hat</a> skills-ს აღწერს როგორც მოდულურ განმეორებად პროცედურებს: აგენტი skill-ს სახელითა და აღწერით პოულობს და სრულად ტვირთავს, როცა ამოცანა ესადაგება<b-proof href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" quote="Naszcyniec, Red Hat: “A skill is not just a prompt; it is a directory containing a SKILL.md file” — developers.redhat.com"></b-proof>. Anthropic skill-ს ახალი თანამშრომლის ონბორდინგის გზამკვლევს ადარებს<b-proof href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" quote="Anthropic: “like putting together an onboarding guide for a new hire” — anthropic.com/engineering"></b-proof>. <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a>-სთვის skills-ის შექმნა მეოთხე დონის ნიშანია, სადაც ადამიანი აგენტის გვერდით აღარ ზის, არამედ სპეციფიკაციებსა და skills-ს წერს და მიდის.
+  <a href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" target="_blank" rel="noopener">Red Hat</a> skills-ს აღწერს როგორც მოდულურ განმეორებად პროცედურებს: აგენტი skill-ს სახელითა და აღწერით პოულობს და სრულად ტვირთავს, როცა ამოცანა ესადაგება<b-proof href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" quote="Naszcyniec, Red Hat: “A skill is not just a prompt; it is a directory containing a SKILL.md file” — developers.redhat.com"></b-proof>. Anthropic skill-ს ახალი თანამშრომლის ონბორდინგის გზამკვლევს ადარებს<b-proof href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" quote="Anthropic: “like putting together an onboarding guide for a new hire” — anthropic.com/engineering"></b-proof>. <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a>-სთვის skills-ის შექმნა მეოთხე დონის ნიშანია, სადაც ადამიანი სპეციფიკაციებსა და skills-ს წერს და მიდის, აგენტის გვერდით კი აღარ ზის.
   Andrew <a href="https://dev.to/0xandrewshu/turn-chats-into-skills-skills-into-scripts-2ndg" target="_blank" rel="noopener">Shu</a>-მ აღწერა, როგორ მივიღოთ skill ჩატიდან: თუ აგენტი ერთსა და იმავე ამოცანას იმეორებს, სთხოვეთ საუბარი თავიდან გადაიკითხოს და skill-ად აქციოს<b-proof href="https://dev.to/0xandrewshu/turn-chats-into-skills-skills-into-scripts-2ndg" quote="Shu: “ask it to reflect on the conversation and turn it into an Agent Skill” — dev.to/0xandrewshu"></b-proof>.
 
   Red Hat-ის სტატიიდან მაგალითი skill არის აპლიკაციის OpenShift-ზე განთავსება. ეს ჩვეულებრივი საქაღალდეა სამი ფაილით: ინსტრუქცია სახელითა და აღწერით დასაწყისში, შაბლონი და შემოწმების სკრიპტი.

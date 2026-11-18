@@ -1,7 +1,7 @@
 ---
 title: Comment trouver une race condition dans le code : un modèle Quint essaie tous les ordres d’actions
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-18
 description: Comment trouver une race condition dans le code : un modèle Quint essaie tous les ordres d’actions et montre la chaîne où une règle se brise. Exemples et limites.
 tags: IA, spécifications, Quint, vérification formelle, tests, harness, race condition, vérification de modèles, data races
 category: specs
@@ -50,7 +50,7 @@ Une race condition se trouve en vérifiant tous les ordres dans lesquels deux op
     <rule icon="user-alt" t="Un message à un inconnu">Un nom d’utilisateur est passé à quelqu’un d’autre</rule>
     <rule icon="chat-square" t="Une citation étrangère">Un message a été déplacé vers un autre poste, l’indice a gardé l’ancienne citation</rule>
   </b-rules>
-  <b-why align="left">Comment lire la liste ci-dessus. Chaque ligne a la classe d’erreur à gauche et un exemple à droite. « Un point sur deux cartes » et « un ☑ perdu » relèvent des tâches de réunion, « suppression d’un élément non vide » et « clés plus larges que les droits » du côté administrateur, « un message à un inconnu » et « une citation étrangère » de la messagerie.</b-why>
+  <b-why align="left">Comment lire la liste. Chaque ligne a la classe d’erreur à gauche et un exemple à droite. « Un point sur deux cartes » et « un ☑ perdu » relèvent des tâches de réunion, « suppression d’un élément non vide » et « clés plus larges que les droits » du côté administrateur, « un message à un inconnu » et « une citation étrangère » de la messagerie.</b-why>
   <b-why align="left">Les six ont un trait commun : des données appartenaient à un propriétaire puis se sont retrouvées chez un autre ou ont disparu. C’est pourquoi vérifier le propriétaire au moment de l’action, et non à l’avance, ferme presque toute la liste.</b-why>
   <b-finding>
     <ex>Presque toutes les trouvailles relèvent d’une même classe : deux actions se sont chevauchées, et le code n’a vérifié la condition qu’une fois.</ex>
@@ -115,7 +115,7 @@ Une race condition se trouve en vérifiant tous les ordres dans lesquels deux op
     <bar k="Confidentialité" w="25%" color="c-work">1 sur 4</bar>
   </b-count-bars>
   <b-why align="left">Les barres montrent la part des règles que le code actuel viole. Plus la barre est longue, plus le modèle a attrapé de règles sur du code réel. « Participants 2 sur 2 » signifie que les deux vérifications ont trouvé un problème. « Confidentialité 1 sur 4 » signifie que le code tient en grande partie, mais qu’un trou existe.</b-why>
-  <b-why align="left">Ce n’est pas une note de qualité du code. Une barre dépend des règles choisies et en montre davantage là où le modèle a apporté le plus.</b-why>
+  <b-why align="left">Une barre dépend des règles choisies et montre surtout où le modèle a apporté le plus, sans noter la qualité du code.</b-why>
   <b-art names="quint-models-find-races/mutant" wide/>
   <b-cap>Une copie cassée du modèle doit déclencher la règle. Si elle passe sans que rien ne se déclenche, la règle ne vérifie rien.</b-cap>
   <b-sublabel top="22">Une vérification automatique après chaque modification du modèle</b-sublabel>

@@ -1,0 +1,82 @@
+{
+  "chatgpt": {
+    "aka": "chat de OpenAI, cuenta de ChatGPT",
+    "def": "ChatGPT es un producto de OpenAI: un chat que responde con texto, con planes de suscripción de pago. La misma cuenta sirve para iniciar sesión en Codex: entonces el agente trabaja dentro de la suscripción y no según las tarifas de la API. La lista de países de OpenAI se aplica igual a ChatGPT y a la clave de API.",
+    "more.label": "Codex CLI no está disponible en tu país: países admitidos, VPN y bloqueos",
+    "faq.0.q": "¿Qué es ChatGPT?",
+    "faq.0.a": "El chat de OpenAI que responde con texto; los planes de pago dan más funciones.",
+    "faq.1.q": "¿Cómo se inicia sesión en Codex con ChatGPT?",
+    "faq.1.a": "Al arrancar, elegir el inicio de sesión con una cuenta de ChatGPT: según la documentación de OpenAI, es acceso por suscripción.",
+    "faq.2.q": "¿Una suscripción a ChatGPT elimina las restricciones regionales?",
+    "faq.2.a": "No: el criterio es la lista de países de OpenAI, y el plan no figura entre los criterios.",
+    "source.label": "Wikipedia (en inglés): ChatGPT",
+    "sites.0.label": "Documentación de OpenAI: inicio de sesión en Codex"
+  },
+  "api-key": {
+    "name": "Clave de API",
+    "aka": "clave de acceso a la API",
+    "def": "Una clave de API es una cadena larga con la que un servicio reconoce de quién llega una solicitud y le cobra al titular de la clave. En Codex, iniciar sesión con una clave de API significa pagar las tarifas de la API por el uso real, sin suscripción. La clave es tan delicada como la contraseña de la cuenta: no se comparte con otras personas ni se publica.",
+    "more.label": "Codex CLI no está disponible en tu país: países admitidos, VPN y bloqueos",
+    "faq.0.q": "¿Qué es una clave de API?",
+    "faq.0.a": "Una cadena con la que un servicio reconoce al titular de la solicitud y le cobra a él.",
+    "faq.1.q": "¿En qué se diferencia iniciar sesión con una clave de API de hacerlo con ChatGPT?",
+    "faq.1.a": "La clave de API da pago por uso; el inicio de sesión con ChatGPT da acceso por suscripción.",
+    "faq.2.q": "¿Se puede dar la propia clave de API a otra persona?",
+    "faq.2.a": "No: la clave da acceso a tu cuenta, y los términos de OpenAI prohíben ceder la cuenta a otros.",
+    "source.label": "Documentación de OpenAI: inicio de sesión en Codex"
+  },
+  "telemetry": {
+    "name": "Telemetría",
+    "aka": "OpenTelemetry, métricas y analítica",
+    "def": "La telemetría son datos sobre cómo funciona un programa que el propio programa envía a su desarrollador: contadores, métricas, informes de uso. OpenTelemetry es un estándar abierto para esos datos. En Codex, además de las solicitudes al modelo, se envían analítica y métricas; se desactivan en el archivo de ajustes, y los textos de las solicitudes llegan a los registros solo con consentimiento explícito.",
+    "more.label": "Codex CLI no está disponible en tu país: países admitidos, VPN y bloqueos",
+    "faq.0.q": "¿Qué es la telemetría?",
+    "faq.0.a": "Datos sobre el funcionamiento de un programa que este envía por sí mismo a su desarrollador.",
+    "faq.1.q": "¿Qué es OpenTelemetry?",
+    "faq.1.a": "Un estándar abierto para métricas, registros y trazas de programas; Codex puede enviar datos en este formato.",
+    "faq.2.q": "¿Desactivar la telemetría detiene las solicitudes al modelo?",
+    "faq.2.a": "No: las solicitudes al modelo salen siempre, el agente funciona gracias a ellas.",
+    "source.label": "OpenTelemetry: qué es",
+    "sites.0.label": "Wikipedia (en inglés): Telemetry"
+  },
+  "diff": {
+    "name": "Diff",
+    "aka": "diff, diferencia entre versiones de un archivo",
+    "def": "Un diff es una vista de cambios: las líneas antiguas de un archivo junto a las nuevas, con la marca de qué se quitó y qué se añadió. El agente muestra el diff antes de escribir en el archivo, y la persona ve la diferencia y decide si la confirma. Así se revisa una edición antes de que haya cambiado nada.",
+    "more.label": "Codex CLI no está disponible en tu país: países admitidos, VPN y bloqueos",
+    "faq.0.q": "¿Qué es un diff?",
+    "faq.0.a": "Una vista de la diferencia entre la versión antigua y la nueva de un archivo.",
+    "faq.1.q": "¿Para qué mirar el diff antes de escribir?",
+    "faq.1.a": "Para ver qué cambiará exactamente y rechazarlo mientras el archivo sigue intacto.",
+    "faq.2.q": "¿Cómo se lee un diff?",
+    "faq.2.a": "Las líneas con un menos se quitan, las líneas con un más se añaden y las demás se quedan como estaban.",
+    "source.label": "Wikipedia (en inglés): Diff"
+  },
+  "embargo": {
+    "name": "Embargo",
+    "aka": "embargo de EE. UU., restricciones comerciales",
+    "def": "Un embargo es la prohibición de un Estado de comerciar y prestar servicios con un país o territorio. Los términos de OpenAI prohíben usar sus servicios en un país o territorio bajo embargo de EE. UU. y en beneficio de personas con las que las leyes comerciales prohíben tratar. Es una regla aparte: se aplica con independencia de la lista de países admitidos.",
+    "more.label": "Codex CLI no está disponible en tu país: países admitidos, VPN y bloqueos",
+    "faq.0.q": "¿Qué es un embargo?",
+    "faq.0.a": "La prohibición de un Estado de comerciar y prestar servicios con un país o territorio.",
+    "faq.1.q": "¿Qué dicen los términos de OpenAI sobre los embargos?",
+    "faq.1.a": "Los servicios no pueden usarse en un país o territorio bajo embargo de EE. UU. ni en beneficio de personas con las que las leyes comerciales prohíben tratar.",
+    "faq.2.q": "¿Basta con estar en la lista de países admitidos?",
+    "faq.2.a": "No: la regla del embargo figura aparte en los términos y se aplica con independencia de la lista.",
+    "source.label": "Términos de uso de OpenAI",
+    "sites.0.label": "Wikipedia (en inglés): Embargo"
+  },
+  "config-toml": {
+    "aka": "archivo de ajustes de Codex",
+    "def": "config.toml es el archivo de ajustes de Codex en el formato de texto TOML: tiene bloques con nombre entre corchetes y, debajo, los parámetros. Los bloques [analytics], [otel] y [feedback] controlan la analítica, las métricas y el envío de comentarios. Este archivo no desactiva las solicitudes al modelo: el agente funciona gracias a ellas.",
+    "more.label": "Codex CLI no está disponible en tu país: países admitidos, VPN y bloqueos",
+    "faq.0.q": "¿Qué es config.toml?",
+    "faq.0.a": "El archivo de ajustes de Codex: bloques entre corchetes y parámetros debajo.",
+    "faq.1.q": "¿Cómo se desactiva la analítica en Codex?",
+    "faq.1.a": "Escribir en config.toml [analytics] enabled = false y, para las métricas, [otel] metrics_exporter = \"none\"; según el esquema de ajustes, la primera línea sola no basta para las métricas.",
+    "faq.2.q": "¿Qué hace el bloque [feedback]?",
+    "faq.2.a": "Activa o desactiva el envío de comentarios con el comando /feedback; por defecto el envío está activado.",
+    "source.label": "Documentación de OpenAI: referencia de config.toml",
+    "sites.0.label": "toml.io, descripción del formato TOML"
+  }
+}

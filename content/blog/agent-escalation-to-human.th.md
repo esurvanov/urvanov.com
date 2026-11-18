@@ -1,7 +1,7 @@
 ---
 title: การส่งต่อให้คนตัดสินใจ (escalation to a human) ในเอเจนต์ AI: เอเจนต์หยุดแล้วถามผ่าน MCP และ hook ได้อย่างไร
 date: 2026-11-14
-updated: 2026-11-17
+updated: 2026-11-18
 description: เมื่อเอเจนต์ส่งการตัดสินใจให้คน จะเกิด elicitation ใน MCP, permission mode และ hook ของ Claude Code บทความนี้ดูว่าเอเจนต์ถามบ่อยแค่ไหน และทำไมทางถึงคนจึงแคบ
 tags: AI, เอเจนต์, MCP, elicitation, escalation, hook, Claude Code, ความเป็นอิสระ, harness
 category: harness
@@ -96,7 +96,7 @@ toc: answer=สรุปสั้น | seen=ภาพแรก | penalty=บท�
   <b-why align="left">วลี “เวลาอัตโนมัติ” มีสามความหมายที่ต่างกันในสามห้องวิจัย และนั่นตัดสินว่าคำถามของเอเจนต์ถึงคนทำให้เมตริกเสียหรือไม่ ด้านล่างตามลำดับ: METR นับอะไร Anthropic นับอะไร และ Google DeepMind นับอะไร</b-why>
   <b-art names="agent-escalation-to-human/three-clocks" wide/>
   <b-cap>สามการวัด: ชั่วโมงของคนที่ใช้กับงาน รอบการทำงานตั้งแต่เริ่มจนหยุด และงานที่ไม่มีการแทรกแซงของคน</b-cap>
-  <b-why align="left">“ทำงานเอง” วัดได้สามทาง ทางแรก: งานที่เอเจนต์แก้ได้ใช้เวลาของคนกี่ชั่วโมง ทางที่สอง: เอเจนต์ไปได้ไกลแค่ไหนจากเริ่มจนหยุด ทางที่สาม: งานสัดส่วนเท่าใดเสร็จโดยไม่มีการแทรกแซงของคน สูตรของทั้งสามอยู่ด้านล่าง</b-why>
+  <b-why align="left">“ทำงานเอง” วัดได้สามทาง ทางแรก: งานที่เอเจนต์แก้ได้ใช้เวลาของคนกี่ชั่วโมง ทางที่สอง: เอเจนต์ไปได้ไกลแค่ไหนจากเริ่มจนหยุด ทางที่สาม: งานสัดส่วนเท่าใดเสร็จโดยไม่มีการแทรกแซงของคน</b-why>
   <b-subhead>METR: ความยากของงาน เวลาของเอเจนต์เองไม่อยู่ในเมตริก</b-subhead>
   <b-why align="left">METR ตอบเองว่านี่คือเวลาของการทำงานอย่างอิสระหรือไม่<b-proof href="https://metr.org/notes/2026-01-22-time-horizon-limitations/" quote="METR, 22.01.2026: „Time horizon is not the length of time AIs can work independently. Rather, it's the amount of serial human labor they can replace with a 50% success rate.“"/> FAQ ในหน้า horizon ก็ว่าเช่นกัน: มันวัดความยากของงาน และเวลาที่ AI ใช้ไม่เป็นส่วนของมัน<b-proof href="https://metr.org/time-horizons" quote="METR, FAQ: „It’s a measure of the difficulty of a task, rather than the time an AI spends to complete the task.“"/> METR ไม่เผยแพร่เวลาของเอเจนต์เอง: มันต่างกันมากตามผู้ให้บริการโมเดลและการตั้งค่าเอเจนต์</b-why>
   <b-subhead>Anthropic: รอบการทำงานของเอเจนต์ตั้งแต่เริ่มจนหยุด</b-subhead>
@@ -123,7 +123,7 @@ toc: answer=สรุปสั้น | seen=ภาพแรก | penalty=บท�
 <b-chapter id="behavior" icon="eye" title="การตรวจ: เอเจนต์ถามจริงหรือไม่">
   <b-art names="agent-escalation-to-human/ask-rate" wide/>
   <b-cap>สัดส่วนเซสชันที่มีคำถามในงานวิจัยหนึ่ง: ตั้งแต่ศูนย์จนถึงครึ่งหนึ่ง</b-cap>
-  <b-why align="left">ไม่มีสัดส่วนเดียว ผลขึ้นกับโมเดล prompt และ harness เมื่อไม่ได้รับอนุญาตให้ถาม โมเดลแทบไม่พูดอะไร: ใน Ambig-SWE (500 งานจาก SWE-bench) “without explicit prompting, models almost never interact”<b-proof href="https://arxiv.org/abs/2502.13069" quote="Ambig-SWE, arXiv 2502.13069: „Without explicit prompting, models almost never interact, even for severely underspecified inputs.“"/> เมื่อมี prompt Sonnet 4 ถามในงานที่กำหนดไม่ครบถึง 82% และในงานที่ครบ 3% แผนภูมิด้านบนแสดง “Ask Early, Ask Late, Ask Right” ซึ่งเป็นอีกชุดข้อมูล: Sonnet 4.5 ถามใน 23% ของเซสชัน GPT-5.2 ใน 52% Gemini 3 Flash ใน 0% และไม่มีโมเดลใดถามในช่วงที่ดีที่สุด ราว 10% ของการรัน (arXiv 2605.07937)</b-why>
+  <b-why align="left">ไม่มีสัดส่วนเดียว ผลขึ้นกับโมเดล prompt และ harness เมื่อไม่ได้รับอนุญาตให้ถาม โมเดลแทบไม่พูดอะไร: ใน Ambig-SWE (500 งานจาก SWE-bench) “without explicit prompting, models almost never interact”<b-proof href="https://arxiv.org/abs/2502.13069" quote="Ambig-SWE, arXiv 2502.13069: „Without explicit prompting, models almost never interact, even for severely underspecified inputs.“"/> เมื่อมี prompt Sonnet 4 ถามในงานที่กำหนดไม่ครบถึง 82% และในงานที่ครบ 3% แผนภูมิแสดง “Ask Early, Ask Late, Ask Right” ซึ่งเป็นอีกชุดข้อมูล: Sonnet 4.5 ถามใน 23% ของเซสชัน GPT-5.2 ใน 52% Gemini 3 Flash ใน 0% และไม่มีโมเดลใดถามในช่วงที่ดีที่สุด ราว 10% ของการรัน (arXiv 2605.07937)</b-why>
   <b-why align="left">สุดขั้วตรงข้ามก็มี ใน LHAW (arXiv 2602.10525) GPT-5.2 ถามใน 81–97% ของการรัน โดยได้ประโยชน์ต่อคำถามน้อย และใน “Ask or Assume” (arXiv 2603.26233) Sonnet 4.5 ถามใน 73.8% ของงาน คนเองก็รับภาระมากเกินไป: ตามข้อมูลของ Anthropic เกี่ยวกับ auto mode ผู้ใช้ยอมรับ 93% ของคำขออนุญาต และโพสต์พูดถึงความล้าจากการยืนยันโดยตรง<b-proof href="https://www.anthropic.com/engineering/claude-code-auto-mode" quote="Anthropic, 25.03.2026: „users accept 93%“ of permission requests"/></b-why>
   <b-art names="agent-escalation-to-human/ask-extremes" wide/>
   <b-cap>สองสุดขั้ว: เงียบและเดา หรือท่วมด้วยคำถาม</b-cap>

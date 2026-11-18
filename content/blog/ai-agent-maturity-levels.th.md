@@ -1,7 +1,7 @@
 ---
 title: ระดับความเติบโตของเอเจนต์ AI: จากแชตสู่ spec, skill, โค้ด, harness และระบบเอเจนต์
 date: 2026-11-14
-updated: 2026-11-17
+updated: 2026-11-18
 description: งานของนักพัฒนากับ AI เติบโตจากถามในแชตไปเป็นระบบเอเจนต์ได้อย่างไร แต่ละขั้นมีอะไรบันทึกไว้ เมื่อไรควรก้าวต่อ และต้องจ่ายอะไร ตามบันไดของ Every และ Hashimoto
 tags: AI, เอเจนต์, spec, skill, harness, ความเติบโต, compound engineering
 category: specs
@@ -46,7 +46,7 @@ toc: map=เจ็ดขั้น | sources=ตลาดว่าอย่าง
   <b-art names="ai-agent-maturity-levels/matrix"></b-art>
   <b-cap>วงกลมทึบหมายถึงผู้เขียนอธิบายขั้นนั้นอย่างชัดเจน วงแหวนหมายถึงอธิบายสิ่งที่ใกล้เคียง (เช่น “deterministic tooling” ของ <a href="https://dev.to/arezvov/five-levels-of-ai-agent-adoption-in-software-development-teams-50pi" target="_blank" rel="noopener">Rezvov</a> และ <a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a> นับว่าใกล้เคียงกับสคริปต์) แถวล่างสุดคือเจ็ดขั้นของบทความนี้ มีเพียง <a href="https://arxiv.org/abs/2607.07052" target="_blank" rel="noopener">Malik</a> ที่อธิบายขั้นสุดท้ายอย่างชัดเจน</b-cap>
 
-  เมทริกซ์แสดงว่าตลาดเรียงตัวอย่างไร ผู้เขียนแต่ละคนอธิบายช่วงของตัวเองบนเส้นทาง และเมื่อรวมกันแล้วช่วงเหล่านั้นครอบคลุมครบทั้งเจ็ดขั้น <a href="https://mitchellh.com/writing/my-ai-adoption-journey" target="_blank" rel="noopener">Hashimoto</a> ไม่มี spec และ skill, Rezvov และ Clark ไม่มี skill, <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a> ไม่มีสคริปต์ รายละเอียดของผู้เขียนแต่ละคนอยู่ในตารางด้านล่าง
+  เมทริกซ์แสดงว่าตลาดเรียงตัวอย่างไร ผู้เขียนแต่ละคนอธิบายช่วงของตัวเองบนเส้นทาง และเมื่อรวมกันแล้วช่วงเหล่านั้นครอบคลุมครบทั้งเจ็ดขั้น <a href="https://mitchellh.com/writing/my-ai-adoption-journey" target="_blank" rel="noopener">Hashimoto</a> ไม่มี spec และ skill, Rezvov และ Clark ไม่มี skill, <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a> ไม่มีสคริปต์ รายละเอียดของผู้เขียนแต่ละคนอยู่ในตาราง
   <b-table>
     <table>
     <thead>
@@ -127,7 +127,7 @@ toc: map=เจ็ดขั้น | sources=ตลาดว่าอย่าง
   </b-table>
 
   Red Hat แยกการทำงานกับ spec เป็นสองโหมด ในโหมด “interacting” คนปรับ spec ร่วมกับเอเจนต์: เช่น ขอให้เอเจนต์ให้คะแนนจาก 0 ถึง 10 และบอกว่าขาดอะไรสำหรับการลงมือทำแบบอัตโนมัติ เมื่อคะแนนถึง 9–10 โหมด “instructing” จะเริ่ม: เอเจนต์อ่าน spec หา skill ที่ต้องใช้ เขียนโค้ด รันเทสต์ และแก้ข้อผิดพลาดเอง ที่ <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a> ตรงกับระดับที่สี่ ที่คนเขียน spec โต้แย้งกับเอเจนต์เรื่อง spec แล้วเดินจากไป<b-proof href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" quote="Shapiro: “You write a spec. You argue with it about the spec.” — danshapiro.com"></b-proof>
-  <b-callout icon="refresh">Red Hat เรียกระดับที่สี่ว่า “co-evolution” ของ spec เอเจนต์เก็บไฟล์ LessonsLearned.md: ทุกครั้งที่ทำผิดมันบันทึกสาเหตุและวิธีแก้ และเสนอการแก้ spec “อย่างไร” ที่เกี่ยวข้อง<b-proof href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" quote="Naszcyniec, Red Hat: “turns every off-key moment into a permanent improvement” — developers.redhat.com"></b-proof> Every ทำแบบเดียวกันที่ขั้น Compound ซึ่งอธิบายไว้ด้านล่าง</b-callout>
+  <b-callout icon="refresh">Red Hat เรียกระดับที่สี่ว่า “co-evolution” ของ spec เอเจนต์เก็บไฟล์ LessonsLearned.md: ทุกครั้งที่ทำผิดมันบันทึกสาเหตุและวิธีแก้ และเสนอการแก้ spec “อย่างไร” ที่เกี่ยวข้อง<b-proof href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" quote="Naszcyniec, Red Hat: “turns every off-key moment into a permanent improvement” — developers.redhat.com"></b-proof> Every ทำแบบเดียวกันที่ขั้น Compound</b-callout>
   <b-finding>
     <ex>spec.md ของรายงานระบุว่า: ใช้คอลัมน์ไหน ข้อมูลมาจากไหน และรายงานเสร็จเมื่อผลรวมตรงกับข้อมูลที่ส่งออก</ex>
     <gen><a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a> วาง spec ไว้บนสุดของบันได: การลงมือทำที่นั่นกลายเป็นผลลัพธ์ที่สลับกันได้ ไม่ใช่สินทรัพย์ถาวร<b-proof href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" quote="Clark: “interchangeable output rather than a durable asset” — hyperact.co.uk"></b-proof> เขายังบอกว่าระดับที่เจ็ดใกล้กับการรีเซ็ตมากกว่าการต่อบันได</gen>

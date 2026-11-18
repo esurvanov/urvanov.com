@@ -2,7 +2,7 @@
 title: Comment analyser l'usage de ChatGPT Enterprise dans une entreprise : qui l'utilise, pour quoi et quels outils d'IA acheter ensuite
 seoTitle: Rapport d’usage de ChatGPT Enterprise : qui, pour quoi
 date: 2026-09-28
-updated: 2026-11-17
+updated: 2026-11-18
 description: Voir qui utilise ChatGPT Enterprise et pour quoi : cinq exports de la console d’administration donnent profondeur d’adoption, carte des tâches, entretiens.
 tags: IA, recherche, analytique
 category: research
@@ -22,7 +22,7 @@ ChatGPT Enterprise est la version de ChatGPT destinée aux organisations, avec u
   <dir href="#layer4" n="04" color="c-proj" t="Choix des personnes" big="16" sub="Sur 340 dans l'exemple, pour des entretiens" dec="Avec qui parler avant d'acheter"><b-dot-grid n="340" on="5,31,58,77,96,120,141,163,187,205,226,248,269,290,311,333"/></dir>
 </b-dir-map>
 <b-chapter id="why" title="Quelles décisions le rapport aide à prendre">
-  <b-lead-large><b>Objectif métier :</b> déterminer pour quelles tâches de travail l'ensemble actuel d'outils d'IA est insuffisant et quelles solutions valent d'être testées avant un achat. La décision revient au responsable du budget des outils d'IA, avec les responsables des équipes où se déroule le pilote. L'accès aux données et la sécurité sont validés par l'équipe de sécurité de l'information. Les critères de décision sont les signes du tableau ci-dessous.</b-lead-large>
+  <b-lead-large><b>Objectif métier :</b> déterminer pour quelles tâches de travail l'ensemble actuel d'outils d'IA est insuffisant et quelles solutions valent d'être testées avant un achat. La décision revient au responsable du budget des outils d'IA, avec les responsables des équipes où se déroule le pilote. L'accès aux données et la sécurité sont validés par l'équipe de sécurité de l'information. Les critères de décision sont les signes du tableau.</b-lead-large>
 
   Que l'ensemble actuel soit sous-optimal quelque part est une hypothèse : le rapport et les entretiens la vérifient. « Sous-optimal » se décompose en signes vérifiables. La conclusion « aucun nouvel outil n'est nécessaire » est aussi un résultat.
 
@@ -46,7 +46,7 @@ ChatGPT Enterprise est la version de ChatGPT destinée aux organisations, avec u
     <step t="Questionnaire à toute l'entreprise">Combien de personnes rencontrent la difficulté, à quelle fréquence et à quel point elle gêne</step>
     <step t="Comparer">Ampleur de la tâche, gravité des conséquences, solutions de contournement, coût de la solution</step>
     <step t="Tester les outils">Les options prometteuses sur de vraies tâches, avec les employés</step>
-    <step t="Décision">Le responsable du budget décide d'après les six <a href="#signs">signes ci-dessus</a> : qualité, temps et reprise, reproductibilité, échelle, accès aux données, coût ; « aucun nouvel outil n'est nécessaire » est une issue valable</step>
+    <step t="Décision">Le responsable du budget décide d'après les six <a href="#signs">signes</a> : qualité, temps et reprise, reproductibilité, échelle, accès aux données, coût ; « aucun nouvel outil n'est nécessaire » est une issue valable</step>
   </b-steps>
   <b-io justify>
     <item k="Entrée">Exports de la console : messages, dépenses, projets et connecteurs de chaque personne</item>

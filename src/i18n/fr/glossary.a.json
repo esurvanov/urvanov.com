@@ -303,7 +303,7 @@
  },
  "claude-code": {
   "aka": "Claude Code CLI, agent de code d’Anthropic",
-  "def": "Claude Code est un agent de programmation d’Anthropic : il lit le projet, modifie des fichiers, exécute des commandes et des tests, et travaille avec git. Contrairement à Claude dans un chat, il a accès au projet : le chat répond par du texte, tandis que Claude Code modifie lui-même les fichiers et lance les commandes. Il fonctionne dans le terminal (CLI), dans VS Code et JetBrains, dans l’application de bureau et dans le navigateur, et c’est le même agent partout. Il n’a pas de modèle propre : il fonctionne avec les modèles Claude (Fable, Opus, Sonnet, Haiku) ; on change de modèle avec `/model`. Il lit les règles du projet dans `CLAUDE.md`, range les processus répétables dans des skills et connecte des systèmes externes via MCP. Ses alternatives les plus proches sont Codex et Cursor.",
+  "def": "Claude Code est un agent de programmation d’Anthropic : il lit le projet, modifie des fichiers, exécute des commandes et des tests, et travaille avec git. Il s’installe avec une seule commande dans le terminal et exige un abonnement payant (Pro à 20 $ par mois, Max, Ultra, Team ou Enterprise) ou un compte Console facturé à l’usage de l’API ; l’offre gratuite de Claude n’inclut pas Claude Code. Contrairement à Claude dans un chat, il a accès au projet : le chat répond par du texte, tandis que Claude Code modifie lui-même les fichiers et lance les commandes. Il fonctionne dans le terminal (CLI), dans VS Code et JetBrains, dans l’application de bureau et dans le navigateur, et c’est le même agent partout. Il n’a pas de modèle propre : il fonctionne avec les modèles Claude (Fable, Opus, Sonnet, Haiku) ; on change de modèle avec `/model`. Il lit les règles du projet dans `CLAUDE.md`, range les processus répétables dans des skills et connecte des systèmes externes via MCP. Ses alternatives les plus proches sont Codex et Cursor.",
   "faq.0.q": "En quoi Claude diffère-t-il de Claude Code ?",
   "faq.0.a": "Claude dans un chat répond par du texte. Claude Code est un agent de code : il lit le projet, modifie des fichiers et lance lui-même des commandes et des tests.",
   "faq.1.q": "Où fonctionne Claude Code ?",
@@ -311,8 +311,8 @@
   "faq.2.q": "Quels modèles utilise Claude Code ?",
   "faq.2.a": "Sur les modèles Claude : Fable, Opus, Sonnet et Haiku. On change de modèle avec la commande /model.",
   "source.label": "Documentation de Claude Code",
-  "seo.title": "Qu’est-ce que Claude Code ? Claude Code ou chat Claude, modèles et mise en route",
-  "seo.description": "À quoi sert Claude Code : il lit votre projet, modifie des fichiers et lance des tests. Claude Code ou chat Claude, modèles utilisés, CLAUDE.md, skills et MCP.",
+  "seo.title": "Claude Code : c’est quoi, installation, prix et gratuit ?",
+  "seo.description": "Claude Code lit votre projet, modifie des fichiers et lance des tests. Installation en une commande, prix (Pro 20 $ par mois), version gratuite ou non, modèles.",
   "more.label": "Claude Code, Codex, Cursor et Hermes Agent : lequel choisir",
   "compare.title": "Claude Code ou Claude : la différence",
   "compare.head": [
@@ -680,7 +680,7 @@
   ]
  },
  "opencode": {
-  "aka": "Open Code",
+  "aka": "OpenCode AI, Open Code",
   "def": "OpenCode est un agent de programmation gratuit et open source qui fonctionne dans le terminal ; il existe aussi une application de bureau et une application web. Vous choisissez le modèle : Claude, GPT, Gemini et des dizaines d’autres via une API, ou un modèle local ; vous ne payez que le fournisseur du modèle. Modes : Build modifie le code, Plan ne fait que planifier et ne change pas les fichiers. Il lit les règles du projet dans `AGENTS.md`, et la commande `/init` crée ce fichier à partir du dépôt.",
   "faq.0.q": "Qu’est-ce qu’OpenCode ?",
   "faq.0.a": "Un agent de programmation gratuit et open source dans le terminal, avec aussi une application de bureau et une application web. Vous choisissez le modèle et ne payez que son fournisseur.",
@@ -693,8 +693,8 @@
   "faq.4.q": "En quoi OpenCode diffère-t-il de Claude Code ?",
   "faq.4.a": "Ils sont construits de la même façon : tous deux lisent le projet, modifient des fichiers et lancent des commandes. OpenCode est open source et fonctionne avec n’importe quel modèle, Claude Code seulement avec les modèles Claude.",
   "source.label": "Documentation d’OpenCode",
-  "seo.title": "OpenCode : définition, agent IA gratuit en terminal",
-  "seo.description": "OpenCode est un agent IA gratuit et open source pour le terminal. Branchez Claude, GPT, Gemini ou un modèle local ; seul le fournisseur est payant.",
+  "seo.title": "OpenCode AI : c’est quoi, agent IA gratuit en terminal",
+  "seo.description": "OpenCode AI est un agent de programmation gratuit et open source pour le terminal. Branchez Claude, GPT, Gemini ou un modèle local ; seul le modèle est payant.",
   "more.label": "Claude Code, Codex, Cursor et Hermes Agent : lequel choisir"
  },
  "gemini-cli": {
@@ -1006,7 +1006,7 @@
  },
  "orchestration": {
   "name": "Orchestration",
-  "def": "L’orchestration consiste à gérer plusieurs étapes ou plusieurs agents : qui est responsable de quoi, dans quel ordre ils travaillent et comment les résultats sont transmis, par des fichiers, le résultat d’un sous-agent ou la messagerie entre sessions.",
+  "def": "L’orchestration d’agents IA consiste à gérer plusieurs étapes ou plusieurs agents : qui est responsable de quoi, dans quel ordre ils travaillent et comment les résultats sont transmis, par des fichiers, le résultat d’un sous-agent ou la messagerie entre sessions.",
   "faq.0.q": "Qu’est-ce que l’orchestration d’agents ?",
   "faq.0.a": "La gestion de plusieurs étapes ou agents : qui est responsable de quoi, dans quel ordre ils travaillent et comment les résultats circulent.",
   "faq.1.q": "Comment les agents se transmettent-ils des résultats ?",
@@ -1050,8 +1050,8 @@
   "faq.2.a": "Cursor lit les deux. AGENTS.md est un fichier commun à différents agents, à la racine et dans les sous-dossiers ; les règles de .cursor/rules sont propres à Cursor, mais elles peuvent s’appliquer toujours, selon une description, selon un motif de fichiers ou manuellement.",
   "faq.3.q": "En quoi AGENTS.md diffère-t-il de spec.md ?",
   "faq.3.a": "AGENTS.md fixe les règles de tout le projet et entre dans chaque session de l’agent. spec.md décrit une tâche — exigences et critères de fin — et vit jusqu’à la clôture de la tâche.",
-  "seo.title": "AGENTS.md, règles Cursor et CLAUDE.md : rôle de chacun",
-  "seo.description": "AGENTS.md est un fichier d’instructions commun à Codex, Cursor et d’autres agents. En quoi il diffère des règles Cursor et de CLAUDE.md, quand il est lu.",
+  "seo.title": "AGENTS.md : définition, différence avec CLAUDE.md et Cursor",
+  "seo.description": "Fichier AGENTS.md : instructions communes à Codex, Cursor et d’autres agents. Ce qu’il contient, en quoi il diffère de CLAUDE.md et des règles Cursor.",
   "more.label": "AGENTS.md, CLAUDE.md et spec.md : quoi mettre où",
   "also.0.label": "Cursor rules et AGENTS.md : quoi mettre où"
  },
@@ -1072,6 +1072,8 @@
   "faq.1.q": "Qui contrôle les permissions via MCP ?",
   "faq.1.a": "Vous : le serveur MCP propose à l’agent un jeu d’outils, et les droits d’accès se règlent côté serveur.",
   "source.label": "Site du Model Context Protocol",
+  "seo.title": "MCP : qu’est-ce que c’est, protocole pour agents IA",
+  "seo.description": "MCP (Model Context Protocol) est un protocole ouvert qui connecte un agent IA à Jira, aux bases de données et à d’autres services. Qui fixe les permissions.",
   "more.label": "MCP pour un agent IA : quel problème il résout et comment confier la connexion à l’agent"
  },
  "mcp-client": {

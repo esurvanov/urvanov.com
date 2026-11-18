@@ -1,7 +1,7 @@
 ---
 title: Le théorème de Rice en mots simples : pourquoi aucune vérification ne marche sur tous les programmes et que faire
 date: 2026-11-06
-updated: 2026-11-13
+updated: 2026-11-18
 description: Ce que dit le théorème de Rice et pourquoi vérifier le comportement d'un programme se heurte au problème de l'arrêt. Prédicats sur le texte et sur le comportement, une preuve sur un exemple de paiement, le lien avec le paradoxe du barbier et trois cadres qui rendent une vérification exacte.
 tags: théorème de Rice, problème de l'arrêt, paradoxe du barbier, prédicat, vérification formelle, Quint, DDD, agents
 category: specs
@@ -23,9 +23,9 @@ Le théorème de Rice dit qu'aucun programme ne peut toujours dire correctement,
 
 <b-chapter id="essence" icon="alert-circle" title="L'essentiel : ce qu'interdit le théorème de Rice">
   <b-why align="left">L'interdiction porte sur un vérificateur unique pour tous les programmes à la fois : pour un programme précis, on peut souvent trouver une réponse. Dans sa forme stricte, le théorème dit qu'aucun programme ne peut vérifier une propriété de comportement que certains programmes ont et d'autres non<b-proof href="https://en.wikipedia.org/wiki/Rice%27s_theorem" quote="Wikipedia: “Rice's theorem states that all non-trivial semantic properties of programs are undecidable.”"/>. Henry Gordon Rice l'a démontré dans sa thèse de 1951<b-proof href="https://en.wikipedia.org/wiki/Rice%27s_theorem" quote="Wikipedia: “The theorem is named after Henry Gordon Rice, who proved it in his doctoral dissertation of 1951 at Syracuse University.”"/>.</b-why>
-  <b-why align="left">Comment le lire en termes courants. Imaginez un vérificateur à qui l'on remet un programme quelconque en demandant : « Débitera-t-il un jour de l'argent sans commande ? » Le vérificateur peut être aussi astucieux qu'on veut, travailler aussi longtemps qu'on veut et connaître tous les langages de programmation. Le théorème dit qu'il existe quand même un programme sur lequel il répond faux ou ne répond jamais. C'est une propriété de la tâche elle-même, et améliorer le vérificateur ne la lève pas, comme améliorer un plan ne produit pas un mouvement perpétuel. Dans le schéma ci-dessous, le vérificateur est le cube bleu : il regarde les programmes un par un et répond « respecte » ou « enfreint » pour chacun. Le programme orange à droite est construit contre cette vérification même, à partir de son propre texte : sur lui, la réponse est fausse ou n'arrive jamais. Une autre vérification a son propre programme de ce genre.</b-why>
+  <b-why align="left">Comment le lire en termes courants. Imaginez un vérificateur à qui l'on remet un programme quelconque en demandant : « Débitera-t-il un jour de l'argent sans commande ? » Le vérificateur peut être aussi astucieux qu'on veut, travailler aussi longtemps qu'on veut et connaître tous les langages de programmation. Le théorème dit qu'il existe quand même un programme sur lequel il répond faux ou ne répond jamais. C'est une propriété de la tâche elle-même, et améliorer le vérificateur ne la lève pas, comme améliorer un plan ne produit pas un mouvement perpétuel. Dans le schéma, le vérificateur est le cube bleu : il regarde les programmes un par un et répond « respecte » ou « enfreint » pour chacun. Le programme orange à droite est construit contre cette vérification même, à partir de son propre texte : sur lui, la réponse est fausse ou n'arrive jamais. Une autre vérification a son propre programme de ce genre.</b-why>
   <iso-art name="term:rice-theorem"></iso-art>
-  <b-why align="left">Imaginez qu'une vérification automatique ait été ajoutée à la boutique. Elle lit chaque modification du code de paiement et répond : « cette modification ne débitera jamais d'argent sans commande » ou « elle en débitera ». Pour qu'on puisse se fier à une telle vérification, il lui faut trois choses, numérotées dans le schéma ci-dessous.</b-why>
+  <b-why align="left">Imaginez qu'une vérification automatique ait été ajoutée à la boutique. Elle lit chaque modification du code de paiement et répond : « cette modification ne débitera jamais d'argent sans commande » ou « elle en débitera ». Pour qu'on puisse se fier à une telle vérification, il lui faut trois choses, numérotées dans le schéma.</b-why>
 
   1. **Une réponse sur le comportement.** La vérification doit dire ce que fera le code à l'exécution : débite-t-il de l'argent ne serait-ce que sur un seul des achats qui passeront un jour par lui. Ces achats ne finissent jamais, et les tests ne peuvent pas tous les essayer.
   2. **Une vérification pour toute modification.** On ne peut pas restreindre d'avance le code qui peut arriver : la vérification fonctionne sur n'importe quel code qu'on lui donne, même écrit pour la tromper.
@@ -54,7 +54,7 @@ Le théorème de Rice dit qu'aucun programme ne peut toujours dire correctement,
 | **Si retirée — texte du code :** une recherche vérifie que seul le module de paiement écrit dans la table des paiements | **Si retirée — petit modèle :** règles de paiement pour 3 commandes et 2 clients, toutes les variantes essayées ; on vérifie le modèle des règles, le code se vérifie à part | **Si retirée — une personne :** sur une modification difficile, la vérification répond « je ne sais pas » et un développeur la regarde |
 
   </b-table>
-  <b-why align="left">Choisissez un côté du triangle : les deux propriétés à ses extrémités restent, la troisième disparaît. Les onglets ici et sous le schéma des propriétés sont liés : le numéro de l'onglet est le numéro de la propriété, et sa colonne dans le tableau ci-dessus s'allume.</b-why>
+  <b-why align="left">Choisissez un côté du triangle : les deux propriétés à ses extrémités restent, la troisième disparaît. Les onglets ici et sous le schéma des propriétés sont liés : le numéro de l'onglet est le numéro de la propriété, et sa colonne dans le tableau s'allume.</b-why>
   <b-lane title="À quelle propriété renoncer" color="accent">
   <b-scene names="rice-theorem-explained/triangle"/>
   <b-pick-tabs id="rice-tri" group="rice-k" tone="accent">
@@ -288,7 +288,7 @@ Le théorème de Rice dit qu'aucun programme ne peut toujours dire correctement,
 |---|---|---|---|
 | 1901 | Bertrand Russell | l'ensemble de tous les ensembles qui ne se contiennent pas eux-mêmes | s'appartient-il à lui-même ? |
 | 1936 | Alan Turing | aucun juge ne peut dire si un programme quelconque s'arrête | le contrariant s'interroge sur lui-même |
-| 1951 | Henry Gordon Rice | aucune vérification d'une propriété de comportement aux réponses différentes | réduire l'arrêt à la vérification, comme dans la preuve ci-dessus |
+| 1951 | Henry Gordon Rice | aucune vérification d'une propriété de comportement aux réponses différentes | réduire l'arrêt à la vérification, comme dans la preuve du théorème |
 
   </b-table>
   <b-why align="left">Pourquoi une question sur soi-même est si puissante. Un programme est aussi du texte, on peut donc le donner à un autre programme et même à lui-même. Dès qu'un vérificateur peut parler de n'importe quel programme, il doit aussi parler d'un programme qui l'interroge sur lui-même et fait le contraire. Alors toute réponse qu'il donne est fausse. Le même mouvement apparaît dans le paradoxe du barbier, le paradoxe de Russell et le théorème d'incomplétude de Gödel (dans tout système de règles cohérent donné par une liste d'axiomes et capable de décrire l'arithmétique, il existe des énoncés qui ne peuvent être ni démontrés ni réfutés).</b-why>

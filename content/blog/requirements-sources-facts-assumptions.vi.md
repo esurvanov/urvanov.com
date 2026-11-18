@@ -1,7 +1,7 @@
 ---
 title: Yêu cầu và biên bản họp với AI: nguồn, giả định, dữ kiện — và bước tiếp theo
 date: 2026-10-05
-updated: 2026-11-13
+updated: 2026-11-18
 description: Yêu cầu viết cùng AI: nguồn, giả định, trạng thái. Dữ kiện đến qua MCP từ Git; tác nhân tự sửa những chỗ nhỏ, còn chỗ lớn do con người quyết định.
 tags: AI, tác nhân, yêu cầu, ảo giác, biên bản họp, harness
 category: harness
@@ -26,7 +26,7 @@ Tác nhân AI (AI agent) viết yêu cầu rất tự tin, và những phỏng �
 | Nguồn | không nêu | cuộc họp ngày 12/10, 14:32, “khách hàng trả bằng thẻ ở bước thanh toán” |
 | Giả định | ẩn trong văn bản: “bằng rúp” | trên dòng riêng: “chỉ thanh toán bằng rúp” |
 | Trạng thái | đọc lên như dữ kiện | không phải dữ kiện: cuộc họp chưa bàn về tiền tệ |
-| Người đọc làm gì | tin mà không kiểm | kiểm tra giả định hoặc đặt câu hỏi |
+| Bạn làm gì | tin mà không kiểm | kiểm tra giả định hoặc đặt câu hỏi |
 
   </b-table>
   <b-rules sw="1.8">

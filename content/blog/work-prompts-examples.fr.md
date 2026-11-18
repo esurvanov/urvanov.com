@@ -1,7 +1,7 @@
 ---
 title: Prompts pour les tâches de travail : cinq parties et six exemples pour ChatGPT et Claude
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-18
 description: Des prompts pour travailler avec un chat IA : les parties d'un bon prompt de travail, à quoi ressemblent une demande faible et une demande solide, six modèles prêts pour des tâches courantes et comment les garder dans un projet, d'après les guides d'Anthropic, d'OpenAI et de Google.
 tags: IA, prompts, ChatGPT, Claude
 category: prompts
@@ -239,6 +239,7 @@ Un prompt de travail pour ChatGPT et Claude se construit en cinq parties : un r�
     <item href="/blog/specs-rules-skills/" k="Contexte" t="Spécifications, bible, règles et skills">Où vit un prompt au-delà d'un seul chat</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Ingénierie" t="L'IA dans le code">Le harness et quatre groupes d'outils</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="Rapport" t="Rapport d'usage de ChatGPT Enterprise">Qui utilise quoi dans l'entreprise</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Choix" t="Codex ou ChatGPT">Chat ou agent de code</item>
   </b-links>
 </b-chapter>
 <b-footer>Les prompts sont des modèles : remplissez ce qui est entre crochets. Les techniques suivent les guides officiels d'Anthropic, d'OpenAI et de Google ; la source se trouve derrière l'icône à côté de chaque affirmation. Les citations du centre d'aide d'OpenAI et du guide de Google sont paraphrasées.</b-footer>

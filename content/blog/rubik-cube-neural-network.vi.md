@@ -1,7 +1,7 @@
 ---
 title: AI giải Rubik vượt hơn 1.000 đội ở 4×4×4 và 5×5×5: học từ các lần xáo trộn, tìm kiếm bằng mặt trận rộng và giữ lời giải ngắn nhất của nhiều mạng
 date: 2026-10-22
-updated: 2026-11-08
+updated: 2026-11-18
 description: Mạng nơ-ron CayleyPy giải Rubik bằng ít nước đi nhất như thế nào: khối Rubik có bao nhiêu tổ hợp, vì sao vét cạn là bất khả, la bàn học từ các lần xáo trộn ngẫu nhiên ra sao, và vì sao mặt trận tìm kiếm rộng cùng một đội mạng lại quan trọng. Kết quả trên 3×3×3, 4×4×4 và 5×5×5, giải thích bằng sơ đồ bài báo arXiv 2502.13266.
 tags: AI, nghiên cứu, mạng nơ-ron, Rubik, AI giải Rubik, tìm đường
 category: research
@@ -326,7 +326,7 @@ AI giải Rubik hoạt động qua ba bước: mạng nơ-ron học từ các l�
     <q t="Khối Rubik 3×3×3 có bao nhiêu tổ hợp?">43.252.003.274.489.856.000 — khoảng 4,3·10¹⁹. Khối 4×4×4 có khoảng 7,4·10⁴⁵, khối 5×5×5 khoảng 2,8·10⁷⁴.</q>
     <q t="Số nước đi ít nhất để giải một khối Rubik bất kỳ là bao nhiêu?">Khối 3×3×3 thông thường cần tối đa 20 nước khi nửa vòng xoay tính là một nước, và 26 khi chỉ tính xoay một phần tư. Với các khối lớn hơn, đáp án chính xác chưa biết.</q>
     <q t="CayleyPy khác DeepCubeA thế nào?">Mạng của nó nhỏ hơn gần bốn lần và huấn luyện nhanh hơn khoảng 18 lần, còn tìm kiếm chạy như một mặt trận rộng cùng một đội mạng. Trên khối thông thường, điều đó cho 98% đường ngắn nhất so với 60%.</q>
-    <q t="Tôi có thể tự thử không?">Có: mã của các tác giả được mở, thư viện CayleyPy có trên GitHub (liên kết bên dưới).</q>
+    <q t="Tôi có thể tự thử không?">Có: mã của các tác giả được mở, thư viện CayleyPy có trên GitHub.</q>
   </b-faq-cards>
 </b-chapter>
 

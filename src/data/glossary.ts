@@ -1398,6 +1398,13 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Кто управляет правами при подключении через MCP?', en: 'Who controls permissions over MCP?' }, a: { ru: 'Вы: MCP-сервер предлагает агенту набор инструментов, а права доступа задаются на стороне сервера.', en: 'You do: the MCP server offers the agent a set of tools, and access rights are set on the server side.' } },
         ],
         source: { url: 'https://modelcontextprotocol.io/', label: { ru: 'Официальный сайт MCP', en: 'Model Context Protocol site' } },
+        seo: {
+          title: { ru: 'MCP: что это', en: 'MCP: what it is' },
+          description: {
+            ru: 'Что такое MCP (Model Context Protocol): открытый протокол, который подключает ИИ-агента к Jira, базам данных и другим сервисам. Кто задаёт права доступа.',
+            en: 'What MCP (Model Context Protocol) is: an open protocol that connects an AI agent to Jira, databases and other services. Who controls permissions.',
+          },
+        },
         more: { post: 'mcp-agent-access', label: { ru: 'MCP для ИИ-агента: какую проблему решает и как поручить подключение агенту', en: 'MCP for an AI agent: what problem it solves and how to delegate setup to the agent' } },
       },
       {
@@ -2128,6 +2135,577 @@ export const TERM_SETS: TermSet[] = [
           { q: { ru: 'Как зовут ИИ Atlassian?', en: 'What is Atlassian’s AI called?' }, a: { ru: 'Rovo: агенты Rovo берут задачи в Jira, а MCP-сервер Atlassian (раньше Rovo MCP Server) даёт внешним агентам доступ к данным Atlassian.', en: 'Rovo: Rovo agents take on tasks in Jira, and the Atlassian MCP server (formerly Rovo MCP Server) gives outside agents access to Atlassian data.' } },
         ],
         source: { url: 'https://www.atlassian.com/', label: { ru: 'Официальный сайт Atlassian', en: 'Atlassian official site' } },
+      },
+    ],
+  },
+  {
+    slug: 'access',
+    icon: 'all',
+    name: { ru: 'Доступ, аккаунт и оплата', en: 'Access, account and payment' },
+    hint: { ru: 'Сети, проверки и платежи вокруг сервисов ИИ', en: 'Networks, checks and payments around AI services' },
+    group: { id: 'ai', name: { ru: 'ИИ-агенты', en: 'AI agents' } },
+    terms: [
+      {
+        slug: 'vpn',
+        name: { ru: 'VPN', en: 'VPN' },
+        aka: { ru: 'виртуальная частная сеть, ВПН', en: 'virtual private network' },
+        def: {
+          ru: 'VPN (виртуальная частная сеть) — программа, которая пропускает трафик через другой сервер, поэтому сайт видит адрес этого сервера вместо адреса вашего подключения. VPN меняет только адрес, с которого виден трафик. Страну человека для правил компаний он сам по себе не определяет и не меняет.',
+          en: 'A VPN (virtual private network) is a program that sends your traffic through another server, so a website sees that server’s address instead of the address of your own connection. It changes only the address the traffic is seen from. By itself it neither determines nor changes the person’s country for a company’s rules.',
+        },
+        match: { ru: ['VPN', 'ВПН'], en: ['VPNs?'] },
+        related: ['http-403', 'anthropic'],
+        more: { post: 'claude-code-access-regions-vpn-bans', label: { ru: 'Claude Code в России: доступ, VPN, блокировки, оплата', en: 'Claude Code not available in your country: supported countries, VPN and bans' } },
+        faq: [
+          { q: { ru: 'Что такое VPN?', en: 'What is a VPN?' }, a: { ru: 'Программа, которая пропускает трафик через другой сервер, поэтому сайт видит адрес этого сервера.', en: 'A program that sends traffic through another server, so a website sees that server’s address.' } },
+          { q: { ru: 'Что видит сайт при включённом VPN?', en: 'What does a site see when a VPN is on?' }, a: { ru: 'Адрес VPN-сервера вместо адреса вашего подключения.', en: 'The VPN server’s address instead of your connection address.' } },
+          { q: { ru: 'Меняет ли VPN страну человека?', en: 'Does a VPN change a person’s country?' }, a: { ru: 'Нет: VPN меняет адрес, с которого виден трафик, а человек остаётся там, где находится. Правила компаний о стране читают в документах самой компании.', en: 'No: a VPN changes the address the traffic is seen from, and the person stays where they are. A company’s rules about a country are read in that company’s own documents.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Virtual_private_network', label: { ru: 'Википедия (англ.): Virtual private network', en: 'Wikipedia: Virtual private network' } },
+        sites: [{ url: 'https://ru.wikipedia.org/wiki/VPN', label: { ru: 'Википедия: VPN', en: 'Wikipedia (Russian): VPN' } }],
+      },
+      {
+        slug: 'persona',
+        name: { ru: 'Persona', en: 'Persona' },
+        aka: { ru: 'Persona Identities, проверка личности', en: 'Persona Identities, identity verification' },
+        def: {
+          ru: 'Persona — внешний сервис проверки личности по фото документа и селфи. Его использует Anthropic для проверки аккаунтов Claude: снимки документа и селфи принимает и хранит сама Persona. Это отдельная компания со своим сайтом, не часть Anthropic.',
+          en: 'Persona is an external identity-verification service that checks a person by a photo of an ID document and a selfie. Anthropic uses it to verify Claude accounts: the document and selfie images are collected and held by Persona itself. It is a separate company with its own site, not a part of Anthropic.',
+        },
+        match: { ru: ['Persona(?: Identities)?'], en: ['Persona(?: Identities)?'] },
+        exact: 'Persona',
+        related: ['anthropic', 'voip'],
+        more: { post: 'claude-code-access-regions-vpn-bans', label: { ru: 'Claude Code в России: доступ, VPN, блокировки, оплата', en: 'Claude Code not available in your country: supported countries, VPN and bans' } },
+        faq: [
+          { q: { ru: 'Что такое Persona?', en: 'What is Persona?' }, a: { ru: 'Внешний сервис проверки личности по документу и селфи.', en: 'An external service that verifies identity by an ID document and a selfie.' } },
+          { q: { ru: 'Кто использует Persona?', en: 'Who uses Persona?' }, a: { ru: 'Anthropic: по справке Claude, проверку личности на Claude выполняет партнёр Persona.', en: 'Anthropic: its Claude help center names Persona as the partner that runs identity verification on Claude.' } },
+          { q: { ru: 'Где хранятся документ и селфи?', en: 'Where are the document and selfie kept?' }, a: { ru: 'У Persona; в справке Anthropic сказано, что их хранит Persona, а не системы Anthropic.', en: 'With Persona; the Anthropic help page says Persona holds them, not Anthropic’s systems.' } },
+        ],
+        source: { url: 'https://support.claude.com/en/articles/14328960-identity-verification-on-claude', label: { ru: 'Справка Claude: проверка личности', en: 'Claude help: identity verification' } },
+        sites: [{ url: 'https://withpersona.com/', label: { ru: 'withpersona.com — сайт Persona', en: 'withpersona.com, the Persona site' } }],
+      },
+      {
+        slug: 'voip',
+        name: { ru: 'VoIP-номер', en: 'VoIP number' },
+        aka: { ru: 'VoIP, IP-телефония, интернет-номер', en: 'VoIP, Voice over IP, internet number' },
+        def: {
+          ru: 'VoIP-номер — номер телефона, звонки и сообщения которого идут по интернету, а физической SIM-карты у него нет. Такие номера дают онлайн-сервисы и приложения. В справке Anthropic для подтверждения аккаунта Claude они названы неподходящими: нужен обычный мобильный номер, на который приходят SMS.',
+          en: 'A VoIP number is a phone number whose calls and texts travel over the internet and that has no physical SIM card. Online services and apps issue such numbers. The Anthropic help page on verifying a Claude account lists them as unsuitable: an ordinary mobile number that receives text messages is required.',
+        },
+        match: { ru: ['VoIP(?:-номер\\p{L}*)?', 'IP-телефони\\p{L}*'], en: ['VoIP(?: numbers?)?', 'Voice over IP'] },
+        related: ['google-voice', 'persona'],
+        faq: [
+          { q: { ru: 'VoIP-номер — что это?', en: 'What is a VoIP number?' }, a: { ru: 'Номер телефона, который работает через интернет и не привязан к физической SIM-карте.', en: 'A phone number that works over the internet and is not tied to a physical SIM card.' } },
+          { q: { ru: 'Чем VoIP-номер отличается от обычного мобильного?', en: 'How does a VoIP number differ from an ordinary mobile one?' }, a: { ru: 'Обычный номер привязан к SIM-карте оператора связи, VoIP-номер живёт в приложении или онлайн-сервисе.', en: 'An ordinary number is tied to a mobile operator’s SIM card; a VoIP number lives in an app or an online service.' } },
+          { q: { ru: 'Принимает ли Anthropic VoIP-номера?', en: 'Does Anthropic accept VoIP numbers?' }, a: { ru: 'Нет: в справке по подтверждению телефона они перечислены среди номеров, которые использовать нельзя.', en: 'No: the phone-verification help page lists them among numbers you cannot use.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Voice_over_IP', label: { ru: 'Википедия (англ.): Voice over IP', en: 'Wikipedia: Voice over IP' } },
+        sites: [
+          { url: 'https://ru.wikipedia.org/wiki/IP-телефония', label: { ru: 'Википедия: IP-телефония', en: 'Wikipedia (Russian): IP telephony' } },
+          { url: 'https://support.claude.com/en/articles/8287232-verify-your-phone-number', label: { ru: 'Справка Claude: подтверждение номера телефона', en: 'Claude help: verify your phone number' } },
+        ],
+      },
+      {
+        slug: 'google-voice',
+        name: { ru: 'Google Voice', en: 'Google Voice' },
+        aka: { ru: 'Гугл Войс', en: 'Google Voice number' },
+        def: {
+          ru: 'Google Voice — сервис Google, который выдаёт номер телефона для звонков, сообщений и голосовой почты по интернету, без привязки к SIM-карте. Это один из видов VoIP-номера. В справке Anthropic для подтверждения аккаунта Claude Google Voice назван среди номеров, которые использовать нельзя.',
+          en: 'Google Voice is a Google service that gives you a phone number for calls, texts and voicemail over the internet, with no SIM card attached. It is one kind of VoIP number. The Anthropic help page on verifying a Claude account names Google Voice among the numbers you cannot use.',
+        },
+        match: { ru: ['Google Voice', 'Гугл Войс'], en: ['Google Voice'] },
+        related: ['voip', 'persona'],
+        faq: [
+          { q: { ru: 'Google Voice — что это?', en: 'What is Google Voice?' }, a: { ru: 'Сервис Google: номер телефона для звонков, сообщений и голосовой почты по интернету.', en: 'A Google service: a phone number for calls, texts and voicemail over the internet.' } },
+          { q: { ru: 'Google Voice — это VoIP?', en: 'Is Google Voice a VoIP service?' }, a: { ru: 'Да, номер работает через интернет и не привязан к SIM-карте.', en: 'Yes: the number works over the internet and is not tied to a SIM card.' } },
+          { q: { ru: 'Подходит ли Google Voice для подтверждения аккаунта Claude?', en: 'Does Google Voice work for verifying a Claude account?' }, a: { ru: 'Нет: в справке Anthropic он перечислен среди номеров, которые использовать нельзя.', en: 'No: the Anthropic help page lists it among numbers you cannot use.' } },
+        ],
+        source: { url: 'https://support.google.com/voice/', label: { ru: 'Справка Google Voice', en: 'Google Voice Help' } },
+        sites: [{ url: 'https://support.claude.com/en/articles/8287232-verify-your-phone-number', label: { ru: 'Справка Claude: подтверждение номера телефона', en: 'Claude help: verify your phone number' } }],
+      },
+      {
+        slug: 'http-403',
+        name: { ru: 'Ошибка 403', en: 'HTTP 403 error' },
+        aka: { ru: '403, ошибка 403, HTTP 403, Forbidden', en: '403, HTTP 403, 403 Forbidden' },
+        def: {
+          ru: 'Ошибка 403 (Forbidden, «запрещено») — код ответа HTTP: сервер понял запрос, но отказывается его выполнить. Повторный вход под тем же аккаунтом ничего не меняет. Причин много: права доступа, правила сайта, защита от ботов. Одна такая ошибка сама по себе не говорит о стране пользователя.',
+          en: 'Error 403 (Forbidden) is an HTTP response code: the server understood the request but refuses to carry it out, and signing in again changes nothing. Causes vary: access rights, site rules, bot protection. A single such error says nothing about the user’s country by itself.',
+        },
+        match: { ru: ['HTTP 403', 'ошибк\\p{L}* 403', '403 Forbidden'], en: ['HTTP 403', '403 Forbidden', '(?:error|status|code) 403'] },
+        related: ['vpn'],
+        faq: [
+          { q: { ru: 'Ошибка 403 — что это?', en: 'What is a 403 error?' }, a: { ru: 'Код ответа HTTP: сервер понял запрос, но отказывается его выполнить.', en: 'An HTTP response code: the server understood the request but refuses to carry it out.' } },
+          { q: { ru: 'Чем 403 отличается от 401?', en: 'How does 403 differ from 401?' }, a: { ru: 'При 401 нужно войти или подтвердить вход, при 403 повторный вход ничего не меняет: отказ задан правилами сервера.', en: 'With 401 you need to sign in or re-authenticate; with 403 signing in again changes nothing, since the refusal comes from the server’s rules.' } },
+          { q: { ru: 'Ошибка 403 означает блокировку по стране?', en: 'Does a 403 mean a country block?' }, a: { ru: 'Сама по себе нет: тот же код выдают при нехватке прав, правилах сайта и защите от ботов.', en: 'Not by itself: the same code is returned for missing permissions, site rules and bot protection.' } },
+        ],
+        source: { url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/403', label: { ru: 'MDN: код ответа 403 Forbidden', en: 'MDN: 403 Forbidden' } },
+        sites: [
+          { url: 'https://en.wikipedia.org/wiki/HTTP_403', label: { ru: 'Википедия (англ.): HTTP 403', en: 'Wikipedia: HTTP 403' } },
+          { url: 'https://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP#403', label: { ru: 'Википедия: список кодов состояния HTTP', en: 'Wikipedia (Russian): list of HTTP status codes' } },
+        ],
+      },
+      {
+        slug: 'paypal',
+        name: { ru: 'PayPal', en: 'PayPal' },
+        aka: { ru: 'ПэйПал, Пейпал', en: 'PayPal wallet' },
+        def: {
+          ru: 'PayPal — платёжный сервис: через него платят и получают деньги в интернете. Для переводов между людьми в США у компании есть отдельное приложение Venmo. Для оплаты в вебе нужен аккаунт PayPal, а доступность сервиса зависит от страны.',
+          en: 'PayPal is a payment service: through it people pay and receive money online. For person-to-person transfers in the US the company has a separate app, Venmo. Paying on the web requires a PayPal account, and the service’s availability depends on the country.',
+        },
+        match: { ru: ['PayPal', 'ПэйПал', 'Пейпал'], en: ['PayPal'] },
+        related: ['venmo'],
+        faq: [
+          { q: { ru: 'PayPal — что это?', en: 'What is PayPal?' }, a: { ru: 'Платёжный сервис для оплаты и получения денег в интернете.', en: 'A payment service for paying and receiving money online.' } },
+          { q: { ru: 'Как PayPal связан с Venmo?', en: 'How is PayPal related to Venmo?' }, a: { ru: 'Venmo — приложение той же компании для переводов между людьми в США.', en: 'Venmo is an app from the same company for person-to-person transfers in the US.' } },
+          { q: { ru: 'Для чего нужен PayPal?', en: 'What is PayPal for?' }, a: { ru: 'Чтобы платить за покупки и получать деньги в интернете через аккаунт сервиса.', en: 'To pay for purchases and receive money online through a service account.' } },
+        ],
+        source: { url: 'https://www.paypal.com/us/home', label: { ru: 'Официальный сайт PayPal', en: 'PayPal official site' } },
+      },
+      {
+        slug: 'venmo',
+        name: { ru: 'Venmo', en: 'Venmo' },
+        aka: { ru: 'Венмо', en: 'Venmo app' },
+        def: {
+          ru: 'Venmo — приложение для быстрых и безопасных платежей между друзьями в США. Это сервис компании PayPal. С 2009 года приложение строится вокруг социальных платежей: перевод другу похож на сообщение.',
+          en: 'Venmo is an app for fast, safe payments between friends in the US. It is a service of PayPal. Since 2009 the app has been built around social payments: sending money to a friend feels like sending a message.',
+        },
+        match: { ru: ['Venmo', 'Венмо'], en: ['Venmo'] },
+        related: ['paypal'],
+        faq: [
+          { q: { ru: 'Venmo — что это?', en: 'What is Venmo?' }, a: { ru: 'Приложение для платежей между друзьями в США.', en: 'An app for payments between friends in the US.' } },
+          { q: { ru: 'Чей это сервис?', en: 'Who owns it?' }, a: { ru: 'PayPal.', en: 'PayPal.' } },
+          { q: { ru: 'Для кого Venmo?', en: 'Who is Venmo for?' }, a: { ru: 'Для платежей между друзьями в США.', en: 'For payments between friends in the US.' } },
+        ],
+        source: { url: 'https://venmo.com/about/us/', label: { ru: 'Venmo: о сервисе', en: 'Venmo: about us' } },
+      },
+      {
+        slug: 'zdr',
+        name: { ru: 'ZDR', en: 'ZDR' },
+        aka: { ru: 'Zero Data Retention, нулевое хранение данных', en: 'Zero Data Retention' },
+        def: {
+          ru: 'ZDR (Zero Data Retention, нулевое хранение данных) — режим, при котором провайдер обрабатывает запросы и ответы в реальном времени и не хранит их после ответа. У Anthropic он доступен отдельным организациям по договорённости. Исключения: хранение, которого требует закон или борьба со злоупотреблениями.',
+          en: 'ZDR (Zero Data Retention) is a mode where a provider processes requests and responses in real time and does not store them after the reply. At Anthropic it is available to qualified organizations by agreement. Exceptions: retention required by law or to combat misuse.',
+        },
+        match: { ru: ['ZDR', 'zero data retention', 'нулев\\p{L}* хранени\\p{L}* данных'], en: ['ZDR', 'zero data retention'] },
+        related: ['hipaa', 'anthropic'],
+        faq: [
+          { q: { ru: 'ZDR — что это?', en: 'What is ZDR?' }, a: { ru: 'Режим нулевого хранения данных: запросы и ответы обрабатываются и не сохраняются после ответа.', en: 'Zero Data Retention: requests and responses are processed and not stored after the reply.' } },
+          { q: { ru: 'Включён ли ZDR у всех?', en: 'Is ZDR on for everyone?' }, a: { ru: 'Нет: по документации Anthropic он доступен квалифицированным аккаунтам Claude for Enterprise и включается отдельно для каждой организации.', en: 'No: per Anthropic’s docs it is available to qualified Claude for Enterprise accounts and is enabled per organization.' } },
+          { q: { ru: 'Хранит ли провайдер что-то при ZDR?', en: 'Does the provider keep anything under ZDR?' }, a: { ru: 'Данные хранятся там, где нужно по закону или для борьбы со злоупотреблениями; учётные данные вроде адресов почты и мест в подписке остаются.', en: 'Data is kept where law or misuse prevention requires it; administrative data such as account emails and seats remains.' } },
+        ],
+        source: { url: 'https://code.claude.com/docs/en/zero-data-retention', label: { ru: 'Документация Claude Code: Zero Data Retention', en: 'Claude Code docs: Zero Data Retention' } },
+        sites: [{ url: 'https://code.claude.com/docs/en/data-usage', label: { ru: 'Документация Claude Code: использование данных', en: 'Claude Code docs: data usage' } }],
+      },
+      {
+        slug: 'hipaa',
+        name: { ru: 'HIPAA', en: 'HIPAA' },
+        aka: { ru: 'Health Insurance Portability and Accountability Act', en: 'Health Insurance Portability and Accountability Act' },
+        def: {
+          ru: 'HIPAA — закон США 1996 года о защите медицинской информации (Health Insurance Portability and Accountability Act). Он задаёт правила, как медицинские организации и их подрядчики обращаются с данными пациентов. Сервис ИИ, который получает такие данные, работает по отдельному соглашению с клиентом.',
+          en: 'HIPAA is a 1996 US law on protecting medical information (the Health Insurance Portability and Accountability Act). It sets rules for how healthcare organizations and their contractors handle patient data. An AI service that receives such data works under a separate agreement with the customer.',
+        },
+        match: { ru: ['HIPAA'], en: ['HIPAA'] },
+        related: ['zdr', 'anthropic'],
+        faq: [
+          { q: { ru: 'HIPAA — что это?', en: 'What is HIPAA?' }, a: { ru: 'Закон США о защите медицинской информации, принятый в 1996 году.', en: 'A US law on protecting medical information, enacted in 1996.' } },
+          { q: { ru: 'Кого касается HIPAA?', en: 'Whom does HIPAA cover?' }, a: { ru: 'Медицинские организации и подрядчики, которым передают данные пациентов.', en: 'Healthcare organizations and the contractors they pass patient data to.' } },
+          { q: { ru: 'Как HIPAA связан с ZDR?', en: 'How is HIPAA related to ZDR?' }, a: { ru: 'Организации с данными пациентов выбирают провайдера с соглашением по HIPAA; по документации Anthropic для части сервисов нужен ещё и режим ZDR.', en: 'Organizations with patient data pick a provider with a HIPAA agreement; per Anthropic’s docs some services also need ZDR.' } },
+        ],
+        source: { url: 'https://www.hhs.gov/hipaa/index.html', label: { ru: 'HHS: HIPAA', en: 'HHS: HIPAA' } },
+        sites: [
+          { url: 'https://ru.wikipedia.org/wiki/HIPAA', label: { ru: 'Википедия: HIPAA', en: 'Wikipedia (Russian): HIPAA' } },
+          { url: 'https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act', label: { ru: 'Википедия (англ.): HIPAA', en: 'Wikipedia: HIPAA' } },
+        ],
+      },
+      {
+        slug: 'telegram',
+        name: { ru: 'Telegram', en: 'Telegram' },
+        aka: { ru: 'Телеграм', en: 'Telegram messenger' },
+        def: {
+          ru: 'Telegram — мессенджер для переписки, звонков и каналов: по описанию самого сервиса, приложение быстрое, простое и бесплатное. Публичные каналы доступны всем. Посты в них — записи их авторов, и содержание таких записей вне Telegram никто не проверяет.',
+          en: 'Telegram is a messaging app for chats, calls and channels: by the service’s own description it is fast, simple and free. Public channels are open to everyone. Posts in them are records by their authors, and the content of such posts is not checked outside Telegram.',
+        },
+        match: { ru: ['Telegram', 'Телеграм\\p{L}*'], en: ['Telegram'] },
+        related: ['hermes-agent'],
+        faq: [
+          { q: { ru: 'Telegram — что это?', en: 'What is Telegram?' }, a: { ru: 'Мессенджер для переписки и каналов.', en: 'A messaging app for chats and channels.' } },
+          { q: { ru: 'Что такое публичный канал?', en: 'What is a public channel?' }, a: { ru: 'Канал, который доступен всем без приглашения; в нём публикует автор или команда.', en: 'A channel available to everyone without an invitation, where an author or a team publishes.' } },
+          { q: { ru: 'Можно ли верить постам в каналах?', en: 'Can posts in channels be trusted?' }, a: { ru: 'Пост остаётся записью автора канала: Telegram содержание не проверяет, сверять факты нужно с первоисточником.', en: 'A post remains the channel author’s record: Telegram does not verify the content, so facts should be checked against the original source.' } },
+        ],
+        source: { url: 'https://telegram.org/faq', label: { ru: 'Telegram: частые вопросы', en: 'Telegram FAQ' } },
+      },
+      {
+        slug: 'chatgpt',
+        name: { ru: 'ChatGPT', en: 'ChatGPT' },
+        aka: { ru: 'чат OpenAI, аккаунт ChatGPT', en: 'OpenAI chat, ChatGPT account' },
+        def: {
+          ru: 'ChatGPT — продукт OpenAI: чат, который отвечает текстом, с подпиской на платные тарифы. Через аккаунт ChatGPT входят и в Codex: тогда агент работает в пределах подписки, а не по ставкам API. Список стран OpenAI распространяется на ChatGPT и на ключ API одинаково.',
+          en: 'ChatGPT is an OpenAI product: a chat that answers with text, with paid subscription plans. The same account signs in to Codex: the agent then works within the subscription instead of API rates. OpenAI’s country list applies to ChatGPT and to the API key alike.',
+        },
+        match: { ru: ['ChatGPT'], en: ['ChatGPT'] },
+        exact: 'ChatGPT',
+        related: ['openai', 'codex', 'api-key'],
+        more: { post: 'codex-access-regions-vpn-bans', label: { ru: 'Codex в России: доступ, VPN и блокировки', en: 'Codex CLI not available in your country: supported countries, VPN and bans' } },
+        faq: [
+          { q: { ru: 'ChatGPT — что это?', en: 'What is ChatGPT?' }, a: { ru: 'Чат OpenAI, который отвечает текстом; платные тарифы дают больше возможностей.', en: 'OpenAI’s chat that answers with text; paid plans give more features.' } },
+          { q: { ru: 'Как войти в Codex через ChatGPT?', en: 'How do you sign in to Codex with ChatGPT?' }, a: { ru: 'Выбрать при запуске вход через аккаунт ChatGPT: по документации OpenAI это доступ по подписке.', en: 'Choose sign-in with a ChatGPT account at launch: per OpenAI’s docs this is subscription access.' } },
+          { q: { ru: 'Снимает ли подписка ChatGPT региональные ограничения?', en: 'Does a ChatGPT subscription lift regional limits?' }, a: { ru: 'Нет: критерием служит список стран OpenAI, тариф среди критериев не назван.', en: 'No: the criterion is OpenAI’s country list, and the plan is not named among the criteria.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/ChatGPT', label: { ru: 'Википедия (англ.): ChatGPT', en: 'Wikipedia: ChatGPT' } },
+        sites: [{ url: 'https://learn.chatgpt.com/docs/auth', label: { ru: 'Документация OpenAI: вход в Codex', en: 'OpenAI docs: signing in to Codex' } }],
+      },
+      {
+        slug: 'api-key',
+        name: { ru: 'Ключ API', en: 'API key' },
+        aka: { ru: 'API-ключ, ключ доступа к API', en: 'API access key' },
+        def: {
+          ru: 'Ключ API — длинная строка, по которой сервис узнаёт, чей запрос к нему пришёл, и списывает оплату с владельца ключа. В Codex вход по ключу API означает оплату по ставкам API за фактическое использование, без подписки. Ключ равноценен паролю от счёта: его не передают другим и не публикуют.',
+          en: 'An API key is a long string by which a service recognizes whose request has arrived and bills the key’s owner. In Codex, signing in with an API key means paying API rates for actual use, with no subscription. A key is as sensitive as a password to the account: it is not shared with others or published.',
+        },
+        match: { ru: ['ключ\\p{L}* API', 'API-ключ\\p{L}*'], en: ['API keys?'] },
+        related: ['api', 'chatgpt', 'codex'],
+        more: { post: 'codex-access-regions-vpn-bans', label: { ru: 'Codex в России: доступ, VPN и блокировки', en: 'Codex CLI not available in your country: supported countries, VPN and bans' } },
+        faq: [
+          { q: { ru: 'Ключ API — что это?', en: 'What is an API key?' }, a: { ru: 'Строка, по которой сервис узнаёт владельца запроса и берёт оплату с него.', en: 'A string by which a service recognizes the request’s owner and bills them.' } },
+          { q: { ru: 'Чем вход по ключу API отличается от входа через ChatGPT?', en: 'How is signing in with an API key different from signing in with ChatGPT?' }, a: { ru: 'Ключ API даёт оплату по использованию, вход через ChatGPT даёт доступ по подписке.', en: 'An API key gives usage-based payment; signing in with ChatGPT gives subscription access.' } },
+          { q: { ru: 'Можно ли дать свой ключ API другому человеку?', en: 'Can you give your API key to someone else?' }, a: { ru: 'Нет: ключ даёт доступ к вашему счёту, а условия OpenAI запрещают передавать аккаунт другим.', en: 'No: the key gives access to your account, and OpenAI’s terms forbid passing an account to others.' } },
+        ],
+        source: { url: 'https://learn.chatgpt.com/docs/auth', label: { ru: 'Документация OpenAI: вход в Codex', en: 'OpenAI docs: signing in to Codex' } },
+      },
+      {
+        slug: 'telemetry',
+        name: { ru: 'Телеметрия', en: 'Telemetry' },
+        aka: { ru: 'OpenTelemetry, метрики и аналитика', en: 'OpenTelemetry, metrics and analytics' },
+        def: {
+          ru: 'Телеметрия — данные о том, как работает программа, которые она сама отправляет разработчику: счётчики, метрики, отчёты об использовании. OpenTelemetry — открытый стандарт таких данных. В Codex помимо запросов к модели уходят аналитика и метрики; они отключаются в файле настроек, а тексты запросов в журналах попадают туда только по явному согласию.',
+          en: 'Telemetry is data about how a program works that the program itself sends to its developer: counters, metrics, usage reports. OpenTelemetry is an open standard for such data. In Codex, besides requests to the model, analytics and metrics are sent; they are switched off in the settings file, and prompt texts reach the logs only with explicit consent.',
+        },
+        match: { ru: ['телеметри\\p{L}*', 'OpenTelemetry', 'OTel'], en: ['telemetry', 'OpenTelemetry', 'OTel'] },
+        related: ['config-toml', 'codex'],
+        more: { post: 'codex-access-regions-vpn-bans', label: { ru: 'Codex в России: доступ, VPN и блокировки', en: 'Codex CLI not available in your country: supported countries, VPN and bans' } },
+        faq: [
+          { q: { ru: 'Телеметрия — что это?', en: 'What is telemetry?' }, a: { ru: 'Данные об работе программы, которые она сама отправляет разработчику.', en: 'Data about how a program works that it sends to its developer by itself.' } },
+          { q: { ru: 'Что такое OpenTelemetry?', en: 'What is OpenTelemetry?' }, a: { ru: 'Открытый стандарт для метрик, журналов и трасс программ; Codex умеет отправлять данные в этом формате.', en: 'An open standard for metrics, logs and traces of programs; Codex can send data in this format.' } },
+          { q: { ru: 'Останавливает ли отключение телеметрии запросы к модели?', en: 'Does turning telemetry off stop requests to the model?' }, a: { ru: 'Нет: запросы к модели уходят всегда, на них держится работа агента.', en: 'No: requests to the model always go out, the agent works on them.' } },
+        ],
+        source: { url: 'https://opentelemetry.io/docs/what-is-opentelemetry/', label: { ru: 'OpenTelemetry: что это', en: 'OpenTelemetry: what it is' } },
+        sites: [{ url: 'https://en.wikipedia.org/wiki/Telemetry', label: { ru: 'Википедия (англ.): Telemetry', en: 'Wikipedia: Telemetry' } }],
+      },
+      {
+        slug: 'diff',
+        name: { ru: 'Дифф', en: 'Diff' },
+        aka: { ru: 'diff, разница между версиями файла', en: 'difference between file versions' },
+        def: {
+          ru: 'Дифф — показ изменений: старые строки файла рядом с новыми, с пометкой, что убрано и что добавлено. Агент показывает дифф до записи в файл, и человек видит разницу и решает, подтверждать ли её. Так правку проверяют до того, как она что-то изменила.',
+          en: 'A diff is a display of changes: the old lines of a file next to the new ones, marked with what was removed and what was added. An agent shows the diff before writing to a file, so the person sees the difference and decides whether to confirm it. This is how an edit is reviewed before it has changed anything.',
+        },
+        match: { ru: ['дифф(?:а|ом|у|е|ы|ов|ам|ами|ах)?'], en: ['diffs?'] },
+        related: ['codex', 'config-toml'],
+        more: { post: 'codex-access-regions-vpn-bans', label: { ru: 'Codex в России: доступ, VPN и блокировки', en: 'Codex CLI not available in your country: supported countries, VPN and bans' } },
+        faq: [
+          { q: { ru: 'Дифф — что это?', en: 'What is a diff?' }, a: { ru: 'Показ разницы между старой и новой версией файла.', en: 'A display of the difference between the old and new version of a file.' } },
+          { q: { ru: 'Зачем смотреть дифф до записи?', en: 'Why look at the diff before writing?' }, a: { ru: 'Чтобы увидеть, что именно изменится, и отказаться, пока файл не тронут.', en: 'To see what exactly will change and refuse while the file is untouched.' } },
+          { q: { ru: 'Как читать дифф?', en: 'How do you read a diff?' }, a: { ru: 'Строки с минусом убираются, строки с плюсом добавляются, остальные остаются как были.', en: 'Lines with a minus are removed, lines with a plus are added, the rest stay as they were.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Diff', label: { ru: 'Википедия (англ.): Diff', en: 'Wikipedia: Diff' } },
+      },
+      {
+        slug: 'embargo',
+        name: { ru: 'Эмбарго', en: 'Embargo' },
+        aka: { ru: 'эмбарго США, торговые ограничения', en: 'US embargo, trade restrictions' },
+        def: {
+          ru: 'Эмбарго — запрет государства на торговлю и услуги со страной или территорией. Условия OpenAI запрещают использовать её сервисы в стране или на территории под эмбарго США и в интересах лиц, с которыми запрещены сделки по торговым законам. Это отдельное правило: оно действует независимо от списка поддерживаемых стран.',
+          en: 'An embargo is a state’s ban on trade and services with a country or territory. OpenAI’s terms forbid using its services in a country or territory under a US embargo and for the benefit of persons with whom dealings are prohibited under trade laws. This is a separate rule: it applies regardless of the list of supported countries.',
+        },
+        match: { ru: ['эмбарго'], en: ['embargo(?:ed)?'] },
+        related: ['openai', 'vpn'],
+        more: { post: 'codex-access-regions-vpn-bans', label: { ru: 'Codex в России: доступ, VPN и блокировки', en: 'Codex CLI not available in your country: supported countries, VPN and bans' } },
+        faq: [
+          { q: { ru: 'Эмбарго — что это?', en: 'What is an embargo?' }, a: { ru: 'Запрет государства на торговлю и услуги со страной или территорией.', en: 'A state’s ban on trade and services with a country or territory.' } },
+          { q: { ru: 'Что условия OpenAI говорят об эмбарго?', en: 'What do OpenAI’s terms say about embargoes?' }, a: { ru: 'Сервисы нельзя использовать в стране или на территории под эмбарго США и в интересах лиц, с которыми запрещены сделки по торговым законам.', en: 'Services may not be used in a US-embargoed country or territory or for the benefit of persons with whom dealings are prohibited under trade laws.' } },
+          { q: { ru: 'Достаточно ли попадать в список поддерживаемых стран?', en: 'Is being on the supported-countries list enough?' }, a: { ru: 'Нет: правило об эмбарго стоит в условиях отдельно и применяется независимо от списка.', en: 'No: the embargo rule stands separately in the terms and applies regardless of the list.' } },
+        ],
+        source: { url: 'https://openai.com/policies/row-terms-of-use/', label: { ru: 'Условия использования OpenAI', en: 'OpenAI terms of use' } },
+        sites: [{ url: 'https://en.wikipedia.org/wiki/Embargo', label: { ru: 'Википедия (англ.): Embargo', en: 'Wikipedia: Embargo' } }],
+      },
+      {
+        slug: 'config-toml',
+        name: { ru: 'config.toml', en: 'config.toml' },
+        aka: { ru: 'файл настроек Codex', en: 'Codex settings file' },
+        def: {
+          ru: 'config.toml — файл настроек Codex в текстовом формате TOML: в нём блоки с названиями в квадратных скобках, а под ними параметры. Блоки [analytics], [otel] и [feedback] управляют аналитикой, метриками и отправкой отзыва. Запросы к модели этот файл не отключает: на них держится работа агента.',
+          en: 'config.toml is the Codex settings file in the TOML text format: blocks named in square brackets with parameters beneath them. The [analytics], [otel] and [feedback] blocks control analytics, metrics and feedback submission. This file does not switch off requests to the model: the agent works on them.',
+        },
+        match: { ru: ['config\\.toml'], en: ['config\\.toml'] },
+        related: ['telemetry', 'codex', 'diff'],
+        more: { post: 'codex-access-regions-vpn-bans', label: { ru: 'Codex в России: доступ, VPN и блокировки', en: 'Codex CLI not available in your country: supported countries, VPN and bans' } },
+        faq: [
+          { q: { ru: 'config.toml — что это?', en: 'What is config.toml?' }, a: { ru: 'Файл настроек Codex: блоки в квадратных скобках и параметры под ними.', en: 'The Codex settings file: blocks in square brackets and parameters under them.' } },
+          { q: { ru: 'Как отключить аналитику в Codex?', en: 'How do you turn off analytics in Codex?' }, a: { ru: 'Записать в config.toml [analytics] enabled = false, а для метрик [otel] metrics_exporter = "none"; по схеме настроек одной первой строки для метрик мало.', en: 'Write [analytics] enabled = false in config.toml, and [otel] metrics_exporter = "none" for metrics; per the settings schema the first line alone is not enough for metrics.' } },
+          { q: { ru: 'Что делает блок [feedback]?', en: 'What does the [feedback] block do?' }, a: { ru: 'Включает или отключает отправку отзыва командой /feedback; по умолчанию отправка включена.', en: 'Turns feedback submission via /feedback on or off; submission is on by default.' } },
+        ],
+        source: { url: 'https://learn.chatgpt.com/docs/config-file/config-reference', label: { ru: 'Документация OpenAI: справочник config.toml', en: 'OpenAI docs: config.toml reference' } },
+        sites: [{ url: 'https://toml.io/en/', label: { ru: 'toml.io — описание формата TOML', en: 'toml.io, the TOML format description' } }],
+      },
+      {
+        slug: 'git',
+        name: { ru: 'Git', en: 'Git' },
+        aka: { ru: 'система контроля версий, история изменений', en: 'version control system, change history' },
+        def: {
+          ru: 'Git — программа, которая хранит историю изменений проекта: кто, когда и что правил в файлах, и позволяет вернуться к любой прежней версии. Claude Code умеет с ней работать, поэтому правки агента можно просмотреть и отменить. На Windows ставить Git for Windows необязательно: без него Claude Code запускает команды через PowerShell.',
+          en: 'Git is a program that keeps the history of a project’s changes: who edited which files and when, with a way back to any earlier version. Claude Code can work with it, so the agent’s edits can be reviewed and undone. On Windows, installing Git for Windows is optional: without it Claude Code runs commands through PowerShell.',
+        },
+        match: { ru: ['git'], en: ['git'] },
+        related: ['github', 'diff', 'claude-code', 'powershell'],
+        more: { post: 'claude-code-install-and-price', label: { ru: 'Claude Code: установка и цена, тарифы и доступ из России', en: 'Claude Code: install and pricing, plans and availability by country' } },
+        faq: [
+          { q: { ru: 'Git — что это?', en: 'What is Git?' }, a: { ru: 'Программа, которая хранит историю изменений проекта и позволяет вернуться к прежней версии.', en: 'A program that keeps a project’s change history and lets you return to an earlier version.' } },
+          { q: { ru: 'Нужен ли Git for Windows для Claude Code?', en: 'Does Claude Code need Git for Windows?' }, a: { ru: 'Нет, установка Git for Windows необязательна: без него Claude Code запускает команды через PowerShell. Источник: code.claude.com/docs/en/setup.', en: 'No, installing Git for Windows is optional: without it Claude Code runs commands through PowerShell. Source: code.claude.com/docs/en/setup.' } },
+          { q: { ru: 'Чем Git отличается от GitHub?', en: 'How is Git different from GitHub?' }, a: { ru: 'Git работает на вашем компьютере и хранит историю проекта. GitHub — сайт, где такие проекты хранят в интернете и работают над ними вместе.', en: 'Git runs on your computer and keeps the project history. GitHub is a website where such projects are stored online and worked on together.' } },
+        ],
+        source: { url: 'https://git-scm.com/about', label: { ru: 'Git: о программе', en: 'Git: about' } },
+        sites: [{ url: 'https://en.wikipedia.org/wiki/Git', label: { ru: 'Википедия (англ.): Git', en: 'Wikipedia: Git' } }],
+      },
+      {
+        slug: 'wsl',
+        name: { ru: 'WSL', en: 'WSL' },
+        aka: { ru: 'Windows Subsystem for Linux, подсистема Windows для Linux', en: 'Windows Subsystem for Linux' },
+        def: {
+          ru: 'WSL — среда Linux внутри Windows: в ней работают программы Linux, и Claude Code ставится и запускается как на обычном Linux. Есть две версии. WSL 2 поддерживает изоляцию команд агента (sandbox), WSL 1 её не поддерживает и нужна, когда WSL 2 недоступен. Установку и запуск делают внутри окна WSL, а не из PowerShell или CMD.',
+          en: 'WSL is a Linux environment inside Windows: Linux programs run in it, and Claude Code installs and starts as on ordinary Linux. There are two versions. WSL 2 supports isolation of the agent’s commands (sandbox); WSL 1 does not and is for when WSL 2 is unavailable. Installation and launch happen inside the WSL window, not from PowerShell or CMD.',
+        },
+        match: { ru: ['WSL(?: ?[12])?'], en: ['WSL(?: ?[12])?'] },
+        related: ['powershell', 'sandbox', 'terminal', 'claude-code'],
+        more: { post: 'claude-code-install-and-price', label: { ru: 'Claude Code: установка и цена, тарифы и доступ из России', en: 'Claude Code: install and pricing, plans and availability by country' } },
+        faq: [
+          { q: { ru: 'WSL — что это?', en: 'What is WSL?' }, a: { ru: 'Среда Linux внутри Windows: в ней программы Linux работают без отдельного компьютера.', en: 'A Linux environment inside Windows: Linux programs run in it without a separate computer.' } },
+          { q: { ru: 'Нужен ли WSL для Claude Code на Windows?', en: 'Does Claude Code need WSL on Windows?' }, a: { ru: 'Нет, Claude Code ставится на Windows напрямую. WSL 2 берут, когда нужны программы Linux или изоляция команд. Источник: code.claude.com/docs/en/setup.', en: 'No, Claude Code installs on Windows directly. WSL 2 is for when Linux programs or command isolation are needed. Source: code.claude.com/docs/en/setup.' } },
+          { q: { ru: 'Чем WSL 1 отличается от WSL 2 для Claude Code?', en: 'How does WSL 1 differ from WSL 2 for Claude Code?' }, a: { ru: 'WSL 2 поддерживает изоляцию команд (sandbox), WSL 1 не поддерживает. WSL 1 подходит, если WSL 2 недоступен.', en: 'WSL 2 supports command isolation (sandbox), WSL 1 does not. WSL 1 fits when WSL 2 is unavailable.' } },
+        ],
+        source: { url: 'https://learn.microsoft.com/en-us/windows/wsl/about', label: { ru: 'Microsoft: что такое WSL', en: 'Microsoft: what is WSL' } },
+        sites: [{ url: 'https://code.claude.com/docs/en/setup', label: { ru: 'Документация Claude Code: установка', en: 'Claude Code docs: setup' } }],
+      },
+      {
+        slug: 'powershell',
+        name: { ru: 'PowerShell', en: 'PowerShell' },
+        aka: { ru: 'командное окно Windows, PS', en: 'Windows command window, PS' },
+        def: {
+          ru: 'PowerShell — окно Windows, где команды вводят текстом; в начале строки приглашения у него стоит «PS». У него своя команда установки Claude Code, а у второго окна Windows, CMD, другая: чужая команда не сработает. Права администратора для установки не нужны.',
+          en: 'PowerShell is a Windows window where commands are typed as text; its prompt line begins with “PS”. It has its own Claude Code install command, and the other Windows window, CMD, has a different one: a command taken from the wrong window will not work. Administrator rights are not needed for the installation.',
+        },
+        match: { ru: ['PowerShell'], en: ['PowerShell'] },
+        related: ['terminal', 'wsl', 'claude-code', 'git'],
+        more: { post: 'claude-code-install-and-price', label: { ru: 'Claude Code: установка и цена, тарифы и доступ из России', en: 'Claude Code: install and pricing, plans and availability by country' } },
+        faq: [
+          { q: { ru: 'PowerShell — что это?', en: 'What is PowerShell?' }, a: { ru: 'Окно Windows для текстовых команд. В начале строки приглашения у него стоит «PS».', en: 'A Windows window for text commands. Its prompt line begins with “PS”.' } },
+          { q: { ru: 'Как отличить PowerShell от CMD?', en: 'How do you tell PowerShell from CMD?' }, a: { ru: 'По строке приглашения: в PowerShell она начинается с «PS», в CMD «PS» нет.', en: 'By the prompt line: in PowerShell it starts with “PS”, in CMD there is no “PS”.' } },
+          { q: { ru: 'Нужны ли права администратора, чтобы поставить Claude Code?', en: 'Are administrator rights needed to install Claude Code?' }, a: { ru: 'На Windows нет, права администратора не нужны. Источник: code.claude.com/docs/en/setup.', en: 'On Windows, no: administrator rights are not needed. Source: code.claude.com/docs/en/setup.' } },
+        ],
+        source: { url: 'https://learn.microsoft.com/en-us/powershell/scripting/overview', label: { ru: 'Microsoft: обзор PowerShell', en: 'Microsoft: PowerShell overview' } },
+      },
+      {
+        slug: 'pull-request',
+        name: { ru: 'Пулл-реквест', en: 'Pull request' },
+        aka: { ru: 'pull request, PR, запрос на слияние правок', en: 'PR, request to merge changes' },
+        def: {
+          ru: 'Пулл-реквест — предложение внести набор правок в проект: автор отправляет изменения на страницу, где их можно просмотреть построчно, обсудить и принять или отклонить. Пока человек не нажал «принять», основной код не меняется. Агенты для кода, такие как Codex, обычно сдают работу именно так: вы видите все правки разом и решаете, оставить их или нет.',
+          en: 'A pull request is a proposal to add a set of changes to a project: the author sends the changes to a page where they can be reviewed line by line, discussed, and accepted or rejected. Until a person accepts them, the main code does not change. Coding agents such as Codex usually hand in their work this way: you see all the edits at once and decide whether to keep them.',
+        },
+        match: {
+          ru: ['пулл-реквест(?:а|у|ом|е|ы|ов|ам|ами|ах)?', 'пул-реквест(?:а|у|ом|е|ы|ов|ам|ами|ах)?', 'pull[ -]requests?'],
+          en: ['pull[ -]requests?'],
+        },
+        related: ['github', 'git', 'diff', 'repository', 'codex'],
+        more: { post: 'codex-or-chatgpt-what-to-choose', label: { ru: 'Codex или ChatGPT: что выбрать для работы с кодом', en: 'Codex vs ChatGPT: which to pick for working with code' } },
+        faq: [
+          { q: { ru: 'Пулл-реквест — что это?', en: 'What is a pull request?' }, a: { ru: 'Предложение внести правки в проект: их можно просмотреть, обсудить и принять или отклонить.', en: 'A proposal to add changes to a project: they can be reviewed, discussed, and accepted or rejected.' } },
+          { q: { ru: 'Зачем агенту пулл-реквест?', en: 'Why does an agent use a pull request?' }, a: { ru: 'Правки агента не попадают в основной код сами: человек смотрит их целиком и решает, принимать ли.', en: 'The agent’s edits do not reach the main code on their own: a person reviews them as a whole and decides whether to accept.' } },
+          { q: { ru: 'Чем пулл-реквест отличается от коммита?', en: 'How is a pull request different from a commit?' }, a: { ru: 'Коммит — одна записанная правка в истории. Пулл-реквест — просьба принять набор таких правок в основную ветку, с обсуждением перед принятием.', en: 'A commit is one recorded change in the history. A pull request is a request to accept a set of such changes into the main branch, with a discussion before acceptance.' } },
+        ],
+        source: { url: 'https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests', label: { ru: 'Документация GitHub: о пулл-реквестах', en: 'GitHub Docs: about pull requests' } },
+        seo: {
+          title: { ru: 'Пулл-реквест: что это и зачем он агенту для кода', en: 'Pull request: what it is and why coding agents use it' },
+          description: { ru: 'Пулл-реквест (pull request) — предложение правок в проект: человек просматривает их и принимает или отклоняет. Как с ним работают Codex и другие агенты.', en: 'A pull request (PR) is a proposal to add changes to a project that a person reviews and accepts or rejects. How Codex and other coding agents use it.' },
+        },
+      },
+      {
+        slug: 'repository',
+        name: { ru: 'Репозиторий', en: 'Repository' },
+        aka: { ru: 'repo, хранилище проекта с историей', en: 'repo, project storage with history' },
+        def: {
+          ru: 'Репозиторий — папка проекта вместе с историей всех правок: файлы кода и записи о том, кто и что менял. Обычно им управляет Git, а копию хранят на сайте вроде GitHub. Агент для кода работает с репозиторием: читает файлы, правит их и запускает проверки. Обычный чат такого доступа не имеет, ему передают только вставленный текст.',
+          en: 'A repository is a project folder together with the history of all its changes: the code files and records of who changed what. It is usually managed by Git, with a copy kept on a site like GitHub. A coding agent works with the repository: it reads files, edits them and runs checks. An ordinary chat has no such access and only sees the text pasted into it.',
+        },
+        match: {
+          ru: ['репозитори(?:й|я|ю|ем|и|ев|ям|ями|ях)'],
+          en: ['repositor(?:y|ies)'],
+        },
+        related: ['git', 'github', 'pull-request', 'codex', 'claude-code'],
+        more: { post: 'codex-or-chatgpt-what-to-choose', label: { ru: 'Codex или ChatGPT: что выбрать для работы с кодом', en: 'Codex vs ChatGPT: which to pick for working with code' } },
+        faq: [
+          { q: { ru: 'Репозиторий — что это?', en: 'What is a repository?' }, a: { ru: 'Папка проекта с историей всех правок: файлы и записи о том, кто и что менял.', en: 'A project folder with the history of all changes: the files and records of who changed what.' } },
+          { q: { ru: 'Чем репозиторий отличается от обычной папки?', en: 'How is a repository different from an ordinary folder?' }, a: { ru: 'В нём хранится вся история правок, поэтому можно посмотреть любую прежнюю версию и вернуться к ней.', en: 'It keeps the full history of changes, so you can look at any earlier version and return to it.' } },
+          { q: { ru: 'Почему агенту для кода нужен репозиторий?', en: 'Why does a coding agent need a repository?' }, a: { ru: 'Из него агент читает проект целиком, а история позволяет просмотреть и отменить его правки.', en: 'The agent reads the whole project from it, and the history lets you review and undo its edits.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Repository_(version_control)', label: { ru: 'Википедия (англ.): репозиторий', en: 'Wikipedia: Repository (version control)' } },
+      },
+      {
+        slug: 'sdk',
+        name: { ru: 'SDK', en: 'SDK' },
+        aka: { ru: 'набор для разработки, Software Development Kit', en: 'Software Development Kit' },
+        def: {
+          ru: 'SDK — набор готового кода и инструкций, который программист подключает к своему проекту, чтобы пользоваться чужим сервисом из программы. SDK Codex позволяет запускать агента из собственного скрипта или приложения, а не вводить задачи вручную. Работает по ключу API: оплата идёт по ставкам API, подписка ChatGPT для этого не используется.',
+          en: 'An SDK is a set of ready-made code and instructions that a programmer plugs into a project to use someone else’s service from a program. The Codex SDK lets you start the agent from your own script or application instead of typing tasks by hand. It works with an API key: you pay API rates, and a ChatGPT subscription is not used for it.',
+        },
+        match: { ru: ['SDK'], en: ['SDKs?'] },
+        exact: 'SDK',
+        related: ['api', 'api-key', 'codex', 'cli', 'ide'],
+        more: { post: 'codex-or-chatgpt-what-to-choose', label: { ru: 'Codex или ChatGPT: что выбрать для работы с кодом', en: 'Codex vs ChatGPT: which to pick for working with code' } },
+        faq: [
+          { q: { ru: 'SDK — что это?', en: 'What is an SDK?' }, a: { ru: 'Набор готового кода и инструкций для подключения чужого сервиса к своей программе.', en: 'A set of ready-made code and instructions for connecting someone else’s service to your own program.' } },
+          { q: { ru: 'Чем SDK отличается от API?', en: 'How is an SDK different from an API?' }, a: { ru: 'API — правила, по которым программа обращается к сервису. SDK — готовый код, который эти обращения делает за вас.', en: 'An API is the rules by which a program calls a service. An SDK is ready-made code that makes those calls for you.' } },
+          { q: { ru: 'Нужен ли SDK, чтобы пользоваться Codex?', en: 'Do you need an SDK to use Codex?' }, a: { ru: 'Нет: Codex работает в приложении, терминале и расширении для IDE. SDK нужен, когда агента запускают из своей программы.', en: 'No: Codex works in the app, the terminal and the IDE extension. An SDK is for starting the agent from your own program.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Software_development_kit', label: { ru: 'Википедия (англ.): SDK', en: 'Wikipedia: Software development kit' } },
+      },
+      {
+        slug: 'cli',
+        name: { ru: 'CLI', en: 'CLI' },
+        aka: { ru: 'интерфейс командной строки, Command-Line Interface', en: 'command-line interface' },
+        def: {
+          ru: 'CLI — программа, которой управляют текстовыми командами в терминале, без окон и кнопок. Claude Code и Codex имеют такую версию: вы запускаете её в папке проекта и пишете агенту задачи строкой текста. Сам терминал — это окно, где команды вводят, а CLI — программа, которая их принимает.',
+          en: 'A CLI is a program controlled by text commands in a terminal, with no windows or buttons. Claude Code and Codex have such a version: you start it in the project folder and type tasks to the agent as lines of text. The terminal is the window where commands are entered, and the CLI is the program that receives them.',
+        },
+        match: { ru: ['CLI', 'интерфейс(?:а|у|ом|е)? командной строки'], en: ['CLIs?', 'command[- ]line interfaces?'] },
+        exact: 'CLI',
+        related: ['terminal', 'ide', 'sdk', 'codex', 'claude-code'],
+        more: { post: 'codex-or-chatgpt-what-to-choose', label: { ru: 'Codex или ChatGPT: что выбрать для работы с кодом', en: 'Codex vs ChatGPT: which to pick for working with code' } },
+        faq: [
+          { q: { ru: 'CLI — что это?', en: 'What is a CLI?' }, a: { ru: 'Программа, которой управляют текстовыми командами в терминале.', en: 'A program controlled by text commands in a terminal.' } },
+          { q: { ru: 'Чем CLI отличается от терминала?', en: 'How is a CLI different from a terminal?' }, a: { ru: 'Терминал — окно, где вводят команды. CLI — программа, которая их принимает и выполняет.', en: 'The terminal is the window where commands are entered. The CLI is the program that receives and runs them.' } },
+          { q: { ru: 'Что выбрать для Codex: CLI или расширение для IDE?', en: 'Codex: CLI or IDE extension?' }, a: { ru: 'Зависит от привычки: CLI работает в терминале, расширение показывает правки прямо в редакторе. Возможности агента те же.', en: 'It depends on habit: the CLI works in the terminal, the extension shows edits right in the editor. The agent’s abilities are the same.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Command-line_interface', label: { ru: 'Википедия (англ.): интерфейс командной строки', en: 'Wikipedia: Command-line interface' } },
+      },
+      {
+        slug: 'chatgpt-work',
+        name: { ru: 'ChatGPT Work', en: 'ChatGPT Work' },
+        aka: { ru: 'режим Work в ChatGPT, крупные задачи до готового результата', en: 'Work mode in ChatGPT, large tasks to a finished result' },
+        def: {
+          ru: 'ChatGPT Work — режим ChatGPT для больших задач: он сам планирует шаги, собирает данные, ищет в интернете, запускает код и выдаёт готовый результат — документ, таблицу, презентацию или PDF. Включается переключателем Work в ChatGPT. Для работы с кодом в проекте у OpenAI есть отдельный агент Codex; ChatGPT Work и Codex входят в тарифы ChatGPT и делят общие лимиты.',
+          en: 'ChatGPT Work is a ChatGPT mode for large tasks: it plans the steps itself, gathers data, searches the web, runs code and delivers a finished result such as a document, spreadsheet, presentation or PDF. It is turned on with the Work switch in ChatGPT. For coding in a project OpenAI has a separate agent, Codex; ChatGPT Work and Codex are included in ChatGPT plans and share usage limits.',
+        },
+        match: { ru: ['ChatGPT Work'], en: ['ChatGPT Work'] },
+        related: ['chatgpt', 'codex', 'cloud-agent', 'openai'],
+        more: { post: 'codex-or-chatgpt-what-to-choose', label: { ru: 'Codex или ChatGPT: что выбрать для работы с кодом', en: 'Codex vs ChatGPT: which to pick for working with code' } },
+        faq: [
+          { q: { ru: 'ChatGPT Work — что это?', en: 'What is ChatGPT Work?' }, a: { ru: 'Режим ChatGPT для больших задач: агент сам ведёт задачу до готового документа, таблицы или презентации.', en: 'A ChatGPT mode for large tasks: the agent carries a task through to a finished document, spreadsheet or presentation.' } },
+          { q: { ru: 'Чем ChatGPT Work отличается от Codex?', en: 'How is ChatGPT Work different from Codex?' }, a: { ru: 'Work даёт готовый документ или отчёт, Codex правит код проекта и проверяет его тестами.', en: 'Work produces a finished document or report, while Codex edits a project’s code and checks it with tests.' } },
+          { q: { ru: 'Где работает ChatGPT Work?', en: 'Where does ChatGPT Work run?' }, a: { ru: 'В вебе — в облачной среде OpenAI; в приложении для компьютера иногда можно выбрать облако или свой компьютер. Источник: learn.chatgpt.com/docs/use-chatgpt.', en: 'On the web, in OpenAI’s cloud environment; in the desktop app you can sometimes choose cloud or your own computer. Source: learn.chatgpt.com/docs/use-chatgpt.' } },
+        ],
+        source: { url: 'https://learn.chatgpt.com/docs/use-chatgpt', label: { ru: 'Документация OpenAI: использование ChatGPT', en: 'OpenAI docs: use ChatGPT' } },
+        seo: {
+          title: { ru: 'ChatGPT Work: что это и чем отличается от Codex', en: 'ChatGPT Work: what it is and how it differs from Codex' },
+          description: { ru: 'ChatGPT Work — режим ChatGPT, который ведёт большую задачу до готового документа, таблицы или презентации. Чем он отличается от Codex и как делят лимиты.', en: 'ChatGPT Work is a ChatGPT mode that takes a large task to a finished document, spreadsheet or presentation. How it differs from Codex and how limits are shared.' },
+        },
+      },
+      {
+        slug: 'path-variable',
+        name: { ru: 'PATH', en: 'PATH' },
+        aka: { ru: 'переменная PATH, список папок с программами', en: 'PATH variable, list of program folders' },
+        def: {
+          ru: 'PATH — список папок, в которых терминал ищет программу по имени команды. Если папки с программой в списке нет, терминал отвечает «command not found». После установки Claude Code на macOS и Linux иногда нужно добавить в PATH папку ~/.local/bin и открыть новое окно терминала.',
+          en: 'PATH is a list of folders in which the terminal looks for a program by the name of a command. If the program’s folder is not in the list, the terminal answers “command not found”. After installing Claude Code on macOS and Linux, you sometimes need to add the ~/.local/bin folder to PATH and open a new terminal window.',
+        },
+        match: { ru: ['PATH'], en: ['PATH'] },
+        exact: 'PATH',
+        related: ['terminal', 'package-manager', 'claude-code'],
+        more: { post: 'claude-code-install-and-price', label: { ru: 'Claude Code: установка и цена, тарифы и доступ из России', en: 'Claude Code: install and pricing, plans and availability by country' } },
+        faq: [
+          { q: { ru: 'PATH — что это?', en: 'What is PATH?' }, a: { ru: 'Список папок, где терминал ищет программы по имени команды.', en: 'A list of folders where the terminal looks for programs by command name.' } },
+          { q: { ru: 'Почему после установки терминал не находит claude?', en: 'Why does the terminal not find claude after installation?' }, a: { ru: 'Чаще всего установка прошла, а терминал не знает о новой папке. Сначала откройте новое окно терминала; если сообщение остаётся, добавьте ~/.local/bin в PATH. Источник: code.claude.com/docs/en/troubleshoot-install.', en: 'Most often the installation worked but the terminal does not know about the new folder. First open a new terminal window; if the message stays, add ~/.local/bin to PATH. Source: code.claude.com/docs/en/troubleshoot-install.' } },
+          { q: { ru: 'Что подтверждает команда claude --version?', en: 'What does the claude --version command confirm?' }, a: { ru: 'Только то, что программа найдена в PATH и запускается. Вход, сеть и права на файлы она не проверяет.', en: 'Only that the program is found in PATH and starts. It does not check sign-in, the network or file permissions.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/PATH_(variable)', label: { ru: 'Википедия (англ.): PATH', en: 'Wikipedia: PATH (variable)' } },
+        sites: [{ url: 'https://code.claude.com/docs/en/troubleshoot-install', label: { ru: 'Документация Claude Code: ошибки установки', en: 'Claude Code docs: installation errors' } }],
+      },
+      {
+        slug: 'package-manager',
+        name: { ru: 'Менеджер пакетов', en: 'Package manager' },
+        aka: { ru: 'Homebrew, WinGet, npm, apt', en: 'Homebrew, WinGet, npm, apt' },
+        def: {
+          ru: 'Менеджер пакетов — программа, которая ставит и обновляет другие программы по имени: Homebrew на macOS, WinGet на Windows, npm для программ на Node.js, apt, dnf и apk в разных видах Linux. Claude Code можно поставить и так, но у Homebrew, WinGet и npm обновлять его придётся вручную, а у apt, dnf и apk обновление идёт вместе с системой. Установщик с curl или irm обновляет программу сам, в фоне.',
+          en: 'A package manager is a program that installs and updates other programs by name: Homebrew on macOS, WinGet on Windows, npm for Node.js programs, apt, dnf and apk on different kinds of Linux. Claude Code can be installed this way too, but with Homebrew, WinGet and npm you have to update it by hand, while with apt, dnf and apk the update comes with the system. The installer with curl or irm updates the program itself, in the background.',
+        },
+        match: { ru: ['менеджер\\p{L}* пакетов', 'пакетн\\p{L}* менеджер\\p{L}*', 'Homebrew', 'WinGet'], en: ['package managers?', 'Homebrew', 'WinGet'] },
+        related: ['node-js', 'path-variable', 'terminal', 'claude-code'],
+        more: { post: 'claude-code-install-and-price', label: { ru: 'Claude Code: установка и цена, тарифы и доступ из России', en: 'Claude Code: install and pricing, plans and availability by country' } },
+        faq: [
+          { q: { ru: 'Менеджер пакетов — что это?', en: 'What is a package manager?' }, a: { ru: 'Программа, которая ставит и обновляет другие программы по имени, например Homebrew или WinGet.', en: 'A program that installs and updates other programs by name, for example Homebrew or WinGet.' } },
+          { q: { ru: 'Что лучше для Claude Code: установщик или менеджер пакетов?', en: 'Which is better for Claude Code: the installer or a package manager?' }, a: { ru: 'Документация рекомендует установщик: он сам обновляет Claude Code в фоне. Менеджер пакетов тоже работает, но обновлять придётся вручную. Источник: code.claude.com/docs/en/setup.', en: 'The docs recommend the installer: it updates Claude Code itself in the background. A package manager works too, but you update by hand. Source: code.claude.com/docs/en/setup.' } },
+          { q: { ru: 'Как обновить Claude Code, поставленный через Homebrew?', en: 'How do you update Claude Code installed through Homebrew?' }, a: { ru: 'Командой brew upgrade claude-code: сам он обновляться не будет. Обновлять нужно тем же менеджером, которым ставили.', en: 'With brew upgrade claude-code: it will not update itself. Update with the same manager you installed with.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Package_manager', label: { ru: 'Википедия (англ.): Package manager', en: 'Wikipedia: Package manager' } },
+        sites: [
+          { url: 'https://brew.sh/', label: { ru: 'Homebrew', en: 'Homebrew' } },
+          { url: 'https://learn.microsoft.com/en-us/windows/package-manager/winget/', label: { ru: 'Microsoft: WinGet', en: 'Microsoft: WinGet' } },
+        ],
+      },
+      {
+        slug: 'proxy',
+        name: { ru: 'Прокси', en: 'Proxy' },
+        aka: { ru: 'прокси-сервер', en: 'proxy server' },
+        def: {
+          ru: 'Прокси — промежуточный сервер между вашим компьютером и интернетом: запросы идут через него, а он может пересылать, фильтровать или проверять трафик. В рабочих сетях через прокси часто ходит весь трафик. Если прокси или фильтр блокирует адрес установщика Claude Code, вместо скрипта приходит веб-страница или ошибка 403.',
+          en: 'A proxy is an intermediate server between your computer and the internet: requests go through it, and it can forward, filter or inspect the traffic. In work networks, all traffic often goes through a proxy. If a proxy or filter blocks the address of the Claude Code installer, a web page or a 403 error arrives instead of the script.',
+        },
+        match: { ru: ['прокси(?:-сервер\\p{L}*)?'], en: ['prox(?:y|ies)'] },
+        related: ['vpn', 'http-403', 'claude-code'],
+        more: { post: 'claude-code-install-and-price', label: { ru: 'Claude Code: установка и цена, тарифы и доступ из России', en: 'Claude Code: install and pricing, plans and availability by country' } },
+        faq: [
+          { q: { ru: 'Прокси — что это?', en: 'What is a proxy?' }, a: { ru: 'Промежуточный сервер, через который идут запросы вашего компьютера в интернет.', en: 'An intermediate server through which your computer’s requests to the internet go.' } },
+          { q: { ru: 'Чем прокси отличается от VPN?', en: 'How does a proxy differ from a VPN?' }, a: { ru: 'Прокси пересылает запросы отдельной программы или сети и не обязан шифровать трафик. VPN отправляет через свой сервер весь трафик устройства в зашифрованном виде.', en: 'A proxy forwards requests of a single program or network and need not encrypt the traffic. A VPN sends all of the device’s traffic through its server in encrypted form.' } },
+          { q: { ru: 'Что делать, если при установке Claude Code пришла ошибка 403?', en: 'What if a 403 error comes during the Claude Code installation?' }, a: { ru: 'Проверить сеть и прокси: по таблице ошибок документации причина в прокси или фильтре, либо страна вне списка поддерживаемых. Во втором случае смена сети не поможет. Источник: code.claude.com/docs/en/troubleshoot-install.', en: 'Check the network and proxy: per the docs’ error table the cause is a proxy or filter, or a country outside the supported list. In the second case changing the network will not help. Source: code.claude.com/docs/en/troubleshoot-install.' } },
+        ],
+        source: { url: 'https://en.wikipedia.org/wiki/Proxy_server', label: { ru: 'Википедия (англ.): Proxy server', en: 'Wikipedia: Proxy server' } },
+      },
+      {
+        slug: 'usage-limit',
+        name: { ru: 'Лимит использования', en: 'Usage limit' },
+        aka: { ru: 'лимит сессии, недельный лимит подписки', en: 'session limit, weekly plan limit' },
+        def: {
+          ru: 'Лимит использования — объём работы, после которого подписка просит подождать. У Pro и Max их два: пятичасовой лимит сессии и недельный лимит; у Ultra есть недельный лимит, а у проверенных аккаунтов Ultra пятичасового нет. Лимит общий для Claude в чате и для Claude Code: потраченное в чате уменьшает объём, оставшийся агенту.',
+          en: 'A usage limit is the amount of work after which a plan asks you to wait. Pro and Max have two: a five-hour session limit and a weekly limit; Ultra has a weekly limit, and verified Ultra accounts have no five-hour limit. The limit is shared by Claude in chat and Claude Code: what is spent in chat reduces what is left for the agent.',
+        },
+        match: { ru: ['лимит\\p{L}* сессии', 'недельн\\p{L}* лимит\\p{L}*', 'пятичасов\\p{L}* лимит\\p{L}*'], en: ['session limits?', 'weekly limits?', 'five-hour (?:session )?limits?'] },
+        related: ['claude-code', 'claude-console', 'api-key', 'token'],
+        more: { post: 'claude-code-install-and-price', label: { ru: 'Claude Code: установка и цена, тарифы и доступ из России', en: 'Claude Code: install and pricing, plans and availability by country' } },
+        faq: [
+          { q: { ru: 'Какие лимиты у подписок Pro и Max?', en: 'What limits do the Pro and Max plans have?' }, a: { ru: 'Два: пятичасовой лимит сессии и недельный лимит. Источник: support.claude.com, статья про Claude Code в тарифах Pro и Max.', en: 'Two: a five-hour session limit and a weekly limit. Source: support.claude.com, the article on Claude Code in the Pro and Max plans.' } },
+          { q: { ru: 'Общий ли лимит у чата Claude и Claude Code?', en: 'Is the limit shared between Claude chat and Claude Code?' }, a: { ru: 'Да, объём общий: если потратить его в чате, агенту останется меньше.', en: 'Yes, the amount is shared: if you spend it in chat, less is left for the agent.' } },
+          { q: { ru: 'Что делать, когда лимит исчерпан?', en: 'What to do when the limit is used up?' }, a: { ru: 'Дождаться нового окна, либо включить дополнительное использование за кредиты, либо купить кредиты API по стандартным ценам API.', en: 'Wait for the next window, or turn on extra usage for credits, or buy API credits at standard API prices.' } },
+        ],
+        source: { url: 'https://support.claude.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan', label: { ru: 'Справка Claude: Claude Code в тарифах Pro и Max', en: 'Claude Help Center: using Claude Code with Pro or Max' } },
+        sites: [{ url: 'https://claude.com/pricing', label: { ru: 'Тарифы Claude', en: 'Claude pricing' } }],
+      },
+      {
+        slug: 'claude-console',
+        name: { ru: 'Claude Console', en: 'Claude Console' },
+        aka: { ru: 'Console, аккаунт с оплатой по API', en: 'Console, an account billed by API use' },
+        def: {
+          ru: 'Claude Console — отдельный аккаунт Anthropic с оплатой по API: деньги вносят заранее кредитами, а списывают их за фактический объём использования. Через него входят в Claude Code, если подписки нет. Это отдельный счёт: подписка Pro, Max или Ultra оформлена на аккаунт claude.ai, а Console оплачивается по ставкам API.',
+          en: 'Claude Console is a separate Anthropic account billed by API use: money is paid in advance as credits and spent by actual usage. You can sign in to Claude Code with it when you have no subscription. It is a separate account: a Pro, Max or Ultra subscription belongs to a claude.ai account, while Console is billed at API rates.',
+        },
+        match: { ru: ['Console'], en: ['Console'] },
+        exact: 'Console',
+        related: ['api-key', 'usage-limit', 'claude-code', 'anthropic'],
+        more: { post: 'claude-code-install-and-price', label: { ru: 'Claude Code: установка и цена, тарифы и доступ из России', en: 'Claude Code: install and pricing, plans and availability by country' } },
+        faq: [
+          { q: { ru: 'Claude Console — что это?', en: 'What is Claude Console?' }, a: { ru: 'Отдельный аккаунт Anthropic с оплатой по API, с предоплаченными кредитами.', en: 'A separate Anthropic account billed by API use, with pre-paid credits.' } },
+          { q: { ru: 'Можно ли войти в Claude Code через Console?', en: 'Can you sign in to Claude Code through Console?' }, a: { ru: 'Да: Console входит в список аккаунтов, с которыми Claude Code работает, рядом с подписками Pro, Max, Ultra, Team и Enterprise. Источник: code.claude.com/docs/en/quickstart.', en: 'Yes: Console is among the accounts Claude Code works with, next to the Pro, Max, Ultra, Team and Enterprise plans. Source: code.claude.com/docs/en/quickstart.' } },
+          { q: { ru: 'Снимает ли Console региональное ограничение?', en: 'Does Console lift the regional limit?' }, a: { ru: 'Нет: список стран Anthropic действует независимо от тарифа и способа оплаты, в том числе на ключ API.', en: 'No: Anthropic’s country list applies regardless of plan and payment method, including the API key.' } },
+        ],
+        source: { url: 'https://code.claude.com/docs/en/quickstart', label: { ru: 'Документация Claude Code: быстрый старт', en: 'Claude Code docs: quickstart' } },
       },
     ],
   },
@@ -5126,11 +5704,51 @@ export function splitTerms(text: string, lang: Lang, ignore: string[] = []): { t
 }
 
 // Статьи, где встречается термин: считаем по тексту без вёрстки (SVG и код не в счёт)
-const plain = (html: string) => html.replace(/<(svg|pre|script|style)[\s\S]*?<\/\1>/g, ' ').replace(/<[^>]+>/g, ' ')
-function hasTerm(slug: string, lang: Lang, text: string): boolean {
+// Результат запоминаем: текст поста для каждого из сотен терминов один и тот же, а очистка 140-килобайтной статьи занимает секунды
+const plainCache = new Map<string, string>()
+const plain = (html: string) => {
+  let r = plainCache.get(html)
+  if (r === undefined) {
+    r = html.replace(/<(svg|pre|script|style)[\s\S]*?<\/\1>/g, ' ').replace(/<[^>]+>/g, ' ')
+    plainCache.set(html, r)
+  }
+  return r
+}
+// Текст поста без вёрстки и его копия в нижнем регистре: считаются один раз на пост
+const postTextCache = new WeakMap<Post, { text: string; lower: string }[]>()
+function postText(p: Post, withTitle: boolean) {
+  const slot = withTitle ? 1 : 0
+  const arr = postTextCache.get(p) ?? []
+  postTextCache.set(p, arr)
+  if (!arr[slot]) { const text = withTitle ? `${p.title} ${plain(p.html)}` : plain(p.html); arr[slot] = { text, lower: text.toLowerCase() } }
+  return arr[slot]
+}
+const stemCache = new Map<string, string[] | null>()
+function stemsOf(match: string[]): string[] | null {
+  const key = match.join('\u0001')
+  const hit = stemCache.get(key)
+  if (hit !== undefined) return hit
+  const out: string[] = []
+  let ok = true
+  for (const m of match) {
+    let raw = /^[^\\()[\]?*+.|{}^$]+/.exec(m)?.[0] ?? ''
+    // последняя буква перед «?», «*», «{» может отсутствовать в тексте
+    if (raw && '?*{'.includes(m[raw.length] ?? '')) raw = raw.slice(0, -1)
+    const st = raw.toLowerCase()
+    if (st.length < 3) { ok = false; break }
+    out.push(st)
+  }
+  const r = ok ? out : null
+  stemCache.set(key, r)
+  return r
+}
+function hasTerm(slug: string, lang: Lang, text: string, lower: string): boolean {
   const term = findTerm(slug)!
   const match = matchOf(term, lang)
   if (!match.length) return false
+  // Быстрая проверка до дорогого регулярного выражения: хотя бы начало одного из слов (до первого спецсимвола) должно встретиться в тексте
+  const stems = stemsOf(match)
+  if (stems && !stems.some((st) => lower.includes(st))) return false
   const re = new RegExp(`(?<![\\p{L}\\p{N}_.-])(?:${match.join('|')})(?![\\p{L}\\p{N}_-]|\\.(?=\\p{L}))`, term.exact ? 'giu' : 'iu')
   if (!term.exact) return re.test(text)
   for (const m of text.matchAll(re)) if (m[0].startsWith(term.exact)) return true
@@ -5141,7 +5759,7 @@ const cache = new Map<string, Post[]>()
 export function postsWithTerm(slug: string, lang: Lang): Post[] {
   const key = `${slug}:${lang}`
   if (!cache.has(key)) {
-    cache.set(key, POSTS.filter((p) => p.lang === lang && hasTerm(slug, lang, `${p.title} ${plain(p.html)}`)))
+    cache.set(key, POSTS.filter((p) => p.lang === lang && hasTerm(slug, lang, postText(p, true).text, postText(p, true).lower)))
   }
   return cache.get(key)!
 }
@@ -5154,7 +5772,8 @@ export function termForTag(tag: string, lang: Lang): Term | undefined {
 }
 /** Термины, которые встречаются в статье (для блока «Термины» под текстом) */
 export function termsInPost(post: Post): Term[] {
-  return ALL_TERMS.filter((t) => hasTerm(t.slug, post.lang, plain(post.html)))
+  const { text, lower } = postText(post, false)
+  return ALL_TERMS.filter((t) => hasTerm(t.slug, post.lang, text, lower))
 }
 
 /** Другие статьи с теми же терминами: чем больше общих терминов, тем выше */

@@ -1,7 +1,7 @@
 ---
 title: Escalado a una persona en agentes de IA: cómo un agente se detiene y pregunta mediante MCP y hooks
 date: 2026-11-14
-updated: 2026-11-17
+updated: 2026-11-18
 description: Un agente de IA traspasa una decisión a una persona mediante las tres respuestas de elicitation en MCP, los modos de permisos y los hooks de Claude Code.
 tags: IA, agentes, MCP, elicitation, escalado, hooks, Claude Code, autonomía, harness
 category: harness
@@ -95,7 +95,7 @@ El escalado a una persona es el momento en que un agente deja de trabajar y tras
   <b-why align="left">La expresión «tiempo autónomo» significa tres cosas distintas en tres laboratorios, y eso decide si la pregunta de un agente a una persona daña la métrica. A continuación, por turnos: qué cuenta METR, qué cuenta Anthropic y qué cuenta Google DeepMind.</b-why>
   <b-art names="agent-escalation-to-human/three-clocks" wide/>
   <b-cap>Tres medidas: las horas de una persona en la tarea, un turno desde el inicio hasta la parada, una tarea sin intervención humana.</b-cap>
-  <b-why align="left">«Trabajar por su cuenta» puede medirse de tres maneras. La primera: cuántas horas le lleva a una persona una tarea que el agente resuelve. La segunda: hasta dónde llega el agente desde el inicio hasta la parada. La tercera: qué proporción de tareas se hace sin intervención humana. Las fórmulas de las tres están más abajo.</b-why>
+  <b-why align="left">«Trabajar por su cuenta» puede medirse de tres maneras. La primera: cuántas horas le lleva a una persona una tarea que el agente resuelve. La segunda: hasta dónde llega el agente desde el inicio hasta la parada. La tercera: qué proporción de tareas se hace sin intervención humana. Cada una tiene su propia fórmula.</b-why>
   <b-subhead>METR: la dificultad de una tarea, el tiempo propio del agente no está en la métrica</b-subhead>
   <b-why align="left">El propio METR responde si este es el tiempo de trabajo independiente<b-proof href="https://metr.org/notes/2026-01-22-time-horizon-limitations/" quote="METR, 22.01.2026: „Time horizon is not the length of time AIs can work independently. Rather, it's the amount of serial human labor they can replace with a 50% success rate.“"/>. Las preguntas frecuentes de la página de horizontes dicen lo mismo: mide la dificultad de una tarea, y el tiempo que emplea una IA no forma parte de ella<b-proof href="https://metr.org/time-horizons" quote="METR, FAQ: „It’s a measure of the difficulty of a task, rather than the time an AI spends to complete the task.“"/>. METR no publica el tiempo propio del agente: varía mucho según el proveedor del modelo y la configuración del agente.</b-why>
   <b-subhead>Anthropic: el turno de un agente desde el inicio hasta la parada</b-subhead>

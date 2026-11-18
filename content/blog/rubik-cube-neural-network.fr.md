@@ -1,7 +1,7 @@
 ---
 title: Un solveur de Rubik's Cube par IA bat plus de 1 000 équipes sur les cubes 4×4×4 et 5×5×5 : il apprend à partir de mélanges, cherche avec un large front et garde la réponse la plus courte de plusieurs réseaux
 date: 2026-10-22
-updated: 2026-11-08
+updated: 2026-11-18
 description: Comment le réseau de neurones CayleyPy résout un Rubik's Cube en un minimum de coups : combien de combinaisons a un cube, pourquoi la force brute est impossible, comment une boussole apprend à partir de mélanges aléatoires, et pourquoi un large front de recherche et une escouade de réseaux comptent. Résultats sur 3×3×3, 4×4×4 et 5×5×5, parcours en schémas de l'article arXiv 2502.13266.
 tags: IA, recherche, réseaux de neurones, Rubik's Cube, solveur de Rubik's Cube, recherche de chemins
 category: research
@@ -326,7 +326,7 @@ Le solveur de Rubik's Cube par IA fonctionne en trois temps : un réseau de neur
     <q t="Combien de combinaisons a un Rubik's Cube 3×3×3 ?">43 252 003 274 489 856 000 — environ 4,3·10¹⁹. Un 4×4×4 en a environ 7,4·10⁴⁵, un 5×5×5 environ 2,8·10⁷⁴.</q>
     <q t="Quel est le nombre minimal de coups pour résoudre n'importe quel Rubik's Cube ?">Le cube ordinaire 3×3×3 demande au plus 20 coups quand un demi-tour compte pour un coup, et 26 quand seuls les quarts de tour sont comptés. Pour les cubes plus grands, la réponse exacte est inconnue.</q>
     <q t="En quoi CayleyPy diffère-t-il de DeepCubeA ?">Son réseau est presque quatre fois plus petit et s'entraîne environ 18 fois plus vite, et la recherche se fait en large front avec une escouade de réseaux. Sur le cube ordinaire, cela donne 98 % de chemins les plus courts contre 60 %.</q>
-    <q t="Puis-je l'essayer moi-même ?">Oui : le code des auteurs est ouvert, la bibliothèque CayleyPy est sur GitHub (lien ci-dessous).</q>
+    <q t="Puis-je l'essayer moi-même ?">Oui : le code des auteurs est ouvert, la bibliothèque CayleyPy est sur GitHub.</q>
   </b-faq-cards>
 </b-chapter>
 

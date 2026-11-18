@@ -1,7 +1,7 @@
 ---
 title: Claude Code dans Chrome : comment l'agent teste un site dans le navigateur — débogage et formulaires sous votre identifiant
 date: 2026-10-05
-updated: 2026-11-17
+updated: 2026-11-18
 description: Claude in Chrome relie Claude Code au navigateur : l'agent ouvre des onglets, lit la console et remplit des formulaires. Connexion et permissions.
 tags: IA, agents, Claude Code, Claude in Chrome, navigateur, QA, harness
 category: harness
@@ -18,7 +18,7 @@ Claude Code teste un site dans le navigateur grâce à l'extension Claude in Chr
   <b-why>Une extension Chrome relie Claude Code au navigateur. L'agent ouvre de nouveaux onglets et travaille dans une fenêtre visible<b-proof href="https://code.claude.com/docs/en/chrome" quote="Browser actions run in a visible Chrome window in real time."/>.</b-why>
   <iso-art name="claude-in-chrome/terminal-to-browser"></iso-art>
   <b-why align="left">Le schéma montre trois participants de gauche à droite : Claude Code dans le terminal, l'extension et votre navigateur. L'agent donne des commandes à l'extension (ouvrir un onglet, cliquer, lire la page), et l'extension les exécute dans le navigateur où vous êtes déjà connecté à vos services. L'agent n'a donc pas besoin de saisir de mots de passe : votre session est déjà ouverte<b-proof href="https://code.claude.com/docs/en/chrome" quote="shares your browser's login state"/>. Le travail se déroule dans une fenêtre visible, et vous pouvez suivre les étapes.</b-why>
-  <b-why align="left">Les étiquettes ci-dessous montrent avec quels navigateurs l'extension fonctionne. Chrome et Edge sont officiellement pris en charge<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi et Opera reposent sur le même moteur Chromium : Claude Code y trouve l'extension et s'y connecte<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. La dernière étiquette, « WSL : non », signifie que cette connexion ne fonctionne pas dans le Windows Subsystem for Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
+  <b-why align="left">Les étiquettes montrent avec quels navigateurs l'extension fonctionne. Chrome et Edge sont officiellement pris en charge<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi et Opera reposent sur le même moteur Chromium : Claude Code y trouve l'extension et s'y connecte<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. La dernière étiquette, « WSL : non », signifie que cette connexion ne fonctionne pas dans le Windows Subsystem for Linux (WSL)<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
   <b-pills>
     <pill>Chrome</pill>
     <pill>Edge</pill>
@@ -80,7 +80,7 @@ Claude Code teste un site dans le navigateur grâce à l'extension Claude in Chr
   <b-say-agent title="Dites à l'agent">Ouvre le banc de test, ajoute un article au panier, applique le code promo et paie avec une carte de test. Si le paiement échoue, regarde la console et enregistre un GIF du parcours.</b-say-agent>
   <b-why align="left">Voici l'exemple de l'article sur la QA : le ticket PAY-142 et le chemin de l'agent jusqu'au résultat final.</b-why>
   <iso-art name="claude-in-chrome/ticket-to-report"></iso-art>
-  <b-why align="left">Le schéma montre le chemin du ticket au résultat. Le ticket parvient à l'agent, l'agent parcourt le panier, le code promo et le paiement dans le navigateur, trouve l'erreur dans la console et enregistre un GIF. La QA reçoit non pas un récit mais une trace vérifiable : le texte de la console et un enregistrement du déplacement sur la page. Si l'enregistrement et la console ne correspondent pas au rapport, cela se voit aussitôt.</b-why>
+  <b-why align="left">Le schéma montre le chemin du ticket au résultat. Le ticket parvient à l'agent, l'agent parcourt le panier, le code promo et le paiement dans le navigateur, trouve l'erreur dans la console et enregistre un GIF. La QA reçoit une trace vérifiable : le texte de la console et un enregistrement du déplacement sur la page. Si l'enregistrement et la console ne correspondent pas au rapport, cela se voit aussitôt.</b-why>
   <b-finding>
     <ex>L'agent parcourt le chemin, trouve l'erreur de console et enregistre un GIF pour le ticket.</ex>
     <gen>La fenêtre est visible : la QA suit les étapes et peut arrêter l'agent. Le texte de la console et le GIF laissent une trace vérifiable.</gen>

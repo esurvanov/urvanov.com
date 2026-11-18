@@ -1,7 +1,7 @@
 ---
 title: MCP pour un agent IA : quel problème il résout et comment confier la configuration à l'agent lui-même
 date: 2026-10-04
-updated: 2026-11-13
+updated: 2026-11-18
 unrelated: mcp-1c
 description: MCP branche un agent sur GitLab, Jira, Confluence et les enregistrements de réunions. Quel problème il résout, comment le configurer en quelques minutes en déléguant la tâche à l'agent, ce qu'il fait gagner en temps et en tokens, et pourquoi l'agent invente moins.
 tags: IA, agents, MCP, Jira, contexte, hallucinations, tokens, harness
@@ -23,7 +23,7 @@ MCP branche un agent sur les systèmes de travail, pour qu'il lise les faits à 
 <b-finding>
   <ex>Dans Jira, l'agent voit ce que voit une personne : la tâche PAY-142 elle-même, les commentaires et l'historique des modifications. Inutile de trouver la tâche et de la copier dans la conversation. Il va chercher les tâches liées sur demande. Il peut commenter en votre nom, créer une tâche ou changer un statut (après votre confirmation). À la première utilisation, vous devriez ressentir un « wow » : c'est le signe que la configuration est bonne. Et c'est très simple.</ex>
   <gen>L'agent regarde plus large qu'une personne : il pèse les tâches voisines, les articles de la base de connaissances et les décisions passées, et trouve des pistes non évidentes qu'une seule tâche ne montre pas. Sans MCP, il ne connaît que ce qu'on y a collé. La personne cesse d'être un coursier entre des fenêtres et reste le relecteur.</gen>
-  <do k="Que faire">Commencez par le gestionnaire de tâches : le démarrage le plus simple et le plus rapide. Comment connecter Jira : <a href="#connect">voir plus bas</a>. Comptez aussi combien de fois par jour vous copiez du texte dans la conversation : c'est votre liste de candidats à la connexion.</do>
+  <do k="Que faire">Commencez par le gestionnaire de tâches : le démarrage le plus simple et le plus rapide. Comment connecter Jira : <a href="#connect">étapes de connexion</a>. Comptez aussi combien de fois par jour vous copiez du texte dans la conversation : c'est votre liste de candidats à la connexion.</do>
 </b-finding>
 </b-chapter>
 <b-chapter id="ours" icon="target-ring" title="Le contexte de l'agent et les autres">
@@ -66,7 +66,7 @@ MCP branche un agent sur les systèmes de travail, pour qu'il lise les faits à 
 </b-table-plain>
 <b-why align="left">Le tableau montre une vérification d'appui sur un exemple. Les étapes de reproduction viennent du ticket Jira, l'endroit où le code échoue de GitLab, la raison de la décision d'un enregistrement de réunion. Si une partie de la réponse n'a pas un tel appui, elle est revérifiée à la main.</b-why>
 <b-section-h3 top="18">Hallucination : une partie sans appui</b-section-h3>
-<b-why align="left">Une <a href="/materials/glossary/hallucination/">hallucination</a> est une supposition assurée là où il n'y a aucun appui. Elle paraît aussi fluide qu'une réponse fondée sur des données. Les détails et les conseils d'Anthropic sont <a href="#facts">dans la section sur les hallucinations plus bas</a>.</b-why>
+<b-why align="left">Une <a href="/materials/glossary/hallucination/">hallucination</a> est une supposition assurée là où il n'y a aucun appui. Elle paraît aussi fluide qu'une réponse fondée sur des données. Les détails et les conseils d'Anthropic : <a href="#facts">comment limiter les hallucinations</a>.</b-why>
 <b-lane title="Hallucination" color="accent" top="12">
 <b-scene names="term:hallucination"/>
 </b-lane>
@@ -113,7 +113,7 @@ MCP branche un agent sur les systèmes de travail, pour qu'il lise les faits à 
 <b-scene names="mcp-agent-access/scopes"/>
 <p>Où vit la configuration et qui voit le serveur : <a href="/blog/mcp-scopes/">portées MCP dans Claude Code</a>.</p>
 </b-details-more>
-<b-why align="left">À la main, ce sont trois commandes : ajouter le serveur, se connecter par le navigateur avec /mcp et vérifier le statut. Le statut prend trois formes : connecté, connexion requise ou erreur. Le schéma ci-dessus le montre pas à pas, et les portées ci-dessous indiquent où le réglage est stocké.</b-why>
+<b-why align="left">À la main, ce sont trois commandes : ajouter le serveur, se connecter par le navigateur avec /mcp et vérifier le statut. Le statut prend trois formes : connecté, connexion requise ou erreur. Le schéma le montre pas à pas, et les portées indiquent où le réglage est stocké.</b-why>
 <b-finding>
   <ex>L'agent exécute les commandes et vérifie lui-même la connexion, et la tâche PAY-142 est lue en entier avec ses commentaires. C'est le moment « wow ».</ex>
   <gen>La connexion prend quelques minutes. La portée « Project » place la configuration dans le dépôt pour que toute l'équipe obtienne les mêmes serveurs. Les trois portées sont décrites dans <a href="/blog/mcp-scopes/">Portées MCP dans Claude Code</a>.</gen>

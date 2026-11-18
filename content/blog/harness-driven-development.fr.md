@@ -1,7 +1,7 @@
 ---
 title: Harness engineering en pratique : transformer les erreurs d’un agent IA en règles de son environnement (HDD)
 date: 2026-09-28
-updated: 2026-11-17
+updated: 2026-11-18
 description: La boucle erreur-règle, guides et capteurs, trois couches de vérifications, lien avec les spécifications et cinq premiers pas dans votre projet.
 tags: IA, Claude Code, harness engineering, harness, HDD, agents
 category: harness
@@ -60,7 +60,7 @@ Le **harness engineering** est le travail qui consiste à façonner l’environn
     <mode icon="table" t="snapshot">un tableau, mis à jour après chaque nouvelle mesure</mode>
     <mode icon="broadcast-pole" t="live">un protocole, frais à chaque fois, rien n’est stocké</mode>
   </b-hdd-modes>
-  <b-why align="left">La matrice se lit comme trois questions. Expectation : ce que le résultat devrait être (par exemple « après la modification, les tests passent »). Observation : ce qu’il est réellement devenu, ce qu’un capteur consigne. Loop : compare les deux et décide quoi faire. Chacune des trois lignes a trois sortes de support : spec (ce qui doit être vrai), skill (comment agir) et memory (sur quoi s’appuyer). Les mots « domaine » et « canon » ne sont ici que des noms : un domaine est une ligne de la matrice, un canon est une cellule, par exemple la spec d’Expectation. Le schéma ci-dessous montre le sens des liens : Expectation et Observation alimentent Loop, qui donne soit un correctif (corriger l’action), soit une révision des règles. Il n’y a pas de lien en retour vers Loop, les domaines ne s’emmêlent donc pas. Les modes de mémoire : snapshot est un tableau mis à jour quand une nouvelle mesure arrive ; live signifie que les données sont prises dans le système vivant (par exemple via MCP) à chaque fois et ne sont pas stockées.</b-why>
+  <b-why align="left">La matrice se lit comme trois questions. Expectation : ce que le résultat devrait être (par exemple « après la modification, les tests passent »). Observation : ce qu’il est réellement devenu, ce qu’un capteur consigne. Loop : compare les deux et décide quoi faire. Chacune des trois lignes a trois sortes de support : spec (ce qui doit être vrai), skill (comment agir) et memory (sur quoi s’appuyer). Les mots « domaine » et « canon » ne sont ici que des noms : un domaine est une ligne de la matrice, un canon est une cellule, par exemple la spec d’Expectation. Le schéma montre le sens des liens : Expectation et Observation alimentent Loop, qui donne soit un correctif (corriger l’action), soit une révision des règles. Il n’y a pas de lien en retour vers Loop, les domaines ne s’emmêlent donc pas. Les modes de mémoire : snapshot est un tableau mis à jour quand une nouvelle mesure arrive ; live signifie que les données sont prises dans le système vivant (par exemple via MCP) à chaque fois et ne sont pas stockées.</b-why>
   <b-finding>
     <ex>La boucle se divise en Expectation, Observation et Loop, chacune avec sa spec, son skill et sa mémoire. Loop lit les deux autres domaines ; eux ne lisent jamais Loop.</ex>
     <gen>C’est une boucle à rétroaction négative : la valeur cible est comparée à la valeur mesurée, et quelque chose ne change qu’en cas d’écart. Un sens de référence strict évite que les domaines ne s’emmêlent, et qu’un même concept se répète dans deux domaines n’est pas un défaut.</gen>

@@ -1,7 +1,7 @@
 ---
 title: Qué es MCP para un agente de IA: qué problema resuelve y cómo delegar la configuración en el agente
 date: 2026-10-04
-updated: 2026-11-13
+updated: 2026-11-18
 unrelated: mcp-1c
 description: MCP conecta un agente con GitLab, Jira, Confluence y grabaciones de reuniones. Qué problema resuelve, cómo configurarlo en minutos y delegarlo en el propio agente, cómo ahorra tiempo y tokens y por qué el agente inventa menos.
 tags: IA, agentes, MCP, Jira, contexto, alucinaciones, tokens, harness
@@ -66,7 +66,7 @@ MCP conecta un agente de IA con los sistemas de trabajo, para que lea los hechos
 </b-table-plain>
 <b-why align="left">La tabla muestra una comprobación del respaldo con un ejemplo. Los pasos de reproducción vienen del ticket de Jira, el lugar donde falla el código de GitLab, el motivo de la decisión de una grabación de reunión. Si una parte de la respuesta no tiene ese respaldo, se vuelve a comprobar a mano.</b-why>
 <b-section-h3 top="18">Alucinación: una parte sin respaldo</b-section-h3>
-<b-why align="left">Una <a href="/materials/glossary/hallucination/">alucinación</a> es una conjetura segura de sí misma donde no hay respaldo. Parece tan fluida como una respuesta basada en datos. Los detalles y el consejo de Anthropic están <a href="#facts">en la sección de alucinaciones, más abajo</a>.</b-why>
+<b-why align="left">Una <a href="/materials/glossary/hallucination/">alucinación</a> es una conjetura segura de sí misma donde no hay respaldo. Parece tan fluida como una respuesta basada en datos. Detalles y consejo de Anthropic: <a href="#facts">alucinaciones y comprobación</a>.</b-why>
 <b-lane title="Alucinación" color="accent" top="12">
 <b-scene names="term:hallucination"/>
 </b-lane>

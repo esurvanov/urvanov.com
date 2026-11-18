@@ -1,7 +1,7 @@
 ---
 title: AI აგენტი = LLM + harness: რით განსხვავდება LLM, harness და აგენტი და რას მოიცავს harness
 date: 2026-10-12
-updated: 2026-11-13
+updated: 2026-11-18
 description: AI აგენტი = LLM + harness. LLM, harness და აგენტი ერთ ცხრილში, harness-ის ხუთი ჯგუფი და ის, თუ რატომ იქცევა ერთი და იგივე მოდელი განსხვავებულად ჩატსა და Claude Code-ში.
 tags: AI, აგენტები, AI აგენტი, LLM, harness, agent harness, harness engineering
 category: harness
@@ -129,6 +129,7 @@ AI აგენტი არის LLM პლუს harness: LLM მხოლო
     <item href="/materials/glossary/harness/" k="ტერმინი" t="Harness">ყველა ნაწილი, ბმულებით</item>
     <item href="/blog/harness-driven-development/" k="პრაქტიკა" t="Harness engineering">შეცდომები წესებად აქციეთ</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="არჩევანი" t="Claude Code, Codex, Cursor">რომელი აგენტი აირჩიოთ</item>
+  <item href="/blog/codex-or-chatgpt-what-to-choose/" k="არჩევანი" t="Codex თუ ChatGPT">ჩატი თუ კოდის აგენტი</item>
   </b-links>
 </b-chapter>
 </b-post>

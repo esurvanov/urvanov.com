@@ -1,0 +1,123 @@
+{
+  "vpn": {
+    "aka": "red privada virtual",
+    "def": "Una VPN (red privada virtual) es un programa que envía tu tráfico a través de otro servidor, de modo que un sitio web ve la dirección de ese servidor en lugar de la de tu propia conexión. Solo cambia la dirección desde la que se ve el tráfico. Por sí sola no determina ni cambia el país de la persona para las reglas de una empresa.",
+    "more.label": "Claude Code no disponible en tu país: países admitidos, VPN y bloqueos",
+    "faq.0.q": "¿Qué es una VPN?",
+    "faq.0.a": "Un programa que envía el tráfico a través de otro servidor, de modo que un sitio web ve la dirección de ese servidor.",
+    "faq.1.q": "¿Qué ve un sitio cuando la VPN está activada?",
+    "faq.1.a": "La dirección del servidor VPN en lugar de la dirección de tu conexión.",
+    "faq.2.q": "¿Una VPN cambia el país de la persona?",
+    "faq.2.a": "No: la VPN cambia la dirección desde la que se ve el tráfico, y la persona sigue donde está. Las reglas de una empresa sobre un país se leen en los documentos de esa empresa.",
+    "source.label": "Wikipedia (en inglés): Virtual private network",
+    "sites.0.label": "Wikipedia (en ruso): VPN"
+  },
+  "persona": {
+    "aka": "Persona Identities, verificación de identidad",
+    "def": "Persona es un servicio externo de verificación de identidad que comprueba a una persona con la foto de un documento y un selfie. Anthropic lo usa para verificar cuentas de Claude: las imágenes del documento y del selfie las recibe y las guarda la propia Persona. Es una empresa distinta, con su propio sitio, y no forma parte de Anthropic.",
+    "more.label": "Claude Code no disponible en tu país: países admitidos, VPN y bloqueos",
+    "faq.0.q": "¿Qué es Persona?",
+    "faq.0.a": "Un servicio externo que verifica la identidad con un documento y un selfie.",
+    "faq.1.q": "¿Quién usa Persona?",
+    "faq.1.a": "Anthropic: su centro de ayuda de Claude nombra a Persona como el socio que realiza la verificación de identidad en Claude.",
+    "faq.2.q": "¿Dónde se guardan el documento y el selfie?",
+    "faq.2.a": "En Persona; la página de ayuda de Anthropic dice que los guarda Persona y no los sistemas de Anthropic.",
+    "source.label": "Ayuda de Claude: verificación de identidad",
+    "sites.0.label": "withpersona.com, el sitio de Persona"
+  },
+  "voip": {
+    "name": "Número VoIP",
+    "aka": "VoIP, voz sobre IP, número de internet",
+    "def": "Un número VoIP es un número de teléfono cuyas llamadas y mensajes viajan por internet y que no tiene tarjeta SIM física. Lo emiten servicios y aplicaciones en línea. La página de ayuda de Anthropic sobre la verificación de una cuenta de Claude los incluye entre los no válidos: hace falta un número móvil normal que reciba mensajes de texto.",
+    "faq.0.q": "¿Qué es un número VoIP?",
+    "faq.0.a": "Un número de teléfono que funciona por internet y no está ligado a una tarjeta SIM física.",
+    "faq.1.q": "¿En qué se diferencia un número VoIP de un móvil normal?",
+    "faq.1.a": "Un número normal está ligado a la SIM de un operador móvil; un número VoIP vive en una aplicación o en un servicio en línea.",
+    "faq.2.q": "¿Anthropic acepta números VoIP?",
+    "faq.2.a": "No: la página de ayuda sobre la verificación del teléfono los enumera entre los números que no se pueden usar.",
+    "source.label": "Wikipedia (en inglés): Voice over IP",
+    "sites.0.label": "Wikipedia (en ruso): telefonía IP",
+    "sites.1.label": "Ayuda de Claude: verificar tu número de teléfono"
+  },
+  "google-voice": {
+    "aka": "número de Google Voice",
+    "def": "Google Voice es un servicio de Google que te da un número de teléfono para llamadas, mensajes de texto y buzón de voz por internet, sin tarjeta SIM. Es un tipo de número VoIP. La página de ayuda de Anthropic sobre la verificación de una cuenta de Claude nombra a Google Voice entre los números que no se pueden usar.",
+    "faq.0.q": "¿Qué es Google Voice?",
+    "faq.0.a": "Un servicio de Google: un número de teléfono para llamadas, mensajes y buzón de voz por internet.",
+    "faq.1.q": "¿Google Voice es un servicio VoIP?",
+    "faq.1.a": "Sí: el número funciona por internet y no está ligado a una tarjeta SIM.",
+    "faq.2.q": "¿Sirve Google Voice para verificar una cuenta de Claude?",
+    "faq.2.a": "No: la página de ayuda de Anthropic lo enumera entre los números que no se pueden usar.",
+    "source.label": "Ayuda de Google Voice",
+    "sites.0.label": "Ayuda de Claude: verificar tu número de teléfono"
+  },
+  "http-403": {
+    "name": "Error HTTP 403",
+    "aka": "403, error 403, HTTP 403, Forbidden",
+    "def": "El error 403 (Forbidden, «prohibido») es un código de respuesta HTTP: el servidor entendió la petición pero se niega a cumplirla, y volver a iniciar sesión no cambia nada. Las causas varían: permisos de acceso, reglas del sitio, protección contra bots. Un solo error de este tipo no dice nada, por sí mismo, sobre el país del usuario.",
+    "faq.0.q": "¿Qué es un error 403?",
+    "faq.0.a": "Un código de respuesta HTTP: el servidor entendió la petición pero se niega a cumplirla.",
+    "faq.1.q": "¿En qué se diferencia el 403 del 401?",
+    "faq.1.a": "Con un 401 hay que iniciar sesión o autenticarse de nuevo; con un 403 volver a iniciar sesión no cambia nada, porque el rechazo viene de las reglas del servidor.",
+    "faq.2.q": "¿Un 403 significa un bloqueo por país?",
+    "faq.2.a": "Por sí solo no: el mismo código se devuelve por falta de permisos, reglas del sitio y protección contra bots.",
+    "source.label": "MDN: 403 Forbidden",
+    "sites.0.label": "Wikipedia (en inglés): HTTP 403",
+    "sites.1.label": "Wikipedia (en ruso): lista de códigos de estado HTTP"
+  },
+  "paypal": {
+    "aka": "cartera PayPal",
+    "def": "PayPal es un servicio de pago: con él las personas pagan y reciben dinero en línea. Para las transferencias entre personas en EE. UU., la empresa tiene una aplicación aparte, Venmo. Pagar en la web requiere una cuenta de PayPal, y la disponibilidad del servicio depende del país.",
+    "faq.0.q": "¿Qué es PayPal?",
+    "faq.0.a": "Un servicio de pago para pagar y recibir dinero en línea.",
+    "faq.1.q": "¿Qué relación hay entre PayPal y Venmo?",
+    "faq.1.a": "Venmo es una aplicación de la misma empresa para transferencias entre personas en EE. UU.",
+    "faq.2.q": "¿Para qué sirve PayPal?",
+    "faq.2.a": "Para pagar compras y recibir dinero en línea mediante una cuenta del servicio.",
+    "source.label": "Sitio oficial de PayPal"
+  },
+  "venmo": {
+    "aka": "aplicación Venmo",
+    "def": "Venmo es una aplicación para pagos rápidos y seguros entre amigos en EE. UU. Es un servicio de PayPal. Desde 2009 la aplicación gira en torno a los pagos sociales: enviar dinero a un amigo se parece a enviar un mensaje.",
+    "faq.0.q": "¿Qué es Venmo?",
+    "faq.0.a": "Una aplicación para pagos entre amigos en EE. UU.",
+    "faq.1.q": "¿De quién es este servicio?",
+    "faq.2.q": "¿Para quién es Venmo?",
+    "faq.2.a": "Para pagos entre amigos en EE. UU.",
+    "source.label": "Venmo: quiénes somos"
+  },
+  "zdr": {
+    "aka": "Zero Data Retention, retención cero de datos",
+    "def": "ZDR (Zero Data Retention, retención cero de datos) es un modo en el que el proveedor procesa las peticiones y las respuestas en tiempo real y no las almacena después de responder. En Anthropic está disponible para organizaciones concretas por acuerdo. Excepciones: la conservación que exige la ley o la lucha contra el uso indebido.",
+    "faq.0.q": "¿Qué es ZDR?",
+    "faq.0.a": "Retención cero de datos: las peticiones y las respuestas se procesan y no se guardan después de responder.",
+    "faq.1.q": "¿ZDR está activado para todos?",
+    "faq.1.a": "No: según la documentación de Anthropic, está disponible para cuentas cualificadas de Claude for Enterprise y se activa por organización.",
+    "faq.2.q": "¿El proveedor guarda algo con ZDR?",
+    "faq.2.a": "Los datos se conservan donde lo exige la ley o la prevención del uso indebido; los datos administrativos, como los correos de las cuentas y los puestos de la suscripción, permanecen.",
+    "source.label": "Documentación de Claude Code: Zero Data Retention",
+    "sites.0.label": "Documentación de Claude Code: uso de datos"
+  },
+  "hipaa": {
+    "def": "HIPAA es una ley de EE. UU. de 1996 sobre la protección de la información médica (Health Insurance Portability and Accountability Act). Fija las reglas con que las organizaciones sanitarias y sus contratistas manejan los datos de los pacientes. Un servicio de IA que recibe esos datos trabaja con un acuerdo aparte con el cliente.",
+    "faq.0.q": "¿Qué es HIPAA?",
+    "faq.0.a": "Una ley de EE. UU. sobre la protección de la información médica, aprobada en 1996.",
+    "faq.1.q": "¿A quién afecta HIPAA?",
+    "faq.1.a": "A las organizaciones sanitarias y a los contratistas a los que se pasan datos de pacientes.",
+    "faq.2.q": "¿Qué relación hay entre HIPAA y ZDR?",
+    "faq.2.a": "Las organizaciones con datos de pacientes eligen un proveedor con acuerdo HIPAA; según la documentación de Anthropic, algunos servicios necesitan además ZDR.",
+    "sites.0.label": "Wikipedia (en ruso): HIPAA",
+    "sites.1.label": "Wikipedia (en inglés): HIPAA"
+  },
+  "telegram": {
+    "aka": "mensajero Telegram",
+    "def": "Telegram es una aplicación de mensajería para chats, llamadas y canales: según la propia descripción del servicio, es rápida, sencilla y gratuita. Los canales públicos están abiertos a todos. Las publicaciones en ellos son escritos de sus autores, y su contenido nadie lo comprueba fuera de Telegram.",
+    "faq.0.q": "¿Qué es Telegram?",
+    "faq.0.a": "Una aplicación de mensajería para chats y canales.",
+    "faq.1.q": "¿Qué es un canal público?",
+    "faq.1.a": "Un canal abierto a todos sin invitación, en el que publica un autor o un equipo.",
+    "faq.2.q": "¿Se puede confiar en las publicaciones de los canales?",
+    "faq.2.a": "Una publicación sigue siendo un escrito del autor del canal: Telegram no verifica el contenido, así que los hechos hay que contrastarlos con la fuente original.",
+    "source.label": "Telegram: preguntas frecuentes"
+  }
+}

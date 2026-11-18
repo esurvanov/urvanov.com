@@ -1,7 +1,7 @@
 ---
 title: Où vérifier le travail d’un agent IA : à la frontière de l’agrégat, car personne ne peut vérifier tous les programmes (théorème de Rice)
 date: 2026-11-06
-updated: 2026-11-13
+updated: 2026-11-18
 description: Pourquoi aucune vérification ne peut contrôler n’importe quel code d’agent par rapport à n’importe quelle règle, quelles trois voies rendent une vérification finie, comment la frontière d’un agrégat issue de l’event storming devient un point de contrôle, comment la vérifiabilité fixe la taille d’un contexte délimité, et pourquoi le premier cadre doit être peu coûteux à déplacer.
 tags: IA, agents, DDD, agrégat, contexte délimité, event storming, théorème de Rice, Quint, vérification de modèles
 category: specs
@@ -90,7 +90,7 @@ Placez la vérification du travail d’un agent IA à la frontière de l’agré
     ALTER TABLE bookings ADD CONSTRAINT no_overlap
       EXCLUDE USING gist (room_id WITH =, tstzrange(starts_at, ends_at) WITH &&);
   </b-codebox>
-  <b-why align="left">La seconde moitié est un rédacteur unique : un seul module a le droit d’écrire dans la table des réservations. Cela se vérifie par une recherche dans le texte du code à chaque modification de l’agent. La commande ci-dessous trouve tous les fichiers qui écrivent dans la table des réservations sauf celui qui est autorisé ; un résultat vide signifie « pas de contournement ».</b-why>
+  <b-why align="left">La seconde moitié est un rédacteur unique : un seul module a le droit d’écrire dans la table des réservations. Cela se vérifie par une recherche dans le texte du code à chaque modification de l’agent. La commande de recherche trouve tous les fichiers qui écrivent dans la table des réservations sauf celui qui est autorisé ; un résultat vide signifie « pas de contournement ».</b-why>
   <b-codebox title="La vérification « rédacteur unique » par recherche dans le code">
     grep -rl "INSERT INTO bookings" src | grep -v src/booking/repository.ts
   </b-codebox>
@@ -145,7 +145,7 @@ Placez la vérification du travail d’un agent IA à la frontière de l’agré
   2. **Les écrire sous forme de modèle Quint.** L’état est quelles réservations existent ; les actions sont la façon dont elles modifient l’état ; les règles sont des vérifications après chaque pas. Ce sont des dizaines de lignes, sans code réel.
   3. **Choisir de petits nombres.** 2 à 3 objets de chaque sorte : 3 salles, 5 réservations, 2 clients. En général, cela suffit pour que les combinaisons vicieuses typiques apparaissent : deux réservations d’une même salle, deux clients dans la même minute. Rien n’est garanti : une erreur qui exige davantage d’objets passera entre les mailles.
   4. **Lancer la recherche avec une limite de temps,** disons 10 minutes.
-  5. **Lire le résultat avec le tableau ci-dessous.** La recherche s’est terminée sans violation : la taille convient. Elle s’est terminée et a montré une violation : la taille convient, mais les règles ou les actions contiennent une erreur à corriger. Elle ne s’est pas terminée dans la limite : il y a trop d’états, et le candidat est scindé.
+  5. **Lire le résultat avec le tableau.** La recherche s’est terminée sans violation : la taille convient. Elle s’est terminée et a montré une violation : la taille convient, mais les règles ou les actions contiennent une erreur à corriger. Elle ne s’est pas terminée dans la limite : il y a trop d’états, et le candidat est scindé.
 
   <b-callout icon="alert-circle">**Pas d’estimations.** Les nombres donnés ici sont une indication, non des seuils mesurés. Personne n’a mesuré, pour ce critère, combien d’objets suffisent à attraper les erreurs d’un contexte ni quelle limite de temps doit compter comme « trop grand ». Choisissez-les pour votre projet et notez les nombres avec lesquels le modèle a été vérifié.</b-callout>
 
@@ -181,12 +181,12 @@ Placez la vérification du travail d’un agent IA à la frontière de l’agré
 
   - si le choix d’un cadre peut être énoncé strictement comme un problème d’information manquante, comme cela a été fait pour CAP, ou si la ressemblance n’est que verbale ;
   - dans quelle mesure l’historique des modifications passées prédit les futures : il n’y a pas de mesures, seulement des observations de projets isolés ;
-  - quelle durée de cycle de revue du cadre fonctionne : les deux semaines ci-dessous sont un exemple, non un nombre éprouvé ;
+  - quelle durée de cycle de revue du cadre fonctionne : les deux semaines sont un exemple, non un nombre éprouvé ;
   - comment deux questions sont liées : quelle taille doit avoir une partie (le théorème de Rice aide ici) et où tracer ses frontières (cela exige de l’information sur l’avenir).
 
   <b-why align="left">Le choix d’un cadre se heurte à une interdiction différente de celle du théorème de Rice. Une vérification de code a toute l’information, tout le code est devant elle, mais la réponse ne peut pas en être calculée. Un cadre manque de l’information elle-même. Un bon cadre est celui où vivront les changements futurs, et il n’y a de données sur l’avenir ni dans le code ni ailleurs. C’est exactement la position du serveur dans le théorème CAP : il ignore ce qui se passe chez son voisin au-delà du lien rompu, et ici personne ne sait quelles modifications viendront le mois prochain.</b-why>
   <b-why align="left">Les issues sont donc les mêmes que dans CAP. Attendre que l’avenir soit connu n’est pas possible : le travail se fait maintenant. Il reste à répondre maintenant avec ce qui est disponible et à être prêt à se tromper. « Ce qui est disponible », ce sont deux approximations de l’avenir : l’historique des modifications passées, qui montre ce qui change habituellement ensemble, et vos plans, que vous seul connaissez. Et la troisième issue de CAP, borner le temps, devient ici les cycles courts de l’agile : fixer le cadre pour deux semaines, observer comment les modifications y vivent, puis le déplacer. Comme le cadre sera de toute façon faux, l’important est qu’il soit peu coûteux à déplacer.</b-why>
-  <b-why align="left">Le théorème de Rice participe encore à cette section, dans un autre rôle. Il n’aide pas à deviner l’avenir, mais fournit une vérification d’un cadre déjà choisi : si un modèle Quint des règles d’une partie peut être exploré jusqu’au bout, la partie est assez petite ; sinon, elle doit être scindée. Ce signe a été traité dans la section sur la taille du contexte.</b-why>
+  <b-why align="left">Le théorème de Rice joue encore un autre rôle. Il n’aide pas à deviner l’avenir, mais fournit une vérification d’un cadre déjà choisi : si un modèle Quint des règles d’une partie peut être exploré jusqu’au bout, la partie est assez petite ; sinon, elle doit être scindée.</b-why>
 
   <b-subhead>D’où viennent les premières parties</b-subhead>
   <b-why align="left">Inutile de connaître les parties d’avance : le premier découpage vient de ce qui existe déjà, et une personne se contente de nommer les parties et de trancher les points disputés.</b-why>

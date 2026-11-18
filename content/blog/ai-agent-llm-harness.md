@@ -1,7 +1,7 @@
 ---
 title: Чем ИИ-агент отличается от ассистента, чата, чат-бота и нейросети
 date: 2026-10-12
-updated: 2026-11-13
+updated: 2026-11-18
 description: ИИ-агент = нейросеть + харнесс. Чем агент отличается от ИИ-ассистента, чат-бота, чата и LLM: таблица, пример на одной задаче, как работает агент и когда что выбрать.
 tags: AI, агенты, ИИ-агент, ИИ-ассистент, чат-бот, нейросеть, LLM, харнесс
 category: harness
@@ -129,6 +129,7 @@ toc: formula=Агент = нейросеть + харнесс | table=Табли
     <item href="/materials/glossary/ai-agent/" k="Термин" t="ИИ-агент">определение и таблица</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Выбор" t="Claude Code, Codex, Cursor">какого агента взять</item>
     <item href="/blog/agent-hands-work-back-to-you/" k="Работа" t="Заберут ли агенты работу">что остаётся человеку</item>
+  <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Выбор" t="Codex или ChatGPT">Чат или агент для кода</item>
   </b-links>
 </b-chapter>
 </b-post>

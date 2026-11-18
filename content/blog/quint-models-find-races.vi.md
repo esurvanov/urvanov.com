@@ -1,7 +1,7 @@
 ---
 title: Cách tìm race condition trong mã: mô hình Quint thử mọi thứ tự hành động
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-18
 description: Cách tìm race condition trong mã: mô hình Quint thử mọi thứ tự hành động và chỉ ra chuỗi bước làm vỡ một quy tắc. Ví dụ và giới hạn.
 tags: AI, đặc tả, Quint, kiểm chứng hình thức, kiểm thử, harness, race condition, kiểm chứng mô hình, data race
 category: specs
@@ -146,7 +146,7 @@ Race condition được tìm ra bằng cách kiểm tra mọi thứ tự mà hai
     <list icon="user" t="Con người kiểm tra" items="nhãn có rõ không|bảng điều khiển có quá tải không|việc chọn có tiện không|tiện ích mở rộng có cài được trên hồ sơ trống không"></list>
   </b-two-lists>
   <b-why align="left">Danh sách bên trái chứa mọi thứ có thể diễn đạt là “luôn luôn” hoặc “không bao giờ”: bản ghi không biến mất, người tham gia không bị lẫn, hành động nguy hiểm yêu cầu xác nhận. Mô hình kiểm tra các quy tắc như vậy một cách đầy đủ.</b-why>
-  <b-why align="left">Danh sách bên phải chứa những thứ không có danh sách đặc điểm hữu hạn. Nhãn có rõ không là do người đọc quyết định. Vì vậy trong bảng yêu cầu, các dòng “cần con người kiểm tra” được đánh dấu từ trước và không cố hình thức hóa chúng.</b-why>
+  <b-why align="left">Danh sách bên phải chứa những thứ không có danh sách đặc điểm hữu hạn. Nhãn có rõ hay không là do chính bạn quyết định. Vì vậy trong bảng yêu cầu, các dòng “cần con người kiểm tra” được đánh dấu từ trước và không cố hình thức hóa chúng.</b-why>
   <b-finding>
     <ex>Các quy tắc của màn hình cũng trở nên kiểm tra được: xác nhận, lý do trên nút bị vô hiệu, trạng thái trung thực.</ex>
     <gen>Gu thẩm mỹ và độ rõ ràng không có danh sách đặc điểm hữu hạn, nên chúng được kiểm tra trên bản mockup.</gen>

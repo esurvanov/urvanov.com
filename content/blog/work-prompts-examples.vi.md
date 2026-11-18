@@ -1,7 +1,7 @@
 ---
 title: Prompt cho công việc: năm phần và sáu ví dụ cho ChatGPT và Claude
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-18
 description: Prompt cho công việc với chatbot AI: các phần của một prompt công việc tốt, yêu cầu yếu và mạnh trông ra sao, sáu mẫu dựng sẵn cho các tác vụ phổ biến và cách giữ chúng trong một dự án, dựa trên hướng dẫn của Anthropic, OpenAI và Google.
 tags: AI, prompt, ChatGPT, Claude
 category: prompts
@@ -239,6 +239,7 @@ Một prompt công việc cho ChatGPT và Claude được dựng từ năm phầ
     <item href="/blog/specs-rules-skills/" k="Ngữ cảnh" t="Đặc tả, bible, quy tắc và skill">Prompt sống ở đâu ngoài một cuộc chat</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Kỹ thuật" t="AI trong code">Harness và bốn nhóm công cụ</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="Báo cáo" t="Báo cáo sử dụng ChatGPT Enterprise">Ai trong công ty dùng gì</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Lựa chọn" t="Codex hay ChatGPT">Chat hay tác nhân viết mã</item>
   </b-links>
 </b-chapter>
 <b-footer>Các prompt là mẫu: điền vào những chỗ trong ngoặc vuông. Các kỹ thuật theo hướng dẫn chính thức của Anthropic, OpenAI và Google; nguồn nằm sau biểu tượng cạnh mỗi khẳng định. Các trích dẫn từ OpenAI Help Center và hướng dẫn của Google là diễn giải lại.</b-footer>

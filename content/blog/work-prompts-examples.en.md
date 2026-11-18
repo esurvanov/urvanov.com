@@ -1,7 +1,7 @@
 ---
 title: Prompts for work tasks: five parts and six examples for ChatGPT and Claude
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-18
 description: Prompts for work with an AI chat: the parts of a good work prompt, what a weak and a strong ask look like, six ready templates for common tasks and how to keep them in a project, based on the Anthropic, OpenAI and Google guides.
 tags: AI, prompts, ChatGPT, Claude
 category: prompts
@@ -239,6 +239,7 @@ A work prompt for ChatGPT and Claude is built from five parts: a role, who the a
     <item href="/en/blog/specs-rules-skills/" k="Context" t="Specs, bible, rules and skills">Where a prompt lives beyond one chat</item>
     <item href="/en/blog/ai-in-code-harness-and-tools/" k="Engineering" t="AI in code">The harness and four groups of tools</item>
     <item href="/en/blog/chatgpt-enterprise-usage-report/" k="Report" t="ChatGPT Enterprise usage report">Who in the company uses what</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Choice" t="Codex vs ChatGPT">Chat or a coding agent</item>
   </b-links>
 </b-chapter>
 <b-footer>The prompts are templates: fill in what is in square brackets. The techniques follow the official Anthropic, OpenAI and Google guides; the source is behind the icon next to each claim. OpenAI Help Center and Google guide quotes are paraphrased.</b-footer>

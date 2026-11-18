@@ -1,7 +1,7 @@
 ---
 title: จุดตรวจคุณภาพ (quality gate) สำหรับเอเจนต์ AI คืออะไร: จุดตรวจที่ช่วยให้คุณภาพดีขึ้นและเอเจนต์ทำงานเองได้นานขึ้น
 date: 2026-11-14
-updated: 2026-11-17
+updated: 2026-11-18
 description: จุดตรวจคุณภาพคือด่านรับงานที่คั่นระหว่างงานของเอเจนต์กับคำว่า “เสร็จแล้ว” บทความอธิบายการตรวจสามแบบ ตัวเลขคุณภาพและต้นทุน วิธีหลบจุดตรวจ และห้าขั้นตอนเริ่มต้น
 tags: AI, เอเจนต์, จุดตรวจคุณภาพ, MCP, bounded context, harness, hook, Claude Code
 category: harness
@@ -49,7 +49,7 @@ toc: answer=สรุปสั้น | origin=ที่มา | why=ตรวจ
   <b-why align="left">แนวคิดอีกสองข้อมาจากโรงงาน ข้อที่สามจากสิบสี่ข้อของ Deming บอกให้เลิกพึ่งพาการตรวจสอบตอนท้าย และสร้างคุณภาพเข้าไปในผลิตภัณฑ์ตั้งแต่แรก<b-proof href="https://deming.org/explore/fourteen-points/" quote="Deming, point 3: „Cease dependence on inspection to achieve quality. Eliminate the need for inspection on a mass basis by building quality into the product in the first place.“"/> ในระบบ jidoka ของ Toyota อุปกรณ์ต้องหยุดทันทีเมื่อตรวจพบความผิดปกติ<b-proof href="https://global.toyota/en/company/vision-and-philosophy/production-system/" quote="Toyota: equipment should „stop immediately when abnormalities are detected to prevent defective products from being produced“"/> จุดตรวจของเอเจนต์รวมสองแนวคิดนี้เข้าด้วยกัน คือการตรวจอยู่เร็วที่สุดเท่าที่ทำได้ และหยุดงานได้</b-why>
   <b-finding>
     <ex>Fagan ตรวจโค้ดด้วยคน Cooper วางจุดตรวจระหว่างขั้นของโปรเจกต์ Sonar ทำจุดตรวจให้เป็นอัตโนมัติ และสำหรับเอเจนต์ จุดตรวจกลายเป็นจุดที่งานไปต่อไม่ได้หากไม่มีคำตัดสิน</ex>
-    <gen>จุดตรวจของเอเจนต์ไม่ใช่สิ่งประดิษฐ์ใหม่ แต่เป็นจุดควบคุมเก่าที่ย้ายมาอยู่ตรงที่เครื่องจักรทำงาน และเครื่องจักรตรวจตัวเองได้ไม่ดี</gen>
+    <gen>จุดตรวจของเอเจนต์คือจุดควบคุมเก่าที่ย้ายมาอยู่ตรงที่เครื่องจักรทำงาน และเครื่องจักรตรวจตัวเองได้ไม่ดี</gen>
     <do>ดูว่าโปรเจกต์ของคุณมีจุดตรวจอะไรสำหรับคนอยู่แล้ว เช่น เทสต์ใน CI รีวิวภาคบังคับ linter เอเจนต์ควรผ่านจุดตรวจชุดเดียวกัน</do>
   </b-finding>
 </b-chapter>

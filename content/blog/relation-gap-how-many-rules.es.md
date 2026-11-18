@@ -1,7 +1,7 @@
 ---
 title: Cuántas reglas necesita un juego: dos para el jugador y una anotación para el contable, la brecha de relaciones
 date: 2026-11-02
-updated: 2026-11-13
+updated: 2026-11-18
 description: Cómo contar con honestidad y con rapidez las reglas de un juego, y si las dos respuestas pueden diferir. Recorrido por el artículo de Bartholdi, Bridson, Mikhailov y Nicholson sobre la brecha de relaciones (arXiv 2610.23637): un juego con dos movimientos donde el jugador necesita dos reglas y el contable una anotación, con diagramas, fórmulas y cálculos.
 tags: investigación, matemáticas, teoría de grupos, topología, IA en matemáticas
 category: research
@@ -125,7 +125,7 @@ Un juego con dos movimientos, un paso y una subida, necesita dos reglas si se cu
   <b-art names="relation-gap-how-many-rules/player"/>
   <b-cap>De cuatro candidatas, dos reglas entran en la lista; las demás son consecuencias. <a href="https://youtu.be/yPvbfDa_GCk?t=124" target="_blank" rel="noopener">▶ 2:04</a></b-cap>
 
-  ¿Por qué la lista no puede tener una sola regla? Si un juego tiene una regla, el teorema de Newman dice que los amigos de cualquier movimiento son amigos entre sí. Aquí los amigos de la media circunferencia, dos pasos y el gancho, no son amigos entre sí (capítulo «Amigos» más abajo), así que una regla no basta. Los matemáticos lo escriben como $d_F(R)=2$: el menor número de generadores normales del grupo de reglas es dos.
+  ¿Por qué la lista no puede tener una sola regla? Si un juego tiene una regla, el teorema de Newman dice que los amigos de cualquier movimiento son amigos entre sí. Aquí los amigos de la media circunferencia, dos pasos y el gancho, no son amigos entre sí, así que una regla no basta. Los matemáticos lo escriben como $d_F(R)=2$: el menor número de generadores normales del grupo de reglas es dos.
 </b-chapter>
 
 <b-chapter id="accountant" icon="bulb" title="El recuento del contable: una anotación">

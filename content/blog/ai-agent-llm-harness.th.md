@@ -1,7 +1,7 @@
 ---
 title: เอเจนต์ AI = LLM + harness: LLM, harness และเอเจนต์ต่างกันอย่างไร และ harness มีอะไรบ้าง
 date: 2026-10-12
-updated: 2026-11-13
+updated: 2026-11-18
 description: เอเจนต์ AI = LLM + harness เทียบ LLM, harness และเอเจนต์ในตารางเดียว ห้ากลุ่มที่ harness ประกอบด้วย และทำไมโมเดลเดียวกันจึงทำงานต่างกันในแชตกับใน Claude Code
 tags: AI, เอเจนต์, เอเจนต์ AI, LLM, harness, agent harness, harness engineering
 category: harness
@@ -129,6 +129,7 @@ toc: formula=เอเจนต์ = LLM + harness | concepts=ห้าแนว
     <item href="/materials/glossary/harness/" k="คำศัพท์" t="Harness">ทุกส่วน พร้อมลิงก์</item>
     <item href="/blog/harness-driven-development/" k="ปฏิบัติ" t="Harness engineering">เปลี่ยนข้อผิดพลาดเป็นกฎ</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="การเลือก" t="Claude Code, Codex, Cursor">เลือกเอเจนต์ตัวไหน</item>
+  <item href="/blog/codex-or-chatgpt-what-to-choose/" k="เลือก" t="Codex หรือ ChatGPT">แชตหรือเอเจนต์เขียนโค้ด</item>
   </b-links>
 </b-chapter>
 </b-post>

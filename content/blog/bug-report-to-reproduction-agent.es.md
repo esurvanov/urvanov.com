@@ -1,7 +1,7 @@
 ---
 title: Cómo hacer QA con un agente de IA tras el soporte: investigar, describir y documentar mediante MCP y skills
 date: 2026-10-04
-updated: 2026-11-13
+updated: 2026-11-18
 description: Se optimiza un solo paso de la cadena: QA tras el soporte. Un agente reproduce un bug de Jira en un entorno de pruebas mediante MCP, acota el camino, lo describe y lo documenta, una skill convierte los pasos en un proceso repetible, y QA comprueba a mano. El soporte y el desarrollo no cambian.
 tags: IA, agentes, QA, Jira, MCP, skills, bugs, harness
 category: harness
@@ -207,7 +207,7 @@ Un bug de un cliente pasa por el soporte y llega a QA. Aquí la investigación, 
     <b-cap>Un esquema del principio; la escala es arbitraria, no una medición.</b-cap>
   </b-view>
   <b-finding>
-    <ex>QA lanza agentes en PAY-142, PAY-143 y PAY-144 a la vez. Mientras trabajan, QA no se sienta sobre un solo bug sino que revisa uno a uno los resultados terminados.</ex>
+    <ex>QA lanza agentes en PAY-142, PAY-143 y PAY-144 a la vez. Mientras trabajan, QA revisa uno a uno los resultados terminados.</ex>
     <gen>Antes, el tiempo de QA se sumaba a lo largo de todos los bugs seguidos. Ahora cada bug tiene su propio agente: por navegador, por código o por API, y QA conserva solo una comprobación breve. Cuantos más agentes se ejecutan, más tiempo de QA se dedica a gestionarlos y a revisar, no a la rutina.</gen>
     <do k="Qué hacer">Aumenta el número de agentes poco a poco: lo limitan el número de entornos, los conjuntos de datos de prueba y los límites de uso. Dedica el tiempo que QA ya no gasta en rutina a gestionar agentes, comprobar y mejorar la skill.</do>
   </b-finding>

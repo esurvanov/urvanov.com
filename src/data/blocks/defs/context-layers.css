@@ -16,3 +16,6 @@
 }
 /* Код в ячейках — с подложкой, как код в тексте статьи (у таблицы блоков подложка снята) */
 .s-rich.bk .bk-table.bk-ctx-layers-lt code { background: var(--surface); padding: 2px 6px; }
+
+.s-rich.bk .bk-ctx-layers-lt-fixed table { table-layout: fixed; width: 100%; }
+.s-rich.bk .bk-ctx-layers-lt-fixed :is(th, td):first-child { width: var(--first); overflow-wrap: anywhere; }

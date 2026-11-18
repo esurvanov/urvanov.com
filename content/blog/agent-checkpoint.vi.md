@@ -1,7 +1,7 @@
 ---
 title: Kiểm tra công việc của tác nhân AI ở đâu: ở ranh giới aggregate, vì không ai kiểm tra được mọi chương trình (định lý Rice)
 date: 2026-11-06
-updated: 2026-11-13
+updated: 2026-11-18
 description: Vì sao không có phép kiểm tra nào xác minh được mã của tác nhân bất kỳ theo quy tắc bất kỳ, ba cách làm cho phép kiểm tra hữu hạn, ranh giới aggregate từ event storming trở thành điểm kiểm tra thế nào, khả năng kiểm tra quyết định kích thước bounded context ra sao, và vì sao khung đầu tiên phải rẻ để dời đi.
 tags: AI, tác nhân, DDD, aggregate, bounded context, event storming, định lý Rice, Quint, kiểm chứng mô hình
 category: specs
@@ -108,7 +108,7 @@ Hãy đặt phép kiểm tra công việc của tác nhân AI (AI agent) ở ran
 <b-chapter id="gate" icon="cube" title="Aggregate như điểm kiểm tra: event storming mang lại gì">
   <b-why align="left">Event storming là định dạng workshop trong đó một nhóm trải lĩnh vực kinh doanh ra thành các sự kiện<b-proof href="https://www.eventstorming.com/" quote="eventstorming.com: “EventStorming is a flexible workshop format for collaborative exploration of complex business domains.”"/>. Sau đó mỗi aggregate có bốn thứ: các lệnh làm thay đổi nó, các sự kiện nó phát ra, các read model dùng để xem nó, và các invariant, tức những quy tắc đúng ở mọi trạng thái.</b-why>
   <iso-art name="term:aggregate"></iso-art>
-  <b-why align="left">Bốn thứ này tạo nên ranh giới nơi phép kiểm tra phù hợp. Mọi thay đổi đi qua các lệnh, mọi thứ các aggregate lân cận thấy rời đi dưới dạng sự kiện, và các quy tắc nằm ở một chỗ. Đây đúng là cách thứ hai ở mục trước: chỉ aggregate ghi vào bảng của nó, nên không mã nào khác phá được quy tắc, và chỉ còn một thứ để kiểm tra: không có gì khác ghi vào bảng đó.</b-why>
+  <b-why align="left">Bốn thứ này tạo nên ranh giới nơi phép kiểm tra phù hợp. Mọi thay đổi đi qua các lệnh, mọi thứ các aggregate lân cận thấy rời đi dưới dạng sự kiện, và các quy tắc nằm ở một chỗ. Đây đúng là cách tìm trong văn bản mã mọi chỗ ghi vào bảng: chỉ aggregate ghi vào bảng của nó, nên không mã nào khác phá được quy tắc, và chỉ còn một thứ để kiểm tra: không có gì khác ghi vào bảng đó.</b-why>
   <b-art names="agent-checkpoint/gate" wide/>
   <b-cap>Điểm kiểm tra nằm nơi các lệnh đi vào và các sự kiện đi ra. Bên trong ranh giới tác nhân tự do.</b-cap>
   <b-why align="left">Bảng đi từng hàng: phần nào trong bốn phần của aggregate nằm trên ranh giới và được máy cùng con người kiểm tra, phần nào ở bên trong và do tác nhân làm mà không cần review từng dòng.</b-why>
@@ -186,7 +186,7 @@ Hãy đặt phép kiểm tra công việc của tác nhân AI (AI agent) ở ran
 
   <b-why align="left">Việc chọn khung chạm vào một điều cấm khác với định lý Rice. Phép kiểm tra mã có đủ thông tin, toàn bộ mã nằm trước mặt nó, nhưng không tính ra được câu trả lời từ đó. Khung thì thiếu chính thông tin. Một khung tốt là khung nơi các thay đổi tương lai sẽ sống, và không có dữ liệu về tương lai trong mã hay ở đâu khác. Đây đúng là vị trí của máy chủ trong định lý CAP: nó không biết điều gì xảy ra ở láng giềng bên kia đường truyền đã đứt, và ở đây không ai biết những thay đổi nào sẽ đến vào tháng sau.</b-why>
   <b-why align="left">Vì vậy các lối ra cũng giống như trong CAP. Không thể chờ cho đến khi tương lai được biết: công việc diễn ra bây giờ. Còn lại là trả lời ngay bây giờ bằng những gì có sẵn và sẵn sàng sai. “Những gì có sẵn” là hai phép xấp xỉ tương lai: lịch sử các thay đổi trong quá khứ, cho thấy cái gì thường đổi cùng nhau, và kế hoạch của bạn, mà chỉ bạn biết. Và lối ra thứ ba của CAP, giới hạn thời gian, ở đây biến thành các chu kỳ ngắn của agile: đặt khung cho hai tuần, xem các thay đổi sống trong đó thế nào, rồi dời nó. Vì khung dù sao cũng sẽ sai, điều quan trọng là dời nó rẻ.</b-why>
-  <b-why align="left">Định lý Rice vẫn có mặt trong mục này, ở một vai trò khác. Nó không giúp đoán tương lai, nhưng cho một phép kiểm tra đối với khung đã chọn: nếu mô hình Quint về các quy tắc của một phần có thể được tìm kiếm đến cùng, phần đó đủ nhỏ; nếu không, nên tách. Dấu hiệu đó đã được nói ở mục về kích thước context.</b-why>
+  <b-why align="left">Định lý Rice vẫn tham gia vào việc chọn khung xem xét, ở một vai trò khác. Nó không giúp đoán tương lai, nhưng cho một phép kiểm tra đối với khung đã chọn: nếu mô hình Quint về các quy tắc của một phần có thể được tìm kiếm đến cùng, phần đó đủ nhỏ; nếu không, nên tách.</b-why>
 
   <b-subhead>Các phần đầu tiên đến từ đâu</b-subhead>
   <b-why align="left">Không cần biết trước các phần: lần cắt đầu đến từ những gì đã có, và con người chỉ đặt tên cho các phần và sửa các chỗ còn tranh cãi.</b-why>

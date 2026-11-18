@@ -1,7 +1,7 @@
 ---
 title: აგენტის მონაცემთა სიბრტყე და მართვის სიბრტყე: როგორ არ გადავაქციოთ მონაცემები ბრძანებებად (prompt injection)
 date: 2026-10-05
-updated: 2026-11-13
+updated: 2026-11-18
 description: რით განსხვავდება აგენტის ბრძანებები (მართვის სიბრტყე) წაკითხული მონაცემებისგან (მონაცემთა სიბრტყე), როგორ მუშაობს prompt injection და როგორ დავიცვათ თავი: მინიმალური უფლებები, ჩაწერის დამტკიცება, წაკითხვისა და ჩაწერის გაყოფა, სანდო წყაროები.
 tags: AI, აგენტები, უსაფრთხოება, prompt injection, MCP, harness
 category: harness
@@ -87,5 +87,5 @@ toc: what=ორი სიბრტყე | attack=Prompt injection | defense=�
     <item href="/blog/incident-investigation-agent/" k="მაგალითი" t="ინციდენტის გამოძიება AI აგენტით: Sentry და Grafana MCP-ით">აგენტი ლოგებსა და ტიკეტებს მხოლოდ წაკითხვით კითხულობს</item>
   </b-links>
 </b-chapter>
-<b-footer>მაგალითები გამოგონილია. გაფრთხილება სერვერების შესახებ, რომლებიც არასანდო შიგთავსს კითხულობენ, არის Claude Code-ის დოკუმენტაციაში: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>. ზემოთ მოცემული დაცვის წესები გუნდის პრაქტიკაა.</b-footer>
+<b-footer>მაგალითები გამოგონილია. გაფრთხილება სერვერების შესახებ, რომლებიც არასანდო შიგთავსს კითხულობენ, არის Claude Code-ის დოკუმენტაციაში: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>. ამ სტატიის დაცვის წესები გუნდის პრაქტიკაა.</b-footer>
 </b-post>

@@ -1,7 +1,7 @@
 ---
 title: Plan de données et plan de contrôle d’un agent : empêcher que des données deviennent des commandes (injection de prompt)
 date: 2026-10-05
-updated: 2026-11-13
+updated: 2026-11-18
 description: Ce qui distingue les commandes d’un agent (plan de contrôle) des données qu’il lit (plan de données), comment fonctionne l’injection de prompt et comment s’en défendre : droits minimaux, validation des écritures, lecture séparée de l’écriture, sources de confiance.
 tags: IA, agents, sécurité, injection de prompt, MCP, harness
 category: harness
@@ -87,5 +87,5 @@ Le plan de contrôle d’un agent IA, ce sont les commandes que vous lui donnez 
     <item href="/blog/incident-investigation-agent/" k="Exemple" t="Enquête sur un incident avec un agent IA : Sentry et Grafana via MCP">L’agent lit logs et tickets en lecture seule</item>
   </b-links>
 </b-chapter>
-<b-footer>Les exemples sont inventés. L’avertissement sur les serveurs qui lisent du contenu non fiable figure dans la documentation de Claude Code : <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>. Les règles de défense ci-dessus relèvent de la pratique courante.</b-footer>
+<b-footer>Les exemples sont inventés. L’avertissement sur les serveurs qui lisent du contenu non fiable figure dans la documentation de Claude Code : <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>. Les règles de défense relèvent de la pratique courante.</b-footer>
 </b-post>

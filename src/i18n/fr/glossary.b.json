@@ -1,7 +1,7 @@
 {
   "harness-engineering": {
     "aka": "ingénierie du harness",
-    "def": "L’ingénierie du harness (harness engineering) est la discipline générale qui consiste à régler le harness d’un agent : ce que l’agent sait du projet, de quels outils il dispose, ce qu’il a le droit de faire et comment son résultat est vérifié. Elle couvre tout l’environnement, sans ordre d’étapes imposé.",
+    "def": "Le harness engineering (ingénierie du harness) est la discipline générale qui consiste à régler le harness d’un agent : ce que l’agent sait du projet, de quels outils il dispose, ce qu’il a le droit de faire et comment son résultat est vérifié. Elle couvre tout l’environnement, sans ordre d’étapes imposé.",
     "faq.0.q": "Qu’est-ce que l’ingénierie du harness ?",
     "faq.0.a": "La discipline qui consiste à mettre en place le harness d’un agent : ce que l’agent sait du projet, de quels outils il dispose, ce qu’il peut faire et comment son résultat est vérifié.",
     "faq.1.q": "En quoi l’ingénierie du harness diffère-t-elle du HDD ?",

@@ -1,7 +1,7 @@
 ---
 title: Escalade vers un humain pour les agents IA : comment un agent s’arrête et demande via MCP et les hooks
 date: 2026-11-14
-updated: 2026-11-17
+updated: 2026-11-18
 description: Quand un agent confie une décision à une personne : réponses d’elicitation MCP, modes de permission, hooks, fréquence réelle des questions.
 tags: IA, agents, MCP, elicitation, escalade, hooks, Claude Code, autonomie, harness
 category: harness
@@ -12,7 +12,7 @@ toc: answer=En bref | seen=Premier regard | penalty=Pénalité | measure=Métriq
 L’escalade vers un humain est le moment où un agent cesse de travailler et confie une décision à une personne : question, demande de permission ou confirmation. MCP a pour cela l’elicitation (accepter, refuser, annuler) ; Claude Code, des hooks et des modes de permission. Le contrôle se tient hors de l’agent. Ci-dessous : l’aspect initial et les vérifications.
 
 <b-post series="harness">
-<b-callout icon="bulb">**Une observation.** Je pensais que les agents sont entraînés et mesurés sur la durée pendant laquelle ils travaillent seuls, sans personne. Le score est donné pour le résultat : tâche résolue vaut 1, non résolue vaut 0. Une question à une personne ne produit pas de résultat par elle-même, la pénalité vient donc de la tâche inachevée, et deviner rapporte davantage. J’ai vérifié cela dans des documents et des articles et déduit les formules ci-dessous. Une pénalité pour la question elle-même s’est révélée rare : certaines métriques ne prévoient pas de question et d’autres la récompensent.</b-callout>
+<b-callout icon="bulb">**Une observation.** Je pensais que les agents sont entraînés et mesurés sur la durée pendant laquelle ils travaillent seuls, sans personne. Le score est donné pour le résultat : tâche résolue vaut 1, non résolue vaut 0. Une question à une personne ne produit pas de résultat par elle-même, la pénalité vient donc de la tâche inachevée, et deviner rapporte davantage. J’ai vérifié cela dans des documents et des articles et déduit les formules. Une pénalité pour la question elle-même s’est révélée rare : certaines métriques ne prévoient pas de question et d’autres la récompensent.</b-callout>
 
 <b-chapter id="answer" icon="chat" title="En bref : ce qu’est l’escalade et par où elle passe">
   <b-art names="agent-escalation-to-human/window" wide/>
@@ -39,7 +39,7 @@ L’escalade vers un humain est le moment où un agent cesse de travailler et co
 </b-chapter>
 
 <b-chapter id="penalty" icon="x" title="Pour quoi un agent est pénalisé : la métrique et ses formules">
-  <b-why align="left">Deux schémas montrent quelle quantité baisse quand un agent s’arrête et demande. C’est une notation simplifiée selon le sens des métriques dans les sources ; les citations viennent dans les chapitres des vérifications.</b-why>
+  <b-why align="left">Deux schémas montrent quelle quantité baisse quand un agent s’arrête et demande. C’est une notation simplifiée selon le sens des métriques dans les sources ; les citations accompagnent chaque vérification.</b-why>
   <b-art names="agent-escalation-to-human/score-cases" wide/>
   <b-cap>Score par résultat : une bonne réponse donne 1, une mauvaise et un arrêt sans solution donnent 0.</b-cap>
   <b-why align="left">La pénalité tombe sur le résultat inachevé : un arrêt sans solution reçoit le même 0 qu’une erreur. Si un canal existe et que la tâche est résolue après la réponse, la question rapporte même, et c’est ainsi que HiL-Bench est construit.</b-why>
@@ -54,7 +54,7 @@ L’escalade vers un humain est le moment où un agent cesse de travailler et co
 </b-chapter>
 
 <b-chapter id="measure" icon="gauge" title="Vérification : ce que mesurent les benchmarks d’autonomie et la place d’une personne dedans">
-  <b-why align="left">L’autonomie se mesure de différentes façons, et la façon décide si une métrique peut voir un arrêt pour poser une question. Dans l’ordre ci-dessous : l’image d’une métrique avec une ligne d’arrivée, l’horizon de METR, les benchmarks classiques et les métriques où une question compte.</b-why>
+  <b-why align="left">L’autonomie se mesure de différentes façons, et la façon décide si une métrique peut voir un arrêt pour poser une question. Dans cet ordre : l’image d’une métrique avec une ligne d’arrivée, l’horizon de METR, les benchmarks classiques et les métriques où une question compte.</b-why>
   <b-art names="agent-escalation-to-human/finish-line" wide/>
   <b-cap>La métrique marque l’arrivée ; le chemin d’une question vers une personne n’entre pas dans le décompte.</b-cap>
   <b-subhead>L’horizon de METR : combien de temps une tâche prend à une personne</b-subhead>
@@ -95,7 +95,7 @@ L’escalade vers un humain est le moment où un agent cesse de travailler et co
   <b-why align="left">L’expression « temps autonome » signifie trois choses différentes dans trois laboratoires, et cela décide si la question d’un agent à une personne nuit à la métrique. Ci-dessous, tour à tour : ce que compte METR, ce que compte Anthropic et ce que compte Google DeepMind.</b-why>
   <b-art names="agent-escalation-to-human/three-clocks" wide/>
   <b-cap>Trois mesures : les heures d’une personne sur la tâche, un tour du début à l’arrêt, une tâche sans intervention humaine.</b-cap>
-  <b-why align="left">« Travailler seul » peut se mesurer de trois façons. La première : combien d’heures une tâche prend à une personne, une tâche que l’agent résout. La deuxième : jusqu’où l’agent va du début à l’arrêt. La troisième : quelle part des tâches est faite sans intervention humaine. Les formules des trois sont ci-dessous.</b-why>
+  <b-why align="left">« Travailler seul » peut se mesurer de trois façons. La première : combien d’heures une tâche prend à une personne, une tâche que l’agent résout. La deuxième : jusqu’où l’agent va du début à l’arrêt. La troisième : quelle part des tâches est faite sans intervention humaine.</b-why>
   <b-subhead>METR : la difficulté d’une tâche, le temps propre de l’agent n’est pas dans la métrique</b-subhead>
   <b-why align="left">METR répond lui-même à la question de savoir si c’est le temps du travail indépendant<b-proof href="https://metr.org/notes/2026-01-22-time-horizon-limitations/" quote="METR, 22.01.2026: „Time horizon is not the length of time AIs can work independently. Rather, it's the amount of serial human labor they can replace with a 50% success rate.“"/>. La FAQ de la page des horizons dit la même chose : elle mesure la difficulté d’une tâche, et le temps que l’IA y passe n’en fait pas partie<b-proof href="https://metr.org/time-horizons" quote="METR, FAQ: „It’s a measure of the difficulty of a task, rather than the time an AI spends to complete the task.“"/>. METR ne publie pas le temps propre de l’agent : il varie beaucoup selon le fournisseur du modèle et la configuration de l’agent.</b-why>
   <b-subhead>Anthropic : le tour d’un agent du début à l’arrêt</b-subhead>
@@ -122,7 +122,7 @@ L’escalade vers un humain est le moment où un agent cesse de travailler et co
 <b-chapter id="behavior" icon="eye" title="Vérification : les agents demandent-ils vraiment">
   <b-art names="agent-escalation-to-human/ask-rate" wide/>
   <b-cap>La part des sessions avec une question dans une étude : de zéro à la moitié.</b-cap>
-  <b-why align="left">Il n’y a pas de part unique ; le résultat dépend du modèle, du prompt et du harness. Sans permission de demander, les modèles sont presque muets : dans Ambig-SWE (500 tâches de SWE-bench), « without explicit prompting, models almost never interact »<b-proof href="https://arxiv.org/abs/2502.13069" quote="Ambig-SWE, arXiv 2502.13069: „Without explicit prompting, models almost never interact, even for severely underspecified inputs.“"/>. Avec un prompt, Sonnet 4 demande dans 82 % des cas sur des tâches sous-spécifiées, dans 3 % sur des tâches complètes. Le graphique ci-dessus montre « Ask Early, Ask Late, Ask Right », un autre ensemble : Sonnet 4.5 a demandé dans 23 % des sessions, GPT-5.2 dans 52 %, Gemini 3 Flash dans 0 %, et aucun modèle n’a demandé dans la meilleure fenêtre, vers 10 % de l’exécution (arXiv 2605.07937).</b-why>
+  <b-why align="left">Il n’y a pas de part unique ; le résultat dépend du modèle, du prompt et du harness. Sans permission de demander, les modèles sont presque muets : dans Ambig-SWE (500 tâches de SWE-bench), « without explicit prompting, models almost never interact »<b-proof href="https://arxiv.org/abs/2502.13069" quote="Ambig-SWE, arXiv 2502.13069: „Without explicit prompting, models almost never interact, even for severely underspecified inputs.“"/>. Avec un prompt, Sonnet 4 demande dans 82 % des cas sur des tâches sous-spécifiées, dans 3 % sur des tâches complètes. Le graphique montre « Ask Early, Ask Late, Ask Right », un autre ensemble : Sonnet 4.5 a demandé dans 23 % des sessions, GPT-5.2 dans 52 %, Gemini 3 Flash dans 0 %, et aucun modèle n’a demandé dans la meilleure fenêtre, vers 10 % de l’exécution (arXiv 2605.07937).</b-why>
   <b-why align="left">L’extrême opposé existe aussi. Dans LHAW (arXiv 2602.10525), GPT-5.2 demande dans 81 à 97 % des exécutions avec peu de bénéfice par question, et dans « Ask or Assume » (arXiv 2603.26233), Sonnet 4.5 demande dans 73,8 % des tâches. Les personnes sont elles aussi surchargées : d’après les données d’Anthropic sur le mode auto, les utilisateurs acceptent 93 % des demandes de permission, et l’article parle directement de fatigue de confirmation<b-proof href="https://www.anthropic.com/engineering/claude-code-auto-mode" quote="Anthropic, 25.03.2026: „users accept 93%“ of permission requests"/>.</b-why>
   <b-art names="agent-escalation-to-human/ask-extremes" wide/>
   <b-cap>Deux extrêmes : silencieux et devinant, ou inondant de questions.</b-cap>
@@ -179,7 +179,7 @@ L’escalade vers un humain est le moment où un agent cesse de travailler et co
   <b-why align="left">L’hôte garde toute la conversation, et un serveur ne reçoit que ce dont il a besoin. Dans la spécification, c’est le troisième principe d’architecture<b-proof href="https://modelcontextprotocol.io/specification/2026-07-28" quote="MCP specification: „Servers should not be able to read the whole conversation, nor 'see into' other servers.“ / „Full conversation history stays with the host“"/>. Un serveur local s’exécute avec les privilèges du client<b-proof href="https://modelcontextprotocol.io/specification/2026-07-28/basic/security_best_practices#local-mcp-server-compromise" quote="MCP specification: „MCP servers run with the same privileges as the client“"/>. J’en tire moi-même une conclusion : une requête et une réponse passent par MCP, et tout le reste reste du côté de l’hôte.</b-why>
   <b-art names="agent-escalation-to-human/barrier-intercom" wide/>
   <b-cap>L’hôte place la barrière, MCP fournit l’interphone ; un contournement consiste à répondre pour la personne.</b-cap>
-  <b-why align="left">Ce qui passe exactement par MCP et ce qui reste du côté de l’hôte est listé ci-dessous.</b-why>
+  <b-why align="left">Ce qui passe exactement par MCP et ce qui reste du côté de l’hôte est détaillé point par point.</b-why>
   <b-rules cols="2">
     <rule icon="package" t="Par MCP">un appel de fonction, un résultat selon un schéma, une demande de données à une personne, les permissions du serveur</rule>
     <rule icon="shield-check" t="Hors de MCP">les hooks du client, les modes de permission, le bac à sable, l’historique de la conversation, le dialogue propre de la personne avec l’agent</rule>

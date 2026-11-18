@@ -1,7 +1,7 @@
 ---
 title: Boucle de retour courte pour les bugs : d’un bouton « Signaler un bug » au correctif avec un agent IA
 date: 2026-10-20
-updated: 2026-11-13
+updated: 2026-11-18
 description: Corriger les bugs plus vite sans téléphone arabe : les employés signalent depuis l’application, le contexte est collecté pour eux, un agent IA trouve la cause, une personne valide.
 tags: IA, agents, bugs, retour utilisateur, MTTR, MCP, Claude Code, harness
 category: harness
@@ -117,7 +117,7 @@ Une boucle de retour courte fonctionne ainsi : un employé envoie un bug avec un
 </b-chapter>
 
 <b-chapter id="risks" icon="alert" title="Risques">
-  <b-why align="left">L’agent lit un texte écrit par des personnes ; la méthode a donc ses propres risques : faux rapports, données personnelles dans les captures, tests au vert avec une fonction cassée, et responsabilité diluée. Les quatre cartes ci-dessous nomment chaque risque et la manière de l’écarter.</b-why>
+  <b-why align="left">L’agent lit un texte écrit par des personnes ; la méthode a donc ses propres risques : faux rapports, données personnelles dans les captures, tests au vert avec une fonction cassée, et responsabilité diluée. Les quatre cartes nomment chaque risque et la manière de l’écarter.</b-why>
   <b-rules cols="2">
     <rule icon="shield-alert" t="Faux rapport">Le texte du rapport est écrit par des personnes ; l’agent le lit comme des données, jamais comme des commandes</rule>
     <rule icon="lock" t="Données personnelles">Le texte est masqué, la capture part telle quelle, et une boîte de dialogue en avertit</rule>

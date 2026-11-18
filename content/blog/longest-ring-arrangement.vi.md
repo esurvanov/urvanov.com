@@ -1,7 +1,7 @@
 ---
 title: Cách xếp bóng trên vòng nào gỡ lâu nhất: nhiều khả năng là “gương” — vét cạn, AI và giả thuyết về số cặp
 date: 2026-10-22
-updated: 2026-11-08
+updated: 2026-11-18
 description: Cách xếp rối nhất của các quả bóng trên vòng có phép xoay và phép đổi chỗ cần bao nhiêu nước đi, và đường kính của đồ thị Cayley là gì. Vét cạn, mạng nơ-ron với beam search, cuộc thi Kaggle và các chứng minh cùng hội tụ về n(n−1)/2 — bài báo CayleyPy RL (arXiv 2502.18663) được giải thích bằng sơ đồ.
 tags: AI, nghiên cứu, mạng nơ-ron, toán học, đồ thị Cayley, tìm đường
 category: research
@@ -262,7 +262,7 @@ Cách xếp gỡ lâu nhất nhiều khả năng là “gương” — vòng bó
     <q t="Đường kính của vòng bóng có phép xoay và đổi chỗ là bao nhiêu?">Theo giả thuyết, là n(n−1)/2 — số cặp bóng, từ bốn quả bóng trở lên. Vét cạn xác nhận điều đó đến 15 quả bóng; đã chứng minh nó nằm giữa n(n−1)/2 − n/2 − 1 và n(n−1)/2 + 3n.</q>
     <q t="Giả thuyết đã được chứng minh chưa?">Chưa hoàn toàn. Năm 2026 một trong các tác giả đã đăng chứng minh cho cận dưới đúng bằng số cặp, nhưng đó là preprint; cận trên vẫn cao hơn 3 nước cho mỗi quả bóng.</q>
     <q t="Mạng nơ-ron tìm đường trong đồ thị khổng lồ như thế nào?">Mạng la bàn học từ các lượt đi ngẫu nhiên để đoán khoảng cách đến mục tiêu, và beam search giữ nhiều trạng thái tốt nhất theo ước lượng của nó cùng lúc để một sai sót không dẫn vào ngõ cụt.</q>
-    <q t="Tôi có thể tự thử không?">Có: mã của các tác giả mở và chạy miễn phí trên Kaggle, còn thư viện CayleyPy có trên GitHub (liên kết bên dưới).</q>
+    <q t="Tôi có thể tự thử không?">Có: mã của các tác giả mở và chạy miễn phí trên Kaggle, còn thư viện CayleyPy có trên GitHub.</q>
   </b-faq-cards>
 </b-chapter>
 

@@ -1,7 +1,7 @@
 ---
 title: Escalation sang con người ở tác nhân AI: tác nhân dừng lại và hỏi qua MCP và hook thế nào
 date: 2026-11-14
-updated: 2026-11-17
+updated: 2026-11-18
 description: Tác nhân trao quyết định cho con người qua elicitation của MCP, chế độ quyền hoặc hook của Claude Code, nhưng đường tới con người hẹp và hiếm khi được dùng.
 tags: AI, tác nhân, MCP, elicitation, escalation, hook, Claude Code, tính tự chủ, harness
 category: harness
@@ -96,7 +96,7 @@ Escalation sang con người là khoảnh khắc tác nhân ngừng làm việc 
   <b-why align="left">Cụm “thời gian tự chủ” có ba nghĩa khác nhau ở ba phòng thí nghiệm, và điều đó quyết định liệu câu hỏi của tác nhân gửi tới người có làm hại chỉ số hay không. Dưới đây lần lượt: METR đếm gì, Anthropic đếm gì và Google DeepMind đếm gì.</b-why>
   <b-art names="agent-escalation-to-human/three-clocks" wide/>
   <b-cap>Ba thước đo: số giờ của một người cho nhiệm vụ, một lượt từ lúc bắt đầu đến lúc dừng, một nhiệm vụ không có sự can thiệp của con người.</b-cap>
-  <b-why align="left">“Làm việc một mình” có thể đo theo ba cách. Thứ nhất: một nhiệm vụ mất bao nhiêu giờ của con người, nhiệm vụ mà tác nhân giải được. Thứ hai: tác nhân đi xa đến đâu từ lúc bắt đầu đến lúc dừng. Thứ ba: tỷ lệ nhiệm vụ được làm xong mà không có sự can thiệp của con người. Công thức của cả ba ở bên dưới.</b-why>
+  <b-why align="left">“Làm việc một mình” có thể đo theo ba cách. Thứ nhất: một nhiệm vụ mất bao nhiêu giờ của con người, nhiệm vụ mà tác nhân giải được. Thứ hai: tác nhân đi xa đến đâu từ lúc bắt đầu đến lúc dừng. Thứ ba: tỷ lệ nhiệm vụ được làm xong mà không có sự can thiệp của con người.</b-why>
   <b-subhead>METR: độ khó của nhiệm vụ, thời gian của chính tác nhân không nằm trong chỉ số</b-subhead>
   <b-why align="left">Chính METR trả lời liệu đây có phải là thời gian làm việc độc lập<b-proof href="https://metr.org/notes/2026-01-22-time-horizon-limitations/" quote="METR, 22.01.2026: „Time horizon is not the length of time AIs can work independently. Rather, it's the amount of serial human labor they can replace with a 50% success rate.“"/>. Phần FAQ trên trang về các chân trời cũng nói như vậy: nó đo độ khó của nhiệm vụ, còn thời gian AI bỏ ra không thuộc về nó<b-proof href="https://metr.org/time-horizons" quote="METR, FAQ: „It’s a measure of the difficulty of a task, rather than the time an AI spends to complete the task.“"/>. METR không công bố thời gian của chính tác nhân: nó khác nhau rất nhiều tùy nhà cung cấp mô hình và cách dựng tác nhân.</b-why>
   <b-subhead>Anthropic: một lượt của tác nhân từ lúc bắt đầu đến lúc dừng</b-subhead>
@@ -123,7 +123,7 @@ Escalation sang con người là khoảnh khắc tác nhân ngừng làm việc 
 <b-chapter id="behavior" icon="eye" title="Kiểm tra: tác nhân có thực sự hỏi không">
   <b-art names="agent-escalation-to-human/ask-rate" wide/>
   <b-cap>Tỷ lệ phiên có câu hỏi trong một nghiên cứu: từ không đến một nửa.</b-cap>
-  <b-why align="left">Không có một tỷ lệ duy nhất; kết quả phụ thuộc vào mô hình, prompt và harness. Khi không được phép hỏi, các mô hình gần như im lặng: trong Ambig-SWE (500 nhiệm vụ SWE-bench) “without explicit prompting, models almost never interact”<b-proof href="https://arxiv.org/abs/2502.13069" quote="Ambig-SWE, arXiv 2502.13069: „Without explicit prompting, models almost never interact, even for severely underspecified inputs.“"/>. Với prompt, Sonnet 4 hỏi ở 82% nhiệm vụ thiếu đặc tả, ở 3% nhiệm vụ đầy đủ. Biểu đồ phía trên cho thấy “Ask Early, Ask Late, Ask Right”, một bộ khác: Sonnet 4.5 hỏi trong 23% phiên, GPT-5.2 trong 52%, Gemini 3 Flash trong 0%, và không mô hình nào hỏi ở khung thời điểm tốt nhất, khoảng 10% quãng đường chạy (arXiv 2605.07937).</b-why>
+  <b-why align="left">Không có một tỷ lệ duy nhất; kết quả phụ thuộc vào mô hình, prompt và harness. Khi không được phép hỏi, các mô hình gần như im lặng: trong Ambig-SWE (500 nhiệm vụ SWE-bench) “without explicit prompting, models almost never interact”<b-proof href="https://arxiv.org/abs/2502.13069" quote="Ambig-SWE, arXiv 2502.13069: „Without explicit prompting, models almost never interact, even for severely underspecified inputs.“"/>. Với prompt, Sonnet 4 hỏi ở 82% nhiệm vụ thiếu đặc tả, ở 3% nhiệm vụ đầy đủ. Một nghiên cứu khác, “Ask Early, Ask Late, Ask Right”, cho thấy: Sonnet 4.5 hỏi trong 23% phiên, GPT-5.2 trong 52%, Gemini 3 Flash trong 0%, và không mô hình nào hỏi ở khung thời điểm tốt nhất, khoảng 10% quãng đường chạy (arXiv 2605.07937).</b-why>
   <b-why align="left">Cực đối lập cũng tồn tại. Trong LHAW (arXiv 2602.10525), GPT-5.2 hỏi ở 81–97% lần chạy với lợi ích nhỏ trên mỗi câu hỏi, và trong “Ask or Assume” (arXiv 2603.26233), Sonnet 4.5 hỏi ở 73,8% nhiệm vụ. Con người cũng bị quá tải: theo số liệu của Anthropic về chế độ auto, người dùng chấp nhận 93% yêu cầu cấp quyền, và bài viết nói thẳng về sự mệt mỏi vì xác nhận<b-proof href="https://www.anthropic.com/engineering/claude-code-auto-mode" quote="Anthropic, 25.03.2026: „users accept 93%“ of permission requests"/>.</b-why>
   <b-art names="agent-escalation-to-human/ask-extremes" wide/>
   <b-cap>Hai cực: im lặng và đoán mò, hoặc dồn dập câu hỏi.</b-cap>

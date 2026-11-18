@@ -1,8 +1,8 @@
 ---
-title: Tác nhân AI = LLM + harness: LLM, harness và tác nhân khác nhau thế nào và harness gồm những gì
+title: Harness là gì: LLM, harness và tác nhân khác nhau thế nào và harness gồm những gì
 date: 2026-10-12
-updated: 2026-11-13
-description: Tác nhân AI = LLM + harness. LLM, harness và tác nhân trong một bảng, năm nhóm thành phần của harness, và vì sao cùng một mô hình lại hành xử khác nhau trong chat và trong Claude Code.
+updated: 2026-11-18
+description: Harness là toàn bộ phần bao quanh LLM để nó thành tác nhân AI. LLM, harness và tác nhân trong một bảng, năm nhóm thành phần, vì sao cùng mô hình hành xử khác.
 tags: AI, tác nhân, tác nhân AI, LLM, harness, agent harness, harness engineering
 category: harness
 layout: wide
@@ -10,7 +10,7 @@ mentions: AI agent, LLM, agent harness, harness engineering, agent loop, MCP, Cl
 toc: formula=Tác nhân = LLM + harness | concepts=Năm khái niệm | table=LLM, harness và tác nhân | parts=Harness gồm những gì | same=Cùng một mô hình | example=Ví dụ | loop=Cách hoạt động | when=Nên chọn gì | faq=FAQ | next=Đọc tiếp
 ---
 
-Tác nhân AI (AI agent) là LLM cộng với harness: LLM chỉ suy luận và viết văn bản, còn harness là mọi thứ xung quanh giúp nó hành động — vòng lặp các bước, công cụ, ngữ cảnh, quy tắc và các phép kiểm tra. Hợp lại, chúng đưa một tác vụ tới kết quả, còn LLM đứng một mình chỉ trả lời. Bên dưới: LLM, harness và tác nhân trong một bảng, năm nhóm thành phần của harness, và cùng một mô hình trong hai harness.
+Harness là gì: toàn bộ phần bao quanh LLM giúp nó hành động như một tác nhân AI (AI agent), gồm vòng lặp các bước, công cụ, ngữ cảnh, quy tắc và các phép kiểm tra. LLM chỉ suy luận và viết văn bản; LLM cộng harness đưa tác vụ tới kết quả. Bên dưới: LLM, harness và tác nhân trong một bảng, năm nhóm thành phần của harness, và cùng một mô hình trong hai harness.
 
 <b-post series="harness">
 <b-chapter id="formula" icon="target-dot" title="Tác nhân = LLM + harness">
@@ -129,6 +129,7 @@ Tác nhân AI (AI agent) là LLM cộng với harness: LLM chỉ suy luận và 
     <item href="/materials/glossary/harness/" k="Thuật ngữ" t="Harness">mọi thành phần, có liên kết</item>
     <item href="/blog/harness-driven-development/" k="Thực hành" t="Harness engineering">biến lỗi thành quy tắc</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Lựa chọn" t="Claude Code, Codex, Cursor">chọn tác nhân nào</item>
+  <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Lựa chọn" t="Codex hay ChatGPT">Chat hay tác nhân viết mã</item>
   </b-links>
 </b-chapter>
 </b-post>

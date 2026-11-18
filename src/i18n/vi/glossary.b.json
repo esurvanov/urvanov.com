@@ -16,7 +16,7 @@
     "faq.1.a": "Môi trường lớn dần từ các lỗi thật, và một lỗi không lặp lại ở những lần chạy sau."
   },
   "spec-driven-development": {
-    "def": "Spec-Driven Development (SDD) là cách tiếp cận trong đó đặc tả — hệ thống phải làm gì — được viết trước, rồi tác nhân viết mã và kiểm tra mã theo đặc tả. Đặc tả trở thành tài liệu chính còn mã là hệ quả của nó.",
+    "def": "SDD là gì: Spec-Driven Development là cách tiếp cận trong đó đặc tả, tức hệ thống phải làm gì, được viết trước, rồi tác nhân viết mã và kiểm tra mã theo đặc tả. Đặc tả trở thành tài liệu chính, còn mã là hệ quả của nó. Ví dụ: OpenSpec và Spec Kit.",
     "faq.0.q": "Phát triển dựa trên đặc tả (spec-driven development) là gì?",
     "faq.0.a": "Cách làm đặt đặc tả về việc hệ thống phải làm lên trước, còn tác nhân viết mã và kiểm tra mã theo đặc tả đó.",
     "faq.1.q": "Những framework nào hỗ trợ spec-driven development?",
@@ -52,7 +52,7 @@
     "faq.2.a": "Với TDD, trước hết viết một kiểm thử thất bại cho một hàm, rồi viết mã cho nó. Với SDD, trước hết viết đặc tả cho cả thay đổi — yêu cầu và các kịch bản «khi — thì» — còn tác nhân suy ra kiểm thử và mã từ đó.",
     "faq.3.q": "Đặc tả khác AGENTS.md thế nào?",
     "faq.3.a": "Đặc tả mô tả một thay đổi và tồn tại đến khi thay đổi đóng. AGENTS.md giữ quy tắc cho cả dự án và đi vào mỗi phiên của tác nhân.",
-    "seo.title": "SDD là gì: spec-driven development hoạt động thế nào",
+    "seo.title": "SDD là gì (Spec-Driven Development): viết đặc tả trước",
     "seo.description": "SDD (spec-driven development) là cách làm viết đặc tả trước, rồi tác nhân AI viết mã và kiểm tra theo đó. Các bước, OpenSpec, Spec Kit và Kiro.",
     "more.label": "OpenSpec: spec-driven development trong thực tế",
     "also.0.label": "Đặc tả theo aggregate: cách để chúng không sinh sôi",

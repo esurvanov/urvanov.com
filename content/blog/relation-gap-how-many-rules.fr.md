@@ -1,7 +1,7 @@
 ---
 title: Combien de règles faut-il à un jeu : le jeu « pas et montée » en demande deux, le comptable n'a besoin que d'une entrée — l'écart de relations
 date: 2026-11-02
-updated: 2026-11-13
+updated: 2026-11-18
 description: Comment compter honnêtement et vite les règles d'un jeu, et si les deux réponses peuvent différer. Lecture pas à pas de l'article de Bartholdi, Bridson, Mikhailov et Nicholson sur l'écart de relations (arXiv 2610.23637) : un jeu à deux mouvements où le joueur a besoin de deux règles et le comptable d'une seule entrée, avec schémas, formules et calculs.
 tags: recherche, mathématiques, théorie des groupes, topologie, IA en mathématiques
 category: research
@@ -18,7 +18,7 @@ Un jeu à deux mouvements, un pas et une montée, demande deux règles si on les
 <b-chapter id="video" icon="video" title="Vidéo : la même histoire en 7,5 minutes">
   <b-why>L'article suit le film scène par scène et entre davantage dans le détail. Sous chaque schéma, un lien mène au moment correspondant de la vidéo.</b-why>
   <b-embed-frame src="https://www.youtube.com/embed/yPvbfDa_GCk" title="Combien de règles faut-il à un jeu — l'article arXiv 2610.23637 en termes simples" ratio="16/9"/>
-  <b-cap>Article : <a href="https://arxiv.org/abs/2610.23637" target="_blank" rel="noopener">Two-generator presentations with a relation gap</a>, arXiv 2610.23637, 16 octobre 2026. Le jeu, le pas, la montée, le joueur et le comptable sont des images pour l'explication ; dans l'article, ce sont un groupe, des générateurs, le plus petit nombre de relations et le plus petit nombre de générateurs du module des relations. Il n'est pas nécessaire de regarder le film : tout ce qu'il contient est repris ci-dessous.</b-cap>
+  <b-cap>Article : <a href="https://arxiv.org/abs/2610.23637" target="_blank" rel="noopener">Two-generator presentations with a relation gap</a>, arXiv 2610.23637, 16 octobre 2026. Le jeu, le pas, la montée, le joueur et le comptable sont des images pour l'explication ; dans l'article, ce sont un groupe, des générateurs, le plus petit nombre de relations et le plus petit nombre de générateurs du module des relations. Il n'est pas nécessaire de regarder le film : tout ce qu'il contient est repris dans le texte.</b-cap>
 </b-chapter>
 
 <b-chapter id="question" icon="grid" title="Question : combien de règles a un jeu, et y a-t-il deux manières de compter">
@@ -57,7 +57,7 @@ Un jeu à deux mouvements, un pas et une montée, demande deux règles si on les
     </tbody></table>
   </b-table>
 
-  Le résultat en une phrase : dans un jeu **à deux mouvements**, le joueur a besoin de deux règles, tandis que le comptable n'a besoin que d'une entrée. Dans l'article, c'est le théorème A, démontré complètement et de façon élémentaire. Le second résultat, le corollaire B, porte sur le <a href="/materials/glossary/wall-d2-problem/">problème D2 de Wall</a>. Il s'appuie sur un preprint d'OpenAI du 6 octobre 2026 et il est conditionnel ; détails dans le chapitre sur les applications. <a href="https://youtu.be/yPvbfDa_GCk?t=26" target="_blank" rel="noopener">▶ 0:26</a>
+  Le résultat en une phrase : dans un jeu **à deux mouvements**, le joueur a besoin de deux règles, tandis que le comptable n'a besoin que d'une entrée. Dans l'article, c'est le théorème A, démontré complètement et de façon élémentaire. Le second résultat, le corollaire B, porte sur le <a href="/materials/glossary/wall-d2-problem/">problème D2 de Wall</a>. Il s'appuie sur un preprint d'OpenAI du 6 octobre 2026 et il est conditionnel . <a href="https://youtu.be/yPvbfDa_GCk?t=26" target="_blank" rel="noopener">▶ 0:26</a>
 
   Le théorème A en formules (pour tous $p, q \ge 2$ premiers entre eux) :
 
@@ -108,7 +108,7 @@ Un jeu à deux mouvements, un pas et une montée, demande deux règles si on les
   <b-art names="relation-gap-how-many-rules/three"/>
   <b-cap>À gauche, trois détails du jeu ; à droite, qui a besoin de chacun. <a href="https://youtu.be/yPvbfDa_GCk?t=98" target="_blank" rel="noopener">▶ 1:38</a></b-cap>
 
-  **Six pas et le jeton est à la maison.** Utile au joueur. Le jeu comporte un mouvement qui, répété plusieurs fois, ramène au départ. En mathématiques, on parle de torsion. Pour le théorème de Newman (voir le chapitre sur les amis), c'est la condition clé.
+  **Six pas et le jeton est à la maison.** Utile au joueur. Le jeu comporte un mouvement qui, répété plusieurs fois, ramène au départ. En mathématiques, on parle de torsion. Pour le théorème de Newman, c'est la condition clé.
 
   **Le demi-cercle et le crochet échangent leurs places.** Également utile au joueur. Les mouvements qui peuvent être échangés s'appellent des **amis**. Le demi-cercle a deux amis : deux pas sur le même cercle et le crochet. Entre eux, ils ne sont pas amis, et il en découle qu'une seule règle ne peut pas décrire le jeu.
 
@@ -125,7 +125,7 @@ Un jeu à deux mouvements, un pas et une montée, demande deux règles si on les
   <b-art names="relation-gap-how-many-rules/player"/>
   <b-cap>Sur quatre candidates, deux règles entrent dans la liste ; les autres sont des conséquences. <a href="https://youtu.be/yPvbfDa_GCk?t=124" target="_blank" rel="noopener">▶ 2:04</a></b-cap>
 
-  Pourquoi la liste ne peut-elle pas contenir une seule règle ? Si un jeu a une seule règle, le théorème de Newman dit que les amis de n'importe quel mouvement sont amis entre eux. Ici, les amis du demi-cercle, deux pas et le crochet, ne sont pas amis entre eux (chapitre « Amis » plus bas), donc une règle ne suffit pas. Les mathématiciens écrivent $d_F(R)=2$ : le plus petit nombre de générateurs normaux du groupe des règles est deux.
+  Pourquoi la liste ne peut-elle pas contenir une seule règle ? Si un jeu a une seule règle, le théorème de Newman dit que les amis de n'importe quel mouvement sont amis entre eux. Ici, les amis du demi-cercle, deux pas et le crochet, ne sont pas amis entre eux, donc une règle ne suffit pas. Les mathématiciens écrivent $d_F(R)=2$ : le plus petit nombre de générateurs normaux du groupe des règles est deux.
 </b-chapter>
 
 <b-chapter id="accountant" icon="bulb" title="Le décompte du comptable : une entrée">
@@ -269,7 +269,7 @@ Un jeu à deux mouvements, un pas et une montée, demande deux règles si on les
   <b-steps top="14" round>
     <step t="Pas une règle">Le groupe n'est pas un groupe à une règle : le demi-cercle $a=x^{p}$ est d'ordre $q$, et $x^{q}$ et le crochet $b$ le centralisent tous deux sans commuter entre eux. Donc $d_F(R)=2$ (théorème de Newman).</step>
     <step t="Deux entrées">Le module des relations est l'image de l'application bord du complexe de revêtement. La matrice de Fox donne deux entrées : $N_x$ et $u$.</step>
-    <step t="Une entrée">Pour $p=3$, $q=2$, on construit $v=N_x+(b+b^{2})\,u$, et $N_x$, $u$ s'expriment à l'aide de $v$ (calcul ci-dessus). Le cas général est analogue, avec une formule plus lourde pour $v$.</step>
+    <step t="Une entrée">Pour $p=3$, $q=2$, on construit $v=N_x+(b+b^{2})\,u$, et $N_x$, $u$ s'expriment à l'aide de $v$. Le cas général est analogue, avec une formule plus lourde pour $v$.</step>
   </b-steps>
 
   Le groupe peut être défini dans le <a href="/materials/glossary/computer-algebra-system/">système de calcul formel</a> GAP en deux lignes : <a href="https://youtu.be/yPvbfDa_GCk?t=389" target="_blank" rel="noopener">▶ 6:29</a>
@@ -322,7 +322,7 @@ Un jeu à deux mouvements, un pas et une montée, demande deux règles si on les
     <q t="Que sont les amis d'un mouvement ?">Les mouvements qui peuvent être échangés avec le mouvement donné. Dans l'article, c'est le centralisateur d'un élément. Le théorème de Newman dit qu'avec une seule règle et un mouvement qui revient au départ, les amis commutent entre eux.</q>
     <q t="Le problème D2 de Wall est-il résolu ?">Sous condition. L'article construit un complexe D2 de six cellules, mais la conclusion repose sur un preprint d'OpenAI du 6 octobre 2026, et les auteurs qualifient le corollaire B de conditionnel. Le théorème A, sur l'écart de relations, ne dépend pas de ce preprint.</q>
     <q t="Quel rôle l'IA a-t-elle joué ?">D'après les auteurs, ChatGPT a aidé à trouver les groupes et la démonstration et a produit un premier brouillon, et Claude a été consulté pendant la relecture. Les auteurs ont eux-mêmes vérifié et remanié les arguments et le texte, et sont responsables du résultat.</q>
-    <q t="Puis-je vérifier moi-même ?">Oui : le groupe du théorème A se définit dans GAP en deux lignes (code ci-dessus), et le calcul pour $p=3$, $q=2$ relève de l'algèbre scolaire, donnée dans le chapitre sur trois et deux.</q>
+    <q t="Puis-je vérifier moi-même ?">Oui : le groupe du théorème A se définit dans GAP en deux lignes, et le calcul pour $p=3$, $q=2$ relève de l'algèbre scolaire.</q>
   </b-faq-cards>
 </b-chapter>
 

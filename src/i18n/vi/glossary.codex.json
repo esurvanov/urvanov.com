@@ -1,0 +1,82 @@
+{
+  "chatgpt": {
+    "aka": "chat của OpenAI, tài khoản ChatGPT",
+    "def": "ChatGPT là sản phẩm của OpenAI: một chat trả lời bằng văn bản, có các gói đăng ký trả phí. Cùng tài khoản đó cũng dùng để đăng nhập vào Codex: khi ấy tác nhân làm việc trong phạm vi gói đăng ký, không tính theo giá API. Danh sách quốc gia của OpenAI áp dụng cho ChatGPT và cho khóa API như nhau.",
+    "more.label": "Codex không dùng được ở nước bạn: các quốc gia được hỗ trợ, VPN và lệnh cấm",
+    "faq.0.q": "ChatGPT là gì?",
+    "faq.0.a": "Chat của OpenAI trả lời bằng văn bản; các gói trả phí có nhiều tính năng hơn.",
+    "faq.1.q": "Đăng nhập Codex bằng ChatGPT như thế nào?",
+    "faq.1.a": "Khi khởi động, chọn đăng nhập bằng tài khoản ChatGPT: theo tài liệu của OpenAI, đó là quyền truy cập theo gói đăng ký.",
+    "faq.2.q": "Gói đăng ký ChatGPT có gỡ giới hạn theo khu vực không?",
+    "faq.2.a": "Không: tiêu chí là danh sách quốc gia của OpenAI, còn gói đăng ký không nằm trong các tiêu chí.",
+    "source.label": "Wikipedia (tiếng Anh): ChatGPT",
+    "sites.0.label": "Tài liệu OpenAI: đăng nhập vào Codex"
+  },
+  "api-key": {
+    "name": "Khóa API",
+    "aka": "khóa truy cập API",
+    "def": "Khóa API là một chuỗi dài để dịch vụ nhận ra yêu cầu đến từ ai và tính tiền chủ khóa. Trong Codex, đăng nhập bằng khóa API nghĩa là trả theo giá API cho mức dùng thực tế, không có gói đăng ký. Khóa nhạy cảm như mật khẩu của tài khoản: không đưa cho người khác và không đăng công khai.",
+    "more.label": "Codex không dùng được ở nước bạn: các quốc gia được hỗ trợ, VPN và lệnh cấm",
+    "faq.0.q": "Khóa API là gì?",
+    "faq.0.a": "Chuỗi để dịch vụ nhận ra chủ của yêu cầu và tính tiền người đó.",
+    "faq.1.q": "Đăng nhập bằng khóa API khác gì đăng nhập qua ChatGPT?",
+    "faq.1.a": "Khóa API tính tiền theo mức dùng, còn đăng nhập qua ChatGPT cho quyền truy cập theo gói đăng ký.",
+    "faq.2.q": "Có thể đưa khóa API của mình cho người khác không?",
+    "faq.2.a": "Không: khóa cho phép truy cập tài khoản của bạn, và điều khoản của OpenAI cấm chuyển tài khoản cho người khác.",
+    "source.label": "Tài liệu OpenAI: đăng nhập vào Codex"
+  },
+  "telemetry": {
+    "name": "Dữ liệu đo từ xa",
+    "aka": "OpenTelemetry, số đo và phân tích",
+    "def": "Dữ liệu đo từ xa (telemetry) là dữ liệu về cách một chương trình hoạt động mà chính chương trình tự gửi cho nhà phát triển: bộ đếm, số đo, báo cáo sử dụng. OpenTelemetry là chuẩn mở cho loại dữ liệu này. Trong Codex, ngoài các yêu cầu tới mô hình còn có dữ liệu phân tích và số đo được gửi đi; chúng tắt trong tệp cài đặt, còn nội dung yêu cầu chỉ vào nhật ký khi bạn đồng ý rõ ràng.",
+    "more.label": "Codex không dùng được ở nước bạn: các quốc gia được hỗ trợ, VPN và lệnh cấm",
+    "faq.0.q": "Dữ liệu đo từ xa là gì?",
+    "faq.0.a": "Dữ liệu về cách chương trình hoạt động mà chương trình tự gửi cho nhà phát triển.",
+    "faq.1.q": "OpenTelemetry là gì?",
+    "faq.1.a": "Chuẩn mở cho số đo, nhật ký và vết của chương trình; Codex có thể gửi dữ liệu theo định dạng này.",
+    "faq.2.q": "Tắt dữ liệu đo từ xa có dừng các yêu cầu tới mô hình không?",
+    "faq.2.a": "Không: các yêu cầu tới mô hình luôn được gửi đi, tác nhân làm việc dựa trên chúng.",
+    "source.label": "OpenTelemetry: nó là gì",
+    "sites.0.label": "Wikipedia (tiếng Anh): Telemetry"
+  },
+  "diff": {
+    "name": "Diff",
+    "aka": "diff, khác biệt giữa các phiên bản tệp",
+    "def": "Diff là cách hiển thị thay đổi: các dòng cũ của tệp đặt cạnh các dòng mới, đánh dấu cái gì bị xóa và cái gì được thêm. Tác nhân hiện diff trước khi ghi vào tệp, nên người dùng thấy sự khác biệt và quyết định có xác nhận hay không. Nhờ vậy việc sửa được xem xét trước khi nó thay đổi bất cứ thứ gì.",
+    "more.label": "Codex không dùng được ở nước bạn: các quốc gia được hỗ trợ, VPN và lệnh cấm",
+    "faq.0.q": "Diff là gì?",
+    "faq.0.a": "Hiển thị sự khác biệt giữa phiên bản cũ và mới của một tệp.",
+    "faq.1.q": "Vì sao nên xem diff trước khi ghi?",
+    "faq.1.a": "Để thấy chính xác cái gì sẽ thay đổi và từ chối khi tệp còn chưa bị động tới.",
+    "faq.2.q": "Đọc diff như thế nào?",
+    "faq.2.a": "Dòng có dấu trừ bị xóa, dòng có dấu cộng được thêm, các dòng còn lại giữ nguyên.",
+    "source.label": "Wikipedia (tiếng Anh): Diff"
+  },
+  "embargo": {
+    "name": "Cấm vận",
+    "aka": "cấm vận của Mỹ, hạn chế thương mại",
+    "def": "Cấm vận là lệnh của nhà nước cấm buôn bán và cung cấp dịch vụ với một quốc gia hay vùng lãnh thổ. Điều khoản của OpenAI cấm dùng dịch vụ của họ tại quốc gia hay vùng lãnh thổ bị Mỹ cấm vận, và vì lợi ích của những người bị luật thương mại cấm giao dịch. Đây là quy tắc riêng: nó có hiệu lực độc lập với danh sách quốc gia được hỗ trợ.",
+    "more.label": "Codex không dùng được ở nước bạn: các quốc gia được hỗ trợ, VPN và lệnh cấm",
+    "faq.0.q": "Cấm vận là gì?",
+    "faq.0.a": "Lệnh của nhà nước cấm buôn bán và cung cấp dịch vụ với một quốc gia hay vùng lãnh thổ.",
+    "faq.1.q": "Điều khoản của OpenAI nói gì về cấm vận?",
+    "faq.1.a": "Không được dùng dịch vụ tại quốc gia hay vùng lãnh thổ bị Mỹ cấm vận, hay vì lợi ích của những người bị luật thương mại cấm giao dịch.",
+    "faq.2.q": "Nằm trong danh sách quốc gia được hỗ trợ có đủ không?",
+    "faq.2.a": "Không: quy tắc về cấm vận nằm riêng trong điều khoản và áp dụng độc lập với danh sách.",
+    "source.label": "Điều khoản sử dụng của OpenAI",
+    "sites.0.label": "Wikipedia (tiếng Anh): Embargo"
+  },
+  "config-toml": {
+    "aka": "tệp cài đặt của Codex",
+    "def": "config.toml là tệp cài đặt của Codex ở định dạng văn bản TOML: các khối có tên trong ngoặc vuông, bên dưới là các tham số. Các khối [analytics], [otel] và [feedback] điều khiển dữ liệu phân tích, số đo và việc gửi phản hồi. Tệp này không tắt các yêu cầu tới mô hình: tác nhân làm việc dựa trên chúng.",
+    "more.label": "Codex không dùng được ở nước bạn: các quốc gia được hỗ trợ, VPN và lệnh cấm",
+    "faq.0.q": "config.toml là gì?",
+    "faq.0.a": "Tệp cài đặt của Codex: các khối trong ngoặc vuông và tham số bên dưới.",
+    "faq.1.q": "Tắt dữ liệu phân tích trong Codex như thế nào?",
+    "faq.1.a": "Ghi vào config.toml [analytics] enabled = false, còn cho số đo thì [otel] metrics_exporter = \"none\"; theo sơ đồ cài đặt, riêng dòng đầu là chưa đủ cho số đo.",
+    "faq.2.q": "Khối [feedback] làm gì?",
+    "faq.2.a": "Bật hoặc tắt việc gửi phản hồi bằng lệnh /feedback; mặc định việc gửi được bật.",
+    "source.label": "Tài liệu OpenAI: tham chiếu config.toml",
+    "sites.0.label": "toml.io — mô tả định dạng TOML"
+  }
+}

@@ -83,5 +83,10 @@
     "name": "Nhóm, nước đi và quy tắc",
     "hint": "Ngôn ngữ của các câu đố và phép đối xứng",
     "group.name": "Lý thuyết"
+  },
+  "access": {
+    "name": "Truy cập, tài khoản và thanh toán",
+    "hint": "Mạng, xác minh và thanh toán xoay quanh các dịch vụ AI",
+    "group.name": "Tác nhân AI"
   }
 }

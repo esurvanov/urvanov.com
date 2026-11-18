@@ -1,7 +1,7 @@
 ---
 title: Các mức trưởng thành của tác nhân AI: từ chat đến spec, skill, mã, harness và hệ thống agentic
 date: 2026-11-14
-updated: 2026-11-17
+updated: 2026-11-18
 description: Công việc của lập trình viên với AI lớn dần từ một câu hỏi trong chat thành hệ thống agentic; mỗi bước ghi lại điều gì, khi nào đi tiếp, cái giá ra sao.
 tags: AI, tác nhân, spec, skill, harness, mức trưởng thành, compound engineering
 category: specs
@@ -42,7 +42,7 @@ Các mức trưởng thành của tác nhân AI đi từ chat đến tác nhân,
 </b-chapter>
 
 <b-chapter id="sources" title="Quan điểm của tác giả và thị trường nói gì" icon="book">
-  <b-why>Bảy bước ở trên là quan điểm của tác giả, được ghép theo một tiêu chí: ở mỗi bước cụ thể được ghi lại cái gì. Trên thị trường, các tác giả khác nhau mô tả cùng một chuyển động, mỗi người ở một đoạn của mình: người thì về quy tắc, người về spec, người khác về skill hay harness. Tất cả đều đi cùng một hướng, từ cuộc trò chuyện vào một tệp và từ tệp vào mã. Bảng cho thấy các bước khớp với các nguồn ra sao.</b-why>
+  <b-why>Bảy bước của bài là quan điểm của tác giả, được ghép theo một tiêu chí: ở mỗi bước cụ thể được ghi lại cái gì. Trên thị trường, các tác giả khác nhau mô tả cùng một chuyển động, mỗi người ở một đoạn của mình: người thì về quy tắc, người về spec, người khác về skill hay harness. Tất cả đều đi cùng một hướng, từ cuộc trò chuyện vào một tệp và từ tệp vào mã. Bảng cho thấy các bước khớp với các nguồn ra sao.</b-why>
   <b-art names="ai-agent-maturity-levels/matrix"></b-art>
   <b-cap>Ô đặc nghĩa là tác giả mô tả bước đó một cách tường minh, vòng tròn nghĩa là mô tả một thứ tương đương gần (ví dụ “deterministic tooling” ở <a href="https://dev.to/arezvov/five-levels-of-ai-agent-adoption-in-software-development-teams-50pi" target="_blank" rel="noopener">Rezvov</a> và <a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a> được tính là gần với script). Hàng dưới cùng là bảy bước của bài viết này; chỉ <a href="https://arxiv.org/abs/2607.07052" target="_blank" rel="noopener">Malik</a> mô tả bước cuối một cách tường minh.</b-cap>
 
@@ -68,7 +68,7 @@ Các mức trưởng thành của tác nhân AI đi từ chat đến tác nhân,
   <b-finding>
     <ex>Rezvov, Clark và Shapiro đặt spec, Eledath và Shapiro đặt skill; bài này đặt chúng lên một thang duy nhất.</ex>
     <gen>Các thang khác nhau mô tả cùng một chuyển động từ những phía khác nhau: đầu tiên mọi thứ nằm trong cuộc trò chuyện, rồi trong một tệp, rồi trong mã.</gen>
-    <do>Hãy so sánh kinh nghiệm của chính bạn với bảy bước ở trên thay vì với danh sách của một tác giả riêng lẻ.</do>
+    <do>Hãy so sánh kinh nghiệm của chính bạn với bảy bước này thay vì với danh sách của một tác giả riêng lẻ.</do>
   </b-finding>
 </b-chapter>
 
@@ -121,13 +121,13 @@ Các mức trưởng thành của tác nhân AI đi từ chat đến tác nhân,
       <tr><td><b>Spec-first</b></td><td>spec được viết trước mã và dùng cho một nhiệm vụ</td><td>GitHub Spec Kit</td></tr>
       <tr><td><b>Spec-anchored</b></td><td>spec sống tiếp sau nhiệm vụ: các thay đổi được gộp vào nó</td><td><a href="/blog/openspec/">OpenSpec</a></td></tr>
       <tr><td><b>Spec-as-source</b></td><td>con người chỉ sửa spec, mã được sinh ra từ nó</td><td>Tessl; chỉ cấp này được <a href="https://martinfowler.com/articles/harness-engineering.html" target="_blank" rel="noopener">Böckeler</a> nêu</td></tr>
-      <tr><td><b>Spec-in-the-loop</b></td><td>metric và sự cố từ hệ thống đang chạy sửa lại spec</td><td>không có chương trình sẵn; hành vi tương tự ở <a href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" target="_blank" rel="noopener">Red Hat</a> và <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>, xem bên dưới</td></tr>
+      <tr><td><b>Spec-in-the-loop</b></td><td>metric và sự cố từ hệ thống đang chạy sửa lại spec</td><td>không có chương trình sẵn; hành vi tương tự ở <a href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" target="_blank" rel="noopener">Red Hat</a> và <a href="https://every.to/guides/compound-engineering" target="_blank" rel="noopener">Every</a>: Red Hat có tệp LessonsLearned.md, Every có bước Compound</td></tr>
     </tbody>
     </table>
   </b-table>
 
   Red Hat phân biệt hai chế độ làm việc với spec. Ở chế độ “tương tác” (interacting), con người tinh chỉnh spec cùng với tác nhân: ví dụ, nhờ tác nhân chấm spec từ 0 đến 10 và nói còn thiếu gì để triển khai tự chủ. Khi điểm là 9–10, chế độ “chỉ thị” (instructing) bắt đầu: tác nhân đọc các spec, tìm các skill cần thiết, viết mã, chạy test và tự sửa lỗi. Ở <a href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" target="_blank" rel="noopener">Shapiro</a> điều này khớp với cấp thứ tư, nơi con người viết một spec, tranh luận với tác nhân về nó rồi bỏ đi<b-proof href="https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/" quote="Shapiro: “You write a spec. You argue with it about the spec.” — danshapiro.com"></b-proof>.
-  <b-callout icon="refresh">Red Hat gọi cấp thứ tư là “đồng tiến hóa” (co-evolution) của spec. Tác nhân giữ một tệp LessonsLearned.md: ở mỗi lỗi nó ghi nguyên nhân và cách sửa và đề xuất một chỉnh sửa cho spec “như thế nào” liên quan<b-proof href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" quote="Naszcyniec, Red Hat: “turns every off-key moment into a permanent improvement” — developers.redhat.com"></b-proof>. Every làm điều tương tự ở bước Compound, được mô tả bên dưới.</b-callout>
+  <b-callout icon="refresh">Red Hat gọi cấp thứ tư là “đồng tiến hóa” (co-evolution) của spec. Tác nhân giữ một tệp LessonsLearned.md: ở mỗi lỗi nó ghi nguyên nhân và cách sửa và đề xuất một chỉnh sửa cho spec “như thế nào” liên quan<b-proof href="https://developers.redhat.com/articles/2026/03/30/vibes-specs-skills-agents-ai-coding" quote="Naszcyniec, Red Hat: “turns every off-key moment into a permanent improvement” — developers.redhat.com"></b-proof>. Every làm điều tương tự ở bước Compound.</b-callout>
   <b-finding>
     <ex>spec.md của báo cáo nói: những cột nào, dữ liệu lấy từ đâu, và báo cáo xong khi các tổng khớp với bản xuất.</ex>
     <gen><a href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" target="_blank" rel="noopener">Clark</a> đặt spec ở đỉnh thang của mình: phần triển khai ở đó trở thành một đầu ra có thể thay thế chứ không phải một tài sản bền vững<b-proof href="https://www.hyperact.co.uk/blog/7-levels-of-ai-assisted-development" quote="Clark: “interchangeable output rather than a durable asset” — hyperact.co.uk"></b-proof>. Ông cũng gọi cấp thứ bảy là gần với một lần đặt lại hơn là sự tiếp nối của thang.</gen>
@@ -308,7 +308,7 @@ Các mức trưởng thành của tác nhân AI đi từ chat đến tác nhân,
 </b-chapter>
 
 <b-chapter id="start" title="Bắt đầu từ đâu: các prompt sẵn cho tác nhân" icon="play">
-  <b-why>Bốn prompt nâng tri thức lên một bước, tức là rút nó ra khỏi bước bên dưới. Hãy đặt nhiệm vụ của chính bạn vào chỗ các dấu ngoặc vuông.</b-why>
+  <b-why>Bốn prompt nâng tri thức lên một bước, tức là rút nó ra khỏi bước thấp hơn. Hãy đặt nhiệm vụ của chính bạn vào chỗ các dấu ngoặc vuông.</b-why>
   <b-sublabel top="12">Từ chat đến tệp quy tắc</b-sublabel>
   <b-prompt>
     Hãy đọc lại cuộc đối thoại này. Tìm những chỗ tôi đã sửa bạn hoặc lặp lại cùng một điều.

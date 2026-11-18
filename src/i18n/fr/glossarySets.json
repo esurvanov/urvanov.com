@@ -83,5 +83,10 @@
     "name": "Groupes, mouvements et règles",
     "hint": "Le langage des casse-têtes et des symétries",
     "group.name": "Théorie"
+  },
+  "access": {
+    "name": "Accès, compte et paiement",
+    "hint": "Réseaux, vérifications et paiements autour des services d'IA",
+    "group.name": "Agents IA"
   }
 }

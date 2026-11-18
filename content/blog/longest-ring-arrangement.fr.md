@@ -1,7 +1,7 @@
 ---
 title: Quel arrangement de boules sur un anneau est le plus long à démêler : très probablement le « miroir » — force brute, IA et conjecture du nombre de paires
 date: 2026-10-22
-updated: 2026-11-08
+updated: 2026-11-18
 description: Combien de coups exige l’arrangement le plus emmêlé de boules sur un anneau avec rotation et échange, et ce qu’est le diamètre d’un graphe de Cayley. Comment la force brute, un réseau de neurones avec recherche en faisceau, un concours Kaggle et des preuves convergent vers n(n−1)/2 — l’article CayleyPy RL (arXiv 2502.18663) expliqué en schémas.
 tags: IA, recherche, réseaux de neurones, mathématiques, graphes de Cayley, recherche de chemin
 category: research
@@ -262,7 +262,7 @@ L’arrangement le plus long à démêler est très probablement le « miroir »
     <q t="Quel est le diamètre de l’anneau avec rotation et échange ?">Selon la conjecture, n(n−1)/2 — le nombre de paires de boules, à partir de quatre boules. La force brute le confirme jusqu’à 15 boules ; il est démontré qu’il se situe entre n(n−1)/2 − n/2 − 1 et n(n−1)/2 + 3n.</q>
     <q t="La conjecture est-elle démontrée ?">Pas entièrement. En 2026, l’un des auteurs a publié une preuve de la borne inférieure d’exactement le nombre de paires, mais c’est une prépublication ; la borne supérieure est encore plus haute de 3 coups par boule.</q>
     <q t="Comment un réseau de neurones trouve-t-il un chemin dans un énorme graphe ?">Un réseau-boussole apprend sur des marches aléatoires à deviner la distance au but, et la recherche en faisceau garde en même temps de nombreux meilleurs états selon son estimation, pour qu’une erreur ne mène pas dans une impasse.</q>
-    <q t="Puis-je essayer moi-même ?">Oui : le code des auteurs est ouvert et tourne gratuitement sur Kaggle, et la bibliothèque CayleyPy est sur GitHub (liens ci-dessous).</q>
+    <q t="Puis-je essayer moi-même ?">Oui : le code des auteurs est ouvert et tourne gratuitement sur Kaggle, et la bibliothèque CayleyPy est sur GitHub.</q>
   </b-faq-cards>
 </b-chapter>
 

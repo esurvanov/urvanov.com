@@ -6,6 +6,6 @@
 .s-rich.bk .bk-gruppy-groups-ico svg { width: 18px; height: 18px; }
 .s-rich.bk .bk-gruppy-groups-t { font-weight: 700; font-size: 16px; line-height: 1.3; }
 .s-rich.bk .bk-gruppy-groups-c { display: inline-block; margin-top: 4px; font-family: "JetBrains Mono", monospace; font-size: 12.5px; background: var(--surface-2); padding: 2px 8px; border-radius: 6px; color: var(--ink); }
-.s-rich.bk .bk-gruppy-groups-q { font-size: 14.5px; color: var(--ink-2); margin-top: 6px; line-height: 1.45; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.s-rich.bk .bk-gruppy-groups-q { font-size: 14.5px; color: var(--ink-2); margin-top: 6px; line-height: 1.45; text-align: left; hyphens: manual; -webkit-hyphens: manual; }
 .s-rich.bk .bk-gruppy-groups-q::before { content: attr(data-k); font-weight: 600; color: var(--ink); }
 .s-rich.bk .bk-gruppy-groups-p { font-size: 13px; color: var(--muted); margin-top: 6px; }

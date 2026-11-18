@@ -2,7 +2,7 @@
 title: Báo cáo sử dụng ChatGPT Enterprise trong công ty: ai dùng, dùng để làm gì và nên mua công cụ AI nào tiếp theo
 seoTitle: Báo cáo sử dụng ChatGPT Enterprise: ai dùng, để làm gì
 date: 2026-09-28
-updated: 2026-11-17
+updated: 2026-11-18
 description: Cách xem ai dùng ChatGPT Enterprise và để làm gì: năm bản xuất từ bảng quản trị cho ra mức độ áp dụng, bản đồ tác vụ và danh sách phỏng vấn.
 tags: AI, nghiên cứu, phân tích
 category: research
@@ -46,7 +46,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
     <step t="Khảo sát toàn công ty">Bao nhiêu người gặp khó khăn đó, gặp thường xuyên đến đâu và nó cản trở nhiều không</step>
     <step t="So sánh">Quy mô tác vụ, mức nghiêm trọng của hậu quả, cách xoay xở hiện có, chi phí giải pháp</step>
     <step t="Thử công cụ">Các lựa chọn triển vọng, thử trên tác vụ thật cùng nhân viên</step>
-    <step t="Quyết định">Người nắm ngân sách quyết định theo sáu <a href="#signs">dấu hiệu ở trên</a>: chất lượng, thời gian và sửa tay, khả năng lặp lại, quy mô, truy cập dữ liệu, chi phí; “không cần công cụ mới” là một kết quả hợp lệ</step>
+    <step t="Quyết định">Người nắm ngân sách quyết định theo sáu <a href="#signs">dấu hiệu</a>: chất lượng, thời gian và sửa tay, khả năng lặp lại, quy mô, truy cập dữ liệu, chi phí; “không cần công cụ mới” là một kết quả hợp lệ</step>
   </b-steps>
   <b-io justify>
     <item k="Đầu vào">Các bản xuất từ bảng quản trị: tin nhắn, chi tiêu, dự án và trình kết nối của từng người</item>
@@ -59,7 +59,7 @@ ChatGPT Enterprise là phiên bản ChatGPT dành cho tổ chức, có bảng qu
   Năm bước từ xuất dữ liệu đến danh sách người hoàn chỉnh.
 
   <b-steps top="18" round>
-    <step t="Xuất dữ liệu">Năm mục của bảng quản trị, chi tiết ở phần “Lấy dữ liệu ở đâu”</step>
+    <step t="Xuất dữ liệu">Năm mục của bảng quản trị</step>
     <step t="Dựng bức tranh chung">Mức độ áp dụng, độ đồng đều giữa các nhóm, công cụ chính, các nhóm hành vi</step>
     <step t="Vẽ bản chất công việc">Mọi người giải những tác vụ nào, bằng công cụ tích hợp nào và qua tích hợp nào</step>
     <step t="Đối chiếu với dữ liệu gốc">Kiểm tra từng bản tổng hợp với bản xuất gốc</step>

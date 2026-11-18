@@ -172,7 +172,7 @@
  },
  "vue": {
   "aka": "framework web",
-  "def": "Vue là framework để dựng website bằng JavaScript: trang được ghép từ các khối gọi là component, và có thể đưa vào dự án từng bước. Cùng với Angular và React, đây là một trong những framework phổ biến nhất.",
+  "def": "Vue là gì (What is Vue): framework JavaScript để dựng website, trong đó trang được ghép từ các khối gọi là component. Có thể đưa Vue vào dự án từng bước. Cùng với Angular và React, đây là một trong những framework web phổ biến nhất.",
   "faq.0.q": "Vue là gì?",
   "faq.0.a": "Framework JavaScript để dựng website: trang được ghép từ các khối component.",
   "faq.1.q": "Vue tiện ở điểm nào?",
@@ -225,18 +225,18 @@
  },
  "context": {
   "name": "Ngữ cảnh (context)",
-  "def": "Ngữ cảnh (context) là mọi thứ mô hình nhìn thấy tại thời điểm đó: cuộc trò chuyện, tệp của dự án và dữ liệu từ các hệ thống được kết nối. Cái gì không có trong ngữ cảnh thì tác nhân không biết.",
+  "def": "Ngữ cảnh trong AI là gì: mọi thứ mô hình nhìn thấy tại thời điểm đó, gồm cuộc trò chuyện, tệp dự án và dữ liệu từ các hệ thống được kết nối. Cái gì không có trong ngữ cảnh thì tác nhân không biết. Kiến thức lâu dài nằm trong AGENTS.md hoặc CLAUDE.md.",
   "faq.0.q": "Ngữ cảnh trong AI là gì?",
   "faq.0.a": "Mọi thứ mô hình nhìn thấy tại thời điểm đó: cuộc trò chuyện, tệp của dự án và dữ liệu từ các hệ thống được kết nối.",
   "faq.1.q": "Vì sao tác nhân không biết về dự án của tôi?",
   "faq.1.a": "Cái gì không có trong ngữ cảnh thì tác nhân không biết. Kiến thức lâu dài về dự án được đưa vào các tệp chỉ dẫn như AGENTS.md hoặc CLAUDE.md.",
   "source.label": "Anthropic: Context windows",
-  "seo.title": "Ngữ cảnh trong AI: là gì, cửa sổ ngữ cảnh và vì sao tác nhân quên",
-  "seo.description": "Ngữ cảnh là mọi thứ mô hình nhìn thấy lúc này: cuộc hội thoại, các tệp dự án, dữ liệu từ các hệ thống đã kết nối. Cửa sổ ngữ cảnh là gì, vì sao tác nhân quên dự án của bạn và nơi để kiến thức lâu dài: AGENTS.md, CLAUDE.md, bộ nhớ."
+  "seo.title": "Ngữ cảnh trong AI là gì (context window): mô hình thấy gì",
+  "seo.description": "Ngữ cảnh là mọi thứ mô hình thấy lúc này: hội thoại, tệp dự án, dữ liệu từ hệ thống kết nối. Vì sao tác nhân quên dự án; AGENTS.md, CLAUDE.md, bộ nhớ."
  },
  "token": {
   "name": "Token",
-  "def": "Token là đơn vị văn bản mà LLM đếm: xấp xỉ một âm tiết hoặc một từ ngắn. Số token quyết định giá của một yêu cầu và lượng nội dung vừa trong ngữ cảnh.",
+  "def": "Token là gì trong AI: đơn vị văn bản mà LLM đếm, xấp xỉ một âm tiết hoặc một từ ngắn. Số token quyết định giá của một yêu cầu và lượng nội dung vừa trong ngữ cảnh. Cả đầu vào lẫn câu trả lời của mô hình đều tính bằng token.",
   "faq.0.q": "Token trong AI là gì?",
   "faq.0.a": "Đơn vị văn bản mà LLM đếm: xấp xỉ một âm tiết hoặc một từ ngắn.",
   "faq.1.q": "Vì sao số token quan trọng?",
@@ -336,13 +336,15 @@
   "source.label": "Trang chính thức của Atlassian"
  },
  "mcp": {
-  "def": "MCP là giao thức mở để tác nhân kết nối với các dịch vụ bên ngoài, như Jira, Airtable, cơ sở dữ liệu, qua một giao diện chung. MCP server đưa cho tác nhân một bộ công cụ, còn quyền hạn vẫn do bạn quyết định.",
+  "def": "MCP là gì: giao thức mở (Model Context Protocol) để tác nhân AI kết nối với các dịch vụ bên ngoài, như Jira, Airtable hay cơ sở dữ liệu, qua một giao diện chung. MCP server đưa cho tác nhân một bộ công cụ, còn quyền truy cập được đặt ở phía server, do bạn quyết định.",
+  "seo.title": "MCP là gì trong AI: giao thức nối tác nhân với dịch vụ",
+  "seo.description": "MCP (Model Context Protocol) cho tác nhân AI đọc Jira, Airtable hay cơ sở dữ liệu qua một giao diện chung. MCP server đưa công cụ, quyền hạn do bạn đặt.",
   "faq.0.q": "MCP là gì, nói đơn giản?",
   "faq.0.a": "Giao thức mở nối tác nhân với các dịch vụ bên ngoài như Jira hay cơ sở dữ liệu qua một giao diện chung.",
   "faq.1.q": "Ai kiểm soát quyền hạn qua MCP?",
   "faq.1.a": "Bạn: MCP server đưa cho tác nhân một bộ công cụ, còn quyền truy cập được đặt ở phía server.",
   "source.label": "Trang Model Context Protocol",
-  "more.label": "MCP cho tác nhân AI: giải quyết vấn đề gì và cách giao việc kết nối cho tác nhân"
+  "more.label": "MCP là gì: giải quyết vấn đề gì cho tác nhân AI và cách giao việc kết nối cho tác nhân"
  },
  "mcp-client": {
   "name": "MCP client",
@@ -504,15 +506,15 @@
  "harness": {
   "name": "Harness",
   "aka": "agent harness",
-  "def": "Harness là toàn bộ phần bao quanh mô hình biến nó thành một tác nhân làm việc được: chỉ dẫn, công cụ, quyền hạn, bộ nhớ và các bước kiểm tra. Mô hình vẫn là một, kết quả phụ thuộc vào harness.",
+  "def": "Harness là gì trong AI: toàn bộ phần bao quanh mô hình biến nó thành một tác nhân làm việc được, gồm chỉ dẫn, công cụ, quyền hạn, bộ nhớ và các bước kiểm tra. Mô hình vẫn là một, còn việc tác nhân biết gì, làm được gì và tự kiểm tra ra sao đều do harness quyết định.",
   "faq.0.q": "Harness trong AI là gì?",
   "faq.0.a": "Toàn bộ phần bao quanh mô hình khiến nó thành một tác nhân làm việc được: chỉ dẫn, công cụ, quyền truy cập, bộ nhớ và các bước kiểm tra.",
   "faq.1.q": "Vì sao kết quả phụ thuộc vào harness?",
   "faq.1.a": "Mô hình vẫn là một, còn việc tác nhân biết gì, làm được gì và tự kiểm tra ra sao đều do harness quyết định.",
   "source.label": "Anthropic: Effective harnesses for agents",
-  "seo.title": "Agent harness là gì và gồm những phần nào",
-  "seo.description": "Agent harness là toàn bộ phần bao quanh mô hình để nó thành tác nhân: vòng lặp, công cụ, ngữ cảnh, bộ nhớ, quy tắc, quyền hạn và kiểm tra. Có liên kết.",
-  "more.label": "Tác nhân AI = LLM + harness: LLM, harness và tác nhân khác nhau thế nào",
+  "seo.title": "Harness là gì trong AI: phần bao quanh mô hình",
+  "seo.description": "Harness trong AI gồm vòng lặp, công cụ, ngữ cảnh, bộ nhớ, quy tắc, quyền hạn và kiểm tra. Mô hình vẫn là một, kết quả phụ thuộc vào harness.",
+  "more.label": "Harness là gì: LLM, harness và tác nhân khác nhau thế nào",
   "parts.title": "Harness gồm những gì"
  },
  "hooks": {
@@ -714,16 +716,16 @@
  "ai-agent": {
   "name": "Tác nhân AI (AI agent)",
   "aka": "tác nhân LLM, AI tác nhân (agentic AI)",
-  "def": "Tác nhân AI (AI agent, còn gọi là tác nhân LLM hay agentic AI) là chương trình trong đó một LLM làm việc bên trong một harness: tự chọn các bước, đọc tệp, chạy lệnh, gọi công cụ và kiểm tra kết quả ngay trong môi trường của bạn. Ví dụ: Claude Code nhận nhiệm vụ “sửa test đang lỗi”, đọc mã, chỉnh sửa, chạy test và lặp lại cho đến khi test qua.",
+  "def": "AI agent là gì: tác nhân AI (còn gọi là tác nhân LLM hay agentic AI) là chương trình trong đó một LLM làm việc bên trong một harness, tự chọn các bước, chạy lệnh, gọi công cụ và kiểm tra kết quả trong môi trường của bạn. Ví dụ: Claude Code.",
   "faq.0.q": "Tác nhân AI khác chatbot thế nào?",
   "faq.0.a": "Chatbot trả lời bằng văn bản. Tác nhân AI tự chọn các bước, đọc tệp, chạy lệnh và kiểm tra kết quả trong môi trường của bạn.",
   "faq.1.q": "Tác nhân AI được cấu tạo như thế nào?",
   "faq.1.a": "Một mạng nơ-ron (LLM) làm việc bên trong một harness: mô hình suy luận, còn harness cung cấp công cụ, quyền hạn và các bước kiểm tra.",
   "source.label": "Anthropic: Building effective agents",
-  "seo.title": "Tác nhân AI (AI agent) = LLM + harness là gì",
-  "seo.description": "Tác nhân AI là chương trình trong đó LLM làm việc bên trong harness và đưa nhiệm vụ đến kết quả. Kiến trúc tác nhân LLM trong một bảng, kèm ví dụ: Claude Code, Codex, Cursor.",
+  "seo.title": "AI agent là gì: tác nhân AI = LLM + harness",
+  "seo.description": "AI agent (tác nhân AI) là LLM làm việc trong harness: tự chọn bước, chạy lệnh và kiểm tra kết quả. Khác chatbot ở đâu; ví dụ Claude Code, Codex, Cursor.",
   "parts.title": "Ví dụ về tác nhân AI",
-  "more.label": "Tác nhân AI = LLM + harness: LLM, harness và tác nhân khác nhau thế nào",
+  "more.label": "Harness là gì: LLM, harness và tác nhân khác nhau thế nào",
   "matrix.title": "Tác nhân AI gồm những gì",
   "matrix.head": [
    "LLM",
@@ -848,7 +850,7 @@
  },
  "llm": {
   "aka": "mô hình ngôn ngữ lớn, mô hình LLM",
-  "def": "LLM (mô hình ngôn ngữ lớn, large language model) là mạng nơ-ron được huấn luyện trên lượng lớn văn bản và mã, viết tiếp văn bản từ một prompt; nó đọc và viết văn bản theo token. Tự nó chỉ trả lời; để hành động trong môi trường của bạn, nó cần một harness, và mô hình cùng harness là một tác nhân.",
+  "def": "LLM là gì: mô hình ngôn ngữ lớn (large language model), mạng nơ-ron được huấn luyện trên lượng lớn văn bản và mã, viết tiếp văn bản từ một prompt theo token. Tự nó chỉ trả lời; để hành động trong môi trường của bạn, nó cần một harness, và mô hình cùng harness là một tác nhân.",
   "faq.0.q": "LLM trong IT nghĩa là gì?",
   "faq.0.a": "Mô hình ngôn ngữ lớn: mạng nơ-ron được huấn luyện trên lượng lớn văn bản và mã, viết tiếp văn bản theo yêu cầu.",
   "faq.1.q": "LLM khác tác nhân AI thế nào?",
@@ -856,7 +858,7 @@
   "faq.2.q": "Trong tiếng Anh viết “a LLM” hay “an LLM”?",
   "faq.2.a": "“An LLM”: chữ viết tắt đọc từng chữ cái, và chữ L đầu đọc là “el”, bắt đầu bằng nguyên âm.",
   "source.label": "Wikipedia: Large language model",
-  "seo.title": "LLM là gì: mô hình ngôn ngữ lớn và khác tác nhân AI thế nào",
+  "seo.title": "LLM là gì (What is an LLM): mô hình ngôn ngữ lớn",
   "seo.description": "LLM là gì nói đơn giản: mô hình ngôn ngữ lớn đọc văn bản theo token và tự nó chỉ trả lời; thêm harness thì thành tác nhân. Ví dụ: GPT, Claude, DeepSeek.",
   "compare.title": "Ví dụ về LLM: ai làm ra và tác nhân nào chạy trên chúng",
   "compare.head": [
@@ -1015,7 +1017,7 @@
  },
  "claude-code": {
   "aka": "Claude Code CLI, tác nhân lập trình của Anthropic",
-  "def": "Claude Code là tác nhân lập trình của Anthropic: đọc dự án, sửa tệp, chạy lệnh và kiểm thử, làm việc với git. Khác với Claude trong khung chat, nó có quyền truy cập dự án: chat trả lời bằng văn bản, còn Claude Code tự sửa tệp và chạy lệnh. Nó chạy trong terminal (CLI), trong VS Code và JetBrains, trong ứng dụng máy tính và trong trình duyệt, và ở đâu cũng là cùng một tác nhân. Nó không có mô hình riêng: chạy trên các mô hình Claude (Fable, Opus, Sonnet, Haiku); đổi mô hình bằng `/model`. Nó đọc quy tắc dự án từ `CLAUDE.md`, giữ các quy trình lặp lại trong skills và kết nối hệ thống bên ngoài qua MCP. Lựa chọn thay thế gần nhất là Codex và Cursor.",
+  "def": "Claude Code là gì: tác nhân lập trình của Anthropic: đọc dự án, sửa tệp, chạy lệnh và kiểm thử, làm việc với git. Chat Claude trả lời bằng văn bản, còn Claude Code tự sửa tệp và chạy lệnh trong dự án. Nó chạy trên các mô hình Claude và đọc quy tắc dự án từ CLAUDE.md.",
   "faq.0.q": "Claude khác Claude Code thế nào?",
   "faq.0.a": "Claude trong chat trả lời bằng văn bản. Claude Code là tác nhân lập trình: tự đọc dự án, sửa tệp, chạy lệnh và test.",
   "faq.1.q": "Claude Code chạy ở đâu?",
@@ -1023,8 +1025,8 @@
   "faq.2.q": "Claude Code dùng những mô hình nào?",
   "faq.2.a": "Trên các mô hình Claude: Fable, Opus, Sonnet và Haiku. Đổi mô hình bằng lệnh /model.",
   "source.label": "Tài liệu Claude Code",
-  "seo.title": "Claude Code là gì? Claude Code và chat Claude, mô hình, cách cài đặt",
-  "seo.description": "Claude Code dùng để làm gì: đọc dự án, sửa tệp và chạy test. Claude Code và chat Claude, mô hình nó dùng, CLAUDE.md, skill và MCP.",
+  "seo.title": "Claude Code là gì: tác nhân lập trình của Anthropic",
+  "seo.description": "Claude Code đọc dự án, sửa tệp, chạy lệnh và test, khác chat Claude ở quyền truy cập dự án. Chạy trong terminal, VS Code, JetBrains; dùng CLAUDE.md, skill, MCP.",
   "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào",
   "compare.title": "Claude Code và Claude: khác nhau ở đâu",
   "compare.head": [
@@ -1133,7 +1135,7 @@
  },
  "codex": {
   "aka": "OpenAI Codex, Codex AI, ChatGPT Codex",
-  "def": "Codex là ứng dụng tác nhân lập trình của OpenAI trên các mô hình GPT, và là thứ khác với ChatGPT: chat trả lời bằng văn bản, còn Codex làm việc ngay trong dự án — đọc mã, sửa tệp, chạy lệnh và test, chuẩn bị pull request. Nó chạy trong ChatGPT, trong ứng dụng desktop, trong terminal, trong IDE và trên đám mây, nơi nhiệm vụ chạy trong một sandbox riêng; ở đâu cũng là một tác nhân và đi kèm các gói ChatGPT, với giới hạn tùy theo gói. Cấu tạo giống Claude Code và Cursor. Nó đọc chỉ dẫn dự án từ `AGENTS.md`, giữ các quy trình lặp lại trong skill và kết nối hệ thống bên ngoài qua MCP. Tóm lại: ChatGPT trả lời, còn Codex làm việc ngay trong dự án; trong ứng dụng ChatGPT cho máy tính, Codex hiển thị chế độ xem diff và review, còn ChatGPT ẩn các chi tiết kỹ thuật.",
+  "def": "Codex là gì: ứng dụng tác nhân lập trình của OpenAI trên các mô hình GPT, khác với ChatGPT. Chat trả lời bằng văn bản, còn Codex làm việc ngay trong dự án: đọc mã, sửa tệp, chạy lệnh và test, chuẩn bị pull request. Nó chạy trong ChatGPT, terminal, IDE và trên đám mây.",
   "faq.0.q": "Codex và ChatGPT có phải là một không?",
   "faq.0.a": "Không: ChatGPT là chat trả lời bằng văn bản, Codex là tác nhân lập trình tự đọc dự án, sửa tệp và chạy test. Codex đi kèm các gói ChatGPT.",
   "faq.1.q": "Codex chạy ở đâu?",
@@ -1147,7 +1149,7 @@
   "faq.5.q": "Codex có dùng được ở Nga không?",
   "faq.5.a": "Không chính thức: Nga không nằm trong danh sách các nước mà OpenAI cung cấp dịch vụ.",
   "source.label": "Repo GitHub của Codex",
-  "seo.title": "Codex là gì: khác ChatGPT thế nào, gói trong một bảng",
+  "seo.title": "Codex là gì: tác nhân lập trình của OpenAI, khác ChatGPT",
   "seo.description": "Codex là tác nhân lập trình của OpenAI: sửa mã, chạy test và tạo pull request, còn ChatGPT trả lời bằng văn bản. Chế độ và gói trong một bảng.",
   "more.label": "Claude Code, Codex, Cursor và Hermes Agent: chọn cái nào",
   "compare.title": "Codex và ChatGPT: Chat và Work",
@@ -1432,7 +1434,7 @@
  },
  "claude-in-chrome": {
   "aka": "Claude for Chrome, tiện ích Claude cho Chrome",
-  "def": "Claude in Chrome (Claude for Chrome) là tiện ích mở rộng chính thức của Claude do Anthropic phát hành cho trình duyệt Chrome, cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console. Nó làm việc bằng phiên đăng nhập của bạn nên thấy giống bạn. Cài từ Chrome Web Store và chỉ chạy trên các gói Claude trả phí: Pro, Max, Ultra, Team và Enterprise. Có hai chế độ: bảng bên cạnh, nơi Claude tự làm việc trên trang đang mở, và điều khiển trình duyệt từ Claude Code. Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính; chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
+  "def": "Claude in Chrome là gì (Claude for Chrome): tiện ích mở rộng chính thức của Claude do Anthropic phát hành cho Chrome, cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console. Cài từ Chrome Web Store, chỉ chạy trên các gói Claude trả phí.",
   "faq.3.q": "Tiện ích Claude cho Chrome làm gì?",
   "faq.3.a": "Cho phép tác nhân làm việc trong trình duyệt của bạn: mở trang, bấm nút, điền biểu mẫu và đọc console dưới tài khoản đăng nhập của bạn.",
   "faq.4.q": "Dùng Claude in Chrome như thế nào?",
@@ -1440,8 +1442,8 @@
   "faq.5.q": "Claude in Chrome có chạy trong các trình duyệt khác không?",
   "faq.5.a": "Bảng bên cạnh chính thức chỉ chạy trong Chrome trên máy tính và không chạy trên điện thoại. Chế độ Claude Code còn chạy trong Edge và các trình duyệt Chromium khác.",
   "source.label": "Trợ giúp: Get started with Claude in Chrome",
-  "seo.title": "Claude in Chrome là gì: tiện ích Chrome, gói, cài đặt",
-  "seo.description": "Claude in Chrome là tiện ích Claude cho Chrome: tác nhân bấm, điền form và đọc console dưới tài khoản của bạn. Cài từ Chrome Web Store, chỉ gói trả phí.",
+  "seo.title": "Claude in Chrome là gì (Claude for Chrome): tiện ích",
+  "seo.description": "Claude in Chrome (Claude for Chrome) là tiện ích Claude cho Chrome: tác nhân bấm, điền form và đọc console dưới tài khoản của bạn. Chỉ gói Claude trả phí.",
   "more.label": "Claude Code trong Chrome: tác nhân kiểm thử trang web trong trình duyệt như thế nào — gỡ lỗi và điền form dưới phiên đăng nhập của bạn",
   "compare.title": "Hai chế độ: bảng bên cạnh và Claude Code",
   "compare.head": [

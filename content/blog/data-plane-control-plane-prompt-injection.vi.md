@@ -1,7 +1,7 @@
 ---
 title: Mặt phẳng dữ liệu và mặt phẳng điều khiển của tác nhân: giữ cho dữ liệu không biến thành lệnh (prompt injection)
 date: 2026-10-05
-updated: 2026-11-13
+updated: 2026-11-18
 description: Lệnh của tác nhân (mặt phẳng điều khiển) khác dữ liệu nó đọc (mặt phẳng dữ liệu) ở chỗ nào, tấn công chèn prompt hoạt động ra sao và cách phòng thủ: quyền tối thiểu, duyệt thao tác ghi, tách đọc khỏi ghi, nguồn tin cậy.
 tags: AI, tác nhân, bảo mật, prompt injection, MCP, harness
 category: harness
@@ -87,5 +87,5 @@ Mặt phẳng điều khiển là các lệnh bạn đưa cho tác nhân AI (AI 
     <item href="/blog/incident-investigation-agent/" k="Ví dụ" t="Điều tra sự cố bằng tác nhân AI: Sentry và Grafana qua MCP">Tác nhân đọc log và ticket ở chế độ chỉ đọc</item>
   </b-links>
 </b-chapter>
-<b-footer>Các ví dụ là hư cấu. Cảnh báo về máy chủ đọc nội dung không đáng tin nằm trong tài liệu Claude Code: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>. Các quy tắc phòng thủ ở trên là thực hành của nhóm.</b-footer>
+<b-footer>Các ví dụ là hư cấu. Cảnh báo về máy chủ đọc nội dung không đáng tin nằm trong tài liệu Claude Code: <a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>. Các quy tắc phòng thủ trong bài là thực hành của nhóm.</b-footer>
 </b-post>

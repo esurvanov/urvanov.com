@@ -1,7 +1,7 @@
 ---
 title: Промпты для рабочих задач: пять частей и шесть примеров для ChatGPT и Claude
 date: 2026-09-28
-updated: 2026-11-13
+updated: 2026-11-18
 description: Промпты для работы с нейросетью: из каких частей собран хороший рабочий промпт, как выглядят слабый и сильный запрос, шесть готовых шаблонов под частые задачи и как сохранить их в проекте — по руководствам Anthropic, OpenAI и Google.
 tags: AI, промпты, ChatGPT, Claude
 category: prompts
@@ -239,6 +239,7 @@ toc: model=Human-in-the-loop | parts=Пять частей | examples=Шесть
     <item href="/blog/specs-rules-skills/" k="Контекст" t="Спеки, библия, правила и скиллы">Где хранить промпт дольше одного чата</item>
     <item href="/blog/ai-in-code-harness-and-tools/" k="Разработка" t="ИИ в коде">Харнесс и четыре группы программ</item>
     <item href="/blog/chatgpt-enterprise-usage-report/" k="Отчёт" t="Отчёт по ChatGPT Enterprise">Кто в компании чем пользуется</item>
+    <item href="/blog/codex-or-chatgpt-what-to-choose/" k="Выбор" t="Codex или ChatGPT">Чат или агент для кода</item>
   </b-links>
 </b-chapter>
 <b-footer>Промпты — шаблоны: в квадратных скобках то, что нужно подставить. Приёмы — по официальным руководствам Anthropic, OpenAI и Google, источник у значка рядом с утверждением. Цитаты из справки OpenAI и руководства Google даны пересказом.</b-footer>

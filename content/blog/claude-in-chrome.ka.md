@@ -1,7 +1,7 @@
 ---
 title: Claude Code Chrome-ში: როგორ ამოწმებს აგენტი საიტს ბრაუზერში — გამართვა და ფორმები თქვენი ავტორიზაციით
 date: 2026-10-05
-updated: 2026-11-17
+updated: 2026-11-18
 description: Claude in Chrome აკავშირებს Claude Code-ს ბრაუზერთან: აგენტი ხსნის ჩანართებს, კითხულობს კონსოლს და ავსებს ფორმებს. დაკავშირება და ნებართვები.
 tags: AI, აგენტები, Claude Code, Claude in Chrome, ბრაუზერი, QA, harness
 category: harness
@@ -18,7 +18,7 @@ Claude Code ამოწმებს საიტს ბრაუზერში
   <b-why>Chrome-ის გაფართოება Claude Code-ს ბრაუზერთან აკავშირებს. აგენტი ხსნის ახალ ჩანართებს და ხილულ ფანჯარაში მუშაობს<b-proof href="https://code.claude.com/docs/en/chrome" quote="Browser actions run in a visible Chrome window in real time."/>.</b-why>
   <iso-art name="claude-in-chrome/terminal-to-browser"></iso-art>
   <b-why align="left">სურათზე მარცხნიდან მარჯვნივ სამი მონაწილეა: Claude Code ტერმინალში, გაფართოება და თქვენი ბრაუზერი. აგენტი გაფართოებას ბრძანებებს აძლევს (გახსენი ჩანართი, დააწკაპუნე, წაიკითხე გვერდი), გაფართოება კი მათ ბრაუზერში ასრულებს, სადაც თქვენს სერვისებში უკვე შესული ხართ. ამიტომ აგენტს პაროლების აკრეფა არ სჭირდება: თქვენი სესია უკვე გახსნილია<b-proof href="https://code.claude.com/docs/en/chrome" quote="shares your browser's login state"/>. მუშაობა ხილულ ფანჯარაში მიმდინარეობს და ნაბიჯებს თვალს ადევნებთ.</b-why>
-  <b-why align="left">ქვემოთ მოცემული ტეგები გვიჩვენებს, რომელ ბრაუზერებთან მუშაობს გაფართოება. Chrome და Edge ოფიციალურად არის მხარდაჭერილი<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi და Opera იმავე Chromium ძრავზეა აგებული: Claude Code მათში გაფართოებას პოულობს და უკავშირდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. ბოლო ტეგი, „WSL: no“, ნიშნავს, რომ ეს კავშირი Windows Subsystem for Linux-ში (WSL) არ მუშაობს<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
+  <b-why align="left">ტეგები გვიჩვენებს, რომელ ბრაუზერებთან მუშაობს გაფართოება. Chrome და Edge ოფიციალურად არის მხარდაჭერილი<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration works with Google Chrome and Microsoft Edge."/>. Brave, Arc, Vivaldi და Opera იმავე Chromium ძრავზეა აგებული: Claude Code მათში გაფართოებას პოულობს და უკავშირდება<b-proof href="https://code.claude.com/docs/en/chrome" quote="Claude Code also detects the extension and sets up the connection in other Chromium-based browsers"/>. ბოლო ტეგი, „WSL: no“, ნიშნავს, რომ ეს კავშირი Windows Subsystem for Linux-ში (WSL) არ მუშაობს<b-proof href="https://code.claude.com/docs/en/chrome" quote="Chrome integration isn't supported in Windows Subsystem for Linux (WSL)."/>.</b-why>
   <b-pills>
     <pill>Chrome</pill>
     <pill>Edge</pill>
@@ -80,7 +80,7 @@ Claude Code ამოწმებს საიტს ბრაუზერში
   <b-say-agent title="უთხარით აგენტს">გახსენი სატესტო სტენდი, დაამატე ნივთი კალათაში, გამოიყენე პრომოკოდი და გადაიხადე სატესტო ბარათით. თუ გადახდა ჩავარდა, ნახე კონსოლი და ჩაწერე გზის GIF.</b-say-agent>
   <b-why align="left">შემდეგი არის მაგალითი QA-ს სტატიიდან: ტიკეტი PAY-142 და აგენტის გზა მზა შედეგამდე.</b-why>
   <iso-art name="claude-in-chrome/ticket-to-report"></iso-art>
-  <b-why align="left">სურათზე ნაჩვენებია გზა ტიკეტიდან შედეგამდე. ტიკეტი აგენტამდე აღწევს, აგენტი ბრაუზერში გადის კალათას, პრომოკოდსა და გადახდას, კონსოლში პოულობს შეცდომას და წერს GIF-ს. QA იღებს არა მოყოლას, არამედ შესამოწმებელ კვალს: კონსოლის ტექსტს და გვერდზე მოძრაობის ჩანაწერს. თუ ჩანაწერი და კონსოლი ანგარიშს არ ემთხვევა, ეს მაშინვე ჩანს.</b-why>
+  <b-why align="left">სურათზე ნაჩვენებია გზა ტიკეტიდან შედეგამდე. ტიკეტი აგენტამდე აღწევს, აგენტი ბრაუზერში გადის კალათას, პრომოკოდსა და გადახდას, კონსოლში პოულობს შეცდომას და წერს GIF-ს. QA იღებს შესამოწმებელ კვალს: კონსოლის ტექსტს და გვერდზე მოძრაობის ჩანაწერს. თუ ჩანაწერი და კონსოლი ანგარიშს არ ემთხვევა, ეს მაშინვე ჩანს.</b-why>
   <b-finding>
     <ex>აგენტი გზას გადის, კონსოლის შეცდომას პოულობს და ტიკეტისთვის GIF-ს წერს.</ex>
     <gen>ფანჯარა ხილულია, ამიტომ QA ნაბიჯებს თვალს ადევნებს და აგენტის გაჩერება შეუძლია. კონსოლის ტექსტი და GIF შესამოწმებელ კვალს ტოვებს.</gen>

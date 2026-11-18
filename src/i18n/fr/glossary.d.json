@@ -98,7 +98,7 @@
   },
   "qc": {
     "aka": "quality control, contrôle qualité, contrôle qualité logiciel",
-    "def": "QC (quality control, « contrôle qualité ») est la vérification d’un résultat fini par rapport aux exigences : trouver les défauts avant que le produit n’atteigne l’utilisateur et décider de le livrer ou de le renvoyer en retouche. Comme dans une usine un contrôleur examine les bouilloires terminées et met de côté les défectueuses, dans un logiciel le QC vérifie la version construite : il lance des tests et compare le résultat aux exigences. Le QC répond à la question « qu’avons-nous obtenu ? », tandis que la QA (assurance qualité) travaille sur le processus pour que moins de défauts apparaissent.",
+    "def": "QC (quality control, « contrôle qualité ») est la vérification d’un résultat fini par rapport aux exigences : trouver les défauts avant que le produit n’atteigne l’utilisateur et décider de le livrer ou de le renvoyer en retouche. Comme dans une usine un contrôleur examine les bouilloires terminées et met de côté les défectueuses, dans un logiciel le QC vérifie la version construite : il lance des tests et compare le résultat aux exigences. Le QC répond à la question « qu’est-ce qui en est ressorti ? », tandis que la QA (assurance qualité) travaille sur le processus pour que moins de défauts apparaissent.",
     "faq.0.q": "Qu’est-ce que le QC ?",
     "faq.0.a": "Quality control, « contrôle qualité » : la vérification d’un résultat fini par rapport aux exigences pour trouver les défauts avant la livraison.",
     "faq.1.q": "En quoi le QC diffère-t-il de la QA ?",
