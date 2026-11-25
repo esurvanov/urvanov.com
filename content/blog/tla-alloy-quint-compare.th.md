@@ -1,13 +1,13 @@
 ---
 title: TLA+ vs Quint vs Alloy: เลือกภาษาตรวจสอบเชิงรูปนัยตัวไหน
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-26
 description: TLA+ vs Alloy vs Quint: แต่ละภาษาอธิบายอะไร เขียนอย่างไร ตรวจด้วยโปรแกรมอะไร และเหมาะกับใคร ตั้งแต่ลำดับเหตุการณ์ไปจนถึงความสัมพันธ์ของข้อมูล
 tags: AI, spec, TLA+, Alloy, Quint, การตรวจสอบเชิงรูปนัย, model checking, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide
 mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, model checking, formal specification, formal methods, TLA+ vs Alloy vs Quint, Leslie Lamport
-toc: idea=หนึ่งโจทย์ | table=สรุป | tla-alloy=TLA+ และ Alloy | tla-quint=TLA+ และ Quint | alloy-quint=Alloy และ Quint | choose=เลือกอะไร | faq=คำถามที่พบบ่อย | next=อ่านเพิ่มเติม
+toc: idea=หนึ่งโจทย์ | table=สรุป | tla-alloy=TLA+ vs Alloy | tla-quint=TLA+ และ Quint | alloy-quint=Alloy และ Quint | choose=เลือกอะไร | faq=คำถามที่พบบ่อย | next=อ่านเพิ่มเติม
 ---
 
 ในบรรดาภาษาตรวจสอบเชิงรูปนัย TLA+ และ Quint อธิบายพฤติกรรมของระบบทีละขั้นเหมือนกัน และต่างกันที่สัญกรณ์ Quint อ่านเหมือนโค้ดทั่วไป TLA+ อ่านเหมือนสูตร ส่วน Alloy อธิบายออบเจกต์และความเชื่อมโยงระหว่างกัน ใช้ Quint สำหรับกฎของผลิตภัณฑ์ที่เปลี่ยนตามเวลา TLA+ สำหรับการพิสูจน์ที่เข้มงวด Alloy สำหรับโครงสร้างข้อมูลและสิทธิ์เข้าถึง
@@ -48,16 +48,24 @@ toc: idea=หนึ่งโจทย์ | table=สรุป | tla-alloy=TLA+ �
   </b-finding>
 </b-chapter>
 
-<b-chapter id="tla-alloy" icon="scales" title="TLA+ ต่างจาก Alloy อย่างไร">
+<b-chapter id="tla-alloy" icon="scales" title="TLA+ vs Alloy: ต่างกันอย่างไรและควรเลือกอะไร">
   <b-art names="tla-alloy-quint-compare/tla-vs-alloy" wide/>
+<b-why align="left">TLA+ vs Alloy ขึ้นอยู่กับว่าอะไรพังได้ TLA+ อธิบายว่าระบบเปลี่ยนไปทีละขั้นอย่างไร และหาลำดับการกระทำที่ทำให้กฎพัง Alloy อธิบายวัตถุและความเชื่อมโยงระหว่างกัน และหาโครงสร้างที่กฎถูกละเมิด เลือก TLA+ สำหรับลำดับของเหตุการณ์ และ Alloy สำหรับข้อมูลและสิทธิ์เข้าถึง</b-why>
 <b-table id="tla-alloy">
 
 | | TLA+ | Alloy |
 |---|---|---|
+| **อธิบายอะไร** | พฤติกรรมของระบบทีละขั้น | วัตถุและความเชื่อมโยงระหว่างกัน |
+| **รูปแบบการเขียน** | แบบคณิตศาสตร์ | ตรรกะเชิงความสัมพันธ์ |
+| **ตรวจด้วยอะไร** | TLC หรือ Apalache | Alloy Analyzer |
+| **เมื่อกฎพังจะเห็นอะไร** | ลำดับขั้นตอน | ตัวอย่างโครงสร้าง |
+| **ขั้นตอนตามเวลา** | เป็นพื้นฐานของภาษา | มีตั้งแต่เวอร์ชัน 6 |
+| **การพิสูจน์** | ระบบ TLAPS | วิเคราะห์ภายในขอบเขตที่กำหนด |
 | **เลือกเมื่อไร** | ลำดับของเหตุการณ์สำคัญ | โครงสร้างของข้อมูลและสิทธิ์สำคัญ |
 
 </b-table>
-  <b-why align="left">TLA+ สร้างโดยเลสลี แลมพอร์ต และตั้งอยู่บนความคิดที่ว่าวิธีที่ดีที่สุดในการอธิบายสิ่งต่าง ๆ อย่างแม่นยำคือคณิตศาสตร์ง่าย ๆ<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/> มันหาลำดับขั้นที่กฎพัง เช่นการชำระเงินซ้ำและสองคำสั่งซื้อ Alloy หาตัวอย่างของโครงสร้างแทนลำดับ และตรวจคุณสมบัติของแบบจำลองด้วยการสร้างตัวอย่างค้าน<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/> เลือก TLA+ สำหรับลำดับของเหตุการณ์ และ Alloy สำหรับความเชื่อมโยงและสิทธิ์เข้าถึง</b-why>
+  <b-why align="left">TLA+ สร้างโดยเลสลี แลมพอร์ต และตั้งอยู่บนความคิดที่ว่าวิธีที่ดีที่สุดในการอธิบายสิ่งต่าง ๆ อย่างแม่นยำคือคณิตศาสตร์ง่าย ๆ<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/> มันหาลำดับขั้นที่กฎพัง เช่นการชำระเงินซ้ำและสองคำสั่งซื้อ Alloy หาตัวอย่างของโครงสร้างแทนลำดับ และตรวจคุณสมบัติของแบบจำลองด้วยการสร้างตัวอย่างค้าน<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/></b-why>
+  <b-why align="left">การวิเคราะห์ใน Alloy ทำภายในขอบเขต คุณกำหนดว่าจะพิจารณาวัตถุแต่ละชนิดกี่ตัว<b-proof href="https://alloytools.org/alloy6.html" quote="Analyses proceed as in Alloy by bounding signatures."/> ถ้าไม่กำหนดช่วงเวลา จะใช้สิบขั้น<b-proof href="https://alloytools.org/alloy6.html" quote="If no time horizon is given, this is implicitly equivalent to for 10 steps."/> มารินาออกแบบสิทธิ์เข้าถึงในอัสตานาและเขียนกฎว่า “คำขอหนึ่งรายการมีผู้รับผิดชอบคนเดียว” เธอรันการตรวจกับพนักงานสามคนและคำขอสามรายการ ถ้าไม่พบตัวอย่างที่ละเมิด ผลนั้นใช้ได้เฉพาะขนาดที่ตรวจแล้ว หากต้องการเห็นด้วยตัวเอง มารินาขยายขอบเขตแล้วรันการวิเคราะห์อีกครั้ง</b-why>
 </b-chapter>
 
 <b-chapter id="tla-quint" icon="code" title="TLA+ ต่างจาก Quint อย่างไร">

@@ -1,13 +1,13 @@
 ---
 title: TLA+, Quint ou Alloy : quel langage de vérification formelle choisir
 date: 2026-10-25
-updated: 2026-11-17
+updated: 2026-11-26
 description: TLA+, Alloy ou Quint : ce que décrit chaque langage, comment on l'écrit, ce qui le vérifie et à qui il convient. De l'ordre des événements aux données.
 tags: IA, spécifications, TLA+, Alloy, Quint, vérification formelle, vérification de modèles, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide
 mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, model checking, formal specification, formal methods, TLA+ vs Alloy vs Quint, Leslie Lamport
-toc: idea=Une tâche | table=Résumé | tla-alloy=TLA+ et Alloy | tla-quint=TLA+ et Quint | alloy-quint=Alloy et Quint | choose=Que choisir | faq=FAQ | next=Pour aller plus loin
+toc: idea=Une tâche | table=Résumé | tla-alloy=TLA+ vs Alloy | tla-quint=TLA+ et Quint | alloy-quint=Alloy et Quint | choose=Que choisir | faq=FAQ | next=Pour aller plus loin
 ---
 
 Parmi les langages de vérification formelle, TLA+ et Quint décrivent tous deux le comportement d'un système pas à pas et ne diffèrent que par la notation : Quint se lit comme du code ordinaire, TLA+ comme des formules. Alloy décrit des objets et les liens entre eux. Prenez Quint pour les règles d'un produit dans le temps, TLA+ pour des preuves strictes, Alloy pour la structure des données et les droits d'accès.
@@ -48,16 +48,24 @@ Parmi les langages de vérification formelle, TLA+ et Quint décrivent tous deux
   </b-finding>
 </b-chapter>
 
-<b-chapter id="tla-alloy" icon="scales" title="En quoi TLA+ diffère d'Alloy">
+<b-chapter id="tla-alloy" icon="scales" title="TLA+ vs Alloy : différences et lequel choisir">
   <b-art names="tla-alloy-quint-compare/tla-vs-alloy" wide/>
+<b-why align="left">TLA+ vs Alloy dépend de ce qui peut casser. TLA+ décrit comment un système change étape par étape et cherche l'enchaînement d'actions qui brise une règle. Alloy décrit des objets et leurs liens et cherche une structure où la règle est violée. Prenez TLA+ pour l'ordre des événements, Alloy pour les données et les droits d'accès.</b-why>
 <b-table id="tla-alloy">
 
 | | TLA+ | Alloy |
 |---|---|---|
+| **Ce qu'il décrit** | le comportement du système étape par étape | des objets et les liens entre eux |
+| **Notation** | mathématique | logique relationnelle |
+| **Ce qui vérifie** | TLC ou Apalache | Alloy Analyzer |
+| **Ce qu'on voit en cas de violation** | un enchaînement d'étapes | un exemple de structure |
+| **Étapes dans le temps** | la base du langage | disponibles depuis la version 6 |
+| **Preuves** | le système TLAPS | l'analyse se fait dans des bornes fixées |
 | **Quand le prendre** | l'ordre des événements compte | la structure des données et des droits compte |
 
 </b-table>
-  <b-why align="left">TLA+ a été créé par Leslie Lamport, et repose sur l'idée que la meilleure façon de décrire précisément les choses est la mathématique simple<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/>. Il cherche l'enchaînement d'étapes sur lequel une règle se brise, par exemple un double paiement et deux commandes. Alloy cherche un exemple de structure plutôt qu'un enchaînement, et vérifie les propriétés d'un modèle en construisant des contre-exemples<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/>. Prenez TLA+ pour l'ordre des événements et Alloy pour les liens et les droits d'accès. </b-why>
+  <b-why align="left">TLA+ a été créé par Leslie Lamport, et repose sur l'idée que la meilleure façon de décrire précisément les choses est la mathématique simple<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/>. Il cherche l'enchaînement d'étapes sur lequel une règle se brise, par exemple un double paiement et deux commandes. Alloy cherche un exemple de structure plutôt qu'un enchaînement, et vérifie les propriétés d'un modèle en construisant des contre-exemples<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/>.</b-why>
+  <b-why align="left">L'analyse dans Alloy se fait dans des bornes : vous indiquez combien d'objets de chaque sorte examiner<b-proof href="https://alloytools.org/alloy6.html" quote="Analyses proceed as in Alloy by bounding signatures."/>. Sans horizon de temps, dix étapes sont prises<b-proof href="https://alloytools.org/alloy6.html" quote="If no time horizon is given, this is implicitly equivalent to for 10 steps."/>. Marina conçoit des droits d'accès à Astana et écrit la règle « une demande a un seul responsable ». Elle lance la vérification avec trois employés et trois demandes. Si aucun contre-exemple n'apparaît, cela ne vaut que pour les tailles vérifiées. Pour le constater elle-même, Marina élargit les bornes et relance l'analyse.</b-why>
 </b-chapter>
 
 <b-chapter id="tla-quint" icon="code" title="En quoi TLA+ diffère de Quint">

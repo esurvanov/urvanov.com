@@ -1,13 +1,13 @@
 ---
 title: TLA+, Quint და Alloy: რომელი ფორმალური ვერიფიკაციის ენა აირჩიოთ
 date: 2026-10-25
-updated: 2026-11-17
+updated: 2026-11-26
 description: TLA+, Alloy და Quint შედარებაში: რას აღწერს თითოეული ენა, როგორ იწერება, რა ამოწმებს მას და ვისთვის გამოდგება.
 tags: AI, სპეციფიკაციები, TLA+, Alloy, Quint, ფორმალური ვერიფიკაცია, მოდელების ვერიფიკაცია (model checking), TLA+ და Alloy, Quint და TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide
 mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, model checking, formal specification, formal methods, TLA+ vs Alloy vs Quint, Leslie Lamport
-toc: idea=ერთი ამოცანა | table=შეჯამება | tla-alloy=TLA+ და Alloy | tla-quint=TLA+ და Quint | alloy-quint=Alloy და Quint | choose=რა აირჩიოთ | faq=კითხვები | next=დამატებით
+toc: idea=ერთი ამოცანა | table=შეჯამება | tla-alloy=TLA+ vs Alloy | tla-quint=TLA+ და Quint | alloy-quint=Alloy და Quint | choose=რა აირჩიოთ | faq=კითხვები | next=დამატებით
 ---
 
 ფორმალური ვერიფიკაციის ენებს შორის TLA+ და Quint სისტემის ქცევას ნაბიჯ-ნაბიჯ აღწერენ და მხოლოდ ჩანაწერით განსხვავდებიან: Quint ჩვეულებრივი კოდივით იკითხება, TLA+ კი ფორმულებივით. Alloy აღწერს ობიექტებს და მათ შორის კავშირებს. Quint-ი აირჩიეთ პროდუქტის წესებისთვის დროში, TLA+ მკაცრი მტკიცებისთვის, Alloy მონაცემთა სტრუქტურისა და წვდომის უფლებებისთვის.
@@ -48,16 +48,24 @@ toc: idea=ერთი ამოცანა | table=შეჯამება | 
   </b-finding>
 </b-chapter>
 
-<b-chapter id="tla-alloy" icon="scales" title="რით განსხვავდება TLA+ Alloy-სგან">
+<b-chapter id="tla-alloy" icon="scales" title="TLA+ vs Alloy: რით განსხვავდება და რომელი აირჩიოთ">
   <b-art names="tla-alloy-quint-compare/tla-vs-alloy" wide/>
+<b-why align="left">TLA+ vs Alloy: არჩევანი იმაზეა დამოკიდებული, რა შეიძლება გაფუჭდეს. TLA+ აღწერს, როგორ იცვლება სისტემა ნაბიჯ-ნაბიჯ, და ეძებს მოქმედებების ჯაჭვს, რომელიც წესს არღვევს. Alloy აღწერს ობიექტებსა და მათ კავშირებს და ეძებს სტრუქტურას, სადაც წესი დარღვეულია. მოვლენების თანმიმდევრობისთვის აირჩიეთ TLA+, მონაცემებისა და წვდომის უფლებებისთვის Alloy.</b-why>
 <b-table id="tla-alloy">
 
 | | TLA+ | Alloy |
 |---|---|---|
+| **რას აღწერს** | სისტემის ქცევას ნაბიჯ-ნაბიჯ | ობიექტებსა და მათ კავშირებს |
+| **ჩანაწერი** | მათემატიკური | მიმართებების ლოგიკა |
+| **რით მოწმდება** | TLC ან Apalache | Alloy Analyzer |
+| **რა ჩანს დარღვევისას** | ნაბიჯების ჯაჭვი | სტრუქტურის მაგალითი |
+| **ნაბიჯები დროში** | ენის საფუძველი | მეექვსე ვერსიიდან |
+| **მტკიცებები** | TLAPS სისტემა | ანალიზი დადგენილ საზღვრებში მიდის |
 | **როდის აირჩიოთ** | მნიშვნელოვანია მოვლენების თანმიმდევრობა | მნიშვნელოვანია მონაცემებისა და უფლებების სტრუქტურა |
 
 </b-table>
-  <b-why align="left">TLA+ შექმნა Leslie Lamport-მა და ის ეყრდნობა იდეას, რომ ზუსტი აღწერის საუკეთესო გზა მარტივი მათემატიკაა<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/>. ის ეძებს ნაბიჯების ჯაჭვს, რომელზეც წესი ირღვევა, მაგალითად, ორმაგ გადახდას და ორ შეკვეთას. Alloy ჯაჭვის ნაცვლად სტრუქტურის მაგალითს ეძებს და მოდელის თვისებებს საპირისპირო მაგალითების აგებით ამოწმებს<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/>. მოვლენების თანმიმდევრობისთვის TLA+-ი აირჩიეთ, კავშირებისა და წვდომის უფლებებისთვის Alloy-ი. </b-why>
+  <b-why align="left">TLA+ შექმნა Leslie Lamport-მა და ის ეყრდნობა იდეას, რომ ზუსტი აღწერის საუკეთესო გზა მარტივი მათემატიკაა<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/>. ის ეძებს ნაბიჯების ჯაჭვს, რომელზეც წესი ირღვევა, მაგალითად, ორმაგ გადახდას და ორ შეკვეთას. Alloy ჯაჭვის ნაცვლად სტრუქტურის მაგალითს ეძებს და მოდელის თვისებებს საპირისპირო მაგალითების აგებით ამოწმებს<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/>.</b-why>
+  <b-why align="left">Alloy-ში ანალიზი საზღვრებში მიდის: თქვენ უთითებთ, თითოეული სახის რამდენი ობიექტი განიხილოს<b-proof href="https://alloytools.org/alloy6.html" quote="Analyses proceed as in Alloy by bounding signatures."/>. თუ დროის ჰორიზონტი არ არის მითითებული, აიღება ათი ნაბიჯი<b-proof href="https://alloytools.org/alloy6.html" quote="If no time horizon is given, this is implicitly equivalent to for 10 steps."/>. მარინა ასტანაში წვდომის უფლებებს აპროექტებს და წერს წესს „განაცხადს ერთი პასუხისმგებელი ჰყავს“. ის შემოწმებას სამი თანამშრომლისა და სამი განაცხადისთვის უშვებს. თუ დარღვევის მაგალითი არ ჩნდება, ეს მხოლოდ შემოწმებულ ზომებს ეხება. ამის სანახავად მარინა საზღვრებს ზრდის და ანალიზს ხელახლა უშვებს.</b-why>
 </b-chapter>
 
 <b-chapter id="tla-quint" icon="code" title="რით განსხვავდება TLA+ Quint-ისგან">

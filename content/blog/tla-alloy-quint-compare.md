@@ -2,13 +2,13 @@
 title: TLA+ vs Quint vs Alloy: какой язык формальной верификации выбрать
 seoTitle: Quint vs TLA+ vs Alloy: какой язык выбрать
 date: 2026-10-25
-updated: 2026-11-17
+updated: 2026-11-26
 description: Quint, TLA+ и Alloy: что описывает каждый язык, как записан, чем проверяется и что выбрать для правил продукта, строгих доказательств или данных.
 tags: AI, спеки, TLA+, Alloy, Quint, формальная верификация, проверка моделей, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide
 mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, проверка моделей, model checking, формальная спецификация, формальные языки, TLA+ vs Alloy vs Quint, Лесли Лэмпорт
-toc: idea=Одна задача | table=Сводка | tla-alloy=TLA+ и Alloy | tla-quint=TLA+ и Quint | qt=Quint или TLA+ | alloy-quint=Alloy и Quint | choose=Что выбрать | faq=Вопросы | next=Дальше по теме
+toc: idea=Одна задача | table=Сводка | tla-alloy=TLA+ vs Alloy | tla-quint=TLA+ и Quint | qt=Quint или TLA+ | alloy-quint=Alloy и Quint | choose=Что выбрать | faq=Вопросы | next=Дальше по теме
 ---
 
 Quint и TLA+ описывают поведение системы шаг за шагом, но записывают его по-разному. Quint написан как код с типами, переводится в TLA+ и запускает проверяющие программы Apalache и TLC. TLA+ пишется формулами и имеет систему доказательств TLAPS, которой у Quint нет. Ниже к ним добавлен Alloy: он описывает объекты и связи.
@@ -49,16 +49,24 @@ Quint и TLA+ описывают поведение системы шаг за �
   </b-finding>
 </b-chapter>
 
-<b-chapter id="tla-alloy" icon="scales" title="Чем TLA+ отличается от Alloy">
+<b-chapter id="tla-alloy" icon="scales" title="TLA+ vs Alloy: чем отличаются и что выбрать">
   <b-art names="tla-alloy-quint-compare/tla-vs-alloy" wide/>
+<b-why align="left">TLA+ vs Alloy: TLA+ описывает, как система меняется шаг за шагом, и ищет цепочку действий, которая ломает правило. Alloy описывает объекты и связи между ними и ищет пример структуры, где правило нарушено. Если опасен порядок событий, берите TLA+, если устройство данных и прав доступа, берите Alloy.</b-why>
 <b-table id="tla-alloy">
 
 | | TLA+ | Alloy |
 |---|---|---|
+| **Что описывают** | поведение системы шаг за шагом | объекты и связи между ними |
+| **Запись** | математическая | логика отношений |
+| **Чем проверяют** | TLC или Apalache | Alloy Analyzer |
+| **Что видно при нарушении** | цепочка шагов | пример структуры |
+| **Шаги во времени** | основа языка | есть с шестой версии |
+| **Доказательства** | система TLAPS | анализ идёт в заданных границах |
 | **Когда брать** | важен порядок событий | важно устройство данных и прав |
 
 </b-table>
-  <b-why align="left">TLA+ создал Лесли Лэмпорт, и в его основе лежит мысль, что точнее всего описывать вещи простой математикой<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/>. Он ищет цепочку шагов, на которой правило ломается, например двойную оплату и два заказа. Alloy ищет пример структуры, в которой правило нарушено, и проверяет свойства модели, строя контрпримеры<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/>. Для порядка событий берут TLA+, для связей и прав доступа Alloy.</b-why>
+  <b-why align="left">TLA+ создал Лесли Лэмпорт, и в его основе лежит мысль, что точнее всего описывать вещи простой математикой<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/>. Он ищет цепочку шагов, на которой правило ломается, например двойную оплату и два заказа. Alloy ищет пример структуры, в которой правило нарушено, и проверяет свойства модели, строя контрпримеры<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/>.</b-why>
+  <b-why align="left">Анализ в Alloy идёт в заданных границах: вы указываете, сколько объектов каждого вида рассматривать<b-proof href="https://alloytools.org/alloy6.html" quote="Analyses proceed as in Alloy by bounding signatures."/>. Если срок во времени не задан, берётся десять шагов<b-proof href="https://alloytools.org/alloy6.html" quote="If no time horizon is given, this is implicitly equivalent to for 10 steps."/>. Марина проектирует права доступа в Астане и записывает правило «у заявки один ответственный». Она запускает проверку для трёх сотрудников и трёх заявок. Если примера нарушения нет, это относится только к проверенным размерам. Чтобы проверить это самой, Марина увеличивает границы и запускает анализ ещё раз.</b-why>
 </b-chapter>
 
 <b-chapter id="tla-quint" icon="code" title="Чем TLA+ отличается от Quint">

@@ -1,13 +1,13 @@
 ---
 title: TLA+ vs Quint vs Alloy: chọn ngôn ngữ kiểm chứng hình thức nào
 date: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-26
 description: TLA+ vs Alloy vs Quint: mỗi ngôn ngữ mô tả gì, được viết ra sao, cái gì kiểm tra nó và hợp với ai, từ thứ tự sự kiện đến quan hệ giữa dữ liệu.
 tags: AI, đặc tả, TLA+, Alloy, Quint, kiểm chứng hình thức, kiểm chứng mô hình, TLA+ vs Alloy, Quint vs TLA+, Alloy Analyzer, TLC
 category: specs
 layout: wide
 mentions: TLA+, Alloy, Quint, Apalache, TLC, Alloy Analyzer, model checking, formal specification, formal methods, TLA+ vs Alloy vs Quint, Leslie Lamport
-toc: idea=Một bài toán | table=Tổng hợp | tla-alloy=TLA+ và Alloy | tla-quint=TLA+ và Quint | alloy-quint=Alloy và Quint | choose=Chọn gì | faq=FAQ | next=Đọc thêm
+toc: idea=Một bài toán | table=Tổng hợp | tla-alloy=TLA+ vs Alloy | tla-quint=TLA+ và Quint | alloy-quint=Alloy và Quint | choose=Chọn gì | faq=FAQ | next=Đọc thêm
 ---
 
 Trong các ngôn ngữ kiểm chứng hình thức, TLA+ và Quint đều mô tả hành vi của hệ thống theo từng bước và khác nhau ở ký pháp: Quint đọc như code thông thường, TLA+ như công thức. Alloy mô tả các đối tượng và mối liên kết giữa chúng. Hãy dùng Quint cho quy tắc sản phẩm theo thời gian, TLA+ cho chứng minh chặt chẽ, Alloy cho cấu trúc dữ liệu và quyền truy cập.
@@ -48,16 +48,24 @@ Trong các ngôn ngữ kiểm chứng hình thức, TLA+ và Quint đều mô t�
   </b-finding>
 </b-chapter>
 
-<b-chapter id="tla-alloy" icon="scales" title="TLA+ khác Alloy thế nào">
+<b-chapter id="tla-alloy" icon="scales" title="TLA+ vs Alloy: khác nhau thế nào và nên chọn gì">
   <b-art names="tla-alloy-quint-compare/tla-vs-alloy" wide/>
+<b-why align="left">TLA+ vs Alloy phụ thuộc vào thứ có thể hỏng. TLA+ mô tả hệ thống thay đổi từng bước và tìm chuỗi hành động làm vỡ quy tắc. Alloy mô tả các đối tượng và liên kết giữa chúng, rồi tìm một cấu trúc vi phạm quy tắc. Hãy chọn TLA+ cho thứ tự sự kiện, chọn Alloy cho dữ liệu và quyền truy cập.</b-why>
 <b-table id="tla-alloy">
 
 | | TLA+ | Alloy |
 |---|---|---|
+| **Mô tả gì** | hành vi của hệ thống từng bước | đối tượng và liên kết giữa chúng |
+| **Cách viết** | kiểu toán học | logic quan hệ |
+| **Kiểm tra bằng gì** | TLC hoặc Apalache | Alloy Analyzer |
+| **Thấy gì khi vi phạm** | một chuỗi bước | một ví dụ cấu trúc |
+| **Các bước theo thời gian** | nền tảng của ngôn ngữ | có từ phiên bản 6 |
+| **Chứng minh** | hệ thống TLAPS | phân tích chạy trong giới hạn đã đặt |
 | **Khi nào chọn** | thứ tự sự kiện quan trọng | cấu trúc dữ liệu và quyền quan trọng |
 
 </b-table>
-  <b-why align="left">TLA+ do Leslie Lamport tạo ra, và nó dựa trên ý tưởng rằng cách tốt nhất để mô tả chính xác là toán học đơn giản<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/>. Nó tìm chuỗi bước làm quy tắc vỡ, chẳng hạn thanh toán hai lần và hai đơn hàng. Alloy tìm ví dụ về một cấu trúc thay vì một chuỗi, và kiểm tra các tính chất của mô hình bằng cách dựng phản ví dụ<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/>. Hãy chọn TLA+ cho thứ tự sự kiện và Alloy cho liên kết và quyền truy cập. </b-why>
+  <b-why align="left">TLA+ do Leslie Lamport tạo ra, và nó dựa trên ý tưởng rằng cách tốt nhất để mô tả chính xác là toán học đơn giản<b-proof href="https://lamport.azurewebsites.net/tla/tla.html" quote="the best way to describe things precisely is with simple mathematics"/>. Nó tìm chuỗi bước làm quy tắc vỡ, chẳng hạn thanh toán hai lần và hai đơn hàng. Alloy tìm ví dụ về một cấu trúc thay vì một chuỗi, và kiểm tra các tính chất của mô hình bằng cách dựng phản ví dụ<b-proof href="https://alloytools.org/about.html" quote="check properties of the model by generating counterexamples"/>.</b-why>
+  <b-why align="left">Phân tích trong Alloy chạy trong giới hạn: bạn cho biết cần xét bao nhiêu đối tượng mỗi loại<b-proof href="https://alloytools.org/alloy6.html" quote="Analyses proceed as in Alloy by bounding signatures."/>. Nếu không đặt khoảng thời gian, mặc định là mười bước<b-proof href="https://alloytools.org/alloy6.html" quote="If no time horizon is given, this is implicitly equivalent to for 10 steps."/>. Marina thiết kế quyền truy cập ở Astana và viết quy tắc “mỗi yêu cầu có một người phụ trách”. Cô chạy kiểm tra với ba nhân viên và ba yêu cầu. Nếu không xuất hiện ví dụ vi phạm, kết quả chỉ đúng cho các kích thước đã kiểm tra. Để tự thấy điều đó, Marina nới giới hạn và chạy lại phân tích.</b-why>
 </b-chapter>
 
 <b-chapter id="tla-quint" icon="code" title="TLA+ khác Quint thế nào">
