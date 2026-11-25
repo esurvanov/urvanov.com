@@ -1,8 +1,9 @@
+import { formatDate as dateText } from '@/lib/formatDate'
 import { marked } from 'marked'
 import { renderTex } from '@/lib/math'
 import { withBlogArt } from '@/data/blogArt'
 import { withBlocks } from '@/data/blocks'
-import { LOCALES, NEW_LANGS, baseOf, localizeLinks, type Lang, type L } from '@/lib/i18n'
+import { NEW_LANGS, baseOf, localizeLinks, type Lang, type L } from '@/lib/i18n'
 
 // Формулы: $…$ — в строке, $$…$$ — отдельной строкой по центру. Набирает KaTeX при сборке; до markdown формулы
 // заменяются метками, чтобы разметка не тронула знаки _ и *, и возвращаются в готовый HTML.
@@ -189,7 +190,7 @@ export function addPosts(found: Record<string, string>, copies: Record<string, s
 }
 
 export const formatDate = (iso: string, lang: Lang = 'ru') =>
-  new Date(iso).toLocaleDateString(LOCALES[lang], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+  dateText(iso, lang, 'long')
 
 export const postsFor = (lang: Lang): Post[] => POSTS.filter((p) => p.lang === lang)
 export const findPost = (slug: string, lang: Lang): Post | undefined => POSTS.find((p) => p.slug === slug && p.lang === lang)

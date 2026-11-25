@@ -1,10 +1,11 @@
 import { ICONS } from '@/components/site/icons'
-import { LOCALES, ui, type Lang } from '@/lib/i18n'
+import { ui, type Lang } from '@/lib/i18n'
+import { formatDate } from '@/lib/formatDate'
 
 // Даты создания и обновления — один компонент для статей блога и терминов глоссария:
 // две плашки со значками, обе видны всегда. Без даты обновления компонент не собрать (оба поля обязательны).
 const shortDate = (iso: string, lang: Lang) =>
-  new Date(iso).toLocaleDateString(LOCALES[lang], { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).replace(' г.', '')
+  formatDate(iso, lang, 'short').replace(' г.', '')
 
 export default function Dates({ created, updated, lang, schema = false }: { created: string; updated: string; lang: Lang; schema?: boolean }) {
   const ru = lang === 'ru'
