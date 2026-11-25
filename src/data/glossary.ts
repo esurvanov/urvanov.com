@@ -39,7 +39,7 @@ export interface Term {
   /** Таблица свойств: столбцы — варианты, строки — [свойство, значение для каждого столбца] */
   table?: { title: L; head: L<string[]>; rows: L<string[]>[] }
   /** Таблица сравнения: заголовок и строки [что сравниваем, левый, правый] */
-  compare?: { title: L; head: L<string[]>; rows: L<string[]>[]; /** Термины столбцов: заголовок становится ссылкой */ headSlugs?: string[]; /** Названия строк тоже со ссылками на термины (например, компании) */ linkRows?: boolean }
+  compare?: { title: L; head: L<string[]>; rows: L<string[]>[]; /** В русской версии вместо таблицы — ссылка на статью, где она живёт: два материала не делят один запрос */ movedRu?: { post: string; label: string }; /** Термины столбцов: заголовок становится ссылкой */ headSlugs?: string[]; /** Названия строк тоже со ссылками на термины (например, компании) */ linkRows?: boolean }
   /** Матрица свойств: строки [свойство, ...значения]; значение: yes — есть, part — использует, но не задаёт, no — нет */
   matrix?: { title: L; head: L<string[]>; rows: L<string[]>[]; legend: L; /** Слаги терминов для каждой строки; название строки делится по «, » */ slugs?: string[][]; /** Термин для строки без замены подписи */ rowSlugs?: (string | null)[]; /** Термины для столбцов */ headSlugs?: string[] }
 }
@@ -536,13 +536,13 @@ export const TERM_SETS: TermSet[] = [
         name: { ru: 'Codex', en: 'Codex' },
         aka: { ru: 'OpenAI Codex, Codex AI, Codex в ChatGPT, Кодекс', en: 'OpenAI Codex, Codex AI, ChatGPT Codex' },
         def: {
-          ru: 'Codex — агент OpenAI для программирования на моделях GPT; от ChatGPT отличается тем, что сам работает в проекте: читает код, правит файлы, запускает команды и тесты, готовит пулл-реквесты, а ChatGPT отвечает текстом. Работает в ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице; везде это один агент, и он входит в тарифы ChatGPT, лимиты зависят от тарифа. Устроен как Claude Code и Cursor. Инструкции проекта читает из `AGENTS.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP. Коротко: ChatGPT отвечает, Codex делает работу в проекте; в приложении ChatGPT для компьютера Codex показывает дифф и ревью, а ChatGPT технические подробности скрывает.',
+          ru: 'Codex — агент OpenAI для программирования на моделях GPT; он сам работает в проекте: читает код, правит файлы, запускает команды и тесты, готовит пулл-реквесты. Работает в ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице; везде это один агент, и он входит в тарифы ChatGPT, лимиты зависят от тарифа. Устроен как Claude Code и Cursor. Инструкции проекта читает из `AGENTS.md`, повторяющиеся процессы держит в скиллах, внешние системы подключает через MCP.',
           en: 'Codex is a coding agent app from OpenAI on GPT models, and it is a different thing from ChatGPT: the chat answers with text, while Codex works in the project itself — it reads the code, edits files, runs commands and tests, and prepares pull requests. It runs in ChatGPT, in the desktop app, in the terminal, in the IDE and in the cloud, where tasks run in a separate sandbox; it is one agent everywhere and comes with ChatGPT plans, with limits that depend on the plan. It is built like Claude Code and Cursor. It reads project instructions from `AGENTS.md`, keeps repeatable processes in skills and connects outside systems through MCP. In short: ChatGPT answers, Codex does the work in the project; in the ChatGPT desktop app Codex shows diff and review views, while ChatGPT hides technical details.',
         },
         match: { ru: ['(?:OpenAI )?Codex(?: AI| CLI)?'], en: ['(?:OpenAI )?Codex(?: AI| CLI)?'] },
         related: ['openai', 'agents-md', 'claude-code', 'cursor', 'ai-agent'],
         faq: [
-          { q: { ru: 'Codex и ChatGPT — это одно и то же?', en: 'Are Codex and ChatGPT the same thing?' }, a: { ru: 'Нет: ChatGPT — чат, который отвечает текстом, Codex — агент для кода, который сам читает проект, правит файлы и запускает тесты. Codex входит в тарифы ChatGPT.', en: 'No: ChatGPT is a chat that answers with text, Codex is a coding agent that reads the project, edits files and runs tests itself. Codex comes with ChatGPT plans.' } },
+          { q: { ru: 'Codex и ChatGPT — это одно и то же?', en: 'Are Codex and ChatGPT the same thing?' }, a: { ru: 'Нет: Codex — агент для кода, который входит в тарифы ChatGPT. Таблица различий и выбор по задаче собраны в статье «Codex или ChatGPT: что выбрать».', en: 'No: ChatGPT is a chat that answers with text, Codex is a coding agent that reads the project, edits files and runs tests itself. Codex comes with ChatGPT plans.' } },
           { q: { ru: 'Где работает Codex?', en: 'Where does Codex run?' }, a: { ru: 'В ChatGPT, в приложении для компьютера, в терминале, в IDE и в облаке, где задачи идут в отдельной песочнице. Везде это один и тот же агент.', en: 'In ChatGPT, in the desktop app, in the terminal, in the IDE and in the cloud, where tasks run in a separate sandbox. It is the same agent everywhere.' } },
           { q: { ru: 'На каких моделях работает Codex?', en: 'Which models does Codex use?' }, a: { ru: 'На моделях GPT от OpenAI.', en: 'On OpenAI’s GPT models.' } },
           { q: { ru: 'Codex — это модель или агент?', en: 'Is Codex a model or an agent?' }, a: { ru: 'Сейчас агент. В 2021 году Codex называлась модель OpenAI, которая дописывала код и работала внутри GitHub Copilot; имя осталось, а под ним теперь агент на моделях GPT.', en: 'An agent today. In 2021 Codex was the name of an OpenAI model that completed code and powered GitHub Copilot; the name stayed, and it now means an agent on GPT models.' } },
@@ -559,15 +559,16 @@ export const TERM_SETS: TermSet[] = [
           { url: 'https://learn.chatgpt.com/docs', label: { ru: 'OpenAI: документация Codex', en: 'OpenAI: Codex documentation' } },
         ],
         seo: {
-          title: { ru: 'Чем Codex отличается от ChatGPT: агент и чат, таблица', en: 'Codex vs ChatGPT: what is the difference, in one table' },
+          title: { ru: 'Codex от OpenAI: что это за агент для кода', en: 'Codex vs ChatGPT: what is the difference, in one table' },
           description: {
-            ru: 'Codex — агент OpenAI: сам правит код, запускает тесты и готовит пулл-реквест, а ChatGPT отвечает текстом. Таблица режимов и тарифов.',
+            ru: 'Codex — агент OpenAI для программирования: читает проект, правит код, запускает тесты и готовит пулл-реквест. Где работает и сколько стоит.',
             en: 'Codex is OpenAI’s coding agent: it edits code, runs tests and opens pull requests, while ChatGPT replies with text. Modes and plans in a table.',
           },
         },
         more: { post: 'ai-in-code-harness-and-tools', label: { ru: 'Claude Code, Codex, Cursor и Hermes Agent: что выбрать', en: 'Claude Code, Codex, Cursor and Hermes Agent: which to pick' } },
         also: [{ post: 'codex-or-chatgpt-what-to-choose', label: { ru: 'Codex или ChatGPT: что выбрать', en: 'Codex vs ChatGPT: which to pick' } }],
         compare: {
+          movedRu: { post: 'codex-or-chatgpt-what-to-choose', label: 'Таблица «Codex и ChatGPT» и выбор по задаче — в статье «Codex или ChatGPT: что выбрать»' },
           title: { ru: 'Чем Codex отличается от ChatGPT: Chat и Work', en: 'Codex vs ChatGPT: Chat and Work' },
           head: { ru: ['ChatGPT Chat', 'ChatGPT Work', 'Codex'], en: ['ChatGPT Chat', 'ChatGPT Work', 'Codex'] },
           rows: [

@@ -114,6 +114,7 @@ export function TermView() {
   const posts = postsWithTerm(term.slug, lang)
   // Схемы терминов нарисованы на двух языках: на новых языках — английская схема
   const art = termArt(term.slug, baseOf(lang))
+  const movedCompare = lang === 'ru' ? term.compare?.movedRu : undefined
   // Дополнительные экраны термина: схемы `slug/2`, `slug/3`… идут под основной
   const more = [2, 3, 4].map((n) => termArt(`${term.slug}/${n}`, baseOf(lang))).filter((a) => a !== null)
   return (
@@ -153,7 +154,11 @@ export function TermView() {
         </section>
       )}
 
-      {term.compare && (
+      {movedCompare && (
+        <p className="s-section"><ActionLink to={to(`/blog/${movedCompare.post}`)} icon={ICONS.doc}>{movedCompare.label}</ActionLink></p>
+      )}
+
+      {term.compare && !movedCompare && (
         <section className="s-section" aria-labelledby="t-cmp">
           <h2 className="s-label" id="t-cmp">{ICONS.links} {t(term.compare.title)}</h2>
           {(() => {
